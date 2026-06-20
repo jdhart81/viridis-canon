@@ -1,0 +1,156 @@
+[package]
+name = "ViridisCanon"
+leanOptions = [{ name = "autoImplicit", value = false }]
+defaultTargets = [
+  "P0_IntelligenceBound_COMPILED",
+  "P1_DScore",
+  "P2_HDFM_POC",
+  "P3_Impossibility",
+  "P4_ThermodynamicEconomics",
+  "P5_SLSPT_IntelligenceBound",
+  "P5_SLSPT_InverseSquare",
+  "P5_SLSPT_ShadowPrice",
+  "P5_SLSPT_ShadowPriceLevelCurves",
+  "P5_SLSPT_TowerOrdering",
+  "P7_PlasmaNFix_Foundations",
+  "P7_PlasmaNFix_Energy",
+  "P7_PlasmaNFix_Integration",
+  "P9_AI_Safety",
+  "Bridge_MissionFeasibility",
+  "PSIT_Symplectic",
+  "EcoChain_DendriticCorridor",
+  "Book_HeatAndDisorder",
+  "ConservationOperator",
+  "Bridge_EcoChainInstrument",
+  "Bridge_BiosphereProductivity",
+  "BiosphereErasureBound",
+  "BoundedMemoryLearning"
+]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+
+[[lean_lib]]
+name = "P0_IntelligenceBound_COMPILED"
+globs = ["P0_IntelligenceBound_COMPILED"]
+
+[[lean_lib]]
+name = "P1_DScore"
+globs = ["P1_DScore"]
+
+[[lean_lib]]
+name = "P2_HDFM_POC"
+globs = ["P2_HDFM_POC"]
+
+[[lean_lib]]
+name = "P3_Impossibility"
+globs = ["P3_Impossibility"]
+
+[[lean_lib]]
+name = "P4_ThermodynamicEconomics"
+globs = ["P4_ThermodynamicEconomics"]
+
+# P5 — Speed Limit Shadow Price Tower (SLSPT). 5 files, 24 theorems.
+# Promoted from Zenodo v3 canon snapshot 2026-05-07. Aristotle project ID
+# recorded in Zenodo deposit 10.5281/zenodo.20006414.
+[[lean_lib]]
+name = "P5_SLSPT_IntelligenceBound"
+globs = ["P5_SLSPT/IntelligenceBound"]
+
+[[lean_lib]]
+name = "P5_SLSPT_InverseSquare"
+globs = ["P5_SLSPT/InverseSquare"]
+
+[[lean_lib]]
+name = "P5_SLSPT_ShadowPrice"
+globs = ["P5_SLSPT/ShadowPrice"]
+
+[[lean_lib]]
+name = "P5_SLSPT_ShadowPriceLevelCurves"
+globs = ["P5_SLSPT/ShadowPriceLevelCurves"]
+
+[[lean_lib]]
+name = "P5_SLSPT_TowerOrdering"
+globs = ["P5_SLSPT/SLSPTTowerOrdering"]
+
+# P7 — Plasma-mediated N₂ fixation (Hart 2026). 16 theorems, zero sorry.
+# Promoted from 03_APPLICATIONS/plasma-nitrogen-fixation/ Aristotle artifact
+# 7fc5f57e-1abb-4126-80fd-86daf035063e on 2026-05-07.
+[[lean_lib]]
+name = "P7_PlasmaNFix_Foundations"
+globs = ["P7_PlasmaNFix/Foundations"]
+
+[[lean_lib]]
+name = "P7_PlasmaNFix_Energy"
+globs = ["P7_PlasmaNFix/Energy"]
+
+[[lean_lib]]
+name = "P7_PlasmaNFix_Integration"
+globs = ["P7_PlasmaNFix/Integration"]
+
+[[lean_lib]]
+name = "P9_AI_Safety"
+globs = ["P9_AI_Safety"]
+
+# Bridge theorem — Mission Feasibility (uses P0 + P3 + P4).
+# Aristotle project 054d616c-00e2-4971-8710-43859893f674, completed 2026-05-07.
+# 5 theorems, zero sorry, axiom-clean. Headline: Feasible e m ↔ r ≤ P/(k_B T ln 2).
+[[lean_lib]]
+name = "Bridge_MissionFeasibility"
+globs = ["Bridge_MissionFeasibility"]
+
+# PSIT — Symplectic structure on the slack of an information-rate bound
+# (Hart 2026, Run-035). 8 theorems, zero sorry. Verified via Aristotle
+# project 6026c56c-7d24-4644-9fea-28d204bd30c6 on 2026-05-21.
+[[lean_lib]]
+name = "PSIT_Symplectic"
+globs = ["PSIT_Symplectic"]
+
+# EcoChain — Dendritic corridor formation & connectivity-weighted payments.
+# 4 theorems + 3 lemmas, zero sorry. Verified via Aristotle project
+# c23eab22-9912-4ec6-8d9b-cac857e2f994 on 2026-05-30. Target venue: MEE.
+[[lean_lib]]
+name = "EcoChain_DendriticCorridor"
+globs = ["EcoChain_DendriticCorridor"]
+
+# Book — "Heat and Disorder" formal spine. Condenses the trade book's
+# qualitative claims into 7 theorems (entropy monotonicity, feedback
+# dichotomy, saddle-node tipping threshold, energy-balance uniqueness).
+# Verified via Aristotle project b18b368f-ecab-40e5-bc6f-68465a801209 on
+# 2026-05-31. Zero sorry; axioms {propext, Classical.choice, Quot.sound}.
+[[lean_lib]]
+name = "Book_HeatAndDisorder"
+globs = ["Book_HeatAndDisorder"]
+
+# ConservationOperator — asymmetric-reward conservation operator architecture.
+# 7 theorems, zero sorry. Verified via Aristotle 2026-05-09; published Zenodo
+# Canon v4 (10.5281/zenodo.20100595). Promoted to defaultTargets 2026-06-04.
+[[lean_lib]]
+name = "ConservationOperator"
+globs = ["ConservationOperator"]
+
+# Bridge — EcoChain instrument bridge (ties ConservationOperator to EcoChain
+# payment/instrument layer). Promoted to defaultTargets 2026-06-04.
+[[lean_lib]]
+name = "Bridge_EcoChainInstrument"
+globs = ["Bridge_EcoChainInstrument"]
+
+# Bridge — Biosphere-Productivity duality (ties the Intelligence Bound to
+# Turyshev's NPP / biosphere-productivity bound as one Landauer inequality
+# read from opposite sides). 6 theorems, zero sorry, axioms
+# {propext, Classical.choice, Quot.sound}. Verified via Aristotle project
+# a776fa56-0786-417b-b06a-9e034606b829 on 2026-06-08 (Lean 4.28.0, Mathlib 8f9d9cff).
+[[lean_lib]]
+name = "Bridge_BiosphereProductivity"
+globs = ["Bridge_BiosphereProductivity"]
+
+# v8 — recovered & unified footing (post-Wolpert). Erasure-side bound + bounded-memory
+# engine. Manually Aristotle-verified 2026-06-16 (projects d5ca243c, ee4f72eb).
+[[lean_lib]]
+name = "BiosphereErasureBound"
+globs = ["BiosphereErasureBound"]
+
+[[lean_lib]]
+name = "BoundedMemoryLearning"
+globs = ["BoundedMemoryLearning"]

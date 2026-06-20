@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: lake build + verification audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build (Lean toolchain from lean-toolchain, fetch Mathlib cache)
+        uses: leanprover/lean-action@v1
+        with:
+          use-mathlib-cache: true
+          build-args: "--wfail"
+
+      - name: Audit — no `sorry` / `admit` in source
+        run: |
+          echo "Scanning Lean sources for sorry/admit outside comments..."
+          if grep -RInE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' --include='*.lean' . \
+              | grep -vE '^\s*--' | grep -v '/\*'; then
+            echo "::error::Found sorry/admit in sources"; exit 1
+          fi
+          echo "OK — zero sorry/admit."
+
+      - name: Axiom audit (informational)
+        run: |
+          echo "Named-theorem axiom dependencies are audited to ⊆ {propext, Classical.choice, Quot.sound}"
+          echo "at forge time (Aristotle) and recorded per module. See scripts/ for #print axioms checks."

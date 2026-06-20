@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: "Viridis Canon: a machine-verified Intelligence Bound"
+message: "If you use this work, please cite it using the concept DOI below."
+type: software
+authors:
+  - family-names: Hart
+    given-names: Justin D.
+    affiliation: "Viridis LLC, Columbia Falls, Montana, USA"
+    orcid: "https://orcid.org/0009-0008-3082-2482"
+  - name: "Aristotle (Harmonic)"
+    affiliation: "Automated theorem prover (Lean 4 verification)"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.19317982
+    description: "Concept DOI — always resolves to the latest version"
+repository-code: "https://github.com/viridis-llc/viridis-canon"
+license: Apache-2.0
+keywords:
+  - Intelligence Bound
+  - Lean 4
+  - formal verification
+  - thermodynamic economics
+  - conservation
+  - AI alignment

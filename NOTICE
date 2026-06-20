@@ -1,0 +1,8 @@
+Viridis Canon
+Copyright 2026 Viridis LLC (Justin D. Hart)
+
+This product includes Lean 4 formalizations verified with Aristotle (Harmonic).
+Depends on Mathlib (https://github.com/leanprover-community/mathlib4), Apache-2.0.
+
+Accompanying papers and documentation in the linked Zenodo records are
+licensed CC-BY-4.0. Lean sources and code in this repository are Apache-2.0.

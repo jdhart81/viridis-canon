@@ -1,0 +1,17 @@
+# Lean / Lake build artifacts
+/.lake/
+/build/
+**/.lake/
+**/build/
+*.olean
+*.ilean
+*.trace
+lakefile.olean
+
+# Aristotle / forge artifacts
+*.tar.gz
+*.v7bak
+
+# OS / editor
+.DS_Store
+*.swp

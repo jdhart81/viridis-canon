@@ -1,35 +1,74 @@
-name: CI
+name: viridis-canon-ci
+
+# Integrity Release v9.1.0 — enforcing CI (replaces the informational workflow).
+# Every check below is BLOCKING. Configure branch protection on `main` to require
+# the `verify` job before merge (see RUNBOOK_v9.1.0.md → "Branch protection").
 
 on:
   push:
     branches: [ main ]
   pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
-  build:
-    name: lake build + verification audit
+  verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: 01_MATHLIB/Aristotle-Pipeline
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Build (Lean toolchain from lean-toolchain, fetch Mathlib cache)
-        uses: leanprover/lean-action@v1
-        with:
-          use-mathlib-cache: true
-          build-args: "--wfail"
+      # Fast, compiler-independent gates first — fail in seconds, not minutes.
+      - name: Spine hygiene (no sorry/admit, no homemade axioms)
+        run: bash tools/check_spine_hygiene.sh .
 
-      - name: Audit — no `sorry` / `admit` in source
+      - name: Vacuity linter (INV-1)
         run: |
-          echo "Scanning Lean sources for sorry/admit outside comments..."
-          if grep -RInE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' --include='*.lean' . \
-              | grep -vE '^\s*--' | grep -v '/\*'; then
-            echo "::error::Found sorry/admit in sources"; exit 1
+          python3 tools/vacuity_lint.py \
+            P0_IntelligenceBound_COMPILED.lean P1_DScore.lean P2_HDFM_POC.lean \
+            P3_Impossibility.lean P4_ThermodynamicEconomics.lean \
+            Bridge_MissionFeasibility.lean PSIT_Symplectic.lean \
+            EcoChain_DendriticCorridor.lean Book_HeatAndDisorder.lean \
+            ConservationOperator.lean Bridge_EcoChainInstrument.lean \
+            Bridge_BiosphereProductivity.lean BiosphereErasureBound.lean \
+            BoundedMemoryLearning.lean BoundedMemoryDissipation.lean
+
+      - name: CLAIMS_MATRIX present
+        run: test -f ../../CLAIMS_MATRIX.md || test -f CLAIMS_MATRIX.md
+
+      # Lean toolchain (pinned by lean-toolchain in the repo).
+      - name: Install elan / Lean
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Mathlib cache
+        run: lake exe cache get || true
+
+      # Full build INCLUDING the enforcing AxiomAudit target. Tee the log so the
+      # next step can independently catch any `sorry` warning the compiler emits.
+      - name: lake build (spine + AxiomAudit)
+        run: set -o pipefail; lake build 2>&1 | tee build.log
+
+      - name: No 'sorry' in build output (INV-1, compiler-level)
+        run: |
+          if grep -nE "declaration uses 'sorry'|sorryAx" build.log; then
+            echo "::error::spine build emitted a sorry — failing"; exit 1
           fi
-          echo "OK — zero sorry/admit."
+          echo "no sorry in build output"
 
-      - name: Axiom audit (informational)
+      # AxiomAudit.lean throws on any non-allowlisted axiom, so a successful build
+      # already implies the allowlist holds. This step makes the guarantee explicit
+      # in the log and fails closed if the audit line is missing.
+      - name: Confirm axiom audit ran
         run: |
-          echo "Named-theorem axiom dependencies are audited to ⊆ {propext, Classical.choice, Quot.sound}"
-          echo "at forge time (Aristotle) and recorded per module. See scripts/ for #print axioms checks."
+          grep -q "Axiom audit PASSED" build.log \
+            || { echo "::error::AxiomAudit did not report PASSED"; exit 1; }
+          echo "axiom allowlist enforced"

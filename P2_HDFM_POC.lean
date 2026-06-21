@@ -21,7 +21,9 @@ Hierarchical Dendritic Forest Management (HDFM).
 ## Main results
 
 * `dendritic_minimum_cost` — **Theorem 1**: MST minimizes total corridor cost
-* `tree_edge_removal_partition` — **Theorem 2**: Edge removal partitions tree into exactly 2 components
+* `tree_edge_removal_partition` — **Theorem 2**: removing any edge of a tree
+*   DISCONNECTS it (every edge is a bridge). NB the Lean conclusion is
+*   `¬ Connected`, not the strictly stronger 'exactly two components'.
 * `dendritic_max_info_efficiency` — **Theorem 3**: Dendritic networks maximize H_b / |E|
 
 ## Design decisions
@@ -141,8 +143,10 @@ theorem dendritic_minimum_cost
 
 /-
 **Theorem 2** (Deterministic Vulnerability Quantification):
-    For a tree T on n vertices, removing any edge e partitions T into
-    exactly two connected components.
+    For a tree T, removing any edge e disconnects it: the Lean conclusion is
+    `¬ (T.deleteEdges {e}).Connected` (every edge is a bridge). The strictly
+    stronger 'exactly two components' is TRUE for trees but is NOT what this
+    theorem proves — see CLAIMS_MATRIX.md.
 
     This is a fundamental property of trees: every edge is a bridge.
     Ecological interpretation: enables precise quantification of edge

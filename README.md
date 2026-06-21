@@ -1,91 +1,119 @@
-# Viridis Canon — the machine-verified Intelligence Bound
+# Aristotle-Pipeline — Viridis Formal Canon
 
-[![CI](https://github.com/jdhart81/viridis-canon/actions/workflows/ci.yml/badge.svg)](https://github.com/jdhart81/viridis-canon/actions/workflows/ci.yml)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19317982.svg)](https://doi.org/10.5281/zenodo.19317982)
-[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
-[![Lean 4](https://img.shields.io/badge/Lean-4-blue.svg)](https://leanprover.github.io/)
+**The canonical compiled Lean 4 artifacts underlying all Viridis science, methods, and publications.**
 
-A **Lean 4** formalization of the **Intelligence Bound** and the theory built on it — every theorem machine-checked, zero `sorry`, with a clean axiom audit. This is the load-bearing **spine** of the Viridis research canon: the minimal set of compiled theorems someone must accept to accept the whole edifice.
+> **What "verified" means here.** These modules are **Lean-checked conditional mathematics**: each theorem's *type* is machine-verified, but a Lean-checked theorem is not automatically a verified statement about physics, economics, or ecology. Every headline result is graded by formal strength in [`CLAIMS_MATRIX.md`](./CLAIMS_MATRIX.md) using the labels in [`THEOREM_STATUS_TAXONOMY.md`](./THEOREM_STATUS_TAXONOMY.md). Read the matrix before citing any result as established. Integrity Release **v9.1.0** (2026-06-21) quarantined P9 and de-escalated several overstated claims; see [`CHANGELOG_v9.1.0.md`](./CHANGELOG_v9.1.0.md).
 
-> **The Intelligence Bound:** an agent's rate of heritable information acquisition is bounded by the physical power it commands — `İ(τ) ≤ min(ρB, P / (k_B T ln 2))`. The live footing is the **erasure side** (a biosphere-erasure floor + a stewardship-intelligence lower bound); the acquisition-rate framing was refuted (Wolpert 2026) and is not asserted.
-
-## The verification guarantee
-
-Every module in this repository:
-- builds under a pinned Lean 4 toolchain (`lean-toolchain`) against [Mathlib](https://github.com/leanprover-community/mathlib4);
-- contains **zero `sorry`** / `admit`;
-- has each named theorem's axiom dependency **audited to `⊆ {propext, Classical.choice, Quot.sound}`** (the standard classical-logic base — no extra axioms smuggled in);
-- carries **non-vacuous** statements (the hypotheses are load-bearing in the proofs).
-
-Theorems are verified with [Aristotle (Harmonic)](https://harmonic.fun/) and re-checked in CI on every push. Verification certifies the **validity of the reasoning**, not empirical magnitudes.
-
-## Build
-
-```bash
-# Lean 4 via elan (toolchain is pinned in lean-toolchain)
-lake exe cache get      # fetch Mathlib build cache
-lake build              # builds all spine modules
-```
-
-## The spine (this repo)
-
-All 23 modules are released together under the spine concept DOI **[10.5281/zenodo.19317982](https://doi.org/10.5281/zenodo.19317982)** (always resolves to the latest version; frozen head **v9.0.1**).
-
-| Module | Pillar / role |
-|---|---|
-| `P0_IntelligenceBound_COMPILED` | **P0** — the core bound |
-| `BiosphereErasureBound`, `BoundedMemoryLearning` | P0 — recovered **erasure-side** footing (post-Wolpert) |
-| `P1_DScore` | **P1** — disorder/biodiversity score |
-| `P2_HDFM_POC` | **P2** — high-definition forest management |
-| `P3_Impossibility` | **P3** — Goodhart / alignment-as-feasibility impossibility |
-| `P4_ThermodynamicEconomics` | **P4** — thermodynamic economics (D-Capital) |
-| `P5_SLSPT_*` (×5) | **P5** — shadow-price / inverse-square / tower-ordering suite |
-| `P7_PlasmaNFix_*` (×3) | **P7** — plasma-mediated N₂ fixation |
-| `P9_AI_Safety` | **P9** — AI-safety formalization |
-| `Bridge_MissionFeasibility` | bridge — mission feasibility |
-| `Bridge_BiosphereProductivity` | bridge — IB ⇄ biosphere-productivity duality |
-| `Bridge_EcoChainInstrument` | bridge — EcoChain instrument |
-| `EcoChain_DendriticCorridor` | corridors — dendritic connectivity |
-| `ConservationOperator` | asymmetric-reward conservation operator |
-| `PSIT_Symplectic` | symplectic integrator theory |
-| `Book_HeatAndDisorder` | "Heat and Disorder" verified appendix |
-
-## The extended canon (thematic series & standalone records)
-
-The spine is a curated, milestone-only release line. Everything else routes to **thematic series** (own DOI, `isDerivedFrom` the spine) or standalone branch records. Live series:
-
-| Series | Theme | Concept DOI |
-|---|---|---|
-| S1 | D-Capital Valuation | [10.5281/zenodo.20705178](https://doi.org/10.5281/zenodo.20705178) |
-| S2 | Monitoring — the Surveyor | [10.5281/zenodo.20704852](https://doi.org/10.5281/zenodo.20704852) |
-| S3 | Gaian Thermodynamics | [10.5281/zenodo.20777225](https://doi.org/10.5281/zenodo.20777225) |
-| S4 | Stewardship & Governance — ViridisOS | [10.5281/zenodo.20705182](https://doi.org/10.5281/zenodo.20705182) |
-| S5 | Corridors & Spatial | [10.5281/zenodo.20777068](https://doi.org/10.5281/zenodo.20777068) |
-
-Browse the full corpus in the [**viridis-canon** Zenodo community](https://zenodo.org/communities/viridis-canon).
-
-## Citation
-
-```bibtex
-@software{viridis_canon,
-  author  = {Hart, Justin D. and {Aristotle (Harmonic)}},
-  title   = {Viridis Canon: a machine-verified Intelligence Bound},
-  doi     = {10.5281/zenodo.19317982},
-  url     = {https://doi.org/10.5281/zenodo.19317982},
-  note    = {Concept DOI — always resolves to the latest version}
-}
-```
-
-See [`CITATION.cff`](./CITATION.cff).
-
-## Relationship to Mathlib
-
-This package **depends on** Mathlib; it is not part of it. General, reusable lemmas discovered while building the canon are **upstreamed to Mathlib as targeted PRs** (the canon keeps the application-specific theorems; Mathlib gets the domain-agnostic pieces). See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
-
-## License
-
-Lean sources and code: **Apache-2.0** ([`LICENSE`](./LICENSE)). Accompanying papers and documentation in the Zenodo records: **CC-BY-4.0**.
+Last updated: 2026-05-31 (Book_HeatAndDisorder v2 promoted; 12 theorems verified via Aristotle a9312b60 — "Heat and Disorder" formal spine + first-principles layer incl. the Intelligence-Bound restoration speed limit)
+Lean toolchain: leanprover/lean4:v4.28.0
+API: https://aristotle.harmonic.fun
 
 ---
 
-*Viridis LLC · Columbia Falls, Montana, USA · ORCID [0009-0008-3082-2482](https://orcid.org/0009-0008-3082-2482)*
+## Module Status
+
+| Module | File | Sorry | Status | Paper Target |
+|--------|------|-------|--------|-------------|
+| **P0** | `P0_IntelligenceBound_COMPILED.lean` | **0** | COMPILED | NJP-119954 (submitted 2026-04-05) |
+| **P1** | `P1_DScore.lean` | **0** | COMPILED | Physical Review E (draft) |
+| **P2** | `P2_HDFM_POC.lean` | **0** | COMPILED | HDFM resubmission |
+| **P3** | `P3_Impossibility.lean` | **0** | COMPILED | 2nd canon paper (Goodhart impossibility / alignment-as-feasibility) |
+| **P4** | `P4_ThermodynamicEconomics.lean` | **0** | COMPILED | Nature Sustainability |
+| **P5** | `P5_SLSPT/` (5 files: IntelligenceBound, InverseSquare, ShadowPrice, ShadowPriceLevelCurves, SLSPTTowerOrdering) | **0** | COMPILED | Speed Limit Shadow Price Tower (24 thms; promoted from Zenodo v3 deposit 10.5281/zenodo.20006414) |
+| **P7** | `P7_PlasmaNFix/` (3 files: Foundations, Energy, Integration) | **0** | COMPILED | Plasma-mediated N₂ fixation for forest C-sequestration (16 thms — Hart 2026; Nature Energy track) |
+| ~~P9~~ | `P9_AI_Safety.lean` | 0 | ⚠ **EXPLORATORY — QUARANTINED v9.1.0** — vacuous `ai_conservation_alignment` (T₀=⊤); removed from `defaultTargets` and the verified guarantee (see CLAIMS_MATRIX.md) | AI Safety (non-vacuous reconstruction queued) |
+| **PSIT** | `PSIT_Symplectic.lean` | **0** | COMPILED | Symplectic-conjugation theorem — Nature Physics (Hart 2026, Run-035; 8 thms) |
+| **BMD** | `BoundedMemoryDissipation.lean` | **0** | COMPILED (Aristotle `6483ae65`, 2026-06-21) | **v9.1.0 INV-4 fix** — honest bounded-memory dissipation floor (`hmem` load-bearing); replaces P0's dead-`h_mem` `finite_memory_dissipation` (→ `landauer_dissipation_bound`) |
+| **EcoChain** | `EcoChain_DendriticCorridor.lean` | **0** | COMPILED | Dendritic corridor formation — *Methods in Ecology & Evolution* (4 thms + 3 lemmas; Aristotle c23eab22, 2026-05-30) |
+| **Book** | `Book_HeatAndDisorder.lean` | **0** | COMPILED | Formal spine of *Heat and Disorder* book — 12 thms. Foundation (7): entropy monotonicity, feedback dichotomy, saddle-node tipping threshold, energy-balance uniqueness. First-principles layer (5): strict Clausius production + gap-monotonicity, Planck climate sensitivity (Stefan–Boltzmann), **Intelligence-Bound restoration speed limit** (dI/dt ≤ P/(k_B T ln2)) + time lower bound. Aristotle a9312b60, 2026-05-31 |
+
+**ALL MODULES ZERO SORRY. 8/9 canon + PSIT + EcoChain_DendriticCorridor + Book_HeatAndDisorder (12 thms) compiled. Full stack: physics → information theory → intelligence bound → biodiversity metric → graph optimality → planetary-conservation impossibility → thermodynamic economics → plasma N₂ fixation.** _(The AI-safety module P9 is **EXPLORATORY — quarantined in v9.1.0** and is NOT part of the verified stack.)_
+
+### Bridge Theorems (cross-canon results)
+
+| Module | File | Sorry | Status | Headline |
+|--------|------|-------|--------|----------|
+| **B1** | `Bridge_MissionFeasibility.lean` | **0** | COMPILED | `Feasible e m ↔ target_rate ≤ P_max / (k_B T ln 2)` — uses P0 + P3 + P4. Aristotle 054d616c-00e2-4971-8710-43859893f674. |
+
+---
+
+## Directory Structure
+
+```
+Aristotle-Pipeline/
+├── P0_IntelligenceBound_COMPILED.lean   # THE FOUNDATION — 604 lines, zero sorry
+├── P1_DScore.lean                        # D-Score biodiversity metric
+├── P2_HDFM_POC.lean                      # HDFM graph-theoretic foundations (zero sorry)
+├── P3_Impossibility.lean                 # Planetary-conservation impossibility (zero sorry)
+├── P4_ThermodynamicEconomics.lean        # Thermodynamic economics (zero sorry)
+├── P7_PlasmaNFix/                        # Plasma N₂ fixation (3 files, 16 thms, zero sorry)
+├── P9_AI_Safety.lean                     # AI Safety — COMPILED, zero sorry
+├── lakefile.toml                         # Unified build config (all modules)
+├── lean-toolchain                        # v4.28.0
+├── lake-manifest.json                    # Mathlib dependency lock
+├── README.md                             # This file
+└── _pre-aristotle-drafts/                # Archive of sorry versions + Aristotle summaries
+    ├── P2_HDFM_POC_sorry.lean
+    ├── P4_ThermodynamicEconomics_sorry.lean
+    ├── ARISTOTLE_SUMMARY_P2.md
+    └── ARISTOTLE_SUMMARY_P4.md
+```
+
+---
+
+## Dependency Graph
+
+```
+P0 (Intelligence Bound) ──┬──> P2 (HDFM)
+                           ├──> P4 (Thermodynamic Economics)
+                           ├──> P1 (D-Score)
+                           ├──> P5 (SLSPT — shadow-price tower)
+                           └──> P9 (AI Safety) [EXPLORATORY — quarantined v9.1.0, not built]
+```
+
+P0 is the root. All downstream modules share its definitions (ENNReal, Landauer, mutual information). P2 and P4 are independent of each other.
+
+---
+
+## Axiom Audit
+
+All compiled modules depend only on:
+- `propext` — propositional extensionality
+- `Classical.choice` — axiom of choice
+- `Quot.sound` — quotient soundness
+
+**Enforcement (v9.1.0).** This allowlist is no longer a claim in prose — it is enforced. `AxiomAudit.lean` is a build target that walks the environment, collects the axioms of every verified-spine declaration, and **throws (fails `lake build`)** on any axiom outside the three above or on `sorryAx`. CI additionally runs `tools/check_spine_hygiene.sh` (no `sorry`/`admit`/homemade axioms) and `tools/vacuity_lint.py` (no ⊤-witness / `absurd … not_top_lt` vacuity). All checks are blocking; see `.github/workflows/ci.yml` and `CHANGELOG_v9.1.0.md`.
+
+No sorry, no native_decide on nontrivial terms, no escape hatches.
+
+---
+
+## Workflow: Adding New Aristotle Outputs
+
+1. Justin drops new Aristotle output folders into `new leans/` in the workspace root
+2. Claude reviews: diff against current versions, verify zero sorry, check axiom set
+3. Archive the old sorry version into `_pre-aristotle-drafts/`
+4. Promote the new compiled .lean file into this directory
+5. Copy the Aristotle summary into `_pre-aristotle-drafts/` for provenance
+6. Update this README's status table
+7. Update the Formal Invariant Structure document (v1.0+) if new theorems added
+
+---
+
+## Stack Complete
+
+All five modules compile with zero sorry. The full Viridis theorem stack covers:
+
+**Physics (Landauer) → Information Theory (Shannon, KL) → Intelligence Bound (P0) → D-Score (P1) → HDFM Graph Optimality (P2) → Thermodynamic Economics (P4)**  
+_(AI-safety module P9 is EXPLORATORY — quarantined v9.1.0, not in the verified stack.)_
+
+P9 note (corrected v9.1.0): `ai_conservation_alignment` is **vacuous** — it is proved with the existential witness T₀ = ⊤, so the hypothesis `T > T₀` can never hold and the ∀ is empty. This is not an "edge case"; the theorem establishes nothing. Two further P9 results are also weaker than their names: `deception_power_cost` proves only `0 < ΔI·kBT_ln2` (no deceptive-power term), and `complete_alignment_framework` proves only `a ≤ b`. P9 is therefore **quarantined as EXPLORATORY** pending a non-vacuous reconstruction. The substantive long-horizon conservation result is P0 `conditional_conservation` (NNReal, non-vacuous). See CLAIMS_MATRIX.md → P9.
+
+---
+
+## Cross-References
+
+- **Formal Invariant Structure:** `Viridis_Formal_Invariant_Structure_v1.0.docx` (workspace root)
+- **Zenodo DOI:** 10.5281/zenodo.19317983 (P0 formalization)
+- **NJP Submission:** Manuscript ID NJP-119954 (Intelligence Bound paper)
+- **Obsidian Log:** Inbox/Intelligence Bound/2026-04-05_Viridis-Formal-Invariant-Structure-v10-Day-One.md

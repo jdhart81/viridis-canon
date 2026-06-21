@@ -16,7 +16,7 @@ Co-authored-by: Aristotle (Harmonic) <aristotle-harmonic@harmonic.fun>
 ERASURE / MAINTENANCE side, not the acquisition side. k_B T ln 2 is NOT a floor on
 *acquiring* a bit (no Landauer floor on acquisition — Wolpert); it IS the floor on
 *maintaining/erasing* information. The operative cost here is the maintenance &
-erasure of predictive/heritable information — see Lemma 3 (`finite_memory_dissipation`,
+erasure of predictive/heritable information — see Lemma 3 (`landauer_dissipation_bound`,
 the bounded-memory ⇒ dissipation core), and modules `BoundedMemoryLearning` and
 `BiosphereErasureBound`, and `IB_FOOTING_CORRECTION_2026-06-16.md`. All theorem
 statements below are UNCHANGED; only the physical reading is corrected. -/
@@ -33,7 +33,8 @@ Implications for Biosphere Information" (Hart 2025).
 * `intelligence_bound` — **Theorem 1**: İ(τ) ≤ min(ρB, P/(k_B T ln 2))
 * `data_bound_lemma_conditional` — **Lemma 1**: İ ≤ ρ · B
 * `thermodynamic_bound_lemma` — **Lemma 2**: İ ≤ P/(k_B T ln 2)
-* `finite_memory_dissipation` — **Lemma 3**: Bounded memory ⟹ power dissipation
+* `landauer_dissipation_bound` — **Lemma 3** (renamed v9.1.0): Landauer floor ⟹ power dissipation
+*   (honest bounded-memory floor: module `BoundedMemoryDissipation`)
 * `learning_dissipation_link` — **Proposition 2**: Learning–dissipation link
 * `conditional_conservation` — **Proposition 7**: Rational long-horizon agents preserve biosphere
 * `phase_transition_regimes` — **Prediction 2**: Power-limited ↔ data-limited phase transition
@@ -182,11 +183,19 @@ def BoundedMemory {Ω State : Type} [MeasurableSpace Ω] [MeasurableSpace State]
     (μ : Measure Ω) (Y : Process Ω State) (C : NNReal) : Prop :=
   ∀ t, shannonEntropy μ (fun ω => Y ω t) ≤ C
 
-/-- Lemma 3: Bounded memory implies power dissipation ≥ learning rate × k_B T ln 2. -/
-theorem finite_memory_dissipation {Ω State : Type} [MeasurableSpace Ω]
+/-- **Landauer dissipation bound** (v9.1.0 — renamed from `finite_memory_dissipation`).
+    Given a Landauer floor on the erasure rate and `erasureRate ≥ İ`, power
+    dissipation is at least `İ · k_B T ln 2`. The former name and its unused
+    `BoundedMemory` hypothesis (`h_mem`/`C`) were withdrawn: the bounded-memory →
+    erasure mechanism is NOT used here. The HONEST, non-vacuous bounded-memory
+    dissipation floor — with bounded memory load-bearing — is
+    `Viridis.P0BoundedMemoryDissipation.bounded_memory_dissipation_floor`
+    (module `BoundedMemoryDissipation`, Aristotle-verified 2026-06-21). See
+    CLAIMS_MATRIX.md → P0. -/
+theorem landauer_dissipation_bound {Ω State : Type} [MeasurableSpace Ω]
     [MeasurableSpace State] (μ : Measure Ω) (X : Process Ω State)
-    (Y : Process Ω State) (τ : NNReal) (C : NNReal) (P T kB : NNReal)
-    (erasureRate : ENNReal) (h_mem : BoundedMemory μ Y C)
+    (Y : Process Ω State) (τ : NNReal) (P T kB : NNReal)
+    (erasureRate : ENNReal)
     (h_landauer : P ≥ erasureRate *
       ENNReal.ofReal ((kB : ℝ) * (T : ℝ) * Real.log 2))
     (h_erasure_needed : erasureRate ≥ intelligenceCreationRate μ X Y τ) :
@@ -198,8 +207,8 @@ theorem finite_memory_dissipation {Ω State : Type} [MeasurableSpace Ω]
     the system satisfies the Landauer limit predicate. -/
 theorem learning_dissipation_link {Ω State : Type} [MeasurableSpace Ω]
     [MeasurableSpace State] (μ : Measure Ω) (X : Process Ω State)
-    (Y : Process Ω State) (τ : NNReal) (C : NNReal) (P T kB : NNReal)
-    (erasureRate : ENNReal) (h_mem : BoundedMemory μ Y C)
+    (Y : Process Ω State) (τ : NNReal) (P T kB : NNReal)
+    (erasureRate : ENNReal)
     (h_landauer : P ≥ erasureRate *
       ENNReal.ofReal ((kB : ℝ) * (T : ℝ) * Real.log 2))
     (h_erasure_needed : erasureRate ≥ intelligenceCreationRate μ X Y τ) :

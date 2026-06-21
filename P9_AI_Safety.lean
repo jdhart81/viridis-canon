@@ -1,3 +1,24 @@
+/-!
+# ⚠ EXPLORATORY — NOT PART OF THE VERIFIED SPINE (quarantined v9.1.0, 2026-06-21)
+
+This module is RETAINED FOR RESEARCH but REMOVED from `defaultTargets` and from
+the verified-canon guarantee. Several results here are conditional, definitional,
+or — in one case — VACUOUS as currently stated:
+
+  * `ai_conservation_alignment` is proved with the existential witness T₀ = ⊤,
+    making `T > T₀` unsatisfiable; the ∀ is vacuously true. It establishes nothing.
+  * `deception_power_cost` concludes only `0 < ΔI · kBT_ln2`; it has no term for a
+    deceptive system's power and proves no lower bound on it.
+  * `complete_alignment_framework` concludes `a ≤ b` (written `a < b ∨ a = b`),
+    not that a rational agent must preserve the biosphere.
+  * `misalignment_self_defeat` ASSUMES ρ₂ ≤ ρ₁; the biological D→ρ link is not
+    formalized (the `D` field of `AISystem` is unused by `ibCeiling`).
+
+Status: EXPLORATORY (see THEOREM_STATUS_TAXONOMY.md). A non-vacuous reconstruction
+is queued for a fresh Aristotle pass; until it lands, do NOT cite P9 as verified.
+See CLAIMS_MATRIX.md and CHANGELOG_v9.1.0.md.
+-/
+
 /-
 Copyright (c) 2025 Justin Hart, Viridis LLC. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.

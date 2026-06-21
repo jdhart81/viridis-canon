@@ -23,15 +23,24 @@ to economic production theory.
 ## Main results
 
 * `thermodynamic_production_bound` — **Theorem 3.1**: dI/dt ≤ η·P·D/(k_B T ln 2)
-* `non_substitutability` — **Theorem 4.1**: σ(P,D) = 0 (perfect complements)
-* `steady_state_necessity` — **Theorem 5.1**: Material throughput growth is bounded
-* `infinite_foreclosure_cost` — **Theorem 6.1**: C(D→0) = ∞
+* `non_substitutability_{D,P}_essential` — **Theorem 4.1**: BOUNDARY
+  ESSENTIALITY. F(P,0)=F(0,D)=0, so each input is essential at its zero
+  limit. This is NOT σ=0 / Leontief: isoquants are rectangular hyperbolae,
+  so substitution is positive for D>0. The σ=0 label is withdrawn in v9.1.0.
+* `steady_state_necessity` — **Theorem 5.1**: the throughput-driven rate
+  ceiling P_max/(k_B T_min ln2) is FINITE. (Boundedness of the ceiling; it
+  does NOT by itself prove growth must halt — see CLAIMS_MATRIX.md.)
+* `infinite_foreclosure_cost` — **Theorem 6.1**: an UNDISCOUNTED positive
+  value flow integrated over [0,∞) diverges. CONDITIONAL on no discounting /
+  non-declining valuation; finite under discounting. See CLAIMS_MATRIX.md.
 
 ## Design decisions
 
 * Builds on IntelligenceBound.lean definitions (ENNReal, Landauer, etc.)
 * Production function F(P,D) = η·P·D/(k_B T ln 2) inherits IB structure
-* Non-substitutability proved via isoquant analysis in ENNReal
+* Boundary essentiality proved via isoquant analysis in ENNReal. The isoquant
+*   D = c·F₀/(η·P) is a rectangular hyperbola — substitution is possible for
+*   D>0; only the D→0 and P→0 limits force F→0. Essentiality, not Leontief.
 * Foreclosure cost uses improper integral formalization
 -/
 
@@ -109,10 +118,14 @@ def isoquant (η kBT_ln2 F₀ P : ENNReal) : ENNReal :=
   kBT_ln2 * F₀ / (η * P)
 
 /-
-**Theorem 4.1** (Non-Substitutability):
-    As D → 0, F → 0 regardless of P. No finite increase in P can
-    compensate for loss of D. This is the essential complementarity
-    (Leontief) property.
+**Theorem 4.1** (Boundary Essentiality of D):
+    As D → 0, F → 0 regardless of P. D is an *essential* input: no power
+    produces output at D = 0.
+    NOTE (v9.1.0): this is boundary essentiality, NOT perfect complementarity.
+    For every D > 0 the isoquant D = c·F₀/(η·P) is a rectangular hyperbola, so
+    a rise in P DOES compensate a fall in D along a level set — the elasticity
+    of substitution is positive, not zero. The Leontief / σ=0 reading is
+    withdrawn; see CLAIMS_MATRIX.md.
 -/
 theorem non_substitutability_D_essential
     (η P kBT_ln2 : ENNReal)

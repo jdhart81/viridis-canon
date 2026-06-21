@@ -1,6 +1,4 @@
-[package]
 name = "ViridisCanon"
-leanOptions = [{ name = "autoImplicit", value = false }]
 defaultTargets = [
   "P0_IntelligenceBound_COMPILED",
   "P1_DScore",
@@ -27,6 +25,9 @@ defaultTargets = [
   "BoundedMemoryDissipation",
   "AxiomAudit"
 ]
+
+[leanOptions]
+autoImplicit = false
 
 [[require]]
 name = "mathlib"

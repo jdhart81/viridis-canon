@@ -57,38 +57,38 @@ globs = ["P4_ThermodynamicEconomics"]
 # recorded in Zenodo deposit 10.5281/zenodo.20006414.
 [[lean_lib]]
 name = "P5_SLSPT_IntelligenceBound"
-globs = ["P5_SLSPT/IntelligenceBound"]
+globs = ["P5_SLSPT.IntelligenceBound"]
 
 [[lean_lib]]
 name = "P5_SLSPT_InverseSquare"
-globs = ["P5_SLSPT/InverseSquare"]
+globs = ["P5_SLSPT.InverseSquare"]
 
 [[lean_lib]]
 name = "P5_SLSPT_ShadowPrice"
-globs = ["P5_SLSPT/ShadowPrice"]
+globs = ["P5_SLSPT.ShadowPrice"]
 
 [[lean_lib]]
 name = "P5_SLSPT_ShadowPriceLevelCurves"
-globs = ["P5_SLSPT/ShadowPriceLevelCurves"]
+globs = ["P5_SLSPT.ShadowPriceLevelCurves"]
 
 [[lean_lib]]
 name = "P5_SLSPT_TowerOrdering"
-globs = ["P5_SLSPT/SLSPTTowerOrdering"]
+globs = ["P5_SLSPT.SLSPTTowerOrdering"]
 
 # P7 — Plasma-mediated N₂ fixation (Hart 2026). 16 theorems, zero sorry.
 # Promoted from 03_APPLICATIONS/plasma-nitrogen-fixation/ Aristotle artifact
 # 7fc5f57e-1abb-4126-80fd-86daf035063e on 2026-05-07.
 [[lean_lib]]
 name = "P7_PlasmaNFix_Foundations"
-globs = ["P7_PlasmaNFix/Foundations"]
+globs = ["P7_PlasmaNFix.Foundations"]
 
 [[lean_lib]]
 name = "P7_PlasmaNFix_Energy"
-globs = ["P7_PlasmaNFix/Energy"]
+globs = ["P7_PlasmaNFix.Energy"]
 
 [[lean_lib]]
 name = "P7_PlasmaNFix_Integration"
-globs = ["P7_PlasmaNFix/Integration"]
+globs = ["P7_PlasmaNFix.Integration"]
 
 # QUARANTINED v9.1.0 (2026-06-21): exploratory, not a verified-spine target.
 # Contains a vacuous theorem (ai_conservation_alignment, T₀=⊤). Excluded from

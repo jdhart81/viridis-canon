@@ -6,7 +6,7 @@ Authors: Justin Hart, Aristotle (Harmonic)
 Mission Feasibility Theorem
 ============================
 
-A bridge theorem that uses P0 (Intelligence Bound), P3 (Goodhart
+A self-contained mission-feasibility analogue (imports only Mathlib; v9.1.1) motivated by P0 (Intelligence Bound), P3 (Goodhart
 Impossibility / alignment-as-feasibility), and P4 (Thermodynamic
 Economics) jointly to produce a single numerical test for whether a
 planetary conservation mission is achievable at all.

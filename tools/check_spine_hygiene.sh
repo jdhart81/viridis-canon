@@ -13,8 +13,13 @@ DIR="${1:-.}"
 TOOLS="$(cd "$(dirname "$0")" && pwd)"
 fail=0
 
-# The verified-spine files (P9 quarantined → excluded).
-mapfile -t SPINE < <(ls "$DIR"/*.lean 2>/dev/null | grep -v 'P9_AI_Safety.lean')
+# Verified-spine files come from the canonical manifest (covers P5/P7 subdirs);
+# fall back to root-level glob (minus quarantined P9) if the manifest is absent.
+if [ -f "$DIR/SPINE_MANIFEST.txt" ]; then
+  mapfile -t SPINE < <(grep -vE '^[[:space:]]*(#|$)' "$DIR/SPINE_MANIFEST.txt" | sed "s|^|$DIR/|")
+else
+  mapfile -t SPINE < <(ls "$DIR"/*.lean 2>/dev/null | grep -v 'P9_AI_Safety.lean')
+fi
 
 strip_comments() {  # remove /- ... -/ block comments and -- line comments
   python3 - "$1" <<'PY'

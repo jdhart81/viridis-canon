@@ -27,16 +27,8 @@ jobs:
       - name: Spine hygiene (no sorry/admit, no homemade axioms, no vacuity)
         run: bash tools/check_spine_hygiene.sh .
 
-      - name: Vacuity linter (INV-1)
-        run: |
-          python3 tools/vacuity_lint.py \
-            P0_IntelligenceBound_COMPILED.lean P1_DScore.lean P2_HDFM_POC.lean \
-            P3_Impossibility.lean P4_ThermodynamicEconomics.lean \
-            Bridge_MissionFeasibility.lean PSIT_Symplectic.lean \
-            EcoChain_DendriticCorridor.lean Book_HeatAndDisorder.lean \
-            ConservationOperator.lean Bridge_EcoChainInstrument.lean \
-            Bridge_BiosphereProductivity.lean BiosphereErasureBound.lean \
-            BoundedMemoryLearning.lean BoundedMemoryDissipation.lean
+      - name: Vacuity linter (INV-1) — full spine via SPINE_MANIFEST
+        run: python3 tools/vacuity_lint.py $(grep -vE '^[[:space:]]*(#|$)' SPINE_MANIFEST.txt)
 
       - name: Integrity docs present
         run: test -f CLAIMS_MATRIX.md && test -f THEOREM_STATUS_TAXONOMY.md

@@ -17,6 +17,26 @@ The ladder, strongest to weakest:
 | **Conjecture** | Stated and motivated, **not proved** (or proved only in a degenerate special case). | Direction of research. | That it is a theorem. |
 | **Exploratory** | **Quarantined.** Not part of the verified spine. May be conditional, mislabeled, trivial, or — in the worst case — vacuous. | Nothing, until reconstructed. | Any verified guarantee. |
 
+## Two-field status — Formal × Interpretive (v9.1.1)
+
+A single label is often too coarse: a theorem can be rigorous mathematics whose
+real-world *interpretation* is unvalidated. So each headline result carries **two**
+fields rather than one:
+
+- **Formal status** — how much the Lean proof establishes *about the stated objects*:
+  one of Derived / Conditional / Definition-expansion / Bridge-assumption / Conjecture /
+  Exploratory.
+- **Interpretive status** — how much is established *about the world* the objects are
+  meant to model: typically Empirical-hypothesis until field/experimental validation,
+  or N/A for pure mathematics making no empirical claim.
+
+Example: `dScore_mem_Icc` is **Formal: Derived** (the normalized ratio provably lies in
+[0,1]) and **Interpretive: Empirical-hypothesis** (that this index tracks real
+biodiversity is an empirical-modeling question). `CLAIMS_MATRIX.md` records both; where a
+row shows a single label, Interpretive = N/A (pure math).
+
+---
+
 ## How a label is assigned
 
 1. **Read the Lean conclusion, not the name.** Strip the docstring; look only at

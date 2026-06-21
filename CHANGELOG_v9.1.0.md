@@ -88,7 +88,7 @@ spine re-entry.
   14-module post-quarantine spine.
 - `tools/check_spine_hygiene.sh` — no `sorry`/`admit` in code, no homemade
   axioms, runs the vacuity linter. Passes clean on the current spine.
-- `.github/workflows/ci.yml` — all checks **blocking**; build + no-`sorry` log
+- `.github/workflows/ci.yml` — textual gates **blocking**; Lean build + axiom audit **provisional** (continue-on-error) pending GitHub Actions validation (clarified in v9.1.1). No-`sorry` log
   scan + axiom-audit confirmation. Branch-protect `main` to require it.
 
 ## Not changed

@@ -1,0 +1,28 @@
+# Canonical verified-spine manifest (v9.1.1). One Lean source path per line.
+# Single source of truth for the integrity gates: tools/check_spine_hygiene.sh,
+# the CI vacuity linter, and (kept in sync) AxiomAudit.lean's import/module list.
+# Mirrors lakefile.toml defaultTargets MINUS the quarantined P9. AxiomAudit.lean
+# is the auditor, not audited, so it is intentionally absent.
+P0_IntelligenceBound_COMPILED.lean
+P1_DScore.lean
+P2_HDFM_POC.lean
+P3_Impossibility.lean
+P4_ThermodynamicEconomics.lean
+P5_SLSPT/IntelligenceBound.lean
+P5_SLSPT/InverseSquare.lean
+P5_SLSPT/ShadowPrice.lean
+P5_SLSPT/ShadowPriceLevelCurves.lean
+P5_SLSPT/SLSPTTowerOrdering.lean
+P7_PlasmaNFix/Foundations.lean
+P7_PlasmaNFix/Energy.lean
+P7_PlasmaNFix/Integration.lean
+Bridge_MissionFeasibility.lean
+PSIT_Symplectic.lean
+EcoChain_DendriticCorridor.lean
+Book_HeatAndDisorder.lean
+ConservationOperator.lean
+Bridge_EcoChainInstrument.lean
+Bridge_BiosphereProductivity.lean
+BiosphereErasureBound.lean
+BoundedMemoryLearning.lean
+BoundedMemoryDissipation.lean

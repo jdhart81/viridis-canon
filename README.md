@@ -33,7 +33,7 @@ API: https://aristotle.harmonic.fun
 
 | Module | File | Sorry | Status | Headline |
 |--------|------|-------|--------|----------|
-| **B1** | `Bridge_MissionFeasibility.lean` | **0** | COMPILED | `Feasible e m ↔ target_rate ≤ P_max / (k_B T ln 2)` — uses P0 + P3 + P4. Aristotle 054d616c-00e2-4971-8710-43859893f674. |
+| **B1** | `Bridge_MissionFeasibility.lean` | **0** | COMPILED | `Feasible e m ↔ target_rate ≤ P_max / (k_B T ln 2)` — a **self-contained mission-feasibility analogue** motivated by P0/P1/P3/P4 (imports only Mathlib; the rate ceiling and D-range are built into its local predicates — see CLAIMS_MATRIX.md). Aristotle 054d616c. |
 
 ---
 
@@ -82,7 +82,7 @@ All compiled modules depend only on:
 - `Classical.choice` — axiom of choice
 - `Quot.sound` — quotient soundness
 
-**Enforcement (v9.1.0).** This allowlist is no longer a claim in prose — it is enforced. `AxiomAudit.lean` is a build target that walks the environment, collects the axioms of every verified-spine declaration, and **throws (fails `lake build`)** on any axiom outside the three above or on `sorryAx`. CI additionally runs `tools/check_spine_hygiene.sh` (no `sorry`/`admit`/homemade axioms) and `tools/vacuity_lint.py` (no ⊤-witness / `absurd … not_top_lt` vacuity). All checks are blocking; see `.github/workflows/ci.yml` and `CHANGELOG_v9.1.0.md`.
+**Enforcement (v9.1.0).** This allowlist is no longer a claim in prose — it is enforced. `AxiomAudit.lean` is a build target that walks the environment, collects the axioms of every verified-spine declaration, and **throws (fails `lake build`)** on any axiom outside the three above or on `sorryAx`. CI additionally runs `tools/check_spine_hygiene.sh` (no `sorry`/`admit`/homemade axioms) and `tools/vacuity_lint.py` (no ⊤-witness / `absurd … not_top_lt` vacuity). **CI status (v9.1.1):** the textual integrity gates — `check_spine_hygiene.sh` (no `sorry`/`admit`/homemade axioms), `vacuity_lint.py`, and integrity-docs presence, all driven by `SPINE_MANIFEST.txt` across **every** default-target module incl. P5/P7 — are **BLOCKING** (the `verify` job). The full Lean build + `AxiomAudit` are **PROVISIONAL** (`continue-on-error`) until validated on GitHub Actions, then made blocking. See `.github/workflows/ci.yml`, `CHANGELOG_v9.1.0.md`, `CHANGELOG_v9.1.1.md`.
 
 No sorry, no native_decide on nontrivial terms, no escape hatches.
 

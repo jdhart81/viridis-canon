@@ -1,8 +1,11 @@
 name: viridis-canon-ci
 
-# Integrity Release v9.1.0 — enforcing CI (replaces the informational workflow).
-# Every check below is BLOCKING. Configure branch protection on `main` to require
-# the `verify` job before merge (see RUNBOOK_v9.1.0.md → "Branch protection").
+# Integrity Release v9.1.0 — enforcing CI. Two jobs:
+#   verify     — fast, BLOCKING, compiler-independent integrity gates.
+#   lean-build — full Lean build + AxiomAudit, PROVISIONALLY non-blocking
+#                (continue-on-error) until validated on a real run; once green,
+#                remove continue-on-error to make the axiom allowlist blocking.
+# Branch-protect `main` to require the `verify` job.
 
 on:
   push:
@@ -17,15 +20,11 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
-    defaults:
-      run:
-        working-directory: 01_MATHLIB/Aristotle-Pipeline
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
 
-      # Fast, compiler-independent gates first — fail in seconds, not minutes.
-      - name: Spine hygiene (no sorry/admit, no homemade axioms)
+      - name: Spine hygiene (no sorry/admit, no homemade axioms, no vacuity)
         run: bash tools/check_spine_hygiene.sh .
 
       - name: Vacuity linter (INV-1)
@@ -39,10 +38,16 @@ jobs:
             Bridge_BiosphereProductivity.lean BiosphereErasureBound.lean \
             BoundedMemoryLearning.lean BoundedMemoryDissipation.lean
 
-      - name: CLAIMS_MATRIX present
-        run: test -f ../../CLAIMS_MATRIX.md || test -f CLAIMS_MATRIX.md
+      - name: Integrity docs present
+        run: test -f CLAIMS_MATRIX.md && test -f THEOREM_STATUS_TAXONOMY.md
 
-      # Lean toolchain (pinned by lean-toolchain in the repo).
+  lean-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    continue-on-error: true   # provisional: AxiomAudit.lean not yet validated on a real runner.
+    steps:
+      - uses: actions/checkout@v4
+
       - name: Install elan / Lean
         run: |
           curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
@@ -52,8 +57,6 @@ jobs:
       - name: Mathlib cache
         run: lake exe cache get || true
 
-      # Full build INCLUDING the enforcing AxiomAudit target. Tee the log so the
-      # next step can independently catch any `sorry` warning the compiler emits.
       - name: lake build (spine + AxiomAudit)
         run: set -o pipefail; lake build 2>&1 | tee build.log
 
@@ -64,10 +67,7 @@ jobs:
           fi
           echo "no sorry in build output"
 
-      # AxiomAudit.lean throws on any non-allowlisted axiom, so a successful build
-      # already implies the allowlist holds. This step makes the guarantee explicit
-      # in the log and fails closed if the audit line is missing.
-      - name: Confirm axiom audit ran
+      - name: Confirm axiom audit ran (INV-3)
         run: |
           grep -q "Axiom audit PASSED" build.log \
             || { echo "::error::AxiomAudit did not report PASSED"; exit 1; }

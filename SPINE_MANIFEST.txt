@@ -26,3 +26,5 @@ Bridge_BiosphereProductivity.lean
 BiosphereErasureBound.lean
 BoundedMemoryLearning.lean
 BoundedMemoryDissipation.lean
+SymbioticIntelligenceBound.lean
+MRAB.lean

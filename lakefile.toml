@@ -23,6 +23,8 @@ defaultTargets = [
   "BiosphereErasureBound",
   "BoundedMemoryLearning",
   "BoundedMemoryDissipation",
+  "SymbioticIntelligenceBound",
+  "MRAB",
   "AxiomAudit"
 ]
 
@@ -91,17 +93,18 @@ globs = ["P7_PlasmaNFix.Energy"]
 name = "P7_PlasmaNFix_Integration"
 globs = ["P7_PlasmaNFix.Integration"]
 
-# STANDALONE CORE-EXTENSION CANDIDATE (held out of the frozen spine).
-# MRAB — Multi-Ring Alignment Bound (Theorem 1). Verified via Aristotle
-# project 65347d17, 2026-06-21: 10 theorems, zero sorry, axioms
-# {propext, Classical.choice, Quot.sound}. Published standalone on Zenodo
-# 2026-06-22. NOT added to defaultTargets / SPINE_MANIFEST: the spine is
-# FROZEN at v9 and MRAB is a candidate for a future curated v10 wave
-# (requires Justin's explicit per-instance OK). Lives in the repo as a
-# committed verified module, like the series/ modules.
-# [[lean_lib]]
-# name = "MRAB"
-# globs = ["MRAB"]
+# SIB & MRAB — IB core-extensions PROMOTED INTO THE SPINE at canon v10
+# (2026-06-22, Justin-authorized freeze-break). SIB (Run-072, Aristotle
+# a0660ac8): two-body generalization of the IB. MRAB (Run-016, Aristotle
+# 65347d17): multi-domain/polymath generalization + UAIB reduction.
+# Both: zero sorry, axioms {propext, Classical.choice, Quot.sound}.
+[[lean_lib]]
+name = "SymbioticIntelligenceBound"
+globs = ["SymbioticIntelligenceBound"]
+
+[[lean_lib]]
+name = "MRAB"
+globs = ["MRAB"]
 
 # QUARANTINED v9.1.0 (2026-06-21): exploratory, not a verified-spine target.
 # Contains a vacuous theorem (ai_conservation_alignment, T₀=⊤). Excluded from

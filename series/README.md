@@ -11,6 +11,9 @@ package at the repo root; these extend it. Each lands here when its Zenodo depos
 | `WuWeiCrypticity.lean` | Wu-Wei Crypticity Theorem (the Mirror) | S4 Governance/Alignment | [10.5281/zenodo.20777067](https://doi.org/10.5281/zenodo.20777067) |
 | `WuWeiDominance.lean` | Wu Wei Dominance Theorem (rate-matched intervention strictly out-diversifies aggression) | S4 Governance × S5 Corridors bridge | [10.5281/zenodo.20838923](https://doi.org/10.5281/zenodo.20838923) |
 | `CorridorStewardship.lean` | Corridor Stewardship Theorem (the Weaver) | S5 Corridors | [10.5281/zenodo.20777069](https://doi.org/10.5281/zenodo.20777069) |
+| `GaianHarmonization.lean` | Gaian Harmonization Theorem (the Harmonizer — scalar thermodynamic shadow price decentralizes planetary stewardship to the social optimum) | Gaian Systems (new category) | [10.5281/zenodo.21168212](https://doi.org/10.5281/zenodo.21168212) |
+| `AfforestationStewardship.lean` | Afforestation Stewardship Theorem (the Sower — cubic optimal seeding + IB ceiling for nucleation-limited reforestation) | Afforestation (new category) | [10.5281/zenodo.21168224](https://doi.org/10.5281/zenodo.21168224) |
+| `CapacityHarmonization.lean` | Capacity Harmonization Theorem (forcing–harmonizing IB duality + exact Bregman curvature gap) | S4 Stewardship/Governance | [10.5281/zenodo.21168241](https://doi.org/10.5281/zenodo.21168241) |
 | `Bridge_BiosphereProductivity.lean` (in spine root) | IB ⇄ biosphere-productivity duality | core / standalone | [10.5281/zenodo.20777118](https://doi.org/10.5281/zenodo.20777118) |
 
 Series concept DOIs: S1 `20705178` · S2 `20704852` · S3 `20777225` · S4 `20705182` · S5 `20777068`.

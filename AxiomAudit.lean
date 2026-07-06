@@ -38,6 +38,8 @@ import BoundedMemoryLearning
 import BoundedMemoryDissipation
 import SymbioticIntelligenceBound
 import MRAB
+import UniversalWaterfilling
+import GeodesicSaturation
 import P5_SLSPT.IntelligenceBound
 import P5_SLSPT.InverseSquare
 import P5_SLSPT.ShadowPrice
@@ -61,7 +63,7 @@ def viridisSpineModules : List Name :=
    `EcoChain_DendriticCorridor, `Book_HeatAndDisorder, `ConservationOperator,
    `Bridge_EcoChainInstrument, `Bridge_BiosphereProductivity,
    `BiosphereErasureBound, `BoundedMemoryLearning, `BoundedMemoryDissipation,
-   `SymbioticIntelligenceBound, `MRAB,
+   `SymbioticIntelligenceBound, `MRAB, `UniversalWaterfilling, `GeodesicSaturation,
    `P5_SLSPT.IntelligenceBound, `P5_SLSPT.InverseSquare, `P5_SLSPT.ShadowPrice,
    `P5_SLSPT.ShadowPriceLevelCurves, `P5_SLSPT.SLSPTTowerOrdering,
    `P7_PlasmaNFix.Foundations, `P7_PlasmaNFix.Energy, `P7_PlasmaNFix.Integration]

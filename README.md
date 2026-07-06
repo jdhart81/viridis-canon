@@ -4,7 +4,7 @@
 
 > **What "verified" means here.** These modules are **Lean-checked conditional mathematics**: each theorem's *type* is machine-verified, but a Lean-checked theorem is not automatically a verified statement about physics, economics, or ecology. Every headline result is graded by formal strength in [`CLAIMS_MATRIX.md`](./CLAIMS_MATRIX.md) using the labels in [`THEOREM_STATUS_TAXONOMY.md`](./THEOREM_STATUS_TAXONOMY.md). Read the matrix before citing any result as established. Integrity Release **v9.1.0** (2026-06-21) quarantined P9 and de-escalated several overstated claims; see [`CHANGELOG_v9.1.0.md`](./CHANGELOG_v9.1.0.md).
 
-Last updated: 2026-05-31 (Book_HeatAndDisorder v2 promoted; 12 theorems verified via Aristotle a9312b60 — "Heat and Disorder" formal spine + first-principles layer incl. the Intelligence-Bound restoration speed limit)
+Last updated: 2026-07-06 (v10.1.0 "The Keystone Wave" — UniversalWaterfilling (UWMT) + GeodesicSaturation (GST) promoted into the spine; see CHANGELOG_v10.1.0.md)
 Lean toolchain: leanprover/lean4:v4.28.0
 API: https://aristotle.harmonic.fun
 
@@ -28,6 +28,8 @@ API: https://aristotle.harmonic.fun
 | **Book** | `Book_HeatAndDisorder.lean` | **0** | COMPILED | Formal spine of *Heat and Disorder* book — 12 thms. Foundation (7): entropy monotonicity, feedback dichotomy, saddle-node tipping threshold, energy-balance uniqueness. First-principles layer (5): strict Clausius production + gap-monotonicity, Planck climate sensitivity (Stefan–Boltzmann), **Intelligence-Bound restoration speed limit** (dI/dt ≤ P/(k_B T ln2)) + time lower bound. Aristotle a9312b60, 2026-05-31 |
 | **MRAB** | `MRAB.lean` | **0** | COMPILED — **IB core-extension, promoted into the spine at v10** | Multi-Ring Alignment Bound (Thm 1; the Polymath Paradox + wu-wei saturation + UAIB reduction). 10 thms; Aristotle `65347d17`, 2026-06-21. Published standalone on Zenodo 2026-06-22; queued for a future curated spine v10 wave (spine frozen at v9). |
 | **SIB** | `SymbioticIntelligenceBound.lean` | **0** | COMPILED — **IB core-extension, promoted into the spine at v10** | Symbiotic Intelligence Bound (two-body generalization of the IB; Good-Regulator rate law). 5 thms; Aristotle `a0660ac8`. Standalone DOI 10.5281/zenodo.20764638; folded into spine v10. |
+| **UWMT** | `UniversalWaterfilling.lean` | **0** | COMPILED — **spine v10.1.0 ("the Keystone")** | Universal Water-Filling Meta-Theorem — unifies the 9-member shadow-price/water-filling family into one variational object (curvature + temperature control knobs; lambda = water level = shadow price = free energy). 8 thms; Aristotle `da92404c`, Run-084. |
+| **GST** | `GeodesicSaturation.lean` | **0** | COMPILED — **spine v10.1.0 ("the Sage")** | Geodesic Saturation Theorem — the IB's own equality/saturation condition: dI/dt=(P-F)c, saturates iff F=0 (constant-speed Fisher-Rao geodesic). 6 thms; Aristotle `f864600a`, Run-086. |
 
 **ALL MODULES ZERO SORRY. 8/9 canon + PSIT + EcoChain_DendriticCorridor + Book_HeatAndDisorder (12 thms) compiled. Full stack: physics → information theory → intelligence bound → biodiversity metric → graph optimality → planetary-conservation impossibility → thermodynamic economics → plasma N₂ fixation.** _(The AI-safety module P9 is **EXPLORATORY — quarantined in v9.1.0** and is NOT part of the verified stack.)_
 

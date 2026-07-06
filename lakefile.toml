@@ -25,6 +25,8 @@ defaultTargets = [
   "BoundedMemoryDissipation",
   "SymbioticIntelligenceBound",
   "MRAB",
+  "UniversalWaterfilling",
+  "GeodesicSaturation",
   "AxiomAudit"
 ]
 
@@ -105,6 +107,24 @@ globs = ["SymbioticIntelligenceBound"]
 [[lean_lib]]
 name = "MRAB"
 globs = ["MRAB"]
+
+# v10.1 — The Keystone Wave (spine freeze-break, Justin-authorized 2026-06-29
+# "ok update to 10.1", cleared 2026-07-06 once both Aristotle passes landed).
+# UWMT (Run-084, Aristotle da92404c, 7 thm + non-vacuity witness) is the
+# meta-theorem unifying the 9-member shadow-price/water-filling family
+# (TWT/TDT/VPT/MWT/AST/GHT/CHT/...) into one variational object with two
+# control knobs (curvature, temperature). GST (Run-086, Aristotle f864600a,
+# 6 thm) is the IB's own equality/saturation geometry
+# (dI/dt=(P-F)c; saturates iff F=0) and names UWMT as its multichannel
+# shadow — the two form the coherent milestone wave admitted here. Both:
+# zero sorry, axioms {propext, Classical.choice, Quot.sound}, non-vacuous.
+[[lean_lib]]
+name = "UniversalWaterfilling"
+globs = ["UniversalWaterfilling"]
+
+[[lean_lib]]
+name = "GeodesicSaturation"
+globs = ["GeodesicSaturation"]
 
 # QUARANTINED v9.1.0 (2026-06-21): exploratory, not a verified-spine target.
 # Contains a vacuous theorem (ai_conservation_alignment, T₀=⊤). Excluded from

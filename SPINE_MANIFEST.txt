@@ -1,4 +1,4 @@
-# Canonical verified-spine manifest (v10.1.0). One Lean source path per line.
+# Canonical verified-spine manifest (v10.2.0). One Lean source path per line.
 # Single source of truth for the integrity gates: tools/check_spine_hygiene.sh,
 # the CI vacuity linter, and (kept in sync) AxiomAudit.lean's import/module list.
 # Mirrors lakefile.toml defaultTargets MINUS the quarantined P9. AxiomAudit.lean
@@ -30,3 +30,9 @@ SymbioticIntelligenceBound.lean
 MRAB.lean
 UniversalWaterfilling.lean
 GeodesicSaturation.lean
+EffortlessEquilibrium.lean
+PerennialCorridor.lean
+DecoherentSelection.lean
+MutualisticAttestation.lean
+ThermodynamicAttention.lean
+StewardshipSetpoint.lean

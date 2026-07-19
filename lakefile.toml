@@ -27,6 +27,12 @@ defaultTargets = [
   "MRAB",
   "UniversalWaterfilling",
   "GeodesicSaturation",
+  "EffortlessEquilibrium",
+  "PerennialCorridor",
+  "DecoherentSelection",
+  "MutualisticAttestation",
+  "ThermodynamicAttention",
+  "StewardshipSetpoint",
   "AxiomAudit"
 ]
 
@@ -203,6 +209,45 @@ globs = ["BoundedMemoryLearning"]
 [[lean_lib]]
 name = "BoundedMemoryDissipation"
 globs = ["BoundedMemoryDissipation"]
+
+
+# v10.2 — The Equilibrium Wave (spine MINOR bump, Justin-authorized 2026-07-19
+# "push the updated spine version"). Six nightly-forge Aristotle-verified
+# core-extensions folded together: EffortlessEquilibrium (EET, Run-097, the
+# Steersman, 11 named results), PerennialCorridor (PCT, Run-098, the Gardener,
+# 15 named results), DecoherentSelection (DST, Run-099, the Chooser, 12 named
+# results), MutualisticAttestation (MAT, Run-100, the Attester, 19 named
+# results), ThermodynamicAttention (TAT, Run-101, the Attuner, 12 named
+# results), StewardshipSetpoint (SST, Run-102, the Steward, 13 named results).
+# Four of the six (EET/PCT/DST/MAT) are R6 members of the eta=cos^2(Theta)
+# basis-efficiency family later unified by the UPEM meta-theorem (held back
+# pending its own paper, INV-PAPER). SST is the first-ever [01] Intelligence
+# Bound x [target] Stewardship pairing and the act-budget twin of TAT. All
+# six: zero sorry, axioms subset-of {propext, Classical.choice, Quot.sound},
+# non-vacuous.
+[[lean_lib]]
+name = "EffortlessEquilibrium"
+globs = ["EffortlessEquilibrium"]
+
+[[lean_lib]]
+name = "PerennialCorridor"
+globs = ["PerennialCorridor"]
+
+[[lean_lib]]
+name = "DecoherentSelection"
+globs = ["DecoherentSelection"]
+
+[[lean_lib]]
+name = "MutualisticAttestation"
+globs = ["MutualisticAttestation"]
+
+[[lean_lib]]
+name = "ThermodynamicAttention"
+globs = ["ThermodynamicAttention"]
+
+[[lean_lib]]
+name = "StewardshipSetpoint"
+globs = ["StewardshipSetpoint"]
 
 [[lean_lib]]
 name = "AxiomAudit"

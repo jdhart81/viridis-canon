@@ -15,3 +15,8 @@ lakefile.olean
 # OS / editor
 .DS_Store
 *.swp
+
+# Python research-catalog tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/

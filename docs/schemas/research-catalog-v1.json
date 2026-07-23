@@ -1,0 +1,70 @@
+{
+  "$id": "https://jdhart81.github.io/viridis-canon/schemas/research-catalog-v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "catalog_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "concept_doi": {
+      "type": "string"
+    },
+    "honesty_notice": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "human_publish_gate": {
+      "const": true
+    },
+    "publication_scope": {
+      "enum": ["public", "workspace"]
+    },
+    "records": {
+      "items": {
+        "additionalProperties": true,
+        "properties": {
+          "caveat": {"type": "string"},
+          "digest": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+          "path": {"minLength": 1, "type": "string"},
+          "record_id": {"minLength": 1, "type": "string"},
+          "source_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+          "status": {"enum": ["verified", "working", "quarantined"]},
+          "tier": {"enum": ["spine", "flagship", "working-corpus"]},
+          "title": {"minLength": 1, "type": "string"},
+          "visibility": {"enum": ["public", "private"]}
+        },
+        "required": [
+          "record_id",
+          "title",
+          "path",
+          "status",
+          "tier",
+          "visibility",
+          "source_sha256",
+          "digest"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "release": {"type": "string"},
+    "repository": {"type": "string"},
+    "schema": {"const": "https://jdhart81.github.io/viridis-canon/schemas/research-catalog-v1.json"},
+    "stats": {"type": "object"}
+  },
+  "required": [
+    "schema",
+    "publication_scope",
+    "release",
+    "concept_doi",
+    "repository",
+    "honesty_notice",
+    "human_publish_gate",
+    "stats",
+    "records",
+    "catalog_digest"
+  ],
+  "title": "Viridis research catalog v1",
+  "type": "object"
+}

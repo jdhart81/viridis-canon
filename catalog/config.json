@@ -1,0 +1,71 @@
+{
+  "concept_doi": "10.5281/zenodo.19317982",
+  "curation": {
+    "Bridge_BiosphereProductivity.lean": {
+      "doi": "10.5281/zenodo.20777118",
+      "id": "biosphere-productivity-bridge",
+      "summary": "The planetary Landauer dual linking biosphere productivity to the Intelligence Bound.",
+      "tags": ["biosphere", "intelligence-bound", "thermodynamics"],
+      "tier": "flagship",
+      "title": "Intelligence Bound ↔ Biosphere Productivity"
+    },
+    "EcoChain_DendriticCorridor.lean": {
+      "doi": "10.5281/zenodo.20467431",
+      "id": "dendritic-corridor",
+      "summary": "Graph-theoretic foundations for cost-minimizing dendritic conservation corridors.",
+      "tags": ["corridors", "ecology", "graph-theory"],
+      "tier": "flagship",
+      "title": "Dendritic Corridor"
+    },
+    "P0_IntelligenceBound_COMPILED.lean": {
+      "doi": "10.5281/zenodo.19317982",
+      "id": "intelligence-bound",
+      "summary": "The formal spine: a thermodynamic ceiling on intelligence production under finite power.",
+      "tags": ["flagship", "information-theory", "thermodynamics"],
+      "tier": "spine",
+      "title": "The Intelligence Bound"
+    },
+    "P1_DScore.lean": {
+      "id": "d-score",
+      "summary": "Formal foundations for a bounded biodiversity measurement score.",
+      "tags": ["biodiversity", "measurement"],
+      "tier": "flagship",
+      "title": "D-Score"
+    },
+    "P3_Impossibility.lean": {
+      "id": "mission-feasibility",
+      "summary": "Conditional feasibility and impossibility results for conservation under bounded resources.",
+      "tags": ["feasibility", "governance"],
+      "title": "Conservation Feasibility"
+    },
+    "P4_ThermodynamicEconomics.lean": {
+      "id": "thermodynamic-economics",
+      "summary": "Conditional mathematical foundations for non-substitutable biodiversity capital.",
+      "tags": ["economics", "natural-capital"],
+      "title": "Thermodynamic Economics"
+    },
+    "P9_AI_Safety.lean": {
+      "id": "ai-safety-quarantined",
+      "summary": "Exploratory AI-safety module quarantined after a vacuity review; it is not part of the verified canon.",
+      "tags": ["ai-safety", "honesty-ledger"],
+      "tier": "working-corpus",
+      "title": "AI Safety — Quarantined"
+    }
+  },
+  "exclude": [
+    "AxiomAudit.lean"
+  ],
+  "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
+  "include": [
+    "*.lean",
+    "P5_SLSPT/*.lean",
+    "P7_PlasmaNFix/*.lean",
+    "series/**/*.lean"
+  ],
+  "manifest": "SPINE_MANIFEST.txt",
+  "quarantined": [
+    "P9_AI_Safety.lean"
+  ],
+  "release": "v10.2.0",
+  "repository": "https://github.com/jdhart81/viridis-canon"
+}

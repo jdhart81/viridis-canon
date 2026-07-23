@@ -105,7 +105,10 @@ def _discover_record(
         status = "working"
         integrity = "not-canon-admitted"
 
-    default_tier = "spine" if is_lean and rel in spine_paths else "working-corpus"
+    default_tier = config.get(
+        "default_tier",
+        "spine" if is_lean and rel in spine_paths else "working-corpus",
+    )
     tier = curated.get("tier", default_tier)
     title = curated.get("title") or _humanize(path.stem)
     if curated.get("summary"):
@@ -136,7 +139,7 @@ def _discover_record(
         path=rel,
         status=status,
         tier=tier,
-        visibility=curated.get("visibility", "public"),
+        visibility=curated.get("visibility", config.get("default_visibility", "public")),
         source_sha256=_sha256_bytes(content),
         theorem_count=theorem_count,
         lemma_count=lemma_count,

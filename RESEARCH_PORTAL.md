@@ -38,6 +38,25 @@ The catalog keeps three distinctions visible:
 
 Those fields must not be collapsed into a single "truth" score.
 
+## Indexing the broader private research estate
+
+`catalog/viridis-workspace.example.json` is an allowlisted starting point for
+the wider Viridis research workspace. It defaults every discovered record to
+`private`, so a normal public build emits none of it. Build an internal catalog
+only with the explicit workspace flag:
+
+```bash
+python3 -m canon_core build \
+  --root /path/to/viridis-workspace \
+  --config catalog/viridis-workspace.example.json \
+  --output private-catalog.json \
+  --include-private
+```
+
+The generated private catalog should remain outside the public repository.
+Promoting a record requires a curated public configuration plus the rights,
+significance, provenance, and human publication gates.
+
 ## Human workflow
 
 Research enters through the GitHub issue template. A pull request carries the

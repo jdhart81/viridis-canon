@@ -141,6 +141,30 @@ class CatalogTests(unittest.TestCase):
             self.assertEqual(validate_catalog(public), [])
             self.assertEqual(validate_catalog(workspace), [])
 
+    def test_default_private_visibility_protects_workspace_catalogs(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "research.md").write_text("# Internal result\n", encoding="utf-8")
+            config = {
+                "release": "test",
+                "concept_doi": "",
+                "repository": "",
+                "include": ["*.md"],
+                "manifest": "",
+                "default_visibility": "private",
+            }
+            config_path = root / "config.json"
+            config_path.write_text(json.dumps(config), encoding="utf-8")
+
+            public = build_catalog(root, config_path=config_path)
+            workspace = build_catalog(
+                root,
+                config_path=config_path,
+                include_private=True,
+            )
+            self.assertEqual(public["stats"]["records"], 0)
+            self.assertEqual(workspace["records"][0]["visibility"], "private")
+
 
 if __name__ == "__main__":
     unittest.main()

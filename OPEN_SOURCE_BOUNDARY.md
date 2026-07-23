@@ -23,9 +23,10 @@ authority.
 - Unpublished working research that has not passed a rights and scope review
 - Third-party papers, datasets, or software without redistribution rights
 
-The core can index records marked `private`, but the public catalog builder
-emits only records whose visibility is explicitly `public`. The catalog tests
-fail if a non-public record reaches the generated Pages data.
+The core can index records marked `private`, and the included wider-workspace
+example defaults every discovered artifact to private. The public catalog
+builder emits only records whose visibility is explicitly `public`. The catalog
+tests fail if a non-public record reaches the generated Pages data.
 
 ## Product boundary
 

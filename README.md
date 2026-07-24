@@ -4,6 +4,24 @@
 
 > **What "verified" means here.** These modules are **Lean-checked conditional mathematics**: each theorem's *type* is machine-verified, but a Lean-checked theorem is not automatically a verified statement about physics, economics, or ecology. Every headline result is graded by formal strength in [`CLAIMS_MATRIX.md`](./CLAIMS_MATRIX.md) using the labels in [`THEOREM_STATUS_TAXONOMY.md`](./THEOREM_STATUS_TAXONOMY.md). Read the matrix before citing any result as established. Integrity Release **v9.1.0** (2026-06-21) quarantined P9 and de-escalated several overstated claims; see [`CHANGELOG_v9.1.0.md`](./CHANGELOG_v9.1.0.md).
 
+## Viridis research portal
+
+This repository now includes **Viridis Canon Core**, a standard-library Python
+package that converts the checked-in research artifacts into a deterministic,
+machine-readable catalog. The accompanying GitHub Pages explorer makes the
+formal spine, selected flagships, working corpus, quarantine state, caveats,
+source hashes, and record hashes inspectable without reading the repository
+tree by hand.
+
+- Public explorer: `https://jdhart81.github.io/viridis-canon/` (after Pages is enabled)
+- Machine interface: `https://jdhart81.github.io/viridis-canon/data/catalog.json`
+- Build and architecture: [`RESEARCH_PORTAL.md`](./RESEARCH_PORTAL.md)
+- Public/private product boundary: [`OPEN_SOURCE_BOUNDARY.md`](./OPEN_SOURCE_BOUNDARY.md)
+
+The portal never publishes a result automatically. GitHub submission and pull
+request templates collect the evidence; canon admission and Zenodo publication
+remain explicit human decisions.
+
 Last updated: 2026-07-19 (v10.2.0 "The Equilibrium Wave" — EffortlessEquilibrium (EET) + PerennialCorridor (PCT) + DecoherentSelection (DST) + MutualisticAttestation (MAT) + ThermodynamicAttention (TAT) + StewardshipSetpoint (SST) promoted into the spine; see CHANGELOG_v10.2.0.md)
 Lean toolchain: leanprover/lean4:v4.28.0
 API: https://aristotle.harmonic.fun

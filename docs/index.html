@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#123c2b">
+    <meta
+      name="description"
+      content="Viridis Canon is the public, machine-readable map of Viridis research: what is formally verified, what remains working research, and what has been quarantined."
+    >
+    <meta property="og:title" content="Viridis Canon — Research you can inspect">
+    <meta
+      property="og:description"
+      content="A living map of machine-checked research, explicit caveats, source fingerprints, and public verification."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://jdhart81.github.io/viridis-canon/assets/og.png">
+    <title>Viridis Canon — Research you can inspect</title>
+    <link rel="stylesheet" href="./assets/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#research">Skip to research</a>
+
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Viridis Canon home">
+        <span class="brand-mark" aria-hidden="true">V</span>
+        <span>
+          <strong>Viridis Canon</strong>
+          <small>Public research infrastructure</small>
+        </span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#research">Explore</a>
+        <a href="#method">Method</a>
+        <a href="#institutions">For institutions</a>
+        <a
+          class="nav-cta"
+          href="https://github.com/jdhart81/viridis-canon"
+          rel="noreferrer"
+        >View repository</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Open canon · Versioned evidence</p>
+          <h1>Research you can<br><em>actually inspect.</em></h1>
+          <p class="hero-lede">
+            A living map of Viridis research—showing what is machine-checked,
+            what remains working science, and what has been quarantined.
+            Every public record carries its source fingerprint and honest scope.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#research">Explore the canon</a>
+            <a class="button button-quiet" href="#method">How to read the evidence</a>
+          </div>
+          <p class="hero-note">
+            Formal verification establishes conditional mathematics.
+            It does not manufacture empirical truth.
+          </p>
+        </div>
+
+        <div class="hero-instrument" aria-label="Research status overview">
+          <div class="instrument-top">
+            <span>CANON / LIVE INDEX</span>
+            <span class="pulse"><i></i> deterministic</span>
+          </div>
+          <div class="bound-card">
+            <span class="bound-label">THE SPINE</span>
+            <strong>İ(τ) ≤ min(ρB, P / k<sub>B</sub>T ln 2)</strong>
+            <p>Intelligence production remains bounded by biospheric information and thermodynamic power.</p>
+          </div>
+          <div class="status-track">
+            <article>
+              <span class="status-dot verified"></span>
+              <div>
+                <strong>Verified spine</strong>
+                <small>Gate-passed Lean modules</small>
+              </div>
+              <b id="hero-verified">—</b>
+            </article>
+            <article>
+              <span class="status-dot working"></span>
+              <div>
+                <strong>Working corpus</strong>
+                <small>Visible, not canon-admitted</small>
+              </div>
+              <b id="hero-working">—</b>
+            </article>
+            <article>
+              <span class="status-dot quarantined"></span>
+              <div>
+                <strong>Quarantine</strong>
+                <small>Held with reasons</small>
+              </div>
+              <b id="hero-quarantined">—</b>
+            </article>
+          </div>
+          <div class="instrument-foot">
+            <span>Catalog fingerprint</span>
+            <code id="catalog-digest">loading…</code>
+          </div>
+        </div>
+      </section>
+
+      <section class="metric-band" aria-label="Catalog statistics">
+        <div>
+          <strong id="metric-records">—</strong>
+          <span>public records</span>
+        </div>
+        <div>
+          <strong id="metric-theorems">—</strong>
+          <span>theorems + lemmas</span>
+        </div>
+        <div>
+          <strong id="metric-flagships">—</strong>
+          <span>front-facing flagships</span>
+        </div>
+        <div>
+          <strong>SHA-256</strong>
+          <span>source + record integrity</span>
+        </div>
+      </section>
+
+      <section class="explorer shell" id="research">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow dark"><span></span> Public research catalog</p>
+            <h2>Follow the evidence,<br>not the mythology.</h2>
+          </div>
+          <p>
+            Search the formal spine, selected flagships, and the wider working
+            corpus. Status labels are claims about process—not substitutes for
+            peer review or field validation.
+          </p>
+        </div>
+
+        <div class="filters" role="search">
+          <label class="search-field">
+            <span>Search title, claim, tag, or module</span>
+            <input id="search" type="search" placeholder="Search the canon…" autocomplete="off">
+          </label>
+          <label>
+            <span>Research tier</span>
+            <select id="tier-filter">
+              <option value="">All tiers</option>
+              <option value="spine">Spine</option>
+              <option value="flagship">Flagships</option>
+              <option value="working-corpus">Working corpus</option>
+            </select>
+          </label>
+          <label>
+            <span>Integrity status</span>
+            <select id="status-filter">
+              <option value="">All statuses</option>
+              <option value="verified">Verified</option>
+              <option value="working">Working</option>
+              <option value="quarantined">Quarantined</option>
+            </select>
+          </label>
+          <label>
+            <span>Sort by</span>
+            <select id="sort">
+              <option value="prominence">Prominence</option>
+              <option value="title">Title</option>
+              <option value="theorems">Most declarations</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="results-line">
+          <p><strong id="result-count">0</strong> records visible</p>
+          <button id="reset-filters" type="button">Reset filters</button>
+        </div>
+        <div id="catalog-grid" class="catalog-grid" aria-live="polite"></div>
+        <div id="catalog-error" class="catalog-error" hidden>
+          The catalog could not be loaded. The repository data file may be unavailable.
+        </div>
+      </section>
+
+      <section class="method" id="method">
+        <div class="shell method-grid">
+          <div class="method-copy">
+            <p class="eyebrow light"><span></span> Credibility architecture</p>
+            <h2>One label is never enough.</h2>
+            <p>
+              Viridis separates mathematical verification, scientific meaning,
+              and real-world validation. A result moves forward only when its
+              evidence—not its name—earns the next state.
+            </p>
+            <a href="https://github.com/jdhart81/viridis-canon/blob/main/CLAIMS_MATRIX.md">
+              Read the claims matrix <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <ol class="method-steps">
+            <li>
+              <span>01</span>
+              <div>
+                <strong>Verify the mathematics</strong>
+                <p>Lean compilation, zero <code>sorry</code>, and an explicit axiom allowlist.</p>
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div>
+                <strong>Gate the significance</strong>
+                <p>Non-vacuous, non-trivial, novel, falsifiable, and honestly scoped.</p>
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div>
+                <strong>Require human publication</strong>
+                <p>No autonomous minting. Public admission remains an explicit human decision.</p>
+              </div>
+            </li>
+            <li>
+              <span>04</span>
+              <div>
+                <strong>Pursue external validation</strong>
+                <p>Peer acceptance, credible collaboration, or a real-world adopter—not download counts.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="institutional shell" id="institutions">
+        <div class="institutional-card">
+          <div>
+            <p class="eyebrow dark"><span></span> A separate institutional lane</p>
+            <h2>Your research deserves<br>an evidence operating system.</h2>
+          </div>
+          <div>
+            <p>
+              Viridis Canon Core can index a private institutional corpus with
+              the same deterministic records, review states, provenance, and
+              public/private boundary used here.
+            </p>
+            <ul>
+              <li>Private research workspaces</li>
+              <li>Human review and quarantine queues</li>
+              <li>Versioned public releases</li>
+              <li>Machine-readable evidence for agents</li>
+            </ul>
+            <a
+              class="button button-dark"
+              href="https://github.com/jdhart81/viridis-canon/issues/new?template=research-submission.yml"
+            >Propose a research record</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-brand">
+        <span class="brand-mark inverse" aria-hidden="true">V</span>
+        <div>
+          <strong>Viridis Canon</strong>
+          <small>Built for inspectability, not authority by assertion.</small>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/jdhart81/viridis-canon">Source</a>
+        <a href="https://doi.org/10.5281/zenodo.19317982">Zenodo canon</a>
+        <a href="https://github.com/jdhart81/viridis-canon/blob/main/SECURITY.md">Security</a>
+        <a href="https://github.com/jdhart81/viridis-canon/blob/main/TRADEMARKS.md">Mark policy</a>
+      </div>
+      <p>Apache-2.0 software. Viridis marks are reserved.</p>
+    </footer>
+
+    <dialog id="record-dialog" aria-labelledby="dialog-title">
+      <button class="dialog-close" id="dialog-close" type="button" aria-label="Close record details">×</button>
+      <div id="dialog-content"></div>
+    </dialog>
+
+    <script src="./assets/app.js" defer></script>
+  </body>
+</html>

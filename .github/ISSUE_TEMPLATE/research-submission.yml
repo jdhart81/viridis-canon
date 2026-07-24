@@ -1,0 +1,71 @@
+name: Research record proposal
+description: Propose a public research artifact for review. Submission never publishes automatically.
+title: "[research proposal] "
+labels:
+  - research-proposal
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A proposal enters review only. Canon admission requires the repository's
+        verification and significance gates plus an explicit human publication decision.
+  - type: input
+    id: title
+    attributes:
+      label: Research title
+      description: Use a descriptive title rather than a promotional or mythic name.
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: Exact claim
+      description: State the narrow claim the evidence supports.
+    validations:
+      required: true
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Evidence and provenance
+      description: Link source, data, proof, code, DOI, and any immutable fingerprints.
+    validations:
+      required: true
+  - type: textarea
+    id: formal
+    attributes:
+      label: Formal verification status
+      description: Name the Lean module, toolchain, axiom audit, and any remaining assumptions.
+    validations:
+      required: true
+  - type: textarea
+    id: falsifiability
+    attributes:
+      label: Falsifiable prediction
+      description: Name an observable relationship and what result would refute the empirical claim.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Honest scope and limitations
+      description: Separate what the proof establishes from interpretation or real-world magnitude.
+    validations:
+      required: true
+  - type: dropdown
+    id: rights
+    attributes:
+      label: Rights status
+      description: Do not attach third-party material you are not authorized to publish.
+      options:
+        - Viridis-authored and cleared for public review
+        - Third-party metadata or citation only
+        - Rights review required before any public use
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgement
+    attributes:
+      label: Submission acknowledgement
+      options:
+        - label: I understand this proposal does not imply acceptance, certification, or publication.
+          required: true

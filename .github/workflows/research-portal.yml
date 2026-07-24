@@ -11,8 +11,11 @@ on:
       - "canon_core/**"
       - "docs/**"
       - "tests/test_canon_core.py"
+      - "tests/test_sync_canon_cloud.py"
       - "tools/build_research_portal.py"
+      - "tools/sync_canon_cloud.py"
       - ".github/workflows/research-portal.yml"
+      - ".github/workflows/sync-canon-cloud.yml"
   pull_request:
     branches: [main]
     paths:
@@ -23,8 +26,11 @@ on:
       - "canon_core/**"
       - "docs/**"
       - "tests/test_canon_core.py"
+      - "tests/test_sync_canon_cloud.py"
       - "tools/build_research_portal.py"
+      - "tools/sync_canon_cloud.py"
       - ".github/workflows/research-portal.yml"
+      - ".github/workflows/sync-canon-cloud.yml"
   workflow_dispatch:
 
 permissions:

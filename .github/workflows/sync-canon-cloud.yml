@@ -1,0 +1,28 @@
+name: sync-canon-cloud
+
+on:
+  workflow_run:
+    workflows: ["research-catalog-and-pages"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CANON_CLOUD_URL: ${{ vars.CANON_CLOUD_URL }}
+      CANON_CLOUD_SYNC_SECRET: ${{ secrets.CANON_CLOUD_SYNC_SECRET }}
+      GITHUB_SHA: ${{ github.event.workflow_run.head_sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - name: Synchronize deterministic catalog
+        run: python3 tools/sync_canon_cloud.py --catalog docs/data/catalog.json

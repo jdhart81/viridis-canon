@@ -22,6 +22,12 @@ The portal never publishes a result automatically. GitHub submission and pull
 request templates collect the evidence; canon admission and Zenodo publication
 remain explicit human decisions.
 
+After a successful catalog build on `main`, the `sync-canon-cloud` workflow can
+also update a private Canon Cloud reader. It is dormant unless
+`CANON_CLOUD_URL` and the `CANON_CLOUD_SYNC_SECRET` Actions secret are
+configured. Synchronization only imports the deterministic catalog; it does not
+approve records or publish research.
+
 Last updated: 2026-07-19 (v10.2.0 "The Equilibrium Wave" — EffortlessEquilibrium (EET) + PerennialCorridor (PCT) + DecoherentSelection (DST) + MutualisticAttestation (MAT) + ThermodynamicAttention (TAT) + StewardshipSetpoint (SST) promoted into the spine; see CHANGELOG_v10.2.0.md)
 Lean toolchain: leanprover/lean4:v4.28.0
 API: https://aristotle.harmonic.fun

@@ -24,10 +24,23 @@
       "items": {
         "additionalProperties": true,
         "properties": {
+          "abstract": {"minLength": 1, "type": "string"},
           "caveat": {"type": "string"},
           "digest": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+          "paper_url": {
+            "anyOf": [
+              {"pattern": "^https://", "type": "string"},
+              {"const": ""}
+            ]
+          },
           "path": {"minLength": 1, "type": "string"},
           "record_id": {"minLength": 1, "type": "string"},
+          "source_url": {
+            "anyOf": [
+              {"pattern": "^https://", "type": "string"},
+              {"const": ""}
+            ]
+          },
           "source_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
           "status": {"enum": ["verified", "working", "quarantined"]},
           "tier": {"enum": ["spine", "flagship", "working-corpus"]},
@@ -37,7 +50,10 @@
         "required": [
           "record_id",
           "title",
+          "abstract",
           "path",
+          "source_url",
+          "paper_url",
           "status",
           "tier",
           "visibility",

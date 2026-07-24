@@ -1,14 +1,15 @@
 {
-  "catalog_digest": "911730320d6255194829a4446c5ecc19091d1a91c394bb4abbf43a16a47cb720",
+  "catalog_digest": "31f5b7f4c537f4aff39931096e03e80389d1b68b6463289129174e0c96e614fb",
   "concept_doi": "10.5281/zenodo.19317982",
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "human_publish_gate": true,
   "publication_scope": "public",
   "records": [
     {
+      "abstract": "Formal foundations for a bounded biodiversity measurement score.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "f4e6e05aed0d0831eef4e919031d7478b71dfd8e792a9f8b931ef1565bb9d5cc",
+      "digest": "c16c084dd07175da53eda5a5ff975fd6011d9a82381fbb765caa2064c68c2cc6",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -24,9 +25,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/P1_DScore.lean",
       "path": "P1_DScore.lean",
       "record_id": "d-score",
       "source_sha256": "3f5ec424f57fcbbcc15d373e9f4f8b624410e2f8bf6504020eea8680f874f7b3",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P1_DScore.lean",
       "status": "verified",
       "summary": "Formal foundations for a bounded biodiversity measurement score.",
       "tags": [
@@ -42,9 +45,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Graph-theoretic foundations for cost-minimizing dendritic conservation corridors.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 4,
-      "digest": "1545f867793197b77af02b139c6020ba86fbfa03111b83ad6878ecf0e798d5e6",
+      "digest": "43a085c72ce84b28d82b5d21dba7c0377d67e7bb5d37d11d3b84a305585a131e",
       "doi": "10.5281/zenodo.20467431",
       "external_validation": "not-recorded",
       "imports": [
@@ -60,9 +64,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20467431",
       "path": "EcoChain_DendriticCorridor.lean",
       "record_id": "dendritic-corridor",
       "source_sha256": "676541790a5d32b8a975a07eada76d589a768c964bb2224ecc7eb835af8f2b8e",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/EcoChain_DendriticCorridor.lean",
       "status": "working",
       "summary": "Graph-theoretic foundations for cost-minimizing dendritic conservation corridors.",
       "tags": [
@@ -79,9 +85,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "The planetary Landauer dual linking biosphere productivity to the Intelligence Bound.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 3,
-      "digest": "0d8e79e25970d924b984ce562c93e6a6fc885ce6c9744418bad58e7112f4edd8",
+      "digest": "ccab72dde0bee88b4506a7baf2b011b6963ae4397b18c7322c188ef69c819ab6",
       "doi": "10.5281/zenodo.20777118",
       "external_validation": "not-recorded",
       "imports": [
@@ -97,9 +104,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20777118",
       "path": "Bridge_BiosphereProductivity.lean",
       "record_id": "biosphere-productivity-bridge",
       "source_sha256": "c74329a81b1c036d414735afc70b976499148ef1fbeffe0afd7e07ad973e2da7",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/Bridge_BiosphereProductivity.lean",
       "status": "working",
       "summary": "The planetary Landauer dual linking biosphere productivity to the Intelligence Bound.",
       "tags": [
@@ -116,9 +125,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Biosphere Erasure Bound — the recovered footing of the Intelligence Bound D. Wolpert refuted the IB's original premise that k_B T ln 2 lower-bounds the cost of *acquiring* a bit (acquisition ≠ erasure; acquisition can be reversible). This module relocates the bound to the side of the ledger Wolpert does NOT dispute: erasure. Erasing a bit (reducing logical entropy) dissipates at least ε_L = k_B T ln 2 — the original Landauer principle. The biosphere is the largest known low-entropy / high-order dataset (genomes, ecosystems, hydrological and climate structure); its *erasure* (extinction, collapse) therefore carries an irreducible thermodynamic floor proportional to its information content D. Two reversals make this the strong form of the IB: 1. Direction: an UPPER bound on acquisition rate (refuted) becomes a LOWER bound on erasure cost and on the intelligence required to steward against erasure. 2. Robustness: Wolpert's \"real costs exceed Landauer (mismatch)\" REINFORCES a lower bound (it only raises the floor) — his refutation becomes a buttress. Mathlib pin: 8f9d9cff6bd728b17a24e163c9402775d9e6a365",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "4a0f268e6d3e3f4e5d0770ef3f8314bdbba50382a6e2014a9578ca089ddf03a3",
+      "digest": "fd9c1649b88ac8e69d39f6b50cc44b76b7e9768a5891476735d59cb0d52f0900",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -134,9 +144,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/BiosphereErasureBound.lean",
       "path": "BiosphereErasureBound.lean",
       "record_id": "biosphereerasurebound",
       "source_sha256": "5daf77e7ca767afe544d1bf112bf8fb22a7daec2b1005e2c0da566a2e55493b9",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/BiosphereErasureBound.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
       "tags": [
@@ -150,9 +162,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Heat and Disorder — Formal Spine of the Popular Narrative This module condenses the *qualitative* claims of the trade book \"Heat and Disorder: How Thermodynamics Shapes Our Climate's Future\" (Hart, 2.0) into a small set of faithful, machine-checkable theorems. The book is written in prose for a general audience and contains no equations; the goal here is NOT to prove the book's empirical claims (CO₂ forcing magnitudes, the Keeling correlation, RCP projections — those are measured, not derived), but to give the book's CONCEPTUAL backbone a verified mathematical appendix. Three buckets were triaged from the manuscript: A. Formalizable theorems (this file). B. Physical postulates (Stefan–Boltzmann law, loop gain, entropy-production ≥ 0) — entered here as HYPOTHESES, never assumed derivable. C. Empirical/statistical claims — out of scope for a theorem prover. Book-claim → theorem map (faithfulness, INV1): second_law_entropy_nondecreasing Preface: \"entropy ... increases inexorably\"; Ch.2/3: the entropy of an isolated system rises over time. Physics supplies the local law (production rate σ(t) = dS/dt ≥ 0); the THEOREM derives the global consequence — S is monotone non-decreasing on all of time. positive_feedback_diverges / negative_feedback_stabilizes Ch.1 \"Feedback Loops\": a POSITIVE (self-reinforcing) loop such as ice–albedo amplifies a perturbation without bound when the loop gain exceeds one; a NEGATIVE loop (gain below one) damps it back to zero. Modeled as the discrete orbit xₙ = gⁿ·x₀ of loop gain g. tipping_point_threshold / saddle_node_two_branches Introduction…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "8736828ac0b64dd4ab899518ae6abe6ecc96f967c5780353542a88e6afc68567",
+      "digest": "9b8513dfbf678a529405912666c80299ba9744612b1e5ebd970a67db7c7099f0",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -168,9 +181,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/Book_HeatAndDisorder.lean",
       "path": "Book_HeatAndDisorder.lean",
       "record_id": "book-heatanddisorder",
       "source_sha256": "9a686285d39ce25cd7147337be3a2066320333ff0c7f1562ff20df5dd8953fbf",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/Book_HeatAndDisorder.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 12 theorem and lemma declarations.",
       "tags": [
@@ -184,9 +199,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "P0 Bounded-Memory Dissipation Floor — INTEGRITY FIX (INV-4) Viridis Aristotle Forge · 2026-06-21 · Integrity Release v9.1.0 follow-on PURPOSE. The canonical P0 finite_memory_dissipation carried an UNUSED bounded- memory hypothesis h_mem (external audit, 2026-06-21): its proof rode on Landauer ∧ erasure ≥ creation alone, so the named bounded-memory mechanism was decorative. This target supplies the honest, NON-VACUOUS replacement in the same real-ledger abstraction as the verified BoundedMemoryLearning engine, in which bounded memory is LOAD-BEARING: deleting hmem breaks the proof, and that fact is itself machine-checked below. ACCEPTANCE. Discharge every sorry; preserve every named statement VERBATIM; axiom audit ⊆ {propext, Classical.choice, Quot.sound}; every theorem NON-VACUOUS; every named hypothesis genuinely consumed. LEDGER. A = acquired predictive bits; M = memory capacity (bits); E = bits erased; Q = total dissipation; ε = per-erasure dissipation floor (a STATED regime parameter, NOT a universal constant — Wolpert-robust). Bounded memory = retained information A − E ≤ M.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "822108ae1dc320007ebca508832cff6bb4fe3e6e41ba0ea03fc117b7f712d5f6",
+      "digest": "d2d9e8c40bc493698e20891919a21e76a6dfc9b8f8bf4ee5c1a631e22f076d86",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -202,9 +218,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/BoundedMemoryDissipation.lean",
       "path": "BoundedMemoryDissipation.lean",
       "record_id": "boundedmemorydissipation",
       "source_sha256": "275b97ac26719847fc0e160f89d7258823d6872a3bc392e43dd1d44686f8cbbd",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/BoundedMemoryDissipation.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
       "tags": [
@@ -218,9 +236,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Power-Limited Sustained Learning (corrected thermodynamic branch of the Intelligence Bound) Context: D. Wolpert (Santa Fe Institute) refuted the original premise of the IB's thermodynamic branch — that k_B T ln 2 is a *lower bound on the cost of acquiring a bit*. He is right: (i) acquisition ≠ erasure (Landauer's floor is for ERASING a bit; acquiring/measuring carries no such floor — Bennett; Sagawa–Ueda); and (ii) even logically-irreversible operations can be run thermodynamically reversibly with zero entropy production (Wolpert, arXiv:1508.05319), so there is no *universal* per-bit floor. This module rebuilds the bound on a defensible footing. The cost is grounded NOT in acquisition but in the ERASURE that *bounded memory* forces: a learner with finite capacity that keeps acquiring must overwrite, and erasure in any finite-time / dissipative (non-reversible) regime has a strictly positive per-erasure dissipation floor ε. ε is a STATED regime parameter (= k_B T ln 2 in the standard quasistatic non-reversible case), NOT a universal constant — and when ε = 0 (the reversible idealization Wolpert invokes) the bound correctly vacates. The result is a CONDITIONAL, regime-restricted bound, not a universal law. Mathlib pin: 8f9d9cff6bd728b17a24e163c9402775d9e6a365",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "a006b116dd713310f59b3478108b6f256117ae9d48f9d336908840eb960e43bd",
+      "digest": "d39241d7c51e8f12d001ae062f0f011311db0392c06524a76efecd54c837ae55",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -236,9 +255,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/BoundedMemoryLearning.lean",
       "path": "BoundedMemoryLearning.lean",
       "record_id": "boundedmemorylearning",
       "source_sha256": "910407243266a4a2793e78184679e9ed24f67a57efca7444d4be871f069514a6",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/BoundedMemoryLearning.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 4 theorem and lemma declarations.",
       "tags": [
@@ -252,9 +273,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Bridge_EcoChainInstrument — Canon-to-Application Bridge Specializes the Conservation Operator canon module's three architectural theorems to EcoChain's Ecological Annuity Model (EAM) and Ecological Asset Continuity (EAC) payment architecture. Provides the formal foundation for EcoChain's three operational claims, previously asserted in the seminal paper but not previously canon-grounded: economic_dominance — sale value strictly exceeds destruction value under EAC + EAM (specialization of CO §7.4 yield-conditional instrument) agent_architecture_dominance — automated AI-agent operation strictly dominates manual-audit operation at sufficient parcel count (specialization of architecture_dominance from CO) enrolled_parcel_positive_EV — every enrolled parcel under EAM has strictly positive expected per-epoch value to the landowner (specialization of positive_EV from CO) composite_feasibility — corollary: when all three architectural conditions hold, EcoChain enrollment is economically feasible for the landowner AND operationally dominant for the protocol AND asset-protective for the ecology This is the canon-application bridge: EcoChain's seminal-paper \"Theorem 1: Economic Dominance\" can now cite this module's economic_dominance as its compiled canon-grounded statement, rather than handwaving the connection to the architecture layer. Connection to existing Canon (cited but not re-proved): ConservationOperator.architecture_dominance — Theorem 3 (parent) ConservationOperator.positive_EV — Theorem 1 (parent) P0 IntelligenceBound.cap — capability function P3…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "99ca8f86d92fc1c5f1a3135dc07720400be6f379b69ba4413f73ec1915362a5c",
+      "digest": "d1d8346a1c86da31d42f9020bfce13ea152025e2a9c5abab1b724ac8274ce167",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -270,9 +292,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/Bridge_EcoChainInstrument.lean",
       "path": "Bridge_EcoChainInstrument.lean",
       "record_id": "bridge-ecochaininstrument",
       "source_sha256": "26ead455648c0634df9faf3f18fe2c9222dbc8d5a276c1eab2eb354c5c03ba78",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/Bridge_EcoChainInstrument.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 4 theorem and lemma declarations.",
       "tags": [
@@ -286,9 +310,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Mission Feasibility Theorem A self-contained mission-feasibility analogue (imports only Mathlib; v9.1.1) motivated by P0 (Intelligence Bound), P3 (Goodhart Impossibility / alignment-as-feasibility), and P4 (Thermodynamic Economics) jointly to produce a single numerical test for whether a planetary conservation mission is achievable at all. Headline (informal): A planetary conservation mission m with per-step information- creation target r(m) and biodiversity target D*(m) is feasible (i.e., there exists some agent that completes it from any starting landscape) if and only if BOTH r(m) ≤ P_max / (k_B · T · ln 2) [P0 thermo bound] D*(m) ≤ D_coherent_attainable [P3 feasibility] hold simultaneously. The forward direction shows feasibility forces* both inequalities (any agent that completes the mission has its rate bounded by P0 and its asymptotic biodiversity bounded by P3). The backward direction *constructs* a witness D-coherent agent that achieves the target whenever the inequalities hold. This is a useful theorem because it converts the abstract \"alignment is feasibility\" claim of P3 into a number a policy-maker can check: given a candidate mission target, is it physically achievable? Acceptance criteria: • Zero sorry, axiom audit limited to {propext, Classical.choice, Quot.sound}. • Each theorem's *conclusion* must encode the physical claim non-vacuously (no \"True\", no ∃ x, x = formula shells).",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 4,
-      "digest": "80100aa1b5fd6294152bbf2c9778e3fe41f4d170f90af62dd16f04cbd1c620c1",
+      "digest": "01e4827a2cf16aa170abf69889edce57ed92015566a0e6cbdd60f1aa5017ac15",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -304,9 +329,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/Bridge_MissionFeasibility.lean",
       "path": "Bridge_MissionFeasibility.lean",
       "record_id": "bridge-missionfeasibility",
       "source_sha256": "80516440836868a1460e64f928e727a9cada59bb7b1dfcf5c8781c19ee146139",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/Bridge_MissionFeasibility.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
       "tags": [
@@ -320,9 +347,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Conditional feasibility and impossibility results for conservation under bounded resources.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 8,
-      "digest": "d69b00b3cbd5182b6573860d615a7ccc6aaded94ac93ee032a63f6dd126694cb",
+      "digest": "aece09a42654b267e176211853c8d2d4ccf9db947d30eb225521a9501387e311",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -338,9 +366,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/P3_Impossibility.lean",
       "path": "P3_Impossibility.lean",
       "record_id": "mission-feasibility",
       "source_sha256": "0bf9766985128788606428999c824ff1c6d1f585f313de9c016f2e057f8cb880",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P3_Impossibility.lean",
       "status": "verified",
       "summary": "Conditional feasibility and impossibility results for conservation under bounded resources.",
       "tags": [
@@ -356,9 +386,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Conservation Operator — Asymmetric-Reward Operator Architecture The architectural framework for asymmetric-reward systems: management operators that produce strictly positive expected value on stochastic input regardless of input quality, with yield concentrated in the upper tail and with marginal returns to operator-efficiency dominating marginal returns to input-power at sufficient scale. Headline (informal): In a value-extracting system applied to a stochastic input process, the architecture of the management operator X determines a strictly larger fraction of long-run realized value than the architecture of the input-selection operator E, whenever (i) X bounds losses and has a dominant-mass win region (Theorem 1), (ii) the yield concentrates in the upper tail (Theorem 2), and (iii) at sufficient scale the marginal return-on-cost of operator efficiency D dominates that of input power P (Theorem 3). Three core theorems, all derived against pinned Mathlib: positive_EV — strictly positive expectation under loss-bounded, win-dominated structure yield_concentration — for non-negative integrable X, the upper tail {X > T} captures at least E[X] - T of the total integral mass architecture_dominance — D-investment marginal return-on-cost strictly exceeds P-investment marginal return-on-cost when D·cost_D < P·cost_P Connection to existing Canon (cited but not re-proved here): P0 IntelligenceBound.cap — used implicitly: cap = P·D/C is the capability function whose partials drive Theorem 3 P5 ShadowPrice / SLSPT-Tower — quadratic-divergence is the mechanism that produces the…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 1,
-      "digest": "ca1b13e992c6c30fd3aea6e35b9f29663960e04b6f79412b3722d0cabe742b11",
+      "digest": "712a9e3acb70bbc8609c11e689cf55640bf63ce34a602980a0458e9f9eaf7195",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -374,9 +405,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/ConservationOperator.lean",
       "path": "ConservationOperator.lean",
       "record_id": "conservationoperator",
       "source_sha256": "0eaefedb7c594e9c0d9fe6909d23d21373dc1d03bb86c8a8d770afcbaa3abdd9",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/ConservationOperator.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 7 theorem and lemma declarations.",
       "tags": [
@@ -390,9 +423,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Decoherent Selection Theorem (DST) — clean thermodynamic / information core Nightly science-engine Run 099 — [12] AI Wavefunction Collapse x Thermodynamic Lens (\"the Chooser\"). 41st Intelligence-Bound self-application. Novelty 4/5. Model. An agent's pre-decision belief over N candidate outcomes in the einselected \"possibility\" basis is a probability vector p : Fin n -> R. A DECISION is a decoherence event in that basis — the collapse of off-diagonals selecting one outcome. In the resource theory of coherence the coherence destroyed by full dephasing of a PURE candidate state equals the Shannon entropy of its populations, C_rel = H(p), so the choice's \"coherence cost\" is exactly the entropy of the choice. This file states the clean, WELL-POSED, non-vacuous real-analytic / thermodynamic core keyed to the run's boxed results (verify.py 29/29, numpy-only). DEFERRED (well-posedness gate — CITED, not re-proven, preserved as paper prose): R1 operator identity dS_collapse = S(Delta rho) - S(rho) = S(rho || Delta rho) (von Neumann entropy of a density matrix + dephasing channel — requires quantum operator scaffolding, not a self-contained R-valued proposition). Its PURE-state reduction C_rel = H(p) IS the model here and carries the run's content. single_collapse_cost_independent_of_monitoring_rate (a distinctness/modeling claim vs MIST-076 — that the single-event cost functional does not take the monitoring rate p as an argument; structural, not a theorem). Named theorems (this file): R2 coherence_nonneg (choice entropy H(p) >= 0) R2 decision_cost_zero_iff_pointer_eigenstate…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "c944060a982ef4c4043fbbb2ec03b87173d23fafa68f398a34c26294c880ff86",
+      "digest": "136eb24befa8a2a5db4868a7ab3278758172f071afff1191977f75f2884c210d",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -408,9 +442,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/DecoherentSelection.lean",
       "path": "DecoherentSelection.lean",
       "record_id": "decoherentselection",
       "source_sha256": "16ee8fbfb30acff0e9ab1c1b1972b274cf81c08fd6d61434e0894426a4ab701c",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/DecoherentSelection.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 12 theorem and lemma declarations.",
       "tags": [
@@ -424,9 +460,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Effortless Equilibrium Theorem (EET) — clean dynamical / thermodynamic core Nightly science-engine Run 097 — [13] Computational Theory x Alignment (\"the Steersman\"). 39th Intelligence-Bound self-application. A steward-able system is a dissipative dynamical system with a bounded-below C^1 free-energy potential Phi and overdamped flow x' = -gradPhi(x). \"Harmonized action\" (wu wei) = let the flow run and rest where it stops; \"forcing\" = hold the system at a target x* chosen independently of the natural attractor set. This file states the clean, WELL-POSED, non-vacuous dynamical / thermodynamic core of EET, keyed to the run's boxed results. DEFERRED (well-posedness gate — CITED, not re-proven, per the run's verification-honesty note): the complexity-class content — R1's membership W in CLS = PPAD cap PLS, R2's CLS-completeness of gradient descent (FGHS 2021), and R3's TFNP -> FNP class transition and PPAD/NP-hardness (DGP 2009; JPY 1988). Those require citing external completeness theorems and are not self-contained non-vacuous propositions provable from scratch in Lean. This file proves the run's OWN dynamical/thermodynamic scaffolding, which is what verify.py gates numerically. Named theorems (this file): R1 wuwei_totality_min_exists (potential-descent / EVT certificate: a rest state EXISTS) R3 rest_state_iff_grad_zero (a resting state at x* exists iff gradPhi(x*) = 0) R3 forcing_nonattractor_no_rest (forcing a non-attractor: the flow never rests there) R5 holding_power_nonneg (P_hold = gamma^-1 ||gradPhi||^2 >= 0) R5 zero_holding_power_iff_grad_zero (BOXED: wu wei is…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "0a72496d7ab543370d4c591b9980eeb71a05b88adb8fc77d008a61a21ceeab50",
+      "digest": "1d6891bda2c85b471154c0ccadcbc8fa621f1a45803ce113ce8520399b2419c5",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -442,9 +479,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/EffortlessEquilibrium.lean",
       "path": "EffortlessEquilibrium.lean",
       "record_id": "effortlessequilibrium",
       "source_sha256": "bdfeb671282f38f664e578799a442980dda2594ec344f9c2661460862f91d7ed",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/EffortlessEquilibrium.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 11 theorem and lemma declarations.",
       "tags": [
@@ -458,9 +497,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Machine-checked Lean research module with 11 theorem and lemma declarations.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 17,
-      "digest": "018f7507aee2be81e37820b87b1eda1f9ef3c33fdbc7d5eac25f1ed4c0e8d22d",
+      "digest": "70d03f3b5395071dff57c788c58f5046b1e043e69246d1523af398100608a7e2",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -477,9 +517,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/P7_PlasmaNFix/Energy.lean",
       "path": "P7_PlasmaNFix/Energy.lean",
       "record_id": "p7-plasmanfix-energy",
       "source_sha256": "73f7c46077f82793400d38c873c9c85a1891127b0bb890e33c69097ac0511b60",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P7_PlasmaNFix/Energy.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 11 theorem and lemma declarations.",
       "tags": [
@@ -493,9 +535,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Thermodynamic and Stoichiometric Foundations of Plasma-Mediated Atmospheric Nitrogen Fixation for Forest Carbon Sequestration Sections 0–2: Constants, Thermodynamics, Plasma Chemistry A formally verified treatment following Hart (2026).",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 18,
-      "digest": "702b284e23c655ae5893a17f286591eea350d12e6a27540c92e4a092fbd5450a",
+      "digest": "d9196c89ee31f5776d78aaecd3ea7301a67eb48801b36f1f1e994576bdeac776",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -511,9 +554,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/P7_PlasmaNFix/Foundations.lean",
       "path": "P7_PlasmaNFix/Foundations.lean",
       "record_id": "p7-plasmanfix-foundations",
       "source_sha256": "d00ed89438dd55a25fc59fbd03a96c69ef91300db910a3da5547be9a15d9f82c",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P7_PlasmaNFix/Foundations.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 8 theorem and lemma declarations.",
       "tags": [
@@ -527,9 +572,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Geodesic Saturation Theorem (GST) — clean analytic core Viridis Canon · Nightly Run-086 (2026-07-01) · [01] Intelligence Bound × ☯️ Alignment \"The Sage\" — 28th IB self-application; CONVERGENCE EVENT. CONTEXT. The Intelligence Bound dI/dt ≤ P·D/(k_BT ln2) is a *ceiling*. GST answers when it is reached with EQUALITY. Sivak–Crooks thermodynamic length gives, for a finite-time protocol at thermodynamic speed v(t)=√(ζ_ij θ̇^i θ̇^j) with length L=∫v and duration τ, the excess dissipation W_diss ≥ L²/τ (a Cauchy–Schwarz / power-mean inequality), with equality iff v is constant. Minimising L over paths gives the geodesic length L_g, so W_diss ≥ L_g²/τ, equality iff a CONSTANT-SPEED Fisher–Rao GEODESIC — wu wei made literal. The IB slack is exactly the forcing F = (W_diss − L_g²/τ)/τ ≥ 0, so dI/dt = (P−F)·D/(k_BT ln2), and the bound saturates iff F = 0. Instantaneous efficiency η = cos²Θ, the squared Fisher-angle between realised velocity and the natural gradient; η = 1 iff Θ = 0 (aligned). This file certifies the clean, well-posed, NON-VACUOUS core of GST. Targets requiring the multichannel water-filling KKT scaffold (GST→UWMT reduction) are deferred to a dedicated follow-up run. THEOREMS (all statements to be preserved VERBATIM; every hypothesis is load-bearing — see per-theorem non-vacuity notes): T1 thermo_cauchy_schwarz (∑ v)² ≤ n · ∑ v² (discrete W_diss·τ ≥ L²) T2 thermo_cs_equality_iff_constant_speed (∑ v)² = n · ∑ v² ↔ v constant (wu wei) T3 forcing_decomposition_nonneg F = F_pace + F_path, both ≥ 0 T4 geodesic_saturation_identity dI/dt = (P−F)c; IB holds ↔ 0≤F; saturates ↔…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "adfdb2e91ec50c69670b62f43bf9b91e3161111a103c461279b0881cf75cda58",
+      "digest": "2fc99d9e055b5e774e99b098862fcdf5dc9b36232f341b20a6c07ca043f8a7e6",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -545,9 +591,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/GeodesicSaturation.lean",
       "path": "GeodesicSaturation.lean",
       "record_id": "geodesicsaturation",
       "source_sha256": "192af4cc32ba24fdef4593c74a819a142fd50f9ed84aeae04fd0603ad5f45d73",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/GeodesicSaturation.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
       "tags": [
@@ -561,9 +609,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Summary of Formally Verified Results The proof dependency DAG is verified by Lean's type checker. Each theorem only references previously defined axioms, definitions, and lemmas. The import structure ensures: Foundations.lean: A1–A7, D1–D3, L1–L3, T1–T2, C1 Energy.lean: A8–A12, D4–D5, T3–T6 (imports Foundations) Integration.lean: T7–T13, I1–I7 (imports both) Verified Theorems: T1: Minimum energy ∈ (6.17, 6.19) MJ/kg N C1: Haber-Bosch η = 20.6%, Plasma η = 24.72% L1: Solar info bound = η·G·A / (k_B·T·ln2) L3: Quenching rate = 30,000 K/s T2: Enhancement exponent ∈ (10.02, 10.04) T3: P_gross = 9,900 W, P_plasma = 6,200 W T4: N production: ~0.638 g/s, ~2.30 kg/hr, ~18.4 kg/day, ~3,680 kg/yr T5: Stoichiometric bound = 20.5 kg C/kg N T6: Decomposition amplifier = 300 kg C/kg N T7: ΔC ≈ 128,800 kg C/yr, ΔCO₂ ≈ 472,300 kg CO₂/yr T8: Fleet scaling is linear T9: Energy invested = 57.024 GJ/yr T10: Information bound structure T12: Safe deposition range: 10–37 kg N/ha/yr T13: N₂O penalty ≈ 4.29, net benefit ≈ 124.0, fraction ≈ 3.3% I1–I5, I7: System invariants verified",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 18,
-      "digest": "eaef6a00c7ab44756ac4722a12404d68339f757e9f42e8f3122b9fecd1a8f215",
+      "digest": "bd35b2dcc892aaee0aa9b321e89afb1214210d543f836e505e6b1b2c2a826f22",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -581,9 +630,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/P7_PlasmaNFix/Integration.lean",
       "path": "P7_PlasmaNFix/Integration.lean",
       "record_id": "p7-plasmanfix-integration",
       "source_sha256": "09612cf1c2f6ff9d06aacb577373822826515bc74ffacebe763e8482e5117884",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P7_PlasmaNFix/Integration.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 19 theorem and lemma declarations.",
       "tags": [
@@ -597,44 +648,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "Formal properties of the inverse-square law used by the shadow-price tower: positivity, strict decrease, convexity, and divergence near zero.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "b1ea52f11b99da59b789ab83514a89662ab6c57e28916e826df88fe42793f205",
-      "doi": "",
-      "external_validation": "not-recorded",
-      "imports": [
-        "Mathlib"
-      ],
-      "integrity": "gate-passed",
-      "lean_module": "IntelligenceBound",
-      "lemma_count": 0,
-      "line_count": 24,
-      "metadata": {
-        "aristotle_id": "",
-        "artifact_type": "lean4",
-        "paper_target": "",
-        "source_decode_replacements": 0
-      },
-      "path": "P5_SLSPT/IntelligenceBound.lean",
-      "record_id": "p5-slspt-intelligencebound",
-      "source_sha256": "ebd8980a134a28e49f4438081753fe1525d8af3b07377e690788646d162180fa",
-      "status": "verified",
-      "summary": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
-      "tags": [
-        "lean4",
-        "spine",
-        "verified"
-      ],
-      "theorem_count": 5,
-      "tier": "spine",
-      "title": "Intelligence Bound",
-      "visibility": "public"
-    },
-    {
-      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
-      "definition_count": 0,
-      "digest": "8a5ef24a945c8c4a09003212ed712516f2c2278198ce10478a2db83fd212e4ad",
-      "doi": "",
+      "digest": "efd94a89f9b34a5f19601e3f75fd5a808bdb16371be7b26939ce7b55b97b4242",
+      "doi": "10.5281/zenodo.20006414",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -649,26 +667,31 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20006414",
       "path": "P5_SLSPT/InverseSquare.lean",
       "record_id": "p5-slspt-inversesquare",
       "source_sha256": "3b7d8eb4b43af18fa96571b8c11330eace642512d847dc6ae0810cf21c1ae9d1",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P5_SLSPT/InverseSquare.lean",
       "status": "verified",
-      "summary": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
+      "summary": "Formal properties of the inverse-square law used by the shadow-price tower: positivity, strict decrease, convexity, and divergence near zero.",
       "tags": [
+        "inverse-square",
         "lean4",
+        "shadow-price",
         "spine",
         "verified"
       ],
       "theorem_count": 5,
       "tier": "spine",
-      "title": "Inverse Square",
+      "title": "Inverse-Square Shadow Price Law",
       "visibility": "public"
     },
     {
+      "abstract": "MRAB.lean — The Multi-Ring Alignment Bound (MRAB), Theorem 1. Source: Viridis nightly engine Run-016 \"aligned-polymath-bound\" (science-engine/.../Run-016_aligned-polymath-bound/paper.tex, Thm 1, eq. (3)). Canon backlog Rank 8; spine (IB specialization). Aristotle Forge submission. INTENDED MEANING. A polymath AI scientist operating across K rings of the Planetary Thermodynamic Market Stack has joint mutual-information rate bounded by dI_joint/dt ≤ (P · D̄ / (k_B T ln 2)) · ∏_{k} cos²Θ_k, where D̄ = (∏_k D_k)^{1/K} is the geometric-mean dissipation factor and cos²Θ_k ∈ [0,1] is the per-ring Fisher–Wasserstein alignment factor. We model the per-ring data as finite real families on Fin K: • c k = cos²Θ_k ∈ [0,1] (Cauchy–Schwarz, assumption 2 of the paper), • D k ∈ [0,1] (structured dissipation fraction, by definition), • κ = k_B T ln 2 > 0 (positive temperature). NON-VACUITY. Every theorem below carries explicit positivity / unit-interval hypotheses and a non-trivial conclusion: the alignment factor genuinely lies in [0,1] (product structure), D̄ lies in [0,1] and is bounded by the arithmetic mean (AM–GM), the MRAB ceiling is non-negative and never exceeds the unaligned base rate P D̄ / κ (the *Polymath Paradox* collapse direction of Theorem 1), equality (saturation) holds exactly at perfect alignment (the wu-wei polymath), the bound reduces to the Master Intelligence Bound at K = 1, Θ = 0 (the Universal Aligned Intelligence Bound / UAIB reduction).",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 5,
-      "digest": "5a120f0f8768839c41a2c8927f8fb17ba4d67074651e802916df9c14d67ecfd1",
-      "doi": "",
+      "digest": "48f87fb23fe42df7c0eb231e235d89f0a5a07a9c67013b27ad9681962ca6e94b",
+      "doi": "10.5281/zenodo.20800757",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -683,9 +706,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20800757",
       "path": "MRAB.lean",
       "record_id": "mrab",
       "source_sha256": "f56396bf4717d3264da534edd92f6cd77919d7377e7b24e56f8885a3d54db2e7",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/MRAB.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 10 theorem and lemma declarations.",
       "tags": [
@@ -699,9 +724,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Mutualistic Attestation Theorem (MAT) — the Attester Viridis Aristotle Forge · Nightly Run 100 · [08] Ecoservices Platform × 🌿 Symbiosis 42nd Intelligence-Bound self-application. Consumes the standing [99]→[08] flag from the Decoherent Selection Theorem (DST, Run 099). INTENDED MEANING (formalized clean core). A conservation *certificate* is a committed bit about a proposition A (\"this site is additional / integrity D ≥ D*\"). Issuing it collapses the certifier's posterior over A; by DST/Landauer the minimum work equals the residual posterior (binary) entropy H(A|y), priced at κ := k_B T ln2. Because the ecosystem's own integrity D sets the SNR of the evidence y, H FALLS as D rises — certification cost is *endogenous* to the thing being certified. That endogeneity is a mutualism (legibility ⇄ integrity) and makes the integrity dynamics dD/dt = b + A·u(D) − δD bistable: a low-integrity Certification Trap and a high-integrity self-certifying Mutualism, separated by an unstable legibility separatrix (a saddle-node fold — structurally distinct from the transcritical *price* bifurcation of VPT-081). NON-VACUITY. Every named statement is discharged over an explicit, non-degenerate model: κ > 0, residual entropy in bits H ∈ [0,1], a strictly-decreasing legibility surrogate Hleg D = 1/(1+D) (D ≥ 0), a cubic fold normal form with three ordered equilibria r1 < r2 < r3, and the cos²Θ pointer-basis geometry. mat_nonvacuous exhibits a concrete witness. No conclusion collapses to a triviality. DEFERRED (measure/asymptotic-dependent; CITED, NOT formalized here — honesty note): · the…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 1,
-      "digest": "95a18ad254ba1ad191e1a945ef6cc5d7bcbd1bb6a12f85dbc573e62d53cb3b73",
+      "digest": "f58a778d89fc96d1ee89bdeeaa1dfe60070baa19bf370c59155ba8789912f6e6",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -717,9 +743,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/MutualisticAttestation.lean",
       "path": "MutualisticAttestation.lean",
       "record_id": "mutualisticattestation",
       "source_sha256": "913685f9c6ac3a54f580a868b6ede8d5c2e7c1e799692c74f66cb577b2aedca5",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/MutualisticAttestation.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 19 theorem and lemma declarations.",
       "tags": [
@@ -733,9 +761,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "HDFM — Graph-Theoretic Foundations This module formalizes the core graph-theoretic theorems underlying Hierarchical Dendritic Forest Management (HDFM). Main results dendritic_minimum_cost — Theorem 1: MST minimizes total corridor cost tree_edge_removal_partition — Theorem 2: removing any edge of a tree DISCONNECTS it (every edge is a bridge). NB the Lean conclusion is ¬ Connected, not the strictly stronger 'exactly two components'. dendritic_max_info_efficiency — Theorem 3: Dendritic networks maximize H_b / |E| Design decisions Uses Mathlib's SimpleGraph for graph structure Trees characterized via IsTree (connected + acyclic) MST optimality via weight minimality among spanning subgraphs Information efficiency as ratio of branching entropy to edge count",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 3,
-      "digest": "5dc1ed2b5e7cdda0928d1a9ac3592fb8f3614f24472e449a66750348c94467c1",
+      "digest": "0d21537ed409c57d1633385cae7413c8dc167aab67be902c3115c6c8f7b5dcb4",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -751,9 +780,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/P2_HDFM_POC.lean",
       "path": "P2_HDFM_POC.lean",
       "record_id": "p2-hdfm-poc",
       "source_sha256": "1374d11ea0119bbb10efb8509299fb9c35ef502e6568908ed5c4d16c73e0712f",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P2_HDFM_POC.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 9 theorem and lemma declarations.",
       "tags": [
@@ -767,9 +798,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Perennial Corridor Theorem (PCT) — clean self-contained core Nightly science-engine Run 098 — [03] HDFM Corridors x Stewardship (\"the Gardener\"). 40th Intelligence-Bound self-application. Landscape connectivity is not built once but MAINTAINED against stochastic decay: a restless multi-armed bandit whose Whittle index prices, each season, which decaying corridors to service. The finding's boxed headline is the exact factorization of that index as structural centrality times a health-urgency multiplier, W_e(s) = kappa_e * phi(s), welding the static Corridor Stewardship Theorem (CST, Run-074) to the dynamic long game and to Run-097's standing holding-power. This file states the WELL-POSED, non-vacuous core keyed to the run's boxed results and to the numeric urgency vector verify.py (24/24) actually validated. DEFERRED (well-posedness gate — CITED, not re-proven, per the run's verification-honesty note): the restless-bandit machinery whose optimality is imported, NOT self-contained -- Whittle indexability as a general MDP fact, Weber-Weiss (1990) asymptotic optimality of the index policy, Papadimitriou-Tsitsiklis (1999) PSPACE-hardness, and the R3 percolation B_crit threshold existence (a numeric finding resting on percolation theory). Those need external completeness/limit theorems and are preserved as paper prose. This file proves the run's OWN algebraic / order-theoretic / thermodynamic scaffolding. Named theorems (this file): R1 whittle_index_homogeneous_deg1 (index is exactly degree-1 homogeneous in centrality: factorization) R1 whittle_ranking_by_centrality (at…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 3,
-      "digest": "8bb441775ef045bc88ee31659ef958e76e0d42488ddf3a2bc6e509ab7d4b4a63",
+      "digest": "e00e9d7a99f00b0cb2b6eb62f1993ef180d0fa609ab641195390e8943e20e84a",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -785,9 +817,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/PerennialCorridor.lean",
       "path": "PerennialCorridor.lean",
       "record_id": "perennialcorridor",
       "source_sha256": "dd00d2360c7a2aa362d4151db994f69d6e8529994510c78dcbede6a6a0199dd7",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/PerennialCorridor.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 16 theorem and lemma declarations.",
       "tags": [
@@ -801,9 +835,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Formalization of \"Symplectic structure on the slack of an information-rate bound\" (Hart 2026; PSIT / Run-035). Formal-verification target for the Nature Physics submission: the symplectic-conjugation theorem (Theorem 1) and the no-solo-saturation corollary (Corollary 1). Mathlib pin: 8f9d9cff6bd728b17a24e163c9402775d9e6a365",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 11,
-      "digest": "14a63af1578c8a9a12bdf32333e9849ae41c3107c01f3bc9db242667ce8f06b4",
+      "digest": "6c2d3f06ed5dd160db7ffe817aa1e6d54c0957acb28ccc22616d920df35e3fcb",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -819,9 +854,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/PSIT_Symplectic.lean",
       "path": "PSIT_Symplectic.lean",
       "record_id": "psit-symplectic",
       "source_sha256": "a99330eea8694d113e802af73bbfcec1eaac6eae97a6d7381b8b15d4bf49ca8c",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/PSIT_Symplectic.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 22 theorem and lemma declarations.",
       "tags": [
@@ -835,10 +872,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "Shadow Price Function — Thermodynamic Speed Limit Theory The shadow price function is p(σ) = d² / (A · τ · σ\u0002�) where d, A, τ, σ are positive reals. We prove four key properties establishing the quadratic divergence (Performance Cliff Theorem).",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "ae7c08a66f6b69b224c86f22d83624b753fc89f2c388ea299584649d475d4355",
-      "doi": "",
+      "digest": "e0f8762e91be465eb18424ba56617c65972b42e8ce4cbada321bc271bb74f46a",
+      "doi": "10.5281/zenodo.20006414",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -853,9 +891,11 @@
         "paper_target": "",
         "source_decode_replacements": 1
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20006414",
       "path": "P5_SLSPT/ShadowPrice.lean",
       "record_id": "p5-slspt-shadowprice",
       "source_sha256": "77c6aee369da70ee71ff28f1ea8b530868d203c89f2da61698b0c8af64f748ca",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P5_SLSPT/ShadowPrice.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 4 theorem and lemma declarations.",
       "tags": [
@@ -869,10 +909,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "Shadow Price Level Set Theorems The shadow price function is p(σ) = C / σ² where C > 0 and σ > 0. These theorems establish the quantitative budget-performance tradeoff.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "334b2e24e95ef07c18b7e257ff9bc1cc62682fcf5e4ab53669acff7c33e9930b",
-      "doi": "",
+      "digest": "4fbfa8debf222e246ee77057ae4c790348fc66fd394feab9f99a6c0bcedaaa72",
+      "doi": "10.5281/zenodo.20006414",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -887,9 +928,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20006414",
       "path": "P5_SLSPT/ShadowPriceLevelCurves.lean",
       "record_id": "p5-slspt-shadowpricelevelcurves",
       "source_sha256": "faf3151d33cdc5e8b1c25faac0d973b0ed0d92737bbde0b90ce5cdf36be340bf",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P5_SLSPT/ShadowPriceLevelCurves.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
       "tags": [
@@ -903,10 +946,51 @@
       "visibility": "public"
     },
     {
+      "abstract": "A capacity bound showing how the attainable rate scales with available power and data while falling with per-unit thermodynamic cost.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "5856b56547153bc22319c19e3157ede677fd4e959a1fa27bb3e26a1f01dc11c5",
-      "doi": "",
+      "digest": "9af60edebd39a5b955bb9fc462eb993daa4fc6e5b74d972c8d1f6c52922b5f0d",
+      "doi": "10.5281/zenodo.20006414",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "gate-passed",
+      "lean_module": "IntelligenceBound",
+      "lemma_count": 0,
+      "line_count": 24,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.20006414",
+      "path": "P5_SLSPT/IntelligenceBound.lean",
+      "record_id": "p5-slspt-intelligencebound",
+      "source_sha256": "ebd8980a134a28e49f4438081753fe1525d8af3b07377e690788646d162180fa",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P5_SLSPT/IntelligenceBound.lean",
+      "status": "verified",
+      "summary": "A capacity bound showing how the attainable rate scales with available power and data while falling with per-unit thermodynamic cost.",
+      "tags": [
+        "capacity",
+        "lean4",
+        "shadow-price",
+        "spine",
+        "thermodynamics",
+        "verified"
+      ],
+      "theorem_count": 5,
+      "tier": "spine",
+      "title": "SLSPT Capacity Bound",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Speed Limit Shadow Price Tower (SLSPT) Ordering Theorems The SLSPT has shadow prices p_i(σ) = C_i / σ² at four levels. We prove that the tower ordering is exact, transitive, and that the gap between levels preserves the quadratic divergence structure.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "7c69f8c2e5965364d2ac1dc196c350aba67b4c7da212a298d4c10e26684b4de0",
+      "doi": "10.5281/zenodo.20006414",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -921,9 +1005,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20006414",
       "path": "P5_SLSPT/SLSPTTowerOrdering.lean",
       "record_id": "p5-slspt-slspttowerordering",
       "source_sha256": "cf15279d012c80cd84a35196734a542753b46f01b65953d17d0abb2cad646ba8",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P5_SLSPT/SLSPTTowerOrdering.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
       "tags": [
@@ -937,9 +1023,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Stewardship Setpoint Theorem (SST) — the Steward Viridis Aristotle Forge · Nightly Run 102 · [01] Intelligence Bound × 🎯 Stewardship 44th Intelligence-Bound self-application. FIRST-EVER [01]×🎯 pairing. Act-budget twin of TAT-101 (the Attuner, perceive-budget). INTENDED MEANING (formalized clean core). Every prior self-application of the Intelligence Bound dI/dt ≤ P·D/(k_B T ln2) reads D (the disequilibrium / usable free-energy stock the ecosystem provides) as a FIXED parameter. Here D is a living renewable stock that is DEGRADED by the very act of extracting intelligence from it: dD/dt = g(D) − φ·H, with logistic regeneration g(D) = ρ D (1 − D/K), where H is the harvested throughput and φ > 0 the degradation coefficient. Pouring the bound's instantaneous ceiling H ≤ Ω·D (with Ω = P/(k_B T ln2) > 0) into Clark's renewable-harvest problem with discount rate r yields a golden-rule STEADY operating point — the Stewardship Setpoint. The seven laws (clean core, formalized): R1 sustainable ceiling ⟨dI/dt⟩_sust = Ω·D⋆ < Ω·K (never the instantaneous max). R2 Stewardship Setpoint (canon candidate): the modified golden rule g'(D⋆) = r ⟺ D⋆ = (K/2)(1 − r/ρ), decreasing in the discount rate. R3 Tragedy of the Bound (HEADLINE canon candidate): running flat-out at the instantaneous ceiling (H = Ω·D, duty cycle u = 1) collapses the stock when φΩ > ρ; the setpoint policy strictly dominates the forcing policy in discounted value. R4 Clark collapse threshold: impatience r ≥ g'(0) = ρ erases the interior optimum. R5 O-R-A-R model-free stewardship: Φ(D) = g(D) − rD is strictly concave with…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "f5dfb51126b54f38fbf525836964b9ea20fe67c980c2ec2052aaae38b3ecdf09",
+      "digest": "ee728137ce6c17377ac668cff4d51c4c7303902f8a67745ccf130e53361c27e2",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -955,9 +1042,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/StewardshipSetpoint.lean",
       "path": "StewardshipSetpoint.lean",
       "record_id": "stewardshipsetpoint",
       "source_sha256": "ec445431680117ed9efb7b3b857071f55bf3704dcda980da39f372515d2fb6c8",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/StewardshipSetpoint.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 13 theorem and lemma declarations.",
       "tags": [
@@ -971,10 +1060,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Symbiotic Intelligence Bound (SIB) — Run 072 forge targets Two IB-bounded dissipative systems — an AI controller A and a living biosphere E — coupled into a mutualism over one thermodynamic bus at temperature T (εL := k_B T ln 2 > 0). Each accumulates permanence-intelligence at a rate bounded by its standalone Intelligence Bound P·D/εL plus a predictive-information *subsidy* Φ supplied by the partner. These theorems formalise the rate/flow twin of the Symbiotic Valuation Theorem (Run 067): the per-partner bound and its additive recovery of the joint IB, the NESS no-free-lunch reciprocity law, the \"no perpetual-learning machine\" corollary, the mutualism-vs-parasitism surplus threshold, and the universal cos²Θ extraction-efficiency bound (Cauchy–Schwarz). Origin: science-engine nightly Run 072 (2026-06-17), [01] Intelligence Bound × 🌿 Symbiosis. All statements are clean finite-dimensional real analysis; non-vacuity conditions are stated per theorem.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "21c7646f299ecf66025497efcb3914495affb972fcb62c30237c48f01580f7ec",
-      "doi": "",
+      "digest": "efcbaad750d1539d976317ed83323b5411a67eadd2fc8247bea45005e4127cb6",
+      "doi": "10.5281/zenodo.20764638",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -989,9 +1079,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20764638",
       "path": "SymbioticIntelligenceBound.lean",
       "record_id": "symbioticintelligencebound",
       "source_sha256": "c3b54a741ebcc7e3953dd9e15f2b7a3d1cb3529ae38c9bb8cb884fcfbe5ea938",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/SymbioticIntelligenceBound.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
       "tags": [
@@ -1005,9 +1097,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "The formal spine: a thermodynamic ceiling on intelligence production under finite power.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 23,
-      "digest": "94751a7f27fc2fff6b30bd76e9c959698982bd47ddfd6ba52ab3d4ba5be61135",
+      "digest": "141fcd5c162623f723fb85734dc04d893fb6e097a0be74e5e7a2708dfca8608a",
       "doi": "10.5281/zenodo.19317982",
       "external_validation": "not-recorded",
       "imports": [
@@ -1023,9 +1116,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.19317982",
       "path": "P0_IntelligenceBound_COMPILED.lean",
       "record_id": "intelligence-bound",
       "source_sha256": "1e6ee55862902c79de3091b1f14c9864198d02e13668629d333dc0638779d49d",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P0_IntelligenceBound_COMPILED.lean",
       "status": "verified",
       "summary": "The formal spine: a thermodynamic ceiling on intelligence production under finite power.",
       "tags": [
@@ -1042,9 +1137,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Thermodynamic Attention Theorem (TAT) — the Attuner Viridis Aristotle Forge · Nightly Run 101 · [02] Thermodynamic Economics × ☯️ Alignment 43rd Intelligence-Bound self-application. Consumes the standing [100]→[02] flag from the Mutualistic Attestation Theorem (MAT, Run 100). INTENDED MEANING (formalized clean core). A steward's *perception* — the mutual information she maintains about a drifting ecosystem's state — is not free. Identifying the rational-inattention shadow price (Sims 2003/2011) with the Landauer quantum (Still–Sivak 2012) gives λ_attention = k_B T ln 2 per bit = k_B T per nat. The ☯️ (wu-wei) core: over-attention is pure dissipation — the optimal steward attends only to the predictive (slow, einselected) modes and lets the nonpredictive rest go. A finite attention budget is spent by water-filling over the uncertainty modes; the modes that clear the water level are the slow, most-predictive ones (which by einselection ARE the redundantly-recorded integrity pointer observables — a face of UWMT-084 on the *perception* budget). Near a tipping point the allocation focuses onto the diverging critical slow mode; below a capacity floor C_crit = ½ log₂(1+SNR_crit) the steward is structurally blind (the Inattention Trap, perception-side twin of MAT-100's Certification Trap). Hoarding nonpredictive information linearly throttles the steward's own Intelligence-Bound speed limit through ρ = I_nonpred/I_pred. NON-VACUITY. Every named statement is discharged over explicit, non-degenerate witnesses (positive temperatures, an active slow mode v=4>λ=1, a dropped fast…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 2,
-      "digest": "118cb20942134b926982aed743636da6def3df873a89b1a45416194a0a799872",
+      "digest": "70664455f05a572c1b952649b709dac24188b0d8b688cfa437c9ee462b0fbec2",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -1060,9 +1156,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/ThermodynamicAttention.lean",
       "path": "ThermodynamicAttention.lean",
       "record_id": "thermodynamicattention",
       "source_sha256": "3c56af1a6bff69d2a567cc3a0cd221dfcd997fdd2136363d7ffaab76dc62a352",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/ThermodynamicAttention.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 12 theorem and lemma declarations.",
       "tags": [
@@ -1076,9 +1174,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Conditional mathematical foundations for non-substitutable biodiversity capital.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 3,
-      "digest": "929e6cb6fcb359da0e8eadda383b277f5c11ad71b3ea617bbdeddc8ceb38147f",
+      "digest": "c71aa324fbc002be946e9c4d9806b547c11f7afd43d6dd5a72f45db983f2be9e",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -1094,9 +1193,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/P4_ThermodynamicEconomics.lean",
       "path": "P4_ThermodynamicEconomics.lean",
       "record_id": "thermodynamic-economics",
       "source_sha256": "3a82c580316b5194c13b0d04ccf67285e898c74bcd938fa9e27c40e1025de328",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P4_ThermodynamicEconomics.lean",
       "status": "verified",
       "summary": "Conditional mathematical foundations for non-substitutable biodiversity capital.",
       "tags": [
@@ -1112,9 +1213,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Universal Water-Filling Meta-Theorem (UWMT) — clean analytic core Viridis Canon · Nightly Run-084 (2026-06-29) · META × 🔥 Thermodynamic \"The Keystone\" — 26th IB self-application; meta-order CONVERGENCE EVENT. CONTEXT. For ~30 nightly runs the engine emitted theorems that all *rhyme*: the Pacer (TWT-079) fills a tempo budget to a water level; the Appraiser (TDT-080) prices a bit by a shadow price r_thermo; the Verifier (VPT-081), the Surveyor (MWT-069), the Sower (AST-083), the Harmonizer (GHT-082) and the capacity Harmonizer (CHT-064) all allocate a conserved budget so that the active set equalises its marginal value at a single multiplier λ*. UWMT is the statement that these are ONE variational object with two control knobs: • CURVATURE of the per-channel value (concave → spread / water-fill; linear → indifferent; convex → concentrate / bang-bang), and • TEMPERATURE τ of an entropic regulariser (τ→0 bang-bang; τ→∞ uniform). The multiplier λ is simultaneously the water level, the economic shadow price, and the thermodynamic free energy (envelope identity dV*/dB = λ). MODELS (concrete, finite-dimensional, NON-VACUOUS). (A) Two-subsystem separable strictly-concave value (the shadow-price face). Per channel g_i(r) = c_i · r − (k_i/2) · r² (k_i > 0 below the ceiling). A conserved budget R is split (x, R − x); aggregate value V(x) = g₁(x) + g₂(R − x). Equalising the active marginals g₁'(x) = g₂'(R − x) gives the unique water-filling allocation x* = (c₁ − c₂ + k₂R)/(k₁ + k₂), at the common water level / shadow price λ = c₁ − k₁ x*. (B) Entropic-linear (Gibbs/Boltzmann) face.…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "fe264ca14fb18408ea4e2a47592ee33e6e63aeba9b125af3b10c99976fb0f7a7",
+      "digest": "12334d75e1c2e266da81c3dee0dfc42c687647d04c500c8e5f94c254b31fc7ea",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -1130,9 +1232,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/UniversalWaterfilling.lean",
       "path": "UniversalWaterfilling.lean",
       "record_id": "universalwaterfilling",
       "source_sha256": "14698b7ded717104f2570d5442adf614af4db45ec63efe23a30695545f435c3d",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/UniversalWaterfilling.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 8 theorem and lemma declarations.",
       "tags": [
@@ -1146,10 +1250,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "Afforestation Stewardship Theorem (AST) — clean analytic core Viridis Canon · Nightly Run-083 (2026-06-28) · IB self-application #25 (\"the Sower\") Area [11] Afforestation Systems × 🎯 Stewardship. CONVERGENCE EVENT: the Forest-Nucleation thread (FNT, Run-061) ⊗ the shadow-price water-filling family (Runs 064/065/068/069/074/079) merged into one variational object, AST being the first NON-CONVEX member; the prior family is its convex limit. This module formalizes the analytic, finite-dimensional core of AST — the results whose statements are unambiguous and whose conclusions are NON-VACUOUS. Combinatorial-optimization results (bang-bang knapsack reduction, greedy ½-approximation) and the (β, T_eco) phase diagram are deferred to a dedicated effort; they are NOT included here. MODEL (classical nucleation, after FNT-061). For a single site with ecological drive Δμ > 0 (suitability), edge hostility / \"surface tension\" σ > 0, and shape constant a > 0: critical nucleus nStar a σ Δμ = (2 a σ / (3 Δμ))^3 nucleation barrier barrier a σ Δμ = 4 (a σ)^3 / (27 Δμ^2) seeding efficiency eff a σ Δμ C = C * (3 Δμ / (2 a σ))^3 (= C / nStar) NON-VACUITY conditions. All scaling/identity theorems are stated for strictly positive parameters (a, σ, Δμ, C, t > 0); the conclusions carry non-trivial numeric factors (t^3, 8, the cos^2 bound strictly inside [0,1] in general), so none collapses to a tautology. THEOREMS (clean core): 1. establishment_efficiency_cubic_in_drive_over_tension eff scales as the CUBE of the drive Δμ (the e_i ∝ (Δμ/σ)^3 law). 2. site_prep_halving_sigma_eightfolds_efficiency…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "ecd96d3616ece66a0e8eb282ed8420b5650bd12a2fb17763ccdc5792b068577f",
-      "doi": "",
+      "digest": "08b7fbc4fc52f675eec81fdd76407ff69622c95762b276898138e26097cb1e52",
+      "doi": "10.5281/zenodo.21168224",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1164,9 +1269,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.21168224",
       "path": "series/AfforestationStewardship.lean",
       "record_id": "series-afforestationstewardship",
       "source_sha256": "3ebe33bfd6bd74124e87b5d7e73448db58e1459207fd6ff5c00a90fc3ac9526f",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/AfforestationStewardship.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
       "tags": [
@@ -1180,9 +1287,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Exploratory AI-safety module quarantined after a vacuity review; it is not part of the verified canon.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 4,
-      "digest": "34e0fbb019f4786f666598b5a805c8034ff050647ab4d2a1bd97f3b41df65d46",
+      "digest": "d38aff0724a09b201ac65918c9b4ec0e38a5f90e6d4e00c25022a155e4b000a1",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -1198,9 +1306,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/P9_AI_Safety.lean",
       "path": "P9_AI_Safety.lean",
       "record_id": "ai-safety-quarantined",
       "source_sha256": "4f804b6e755226fa24c451e5ef749268c26015c82a219462d603cdeb4f8cf08f",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P9_AI_Safety.lean",
       "status": "quarantined",
       "summary": "Exploratory AI-safety module quarantined after a vacuity review; it is not part of the verified canon.",
       "tags": [
@@ -1216,10 +1326,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "Capacity Harmonization Theorem (CHT) — clean analytic core Viridis Canon · Nightly Run-064 (2026-06-09) · Intelligence Capacity Framework Area [09] Intelligence Capacity Framework × ☯️ Alignment (\"Reweaving the Tapestry\": emergence, wu wei, harmonization, paradox). CHT is the capacity/ICF-framed member of the shadow-price water-filling family (Runs 064/065/068/069/074/079/082/083). Its DISTINCTIVE, non-redundant content — not present in the already-verified family members (GHT-082, MWT-069, AST-083) — is the *Forcing / Harmonizing Duality* tied directly to the Intelligence Bound: saturated (at-ceiling) yield is LINEAR, g_i(r)=c_i r with c_i = D_i/(k_B T ln 2), so its marginal is constant and bang-bang \"forcing\" is optimal; an interior \"harmonized\" optimum exists ONLY below the ceiling, where the yield is strictly concave. Real hardware runs 10^19–10^20× below the Landauer limit, so for all practical intelligence harmonizing (wu wei) strictly dominates forcing — bang-bang is optimal only at an unreachable limit. MODEL (concrete, finite-dimensional, NON-VACUOUS). A conserved budget R is split across two subsystems as (r₁, r₂) = (x, R − x). Each subsystem yields capacity through a strictly concave quadratic g_i(r) = c_i · r − (k_i / 2) · r² (k_i > 0 below the ceiling). Aggregate instantaneous capacity: ICB(x) = g₁(x) + g₂(R − x) c₁ x − (k₁/2) x² + c₂ (R − x) − (k₂/2)(R − x)². Equalizing the active marginals g₁'(x) = g₂'(R − x) (the equimarginal / Ideal-Free-Distribution / constant-costate condition — wu wei made quantitative) gives the unique emergent shadow-price allocation…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "85ba76d8eab0cd7354d0b1f2b62b0f3cf21961e0e1a929977798ed209325e961",
-      "doi": "",
+      "digest": "f47261fd79baff11972d5fc2f6f53372fd5c3a52df181f5abb468312d59100d2",
+      "doi": "10.5281/zenodo.21168241",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1234,9 +1345,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.21168241",
       "path": "series/CapacityHarmonization.lean",
       "record_id": "series-capacityharmonization",
       "source_sha256": "eb835e109f756c668ff77867dcd1b937eadca1dba55b636b510f1d662b7b165a",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/CapacityHarmonization.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
       "tags": [
@@ -1250,10 +1363,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "Certification Complexity Theorem (CCT) — Run 050, Aristotle Forge submission PROVENANCE / WELL-POSEDNESS NOTE CANON_BACKLOG Rank 4 (Run 050) originally named two complexity-class targets, cert_monoid_word_problem_in_P and confluence_implies_poly_certification. Both assert membership in the class P, which is NOT encodable as a well-posed non-vacuous Lean theorem under Mathlib pin 8f9d9cff (no cost model / complexity-class layer). Justin (2026-06-17) APPROVED the reframe: verify the three *physical* CCT results instead and record the χ∈P / poly-time claims as prose-rigorous (known rewriting-theory result), NOT canon-Lean targets. The originally STAGED skeleton wrote two of the three physical targets as hypothesis-equals-conclusion identities (exact hrate), which are VACUOUS and violate the forge non-vacuity invariant. They are RESTATED here as genuinely non-vacuous theorems carrying the same physical content (as the staging brief instructed: \"restate against the monitor model before submission\"): T1 certification_bound — the certification rate is bounded by a strictly POSITIVE Landauer-priced ceiling (positivity is the non-trivial content; the IB self-applied to the monitor). T2 certified_bit_budget — a genuine inequality-chain derivation: rate bound + finite horizon + conserved E_cert = P_mon·T ⟹ total certified information is capped at C ≤ E_cert·D/εL. T3 landauer_certification_floor — the certification energy floor εL·ln(1/φ) is STRICTLY POSITIVE for relative resolution φ∈(0,1), and any E_cert meeting it is itself strictly positive (irreducible thermodynamic price of…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "390a20f87c9eb1cf7fce3ee8b724035ab24c4edf76c0adbc263dba1153d87193",
-      "doi": "",
+      "digest": "0070cd713ab122006bed54d1ae7260fa63bf48dbf160296a0b4bc31a8693a9bb",
+      "doi": "10.5281/zenodo.20777059",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1268,9 +1382,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20777059",
       "path": "series/CertificationComplexity.lean",
       "record_id": "series-certificationcomplexity",
       "source_sha256": "eead20cc499919b01447419e7a09c55e955ebee234333bbd77526157578c8ef4",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/CertificationComplexity.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 3 theorem and lemma declarations.",
       "tags": [
@@ -1284,10 +1400,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "CognitiveThroughput.lean — Viridis Aristotle Forge Nightly Run 039 — The Cognitive Throughput Theorem (CTT) The first first-principles cognitive-throughput envelope: under simultaneous Pierra–Censor–Elfving Bregman multiprojection onto Csense ∩ Cmodel ∩ Cmotor, the maximum certified information rate per observation obeys an inverse square-root law in the number of observations N, dI_cog/dt |max (N) = K_cog · N^(−1/2), with throughput constant K_cog = √( 2·W_attn·Φ_eco / (k_B T ln 2) ), and Φ_eco ∈ (0,1] the ecological coupling factor (cosine of the angle between the motor jump operator and the environmental affordance basis). This module discharges the named canon target Viridis.Cognition.CTT. SquareRootScaling and its load-bearing corollaries (throughput invariant, strict antitone \"attentional iris\", and the Symbiotic-AI inference bound: a fully decoupled agent Φ_eco = 0 saturates at ZERO throughput, while any ecological coupling Φ_eco > 0 yields strictly positive K_cog). We model the envelope as R K N := K / √N (N = N_obs > 0). The square-root scaling content is the homogeneity law R(c·N) = R(N)/√c, equivalently the throughput invariant R(N)·√N = K. DEFERRED to a dedicated run (NOT in this project): • Viridis.Cognition.CTT.OMPathEquivalence — the Onsager–Machlup ↔ Koopman path-equivalence; the finding gives no closed-form Lean-ready proposition (statement-form risk) → staged as a gate-check, not auto-submitted. ACCEPTANCE: 0 sorry; axiom audit ⊆ {propext, Classical.choice, Quot.sound}; every named theorem compiles NON-VACUOUSLY (no conclusion collapsed to a…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "45f0f0b9d457c1973c3c10e7881c81c824cab70dc7fe83cd224dcc857ff3079b",
-      "doi": "",
+      "digest": "f384cae268e2cb2912cf0c20290b7e0f055668ab547fced9a8c4033621d857c3",
+      "doi": "10.5281/zenodo.20763323",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1302,9 +1419,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20763323",
       "path": "series/S6_CognitionLearning/CognitiveThroughput.lean",
       "record_id": "series-s6-cognitionlearning-cognitivethroughput",
       "source_sha256": "ec7fbe0f6defc0cbf02f7143e0f1ac2ac2bac95d44f972358f4a3cfc6cfa4989",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/S6_CognitionLearning/CognitiveThroughput.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
       "tags": [
@@ -1318,10 +1437,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "Corridor Stewardship Theorem (CST) — Clean Cores Nightly science-engine Run 074 (2026-06-19), [03] HDFM Corridors x Stewardship — the \"Weaver\", 16th IB self-application; the edge-dual of the Monitoring Water-Filling Theorem (MWT, Run 069). CONVERGENCE EVENT: it fuses the corridor-design thread (Runs 022/036/055/058) with the broadcast-shadow-price stewardship-allocation family (Runs 064/065/068/069) into a single variational object, by recognizing that McRae's resistance distance (Circuitscape), Ghosh- Boyd's convex edge-weight allocation, and the canon's broadcast shadow price are the same optimization seen by three non-citing communities. This file pins the CLEAN, WELL-POSED, NON-VACUOUS cores of CST as Lean 4 theorem statements for machine verification by Aristotle. The harder matrix-calculus form of the global marginal-current law (dR_eff/dr_e = i_e^2 via the pseudoinverse Laplacian L^+ / Thomson's variational principle) and the graph-connectivity items (two_edge_connected_iff_bridgeless, kirchhoff_gradient_eq_current_flow_betweenness, efficiency_resilience_paradox) are DEFERRED to a follow-up forge run pending an L^+/envelope-theorem formalization; they are gate-checked out of this bundle to bound Aristotle budget and keep every statement here crisply non-vacuous. Toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "193999dd40731d2ce1e9e27559b0cafd0e5f274a6ea91cb52013e65a8babbdac",
-      "doi": "",
+      "digest": "65f848081e9b6696acfdd5c93f0ef68c29460205329978d38d40ca1b6967f511",
+      "doi": "10.5281/zenodo.20777069",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1336,9 +1456,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20777069",
       "path": "series/CorridorStewardship.lean",
       "record_id": "series-corridorstewardship",
       "source_sha256": "aea454d414f162c47e024dc46b3dddcb50fb32e67b431a85d32b01c5a1a277f4",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/CorridorStewardship.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 7 theorem and lemma declarations.",
       "tags": [
@@ -1352,10 +1474,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Dissipative Generalization Theorem (DGT) — \"the Annealer\" Viridis Aristotle Forge · nightly Run 075 · [06] Entropy-Driven Learning × 🔥 Thermodynamic 17th self-application of the Intelligence Bound (learning-time companion to Run-073 \"the Mirror\"). This file states the throttled CLEAN CORE of the DGT for machine verification. ACCEPTANCE: discharge every sorry; preserve every named statement VERBATIM; axiom audit limited to {propext, Classical.choice, Quot.sound}; every theorem must be NON-VACUOUS. Modeling layer (finite-dim ℝ; the cryptic/predictive split of stored information after Still–Crooks \"thermodynamics of prediction\"): • S_mem = total stored information I(W;D) (Goldt–Seifert dissipated bits; Xu–Raginsky bound) • E_pred = predictive part of the stored information (generalizes) • χ_L = cryptic part / \"nostalgia\" (memorized noise unseen data never reads) Still–Crooks decomposition: S_mem = E_pred + χ_L. NON-VACUITY is stated per theorem below; each hypothesis named in a theorem is load-bearing (positivity / ordering / decomposition assumptions are genuinely consumed, never decorative).",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "8a43fa29dd095d0ee9f40e137fcdabdc7027efd3861ab10f6651ca8d2ecb3965",
-      "doi": "",
+      "digest": "62a011ccdf38f333e6b7316b31c6010b4c5eaf960631c333b26b08c42ae0ca43",
+      "doi": "10.5281/zenodo.20982959",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1370,9 +1493,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20982959",
       "path": "series/DissipativeGeneralization.lean",
       "record_id": "series-dissipativegeneralization",
       "source_sha256": "3c01e85505e4056f638700eb830f05f36ffc222eb6ff289a64c29996157a6391",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/DissipativeGeneralization.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
       "tags": [
@@ -1386,10 +1511,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Dissipative Generalization Theorem (DGT) — \"the Annealer\" Viridis Aristotle Forge · nightly Run 075 · [06] Entropy-Driven Learning × 🔥 Thermodynamic 17th self-application of the Intelligence Bound (learning-time companion to Run-073 \"the Mirror\"). This file states the throttled CLEAN CORE of the DGT for machine verification. ACCEPTANCE: discharge every sorry; preserve every named statement VERBATIM; axiom audit limited to {propext, Classical.choice, Quot.sound}; every theorem must be NON-VACUOUS. Modeling layer (finite-dim ℝ; the cryptic/predictive split of stored information after Still–Crooks \"thermodynamics of prediction\"): • S_mem = total stored information I(W;D) (Goldt–Seifert dissipated bits; Xu–Raginsky bound) • E_pred = predictive part of the stored information (generalizes) • χ_L = cryptic part / \"nostalgia\" (memorized noise unseen data never reads) Still–Crooks decomposition: S_mem = E_pred + χ_L. NON-VACUITY is stated per theorem below; each hypothesis named in a theorem is load-bearing (positivity / ordering / decomposition assumptions are genuinely consumed, never decorative).",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "8a2fd3941342dcce600a517ff920d78dddd8ea2597330e7e528d14fc8bc68fb7",
-      "doi": "",
+      "digest": "d199f53affaec01113f200a8fabe8fe0209a66403199ffd3427f0391d988e2ff",
+      "doi": "10.5281/zenodo.20982958",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1404,9 +1530,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20982958",
       "path": "series/S6_CognitionLearning/DissipativeGeneralization.lean",
       "record_id": "series-s6-cognitionlearning-dissipativegeneralization",
       "source_sha256": "3c01e85505e4056f638700eb830f05f36ffc222eb6ff289a64c29996157a6391",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/S6_CognitionLearning/DissipativeGeneralization.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
       "tags": [
@@ -1420,10 +1548,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Ecopoietic Succession-Ordering Theorem (ESOT) — combinatorial core Nightly science-engine Run 095 — [15] Ecoterraforming × Thermodynamic (\"the Mason\"). DEDICATED COMBINATORIAL RUN. The clean analytic core (R1/R4/R5/R6) was landed 2026-07-11 in EcopoieticSuccession.lean. This module discharges the two pieces that were DEFERRED there as genuine combinatorial-optimization statements: R2 greedy / minimax build-order optimality under monotone facilitation, and R3 the θ-reachable-closure FIXPOINT and the reachability wall (target biosphere reachable ⇔ drive budget clears the minimax bottleneck B⋆). Model. Layers indexed by a finite type L. Layer k has bare barrier Psi0 k. An established set S lowers k's barrier by ∑_{j∈S} f j k, with f ≥ 0 (MONOTONE facilitation — the load-bearing premise): residual Psi0 f k S = Psi0 k - ∑_{j∈S} f j k. (R1) A layer is *ignitable* under drive budget θ iff its residual barrier ≤ θ. θ-reachable closure = least fixpoint of \"add every layer with residual ≤ θ\", reached by iterating the extensive, monotone one-step operator reachStep. A build ORDER is a permutation of the not-yet-established layers; its makespan bottleneck is the largest residual barrier encountered along the build (obAux), and Bstar = min over orders. Named theorems (this file): residual_antitone_in_established (R1 monotonicity) reachStep_extensive reachStep_mono_in_established (monotone premise, load-bearing) reachStep_mono_in_budget reachClosure_extensive reach_closure_is_fixpoint (θ-reachable-closure FIXPOINT) reach_closure_monotone_in_budget (verified numerically in the run)…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 3,
-      "digest": "ba9ed2956ea5c9a63db1f73add3e82e8cf198f284ba5df8a943334dea06fe4cc",
-      "doi": "",
+      "digest": "138e9e7b33cc26a1ae521cc81468664ed2cb74923d474606ce548d3f473c0ddc",
+      "doi": "10.5281/zenodo.21327072",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1438,9 +1567,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.21327072",
       "path": "series/EcopoieticOrdering.lean",
       "record_id": "series-ecopoieticordering",
       "source_sha256": "c808d2f3fa598ca66e24bd1c7b5fc94fad85fbe36832c46b08a7b211c2876b6a",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/EcopoieticOrdering.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 28 theorem and lemma declarations.",
       "tags": [
@@ -1454,10 +1585,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Ecopoietic Succession-Ordering Theorem (ESOT) — \"the Mason\" Nightly science-engine Run 095 — [15] Ecoterraforming × Thermodynamic. 37th Intelligence-Bound self-application. Prices the ORDER in which biosphere \"courses\" (functional layers) are laid: a target biosphere is a coupled cascade of metastable->viable nucleation events, each barrier renormalized DOWN by the layers already present. This module encodes the CLEAN ANALYTIC CORE of the run. Model. Layers indexed by a finite type; layer k has a bare nucleation barrier DPsi0_k = Psi0 k. An established set S facilitates k, lowering its barrier by sum_{j in S} f j k, f ≥ 0: DPsi_k(S) = Psi0 k - sum_{j in S} f j k. (R1) Layer k is *ignitable* under drive budget B iff DPsi_k(S) ≤ B. EPR-generated facilitation: f j k = (g k) * (dsig j), dsig j ≥ 0. Then DPsi_k(S) = Psi0 k - (g k) * sigma(S), sigma(S) = sum_{j in S} dsig j. (R4) Clean-core theorems (this file): R1 facilitation_barrier_renormalization_monotone R4a residual_linear_in_accumulated_epr R4b layer_ignites_at_critical_epr_threshold R4c barrier_slope_linear_in_epr R4d epr_trajectory_monotone_along_build R3 critical_budget_equals_bottleneck R5a mason_ib_floors_ordering_learning_time R5b ordering_regret_nonneg R5c ordering_regret_decreasing_in_knowledge R6 drive_alignment_efficiency_eq_cos2_theta esot_nonvacuous DEFERRED (dedicated combinatorial run, NOT in this file): R2 greedy-minimax build-order optimality vs all N! orders (widest-path), R3 full theta-reachable-closure fixpoint. Every statement is intended NON-VACUOUSLY (see esot_nonvacuous). sorry placeholders are…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "0b86374a36647f4b620604d0a44d01addc41b690ff9acd41d004b592d8710533",
-      "doi": "",
+      "digest": "3ffe1c8c42a70e230b995957194c4de73e9ffcde5403d87756bfbe734fcd4737",
+      "doi": "10.5281/zenodo.21327072",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1472,9 +1604,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.21327072",
       "path": "series/EcopoieticSuccession.lean",
       "record_id": "series-ecopoieticsuccession",
       "source_sha256": "031be6a177b23b8d1c2f7a2a8e764c7c896f6082d6b58ed7b64b09350a18dec7",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/EcopoieticSuccession.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 11 theorem and lemma declarations.",
       "tags": [
@@ -1488,10 +1622,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Forest Nucleation Theorem (FNT) — clean core Lean 4 / Mathlib formalization. Viridis LLC. For submission to Aristotle. CONTEXT (nightly Run 061, forest-nucleation-theorem; [11] Afforestation × 🔥). A cluster of planted trees on degraded land is a *nucleus of the forest phase* inside the metastable degraded phase. Classical nucleation theory (CNT) gives its free energy as a competition between a favorable bulk (interior) term and an unfavorable surface (perimeter) term: ΔG(n) = -Δμ · n + a σ · n^(2/3) • n — trees established in the cluster (extensive order parameter; area A ∝ n^(2/3)). • Δμ — per-tree driving force (forest gain over degraded state); bulk term. • σ — facilitation deficit / edge mortality excess (ecological \"surface tension\"); surface term. • a — geometric shape factor. CNT delivers a critical nucleus n* below which the cluster dissolves and above which it grows, a barrier ΔG* = ½ Δμ n*, and — under a fixed seed budget — a non-monotonic colonized-area law whose maximum is the dispersal–establishment paradox: uniform broadcast covers the least ground. CLEAN-CORE ENCODING (this file — no sorry, axioms ⊆ Mathlib). We reparametrize by the cube-root order parameter r := n^(1/3) (so n = r^3 and the surface term n^(2/3) = r^2), turning the rpow free energy into a clean polynomial G(r) = -Δμ r^3 + a σ r^2. The critical radius is rStar = 2 a σ / (3 Δμ), n* = rStar^3. All three named nightly targets are then exact, non-vacuous statements: 1. critical_nucleus — rStar > 0 and is the UNIQUE global maximizer of the free energy G over r ≥ 0 (the critical nucleus is the…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "30fad542264e079ce1819e6a8011b0851be0da9248ba77a9092f732839d7f104",
-      "doi": "",
+      "digest": "78f6b5f8213aba7649513ceedad137f419c6f4fd2b80cddd65c01ae6c41ae506",
+      "doi": "10.5281/zenodo.20982979",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1506,9 +1641,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20982979",
       "path": "series/ForestNucleation.lean",
       "record_id": "series-forestnucleation",
       "source_sha256": "667a826a2e5befac67964b69670435362de2d3d792e163807c3bb7c2aec28132",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ForestNucleation.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 4 theorem and lemma declarations.",
       "tags": [
@@ -1522,10 +1659,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Gaian Harmonization Theorem (GHT) — Lean 4 / Mathlib formalization Viridis LLC. Nightly Science Engine Run 082 (2026-06-27). For Aristotle. Namespace: Viridis.Gaian.GaianHarmonization CONTEXT. Gaia has no central controller. GHT asks: how do N uncoordinated local ecosystems — none observing the global state — achieve the *centralized* minimum-dissipation planetary optimum? The answer is a welfare theorem: every agent best-responding to a single shared scalar price lam* reproduces the centralized optimum exactly. The price is not abstract — it is the regulated variable's own deviation, broadcast for free by the shared environment. This imports the canon keystone (the shadow price lam) into the Gaian area for the first time (the Intelligence Bound's 24th self-application). MODEL (well-posed, finite-dimensional, non-vacuous). Each of N agents picks an effort x i. Its local dissipation is the strictly convex quadratic (a i / 2) (x i - b i)^2, with curvature a i > 0 and ideal b i. The planet imposes one coupling constraint: total effort must meet the regulation target, ∑ i, x i = X. At a broadcast price lam, agent i minimizes its private Lagrangian g lam i x = (a i/2)(x - b i)^2 + lam * x; its best response is br lam i = b i - lam / a i. The market-clearing price lamStar is the unique scalar making the best responses feasible, and xStar is the resulting allocation. WHAT IS PROVEN (the clean core; proofs to be discharged by Aristotle): R1 STRONG DUALITY / WELFARE THEOREM. • ght_best_response_minimizes — br lam i globally minimizes the local Lagrangian (decentralized…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 2,
-      "digest": "01ee9f1eb74a6ddf2ad006c0901d53c156ea59909ff6269bf9eb59e9061efafb",
-      "doi": "",
+      "digest": "4e25fcd105519f012eb952daf416ac9a87d2017b5efb419ea008e6834000fecf",
+      "doi": "10.5281/zenodo.21168212",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1540,9 +1678,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.21168212",
       "path": "series/GaianHarmonization.lean",
       "record_id": "series-gaianharmonization",
       "source_sha256": "cfdead658b1373cd311ac816f88867c5fd429a708e813a23a3293c901d110aec",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/GaianHarmonization.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 10 theorem and lemma declarations.",
       "tags": [
@@ -1556,9 +1696,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Grokking Nucleation Theorem (GNT) — clean analytic core Viridis Canon · Nightly Run-090 (2026-07-05) · [06] Entropy-Driven Learning × ☯️ Alignment \"The Incubation–Forcing Paradox\" — first-order/nucleation member of the transition taxonomy (continuous/054 · third-law/057 · first-order-nucleation/090). CONTEXT. Grokking — a network memorizes perfectly, sits on a flat plateau for 10²–10³× longer, then abruptly generalizes — is the sharpest emergence phenomenon in ML. The field agrees it is a *first-order phase transition* between a memorizing basin (n≈0) and a generalizing basin (n≈1), where n∈[0,1] is the fraction of the representation occupied by the generalizing circuit. But a first-order transition between two BULK phases is instantaneous in mean field — it does not explain a DELAY. The missing microscopic content is NUCLEATION. Near the memorizing basin the coarse-grained free energy takes the classical nucleation form (in the cube-root coordinate u = n^(1/3), so n^(2/3) = u²): g(u) = σ·u² − Δ·u³ (equivalently Φ(n) = σ·n^(2/3) − Δ·n) a representational SURFACE TENSION σ>0 (cost of a half-built circuit that interferes with the memorizer) fighting a weight-decay BULK DRIVING FORCE Δ>0. This yields a critical nucleus and a nucleation barrier; the grokking delay is a Kramers escape time. This file certifies the clean analytic core (3 queued canon-candidate targets R1–R3 + a critical-point lemma + an explicit non-vacuity witness). All statements are encoded to be well-posed and NON-VACUOUS. Targets: R1 gnt_barrier_eq_cnt — critical-nucleus barrier closed forms + identity…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "82d2b8d199f3351e3348d72378c4e3744f1089b956b6ebc3016f1b9641dfbce5",
+      "digest": "61b32d3c1b2281a59fca182bffb101c71b35a17667fc2aebb29b0ec5fd39a9ff",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -1574,9 +1715,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/GrokkingNucleation.lean",
       "path": "series/GrokkingNucleation.lean",
       "record_id": "series-grokkingnucleation",
       "source_sha256": "f1e7a8a1c24887bee52ea1fae376f07a1698e4386676c349466bdb4c32122ac5",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/GrokkingNucleation.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
       "tags": [
@@ -1590,10 +1733,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Harmonic Early-Warning Theorem (HEWT) Nightly science-engine Run 094 — [10] Monitoring Technology × Alignment — \"the Listener\". Recasts tipping-point monitoring as a THERMODYNAMIC DETECTION problem: the detection-side sibling of the Symbiotic Risk-Premium Theorem (Run 093). Distance-to-threshold is eps > 0; the critical exponent product is m = nu*z > 0. All order parameters diverge/vanish as powers of eps governed by the SAME exponent m — control (Run 092), valuation (Run 093), and now observability (this run) are three faces of one exponent. Model quantities (all with the physically required positivity): susceptibility chi(eps) = chi0 * eps^(-m) (diverges as eps->0+) monitored variance Var(eps) = Dn * chi0 * eps^(-m) = Dn * chi(eps) (FDT identity, R1) effective sample count Neff(eps) = N0 * eps^(m) (collapses as eps->0+) detection SNR SNR(eps) = S0 * eps^(m/2) (DEGRADES as eps->0+, R4) passive sensing cost cp(eps) = kappa * eps^(m) (falls toward threshold) active sensing cost ca (constant) (R3 crossover) detection statistic S(eps) = eps^(m) * (eps0^(m) - eps^(m))^2 (interior optimum, R4) sensor efficiency eta(Theta) = cos^2 Theta (soft-mode alignment, R6/R7) Named results (statements are stated; all substantive ones carry sorry for Aristotle): R1 fdt_variance_equals_susceptibility Var(eps) = Dn * chi(eps) (fluctuation-response duality) R1 ews_variance_diverges Var(eps) -> +inf as eps->0+ (rising-variance EWS) R2 detection_dissipation_floor per-bit dissipation >= 2*kB*ln2 (TUR + Landauer floor) R2 early_warning_floor_pos 2*kB*ln2 > 0 (the floor is a genuine barrier) R3…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 9,
-      "digest": "a3b7b5c789e8385665b73de45ba932430f317060af61fa9b0a08453b8ad38c46",
-      "doi": "",
+      "digest": "a389612e213673a83007e335ad2b978215a720fc80b1f66fc49d5c5639e9cbc1",
+      "doi": "10.5281/zenodo.21327070",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1608,9 +1752,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.21327070",
       "path": "series/HarmonicEarlyWarning.lean",
       "record_id": "series-harmonicearlywarning",
       "source_sha256": "91451408ea0a76360c2f27a15800e7aaf63d53daf33531ff70b02040ca21bf05",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/HarmonicEarlyWarning.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 11 theorem and lemma declarations.",
       "tags": [
@@ -1624,10 +1770,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "HarmonicValuation.lean — Viridis Aristotle Forge — STAGING SKELETON (NOT SUBMITTED) Nightly Run 059 — The Harmonic Valuation Theorem (HVT), integrability core. CLAIM (finding §3.3 / line 145): a D-Capital price 1-form ω admits a unique, path-independent valuation potential V (ω is EXACT, the market is arbitrage-free) IFF ω is CLOSED (dω = 0) — the Poincaré-lemma instance on a \"simply-connected D-Capital chart\": dω = 0 ↔ ∃ V, ω = dV. WHY STAGED (not auto-submitted): the precise statement is well-posed, but the faithful Lean encoding of \"simply-connected D-Capital chart\" forces a load-bearing modeling choice the forge will not make silently: (A) CONVEX / star-shaped coordinate chart in a real inner-product space E (the standard Poincaré-lemma domain). Closedness = symmetric Jacobian (∂ⱼpᵢ = ∂ᵢpⱼ); exactness = ∃ V, ∀ x ∈ U, ∇V x = p x. This is a faithful instance* of the claim (a chart can always be taken star-shaped), and is tractable from Mathlib's calculus (line-integral primitive V(x) = ∫₀¹ ⟨p(a + t(x−a)), x−a⟩ dt + Clairaut symmetry). ← RECOMMENDED. (B) GENERAL simply-connected domain / de-Rham H¹(U)=0 statement: requires algebraic-topology machinery Mathlib does not currently package as a ready 1-form Poincaré lemma. High risk of non-termination within the Aristotle budget, or of the prover silently weakening the hypothesis to a contractible/convex set (a flagged tightening). The two differ in *what is claimed* (a calculus result vs. a topological theorem), so per the well-posedness gate + \"flag ambiguity before building\", the forge stages this for a one-word confirm.…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "4cd4948304e6d9e755a48cb5c68e95ca15cfd79d112a401f7c09e1cb603deaac",
-      "doi": "",
+      "digest": "384325d79a79fb71de32994e751cfec1670d811936d4e28b908e75a5c4368ea4",
+      "doi": "10.5281/zenodo.20777065",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1642,9 +1789,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20777065",
       "path": "series/HarmonicValuation.lean",
       "record_id": "series-harmonicvaluation",
       "source_sha256": "a7036c810f3fd526a53ea02fed27a08740e2b602a53f234ca9f723f34d9a9c25",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/HarmonicValuation.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 3 theorem and lemma declarations.",
       "tags": [
@@ -1658,10 +1807,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Harmonized Descent Theorem (HDT) — \"the Learner\" — clean core Lean 4 / Mathlib formalization. Viridis LLC. For submission to Aristotle. CONTEXT (nightly Run 054, harmonized-descent-generalization-paradox; [06] Entropy-Driven Learning × ☯️ Alignment; the 6th Intelligence-Bound self-application — \"the Learner\"). Entropy-driven learning is Langevin descent on a loss landscape L(θ): dθ = −η ∇L(θ) dt + √(2 η T_eff) dW, with effective temperature T_eff ∝ η·Σ_g/B set by minibatch gradient noise. The Alignment lens asks what emerges when we stop *forcing* the learner (aggressive optimization) and let it *harmonize* (anneal). This file encodes the two WELL-POSED, NON-VACUOUS core results of HDT. CLEAN-CORE ENCODING (this file — must compile with 0 sorry, axioms ⊆ Mathlib): R1 (IB self-application, load-bearing — smallest, reuses the canon IB lemma): IBceiling — the learner's thermodynamic ceiling Π(P_learn,D_L,k_B,T_eff) = P_learn·D_L / (k_B·T_eff·ln 2). learner_intelligence_bound — THE 6th IB SELF-APPLICATION. Under the Landauer power budget İ_gen·(k_B·T_eff·ln 2 / D_L) ≤ P_learn (each generalizing — i.e. *permanent* — bit costs at least k_B·T_eff·ln 2 / D_L units of power·time to maintain/erase, the erasure-side reading of the IB; D_L is the distinguishability / spectral-gap \"D-score\" of the loss landscape), the rate of acquisition of generalizing information obeys İ_gen ≤ P_learn·D_L / (k_B·T_eff·ln 2). Positivity of P_learn, D_L, k_B, T_eff is load-bearing; the budget hypothesis is the load-bearing physical assumption. learner_intelligence_bound_nonvacuous — the regime is…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "e961f4c3f9974b0ae205cca4b917493744de4023398dff49b02934a4cc8c70cf",
-      "doi": "",
+      "digest": "a65f14a17aad871e9f467b9642e36d9dc61b3285785a2c2cee3dd269ee3cd88b",
+      "doi": "10.5281/zenodo.21002784",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1676,9 +1826,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.21002784",
       "path": "series/S6_CognitionLearning/HarmonizedDescent.lean",
       "record_id": "series-s6-cognitionlearning-harmonizeddescent",
       "source_sha256": "1f357e25b51dd37d348a34d22f3e6087993fe5078e180d98fa36fbfd9c2b71f9",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/S6_CognitionLearning/HarmonizedDescent.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 4 theorem and lemma declarations.",
       "tags": [
@@ -1692,9 +1844,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Intelligence Exergy Theorem (IET) — clean analytic core Viridis Canon · Nightly Run-088 (2026-07-03) · [09] Intelligence Capacity × 🔥 Thermodynamic \"The Refiner\" — 30th IB self-application; CONVERGENCE EVENT. CONTEXT. The Intelligence Capacity Framework answers the FIRST-law question: Potential Intelligence PIP is a stock of accumulable predictive-information capacity. IET adds the SECOND law. Referenced to a cognitive dead state (a task-environment), the usable part of PIP is the intelligence EXERGY Ξ (maximum extractable predictive-information work); the structurally unusable remainder is the ANERGY Ψ. Via Still–Crooks (thermodynamics of prediction), Ξ = predictive information and Ψ = nonpredictive information = the crypticity χ = C_μ − E of WWCT. The IB *slack* (the GST forcing F) is precisely destroyed exergy (a cognitive Gouy–Stodola relation), the second-law efficiency ψ_II equals the GST geodesic alignment cos²Θ, and coupling (SIB) makes exergy super-additive — a cognitive heat pump recovering one system's anergy as the other's exergy. This file certifies the clean, well-posed, NON-VACUOUS core of IET. Rate-dynamics (dead-state relaxation) and the full SIB tensor construction are deferred to dedicated follow-up runs. THEOREMS (statements preserved VERBATIM; every hypothesis load-bearing — see per-theorem non-vacuity notes): T1 capacity_exergy_decomposition_nonneg PIP = Ξ + Ψ, with Ξ,Ψ ≥ 0 ⇒ 0 ≤ Ξ,Ψ ≤ PIP T2 exergy_eq_predictive_info Ξ = E (predictive), Ψ = χ = C_μ − E; Ξ+Ψ = C_μ T3 cognitive_gouy_stodola Ξ̇_dest = F·c = T·Σ_gen; wu wei F=0 ↔ no destruction T4…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "581dc2ac8a458da40a331fadd4b0c1e39d94ca6863b47cb047f30e8b38ca9e81",
+      "digest": "1ac77dbf9e70ad3065dfc003bc422f5a6a936bb72bd63485cfb79ed2bca2910f",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -1710,9 +1863,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/IntelligenceExergy.lean",
       "path": "series/IntelligenceExergy.lean",
       "record_id": "series-intelligenceexergy",
       "source_sha256": "08c2754ccf22c43ff4ad9ba77e9035c7115f69b885461ead871c12d81640e751",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/IntelligenceExergy.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
       "tags": [
@@ -1726,10 +1881,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "Kibble–Zurek Speed Limit Theorem (KZSLT) — clean analytic core Viridis Canon · Nightly Run-092 (2026-07-07) · [05] Thermodynamic Speed Limits × 🔥 Thermodynamic \"The Quencher\" — 34th Intelligence-Bound self-application. Continuous/critical (Kibble–Zurek) member of the finite-time transition taxonomy (continuous-confluence/054 · third-law-freeze/057 · first-order-nucleation/090,091 · critical-KZ/092). CONTEXT. Driving a system across a *continuous* critical point in finite time (ε(t)=t/τ_Q, ε=0 the threshold) is inherently irreversible and entropy-producing. With static/dynamic critical exponents (ν,z) and defect codimension D̄, the Kibble–Zurek exponent is α_KZ ≡ D̄ · ν / (1 + ν z). This file certifies the clean analytic core of the six boxed results. All statements are encoded to be well-posed and NON-VACUOUS; proof bodies are sorry for the forge. Targets: R1 kzsl_product_form_equiv — speed limit Σ·τ^α ≥ K ⇔ Σ ≥ K·τ^(−α) kzsl_criticality_cushions_haste — criticality cushions haste: α∈(0,1) ⇒ τ^(−α) < τ^(−1) (fast regime) R2 critical_tempo_first_order — the optimum τ_Q*=(αA/B)^(1/(1+α)) satisfies C'(τ*)=0 critical_tempo_recovers_run060 — α=1 ⇒ τ_Q* = √(A/B) (contains the Run-060 Tempo Theorem) R4 critical_wall_time_diverges — t_min(ε) ∝ ε^(−νz) → ∞ as ε→0⁺ (the Critical Wall) R5 quencher_residual_floor — 0 < n_ach(ε) < n_KZ (IB-floored residual; 34th self-application) R6 crossing_efficiency_eq_cos2 — η = ⟨drive,mode⟩²/(‖·‖²‖·‖²) ∈ [0,1], =1 iff aligned (cos²Θ) kzslt_nonvacuous — explicit mean-field-kink witness (α_KZ=1/4∈(0,1), τ*>0) DEFERRED (well-posedness /…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "de025f661454020f28e91407d2138b182e40a8983fcb4d48bb906e90e7592d00",
-      "doi": "",
+      "digest": "8846b6b43e779b22ace8cdfb5793d384e3b7bc8ec76ed4a854f7e0001cc18e88",
+      "doi": "10.5281/zenodo.21327040",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1744,9 +1900,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.21327040",
       "path": "series/KibbleZurekSpeedLimit.lean",
       "record_id": "series-kibblezurekspeedlimit",
       "source_sha256": "e82c8a0ea7d53d10da44e3e3e44d18d024fdc6dfea865b159941c819b67ce69a",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/KibbleZurekSpeedLimit.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 8 theorem and lemma declarations.",
       "tags": [
@@ -1760,10 +1918,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "KSCT — Gaian Density-Operator & Purity (clean core) Source: Viridis nightly science engine, Run 030 (k-spectrum-collapse theorem). This file formalizes the clean, finite-dimensional, non-vacuous core of KSCT: the density-operator reading of the Gaian coupling tensor K and the purity bounds on its spectrum. The dynamical / open-quantum targets of Run 030 (EffectiveHamiltonianGibbs, SCPT_FirstOrder, CSD_Divergence, BBP_Lindblad, KSCT_QWCE) are DEFERRED — they involve stochastic Lyapunov dynamics, the matrix logarithm, and Lindblad generators, and are not yet reduced to well-posed finite-dimensional statements. Intended meaning K is the planetary coupling tensor, K_ij = cos^2(Theta_ij). Because K is the entrywise (Schur/Hadamard) square of a correlation matrix, it is positive semidefinite with unit diagonal, hence K.trace = N. The normalized operator rho := K / N is therefore a density operator: positive semidefinite with unit trace. Its eigenvalue spectrum (p_i) is a probability distribution, and the purity rho_H := Tr(rho^2) = sum_i p_i^2 measures how concentrated the planetary state is. rho_H = 1 (pure / rank-one) is exact Gaian saturation; rho_H = 1/N (maximally mixed / uniform) is anti-Gaian fragmentation. gaian_density_operator is stated at the matrix level (faithful to the named target GaianDensityOperator). The purity facts (GaianPurity) are stated on the spectrum p : Fin N -> R, the standard faithful encoding since the purity of a real-symmetric density matrix equals the sum of squares of its eigenvalues (real spectral theorem). This is an auxiliary representation…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "0e39c8f1023cc1a3f13b4d0513b01316ce45ff1bcea23ea4b309c5796815337b",
-      "doi": "",
+      "digest": "0cb60c1c8615a98a77b3f93d5bc764e8cee57d4490da12a77eb818990a5f4971",
+      "doi": "10.5281/zenodo.20982961",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1778,9 +1937,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20982961",
       "path": "series/KSCT.lean",
       "record_id": "series-ksct",
       "source_sha256": "b27cf51bcb5b5e3a06ffdad8efe03f93ee07835ea8b1af73b7c40b83fa629be8",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/KSCT.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 4 theorem and lemma declarations.",
       "tags": [
@@ -1794,10 +1955,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "Kibble–Zurek Speed-Limit Theorem — R3 Integrity Re-Proof (the Quencher, Run-092) This module corrects and machine-checks the boxed cost-ratio of Run-092 R3 (\"Symmetry-Breaking of the Paradox\"). Generalising the Run-060 Tempo Theorem to a critical (Kibble–Zurek) crossing with universality exponent α = α_KZ = D̄·ν / (1 + ν·z) ∈ (0,1), the finite-time crossing cost is C(τ) = A·τ^(−α) + B·τ, minimised at τ⋆ = (αA/B)^{1/(1+α)}. Writing u = τ/τ⋆, the cost ratio is ρ(u) = C(u·τ⋆)/C(τ⋆) = (u^(−α) + α·u) / (1 + α). -- CORRECTED The Run-092 manuscript printed the α-weight on the WRONG term, (α·u^(−α) + u)/(1+α) (rhoSwapped). This file verifies the corrected object and proves the two forms genuinely differ away from the optimum, so the integrity correction is non-trivial. All statements are intended to be TRUE and NON-VACUOUS (witness α = 1/2). Sorries are placeholders for the Aristotle (Harmonic) prover; preserve every theorem statement VERBATIM.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "916bc6d8e8d04b0ffdda963f336fb04d4d61dc4dddbf822f3646e06a972d9f84",
-      "doi": "",
+      "digest": "ef6ba2e81bce17d4a0d1b5c0acab8527477f639e6516d3b756daab280f3bdf0b",
+      "doi": "10.5281/zenodo.21327040",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1812,9 +1974,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.21327040",
       "path": "series/KZSLTReprove.lean",
       "record_id": "series-kzsltreprove",
       "source_sha256": "d87775777941af61a91f37dec52fcfb4030f8dc74fb33a3c719e8afc0c7980d7",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/KZSLTReprove.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 11 theorem and lemma declarations.",
       "tags": [
@@ -1828,10 +1992,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "MELT — The Mutualistic Entropy-Driven Learning Theorem (Viridis nightly Run 031) Aristotle Forge target. Spine tier. CONTEXT (from Run-031 finding.md): An AI learning system L and an ecological system E are coupled through a stewardship-Lindblad operator with scalar cross-coupling μ_LE. The MELT efficiency law is η_LE := η_L + η_E + 2·μ_LE / √(λ_L·λ_E) where η_L, η_E are subsystem learning efficiencies and λ_L, λ_E > 0 are the subsystem Lindblad spectral gaps. The mutualistic information cross term in the joint Intelligence Bound is 2·μ_LE·√(C_L·C_E)/(k_B T ln2) with carrying capacities C_L, C_E ≥ 0, and saturates (equality) exactly at the rank-1 mutualistic alignment Θ_LE = 0. WHAT THIS FILE MACHINE-CHECKS (clean, well-posed, NON-VACUOUS core): • cauchy_schwarz_bloch — the Cauchy–Schwarz inequality on the Bloch-vector inner product that the MELT mutualistic cross term reduces to. • melt_cross_term_amgm — 2√(C_L C_E) ≤ C_L + C_E, the AM–GM bound on the mutualistic information cross term. • melt_cross_term_saturation — equality iff C_L = C_E (the rank-1 mutualistic saturation, Θ_LE = 0). • melt_mutualism_superadditive — μ_LE > 0 ⇒ η_LE > η_L + η_E. • melt_independence_additive — μ_LE = 0 ⇒ η_LE = η_L + η_E. • lindblad_spectral_gap_subadditivity — μ_LE < 0 ⇒ η_LE < η_L + η_E (the parasitic / Lindblad spectral-gap sub-additive regime). NON-VACUITY. The spectral gaps satisfy 0 < λ_L and 0 < λ_E, so √(λ_L·λ_E) > 0 and the cross term 2·μ_LE/√(λ_L·λ_E) is a strictly-monotone, nonzero function of μ_LE whenever μ_LE ≠ 0; the three efficiency theorems therefore have strict /…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "5e2a1d9cc6c8ef23a51628de85835735f50dbd5163a5a29c8b319008d1d465f5",
-      "doi": "",
+      "digest": "7cee6a280ff0dd0b4261c9dda17c9aeb2bd88fa03a5ca83a002994173da68c71",
+      "doi": "10.5281/zenodo.20982975",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1846,9 +2011,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20982975",
       "path": "series/MELT.lean",
       "record_id": "series-melt",
       "source_sha256": "41a375313bd617545640257f531fada36b24e9bb855fcb2e6e3dd105ef58eb90",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/MELT.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
       "tags": [
@@ -1862,10 +2029,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "MELT — The Mutualistic Entropy-Driven Learning Theorem (Viridis nightly Run 031) Aristotle Forge target. Spine tier. CONTEXT (from Run-031 finding.md): An AI learning system L and an ecological system E are coupled through a stewardship-Lindblad operator with scalar cross-coupling μ_LE. The MELT efficiency law is η_LE := η_L + η_E + 2·μ_LE / √(λ_L·λ_E) where η_L, η_E are subsystem learning efficiencies and λ_L, λ_E > 0 are the subsystem Lindblad spectral gaps. The mutualistic information cross term in the joint Intelligence Bound is 2·μ_LE·√(C_L·C_E)/(k_B T ln2) with carrying capacities C_L, C_E ≥ 0, and saturates (equality) exactly at the rank-1 mutualistic alignment Θ_LE = 0. WHAT THIS FILE MACHINE-CHECKS (clean, well-posed, NON-VACUOUS core): • cauchy_schwarz_bloch — the Cauchy–Schwarz inequality on the Bloch-vector inner product that the MELT mutualistic cross term reduces to. • melt_cross_term_amgm — 2√(C_L C_E) ≤ C_L + C_E, the AM–GM bound on the mutualistic information cross term. • melt_cross_term_saturation — equality iff C_L = C_E (the rank-1 mutualistic saturation, Θ_LE = 0). • melt_mutualism_superadditive — μ_LE > 0 ⇒ η_LE > η_L + η_E. • melt_independence_additive — μ_LE = 0 ⇒ η_LE = η_L + η_E. • lindblad_spectral_gap_subadditivity — μ_LE < 0 ⇒ η_LE < η_L + η_E (the parasitic / Lindblad spectral-gap sub-additive regime). NON-VACUITY. The spectral gaps satisfy 0 < λ_L and 0 < λ_E, so √(λ_L·λ_E) > 0 and the cross term 2·μ_LE/√(λ_L·λ_E) is a strictly-monotone, nonzero function of μ_LE whenever μ_LE ≠ 0; the three efficiency theorems therefore have strict /…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "5fe087350a3ac789461cdecd58b90c9f617433c690ec334d0fb1a57ab2fc3747",
-      "doi": "",
+      "digest": "22d3a3009de3287993a778361523b9af0f39da310c4a55926f7a09394b1bdbc8",
+      "doi": "10.5281/zenodo.20982974",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1880,9 +2048,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20982974",
       "path": "series/S6_CognitionLearning/MELT.lean",
       "record_id": "series-s6-cognitionlearning-melt",
       "source_sha256": "41a375313bd617545640257f531fada36b24e9bb855fcb2e6e3dd105ef58eb90",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/S6_CognitionLearning/MELT.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
       "tags": [
@@ -1896,10 +2066,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "MIST — Measurement-Induced Symbiosis Theorem (Run 076, \"the Witness\") 18th IB self-application. Forge-encoded clean, well-posed, NON-VACUOUS core of Run 076 (MIST). Source: science-engine/07_nightly_engine/.../Run-076_measurement-induced-symbiosis/finding.md. Modeling notes (forge-flagged assumptions; named CONCLUSIONS preserved from the finding) Legibility (saturating information gain): Leg γ p = p / (p + γ), γ > 0. (The finding's honest course-corrected form Λ(p)=p/(p+γ).) Retained adaptive capacity (linear collapse to zero at criticality): Cap pc p = pc - p on [0, pc], pc > 0. This explicit decreasing form is a forge modeling choice; the named conclusions (Σ unimodal; interior optimum p* ≤ p_c) are the finding's R2 claims and are preserved verbatim. Symbiotic surplus: Surplus γ pc p = Leg γ p * Cap pc p (finding R2, Σ = Λ·A). Cooperative back-action (finding R5, verbatim closed form): Dtot γ L K = K·γ·((1-L)^(-1/K) - 1), γ>0, L∈(0,1). Witness efficiency (finding R6, cos²Θ geometry): η_W(Θ) = cos²Θ / (cos²Θ + sin²Θ) = cos²Θ. Non-vacuity pStar γ pc = √(γ² + γ·pc) − γ is the positive root of p² + 2γp − γ·pc; it lies strictly in (0, pc) and is the STRICT global maximizer of Surplus on [0, pc] (so p* ≤ p_c is non-trivial, strict, and interior — the edge-of-collapse). Dtot is STRICTLY decreasing in K with finite positive asymptote γ·log(1/(1-L)). η_W is a genuine ratio identity with range [0,1]. None collapses to a trivially-true statement.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "403189cdc9e4ea1748d31a6ab07a1b4a4b0e7b81553a87bfcf2c54f220c4e33e",
-      "doi": "",
+      "digest": "73ec1c93d07621b9f03ce184b5eca87d2c8a6b2102df33bf46e6efb7d6e4e46e",
+      "doi": "10.5281/zenodo.20982957",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1914,9 +2085,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20982957",
       "path": "series/MIST.lean",
       "record_id": "series-mist",
       "source_sha256": "db7a69eb3cb06fae5c4e9d6381e014d928c6aae1e3febe610129f821a4ee5bcd",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/MIST.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
       "tags": [
@@ -1930,10 +2103,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Mutualist Co-Establishment Theorem (MCET) — clean analytic core Nightly science-engine Run 096 — [11] Afforestation Systems x Symbiosis (\"the Matchmaker\"). 38th Intelligence-Bound self-application. Afforestation is a TWO-BODY co-establishment event: a plant p and its obligate microbial symbiont s must arrive together at sufficient JOINT density, or neither takes hold. The physical bridge is the mass-action exchange flux J_exch = kappa * n_p * n_s (bilinear in the two densities); a self-sustaining mutualistic nucleus is viable only when this flux covers the fixed free-energy cost Phi of maintaining it. That single inequality generates the theory below. This file states the clean, well-posed, single-proposition core of MCET. Combinatorial / measure-dependent pieces (the exact convex separatrix of the bounded obligate-mutualism ODE, ER-network percolation) are DEFERRED as they were for the Mason (Run 095) — this core is the mass-action / closed-form layer. Named theorems (this file), keyed to the run's boxed results: R1 coestablishment_feasible_iff_product_geq_threshold (product-law joint threshold) R1 coestablishment_obligacy_forces_both_positive (obligacy: Theta>0 ==> both partners needed) R1 log_separatrix_is_unit_slope_halfplane (additive-in-log-density barrier) R2 min_seeding_cost_ge_two_sqrt_cp_cs_theta (BOXED: C >= 2 sqrt(c_p c_s Theta), AM-GM lower bound) R2 optimal_coinoculation_achieves_min_cost (the bound is attained -> tightness) R2 optimal_coinoculation_equal_spend (optimum spends equally on each partner) R2 optimal_ratio_eq_inverse_cost_ratio (n_p*/n_s* =…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "628f951bce40691ca253e9a3ba16fed39ecd14e2aca63b8036a8cb8c03ee6431",
-      "doi": "",
+      "digest": "78cc497d980530121434e9da68389a4d128c36c838d8b22bece3a66cf4ec39e4",
+      "doi": "10.5281/zenodo.21327074",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1948,9 +2122,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.21327074",
       "path": "series/MutualistCoestablishment.lean",
       "record_id": "series-mutualistcoestablishment",
       "source_sha256": "2764c87022f1996c07d05ce7a712bbff7867ea96e5da08f05588197147663ea3",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/MutualistCoestablishment.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 15 theorem and lemma declarations.",
       "tags": [
@@ -1964,9 +2140,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Mutualistic Inference Network Theorem (MINT) — clean network-thermodynamic core Viridis Canon · Nightly Run-085 (2026-06-30) · [14] Cognitive Modeling × 🌿 Symbiosis \"The Mutualist\" — 27th IB self-application; CONVERGENCE EVENT. CONTEXT. The Symbiotic Inference Theorem (SIT, Run-062) proved a DYAD: a steward halves its Intelligence-Bound inference bill by sharing mutual predictive information with ONE ecosystem. MINT lifts SIT from a dyad to a NETWORK of N mutually-predicting agents. The collective information-work floor is the solo total minus a PREDICTIVE COMMONS — a subsidy that is a sum over the edges of the mutual-legibility graph: W_net/(k_BT ln2) ≥ Σ_i I_non^(i) − Σ_edges I_pred^(ij) − S_higher. Each agent's choice of whom to model is a water-filling allocation of its IB budget (the UWMT-084 water-fill, already canon-certified, is MINT's per-agent shadow — inherited here, NOT re-proved). Above a legibility-percolation threshold the giant component acquires a group-level Markov blanket and is one larger IB-limited agent whose ceiling is the SUM of member ceilings. The Mutualist (27th IB self-application) states that mutual prediction — open science — is a thermodynamic optimum: the network learns STRICTLY cheaper than the naive solo sum, by exactly the predictive-commons debit. This file certifies the clean, well-posed, NON-VACUOUS, MINT-specific core. Targets that rest on the Erdős–Rényi mean-field percolation threshold (ρ_c = 1/(N−1); sublinear-cost / synergy-vanishing regime laws) are probabilistic / measure-dependent and DEFERRED (honest-scope-flagged in the…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "02e257801cb35504090e6aeecefad0b07f6e055444ae40b9f9e263f7140774b7",
+      "digest": "2cb77e1d5e1ddb873f1e99ebe5b7bbbcade824ba6c6eb3e1666eb490bfbaf5b4",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -1982,9 +2159,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/MutualisticInference.lean",
       "path": "series/MutualisticInference.lean",
       "record_id": "series-mutualisticinference",
       "source_sha256": "7eea642d4d68174c8acb0013919878c8c962a6c7c4b7bca8912278ff3526adec",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/MutualisticInference.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
       "tags": [
@@ -1998,9 +2177,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "StewardshipRevisit.lean — The Stewardship Revisit Theorem (SRT), \"the Tender\" Viridis Nightly Science Engine, Run 087 — [04] D-Score Science × 🎯 Stewardship. The temporal completion of the monitoring calculus: when should a steward re-observe a *drifting* ecosystem? Site i's true certified slack drifts as an Ornstein–Uhlenbeck process; a D-Score certificate pins the estimate, after which the steward's conditional uncertainty grows as V(t) = (s^2 / (2θ)) · (1 − e^{−2θ t}), V∞ = s^2/(2θ). This file states the CLEAN, WELL-POSED, NON-VACUOUS core of SRT as deterministic claims about the conditional-variance curve V, the amortized renewal cost rate, and the Whittle scheduling index. Each theorem below has a genuinely non-trivial conclusion (see srt_nonvacuous for a concrete binding instance): 1. certificate_halflife_eq_ln2_over_2theta at t½ = ln2/(2θ) the conditional variance is exactly half its stationary value. Cadence tracks turnover θ, not the calendar. 2. ou_conditional_variance_growth_monotone V is strictly increasing in age (a certificate is a decaying asset). 3. sqrt_cadence_minimizes_amortized_cost in the diffusion regime the amortized cost rate C(τ) = c/τ + ½ κ s² τ is globally minimized at τ* = √(2c/(κ s²)) (EOQ/AM–GM). 4. whittle_index_form_eq_stakes_times_variance_rate the scheduling index W(t) = κ·V(t) (the accrued staleness-penalty rate) equals stakes × conditional variance and is strictly increasing in age (indexability of the restless bandit). 5. broadcast_clock_price_equalizes_marginal_penalty a single broadcast monitoring-clock price ν ∈ (0, κV∞) sets a…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "258382c5c54ced3957d9a1f081745cb8556f546e539c721a2dbec23673bcc39a",
+      "digest": "e54be0029175ff151ca8c13f5f18510141d6d6c4a9c0b6e7b7e16e94ee34fd65",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -2016,9 +2196,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/StewardshipRevisit.lean",
       "path": "series/StewardshipRevisit.lean",
       "record_id": "series-stewardshiprevisit",
       "source_sha256": "33b76ffef03aaeea3b18b4a1d64363b94823c8f3c9ae25719a36fb1d07043c37",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/StewardshipRevisit.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 8 theorem and lemma declarations.",
       "tags": [
@@ -2032,9 +2214,10 @@
       "visibility": "public"
     },
     {
+      "abstract": "Symbiotic Corridor Theorem (SCT) — clean analytic core Viridis Canon · Nightly Run-089 (2026-07-04) · [03] HDFM Corridors × 🌿 Symbiosis \"The Loom\" — 31st IB self-application; CONVERGENCE EVENT (governance layer). CONTEXT. Classical connectivity science optimizes ONE layer: where to spend restoration budget so a landscape graph carries ecological flux (the Corridor Stewardship Theorem, CST / Run-074). SCT couples that connectivity layer E to the sensing / MRV layer I on the SAME edges, via a *supermodular* (\"sense-what- you-connect\"), not a dependency, link. On a landscape graph with per-edge connectivity spend g_e >= 0 and sensing spend s_e >= 0, unit costs c_e, w_e > 0, pooled budget B, and coupling strength beta >= 0, the joint objective is J(g,s;beta) = sum_e [ k_e*log(1+g_e) + v_e*log(1+s_e) + beta*mu_e*sqrt(g_e*s_e) ]. The single coupling term beta*mu*sqrt(g*s) (joint value only where an edge carries BOTH flux and sensing) inverts every conclusion of interdependent- network theory: mutualistic coupling is an ASSET, co-design dominates siloing, and one shadow price clears the pooled budget. This file certifies the clean, well-posed, NON-VACUOUS convex-analysis core (R1 structural + R2 sign law). The measure-dependent results — R3/R4 nested assortativity phase transition (NODF, beta_c = argmax da/dbeta) and R5 the IB co-evolution rate limit (tracking-rate dynamics) — are deferred to dedicated follow-up runs. THEOREMS (statements preserved VERBATIM; each hypothesis load-bearing): T1 joint_objective_concave J concave on the positive orthant. T2 coupling_sign_law…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 3,
-      "digest": "0616b9e92d226fd6868aa28b49b243c3e3539f9473e9003dea4a042bd09b8f45",
+      "digest": "4b736623584022c15cf12c1da4c3016bf37091ebe58dfd80312dcfd27f99c567",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -2050,9 +2233,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SymbioticCorridor.lean",
       "path": "series/SymbioticCorridor.lean",
       "record_id": "series-symbioticcorridor",
       "source_sha256": "a8498bb16c7dea8fcf2593275c8bc7c6c4579d67b99806511e246fab36d63441",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SymbioticCorridor.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 9 theorem and lemma declarations.",
       "tags": [
@@ -2066,10 +2251,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "Symbiotic Risk-Premium Theorem (SRPT) — clean analytic core Viridis Canon · Nightly Run-093 (2026-07-08) · [02] Thermodynamic Economics × 🌿 Symbiosis \"The Mutualist\" — 35th Intelligence-Bound self-application. Second-moment (variance / risk) sibling of the D-Capital valuation canon (SVT-067 value-coupling · SIB-072 rate-coupling · TDT-080 time-axis / discount rate). CONTEXT. The valuation canon prices EXPECTED D-Capital flows (first moment) and their timing, importing the risk premium — the price of variance — as an exogenous constant, as CAPM does. SRPT derives it from thermodynamics. The Thermodynamic Uncertainty Relation (TUR) supplies the physics of variance (precision costs dissipation: Var(J)/⟨J⟩² ≥ 2 k_B/Σ), and the ecological portfolio effect supplies the statistics of aggregate stability (joint variance governed by covariance). SRPT joins them: the risk premium is the price of dissipation-limited variance, and symbiotic coupling is thermodynamic diversification whose power is bounded by the same TUR that prices the risk. This file certifies the CLEAN ANALYTIC CORE of the boxed results. All statements are encoded to be well-posed and NON-VACUOUS; proof bodies are sorry for the forge. Targets (named — PRESERVE VERBATIM): R1 risk_premium_tur_floor — π ≥ ρ k_B/Σ : no riskless D-Capital asset at finite dissipation. R2 mutualistic_iff_covariance_negative — joint variance sub-additive (diversifying) iff Cov < 0. R3 diversification_wall_residual_positive — TUR floors a strictly positive undiversifiable residual premium π_min = ρ k_B/Σ_tot.…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 2,
-      "digest": "cd68ef2eded313220164222373d3905b6e826a4c51e5fe6ce9de9d0e49746611",
-      "doi": "",
+      "digest": "5c93003c5da62f20ba9868fca5a31dc58d98813f18af43a72daca54d727f7f38",
+      "doi": "10.5281/zenodo.21327066",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -2084,9 +2270,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.21327066",
       "path": "series/SymbioticRiskPremium.lean",
       "record_id": "series-symbioticriskpremium",
       "source_sha256": "7d2c830b8ac412592ce0b5d6bdbdfddbc410223c5e5269aa3321b946f97d31c7",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SymbioticRiskPremium.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 9 theorem and lemma declarations.",
       "tags": [
@@ -2100,10 +2288,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "Thermodynamic Corridor Theorem (TCT) — Run 022 Formalization targets for the Viridis nightly finding Run 022 — Thermodynamic Corridor Theorem, which derives the HDFM corridor bifurcation optimum μ_opt ∈ [2,3] and the PTMS Ring-3 pricing kernel f(k) = μ^{k-1} from thermodynamic first principles (Prigogine minimum-entropy-production on a balanced Strahler tree, with a Maximum-Entropy-Production boundary condition). Source: science-engine/.../Run-022_thermodynamic-corridor-theorem/finding.md, §6. This file states the four verification targets as well-posed, non-vacuous Lean 4 propositions. Proofs are left as sorry for the Aristotle forge to discharge. Each statement is accompanied by its intended physical meaning and an explicit non-vacuity note: none of the conclusions is trivially true.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "9ac8a3053648b5871a8789446fe0970a23be9913a4a0cabecfcdea31ed3a2bda",
-      "doi": "",
+      "digest": "b45b0700f0379dd0bea1d30d2d7b13ddff08d59cef09d4e643da5c964ea78f89",
+      "doi": "10.5281/zenodo.20982967",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -2118,9 +2307,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20982967",
       "path": "series/TCT.lean",
       "record_id": "series-tct",
       "source_sha256": "6c68ba3a620db4a725f70541f30cbcbf746e1c0b007460edbf19ab9640375f14",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/TCT.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 4 theorem and lemma declarations.",
       "tags": [
@@ -2134,10 +2325,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Thermodynamic Discounting Theorem (TDT) — clean core Lean 4 / Mathlib formalization. Viridis LLC. For submission to Aristotle. CONTEXT (nightly Run 080, thermodynamic-discounting-theorem; [02] Thermodynamic Economics × Thermodynamic lens; CONVERGENCE EVENT; 22nd IB self-application, \"the Appraiser\"). A degrading natural D-Capital asset has TVT value V > 0 (Run 047), measured in Landauer units. Restoring it to target by a hard horizon T > 0 costs irreversible entropy on the single-system tempo cost (Run 060 / 079): Σ(T) = A / T + B · T, A, B > 0, whose free optimum is at the critical horizon τ* = √(A / B) with flat cost Σ* = 2√(A·B). The *deadline shadow price* is λ = − dΣ*/dT : scarce (T < τ*): Σ*(T) = A/T + B·T, λ(T) = A / T² − B ( > 0 ), abundant (T ≥ τ*): Σ* = 2√(A·B) , λ = 0. The endogenous (thermodynamic) discount rate is the deadline shadow price per unit asset value: r_thermo(T) = λ(T) / V. WHAT IS PROVEN HERE (clean core — target: 0 sorry, axioms ⊆ {propext, Classical.choice, Quot.sound}): 1. thermo_discount_rate_eq_lambda_over_value (R1, defining identity) r_thermo · V = λ. 2. discount_rate_zero_in_abundant_time_regime (R2, abundant / \"Stern\" pole) T ≥ τ* ⟹ r_thermo = 0. 3. discount_rate_diverges_at_tipping (R3) as A → ∞ (critical slowing down, τ* → ∞) r_thermo → +∞. 4. pv_kernel_recovers_tvt_at_zero_lambda (R4) λ = 0 ⟹ discount kernel ≡ 1, so the present-value integrand equals the undiscounted gross flux — PV recovers the TVT stock value. 5. stern_nordhaus_regime_dichotomy_monotone_single_crossover (R2 flagship) r_thermo(·) is 0 on [τ*,∞), strictly positive…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "9e66ac8c84401c3474006ea8116cca20389d128e4ba822760ee63fe9f43dd738",
-      "doi": "",
+      "digest": "c832eb39a832ef31ebbbe3541cce101b9095d23e92e59b9b1276932bb179f8fc",
+      "doi": "10.5281/zenodo.20982947",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -2152,9 +2344,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20982947",
       "path": "series/ThermodynamicDiscounting.lean",
       "record_id": "series-thermodynamicdiscounting",
       "source_sha256": "5b6e5d62a493f801397a6e696e1bf6aa349d5ce6f6cc096f527883b5537f42dd",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ThermodynamicDiscounting.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
       "tags": [
@@ -2168,10 +2362,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "Universal Nucleation–Kramers Meta-Theorem (UNMT) Unifies the nucleation-Kramers canon family (GNT-090 grokking, SNT-091 stewardship/audit, FNT afforestation) into one cubic-well Classical-Nucleation-Theory object: Ψ(x) = σ · x^(2/3) − Δ · x (x, σ, Δ > 0) with a substrate-independent critical point, barrier height, and Kramers escape law, plus an information-thermodynamic (Landauer/IB) floor on completion time. Statements are stated; the substantive ones (Targets 1–4b) carry sorry for Aristotle. Acceptance = zero sorry + #print axioms ⊆ {propext, Classical.choice, Quot.sound}, Lean 4.28.0, Mathlib pin 8f9d9cff. FORGE NOTE (2026-07-09, integrity): the auto-queue skeleton's original Target 7 unc_nonmonotone_optimum was GATED OUT before submission — it asserted an interior minimizer of kramers σ Δ · τ₀ in T, but kramers as defined (τ₀·exp(barrier/T)) is strictly DECREASING in T, so no interior minimizer exists on (0,Td); the named Td,B basin-dissolution hypotheses never enter the definition, making the conclusion FALSE. The honest Forcing–Neglect optimum needs a τ(T) model carrying a basin-dissolution divergence as T→Td⁻ (a genuine model change) — deferred to Justin. The sound, non-vacuous core (critical point, barrier top, barrier height, Kramers monotonicity, IB floor, non-vacuity witness) is submitted here.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 4,
-      "digest": "1d7250dc132b6b829d6c2ea4d35900b5519ea179a782e3899790c74b2f0414bf",
-      "doi": "",
+      "digest": "299e8e4c51b148da756f2a6df76a6b4c4821d2f666422088d9287a94d7ad3c71",
+      "doi": "10.5281/zenodo.21327076",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -2186,9 +2381,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.21327076",
       "path": "series/UniversalNucleationMetaTheorem.lean",
       "record_id": "series-universalnucleationmetatheorem",
       "source_sha256": "8114636ece4e8f6a0df53b696efd5d8a203229227ca48fb6e6f6dd848e56f205",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/UniversalNucleationMetaTheorem.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 8 theorem and lemma declarations.",
       "tags": [
@@ -2202,10 +2399,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Verification Phase-Transition Theorem (VPT) — clean core Lean 4 / Mathlib formalization. Viridis LLC. For submission to Aristotle. CONTEXT (nightly Run 081, verification-phase-transition; [08] Ecoservices Platform × Symbiosis lens; 23rd IB self-application, \"the Verifier\"). A monitoring AI and the ecosystem it measures form a thermodynamic mutualism. Every attested credit-bit costs at least the Landauer quantum q = k_B · T · ln 2 ( > 0 ). There is a minimum self-sustaining ESU (ecosystem-service-unit) price p_crit = (δ + r_thermo) · q · H_eff / (η · P · κ), with all parameters positive: δ depreciation / leakage rate of attested capital, r_thermo endogenous thermodynamic discount rate (Run 080, the Appraiser; r_thermo → ∞ at tipping points), H_eff effective bits per attestation (entropy load), η verifier energy efficiency, P available power, κ Joule-to-value conversion. Below p_crit the credit market cannot bootstrap (a \"verification poverty trap\"); above it the AI–ecosystem–market triad self-funds. The crossing at p = p_crit is a TRANSCRITICAL bifurcation of the market-participation dynamics. Writing the participation density x ≥ 0, the bootstrap normal form is dx/dt = f(x) = s·(p − p_crit)·x − β·x², s, β > 0, with equilibria x = 0 and x* = s(p − p_crit)/β, and linearization f'(x) = s(p − p_crit) − 2β x, so f'(0) = s(p − p_crit) and f'(x*) = − s(p − p_crit): the two equilibria exchange stability exactly at p_crit. Engineering levers (proved below): ZK-MRV compression c ∈ (0,1] lowers p_crit proportionally (a thermodynamic subsidy); alignment-matched sensing lowers it…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "264c5dcaae6aae5e4a3f213ee0ff78863aa478c196eec536048a742beebfa985",
-      "doi": "",
+      "digest": "22e15e5bb4baadb3b680f6e7c9c8f35410cc52f889b1b17d07f5b292cf5c3a55",
+      "doi": "10.5281/zenodo.20982945",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -2220,9 +2418,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20982945",
       "path": "series/VerificationPhaseTransition.lean",
       "record_id": "series-verificationphasetransition",
       "source_sha256": "e46ff30efaaca0d1378ab55d38d82c133e916969207df450a39201edc4cef714",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/VerificationPhaseTransition.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 8 theorem and lemma declarations.",
       "tags": [
@@ -2236,10 +2436,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Wu-Wei Corridor Design Theorem (WCDT) — clean core Lean 4 / Mathlib formalization. Viridis LLC. For submission to Aristotle. CONTEXT (nightly Run 036, wu-wei-corridor-design). A conservation corridor must simultaneously satisfy three *pillar* feasibility constraints — geometric (C_geom), measurement (C_meas), and decoherence (C_decoh) — on the Symbiotic Stewardship Manifold M_symb. The \"wu-wei\" (minimum-force) design is, by definition (finding Invariant I3), the unique fixed point of the simultaneous Bregman / Censor–Elfving multiprojection iteration whose fixed-point set is the common feasible region. Pierra's product-space reformulation makes the combined multiprojection operator a firmly-nonexpansive averaged map; under the standard Bregman–Legendre contraction hypothesis (finding Invariant I5) it is a strict contraction, so Banach's theorem delivers existence, uniqueness, and Picard convergence of the wu-wei corridor. WHAT IS PROVEN HERE (the clean core — no sorry, axioms ⊆ Mathlib): Abstracting the multiprojection operator as a contraction T (Lipschitz constant K < 1) on a complete nonempty metric space E (the model for M_symb with the Fisher–Rao metric): 1. WCDT_unique_fixed_point — the wu-wei corridor EXISTS and is UNIQUE: ∃! c, T c = c. (Censor–Elfving limit) 2. WCDT_iteration_converges — the multiprojection Picard iteration converges to that corridor from any starting design x₀. (constructive design) 3. WCDT_corridor_feasible — the wu-wei corridor lies in EVERY pillar feasibility set simultaneously (the wu-wei = no-forcing property): if the operator maps into…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "7fb67088a403e3d8c894054e5ef41617622f9ec4d7fb44d1b403ac8877c16bb6",
-      "doi": "",
+      "digest": "18b9a700b20c986d133617f3092cbf56bc7264877260ef912d83aef534c8f755",
+      "doi": "10.5281/zenodo.20982971",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -2254,9 +2455,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20982971",
       "path": "series/WuWeiCorridor.lean",
       "record_id": "series-wuweicorridor",
       "source_sha256": "37fe5a0b0b4f0995da10f27c361eb2f3bd0e3b0ffd527fa9ecfc43e5684cbe9d",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/WuWeiCorridor.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 4 theorem and lemma declarations.",
       "tags": [
@@ -2270,10 +2473,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Wu-Wei Crypticity Theorem (WWCT) — Run 073 forge targets Computational mechanics assigns every stationary process a minimal optimal predictor (its ε-machine) with two scalars: the statistical complexity Cmu = H[causal states] (memory about the *past*) and the excess entropy E = I[past;future] (information past and future *share*). Their difference χ := Cmu − E ≥ 0 (crypticity, Crutchfield–Ellison–Mahoney 2009) is the stored state hidden from the future — memory the predictor must hold that the future never reads back. By the thermodynamics of prediction (Still–Sivak–Bell–Crooks, PRL 109 120604, 2012) maintaining that non-predictive memory dissipates work at rate ≥ k_B ln 2 · χ̇. Crypticity and non-predictive information are the *same object*; this run prices \"forcing\" in those units. Wu wei (effortless action) is the limit χ = 0: the predictor that stores only what the future will use — *the Mirror*, the 15th self-application of the Intelligence Bound. These are the clean-core Lean targets queued for the Aristotle forge from the science-engine nightly Run 073 (2026-06-18), area [13] Computational Theory × ☯️ Alignment. All statements are finite-dimensional real analysis; each carries explicit non-vacuity conditions so that no conclusion is trivially true regardless of hypotheses. Origin: science-engine/.../Run-073_wu-wei-crypticity-theorem/finding.md (9/9 numerical checks pass). Spine + branch (PRL / Nature Communications).",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "678e59608835202d7d356934c538aa407e08674d245ff4d3fb7c398d3a486fde",
-      "doi": "",
+      "digest": "7cd223c201d9a52d5750e5b00cf1f346b34289f53e22d05b80ff72e0fd0e9451",
+      "doi": "10.5281/zenodo.20777067",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -2288,9 +2492,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20777067",
       "path": "series/WuWeiCrypticity.lean",
       "record_id": "series-wuweicrypticity",
       "source_sha256": "7bfe66c0b8d35e28636f206909221a7d4147ab53cccb350455b1744a87666fd1",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/WuWeiCrypticity.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 8 theorem and lemma declarations.",
       "tags": [
@@ -2304,10 +2510,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Wu Wei Dominance Theorem — Lean 4 / Mathlib formalization Viridis LLC. For submission to Aristotle. WHAT IS PROVEN (completely, no sorry, no axioms beyond Mathlib): Model an ecosystem (or a belief / value distribution) as an abundance vector. Management is a *multiplicative drift* (replicator / Bayesian / selection update) followed by an *extinction cull* that removes any type below the one-individual threshold thr = 1/N. 1. ABSORBING BOUNDARY. Drift cannot resurrect an extinct type, and the cull only removes types: support (Step c) ⊆ support c. (Extinction = Bayes assigning probability 0 = irreversible.) 2. PERMANENCE. Support — hence species richness — is antitone along any trajectory. Loss is forever. 3. SUB-CRITICAL SAFETY. If every step keeps each extant type's drifted abundance at or above thr, the support is preserved. 4. SUPER-CRITICAL COLLAPSE. If at some step the drift pushes an extant type below thr, that type goes extinct and richness strictly, permanently drops. 5. DOMINANCE. A sub-critical (slow / wu wei) policy attains strictly greater long-run species richness than a super-critical (aggressive) policy. Richness is the Hill-0 diversity index and the ceiling on Shannon diversity (max entropy on a k-type support is log k), so this is genuine diversity dominance. THE HONEST BOUNDARY (the input, NOT formalized here): WHICH rate regime a policy falls in — i.e. whether hypotheses hsub (sub-critical) or hsuper (super-critical) hold for a given intervention rate r_int relative to the ecosystem's intrinsic rate r_eco — is governed by a Kramers / Freidlin–Wentzell…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 1,
-      "digest": "df748c9183f4d3a68a7f73ea7b32a2ee24ba4dd63a2f48877ca20bfe0a20b0fb",
-      "doi": "",
+      "digest": "44122e38bce87f1e8400ae8f27843f95f5b95692ab6d6f7b57c73d419f9bb74a",
+      "doi": "10.5281/zenodo.20838923",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -2322,9 +2529,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20838923",
       "path": "series/WuWeiDominance.lean",
       "record_id": "series-wuweidominance",
       "source_sha256": "18adb3b6b2e3bef60087e30d7ad6bab38da1d9051d3cc47c31736bb6db0c2fe8",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/WuWeiDominance.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 12 theorem and lemma declarations.",
       "tags": [
@@ -2338,10 +2547,11 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Wu-Wei Sampling Theorem (WWST) — \"the Listener\" — clean core Lean 4 / Mathlib formalization. Viridis LLC. For submission to Aristotle. CONTEXT (nightly Run 078, wu-wei-sampling-theorem; [10] Monitoring Technology × ☯️ Alignment; 20th IB self-application; temporal dual of MWT-069 the Surveyor). Monitoring has priced *where* (MWT, space) and *how-gently* (MIST, rate) to look, but never *when*. A fixed CLOCK schedule (Riemann sampling) is the purest act of forcing: a uniform human time-grid imposed on a world whose information arrives in BURSTS. The wu-wei alternative is EVENT-TRIGGERED (send-on-delta / Lebesgue) sampling: look only when the state has actually moved by a set increment Δ. Brownian baseline. For a Wiener process with diffusion σ², the time-averaged zero-order-hold estimation-error variances are, at mean inter-sample interval: • CLOCK (periodic, interval T): V_clock = σ²·T / 2 • EVENT (send-on-delta, threshold Δ): V_event = Δ² / 6 where V_event is the Dynkin first-passage time-average V_event = E[∫₀^τ X² ds] / E[τ] = (Δ⁴/(6σ²)) / (Δ²/σ²) = Δ²/6, with E[τ] = Δ²/σ² the mean exit time of (−Δ,Δ) and the time-integrated square error g(x) = (Δ⁴ − x⁴)/(6σ²) the solution of the Dynkin BVP (σ²/2)·g''(x) = −x², g(±Δ) = 0 (this is what *derives* the 1/6). CLEAN-CORE ENCODING (this file — must compile with 0 sorry, axioms ⊆ Mathlib). R1 dynkin_solution — g solves the Dynkin BVP and vanishes on the boundary (the genuine origin of the constant 6). R1 event_variance_eq_first_passage_time_average — V_event = g(0)/E[τ], i.e. the 1/6 is the time-average, not an assumption…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "644a062f5588f2b098aaa9cdde6890f73fa2b901299408ac1661aae95499baf4",
-      "doi": "",
+      "digest": "f661c7c6a9557298e523c00003137d0c3385e67447c4926ef7a745e6930cf39d",
+      "doi": "10.5281/zenodo.20982949",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -2356,9 +2566,11 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
+      "paper_url": "https://doi.org/10.5281/zenodo.20982949",
       "path": "series/WuWeiSampling.lean",
       "record_id": "series-wuweisampling",
       "source_sha256": "2dd7cbc45790a075b2b1dd6fdd85ca532588fbabf6cf697175c16721c431d0c0",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/WuWeiSampling.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 10 theorem and lemma declarations.",
       "tags": [

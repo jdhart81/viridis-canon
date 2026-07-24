@@ -33,12 +33,21 @@ class ResearchPortalTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.index = (DOCS / "index.html").read_text(encoding="utf-8")
+        cls.app = (DOCS / "assets" / "app.js").read_text(encoding="utf-8")
         cls.parser = _PageParser()
         cls.parser.feed(cls.index)
 
     def test_landmark_ids_are_unique(self) -> None:
         self.assertEqual(len(self.parser.ids), len(set(self.parser.ids)))
-        for expected in ("research", "method", "institutions", "catalog-grid"):
+        for expected in (
+            "research-map",
+            "research-graph",
+            "graph-search",
+            "research",
+            "method",
+            "institutions",
+            "catalog-grid",
+        ):
             self.assertIn(expected, self.parser.ids)
 
     def test_local_assets_exist(self) -> None:
@@ -67,6 +76,16 @@ class ResearchPortalTests(unittest.TestCase):
     def test_page_states_the_honesty_boundary(self) -> None:
         self.assertIn("does not manufacture empirical truth", self.index)
         self.assertIn("No autonomous minting", self.index)
+
+    def test_portal_exposes_abstract_reader_and_full_artifacts(self) -> None:
+        self.assertIn("Abstract", self.app)
+        self.assertIn("Read full research artifact", self.app)
+        self.assertIn("Open paper", self.app)
+
+    def test_portal_exposes_interactive_research_map(self) -> None:
+        self.assertIn("living mind map", self.index)
+        self.assertIn("renderResearchGraph", self.app)
+        self.assertIn("filterResearchGraph", self.app)
 
 
 if __name__ == "__main__":

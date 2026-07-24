@@ -11,7 +11,9 @@ package that converts the checked-in research artifacts into a deterministic,
 machine-readable catalog. The accompanying GitHub Pages explorer makes the
 formal spine, selected flagships, working corpus, quarantine state, caveats,
 source hashes, and record hashes inspectable without reading the repository
-tree by hand.
+tree by hand. Every public record includes a readable abstract and a full-paper
+or full-source action, and the research map exposes tier, import, and topic
+relationships as an interactive graph.
 
 - Public explorer: `https://jdhart81.github.io/viridis-canon/` (after Pages is enabled)
 - Machine interface: `https://jdhart81.github.io/viridis-canon/data/catalog.json`

@@ -91,6 +91,26 @@ class CatalogTests(unittest.TestCase):
             self.assertEqual(len(record["source_sha256"]), 64)
             self.assertEqual(len(record["digest"]), 64)
 
+    def test_every_public_record_has_an_abstract_and_readable_artifact(self) -> None:
+        for record in self.catalog["records"]:
+            self.assertGreaterEqual(len(record["abstract"].strip()), 20, record["path"])
+            self.assertTrue(record["source_url"].startswith("https://"), record["path"])
+            self.assertTrue(record["paper_url"].startswith("https://"), record["path"])
+
+    def test_published_records_link_to_their_declared_doi(self) -> None:
+        published = [
+            record
+            for record in self.catalog["records"]
+            if record["doi"]
+        ]
+        self.assertGreaterEqual(len(published), 35)
+        for record in published:
+            self.assertEqual(
+                record["paper_url"],
+                f"https://doi.org/{record['doi']}",
+                record["path"],
+            )
+
     def test_write_catalog_is_deterministic(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             one = Path(temp) / "one.json"
@@ -164,6 +184,8 @@ class CatalogTests(unittest.TestCase):
             )
             self.assertEqual(public["stats"]["records"], 0)
             self.assertEqual(workspace["records"][0]["visibility"], "private")
+            self.assertEqual(workspace["records"][0]["source_url"], "")
+            self.assertEqual(workspace["records"][0]["paper_url"], "")
 
 
 if __name__ == "__main__":

@@ -31,6 +31,7 @@
       </a>
       <nav aria-label="Primary navigation">
         <a href="#research">Explore</a>
+        <a href="#research-map">Research map</a>
         <a href="#method">Method</a>
         <a href="#institutions">For institutions</a>
         <a
@@ -53,6 +54,7 @@
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="#research">Explore the canon</a>
+            <a class="button button-quiet" href="#research-map">Open research map</a>
             <a class="button button-quiet" href="#method">How to read the evidence</a>
           </div>
           <p class="hero-note">
@@ -120,6 +122,45 @@
         <div>
           <strong>SHA-256</strong>
           <span>source + record integrity</span>
+        </div>
+      </section>
+
+      <section class="map-section shell" id="research-map">
+        <div class="section-heading map-heading">
+          <div>
+            <p class="eyebrow dark"><span></span> Connected research graph</p>
+            <h2>The canon as a<br>living mind map.</h2>
+          </div>
+          <p id="map-description">
+            Explore the relationships among the verified spine, flagships, and
+            working research. Search to isolate a concept, drag any node, zoom
+            with the trackpad or mouse wheel, and select a record to read its
+            abstract and open the full paper or source.
+          </p>
+        </div>
+
+        <div class="map-panel" role="region" aria-labelledby="map-title" aria-describedby="map-description">
+          <div class="map-toolbar">
+            <label>
+              <span id="map-title">Search the research map</span>
+              <input id="graph-search" type="search" placeholder="Intelligence, ecology, thermodynamics…" autocomplete="off">
+            </label>
+            <button id="reset-map" type="button">Reset view</button>
+            <p id="graph-status" aria-live="polite">Loading research relationships…</p>
+          </div>
+          <div class="map-legend" aria-hidden="true">
+            <span><i class="spine"></i> Verified spine</span>
+            <span><i class="flagship"></i> Flagships</span>
+            <span><i class="working"></i> Working corpus</span>
+            <span><b></b> Research relationship</span>
+          </div>
+          <svg
+            id="research-graph"
+            viewBox="0 0 1200 720"
+            role="img"
+            aria-label="Interactive graph of public Viridis research records"
+          ></svg>
+          <p class="map-help">Drag nodes · Scroll to zoom · Select a node to read the abstract</p>
         </div>
       </section>
 

@@ -30,6 +30,9 @@ class ResearchRecord:
     tier: str
     visibility: str
     source_sha256: str
+    abstract: str = ""
+    source_url: str = ""
+    paper_url: str = ""
     theorem_count: int = 0
     lemma_count: int = 0
     definition_count: int = 0
@@ -77,6 +80,9 @@ class ResearchRecord:
             "tier": self.tier,
             "visibility": self.visibility,
             "source_sha256": self.source_sha256,
+            "abstract": self.abstract,
+            "source_url": self.source_url,
+            "paper_url": self.paper_url,
             "theorem_count": self.theorem_count,
             "lemma_count": self.lemma_count,
             "definition_count": self.definition_count,

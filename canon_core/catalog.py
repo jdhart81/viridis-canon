@@ -7,6 +7,7 @@ import json
 import re
 from pathlib import Path
 from typing import Any, Iterable
+from urllib.parse import quote
 
 from .canonical import canonical_digest
 from .model import ResearchRecord
@@ -24,6 +25,9 @@ _DECL_RE = re.compile(
 _IMPORT_RE = re.compile(r"^\s*import\s+(.+?)\s*$", re.MULTILINE)
 _NAMESPACE_RE = re.compile(r"^\s*namespace\s+([A-Za-z0-9_'.]+)\s*$", re.MULTILINE)
 _BANNED_RE = re.compile(r"\b(?:sorry|admit|sorryAx)\b")
+_COMMENT_RE = re.compile(r"/-!?\s*(.*?)\s*-/", re.DOTALL)
+_MODULE_COMMENT_RE = re.compile(r"/-!\s*(.*?)\s*-/", re.DOTALL)
+_ABSTRACT_LIMIT = 1_600
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -61,6 +65,81 @@ def _sha256_bytes(content: bytes) -> str:
     return hashlib.sha256(content).hexdigest()
 
 
+def _clean_comment_paragraph(value: str) -> str:
+    lines = []
+    for raw in value.splitlines():
+        line = raw.strip()
+        lowered = line.casefold()
+        if lowered.startswith(
+            (
+                "copyright (c)",
+                "released under ",
+                "authors:",
+                "co-authored-by:",
+                "toolchain:",
+                "lean:",
+                "lean version:",
+                "mathlib:",
+                "mathlib version:",
+            )
+        ):
+            continue
+        line = re.sub(r"^[=*#─━\-\s]+", "", line)
+        if line:
+            lines.append(line)
+        elif lines and lines[-1] != "":
+            lines.append("")
+    cleaned = re.sub(r"\s+", " ", " ".join(lines)).strip()
+    return cleaned.replace("**", "").replace("`", "")
+
+
+def _extract_abstract(text: str, fallback: str) -> str:
+    scope = text[:80_000]
+    leading = _COMMENT_RE.search(scope)
+    leading_text = _clean_comment_paragraph(leading.group(1)) if leading else ""
+    if leading and leading.start() < 500 and len(leading_text) >= 300:
+        abstract = leading_text
+    else:
+        candidates: list[tuple[int, int, str]] = []
+        module_blocks = _MODULE_COMMENT_RE.findall(scope)
+        blocks = module_blocks or _COMMENT_RE.findall(scope)
+        for index, block in enumerate(blocks[:18]):
+            cleaned = _clean_comment_paragraph(block)
+            lowered = cleaned.casefold()
+            if len(cleaned) < 90:
+                continue
+            if (
+                "copyright (c)" in lowered
+                and len(cleaned) < 500
+                and "theorem" not in lowered
+            ):
+                continue
+            score = min(len(cleaned), 900)
+            if "this module" in lowered:
+                score += 600
+            if "formaliz" in lowered:
+                score += 400
+            if "context" in lowered or "main result" in lowered or "headline" in lowered:
+                score += 180
+            if "theorem" in lowered:
+                score += 100
+            candidates.append((score, -index, cleaned))
+        if not candidates:
+            return fallback
+        abstract = max(candidates, key=lambda item: (item[0], item[1], item[2]))[2]
+    if len(abstract) <= _ABSTRACT_LIMIT:
+        return abstract
+    shortened = abstract[:_ABSTRACT_LIMIT].rsplit(" ", 1)[0].rstrip(" ,;:")
+    return shortened + "…"
+
+
+def _repository_file_url(repository: str, path: str) -> str:
+    if not repository.startswith("https://"):
+        return ""
+    encoded = quote(Path(path).as_posix(), safe="/")
+    return f"{repository.rstrip('/')}/blob/main/{encoded}"
+
+
 def _expand_globs(root: Path, patterns: Iterable[str], excluded: set[str]) -> list[Path]:
     seen: set[str] = set()
     found: list[Path] = []
@@ -87,6 +166,7 @@ def _discover_record(
     text = content.decode("utf-8", errors="replace")
     decode_replacements = text.count("\ufffd")
     curated = config.get("curation", {}).get(rel, {})
+    doi = str(curated.get("doi") or config.get("doi_by_path", {}).get(rel, ""))
     is_lean = path.suffix.casefold() == ".lean"
     declarations = _DECL_RE.findall(text)
     theorem_count = sum(kind == "theorem" for kind, _ in declarations)
@@ -120,6 +200,20 @@ def _discover_record(
         )
     else:
         summary = "Research artifact indexed with a deterministic source fingerprint."
+    abstract = (
+        curated.get("abstract")
+        or curated.get("summary")
+        or _extract_abstract(text, summary)
+    )
+    repository = str(config.get("repository") or "")
+    source_url = _repository_file_url(repository, rel)
+    paper_target = str(curated.get("paper_target") or "")
+    if doi:
+        paper_url = f"https://doi.org/{quote(doi, safe='./')}"
+    elif paper_target:
+        paper_url = _repository_file_url(repository, paper_target)
+    else:
+        paper_url = source_url
     type_tag = "lean4" if is_lean else path.suffix.casefold().lstrip(".") or "artifact"
     tags = tuple(
         sorted(
@@ -141,13 +235,16 @@ def _discover_record(
         tier=tier,
         visibility=curated.get("visibility", config.get("default_visibility", "public")),
         source_sha256=_sha256_bytes(content),
+        abstract=abstract,
+        source_url=source_url,
+        paper_url=paper_url,
         theorem_count=theorem_count,
         lemma_count=lemma_count,
         definition_count=definition_count,
         line_count=len(text.splitlines()),
         imports=tuple(sorted(_IMPORT_RE.findall(text))),
         tags=tags,
-        doi=curated.get("doi", ""),
+        doi=doi,
         lean_module=(
             curated.get("lean_module")
             or (namespaces[0] if namespaces else path.stem)

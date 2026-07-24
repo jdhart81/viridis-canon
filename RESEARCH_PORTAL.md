@@ -24,11 +24,23 @@ python3 -m http.server 8080 --directory docs
 
 Then open `http://127.0.0.1:8080`.
 
+The public explorer includes:
+
+- a deterministic, interactive research graph grouped by spine, flagship, and
+  working-corpus tiers, with import and topic relationships;
+- a readable abstract on every public record;
+- a direct paper link when a DOI or curated paper target exists; and
+- a full-source link for records whose public research artifact is the Lean
+  module itself.
+
 ## Machine interface
 
 GitHub Pages exposes `data/catalog.json`. The document and every record carry
 SHA-256 digests over canonical JSON. Consumers can recompute these using
-`canon_core.canonical`.
+`canon_core.canonical`. Each public record also carries `abstract`,
+`source_url`, and `paper_url`. When a distinct paper has not been deposited,
+`paper_url` deliberately resolves to the complete public source artifact rather
+than inventing a publication.
 
 The catalog keeps three distinctions visible:
 

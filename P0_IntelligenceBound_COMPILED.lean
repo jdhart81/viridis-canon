@@ -12,6 +12,8 @@ Mathlib version: f897ebcf72cd16f89ab4577d0c826cd14afaafc7
 Co-authored-by: Aristotle (Harmonic) <aristotle-harmonic@harmonic.fun>
 -/
 
+import Mathlib
+
 /-! ## v8 FRAMING CORRECTION (2026-06-16) — read the thermodynamic branch on the
 ERASURE / MAINTENANCE side, not the acquisition side. k_B T ln 2 is NOT a floor on
 *acquiring* a bit (no Landauer floor on acquisition — Wolpert); it IS the floor on
@@ -60,8 +62,6 @@ Implications for Biosphere Information" (Hart 2025).
 * [J. Kaplan et al., *Scaling Laws for Neural Language Models*][kaplan2020]
 * [J. Hoffmann et al., *Training Compute-Optimal Large Language Models*][hoffmann2022]
 -/
-
-import Mathlib
 
 set_option linter.mathlibStandardSet false
 

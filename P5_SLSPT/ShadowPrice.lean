@@ -2,7 +2,7 @@ import Mathlib
 
 /-! # Shadow Price Function — Thermodynamic Speed Limit Theory
 
-The shadow price function is `p(σ) = d² / (A · τ · σ�)` where `d, A, τ, σ` are positive reals.
+The shadow price function is `p(σ) = d² / (A · τ · σ²)` where `d, A, τ, σ` are positive reals.
 We prove four key properties establishing the quadratic divergence (Performance Cliff Theorem).
 -/
 

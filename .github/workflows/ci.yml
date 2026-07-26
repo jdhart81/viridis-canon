@@ -1,11 +1,9 @@
 name: viridis-canon-ci
 
-# Integrity Release v9.1.0 — enforcing CI. Two jobs:
-#   verify     — fast, BLOCKING, compiler-independent integrity gates.
-#   lean-build — full Lean build + AxiomAudit, PROVISIONALLY non-blocking
-#                (continue-on-error) until validated on a real run; once green,
-#                remove continue-on-error to make the axiom allowlist blocking.
-# Branch-protect `main` to require the `verify` job.
+# Integrity Release v10.2.0 — enforcing CI. Both jobs are blocking:
+#   verify     — fast, compiler-independent integrity gates.
+#   lean-build — full Lean build + AxiomAudit.
+# Branch-protect `main` to require both jobs.
 
 on:
   push:
@@ -36,7 +34,6 @@ jobs:
   lean-build:
     runs-on: ubuntu-latest
     timeout-minutes: 90
-    continue-on-error: true   # provisional: AxiomAudit.lean not yet validated on a real runner.
     steps:
       - uses: actions/checkout@v4
 

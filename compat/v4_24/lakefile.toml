@@ -1,0 +1,20 @@
+name = "ViridisP0Compat"
+defaultTargets = ["P0_IntelligenceBound_COMPILED", "P0AxiomAudit"]
+
+[leanOptions]
+autoImplicit = false
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "f897ebcf72cd16f89ab4577d0c826cd14afaafc7"
+
+[[lean_lib]]
+name = "P0_IntelligenceBound_COMPILED"
+srcDir = "../.."
+globs = ["P0_IntelligenceBound_COMPILED"]
+
+[[lean_lib]]
+name = "P0AxiomAudit"
+srcDir = "../.."
+globs = ["P0AxiomAudit"]

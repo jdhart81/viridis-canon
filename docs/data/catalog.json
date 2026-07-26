@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "6c2e8cb0210409d841e4cb176f8b6e481c681666955d404e60efe34de18affbf",
+  "catalog_digest": "91346efa0048460e249192607112fd927d5ac8a038b94fdc7f8720607ef1a581",
   "concept_doi": "10.5281/zenodo.19317982",
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "human_publish_gate": true,
@@ -88,7 +88,7 @@
       "abstract": "The planetary Landauer dual linking biosphere productivity to the Intelligence Bound.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 3,
-      "digest": "ccab72dde0bee88b4506a7baf2b011b6963ae4397b18c7322c188ef69c819ab6",
+      "digest": "ae6f4b313f440ff26120d3ad9a1402d0ac4dd71b30fa8fe5996f26ebeefbad2b",
       "doi": "10.5281/zenodo.20777118",
       "external_validation": "not-recorded",
       "imports": [
@@ -107,7 +107,7 @@
       "paper_url": "https://doi.org/10.5281/zenodo.20777118",
       "path": "Bridge_BiosphereProductivity.lean",
       "record_id": "biosphere-productivity-bridge",
-      "source_sha256": "c74329a81b1c036d414735afc70b976499148ef1fbeffe0afd7e07ad973e2da7",
+      "source_sha256": "7eeeaecbd866eabf497dcdbbcda480510df9fa58dab8e969354911a19f04c01a",
       "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/Bridge_BiosphereProductivity.lean",
       "status": "working",
       "summary": "The planetary Landauer dual linking biosphere productivity to the Intelligence Bound.",

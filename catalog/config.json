@@ -109,7 +109,8 @@
     }
   },
   "exclude": [
-    "AxiomAudit.lean"
+    "AxiomAudit.lean",
+    "P0AxiomAudit.lean"
   ],
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "include": [

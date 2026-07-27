@@ -19,8 +19,12 @@ assumptions**, what is **NOT established**, and a **status label** from
 > requires data to validate · **Conjecture** = stated, not proved · **Exploratory**
 > = quarantined, not part of the verified spine.
 
-Last updated: 2026-06-21 (Integrity Release v9.1.0). Module/line references are to
-`01_MATHLIB/Aristotle-Pipeline/`.
+Last updated: 2026-07-26. Module/line references are to the public repository.
+
+**Coverage boundary.** This matrix audits the headline foundation, flagship,
+bridge, and quarantined results listed below. It is not yet a row-by-row audit
+of every record in the 76-record catalog. A record absent from this matrix does
+not inherit a stronger claim status by omission.
 
 ---
 
@@ -39,6 +43,13 @@ an empirical-modeling problem, not a theorem.
 ---
 
 ## P0 — Intelligence Bound (erasure-side footing, post-Wolpert)
+
+**Reproducibility update (2026-07-26).** Aristotle project
+`ba3dccd5-5c4d-4845-84f7-46aa24cd835b` independently reconstructed five proof
+bodies while preserving all 47 declaration signatures and non-proof content.
+The pinned Lean 4.24 / Mathlib `f897ebcf72cd16f89ab4577d0c826cd14afaafc7`
+build and the unchanged 72-declaration P0 axiom audit pass in required CI. This
+repairs reproducibility; it does not upgrade any interpretive claim below.
 
 | Result | Exact Lean conclusion | Required assumptions | NOT established | Status |
 |---|---|---|---|---|

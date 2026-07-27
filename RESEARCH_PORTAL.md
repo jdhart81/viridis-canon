@@ -50,6 +50,13 @@ The catalog keeps three distinctions visible:
 
 Those fields must not be collapsed into a single "truth" score.
 
+External validation is recorded separately from repository traffic. A reader
+who reproduces a build, finds a counterexample, cites a result, or tests an
+empirical interpretation can submit a structured
+[external-validation report](https://github.com/jdhart81/viridis-canon/issues/new?template=external-validation.yml).
+See [`EXTERNAL_VALIDATION.md`](./EXTERNAL_VALIDATION.md) for the evidence
+ladder and the current no-inference boundary.
+
 ## Indexing the broader private research estate
 
 `catalog/viridis-workspace.example.json` is an allowlisted starting point for
@@ -68,6 +75,13 @@ python3 -m canon_core build \
 The generated private catalog should remain outside the public repository.
 Promoting a record requires a curated public configuration plus the rights,
 significance, provenance, and human publication gates.
+
+## Reproduce the formal artifacts
+
+[`REPRODUCE.md`](./REPRODUCE.md) separates the current Lean 4.28 corpus build
+from the historical Lean 4.24 P0 build and lists the expected audit markers.
+Failed reproductions are evidence and should be reported through the same
+external-validation pathway as successful ones.
 
 ## Human workflow
 

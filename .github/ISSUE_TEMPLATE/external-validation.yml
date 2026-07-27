@@ -1,0 +1,67 @@
+name: External validation or reproduction
+description: Report an independent reproduction, critique, citation, empirical test, or institutional pilot.
+title: "[external validation] "
+labels:
+  - external-validation
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for testing the Viridis research corpus. Positive, negative,
+        and inconclusive results are all useful. This report does not imply that
+        Viridis will classify the evidence above the level it directly supports.
+  - type: dropdown
+    id: evidence_type
+    attributes:
+      label: Evidence type
+      options:
+        - Independent Lean reproduction
+        - Formal critique or counterexample
+        - Citation or downstream reuse
+        - Empirical test or replication
+        - Peer or expert review
+        - Institutional pilot or adoption
+    validations:
+      required: true
+  - type: input
+    id: artifact
+    attributes:
+      label: Artifact, module, or DOI
+      description: Link the exact source, commit, paper, or DOI you evaluated.
+    validations:
+      required: true
+  - type: textarea
+    id: method
+    attributes:
+      label: Method and environment
+      description: Describe the toolchain, data, protocol, or review method.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Result
+      description: State what reproduced, failed, was contradicted, or remains inconclusive.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Inspectable evidence
+      description: Add logs, code, data, citation metadata, or another durable evidence link.
+    validations:
+      required: true
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Limitations or conflicts
+      description: Note uncertainty, conflicts of interest, or limits on public disclosure.
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgement
+    attributes:
+      label: Evidence acknowledgement
+      options:
+        - label: I understand that traffic alone is not validation and that Viridis may classify this report below the claimed rung if the evidence does not support it.
+          required: true

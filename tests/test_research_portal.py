@@ -77,6 +77,20 @@ class ResearchPortalTests(unittest.TestCase):
         self.assertIn("does not manufacture empirical truth", self.index)
         self.assertIn("No autonomous minting", self.index)
 
+    def test_external_validation_path_is_public_and_inspectable(self) -> None:
+        self.assertIn("external-validation.yml", self.index)
+        for relative in (
+            "AI_USE_AND_AUTHORSHIP.md",
+            "EXTERNAL_VALIDATION.md",
+            "REPRODUCE.md",
+            ".github/ISSUE_TEMPLATE/external-validation.yml",
+        ):
+            self.assertTrue((ROOT / relative).is_file(), relative)
+        validation = (ROOT / "EXTERNAL_VALIDATION.md").read_text(encoding="utf-8")
+        self.assertIn("Traffic", validation)
+        self.assertIn("External validation", validation)
+        self.assertIn("Institutional adoption", validation)
+
     def test_portal_exposes_abstract_reader_and_full_artifacts(self) -> None:
         self.assertIn("Abstract", self.app)
         self.assertIn("Read full research artifact", self.app)

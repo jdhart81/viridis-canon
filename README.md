@@ -4,6 +4,20 @@
 
 > **What "verified" means here.** These modules are **Lean-checked conditional mathematics**: each theorem's *type* is machine-verified, but a Lean-checked theorem is not automatically a verified statement about physics, economics, or ecology. Every headline result is graded by formal strength in [`CLAIMS_MATRIX.md`](./CLAIMS_MATRIX.md) using the labels in [`THEOREM_STATUS_TAXONOMY.md`](./THEOREM_STATUS_TAXONOMY.md). Read the matrix before citing any result as established. Integrity Release **v9.1.0** (2026-06-21) quarantined P9 and de-escalated several overstated claims; see [`CHANGELOG_v9.1.0.md`](./CHANGELOG_v9.1.0.md).
 
+## Start here
+
+Viridis is an independent research program studying conditional mathematical
+connections among information, thermodynamics, learning, and living systems.
+The repository is the reproducible source, not a claim that every model
+assumption has been established in nature.
+
+- **Inspect the exact claims:** [`CLAIMS_MATRIX.md`](./CLAIMS_MATRIX.md)
+- **Reproduce current and historical builds:** [`REPRODUCE.md`](./REPRODUCE.md)
+- **Cite the stable concept:** [10.5281/zenodo.19317982](https://doi.org/10.5281/zenodo.19317982)
+- **Report a reproduction, critique, citation, or field test:** [external-validation issue](https://github.com/jdhart81/viridis-canon/issues/new?template=external-validation.yml)
+- **Understand AI use and human responsibility:** [`AI_USE_AND_AUTHORSHIP.md`](./AI_USE_AND_AUTHORSHIP.md)
+- **See the current validation boundary:** [`EXTERNAL_VALIDATION.md`](./EXTERNAL_VALIDATION.md)
+
 ## Viridis research portal
 
 This repository now includes **Viridis Canon Core**, a standard-library Python
@@ -15,7 +29,7 @@ tree by hand. Every public record includes a readable abstract and a full-paper
 or full-source action, and the research map exposes tier, import, and topic
 relationships as an interactive graph.
 
-- Public explorer: `https://jdhart81.github.io/viridis-canon/` (after Pages is enabled)
+- Public explorer: `https://jdhart81.github.io/viridis-canon/`
 - Machine interface: `https://jdhart81.github.io/viridis-canon/data/catalog.json`
 - Build and architecture: [`RESEARCH_PORTAL.md`](./RESEARCH_PORTAL.md)
 - Public/private product boundary: [`OPEN_SOURCE_BOUNDARY.md`](./OPEN_SOURCE_BOUNDARY.md)
@@ -30,7 +44,9 @@ also update a private Canon Cloud reader. It is dormant unless
 configured. Synchronization only imports the deterministic catalog; it does not
 approve records or publish research.
 
-Last updated: 2026-07-19 (v10.2.0 "The Equilibrium Wave" — EffortlessEquilibrium (EET) + PerennialCorridor (PCT) + DecoherentSelection (DST) + MutualisticAttestation (MAT) + ThermodynamicAttention (TAT) + StewardshipSetpoint (SST) promoted into the spine; see CHANGELOG_v10.2.0.md)
+Last updated: 2026-07-26 (v10.2.0 "The Equilibrium Wave"; historical P0
+reproducibility repaired without changing declaration statements, the public
+catalog regenerated, and protected-branch checks made blocking)
 Lean toolchain: leanprover/lean4:v4.28.0
 API: https://aristotle.harmonic.fun
 
@@ -40,7 +56,7 @@ API: https://aristotle.harmonic.fun
 
 | Module | File | Sorry | Status | Paper Target |
 |--------|------|-------|--------|-------------|
-| **P0** | `P0_IntelligenceBound_COMPILED.lean` | **0** | COMPILED | NJP-119954 (submitted 2026-04-05) |
+| **P0** | `P0_IntelligenceBound_COMPILED.lean` | **0** | COMPILED under its pinned Lean 4.24 / Mathlib environment and checked by required CI | Intelligence Bound flagship; external-validation status is tracked separately |
 | **P1** | `P1_DScore.lean` | **0** | COMPILED | Physical Review E (draft) |
 | **P2** | `P2_HDFM_POC.lean` | **0** | COMPILED | HDFM resubmission |
 | **P3** | `P3_Impossibility.lean` | **0** | COMPILED | 2nd canon paper (Goodhart impossibility / alignment-as-feasibility) |
@@ -61,9 +77,12 @@ API: https://aristotle.harmonic.fun
 | **DST** | `DecoherentSelection.lean` | **0** | COMPILED — **spine v10.2.0 ("the Chooser")** | Decoherent Selection Theorem — decision cost vanishes iff the pointer-basis eigenstate is selected, is bounded by ln N, and the einselected basis is the unique zero-waste choice; IB throughput speed limit on collapse. 12 thms; Run-099. |
 | **MAT** | `MutualisticAttestation.lean` | **0** | COMPILED — **spine v10.2.0 ("the Attester")** | Mutualistic Attestation Theorem — attestation cost = kBT·ln2·(residual entropy); certification feedback has fold bistability (trap/mutualism stable states); optimal confidence is interior. 19 thms; Run-100 (100th nightly-run milestone). |
 | **TAT** | `ThermodynamicAttention.lean` | **0** | COMPILED — **spine v10.2.0 ("the Attuner")** | Thermodynamic Attention Theorem — the rational-inattention shadow price equals the Landauer quantum kBT; attention water-fills the einselected slow basis per KKT; Inattention Trap below a resolvability threshold C_crit. 12 thms; Run-101. |
-| **SST** | `StewardshipSetpoint.lean` | **0** | COMPILED — **spine v10.2.0 ("the Steward")** | Stewardship Setpoint Theorem — golden-rule sustainable ceiling for a living renewable stock (dD/dt=g(D)-phi*H); Tragedy collapse for phi*Omega>rho; act-budget twin of TAT. First-ever [01] Intelligence Bound x [target] Stewardship pairing. 13 thms; Run-102. |
+| **SST** | `StewardshipSetpoint.lean` | **0** | COMPILED — **spine v10.2.0 ("the Steward")** | Stewardship Setpoint Theorem — golden-rule sustainable ceiling for a living renewable stock (dD/dt=g(D)-phi*H); Tragedy collapse for phi*Omega>rho; act-budget twin of TAT. 13 thms; Run-102. |
 
-**ALL MODULES ZERO SORRY. 8/9 canon + PSIT + EcoChain_DendriticCorridor + Book_HeatAndDisorder (12 thms) compiled. Full stack: physics → information theory → intelligence bound → biodiversity metric → graph optimality → planetary-conservation impossibility → thermodynamic economics → plasma N₂ fixation.** _(The AI-safety module P9 is **EXPLORATORY — quarantined in v9.1.0** and is NOT part of the verified stack.)_
+The protected `main` branch requires the repository hygiene check, the current
+Lean build and axiom audit, the pinned historical P0 build and audit, and the
+deterministic catalog check. P9 remains **EXPLORATORY — quarantined** and is not
+part of the verified spine.
 
 ### Bridge Theorems (cross-canon results)
 
@@ -118,7 +137,14 @@ All compiled modules depend only on:
 - `Classical.choice` — axiom of choice
 - `Quot.sound` — quotient soundness
 
-**Enforcement (v9.1.0).** This allowlist is no longer a claim in prose — it is enforced. `AxiomAudit.lean` is a build target that walks the environment, collects the axioms of every verified-spine declaration, and **throws (fails `lake build`)** on any axiom outside the three above or on `sorryAx`. CI additionally runs `tools/check_spine_hygiene.sh` (no `sorry`/`admit`/homemade axioms) and `tools/vacuity_lint.py` (no ⊤-witness / `absurd … not_top_lt` vacuity). **CI status (v9.1.1):** the textual integrity gates — `check_spine_hygiene.sh` (no `sorry`/`admit`/homemade axioms), `vacuity_lint.py`, and integrity-docs presence, all driven by `SPINE_MANIFEST.txt` across **every** default-target module incl. P5/P7 — are **BLOCKING** (the `verify` job). The full Lean build + `AxiomAudit` are **PROVISIONAL** (`continue-on-error`) until validated on GitHub Actions, then made blocking. See `.github/workflows/ci.yml`, `CHANGELOG_v9.1.0.md`, `CHANGELOG_v9.1.1.md`.
+**Enforcement.** This allowlist is no longer a claim in prose — it is enforced.
+`AxiomAudit.lean` and `P0AxiomAudit.lean` walk the relevant environments and
+fail on any axiom outside the three above or on `sorryAx`. Protected `main`
+requires four GitHub Actions checks: `verify`, `lean-build-current`,
+`lean-build-p0`, and `verify-catalog`. The checks cover spine hygiene,
+non-vacuity, both current and historical Lean builds, both axiom audits, and the
+deterministic public catalog. See `.github/workflows/ci.yml` and
+`.github/workflows/research-portal.yml`.
 
 No sorry, no native_decide on nontrivial terms, no escape hatches.
 
@@ -126,13 +152,15 @@ No sorry, no native_decide on nontrivial terms, no escape hatches.
 
 ## Workflow: Adding New Aristotle Outputs
 
-1. Justin drops new Aristotle output folders into `new leans/` in the workspace root
-2. Claude reviews: diff against current versions, verify zero sorry, check axiom set
-3. Archive the old sorry version into `_pre-aristotle-drafts/`
-4. Promote the new compiled .lean file into this directory
-5. Copy the Aristotle summary into `_pre-aristotle-drafts/` for provenance
-6. Update this README's status table
-7. Update the Formal Invariant Structure document (v1.0+) if new theorems added
+1. Preserve the exact Aristotle output and project identifier.
+2. Reconcile the paper to the final proof and separate formal, numeric, assumed,
+   and empirical claims.
+3. Route the result through the five-gate Spine Admission Test; the default
+   destination is a thematic series or standalone record.
+4. Open a pull request containing the Lean source, Aristotle summary, DOI map,
+   series index, and regenerated catalog.
+5. Merge only after the protected checks pass. Zenodo publication remains a
+   separate explicit human decision and must close in the same release receipt.
 
 ---
 
@@ -151,5 +179,5 @@ P9 note (corrected v9.1.0): `ai_conservation_alignment` is **vacuous** — it is
 
 - **Formal Invariant Structure:** `Viridis_Formal_Invariant_Structure_v1.0.docx` (workspace root)
 - **Zenodo DOI:** 10.5281/zenodo.19317983 (P0 formalization)
-- **NJP Submission:** Manuscript ID NJP-119954 (Intelligence Bound paper)
+- **Historical submission record:** NJP-119954 (current venue status is not inferred here)
 - **Obsidian Log:** Inbox/Intelligence Bound/2026-04-05_Viridis-Formal-Invariant-Structure-v10-Day-One.md

@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "91346efa0048460e249192607112fd927d5ac8a038b94fdc7f8720607ef1a581",
+  "catalog_digest": "556da19de444c460454c105a6963a4bebfc0ddfb8e06a700fa0004c0d592963f",
   "concept_doi": "10.5281/zenodo.19317982",
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "human_publish_gate": true,
@@ -1100,7 +1100,7 @@
       "abstract": "The formal spine: a thermodynamic ceiling on intelligence production under finite power.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 23,
-      "digest": "c91b2d9326dfafce14c305c03a3908b5908593285821b4f325f6f755980963c4",
+      "digest": "7b8ab0bb1521b457075551d17606364fb8ab4e87a28895e746dc3bb58519c9ff",
       "doi": "10.5281/zenodo.19317982",
       "external_validation": "not-recorded",
       "imports": [
@@ -1109,7 +1109,7 @@
       "integrity": "gate-passed",
       "lean_module": "P0_IntelligenceBound_COMPILED",
       "lemma_count": 11,
-      "line_count": 622,
+      "line_count": 636,
       "metadata": {
         "aristotle_id": "",
         "artifact_type": "lean4",
@@ -1119,7 +1119,7 @@
       "paper_url": "https://doi.org/10.5281/zenodo.19317982",
       "path": "P0_IntelligenceBound_COMPILED.lean",
       "record_id": "intelligence-bound",
-      "source_sha256": "f3527a6e44d38a63dfa0a638a1f02cee191e26b7e257a76e58ba523f2a181b79",
+      "source_sha256": "3f192275ee326f0fb2cf2dca3b4d97146044b3b12fca28ff18e07914fb4d9130",
       "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P0_IntelligenceBound_COMPILED.lean",
       "status": "verified",
       "summary": "The formal spine: a thermodynamic ceiling on intelligence production under finite power.",

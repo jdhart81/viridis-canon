@@ -1,8 +1,9 @@
 # Canonical verified-spine manifest (v10.2.0). One Lean source path per line.
 # Single source of truth for the integrity gates: tools/check_spine_hygiene.sh,
-# the CI vacuity linter, and (kept in sync) AxiomAudit.lean's import/module list.
-# Mirrors lakefile.toml defaultTargets MINUS the quarantined P9. AxiomAudit.lean
-# is the auditor, not audited, so it is intentionally absent.
+# the CI vacuity linter, and the two toolchain-specific axiom audits.
+# P0 is compiled/audited under compat/v4_24; the remaining entries mirror the
+# root lakefile.toml defaultTargets minus the quarantined P9. Audit source files
+# are auditors, not audited, so they are intentionally absent.
 P0_IntelligenceBound_COMPILED.lean
 P1_DScore.lean
 P2_HDFM_POC.lean

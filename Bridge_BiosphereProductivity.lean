@@ -70,13 +70,13 @@ Acceptance criteria:
     (no `True`, no `∃ x, x = formula` shells).
 -/
 
+import Mathlib
+
 /-! ## v8 FRAMING CORRECTION (2026-06-16) — both sides of this duality are the COST
 (maintenance/erasure) side of the ledger. The "Intelligence Bound" side is read as
 the cost of maintaining heritable predictive information (Landauer-valid), NOT as a
 floor on acquisition (Wolpert). This makes the correspondence with Turyshev's NPP
 bound exact on the heritable-information cost ledger. Theorem statements UNCHANGED. -/
-
-import Mathlib
 
 set_option linter.mathlibStandardSet false
 open scoped BigOperators Real Nat Pointwise

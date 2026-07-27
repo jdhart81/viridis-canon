@@ -1,6 +1,7 @@
 name = "ViridisCanon"
+# P0 retains its declared Lean 4.24 / Mathlib f897 toolchain and is built by
+# compat/v4_24. All other default targets use the current 4.28 toolchain.
 defaultTargets = [
-  "P0_IntelligenceBound_COMPILED",
   "P1_DScore",
   "P2_HDFM_POC",
   "P3_Impossibility",
@@ -42,10 +43,6 @@ autoImplicit = false
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"
-
-[[lean_lib]]
-name = "P0_IntelligenceBound_COMPILED"
-globs = ["P0_IntelligenceBound_COMPILED"]
 
 [[lean_lib]]
 name = "P1_DScore"

@@ -1,11 +1,10 @@
 name: viridis-canon-ci
 
-# Integrity Release v9.1.0 — enforcing CI. Two jobs:
-#   verify     — fast, BLOCKING, compiler-independent integrity gates.
-#   lean-build — full Lean build + AxiomAudit, PROVISIONALLY non-blocking
-#                (continue-on-error) until validated on a real run; once green,
-#                remove continue-on-error to make the axiom allowlist blocking.
-# Branch-protect `main` to require the `verify` job.
+# Integrity Release v10.2.0 — enforcing CI. All jobs are blocking:
+#   verify             — fast, compiler-independent integrity gates.
+#   lean-build-current — Lean 4.28 spine/series build + current axiom audit.
+#   lean-build-p0      — historical P0 under its declared 4.24/f897 toolchain.
+# Branch-protect `main` to require all three jobs plus verify-catalog.
 
 on:
   push:
@@ -33,10 +32,9 @@ jobs:
       - name: Integrity docs present
         run: test -f CLAIMS_MATRIX.md && test -f THEOREM_STATUS_TAXONOMY.md
 
-  lean-build:
+  lean-build-current:
     runs-on: ubuntu-latest
     timeout-minutes: 90
-    continue-on-error: true   # provisional: AxiomAudit.lean not yet validated on a real runner.
     steps:
       - uses: actions/checkout@v4
 
@@ -49,7 +47,7 @@ jobs:
       - name: Mathlib cache
         run: lake exe cache get || true
 
-      - name: lake build (spine + AxiomAudit)
+      - name: lake build (current-toolchain spine + series + AxiomAudit)
         run: set -o pipefail; lake build 2>&1 | tee build.log
 
       - name: No 'sorry' in build output (INV-1, compiler-level)
@@ -64,3 +62,37 @@ jobs:
           grep -q "Axiom audit PASSED" build.log \
             || { echo "::error::AxiomAudit did not report PASSED"; exit 1; }
           echo "axiom allowlist enforced"
+
+  lean-build-p0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: compat/v4_24
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install elan / Lean
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Historical Mathlib cache
+        run: lake exe cache get || true
+
+      - name: Build and audit historical P0
+        run: set -o pipefail; lake build 2>&1 | tee build.log
+
+      - name: No 'sorry' in P0 build output (INV-1)
+        run: |
+          if grep -nE "declaration uses 'sorry'|sorryAx" build.log; then
+            echo "::error::P0 build emitted a sorry — failing"; exit 1
+          fi
+          echo "no sorry in P0 build output"
+
+      - name: Confirm P0 axiom audit ran (INV-3)
+        run: |
+          grep -q "P0 axiom audit PASSED" build.log \
+            || { echo "::error::P0AxiomAudit did not report PASSED"; exit 1; }
+          echo "P0 axiom allowlist enforced"

@@ -12,6 +12,8 @@ Mathlib version: f897ebcf72cd16f89ab4577d0c826cd14afaafc7
 Co-authored-by: Aristotle (Harmonic) <aristotle-harmonic@harmonic.fun>
 -/
 
+import Mathlib
+
 /-! ## v8 FRAMING CORRECTION (2026-06-16) — read the thermodynamic branch on the
 ERASURE / MAINTENANCE side, not the acquisition side. k_B T ln 2 is NOT a floor on
 *acquiring* a bit (no Landauer floor on acquisition — Wolpert); it IS the floor on
@@ -60,8 +62,6 @@ Implications for Biosphere Information" (Hart 2025).
 * [J. Kaplan et al., *Scaling Laws for Neural Language Models*][kaplan2020]
 * [J. Hoffmann et al., *Training Compute-Optimal Large Language Models*][hoffmann2022]
 -/
-
-import Mathlib
 
 set_option linter.mathlibStandardSet false
 
@@ -229,32 +229,39 @@ lemma indep_self_implies_indep_any {Ω A B : Type*} [MeasurableSpace Ω]
     [MeasurableSpace A] [MeasurableSpace B] (μ : Measure Ω)
     [IsProbabilityMeasure μ] (X : Ω → A) (Y : Ω → B)
     (hY : IndepFun Y Y μ) : IndepFun X Y μ := by
-  rw [ProbabilityTheory.indepFun_iff_measure_inter_preimage_eq_mul] at *
+  rw [ProbabilityTheory.indepFun_iff_measure_inter_preimage_eq_mul] at hY ⊢
   have hY_const : ∀ s : Set B, MeasurableSet s →
       μ (Y ⁻¹' s) = 0 ∨ μ (Y ⁻¹' s) = 1 := by
     intro s hs
     have h_eq : μ (Y ⁻¹' s) = μ (Y ⁻¹' s) * μ (Y ⁻¹' s) := by
       simpa using hY s s hs hs
-    by_cases h : μ (Y ⁻¹' s) = 0 <;> simp +decide [h] at h_eq ⊢
-    rw [← ENNReal.toReal_eq_toReal] at * <;> norm_num at *
-    · exact mul_left_cancel₀ h <| by linarith
-    · exact ENNReal.mul_ne_top (MeasureTheory.measure_ne_top _ _)
-        (MeasureTheory.measure_ne_top _ _)
+    have hfin : μ (Y ⁻¹' s) ≠ ⊤ := MeasureTheory.measure_ne_top μ _
+    by_cases hzero : μ (Y ⁻¹' s) = 0
+    · exact Or.inl hzero
+    · right
+      have hreal_pos : 0 < (μ (Y ⁻¹' s)).toReal :=
+        ENNReal.toReal_pos hzero hfin
+      have hreal_eq := congrArg ENNReal.toReal h_eq
+      simp only [ENNReal.toReal_mul] at hreal_eq
+      apply (ENNReal.toReal_eq_toReal hfin ENNReal.one_ne_top).mp
+      simp only [ENNReal.toReal_one]
+      nlinarith
   intro s t hs ht
-  cases hY_const t ht <;>
-    simp_all +decide [Set.inter_comm,
-      MeasureTheory.measure_inter_add_diff]
-  · exact MeasureTheory.measure_mono_null
-      (fun x => by aesop) ‹μ (Y ⁻¹' t) = 0›
-  · have hY_const : μ (Y ⁻¹' tᶜ) = 0 := by
-      have := hY t tᶜ ht ht.compl
-      simp_all +decide [Set.preimage]
-      simp_all +decide [Set.inter_comm, Set.inter_def]
-    rw [MeasureTheory.measure_congr, MeasureTheory.ae_eq_set]
-    exact ⟨by rw [show (X ⁻¹' s ∩ Y ⁻¹' t) \ X ⁻¹' s = ∅ by ext; aesop]
-      simp +decide,
-      by exact MeasureTheory.measure_mono_null
-        (fun x => by aesop) hY_const⟩
+  rcases hY_const t ht with ht0 | ht1
+  · rw [ht0, mul_zero]
+    exact MeasureTheory.measure_mono_null Set.inter_subset_right ht0
+  · rw [ht1, mul_one]
+    apply MeasureTheory.measure_congr
+    rw [MeasureTheory.ae_eq_set]
+    constructor
+    · rw [show (X ⁻¹' s ∩ Y ⁻¹' t) \ X ⁻¹' s = ∅ by ext x; simp; tauto]
+      exact MeasureTheory.measure_empty
+    · have htcompl : μ (Y ⁻¹' tᶜ) = 0 := by
+        have h := hY t tᶜ ht ht.compl
+        rw [show Y ⁻¹' t ∩ Y ⁻¹' tᶜ = ∅ by ext; simp,
+          MeasureTheory.measure_empty, ht1, one_mul] at h
+        exact h.symm
+      exact MeasureTheory.measure_mono_null (by intro x hx; simp_all) htcompl
 
 /-- Mutual information is zero iff X and Y are independent.
     Forward direction uses Mathlib's `klDiv_eq_zero_iff` (Gibbs' inequality)
@@ -265,15 +272,9 @@ lemma mutualInformation_eq_zero_iff_indep {Ω A B : Type*}
     (μ : Measure Ω) [IsFiniteMeasure μ] (X : Ω → A) (Y : Ω → B)
     (hX : AEMeasurable X μ) (hY : AEMeasurable Y μ) :
     mutualInformation μ X Y = 0 ↔ IndepFun X Y μ := by
-  rw [mutualInformation]
-  constructor
-  · intro h
-    -- klDiv = 0 → measures are equal (Gibbs' inequality, via Mathlib)
-    rw [klDiv_eq_zero_iff.mp h]
-    rwa [indepFun_iff_map_prod_eq_prod_map_map]
-  · intro h_ind
-    rw [(indepFun_iff_map_prod_eq_prod_map_map.mp h_ind)]
-    exact klDiv_self _
+  unfold mutualInformation
+  rw [InformationTheory.klDiv_eq_zero_iff,
+    ProbabilityTheory.indepFun_iff_map_prod_eq_prod_map_map hX hY]
 
 /-- Entropy is zero iff the variable is independent of itself. -/
 lemma entropy_eq_zero_iff_indep_self {Ω A : Type*} [MeasurableSpace Ω]
@@ -417,24 +418,26 @@ def criticalPower (ρ B : ENNReal) (T kB : NNReal) : ENNReal :=
 lemma thermodynamic_factor_pos_finite (T kB : NNReal)
     (h_kB_pos : 0 < kB) (h_T_pos : 0 < T) :
     0 < thermodynamicFactor T kB ∧ thermodynamicFactor T kB ≠ ⊤ := by
-  exact ⟨by rw [thermodynamicFactor]
-    exact ENNReal.ofReal_pos.mpr (by exact mul_pos (mul_pos h_kB_pos h_T_pos)
-      (Real.log_pos one_lt_two)),
-    by rw [thermodynamicFactor]; exact ENNReal.ofReal_ne_top⟩
+  constructor
+  · rw [thermodynamicFactor]
+    exact ENNReal.ofReal_pos.mpr (mul_pos
+      (mul_pos (NNReal.coe_pos.mpr h_kB_pos) (NNReal.coe_pos.mpr h_T_pos))
+      (Real.log_pos one_lt_two))
+  · rw [thermodynamicFactor]
+    exact ENNReal.ofReal_ne_top
 
 /-- Phase transition algebra: min(a, b/k) resolves by comparing b to a·k. -/
 theorem phase_transition_algebra (ρB P_enn K : ENNReal)
     (hK0 : K ≠ 0) (hKt : K ≠ ⊤) :
     (P_enn < ρB * K → min ρB (P_enn / K) = P_enn / K) ∧
     (P_enn ≥ ρB * K → min ρB (P_enn / K) = ρB) := by
-  constructor <;> intro h <;> rw [ENNReal.div_eq_inv_mul] at *
-  · rw [min_eq_right, ← ENNReal.div_eq_inv_mul, ENNReal.div_le_iff_le_mul]
-    · exact le_of_lt h
-    · aesop
-    · tauto
-  · rw [min_eq_left]
-    convert mul_le_mul_left' h (K⁻¹) using 1; ring
-    rw [mul_right_comm, ENNReal.inv_mul_cancel hK0 hKt, one_mul]
+  constructor
+  · intro h
+    apply min_eq_right
+    exact (ENNReal.div_le_iff_le_mul (Or.inl hK0) (Or.inl hKt)).2 (le_of_lt h)
+  · intro h
+    apply min_eq_left
+    exact (ENNReal.le_div_iff_mul_le (Or.inl hK0) (Or.inl hKt)).2 h
 
 /-- Data-limited regime: P ≥ P*. -/
 def IsDataLimited (ρ B : ENNReal) (P T kB : NNReal) : Prop :=
@@ -538,32 +541,43 @@ theorem conditional_conservation_core
       (r_P * initialPot * T : ENNReal) >
       ENNReal.ofReal ((r_E : ℝ) * (initialPot : ℝ) *
         ((1 - Real.exp (-(degRate : ℝ) * (T : ℝ))) / (degRate : ℝ))) := by
-  suffices h_div : ∃ T₀ : NNReal, ∀ T > T₀,
-      (r_P : ENNReal) * T > ENNReal.ofReal ((r_E : ℝ) *
-        ((1 - Real.exp (-(degRate : ℝ) * (T : ℝ))) / (degRate : ℝ))) by
-    simp_all +decide [mul_assoc, mul_comm, mul_left_comm]
-    convert h_div using 3; ring
-    rw [mul_assoc, mul_assoc, ENNReal.mul_lt_mul_left] <;> aesop
-  obtain ⟨T₀, hT₀⟩ : ∃ T₀ : NNReal, ∀ T > T₀,
-      (r_P : ENNReal) * T > ENNReal.ofReal (r_E / degRate) := by
-    have h_lim : Filter.Tendsto (fun T : NNReal => (r_P : ENNReal) * T)
-        Filter.atTop (nhds ⊤) := by
-      rw [ENNReal.tendsto_nhds_top_iff_nnreal]
-      intro x; exact Filter.eventually_atTop.mpr
-        ⟨⟨x / r_P + 1, by positivity⟩, fun a ha => by
-          exact_mod_cast (by nlinarith [
-            show (r_P : ℝ) > 0 from NNReal.coe_pos.mpr h_preserve_pos,
-            show (a : ℝ) ≥ x / r_P + 1 from mod_cast ha,
-            mul_div_cancel₀ (x : ℝ)
-              (ne_of_gt (NNReal.coe_pos.mpr h_preserve_pos))] :
-            (x : ℝ) < r_P * a)⟩
-    rw [ENNReal.tendsto_nhds_top_iff_nnreal] at h_lim
-    rcases Filter.eventually_atTop.mp
-      (h_lim (ENNReal.toNNReal (ENNReal.ofReal (r_E / degRate)))) with ⟨T₀, hT₀⟩
-    exact ⟨T₀, fun T hT => by simpa [ENNReal.ofReal] using hT₀ T hT.le⟩
-  refine' ⟨T₀, fun T hT => lt_of_le_of_lt _ (hT₀ T hT)⟩
-  gcongr; ring_nf; norm_num [h_deg_pos.ne']
-  positivity
+  let T₀ : NNReal := r_E / (r_P * degRate) + 1
+  refine ⟨T₀, fun T hT => ?_⟩
+  have hdeg : (0 : ℝ) < degRate := NNReal.coe_pos.mpr h_deg_pos
+  have hinit : (0 : ℝ) < initialPot := NNReal.coe_pos.mpr h_init_pos
+  have hrp : (0 : ℝ) < r_P := NNReal.coe_pos.mpr h_preserve_pos
+  have hlinear : (r_E : ℝ) * initialPot / degRate <
+      (r_P : ℝ) * initialPot * T := by
+    have hTreal : (r_E : ℝ) / ((r_P : ℝ) * degRate) + 1 < T := by
+      exact_mod_cast hT
+    have hden : 0 < (r_P : ℝ) * degRate := mul_pos hrp hdeg
+    have hprod : (r_E : ℝ) < (r_P : ℝ) * degRate * T := by
+      have := (div_lt_iff₀ hden).mp (lt_trans (lt_add_one _) hTreal)
+      nlinarith
+    apply (div_lt_iff₀ hdeg).2
+    nlinarith
+  have hre : (0 : ℝ) ≤ r_E := NNReal.coe_nonneg r_E
+  have hexp : 0 ≤ Real.exp (-(degRate : ℝ) * (T : ℝ)) :=
+    (Real.exp_pos _).le
+  have hn : (r_E : ℝ) * initialPot *
+      (1 - Real.exp (-(degRate : ℝ) * (T : ℝ))) ≤
+      (r_E : ℝ) * initialPot := by
+    nlinarith [mul_nonneg hre (le_of_lt hinit)]
+  have hexploit : (r_E : ℝ) * initialPot *
+      ((1 - Real.exp (-(degRate : ℝ) * (T : ℝ))) / degRate) ≤
+      (r_E : ℝ) * initialPot / degRate := by
+    calc
+      _ = ((r_E : ℝ) * initialPot *
+          (1 - Real.exp (-(degRate : ℝ) * (T : ℝ)))) / degRate := by ring
+      _ ≤ ((r_E : ℝ) * initialPot) / degRate :=
+        (div_le_div_iff_of_pos_right hdeg).2 hn
+      _ = _ := by ring
+  have hupper_nonneg : 0 ≤ (r_E : ℝ) * initialPot / degRate := by positivity
+  refine lt_of_le_of_lt (ENNReal.ofReal_le_ofReal hexploit) ?_
+  change ENNReal.ofReal ((r_E : ℝ) * initialPot / degRate) <
+    ((↑(r_P * initialPot * T) : ENNReal))
+  rw [ENNReal.ofReal_lt_coe_iff hupper_nonneg]
+  exact_mod_cast hlinear
 
 /-- Helper to construct a `BiosphereScenario`. -/
 def makeScenario (degRate initialPot r_E r_P : NNReal)

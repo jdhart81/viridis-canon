@@ -4,24 +4,22 @@ Copyright (c) 2026 Justin Hart, Viridis LLC. Released under Apache 2.0.
 # AxiomAudit — ENFORCING axiom allowlist for the Viridis Canon spine (INV-3)
 
 This is a build target. Building it walks the environment, finds every
-declaration that originates in a verified-spine module, collects the axioms each
-one depends on, and **throws** (failing `lake build`) if any declaration depends
-on an axiom outside the allowlist `{propext, Classical.choice, Quot.sound}` — or
-on `sorryAx` (i.e. a `sorry`). It is name-free: it does not enumerate theorem
-names, so it cannot silently miss a theorem and is robust to namespaces.
+declaration that originates in a current-toolchain verified-spine module,
+collects the axioms each one depends on, and **throws** (failing `lake build`) if
+any declaration depends on an axiom outside the allowlist
+`{propext, Classical.choice, Quot.sound}` — or on `sorryAx` (i.e. a `sorry`). It
+is name-free: it does not enumerate theorem names, so it cannot silently miss a
+theorem and is robust to namespaces.
 
-Replaces the previous informational "axiom audit" step that only printed a
-message. If a declaration sneaks in a `sorry` or an extra axiom, CI goes red.
-
-NB: this is the one file in v9.1.0 that has not been locally compiled (no Lean
-toolchain in the authoring sandbox). It uses only stable `Lean` APIs; validate on
-the first CI run and adjust the three flagged API calls if the pinned toolchain
-differs. The shell gates in `.github/workflows/ci.yml` enforce the no-`sorry`
-property independently, so enforcement does not rest on this file alone.
+The historical P0 module is compiled and audited separately under its declared
+Lean 4.24 / Mathlib f897ebcf toolchain by `P0AxiomAudit.lean`. Replaces the
+previous informational audit. If a declaration sneaks in a `sorry` or an extra
+axiom, CI goes red. The shell gates in `.github/workflows/ci.yml` enforce the
+no-`sorry` property independently, so enforcement does not rest on this file
+alone.
 -/
 import Mathlib
 -- Verified-spine modules (P9 is QUARANTINED and intentionally absent):
-import P0_IntelligenceBound_COMPILED
 import P1_DScore
 import P2_HDFM_POC
 import P3_Impossibility
@@ -64,7 +62,7 @@ def viridisAllowedAxioms : List Name :=
 /-- Modules whose declarations constitute the verified spine. Keep in lockstep
     with `lakefile.toml` `defaultTargets` (minus quarantined modules). -/
 def viridisSpineModules : List Name :=
-  [`P0_IntelligenceBound_COMPILED, `P1_DScore, `P2_HDFM_POC, `P3_Impossibility,
+  [`P1_DScore, `P2_HDFM_POC, `P3_Impossibility,
    `P4_ThermodynamicEconomics, `Bridge_MissionFeasibility, `PSIT_Symplectic,
    `EcoChain_DendriticCorridor, `Book_HeatAndDisorder, `ConservationOperator,
    `Bridge_EcoChainInstrument, `Bridge_BiosphereProductivity,

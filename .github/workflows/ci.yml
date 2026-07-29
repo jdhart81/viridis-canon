@@ -2,9 +2,15 @@ name: viridis-canon-ci
 
 # Integrity Release v10.2.0 — enforcing CI. All jobs are blocking:
 #   verify             — fast, compiler-independent integrity gates.
-#   lean-build-current — Lean 4.28 spine/series build + current axiom audit.
+#   lean-build-current — Lean 4.28 SPINE build (defaultTargets) + spine axiom audit.
 #   lean-build-p0      — historical P0 under its declared 4.24/f897 toolchain.
-# Branch-protect `main` to require all three jobs plus verify-catalog.
+#   deposit-verify     — rebuilds and re-audits DOI-bearing `series/` deposits.
+# Branch-protect `main` to require all four jobs plus verify-catalog.
+#
+# NOTE (corrected 2026-07-29): this header previously described lean-build-current
+# as a "spine/series" build. It never built a series module — defaultTargets
+# contains none — so a green run said nothing about any deposited artifact. The
+# `deposit-verify` job below closes that gap; see DEPOSIT_MANIFEST.txt.
 
 on:
   push:
@@ -32,6 +38,9 @@ jobs:
       - name: Integrity docs present
         run: test -f CLAIMS_MATRIX.md && test -f THEOREM_STATUS_TAXONOMY.md
 
+      - name: Deposit manifest wiring (fails in ~1s, not 90min)
+        run: bash tools/check_deposit_manifest.sh .
+
   lean-build-current:
     runs-on: ubuntu-latest
     timeout-minutes: 90
@@ -47,7 +56,7 @@ jobs:
       - name: Mathlib cache
         run: lake exe cache get || true
 
-      - name: lake build (current-toolchain spine + series + AxiomAudit)
+      - name: lake build (current-toolchain SPINE defaultTargets + AxiomAudit)
         run: set -o pipefail; lake build 2>&1 | tee build.log
 
       - name: No 'sorry' in build output (INV-1, compiler-level)
@@ -96,3 +105,44 @@ jobs:
           grep -q "P0 axiom audit PASSED" build.log \
             || { echo "::error::P0AxiomAudit did not report PASSED"; exit 1; }
           echo "P0 axiom allowlist enforced"
+
+  deposit-verify:
+    # Rebuilds every DOI-bearing artifact listed in DEPOSIT_MANIFEST.txt from
+    # source under the CURRENT toolchain and re-runs the axiom audit on it,
+    # independently of whoever deposited it.
+    #
+    # Separate from lean-build-current on purpose: the spine build must stay
+    # fast and must never be blocked by a branch deposit. Same allowlist though —
+    # a file carrying its own DOI is held to the spine's standard.
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deposit manifest wiring
+        run: bash tools/check_deposit_manifest.sh .
+
+      - name: Install elan / Lean
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Mathlib cache
+        run: lake exe cache get || true
+
+      - name: Rebuild deposits and audit their axioms
+        run: set -o pipefail; lake build DepositAudit 2>&1 | tee deposit.log
+
+      - name: No 'sorry' in deposit build output (INV-1, compiler-level)
+        run: |
+          if grep -nE "declaration uses 'sorry'|sorryAx" deposit.log; then
+            echo "::error::a deposited artifact emitted a sorry — failing"; exit 1
+          fi
+          echo "no sorry in deposit build output"
+
+      - name: Confirm deposit axiom audit ran (INV-3)
+        run: |
+          grep -q "Deposit axiom audit PASSED" deposit.log \
+            || { echo "::error::DepositAudit did not report PASSED"; exit 1; }
+          echo "deposit axiom allowlist enforced"

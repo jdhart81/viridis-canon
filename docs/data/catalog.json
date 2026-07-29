@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "556da19de444c460454c105a6963a4bebfc0ddfb8e06a700fa0004c0d592963f",
+  "catalog_digest": "ad1ac005700f9a2e31a72a3707ef35937433cc2b8bd94016ba4b58de9209ae6d",
   "concept_doi": "10.5281/zenodo.19317982",
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "human_publish_gate": true,
@@ -2584,6 +2584,49 @@
       "visibility": "public"
     },
     {
+      "abstract": "An interior tree corridor has circuit rank 0 and therefore cannot disconnect the fuel matrix, however much land it occupies; compartment count is exactly mu + 1, and boundary anchoring buys b compartments at mu = 0.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 1,
+      "digest": "f82841d8415043f456c9ca87081d8ffde7b741de113cc5ca7d76cc479872cd0b",
+      "doi": "10.5281/zenodo.21686447",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "DualCorridor",
+      "lemma_count": 5,
+      "line_count": 1191,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "Landscape Ecology",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21686447",
+      "path": "series/DualCorridor.lean",
+      "record_id": "trees-cannot-cut",
+      "source_sha256": "362cca7f761ca377ea65afd231d72716954e45c2322d3ef0262c62d7872b6e6a",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/DualCorridor.lean",
+      "status": "working",
+      "summary": "An interior tree corridor has circuit rank 0 and therefore cannot disconnect the fuel matrix, however much land it occupies; compartment count is exactly mu + 1, and boundary anchoring buys b compartments at mu = 0.",
+      "tags": [
+        "alexander-duality",
+        "circuit-rank",
+        "corridors",
+        "landscape-ecology",
+        "lean4",
+        "s5",
+        "wildfire",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 15,
+      "tier": "working-corpus",
+      "title": "Trees Cannot Cut — Circuit Rank as the Design Variable Reconciling Habitat Connectivity and Fuel Discontinuity",
+      "visibility": "public"
+    },
+    {
       "abstract": "Universal Nucleation–Kramers Meta-Theorem (UNMT) Unifies the nucleation-Kramers canon family (GNT-090 grokking, SNT-091 stewardship/audit, FNT afforestation) into one cubic-well Classical-Nucleation-Theory object: Ψ(x) = σ · x^(2/3) − Δ · x (x, σ, Δ > 0) with a substrate-independent critical point, barrier height, and Kramers escape law, plus an information-thermodynamic (Landauer/IB) floor on completion time. Statements are stated; the substantive ones (Targets 1–4b) carry sorry for Aristotle. Acceptance = zero sorry + #print axioms ⊆ {propext, Classical.choice, Quot.sound}, Lean 4.28.0, Mathlib pin 8f9d9cff. FORGE NOTE (2026-07-09, integrity): the auto-queue skeleton's original Target 7 unc_nonmonotone_optimum was GATED OUT before submission — it asserted an interior minimizer of kramers σ Δ · τ₀ in T, but kramers as defined (τ₀·exp(barrier/T)) is strictly DECREASING in T, so no interior minimizer exists on (0,Td); the named Td,B basin-dissolution hypotheses never enter the definition, making the conclusion FALSE. The honest Forcing–Neglect optimum needs a τ(T) model carrying a basin-dissolution divergence as T→Td⁻ (a genuine model change) — deferred to Justin. The sound, non-vacuous core (critical point, barrier top, barrier height, Kramers monotonicity, IB floor, non-vacuity witness) is submitted here.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 4,
@@ -2849,11 +2892,11 @@
   "stats": {
     "flagships": 3,
     "quarantined": 1,
-    "records": 76,
+    "records": 77,
     "spine": 30,
-    "theorems_and_lemmas": 697,
+    "theorems_and_lemmas": 717,
     "verified": 26,
-    "working": 49,
-    "working_corpus": 43
+    "working": 50,
+    "working_corpus": 44
   }
 }

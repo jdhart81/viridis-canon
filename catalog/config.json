@@ -13,6 +13,7 @@
     "series/CertificationComplexity.lean": "10.5281/zenodo.20777059",
     "series/CorridorStewardship.lean": "10.5281/zenodo.20777069",
     "series/DeadlineCarnot.lean": "10.5281/zenodo.21609934",
+    "series/DualCorridor.lean": "10.5281/zenodo.21686447",
     "series/DissipativeGeneralization.lean": "10.5281/zenodo.20982959",
     "series/EcopoieticOrdering.lean": "10.5281/zenodo.21327072",
     "series/EcopoieticSuccession.lean": "10.5281/zenodo.21327072",
@@ -47,7 +48,13 @@
     "series/WuWeiSampling.lean": "10.5281/zenodo.20982949"
   },
   "curation": {
-    "Bridge_BiosphereProductivity.lean": {
+    "series/DualCorridor.lean": {
+      "id": "trees-cannot-cut",
+      "title": "Trees Cannot Cut \u2014 Circuit Rank as the Design Variable Reconciling Habitat Connectivity and Fuel Discontinuity",
+      "summary": "An interior tree corridor has circuit rank 0 and therefore cannot disconnect the fuel matrix, however much land it occupies; compartment count is exactly mu + 1, and boundary anchoring buys b compartments at mu = 0.",
+      "tags": ["corridors", "wildfire", "circuit-rank", "alexander-duality", "landscape-ecology", "s5"],
+      "paper_target": "Landscape Ecology"
+    },    "Bridge_BiosphereProductivity.lean": {
       "doi": "10.5281/zenodo.20777118",
       "id": "biosphere-productivity-bridge",
       "summary": "The planetary Landauer dual linking biosphere productivity to the Intelligence Bound.",

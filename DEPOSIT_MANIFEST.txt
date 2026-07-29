@@ -1,0 +1,36 @@
+# Deposit re-verification manifest.
+#
+# One Lean source path per line. Every entry is REBUILT AND AXIOM-AUDITED BY CI
+# under the current toolchain, independently of whoever deposited it.
+#
+# WHY THIS FILE EXISTS
+# --------------------
+# Until 2026-07-29 the canon CI compiled only `lakefile.toml` defaultTargets —
+# the spine. No `series/` journal-branch deposit was ever in that list, so a
+# green `lean-build-current` proved the pre-existing corpus still built and said
+# nothing whatever about the artifact just deposited. Every standalone DOI in
+# the canon rested entirely on the depositor's own unreproduced run.
+#
+# That is the exact failure mode the canon exists to rule out. On Trees Cannot
+# Cut, Aristotle run 1 produced a file that compiled while the theorem the paper
+# is named after was still unproved; only `#print axioms` caught it. A CI that
+# goes green without touching the deposit is that same green light, one level up.
+#
+# HOW TO USE IT
+# -------------
+# Add the deposit's path here IN THE SAME PR that adds the .lean file. The
+# `deposit-verify` CI job builds `DepositAudit`, which imports every module
+# listed here and throws if any declaration in them depends on an axiom outside
+# {propext, Classical.choice, Quot.sound} — sorryAx included. Name-free: it walks
+# the environment rather than a list of theorem names, so it cannot silently miss
+# a declaration.
+#
+# Adding a path here is a claim that the file builds under the CURRENT toolchain
+# (lean-toolchain + lake-manifest.json). Legacy deposits authored against older
+# Mathlib pins are deliberately NOT backfilled in bulk — add them one at a time,
+# confirming each still builds, rather than turning CI red in a single sweep.
+#
+# Keep in lockstep with: lakefile.toml [[lean_lib]] entries, DepositAudit.lean
+# imports, and DepositAudit.lean's `viridisDepositModules` list.
+
+series/DualCorridor.lean

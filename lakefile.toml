@@ -249,3 +249,23 @@ globs = ["StewardshipSetpoint"]
 [[lean_lib]]
 name = "AxiomAudit"
 globs = ["AxiomAudit"]
+
+# ---------------------------------------------------------------------------
+# Deposit re-verification (added 2026-07-29).
+#
+# `series/` modules carry their own Zenodo DOI. They are deliberately NOT in
+# defaultTargets: that list is the verified spine, and a deposit is a branch, not
+# the trunk. But leaving them out of the build entirely meant CI never rebuilt a
+# single deposited artifact — see DEPOSIT_MANIFEST.txt for why that matters.
+#
+# These targets are built by the `deposit-verify` CI job, not by a bare
+# `lake build`, so the spine build stays fast and a deposit can never block it.
+# ---------------------------------------------------------------------------
+
+[[lean_lib]]
+name = "Series_DualCorridor"
+globs = ["series.DualCorridor"]
+
+[[lean_lib]]
+name = "DepositAudit"
+globs = ["DepositAudit"]

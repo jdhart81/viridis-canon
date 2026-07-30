@@ -3,8 +3,9 @@
 **Module:** `DualCorridor` (`DualCorridor_Verified.lean`)
 **Paper:** Hart, J. (2026). *Trees Cannot Cut: Circuit Rank as the Design Variable Reconciling
 Habitat Connectivity and Fuel Discontinuity in Managed Forest Landscapes.*
-**DOI (version):** 10.5281/zenodo.21686447 · **Concept DOI:** 10.5281/zenodo.21686446
-**Published:** 2026-07-29, `viridis-canon` community
+**Concept DOI (cite this):** 10.5281/zenodo.21686446 · **Latest:** 10.5281/zenodo.21708530 (v1.0.1, 2026-07-30) · **First release:** 10.5281/zenodo.21686447 (v1.0.0)
+**Published:** 2026-07-29 (v1.0.0); revised 2026-07-30 (v1.0.1) · `viridis-canon`
+**Authorship:** Justin D. Hart is sole author; Aristotle (Harmonic) is a *contributor* (Lean 4 verification), not a creator — corrected in both versions 2026-07-30.
 **Route:** Journal branch (standalone DOI) · indexed in Series **S5 — Corridors & Spatial**
 (`10.5281/zenodo.20777068`) · `isDerivedFrom` spine `10.5281/zenodo.19317982`
 **Toolchain:** `leanprover/lean4:v4.28.0` · Mathlib rev `8f9d9cff`

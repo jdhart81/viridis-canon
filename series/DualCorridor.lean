@@ -7,7 +7,7 @@
     Viridis LLC, Columbia Falls, Montana.  Correspondence: Justin@viridisconservation.com
     ORCID: 0009-0008-3082-2482
 
-  DOI: 10.5281/zenodo.21686447 (concept 10.5281/zenodo.21686446)
+  DOI: 10.5281/zenodo.21686446 (concept DOI, resolves to latest; v1.0.1 = 10.5281/zenodo.21708530)
   Toolchain: leanprover/lean4:v4.28.0 · Mathlib rev 8f9d9cff
   Verified with Aristotle (Harmonic), run 3 of 3, 2026-07-29.
   Co-authored-by: Aristotle (Harmonic) <aristotle-harmonic@harmonic.fun>

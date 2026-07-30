@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "ad1ac005700f9a2e31a72a3707ef35937433cc2b8bd94016ba4b58de9209ae6d",
+  "catalog_digest": "5fb1a88f4c561fc035dca97984bd464b68f4625cf28c9866d2f88a28eefd0a1c",
   "concept_doi": "10.5281/zenodo.19317982",
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "human_publish_gate": true,
@@ -2587,8 +2587,8 @@
       "abstract": "An interior tree corridor has circuit rank 0 and therefore cannot disconnect the fuel matrix, however much land it occupies; compartment count is exactly mu + 1, and boundary anchoring buys b compartments at mu = 0.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 1,
-      "digest": "f82841d8415043f456c9ca87081d8ffde7b741de113cc5ca7d76cc479872cd0b",
-      "doi": "10.5281/zenodo.21686447",
+      "digest": "1d5d3ece51d100a353167224f9bdc450f5dd2924b085b5400ec2f08973dcba01",
+      "doi": "10.5281/zenodo.21686446",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -2603,10 +2603,10 @@
         "paper_target": "Landscape Ecology",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21686447",
+      "paper_url": "https://doi.org/10.5281/zenodo.21686446",
       "path": "series/DualCorridor.lean",
       "record_id": "trees-cannot-cut",
-      "source_sha256": "362cca7f761ca377ea65afd231d72716954e45c2322d3ef0262c62d7872b6e6a",
+      "source_sha256": "57ef9ca596e42fc70b445e8dd6348d05d0d67c4849268e3333336427bb45448b",
       "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/DualCorridor.lean",
       "status": "working",
       "summary": "An interior tree corridor has circuit rank 0 and therefore cannot disconnect the fuel matrix, however much land it occupies; compartment count is exactly mu + 1, and boundary anchoring buys b compartments at mu = 0.",

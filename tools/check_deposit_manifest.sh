@@ -65,7 +65,7 @@ done <<< "$paths"
 while IFS= read -r mod; do
   [ -n "$mod" ] || continue
   [ "$mod" = "Mathlib" ] && continue
-  src="${mod//./\/}.lean"
+  src=$(printf "%s" "$mod" | tr "." "/").lean   # tr, not ${//}: bash 3.2 keeps the backslash
   grep -qxF "$src" <<< "$paths" \
     || { echo "::error::$AUDIT imports '$mod' but $MANIFEST does not list '$src'"; fail=1; }
 done < <(grep -oE '^import[[:space:]]+[A-Za-z0-9_.]+' "$AUDIT" | awk '{print $2}')

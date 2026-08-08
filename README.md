@@ -23,16 +23,11 @@ assumption has been established in nature.
 The 2026-08-08 release adds five independently reviewed, zero-sorry research
 packages without changing the Intelligence Bound spine:
 
-- **Carbon Continuity After Wildfire** — weekly public feature and Natural
-  Carbon research-pillar release.
-- **Robustness Before Performance v1** — Viridis Security Core Research
-  Flagship v1.
-- **The Ecopoietic Hedge** — Restoration Reliability and Symbiosis working
-  corpus.
-- **The D-Score Snapshot Alignment Theorem** — Biodiversity Measurement
-  Assurance working corpus.
-- **The Scheduler Free-Energy Certificate** — Research Operations method; its
-  policy proposal remains explicitly unadopted.
+- **[Carbon Continuity After Wildfire](https://doi.org/10.5281/zenodo.21855690)** — weekly public feature and Natural Carbon research-pillar release.
+- **[Robustness Before Performance v1](https://doi.org/10.5281/zenodo.21855705)** — Viridis Security Core Research Flagship v1.
+- **[The Ecopoietic Hedge](https://doi.org/10.5281/zenodo.21855726)** — Restoration Reliability and Symbiosis working corpus.
+- **[The D-Score Snapshot Alignment Theorem](https://doi.org/10.5281/zenodo.21855724)** — Biodiversity Measurement Assurance working corpus.
+- **[The Scheduler Free-Energy Certificate](https://doi.org/10.5281/zenodo.21855731)** — Research Operations method; its policy proposal remains explicitly unadopted.
 
 Each record includes the paper, exact Lean source, pinned environment,
 numerical checks, independent review, provenance, CC BY 4.0 metadata, and

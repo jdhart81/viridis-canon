@@ -6,11 +6,11 @@ with zero proof holes.
 
 ## Release order
 
-1. [Carbon Continuity After Wildfire](./Carbon_Continuity_After_Wildfire/)
-2. [Robustness Before Performance v1](./Robustness_Before_Performance/)
-3. [The Ecopoietic Hedge](./The_Ecopoietic_Hedge/)
-4. [The D-Score Snapshot Alignment Theorem](./The_D-Score_Snapshot_Alignment_Theorem/)
-5. [The Scheduler Free-Energy Certificate](./The_Scheduler_Free-Energy_Certificate/)
+1. [Carbon Continuity After Wildfire](./Carbon_Continuity_After_Wildfire/) — [10.5281/zenodo.21855690](https://doi.org/10.5281/zenodo.21855690)
+2. [Robustness Before Performance v1](./Robustness_Before_Performance/) — [10.5281/zenodo.21855705](https://doi.org/10.5281/zenodo.21855705)
+3. [The Ecopoietic Hedge](./The_Ecopoietic_Hedge/) — [10.5281/zenodo.21855726](https://doi.org/10.5281/zenodo.21855726)
+4. [The D-Score Snapshot Alignment Theorem](./The_D-Score_Snapshot_Alignment_Theorem/) — [10.5281/zenodo.21855724](https://doi.org/10.5281/zenodo.21855724)
+5. [The Scheduler Free-Energy Certificate](./The_Scheduler_Free-Energy_Certificate/) — [10.5281/zenodo.21855731](https://doi.org/10.5281/zenodo.21855731)
 
 Carbon Continuity is the weekly communication feature. Robustness Before
 Performance is the Viridis Security Core Research Flagship v1. The remaining

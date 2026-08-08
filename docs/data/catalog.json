@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "5601ab39a59e85e67c14f8a7fb0c888681fc4e2d5994359376784134fa3874be",
+  "catalog_digest": "4b89301424a2fe8ce06def1c8bf9674f459d5d43f4cc3eac2a028c7a04bc4f31",
   "concept_doi": "10.5281/zenodo.19317982",
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "human_publish_gate": true,
@@ -128,8 +128,8 @@
       "abstract": "A non-actuating governed robustness decision kernel with explicit evidence, authority, lineage, interval, trajectory, and release boundaries.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 17,
-      "digest": "570db90abd4a4f713a37e3babd6196cbea3a5bea31cdd16ef66ef063e1bc8ebf",
-      "doi": "",
+      "digest": "7329554645caed5a9661ca3690a49b5e73fcfcebe03761dcaaf599414e419a45",
+      "doi": "10.5281/zenodo.21855705",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib.Data.Finset.Card",
@@ -148,7 +148,7 @@
         "paper_target": "releases/2026-08-08/Robustness_Before_Performance/paper.pdf",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/releases/2026-08-08/Robustness_Before_Performance/paper.pdf",
+      "paper_url": "https://doi.org/10.5281/zenodo.21855705",
       "path": "releases/2026-08-08/Robustness_Before_Performance/lean/RobustnessKernelV1.lean",
       "record_id": "robustness-before-performance",
       "source_sha256": "ef373a04b19dff71bf02632d0e4134879069c31ab716e5f669483ab33c18802f",
@@ -1411,8 +1411,8 @@
       "abstract": "A model-scoped two-pool framework for post-wildfire carbon continuity with an exact regenerative-coupling threshold.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 2,
-      "digest": "ca2673b2041fddbc9938d85bb22a42ba5e8443d305c6f12aacc582b749bc70c8",
-      "doi": "",
+      "digest": "38c867b5eab82aea9e8eb78cd4394351a9d2c5844a56668730b3bf9a1b869526",
+      "doi": "10.5281/zenodo.21855690",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib.Data.Real.Basic",
@@ -1431,7 +1431,7 @@
         "paper_target": "releases/2026-08-08/Carbon_Continuity_After_Wildfire/paper.pdf",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/releases/2026-08-08/Carbon_Continuity_After_Wildfire/paper.pdf",
+      "paper_url": "https://doi.org/10.5281/zenodo.21855690",
       "path": "releases/2026-08-08/Carbon_Continuity_After_Wildfire/lean/CarbonContinuity.lean",
       "record_id": "carbon-continuity-after-wildfire",
       "source_sha256": "899d3bb1929bac8d1ab6b760caffac428de115489e6fc7c1b2752e0769a77fc1",
@@ -2640,8 +2640,8 @@
       "abstract": "An exact phasor identity and delay-variance coherence budget for asynchronous weighted biodiversity indicators.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 4,
-      "digest": "22ea3596133062179efc5243fe6f5e2b0d88a05a2fbaf892823452ee094bdbd8",
-      "doi": "",
+      "digest": "aac1cdba7f4366d62c21e0932fd64c95c4fb28bd3d3374352715203eb5384a31",
+      "doi": "10.5281/zenodo.21855724",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib.Analysis.Complex.Basic",
@@ -2659,7 +2659,7 @@
         "paper_target": "releases/2026-08-08/The_D-Score_Snapshot_Alignment_Theorem/paper.pdf",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/releases/2026-08-08/The_D-Score_Snapshot_Alignment_Theorem/paper.pdf",
+      "paper_url": "https://doi.org/10.5281/zenodo.21855724",
       "path": "releases/2026-08-08/The_D-Score_Snapshot_Alignment_Theorem/lean/SnapshotAlignment.lean",
       "record_id": "d-score-snapshot-alignment",
       "source_sha256": "bce0b84e350694d345ab2fc439c3f6a532d530e453c15ae539d8f76e96c7aa61",
@@ -2684,8 +2684,8 @@
       "abstract": "A model-scoped robust-allocation theorem for two symbiont strains under unresolved environmental regimes.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 6,
-      "digest": "70d9b689d8f4df4203015ef9e506d11682c57153792ecdffc6eb408ab160b2f7",
-      "doi": "",
+      "digest": "7e1640ef3f9bfea8721b3447ce64183c3d588b4e0116340c582170fbe14145da",
+      "doi": "10.5281/zenodo.21855726",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib.Analysis.SpecialFunctions.Log.Basic",
@@ -2704,7 +2704,7 @@
         "paper_target": "releases/2026-08-08/The_Ecopoietic_Hedge/paper.pdf",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/releases/2026-08-08/The_Ecopoietic_Hedge/paper.pdf",
+      "paper_url": "https://doi.org/10.5281/zenodo.21855726",
       "path": "releases/2026-08-08/The_Ecopoietic_Hedge/lean/EcopoieticHedge.lean",
       "record_id": "ecopoietic-hedge",
       "source_sha256": "33c52fb5e837b37adc0f85c896375f8087e2ced2836222ad78c353778108b732",
@@ -2729,8 +2729,8 @@
       "abstract": "A one-step equal-cost anti-starvation certificate and reproducible audit of a proposed research-selection policy.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 3,
-      "digest": "49411156525ff83fe1c41f3f6e5d735e5fbd69398ad9599468c426d7649930fd",
-      "doi": "",
+      "digest": "790255a8c67ad3f6145c126e7c7698bdd79bb026e80d565952230ca655516959",
+      "doi": "10.5281/zenodo.21855731",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib.Analysis.SpecialFunctions.Exp",
@@ -2746,7 +2746,7 @@
         "paper_target": "releases/2026-08-08/The_Scheduler_Free-Energy_Certificate/paper.pdf",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/releases/2026-08-08/The_Scheduler_Free-Energy_Certificate/paper.pdf",
+      "paper_url": "https://doi.org/10.5281/zenodo.21855731",
       "path": "releases/2026-08-08/The_Scheduler_Free-Energy_Certificate/lean/SchedulerFreeEnergy.lean",
       "record_id": "scheduler-free-energy-certificate",
       "source_sha256": "70c1dbfb1f86f3247e5084165e27dd9ec03ec8646c7bd45f7112a4dd7f98df4d",

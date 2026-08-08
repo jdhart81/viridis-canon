@@ -1,0 +1,471 @@
+\documentclass[10pt]{article}
+\usepackage[letterpaper,margin=0.66in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black,pdftitle={The D-Score Snapshot Alignment Theorem},pdfauthor={Justin D. Hart}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2.5pt}
+\setlist{nosep,leftmargin=*}
+\raggedbottom
+\emergencystretch=2em
+
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\E}{\mathbb{E}}
+
+\title{\vspace{-1.2em}\textbf{The D-Score Snapshot Alignment Theorem}\\
+\large A delay-variance budget for asynchronous biodiversity indicators}
+\author{Justin D. Hart\\\small Viridis Research}
+\date{5 August 2026\\\small Final reconciled manuscript}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Biodiversity composites often fuse observations collected on incompatible
+clocks: satellite products may refresh daily, field inventories seasonally,
+and genetic surveys over years.  A weighted average can therefore appear
+precise while its components describe different ecological states.  We isolate
+this temporal-coherence problem in a local common-mode model.  For normalized
+nonnegative effective weights $w_i$, observation delays $\tau_i$, and harmonic
+frequency $\omega$, the fused response has alignment efficiency
+\(
+\eta(\omega)=\left|\sum_i w_i e^{-\mathrm{i}\omega\tau_i}\right|^2.
+\)
+We derive the exact pairwise loss identity and the conservative bound
+\(
+\eta(\omega)\ge 1-\omega^2\Var_w(\tau).
+\)
+Consequently, a declared ecological bandwidth $\Omega$ and target coherence
+$q$ imply an auditable sufficient rule,
+\(
+\Var_w(\tau)\le(1-q)/\Omega^2.
+\)
+Equal delays preserve perfect coherence, whereas two equally weighted channels
+separated by half a cycle cancel completely.  A preregistered standard-library
+Python gate passed 21 of 21 analytic, randomized, convergence, negative-control,
+and time-domain checks.  Separately, Aristotle returned six Lean theorems that
+an independent local audit rebuilt in Lean 4.28.0/Mathlib, with no proof holes,
+forbidden constructs, or axioms beyond \texttt{propext},
+\texttt{Classical.choice}, and \texttt{Quot.sound}.  The result is a formally
+verified conditional signal-model statement, not an empirical validation of
+D-Score, a novelty or priority finding, or evidence of field utility.
+\end{abstract}
+
+\textbf{Keywords:} biodiversity monitoring; data fusion; temporal alignment;
+composite indicators; D-Score; sensor synchronization; measurement coherence
+
+\section{Introduction}
+
+Composite biodiversity indicators are assembled from measurements that differ
+in biological meaning, spatial support, error structure, sampling protocol, and
+time.  The last difference is easy to hide.  A species inventory dated 2021, a
+satellite productivity layer dated 2026, and a genetic-diversity estimate dated
+2018 can be placed in the same row of a database and averaged without any
+arithmetic warning.  The result is numerically well formed but may not describe
+an ecosystem that ever existed at one time.
+
+The D-Score research program makes this concern concrete.  Its validation
+protocol combines taxonomic, phylogenetic, genetic, and environmental inputs.
+Prior Viridis work has separately studied component priorities, finite-sample
+measurement floors, spatial allocation of monitoring power, optimal revisit
+cadence, and weights robust to strategic gaming.  None of those results answers
+the narrower question here: \emph{when do component timestamps permit a
+weighted score to be interpreted as a coherent snapshot?}
+
+The broader literature supplies both motivation and caution.  Multi-sensor
+fusion systems require a shared time reference and explicit temporal sample
+alignment; experimental work shows that software synchronization can prevent
+cumulative desynchronization across heterogeneous sensors
+\cite{piatkowski2025}.  Biodiversity data products similarly combine remote
+sensing, field surveys, and other observation streams, for which fusion can add
+substantial information \cite{schulte2018}.  Yet ecological timing is not merely
+an instrumentation nuisance.  Global phenology maps reveal spatially displaced
+seasonal cycles and validate them against independent products
+\cite{terasakihart2025}; nearly half a million plant and animal time series show
+divergent phenological shifts \cite{lang2025}.  Real biological asynchrony can be
+signal rather than error.  Monitoring uncertainty also limits the detectable
+evidence for biodiversity trend change even at large sample sizes
+\cite{leung2024}.
+
+We therefore seek a deliberately bounded result.  We do not claim that all
+D-Score components share one dynamic, that all delays should be removed, or that
+temporal coherence proves ecological validity.  We ask what follows \emph{if}
+a set of normalized channels is intended to measure a locally common dynamical
+mode.  Under that contract, delay becomes phase, the weighted snapshot becomes
+a phasor sum, and an exact coherence audit follows.
+
+\section{Preregistration and scope}
+
+The hypotheses, assumptions, falsifiers, and verification program were fixed
+before the manuscript was drafted.
+
+\subsection{Hypotheses}
+
+For a locally common harmonic mode and known channel delays:
+
+\begin{enumerate}
+\item the aligned signal fraction is the squared magnitude of the weighted
+delay phasor;
+\item its loss has an exact pairwise cosine decomposition;
+\item the loss is bounded by frequency squared times weighted delay variance;
+\item this bound is second-order sharp as delay spread tends to zero; and
+\item a bandlimited common-mode process inherits a spectral version of the
+same guarantee.
+\end{enumerate}
+
+\subsection{Assumptions}
+
+The channels share a locally common mode after centering and scaling.  Effective
+weights are nonnegative and normalized, delays are known relative to a declared
+reference time, and the local response is linear.  Measurement noise, spatial
+mismatch, missingness, taxonomic bias, calibration drift, and channel-specific
+ecological dynamics are held outside the timing term.  These exclusions are
+substantive: a real deployment must test them rather than inherit them.
+
+\subsection{Falsifiers and controls}
+
+The computational gate would fail if the pairwise identity exceeded numerical
+tolerance, if $\eta$ left $[0,1]$, if the variance bound were violated, or if
+independent time-domain estimates failed to converge to the phasor prediction.
+Negative controls included equal delays, a static mode, one active channel,
+balanced half-period cancellation, and full-period phase wrapping.
+
+\section{Model}
+
+Let the centered common ecological perturbation be
+\begin{equation}
+x(t)=\Re\{z e^{\mathrm{i}\omega t}\},
+\label{eq:mode}
+\end{equation}
+where $z$ is a complex amplitude and $\omega$ is angular frequency.  Channel
+$i$ observes the same local mode at delay $\tau_i$.  Channel sensitivity can be
+absorbed into an effective weight $w_i$ after sign and scale have been validated.
+We assume
+\begin{equation}
+w_i\ge0, \qquad \sum_{i=1}^n w_i=1.
+\label{eq:weights}
+\end{equation}
+The fused response is
+\begin{equation}
+y(t)=\sum_i w_i x(t-\tau_i)
+=\Re\{z e^{\mathrm{i}\omega t}A(\omega)\},
+\end{equation}
+with transfer phasor
+\begin{equation}
+A(\omega)=\sum_i w_i e^{-\mathrm{i}\omega\tau_i}.
+\label{eq:phasor}
+\end{equation}
+We define snapshot alignment efficiency as the common-mode output-to-input
+energy ratio
+\begin{equation}
+\eta(\omega)=|A(\omega)|^2.
+\label{eq:eta}
+\end{equation}
+This quantity measures temporal coherence only.  It is not an information
+content, accuracy, causality, or conservation-value score.
+
+Define the weighted mean delay and variance by
+\begin{equation}
+\bar\tau=\sum_i w_i\tau_i, \qquad
+\Var_w(\tau)=\sum_i w_i(\tau_i-\bar\tau)^2.
+\label{eq:variance}
+\end{equation}
+Only relative timing should matter: translating every $\tau_i$ by the same
+constant rotates $A$ without changing $\eta$.
+
+\section{Results}
+
+The formal artifact \texttt{SnapshotAlignment.lean} defines the weighted
+complex \texttt{phasor}, its squared-norm \texttt{alignment}, the
+\texttt{weightedMean}, and \texttt{delayVariance}.  It contains exactly six
+audited theorems: \path{phasor_energy_pairwise_identity},
+\path{alignment_efficiency_unit_interval},
+\path{delay_variance_bounds_alignment_loss},
+\path{alignment_budget_sufficient_for_band},
+\path{equal_delay_perfect_alignment}, and
+\path{two_channel_half_period_cancellation}.  The first is stated over
+an arbitrary finite index type without weight hypotheses.  The next three use
+nonnegative normalized weights; the band theorem additionally assumes
+$0<\Omega$, $0\le q\le1$, $|\omega|\le\Omega$, and the displayed variance
+budget.  The equal-delay theorem assumes a nonempty finite channel type and
+weights summing to one.  The cancellation theorem assumes exactly two equal
+weights and the explicit antipodal-phase equation.  These are mathematical
+claims about the defined model only.
+
+\subsection{Exact pairwise identity}
+
+\textbf{Proposition 1 (snapshot alignment identity).}
+Under Eqs.~\eqref{eq:weights}--\eqref{eq:eta},
+\begin{align}
+\eta(\omega)
+&=\sum_i w_i^2+2\sum_{i<j}w_iw_j
+\cos\!\left(\omega(\tau_i-\tau_j)\right),
+\label{eq:pair}\\
+1-\eta(\omega)
+&=2\sum_{i<j}w_iw_j
+\left[1-\cos\!\left(\omega(\tau_i-\tau_j)\right)\right].
+\label{eq:loss}
+\end{align}
+
+\emph{Derivation.}  Expand $A\overline{A}$ into diagonal and off-diagonal
+terms.  Pair each complex exponential with its conjugate to obtain a cosine.
+Then subtract the result from
+$1=(\sum_iw_i)^2=\sum_iw_i^2+2\sum_{i<j}w_iw_j$.
+
+Equation~\eqref{eq:loss} assigns every unit of modeled coherence loss to a
+pair of channels.  It also makes the bounds $0\le\eta\le1$ immediate: squared
+magnitude gives the lower bound and each term in the loss is nonnegative.
+
+\subsection{Delay-variance bound}
+
+\textbf{Theorem 1 (delay variance bounds alignment loss).}
+For every real $\omega$,
+\begin{equation}
+1-\eta(\omega)\le\omega^2\Var_w(\tau),
+\qquad
+\eta(\omega)\ge1-\omega^2\Var_w(\tau).
+\label{eq:mainbound}
+\end{equation}
+
+\emph{Derivation.}  Apply $1-\cos u\le u^2/2$ termwise in
+Eq.~\eqref{eq:loss}, then use the weighted pairwise-variance identity
+\begin{equation}
+\sum_{i<j}w_iw_j(\tau_i-\tau_j)^2=\Var_w(\tau).
+\end{equation}
+For small delays, $1-\cos u=u^2/2+O(u^4)$, so the ratio
+$(1-\eta)/(\omega^2\Var_w)$ tends to one whenever the delay shape has nonzero
+variance.  The gate recovered second-order convergence under repeated halving.
+
+\subsection{Bandlimited process and operational rule}
+
+The following spectral extension is an ordinary analytic consequence and was
+not formalized among the six Lean theorems.  Suppose a wide-sense stationary
+common-mode process has spectral density
+$S_x(\omega)$ supported on $|\omega|\le\Omega$.  By linear filtering and
+Parseval's relation, its normalized fused common-mode energy is the
+$S_x$-weighted average of $\eta(\omega)$.  Equation~\eqref{eq:mainbound}
+therefore yields
+\begin{equation}
+\frac{\int S_x(\omega)\eta(\omega)\,d\omega}
+{\int S_x(\omega)\,d\omega}
+\ge 1-\Omega^2\Var_w(\tau).
+\label{eq:spectral}
+\end{equation}
+
+\textbf{Corollary 1 (alignment budget).}  If a monitoring product declares a
+maximum modeled frequency $\Omega$ and minimum acceptable alignment $q\in[0,1]$,
+then
+\begin{equation}
+\boxed{\Var_w(\tau)\le\frac{1-q}{\Omega^2}}
+\label{eq:budget}
+\end{equation}
+is sufficient for $\eta(\omega)\ge q$ throughout the declared band.
+
+This rule is conservative.  It can be audited from timestamps and weights, but
+it is only meaningful if $\Omega$ is scientifically justified.  Declaring a
+slower process makes the budget looser; that choice must be tied to an external
+ecological hypothesis rather than selected to pass the gate.
+
+\subsection{Controls and edge cases}
+
+\begin{center}
+\small
+\textbf{Table 1. Analytic controls defining the scope of the coherence claim.}\\[2pt]
+\begin{tabular}{p{0.29\linewidth}p{0.24\linewidth}p{0.37\linewidth}}
+\toprule
+Case & Result & Interpretation \\
+\midrule
+All $\tau_i$ equal & $\eta=1$ & Common timestamp preserves the mode. \\
+$\omega=0$ & $\eta=1$ & Static differences are unaffected by age. \\
+One active channel & $\eta=1$ & Coherence alone does not imply completeness. \\
+Two equal channels, half-cycle apart & $\eta=0$ & An average can erase the common signal. \\
+Two equal channels, full-cycle apart & $\eta=1$ & Raw delay variance is sufficient, not necessary. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+For two channels with weights $w$ and $1-w$ and delay difference $\Delta\tau$,
+Eq.~\eqref{eq:loss} reduces to
+\begin{equation}
+\eta=1-4w(1-w)\sin^2\!\left(\frac{\omega\Delta\tau}{2}\right).
+\end{equation}
+The worst cancellation occurs at balanced weights and an odd half-cycle.  In
+contrast, an integer full-cycle difference is phase aligned.  This periodicity
+is why Eq.~\eqref{eq:budget} must never be represented as a necessary condition.
+
+\section{Verification}
+
+The exact program \texttt{verification.py} uses only the Python standard
+library and a fixed seed.  It was written and executed before this manuscript.
+The captured, untruncated output is \texttt{verification\_output.txt}.
+
+The gate passed 21 of 21 checks.  It included a hand-auditable three-channel
+case, 5,000 randomized cases with two to twelve channels, weights spanning seven
+orders of magnitude, delays on both sides of the reference time, and frequencies
+spanning more than four orders of magnitude.  The maximum pairwise-identity
+error was $3.531\times10^{-14}$.  The largest computed excess above the variance
+bound was $1.178\times10^{-16}$, consistent with floating-point roundoff.
+
+An independent time-domain calculation sampled delayed cosines at 256, 1,024,
+4,096, and 16,384 points and reproduced the phasor energy to below
+$2.5\times10^{-15}$.  The small-delay experiment observed convergence orders
+1.9985, 1.9996, and 1.9999.  A four-frequency mixture passed the spectral bound,
+and a grid of 1,001 frequencies passed the operational $q=0.90$ budget.
+
+\begingroup\raggedright
+These checks reduce implementation and algebra risk but are not the formal
+proof.  Formal support comes from the separate audited Lean artifact.  The
+numeric suite does not validate the common-mode assumption, establish novelty,
+or demonstrate field utility.  The small-delay convergence and spectral-mixture
+experiments are numeric checks of claims not separately stated as Lean
+theorems.\par
+\endgroup
+
+\section{Empirical verification plan}
+
+A field test should begin with a named common-mode hypothesis, not with the
+composite itself.  For example, a monitoring program might preregister that
+several normalized indicators respond with positive sensitivity to a seasonal
+productivity mode over a specified frequency band.  Training years would be
+used to estimate signs, gains, delay distributions, and $\Omega$.  Weights,
+$q$, and interpolation rules would then be frozen.
+
+On held-out years, the program would compare: (i) the original asynchronous
+composite; (ii) a common-time reconstruction using only training-fitted
+state-space or interpolation models; and (iii) a simple maximum-age baseline.
+The central test is whether snapshots inside the variance budget achieve
+coherence at least $q$ against an independent common-mode reference, with delay
+uncertainty propagated.  Snapshots outside the budget must remain in the test
+set as predicted failures.
+
+The model should be rejected for the intended application if the channels lack
+the preregistered common mode, if estimated signs differ, if alignment does not
+improve held-out coherence, if the bound fails after delay uncertainty is
+included, or if the simpler baseline predicts failures equally well.  Genuine
+ecological phase differences should be modeled as biology, not ``corrected''
+away to make a score smoother.
+
+\section{Discussion}
+
+The main contribution is not the observation that timestamps matter.  It is a
+compact contract connecting three quantities a monitoring product can declare:
+the frequency band it claims to represent, the coherence it promises, and the
+weighted dispersion of the timestamps it actually uses.  The pairwise identity
+also supports diagnosis: channels with large $w_iw_j$ and large phase separation
+dominate predicted loss, so remediation can target the specific stale pair
+rather than refresh every stream.
+
+Run 118 is distinct from the prior D-Score lineage.  Measurement closure asks
+whether a value is statistically resolvable.  Monitoring water-filling asks
+where finite observation power should go.  Revisit scheduling asks when each
+site should be observed again.  Manipulation-proof weighting asks how strategic
+elasticity should affect weights.  Snapshot alignment asks whether the chosen
+values, weights, and ages can represent one common-time state.  A mature system
+would need all of these gates; passing one does not imply another.
+
+The result also supplies a useful negative lesson.  ``Fresh enough'' cannot be
+defined by a universal maximum age.  A one-month mismatch may be negligible for
+a decadal mode and destructive for a seasonal or disturbance mode.  Conversely,
+large age differences can phase-wrap for a single exact sinusoid, although such
+coincidence is fragile under broadband dynamics.  The declared ecological
+bandwidth, not the calendar alone, is the essential comparison scale.
+
+\section{Limitations}
+
+The analysis is intentionally narrow.  A composite may be temporally coherent
+yet biased, gamed, underpowered, spatially mismatched, or unrelated to ecological
+value.  Nonnegative weights exclude validated anticorrelated channels.  A single
+common mode excludes component-specific dynamics.  Harmonic analysis is local
+and does not by itself handle regime shifts, hysteresis, irregular missingness,
+aliasing, nonlinear response, or uncertain clocks.  The bound becomes negative
+and uninformative when $\Omega^2\Var_w(\tau)>1$.
+
+Most importantly, real ecological asynchrony is not automatically a defect.
+Phenological divergence can encode interactions, adaptation, or stability.  The
+proposed gate applies only when channels are contractually intended to track the
+same local mode.  No external dataset was analyzed, no field performance is
+claimed, and the targeted literature search cannot establish novelty or
+priority.
+
+\section{Reproducibility and declarations}
+
+\textbf{Reproducibility.}  Run \texttt{python3 verification.py} with Python
+3.11 or later; no third-party package or external data is required.  The seed,
+tolerance, hypotheses, assumptions, and falsifiers are printed in the captured
+output.  The manuscript compiles from \texttt{paper.tex} with Tectonic 0.17.0.
+
+\textbf{Data and code availability.}  All code and synthetic parameters used
+in this generated exploration are contained in the immutable Run 118 package.
+No external ecological data were generated or analyzed.
+
+\textbf{Funding.}  No specific external funding supported this run.
+
+\textbf{Conflicts of interest.}  Justin D. Hart is founder of Viridis LLC,
+which may develop biodiversity measurement and assurance products.  The
+separate business note reports zero signed revenue and no named customer
+validation attributable to this result.
+
+\textbf{Accountable authorship.}  Justin D. Hart is the accountable human
+author and retains responsibility for scientific claims, corrections, and any
+future submission.  No AI system is represented as a journal author.
+
+\textbf{Substantive AI-use disclosure.}  Under Justin D. Hart's direction,
+OpenAI Codex searched the local Viridis corpus and current literature, proposed
+and preregistered the hypothesis, wrote and executed the verification code,
+drafted the manuscript, assembled the package, and reconciled this final version
+line by line against the landed formal artifact.  Historical Claude-authored
+Viridis artifacts were read for context with attribution preserved.  Aristotle
+served as the automated theorem-proving system for the six frozen Lean targets;
+Codex then independently rebuilt and audited the returned artifact for statement
+freeze, proof holes, forbidden constructs, allowed axioms, non-vacuity, and
+significance.  AI systems are tools and contributors, not authors or creators.
+No external peer review has occurred.
+
+\textbf{Stage and route.}  This version is the exact
+\texttt{FINAL\_RECONCILED} manuscript bound to the local package.
+The authoritative ledger row is \texttt{null}: no exact Run 118 identity occurs
+in the root ledger.  The advisory route is working corpus.  The result is a
+domain-applying biodiversity-measurement theorem and is not admitted to the
+spine (\texttt{spine\_admitted=false}).  These local states confer no ledger
+approval, publication authorization, peer acceptance, adoption, or revenue.
+
+\begin{thebibliography}{9}
+\bibitem{piatkowski2025}
+J. Piatkowski, L. Karbowiak, and F. Depta,
+``A lightweight algorithm for synchronized multimodal data acquisition using
+temporal sample alignment,'' \emph{Scientific Reports} \textbf{15}, 22711
+(2025). \href{https://doi.org/10.1038/s41598-025-07797-7}{doi:10.1038/s41598-025-07797-7}.
+
+\bibitem{terasakihart2025}
+D. E. Terasaki Hart, T. N. Bui, L. Di Maggio, et al.,
+``Global phenology maps reveal the drivers and effects of seasonal asynchrony,''
+\emph{Nature} \textbf{645}, 133--140 (2025).
+\href{https://doi.org/10.1038/s41586-025-09410-3}{doi:10.1038/s41586-025-09410-3}.
+
+\bibitem{lang2025}
+W. Lang, Y. Zhang, X. Li, et al.,
+``Phenological divergence between plants and animals under climate change,''
+\emph{Nature Ecology \& Evolution} \textbf{9}, 261--272 (2025).
+\href{https://doi.org/10.1038/s41559-024-02597-0}{doi:10.1038/s41559-024-02597-0}.
+
+\bibitem{leung2024}
+B. Leung and A. Gonzalez,
+``Global monitoring for biodiversity: Uncertainty, risk, and power analyses to
+support trend change detection,'' \emph{Science Advances} \textbf{10},
+eadj1448 (2024).
+\href{https://doi.org/10.1126/sciadv.adj1448}{doi:10.1126/sciadv.adj1448}.
+
+\bibitem{schulte2018}
+H. Schulte to Buehne and N. Pettorelli,
+``Better together: Integrating and fusing multispectral and radar satellite
+imagery to inform biodiversity monitoring, ecological research and
+conservation science,'' \emph{Methods in Ecology and Evolution} \textbf{9},
+849--865 (2018).
+\href{https://doi.org/10.1111/2041-210X.12942}{doi:10.1111/2041-210X.12942}.
+\end{thebibliography}
+
+\end{document}

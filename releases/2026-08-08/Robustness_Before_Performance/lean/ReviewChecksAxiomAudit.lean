@@ -1,0 +1,21 @@
+import ReviewChecks
+open Viridis.RobustnessKernelV1.ReviewChecks
+#print axioms dependency_disjoint_is_one
+#print axioms dependency_one_shared_is_two_thirds
+#print axioms dependency_equal_is_zero
+#print axioms authority_grants_on_full_lease
+#print axioms authority_denies_unselected
+#print axioms authority_denies_advisory
+#print axioms authority_denies_out_of_scope
+#print axioms numerical_support_does_not_yield_proof
+#print axioms asserted_state_is_derivable
+#print axioms classifier_emits_pass
+#print axioms classifier_emits_fail
+#print axioms classifier_emits_uncertain
+#print axioms robust_dominance_nonvacuous
+#print axioms overlapping_intervals_do_not_dominate
+#print axioms shortfall_of_violating_trajectory
+#print axioms span_counts_only_marked_segments
+#print axioms aftershock_counts_downward_transitions
+#print axioms aftershock_of_stable_trajectory_is_zero
+#print axioms release_states_deployment_without_observation

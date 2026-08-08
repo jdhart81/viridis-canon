@@ -8,6 +8,11 @@
     "P5_SLSPT/ShadowPrice.lean": "10.5281/zenodo.20006414",
     "P5_SLSPT/ShadowPriceLevelCurves.lean": "10.5281/zenodo.20006414",
     "SymbioticIntelligenceBound.lean": "10.5281/zenodo.20764638",
+    "releases/2026-08-08/Carbon_Continuity_After_Wildfire/lean/CarbonContinuity.lean": "10.5281/zenodo.21855690",
+    "releases/2026-08-08/Robustness_Before_Performance/lean/RobustnessKernelV1.lean": "10.5281/zenodo.21855705",
+    "releases/2026-08-08/The_D-Score_Snapshot_Alignment_Theorem/lean/SnapshotAlignment.lean": "10.5281/zenodo.21855724",
+    "releases/2026-08-08/The_Ecopoietic_Hedge/lean/EcopoieticHedge.lean": "10.5281/zenodo.21855726",
+    "releases/2026-08-08/The_Scheduler_Free-Energy_Certificate/lean/SchedulerFreeEnergy.lean": "10.5281/zenodo.21855731",
     "series/AfforestationStewardship.lean": "10.5281/zenodo.21168224",
     "series/CapacityHarmonization.lean": "10.5281/zenodo.21168241",
     "series/CertificationComplexity.lean": "10.5281/zenodo.20777059",
@@ -48,6 +53,51 @@
     "series/WuWeiSampling.lean": "10.5281/zenodo.20982949"
   },
   "curation": {
+    "releases/2026-08-08/Carbon_Continuity_After_Wildfire/lean/CarbonContinuity.lean": {
+      "aristotle_id": "40c58299-efeb-4cad-b332-2525b7c8d6d1",
+      "id": "carbon-continuity-after-wildfire",
+      "paper_target": "releases/2026-08-08/Carbon_Continuity_After_Wildfire/paper.pdf",
+      "summary": "A model-scoped two-pool framework for post-wildfire carbon continuity with an exact regenerative-coupling threshold.",
+      "tags": ["carbon", "formal-verification", "regeneration", "wildfire"],
+      "tier": "working-corpus",
+      "title": "Carbon Continuity After Wildfire"
+    },
+    "releases/2026-08-08/Robustness_Before_Performance/lean/RobustnessKernelV1.lean": {
+      "aristotle_id": "3e142131-f6f4-4c32-b273-873783735a69",
+      "id": "robustness-before-performance",
+      "paper_target": "releases/2026-08-08/Robustness_Before_Performance/paper.pdf",
+      "summary": "A non-actuating governed robustness decision kernel with explicit evidence, authority, lineage, interval, trajectory, and release boundaries.",
+      "tags": ["decision-governance", "formal-verification", "robustness", "security"],
+      "tier": "flagship",
+      "title": "Robustness Before Performance"
+    },
+    "releases/2026-08-08/The_D-Score_Snapshot_Alignment_Theorem/lean/SnapshotAlignment.lean": {
+      "aristotle_id": "8ae74567-4444-44cf-8988-5e3b81ed1e60",
+      "id": "d-score-snapshot-alignment",
+      "paper_target": "releases/2026-08-08/The_D-Score_Snapshot_Alignment_Theorem/paper.pdf",
+      "summary": "An exact phasor identity and delay-variance coherence budget for asynchronous weighted biodiversity indicators.",
+      "tags": ["biodiversity", "formal-verification", "measurement", "temporal-alignment"],
+      "tier": "working-corpus",
+      "title": "The D-Score Snapshot Alignment Theorem"
+    },
+    "releases/2026-08-08/The_Ecopoietic_Hedge/lean/EcopoieticHedge.lean": {
+      "aristotle_id": "c40e3631-82b5-4df4-99e8-7697f2482ba4",
+      "id": "ecopoietic-hedge",
+      "paper_target": "releases/2026-08-08/The_Ecopoietic_Hedge/paper.pdf",
+      "summary": "A model-scoped robust-allocation theorem for two symbiont strains under unresolved environmental regimes.",
+      "tags": ["formal-verification", "restoration", "robust-optimization", "symbiosis"],
+      "tier": "working-corpus",
+      "title": "The Ecopoietic Hedge"
+    },
+    "releases/2026-08-08/The_Scheduler_Free-Energy_Certificate/lean/SchedulerFreeEnergy.lean": {
+      "aristotle_id": "8a5d878e-bee9-4e70-9300-9bac24d91166",
+      "id": "scheduler-free-energy-certificate",
+      "paper_target": "releases/2026-08-08/The_Scheduler_Free-Energy_Certificate/paper.pdf",
+      "summary": "A one-step equal-cost anti-starvation certificate and reproducible audit of a proposed research-selection policy.",
+      "tags": ["anti-starvation", "formal-verification", "research-operations", "scheduling"],
+      "tier": "working-corpus",
+      "title": "The Scheduler Free-Energy Certificate"
+    },
     "series/DualCorridor.lean": {
       "id": "trees-cannot-cut",
       "title": "Trees Cannot Cut \u2014 Circuit Rank as the Design Variable Reconciling Habitat Connectivity and Fuel Discontinuity",
@@ -125,7 +175,12 @@
     "*.lean",
     "P5_SLSPT/*.lean",
     "P7_PlasmaNFix/*.lean",
-    "series/**/*.lean"
+    "series/**/*.lean",
+    "releases/2026-08-08/Carbon_Continuity_After_Wildfire/lean/CarbonContinuity.lean",
+    "releases/2026-08-08/Robustness_Before_Performance/lean/RobustnessKernelV1.lean",
+    "releases/2026-08-08/The_D-Score_Snapshot_Alignment_Theorem/lean/SnapshotAlignment.lean",
+    "releases/2026-08-08/The_Ecopoietic_Hedge/lean/EcopoieticHedge.lean",
+    "releases/2026-08-08/The_Scheduler_Free-Energy_Certificate/lean/SchedulerFreeEnergy.lean"
   ],
   "manifest": "SPINE_MANIFEST.txt",
   "quarantined": [

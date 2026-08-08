@@ -1,0 +1,188 @@
+{
+  "attempt": 2,
+  "audited_at_utc": "2026-08-05T06:05:36.960132+00:00",
+  "axiom_audit_pass": true,
+  "build_pass": true,
+  "candidate_id": "Run-118-SnapshotAlignment-attempt-2",
+  "evidence": {
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "axiom_output": "'Viridis.SnapshotAlignment.phasor_energy_pairwise_identity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.SnapshotAlignment.alignment_efficiency_unit_interval' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.SnapshotAlignment.delay_variance_bounds_alignment_loss' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.SnapshotAlignment.alignment_budget_sufficient_for_band' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.SnapshotAlignment.equal_delay_perfect_alignment' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.SnapshotAlignment.two_channel_half_period_cancellation' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+    "axioms_used": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "build_output_tail": "\u26a0 [2154/2155] Built SnapshotAlignment (9.0s)\ninfo: SnapshotAlignment.lean:92:6: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nwarning: SnapshotAlignment.lean:181:5: unused variable `h\u03a9`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: SnapshotAlignment.lean:182:5: unused variable `hq0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nBuild completed successfully (2155 jobs).\n",
+    "build_root": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-04_aristotle_SnapshotAlignment_forge_attempt_2/attempt-2_aristotle",
+    "forbidden_occurrences_comment_stripped": {
+      "admit": 0,
+      "axiom declaration": 0,
+      "extern declaration": 0,
+      "implemented_by": 0,
+      "native_decide": 0,
+      "sorry": 0,
+      "sorryAx": 0,
+      "unsafe declaration": 0
+    },
+    "forbidden_occurrences_raw": {
+      "admit": 0,
+      "axiom declaration": 0,
+      "extern declaration": 0,
+      "implemented_by": 0,
+      "native_decide": 0,
+      "sorry": 0,
+      "sorryAx": 0,
+      "unsafe declaration": 0
+    },
+    "formal_target_rows": [
+      {
+        "aristotle_target": "phasor_energy_pairwise_identity",
+        "claim": "Under normalized nonnegative effective weights in the stated local common-mode model, snapshot alignment efficiency has the exact weighted pairwise cosine-loss identity.",
+        "evidence_class": "FORMAL_TARGET",
+        "formal_status": "UNPROVED",
+        "id": "C1",
+        "paper_locator": "Abstract; Proposition 1; Eq. (8)"
+      },
+      {
+        "aristotle_target": "alignment_efficiency_unit_interval",
+        "claim": "The modeled alignment efficiency lies in the unit interval.",
+        "evidence_class": "FORMAL_TARGET",
+        "formal_status": "UNPROVED",
+        "id": "C2",
+        "paper_locator": "Corollary to Proposition 1; Eq. (5)"
+      },
+      {
+        "aristotle_target": "delay_variance_bounds_alignment_loss",
+        "claim": "For every modeled real angular frequency, alignment loss is at most angular frequency squared times weighted delay variance.",
+        "evidence_class": "FORMAL_TARGET",
+        "formal_status": "UNPROVED",
+        "id": "C3",
+        "paper_locator": "Theorem 1; Eqs. (9)-(10)"
+      },
+      {
+        "aristotle_target": "alignment_budget_sufficient_for_band",
+        "claim": "Within the declared frequency band and model assumptions, the weighted delay-variance budget is sufficient for the declared alignment floor.",
+        "evidence_class": "FORMAL_TARGET",
+        "formal_status": "UNPROVED",
+        "id": "C4",
+        "paper_locator": "Corollary 1; Eq. (12)"
+      },
+      {
+        "aristotle_target": "equal_delay_perfect_alignment",
+        "claim": "Equal channel delays retain perfect modeled alignment.",
+        "evidence_class": "FORMAL_TARGET",
+        "formal_status": "UNPROVED",
+        "id": "C5",
+        "paper_locator": "Controls and edge cases; Table 1"
+      },
+      {
+        "aristotle_target": "two_channel_half_period_cancellation",
+        "claim": "Two equal-weight channels separated by a half cycle cancel the modeled common signal.",
+        "evidence_class": "FORMAL_TARGET",
+        "formal_status": "UNPROVED",
+        "id": "C6",
+        "paper_locator": "Controls and edge cases; Table 1"
+      }
+    ],
+    "local_build_pass": true,
+    "nonvacuity_obligations": [
+      "two_channel_half_period_cancellation gives a concrete Fin 2 destructive-interference control under the exact antipodal phase hypothesis",
+      "equal_delay_perfect_alignment proves the opposite unit-alignment control for every nonempty finite channel family",
+      "alignment_budget_sufficient_for_band retains nonnegative normalized weights, positive bandwidth, a real frequency-band hypothesis, and the explicit delay-variance budget"
+    ],
+    "nonvacuity_theorems": [
+      "equal_delay_perfect_alignment",
+      "two_channel_half_period_cancellation"
+    ],
+    "output_files_sha256": {
+      "attempt-2_aristotle/ARISTOTLE_FORGE_REQUEST.json": "d696cd07a692fbaaec4d22f8015090e9594945d4a58486c6916f3c36aa122b67",
+      "attempt-2_aristotle/ARISTOTLE_PROMPT.md": "dfb520a69e3726b5a2539e6a06ffa3d1ebb67b373bc814a1e56b4f9585b5388f",
+      "attempt-2_aristotle/ARISTOTLE_SUMMARY.md": "b2900f1784cd25711848b452158394c1d90f2996011724fdc2518cfb61498167",
+      "attempt-2_aristotle/LOCAL_REPAIR_BUILD_RECEIPT.json": "19dc493e5cfb12a4c99efa065493351abd8c1e02adc851049968eff150b7b059",
+      "attempt-2_aristotle/README.md": "39ec8cd0459306d9f50cf0c0da2aaf858aeaba5affa9ae26c3dbaee9f872f0ab",
+      "attempt-2_aristotle/REPAIR_RECEIPT.json": "dfd030c29ad21d773ca4d6f8c38c9555d9ae922bc7053a8f1d6071f94259f199",
+      "attempt-2_aristotle/RUN118_ARISTOTLE_SUMMARY.md": "d35f9309f85ef0a87491f2576cdc53e112bf51f5e27be90582aa3aebba60eb2c",
+      "attempt-2_aristotle/SOURCE_BINDING.json": "4bfdd65b0781b6333a36ac9901f0df7188f16aebfbf1fdfcc8b3cd145f887182",
+      "attempt-2_aristotle/STATEMENT_CONTRACT.md": "bacd1463fb759efd89c46db376d6b8562fd6bea615d2307454df1ee23cfe7e9b",
+      "attempt-2_aristotle/SnapshotAlignment.lean": "bce0b84e350694d345ab2fc439c3f6a532d530e453c15ae539d8f76e96c7aa61",
+      "attempt-2_aristotle/lake-manifest.json": "3ec38d0f996dac8598d16486543d1dfc58ea66e9bd77663ec6436fe5aadafa9d",
+      "attempt-2_aristotle/lakefile.toml": "664eeeb029a90bc67df25a3d39ac7ec7ddfe774cc459335e9089dbb05a4a7297",
+      "attempt-2_aristotle/lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028"
+    },
+    "output_module": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-04_aristotle_SnapshotAlignment_forge_attempt_2/attempt-2_aristotle/SnapshotAlignment.lean",
+    "provider_completion_pass": true,
+    "provider_task_statuses": [
+      "COMPLETE"
+    ],
+    "scanned_lean_files": [
+      "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-04_aristotle_SnapshotAlignment_forge_attempt_2/attempt-2_aristotle/SnapshotAlignment.lean"
+    ],
+    "significance": {
+      "candidate_evidence": {
+        "canon_index": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/canon_fingerprint_index.json",
+        "empirical_claims": [
+          "The delay-variance budget may predict held-out biodiversity snapshot coherence.",
+          "A Snapshot Coherence Audit may outperform a simple maximum-age rule."
+        ],
+        "empirical_claims_flagged_unproven": true,
+        "falsifiable_prediction": {
+          "observable": "Held-out common-mode amplitude alignment, normalized channel weights, channel delays, and their weighted delay variance across a preregistered frequency band.",
+          "predicted": "When the calibrated variance budget is at most (1-q)/Omega^2 and the common-mode assumptions hold, observed modeled alignment will remain at least q throughout the band, within declared measurement uncertainty.",
+          "refuted_if": "A held-out channel set satisfying the declared model and budget has alignment below q beyond the preregistered uncertainty tolerance, or the common-mode model fails its preregistered fit test."
+        },
+        "is_restatement": false,
+        "name": "The D-Score Snapshot Alignment Theorem",
+        "nontrivial_justification": "The package links an exact phasor identity to a frequency-dependent delay-variance upper bound, a band-wide sufficient engineering budget, and two opposite controls. It is distinct from prior Viridis generic alignment and asynchrony records because delay timestamps, harmonic phase, and the explicit variance budget are load-bearing. No literature-priority claim is made.",
+        "nonvacuity_theorems": [
+          "equal_delay_perfect_alignment",
+          "two_channel_half_period_cancellation"
+        ],
+        "run_id": "Run-118",
+        "schema_version": "1.0",
+        "statement": "For normalized nonnegative channel weights in the declared common-mode harmonic model, squared weighted-phasor energy has an exact pairwise cosine identity, alignment lies in [0,1], and alignment loss is bounded by angular frequency squared times weighted delay variance, yielding a sufficient variance budget for a requested alignment floor over a bounded frequency band.",
+        "vacuity_checked": true,
+        "witness": "A nonempty one-channel system with weight 1 and common delay 0 satisfies normalization and has perfect alignment; the Fin 2 equal-weight half-period construction supplies the opposite exact-cancellation control under its antipodal-phase hypothesis."
+      },
+      "canon_index": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/canon_fingerprint_index.json",
+      "invariants": {
+        "INV-SIG-1 NON-VACUOUS": true,
+        "INV-SIG-2 NON-TRIVIAL": true,
+        "INV-SIG-3 NOVEL": true,
+        "INV-SIG-4 FALSIFIABLE": true,
+        "INV-SIG-5 AXIOM-CLEAN": true,
+        "INV-SIG-6 HONEST-SCOPE": true
+      },
+      "reasons": [],
+      "verdict": "PASS"
+    },
+    "statement_comparisons": {
+      "def alignment": true,
+      "def delayVariance": true,
+      "def phasor": true,
+      "def weightedMean": true,
+      "theorem alignment_budget_sufficient_for_band": true,
+      "theorem alignment_efficiency_unit_interval": true,
+      "theorem delay_variance_bounds_alignment_loss": true,
+      "theorem equal_delay_perfect_alignment": true,
+      "theorem phasor_energy_pairwise_identity": true,
+      "theorem two_channel_half_period_cancellation": true
+    },
+    "unexpected_axioms": []
+  },
+  "external_mutation": false,
+  "failed_checks": [],
+  "forbidden_constructs_pass": true,
+  "nonvacuity_pass": true,
+  "output_tree_sha256": "a8d78fa1fec08335871d952348e922837f61e47a1fc86fd4f2827d7797588e62",
+  "project_id": "8ae74567-4444-44cf-8988-5e3b81ed1e60",
+  "request_sha256": "d696cd07a692fbaaec4d22f8015090e9594945d4a58486c6916f3c36aa122b67",
+  "root_candidate_id": "Run-118-SnapshotAlignment",
+  "schema_version": "2.0",
+  "significance_gate_pass": true,
+  "statement_freeze_pass": true,
+  "zero_sorry_pass": true
+}

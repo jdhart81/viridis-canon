@@ -1,0 +1,39 @@
+{
+  "schema_version": "2.0",
+  "candidate_id": "Directed-2026-08-04-CarbonContinuity",
+  "reviewed_at_utc": "2026-08-04T16:36:43Z",
+  "reviewer_system": "Codex",
+  "verdict": "PASS_FOR_SATURDAY_REVIEW_STAGING",
+  "series_route": "directed working research corpus",
+  "artifacts_sha256": {
+    "paper.pdf": "926723f838776dca40c2229e1a9ad51217265e51d49391ef346b48751a0d9103",
+    "paper.tex": "720074dfaf7e53970c764a7d04f14e681082c730e51b33350de097c316a97dca",
+    "CarbonContinuity.lean": "899d3bb1929bac8d1ab6b760caffac428de115489e6fc7c1b2752e0769a77fc1",
+    "ARISTOTLE_SUMMARY.md": "614a078981dd8b18cf2b89ec0cc9541292498140a9c2188429e8f94cc55a0e66",
+    "FORGE_AUDIT.json": "cd850a9983fc2bd792728f936e3cba2897656b79f261af6d283f78832f80253f",
+    "verification.py": "4f6c12106013d07e8ee65143d660b9ef65c75d8e6be7c3a3976fe3c664bbaa21",
+    "verification_output.txt": "00596e653d84c3b93cf1f80002231a8982c4beac48d8bc08509429eab1080eb8"
+  },
+  "checks": {
+    "paper_build_pass": true,
+    "paper_pages": 9,
+    "all_pages_visual_review_pass": true,
+    "stale_pre_aristotle_language_absent": true,
+    "claim_separation_pass": true,
+    "local_lean_build_pass": true,
+    "statement_freeze_pass": true,
+    "zero_sorry_pass": true,
+    "forbidden_constructs_pass": true,
+    "axiom_audit_pass": true,
+    "nonvacuity_pass": true,
+    "significance_gate_pass": true,
+    "paper_to_lean_reconciliation_pass": true,
+    "publication_or_canon_claim_absent": true
+  },
+  "spine_admission": {
+    "admitted": false,
+    "reason": "Directed model-scoped result; Saturday review has not occurred."
+  },
+  "external_mutation": false,
+  "publication_authority": false
+}

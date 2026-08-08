@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "candidate_id": "Directed-2026-08-04-CarbonContinuity",
+  "attempt": 1,
+  "reconciled_at_utc": "2026-08-04T16:36:43Z",
+  "aristotle_project_id": "40c58299-efeb-4cad-b332-2525b7c8d6d1",
+  "request_sha256": "c7a1be8facb599c401589f0f39616d5aa54bfaad5f4ab203e49014acbe8bb833",
+  "output_tree_sha256": "0ca560db0dc55e600f378ee4af42b801c54c9aa81fe55623d2fb3d05b9e44d04",
+  "frozen_claims": [
+    {
+      "paper_claim": "Threshold sufficiency with the explicit witness (r,1-a).",
+      "lean_theorem": "Viridis.CarbonContinuity.carbon_continuity_threshold_sufficient",
+      "status": "PROVED_FROZEN_STATEMENT"
+    },
+    {
+      "paper_claim": "Threshold necessity from any positive cycle-nondecreasing portfolio.",
+      "lean_theorem": "Viridis.CarbonContinuity.carbon_continuity_threshold_necessary",
+      "status": "PROVED_FROZEN_STATEMENT"
+    },
+    {
+      "paper_claim": "A strictly positive nondecreasing portfolio exists if and only if r*p >= (1-a)*(1-d).",
+      "lean_theorem": "Viridis.CarbonContinuity.carbon_continuity_threshold_iff",
+      "status": "PROVED_FROZEN_STATEMENT"
+    },
+    {
+      "paper_claim": "The explicit witness is stationary at the threshold boundary.",
+      "lean_theorem": "Viridis.CarbonContinuity.carbon_continuity_boundary_stationary",
+      "status": "PROVED_FROZEN_STATEMENT"
+    },
+    {
+      "paper_claim": "The explicit witness has strict durable growth above the boundary.",
+      "lean_theorem": "Viridis.CarbonContinuity.carbon_continuity_strict_threshold_growth",
+      "status": "PROVED_FROZEN_STATEMENT"
+    },
+    {
+      "paper_claim": "The contract has a concrete rational strict-threshold witness.",
+      "lean_theorem": "Viridis.CarbonContinuity.carbon_continuity_nonvacuous",
+      "status": "PROVED_FROZEN_STATEMENT"
+    }
+  ],
+  "paper_edits": [
+    "Replaced pre-Aristotle and unproved language with the independently audited formal status.",
+    "Bound the formal status to the exact Aristotle project and local audit scope.",
+    "Added an explicit separation between formal model verification and ecological, empirical, treatment, and market claims.",
+    "Updated the AI-use disclosure and working-draft status without claiming publication or canon admission."
+  ],
+  "scope_not_proved": [
+    "Ecological interpretation",
+    "Empirical coefficient values",
+    "Treatment efficacy or causality",
+    "Carbon-credit validity or market performance",
+    "Literature priority",
+    "Real-world truth outside the declared two-pool model"
+  ],
+  "verdict": "RECONCILED",
+  "external_mutation": false,
+  "canon_admission": false,
+  "publication_authority": false
+}

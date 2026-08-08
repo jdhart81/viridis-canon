@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "identifier": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled generated exploration of robust two-strain symbiont allocation under unresolved environmental regimes; formally verified for the stated mathematics, independently reviewed locally, but not peer reviewed or field validated.",
+    "keywords": [
+      "ecological restoration",
+      "symbiosis",
+      "microbial inoculants",
+      "robust optimization",
+      "environmental uncertainty"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "Zero-hole Lean verification, curator reconciliation, and an exact-hash independent post-Aristotle review are complete. Empirical validation, adoption, signed revenue, ledger approval, and publication authorization are not asserted.",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "title": "The Ecopoietic Hedge: When Symbiont Diversity Improves Restoration Reliability Under Environmental Uncertainty",
+    "upload_type": "publication",
+    "version": "0.2.0-formal-candidate"
+  }
+}

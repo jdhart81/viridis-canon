@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VRS-NIGHTLY-SELECTION-1",
+  "effective_date": "2026-08-01",
+  "owner": "Justin D. Hart",
+  "machine_authority": true,
+  "precedence": [
+    "explicit_temporary_directive",
+    "severe_starvation",
+    "persistent_organic_leader_debt",
+    "tier_starvation_floor",
+    "scored_selection"
+  ],
+  "thresholds": {
+    "severe_starvation": 22,
+    "organic_leader_consecutive_runs": 3,
+    "tier_floor": {"T1": 14, "T2": 14, "T3": 18, "T4": null},
+    "combination_guard_runs": 16
+  },
+  "score": {
+    "formula": "tier_weight * scoring_staleness + standing_inbound_flags + coverage_relief",
+    "centrality": "advisory_only_until_deterministic_graph_reconstruction"
+  },
+  "lens_policy": {
+    "order": ["Thermodynamic", "Stewardship", "Symbiosis", "Alignment"],
+    "assign_after_area": true,
+    "lens_may_defer_required_area": false,
+    "swap_to_preserve_rotation": true,
+    "combination_guard_runs": 16
+  },
+  "meta_policy": {
+    "may_propose_changes": true,
+    "may_adopt_changes": false,
+    "required_evidence": ["versioned_diff", "deterministic_tests", "before_after_replay", "accountable_review"]
+  },
+  "generator_exit_state": "GENERATED_EXPLORATION",
+  "allowed_recommendations": ["EXPLORE", "HOLD", "ROUTE_FOR_SIGNIFICANCE_REVIEW", "ROUTE_FOR_ARISTOTLE"],
+  "forbidden_labels": ["PUBLISH-CANDIDATE", "JOURNAL_READY", "CANON_ADMITTED", "SPINE_ADMITTED"]
+}
+

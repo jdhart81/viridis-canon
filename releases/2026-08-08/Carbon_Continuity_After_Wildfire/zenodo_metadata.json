@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "title": "Carbon Continuity After Wildfire: A Dynamic Portfolio Framework and Regenerative Coupling Threshold for Natural Carbon Assets",
+    "upload_type": "publication",
+    "publication_type": "preprint",
+    "creators": [
+      {
+        "name": "Hart, Justin D.",
+        "affiliation": "Viridis Research",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "A model-scoped framework for post-wildfire carbon continuity. The exact two-pool coupling threshold is formally verified in Lean with six frozen zero-sorry theorems and an independent local audit. The manuscript does not claim ecological validation, treatment efficacy, carbon-credit validity, or literature priority.",
+    "keywords": [
+      "wildfire",
+      "forest carbon",
+      "carbon permanence",
+      "regeneration",
+      "dynamic accounting",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "access_right": "open",
+    "version": "0.2.0-formal",
+    "notes": "Six frozen Lean theorems are independently audited with zero sorry. The numerical checker is portable and provenance-bound; the original concept outline is recorded as provenance and not scientific evidence. No canon admission, peer acceptance, ecological validation, treatment efficacy, carbon-credit validity, or literature priority is asserted."
+  },
+  "external_mutation": false,
+  "publication_authority": false
+}

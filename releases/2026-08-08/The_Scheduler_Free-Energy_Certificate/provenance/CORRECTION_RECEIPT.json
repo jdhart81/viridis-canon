@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "standard": "VRS-PRE-ARISTOTLE-CORRECTION-1",
+  "run_id": "Run-119",
+  "revision": 1,
+  "created_at_utc": "2026-08-04T16:23:05Z",
+  "purpose": "Bind an exact deterministic verifier replay and reconcile the control-plane target inventory without changing the immutable live run or mirror.",
+  "original": {
+    "live_run": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-119_scheduler-free-energy-certificate",
+    "mirror_run": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/science-engine/07_nightly_engine/compound research papers/Run-119_scheduler-free-energy-certificate",
+    "tree_sha256": "263632f300879acad3f9a55a5576354246825893abd8b7196920d25cc85fd488",
+    "paper_tex_sha256": "914ee219d6ece78d01c8d494b996a51edd69cdbfffa9d82ee539b285dd2c8428",
+    "paper_pdf_sha256": "5d520ccde5f24ff4f3ba48b47b23d44d2e58d0760ba46052537b5550371f4bdd",
+    "paper_log_sha256": "fd01bfe97cedddef1fa6aa9dff003a61d81c69c445d623c88f7947d783250e8a",
+    "claim_inventory_sha256": "1e9520489090d6d0370160b2dcafca3c315533845a44be30761cb7ac92d29bb7"
+  },
+  "correction_directory": "RESEARCH_PIPELINE_v2/pre_aristotle_corrections/Run-119_scheduler-free-energy-certificate-r1",
+  "corrections": [
+    {
+      "flag": "N4_SEMANTIC_SECTION_READER",
+      "change": "The tested gate reader now recognizes the manuscript's certificate, verification, and evaluation section roles without editing the paper.",
+      "claim_or_theorem_changed": false
+    },
+    {
+      "flag": "N6_EXACT_VERIFICATION_REPLAY",
+      "change": "Re-executed the immutable verifier after its final script timestamp; exit status was zero and output matched verification_output.txt byte-for-byte before refreshing only the correction-overlay copy's capture metadata.",
+      "claim_or_theorem_changed": false
+    },
+    {
+      "flag": "GENERATOR_CLAIM_INVENTORY_GAP",
+      "change": "Preserved the immutable generator omission and reconciled logsumexp_bounds_max_age as control-plane claim C5 because it is explicitly named in paper.tex and finding.md.",
+      "claim_or_theorem_changed": false
+    }
+  ],
+  "corrected": {
+    "paper_tex_sha256": "914ee219d6ece78d01c8d494b996a51edd69cdbfffa9d82ee539b285dd2c8428",
+    "paper_pdf_sha256": "5d520ccde5f24ff4f3ba48b47b23d44d2e58d0760ba46052537b5550371f4bdd",
+    "paper_log_sha256": "fd01bfe97cedddef1fa6aa9dff003a61d81c69c445d623c88f7947d783250e8a",
+    "verification_script_sha256": "1e6a2734b1887f3348464b122161cd5ae7ea5c8d75c30e1bd8ecc77dea795406",
+    "verification_output_sha256": "9d700a4c1f8d225e439f8369b1b341071bc3808c688e4cee490d067dc8bb8014",
+    "verification_replay_exit_code": 0,
+    "verification_replay_exact_match": true,
+    "pdf_bytes": 86620,
+    "pdf_pages": 4,
+    "visual_review": {
+      "rendered_pages_reviewed": [1, 2, 3, 4],
+      "clipped_or_overlapping_content": false,
+      "legibility_pass": true,
+      "verdict": "PASS"
+    }
+  },
+  "stage_holds_preserved": [
+    "Aristotle formal targets remain unproved until the forge returns and passes audit.",
+    "The policy proposal remains proposal-only and is not adopted by this correction.",
+    "Novelty and priority remain unassessed for canon purposes.",
+    "Post-Aristotle reconciliation and independent review remain pending."
+  ],
+  "immutable_original_changed": false,
+  "external_mutation": false
+}

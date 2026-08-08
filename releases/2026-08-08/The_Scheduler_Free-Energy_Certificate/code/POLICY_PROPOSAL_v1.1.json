@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "proposal_id": "VRS-NIGHTLY-SELECTION-1.1-DRAFT-RUN-119",
+  "status": "PROPOSAL_ONLY_NOT_ADOPTED",
+  "base_policy_id": "VRS-NIGHTLY-SELECTION-1",
+  "base_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+  "proposed_changes": [
+    {
+      "path": "state_transition.meta",
+      "value": "increment every area staleness by one; reset no area"
+    },
+    {
+      "path": "state_transition.area",
+      "value": "increment every area staleness by one; then reset the selected area to zero"
+    },
+    {
+      "path": "score.scoring_staleness",
+      "value": "the pre-run integer field areas[i].staleness"
+    },
+    {
+      "path": "tie_break.severe_starvation",
+      "value": [
+        "largest pre-run staleness",
+        "largest current score",
+        "lexicographically smallest area_id"
+      ]
+    },
+    {
+      "path": "tie_break.other_area_rules",
+      "value": [
+        "largest current score",
+        "largest pre-run staleness",
+        "lexicographically smallest area_id"
+      ]
+    },
+    {
+      "path": "lens_policy.tie_break",
+      "value": "first admissible lens in lens_policy.order after applying the combination guard"
+    }
+  ],
+  "scientific_certificate": {
+    "potential": "F_beta(a) = beta^-1 log(sum_i exp(beta a_i))",
+    "scope": "one-step reset choice in the equal-cost, deterministic age model",
+    "result": "resetting a maximum-age area minimizes the next-step potential for every beta > 0",
+    "does_not_establish": [
+      "long-run optimality under unequal research value",
+      "optimal thresholds",
+      "empirical scientific productivity",
+      "novelty or priority"
+    ]
+  },
+  "required_before_adoption": [
+    "independent accountable control-plane review",
+    "schema validation against a deliberately versioned policy file",
+    "full historical replay from a machine-readable transition ledger",
+    "fresh preflight and regression tests"
+  ],
+  "authority": "This file is evidence attached to Run 119. It does not edit or override NIGHTLY_SELECTION_POLICY_v1.json."
+}

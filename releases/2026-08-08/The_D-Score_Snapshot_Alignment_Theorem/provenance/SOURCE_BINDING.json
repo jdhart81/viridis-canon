@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "source_run": "Run-118",
+  "source_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-118_dscore-snapshot-alignment",
+  "mirror_directory": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/science-engine/07_nightly_engine/compound research papers/Run-118_dscore-snapshot-alignment",
+  "quality_gate": "RESEARCH_PIPELINE_v2/nightly_packages/Run-118/QUALITY_GATE.json",
+  "quality_verdict": "PASS",
+  "saturday_status": "HOLD_ARISTOTLE",
+  "novelty_status": "DISTINCT_CANDIDATE_NOT_PRIORITY_CLAIM",
+  "nearest_viridis_context": [
+    "Run-017 cosine-squared alignment efficiency",
+    "Run-086 geodesic saturation and Fisher-angle alignment",
+    "Run-093 ecological portfolio asynchrony",
+    "Run-095 and Run-097 drive-alignment efficiency",
+    "Run-099 basis-alignment efficiency"
+  ],
+  "distinct_scope": "Timestamp-delay phasor energy identity and a weighted delay-variance sufficient coherence budget for a locally common harmonic mode.",
+  "empirical_claim": false,
+  "publication_or_canon_authority": false,
+  "external_mutation": false
+}

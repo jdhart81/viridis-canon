@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://robustness.local/schemas/decision-record.schema.json",
+  "title": "Robustness Decision Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "engine_version",
+    "status",
+    "case_id",
+    "case_version",
+    "evaluation_time",
+    "input_hashes",
+    "issues",
+    "evaluations",
+    "admissible_candidates",
+    "pareto_frontier",
+    "selected_candidate",
+    "action_boundary",
+    "record_sha256"
+  ],
+  "properties": {
+    "engine_version": { "type": "string" },
+    "status": { "enum": ["DECISION", "DECISION_READY", "HOLD", "NO_ADMISSIBLE_OPTION"] },
+    "case_id": { "type": ["string", "null"] },
+    "case_version": { "type": ["string", "null"] },
+    "evaluation_time": { "type": ["string", "null"], "format": "date-time" },
+    "model_id": { "type": "string" },
+    "input_hashes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["case_sha256", "outcomes_sha256"],
+      "properties": {
+        "case_sha256": { "$ref": "#/$defs/sha256" },
+        "outcomes_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "issues": { "type": "array", "items": { "$ref": "#/$defs/issue" } },
+    "decision_rule": { "type": "string" },
+    "selection_rule": { "enum": ["pareto_only", "unique_pareto", "lexicographic"] },
+    "evaluations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["candidate_id", "candidate_name", "admissible", "gate_failures", "breaches", "profile", "fragility_ledger"],
+        "properties": {
+          "candidate_id": { "type": "string" },
+          "candidate_name": { "type": "string" },
+          "admissible": { "type": "boolean" },
+          "gate_failures": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["code", "message", "details"],
+              "properties": {
+                "code": { "type": "string" },
+                "message": { "type": "string" },
+                "details": { "type": "object" }
+              }
+            }
+          },
+          "breaches": { "type": "array", "items": { "type": "object" } },
+          "profile": {
+            "type": "object",
+            "additionalProperties": { "type": ["number", "integer", "null"] }
+          },
+          "fragility_ledger": {
+            "type": "object",
+            "required": ["direct_common_dependencies", "shared_failure_domains", "path_dependency_closures", "externalities", "irreversible_commitments"],
+            "properties": {
+              "direct_common_dependencies": { "type": "array", "items": { "type": "string" } },
+              "shared_failure_domains": { "type": "array", "items": { "type": "string" } },
+              "path_dependency_closures": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["path_id", "direct_dependencies", "expanded_failure_domains"],
+                  "properties": {
+                    "path_id": { "type": "string" },
+                    "direct_dependencies": { "type": "array", "items": { "type": "string" } },
+                    "expanded_failure_domains": { "type": "array", "items": { "type": "string" } }
+                  }
+                }
+              },
+              "externalities": { "type": "array", "items": { "type": "object" } },
+              "irreversible_commitments": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "admissible_candidates": { "type": "array", "items": { "type": "string" } },
+    "pareto_frontier": { "type": "array", "items": { "type": "string" } },
+    "selected_candidate": { "type": ["string", "null"] },
+    "action_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["execution_status", "executed", "selected_candidate", "authorized_actions", "authority_lease_id", "reasons"],
+      "properties": {
+        "execution_status": { "enum": ["AUTHORIZED_NOT_EXECUTED", "NOT_AUTHORIZED"] },
+        "executed": { "const": false },
+        "selected_candidate": { "type": ["string", "null"] },
+        "authorized_actions": { "type": "array", "items": { "type": "string" } },
+        "authority_lease_id": { "type": ["string", "null"] },
+        "reasons": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "selection_notes": { "type": "array", "items": { "type": "string" } },
+    "dissent": { "type": "array", "items": { "type": "object" } },
+    "record_sha256": { "$ref": "#/$defs/sha256" }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "issue": {
+      "type": "object",
+      "required": ["code", "message", "path"],
+      "properties": {
+        "code": { "type": "string" },
+        "message": { "type": "string" },
+        "path": { "type": "string" }
+      }
+    }
+  }
+}

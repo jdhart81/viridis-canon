@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "receipt_id": "RobustnessEngine-v0.6-2026-08-07",
+  "engine_version": "0.6.0",
+  "predecessor_receipt": "ROBUSTNESS_ENGINE_V05_BUILD_RECEIPT.json",
+  "predecessor_receipt_sha256": "1df707ca164758568b791f9a46238d7f620acb8f5194dff6fb5d8c5089c07ec8",
+  "state": "VERIFIED_LOCAL_REFERENCE_BUILD_WITH_LOCAL_LEAN_PREFLIGHT",
+  "mechanism": {
+    "trajectory_interpolation": "PIECEWISE_LINEAR_BETWEEN_DECLARED_SAMPLES",
+    "segment_policy": "CONSERVATIVE_ENDPOINT_STATE_SPAN",
+    "coverage_policy": "GOVERNANCE_DECLARED_MINIMUM_MANDATORY_COVERAGE",
+    "measures": [
+      "possible_violation_span_hours",
+      "robust_violation_span_hours",
+      "declared_linear_shortfall_area",
+      "guaranteed_recovery_elapsed_hours",
+      "aftershock_count"
+    ],
+    "mandatory_noncompensable_uncertainty_policy": "HOLD"
+  },
+  "files_sha256": {
+    "pyproject.toml": "4f025b31bc3f80916db7eb8fb8f66db8a4fd21500b1bef7fb7c52f79138bc750",
+    "README.md": "07593c4112f367d424d80d03881e78989e18b17c121d7fc7a4de1a79a6b4b786",
+    "CHANGELOG.md": "50e068b9f062128a67c54c11bab8a2f07d15837c0805cf45eb8d36da3112929b",
+    "docs/ALGORITHM_SPEC.md": "e64a066d1afd1f0663914768679b0b8767229ff42c935e53ba3a6509c13ad9b5",
+    "docs/FINAL_RELEASE_CRITERIA.md": "0b34d16b1e0b0581daa082a3eb692b660c68fddff3fdb81022b2cec70678b116",
+    "docs/FORMAL_CLAIM_MATRIX.md": "a14683766f9cf72514bd4553a5113134ac1f31a1e857a6c84e0c3c8fedada43b",
+    "docs/TRAJECTORY_ANALYSIS.md": "ad92f1ce2ff8490247cf6c75d261e62c687c89ea0931edbb02ffed08bdcb767f",
+    "schemas/decision-case.schema.json": "19741ce2f6b51aff2165e7f233fad61d8cd2004374a5dacf7140be5bed380910",
+    "schemas/outcome-bundle.schema.json": "b531db677a454628dffa0f89c1ee8a0ad79b8d84dbb8985def50c2d68f024590",
+    "schemas/decision-record.schema.json": "e609776c5991d25a0aa6f07857c0ceb03a667ead1cd8f0255eb1c872f7af4ffc",
+    "src/robustness_engine/engine.py": "0ed98dba1c1a786fae97c00c652f5d07680d6b3084271f845ef7992747cad7d9",
+    "src/robustness_engine/validation.py": "55bfb82d697a379769cc66db0270fd95039d948d5720c8a80800f82431f59c59",
+    "src/robustness_engine/uncertainty.py": "e50df6023d3379f4fdd7297181bc8108b6ebe52aa1449c214db41df3d61a79f5",
+    "src/robustness_engine/trajectory.py": "35a427da6cf93d282803813edeb8cedddc516a9cb7af57ba05b96c0006b0ff89",
+    "examples/cyber_identity/case.json": "94a159c1475b057cdebaa5a8fcd596d3f07b9ccf05a78af741c392da8c37bc94",
+    "examples/cyber_identity/outcomes.json": "2387fb55e33d0ed8b2ff542908ccf1ae9f9fb0da632d6ec6a7cb03d8f2e688f8",
+    "examples/municipal_heat/case.json": "ff3bb5324a810f7e9346b77fefbf77f7a826ecc26fdb6bba6f1a972a573d968a",
+    "examples/municipal_heat/outcomes.json": "fb01cbe1355010c247ce102b822826377f4d86272cec9c8a5bb96b68224c8ca0",
+    "tests/test_engine.py": "bc27739bcccc8d7202680c085a9626d23f2dbe11ef169f3c0e7b0128a9dc8299"
+  },
+  "verification": {
+    "reference_engine_tests": "35_PASS_0_FAIL",
+    "cyber_fixture_record_sha256": "ed2e6726571d2239ed2e90839435ea06ed887f371f791c3a0cb4e43df23c1b79",
+    "municipal_heat_fixture_record_sha256": "3badd072093e42958cdeb1f1df65eca12742235b235f3b4374e09f292aef7783",
+    "formal_local_preflight": {
+      "state": "LOCAL_LEAN_PREFLIGHT_PASS_NOT_ARISTOTLE_AUDITED",
+      "receipt_sha256": "7cf47e3cf0f9ad1102a2cd75a15552d30d1247d0134071b1a503bcccba526e0d",
+      "lake_build": "PASS_920_JOBS",
+      "named_theorems": 27,
+      "frozen_contract_theorems": 22,
+      "proof_holes": 0,
+      "forbidden_construct_hits": 0,
+      "axiom_audit": "PASS_ALLOWED_SUBSET_ONLY"
+    },
+    "service_targeted_tests": "5_PASS_0_FAIL",
+    "authoritative_isolated_fleet_runner": "2136_PASS_0_FAIL_0_ERROR_37_OF_37_CLEAN"
+  },
+  "release_boundary": {
+    "aristotle_submitted": false,
+    "aristotle_audited": false,
+    "successor_paper_reconciled": false,
+    "public_canon_published": false,
+    "production_deployed": false,
+    "publication_authority": false,
+    "note": "This is a verified local successor build, not FINAL_LEAN_PROVEN_FLEET_DEPLOYED."
+  }
+}

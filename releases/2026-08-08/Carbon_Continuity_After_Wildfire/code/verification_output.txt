@@ -1,0 +1,28 @@
+CARBON CONTINUITY VERIFICATION
+SEED: 20260804
+SOURCE_SHA256: f538bb8b6629fea970336a710c471915b8cdee319b2cde3100cdb1019321bd67
+
+01 PASS source-binding-present: provenance/SOURCE_BINDING.json
+02 PASS source-binding-hash-match: f538bb8b6629fea970336a710c471915b8cdee319b2cde3100cdb1019321bd67
+03 PASS explicit-witness-positive: L=0.500, D=0.400
+04 PASS explicit-threshold-strict: rp=0.100 > leakage=0.080
+05 PASS explicit-living-held: L'=0.500
+06 PASS explicit-durable-grows: D'=0.420 > D=0.400
+07 PASS threshold-sufficiency-exhaustive: 25,000 exact rational cases
+08 PASS threshold-necessity-exhaustive: 25,000 exact rational cases with adversarial portfolios
+09 PASS boundary-stationarity-exhaustive: 25,000 exact boundary constructions
+10 PASS strict-threshold-growth-exhaustive: 25,000 exact strict-threshold cases
+11 PASS zero-coupling-negative-control: state (1,1) -> (0.60,0.80)
+12 PASS below-threshold-grid-negative-control: 10,000 positive portfolios searched
+13 PASS spectral-cross-check-above: dominant eigenvalue=1.026556
+14 PASS spectral-cross-check-below: dominant eigenvalue=0.923607
+15 PASS illustrative-cci-order: continuity=0.661225 > stock=0.207699
+16 PASS illustrative-stock-starts-with-more-living-carbon: stock-focused living=1.00; continuity-focused living=0.85; initial total=1.05 for both
+17 PASS figures-created: 3 vector TikZ figure fragments
+18 PASS figure-files-nonempty: all figure fragments exceed 1 KB
+19 PASS continuity-number-stock-below: R_C=0.166667
+20 PASS continuity-number-balanced-above: R_C=3.375000
+
+SUMMARY: 20 PASS / 0 FAIL
+STATUS: NUMERICAL_GATE_PASS
+SCOPE: exact algebra and stylized model checks only; no empirical calibration or causal field claim

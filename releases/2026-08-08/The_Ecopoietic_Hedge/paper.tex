@@ -1,0 +1,521 @@
+\documentclass[10pt,twocolumn]{article}
+\usepackage[letterpaper,margin=0.68in,columnsep=0.24in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype,xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\setlist{nosep,leftmargin=*}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\title{\textbf{The Ecopoietic Hedge: When Symbiont Diversity Improves Restoration Reliability Under Environmental Uncertainty}}
+\author{Justin D. Hart\\Viridis Research\\\texttt{viridisnorthllc@gmail.com}}
+\date{2 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Microbial and mycorrhizal inocula can support plant establishment, but their
+effects depend on host, stress, delivery practice, and environmental context.
+This creates a decision problem upstream of any field deployment: should a
+restoration program allocate a fixed inoculum dose to the strain with the best
+point estimate, or hedge across strains before the realized establishment
+regime is known? We analyze a preregistered two-strain, two-regime model in
+which effective exposures are additive in the negative log failure
+probability. When strain performance crosses symmetrically across regimes,
+with efficacy matrix $[(\alpha,\beta),(\beta,\alpha)]$ and
+$\alpha>\beta>0$, the equal-dose mixture uniquely maximizes worst-regime
+establishment. Its guaranteed log-failure exponent is
+$(\alpha+\beta)D/2$, compared with $\beta D$ for either monoculture. For a
+fixed target probability, the implied dose saving is
+$(\alpha-\beta)/(\alpha+\beta)$. The conclusion has sharp negative
+controls: identical strains provide no diversification benefit, and a strain
+that weakly dominates in every modeled regime should receive the entire dose.
+An exact breakpoint solver, grid-convergence tests, 1,000 randomized symmetric
+instances, 250 multi-scenario instances, and numerical-stability tests passed
+32 of 32 preregistered checks. A separate Lean 4 artifact proves the five
+load-bearing model claims and a concrete non-vacuity witness with no remaining
+proof holes. These are synthetic model and formal checks, not field
+verification. The result supplies a falsifiable criterion for when a
+symbiont portfolio is justified: measured cross-regime rank reversal, not
+diversity by itself.
+\end{abstract}
+
+\noindent\textbf{Keywords:} ecological restoration; plant microbiome;
+symbiosis; robust optimization; microbial inoculants; environmental
+uncertainty; maximin allocation
+
+\section{Introduction}
+
+Large-scale restoration increasingly treats microbial partners as active
+components of establishment rather than invisible background. Mycorrhizal
+fungi can alter nutrient and water acquisition, plant-growth-promoting
+bacteria can change stress physiology, and designed synthetic communities can
+carry several complementary functions. Yet biological efficacy is not a
+property of a strain alone. It depends on the host, soil, drought intensity,
+timing, community history, and delivery method. Current experiments make this
+context dependence concrete. Wang et al. found that selected
+\emph{Rhizobium} strains and synthetic communities improved Arabidopsis growth
+under osmotic stress while having little effect under the mock condition
+\cite{wang2024}. Bandopadhyay et al. separated plant- and environment-mediated
+drivers of active rhizosphere responses to drought and found no single taxon
+that behaved as a drought generalist across their two crop systems
+\cite{bandopadhyay2024}. Lin et al. showed that inoculation practice affected
+early fabricated-community assembly and that reproducibility differed across
+delivery protocols \cite{lin2024}.
+
+Combined inocula can help, but not uniformly. In a Mediterranean maize field
+experiment, single and dual microbial treatments changed distinct plant and
+soil outcomes under watered and drought conditions \cite{ouhaddou2024}. A
+16-member drought-tolerant bacterial synthetic community improved barley
+performance in a pot experiment \cite{rigerte2025}. Conversely, field
+mycorrhizal inoculation during drought aided one forage species while
+increasing competition and water stress for another \cite{amf2023}. These
+results motivate portfolios without proving that more strains are always
+better. A mixture consumes finite dose, can include redundant organisms, and
+can introduce antagonism or biosecurity risk.
+
+The decision studied here is deliberately narrower than biological community
+design in full. A manager has two approved, non-antagonistic candidate strains,
+a fixed total dose, and multiple plausible establishment regimes. Allocation
+must occur before the realized regime is known. We ask when the mixture raises
+the guaranteed probability of at least one effective exposure.
+
+This question is distinct from two nearby results in the Viridis working
+corpus. Run 095 studied the order of one-way facilitation across biosphere
+layers \cite{run095}; Run 096 studied deterministic plant-symbiont
+co-establishment and best-strain matching for a known host-site pair
+\cite{run096}. Here the host and total dose are fixed. The new axis is
+pre-regime robust allocation across alternative symbionts. The work remains a
+generated exploration and novelty is unassessed. Its five preregistered formal
+targets were subsequently proved in Lean 4 and independently rebuilt and
+audited after Aristotle review. Formal verification establishes only the
+stated mathematics; it does not establish the ecological assumptions or field
+efficacy.
+
+\section{Prior work and decision context}
+
+The biological literature contains both reasons to diversify and reasons to
+avoid an automatic diversity rule. Synthetic communities can combine traits
+that no single strain carries, but community assembly is sensitive to
+inoculation practice \cite{lin2024}. Host genotype and root traits can recruit
+different microbes under stress \cite{wang2024}; environmental exposure can
+independently restructure the active community \cite{bandopadhyay2024}. A
+strain portfolio is therefore best interpreted as a hedge over unresolved
+host--environment response, not as a universal ecological good.
+
+The mathematical form is a small robust optimization problem. Robust
+optimization selects a decision that remains feasible or performant across a
+specified uncertainty set rather than optimizing only one point estimate
+\cite{bental1998}. In this paper the uncertainty set is finite and explicit:
+each scenario supplies one efficacy per strain. The objective is maximin, so it
+prioritizes the weakest modeled regime. This is appropriate only when the
+scenarios are safety-relevant and no defensible probability distribution is
+available. If credible probabilities exist, expected utility or a coherent
+risk measure may be preferable.
+
+We model establishment through a Poisson-exposure approximation. If an
+effective colonization event occurs with exponent $E\ge0$, then the probability
+of at least one event is
+\begin{equation}
+ p(E)=1-\exp(-E).
+ \label{eq:success}
+\end{equation}
+The exponent is additive across independent doses. Equation
+\eqref{eq:success} is an operational approximation, not a biological law. Its
+advantage is that dose contributions combine in negative log failure, allowing
+the allocation question to be stated exactly and tested directly.
+
+\section{Model, hypotheses, and failure conditions}
+
+Let $D>0$ be total dose. Allocate $x\in[0,D]$ to strain A and $D-x$ to strain B.
+There are two plausible regimes. In regime 1, efficacies per dose are
+$(\alpha,\beta)$; in regime 2 they are $(\beta,\alpha)$, with
+$\alpha>\beta>0$. The regime exponents are
+\begin{align}
+ E_1(x)&=\alpha x+\beta(D-x)
+       =\beta D+(\alpha-\beta)x,\\
+ E_2(x)&=\beta x+\alpha(D-x)
+       =\alpha D-(\alpha-\beta)x.
+\end{align}
+Because $p(E)$ is strictly increasing, maximizing worst-regime success is
+equivalent to
+\begin{equation}
+ \max_{0\le x\le D} g(x),\qquad
+ g(x)=\min\{E_1(x),E_2(x)\}.
+ \label{eq:maximin}
+\end{equation}
+
+The hypothesis, assumptions, and stopping rules were written into
+\texttt{verification.py} before this manuscript. The assumptions are:
+\begin{enumerate}
+\item log-failure contributions add within each regime;
+\item per-dose costs are equal and total dose is fixed;
+\item allocation precedes regime realization and uses a worst-case objective;
+\item efficacies are nonnegative and fixed over the establishment window; and
+\item the symmetric matrix is a test case, not a measured site claim.
+\end{enumerate}
+
+The preregistered claim would be abandoned if dense search moved the optimum
+away from $D/2$ beyond grid resolution, if the analytic value disagreed with an
+independent breakpoint solver, if identical strains retained a claimed gain,
+if mixing beat a uniformly dominant strain, or if refinement failed to
+converge.
+
+\section{Analytic results}
+
+\begin{proposition}[Symmetric robust allocation]
+\label{prop:equal}
+For $\alpha>\beta>0$ and $D>0$, the unique maximizer of
+\eqref{eq:maximin} is $x^*=D/2$, and
+\begin{equation}
+ g(x^*)=\frac{\alpha+\beta}{2}D.
+ \label{eq:star}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+$E_1$ is strictly increasing in $x$ and $E_2$ is strictly decreasing. Their
+unique crossing solves
+$\beta D+(\alpha-\beta)x=\alpha D-(\alpha-\beta)x$, hence $x=D/2$.
+To the left of the crossing, $E_1<E_2$, so $g=E_1$ increases strictly. To the
+right, $E_2<E_1$, so $g=E_2$ decreases strictly. The crossing is therefore the
+unique maximizer. Substitution gives \eqref{eq:star}.
+\end{proof}
+
+\begin{corollary}[Guaranteed exponent gain]
+\label{cor:gain}
+Either monoculture has worst-regime exponent $\beta D$. The mixed allocation
+improves that exponent by
+\begin{equation}
+ \Delta g=\frac{\alpha-\beta}{2}D>0.
+\end{equation}
+\end{corollary}
+
+\begin{corollary}[Target-probability dose]
+\label{cor:dose}
+For target success $p_0\in(0,1)$, define $L=-\log(1-p_0)$. The robust doses are
+\begin{equation}
+ D_{\rm mix}=\frac{2L}{\alpha+\beta},\qquad
+ D_{\rm mono}=\frac{L}{\beta}.
+\end{equation}
+The fractional dose saving is
+\begin{equation}
+ 1-\frac{D_{\rm mix}}{D_{\rm mono}}
+ =\frac{\alpha-\beta}{\alpha+\beta}.
+ \label{eq:saving}
+\end{equation}
+\end{corollary}
+
+The result is not a generic endorsement of equal splitting. Consider $m$
+scenarios with efficacy pairs $(a_s,b_s)$. The two-strain robust problem is
+\begin{align}
+ \max_{x,t}\quad &t\\
+ \text{subject to}\quad&a_s x+b_s(D-x)\ge t,\quad s=1,\ldots,m,\\
+ &0\le x\le D.
+ \label{eq:lp}
+\end{align}
+The lower envelope of the scenario lines is concave and piecewise linear, so an
+optimum occurs at an endpoint or at an intersection of two scenario lines.
+This supplies an exact breakpoint algorithm for two strains. In an asymmetric
+crossover, the robust solution can be interior without being $D/2$.
+
+\begin{proposition}[Dominance negative control]
+\label{prop:dominance}
+If $a_s\ge b_s$ for every modeled scenario, $x=D$ is maximin. If the inequality
+is strict in every active worst-case scenario, moving dose from A to B strictly
+reduces the robust objective locally.
+\end{proposition}
+
+\begin{proof}
+For any $x\le D$ and each $s$,
+$a_sD-[a_sx+b_s(D-x)]=(a_s-b_s)(D-x)\ge0$. Thus the all-A allocation weakly
+improves every scenario simultaneously and cannot have a smaller minimum.
+\end{proof}
+
+If $a_s=b_s$ for every scenario, each line is constant in $x$. Every allocation
+ties, so merely increasing strain count has no modeled value. These controls
+are decision-relevant: the portfolio is justified by crossing performance, not
+by a diversity label.
+
+\section{Numerical verification}
+
+The verification program was frozen before the paper and uses only the Python
+standard library. It independently implements the formulas, an exact
+two-strain breakpoint solver, and a dense-grid solver. All 32 checks passed.
+
+For the illustrative values $\alpha=1.7$, $\beta=0.3$, and $D=4$, the equal
+mix has exponent $4$ and worst-regime success
+$1-e^{-4}=0.98168436$. Either monoculture has exponent $1.2$ and success
+$1-e^{-1.2}=0.69880579$. The implied target-dose saving is $0.7$. These are
+dimensionless synthetic values, not treatment recommendations.
+
+Three odd grid resolutions---101, 1,001, and 10,001 intervals---were chosen so
+that the equal split was not sampled exactly. Value errors fell from
+$2.772\times10^{-2}$ to $2.797\times10^{-3}$ to
+$2.800\times10^{-4}$, within the derived slope-resolution bound. The exact
+solver matched the closed form over 1,000 randomized symmetric parameter sets;
+the largest allocation discrepancy was $6.253\times10^{-13}$ and the largest
+value discrepancy was $5.684\times10^{-14}$.
+
+For 250 random problems with two to seven scenario lines, the exact breakpoint
+solution agreed with a 20,000-interval grid within the relevant slope bound;
+the largest observed value gap was $1.704\times10^{-4}$. The identical-strain
+control was flat. In four dominance scenarios, the exact solver assigned all
+dose to the dominant strain. An asymmetric three-scenario crossover produced
+an interior allocation $x=1.5$ for $D=4$, explicitly disproving the use of
+50/50 as a general heuristic.
+
+The probability path uses \texttt{expm1} to avoid cancellation at small
+exponents. A value of $10^{-14}$ remained resolvable, while an exponent of
+1,000 saturated safely at probability one. The complete output is retained in
+\texttt{verification\_output.txt}; no test output was truncated.
+
+The correct numerical status is \texttt{NUMERICAL\_GATE\_PASS}. The program
+checks a finite implementation and does not by itself provide Lean proof,
+field validation, novelty assessment, or evidence of ecological safety. The
+separate formal artifact described next addresses the bounded mathematical
+claims only.
+
+\section{Formal verification}
+
+The audited Lean 4 module \path{EcopoieticHedge.lean} uses toolchain
+\path{leanprover/lean4:v4.28.0} and the pinned mathlib revision recorded in the
+accompanying forge request. It contains five load-bearing theorems plus one
+explicit non-vacuity witness:
+\begin{enumerate}
+\item \path{reciprocal_two_regime_maximin_equal_split};
+\item \path{reciprocal_diversification_gain};
+\item \path{target_probability_dose_saving};
+\item \path{uniform_dominance_implies_monoculture_optimal};
+\item \path{identical_strains_zero_diversification_gain}; and
+\item \path{ecopoietic_hedge_nonvacuous}.
+\end{enumerate}
+The first theorem proves both the maximin upper bound and the equality
+condition $x=D/2$. The second states the exact exponent gain against the
+$x=0$ monoculture endpoint; direct evaluation of the reciprocal definitions
+gives the same endpoint value at $x=D$. The third retains
+$\alpha>\beta>0$ and $0<p<1$. The fourth proves that the all-A allocation
+weakly improves every scenario under pointwise dominance, which is the
+sufficient maximin certificate used in Proposition~\ref{prop:dominance}. The
+fifth proves allocation-independence under identical scenario coefficients.
+The witness evaluates $\alpha=2$, $\beta=1$, and $D=2$, obtaining mixed and
+monoculture worst-case exponents 3 and 2.
+
+The local forge audit rebuilt the returned project, compared every submitted
+definition and theorem signature with the frozen request, scanned the Lean
+sources for proof holes and prohibited escapes, inspected the axioms of all
+six named theorems, checked the explicit witness, and reconciled the target
+names against the paper claim inventory. This verifies the formal model only;
+the additive exposure law, parameter relevance, and biological interpretation
+remain assumptions to be tested empirically.
+
+\section{Predictions and empirical tests}
+
+The central empirical prediction is conditional and discriminating:
+
+\begin{quote}
+An inoculant portfolio should improve held-out worst-regime establishment over
+the best monoculture only when estimated strain performance crosses across the
+relevant regimes; under uniform dominance, the portfolio should not help after
+holding total viable dose fixed.
+\end{quote}
+
+A direct test is a host-by-strain-by-regime factorial experiment with at least
+four dose levels plus an uninoculated control. Regimes should be chosen before
+outcome inspection and represent operational uncertainty such as watered versus
+droughted soil, low versus high phosphorus, or two delivery timings. Within
+each cell, estimate establishment failure $q$ and test whether
+$-\log q$ is approximately linear in viable dose over the proposed operating
+range. The strain efficacy is the slope, with uncertainty propagated from
+replicate blocks.
+
+The efficacy matrix should then be classified before portfolio evaluation:
+\begin{enumerate}
+\item \textbf{crossover:} rank order reverses across at least two regimes;
+\item \textbf{dominance:} one strain is no worse in every regime; or
+\item \textbf{unresolved:} confidence intervals do not distinguish either.
+\end{enumerate}
+For a crossover matrix, freeze the robust allocation and compare it with both
+monocultures on held-out blocks. Refutation occurs if the additive hazard model
+fails materially, if antagonistic interactions make the combined exponent
+non-additive, or if the predicted mixture fails to improve held-out worst-
+regime establishment. A dominance result favoring monoculture confirms the
+negative control rather than invalidating the framework.
+
+Secondary tests should estimate interaction terms by comparing the mixture
+with the sum of single-strain log-failure exponents. A negative interaction
+large enough to reverse the robust gain is a stop condition. Long-term
+persistence, ecosystem composition, pathogen transmission, and off-target
+effects must be measured separately; early establishment is not restoration
+success.
+
+\section{Discussion}
+
+The mathematical result turns a vague case for microbial diversity into an
+auditable decision rule. A mix is useful when it spans environmental response
+directions that a single strain does not. In the symmetric case, the two
+regime constraints pull allocation in opposite directions and the robust
+solution equalizes them. The same geometry appears in reliability portfolios:
+diversification is valuable when components fail differently, not when they
+are clones.
+
+This clarifies the relationship to deterministic symbiont matching. If the
+site regime is known and one strain has the highest efficacy, Run 096's
+matching logic remains appropriate. The hedge becomes relevant only when the
+decision precedes unresolved regime realization and the cost of failure makes
+the lower tail load-bearing. It therefore extends, rather than replaces, the
+deterministic pair model.
+
+The result also places a burden on data collection. Without cross-regime dose
+response, a portfolio recommendation is not evidence based. A single-condition
+screen can rank strains but cannot estimate hedge value. Conversely, a small
+factorial trial can decide that the mix is unnecessary, which is economically
+useful because it avoids spending dose on a dominated strain.
+
+No claim is made that the current primary literature contains the same
+closed-form model or that the result is new to robust optimization, ecological
+insurance theory, or inoculant design. The literature search was targeted, not
+systematic. Novelty remains unassessed pending independent prior-art and
+significance review.
+
+\section{Limitations}
+
+The model omits most of the ecology that determines deployment safety and
+durability. Independent Poisson exposures can fail when strains compete,
+facilitate one another, share a delivery bottleneck, or change host recruitment.
+Efficacy can vary with dose, time, genotype, soil legacy, and resident community.
+Equal per-dose cost ignores production yield, shelf life, regulatory burden,
+and viable propagule uncertainty. The maximin objective can be overly
+conservative, and the two-regime symmetric case is intentionally stylized.
+
+Early establishment probability is not ecosystem function, persistence,
+native-community recovery, or net conservation benefit. A portfolio can also
+increase biosecurity and pathogen risks. Only approved, locally appropriate
+organisms should enter a field trial, under the applicable ecological and
+regulatory review. The numerical gate does not evaluate any of those conditions.
+
+The general two-strain finite-scenario problem is easy; many-strain robust
+allocation with interactions, integer packaging, capacity limits, uncertain
+efficacies, and chance constraints is materially harder. Those extensions are
+deferred. So are empirical calibration and comparison with simpler baselines.
+
+\section{Reproducibility}
+
+\paragraph{Reproducibility.}
+Run \texttt{python3 verification.py} with Python 3. The program uses only the
+standard library and a fixed pseudorandom seed, prints every aggregate check,
+and exits nonzero on failure. The exact source and complete output are included
+with this paper. The manuscript can be rebuilt with two passes of
+\texttt{pdflatex -interaction=nonstopmode -halt-on-error paper.tex}.
+
+\paragraph{Data and code availability.}
+No external dataset was analyzed. All generated code, synthetic parameters,
+claims, and captured output needed to reproduce the numerical result are in the
+immutable Run 117 package. External papers are identified in
+\texttt{SOURCE\_LEDGER.json} by DOI or stable URL.
+
+The formal artifact is rebuilt with \texttt{lake build} using the included
+\texttt{lean-toolchain}, \texttt{lakefile.toml}, and pinned
+\texttt{lake-manifest.json}. The immutable Aristotle requests, returned Lean
+tree, repair receipt, and seven-gate forge audit are included in the staged
+submission package.
+
+\paragraph{Accountable authorship.}
+Justin D. Hart is the accountable human author and is responsible for the
+scientific claims, source selection, release decisions, and any future
+correction. No AI system is an author.
+
+\paragraph{Substantive AI-use disclosure.}
+OpenAI Codex generated the initial hypothesis, performed the local corpus and
+literature search under Justin D. Hart's standing direction, wrote the
+preregistered verification program, executed the synthetic checks, drafted the
+manuscript and package metadata, and checked compilation and rendering. Codex
+also narrowed the claim to a conditional crossover result and retained the
+negative controls. Historical Claude-generated Viridis artifacts were read as
+attributed prior work and were not rewritten. Aristotle was not used for this
+run's initial hypothesis, source work, numerical program, or manuscript. It
+was used as the external formal-verification service for the hash-bound Lean
+request and repair review. Codex developed and locally compiled the bounded
+proof repair after the first Aristotle task stalled before proof work, then
+performed the separate deterministic statement, build, escape, axiom,
+non-vacuity, and significance audit. The human author remains accountable for
+review and any external use.
+
+\paragraph{Funding.}
+No external funding was received specifically for this generated exploration.
+
+\paragraph{Conflicts of interest.}
+The author is the founder of Viridis and could benefit if a future decision
+tool based on this work is commercialized. No signed revenue, customer
+validation, adoption, or product efficacy is evidenced by this paper.
+
+\section{Conclusion}
+
+Under a transparent additive log-failure model, symbiont diversity is a robust
+hedge only when strain performance crosses across unresolved establishment
+regimes. Symmetric crossover yields an equal split and an exact dose-saving
+formula; identical strains yield no gain; uniform dominance favors a
+monoculture. The strongest next step is not a broader claim but a small
+preregistered factorial experiment that estimates the efficacy matrix and
+tries to falsify additivity on held-out blocks. The bounded model claims now
+have zero-hole Lean proofs, but the result remains a synthetic generated
+exploration, not field guidance, empirical validation, or a novelty claim.
+
+\begin{thebibliography}{99}
+
+\bibitem{wang2024}
+Z. Wang, Z. Li, Y. Zhang, et al., ``Root hair developmental regulators
+orchestrate drought triggered microbiome changes and the interaction with
+beneficial Rhizobiaceae,'' \emph{Nature Communications} \textbf{15}, 10068
+(2024). doi:10.1038/s41467-024-54417-5.
+
+\bibitem{bandopadhyay2024}
+S. Bandopadhyay, X. Li, A. W. Bowsher, R. L. Last, and A. Shade,
+``Disentangling plant- and environment-mediated drivers of active rhizosphere
+bacterial community dynamics during short-term drought,'' \emph{Nature
+Communications} \textbf{15}, 6347 (2024).
+doi:10.1038/s41467-024-50463-1.
+
+\bibitem{lin2024}
+H.-H. Lin, M. Torres, C. A. Adams, et al., ``Impact of Inoculation Practices on
+Microbiota Assembly and Community Stability in a Fabricated Ecosystem,''
+\emph{Phytobiomes Journal} \textbf{8}, 155--167 (2024).
+doi:10.1094/PBIOMES-06-23-0050-R.
+
+\bibitem{ouhaddou2024}
+R. Ouhaddou, L. Ech-chatir, C. Ikan, et al., ``Investigation of the impact of
+dual inoculations of arbuscular mycorrhizal fungi and plant growth-promoting
+rhizobacteria on drought tolerance of maize grown in a compost-amended field
+under Mediterranean conditions,'' \emph{Frontiers in Microbiology}
+\textbf{15}, 1432637 (2024). doi:10.3389/fmicb.2024.1432637.
+
+\bibitem{rigerte2025}
+L. Rigerte, A. Heintz-Buschart, T. Reitz, and M. T. Tarkka, ``Assembly and
+application of a synthetic bacterial community for enhancing barley tolerance
+to drought,'' \emph{Frontiers in Bacteriology} \textbf{4}, 1572294 (2025).
+doi:10.3389/fbrio.2025.1572294.
+
+\bibitem{amf2023}
+``Arbuscular mycorrhizal fungi increase the interspecific competition between
+two forage plant species and stabilize the soil microbial network during a
+drought event: Evidence from the field,'' \emph{Applied Soil Ecology}
+\textbf{185}, 104805 (2023). doi:10.1016/j.apsoil.2023.104805.
+
+\bibitem{bental1998}
+A. Ben-Tal and A. Nemirovski, ``Robust convex optimization,''
+\emph{Mathematics of Operations Research} \textbf{23}, 769--805 (1998).
+
+\bibitem{run095}
+J. D. Hart, ``The Ecopoietic Succession-Ordering Theorem,'' Viridis Nightly
+Science Engine, Run 095 (2026). Internal working-corpus artifact.
+
+\bibitem{run096}
+J. D. Hart, ``The Mutualist Co-Establishment Theorem,'' Viridis Nightly Science
+Engine, Run 096 (2026). Internal working-corpus artifact.
+
+\end{thebibliography}
+
+\end{document}

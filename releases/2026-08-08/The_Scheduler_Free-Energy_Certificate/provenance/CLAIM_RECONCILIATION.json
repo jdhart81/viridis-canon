@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "candidate_id": "Run-119",
+  "paper_sha256": "0870eea2a1b65734bfb09046a665b24e1241797f0e5c539eb7e81ea9da79f450",
+  "lean_sha256": "70c1dbfb1f86f3247e5084165e27dd9ec03ec8646c7bd45f7112a4dd7f98df4d",
+  "formal_claims": [
+    {
+      "paper_locator": "Proposition 1; equations 3-4",
+      "lean_theorem": "Viridis.SchedulerFreeEnergy.reset_partition_function_identity",
+      "status": "MATCH"
+    },
+    {
+      "paper_locator": "Theorem 1",
+      "lean_theorem": "Viridis.SchedulerFreeEnergy.max_age_minimizes_next_logsumexp",
+      "status": "MATCH"
+    },
+    {
+      "paper_locator": "Theorem 1 uniqueness clause",
+      "lean_theorem": "Viridis.SchedulerFreeEnergy.unique_max_age_unique_minimizer",
+      "status": "MATCH"
+    },
+    {
+      "paper_locator": "Tie negative control",
+      "lean_theorem": "Viridis.SchedulerFreeEnergy.tied_maxima_equal_next_potential",
+      "status": "MATCH"
+    },
+    {
+      "paper_locator": "Equation 2 soft-maximum bounds",
+      "lean_theorem": "Viridis.SchedulerFreeEnergy.logsumexp_bounds_max_age",
+      "status": "MATCH"
+    },
+    {
+      "paper_locator": "Verification and negative controls",
+      "lean_theorem": "Viridis.SchedulerFreeEnergy.scheduler_free_energy_nonvacuous",
+      "status": "MATCH"
+    }
+  ],
+  "nonformal_boundaries": [
+    "The live policy-file diagnosis and replay are numerical and source-audit claims, not Lean theorems.",
+    "Policy adoption, execution authority, long-run scheduling performance, and scientific productivity are not proved."
+  ],
+  "statement_freeze_pass": true,
+  "paper_to_lean_scope_match": true,
+  "external_mutation": false
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "candidate_id": "Directed-2026-08-04-CarbonContinuity",
+  "captured_at": "2026-08-04T15:20:00Z",
+  "accountable_author": "Justin D. Hart",
+  "source_concept": {
+    "path": "/Users/justinhart/Desktop/Wildfires Carbon Impact Analysis.pdf",
+    "sha256": "f538bb8b6629fea970336a710c471915b8cdee319b2cde3100cdb1019321bd67",
+    "role": "user-supplied concept outline; not scientific evidence"
+  },
+  "search_scope": {
+    "date": "2026-08-04",
+    "method": "primary and official web-source search plus local Viridis corpus deduplication",
+    "queries": [
+      "wildfire forest carbon permanence pyrogenic carbon",
+      "post-fire carbon recovery California",
+      "forest carbon offset wildfire buffer pool",
+      "post-fire erosion hydrology contour felled logs",
+      "carbon continuity wildfire framework",
+      "two-pool carbon coupling threshold"
+    ]
+  },
+  "sources": [
+    {"id":"wu2026","type":"PRIMARY","url":"https://doi.org/10.1038/s41586-026-10571-y","supports":"climate-driven forest carbon reversal risk and buffer sizing"},
+    {"id":"anderegg2020","type":"SYNTHESIS","url":"https://doi.org/10.1126/science.aaz7005","supports":"climate risks to forest mitigation potential"},
+    {"id":"ipcc2022","type":"OFFICIAL","url":"https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-12/","supports":"biological storage durability and CDR context"},
+    {"id":"badgley2022","type":"PRIMARY","url":"https://doi.org/10.3389/ffgc.2022.930426","supports":"California buffer-pool actuarial analysis"},
+    {"id":"jones2019","type":"PRIMARY_SYNTHESIS","url":"https://doi.org/10.1038/s41561-019-0403-x","supports":"global pyrogenic-carbon production estimate"},
+    {"id":"bowring2022","type":"PRIMARY_MODEL","url":"https://doi.org/10.1038/s41561-021-00892-0","supports":"uncertainty in full PyC fire carbon balance"},
+    {"id":"hemes2023","type":"PRIMARY","url":"https://doi.org/10.1073/pnas.2201954120","supports":"post-fire GPP recovery and severity/time trends"},
+    {"id":"pellegrini2018","type":"PRIMARY_SYNTHESIS","url":"https://doi.org/10.1038/nature24668","supports":"fire frequency, soil carbon, nitrogen, and productivity"},
+    {"id":"santin2016","type":"SYNTHESIS","url":"https://doi.org/10.1111/gcb.12985","supports":"PyC measurement and global-cycle gaps"},
+    {"id":"lehmann2021","type":"SYNTHESIS","url":"https://doi.org/10.1038/s41561-021-00852-8","supports":"biochar persistence, mitigation, and trade-offs"},
+    {"id":"foster2020","type":"PRIMARY","url":"https://doi.org/10.1002/ecs2.3198","supports":"risk-sensitive treatment-carbon trade-offs"},
+    {"id":"loudermilk2017","type":"PRIMARY_MODEL","url":"https://doi.org/10.1007/s10980-016-0447-x","supports":"landscape fire management and carbon resilience"},
+    {"id":"ebel2017","type":"PRIMARY_SYNTHESIS","url":"https://doi.org/10.1002/hyp.10998","supports":"post-fire soil-hydraulic response"},
+    {"id":"robichaud2013","type":"PRIMARY","url":"https://doi.org/10.1016/j.catena.2012.11.015","supports":"post-fire mulch effectiveness"},
+    {"id":"robichaud2008","type":"PRIMARY","url":"https://doi.org/10.1071/WF07032","supports":"conditional contour-felled-log efficacy"},
+    {"id":"donato2006","type":"PRIMARY","url":"https://doi.org/10.1126/science.1122855","supports":"site-specific post-fire logging regeneration and fuel effects"},
+    {"id":"usda2024","type":"OFFICIAL","url":"https://www.usda.gov/sites/default/files/documents/USDA-Methods-Report-Chapter-5.pdf","supports":"managed forest carbon accounting vocabulary"},
+    {"id":"car2025","type":"OFFICIAL","url":"https://climateactionreserve.org/permanence-work-program/","supports":"current buffer-pool and unavoidable-reversal mechanism"}
+  ],
+  "nearest_prior_art": [
+    "Risk-sensitive carbon accounting and carbon-resilience simulation already exist.",
+    "Natural-climate-solution portfolio diversification already exists.",
+    "No exact phrase search established priority for Carbon Continuity, and no priority claim is made.",
+    "The bounded contribution is the explicit two-pool coupling threshold and falsification protocol."
+  ],
+  "novelty_status": "BOUNDED_SEARCH_COMPLETE_PRIORITY_NOT_CLAIMED"
+}

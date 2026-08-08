@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "run": 118,
+  "stage": "pre_aristotle",
+  "novelty": "UNASSESSED",
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Under normalized nonnegative effective weights, the harmonic common-mode snapshot efficiency equals the squared magnitude of the weighted delay phasor and admits the exact pairwise cosine-loss identity.",
+      "paper_locator": "Proposition 1",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "phasor_energy_pairwise_identity",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 5-14"
+    },
+    {
+      "id": "C2",
+      "claim": "The modeled alignment efficiency lies in [0,1].",
+      "paper_locator": "Corollary 1",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "alignment_efficiency_unit_interval",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 8, 10, and 11"
+    },
+    {
+      "id": "C3",
+      "claim": "The alignment loss is at most omega squared times the weighted delay variance.",
+      "paper_locator": "Theorem 1",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "delay_variance_bounds_alignment_loss",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 7, 12, 15, and 16"
+    },
+    {
+      "id": "C4",
+      "claim": "Var_w(tau) <= (1-q)/Omega^2 is sufficient for eta >= q for every modeled mode with |omega| <= Omega.",
+      "paper_locator": "Corollary 2",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "alignment_budget_sufficient_for_band",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 19 and 20"
+    },
+    {
+      "id": "C5",
+      "claim": "Equal delays, a static mode, or one active channel retain eta=1; two equal channels half a cycle apart have eta=0.",
+      "paper_locator": "Negative controls",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "equal_delay_perfect_alignment; two_channel_half_period_cancellation",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 1-5"
+    },
+    {
+      "id": "C6",
+      "claim": "The delay-variance budget is sufficient rather than necessary because a full-period delay can have eta=1 at large raw delay variance.",
+      "paper_locator": "Scope and negative controls",
+      "evidence_class": "NUMERIC",
+      "support": "verification_output.txt check 21; analytic explanation in paper"
+    },
+    {
+      "id": "C7",
+      "claim": "Current primary research shows that ecological and sensor time series can be asynchronous and that multi-source fusion requires explicit temporal harmonization.",
+      "paper_locator": "Prior work",
+      "evidence_class": "CITED",
+      "support": "Piatkowski et al. 2025; Terasaki Hart et al. 2025; Lang et al. 2025"
+    },
+    {
+      "id": "C8",
+      "claim": "The channels share a locally common, linearly represented ecological mode after centering and scaling.",
+      "paper_locator": "Model and assumptions",
+      "evidence_class": "ASSUMED",
+      "support": "Preregistered modeling assumption; must be tested per application"
+    },
+    {
+      "id": "C9",
+      "claim": "A Snapshot Coherence Audit may have business value if it predicts consequential held-out monitoring failures better than a simple maximum-age rule.",
+      "paper_locator": "Business EV only",
+      "evidence_class": "CONJECTURED",
+      "support": "business_EV-118.md; signed revenue $0; no adoption evidence"
+    },
+    {
+      "id": "C10",
+      "claim": "No existing Viridis canon fingerprint matches this exact claim family.",
+      "paper_locator": "Distinctness statement",
+      "evidence_class": "DEFERRED",
+      "support": "Current fingerprint search found no match; novelty remains UNASSESSED pending independent review"
+    }
+  ]
+}

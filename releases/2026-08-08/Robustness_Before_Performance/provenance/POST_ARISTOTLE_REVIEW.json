@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "standard": "VRS-SUBMIT-INVARIANT-1",
+  "candidate_id": "Directed-2026-08-07-RobustnessAlgorithmV1",
+  "title": "Robustness Before Performance",
+  "reviewed_at_utc": "2026-08-08T22:28:01Z",
+  "reviewer_system": "Codex",
+  "reviewer_model": "GPT-5",
+  "sealed_scientific_artifacts": {
+    "paper.pdf": "3742b8d9133164d0c312222a7fad63f5a1e99c83d54af589bea23e40d3402819",
+    "paper.tex": "425d21d0fdd40d7a28c4c3ec7cc55bcaac5de5c328970d3aba3a1c3df79beca6",
+    "lean/RobustnessKernelV1.lean": "ef373a04b19dff71bf02632d0e4134879069c31ab716e5f669483ab33c18802f",
+    "lean/ReviewChecks.lean": "f3e9b219f3e581a8ac36a831089c708e4980081a013f0ba96d949a07e9b2c33f",
+    "code/pyproject.toml": "4f025b31bc3f80916db7eb8fb8f66db8a4fd21500b1bef7fb7c52f79138bc750",
+    "code/tests/test_engine.py": "bc27739bcccc8d7202680c085a9626d23f2dbe11ef169f3c0e7b0128a9dc8299"
+  },
+  "release_overlays": {
+    "license": "CC-BY-4.0",
+    "license_sha256": "51032bddc269c77bc8078fa94ec917aeecb8a6e3c22fb97240b1f329871856e5",
+    "license_decision_sha256": "19a979fafca3e153e4ba4841e0e3ae4b7ef3c6949e148b3deddfdd01bebffc0e",
+    "citation_sha256": "b32b6159c132b6447ea639df5a85c182af3c3652321e80ded36d12d3b87946c4",
+    "zenodo_metadata_sha256": "d9137f07d2f7ce3e7c879afb6ae266b3960f9ce920b3aa4c32eeb79db7f60c7c"
+  },
+  "checks": {
+    "finished_paper": true,
+    "paper_to_lean_scope_match": true,
+    "fresh_reference_suite": "35 passed",
+    "fresh_pinned_lean_build": "922 jobs; exit 0",
+    "zero_sorry_pass": true,
+    "forbidden_escape_scan_pass": true,
+    "allowed_axioms_only": true,
+    "statement_freeze_pass": true,
+    "rights_metadata_complete": true,
+    "all_pages_visual_reviewed": true
+  },
+  "scientific_invariant": "PASS",
+  "package_state": "READY_FOR_EXACT_SUBMISSION_AUTHORIZATION",
+  "route": "Robustness Engineering and Governance working branch",
+  "intelligence_bound_spine_admitted": false,
+  "limitations": [
+    "The formal model does not establish empirical input truth or threat-model completeness.",
+    "No security certification, legitimate execution authority, deployment benefit, adoption, or revenue is claimed.",
+    "The included deployment receipt is historical software evidence, not a theorem or observed scientific outcome."
+  ],
+  "external_mutation": false,
+  "publication_authority": false
+}

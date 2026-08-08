@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.0",
+  "run": 119,
+  "search_date": "2026-08-04",
+  "novelty_status": "UNASSESSED",
+  "searches": [
+    {
+      "query": "age of information scheduling max-age-first exponential potential primary research",
+      "surface": "current web search",
+      "purpose": "find nearest primary scheduling literature for age-based service"
+    },
+    {
+      "query": "MaxWeight scheduling Lyapunov queue primary paper",
+      "surface": "current web search",
+      "purpose": "challenge whether the one-step potential certificate is already a standard scheduling consequence"
+    },
+    {
+      "query": "2024 curriculum learning scheduling fairness research allocation primary paper",
+      "surface": "current web search",
+      "purpose": "identify current work on sequencing learning tasks and fairness"
+    },
+    {
+      "query": "scheduler, staleness, selection, centrality, entropy, free energy, age, Whittle",
+      "surface": "local Viridis corpus, landed Lean, root ledger, canon map, backlog, fingerprint index, corrections, and quarantine",
+      "purpose": "deduplicate against internal process and scheduling claim families"
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "type": "primary_research",
+      "citation": "Kaul S, Yates R, Gruteser M. Real-time status: How often should one update? IEEE INFOCOM, 2731-2735 (2012).",
+      "doi": "10.1109/INFCOM.2012.6195689",
+      "url": "https://doi.org/10.1109/INFCOM.2012.6195689",
+      "supports_or_challenges": "Introduces time-average Age of Information and shows freshness objectives differ from throughput and delay. It establishes the broader age-scheduling lineage, not the Run 119 identity."
+    },
+    {
+      "id": "S2",
+      "type": "primary_research",
+      "citation": "Kadota I, Sinha A, Uysal-Biyikoglu E, Singh R, Modiano E. Scheduling Policies for Minimizing Age of Information in Broadcast Wireless Networks. IEEE/ACM Transactions on Networking 26, 2637-2650 (2018).",
+      "doi": "10.1109/TNET.2018.2873606",
+      "url": "https://doi.org/10.1109/TNET.2018.2873606",
+      "supports_or_challenges": "Proves highest-current-age scheduling optimal in a symmetric unreliable broadcast model and develops MaxWeight and Whittle policies in general settings. It strongly limits any novelty claim for max-age scheduling."
+    },
+    {
+      "id": "S3",
+      "type": "primary_research",
+      "citation": "Tassiulas L, Ephremides A. Stability Properties of Constrained Queueing Systems and Scheduling Policies for Maximum Throughput in Multihop Radio Networks. IEEE Transactions on Automatic Control 37, 1936-1948 (1992).",
+      "doi": "10.1109/9.182479",
+      "url": "https://doi.org/10.1109/9.182479",
+      "supports_or_challenges": "Establishes queue-state-driven maximum-weight scheduling and Lyapunov-style stability. It challenges priority language and supplies the nearest classical control framework."
+    },
+    {
+      "id": "S4",
+      "type": "primary_research",
+      "citation": "Yang Z, Srikant R, Ying L. Learning While Scheduling in Multi-Server Systems With Unknown Statistics: MaxWeight with Discounted UCB. AISTATS, PMLR 206, 4275-4312 (2023).",
+      "doi": null,
+      "url": "https://proceedings.mlr.press/v206/yang23d.html",
+      "supports_or_challenges": "Shows that learning and scheduling under unknown and nonstationary service statistics requires machinery beyond deterministic age reset. Supports the Run 119 scope limitation."
+    },
+    {
+      "id": "S5",
+      "type": "primary_research",
+      "citation": "Cohen O, Meir R, Weinberger N. Statistical curriculum learning: An elimination algorithm achieving an oracle risk. COLT, PMLR 247, 1142-1199 (2024).",
+      "doi": null,
+      "url": "https://proceedings.mlr.press/v247/cohen24a.html",
+      "supports_or_challenges": "Provides current theory for curriculum sequencing in statistical learning. It underscores that scientific task scheduling depends on learning structure, not age alone."
+    },
+    {
+      "id": "V1",
+      "type": "binding_policy",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/NIGHTLY_SELECTION_POLICY_v1.json",
+      "sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+      "supports_or_challenges": "Authoritative v1 precedence, thresholds, score string, lens order, META proposal-only authority, and generator exit state."
+    },
+    {
+      "id": "V2",
+      "type": "machine_state",
+      "path": "/Users/justinhart/Desktop/science /07_nightly_engine/viridis-science-agent/nightly/NIGHTLY_STATE.json",
+      "sha256": "f329b1a6d39e52c154a5b97aa9166512ed0c64d106396f9f7763ae82c3a9286e",
+      "supports_or_challenges": "Locks Run 119 META x Thermodynamic and supplies the sixteen pre-run ages and checksum 139."
+    },
+    {
+      "id": "V3",
+      "type": "binding_audit",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/NIGHTLY_SCIENCE_CANON_LOGIC_AUDIT_2026-08-01.md",
+      "sha256": "ce06467025cf2b60e294f6e935cb3181134c05da70e49be4a756d8131354585d",
+      "supports_or_challenges": "Identifies prose-interpreted policy and self-adoption as control defects and requires versioned policy, tests, replay, and accountable review."
+    },
+    {
+      "id": "V4",
+      "type": "internal_prior",
+      "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-063_symbiotic-curation-theorem/finding.md",
+      "sha256": "99d56eae7dd93be30af59088e78bbcd85086ceb49d592ca6873b5b2c0f5a5349",
+      "supports_or_challenges": "Prior META centrality/diversity proposal. Its self-adoption language is historical and cannot govern Run 119."
+    },
+    {
+      "id": "V5",
+      "type": "internal_prior",
+      "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-077_discovery-dissipation-theorem/finding.md",
+      "sha256": "9ffb9fad629cf81aed28597db53e64f90ecb51de42e5fe5ff1b4e0916cefd0ec",
+      "supports_or_challenges": "Prior thermodynamic META treatment of engine diversity, memory growth, and scheduling. Distinct from the exact reset-choice identity."
+    },
+    {
+      "id": "V6",
+      "type": "landed_lean_prior",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/new leans/2026-07-02_aristotle_SRT_forge/StewardshipRevisit.lean",
+      "sha256": "33b76ffef03aaeea3b18b4a1d64363b94823c8f3c9ae25719a36fb1d07043c37",
+      "supports_or_challenges": "Formally landed age-indexed monitoring work using an OU variance curve and Whittle index. It is richer and domain-specific; Run 119 does not duplicate its theorem statements."
+    },
+    {
+      "id": "V7",
+      "type": "landed_lean_prior",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/new leans/2026-07-13_aristotle_EET_forge/EffortlessEquilibrium.lean",
+      "sha256": "bdfeb671282f38f664e578799a442980dda2594ec344f9c2661460862f91d7ed",
+      "supports_or_challenges": "Formally landed free-energy minimization scaffolding for dynamical equilibria. It motivates terminology but does not prove a scheduling reset identity."
+    },
+    {
+      "id": "V8",
+      "type": "dedup_index",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/canon_fingerprint_index.json",
+      "sha256": "5a90bace3df645b97bdea3a77d55d2b899b578c1af3b67951a4a533d60697a9d",
+      "supports_or_challenges": "No exact scheduler-free-energy fingerprint was found, but this cannot establish novelty."
+    },
+    {
+      "id": "V9",
+      "type": "control_context",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/QUARANTINE_POOL.md",
+      "sha256": "39612765a9daaf3ccd9bb8ae586044c8947f1f4ba44babdfbdeaa013ce3d8359",
+      "supports_or_challenges": "Current quarantine context was read; it contains no scheduler claim family."
+    }
+  ],
+  "search_conclusion": "Nearest primary literature already establishes Age-of-Information, max-age, MaxWeight, Whittle, and curriculum-scheduling theories. Run 119 makes no novelty or priority claim. Its bounded contribution is an exact one-step identity applied to the current Viridis state plus an executable-policy schema audit."
+}

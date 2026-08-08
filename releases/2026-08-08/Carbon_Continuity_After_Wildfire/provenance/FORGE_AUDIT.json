@@ -1,0 +1,154 @@
+{
+  "attempt": 1,
+  "audited_at_utc": "2026-08-04T16:33:30.295356+00:00",
+  "axiom_audit_pass": true,
+  "build_pass": true,
+  "candidate_id": "Directed-CarbonContinuity-attempt-1",
+  "evidence": {
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "axiom_output": "'Viridis.CarbonContinuity.carbon_continuity_threshold_sufficient' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.CarbonContinuity.carbon_continuity_threshold_necessary' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.CarbonContinuity.carbon_continuity_threshold_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.CarbonContinuity.carbon_continuity_boundary_stationary' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.CarbonContinuity.carbon_continuity_strict_threshold_growth' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.CarbonContinuity.carbon_continuity_nonvacuous' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+    "axioms_used": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "build_output_tail": "\u26a0 [857/858] Replayed CarbonContinuity\nwarning: CarbonContinuity.lean:21:5: unused variable `ha0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: CarbonContinuity.lean:22:5: unused variable `hd0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: CarbonContinuity.lean:22:19: unused variable `hd1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: CarbonContinuity.lean:23:18: unused variable `hp`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: CarbonContinuity.lean:37:5: unused variable `ha0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: CarbonContinuity.lean:38:5: unused variable `hd0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: CarbonContinuity.lean:39:5: unused variable `hr`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: CarbonContinuity.lean:39:18: unused variable `hp`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: CarbonContinuity.lean:90:5: unused variable `ha1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: CarbonContinuity.lean:90:19: unused variable `hr`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nBuild completed successfully (858 jobs).\n",
+    "build_root": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-04_aristotle_CarbonContinuity_forge_attempt_1/attempt-1_aristotle",
+    "forbidden_occurrences_comment_stripped": {
+      "admit": 0,
+      "axiom declaration": 0,
+      "extern declaration": 0,
+      "implemented_by": 0,
+      "native_decide": 0,
+      "sorry": 0,
+      "sorryAx": 0,
+      "unsafe declaration": 0
+    },
+    "forbidden_occurrences_raw": {
+      "admit": 0,
+      "axiom declaration": 0,
+      "extern declaration": 0,
+      "implemented_by": 0,
+      "native_decide": 0,
+      "sorry": 0,
+      "sorryAx": 0,
+      "unsafe declaration": 0
+    },
+    "formal_target_rows": [
+      {
+        "claim": "A positive nondecreasing two-pool portfolio exists iff r*p >= (1-a)*(1-d).",
+        "class": "FORMAL_TARGET",
+        "id": "C5",
+        "support": [
+          "CarbonContinuity.lean:carbon_continuity_threshold_iff",
+          "verification_output.txt"
+        ]
+      },
+      {
+        "claim": "The explicit witness (r,1-a) is stationary at equality and has strict durable growth above threshold.",
+        "class": "FORMAL_TARGET",
+        "id": "C6",
+        "support": [
+          "CarbonContinuity.lean:carbon_continuity_boundary_stationary",
+          "CarbonContinuity.lean:carbon_continuity_strict_threshold_growth",
+          "verification_output.txt"
+        ]
+      }
+    ],
+    "local_build_pass": true,
+    "nonvacuity_obligations": [
+      "carbon_continuity_nonvacuous proves the concrete strict-threshold model (a,d,r,p)=(3/5,4/5,1/2,1/5) with positive portfolio (L,D)=(1/2,2/5)",
+      "carbon_continuity_threshold_sufficient retains strict positivity of r and p and constructs a strictly positive portfolio",
+      "carbon_continuity_threshold_necessary retains strict positivity of L and D so cancellation is load-bearing"
+    ],
+    "nonvacuity_theorems": [
+      "carbon_continuity_nonvacuous"
+    ],
+    "output_files_sha256": {
+      "attempt-1_aristotle/ARISTOTLE_FORGE_REQUEST.json": "c7a1be8facb599c401589f0f39616d5aa54bfaad5f4ab203e49014acbe8bb833",
+      "attempt-1_aristotle/ARISTOTLE_PROMPT.md": "0eec97963e81c3fd7274841cb0a3db96cb665d14ba84cda48819a8fc6895c351",
+      "attempt-1_aristotle/ARISTOTLE_SUMMARY.md": "614a078981dd8b18cf2b89ec0cc9541292498140a9c2188429e8f94cc55a0e66",
+      "attempt-1_aristotle/AxiomAudit.lean": "58520259972c9c828196ce4376d9dac3f01358f0b308fe036c6f0a739803a171",
+      "attempt-1_aristotle/CARBON_CONTINUITY_ARISTOTLE_SUMMARY.md": "c05b3dba1f48fcf63c07d8e50e8bb536f786d17402056020e04efb47e5a9f6fd",
+      "attempt-1_aristotle/CarbonContinuity.lean": "899d3bb1929bac8d1ab6b760caffac428de115489e6fc7c1b2752e0769a77fc1",
+      "attempt-1_aristotle/LOCAL_PREFLIGHT_RECEIPT.json": "09822b3cf876263f20b326ca89d43a573052de2a67980eedc40f902a4643a086",
+      "attempt-1_aristotle/README.md": "39ec8cd0459306d9f50cf0c0da2aaf858aeaba5affa9ae26c3dbaee9f872f0ab",
+      "attempt-1_aristotle/SOURCE_BINDING.json": "dd0aa41f470a38a72e28f70299695a30bea81eaae35ba3f22c645b025265b60c",
+      "attempt-1_aristotle/STATEMENT_CONTRACT.md": "45b8ff716e6ccda55bdf547f3a735e295c2db9bee3d0786524f38fdaab555f7b",
+      "attempt-1_aristotle/SUBMISSION_STATUS.json": "dce743a77223cbb526e29ae469166ab47755666ce263b185e3482397e591b586",
+      "attempt-1_aristotle/lake-manifest.json": "3ec38d0f996dac8598d16486543d1dfc58ea66e9bd77663ec6436fe5aadafa9d",
+      "attempt-1_aristotle/lakefile.toml": "e3505eb5e69cd9fdf405175b9ca056b056740f1fa720ae75b9ba8fa9663014e5",
+      "attempt-1_aristotle/lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028"
+    },
+    "output_module": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-04_aristotle_CarbonContinuity_forge_attempt_1/attempt-1_aristotle/CarbonContinuity.lean",
+    "provider_completion_pass": true,
+    "provider_task_statuses": [
+      "COMPLETE"
+    ],
+    "scanned_lean_files": [
+      "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-04_aristotle_CarbonContinuity_forge_attempt_1/attempt-1_aristotle/CarbonContinuity.lean"
+    ],
+    "significance": {
+      "candidate_evidence": {
+        "canon_index": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/canon_fingerprint_index.json",
+        "empirical_claims": [
+          "Wildfire disturbance constrains forest-carbon durability.",
+          "Management interventions may alter retention or transfer coefficients.",
+          "The threshold may inform stewardship and carbon-risk contracts."
+        ],
+        "empirical_claims_flagged_unproven": true,
+        "falsifiable_prediction": {
+          "observable": "Per-cycle retained fractions a and d, transfer coefficients r and p, and whether a calibrated positive living/durable carbon portfolio is nondecreasing under the declared two-pool transition model.",
+          "predicted": "Within that fixed model, such a portfolio exists exactly when r*p >= (1-a)*(1-d).",
+          "refuted_if": "A correctly calibrated cycle satisfying the model assumptions is observed to violate the threshold classification; systematic model misfit instead invalidates application of the theorem to that system."
+        },
+        "is_restatement": false,
+        "name": "Carbon Continuity After Wildfire",
+        "nontrivial_justification": "The package proves both directions of an exact existence threshold, plus boundary stationarity, strict growth, and a concrete rational witness. The result is algebraic and model-scoped; it is not merely a numerical replay or an assertion of ecological truth. The current Viridis canon index contains no duplicate statement at the configured similarity threshold; no broader literature-priority claim is made.",
+        "run_id": "Directed-2026-08-04-CarbonContinuity",
+        "schema_version": "1.0",
+        "statement": "For the fixed two-pool nonnegative carbon transition model with positive retained and transfer coefficients, a strictly positive nondecreasing portfolio exists if and only if r*p is at least (1-a)*(1-d); the boundary witness is stationary and becomes strictly growing above the threshold.",
+        "vacuity_checked": true,
+        "witness": "The exact rational model (a,d,r,p,L,D)=(3/5,4/5,1/2,1/5,1/2,2/5) satisfies all interval and strict-positivity hypotheses, has r*p=1/10>(1-a)*(1-d)=2/25, and gives a strictly growing positive portfolio."
+      },
+      "canon_index": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/canon_fingerprint_index.json",
+      "invariants": {
+        "INV-SIG-1 NON-VACUOUS": true,
+        "INV-SIG-2 NON-TRIVIAL": true,
+        "INV-SIG-3 NOVEL": true,
+        "INV-SIG-4 FALSIFIABLE": true,
+        "INV-SIG-5 AXIOM-CLEAN": true,
+        "INV-SIG-6 HONEST-SCOPE": true
+      },
+      "reasons": [],
+      "verdict": "PASS"
+    },
+    "statement_comparisons": {
+      "def stepDurable": true,
+      "def stepLiving": true,
+      "theorem carbon_continuity_boundary_stationary": true,
+      "theorem carbon_continuity_nonvacuous": true,
+      "theorem carbon_continuity_strict_threshold_growth": true,
+      "theorem carbon_continuity_threshold_iff": true,
+      "theorem carbon_continuity_threshold_necessary": true,
+      "theorem carbon_continuity_threshold_sufficient": true
+    },
+    "unexpected_axioms": []
+  },
+  "external_mutation": false,
+  "failed_checks": [],
+  "forbidden_constructs_pass": true,
+  "nonvacuity_pass": true,
+  "output_tree_sha256": "0ca560db0dc55e600f378ee4af42b801c54c9aa81fe55623d2fb3d05b9e44d04",
+  "project_id": "40c58299-efeb-4cad-b332-2525b7c8d6d1",
+  "request_sha256": "c7a1be8facb599c401589f0f39616d5aa54bfaad5f4ab203e49014acbe8bb833",
+  "root_candidate_id": "Directed-CarbonContinuity",
+  "schema_version": "2.0",
+  "significance_gate_pass": true,
+  "statement_freeze_pass": true,
+  "zero_sorry_pass": true
+}

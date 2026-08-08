@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "candidate_id": "Directed-CarbonContinuity-attempt-1",
+  "source_candidate": "Directed-2026-08-04-CarbonContinuity",
+  "source_concept_sha256": "f538bb8b6629fea970336a710c471915b8cdee319b2cde3100cdb1019321bd67",
+  "paper_sha256": "aac045cfb8735257d1b42371e5180f8aa573858a589d3f5cdd7b3f22c61b7f68",
+  "verification_sha256": "4f6c12106013d07e8ee65143d660b9ef65c75d8e6be7c3a3976fe3c664bbaa21",
+  "verification_output_sha256": "00596e653d84c3b93cf1f80002231a8982c4beac48d8bc08509429eab1080eb8",
+  "claim_inventory_sha256": "234da22804e8f0d40c4610299e21730f3028c6897999c20d5b1ebeb605deab61",
+  "source_ledger_sha256": "f970840202b118b6c6a449ee673238f4bc163c718cf1fa890487f541609c3084",
+  "integrity_screen_sha256": "80b2f5d8efce45829ee4d8a1de358c1d8278b7349174e242f0c8b9ba624a741f",
+  "formal_scope": "two-pool real-valued threshold only",
+  "empirical_scope": "not proved by Lean",
+  "nightly_state_mutated": false,
+  "external_mutation_before_submit": false
+}

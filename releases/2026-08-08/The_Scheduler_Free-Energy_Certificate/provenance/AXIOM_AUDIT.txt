@@ -1,0 +1,6 @@
+'Viridis.SchedulerFreeEnergy.reset_partition_function_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.SchedulerFreeEnergy.max_age_minimizes_next_logsumexp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.SchedulerFreeEnergy.unique_max_age_unique_minimizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.SchedulerFreeEnergy.tied_maxima_equal_next_potential' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.SchedulerFreeEnergy.logsumexp_bounds_max_age' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.SchedulerFreeEnergy.scheduler_free_energy_nonvacuous' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,24 @@
+{
+  "schema_version": "2.0",
+  "status": "RETRY_ELIGIBLE",
+  "root_candidate_id": "Run-119-SchedulerFreeEnergy",
+  "from_attempt": 1,
+  "to_attempt": 2,
+  "previous_request_sha256": "d591e2c055791a9134f9c9fd15fc360ed1a4da2df639e6b5e2457389aec0c8f4",
+  "prior_audit_sha256": "77c39b9931af9e6b296c14f00e91228faecb42589cf0d6009ebaecdf31d16e1c",
+  "statement_contract_sha256": "b4c2520d0936ec49da00c5b9c00ed5102b8ba8ecfcec8d02123fb01069c9176d",
+  "retryable_failures": [
+    "build_pass",
+    "axiom_audit_pass",
+    "nonvacuity_pass"
+  ],
+  "non_retryable_failures": [],
+  "diagnosis": "Attempt 1 returned a zero-hole Lean module with all three frozen definitions and all six theorem signatures preserved, but the exact downloaded project did not independently build. Its lake-manifest.json listed only mathlib; after checking out the pinned Mathlib revision, Lake aborted because the transitive dependency plausible was absent from the project manifest. Build-dependent axiom and non-vacuity checks therefore failed closed.",
+  "repair_changes": [
+    "Carried forward the exact zero-hole SchedulerFreeEnergy.lean returned by attempt 1; no definition or theorem statement changed.",
+    "Replaced the incomplete one-package lake-manifest.json with the complete nine-package manifest for the same pinned Mathlib revision 8f9d9cff6bd728b17a24e163c9402775d9e6a365.",
+    "Added attempt-specific instructions requiring a local build, exact statement preservation, zero forbidden constructs, and no remote Git operation.",
+    "Added LOCAL_REPAIR_BUILD_RECEIPT.json after independent local build, forbidden-construct scan, statement comparison, and axiom audit complete."
+  ],
+  "external_mutation": false
+}

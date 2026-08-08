@@ -1,0 +1,42 @@
+{
+  "schema_version": "2.0",
+  "candidate_id": "Run-119-SchedulerFreeEnergy-attempt-2",
+  "root_candidate_id": "Run-119-SchedulerFreeEnergy",
+  "attempt": 2,
+  "source_run": "Run-119",
+  "project_dir": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/aristotle_submissions/Run-119-SchedulerFreeEnergy/attempt-2",
+  "prompt_file": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/aristotle_submissions/Run-119-SchedulerFreeEnergy/attempt-2/ARISTOTLE_PROMPT.md",
+  "output_dir": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/new leans/2026-08-05_aristotle_SchedulerFreeEnergy_forge_attempt_2",
+  "input_sha256": {
+    "ARISTOTLE_PROMPT.md": "dd414cceabb55ad412ca91b37901fb99af9ac57a958093976accd0674dda6c30",
+    "SchedulerFreeEnergy.lean": "70c1dbfb1f86f3247e5084165e27dd9ec03ec8646c7bd45f7112a4dd7f98df4d",
+    "LOCAL_REPAIR_BUILD_RECEIPT.json": "d512846fc5619e3bc7eb884dc2f039af86bc6c29d38607649862e0ed0dc1cbe7",
+    "REPAIR_RECEIPT.json": "7dfb0df4fb38562ff9c5895e0703dfbfd45e14385a70fea41238c1b64b52b1f7",
+    "SOURCE_BINDING.json": "374fdf4ea6572ea8c59183918cf4c781bbb11ce3b08b165fea6a124a70e643ad",
+    "STATEMENT_CONTRACT.md": "b4c2520d0936ec49da00c5b9c00ed5102b8ba8ecfcec8d02123fb01069c9176d",
+    "lake-manifest.json": "d69add02191c2296f6bd6136834316deb77332749b0f0244afb551b6dd10a4b4",
+    "lakefile.toml": "9ec9d3f7b00b5ae8ba6250ee2d2cc2499243fae4e55309940ffac04be82a5694",
+    "lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028"
+  },
+  "statement_contract_sha256": "b4c2520d0936ec49da00c5b9c00ed5102b8ba8ecfcec8d02123fb01069c9176d",
+  "module": "SchedulerFreeEnergy",
+  "namespace": "Viridis.SchedulerFreeEnergy",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "expected_theorem_names": [
+    "reset_partition_function_identity",
+    "max_age_minimizes_next_logsumexp",
+    "unique_max_age_unique_minimizer",
+    "tied_maxima_equal_next_potential",
+    "logsumexp_bounds_max_age",
+    "scheduler_free_energy_nonvacuous"
+  ],
+  "nonvacuity_obligations": [
+    "scheduler_free_energy_nonvacuous proves a concrete Fin 2 strict comparison at every beta greater than zero",
+    "tied_maxima_equal_next_potential preserves the negative control that ties destroy uniqueness",
+    "the maximum-age results retain positive beta and do not claim unequal-cost or long-run optimality"
+  ],
+  "supersedes_request_sha256": "d591e2c055791a9134f9c9fd15fc360ed1a4da2df639e6b5e2457389aec0c8f4",
+  "repair_receipt": "REPAIR_RECEIPT.json",
+  "repair_receipt_sha256": "7dfb0df4fb38562ff9c5895e0703dfbfd45e14385a70fea41238c1b64b52b1f7"
+}

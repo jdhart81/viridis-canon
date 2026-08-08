@@ -1,0 +1,14 @@
+'Viridis.CarbonContinuity.carbon_continuity_threshold_sufficient' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Viridis.CarbonContinuity.carbon_continuity_threshold_necessary' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Viridis.CarbonContinuity.carbon_continuity_threshold_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.CarbonContinuity.carbon_continuity_boundary_stationary' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Viridis.CarbonContinuity.carbon_continuity_strict_threshold_growth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Viridis.CarbonContinuity.carbon_continuity_nonvacuous' depends on axioms: [propext, Classical.choice, Quot.sound]

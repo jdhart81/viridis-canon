@@ -1,0 +1,8 @@
+import SchedulerFreeEnergy
+
+#print axioms Viridis.SchedulerFreeEnergy.reset_partition_function_identity
+#print axioms Viridis.SchedulerFreeEnergy.max_age_minimizes_next_logsumexp
+#print axioms Viridis.SchedulerFreeEnergy.unique_max_age_unique_minimizer
+#print axioms Viridis.SchedulerFreeEnergy.tied_maxima_equal_next_potential
+#print axioms Viridis.SchedulerFreeEnergy.logsumexp_bounds_max_age
+#print axioms Viridis.SchedulerFreeEnergy.scheduler_free_energy_nonvacuous

@@ -1,0 +1,33 @@
+RUN 118 ADVERSARIAL GATE
+seed=118042026 tolerance=2.0e-11
+HYPOTHESIS H1: asynchronous nonnegative fusion has eta=|sum w_i exp(-i omega tau_i)|^2.
+HYPOTHESIS H2: 1-eta <= omega^2 Var_w(tau), hence eta >= 1-omega^2 Var_w(tau).
+ASSUMPTIONS: normalized nonnegative effective weights; locally common harmonic mode; known delays.
+FALSIFIERS: identity error > tolerance; eta outside [0,1]; variance bound violation; convergence failure.
+NEGATIVE CONTROLS: equal delays, DC, singleton, and balanced half-period cancellation.
+
+PASS 01 | equal-delay control | eta=1
+PASS 02 | DC control | omega=0 gives eta=1
+PASS 03 | singleton control | one active channel gives eta=1
+PASS 04 | half-period cancellation | eta=3.749e-33
+PASS 05 | two-channel exact law | eta=0.500000000000000
+PASS 06 | worked identity | direct=0.790809934400830 pairwise=0.790809934400830
+PASS 07 | worked variance bound | loss=0.209190066 bound=0.233006250
+PASS 08 | worked efficiency range | eta=0.790809934401
+PASS 09 | Monte Carlo identity | 5000 cases max_error=3.531e-14
+PASS 10 | Monte Carlo eta lower | min_eta=9.810287e-04
+PASS 11 | Monte Carlo eta upper | max_eta=0.999999999972314
+PASS 12 | Monte Carlo variance bound | max_violation=1.178e-16
+PASS 13 | common-time translation invariance | difference=6.217e-15
+PASS 14 | channel permutation invariance | difference=0.000e+00
+PASS 15 | small-delay asymptotic approaches one | ratios=[0.99716609, 0.99929079, 0.99982265, 0.99995566]
+PASS 16 | small-delay second-order convergence | observed_orders=[1.9985, 1.9996, 1.9999]
+PASS 17 | time-domain energy identity | target=0.743208704994390 error=2.442e-15
+PASS 18 | time-domain convergence stable | errors=['5.55e-16', '1.11e-16', '1.78e-15', '2.44e-15']
+PASS 19 | bandlimited spectral lower bound | ratio=0.883711471 lower=0.229744000
+PASS 20 | sufficient alignment budget | variance=0.024750000 budget=0.025000000 min_eta=0.904719190
+PASS 21 | non-necessity control | eta=1.000000000000000 variance=9.869604
+
+SUMMARY: 21 PASS / 0 FAIL
+STATUS: NUMERICAL_GATE_PASS
+INTERPRETATION: finite adversarial checks support the stated model identities and bound; they are not formal proof or empirical validation.

@@ -1,0 +1,42 @@
+{
+  "schema_version": "2.0",
+  "candidate_id": "Run-118-SnapshotAlignment-attempt-2",
+  "root_candidate_id": "Run-118-SnapshotAlignment",
+  "attempt": 2,
+  "source_run": "Run-118",
+  "project_dir": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/aristotle_submissions/Run-118-SnapshotAlignment/attempt-2",
+  "prompt_file": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/aristotle_submissions/Run-118-SnapshotAlignment/attempt-2/ARISTOTLE_PROMPT.md",
+  "output_dir": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/new leans/2026-08-04_aristotle_SnapshotAlignment_forge_attempt_2",
+  "input_sha256": {
+    "ARISTOTLE_PROMPT.md": "dfb520a69e3726b5a2539e6a06ffa3d1ebb67b373bc814a1e56b4f9585b5388f",
+    "SnapshotAlignment.lean": "bce0b84e350694d345ab2fc439c3f6a532d530e453c15ae539d8f76e96c7aa61",
+    "LOCAL_REPAIR_BUILD_RECEIPT.json": "19dc493e5cfb12a4c99efa065493351abd8c1e02adc851049968eff150b7b059",
+    "REPAIR_RECEIPT.json": "dfd030c29ad21d773ca4d6f8c38c9555d9ae922bc7053a8f1d6071f94259f199",
+    "SOURCE_BINDING.json": "4bfdd65b0781b6333a36ac9901f0df7188f16aebfbf1fdfcc8b3cd145f887182",
+    "STATEMENT_CONTRACT.md": "bacd1463fb759efd89c46db376d6b8562fd6bea615d2307454df1ee23cfe7e9b",
+    "lake-manifest.json": "3ec38d0f996dac8598d16486543d1dfc58ea66e9bd77663ec6436fe5aadafa9d",
+    "lakefile.toml": "664eeeb029a90bc67df25a3d39ac7ec7ddfe774cc459335e9089dbb05a4a7297",
+    "lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028"
+  },
+  "statement_contract_sha256": "bacd1463fb759efd89c46db376d6b8562fd6bea615d2307454df1ee23cfe7e9b",
+  "module": "SnapshotAlignment",
+  "namespace": "Viridis.SnapshotAlignment",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "expected_theorem_names": [
+    "phasor_energy_pairwise_identity",
+    "alignment_efficiency_unit_interval",
+    "delay_variance_bounds_alignment_loss",
+    "alignment_budget_sufficient_for_band",
+    "equal_delay_perfect_alignment",
+    "two_channel_half_period_cancellation"
+  ],
+  "nonvacuity_obligations": [
+    "two_channel_half_period_cancellation gives a concrete Fin 2 destructive-interference control under the exact antipodal phase hypothesis",
+    "equal_delay_perfect_alignment proves the opposite unit-alignment control for every nonempty finite channel family",
+    "alignment_budget_sufficient_for_band retains nonnegative normalized weights, positive bandwidth, a real frequency-band hypothesis, and the explicit delay-variance budget"
+  ],
+  "supersedes_request_sha256": "6a65aa0d188f8be944ed111b0d22c1bde1c7f884d58867f8349386a26f6be2db",
+  "repair_receipt": "REPAIR_RECEIPT.json",
+  "repair_receipt_sha256": "dfd030c29ad21d773ca4d6f8c38c9555d9ae922bc7053a8f1d6071f94259f199"
+}

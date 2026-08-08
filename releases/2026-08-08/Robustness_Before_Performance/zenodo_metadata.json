@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "title": "Robustness Before Performance: A Governed Decision Kernel with Formally Verified Release Boundaries",
+    "upload_type": "publication",
+    "publication_type": "preprint",
+    "creators": [
+      {
+        "name": "Hart, Justin D.",
+        "affiliation": "Viridis Research",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "A domain-independent, non-actuating robustness decision kernel with explicit evidence, authority, lineage, interval, trajectory, and release-state boundaries. The paper is reconciled to 27 named Lean theorems and 19 review checks with zero proof holes. It does not claim empirical effectiveness, security certification, legitimate authority, or observed benefit.",
+    "keywords": [
+      "robustness engineering",
+      "decision governance",
+      "formal verification",
+      "uncertainty",
+      "lineage",
+      "release engineering"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "access_right": "open",
+    "version": "1.0.0-formal",
+    "notes": "The release includes the final paper, v0.6.0 reference implementation and 35-test suite, pinned Lean environment, zero-sorry audit, provenance, and exact checksums. It is a standalone Robustness Engineering and Governance result, not a security certification, empirical validation, or Intelligence Bound spine addition."
+  },
+  "external_mutation": false,
+  "publication_authority": false
+}

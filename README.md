@@ -18,6 +18,22 @@ assumption has been established in nature.
 - **Understand AI use and human responsibility:** [`AI_USE_AND_AUTHORSHIP.md`](./AI_USE_AND_AUTHORSHIP.md)
 - **See the current validation boundary:** [`EXTERNAL_VALIDATION.md`](./EXTERNAL_VALIDATION.md)
 
+## Weekly research release — 2026-08-08
+
+The 2026-08-08 release adds five independently reviewed, zero-sorry research
+packages without changing the Intelligence Bound spine:
+
+- **[Carbon Continuity After Wildfire](https://doi.org/10.5281/zenodo.21855690)** — weekly public feature and Natural Carbon research-pillar release.
+- **[Robustness Before Performance v1](https://doi.org/10.5281/zenodo.21855705)** — Viridis Security Core Research Flagship v1.
+- **[The Ecopoietic Hedge](https://doi.org/10.5281/zenodo.21855726)** — Restoration Reliability and Symbiosis working corpus.
+- **[The D-Score Snapshot Alignment Theorem](https://doi.org/10.5281/zenodo.21855724)** — Biodiversity Measurement Assurance working corpus.
+- **[The Scheduler Free-Energy Certificate](https://doi.org/10.5281/zenodo.21855731)** — Research Operations method; its policy proposal remains explicitly unadopted.
+
+Each record includes the paper, exact Lean source, pinned environment,
+numerical checks, independent review, provenance, CC BY 4.0 metadata, and
+checksums under [`releases/2026-08-08/`](./releases/2026-08-08/). The public
+spine remains v10.2.0.
+
 ## Viridis research portal
 
 This repository now includes **Viridis Canon Core**, a standard-library Python
@@ -44,9 +60,9 @@ also update a private Canon Cloud reader. It is dormant unless
 configured. Synchronization only imports the deterministic catalog; it does not
 approve records or publish research.
 
-Last updated: 2026-07-26 (v10.2.0 "The Equilibrium Wave"; historical P0
-reproducibility repaired without changing declaration statements, the public
-catalog regenerated, and protected-branch checks made blocking)
+Last updated: 2026-08-08 (five zero-sorry standalone research packages added;
+Robustness Before Performance designated the Viridis Security business-line
+flagship; Intelligence Bound spine unchanged at v10.2.0)
 Lean toolchain: leanprover/lean4:v4.28.0
 API: https://aristotle.harmonic.fun
 

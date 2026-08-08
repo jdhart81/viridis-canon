@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "candidate_id": "Directed-RobustnessKernelV1-attempt-1",
+  "root_candidate_id": "Directed-RobustnessKernelV1",
+  "state": "ARISTOTLE_AUDITED_VERIFIED_ZERO_SORRY",
+  "aristotle_project_id": "3e142131-f6f4-4c32-b273-873783735a69",
+  "request_sha256": "addd4da10c171161a802f5a7d0add18b67b635b75a45012a6d64e01666b3c6db",
+  "forge_audit_sha256": "fc5e6c7d21fcb3c3c2ec5ab5b06dc3590ae0aab99600fa375c9a31fca562a98e",
+  "output_tree_sha256": "7c7b2f254068999857bb0f0b2a97ad88d5412fed3edcef0d02c59650cb5a2c35",
+  "audited_at_utc": "2026-08-07T19:20:35.862965+00:00",
+  "formal_source_sha256": "ef373a04b19dff71bf02632d0e4134879069c31ab716e5f669483ab33c18802f",
+  "statement_contract_sha256": "12410f1dd42d4813263640ee3ab5e957a82629b46d9933d3237974527e468184",
+  "returned_artifacts_sha256": {
+    "RobustnessKernelV1.lean": "ef373a04b19dff71bf02632d0e4134879069c31ab716e5f669483ab33c18802f",
+    "ReviewChecks.lean": "f3e9b219f3e581a8ac36a831089c708e4980081a013f0ba96d949a07e9b2c33f",
+    "ReviewChecksAxiomAudit.lean": "1c7d1fcd7cee651b88b0db897a72c49f55614f8786fa14247157416669554a3d",
+    "REVIEW_REPORT.md": "b015eb6ac01ce2d35f54b394edeff5a5a8c64707d669b43653b36c9bd31808a7",
+    "ARISTOTLE_SUMMARY.md": "79fd5d338c7547b5aee525caa36e9cb0768c42aaab4c18480e138baf8840ee2e",
+    "lakefile.toml": "e4dbfb0ce3ca56f1ff8a77af702cd97459161f64245887992df64a16528a49d7",
+    "lake-manifest.json": "fa05c12477470e616f6651b16470fc781480071e163b7d24f6feb155e17028f9",
+    "lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028"
+  },
+  "verification": {
+    "provider_completion_pass": true,
+    "provider_task_statuses": ["COMPLETE"],
+    "lake_build": "PASS_930_JOBS_WITH_19_REVIEW_CHECKS",
+    "named_theorems": 27,
+    "frozen_contract_theorems": 22,
+    "review_check_theorems": 19,
+    "statement_freeze_pass": true,
+    "zero_sorry_pass": true,
+    "forbidden_constructs_pass": true,
+    "axiom_audit_pass": true,
+    "nonvacuity_pass": true,
+    "significance_gate_pass": true,
+    "unexpected_axioms": [],
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "failed_checks": []
+  },
+  "scope_boundary": "Proves properties of declared finite structures, closed rational intervals, Boolean authority conditions, sampled rational trajectories, and distinct release-state witnesses. It does not prove empirical completeness, evidence truth, calibrated uncertainty, legitimate authority, deployment, adoption, revenue, or observed outcomes.",
+  "claims": {
+    "paper_reconciled": false,
+    "canon_admitted": false,
+    "production_deployed": false,
+    "publication_authority": false
+  }
+}

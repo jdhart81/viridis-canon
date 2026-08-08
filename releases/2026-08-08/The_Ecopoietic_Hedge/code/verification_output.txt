@@ -1,0 +1,44 @@
+PASS 01: equal split equalizes regime exponents | E1=4, E2=4
+PASS 02: equalized exponent matches closed form | t*=4
+PASS 03: left perturbation lowers guarantee
+PASS 04: right perturbation lowers guarantee
+PASS 05: monoculture worst exponent is beta D
+PASS 06: diversification exponent gain is (alpha-beta)D/2
+PASS 07: crossover produces strict gain
+PASS 08: breakpoint solver returns equal split | x=2
+PASS 09: breakpoint solver returns analytic value | t=4
+PASS 10: grid 101 converges within slope-resolution bound | x=1.98019802, value_error=2.772e-02, bound=2.772e-02
+PASS 11: grid 1001 converges within slope-resolution bound | x=1.998002, value_error=2.797e-03, bound=2.797e-03
+PASS 12: grid 10001 converges within slope-resolution bound | x=1.99980002, value_error=2.800e-04, bound=2.800e-04
+PASS 13: grid refinement strictly reduces error
+PASS 14: 1000 randomized reciprocal cases match exact allocation | max error=6.253e-13
+PASS 15: 1000 randomized reciprocal cases match exact value | max error=5.684e-14
+PASS 16: 250 multi-scenario exact solutions agree with dense grid | worst gap=1.704e-04
+PASS 17: negative control: identical strains make every allocation tie
+PASS 18: negative control: identical strains have zero diversification gain
+PASS 19: negative control: uniformly dominant strain gets all dose | x_A=4
+PASS 20: negative control: mixing cannot beat dominant monoculture
+PASS 21: asymmetric crossover produces an interior robust allocation | x_A=1.5
+PASS 22: asymmetric crossover need not produce equal split | x_A=1.5
+PASS 23: asymmetric robust mix beats both monocultures | robust exponent=3.1
+PASS 24: guaranteed establishment probability improves under crossover | mix=0.98168436, mono=0.69880579
+PASS 25: probability remains in [0,1)
+PASS 26: target-dose formulas hit the requested probability
+PASS 27: target-dose saving equals (alpha-beta)/(alpha+beta) | saving=0.70000000
+PASS 28: target-dose saving is strictly between 0 and 1
+PASS 29: guaranteed mix exponent increases linearly with dose
+PASS 30: gain vanishes continuously as crossover closes
+PASS 31: expm1 path resolves tiny establishment probabilities | p=1.000e-14
+PASS 32: large-exponent probability saturates safely without overflow
+
+PREREGISTERED FAILURE CONDITIONS
+- equal-split mismatch: NOT TRIGGERED
+- analytic/exact disagreement: NOT TRIGGERED
+- false diversity gain for identical strains: NOT TRIGGERED
+- mixture beats uniformly dominant strain: NOT TRIGGERED
+- nonconvergent refinement: NOT TRIGGERED
+
+RESULT: 32 PASS / 0 FAIL
+STATUS: NUMERICAL_GATE_PASS
+SCOPE: synthetic model checks only; no formal or empirical verification
+

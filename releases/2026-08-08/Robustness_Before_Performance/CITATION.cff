@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the archived release."
+title: "Robustness Before Performance: A Governed Decision Kernel with Formally Verified Release Boundaries"
+type: article
+version: "1.0.0-formal"
+authors:
+  - family-names: Hart
+    given-names: Justin D.
+    orcid: "https://orcid.org/0009-0008-3082-2482"
+    affiliation: "Viridis Research"
+license: CC-BY-4.0

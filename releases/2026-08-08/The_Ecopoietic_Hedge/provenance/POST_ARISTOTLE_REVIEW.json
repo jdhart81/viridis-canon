@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "reviewer_system": "Codex",
+  "reviewer_model": "GPT-5",
+  "reviewed_at_utc": "2026-08-04T12:50:28Z",
+  "verdict": "pass",
+  "series_route": "working corpus",
+  "spine_admission": {
+    "admitted": false,
+    "gate": "Gate 3",
+    "reason": "Domain-applying result, not domain-defining; no spine effect is proposed."
+  },
+  "artifacts": {
+    "paper.pdf": "03540ff3ca8b3dcbfaa1a682ff7adfecf789b6e275db0bced2b915985bb8ff78",
+    "EcopoieticHedge.lean": "33c52fb5e837b37adc0f85c896375f8087e2ced2836222ad78c353778108b732",
+    "ARISTOTLE_SUMMARY.md": "4a914b7e4dcefecd6e4ced21eecf07806a3c381a8842e6f0d0a615b5f5576872",
+    "RUN117_ARISTOTLE_SUMMARY.md": "4b718f2fe8e56ab56d174726763d1dde2a090e087aeb1e1704f1d37a6fab6316"
+  },
+  "checks": {
+    "claim_separation": true,
+    "stale_language_removed": true,
+    "theorem_scope_matches": true,
+    "references_checked": true,
+    "ai_disclosure_ready": true,
+    "build_pass": true,
+    "statement_freeze_pass": true,
+    "zero_sorry_pass": true,
+    "forbidden_constructs_pass": true,
+    "axiom_audit_pass": true,
+    "nonvacuity_pass": true,
+    "significance_gate_pass": true,
+    "integrity_check_pass": true,
+    "limitations_reproducibility_ready": true,
+    "rights_metadata_ready": true,
+    "route_unambiguous": true
+  }
+}

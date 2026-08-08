@@ -1,0 +1,253 @@
+{
+  "attempt": 1,
+  "audited_at_utc": "2026-08-07T19:20:35.862965+00:00",
+  "axiom_audit_pass": true,
+  "build_pass": true,
+  "candidate_id": "Directed-RobustnessKernelV1-attempt-1",
+  "evidence": {
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "axiom_output": "'Viridis.RobustnessKernelV1.shared_dependency_strictly_reduces_independence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.RobustnessKernelV1.hidden_common_parent_lowers_independence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.RobustnessKernelV1.execution_authority_gate_iff' depends on axioms: [propext]\n'Viridis.RobustnessKernelV1.advisory_selection_never_authorizes_execution' depends on axioms: [propext]\n'Viridis.RobustnessKernelV1.revoked_or_expired_lease_denies_execution' depends on axioms: [propext]\n'Viridis.RobustnessKernelV1.derivable_iff_explicitly_asserted' depends on axioms: [propext, Quot.sound]\n'Viridis.RobustnessKernelV1.distinct_state_is_not_derived_from_singleton' depends on axioms: [propext, Quot.sound]\n'Viridis.RobustnessKernelV1.recalled_artifact_is_blocked' depends on axioms: [propext, Quot.sound]\n'Viridis.RobustnessKernelV1.descendant_of_recalled_artifact_is_blocked' depends on axioms: [propext, Quot.sound]\n'Viridis.RobustnessKernelV1.unrelated_artifact_is_not_blocked' depends on axioms: [propext, Quot.sound]\n'Viridis.RobustnessKernelV1.robust_pass_and_fail_are_disjoint' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.RobustnessKernelV1.interval_classification_complete' depends on axioms: [propext]\n'Viridis.RobustnessKernelV1.interval_classification_pass_iff' depends on axioms: [propext]\n'Viridis.RobustnessKernelV1.interval_classification_fail_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.RobustnessKernelV1.robust_no_worse_transitive' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.RobustnessKernelV1.robust_strict_then_no_worse' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.RobustnessKernelV1.robust_dominance_irreflexive' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.RobustnessKernelV1.robust_dominance_transitive' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.RobustnessKernelV1.margin_shortfall_nonnegative' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.RobustnessKernelV1.segment_shortfall_nonnegative' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.RobustnessKernelV1.trajectory_shortfall_nonnegative' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.RobustnessKernelV1.margin_shortfall_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.RobustnessKernelV1.nonnegative_trajectory_has_zero_shortfall' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.RobustnessKernelV1.marked_violation_span_nonnegative' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.RobustnessKernelV1.aftershock_count_le_adjacent_pairs' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.RobustnessKernelV1.release_states_are_independent_nonvacuous' does not depend on any axioms\n'Viridis.RobustnessKernelV1.robustness_kernel_v1_nonvacuous' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+    "axioms_used": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "build_output_tail": "lt Mathlib.Tactic.CancelDenoms.Core (2.3s)\n\u2714 [859/930] Built Mathlib.Algebra.Order.Field.Canonical (1.3s)\n\u2714 [860/930] Built Mathlib.Data.Rat.Cast.Defs (1.7s)\n\u2714 [861/930] Built Mathlib.Data.Multiset.Bind (1.7s)\n\u2714 [862/930] Built Mathlib.Data.Nat.Cast.Order.Ring (1.3s)\n\u2714 [863/930] Built Mathlib.Data.Fin.Tuple.Basic (3.2s)\n\u2714 [864/930] Built Mathlib.Data.Rat.Cast.CharZero (1.4s)\n\u2714 [865/930] Built Mathlib.Data.Multiset.Powerset (1.3s)\n\u2714 [866/930] Built Mathlib.Algebra.Order.Invertible (1.2s)\n\u2714 [867/930] Built Mathlib.Tactic.Linarith.Lemmas (1.4s)\n\u2714 [868/930] Built Mathlib.Data.Finset.Basic (2.3s)\n\u2714 [869/930] Built Mathlib.Data.Finset.Image (2.3s)\n\u2714 [870/930] Built Mathlib.Tactic.NormNum.Abs (1.5s)\n\u2714 [871/930] Built Mathlib.Algebra.Order.Ring.Cast (1.6s)\n\u2714 [872/930] Built Mathlib.Order.CompleteBooleanAlgebra (3.4s)\n\u2714 [873/930] Built Mathlib.Data.List.OfFn (1.1s)\n\u2714 [874/930] Built Mathlib.Tactic.NormNum.Inv (1.4s)\n\u2714 [875/930] Built Mathlib.Tactic.Linarith.Datatypes (1.4s)\n\u2714 [876/930] Built Mathlib.Data.Fintype.OfMap (1.3s)\n\u2714 [877/930] Built Mathlib.Data.Finset.SymmDiff (1.3s)\n\u2714 [878/930] Built Mathlib.Data.Set.BooleanAlgebra (1.1s)\n\u2714 [879/930] Built Mathlib.Data.Finset.Fold (1.5s)\n\u2714 [880/930] Built Mathlib.Data.Finset.BooleanAlgebra (1.6s)\n\u2714 [881/930] Built Mathlib.Data.List.FinRange (1.3s)\n\u2714 [882/930] Built Mathlib.Tactic.NormNum.Eq (1.5s)\n\u2714 [883/930] Built Mathlib.Tactic.Linarith.Parsing (1.6s)\n\u2714 [884/930] Built Mathlib.Tactic.Linarith.Oracle.SimplexAlgorithm (1.7s)\n\u2714 [885/930] Built Mathlib.Tactic.Positivity.Core (3.1s)\n\u2714 [886/930] Built Mathlib.Data.Fintype.Sets (1.8s)\n\u2714 [887/930] Built Mathlib.Tactic.Linarith.Preprocessing (2.2s)\n\u2714 [888/930] Built Mathlib.Data.Finset.Union (2.1s)\n\u2714 [889/930] Built Mathlib.Data.Set.Sigma (2.3s)\n\u2714 [890/930] Built Mathlib.Tactic.Linarith.Verification (1.5s)\n\u2714 [891/930] Built Mathlib.Data.Set.Lattice (3.3s)\n\u2714 [892/930] Built Mathlib.Data.Finset.Card (4.9s)\n\u2714 [893/930] Built Mathlib.Data.Fintype.Basic (1.3s)\n\u2714 [894/930] Built Mathlib.Tactic.NormNum.Ineq (2.6s)\n\u2714 [895/930] Built Mathlib.Data.Finset.Option (1.3s)\n\u2714 [896/930] Built Mathlib.Data.Fintype.Card (1.6s)\n\u2714 [897/930] Built Mathlib.Algebra.BigOperators.Group.Finset.Defs (3.1s)\n\u2714 [898/930] Built Mathlib.Tactic.NormNum.DivMod (1.7s)\n\u2714 [899/930] Built Mathlib.Data.Finset.Sum (1.9s)\n\u2714 [900/930] Built Mathlib.Data.Finset.Prod (2.1s)\n\u2714 [901/930] Built Mathlib.Order.ConditionallyCompleteLattice.Basic (2.5s)\n\u2714 [902/930] Built Mathlib.Tactic.Positivity.Basic (3.0s)\n\u2714 [903/930] Built Mathlib.Tactic.Ring.Common (6.9s)\n\u2714 [904/930] Built Mathlib.Data.Set.Lattice.Image (3.7s)\n\u2714 [905/930] Built Mathlib.Order.CompleteLatticeIntervals (1.3s)\n\u2714 [906/930] Built Mathlib.Tactic.Ring.Basic (1.1s)\n\u2714 [907/930] Built Mathlib.Data.Finset.Lattice.Fold (2.4s)\n\u2714 [908/930] Built Mathlib.Algebra.Order.Nonneg.Lattice (870ms)\n\u2714 [909/930] Built Mathlib.Order.CompleteLattice.Finset (1.1s)\n\u2714 [910/930] Built Mathlib.Tactic.Linarith.Frontend (1.5s)\n\u2714 [911/930] Built Mathlib.Algebra.Order.Nonneg.Ring (1.0s)\n\u2714 [912/930] Built Mathlib.Data.Finset.Sigma (1.0s)\n\u2714 [913/930] Built Mathlib.Algebra.BigOperators.Group.Finset.Basic (3.9s)\n\u2714 [914/930] Built Mathlib.Data.NNRat.Order (794ms)\n\u2714 [915/930] Built Mathlib.Algebra.Order.Nonneg.Field (1.2s)\n\u2714 [916/930] Built Mathlib.Algebra.BigOperators.Group.Finset.Sigma (921ms)\n\u2714 [917/930] Built Mathlib.Algebra.Order.Field.Rat (778ms)\n\u2714 [918/930] Built Mathlib.Data.Rat.Cast.Lemmas (856ms)\n\u2714 [919/930] Built Mathlib.Tactic.NormNum.OfScientific (1.1s)\n\u2714 [920/930] Built Mathlib.Algebra.Order.BigOperators.Group.Finset (2.1s)\n\u2714 [921/930] Built Mathlib.Data.Rat.Cast.Order (1.7s)\n\u2714 [922/930] Built Mathlib.Data.Finset.Density (1.8s)\n\u2714 [923/930] Built Mathlib.Tactic.NormNum (743ms)\n\u2714 [924/930] Built Mathlib.Tactic.Positivity.Finset (1.2s)\n\u2714 [925/930] Built Mathlib.Tactic.Linarith (729ms)\n\u2714 [926/930] Built Mathlib.Tactic.Positivity (705ms)\n\u2714 [927/930] Built RobustnessKernelV1 (3.1s)\n\u2714 [929/930] Built ReviewChecks (972ms)\nBuild completed successfully (930 jobs).\n",
+    "build_root": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-07_aristotle_RobustnessKernelV1_forge_attempt_1/attempt-1_aristotle",
+    "forbidden_occurrences_comment_stripped": {
+      "admit": 0,
+      "axiom declaration": 0,
+      "extern declaration": 0,
+      "implemented_by": 0,
+      "native_decide": 0,
+      "sorry": 0,
+      "sorryAx": 0,
+      "unsafe declaration": 0
+    },
+    "forbidden_occurrences_raw": {
+      "admit": 0,
+      "axiom declaration": 0,
+      "extern declaration": 0,
+      "implemented_by": 0,
+      "native_decide": 0,
+      "sorry": 0,
+      "sorryAx": 0,
+      "unsafe declaration": 0
+    },
+    "formal_target_rows": [
+      {
+        "claim": "Shared ancestry strictly lowers declared finite-set dependency independence.",
+        "class": "FORMAL_TARGET",
+        "id": "F1",
+        "support": [
+          "RobustnessKernelV1.lean:shared_dependency_strictly_reduces_independence",
+          "RobustnessKernelV1.lean:hidden_common_parent_lowers_independence"
+        ]
+      },
+      {
+        "claim": "Execution is true exactly when selection and every frozen authority condition pass.",
+        "class": "FORMAL_TARGET",
+        "id": "F2",
+        "support": [
+          "RobustnessKernelV1.lean:execution_authority_gate_iff",
+          "RobustnessKernelV1.lean:advisory_selection_never_authorizes_execution",
+          "RobustnessKernelV1.lean:revoked_or_expired_lease_denies_execution"
+        ]
+      },
+      {
+        "claim": "An explicit claim-state assertion creates no distinct claim-state assertion.",
+        "class": "FORMAL_TARGET",
+        "id": "F3",
+        "support": [
+          "RobustnessKernelV1.lean:derivable_iff_explicitly_asserted",
+          "RobustnessKernelV1.lean:distinct_state_is_not_derived_from_singleton"
+        ]
+      },
+      {
+        "claim": "Recalled roots and declared descendants are blocked while unrelated nodes are not blocked solely by the recall relation.",
+        "class": "FORMAL_TARGET",
+        "id": "F4",
+        "support": [
+          "RobustnessKernelV1.lean:recalled_artifact_is_blocked",
+          "RobustnessKernelV1.lean:descendant_of_recalled_artifact_is_blocked",
+          "RobustnessKernelV1.lean:unrelated_artifact_is_not_blocked"
+        ]
+      },
+      {
+        "claim": "Closed-interval robust pass and fail are disjoint and the classifier is complete and exact.",
+        "class": "FORMAL_TARGET",
+        "id": "F5",
+        "support": [
+          "RobustnessKernelV1.lean:robust_pass_and_fail_are_disjoint",
+          "RobustnessKernelV1.lean:interval_classification_complete",
+          "RobustnessKernelV1.lean:interval_classification_pass_iff",
+          "RobustnessKernelV1.lean:interval_classification_fail_iff"
+        ]
+      },
+      {
+        "claim": "The frozen robust-dominance relation is irreflexive and transitive.",
+        "class": "FORMAL_TARGET",
+        "id": "F6",
+        "support": [
+          "RobustnessKernelV1.lean:robust_dominance_irreflexive",
+          "RobustnessKernelV1.lean:robust_dominance_transitive"
+        ]
+      },
+      {
+        "claim": "Frozen trajectory shortfall and marked violation span are nonnegative, and a nonnegative trace has zero shortfall.",
+        "class": "FORMAL_TARGET",
+        "id": "F7",
+        "support": [
+          "RobustnessKernelV1.lean:trajectory_shortfall_nonnegative",
+          "RobustnessKernelV1.lean:nonnegative_trajectory_has_zero_shortfall",
+          "RobustnessKernelV1.lean:marked_violation_span_nonnegative"
+        ]
+      },
+      {
+        "claim": "The aftershock count cannot exceed the number of adjacent sample pairs.",
+        "class": "FORMAL_TARGET",
+        "id": "F8",
+        "support": [
+          "RobustnessKernelV1.lean:aftershock_count_le_adjacent_pairs"
+        ]
+      },
+      {
+        "claim": "Proof, selection, authorization, deployment, and observation require distinct witnesses.",
+        "class": "FORMAL_TARGET",
+        "id": "F9",
+        "support": [
+          "RobustnessKernelV1.lean:release_states_are_independent_nonvacuous",
+          "RobustnessKernelV1.lean:robustness_kernel_v1_nonvacuous"
+        ]
+      }
+    ],
+    "local_build_pass": true,
+    "nonvacuity_obligations": [
+      "release_states_are_independent_nonvacuous constructs five distinct witnesses so proof, selection, authorization, deployment, and observation cannot collapse",
+      "robustness_kernel_v1_nonvacuous simultaneously instantiates strict common-parent loss, authority pass and advisory denial, all three interval states, strict robust dominance, nonzero trajectory shortfall, one aftershock, and recalled, descendant, and unrelated lineage cases",
+      "Every theorem statement, definition, and witness remains byte-for-byte semantically identical to the frozen source and statement contract"
+    ],
+    "nonvacuity_theorems": [
+      "release_states_are_independent_nonvacuous",
+      "robustness_kernel_v1_nonvacuous"
+    ],
+    "output_files_sha256": {
+      "attempt-1_aristotle/ARISTOTLE_FORGE_REQUEST.json": "addd4da10c171161a802f5a7d0add18b67b635b75a45012a6d64e01666b3c6db",
+      "attempt-1_aristotle/ARISTOTLE_PROMPT.md": "934ba1092cb136bc1548a9859558ec72ee6239d3eef9469ee3cebd5b84e46935",
+      "attempt-1_aristotle/ARISTOTLE_SUMMARY.md": "79fd5d338c7547b5aee525caa36e9cb0768c42aaab4c18480e138baf8840ee2e",
+      "attempt-1_aristotle/AxiomAudit.lean": "47488bc9e4eef0baca13cbcebd93a2ad8761064489e848b98b8dcdabcc0acc0c",
+      "attempt-1_aristotle/LOCAL_PREFLIGHT_RECEIPT.json": "7cf47e3cf0f9ad1102a2cd75a15552d30d1247d0134071b1a503bcccba526e0d",
+      "attempt-1_aristotle/PRE_ARISTOTLE_SCREEN.json": "ba4f8105e76165116a5241ff9acacfcea01a569f9b79ad4e1418ddc1997bded6",
+      "attempt-1_aristotle/README.md": "39ec8cd0459306d9f50cf0c0da2aaf858aeaba5affa9ae26c3dbaee9f872f0ab",
+      "attempt-1_aristotle/REVIEW_REPORT.md": "b015eb6ac01ce2d35f54b394edeff5a5a8c64707d669b43653b36c9bd31808a7",
+      "attempt-1_aristotle/ReviewChecks.lean": "f3e9b219f3e581a8ac36a831089c708e4980081a013f0ba96d949a07e9b2c33f",
+      "attempt-1_aristotle/ReviewChecksAxiomAudit.lean": "1c7d1fcd7cee651b88b0db897a72c49f55614f8786fa14247157416669554a3d",
+      "attempt-1_aristotle/RobustnessKernelV1.lean": "ef373a04b19dff71bf02632d0e4134879069c31ab716e5f669483ab33c18802f",
+      "attempt-1_aristotle/SIGNIFICANCE_CANDIDATE.json": "164d9588aafce1bc75565c8edd351c4a765d260f0dfd17809afbe16dda2f6da1",
+      "attempt-1_aristotle/SOURCE_BINDING.json": "ba6fadf1c4305861d95379b9569f3df5b4a3b828a25ae34efa3d6259ea133a9c",
+      "attempt-1_aristotle/STATEMENT_CONTRACT.md": "12410f1dd42d4813263640ee3ab5e957a82629b46d9933d3237974527e468184",
+      "attempt-1_aristotle/lake-manifest.json": "fa05c12477470e616f6651b16470fc781480071e163b7d24f6feb155e17028f9",
+      "attempt-1_aristotle/lakefile.toml": "e4dbfb0ce3ca56f1ff8a77af702cd97459161f64245887992df64a16528a49d7",
+      "attempt-1_aristotle/lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028"
+    },
+    "output_module": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-07_aristotle_RobustnessKernelV1_forge_attempt_1/attempt-1_aristotle/RobustnessKernelV1.lean",
+    "provider_completion_pass": true,
+    "provider_task_statuses": [
+      "COMPLETE"
+    ],
+    "scanned_lean_files": [
+      "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-07_aristotle_RobustnessKernelV1_forge_attempt_1/attempt-1_aristotle/ReviewChecks.lean",
+      "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-07_aristotle_RobustnessKernelV1_forge_attempt_1/attempt-1_aristotle/ReviewChecksAxiomAudit.lean",
+      "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-07_aristotle_RobustnessKernelV1_forge_attempt_1/attempt-1_aristotle/RobustnessKernelV1.lean"
+    ],
+    "significance": {
+      "candidate_evidence": {
+        "canon_index": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/canon_fingerprint_index.json",
+        "empirical_claims": [
+          "Real dependency maps may omit common parents.",
+          "Declared uncertainty intervals may be uncalibrated.",
+          "Declared trajectory samples may not represent the real path.",
+          "A recorded authority lease may not be legitimate or current.",
+          "The broader kernel may or may not improve decisions in society, cybersecurity, architecture, infrastructure, or product design."
+        ],
+        "empirical_claims_flagged_unproven": true,
+        "falsifiable_prediction": {
+          "observable": "Frozen finite dependency sets, authority Booleans, explicit claim-state memberships, lineage edges and recalls, rational closed intervals, comparison directions, rational trajectory samples, and separately supplied release-state witnesses.",
+          "predicted": "Every input satisfying the frozen premises satisfies all 22 contract conclusions, including strict common-parent loss, fail-closed authority, descendant recall, exact interval classification, transitive robust dominance, nonnegative trajectory measures, the adjacent-pair aftershock bound, and non-collapsing release states.",
+          "refuted_if": "Lean accepts a concrete counterexample to any frozen theorem statement under the same definitions, or independent rebuild finds statement drift, a proof hole, a forbidden construct, a disallowed axiom, or a vacuous non-vacuity witness."
+        },
+        "is_restatement": false,
+        "name": "Governed Robustness Kernel v1 Certificates",
+        "nontrivial_justification": "The package is a versioned successor to the earlier two-family robustness nucleus. It adds seven independently testable formal families and one cross-kernel witness: transitive recall over declared lineage, exact five-operator interval classification, a transitive separated-interval dominance order, nonnegative rational trajectory integrals and marked spans, a structural aftershock bound, and non-collapsing release states. No literature-priority claim is made, and elementary supporting lemmas are not promoted as standalone discoveries.",
+        "nonvacuity_theorems": [
+          "release_states_are_independent_nonvacuous",
+          "robustness_kernel_v1_nonvacuous"
+        ],
+        "run_id": "Directed-2026-08-07-RobustnessKernelV1",
+        "schema_version": "1.0",
+        "statement": "A single frozen decision-kernel specification proves strict hidden-common-dependency loss, exact fail-closed execution authority, explicit epistemic-state separation, cascading content-addressed recall, complete disjoint closed-interval viability classification, transitive robust interval dominance, nonnegative sampled-trajectory shortfall and violation span, an adjacent-pair bound on aftershocks, and independent proof, selection, authorization, deployment, and observation witnesses.",
+        "vacuity_checked": true,
+        "witness": "The release_states_are_independent_nonvacuous theorem constructs pairwise distinct proof, selection, authorization, deployment, and observation states. The robustness_kernel_v1_nonvacuous theorem simultaneously instantiates disjoint direct dependencies with a hidden shared parent, a valid authority lease and advisory denial, pass/fail/uncertain intervals, a strict robust-dominance pair, a nonzero trajectory shortfall, one aftershock, and recalled/descendant/unrelated lineage nodes."
+      },
+      "canon_index": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/canon_fingerprint_index.json",
+      "invariants": {
+        "INV-SIG-1 NON-VACUOUS": true,
+        "INV-SIG-2 NON-TRIVIAL": true,
+        "INV-SIG-3 NOVEL": true,
+        "INV-SIG-4 FALSIFIABLE": true,
+        "INV-SIG-5 AXIOM-CLEAN": true,
+        "INV-SIG-6 HONEST-SCOPE": true
+      },
+      "reasons": [],
+      "verdict": "PASS"
+    },
+    "statement_comparisons": {
+      "def HiddenCommonParent": true,
+      "def dependencyIndependence": true,
+      "theorem advisory_selection_never_authorizes_execution": true,
+      "theorem aftershock_count_le_adjacent_pairs": true,
+      "theorem derivable_iff_explicitly_asserted": true,
+      "theorem descendant_of_recalled_artifact_is_blocked": true,
+      "theorem distinct_state_is_not_derived_from_singleton": true,
+      "theorem execution_authority_gate_iff": true,
+      "theorem hidden_common_parent_lowers_independence": true,
+      "theorem interval_classification_complete": true,
+      "theorem interval_classification_fail_iff": true,
+      "theorem interval_classification_pass_iff": true,
+      "theorem margin_shortfall_eq_zero": true,
+      "theorem margin_shortfall_nonnegative": true,
+      "theorem marked_violation_span_nonnegative": true,
+      "theorem nonnegative_trajectory_has_zero_shortfall": true,
+      "theorem recalled_artifact_is_blocked": true,
+      "theorem release_states_are_independent_nonvacuous": true,
+      "theorem revoked_or_expired_lease_denies_execution": true,
+      "theorem robust_dominance_irreflexive": true,
+      "theorem robust_dominance_transitive": true,
+      "theorem robust_no_worse_transitive": true,
+      "theorem robust_pass_and_fail_are_disjoint": true,
+      "theorem robust_strict_then_no_worse": true,
+      "theorem robustness_kernel_v1_nonvacuous": true,
+      "theorem segment_shortfall_nonnegative": true,
+      "theorem shared_dependency_strictly_reduces_independence": true,
+      "theorem trajectory_shortfall_nonnegative": true,
+      "theorem unrelated_artifact_is_not_blocked": true
+    },
+    "unexpected_axioms": []
+  },
+  "external_mutation": false,
+  "failed_checks": [],
+  "forbidden_constructs_pass": true,
+  "nonvacuity_pass": true,
+  "output_tree_sha256": "7c7b2f254068999857bb0f0b2a97ad88d5412fed3edcef0d02c59650cb5a2c35",
+  "project_id": "3e142131-f6f4-4c32-b273-873783735a69",
+  "request_sha256": "addd4da10c171161a802f5a7d0add18b67b635b75a45012a6d64e01666b3c6db",
+  "root_candidate_id": "Directed-RobustnessKernelV1",
+  "schema_version": "2.0",
+  "significance_gate_pass": true,
+  "statement_freeze_pass": true,
+  "zero_sorry_pass": true
+}

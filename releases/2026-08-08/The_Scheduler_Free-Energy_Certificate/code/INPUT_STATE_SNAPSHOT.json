@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "current_run": 118,
+  "current_run_slug": "dscore-snapshot-alignment",
+  "state_timestamp": "2026-08-03T07:20:31Z",
+  "selection_policy_id": "VRS-NIGHTLY-SELECTION-1",
+  "selection_policy_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/NIGHTLY_SELECTION_POLICY_v1.json",
+  "sum_staleness": 139,
+  "areas": [
+    {"id":"01","name":"Intelligence Bound","tier":"T1","weight":3.0,"last_run":113,"staleness":5,"standing_flags":0.0,"coverage_relief":0.0},
+    {"id":"02","name":"Thermodynamic Economics","tier":"T1","weight":3.0,"last_run":116,"staleness":2,"standing_flags":0.0,"coverage_relief":0.0},
+    {"id":"03","name":"HDFM Corridors","tier":"T1","weight":3.0,"last_run":109,"staleness":9,"standing_flags":2.5,"coverage_relief":0.0},
+    {"id":"04","name":"D-Score Science","tier":"T2","weight":2.0,"last_run":118,"staleness":0,"standing_flags":0.0,"coverage_relief":0.0},
+    {"id":"05","name":"Thermodynamic Speed Limits","tier":"T2","weight":2.0,"last_run":107,"staleness":11,"standing_flags":1.0,"coverage_relief":0.0},
+    {"id":"06","name":"Entropy-Driven Learning","tier":"T2","weight":2.0,"last_run":103,"staleness":15,"standing_flags":2.5,"coverage_relief":0.0,"tier_floor_arms_run":117},
+    {"id":"07","name":"Gaian Systems","tier":"T2","weight":2.0,"last_run":104,"staleness":14,"standing_flags":0.0,"coverage_relief":0.0},
+    {"id":"08","name":"Ecoservices Platform","tier":"T3","weight":1.5,"last_run":115,"staleness":3,"standing_flags":0.0,"coverage_relief":0.0},
+    {"id":"09","name":"Intelligence Capacity","tier":"T3","weight":1.5,"last_run":106,"staleness":12,"standing_flags":1.0,"coverage_relief":0.0},
+    {"id":"10","name":"Monitoring Technology","tier":"T3","weight":1.5,"last_run":111,"staleness":7,"standing_flags":3.0,"coverage_relief":0.0,"next_lens_constraint":["Thermodynamic","Symbiosis"]},
+    {"id":"11","name":"Afforestation Systems","tier":"T3","weight":1.5,"last_run":114,"staleness":4,"standing_flags":0.0,"coverage_relief":0.0},
+    {"id":"12","name":"AI Wavefunction Collapse","tier":"T4","weight":1.0,"last_run":99,"staleness":19,"standing_flags":0.0,"coverage_relief":0.0},
+    {"id":"13","name":"Computational Theory","tier":"T4","weight":1.0,"last_run":97,"staleness":21,"standing_flags":0.0,"coverage_relief":2.0},
+    {"id":"14","name":"Cognitive Modeling","tier":"T4","weight":1.0,"last_run":108,"staleness":10,"standing_flags":0.0,"coverage_relief":0.0},
+    {"id":"15","name":"Ecoterraforming","tier":"T4","weight":1.0,"last_run":117,"staleness":1,"standing_flags":0.0,"coverage_relief":0.0},
+    {"id":"16","name":"Applications","tier":"T4","weight":1.0,"last_run":112,"staleness":6,"standing_flags":1.5,"coverage_relief":0.0}
+  ],
+  "locked_directives": [
+    {"run":119,"kind":"meta","area_id":null,"lens":"Thermodynamic","reason":"scheduled_meta_policy_review_no_self_adoption"}
+  ],
+  "legacy_markdown_state": "/Users/justinhart/Desktop/science /07_nightly_engine/viridis-science-agent/nightly/NIGHTLY_STATE.md",
+  "provenance": {
+    "source_run": 116,
+    "converted_by": "Codex",
+    "converted_at": "2026-08-01T21:00:00Z",
+    "note": "Machine-state bootstrap from the post-Run-116 authoritative wheel; historical prose remains unchanged."
+  }
+}

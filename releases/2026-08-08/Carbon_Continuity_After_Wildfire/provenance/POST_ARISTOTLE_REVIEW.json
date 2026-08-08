@@ -1,0 +1,58 @@
+{
+  "schema_version": "2.1",
+  "candidate_id": "Directed-2026-08-04-CarbonContinuity-v2",
+  "reviewed_at_utc": "2026-08-08T22:03:27Z",
+  "reviewer_system": "Codex",
+  "verdict": "PASS_REPRODUCIBLE_RELEASE_PACKAGE",
+  "series_route": "directed working research corpus",
+  "overlay_scope": "portable provenance and packaging only; paper, Lean source, theorem statements, and scientific claims unchanged",
+  "artifacts_sha256": {
+    "BUILD_VERIFICATION.md": "f2d88c525533b935674b230368a0d0940500bb7170323cb7a12fd51eb1196cc4",
+    "PACKAGING_OVERLAY.md": "84eb45c86f543550959968f3e026e00f3f938723845e6501a6dd39be7470cdc6",
+    "paper.pdf": "926723f838776dca40c2229e1a9ad51217265e51d49391ef346b48751a0d9103",
+    "paper.tex": "720074dfaf7e53970c764a7d04f14e681082c730e51b33350de097c316a97dca",
+    "lean/CarbonContinuity.lean": "899d3bb1929bac8d1ab6b760caffac428de115489e6fc7c1b2752e0769a77fc1",
+    "lean/AxiomAudit.lean": "58520259972c9c828196ce4376d9dac3f01358f0b308fe036c6f0a739803a171",
+    "code/verification.py": "1620f659997daae80e18623eed7a10c77a306125f57eede3375ec2774459cfc1",
+    "code/verification_output.txt": "58c13bd5af507461f8e28b93dd7bd43d727c7d8f77183b939f260389ca470599",
+    "provenance/AXIOM_AUDIT.txt": "27faadb49137473e3f980d9c219e62c9b372d6296558ca60d1f2a01aafad32af",
+    "provenance/SOURCE_BINDING.json": "dd0aa41f470a38a72e28f70299695a30bea81eaae35ba3f22c645b025265b60c",
+    "provenance/SOURCE_LEDGER.json": "f970840202b118b6c6a449ee673238f4bc163c718cf1fa890487f541609c3084"
+  },
+  "checks": {
+    "scientific_invariant_pass": true,
+    "paper_finished": true,
+    "paper_pages": 9,
+    "all_pages_visual_review_pass": true,
+    "paper_byte_identical_to_scientifically_reviewed_candidate": true,
+    "lean_source_byte_identical_to_scientifically_reviewed_candidate": true,
+    "local_pinned_lean_build_pass": true,
+    "lean_build_jobs": 866,
+    "zero_sorry_pass": true,
+    "forbidden_constructs_pass": true,
+    "axiom_audit_pass": true,
+    "allowed_axioms_only": true,
+    "nonvacuity_pass": true,
+    "paper_to_lean_reconciliation_pass": true,
+    "numerical_gate_pass": true,
+    "numerical_checks_passed": 20,
+    "numerical_checks_failed": 0,
+    "private_absolute_path_removed": true,
+    "frozen_source_digest_preserved": true,
+    "source_role_not_scientific_evidence": true,
+    "portable_reproduction_pass": true,
+    "rights_metadata_ready": true,
+    "release_metadata_ready": true
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "spine_admission": {
+    "admitted": false,
+    "reason": "Directed model-scoped result; no Intelligence Bound spine update is proposed."
+  },
+  "external_mutation": false,
+  "publication_authority": false
+}

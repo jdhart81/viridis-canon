@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the archived release."
+title: "Carbon Continuity After Wildfire: A Dynamic Portfolio Framework and Regenerative Coupling Threshold for Natural Carbon Assets"
+type: article
+version: "0.2.0-formal"
+authors:
+  - family-names: Hart
+    given-names: Justin D.
+    orcid: "https://orcid.org/0009-0008-3082-2482"
+    affiliation: "Viridis Research"
+license: CC-BY-4.0

@@ -1,0 +1,20 @@
+'Viridis.RobustnessKernelV1.ReviewChecks.dependency_disjoint_is_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.RobustnessKernelV1.ReviewChecks.dependency_one_shared_is_two_thirds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.RobustnessKernelV1.ReviewChecks.dependency_equal_is_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.RobustnessKernelV1.ReviewChecks.authority_grants_on_full_lease' does not depend on any axioms
+'Viridis.RobustnessKernelV1.ReviewChecks.authority_denies_unselected' does not depend on any axioms
+'Viridis.RobustnessKernelV1.ReviewChecks.authority_denies_advisory' does not depend on any axioms
+'Viridis.RobustnessKernelV1.ReviewChecks.authority_denies_out_of_scope' does not depend on any axioms
+'Viridis.RobustnessKernelV1.ReviewChecks.numerical_support_does_not_yield_proof' depends on axioms: [propext, Quot.sound]
+'Viridis.RobustnessKernelV1.ReviewChecks.asserted_state_is_derivable' depends on axioms: [propext, Quot.sound]
+'Viridis.RobustnessKernelV1.ReviewChecks.classifier_emits_pass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.RobustnessKernelV1.ReviewChecks.classifier_emits_fail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.RobustnessKernelV1.ReviewChecks.classifier_emits_uncertain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.RobustnessKernelV1.ReviewChecks.robust_dominance_nonvacuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.RobustnessKernelV1.ReviewChecks.overlapping_intervals_do_not_dominate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.RobustnessKernelV1.ReviewChecks.shortfall_of_violating_trajectory' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.RobustnessKernelV1.ReviewChecks.span_counts_only_marked_segments' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.RobustnessKernelV1.ReviewChecks.aftershock_counts_downward_transitions' does not depend on any axioms
+'Viridis.RobustnessKernelV1.ReviewChecks.aftershock_of_stable_trajectory_is_zero' does not depend on any axioms
+'Viridis.RobustnessKernelV1.ReviewChecks.release_states_deployment_without_observation' does not depend on any axioms
+

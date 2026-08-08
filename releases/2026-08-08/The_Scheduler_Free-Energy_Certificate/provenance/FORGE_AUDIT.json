@@ -1,0 +1,179 @@
+{
+  "attempt": 2,
+  "audited_at_utc": "2026-08-06T00:04:51.470349+00:00",
+  "axiom_audit_pass": true,
+  "build_pass": true,
+  "candidate_id": "Run-119-SchedulerFreeEnergy-attempt-2",
+  "evidence": {
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "axiom_output": "'Viridis.SchedulerFreeEnergy.reset_partition_function_identity' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.SchedulerFreeEnergy.max_age_minimizes_next_logsumexp' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.SchedulerFreeEnergy.unique_max_age_unique_minimizer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.SchedulerFreeEnergy.tied_maxima_equal_next_potential' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.SchedulerFreeEnergy.logsumexp_bounds_max_age' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.SchedulerFreeEnergy.scheduler_free_energy_nonvacuous' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+    "axioms_used": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "build_output_tail": "\u2714 [1894/1895] Built SchedulerFreeEnergy (9.0s)\nBuild completed successfully (1895 jobs).\n",
+    "build_root": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-05_aristotle_SchedulerFreeEnergy_forge_attempt_2/attempt-2_aristotle",
+    "forbidden_occurrences_comment_stripped": {
+      "admit": 0,
+      "axiom declaration": 0,
+      "extern declaration": 0,
+      "implemented_by": 0,
+      "native_decide": 0,
+      "sorry": 0,
+      "sorryAx": 0,
+      "unsafe declaration": 0
+    },
+    "forbidden_occurrences_raw": {
+      "admit": 0,
+      "axiom declaration": 0,
+      "extern declaration": 0,
+      "implemented_by": 0,
+      "native_decide": 0,
+      "sorry": 0,
+      "sorryAx": 0,
+      "unsafe declaration": 0
+    },
+    "formal_target_rows": [
+      {
+        "aristotle_target": "reset_partition_function_identity",
+        "claim": "Under the stated equal-cost deterministic reset model, the post-reset exponential partition function has the exact choice-gap identity.",
+        "evidence_class": "FORMAL_TARGET",
+        "formal_status": "UNPROVED",
+        "id": "C1",
+        "paper_locator": "Proposition 1; Eqs. (3)-(4)"
+      },
+      {
+        "aristotle_target": "max_age_minimizes_next_logsumexp",
+        "claim": "For every beta greater than zero, resetting a maximum-age area minimizes the next-step log-sum-exp potential.",
+        "evidence_class": "FORMAL_TARGET",
+        "formal_status": "UNPROVED",
+        "id": "C2",
+        "paper_locator": "Theorem 1"
+      },
+      {
+        "aristotle_target": "unique_max_age_unique_minimizer",
+        "claim": "The next-step minimizer is unique exactly when the maximum age is unique.",
+        "evidence_class": "FORMAL_TARGET",
+        "formal_status": "UNPROVED",
+        "id": "C3",
+        "paper_locator": "Theorem 1"
+      },
+      {
+        "aristotle_target": "tied_maxima_equal_next_potential",
+        "claim": "Tied maximum ages yield equal minimal next-step potential, while beta equal to zero loses selection information.",
+        "evidence_class": "FORMAL_TARGET",
+        "formal_status": "UNPROVED",
+        "id": "C4",
+        "paper_locator": "Negative controls; verification checks 9-10"
+      },
+      {
+        "aristotle_target": "logsumexp_bounds_max_age",
+        "claim": "The log-sum-exp potential is bounded by the maximum age and that maximum plus log(n)/beta under beta greater than zero.",
+        "evidence_class": "FORMAL_TARGET",
+        "formal_status": "UNPROVED",
+        "id": "C5",
+        "paper_locator": "One-step free-energy certificate; Eq. (2)"
+      }
+    ],
+    "local_build_pass": true,
+    "nonvacuity_obligations": [
+      "scheduler_free_energy_nonvacuous proves a concrete Fin 2 strict comparison at every beta greater than zero",
+      "tied_maxima_equal_next_potential preserves the negative control that ties destroy uniqueness",
+      "the maximum-age results retain positive beta and do not claim unequal-cost or long-run optimality"
+    ],
+    "nonvacuity_theorems": [
+      "scheduler_free_energy_nonvacuous",
+      "tied_maxima_equal_next_potential"
+    ],
+    "output_files_sha256": {
+      "attempt-2_aristotle/ARISTOTLE_FORGE_REQUEST.json": "4f93b7e3dda736236ab68fe6e1905cd353427af84df2a2155bd213c7477dd72a",
+      "attempt-2_aristotle/ARISTOTLE_PROMPT.md": "dd414cceabb55ad412ca91b37901fb99af9ac57a958093976accd0674dda6c30",
+      "attempt-2_aristotle/ARISTOTLE_SUMMARY.md": "615b615b809f0b2f166a0d23dda09c883d8be0db7db6d462c28e8d8ef1af0cf7",
+      "attempt-2_aristotle/LOCAL_REPAIR_BUILD_RECEIPT.json": "d512846fc5619e3bc7eb884dc2f039af86bc6c29d38607649862e0ed0dc1cbe7",
+      "attempt-2_aristotle/README.md": "39ec8cd0459306d9f50cf0c0da2aaf858aeaba5affa9ae26c3dbaee9f872f0ab",
+      "attempt-2_aristotle/REPAIR_RECEIPT.json": "7dfb0df4fb38562ff9c5895e0703dfbfd45e14385a70fea41238c1b64b52b1f7",
+      "attempt-2_aristotle/RUN119_ARISTOTLE_SUMMARY.md": "aca6c056ecd7487a2742f2df5007b3c5b8be5c3e476777cb180b8d046392949e",
+      "attempt-2_aristotle/SOURCE_BINDING.json": "374fdf4ea6572ea8c59183918cf4c781bbb11ce3b08b165fea6a124a70e643ad",
+      "attempt-2_aristotle/STATEMENT_CONTRACT.md": "b4c2520d0936ec49da00c5b9c00ed5102b8ba8ecfcec8d02123fb01069c9176d",
+      "attempt-2_aristotle/SchedulerFreeEnergy.lean": "70c1dbfb1f86f3247e5084165e27dd9ec03ec8646c7bd45f7112a4dd7f98df4d",
+      "attempt-2_aristotle/lake-manifest.json": "d69add02191c2296f6bd6136834316deb77332749b0f0244afb551b6dd10a4b4",
+      "attempt-2_aristotle/lakefile.toml": "9ec9d3f7b00b5ae8ba6250ee2d2cc2499243fae4e55309940ffac04be82a5694",
+      "attempt-2_aristotle/lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028"
+    },
+    "output_module": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-05_aristotle_SchedulerFreeEnergy_forge_attempt_2/attempt-2_aristotle/SchedulerFreeEnergy.lean",
+    "provider_completion_pass": true,
+    "provider_task_statuses": [
+      "COMPLETE"
+    ],
+    "scanned_lean_files": [
+      "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-05_aristotle_SchedulerFreeEnergy_forge_attempt_2/attempt-2_aristotle/SchedulerFreeEnergy.lean"
+    ],
+    "significance": {
+      "candidate_evidence": {
+        "canon_index": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/canon_fingerprint_index.json",
+        "empirical_claims": [
+          "The certificate may detect starvation defects in external research workflows.",
+          "A proposal-only selector may improve research productivity or scientific output."
+        ],
+        "empirical_claims_flagged_unproven": true,
+        "falsifiable_prediction": {
+          "observable": "For equal-cost workflow items under the declared deterministic reset rule, the next-step log-sum-exp potential after each possible service choice.",
+          "predicted": "Serving a currently maximum-age item produces a minimal next-step potential; if that maximum is unique, its choice is the unique strict minimizer.",
+          "refuted_if": "A replay satisfying the equal-cost deterministic-reset assumptions produces a lower next-step potential by serving a non-maximum-age item, or a tied maximum produces unequal next-step potentials."
+        },
+        "is_restatement": false,
+        "name": "The Scheduler Free-Energy Certificate",
+        "nontrivial_justification": "The frozen package combines the exact reset partition identity, weak and strict minimization, the tie control, an attained-maximum envelope, and a concrete strict witness. The result is intentionally one-step and equal-cost; it is not presented as a long-run scheduler theorem or a priority claim over Age-of-Information, MaxWeight, Whittle, or curriculum-scheduling literature.",
+        "nonvacuity_theorems": [
+          "scheduler_free_energy_nonvacuous",
+          "tied_maxima_equal_next_potential"
+        ],
+        "run_id": "Run-119",
+        "schema_version": "1.0",
+        "statement": "In the declared equal-cost deterministic-reset model and for every positive inverse temperature, serving a maximum-age component minimizes the next-step log-sum-exp free energy; a unique maximum gives the unique strict minimizer, tied maxima give equal minima, and the free energy lies in its attained-maximum log-cardinality envelope.",
+        "vacuity_checked": true,
+        "witness": "For every beta>0, the concrete Fin 2 age vector (1,0) satisfies the model and serving the unique older component strictly lowers the next-step potential relative to serving the younger component."
+      },
+      "canon_index": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/canon_fingerprint_index.json",
+      "invariants": {
+        "INV-SIG-1 NON-VACUOUS": true,
+        "INV-SIG-2 NON-TRIVIAL": true,
+        "INV-SIG-3 NOVEL": true,
+        "INV-SIG-4 FALSIFIABLE": true,
+        "INV-SIG-5 AXIOM-CLEAN": true,
+        "INV-SIG-6 HONEST-SCOPE": true
+      },
+      "reasons": [],
+      "verdict": "PASS"
+    },
+    "statement_comparisons": {
+      "def freeEnergy": true,
+      "def nextAge": true,
+      "def partition": true,
+      "theorem logsumexp_bounds_max_age": true,
+      "theorem max_age_minimizes_next_logsumexp": true,
+      "theorem reset_partition_function_identity": true,
+      "theorem scheduler_free_energy_nonvacuous": true,
+      "theorem tied_maxima_equal_next_potential": true,
+      "theorem unique_max_age_unique_minimizer": true
+    },
+    "unexpected_axioms": []
+  },
+  "external_mutation": false,
+  "failed_checks": [],
+  "forbidden_constructs_pass": true,
+  "nonvacuity_pass": true,
+  "output_tree_sha256": "5e5d6ea145ccd274c53b9c342ffa6e61eaf6832baca19f5f903d3fd3bfd2e7ce",
+  "project_id": "8a5d878e-bee9-4e70-9300-9bac24d91166",
+  "request_sha256": "4f93b7e3dda736236ab68fe6e1905cd353427af84df2a2155bd213c7477dd72a",
+  "root_candidate_id": "Run-119-SchedulerFreeEnergy",
+  "schema_version": "2.0",
+  "significance_gate_pass": true,
+  "statement_freeze_pass": true,
+  "zero_sorry_pass": true
+}

@@ -1,0 +1,8 @@
+import CarbonContinuity
+
+#print axioms Viridis.CarbonContinuity.carbon_continuity_threshold_sufficient
+#print axioms Viridis.CarbonContinuity.carbon_continuity_threshold_necessary
+#print axioms Viridis.CarbonContinuity.carbon_continuity_threshold_iff
+#print axioms Viridis.CarbonContinuity.carbon_continuity_boundary_stationary
+#print axioms Viridis.CarbonContinuity.carbon_continuity_strict_threshold_growth
+#print axioms Viridis.CarbonContinuity.carbon_continuity_nonvacuous

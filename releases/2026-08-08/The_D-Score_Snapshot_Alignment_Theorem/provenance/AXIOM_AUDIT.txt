@@ -1,0 +1,15 @@
+'Viridis.SnapshotAlignment.phasor_energy_pairwise_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.SnapshotAlignment.alignment_efficiency_unit_interval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Viridis.SnapshotAlignment.delay_variance_bounds_alignment_loss' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Viridis.SnapshotAlignment.alignment_budget_sufficient_for_band' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Viridis.SnapshotAlignment.equal_delay_perfect_alignment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Viridis.SnapshotAlignment.two_channel_half_period_cancellation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+

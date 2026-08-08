@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "run_id": "Run-119",
+  "title": "The Scheduler Free-Energy Certificate: A One-Step Audit of Anti-Starvation Research Selection",
+  "paper_stage": "pre_aristotle",
+  "artifacts": {
+    "readme": "README.md",
+    "finding": "finding.md",
+    "paper_source": "paper.tex",
+    "paper_pdf": "paper.pdf",
+    "paper_log": "paper.log",
+    "verification_script": "verification.py",
+    "verification_output": "verification_output.txt",
+    "business_value": "business_EV-119.md",
+    "policy_proposal": "POLICY_PROPOSAL_v1.1.json",
+    "input_state_snapshot": "INPUT_STATE_SNAPSHOT.json"
+  },
+  "claim_inventory": [
+    {
+      "id": "C1",
+      "paper_locator": "Proposition 1",
+      "claim": "The post-reset exponential partition function obeys an exact choice-gap identity.",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "reset_partition_function_identity"
+    },
+    {
+      "id": "C2",
+      "paper_locator": "Theorem 1",
+      "claim": "A maximum-age reset minimizes next-step log-sum-exp potential for beta > 0.",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "max_age_minimizes_next_logsumexp"
+    },
+    {
+      "id": "C3",
+      "paper_locator": "Locked replay",
+      "claim": "Run 120 is uniquely area 13 x Stewardship after the META transition.",
+      "evidence_class": "NUMERIC",
+      "support": "verification_output.txt checks 13-16 and 21"
+    },
+    {
+      "id": "C4",
+      "paper_locator": "Policy-schema audit",
+      "claim": "The v1 policy does not define scoring_staleness or a deterministic tie-break.",
+      "evidence_class": "CITED",
+      "support": "locked v1 policy plus executable checks 17-18"
+    },
+    {
+      "id": "C5",
+      "paper_locator": "Model assumptions",
+      "claim": "Research slots have equal service cost under deterministic age reset.",
+      "evidence_class": "ASSUMED",
+      "support": "scope assumption; unequal-cost counterexample retained"
+    }
+  ],
+  "high_risk_claims": [
+    {
+      "phrase": "certificate",
+      "paper_locator": "Title and Theorem 1",
+      "evidence_class": "FORMAL_TARGET",
+      "support": "Exact algebra plus 22 executable checks in the equal-cost one-step model; proposed Lean target remains unproved"
+    },
+    {
+      "phrase": "minimizes",
+      "paper_locator": "Theorem 1",
+      "evidence_class": "FORMAL_TARGET",
+      "support": "Restricted to next-step log-sum-exp staleness with equal service cost; no long-run or scientific-productivity optimality"
+    }
+  ],
+  "aristotle": {
+    "status": "pending",
+    "lean_files": [],
+    "summary_files": []
+  },
+  "post_aristotle_review": {
+    "status": "pending",
+    "path": null
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "corpus and current primary-literature search, preregistration, code, execution, policy audit, manuscript drafting, packaging, and QA under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "historical Viridis META and research artifacts read with attribution preserved and not rewritten"
+      }
+    ]
+  },
+  "route_proposal": "internal-methods-hold",
+  "release_metadata": {
+    "abbreviation": "SFEC",
+    "description": "Generated exploration of a one-step anti-starvation scheduling certificate and executable-policy schema audit; not peer reviewed or formally verified.",
+    "keywords": [
+      "research scheduling",
+      "age of information",
+      "log-sum-exp",
+      "anti-starvation",
+      "reproducible policy"
+    ],
+    "version": "0.1.0-generated-exploration",
+    "license": "unassigned",
+    "series_route": "internal methods",
+    "spine_admitted": false,
+    "spine_gate": "not evaluated",
+    "spine_reason": "internal scheduler audit with no proposed spine effect",
+    "notes": "META proposal only. Numerical checks do not confer policy adoption, formal proof, scientific productivity, or publication authority.",
+    "ledger_row": null
+  },
+  "integrity_flags": []
+}

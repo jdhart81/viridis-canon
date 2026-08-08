@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "title": "The D-Score Snapshot Alignment Theorem: A Delay-Variance Budget for Asynchronous Biodiversity Indicators",
+    "upload_type": "publication",
+    "publication_type": "preprint",
+    "creators": [
+      {
+        "name": "Hart, Justin D.",
+        "affiliation": "Viridis Research",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "A model-scoped theorem for temporal coherence in weighted biodiversity snapshots. Six frozen Lean theorems are independently audited with zero proof holes. The paper does not claim empirical biodiversity validation, universal timing rules, or literature priority.",
+    "keywords": [
+      "biodiversity monitoring",
+      "temporal alignment",
+      "data fusion",
+      "D-Score",
+      "measurement coherence",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "access_right": "open",
+    "version": "0.2.1-formal",
+    "notes": "The release includes the final paper, deterministic 21-check suite, pinned Lean environment, six-theorem zero-sorry audit, provenance, and exact checksums. It is a standalone working-corpus result, not an Intelligence Bound spine addition, peer acceptance, or empirical validation."
+  },
+  "external_mutation": false,
+  "publication_authority": false
+}

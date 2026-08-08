@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "5fb1a88f4c561fc035dca97984bd464b68f4625cf28c9866d2f88a28eefd0a1c",
+  "catalog_digest": "5601ab39a59e85e67c14f8a7fb0c888681fc4e2d5994359376784134fa3874be",
   "concept_doi": "10.5281/zenodo.19317982",
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "human_publish_gate": true,
@@ -122,6 +122,51 @@
       "theorem_count": 6,
       "tier": "flagship",
       "title": "Intelligence Bound ↔ Biosphere Productivity",
+      "visibility": "public"
+    },
+    {
+      "abstract": "A non-actuating governed robustness decision kernel with explicit evidence, authority, lineage, interval, trajectory, and release boundaries.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 17,
+      "digest": "570db90abd4a4f713a37e3babd6196cbea3a5bea31cdd16ef66ef063e1bc8ebf",
+      "doi": "",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib.Data.Finset.Card",
+        "Mathlib.Data.Rat.Defs",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Positivity"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.RobustnessKernelV1",
+      "lemma_count": 0,
+      "line_count": 508,
+      "metadata": {
+        "aristotle_id": "3e142131-f6f4-4c32-b273-873783735a69",
+        "artifact_type": "lean4",
+        "paper_target": "releases/2026-08-08/Robustness_Before_Performance/paper.pdf",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/releases/2026-08-08/Robustness_Before_Performance/paper.pdf",
+      "path": "releases/2026-08-08/Robustness_Before_Performance/lean/RobustnessKernelV1.lean",
+      "record_id": "robustness-before-performance",
+      "source_sha256": "ef373a04b19dff71bf02632d0e4134879069c31ab716e5f669483ab33c18802f",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/releases/2026-08-08/Robustness_Before_Performance/lean/RobustnessKernelV1.lean",
+      "status": "working",
+      "summary": "A non-actuating governed robustness decision kernel with explicit evidence, authority, lineage, interval, trajectory, and release boundaries.",
+      "tags": [
+        "decision-governance",
+        "flagship",
+        "formal-verification",
+        "lean4",
+        "robustness",
+        "security",
+        "working"
+      ],
+      "theorem_count": 27,
+      "tier": "flagship",
+      "title": "Robustness Before Performance",
       "visibility": "public"
     },
     {
@@ -1363,6 +1408,51 @@
       "visibility": "public"
     },
     {
+      "abstract": "A model-scoped two-pool framework for post-wildfire carbon continuity with an exact regenerative-coupling threshold.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 2,
+      "digest": "ca2673b2041fddbc9938d85bb22a42ba5e8443d305c6f12aacc582b749bc70c8",
+      "doi": "",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib.Data.Real.Basic",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.LinearCombination",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Ring"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.CarbonContinuity",
+      "lemma_count": 0,
+      "line_count": 119,
+      "metadata": {
+        "aristotle_id": "40c58299-efeb-4cad-b332-2525b7c8d6d1",
+        "artifact_type": "lean4",
+        "paper_target": "releases/2026-08-08/Carbon_Continuity_After_Wildfire/paper.pdf",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/releases/2026-08-08/Carbon_Continuity_After_Wildfire/paper.pdf",
+      "path": "releases/2026-08-08/Carbon_Continuity_After_Wildfire/lean/CarbonContinuity.lean",
+      "record_id": "carbon-continuity-after-wildfire",
+      "source_sha256": "899d3bb1929bac8d1ab6b760caffac428de115489e6fc7c1b2752e0769a77fc1",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/releases/2026-08-08/Carbon_Continuity_After_Wildfire/lean/CarbonContinuity.lean",
+      "status": "working",
+      "summary": "A model-scoped two-pool framework for post-wildfire carbon continuity with an exact regenerative-coupling threshold.",
+      "tags": [
+        "carbon",
+        "formal-verification",
+        "lean4",
+        "regeneration",
+        "wildfire",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 6,
+      "tier": "working-corpus",
+      "title": "Carbon Continuity After Wildfire",
+      "visibility": "public"
+    },
+    {
       "abstract": "Certification Complexity Theorem (CCT) — Run 050, Aristotle Forge submission PROVENANCE / WELL-POSEDNESS NOTE CANON_BACKLOG Rank 4 (Run 050) originally named two complexity-class targets, cert_monoid_word_problem_in_P and confluence_implies_poly_certification. Both assert membership in the class P, which is NOT encodable as a well-posed non-vacuous Lean theorem under Mathlib pin 8f9d9cff (no cost model / complexity-class layer). Justin (2026-06-17) APPROVED the reframe: verify the three *physical* CCT results instead and record the χ∈P / poly-time claims as prose-rigorous (known rewriting-theory result), NOT canon-Lean targets. The originally STAGED skeleton wrote two of the three physical targets as hypothesis-equals-conclusion identities (exact hrate), which are VACUOUS and violate the forge non-vacuity invariant. They are RESTATED here as genuinely non-vacuous theorems carrying the same physical content (as the staging brief instructed: \"restate against the monitor model before submission\"): T1 certification_bound — the certification rate is bounded by a strictly POSITIVE Landauer-priced ceiling (positivity is the non-trivial content; the IB self-applied to the monitor). T2 certified_bit_budget — a genuine inequality-chain derivation: rate bound + finite horizon + conserved E_cert = P_mon·T ⟹ total certified information is capped at C ≤ E_cert·D/εL. T3 landauer_certification_floor — the certification energy floor εL·ln(1/φ) is STRICTLY POSITIVE for relative resolution φ∈(0,1), and any E_cert meeting it is itself strictly positive (irreducible thermodynamic price of…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
@@ -2547,6 +2637,137 @@
       "visibility": "public"
     },
     {
+      "abstract": "An exact phasor identity and delay-variance coherence budget for asynchronous weighted biodiversity indicators.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 4,
+      "digest": "22ea3596133062179efc5243fe6f5e2b0d88a05a2fbaf892823452ee094bdbd8",
+      "doi": "",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib.Analysis.Complex.Basic",
+        "Mathlib.Analysis.Complex.Exponential",
+        "Mathlib.Analysis.Complex.Trigonometric",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.SnapshotAlignment",
+      "lemma_count": 7,
+      "line_count": 231,
+      "metadata": {
+        "aristotle_id": "8ae74567-4444-44cf-8988-5e3b81ed1e60",
+        "artifact_type": "lean4",
+        "paper_target": "releases/2026-08-08/The_D-Score_Snapshot_Alignment_Theorem/paper.pdf",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/releases/2026-08-08/The_D-Score_Snapshot_Alignment_Theorem/paper.pdf",
+      "path": "releases/2026-08-08/The_D-Score_Snapshot_Alignment_Theorem/lean/SnapshotAlignment.lean",
+      "record_id": "d-score-snapshot-alignment",
+      "source_sha256": "bce0b84e350694d345ab2fc439c3f6a532d530e453c15ae539d8f76e96c7aa61",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/releases/2026-08-08/The_D-Score_Snapshot_Alignment_Theorem/lean/SnapshotAlignment.lean",
+      "status": "working",
+      "summary": "An exact phasor identity and delay-variance coherence budget for asynchronous weighted biodiversity indicators.",
+      "tags": [
+        "biodiversity",
+        "formal-verification",
+        "lean4",
+        "measurement",
+        "temporal-alignment",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 6,
+      "tier": "working-corpus",
+      "title": "The D-Score Snapshot Alignment Theorem",
+      "visibility": "public"
+    },
+    {
+      "abstract": "A model-scoped robust-allocation theorem for two symbiont strains under unresolved environmental regimes.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 6,
+      "digest": "70d9b689d8f4df4203015ef9e506d11682c57153792ecdffc6eb408ab160b2f7",
+      "doi": "",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Ring"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.EcopoieticHedge",
+      "lemma_count": 0,
+      "line_count": 224,
+      "metadata": {
+        "aristotle_id": "c40e3631-82b5-4df4-99e8-7697f2482ba4",
+        "artifact_type": "lean4",
+        "paper_target": "releases/2026-08-08/The_Ecopoietic_Hedge/paper.pdf",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/releases/2026-08-08/The_Ecopoietic_Hedge/paper.pdf",
+      "path": "releases/2026-08-08/The_Ecopoietic_Hedge/lean/EcopoieticHedge.lean",
+      "record_id": "ecopoietic-hedge",
+      "source_sha256": "33c52fb5e837b37adc0f85c896375f8087e2ced2836222ad78c353778108b732",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/releases/2026-08-08/The_Ecopoietic_Hedge/lean/EcopoieticHedge.lean",
+      "status": "working",
+      "summary": "A model-scoped robust-allocation theorem for two symbiont strains under unresolved environmental regimes.",
+      "tags": [
+        "formal-verification",
+        "lean4",
+        "restoration",
+        "robust-optimization",
+        "symbiosis",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 6,
+      "tier": "working-corpus",
+      "title": "The Ecopoietic Hedge",
+      "visibility": "public"
+    },
+    {
+      "abstract": "A one-step equal-cost anti-starvation certificate and reproducible audit of a proposed research-selection policy.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 3,
+      "digest": "49411156525ff83fe1c41f3f6e5d735e5fbd69398ad9599468c426d7649930fd",
+      "doi": "",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Exp",
+        "Mathlib.Analysis.SpecialFunctions.Log.Basic"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.SchedulerFreeEnergy",
+      "lemma_count": 0,
+      "line_count": 176,
+      "metadata": {
+        "aristotle_id": "8a5d878e-bee9-4e70-9300-9bac24d91166",
+        "artifact_type": "lean4",
+        "paper_target": "releases/2026-08-08/The_Scheduler_Free-Energy_Certificate/paper.pdf",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/releases/2026-08-08/The_Scheduler_Free-Energy_Certificate/paper.pdf",
+      "path": "releases/2026-08-08/The_Scheduler_Free-Energy_Certificate/lean/SchedulerFreeEnergy.lean",
+      "record_id": "scheduler-free-energy-certificate",
+      "source_sha256": "70c1dbfb1f86f3247e5084165e27dd9ec03ec8646c7bd45f7112a4dd7f98df4d",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/releases/2026-08-08/The_Scheduler_Free-Energy_Certificate/lean/SchedulerFreeEnergy.lean",
+      "status": "working",
+      "summary": "A one-step equal-cost anti-starvation certificate and reproducible audit of a proposed research-selection policy.",
+      "tags": [
+        "anti-starvation",
+        "formal-verification",
+        "lean4",
+        "research-operations",
+        "scheduling",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 8,
+      "tier": "working-corpus",
+      "title": "The Scheduler Free-Energy Certificate",
+      "visibility": "public"
+    },
+    {
       "abstract": "The Thermodynamic Discounting Theorem (TDT) — clean core Lean 4 / Mathlib formalization. Viridis LLC. For submission to Aristotle. CONTEXT (nightly Run 080, thermodynamic-discounting-theorem; [02] Thermodynamic Economics × Thermodynamic lens; CONVERGENCE EVENT; 22nd IB self-application, \"the Appraiser\"). A degrading natural D-Capital asset has TVT value V > 0 (Run 047), measured in Landauer units. Restoring it to target by a hard horizon T > 0 costs irreversible entropy on the single-system tempo cost (Run 060 / 079): Σ(T) = A / T + B · T, A, B > 0, whose free optimum is at the critical horizon τ* = √(A / B) with flat cost Σ* = 2√(A·B). The *deadline shadow price* is λ = − dΣ*/dT : scarce (T < τ*): Σ*(T) = A/T + B·T, λ(T) = A / T² − B ( > 0 ), abundant (T ≥ τ*): Σ* = 2√(A·B) , λ = 0. The endogenous (thermodynamic) discount rate is the deadline shadow price per unit asset value: r_thermo(T) = λ(T) / V. WHAT IS PROVEN HERE (clean core — target: 0 sorry, axioms ⊆ {propext, Classical.choice, Quot.sound}): 1. thermo_discount_rate_eq_lambda_over_value (R1, defining identity) r_thermo · V = λ. 2. discount_rate_zero_in_abundant_time_regime (R2, abundant / \"Stern\" pole) T ≥ τ* ⟹ r_thermo = 0. 3. discount_rate_diverges_at_tipping (R3) as A → ∞ (critical slowing down, τ* → ∞) r_thermo → +∞. 4. pv_kernel_recovers_tvt_at_zero_lambda (R4) λ = 0 ⟹ discount kernel ≡ 1, so the present-value integrand equals the undiscounted gross flux — PV recovers the TVT stock value. 5. stern_nordhaus_regime_dichotomy_monotone_single_crossover (R2 flagship) r_thermo(·) is 0 on [τ*,∞), strictly positive…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
@@ -2890,13 +3111,13 @@
   "repository": "https://github.com/jdhart81/viridis-canon",
   "schema": "https://jdhart81.github.io/viridis-canon/schemas/research-catalog-v1.json",
   "stats": {
-    "flagships": 3,
+    "flagships": 4,
     "quarantined": 1,
-    "records": 77,
+    "records": 82,
     "spine": 30,
-    "theorems_and_lemmas": 717,
+    "theorems_and_lemmas": 777,
     "verified": 26,
-    "working": 50,
-    "working_corpus": 44
+    "working": 55,
+    "working_corpus": 48
   }
 }

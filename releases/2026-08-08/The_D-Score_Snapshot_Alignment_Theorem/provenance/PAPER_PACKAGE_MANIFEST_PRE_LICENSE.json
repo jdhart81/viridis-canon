@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "run_id": "Run-118",
+  "title": "The D-Score Snapshot Alignment Theorem: A Delay-Variance Budget for Asynchronous Biodiversity Indicators",
+  "paper_stage": "final_reconciled",
+  "artifacts": {
+    "readme": "README.md",
+    "finding": "finding.md",
+    "paper_source": "paper.tex",
+    "paper_pdf": "paper.pdf",
+    "paper_log": "paper.log",
+    "verification_script": "verification.py",
+    "verification_output": "verification_output.txt",
+    "business_value": "business_EV-118.md"
+  },
+  "upstream_contract": {
+    "live_state": {
+      "path": "/Users/justinhart/Desktop/science /07_nightly_engine/viridis-science-agent/nightly/NIGHTLY_STATE.json",
+      "current_run": 118,
+      "state_timestamp": "2026-08-03T07:20:31Z",
+      "resulting_state_sha256": "f329b1a6d39e52c154a5b97aa9166512ed0c64d106396f9f7763ae82c3a9286e",
+      "verified": true
+    },
+    "run_manifest": {
+      "path": "RUN_MANIFEST.json",
+      "sha256": "db349bb5332485b510fa2c4bf11ce3a3a7cd94f6fb41aa8e7751b531f0679286",
+      "exit_state": "GENERATED_EXPLORATION",
+      "verification_status": "NUMERICAL_GATE_PASS",
+      "aristotle_status": "NOT_RUN",
+      "novelty": "UNASSESSED",
+      "verified_before_package_manifest": true
+    },
+    "mirror_receipt": {
+      "path": "RESEARCH_PIPELINE_v2/nightly_mirror_receipts/Run-118.json",
+      "status": "MIRRORED",
+      "artifact_count": 15,
+      "source_tree_sha256": "3d1c49aa06506d37d807ed26bedf93e571e5d8e2fde0f07fc8d054180adce875",
+      "verified_live_mirror_file_parity": "all 15 files SHA-256 identical"
+    },
+    "required_generator_artifacts": {
+      "CEO_ALERT.md": "1cd8831aca6d43d146e083a147c41c971d91bd84b67bd7904a40e336f2db8a02",
+      "CLAIM_INVENTORY.json": "02002f8224ff739db814ad05e234c1a59ccf5ac6f7aa7cf143be0202bfa53f82",
+      "PAPER_PACKAGE_MANIFEST.json": "e6dcef7e4339aad9fa24e3a37fad345a7bfe333acb5d08cc196174f735cdb000",
+      "README.md": "879ca7c88fd5d36c8b5314023ba9eb2925100796166f79ebabad07814eee5c60",
+      "SOURCE_LEDGER.json": "d1c390fc7837434322e30abbe5c1c80aea2dd86a997a57694eaf93197ef7afcd",
+      "business_EV-118.md": "921d0bd2352cf123fb7b6a3cf262ecb5b35a4529297eedebe087592532e7e6ef",
+      "finding.md": "7fa74033aaaec27a811cd14be34b1685d949d18080373aa862da7e85e06ca06a",
+      "paper.aux": "0456127b2c15049dabd1a8f7c138c15af9d437c5d18caad54b824def6f54fc27",
+      "paper.log": "6baea2e4a87d680fb5c9f1d7765d316e9171bc597546b49f2cc346158c53be42",
+      "paper.out": "a2a24dda6f34f89e0bbb7caa1218aec04a93c0565aaa8cbf62a3a7c0a5675a46",
+      "paper.pdf": "5c3711634676fdeb42b63db9bb6fff112c0724436fd21d1a1a9c3369909945b7",
+      "paper.tex": "a3ad0fe19196e64d91aa9e0ada0ab1eda67186dbee2e2ad810b7581e8ea86d4c",
+      "verification.py": "acfd2db6b9d71031b62caee2091a4423989f717a8eca3ee1c35f9aa5db5e41ab",
+      "verification_output.txt": "de62348d73fc7c8d142e2200f7bdbdada5c30c2b84c8fdca501db98c4acc4d23"
+    }
+  },
+  "claim_inventory": [
+    {
+      "id": "C1",
+      "paper_locator": "Abstract; Proposition 1; Eq. (8)",
+      "claim": "Under normalized nonnegative effective weights in the stated local common-mode model, snapshot alignment efficiency has the exact weighted pairwise cosine-loss identity.",
+      "evidence_class": "FORMALLY_VERIFIED",
+      "aristotle_target": "phasor_energy_pairwise_identity",
+      "lean_theorem": "Viridis.SnapshotAlignment.phasor_energy_pairwise_identity",
+      "formal_status": "VERIFIED_ZERO_SORRY"
+    },
+    {
+      "id": "C2",
+      "paper_locator": "Corollary to Proposition 1; Eq. (5)",
+      "claim": "The modeled alignment efficiency lies in the unit interval.",
+      "evidence_class": "FORMALLY_VERIFIED",
+      "aristotle_target": "alignment_efficiency_unit_interval",
+      "lean_theorem": "Viridis.SnapshotAlignment.alignment_efficiency_unit_interval",
+      "formal_status": "VERIFIED_ZERO_SORRY"
+    },
+    {
+      "id": "C3",
+      "paper_locator": "Theorem 1; Eqs. (9)-(10)",
+      "claim": "For every modeled real angular frequency, alignment loss is at most angular frequency squared times weighted delay variance.",
+      "evidence_class": "FORMALLY_VERIFIED",
+      "aristotle_target": "delay_variance_bounds_alignment_loss",
+      "lean_theorem": "Viridis.SnapshotAlignment.delay_variance_bounds_alignment_loss",
+      "formal_status": "VERIFIED_ZERO_SORRY"
+    },
+    {
+      "id": "C4",
+      "paper_locator": "Corollary 1; Eq. (12)",
+      "claim": "Within the declared frequency band and model assumptions, the weighted delay-variance budget is sufficient for the declared alignment floor.",
+      "evidence_class": "FORMALLY_VERIFIED",
+      "aristotle_target": "alignment_budget_sufficient_for_band",
+      "lean_theorem": "Viridis.SnapshotAlignment.alignment_budget_sufficient_for_band",
+      "formal_status": "VERIFIED_ZERO_SORRY"
+    },
+    {
+      "id": "C5",
+      "paper_locator": "Controls and edge cases; Table 1",
+      "claim": "Equal channel delays retain perfect modeled alignment.",
+      "evidence_class": "FORMALLY_VERIFIED",
+      "aristotle_target": "equal_delay_perfect_alignment",
+      "lean_theorem": "Viridis.SnapshotAlignment.equal_delay_perfect_alignment",
+      "formal_status": "VERIFIED_ZERO_SORRY"
+    },
+    {
+      "id": "C6",
+      "paper_locator": "Controls and edge cases; Table 1",
+      "claim": "Two equal-weight channels separated by a half cycle cancel the modeled common signal.",
+      "evidence_class": "FORMALLY_VERIFIED",
+      "aristotle_target": "two_channel_half_period_cancellation",
+      "lean_theorem": "Viridis.SnapshotAlignment.two_channel_half_period_cancellation",
+      "formal_status": "VERIFIED_ZERO_SORRY"
+    },
+    {
+      "id": "C7",
+      "paper_locator": "Verification; verification_output.txt",
+      "claim": "The captured adversarial suite reports 21 passed checks, zero failures, and no triggered preregistered failure condition for the stated analytic and synthetic model.",
+      "evidence_class": "NUMERIC",
+      "support": "verification.py SHA-256 acfd2db6b9d71031b62caee2091a4423989f717a8eca3ee1c35f9aa5db5e41ab; verification_output.txt SHA-256 de62348d73fc7c8d142e2200f7bdbdada5c30c2b84c8fdca501db98c4acc4d23"
+    },
+    {
+      "id": "C8",
+      "paper_locator": "Introduction; Prior work",
+      "claim": "The cited literature documents temporal asynchrony and the need for explicit temporal harmonization in multi-source monitoring, while also cautioning that ecological asynchrony may be signal rather than error.",
+      "evidence_class": "CITED",
+      "support": "SOURCE_LEDGER.json S1-S5; paper references [1]-[5]"
+    },
+    {
+      "id": "C9",
+      "paper_locator": "Model; Assumptions; Limitations",
+      "claim": "Channels share a locally common, linearly represented ecological mode after centering and scaling, with normalized nonnegative effective weights and known delays.",
+      "evidence_class": "ASSUMED",
+      "support": "Declared model contract only; no Run-118 empirical calibration or field validation"
+    },
+    {
+      "id": "C10",
+      "paper_locator": "business_EV-118.md",
+      "claim": "A Snapshot Coherence Audit may have business value if it predicts held-out monitoring failures better than a simple maximum-age rule.",
+      "evidence_class": "CONJECTURED",
+      "support": "Separate business hypothesis; signed revenue $0, named customer validation none, and no adoption evidence"
+    },
+    {
+      "id": "C11",
+      "paper_locator": "Introduction; Limitations; SOURCE_LEDGER.json",
+      "claim": "No existing Viridis canon fingerprint matches this exact claim family, and the targeted literature search does not establish novelty or priority.",
+      "evidence_class": "DEFERRED",
+      "support": "SOURCE_LEDGER.json V12 and search limits; the significance audit found no matching Viridis fingerprint but does not establish literature priority"
+    },
+    {
+      "id": "C12",
+      "paper_locator": "Bandlimited process and operational rule; Eq. (12)",
+      "claim": "The wide-sense stationary bandlimited spectral extension follows analytically from the pointwise bound under the stated spectral assumptions.",
+      "evidence_class": "DEFERRED",
+      "support": "Ordinary Parseval/linear-filtering derivation in the paper; not one of the six Lean theorem signatures"
+    },
+    {
+      "id": "C13",
+      "paper_locator": "Delay-variance bound; Verification",
+      "claim": "The captured small-delay experiment exhibits approximately second-order convergence for the tested delay family.",
+      "evidence_class": "NUMERIC",
+      "support": "verification_output.txt reports observed orders 1.9985, 1.9996, and 1.9999; no universal formal sharpness theorem is claimed"
+    }
+  ],
+  "high_risk_claims": [
+    {
+      "phrase": "theorem",
+      "paper_locator": "Title; Theorem 1; Verification",
+      "evidence_class": "FORMALLY_VERIFIED",
+      "support": "C1-C6 map to the six exact theorem signatures in SnapshotAlignment.lean; FORGE_AUDIT.json passes build, statement freeze, zero-sorry, forbidden-construct, axiom, non-vacuity, and significance checks."
+    },
+    {
+      "phrase": "sufficient",
+      "paper_locator": "Abstract; Corollary 1; Eq. (12)",
+      "evidence_class": "FORMALLY_VERIFIED",
+      "support": "Only the exact model-scoped sufficient condition in alignment_budget_sufficient_for_band is claimed. The paper states that the budget is not necessary and is not an empirical guarantee."
+    },
+    {
+      "phrase": "optimal revisit cadence",
+      "paper_locator": "Introduction; Discussion",
+      "evidence_class": "CITED",
+      "support": "This describes a distinct prior Viridis line, not a Run-118 optimality claim; SOURCE_LEDGER.json V6 identifies its exact prior artifact and scope."
+    },
+    {
+      "phrase": "universal maximum age",
+      "paper_locator": "Discussion",
+      "evidence_class": "DEFERRED",
+      "support": "The paper rejects a positive universal claim and confines its reasoning to the stated harmonic common-mode model; C3 is frequency-dependent and the paper records the external-validity limitation."
+    },
+    {
+      "phrase": "novelty / priority",
+      "paper_locator": "Abstract; Limitations; Reproducibility and declarations",
+      "evidence_class": "DEFERRED",
+      "support": "Novelty is explicitly UNASSESSED and the targeted source ledger is not an independent or systematic prior-art reconciliation."
+    }
+  ],
+  "aristotle": {
+    "status": "landed",
+    "project_id": "8ae74567-4444-44cf-8988-5e3b81ed1e60",
+    "candidate_id": "Run-118-SnapshotAlignment-attempt-2",
+    "request": "FORGE_REQUEST.json",
+    "audit": "FORGE_AUDIT.json",
+    "lean_files": [
+      "SnapshotAlignment.lean"
+    ],
+    "summary_files": [
+      "ARISTOTLE_SUMMARY.md",
+      "RUN118_ARISTOTLE_SUMMARY.md"
+    ],
+    "theorem_count": 6,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "evidence": "Attempt 2 is the unique Run-118 AUDITED_VERIFIED forge history row; FORGE_AUDIT.json passes all seven audit booleans and binds the exact request and output hashes."
+  },
+  "post_aristotle_review": {
+    "status": "pending",
+    "path": null,
+    "evidence": "Curator revision 2 is sealed for a separate provider-attributed hash-bound review; the manuscript itself makes no claim about that review's outcome."
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "hypothesis generation, corpus and literature search, preregistration, code, execution, manuscript drafting, packaging, local proof audit, and paper-to-Lean reconciliation under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "historical Viridis prior artifacts read with attribution preserved and not rewritten"
+      },
+      {
+        "name": "Aristotle",
+        "role": "automated theorem proving for the six frozen Lean targets; not an author or creator"
+      }
+    ]
+  },
+  "route_proposal": "working-corpus",
+  "release_metadata": {
+    "abbreviation": "DSA",
+    "description": "Final reconciled manuscript for a formally verified conditional theorem on temporal coherence in weighted biodiversity snapshots; not externally peer reviewed or empirically validated.",
+    "keywords": [
+      "biodiversity monitoring",
+      "temporal alignment",
+      "data fusion",
+      "D-Score",
+      "measurement coherence"
+    ],
+    "version": "0.2.1-final-reconciled",
+    "license": "unassigned",
+    "series_route": "working corpus",
+    "spine_admitted": false,
+    "spine_gate": "fails Gate 3",
+    "spine_reason": "domain-applying biodiversity measurement result, not domain-defining; no spine effect proposed",
+    "notes": "Six Lean theorems are locally audited and reconciled to the paper. Numerical checks support only the stated analytic and synthetic model. No external peer review, empirical validation, adoption, signed revenue, ledger approval, or publication authorization is asserted. Curator revision 1 and its independent-review HOLD receipt are preserved under revisions/revision-1-review-hold/.",
+    "ledger_row": null
+  },
+  "intake_repair_receipts": [
+    "RESEARCH_PIPELINE_v2/nightly_packages/Run-118/GATE_READER_REPAIR.json"
+  ],
+  "integrity_flags": [],
+  "repair_plan": [
+    {
+      "blocker": "No independent hash-bound post-Aristotle paper review exists.",
+      "owner": "Post-Aristotle review bundler",
+      "required_state_before_clear": "A separate provider-attributed reviewer verifies the sealed paper, Lean, summaries, audit, numeric evidence, citations, disclosures, metadata, route, and exact hashes."
+    }
+  ],
+  "external_mutation": false
+}

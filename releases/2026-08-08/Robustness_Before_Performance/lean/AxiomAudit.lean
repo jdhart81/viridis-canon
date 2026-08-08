@@ -1,0 +1,26 @@
+import RobustnessKernelV1
+
+open Viridis.RobustnessKernelV1
+
+#print axioms shared_dependency_strictly_reduces_independence
+#print axioms hidden_common_parent_lowers_independence
+#print axioms execution_authority_gate_iff
+#print axioms advisory_selection_never_authorizes_execution
+#print axioms revoked_or_expired_lease_denies_execution
+#print axioms derivable_iff_explicitly_asserted
+#print axioms distinct_state_is_not_derived_from_singleton
+#print axioms recalled_artifact_is_blocked
+#print axioms descendant_of_recalled_artifact_is_blocked
+#print axioms unrelated_artifact_is_not_blocked
+#print axioms robust_pass_and_fail_are_disjoint
+#print axioms interval_classification_complete
+#print axioms interval_classification_pass_iff
+#print axioms interval_classification_fail_iff
+#print axioms robust_dominance_irreflexive
+#print axioms robust_dominance_transitive
+#print axioms trajectory_shortfall_nonnegative
+#print axioms nonnegative_trajectory_has_zero_shortfall
+#print axioms marked_violation_span_nonnegative
+#print axioms aftershock_count_le_adjacent_pairs
+#print axioms release_states_are_independent_nonvacuous
+#print axioms robustness_kernel_v1_nonvacuous

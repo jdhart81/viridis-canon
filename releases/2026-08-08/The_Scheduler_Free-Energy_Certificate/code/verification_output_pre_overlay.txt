@@ -1,0 +1,31 @@
+RUN 119 ADVERSARIAL GATE
+seed=11920260804
+tolerance=2.0e-12
+hypotheses=H1 one-step free-energy certificate; H2 locked transition; H3 executable-policy audit; H4 no-drift proposal replay
+falsifier=any counterexample, next-choice drift, or explicit policy definition contradicting H3
+PASS 01 | locked input hashes | policy=fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e state=f329b1a6d39e52c154a5b97aa9166512ed0c64d106396f9f7763ae82c3a9286e
+PASS 02 | proposal is non-adopting | status=PROPOSAL_ONLY_NOT_ADOPTED
+PASS 03 | machine checksum | sum=139
+PASS 04 | locked Run 119 directive | directives=[{'run': 119, 'kind': 'meta', 'area_id': None, 'lens': 'Thermodynamic', 'reason': 'scheduled_meta_policy_review_no_self_adoption'}]
+PASS 05 | exact reset-gap identity | observed=2.622602375136e+02 exact=2.622602375136e+02
+PASS 06 | hand-case maximum age minimizes potential | post_reset_Z=['304.541859', '42.281622', '279.592577']
+PASS 07 | exhaustive small-state certificate | cases=78100 failures=0
+PASS 08 | random unique-maximum strictness | cases=10000 failures=0 min_margin=3.246e-02
+PASS 09 | tie negative control | minimizers=[0, 2] maxima=[0, 2]
+PASS 10 | beta-zero degeneracy negative control | Z_0=[3.0, 3.0, 3.0]
+PASS 11 | stable thermal-limit bounds | F_beta-max=['7.198e+00', '3.377e-04', '0.000e+00', '0.000e+00']
+PASS 12 | nonmaximum reset is strictly worse | beta sweep=1e-6..100 unique maximum age=22
+PASS 13 | META transition checksum | pre_sum=139 post_sum=155 resets=0
+PASS 14 | Run 120 unique severe-starvation area | max_age=22 ids=['13']
+PASS 15 | Run 120 choice invariant across temperature | all beta choose zero-based index 12 / area 13
+PASS 16 | proposal actual-state replay | threshold=22 selected=13
+PASS 17 | undefined scoring_staleness detected | formula='tier_weight * scoring_staleness + standing_inbound_flags + coverage_relief' explicit_definition=False
+PASS 18 | missing deterministic tie-break detected | tie_definition_present=False
+PASS 19 | adversarial tie exposes partial selector | current_candidates=['12', '13'] proposal=13
+PASS 20 | proposal deterministically resolves tie | selected=13 rule=age,score,area_id
+PASS 21 | Run 120 lens and combination guard | lens=Stewardship area13_distance=23
+PASS 22 | unequal-cost scope negative control | net_benefit=['-99.687', '-1.687'] max-age_not_optimal_when_costed
+
+SUMMARY: 22 PASS / 0 FAIL
+STATUS: NUMERICAL_GATE_PASS
+INTERPRETATION: finite exact/exhaustive/randomized checks support a one-step equal-cost certificate and expose two policy-schema gaps; no formal proof, long-run optimality, productivity gain, novelty, or adoption is established.

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "candidate_id": "Directed-2026-08-07-RobustnessAlgorithmV1",
+  "review_state": "PASS_TECHNICAL_RECONCILIATION_LOCAL_CONTROL_REVIEW",
+  "reviewed_at_utc": "2026-08-07T19:28:00Z",
+  "reviewer_system": "Codex",
+  "review_independence": "Independent of Aristotle proof generation, but performed in the same continuous build turn as final paper reconciliation; not external peer review and not the separate provider-attributed curator review required for FINALIZED_REVIEWED_PACKAGE.",
+  "formal_binding": {
+    "frozen_lean_source_sha256": "ef373a04b19dff71bf02632d0e4134879069c31ab716e5f669483ab33c18802f",
+    "aristotle_project_id": "3e142131-f6f4-4c32-b273-873783735a69",
+    "forge_audit_sha256": "fc5e6c7d21fcb3c3c2ec5ab5b06dc3590ae0aab99600fa375c9a31fca562a98e",
+    "returned_source_byte_identical": true,
+    "frozen_claim_families": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9"],
+    "paper_claims_match_frozen_theorems": true
+  },
+  "checks": {
+    "claim_classification_complete": true,
+    "empirical_and_formal_claims_separated": true,
+    "proof_authority_deployment_observation_separated": true,
+    "source_ledger_present": true,
+    "visual_review_all_pages": true,
+    "high_risk_overclaim_found": false,
+    "unresolved_formal_claim_found": false
+  },
+  "scope_boundary": "The review establishes correspondence between the paper's F1-F9 statements and the audited frozen Lean package. It does not establish empirical input truth, completeness of a real threat model, legitimate authority, production deployment, adoption, revenue, or beneficial outcomes.",
+  "rights_and_publication": {
+    "license": "unassigned",
+    "ledger_row": null,
+    "publication_authority": false,
+    "public_canon_admitted": false
+  },
+  "result": "PASS_TECHNICAL_PACKAGE_RIGHTS_HELD"
+}

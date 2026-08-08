@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "candidate_id": "Directed-RobustnessKernelV02-attempt-1",
+  "request_sha256": "f1b2e7952eb365c5f5804688247026bc72e27856584cfc20e4a94ede2a8b3246",
+  "purpose": "Recoverable local copies of every v0.2 source artifact named by the frozen SOURCE_BINDING.json before v0.3 development changed the live files.",
+  "files": {
+    "engine_v0_2.py": "e6d168f9763bb2380489104d70feb70cec0e9dac7012c557f409710f97d419f5",
+    "decision-case_v0_2.schema.json": "99b42eb22e640979ce2cae233872dc5084a23f50f414d8abe4a94711198d32ad",
+    "outcome-bundle_v0_2.schema.json": "b86737444f72d973a27ab65f0339a3c63ed91f708af883c32b9ef420bf57b4e6",
+    "decision-record_v0_2.schema.json": "b25d10b670f89fec8526d6b7758c78806c62b924f3777f462465ea2e07b71867",
+    "ALGORITHM_SPEC_v0_2.md": "752597512d3d47160c0b52c437bbd6b537c6440bfdc60c4ea6d1a2be7e70e5b7"
+  },
+  "mutation_authority": false,
+  "note": "This snapshot preserves source identity only. It does not alter the submitted theorem contract or constitute a proof audit."
+}

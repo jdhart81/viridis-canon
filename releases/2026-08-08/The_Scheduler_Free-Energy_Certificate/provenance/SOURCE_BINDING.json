@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "source_run": "Run-119",
+  "source_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-119_scheduler-free-energy-certificate",
+  "correction_overlay": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/pre_aristotle_corrections/Run-119_scheduler-free-energy-certificate-r1",
+  "quality_gate": "RESEARCH_PIPELINE_v2/nightly_packages/Run-119/QUALITY_GATE.json",
+  "quality_verdict": "PASS",
+  "saturday_status": "HOLD_ARISTOTLE",
+  "novelty_status": "UNASSESSED_NO_PRIORITY_CLAIM",
+  "nearest_prior_context": [
+    "Age-of-Information scheduling",
+    "MaxWeight scheduling",
+    "Whittle-index scheduling",
+    "statistical curriculum scheduling",
+    "Viridis anti-starvation selection policy and prior scheduler runs"
+  ],
+  "distinct_scope": "Exact one-step reset-partition identity and maximum-age minimization certificate under equal cost and deterministic age reset.",
+  "policy_proposal_status": "PROPOSAL_ONLY_NOT_ADOPTED",
+  "empirical_claim": false,
+  "publication_or_canon_authority": false,
+  "external_mutation": false
+}

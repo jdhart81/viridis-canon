@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "title": "The Scheduler Free-Energy Certificate: A One-Step Audit of Anti-Starvation Research Selection",
+    "upload_type": "publication",
+    "publication_type": "preprint",
+    "creators": [
+      {
+        "name": "Hart, Justin D.",
+        "affiliation": "Viridis Research",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "A formally verified one-step certificate for maximum-age selection under an equal-cost deterministic reset model, paired with a reproducible audit of a versioned research-scheduling policy. The policy proposal remains unadopted, and the paper does not claim long-run optimality, empirical productivity, or execution authority.",
+    "keywords": [
+      "research scheduling",
+      "age of information",
+      "log-sum-exp",
+      "anti-starvation",
+      "reproducible policy",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "access_right": "open",
+    "version": "0.2.0-formal",
+    "notes": "The release includes the final reconciled paper, deterministic 22-check replay, exact policy and state inputs, pinned Lean environment, six-theorem zero-sorry audit, provenance, and checksums. Publication does not adopt or authorize the included policy proposal."
+  },
+  "external_mutation": false,
+  "publication_authority": false
+}

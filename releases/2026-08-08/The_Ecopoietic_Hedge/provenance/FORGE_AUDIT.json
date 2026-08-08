@@ -1,0 +1,86 @@
+{
+  "attempt": 3,
+  "audited_at_utc": "2026-08-02T19:11:17.719435+00:00",
+  "axiom_audit_pass": true,
+  "build_pass": true,
+  "candidate_id": "Run-117-EcopoieticHedge-attempt-3",
+  "evidence": {
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "axiom_output": "'Viridis.EcopoieticHedge.reciprocal_two_regime_maximin_equal_split' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.EcopoieticHedge.reciprocal_diversification_gain' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.EcopoieticHedge.target_probability_dose_saving' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Viridis.EcopoieticHedge.uniform_dominance_implies_monoculture_optimal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.EcopoieticHedge.identical_strains_zero_diversification_gain' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Viridis.EcopoieticHedge.ecopoietic_hedge_nonvacuous' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+    "build_output_tail": "\u26a0 [1894/1895] Built EcopoieticHedge (9.8s)\nwarning: EcopoieticHedge.lean:40:5: unused variable `h_beta`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: EcopoieticHedge.lean:41:5: unused variable `h_dose`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: EcopoieticHedge.lean:42:5: unused variable `h_x_nonneg`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: EcopoieticHedge.lean:43:5: unused variable `h_x_le_dose`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: EcopoieticHedge.lean:145:5: unused variable `h_beta`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: EcopoieticHedge.lean:193:5: unused variable `h_x_nonneg`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nBuild completed successfully (1895 jobs).\n",
+    "build_root": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-02_aristotle_EcopoieticHedge_forge_attempt_3/attempt-3_aristotle",
+    "forbidden_occurrences": {
+      "admit": 0,
+      "axiom declaration": 0,
+      "extern declaration": 0,
+      "implemented_by": 0,
+      "native_decide": 0,
+      "sorry": 0,
+      "sorryAx": 0,
+      "unsafe declaration": 0
+    },
+    "formal_targets": [
+      "identical_strains_zero_diversification_gain",
+      "reciprocal_diversification_gain",
+      "reciprocal_two_regime_maximin_equal_split",
+      "target_probability_dose_saving",
+      "uniform_dominance_implies_monoculture_optimal"
+    ],
+    "local_build_pass": true,
+    "nonvacuity_obligations": [
+      "ecopoietic_hedge_nonvacuous proves a concrete reciprocal instance with alpha = 2, beta = 1, dose = 2, mixed worst-case exponent = 3, and monoculture worst-case exponent = 2",
+      "reciprocal_two_regime_maximin_equal_split retains strict beta < alpha and positive beta and dose hypotheses and proves both optimality and uniqueness",
+      "target_probability_dose_saving retains the nonempty probability interval 0 < p < 1"
+    ],
+    "output_files_sha256": {
+      "attempt-3_aristotle/ARISTOTLE_FORGE_REQUEST.json": "99113fc21c94143a1a7ef4a10fc6c102c74525d501d9288cf836eb5a0a73ed2a",
+      "attempt-3_aristotle/ARISTOTLE_PROMPT.md": "390b7b1cf7d6f9f5534b9742835994ac80086e0a09466bc184bf2bb78c9bf36b",
+      "attempt-3_aristotle/ARISTOTLE_SUMMARY.md": "4a914b7e4dcefecd6e4ced21eecf07806a3c381a8842e6f0d0a615b5f5576872",
+      "attempt-3_aristotle/EcopoieticHedge.lean": "33c52fb5e837b37adc0f85c896375f8087e2ced2836222ad78c353778108b732",
+      "attempt-3_aristotle/LOCAL_REPAIR_BUILD_RECEIPT.json": "1cff4fed82cba5a40ea12d0a900a2d91caf3f2d87ce9ba513af69df026a6a08f",
+      "attempt-3_aristotle/README.md": "39ec8cd0459306d9f50cf0c0da2aaf858aeaba5affa9ae26c3dbaee9f872f0ab",
+      "attempt-3_aristotle/REPAIR_RECEIPT.json": "e083b051f7ba2c29dea58f1923091695b3fb4256bca018b28245acca9c1ae711",
+      "attempt-3_aristotle/RUN117_ARISTOTLE_SUMMARY.md": "4b718f2fe8e56ab56d174726763d1dde2a090e087aeb1e1704f1d37a6fab6316",
+      "attempt-3_aristotle/STATEMENT_CONTRACT.md": "0fb65679ef0400aa20363162149033e99db70098bab9d26394e7d493fc97f81c",
+      "attempt-3_aristotle/lake-manifest.json": "3ec38d0f996dac8598d16486543d1dfc58ea66e9bd77663ec6436fe5aadafa9d",
+      "attempt-3_aristotle/lakefile.toml": "034dd275e1e8d616e7599ae1d3660b1dc8a0e1cf394b7fca959c88848d2a5e74",
+      "attempt-3_aristotle/lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028"
+    },
+    "output_module": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/new leans/2026-08-02_aristotle_EcopoieticHedge_forge_attempt_3/attempt-3_aristotle/EcopoieticHedge.lean",
+    "provider_completion_pass": true,
+    "provider_task_statuses": [
+      "COMPLETE"
+    ],
+    "statement_comparisons": {
+      "def mixedTargetDose": true,
+      "def monocultureTargetDose": true,
+      "def regimeA": true,
+      "def regimeB": true,
+      "def robustExponent": true,
+      "def targetLog": true,
+      "theorem ecopoietic_hedge_nonvacuous": true,
+      "theorem identical_strains_zero_diversification_gain": true,
+      "theorem reciprocal_diversification_gain": true,
+      "theorem reciprocal_two_regime_maximin_equal_split": true,
+      "theorem target_probability_dose_saving": true,
+      "theorem uniform_dominance_implies_monoculture_optimal": true
+    },
+    "unexpected_axioms": []
+  },
+  "external_mutation": false,
+  "failed_checks": [],
+  "forbidden_constructs_pass": true,
+  "nonvacuity_pass": true,
+  "output_tree_sha256": "464c36e8d1c7abf1107bd7719b7f99d27d7f3a97ca419bf310790246266a3b97",
+  "project_id": "c40e3631-82b5-4df4-99e8-7697f2482ba4",
+  "request_sha256": "99113fc21c94143a1a7ef4a10fc6c102c74525d501d9288cf836eb5a0a73ed2a",
+  "root_candidate_id": "Run-117-EcopoieticHedge",
+  "schema_version": "2.0",
+  "significance_gate_pass": true,
+  "statement_freeze_pass": true,
+  "zero_sorry_pass": true
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "standard": "VRS-SUBMIT-INVARIANT-1",
+  "candidate_id": "Run-118",
+  "title": "The D-Score Snapshot Alignment Theorem",
+  "reviewed_at_utc": "2026-08-08T21:46:16Z",
+  "reviewer_system": "Codex",
+  "reviewer_model": "GPT-5",
+  "source_review": {
+    "path": "RESEARCH_PIPELINE_v2/finalized_runs/Run-118/POST_ARISTOTLE_REVIEW_HOLD_2026-08-08T194840Z.md",
+    "sha256": "38d89a9342a49b4535176a1c4a4402b3a816f29d83334c24ab72bf3e01530b53",
+    "legacy_verdict": "HOLD_RIGHTS_METADATA"
+  },
+  "artifacts": {
+    "paper.pdf": "e03a0f11717cd29276c8a8a2b6008460b8f028e45bb3a741c28464b7b4e5291e",
+    "paper.tex": "984456b9c4401318709833d632aea88f39fa16fbe9edef8cdce9c5be0f65039b",
+    "SnapshotAlignment.lean": "bce0b84e350694d345ab2fc439c3f6a532d530e453c15ae539d8f76e96c7aa61",
+    "FORGE_AUDIT.json": "5179fa6f2f063a979a0827adf19d00949b076ba9041de24d82b748e026899d07",
+    "ARISTOTLE_SUMMARY.md": "b2900f1784cd25711848b452158394c1d90f2996011724fdc2518cfb61498167"
+  },
+  "checks": {
+    "finished_paper": true,
+    "all_pages_visual_reviewed": true,
+    "paper_to_lean_scope_match": true,
+    "pinned_build_pass": true,
+    "zero_sorry_pass": true,
+    "forbidden_escape_scan_pass": true,
+    "allowed_axioms_only": true,
+    "statement_freeze_pass": true
+  },
+  "scientific_invariant": "PASS",
+  "package_state": "HOLD_RIGHTS_METADATA",
+  "license": "unassigned",
+  "external_mutation": false,
+  "publication_authority": false
+}

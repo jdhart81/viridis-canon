@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0",
+  "run": 118,
+  "search_date": "2026-08-03",
+  "novelty_status": "UNASSESSED",
+  "searches": [
+    {
+      "query": "2025 primary research ecological monitoring multisensor temporal alignment asynchrony DOI biodiversity data fusion",
+      "surface": "web search",
+      "purpose": "find current primary evidence on ecological and sensor timing mismatch"
+    },
+    {
+      "query": "2024 primary research Essential Biodiversity Variables harmonized time series multi-source monitoring DOI",
+      "surface": "web search",
+      "purpose": "identify current multi-source biodiversity monitoring requirements"
+    },
+    {
+      "query": "asynchronous sensor fusion temporal synchronization weighted phase delay signals primary research",
+      "surface": "web search",
+      "purpose": "challenge whether synchronization is already treated by nearby engineering methods"
+    },
+    {
+      "query": "D-Score, temporal alignment, timestamp, monitoring, revisit, component weighting, manipulation proof",
+      "surface": "local Viridis corpus, root ledger, canon map, and fingerprint index",
+      "purpose": "deduplicate against internal D-Score claim families and related landed Lean"
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "type": "primary_research",
+      "citation": "Piatkowski J, Karbowiak L, Depta F. A lightweight algorithm for synchronized multimodal data acquisition using temporal sample alignment. Scientific Reports 15, 22711 (2025).",
+      "doi": "10.1038/s41598-025-07797-7",
+      "url": "https://www.nature.com/articles/s41598-025-07797-7",
+      "supports_or_challenges": "Experimentally demonstrates that heterogeneous sensor fusion requires a shared time reference and temporal sample alignment. It addresses acquisition engineering, not the Run 118 ecological coherence bound."
+    },
+    {
+      "id": "S2",
+      "type": "primary_research",
+      "citation": "Terasaki Hart DE, Bui TN, Di Maggio L, et al. Global phenology maps reveal the drivers and effects of seasonal asynchrony. Nature 645, 133-140 (2025).",
+      "doi": "10.1038/s41586-025-09410-3",
+      "url": "https://www.nature.com/articles/s41586-025-09410-3",
+      "supports_or_challenges": "Uses multiple time-series products and independent validation to map real phenological asynchrony. It supports the need to model timing while challenging any assumption that all asynchrony is measurement error."
+    },
+    {
+      "id": "S3",
+      "type": "primary_research",
+      "citation": "Lang W, Zhang Y, Li X, et al. Phenological divergence between plants and animals under climate change. Nature Ecology & Evolution 9, 261-272 (2025).",
+      "doi": "10.1038/s41559-024-02597-0",
+      "url": "https://www.nature.com/articles/s41559-024-02597-0",
+      "supports_or_challenges": "Analyzes nearly half a million terrestrial phenology time series and finds unequal temporal shifts. It challenges the common-mode assumption outside a preregistered local signal family."
+    },
+    {
+      "id": "S4",
+      "type": "primary_research",
+      "citation": "Leung B, Gonzalez A. Global monitoring for biodiversity: Uncertainty, risk, and power analyses to support trend change detection. Science Advances 10, eadj1448 (2024).",
+      "doi": "10.1126/sciadv.adj1448",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639671/",
+      "supports_or_challenges": "Shows that uncertainty can prevent detection of biodiversity trend changes even at large sample sizes. Supports treating monitoring adequacy as a quantitative gate; does not test timing coherence."
+    },
+    {
+      "id": "S5",
+      "type": "methods_context",
+      "citation": "Schulte to Buhne H, Pettorelli N. Better together: Integrating and fusing multispectral and radar satellite imagery to inform biodiversity monitoring, ecological research and conservation science. Methods in Ecology and Evolution 9, 849-865 (2018).",
+      "doi": "10.1111/2041-210X.12942",
+      "url": "https://doi.org/10.1111/2041-210X.12942",
+      "supports_or_challenges": "Documents the value and methodological complexity of fusing complementary remote-sensing streams for biodiversity monitoring. It is contextual rather than evidence for the exact theorem."
+    },
+    {
+      "id": "V1",
+      "type": "selected_area_corpus",
+      "path": "/Users/justinhart/Desktop/science /02_enabling_science/d_score/validation_study/validation_protocol_v1.md",
+      "sha256": "462edaf10fd3ea08ad31c4bd003a83b0263c4604140a333eda7e6a8640d934e5",
+      "supports_or_challenges": "Defines multi-component D-Score validation inputs and covariates but does not impose common-time coherence."
+    },
+    {
+      "id": "V2",
+      "type": "selected_area_corpus",
+      "path": "/Users/justinhart/Desktop/science /02_enabling_science/d_score/validation_study/D_Measurement_Protocol.md",
+      "sha256": "2ef82388efef5d98bd8e6722d36f086f0af048601d557513ffc0f2f78c68793d",
+      "supports_or_challenges": "Makes D-Score empirical validation critical path and combines disparate sources, motivating a timestamp-specific gate."
+    },
+    {
+      "id": "V3",
+      "type": "internal_prior",
+      "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-025_dscore-component-weighting/finding.md",
+      "sha256": "390329358ff4048411d7cfb733140bc02e59e9822a796185dcef2ad49072f0c1",
+      "supports_or_challenges": "Nearest weight-selection work; it does not model asynchronous timestamps."
+    },
+    {
+      "id": "V4",
+      "type": "internal_prior",
+      "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-046_dscore-measurement-closure/finding.md",
+      "sha256": "db8597e724142a22ad7d2ac721a40030a3018a54506ed51f763f197d99097f46",
+      "supports_or_challenges": "Bounds finite-sample resolution; distinct from temporal phase coherence."
+    },
+    {
+      "id": "V5",
+      "type": "internal_prior",
+      "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-069_monitoring-waterfilling-theorem/finding.md",
+      "sha256": "b982584c45bd431c1b9e676c7f6df430f73f0736d20ad417254968732eebd44e",
+      "supports_or_challenges": "Allocates monitoring power spatially; it holds snapshot timing outside the objective."
+    },
+    {
+      "id": "V6",
+      "type": "internal_prior",
+      "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-087_stewardship-revisit-theorem/finding.md",
+      "sha256": "afc3b0cddaa1098476d91c25cfecac6fd27af1754a941ada899c503d997454c3",
+      "supports_or_challenges": "Optimizes when to revisit each drifting site; Run 118 instead audits whether component ages form one coherent snapshot."
+    },
+    {
+      "id": "V7",
+      "type": "internal_prior",
+      "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-105_manipulation-proof-weighting-theorem/finding.md",
+      "sha256": "c671991baa11a753d0c9ce9bfdb51600c27ff83a7604b709bb9ee97f970376ac",
+      "supports_or_challenges": "Chooses weights under gaming elasticity; Run 118 treats effective weights as fixed and studies delay coherence."
+    },
+    {
+      "id": "V8",
+      "type": "landed_formal_artifact",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/new leans/2026-06-12_aristotle_DMCT_forge/DScoreMeasurementClosure.lean",
+      "sha256": "fc5004a60c51ddcea7ff283cf05cd8e5db2f3d53164a48d18fa89251769d66c0",
+      "supports_or_challenges": "Landed measurement-closure lineage used for deduplication only; it does not verify Run 118."
+    },
+    {
+      "id": "V9",
+      "type": "landed_formal_artifact",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/new leans/2026-06-14_aristotle_MonitoringWaterfilling_forge/MonitoringWaterfilling.lean",
+      "sha256": "b3d38faf7358f305f820ab71ff723411d58b85d5456e9166592d9ced11d51fee",
+      "supports_or_challenges": "Landed spatial-allocation lineage used for deduplication only; it does not verify Run 118."
+    },
+    {
+      "id": "V10",
+      "type": "landed_formal_artifact",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/new leans/2026-07-02_aristotle_SRT_forge/StewardshipRevisit.lean",
+      "sha256": "33b76ffef03aaeea3b18b4a1d64363b94823c8f3c9ae25719a36fb1d07043c37",
+      "supports_or_challenges": "Landed revisit-cadence lineage used for deduplication only; it does not verify Run 118."
+    },
+    {
+      "id": "V11",
+      "type": "landed_formal_artifact",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/new leans/2026-07-21_aristotle_MPWT_forge/ManipulationProofWeighting.lean",
+      "sha256": "3ae0434ba4124450b62148502257cc14b82d6aa6fedeb9e0e2b428b5287dae0f",
+      "supports_or_challenges": "Landed gaming-resistant weighting lineage used for deduplication only; it does not verify Run 118."
+    },
+    {
+      "id": "V12",
+      "type": "canon_fingerprint_index",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/canon_fingerprint_index.json",
+      "sha256": "5a90bace3df645b97bdea3a77d55d2b899b578c1af3b67951a4a533d60697a9d",
+      "supports_or_challenges": "No matching fingerprint was identified; this is deduplication evidence only and does not establish novelty."
+    }
+  ],
+  "search_limits": [
+    "The search was targeted rather than systematic and did not cover every database or language.",
+    "Search-engine and publisher indexing can omit relevant work.",
+    "The exact pairwise identity is elementary signal algebra; no priority claim is made.",
+    "No novelty, first-in-field, or empirical-validity claim is made at generator exit."
+  ]
+}

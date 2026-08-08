@@ -1,0 +1,359 @@
+\documentclass[10pt]{article}
+\usepackage[letterpaper,margin=0.66in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black,pdftitle={The Scheduler Free-Energy Certificate},pdfauthor={Justin D. Hart}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2.5pt}
+\setlist{nosep,leftmargin=*}
+\raggedbottom
+\emergencystretch=2em
+
+\title{\vspace{-1.2em}\textbf{The Scheduler Free-Energy Certificate}\\
+\large A one-step audit of anti-starvation research selection}
+\author{Justin D. Hart\\\small Viridis Research}
+\date{8 August 2026\\\small Final post-Aristotle reconciled manuscript}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Autonomous research programs need both productive selection and reproducible
+safety rails.  We audit a deterministic anti-starvation rule in which every
+unserved research area ages by one and the selected area resets to zero.  For
+inverse temperature $\beta>0$, define the soft maximum
+$F_\beta(a)=\beta^{-1}\log\sum_i e^{\beta a_i}$.  We show by an exact
+choice-gap identity that serving a maximum-age area minimizes the next-step
+$F_\beta$, uniquely when the maximum is unique.  An adversarial standard-library
+Python gate passed 22 of 22 checks, including 78,100 exhaustive and 10,000
+randomized cases, tie and zero-temperature-information controls, stable
+large-$\beta$ evaluation, an unequal-cost counterexample, and replay against the
+current Viridis state.  The locked META transition moves total staleness from
+139 to 155 and makes area 13 the unique age-22 choice for Run 120.  The audit
+also finds that the governing policy names an undefined scoring variable and
+contains no deterministic tie-break.  We package a versioned proposal but do
+not adopt it.  Separately, Aristotle returned six Lean theorems whose frozen
+statements were rebuilt and audited with zero proof holes, no forbidden
+constructs, and only the permitted foundational axioms.  The result is a
+formally verified one-step equal-cost scheduling certificate, not a long-run
+productivity theorem, policy adoption, or execution authority.
+\end{abstract}
+
+\textbf{Keywords:} research scheduling; age of information; log-sum-exp;
+anti-starvation; reproducible policy; Lyapunov potential
+
+\section{Introduction}
+
+A nightly research engine must choose one object while preserving a much wider
+portfolio.  Selection pressure rewards depth and topical demand; fairness
+pressure prevents quiet areas from becoming permanently invisible.  A safety
+rail can serve that purpose only if it has two properties: its local action
+should improve a declared measure, and its implementation should be reproducible
+from versioned state rather than inherited prose.
+
+Freshness scheduling has a mature theory.  Age of Information (AoI) was
+introduced to distinguish timely status from throughput and queueing delay
+\cite{kaul2012}.  Highest-age service is optimal in a symmetric broadcast model,
+while MaxWeight and Whittle policies address more general unreliable settings
+\cite{kadota2018}.  Queue-state-driven MaxWeight control has a still earlier
+Lyapunov lineage \cite{tassiulas1992}.  Recent work combines scheduling with
+learning under unknown and nonstationary service statistics
+\cite{yang2023}, and statistical curriculum learning analyzes task order through
+its effect on learning risk \cite{cohen2024}.  These results prevent an inflated
+claim: prioritizing an old item is not new by itself.
+
+Our contribution is narrower and operational.  We derive an exact one-step
+certificate for the severe-starvation rail used by the Viridis nightly engine,
+apply it to the locked Run 119 state, and audit whether the current policy file
+fully determines future selections.  This is a scheduled META run under a
+proposal-only rule.  No governing policy is edited.
+
+\section{Preregistration and scope}
+
+The hypotheses, assumptions, falsifiers, and executable gate were fixed before
+this manuscript was drafted.
+
+\subsection{Hypotheses}
+
+\begin{enumerate}
+\item For every $\beta>0$, resetting a maximum-age component minimizes the
+next-step log-sum-exp staleness potential.
+\item The locked META transition raises the live checksum from 139 to 155 and
+makes area 13 the unique severe-starvation choice for Run 120.
+\item The version-1 policy is not a total executable selector because it does
+not define \texttt{scoring\_staleness} or deterministic tie-breaking.
+\item A draft total-order proposal leaves the actual Run 119/120 replay
+unchanged while resolving a deliberately tied state.
+\end{enumerate}
+
+The gate would fail on any analytic, exhaustive, or randomized counterexample;
+any positive $\beta$ that changes the next choice; any existing policy
+definition contradicting hypothesis 3; or any actual-state replay drift.
+
+\subsection{Assumptions}
+
+Ages are nonnegative integers measured before a run.  A normal research slot has
+equal unit cost: all ages increment, then the selected area resets to zero.  A
+META run increments every age and resets none.  Scientific importance, tier,
+cross-pollination demand, lens fit, uncertain return, and unequal effort costs
+are excluded from the certificate.  These are not minor omissions: they are the
+reason the result cannot be promoted into a general research-allocation theorem.
+
+\section{One-step free-energy certificate}
+
+Let $a=(a_1,\ldots,a_n)$ have nonnegative integer entries.  If area $j$ is served, define
+\begin{equation}
+a_i^{(j)}=\begin{cases}0,&i=j,\\a_i+1,&i\ne j.\end{cases}
+\label{eq:transition}
+\end{equation}
+For $\beta>0$, define
+\begin{equation}
+Z_\beta(a)=\sum_{i=1}^n e^{\beta a_i},\qquad
+F_\beta(a)=\frac{1}{\beta}\log Z_\beta(a).
+\label{eq:free}
+\end{equation}
+The second quantity is the smooth maximum of the ages.  It satisfies
+$\max_i a_i\le F_\beta(a)\le\max_i a_i+\log(n)/\beta$.
+
+\textbf{Proposition 1 (reset identity).}
+For any service choice $j$,
+\begin{equation}
+Z_\beta(a^{(j)})
+=1+e^\beta\left[Z_\beta(a)-e^{\beta a_j}\right].
+\label{eq:reset}
+\end{equation}
+Consequently, for choices $j$ and $k$,
+\begin{equation}
+Z_\beta(a^{(j)})-Z_\beta(a^{(k)})
+=e^\beta\left(e^{\beta a_k}-e^{\beta a_j}\right).
+\label{eq:gap}
+\end{equation}
+
+\emph{Derivation.}  The selected exponential is replaced by $e^0=1$ and
+every unselected exponential is multiplied by $e^\beta$.  Subtracting two
+candidate expressions cancels all common terms.
+
+\textbf{Theorem 1 (maximum age minimizes next-step soft maximum).}
+For every $\beta>0$, $F_\beta(a^{(j)})$ is minimal exactly when
+$a_j=\max_i a_i$.  The minimizer is unique if and only if the maximum age is
+unique.
+
+\emph{Derivation.}  Equation~\eqref{eq:gap} has the opposite ordering of
+$a_j$, and the logarithm is strictly increasing.  Equal maximum ages give equal
+minimal values.  This is the entire theorem; its value is as an inspectable
+certificate tied to the implemented transition.
+
+The thermodynamic language is an analogy, not an empirical physical claim.
+$\beta$ tunes sensitivity to the tail: at large $\beta$, $F_\beta$ approaches
+the maximum age; at small positive $\beta$, selection differences flatten.  At
+$\beta=0$, the unscaled partition function is $n$ for every choice, a negative
+control showing that positivity is load-bearing.
+
+\section{Application to the locked scheduler}
+
+The source-state SHA-256 is
+\texttt{f329b1a6d39e52c154a5b97aa9166512ed0c64d106396f9f7763ae82c3a9286e}.
+It locks Run 119 as META $\times$ Thermodynamic and records a total staleness of
+139.  The META transition increments sixteen counters and resets none, giving
+155.  Table~\ref{tab:ages} shows the active frontier.
+
+\begin{table}[h]
+\centering
+\small
+\caption{Largest post-META ages and binding precedence.}
+\label{tab:ages}
+\begin{tabular}{lll}
+\toprule
+Area & Age & Status \\
+\midrule
+13 Computational Theory & 22 & severe-starvation threshold \\
+12 AI Wavefunction Collapse & 20 & below severe threshold \\
+06 Entropy-Driven Learning & 16 & Tier-2 floor \\
+07 Gaian Systems & 15 & Tier-2 floor \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Severe starvation precedes tier floors.  Area 13 is the sole age-22 component,
+so Theorem 1 and the stated rail agree for every tested $\beta$ from $10^{-6}$
+to $100$.  Lens rotation after Thermodynamic gives Stewardship.  Area 13 was
+last visited at Run 097; its Run-120 separation is 23, exceeding the 16-run
+combination guard.  The locked next directive is therefore
+\textbf{Run 120: area 13 Computational Theory $\times$ Stewardship}.
+
+\section{Executable-policy audit}
+
+The governing policy SHA-256 is
+\texttt{fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e}.
+Its precedence and thresholds are explicit, but three execution details are not:
+
+\begin{enumerate}
+\item the score string uses \texttt{scoring\_staleness}, which has no JSON
+definition;
+\item same-precedence candidates have no deterministic tie-break; and
+\item normal and META state transitions are not encoded in the policy.
+\end{enumerate}
+
+The current next choice remains unambiguous because area 13 is the unique
+severe candidate.  To test the latent defect, the gate raises area 12 to the
+same age.  The current artifact then returns a candidate set $\{12,13\}$ rather
+than a total decision.  The proposal-only file
+\texttt{POLICY\_PROPOSAL\_v1.1.json} resolves ties by age, current score, and
+area ID, after defining the state transitions and scoring age.  It selects area
+13 in the adversarial state and preserves the real Run 119/120 replay.
+
+This does not justify adoption.  A different tie-break could be preferable,
+and two-run no-drift evidence is much weaker than a full historical replay.
+The proposal remains blocked on independent accountable review, schema
+validation, an append-only machine transition ledger, and regression tests.
+
+\section{Verification and negative controls}
+
+The exact standard-library program \texttt{verification.py} was written and
+executed before the paper.  Its complete output is
+\texttt{verification\_output.txt}.  It passed 22 of 22 checks.
+
+The gate verifies Eq.~\eqref{eq:gap} on a hand-auditable state, exhausts 78,100
+combinations with two to six components, and samples 10,000 states with two to
+32 components and a forced unique maximum.  It tests tied maxima, $\beta=0$,
+stable log-sum-exp evaluation to $\beta=100$, the soft-maximum bounds, the live
+META checksum, the unique next area, lens rotation, and the proposal replay.
+
+The most important negative control assigns service costs 100 and 1 to ages 10
+and 9.  After subtracting cost from one-step potential reduction, serving the
+younger cheap component dominates.  Max-age is therefore not a general
+cost-sensitive policy.  The control is not a failure of Theorem 1; it marks the
+boundary of what Theorem 1 optimizes.
+
+These finite checks reduce transcription, overflow, state, and implementation
+risk.  They are not the formal proof.  The separate pinned Lean artifact
+\texttt{SchedulerFreeEnergy.lean} proves the following five frozen targets:
+\path{reset_partition_function_identity},
+\path{max_age_minimizes_next_logsumexp},
+\path{unique_max_age_unique_minimizer},
+\path{tied_maxima_equal_next_potential}, and
+\path{logsumexp_bounds_max_age}.  It also proves the concrete witness
+\path{scheduler_free_energy_nonvacuous}.  An independent local audit rebuilt
+the project in 1,895 jobs, confirmed statement freeze, zero sorries and escape
+constructs, non-vacuity, and only \texttt{propext},
+\texttt{Classical.choice}, and \texttt{Quot.sound}.  The formal result covers
+the declared one-step equal-cost model; it does not prove the live policy-file
+diagnosis, empirical productivity, or adoption authority.
+
+\section{Evaluation plan}
+
+A policy evaluation needs a machine-readable history, not the legacy narrative
+alone.  Starting from a frozen state, an independent reference implementation
+and the proposed selector should replay every directive.  Untied historical
+decisions and resulting hashes must match exactly; tied cases must be surfaced,
+not silently resolved.  Before/after evaluation should preregister maximum age,
+tier-floor violations, attention diversity, inbound-flag debt, override rate,
+and scientific-information proxies.  Reject the proposal if it changes an
+untied decision, hides a prose dependency, increases maximum age, or reduces
+diversity without a declared compensating benefit.
+
+Scientific usefulness requires a harder model.  Add unequal service costs,
+uncertain returns, delayed cross-pollination, and nonstationarity, then compare
+max-age, score, risk-sensitive index, and curriculum policies on held-out
+regimes.  The classical AoI, MaxWeight, Whittle, and learning-while-scheduling
+literatures are the appropriate baselines, not internal META prose.
+
+\section{Discussion and limitations}
+
+The positive result is modest but useful: the severe-starvation action has an
+exact declared objective under the implemented equal-cost transition.  Its
+benefit does not depend on tuning $\beta$ when the maximum is unique.  The
+negative result is operationally more important: a versioned policy can still
+be incomplete if a symbol, state transition, or tie-break lives only in the
+reader's assumptions.
+
+The certificate does not establish optimal threshold 22, long-run stability,
+scientific importance, novelty, external validity, or improved research output.
+The log-sum-exp potential is selected for transparency, not inferred from data.
+Tiers and flags may encode real value that age omits.  META scheduling also
+consumes a slot without resetting an area, and future policy must evaluate that
+cost rather than treat the cadence as physically necessary.
+
+Nearest-work search found extensive prior theory for age, queue, index, and
+curriculum scheduling.  No priority claim is made.  The internal fingerprint
+index contains no exact match, but absence from that index cannot establish
+novelty.  The paper may enter the standalone Viridis Research Operations
+methods corpus.  The policy proposal itself remains on HOLD until full
+historical replay, schema validation, accountable review, and separately
+authorized adoption.
+
+\section{Reproducibility and declarations}
+
+\textbf{Reproducibility.} Run \texttt{python3 verification.py} with Python
+3.11 or later; no third-party package or external data is required.  The seed,
+tolerance, hypotheses, falsifier, source hashes, and full result are printed.
+The manuscript compiles from \texttt{paper.tex} with Tectonic 0.17.0.
+
+\textbf{Data and code availability.} All synthetic states, code, proposal
+metadata, and captured outputs are in the immutable Run 119 package.  No
+external scientific dataset was generated or analyzed.
+
+\textbf{Funding.} No specific external funding supported this run.
+
+\textbf{Conflicts of interest.} Justin D. Hart is founder of Viridis LLC,
+which may develop research-governance or assurance tools.  The separate
+business note reports zero signed revenue and no named customer validation.
+
+\textbf{Accountable authorship.} Justin D. Hart is the accountable human
+author and retains responsibility for scientific claims, corrections, and any
+future policy or submission.  No AI system is represented as a journal author.
+
+\textbf{Substantive AI-use disclosure.} Under Justin D. Hart's direction,
+OpenAI Codex searched the local Viridis corpus and current primary literature,
+preregistered the hypotheses and falsifiers, wrote and executed the gate,
+audited the policy schema, drafted the manuscript, and assembled the package.
+Historical Claude-authored Viridis artifacts were read for context with
+attribution preserved.  Aristotle served as the automated theorem-proving
+system for the six frozen Lean targets; Codex then rebuilt and audited the
+returned artifact, checked statement preservation and scope, and reconciled
+this final manuscript.  AI systems are research tools, not authors or policy
+authorities.  No external peer review has occurred.
+
+\textbf{Stage and route.} The package exits as
+\texttt{FINAL\_POST\_ARISTOTLE\_RECONCILED}.  Release route: standalone
+Viridis Research Operations methods corpus.  The policy proposal remains
+\texttt{PROPOSAL\_ONLY\_NOT\_ADOPTED}; publication does not authorize its use.
+No Intelligence Bound spine effect is proposed.
+
+\begin{thebibliography}{9}
+\bibitem{kaul2012}
+S. Kaul, R. Yates, and M. Gruteser,
+``Real-time status: How often should one update?''
+\emph{IEEE INFOCOM}, 2731--2735 (2012).
+\href{https://doi.org/10.1109/INFCOM.2012.6195689}{doi:10.1109/INFCOM.2012.6195689}.
+
+\bibitem{kadota2018}
+I. Kadota, A. Sinha, E. Uysal-Biyikoglu, R. Singh, and E. Modiano,
+``Scheduling policies for minimizing age of information in broadcast wireless networks,''
+\emph{IEEE/ACM Trans. Networking} \textbf{26}, 2637--2650 (2018).
+\href{https://doi.org/10.1109/TNET.2018.2873606}{doi:10.1109/TNET.2018.2873606}.
+
+\bibitem{tassiulas1992}
+L. Tassiulas and A. Ephremides,
+``Stability properties of constrained queueing systems and scheduling policies for maximum throughput in multihop radio networks,''
+\emph{IEEE Trans. Automatic Control} \textbf{37}, 1936--1948 (1992).
+\href{https://doi.org/10.1109/9.182479}{doi:10.1109/9.182479}.
+
+\bibitem{yang2023}
+Z. Yang, R. Srikant, and L. Ying,
+``Learning while scheduling in multi-server systems with unknown statistics: MaxWeight with discounted UCB,''
+\emph{AISTATS, PMLR} \textbf{206}, 4275--4312 (2023).
+\href{https://proceedings.mlr.press/v206/yang23d.html}{PMLR record}.
+
+\bibitem{cohen2024}
+O. Cohen, R. Meir, and N. Weinberger,
+``Statistical curriculum learning: An elimination algorithm achieving an oracle risk,''
+\emph{COLT, PMLR} \textbf{247}, 1142--1199 (2024).
+\href{https://proceedings.mlr.press/v247/cohen24a.html}{PMLR record}.
+\end{thebibliography}
+
+\end{document}

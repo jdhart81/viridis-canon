@@ -1,0 +1,39 @@
+{
+  "schema_version": "2.0",
+  "candidate_id": "Directed-RobustnessKernelV02-attempt-1",
+  "root_candidate_id": "Directed-RobustnessKernelV02",
+  "attempt": 1,
+  "source_run": "Directed-2026-08-06-RobustnessKernelV02",
+  "project_dir": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/aristotle_submissions/Directed-RobustnessKernelV02/attempt-1",
+  "prompt_file": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/aristotle_submissions/Directed-RobustnessKernelV02/attempt-1/ARISTOTLE_PROMPT.md",
+  "output_dir": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/new leans/2026-08-06_aristotle_RobustnessKernelV02_forge_attempt_1",
+  "input_sha256": {
+    "ARISTOTLE_PROMPT.md": "fe65178b25af9ab950edba480a35badc77cd7895124b4e94c50fd4b004e2e731",
+    "RobustnessKernel.lean": "a011a2dd966cfaf1e32bd8258a4a4500b6c188210c8d9f3139fa4df040254b3c",
+    "LOCAL_PREFLIGHT_RECEIPT.json": "c83f0aa71c9aa9a89c685769d43800bcc3d93bca5b9dc9c38bb5b8d176ae3022",
+    "SOURCE_BINDING.json": "3d6b9844d53a9576e1fabaf619e22e20c7ca0cf06e67aa6e7f1e89ec1fa89f90",
+    "STATEMENT_CONTRACT.md": "dec356ad1e0effaec2f09ef00f197afcf2a22f184c240f59f46e47d6c4926758",
+    "lake-manifest.json": "3ecab06df8d9dcb90021fa82267f6795fb9901668d045b6c42e6c9cc6823ad18",
+    "lakefile.toml": "945c037f6a319b5bd438fc46c9f8ca9e0f34d3a7506a808ba6216b4e8e986455",
+    "lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028"
+  },
+  "statement_contract_sha256": "dec356ad1e0effaec2f09ef00f197afcf2a22f184c240f59f46e47d6c4926758",
+  "module": "RobustnessKernel",
+  "namespace": "Viridis.RobustnessKernel",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "expected_theorem_names": [
+    "shared_dependency_strictly_reduces_independence",
+    "hidden_common_parent_lowers_independence",
+    "execution_authority_gate_iff",
+    "advisory_selection_never_authorizes_execution",
+    "revoked_or_expired_lease_denies_execution",
+    "robustness_kernel_nonvacuous"
+  ],
+  "nonvacuity_obligations": [
+    "robustness_kernel_nonvacuous proves directly disjoint singleton paths have independence one and their shared hidden parent lowers the exact score to two-thirds",
+    "robustness_kernel_nonvacuous proves a fully valid bounded lease can authorize a selected action, so executionAuthorized is not identically false",
+    "robustness_kernel_nonvacuous proves an otherwise identical advisory-only lease cannot authorize execution",
+    "hidden_common_parent_lowers_independence retains direct disjointness and absence of the parent from both direct dependency descriptions"
+  ]
+}

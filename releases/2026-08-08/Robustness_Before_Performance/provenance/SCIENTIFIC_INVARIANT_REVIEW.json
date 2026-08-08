@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "standard": "VRS-SUBMIT-INVARIANT-1",
+  "candidate_id": "Directed-2026-08-07-RobustnessAlgorithmV1",
+  "title": "Robustness Before Performance",
+  "reviewed_at_utc": "2026-08-08T21:46:16Z",
+  "reviewer_system": "Codex",
+  "reviewer_model": "GPT-5",
+  "source_review": {
+    "path": "RESEARCH_PIPELINE_v2/saturday_candidates/2026-08-08/2026-08-08_RBPA_v1_successor_post_aristotle_deployed/POST_ARISTOTLE_REVIEW.json",
+    "sha256": "0d72919b5c1f9cbc902febee8f3fdcb74a4a0a577b432fb6b0c606903e691e05",
+    "legacy_result": "PASS_TECHNICAL_PACKAGE_RIGHTS_HELD"
+  },
+  "artifacts": {
+    "paper.pdf": "3742b8d9133164d0c312222a7fad63f5a1e99c83d54af589bea23e40d3402819",
+    "paper.tex": "425d21d0fdd40d7a28c4c3ec7cc55bcaac5de5c328970d3aba3a1c3df79beca6",
+    "RobustnessKernelV1.lean": "ef373a04b19dff71bf02632d0e4134879069c31ab716e5f669483ab33c18802f",
+    "FORGE_AUDIT.json": "fc5e6c7d21fcb3c3c2ec5ab5b06dc3590ae0aab99600fa375c9a31fca562a98e",
+    "ARISTOTLE_SUMMARY.md": "79fd5d338c7547b5aee525caa36e9cb0768c42aaab4c18480e138baf8840ee2e",
+    "PAPER_TO_LEAN_RECONCILIATION.json": "c807596eff7bbab7ea242c24b0e61023d8ff831f02caf589d55f174171b25068"
+  },
+  "checks": {
+    "finished_paper": true,
+    "all_pages_visual_reviewed": true,
+    "paper_to_lean_scope_match": true,
+    "pinned_build_pass": true,
+    "zero_sorry_pass": true,
+    "forbidden_escape_scan_pass": true,
+    "allowed_axioms_only": true,
+    "statement_freeze_pass": true
+  },
+  "scientific_invariant": "PASS",
+  "package_state": "HOLD_RIGHTS_METADATA",
+  "license": "unassigned",
+  "external_mutation": false,
+  "publication_authority": false
+}

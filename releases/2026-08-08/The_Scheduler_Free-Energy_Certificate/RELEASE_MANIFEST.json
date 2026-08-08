@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "standard": "VRS-SUBMIT-INVARIANT-1",
+  "candidate_id": "Run-119",
+  "abbreviation": "SFE",
+  "title": "The Scheduler Free-Energy Certificate: A One-Step Audit of Anti-Starvation Research Selection",
+  "paper_stage": "final_post_aristotle_reconciled",
+  "scientific_invariant": "PASS",
+  "reproducibility_package": "PASS",
+  "license": "cc-by-4.0",
+  "route": "Viridis Research Operations methods corpus",
+  "business_core": "internal_research_operations_method",
+  "customer_facing_flagship": false,
+  "spine_admission": false,
+  "policy_proposal_state": "PROPOSAL_ONLY_NOT_ADOPTED",
+  "external_mutation": false,
+  "publication_authority": false
+}

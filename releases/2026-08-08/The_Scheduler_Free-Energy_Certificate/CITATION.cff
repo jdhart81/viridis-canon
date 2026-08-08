@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "The Scheduler Free-Energy Certificate: A One-Step Audit of Anti-Starvation Research Selection"
+type: article
+version: "0.2.0-formal"
+date-released: 2026-08-08
+license: CC-BY-4.0
+authors:
+  - family-names: Hart
+    given-names: Justin D.
+    orcid: "https://orcid.org/0009-0008-3082-2482"
+    affiliation: Viridis Research
+keywords:
+  - research scheduling
+  - age of information
+  - log-sum-exp
+  - anti-starvation
+  - formal verification

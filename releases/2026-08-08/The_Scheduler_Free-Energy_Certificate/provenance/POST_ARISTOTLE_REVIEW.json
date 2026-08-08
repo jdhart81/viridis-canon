@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "standard": "VRS-SUBMIT-INVARIANT-1",
+  "candidate_id": "Run-119",
+  "title": "The Scheduler Free-Energy Certificate",
+  "reviewed_at_utc": "2026-08-08T22:47:52Z",
+  "reviewer_system": "Codex",
+  "reviewer_model": "GPT-5",
+  "artifacts": {
+    "paper.pdf": "0870eea2a1b65734bfb09046a665b24e1241797f0e5c539eb7e81ea9da79f450",
+    "paper.tex": "073c83f1c59571872008d08d4b3375e730b828cc91c80098b70f19b32b69fc42",
+    "code/verification.py": "e5a03983baaa53bfc1e86a1fa9de3b6dda5f6e8999b0bf70fb5ce135013998d1",
+    "code/verification_output.txt": "9d700a4c1f8d225e439f8369b1b341071bc3808c688e4cee490d067dc8bb8014",
+    "lean/SchedulerFreeEnergy.lean": "70c1dbfb1f86f3247e5084165e27dd9ec03ec8646c7bd45f7112a4dd7f98df4d",
+    "provenance/FORGE_AUDIT.json": "407d3acfee0133f484bfcab8a671b5c7f072759d1bcacf7956cf03c49f1b8be8"
+  },
+  "checks": {
+    "finished_paper": true,
+    "all_pages_visual_reviewed": true,
+    "paper_to_lean_scope_match": true,
+    "fresh_numerical_gate": "22 PASS / 0 FAIL; exact sealed-output match",
+    "fresh_pinned_lean_build": "1895 jobs; exit 0",
+    "zero_sorry_pass": true,
+    "forbidden_escape_scan_pass": true,
+    "allowed_axioms_only": true,
+    "statement_freeze_pass": true,
+    "rights_metadata_complete": true,
+    "portable_reproduction_pass": true
+  },
+  "scientific_invariant": "PASS",
+  "package_state": "READY_FOR_EXACT_SUBMISSION_AUTHORIZATION",
+  "route": "Viridis Research Operations methods corpus",
+  "business_core": "internal_research_operations_method",
+  "customer_facing_flagship": false,
+  "intelligence_bound_spine_admitted": false,
+  "policy_proposal_state": "PROPOSAL_ONLY_NOT_ADOPTED",
+  "limitations": [
+    "The result is one-step and assumes equal service cost with deterministic reset.",
+    "No long-run optimality, scientific productivity, policy adoption, or execution authority is claimed.",
+    "No literature-priority or external peer-acceptance claim is made."
+  ],
+  "external_mutation": false,
+  "publication_authority": false
+}

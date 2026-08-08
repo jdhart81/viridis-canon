@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "candidate_id": "Directed-2026-08-07-RobustnessAlgorithmV1",
+  "captured_at_local": "2026-08-07",
+  "accountable_author": "Justin D. Hart",
+  "sources": [
+    {"id": "hamant2024", "type": "PRIMARY_EDITORIAL", "url": "https://doi.org/10.1017/qpb.2024.3", "supports": "Plant optimization critique and roles of apparent inefficiency, heterogeneity, delay, incoherence, and stochasticity."},
+    {"id": "sismique2024", "type": "PODCAST_TRANSCRIPT", "url": "https://www.sismique.fr/episodes/140-performance-turbulences-et-robustesse-olivier-hamant", "youtube_url": "https://www.youtube.com/watch?v=Kzzr15cEg3o&t=4740s", "supports": "Operational robustness framing, maneuvering room, multiple paths, and dynamic stability."},
+    {"id": "kitano2004", "type": "SYNTHESIS", "url": "https://doi.org/10.1038/nrg1471", "supports": "Biological robustness mechanisms and trade-offs."},
+    {"id": "carlson2000", "type": "PRIMARY_THEORY", "url": "https://doi.org/10.1103/PhysRevLett.84.2529", "supports": "Highly optimized tolerance and designed-for robustness versus unanticipated fragility."},
+    {"id": "carlson2002", "type": "PRIMARY_THEORY", "url": "https://doi.org/10.1073/pnas.012582499", "supports": "Complexity and robust-yet-fragile systems."},
+    {"id": "nist2021", "type": "OFFICIAL_STANDARD", "url": "https://doi.org/10.6028/NIST.SP.800-160v2r1", "supports": "Cyber-resiliency goals and systems-engineering framing."}
+  ],
+  "source_boundary": "Hamant's plant-science and civilizational arguments motivate design hypotheses. They do not prove legitimacy, justice, domain transfer, or real-world effectiveness.",
+  "priority_claim": false,
+  "empirical_validation_claim": false
+}

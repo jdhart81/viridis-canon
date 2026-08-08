@@ -1,0 +1,8 @@
+import SnapshotAlignment
+
+#print axioms Viridis.SnapshotAlignment.phasor_energy_pairwise_identity
+#print axioms Viridis.SnapshotAlignment.alignment_efficiency_unit_interval
+#print axioms Viridis.SnapshotAlignment.delay_variance_bounds_alignment_loss
+#print axioms Viridis.SnapshotAlignment.alignment_budget_sufficient_for_band
+#print axioms Viridis.SnapshotAlignment.equal_delay_perfect_alignment
+#print axioms Viridis.SnapshotAlignment.two_channel_half_period_cancellation

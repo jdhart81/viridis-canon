@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "candidate_id": "Directed-2026-08-07-RobustnessAlgorithmV1",
+  "paper_state": "FINAL_RECONCILED_ARISTOTLE_AUDITED",
+  "formal_claim_rule": "F1-F9 are bounded to the exact frozen Lean declarations and terminal Aristotle/Viridis audit receipt. No empirical or authority inference is permitted.",
+  "claims": [
+    {"id": "C1", "class": "CITED", "claim": "Biological robustness can involve stochasticity, heterogeneity, delay, incoherence, and apparent inefficiency.", "support": ["hamant2024", "kitano2004"]},
+    {"id": "C2", "class": "CITED", "claim": "Optimized systems can be robust to designed-for disturbances and fragile to unanticipated disturbances or design errors.", "support": ["carlson2000", "carlson2002"]},
+    {"id": "C3", "class": "PROPOSED_METHOD", "claim": "Robustness is represented as a declared relation over boundary, invariants, disturbances, horizon, scales, stakeholders, evidence, and authority.", "support": ["paper.tex:eq:frame"]},
+    {"id": "F1", "class": "FORMALLY_PROVED_ARISTOTLE_AUDITED", "claim": "Shared ancestry lowers declared finite-set dependency independence.", "lean": ["shared_dependency_strictly_reduces_independence", "hidden_common_parent_lowers_independence"]},
+    {"id": "F2", "class": "FORMALLY_PROVED_ARISTOTLE_AUDITED", "claim": "Execution is true exactly when selection and every frozen authority condition pass.", "lean": ["execution_authority_gate_iff", "advisory_selection_never_authorizes_execution", "revoked_or_expired_lease_denies_execution"]},
+    {"id": "F3", "class": "FORMALLY_PROVED_ARISTOTLE_AUDITED", "claim": "An explicitly asserted claim state does not by itself create a distinct claim state.", "lean": ["derivable_iff_explicitly_asserted", "distinct_state_is_not_derived_from_singleton"]},
+    {"id": "F4", "class": "FORMALLY_PROVED_ARISTOTLE_AUDITED", "claim": "Recalled artifacts and declared descendants are blocked while unrelated artifacts are not blocked solely by that recall relation.", "lean": ["recalled_artifact_is_blocked", "descendant_of_recalled_artifact_is_blocked", "unrelated_artifact_is_not_blocked"]},
+    {"id": "F5", "class": "FORMALLY_PROVED_ARISTOTLE_AUDITED", "claim": "Closed-interval robust pass and fail are disjoint and the frozen classifier is complete and exact.", "lean": ["robust_pass_and_fail_are_disjoint", "interval_classification_complete", "interval_classification_pass_iff", "interval_classification_fail_iff"]},
+    {"id": "F6", "class": "FORMALLY_PROVED_ARISTOTLE_AUDITED", "claim": "The frozen robust-dominance relation is irreflexive and transitive.", "lean": ["robust_dominance_irreflexive", "robust_dominance_transitive"]},
+    {"id": "F7", "class": "FORMALLY_PROVED_ARISTOTLE_AUDITED", "claim": "Frozen trajectory shortfall and marked violation span are nonnegative, and an everywhere nonnegative trace has zero shortfall.", "lean": ["trajectory_shortfall_nonnegative", "nonnegative_trajectory_has_zero_shortfall", "marked_violation_span_nonnegative"]},
+    {"id": "F8", "class": "FORMALLY_PROVED_ARISTOTLE_AUDITED", "claim": "The frozen aftershock count cannot exceed the number of adjacent sample pairs.", "lean": ["aftershock_count_le_adjacent_pairs"]},
+    {"id": "F9", "class": "FORMALLY_PROVED_ARISTOTLE_AUDITED", "claim": "Formal proof, selection, authorization, deployment, and observation require distinct witnesses in the frozen state model.", "lean": ["release_states_are_independent_nonvacuous", "robustness_kernel_v1_nonvacuous"]},
+    {"id": "N1", "class": "NUMERICALLY_SUPPORTED_SYNTHETIC", "claim": "The v0.6.0 reference suite passes 35 tests on two synthetic domain fixtures.", "support": ["receipts/ROBUSTNESS_ENGINE_V06_BUILD_RECEIPT.json"]},
+    {"id": "N2", "class": "SOFTWARE_INTEGRATION_AND_DEPLOYMENT_VERIFIED", "claim": "The service passes 5 focused tests, the isolated fleet passes 2136 tests across 37 agents, and the exact digest-bound image is deployed as a healthy internal-only non-actuating fleet service with an 8-second rollback drill.", "support": ["integration/agent_fleet/robustness-engine-agent/PROTOTYPE_INTEGRATION_RECEIPT.json", "integration/agent_fleet/robustness-engine-agent/PRODUCTION_DEPLOYMENT_RECEIPT.json"]},
+    {"id": "H1", "class": "HYPOTHESIZED", "claim": "The governed kernel may improve decision auditability and invariant preservation in real cross-domain decisions.", "support": ["paper.tex:Falsification and validation"]}
+  ],
+  "prohibited_inferences": [
+    "formal proof implies empirical truth",
+    "formal proof implies legitimate authority",
+    "local fleet adoption implies production deployment",
+    "deployment implies observed benefit",
+    "technical readiness implies canon admission or publication"
+  ]
+}

@@ -1,0 +1,10 @@
+import PaperFormalization
+
+#print axioms Viridis.Run129.PaperFormalization.anytime_change_mixture_martingale
+#print axioms Viridis.Run129.PaperFormalization.anytime_change_ville_certificate
+#print axioms Viridis.Run129.PaperFormalization.change_component_dominance_and_penalty
+#print axioms Viridis.Run129.PaperFormalization.bounded_overshoot_expected_delay
+#print axioms Viridis.Run129.PaperFormalization.C12Witness.c12_nonvacuous
+#print axioms Viridis.Run129.PaperFormalization.C12Witness.c2_sup_nonvacuous
+#print axioms Viridis.Run129.PaperFormalization.C3Witness.c3_nonvacuous
+#print axioms Viridis.Run129.PaperFormalization.C4Witness.c4_nonvacuous

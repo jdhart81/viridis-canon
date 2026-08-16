@@ -1,0 +1,15 @@
+import PaperFormalization
+
+#print axioms Viridis.Run128.PaperFormalization.bilateral_benefit_iff_reciprocity_corridor
+#print axioms Viridis.Run128.PaperFormalization.strict_corridor_nonempty_iff_product_condition
+#print axioms Viridis.Run128.PaperFormalization.share_coordinate_corridor_equivalence
+#print axioms Viridis.Run128.PaperFormalization.nash_midpoint_unique_maximizer
+#print axioms Viridis.Run128.PaperFormalization.bandwidth_scaling_cannot_restore_feasibility
+#print axioms Viridis.Run128.PaperFormalization.witness_feasible_product_condition
+#print axioms Viridis.Run128.PaperFormalization.witness_infeasible_product_condition
+#print axioms Viridis.Run128.PaperFormalization.witness_C1_benefit
+#print axioms Viridis.Run128.PaperFormalization.witness_C1_no_benefit
+#print axioms Viridis.Run128.PaperFormalization.witness_C2_corridor_nonempty
+#print axioms Viridis.Run128.PaperFormalization.witness_C2_corridor_empty
+#print axioms Viridis.Run128.PaperFormalization.witness_C3
+#print axioms Viridis.Run128.PaperFormalization.witness_C4

@@ -1,0 +1,12 @@
+import PaperFormalization
+
+#print axioms Viridis.Run126.PaperFormalization.mutual_information_chain_balance
+#print axioms Viridis.Run126.PaperFormalization.forbidden_proxy_capacity_ceiling
+#print axioms Viridis.Run126.PaperFormalization.capacity_ceiling_slack_decomposition
+#print axioms Viridis.Run126.PaperFormalization.perfect_invariance_target_proxy_collapse
+#print axioms Viridis.Run126.PaperFormalization.erasure_family_tightness
+#print axioms Viridis.Run126.PaperFormalization.mutual_information_chain_balance_nonvacuity
+#print axioms Viridis.Run126.PaperFormalization.forbidden_proxy_capacity_ceiling_nonvacuity
+#print axioms Viridis.Run126.PaperFormalization.capacity_ceiling_slack_decomposition_nonvacuity
+#print axioms Viridis.Run126.PaperFormalization.perfect_invariance_target_proxy_collapse_nonvacuity
+#print axioms Viridis.Run126.PaperFormalization.erasure_family_tightness_nonvacuity

@@ -1,0 +1,54 @@
+name: Reproduction report
+description: Report a successful or failed reproduction of a Viridis release.
+title: "[Reproduction]: "
+body:
+  - type: input
+    id: doi
+    attributes:
+      label: Zenodo DOI and version
+      placeholder: 10.5281/zenodo… — version …
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Git commit
+      description: Exact viridis-canon commit, if applicable.
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Lean toolchain, dependencies, and hardware relevant to the run.
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Exact command
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Observed result
+      description: Include the first useful error and sanitized logs; never include secrets.
+    validations:
+      required: true
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: Outcome
+      options:
+        - Reproduced exactly
+        - Reproduced with documented variation
+        - Did not reproduce
+    validations:
+      required: true
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Data and privacy
+      options:
+        - label: I removed credentials, personal data, and confidential information.
+          required: true

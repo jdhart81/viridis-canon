@@ -1,0 +1,58 @@
+name: Research proposal
+description: Propose a conjecture, formalization, method, or ViridisOS research adapter.
+title: "[Research proposal]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and Viridis mission relevance
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: Proposed claim, object, or decision capability
+      description: State it precisely enough to be challenged or formalized.
+    validations:
+      required: true
+  - type: textarea
+    id: assumptions
+    attributes:
+      label: Assumptions, scope, and falsifier
+    validations:
+      required: true
+  - type: textarea
+    id: prior_work
+    attributes:
+      label: Closest prior work
+      description: Include citations and explain what is genuinely different.
+    validations:
+      required: true
+  - type: dropdown
+    id: route
+    attributes:
+      label: Initial route
+      options:
+        - Working Corpus research
+        - Series extension
+        - Reusable Lean lemma or definition
+        - ViridisOS adapter
+        - Unsure — curator should classify
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and reproduction plan
+      description: Tests, data, proof plan, or counterexample search.
+    validations:
+      required: true
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Rights and claims
+      options:
+        - label: I have the right to submit the included material and will disclose reused or AI-assisted work.
+          required: true
+        - label: I am not treating proposal acceptance as publication, Canon admission, or deployment.
+          required: true

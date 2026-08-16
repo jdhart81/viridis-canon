@@ -1,28 +1,31 @@
-## Research or software change
+## Contribution
 
-Describe the narrow change, why it belongs in the canon repository, and which
-public or internal consumer needs it.
+What does this change, and which issue or DOI does it relate to?
 
-## Evidence boundary
+## Evidence and boundary
 
-- [ ] I separated machine-checked mathematics from empirical or interpretive claims.
-- [ ] I identified all source artifacts and licenses.
-- [ ] I did not add secrets, customer data, unpublished private research, or signing keys.
-- [ ] Generated `docs/data/catalog.json` is current.
+- Claim or behavior being added/changed:
+- Assumptions and limitations:
+- What this does **not** establish:
+- Reproduction/test commands and results:
 
-## Canon gates
+## Provenance and rights
 
-Complete these when the change proposes a research record:
+- [ ] I created this contribution or have the right to submit it.
+- [ ] I agree that code is contributed under Apache-2.0 and documentation under
+      CC-BY-4.0 unless the file declares another compatible license.
+- [ ] I cited reused sources, datasets, and generated artifacts.
+- [ ] I disclosed material AI assistance; no AI system is listed as an author.
+- [ ] No credentials, personal data, restricted data, or confidential material
+      are included.
 
-- [ ] Zero `sorry` / `admit`
-- [ ] Axiom dependencies are within the canon allowlist
-- [ ] Non-vacuous witness or model supplied
-- [ ] Non-triviality explained
-- [ ] Novelty checked against the public catalog
-- [ ] Falsifiable prediction stated
-- [ ] Honest-scope caveat present
+## Gate checklist
 
-## Validation
-
-List the exact checks run. A passing pull request does **not** publish a result;
-canon publication remains an explicit human decision.
+- [ ] Tests pass for the changed surface.
+- [ ] Lean claims contain no `sorry` or unapproved axiom use.
+- [ ] Proof claims identify the Harmonic Aristotle receipt, or are explicitly
+      marked as awaiting that release gate.
+- [ ] This pull request does not claim Zenodo publication, Canon-spine admission,
+      ViridisOS deployment, or field validation without the matching receipt.
+- [ ] A ViridisOS change names the exact DOI/commit, units, uncertainty, refusal
+      behavior, and human-review trigger.

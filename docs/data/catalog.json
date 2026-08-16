@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "0349ab696a0e2b0fff5c7f91c38cf339c12a36f35967db02073f1aa44b22795d",
+  "catalog_digest": "c0063db3886336f708b5314cbc9f618776b7b67d3479f425b4dbd626a68e2391",
   "concept_doi": "10.5281/zenodo.19317982",
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "human_publish_gate": true,
@@ -1374,8 +1374,8 @@
       "abstract": "Auxiliary algebra for the Run-125 formalization Projector algebra, the exact inverse of I + κ P, the quadratic form of that inverse, the identity trace P = rank P for idempotent matrices, existence of unit kernel vectors in the rank-deficient case, and the combinatorial core of the Ky Fan bound.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "0d736fef51418e4589d66e1dc79fc4fdd4fbddf34e42abba15358cd2b53d4069",
-      "doi": "10.5281/zenodo.21968383",
+      "digest": "86785b1840a32095876a6efb08cd7b9e5ba12b36cc97462325a1dde25e7451d1",
+      "doi": "10.5281/zenodo.21971052",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Defs"
@@ -1390,7 +1390,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968383",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971052",
       "path": "series/SBB/PaperFormalization/Algebra.lean",
       "record_id": "series-sbb-paperformalization-algebra",
       "source_sha256": "f5bb8d8546d54f765983d669e9c27f39ffa02eef8fcba70fcbb3b034b424f6a7",
@@ -1411,8 +1411,8 @@
       "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "65599a75fd2ba16fe681af4c6a18417138ab41b4dd9b17976be01d9deab186b8",
-      "doi": "10.5281/zenodo.21968301",
+      "digest": "49d446f472d23991840b16c6f01c8d4654bf72fef73018fc8ded7f8bf65a39f3",
+      "doi": "10.5281/zenodo.21971041",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization"
@@ -1427,7 +1427,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971041",
       "path": "series/ACC/AxiomCheck.lean",
       "record_id": "series-acc-axiomcheck",
       "source_sha256": "0bde993fe0cc7f49e171ee39bc171f7eebc4c9dcf82fa15b9b47e7a9b0e38133",
@@ -1448,8 +1448,8 @@
       "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "8bb90f54d9f22dddd5d0268fba0014e88d5fdea743007d4a6757d828cfb81c4d",
-      "doi": "10.5281/zenodo.21968331",
+      "digest": "27f1eb322cd8d5337a8955caea285df94ba77821e86ea1e17cccafad3bf1a4da",
+      "doi": "10.5281/zenodo.21971042",
       "external_validation": "not-recorded",
       "imports": [
         "CognitiveSwitchingHysteresis"
@@ -1464,7 +1464,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968331",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971042",
       "path": "series/CSHC/AxiomCheck.lean",
       "record_id": "series-cshc-axiomcheck",
       "source_sha256": "ae024581ff13d2954130f1730ce3e93126f6212b6e4bb1e0b1c61097ac8a36f2",
@@ -1485,8 +1485,8 @@
       "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "065f13598d0ee28bfeffc9ef163bac1489d7880f9349acd3e99e33e83be6a7f5",
-      "doi": "10.5281/zenodo.21968337",
+      "digest": "66447d53735479ea4f4630c51dc951c8f8158aa9ee82b5d447eef3d3f026279f",
+      "doi": "10.5281/zenodo.21971043",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization"
@@ -1501,7 +1501,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968337",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971043",
       "path": "series/ICC/AxiomCheck.lean",
       "record_id": "series-icc-axiomcheck",
       "source_sha256": "125bc88e436bfd3183c27cf830f8f139dc48e987a9af6f40225daefafd689297",
@@ -1522,8 +1522,8 @@
       "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "3ef019e2c3c1160cdfd8ecb1e64cb00d2a7ad52b978c8a27656f1768683fab53",
-      "doi": "10.5281/zenodo.21968347",
+      "digest": "f73222632a44a919a1b12f32f6d35c12c4b15c93356126c972d76853e523a8ff",
+      "doi": "10.5281/zenodo.21971046",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization"
@@ -1538,7 +1538,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968347",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971046",
       "path": "series/PCR/AxiomCheck.lean",
       "record_id": "series-pcr-axiomcheck",
       "source_sha256": "8fcec7d339d0e202fd38fc69a77777c2d44d154b6fd94f5fc7bbd9d80feb9e2d",
@@ -1559,8 +1559,8 @@
       "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "3ff442c9f2d88a9795d8c8e58e669c7b1cc67ce57e635d367bda8a8e10d93585",
-      "doi": "10.5281/zenodo.21968361",
+      "digest": "de0d5c40027cbf864cc8fa14543448493c8c189a0cb07cffdb08a14d333ede34",
+      "doi": "10.5281/zenodo.21971047",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization"
@@ -1575,7 +1575,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968361",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971047",
       "path": "series/RC/AxiomCheck.lean",
       "record_id": "series-rc-axiomcheck",
       "source_sha256": "ddabe946805cd3913a8088135a3341a466467567c128645a9b487c7e8416631b",
@@ -1596,8 +1596,8 @@
       "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "cc6951f14e0651560d50e890b0280b119de56a57ab23340fa886fc4e4d5ddb77",
-      "doi": "10.5281/zenodo.21968383",
+      "digest": "16c6ee99844cf82cc048655aac44eb95205deaf20014efd1022f862860690054",
+      "doi": "10.5281/zenodo.21971052",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization",
@@ -1613,7 +1613,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968383",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971052",
       "path": "series/SBB/AxiomCheck.lean",
       "record_id": "series-sbb-axiomcheck",
       "source_sha256": "6aa9dadb059b8c33fa676a6104825f99b3a86cada83eb8f9117f7cfde7bfa2db",
@@ -1634,8 +1634,8 @@
       "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "8c555e54033a4bac76388ad860d06fa3d1def66e637b6040c7da318cd72c022b",
-      "doi": "10.5281/zenodo.21968480",
+      "digest": "cbf2bbb0b45bf590c4e54a096bc0831c528ba091ee62c908949911dd76592eea",
+      "doi": "10.5281/zenodo.21971057",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization"
@@ -1650,7 +1650,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968480",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971057",
       "path": "series/SSBC/AxiomCheck.lean",
       "record_id": "series-ssbc-axiomcheck",
       "source_sha256": "2e81aa7d30dc0c519c887c1726478bb7875ec75052f1633e0be76cc30dfc3c83",
@@ -1671,8 +1671,8 @@
       "abstract": "Cantelli's one-sided inequality (lower tail) The paper's Theorem 1 is a specialization of the classical Cantelli inequality. Mathlib (at the revision pinned by this project) contains Chebyshev's inequality but not Cantelli's one-sided inequality, so we prove the version we need here.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "80dbcb3dee8ae3272f73ab0f153d9bc5bdcf478e929d922c910afb909f2b428a",
-      "doi": "10.5281/zenodo.21968347",
+      "digest": "a821fc3eef7beb1b1b8bb2869b1dc5a34f4fe5c888bcf04577b840ada0b809b5",
+      "doi": "10.5281/zenodo.21971046",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1687,7 +1687,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968347",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971046",
       "path": "series/PCR/PaperFormalization/Cantelli.lean",
       "record_id": "series-pcr-paperformalization-cantelli",
       "source_sha256": "53512d1e556433b8aeea19d683a15d692c3e421eb72b6166066c7e8f60544bb6",
@@ -1790,8 +1790,8 @@
       "abstract": "The Seed-Source Bottleneck Certificate — formal statements of the frozen targets This file formalizes the preregistered model of SEALED_paper.tex (Run-130) and the four frozen formal targets listed in STATEMENT_CONTRACT.md: C1 : seed_routing_common_fraction_eq_min_cut_ratio C2 : seed_routing_feasible_iff_cut_conditions C3 : capacity_outside_active_bottleneck_irrelevant C4 : scenario_intersection_certificate_le_each_scenario The preregistered model (paper, Section 2) σ is the finite set I of restoration sites, τ is the finite set J of seed sources, d : σ → ℝ are the site demands (the paper assumes d i > 0), s : τ → ℝ are the source capacities (the paper assumes s j ≥ 0), and E : τ → σ → Bool is the frozen eligibility graph E ⊆ J × I (E j i = true means the transfer (j, i) is eligible). A routing x : τ → σ → ℝ is admissible for the common fulfillment fraction lam when it is nonnegative, supported on E, satisfies the supply constraints (paper eq. 1) and the demand constraints (paper eq. 2). This is IsFeasibleFraction. certificate E d s is the right-hand side of the boxed equation (3) of the paper, min {1, min_{∅ ≠ U ⊆ I} S(N(U))/D(U)}, realized as the minimum of the finite set of reals {1} ∪ {S(N(U))/D(U) : ∅ ≠ U ⊆ I}. Non-vacuity witnesses for all four targets are in PaperFormalization/Witnesses.lean.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 3,
-      "digest": "b9c7cacccb4ad52a43a27b7aceb957484e2971b40438c1da2011930704f6ea76",
-      "doi": "10.5281/zenodo.21968480",
+      "digest": "1dfe75670f2eb84ba60545a92476cea03aca568c242a145f4026f1a8cd3ee86d",
+      "doi": "10.5281/zenodo.21971057",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Hall"
@@ -1806,7 +1806,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968480",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971057",
       "path": "series/SSBC/PaperFormalization/Certificate.lean",
       "record_id": "series-ssbc-paperformalization-certificate",
       "source_sha256": "01c67384af895fd37d9415686c9d1c6d8e6bba9ddb9630f935afc617a2431f09",
@@ -1864,8 +1864,8 @@
       "abstract": "Chain rules and nonnegativity for the finite-alphabet information measures The information quantities of PaperFormalization.Entropy are defined in divergence form. Here we prove: the marginalisation lemmas relating the six marginals of a JointLaw; the *entropy-algebra* formulas for each information quantity (I_RY_eq, I_RS_eq, I_RY_given_S_eq, I_RS_given_Y_eq, H_Y_given_S_eq, H_Y_given_RS_eq); nonnegativity of I(R;Y), I(R;S|Y) (Gibbs' inequality) and of H(Y|R,S).",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "a941bb7124e30a04cb78471317c7e568ee69acec045a6897b27f1c7c65db2912",
-      "doi": "10.5281/zenodo.21968337",
+      "digest": "3ebbaf416e2c1dbaff07874b930fef061c4a6c15b3125ad449ccfb1c5e754d7a",
+      "doi": "10.5281/zenodo.21971043",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Entropy"
@@ -1880,7 +1880,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968337",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971043",
       "path": "series/ICC/PaperFormalization/ChainRule.lean",
       "record_id": "series-icc-paperformalization-chainrule",
       "source_sha256": "40f7f627bc08f56eb91758d2d267737aa8c03d342fcef183c3aeffd1e24f7734",
@@ -1901,8 +1901,8 @@
       "abstract": "The frozen Run-126 claims C1–C4 This file states and proves the first four named targets of STATEMENT_CONTRACT.md: mutual_information_chain_balance (C1, Theorem 1, Eq. 1); forbidden_proxy_capacity_ceiling (C2, Corollary 1, Eq. 2); capacity_ceiling_slack_decomposition (C3, Theorem 1, Eq. 3); perfect_invariance_target_proxy_collapse (C4, Boundary cases). Target C5 (erasure_family_tightness, Proposition 1) is in PaperFormalization.ErasureFamily. Each claim is followed by explicit non-vacuity witnesses: concrete finite joint laws for which the hypotheses hold and all quantities appearing in the statement are computed.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "610f780ef2d0bf5790e83d8814408d6970e88baffa9f53452e845a475a68d051",
-      "doi": "10.5281/zenodo.21968337",
+      "digest": "e016c70aa1146e77088e6b7654bebaac2f822da9aa11ebb94b75a4979b1668bc",
+      "doi": "10.5281/zenodo.21971043",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.ChainRule"
@@ -1917,7 +1917,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968337",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971043",
       "path": "series/ICC/PaperFormalization/Claims.lean",
       "record_id": "series-icc-paperformalization-claims",
       "source_sha256": "bf9016e22d051c6abed92ef19d052f7674f097dc4ae799a5e17674ffb9cdf6e9",
@@ -1938,8 +1938,8 @@
       "abstract": "Run 131 cognitive switching hysteresis certificate Statement contract VRS-FORMAL-TARGET-CONTRACT-1 (run 131). Every definition and theorem statement below is preserved verbatim from the frozen contract; only the proof bodies have been supplied.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "3a2da5753ebd9fef733a0194c87ebcad47e64de076338468f4f86d298efd04c9",
-      "doi": "10.5281/zenodo.21968331",
+      "digest": "3ebae95721a9bfe5a6e0ac8d4fad0a7686f17a27eb90a1987063177745b07b91",
+      "doi": "10.5281/zenodo.21971042",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -1954,7 +1954,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968331",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971042",
       "path": "series/CSHC/CognitiveSwitchingHysteresis.lean",
       "record_id": "series-cshc-cognitiveswitchinghysteresis",
       "source_sha256": "842943f1da4b1dc2e55b07d2f9eb0edbeffe381e82bc44b51cabd08296295412",
@@ -2086,8 +2086,8 @@
       "abstract": "Run-125 \"Symbiotic Bandwidth Bound\" — definitions This file fixes the formal counterparts of the model of the sealed paper (SEALED_paper.tex, Section \"Model and assumptions\"). Everything happens in ℝ^m, represented as Fin m → ℝ, with matrices Matrix (Fin m) (Fin m) ℝ. The Euclidean structure is the standard dot product; sqNorm_eq_euclideanNorm_sq below certifies that our sqNorm really is the squared Euclidean norm ‖·‖².",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 1,
-      "digest": "4d1a13a1eee619ac8b017238e04397e2c17db0c74b5d806ba997d4b5d2a105da",
-      "doi": "10.5281/zenodo.21968383",
+      "digest": "09668dcc307513613fabf3adb1b1a464525535a69b024c23f66b6512f9ef151f",
+      "doi": "10.5281/zenodo.21971052",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -2102,7 +2102,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968383",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971052",
       "path": "series/SBB/PaperFormalization/Defs.lean",
       "record_id": "series-sbb-paperformalization-defs",
       "source_sha256": "c0642d03626a7f4e966ce2ef4d3cb3d01903aa0f7de0bfbec88b3559e52a85e3",
@@ -2123,8 +2123,8 @@
       "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "2fe5a7847d85edf46ea5ac7dfba64e8649c70a38e89f634b4a9d4419efc03f68",
-      "doi": "10.5281/zenodo.21968480",
+      "digest": "62dc1fa9b8135f6738f1d7e1d77fef3f9367bf4ebfce7c74a7066e270a46fdbe",
+      "doi": "10.5281/zenodo.21971057",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -2139,7 +2139,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968480",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971057",
       "path": "series/SSBC/PaperFormalization/Defs.lean",
       "record_id": "series-ssbc-paperformalization-defs",
       "source_sha256": "1015f8f4676a27ea63780b30cc916712232857097b2bdf635dc61cb949c107fb",
@@ -2234,8 +2234,8 @@
       "abstract": "C3: component dominance and the late-change evidence penalty This file formalizes Equations (5)–(6) of SEALED_paper.tex: M_n ≥ π_ν ∏_{i=ν}^{n} Λ_i (Equation 5), hence the mixture alarm time is never later than the alarm time of the embedded change-time-ν component; a_ν = log(1/(α π_ν)) = log(1/α) + log[ν(ν+1)] (Equation 6), whose late-change part log[ν(ν+1)] is asymptotically 2 log ν. The alarm time is formalized by firstAlarm f c, the first index at which the path f reaches the level c, valued in ℕ∞ so that \"never alarms\" is represented by ⊤.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "e918190ee57fc6bb19a16cbf34cbad984f79731dde2aa196c8c374ec1d7c9ba5",
-      "doi": "10.5281/zenodo.21968301",
+      "digest": "3aa486b2c19120945b4ef30752984b8302311b81e8f6ed120b1ec4d3905a88eb",
+      "doi": "10.5281/zenodo.21971041",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Mixture"
@@ -2250,7 +2250,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971041",
       "path": "series/ACC/PaperFormalization/Dominance.lean",
       "record_id": "series-acc-paperformalization-dominance",
       "source_sha256": "ea47f10d376cd6a3f2a8180a48f15f4f4b5f189e632a1991230c8341157fa24f",
@@ -2345,8 +2345,8 @@
       "abstract": "Existence of a sorted spectral decomposition The hypotheses of C5 (top_subspace_mean_cost) ask for an orthogonal U and an antitone lam with C = U diag(lam) Uᵀ. The next theorem shows that this data exists for *every* symmetric C, so those hypotheses restrict nothing.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "81ff7ca46f5fe7d5b3fe380d1708a9ffd56f8299344b83fb1b1aea2b4af0f62a",
-      "doi": "10.5281/zenodo.21968383",
+      "digest": "e4b64072e90f0abeec98ec4b64fad738b013ec2dcd54d00873a0418e7d48156e",
+      "doi": "10.5281/zenodo.21971052",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Algebra"
@@ -2361,7 +2361,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968383",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971052",
       "path": "series/SBB/PaperFormalization/Ensemble.lean",
       "record_id": "series-sbb-paperformalization-ensemble",
       "source_sha256": "b1d4c7bb316dc694daaec7d2ca909d978dca83ff971aa057eca74f00a6f5121c",
@@ -2382,8 +2382,8 @@
       "abstract": "Finite-alphabet Shannon information measures This file develops, from first principles, the discrete (finite-alphabet, base-two) Shannon information quantities used by the Run-126 paper \"The Invariance Capacity Ceiling: Forbidden-Proxy Alignment Caps Predictive Information\"*. Mathlib (at the revision pinned by this project) contains no discrete entropy or mutual information API, so everything used by the formalized claims is built here: Viridis.Run126.PaperFormalization.Hs : Shannon entropy H(p) = -∑ p log₂ p of a finite mass function; Viridis.Run126.PaperFormalization.JointLaw ρ η σ : a joint probability law of the triple (R, Y, S) on finite alphabets ρ, η, σ; its six marginals and the associated entropies; the information quantities I(R;Y), I(R;S), I(R;Y|S), I(R;S|Y), H(Y|S), H(Y|R,S), each defined in divergence form (as an expectation of a log-ratio), i.e. *not* defined by the entropy-algebra identities that the paper's Theorem 1 asserts; the chain-rule lemmas converting each divergence form into an entropy combination; nonnegativity of conditional mutual information and of conditional entropy, via a Gibbs / log-sum inequality proved here (Viridis.Run126.PaperFormalization.sum_mul_logb_le). Conventions: Real.logb 2 0 = 0, so a mass-zero outcome contributes 0 to every sum, which is the standard 0 log 0 = 0 convention of information theory.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 7,
-      "digest": "56a5238b00da83fad2e8eb679d6ddfa953e7923d3698b716e05116017d62f582",
-      "doi": "10.5281/zenodo.21968337",
+      "digest": "89e285c58e66287516824e0775d292ba7fe7d3e0248f97f065c2db377a5733a5",
+      "doi": "10.5281/zenodo.21971043",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -2398,7 +2398,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968337",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971043",
       "path": "series/ICC/PaperFormalization/Entropy.lean",
       "record_id": "series-icc-paperformalization-entropy",
       "source_sha256": "84edfd84d01ec967cc052475cc014d82b3bd833fd79fef0f4467ab2bf56d07d0",
@@ -2419,8 +2419,8 @@
       "abstract": "C5 — the tight erasure family (Proposition 1) Paper statement (Proposition 1, Eq. 5): let S and U be independent fair bits, let Y = (S, U), and let L reveal S with probability q and otherwise output an erasure symbol. For R = (U, L), I(R;S) = q, H(Y|S) = 1, I(R;Y) = 1 + q, so the ceiling I(R;Y) ≤ H(Y|S) + δ of Corollary 1 is tight for every q ∈ [0,1] bit. Formalization: the alphabets are ρ = Bool × Option Bool (the pair (U, L), with none the erasure symbol), η = Bool × Bool (the pair (S, U)) and σ = Bool (the proxy S), and the joint mass function is p (u,l) (y₁,y₂) s = ¼ · leak q l s when y₁ = s and y₂ = u, and 0 otherwise.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "686502dfbc08c4537c8ce96572754572ac7c3fa59dfff1d0113db5d861624bb8",
-      "doi": "10.5281/zenodo.21968337",
+      "digest": "c48c76b72b74d577a25892aaaeeb767461493d2d5dca31d0e4c92d7ed9aeebd3",
+      "doi": "10.5281/zenodo.21971043",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Claims"
@@ -2435,7 +2435,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968337",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971043",
       "path": "series/ICC/PaperFormalization/ErasureFamily.lean",
       "record_id": "series-icc-paperformalization-erasurefamily",
       "source_sha256": "39d35338f29245f425ce570eead3e485337de95bdd0a3996e53a711310b77351",
@@ -2641,8 +2641,8 @@
       "abstract": "A capacitated Hall / Gale supply–demand theorem This file develops, from scratch, the network-flow ingredient that the sealed paper (SEALED_paper.tex, Run-130, \"The Seed-Source Bottleneck Certificate\") invokes as \"max-flow/min-cut\" in its proof sketch of Proposition 1. Mathlib (revision recorded in TOOLCHAIN.md) contains Hall's marriage theorem but no max-flow/min-cut theorem and no capacitated Hall condition, so the required statement is proved here directly, by induction on the total size of the bipartite ground sets. Everything in this file is stated for arbitrary Finsets A of sites and B of sources so that the induction can shrink both sides; the paper-level statements in PaperFormalization/Certificate.lean are the special case A = univ, B = univ.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 3,
-      "digest": "e23a73c1524532e2fd670fd865dae1aeef2c7384b84d99801f9931fd1f50407b",
-      "doi": "10.5281/zenodo.21968480",
+      "digest": "a014056e6c3ee12239665c602929df381d284f384f834e2648840f3801a540cf",
+      "doi": "10.5281/zenodo.21971057",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -2657,7 +2657,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968480",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971057",
       "path": "series/SSBC/PaperFormalization/Hall.lean",
       "record_id": "series-ssbc-paperformalization-hall",
       "source_sha256": "0fe965f3e834715b8a734fed1d307bf569794bd198e3df2365006f7dbb58423d",
@@ -3085,8 +3085,8 @@
       "abstract": "The change-time mixture M_n of Run-129 This file formalizes the recursion of Equation (2) in SEALED_paper.tex: A_0 = 0, A_n = Λ_n (A_{n-1} + π_n), M_n = A_n + t_n. Everything in this file is *pathwise* (no measure theory): the accumulator mixAcc, the mixture mixture, nonnegativity, M_0 = 1, adaptedness, and the component dominance bound M_n ≥ π_ν ∏_{i=ν}^{n} Λ_i of Equation (5). Λ is the sequence of likelihood ratios Λ_n = dP₁/dP₀(X_n); it is an arbitrary sequence of functions here, and all distributional assumptions are made where needed.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "0defc40a133b7c862b2f6172665dfd582a3bf42c502c1e4dd03421a770b08f28",
-      "doi": "10.5281/zenodo.21968301",
+      "digest": "892e743650bd61fa059bbc71f982e164e0c21c883a5449a1231bef8614eb4066",
+      "doi": "10.5281/zenodo.21971041",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Prior"
@@ -3101,7 +3101,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971041",
       "path": "series/ACC/PaperFormalization/Mixture.lean",
       "record_id": "series-acc-paperformalization-mixture",
       "source_sha256": "68f860dfe39a314ae34f5cee29cad344f70971f560d47fbc88ec050afb5eae65",
@@ -3122,8 +3122,8 @@
       "abstract": "The Run-127 model: definitions and assumptions This file fixes the definitions used to state the frozen claims of the sealed paper The Precautionary Capacity Reserve* (Run-127). Paper objects formalized here: the fixed positive scalars P, k_B, T of the model premise r ≤ C(D) = P D / (k_B T ln 2) (bundled in RateModel); the model ceiling C (RateModel.ceiling), Eq. (1); the required capacity d(r) = (k_B T ln 2 / P) r (RateModel.requiredCapacity), Eq. (2); the strict violation event 𝒱(r) = {r > C(D)} (RateModel.violationEvent), Eq. (3); the Cantelli factor √((1-α)/α) (cantelliFactor); the two-moment capacity floor d_α = [μ - σ √((1-α)/α)]_+ (capacityFloor), Eq. (4); the certified rate r_α = P d_α / (k_B T ln 2) (RateModel.certifiedRate), Eq. (5); the mean plug-in ceiling r_μ = P μ / (k_B T ln 2) (RateModel.meanPlugInCeiling); the coefficient of variation CV(D) = σ / μ (coeffVar).",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 2,
-      "digest": "8ccf237c8e44ceb7b93c8887816a8558947c0fe53f4e83b563e77f7dcff27169",
-      "doi": "10.5281/zenodo.21968347",
+      "digest": "3563f6d30f186763aad24878af455d61b31f45049ec56b242122b7b44ebf3933",
+      "doi": "10.5281/zenodo.21971046",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -3138,7 +3138,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968347",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971046",
       "path": "series/PCR/PaperFormalization/Model.lean",
       "record_id": "series-pcr-paperformalization-model",
       "source_sha256": "ed2c79195e5aa25ee30b430d228f82573d88f207015aaf7c05390768bfef7866",
@@ -3233,8 +3233,8 @@
       "abstract": "Explicit non-vacuity witnesses For each frozen target we exhibit a concrete instance in which *all* hypotheses hold and the conclusion is not degenerate: cantelli_capacity_certificate_nonvacuous / precautionary_rate_le_violation_budget_nonvacuous: a nonnegative law with σ > 0, a strictly positive capacity floor, and a violation event of strictly positive probability (4/13), so the certificate bound ≤ α = 1/2 is a genuine, non-trivial bound on a nonempty event; capacity_reserve_fraction_eq_nonvacuous: both branches of the positive part are realized (a strictly positive certified fraction 1/2 and a clipped fraction 0); positive_floor_sharp_two_point_counterexample_nonvacuous: the positive-floor hypotheses are satisfiable, and the produced counterexample is exhibited; mean_only_plugin_arbitrarily_unsafe_nonvacuous: a law whose violation probability exceeds 999/1000 at the full mean plug-in rate.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 1,
-      "digest": "ea78e0ecffd83c7d5a346751e934e4167df6116fda4dd3e1d0bbbec3db2ce025",
-      "doi": "10.5281/zenodo.21968347",
+      "digest": "09731d6ef4542315d9ae579c98f8ffe10c49c6af897008fde7b4d1d69fdd9e39",
+      "doi": "10.5281/zenodo.21971046",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Targets"
@@ -3249,7 +3249,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968347",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971046",
       "path": "series/PCR/PaperFormalization/NonVacuity.lean",
       "record_id": "series-pcr-paperformalization-nonvacuity",
       "source_sha256": "d6b5721858c803d7860a165e128cf9b22f105060d05c323b08c0a9205017f285",
@@ -3270,8 +3270,8 @@
       "abstract": "C1 and C2: the null martingale property and the anytime (Ville) certificate This file formalizes the two certificate claims of SEALED_paper.tex, §2: C1 anytime_change_mixture_martingale: under the declared null, (M_n) is a nonnegative martingale with M_0 = 1 and E₀[M_n] = 1 for all n. C2 anytime_change_ville_certificate (Equation 4): P₀(ever alarming) ≤ α when the alarm threshold is 1/α. Explicit assumptions and scope The paper's null is: X₁, X₂, … iid P₀, P₁ ≪ P₀, and Λ_n = dP₁/dP₀(X_n), from which it records the only distributional consequence it ever uses, namely E₀[Λ_n ∣ ℱ_{n-1}] = 1. We take exactly that consequence (hcondΛ below) as the hypothesis, together with nonnegativity, adaptedness and integrability. This is a faithful abstraction of the paper's null: no dependence structure beyond the displayed conditional-mean-one identity is used anywhere in §2. PaperFormalization.Witnesses exhibits a genuinely iid Bernoulli likelihood-ratio model satisfying all of these hypotheses, so nothing here is vacuous.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "fca9640d2d72f35f05210f3a6a5c2d305969b180bdc014303c35782a03b29ce7",
-      "doi": "10.5281/zenodo.21968301",
+      "digest": "9d3e77981c1d63a60f3485640b91d825dba706c1c87e2270d7d7df2f2ea4a2b2",
+      "doi": "10.5281/zenodo.21971041",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Mixture"
@@ -3286,7 +3286,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971041",
       "path": "series/ACC/PaperFormalization/NullMartingale.lean",
       "record_id": "series-acc-paperformalization-nullmartingale",
       "source_sha256": "76ba31a5b7b1a286fec1cf0d1d4273ab7a73746c0c4b58378b94c60e12c3956d",
@@ -3307,8 +3307,8 @@
       "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "b42af887270b8bc48ee4f94b76fe4424a7a47b9783848e4d810ed179dbb94f13",
-      "doi": "10.5281/zenodo.21968301",
+      "digest": "6d6d8b312b59de556d0a8bbbb94ac0af986e990e552112281e1ef5af856009d1",
+      "doi": "10.5281/zenodo.21971041",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Dominance",
@@ -3328,7 +3328,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971041",
       "path": "series/ACC/PaperFormalization.lean",
       "record_id": "series-acc-paperformalization",
       "source_sha256": "6955d21f6a8d2c8386ca1504bf005ec9fa922f8cc74bbbea6db703dbf4bc8a0c",
@@ -3349,8 +3349,8 @@
       "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "ffeeb3f423d6b07decb08aa0e6bbc886b5559900d7379d1d481541324c2c2e58",
-      "doi": "10.5281/zenodo.21968337",
+      "digest": "45ff480d4f966a5a08aced29ffc5fef2f847360b5ed7314b2435410a5d22b157",
+      "doi": "10.5281/zenodo.21971043",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.ChainRule",
@@ -3369,7 +3369,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968337",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971043",
       "path": "series/ICC/PaperFormalization.lean",
       "record_id": "series-icc-paperformalization",
       "source_sha256": "fe79a19f104fb1e1252f13df3c31b1bb066f7e70c0232e4abeb6616a3e56e4ec",
@@ -3390,8 +3390,8 @@
       "abstract": "Run-127 paper-to-Lean formalization Formalization of the frozen formal targets of the sealed paper The Precautionary Capacity Reserve: A Sharp Moment-Robust Stewardship Discount for an Intelligence-Rate Model* (Run-127), as listed in STATEMENT_CONTRACT.md. Contents PaperFormalization/Cantelli.lean — Cantelli's one-sided (lower-tail) inequality, proved from Markov's inequality (it is not available in the pinned Mathlib revision). PaperFormalization/Model.lean — the model definitions and assumptions of the paper: RateModel (P, k_B, T positive and fixed), RateModel.ceiling (Eq. 1), RateModel.requiredCapacity (Eq. 2), RateModel.violationEvent (Eq. 3), cantelliFactor, capacityFloor (Eq. 4), RateModel.certifiedRate (Eq. 5), RateModel.meanPlugInCeiling, coeffVar. PaperFormalization/TwoPoint.lean — nonnegative two-point laws and the Cantelli extremal two-point law used by the counterexample constructions. PaperFormalization/Targets.lean — the named frozen targets: cantelli_capacity_certificate (C1), precautionary_rate_le_violation_budget (paper's fifth target), capacity_reserve_fraction_eq (C2), positive_floor_sharp_two_point_counterexample (C3), mean_only_plugin_arbitrarily_unsafe (C4). PaperFormalization/NonVacuity.lean — explicit non-vacuity witnesses for every target. See LEAN_STATEMENT_CONTRACT.md for the exact statement contract, the assumptions used, the non-vacuity witnesses, the documented interpretation decisions, and the recorded toolchain and Mathlib revision. The development contains no sorry, admit, axiom, implemented_by, native_decide, unsafe or extern.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "821aee7ea3ffd36f77b47ef21a785d320ecf2c9f53ed3f6fca273bfb634debce",
-      "doi": "10.5281/zenodo.21968347",
+      "digest": "87336d24493bb1b89352a6651e1e3c66fb5ccb6ea8f96bf41caab19e0e5d8a9b",
+      "doi": "10.5281/zenodo.21971046",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Cantelli",
@@ -3410,7 +3410,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968347",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971046",
       "path": "series/PCR/PaperFormalization.lean",
       "record_id": "series-pcr-paperformalization",
       "source_sha256": "c39845a9f92402521fa37f758c65af95e5fdab65b24b5e92544d94c0296c8364",
@@ -3431,8 +3431,8 @@
       "abstract": "Run-128 — \"The Reciprocity Corridor: A Bilateral-Benefit Test for Directional Information Exchange\" (J. D. Hart, 12 August 2026) — Lean formalization This file formalizes the four frozen FORMAL_TARGET claims of STATEMENT_CONTRACT.md (paper Theorems 1–3 and Corollary 1), together with the auxiliary share-coordinate target share_coordinate_corridor_equivalence listed in SEALED_CLAIM_INVENTORY.json → proposed_lean_targets. Everything below is stated over the real numbers under the paper's explicit standing assumptions (Section 2 of the paper): one period, two partners X and Y; strictly positive directional flows x = TE(X→Y) > 0, y = TE(Y→X) > 0; strictly positive, known, constant coefficients vX, cX, vY, cY > 0; linear separable payoffs with zero disagreement utilities, uX = vX*y - cX*x and uY = vY*x - cY*y; no externalities. Only the algebraic content of the paper is formalized. The Gaussian measurement layer (paper Section 5, claim C5) is explicitly *not* a formal target of the contract (formal_status = NOT_A_NEW_FORMAL_CLAIM), and the numerical/control claims C6–C9 are not formal targets either; see BLOCKERS.md for the audit. mathlib revision: see MATHLIB_REVISION.txt / lake-manifest.json.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 8,
-      "digest": "ef00555d332c4e7c1eca7c8326d599341ae27bb573fef20d30feccd1a95404a7",
-      "doi": "10.5281/zenodo.21968361",
+      "digest": "860f23b55cf8d2629d6374e0739ced2d948537250d177e6f3bf6b78489ecda0b",
+      "doi": "10.5281/zenodo.21971047",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -3447,7 +3447,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968361",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971047",
       "path": "series/RC/PaperFormalization.lean",
       "record_id": "series-rc-paperformalization",
       "source_sha256": "1de8f6a1f2ac05dd8026ad92a646b910d17b8369ba72c3dc6ebf7628ba1696ee",
@@ -3468,8 +3468,8 @@
       "abstract": "Run-125 — \"The Symbiotic Bandwidth Bound\": Lean formalization of the frozen claims This module contains the six formal targets named in STATEMENT_CONTRACT.md: shared_channel_inverse (C1, paper Theorem 1 / Eq. 5) directional_gain_bounds (C2, paper Theorem 1 / Eq. 6) rank_deficient_unit_gain (C3, paper Theorem 2) worstcase_deadline (C4, paper Theorem 2 / Eq. 7) top_subspace_mean_cost (C5, paper Theorem 3 / Eq. 8) isotropic_rank_fraction (C6, paper Eq. 9) All model notions (mobility, baselineCost, channelCost, capturedFraction, gain, meanCostTau, deadlineBound, IsOrthProjector) are defined in PaperFormalization/Defs.lean, together with the bridges certifying that sqNorm is the squared Euclidean norm and that meanCostTau is the ensemble average of the quadratic cost. Non-vacuity witnesses for every target are in PaperFormalization/Witnesses.lean. Toolchain and mathlib revision are recorded in TOOLCHAIN.md.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "1086ae4109fc081c3d269055676f8723cd19203a82c1453ebd78371221f51afd",
-      "doi": "10.5281/zenodo.21968383",
+      "digest": "f4dcabdc34d27c5b6725f74b535c35bcc9dc81e9a1cadc8b250b5b5964dac332",
+      "doi": "10.5281/zenodo.21971052",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Algebra",
@@ -3486,7 +3486,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968383",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971052",
       "path": "series/SBB/PaperFormalization.lean",
       "record_id": "series-sbb-paperformalization",
       "source_sha256": "0898b5d9fc9705c054e451267ea54376a5c67251613c38a6434515037587109d",
@@ -3507,8 +3507,8 @@
       "abstract": "Run-130 — \"The Seed-Source Bottleneck Certificate\": Lean formalization This is the root module of the returned project. It collects the formalization of the four frozen formal targets of STATEMENT_CONTRACT.md (paper source: SEALED_paper.tex). PaperFormalization/Hall.lean — the network-flow ingredient (capacitated Hall / Gale supply–demand theorem), proved from scratch: Mathlib has no max-flow/min-cut theorem. PaperFormalization/Certificate.lean — the preregistered model, the cut certificate, and the four targets C1–C4. PaperFormalization/Witnesses.lean — explicit non-vacuity witnesses. Toolchain actually used is recorded in TOOLCHAIN.md; the exact Lean statement contract, including the assumptions carried by each target and the documented scope blockers, is in LEAN_STATEMENT_CONTRACT.md. No sorry, admit, new axiom, implemented_by, native_decide, unsafe or extern occurs anywhere in this project.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "3355259e10cd4f0192fd3e8e7671b83039575d75f2573b7cfd151b15f2e6c8c0",
-      "doi": "10.5281/zenodo.21968480",
+      "digest": "798c7982031acef5fd9900fbe1d0ad7b3f8a9a7f82804894a3a40ad1ad2fc166",
+      "doi": "10.5281/zenodo.21971057",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Certificate",
@@ -3525,7 +3525,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968480",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971057",
       "path": "series/SSBC/PaperFormalization.lean",
       "record_id": "series-ssbc-paperformalization",
       "source_sha256": "0a31250effb3ef00b1c61d022fa72b95bd66b4f4fd7099fcd568fa36ec80335d",
@@ -3583,8 +3583,8 @@
       "abstract": "The heavy-tailed change-time prior of Run-129 This file formalizes Equation (1) of the sealed paper SEALED_paper.tex: π_k = 1 / (k (k+1)), t_n = ∑_{k > n} π_k = 1 / (n+1). changePrior is π and priorTail is t. Both are defined for every natural index; the paper only uses k ≥ 1 for π (and changePrior 0 = 0 in Lean, which is harmless since the index 0 never occurs in the recursion). The two facts that the rest of the development needs are changePrior_add_priorTail: π_{n+1} + t_{n+1} = t_n (the identity π_n + t_n = t_{n-1} used in the martingale computation), and hasSum_changePrior_tail: t_n really is the tail mass ∑_{k > n} π_k of the prior, so in particular (hasSum_changePrior) π is a probability distribution on {1, 2, …}.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "4ac798550280f02febc2d2de6748b93b333df8eb1988fdf03e25c6c40cf7866d",
-      "doi": "10.5281/zenodo.21968301",
+      "digest": "012a7dc810136e930ab53ef973cff6dc9d3473cb0469575ec34b7b15987ed1b0",
+      "doi": "10.5281/zenodo.21971041",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -3599,7 +3599,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971041",
       "path": "series/ACC/PaperFormalization/Prior.lean",
       "record_id": "series-acc-paperformalization-prior",
       "source_sha256": "d05294efcd42645a43b5832c8c37538e1b00907d8d974202d0af780af8e4451a",
@@ -3768,8 +3768,8 @@
       "abstract": "The frozen formal targets of Run-127 This file states and proves the named Lean targets of STATEMENT_CONTRACT.md: cantelli_capacity_certificate (C1, paper Theorem 1); precautionary_rate_le_violation_budget (extra target listed in the paper, Theorem 1 restated through the required-capacity map of Eq. (2)); capacity_reserve_fraction_eq (C2, paper Corollary 1); positive_floor_sharp_two_point_counterexample (C3, paper Theorem 2); mean_only_plugin_arbitrarily_unsafe (C4, paper Proposition 1).",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "6d47f3cd217e3be358d1a8a674921474f93a4bd940f348fc6da3791b0b7ede96",
-      "doi": "10.5281/zenodo.21968347",
+      "digest": "0da6c28aa009560197fa7699e7e288eaee6514caa012cd8e5f73506155952dfc",
+      "doi": "10.5281/zenodo.21971046",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Cantelli",
@@ -3786,7 +3786,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968347",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971046",
       "path": "series/PCR/PaperFormalization/Targets.lean",
       "record_id": "series-pcr-paperformalization-targets",
       "source_sha256": "859e22d3574fbe30fe3c1dc73bc1c94d56ba63e05d79d9c15f978a191f06ed18",
@@ -4055,8 +4055,8 @@
       "abstract": "Two-point laws on ℝ The counterexample constructions of the paper (Theorem 2 and Proposition 1) use two-point nonnegative laws. This file provides the measure twoPointLaw l h q = q δ_l + (1-q) δ_h together with its basic integral, mean, variance and tail-mass computations.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "1bd1cc15bac6dae4ff4c157e3216e0b8ec8cdc9ec32e6f8a405538a676d94eb1",
-      "doi": "10.5281/zenodo.21968347",
+      "digest": "7a4c7fdbc00eb6a22d4f868620509b785774756f913c3473aaa5789bdc7e9de6",
+      "doi": "10.5281/zenodo.21971046",
       "external_validation": "not-recorded",
       "imports": [
         "Mathlib"
@@ -4071,7 +4071,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968347",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971046",
       "path": "series/PCR/PaperFormalization/TwoPoint.lean",
       "record_id": "series-pcr-paperformalization-twopoint",
       "source_sha256": "431368e91ff441c4d057b0c1303a20093b8acb9c6c2b49d76c3d2a328f3e845e",
@@ -4166,8 +4166,8 @@
       "abstract": "C4: the bounded-overshoot expected-delay corridor This file formalizes Equations (7)–(8) of SEALED_paper.tex: N_a = inf{ m ≥ 1 : ∑_{j=1}^m Z_j ≥ a }, a/D ≤ E₁[N_a] < (a + z_max)/D. Explicit assumptions The paper says: \"let post-change increments Z_i = log Λ_i be iid, bounded above by finite z_max > 0, and have mean D = E₁ Z_i = D(P₁‖P₀) > 0 … assume the usual Wald integrability conditions\". The hypotheses used here are exactly: hZbdd : the increments are bounded, |Z_j| ≤ B (the paper's \"bounded … increments\"; boundedness is what makes Z_j integrable and the dominating function below finite); hZmax : Z_j ≤ z_max (the paper's overshoot control); hZmean : every increment has the same mean D, and hD : 0 < D; hindep : Z_j is independent of the past σ-algebra 𝒢 j (the \"iid increments\" hypothesis in exactly the form Wald's identity consumes); hNstop : N is a stopping time for 𝒢; hNint : E[N] < ∞ — this is \"the usual Wald integrability condition\" that the paper assumes rather than derives; hfirst : N is a.s. the first time m ≥ 1 at which S_m ≥ a (Equation 7). Wald's identity itself (wald_identity) is *proved* here, not assumed.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "a6654af668adfe754f4a75dae5410df3a6bba8df2dec82f7a91a9cc16dab87d0",
-      "doi": "10.5281/zenodo.21968301",
+      "digest": "a151e12cdcfb40381006f045b7ad9cc3aa0adc6f94cc0cc537a61b1a6843564f",
+      "doi": "10.5281/zenodo.21971041",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Dominance"
@@ -4182,7 +4182,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971041",
       "path": "series/ACC/PaperFormalization/Wald.lean",
       "record_id": "series-acc-paperformalization-wald",
       "source_sha256": "6087275d757f85442bdc92730dd8282b01394133fefb5d0d6687ae4a259d3c7a",
@@ -4203,8 +4203,8 @@
       "abstract": "Non-vacuity witnesses Every formalized target (C1–C4) is instantiated here at an explicit model, so that none of the theorem statements is vacuously true. C3Witness: a deterministic likelihood-ratio path for which the mixture alarm time is strictly* earlier than the embedded component alarm time (1 < 2), so the dominance claim C3 is non-trivial. C4Witness: an explicit increment model, stopping time and boundary for which every hypothesis of C4 holds and the corridor reads 5/2 ≤ 3 < 7/2. C12Witness: the paper's preregistered Bernoulli instance P₀ = Bern(1/5), P₁ = Bern(3/5) realized as a genuinely iid sequence on ℕ → Bool under an infinite product measure. All hypotheses of C1 and C2 hold, the mixture is not identically 1, and the resulting Ville certificate is an instance of C2.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 1,
-      "digest": "e99f8e142bcc2ee3c8d281686871d6273919dac1d1f48946bb95500ac7af4661",
-      "doi": "10.5281/zenodo.21968301",
+      "digest": "914a2ec69f01494849035d9878358447bafab3324cfbca1074236e1ef93e8de7",
+      "doi": "10.5281/zenodo.21971041",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Dominance",
@@ -4221,7 +4221,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971041",
       "path": "series/ACC/PaperFormalization/Witnesses.lean",
       "record_id": "series-acc-paperformalization-witnesses",
       "source_sha256": "779ecdaa5aa785919222d147c96f8e24da718b3fce322e5cee037fc1d39f246c",
@@ -4242,8 +4242,8 @@
       "abstract": "Non-vacuity witnesses For every formal target of STATEMENT_CONTRACT.md this file exhibits explicit data satisfying *all* hypotheses of the corresponding theorem, together with the concrete numerical conclusion obtained by instantiating the theorem at that data. This rules out vacuous formalizations. The running witness is the two-dimensional model m = 2 with the rank-one orthogonal projector P₂ = diag(1,0), mirroring the paper's own aligned / null-space controls (κ = 4.5 gives the aligned gain 5.5 and the orthogonal gain 1.0).",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 2,
-      "digest": "29d12e73e790bf627b3338f328d90a20a89ab110b1db66c29ba2983d1ebed6b0",
-      "doi": "10.5281/zenodo.21968383",
+      "digest": "35ccc18bdc100ab54eedfef746a621b8c79c4f960d04a74b58501da87a3a122a",
+      "doi": "10.5281/zenodo.21971052",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization"
@@ -4258,7 +4258,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968383",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971052",
       "path": "series/SBB/PaperFormalization/Witnesses.lean",
       "record_id": "series-sbb-paperformalization-witnesses",
       "source_sha256": "b725b377cd5ba484e4247af28389a8ae0dafba1d9b7b98b71636a8bd601fcfe9",
@@ -4279,8 +4279,8 @@
       "abstract": "Non-vacuity witnesses Explicit instances showing that the hypotheses of each frozen target C1–C4 are satisfiable and that the conclusions are non-trivial. All witnesses use the paper's own negative control (Section 3.1 of SEALED_paper.tex): two unit-demand sites, two sources with capacities (1/10, 19/10), and the \"private\" eligibility graph in which source j may serve site i only if j = i. Total inventory equals total demand, yet the certified common fulfillment fraction is 1/10.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 3,
-      "digest": "418ad4ce837fd88c0cb18e543121184495502aa855ebb8ee03ca14da8855d138",
-      "doi": "10.5281/zenodo.21968480",
+      "digest": "bf4d5118fd5cda3cb8c334dae23b869506cd99a56e6af6176fcb72b669f5aac2",
+      "doi": "10.5281/zenodo.21971057",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Certificate"
@@ -4295,7 +4295,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968480",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971057",
       "path": "series/SSBC/PaperFormalization/Witnesses.lean",
       "record_id": "series-ssbc-paperformalization-witnesses",
       "source_sha256": "87f6d365f8b3be0812761a3c5c333bbf2a19837801cce27cdb3c51852cd5171e",
@@ -4501,8 +4501,8 @@
       "abstract": "The nonlinear negative control (paper claim C7) The paper's negative control (Section \"Boundary cases and controls\", inventory claim C7, evidence class NUMERIC) states: let S be uniform on {-1, 0, 1} and R = S². Then Cov(R, S) = 0 by symmetry, but R reveals whether S = 0, giving I(R;S) = H(R) = 0.918296… bit. This claim is *not* one of the five frozen formal targets, but it is formalized here as an exact statement: the covariance vanishes while the mutual information equals log₂ 3 - 2/3 = 0.9182958… bit, which is strictly positive.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 1,
-      "digest": "a833a245b5dd6172501d674fb0cd4e4c5d2e9238dd00a1257728ab27e1bf4d19",
-      "doi": "10.5281/zenodo.21968337",
+      "digest": "aa86a1277f0c0d0e75451642479732144efd66aa62a0ce684471537e0782ba81",
+      "doi": "10.5281/zenodo.21971043",
       "external_validation": "not-recorded",
       "imports": [
         "PaperFormalization.Claims"
@@ -4517,7 +4517,7 @@
         "paper_target": "",
         "source_decode_replacements": 0
       },
-      "paper_url": "https://doi.org/10.5281/zenodo.21968337",
+      "paper_url": "https://doi.org/10.5281/zenodo.21971043",
       "path": "series/ICC/PaperFormalization/ZeroCovariance.lean",
       "record_id": "series-icc-paperformalization-zerocovariance",
       "source_sha256": "4990ab3d81b4209ec1247a30df9989f2d5313a4abd1a8be557a37db133b92ccd",

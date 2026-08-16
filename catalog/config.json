@@ -13,13 +13,23 @@
     "releases/2026-08-08/The_D-Score_Snapshot_Alignment_Theorem/lean/SnapshotAlignment.lean": "10.5281/zenodo.21855724",
     "releases/2026-08-08/The_Ecopoietic_Hedge/lean/EcopoieticHedge.lean": "10.5281/zenodo.21855726",
     "releases/2026-08-08/The_Scheduler_Free-Energy_Certificate/lean/SchedulerFreeEnergy.lean": "10.5281/zenodo.21855731",
+    "series/ACC/AxiomCheck.lean": "10.5281/zenodo.21968301",
+    "series/ACC/PaperFormalization.lean": "10.5281/zenodo.21968301",
+    "series/ACC/PaperFormalization/Dominance.lean": "10.5281/zenodo.21968301",
+    "series/ACC/PaperFormalization/Mixture.lean": "10.5281/zenodo.21968301",
+    "series/ACC/PaperFormalization/NullMartingale.lean": "10.5281/zenodo.21968301",
+    "series/ACC/PaperFormalization/Prior.lean": "10.5281/zenodo.21968301",
+    "series/ACC/PaperFormalization/Wald.lean": "10.5281/zenodo.21968301",
+    "series/ACC/PaperFormalization/Witnesses.lean": "10.5281/zenodo.21968301",
     "series/AfforestationStewardship.lean": "10.5281/zenodo.21168224",
+    "series/CSHC/AxiomCheck.lean": "10.5281/zenodo.21968331",
+    "series/CSHC/CognitiveSwitchingHysteresis.lean": "10.5281/zenodo.21968331",
     "series/CapacityHarmonization.lean": "10.5281/zenodo.21168241",
     "series/CertificationComplexity.lean": "10.5281/zenodo.20777059",
     "series/CorridorStewardship.lean": "10.5281/zenodo.20777069",
     "series/DeadlineCarnot.lean": "10.5281/zenodo.21609934",
-    "series/DualCorridor.lean": "10.5281/zenodo.21686446",
     "series/DissipativeGeneralization.lean": "10.5281/zenodo.20982959",
+    "series/DualCorridor.lean": "10.5281/zenodo.21686446",
     "series/EcopoieticOrdering.lean": "10.5281/zenodo.21327072",
     "series/EcopoieticSuccession.lean": "10.5281/zenodo.21327072",
     "series/ForestNucleation.lean": "10.5281/zenodo.20982979",
@@ -28,18 +38,46 @@
     "series/GaianMutualismSelection.lean": "10.5281/zenodo.21609942",
     "series/HarmonicEarlyWarning.lean": "10.5281/zenodo.21327070",
     "series/HarmonicValuation.lean": "10.5281/zenodo.20777065",
+    "series/ICC/AxiomCheck.lean": "10.5281/zenodo.21968337",
+    "series/ICC/PaperFormalization.lean": "10.5281/zenodo.21968337",
+    "series/ICC/PaperFormalization/ChainRule.lean": "10.5281/zenodo.21968337",
+    "series/ICC/PaperFormalization/Claims.lean": "10.5281/zenodo.21968337",
+    "series/ICC/PaperFormalization/Entropy.lean": "10.5281/zenodo.21968337",
+    "series/ICC/PaperFormalization/ErasureFamily.lean": "10.5281/zenodo.21968337",
+    "series/ICC/PaperFormalization/ZeroCovariance.lean": "10.5281/zenodo.21968337",
     "series/KSCT.lean": "10.5281/zenodo.20982961",
     "series/KZSLTReprove.lean": "10.5281/zenodo.21327040",
     "series/KibbleZurekSpeedLimit.lean": "10.5281/zenodo.21327040",
-    "series/ManipulationProofWeighting.lean": "10.5281/zenodo.21609945",
     "series/MELT.lean": "10.5281/zenodo.20982975",
     "series/MIST.lean": "10.5281/zenodo.20982957",
+    "series/ManipulationProofWeighting.lean": "10.5281/zenodo.21609945",
     "series/MutualistCoestablishment.lean": "10.5281/zenodo.21327074",
+    "series/PCR/AxiomCheck.lean": "10.5281/zenodo.21968347",
+    "series/PCR/PaperFormalization.lean": "10.5281/zenodo.21968347",
+    "series/PCR/PaperFormalization/Cantelli.lean": "10.5281/zenodo.21968347",
+    "series/PCR/PaperFormalization/Model.lean": "10.5281/zenodo.21968347",
+    "series/PCR/PaperFormalization/NonVacuity.lean": "10.5281/zenodo.21968347",
+    "series/PCR/PaperFormalization/Targets.lean": "10.5281/zenodo.21968347",
+    "series/PCR/PaperFormalization/TwoPoint.lean": "10.5281/zenodo.21968347",
     "series/PlasticityVitrification.lean": "10.5281/zenodo.21609947",
+    "series/RC/AxiomCheck.lean": "10.5281/zenodo.21968361",
+    "series/RC/PaperFormalization.lean": "10.5281/zenodo.21968361",
     "series/S6_CognitionLearning/CognitiveThroughput.lean": "10.5281/zenodo.20763323",
     "series/S6_CognitionLearning/DissipativeGeneralization.lean": "10.5281/zenodo.20982958",
     "series/S6_CognitionLearning/HarmonizedDescent.lean": "10.5281/zenodo.21002784",
     "series/S6_CognitionLearning/MELT.lean": "10.5281/zenodo.20982974",
+    "series/SBB/AxiomCheck.lean": "10.5281/zenodo.21968383",
+    "series/SBB/PaperFormalization.lean": "10.5281/zenodo.21968383",
+    "series/SBB/PaperFormalization/Algebra.lean": "10.5281/zenodo.21968383",
+    "series/SBB/PaperFormalization/Defs.lean": "10.5281/zenodo.21968383",
+    "series/SBB/PaperFormalization/Ensemble.lean": "10.5281/zenodo.21968383",
+    "series/SBB/PaperFormalization/Witnesses.lean": "10.5281/zenodo.21968383",
+    "series/SSBC/AxiomCheck.lean": "10.5281/zenodo.21968480",
+    "series/SSBC/PaperFormalization.lean": "10.5281/zenodo.21968480",
+    "series/SSBC/PaperFormalization/Certificate.lean": "10.5281/zenodo.21968480",
+    "series/SSBC/PaperFormalization/Defs.lean": "10.5281/zenodo.21968480",
+    "series/SSBC/PaperFormalization/Hall.lean": "10.5281/zenodo.21968480",
+    "series/SSBC/PaperFormalization/Witnesses.lean": "10.5281/zenodo.21968480",
     "series/SymbioticRiskPremium.lean": "10.5281/zenodo.21327066",
     "series/SymbioticSpeedLimit.lean": "10.5281/zenodo.21609949",
     "series/TCT.lean": "10.5281/zenodo.20982967",
@@ -58,7 +96,12 @@
       "id": "carbon-continuity-after-wildfire",
       "paper_target": "releases/2026-08-08/Carbon_Continuity_After_Wildfire/paper.pdf",
       "summary": "A model-scoped two-pool framework for post-wildfire carbon continuity with an exact regenerative-coupling threshold.",
-      "tags": ["carbon", "formal-verification", "regeneration", "wildfire"],
+      "tags": [
+        "carbon",
+        "formal-verification",
+        "regeneration",
+        "wildfire"
+      ],
       "tier": "working-corpus",
       "title": "Carbon Continuity After Wildfire"
     },
@@ -67,7 +110,12 @@
       "id": "robustness-before-performance",
       "paper_target": "releases/2026-08-08/Robustness_Before_Performance/paper.pdf",
       "summary": "A non-actuating governed robustness decision kernel with explicit evidence, authority, lineage, interval, trajectory, and release boundaries.",
-      "tags": ["decision-governance", "formal-verification", "robustness", "security"],
+      "tags": [
+        "decision-governance",
+        "formal-verification",
+        "robustness",
+        "security"
+      ],
       "tier": "flagship",
       "title": "Robustness Before Performance"
     },
@@ -76,7 +124,12 @@
       "id": "d-score-snapshot-alignment",
       "paper_target": "releases/2026-08-08/The_D-Score_Snapshot_Alignment_Theorem/paper.pdf",
       "summary": "An exact phasor identity and delay-variance coherence budget for asynchronous weighted biodiversity indicators.",
-      "tags": ["biodiversity", "formal-verification", "measurement", "temporal-alignment"],
+      "tags": [
+        "biodiversity",
+        "formal-verification",
+        "measurement",
+        "temporal-alignment"
+      ],
       "tier": "working-corpus",
       "title": "The D-Score Snapshot Alignment Theorem"
     },
@@ -85,7 +138,12 @@
       "id": "ecopoietic-hedge",
       "paper_target": "releases/2026-08-08/The_Ecopoietic_Hedge/paper.pdf",
       "summary": "A model-scoped robust-allocation theorem for two symbiont strains under unresolved environmental regimes.",
-      "tags": ["formal-verification", "restoration", "robust-optimization", "symbiosis"],
+      "tags": [
+        "formal-verification",
+        "restoration",
+        "robust-optimization",
+        "symbiosis"
+      ],
       "tier": "working-corpus",
       "title": "The Ecopoietic Hedge"
     },
@@ -94,21 +152,38 @@
       "id": "scheduler-free-energy-certificate",
       "paper_target": "releases/2026-08-08/The_Scheduler_Free-Energy_Certificate/paper.pdf",
       "summary": "A one-step equal-cost anti-starvation certificate and reproducible audit of a proposed research-selection policy.",
-      "tags": ["anti-starvation", "formal-verification", "research-operations", "scheduling"],
+      "tags": [
+        "anti-starvation",
+        "formal-verification",
+        "research-operations",
+        "scheduling"
+      ],
       "tier": "working-corpus",
       "title": "The Scheduler Free-Energy Certificate"
     },
     "series/DualCorridor.lean": {
       "id": "trees-cannot-cut",
-      "title": "Trees Cannot Cut \u2014 Circuit Rank as the Design Variable Reconciling Habitat Connectivity and Fuel Discontinuity",
+      "title": "Trees Cannot Cut — Circuit Rank as the Design Variable Reconciling Habitat Connectivity and Fuel Discontinuity",
       "summary": "An interior tree corridor has circuit rank 0 and therefore cannot disconnect the fuel matrix, however much land it occupies; compartment count is exactly mu + 1, and boundary anchoring buys b compartments at mu = 0.",
-      "tags": ["corridors", "wildfire", "circuit-rank", "alexander-duality", "landscape-ecology", "s5"],
+      "tags": [
+        "corridors",
+        "wildfire",
+        "circuit-rank",
+        "alexander-duality",
+        "landscape-ecology",
+        "s5"
+      ],
       "paper_target": "Landscape Ecology"
-    },    "Bridge_BiosphereProductivity.lean": {
+    },
+    "Bridge_BiosphereProductivity.lean": {
       "doi": "10.5281/zenodo.20777118",
       "id": "biosphere-productivity-bridge",
       "summary": "The planetary Landauer dual linking biosphere productivity to the Intelligence Bound.",
-      "tags": ["biosphere", "intelligence-bound", "thermodynamics"],
+      "tags": [
+        "biosphere",
+        "intelligence-bound",
+        "thermodynamics"
+      ],
       "tier": "flagship",
       "title": "Intelligence Bound ↔ Biosphere Productivity"
     },
@@ -116,7 +191,11 @@
       "doi": "10.5281/zenodo.20467431",
       "id": "dendritic-corridor",
       "summary": "Graph-theoretic foundations for cost-minimizing dendritic conservation corridors.",
-      "tags": ["corridors", "ecology", "graph-theory"],
+      "tags": [
+        "corridors",
+        "ecology",
+        "graph-theory"
+      ],
       "tier": "flagship",
       "title": "Dendritic Corridor"
     },
@@ -124,43 +203,66 @@
       "doi": "10.5281/zenodo.19317982",
       "id": "intelligence-bound",
       "summary": "The formal spine: a thermodynamic ceiling on intelligence production under finite power.",
-      "tags": ["flagship", "information-theory", "thermodynamics"],
+      "tags": [
+        "flagship",
+        "information-theory",
+        "thermodynamics"
+      ],
       "tier": "spine",
       "title": "The Intelligence Bound"
     },
     "P1_DScore.lean": {
       "id": "d-score",
       "summary": "Formal foundations for a bounded biodiversity measurement score.",
-      "tags": ["biodiversity", "measurement"],
+      "tags": [
+        "biodiversity",
+        "measurement"
+      ],
       "tier": "flagship",
       "title": "D-Score"
     },
     "P3_Impossibility.lean": {
       "id": "mission-feasibility",
       "summary": "Conditional feasibility and impossibility results for conservation under bounded resources.",
-      "tags": ["feasibility", "governance"],
+      "tags": [
+        "feasibility",
+        "governance"
+      ],
       "title": "Conservation Feasibility"
     },
     "P4_ThermodynamicEconomics.lean": {
       "id": "thermodynamic-economics",
       "summary": "Conditional mathematical foundations for non-substitutable biodiversity capital.",
-      "tags": ["economics", "natural-capital"],
+      "tags": [
+        "economics",
+        "natural-capital"
+      ],
       "title": "Thermodynamic Economics"
     },
     "P5_SLSPT/IntelligenceBound.lean": {
       "summary": "A capacity bound showing how the attainable rate scales with available power and data while falling with per-unit thermodynamic cost.",
-      "tags": ["capacity", "shadow-price", "thermodynamics"],
+      "tags": [
+        "capacity",
+        "shadow-price",
+        "thermodynamics"
+      ],
       "title": "SLSPT Capacity Bound"
     },
     "P5_SLSPT/InverseSquare.lean": {
       "summary": "Formal properties of the inverse-square law used by the shadow-price tower: positivity, strict decrease, convexity, and divergence near zero.",
-      "tags": ["inverse-square", "shadow-price"],
+      "tags": [
+        "inverse-square",
+        "shadow-price"
+      ],
       "title": "Inverse-Square Shadow Price Law"
     },
     "P9_AI_Safety.lean": {
       "id": "ai-safety-quarantined",
       "summary": "Exploratory AI-safety module quarantined after a vacuity review; it is not part of the verified canon.",
-      "tags": ["ai-safety", "honesty-ledger"],
+      "tags": [
+        "ai-safety",
+        "honesty-ledger"
+      ],
       "tier": "working-corpus",
       "title": "AI Safety — Quarantined"
     }

@@ -1,0 +1,12 @@
+import PaperFormalization
+
+#print axioms Viridis.Run127.PaperFormalization.cantelli_capacity_certificate
+#print axioms Viridis.Run127.PaperFormalization.precautionary_rate_le_violation_budget
+#print axioms Viridis.Run127.PaperFormalization.capacity_reserve_fraction_eq
+#print axioms Viridis.Run127.PaperFormalization.positive_floor_sharp_two_point_counterexample
+#print axioms Viridis.Run127.PaperFormalization.mean_only_plugin_arbitrarily_unsafe
+#print axioms Viridis.Run127.PaperFormalization.cantelli_capacity_certificate_nonvacuous
+#print axioms Viridis.Run127.PaperFormalization.precautionary_rate_le_violation_budget_nonvacuous
+#print axioms Viridis.Run127.PaperFormalization.capacity_reserve_fraction_eq_nonvacuous
+#print axioms Viridis.Run127.PaperFormalization.positive_floor_sharp_two_point_counterexample_nonvacuous
+#print axioms Viridis.Run127.PaperFormalization.mean_only_plugin_arbitrarily_unsafe_nonvacuous

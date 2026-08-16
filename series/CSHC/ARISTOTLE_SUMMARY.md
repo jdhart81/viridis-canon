@@ -1,0 +1,14 @@
+# Summary of changes for run 37b63949-29a6-44fc-bdee-5a9348f6aba1
+All six named targets in `STATEMENT_CONTRACT.json` are now proved in `CognitiveSwitchingHysteresis.lean`, with no `sorry` remaining.
+
+**Statement fidelity.** The four definitions (`hDown`, `hUp`, `bandWidth`, `signedLoopIntegral`) and all six theorem statements (`threshold_order`, `band_width_identity`, `closed_loop_area_identity`, `bias_translation`, `directional_cost_recovery`, `cshc_nonvacuous`) are preserved verbatim in the contract namespace `Viridis.Cognition.CognitiveSwitchingHysteresis`; only the `sorry` proof bodies were replaced. Two mechanical, semantics-preserving adjustments were required for the frozen file to compile at all under Lean v4.28.0, and neither changes any name, type, hypothesis, or conclusion:
+1. `import Mathlib` was moved above the module comment — Lean requires imports at the very start of a file, so the frozen source as delivered was a hard syntax error.
+2. The four `def`s are marked `noncomputable`, since real-number division has no executable code in Mathlib and code generation otherwise fails. This suppresses only executable-code generation.
+
+**Build evidence.** Full default-target build succeeded: `✔ [8026/8027] Built CognitiveSwitchingHysteresis` / `Build completed successfully (8027 jobs)`, zero errors and no warnings from the module. Toolchain `leanprover/lean4:v4.28.0` (`Lean (version 4.28.0, x86_64-unknown-linux-gnu, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b, Release)`); the Mathlib tree built against is at revision `8f9d9cff6bd728b17a24e163c9402775d9e6a365`, matching the contract. Mathlib is supplied as a locally materialised package pinned at that revision, so `lake` emits an informational `manifest out of date: source kind (git/path) of dependency 'mathlib' changed` notice; this is package-source bookkeeping, not a build error.
+
+**Axiom check.** `AxiomCheck.lean` was elaborated (exit code 0); each of the six theorems reports `depends on axioms: [propext, Classical.choice, Quot.sound]` — exactly the allowed set, with no `sorryAx` and no other axiom. The verbatim output is saved to `AXIOM_CHECK_OUTPUT.txt`, and the full evidence record to `BUILD_EVIDENCE.md`.
+
+**Escape-hatch scan.** A search of `CognitiveSwitchingHysteresis.lean` and `AxiomCheck.lean` for `sorry`, `admit`, `sorryAx`, `axiom`, `implemented_by`, `native_decide`, `unsafe`, `extern`, `partial`, and `csimp` returns only the six intended `#print axioms` lines in `AxiomCheck.lean`. No new axioms were introduced.
+
+**Constraints honoured.** No Git command was run: no commit, branch, push, or remote/external mutation. Only project and evidence files were written. This artefact is a formal-proof result only: it asserts no empirical validation, reconciliation, ledger or canon admission, publication readiness, or publication authority, and it does not clear the separate classification state `HOLD_SIGNIFICANCE_NONTRIVIALITY_NOT_INDEPENDENTLY_CLEARED`.

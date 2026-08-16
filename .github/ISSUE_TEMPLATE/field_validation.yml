@@ -1,0 +1,48 @@
+name: Field validation
+description: Propose or report an empirical test of a Viridis research result.
+title: "[Field validation]: "
+body:
+  - type: input
+    id: research
+    attributes:
+      label: Research DOI or theorem
+      description: Identify the exact release and claim being tested.
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Validation question and falsifier
+      description: State what observation would support or contradict the proposed use.
+    validations:
+      required: true
+  - type: textarea
+    id: protocol
+    attributes:
+      label: Protocol
+      description: Sampling, controls, units, analysis, uncertainty, and stopping rule.
+    validations:
+      required: true
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Data provenance, consent, and rights
+      description: Explain collection authority, privacy, cultural context, and sharing license.
+    validations:
+      required: true
+  - type: textarea
+    id: limits
+    attributes:
+      label: Limitations and safety
+      description: Identify known biases, affected communities, risks, and human-review needs.
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundary
+    attributes:
+      label: Evidence boundary
+      options:
+        - label: I understand that a Lean proof does not establish field validity or ecological outcome.
+          required: true
+        - label: I have the right to share every submitted data artifact.
+          required: true

@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "4b89301424a2fe8ce06def1c8bf9674f459d5d43f4cc3eac2a028c7a04bc4f31",
+  "catalog_digest": "0349ab696a0e2b0fff5c7f91c38cf339c12a36f35967db02073f1aa44b22795d",
   "concept_doi": "10.5281/zenodo.19317982",
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "human_publish_gate": true,
@@ -1371,6 +1371,340 @@
       "visibility": "public"
     },
     {
+      "abstract": "Auxiliary algebra for the Run-125 formalization Projector algebra, the exact inverse of I + κ P, the quadratic form of that inverse, the identity trace P = rank P for idempotent matrices, existence of unit kernel vectors in the rank-deficient case, and the combinatorial core of the Ky Fan bound.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "0d736fef51418e4589d66e1dc79fc4fdd4fbddf34e42abba15358cd2b53d4069",
+      "doi": "10.5281/zenodo.21968383",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Defs"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run125.PaperFormalization",
+      "lemma_count": 0,
+      "line_count": 200,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968383",
+      "path": "series/SBB/PaperFormalization/Algebra.lean",
+      "record_id": "series-sbb-paperformalization-algebra",
+      "source_sha256": "f5bb8d8546d54f765983d669e9c27f39ffa02eef8fcba70fcbb3b034b424f6a7",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SBB/PaperFormalization/Algebra.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 15 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 15,
+      "tier": "working-corpus",
+      "title": "Algebra",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "65599a75fd2ba16fe681af4c6a18417138ab41b4dd9b17976be01d9deab186b8",
+      "doi": "10.5281/zenodo.21968301",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "AxiomCheck",
+      "lemma_count": 0,
+      "line_count": 10,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "path": "series/ACC/AxiomCheck.lean",
+      "record_id": "series-acc-axiomcheck",
+      "source_sha256": "0bde993fe0cc7f49e171ee39bc171f7eebc4c9dcf82fa15b9b47e7a9b0e38133",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ACC/AxiomCheck.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Axiom Check",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "8bb90f54d9f22dddd5d0268fba0014e88d5fdea743007d4a6757d828cfb81c4d",
+      "doi": "10.5281/zenodo.21968331",
+      "external_validation": "not-recorded",
+      "imports": [
+        "CognitiveSwitchingHysteresis"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "AxiomCheck",
+      "lemma_count": 0,
+      "line_count": 8,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968331",
+      "path": "series/CSHC/AxiomCheck.lean",
+      "record_id": "series-cshc-axiomcheck",
+      "source_sha256": "ae024581ff13d2954130f1730ce3e93126f6212b6e4bb1e0b1c61097ac8a36f2",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/CSHC/AxiomCheck.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Axiom Check",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "065f13598d0ee28bfeffc9ef163bac1489d7880f9349acd3e99e33e83be6a7f5",
+      "doi": "10.5281/zenodo.21968337",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "AxiomCheck",
+      "lemma_count": 0,
+      "line_count": 12,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968337",
+      "path": "series/ICC/AxiomCheck.lean",
+      "record_id": "series-icc-axiomcheck",
+      "source_sha256": "125bc88e436bfd3183c27cf830f8f139dc48e987a9af6f40225daefafd689297",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ICC/AxiomCheck.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Axiom Check",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "3ef019e2c3c1160cdfd8ecb1e64cb00d2a7ad52b978c8a27656f1768683fab53",
+      "doi": "10.5281/zenodo.21968347",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "AxiomCheck",
+      "lemma_count": 0,
+      "line_count": 12,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968347",
+      "path": "series/PCR/AxiomCheck.lean",
+      "record_id": "series-pcr-axiomcheck",
+      "source_sha256": "8fcec7d339d0e202fd38fc69a77777c2d44d154b6fd94f5fc7bbd9d80feb9e2d",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/PCR/AxiomCheck.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Axiom Check",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "3ff442c9f2d88a9795d8c8e58e669c7b1cc67ce57e635d367bda8a8e10d93585",
+      "doi": "10.5281/zenodo.21968361",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "AxiomCheck",
+      "lemma_count": 0,
+      "line_count": 15,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968361",
+      "path": "series/RC/AxiomCheck.lean",
+      "record_id": "series-rc-axiomcheck",
+      "source_sha256": "ddabe946805cd3913a8088135a3341a466467567c128645a9b487c7e8416631b",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/RC/AxiomCheck.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Axiom Check",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "cc6951f14e0651560d50e890b0280b119de56a57ab23340fa886fc4e4d5ddb77",
+      "doi": "10.5281/zenodo.21968383",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization",
+        "PaperFormalization.Witnesses"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "AxiomCheck",
+      "lemma_count": 0,
+      "line_count": 16,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968383",
+      "path": "series/SBB/AxiomCheck.lean",
+      "record_id": "series-sbb-axiomcheck",
+      "source_sha256": "6aa9dadb059b8c33fa676a6104825f99b3a86cada83eb8f9117f7cfde7bfa2db",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SBB/AxiomCheck.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Axiom Check",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "8c555e54033a4bac76388ad860d06fa3d1def66e637b6040c7da318cd72c022b",
+      "doi": "10.5281/zenodo.21968480",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "AxiomCheck",
+      "lemma_count": 0,
+      "line_count": 14,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968480",
+      "path": "series/SSBC/AxiomCheck.lean",
+      "record_id": "series-ssbc-axiomcheck",
+      "source_sha256": "2e81aa7d30dc0c519c887c1726478bb7875ec75052f1633e0be76cc30dfc3c83",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SSBC/AxiomCheck.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Axiom Check",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Cantelli's one-sided inequality (lower tail) The paper's Theorem 1 is a specialization of the classical Cantelli inequality. Mathlib (at the revision pinned by this project) contains Chebyshev's inequality but not Cantelli's one-sided inequality, so we prove the version we need here.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "80dbcb3dee8ae3272f73ab0f153d9bc5bdcf478e929d922c910afb909f2b428a",
+      "doi": "10.5281/zenodo.21968347",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run127.PaperFormalization",
+      "lemma_count": 0,
+      "line_count": 81,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968347",
+      "path": "series/PCR/PaperFormalization/Cantelli.lean",
+      "record_id": "series-pcr-paperformalization-cantelli",
+      "source_sha256": "53512d1e556433b8aeea19d683a15d692c3e421eb72b6166066c7e8f60544bb6",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/PCR/PaperFormalization/Cantelli.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 1 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 1,
+      "tier": "working-corpus",
+      "title": "Cantelli",
+      "visibility": "public"
+    },
+    {
       "abstract": "Capacity Harmonization Theorem (CHT) — clean analytic core Viridis Canon · Nightly Run-064 (2026-06-09) · Intelligence Capacity Framework Area [09] Intelligence Capacity Framework × ☯️ Alignment (\"Reweaving the Tapestry\": emergence, wu wei, harmonization, paradox). CHT is the capacity/ICF-framed member of the shadow-price water-filling family (Runs 064/065/068/069/074/079/082/083). Its DISTINCTIVE, non-redundant content — not present in the already-verified family members (GHT-082, MWT-069, AST-083) — is the *Forcing / Harmonizing Duality* tied directly to the Intelligence Bound: saturated (at-ceiling) yield is LINEAR, g_i(r)=c_i r with c_i = D_i/(k_B T ln 2), so its marginal is constant and bang-bang \"forcing\" is optimal; an interior \"harmonized\" optimum exists ONLY below the ceiling, where the yield is strictly concave. Real hardware runs 10^19–10^20× below the Landauer limit, so for all practical intelligence harmonizing (wu wei) strictly dominates forcing — bang-bang is optimal only at an unreachable limit. MODEL (concrete, finite-dimensional, NON-VACUOUS). A conserved budget R is split across two subsystems as (r₁, r₂) = (x, R − x). Each subsystem yields capacity through a strictly concave quadratic g_i(r) = c_i · r − (k_i / 2) · r² (k_i > 0 below the ceiling). Aggregate instantaneous capacity: ICB(x) = g₁(x) + g₂(R − x) c₁ x − (k₁/2) x² + c₂ (R − x) − (k₂/2)(R − x)². Equalizing the active marginals g₁'(x) = g₂'(R − x) (the equimarginal / Ideal-Free-Distribution / constant-costate condition — wu wei made quantitative) gives the unique emergent shadow-price allocation…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
@@ -1453,6 +1787,43 @@
       "visibility": "public"
     },
     {
+      "abstract": "The Seed-Source Bottleneck Certificate — formal statements of the frozen targets This file formalizes the preregistered model of SEALED_paper.tex (Run-130) and the four frozen formal targets listed in STATEMENT_CONTRACT.md: C1 : seed_routing_common_fraction_eq_min_cut_ratio C2 : seed_routing_feasible_iff_cut_conditions C3 : capacity_outside_active_bottleneck_irrelevant C4 : scenario_intersection_certificate_le_each_scenario The preregistered model (paper, Section 2) σ is the finite set I of restoration sites, τ is the finite set J of seed sources, d : σ → ℝ are the site demands (the paper assumes d i > 0), s : τ → ℝ are the source capacities (the paper assumes s j ≥ 0), and E : τ → σ → Bool is the frozen eligibility graph E ⊆ J × I (E j i = true means the transfer (j, i) is eligible). A routing x : τ → σ → ℝ is admissible for the common fulfillment fraction lam when it is nonnegative, supported on E, satisfies the supply constraints (paper eq. 1) and the demand constraints (paper eq. 2). This is IsFeasibleFraction. certificate E d s is the right-hand side of the boxed equation (3) of the paper, min {1, min_{∅ ≠ U ⊆ I} S(N(U))/D(U)}, realized as the minimum of the finite set of reals {1} ∪ {S(N(U))/D(U) : ∅ ≠ U ⊆ I}. Non-vacuity witnesses for all four targets are in PaperFormalization/Witnesses.lean.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 3,
+      "digest": "b9c7cacccb4ad52a43a27b7aceb957484e2971b40438c1da2011930704f6ea76",
+      "doi": "10.5281/zenodo.21968480",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Hall"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run130",
+      "lemma_count": 15,
+      "line_count": 317,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968480",
+      "path": "series/SSBC/PaperFormalization/Certificate.lean",
+      "record_id": "series-ssbc-paperformalization-certificate",
+      "source_sha256": "01c67384af895fd37d9415686c9d1c6d8e6bba9ddb9630f935afc617a2431f09",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SSBC/PaperFormalization/Certificate.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 22 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 7,
+      "tier": "working-corpus",
+      "title": "Certificate",
+      "visibility": "public"
+    },
+    {
       "abstract": "Certification Complexity Theorem (CCT) — Run 050, Aristotle Forge submission PROVENANCE / WELL-POSEDNESS NOTE CANON_BACKLOG Rank 4 (Run 050) originally named two complexity-class targets, cert_monoid_word_problem_in_P and confluence_implies_poly_certification. Both assert membership in the class P, which is NOT encodable as a well-posed non-vacuous Lean theorem under Mathlib pin 8f9d9cff (no cost model / complexity-class layer). Justin (2026-06-17) APPROVED the reframe: verify the three *physical* CCT results instead and record the χ∈P / poly-time claims as prose-rigorous (known rewriting-theory result), NOT canon-Lean targets. The originally STAGED skeleton wrote two of the three physical targets as hypothesis-equals-conclusion identities (exact hrate), which are VACUOUS and violate the forge non-vacuity invariant. They are RESTATED here as genuinely non-vacuous theorems carrying the same physical content (as the staging brief instructed: \"restate against the monitor model before submission\"): T1 certification_bound — the certification rate is bounded by a strictly POSITIVE Landauer-priced ceiling (positivity is the non-trivial content; the IB self-applied to the monitor). T2 certified_bit_budget — a genuine inequality-chain derivation: rate bound + finite horizon + conserved E_cert = P_mon·T ⟹ total certified information is capped at C ≤ E_cert·D/εL. T3 landauer_certification_floor — the certification energy floor εL·ln(1/φ) is STRICTLY POSITIVE for relative resolution φ∈(0,1), and any E_cert meeting it is itself strictly positive (irreducible thermodynamic price of…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
@@ -1487,6 +1858,117 @@
       "theorem_count": 3,
       "tier": "working-corpus",
       "title": "Certification Complexity",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Chain rules and nonnegativity for the finite-alphabet information measures The information quantities of PaperFormalization.Entropy are defined in divergence form. Here we prove: the marginalisation lemmas relating the six marginals of a JointLaw; the *entropy-algebra* formulas for each information quantity (I_RY_eq, I_RS_eq, I_RY_given_S_eq, I_RS_given_Y_eq, H_Y_given_S_eq, H_Y_given_RS_eq); nonnegativity of I(R;Y), I(R;S|Y) (Gibbs' inequality) and of H(Y|R,S).",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "a941bb7124e30a04cb78471317c7e568ee69acec045a6897b27f1c7c65db2912",
+      "doi": "10.5281/zenodo.21968337",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Entropy"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run126.PaperFormalization",
+      "lemma_count": 31,
+      "line_count": 397,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968337",
+      "path": "series/ICC/PaperFormalization/ChainRule.lean",
+      "record_id": "series-icc-paperformalization-chainrule",
+      "source_sha256": "40f7f627bc08f56eb91758d2d267737aa8c03d342fcef183c3aeffd1e24f7734",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ICC/PaperFormalization/ChainRule.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 40 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 9,
+      "tier": "working-corpus",
+      "title": "Chain Rule",
+      "visibility": "public"
+    },
+    {
+      "abstract": "The frozen Run-126 claims C1–C4 This file states and proves the first four named targets of STATEMENT_CONTRACT.md: mutual_information_chain_balance (C1, Theorem 1, Eq. 1); forbidden_proxy_capacity_ceiling (C2, Corollary 1, Eq. 2); capacity_ceiling_slack_decomposition (C3, Theorem 1, Eq. 3); perfect_invariance_target_proxy_collapse (C4, Boundary cases). Target C5 (erasure_family_tightness, Proposition 1) is in PaperFormalization.ErasureFamily. Each claim is followed by explicit non-vacuity witnesses: concrete finite joint laws for which the hypotheses hold and all quantities appearing in the statement are computed.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "610f780ef2d0bf5790e83d8814408d6970e88baffa9f53452e845a475a68d051",
+      "doi": "10.5281/zenodo.21968337",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.ChainRule"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run126.PaperFormalization",
+      "lemma_count": 4,
+      "line_count": 287,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968337",
+      "path": "series/ICC/PaperFormalization/Claims.lean",
+      "record_id": "series-icc-paperformalization-claims",
+      "source_sha256": "bf9016e22d051c6abed92ef19d052f7674f097dc4ae799a5e17674ffb9cdf6e9",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ICC/PaperFormalization/Claims.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 17 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 13,
+      "tier": "working-corpus",
+      "title": "Claims",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Run 131 cognitive switching hysteresis certificate Statement contract VRS-FORMAL-TARGET-CONTRACT-1 (run 131). Every definition and theorem statement below is preserved verbatim from the frozen contract; only the proof bodies have been supplied.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "3a2da5753ebd9fef733a0194c87ebcad47e64de076338468f4f86d298efd04c9",
+      "doi": "10.5281/zenodo.21968331",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Cognition.CognitiveSwitchingHysteresis",
+      "lemma_count": 0,
+      "line_count": 73,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968331",
+      "path": "series/CSHC/CognitiveSwitchingHysteresis.lean",
+      "record_id": "series-cshc-cognitiveswitchinghysteresis",
+      "source_sha256": "842943f1da4b1dc2e55b07d2f9eb0edbeffe381e82bc44b51cabd08296295412",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/CSHC/CognitiveSwitchingHysteresis.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 7 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 7,
+      "tier": "working-corpus",
+      "title": "Cognitive Switching Hysteresis",
       "visibility": "public"
     },
     {
@@ -1601,6 +2083,80 @@
       "visibility": "public"
     },
     {
+      "abstract": "Run-125 \"Symbiotic Bandwidth Bound\" — definitions This file fixes the formal counterparts of the model of the sealed paper (SEALED_paper.tex, Section \"Model and assumptions\"). Everything happens in ℝ^m, represented as Fin m → ℝ, with matrices Matrix (Fin m) (Fin m) ℝ. The Euclidean structure is the standard dot product; sqNorm_eq_euclideanNorm_sq below certifies that our sqNorm really is the squared Euclidean norm ‖·‖².",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 1,
+      "digest": "4d1a13a1eee619ac8b017238e04397e2c17db0c74b5d806ba997d4b5d2a105da",
+      "doi": "10.5281/zenodo.21968383",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run125.PaperFormalization",
+      "lemma_count": 0,
+      "line_count": 102,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968383",
+      "path": "series/SBB/PaperFormalization/Defs.lean",
+      "record_id": "series-sbb-paperformalization-defs",
+      "source_sha256": "c0642d03626a7f4e966ce2ef4d3cb3d01903aa0f7de0bfbec88b3559e52a85e3",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SBB/PaperFormalization/Defs.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 5,
+      "tier": "working-corpus",
+      "title": "Defs",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "2fe5a7847d85edf46ea5ac7dfba64e8649c70a38e89f634b4a9d4419efc03f68",
+      "doi": "10.5281/zenodo.21968480",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Defs",
+      "lemma_count": 0,
+      "line_count": 1,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968480",
+      "path": "series/SSBC/PaperFormalization/Defs.lean",
+      "record_id": "series-ssbc-paperformalization-defs",
+      "source_sha256": "1015f8f4676a27ea63780b30cc916712232857097b2bdf635dc61cb949c107fb",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SSBC/PaperFormalization/Defs.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Defs",
+      "visibility": "public"
+    },
+    {
       "abstract": "The Dissipative Generalization Theorem (DGT) — \"the Annealer\" Viridis Aristotle Forge · nightly Run 075 · [06] Entropy-Driven Learning × 🔥 Thermodynamic 17th self-application of the Intelligence Bound (learning-time companion to Run-073 \"the Mirror\"). This file states the throttled CLEAN CORE of the DGT for machine verification. ACCEPTANCE: discharge every sorry; preserve every named statement VERBATIM; axiom audit limited to {propext, Classical.choice, Quot.sound}; every theorem must be NON-VACUOUS. Modeling layer (finite-dim ℝ; the cryptic/predictive split of stored information after Still–Crooks \"thermodynamics of prediction\"): • S_mem = total stored information I(W;D) (Goldt–Seifert dissipated bits; Xu–Raginsky bound) • E_pred = predictive part of the stored information (generalizes) • χ_L = cryptic part / \"nostalgia\" (memorized noise unseen data never reads) Still–Crooks decomposition: S_mem = E_pred + χ_L. NON-VACUITY is stated per theorem below; each hypothesis named in a theorem is load-bearing (positivity / ordering / decomposition assumptions are genuinely consumed, never decorative).",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
@@ -1675,6 +2231,43 @@
       "visibility": "public"
     },
     {
+      "abstract": "C3: component dominance and the late-change evidence penalty This file formalizes Equations (5)–(6) of SEALED_paper.tex: M_n ≥ π_ν ∏_{i=ν}^{n} Λ_i (Equation 5), hence the mixture alarm time is never later than the alarm time of the embedded change-time-ν component; a_ν = log(1/(α π_ν)) = log(1/α) + log[ν(ν+1)] (Equation 6), whose late-change part log[ν(ν+1)] is asymptotically 2 log ν. The alarm time is formalized by firstAlarm f c, the first index at which the path f reaches the level c, valued in ℕ∞ so that \"never alarms\" is represented by ⊤.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "e918190ee57fc6bb19a16cbf34cbad984f79731dde2aa196c8c374ec1d7c9ba5",
+      "doi": "10.5281/zenodo.21968301",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Mixture"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run129.PaperFormalization",
+      "lemma_count": 5,
+      "line_count": 177,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "path": "series/ACC/PaperFormalization/Dominance.lean",
+      "record_id": "series-acc-paperformalization-dominance",
+      "source_sha256": "ea47f10d376cd6a3f2a8180a48f15f4f4b5f189e632a1991230c8341157fa24f",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ACC/PaperFormalization/Dominance.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 8 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 3,
+      "tier": "working-corpus",
+      "title": "Dominance",
+      "visibility": "public"
+    },
+    {
       "abstract": "The Ecopoietic Succession-Ordering Theorem (ESOT) — combinatorial core Nightly science-engine Run 095 — [15] Ecoterraforming × Thermodynamic (\"the Mason\"). DEDICATED COMBINATORIAL RUN. The clean analytic core (R1/R4/R5/R6) was landed 2026-07-11 in EcopoieticSuccession.lean. This module discharges the two pieces that were DEFERRED there as genuine combinatorial-optimization statements: R2 greedy / minimax build-order optimality under monotone facilitation, and R3 the θ-reachable-closure FIXPOINT and the reachability wall (target biosphere reachable ⇔ drive budget clears the minimax bottleneck B⋆). Model. Layers indexed by a finite type L. Layer k has bare barrier Psi0 k. An established set S lowers k's barrier by ∑_{j∈S} f j k, with f ≥ 0 (MONOTONE facilitation — the load-bearing premise): residual Psi0 f k S = Psi0 k - ∑_{j∈S} f j k. (R1) A layer is *ignitable* under drive budget θ iff its residual barrier ≤ θ. θ-reachable closure = least fixpoint of \"add every layer with residual ≤ θ\", reached by iterating the extensive, monotone one-step operator reachStep. A build ORDER is a permutation of the not-yet-established layers; its makespan bottleneck is the largest residual barrier encountered along the build (obAux), and Bstar = min over orders. Named theorems (this file): residual_antitone_in_established (R1 monotonicity) reachStep_extensive reachStep_mono_in_established (monotone premise, load-bearing) reachStep_mono_in_budget reachClosure_extensive reach_closure_is_fixpoint (θ-reachable-closure FIXPOINT) reach_closure_monotone_in_budget (verified numerically in the run)…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 3,
@@ -1746,6 +2339,117 @@
       "theorem_count": 11,
       "tier": "working-corpus",
       "title": "Ecopoietic Succession",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Existence of a sorted spectral decomposition The hypotheses of C5 (top_subspace_mean_cost) ask for an orthogonal U and an antitone lam with C = U diag(lam) Uᵀ. The next theorem shows that this data exists for *every* symmetric C, so those hypotheses restrict nothing.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "81ff7ca46f5fe7d5b3fe380d1708a9ffd56f8299344b83fb1b1aea2b4af0f62a",
+      "doi": "10.5281/zenodo.21968383",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Algebra"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run125.PaperFormalization",
+      "lemma_count": 0,
+      "line_count": 189,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968383",
+      "path": "series/SBB/PaperFormalization/Ensemble.lean",
+      "record_id": "series-sbb-paperformalization-ensemble",
+      "source_sha256": "b1d4c7bb316dc694daaec7d2ca909d978dca83ff971aa057eca74f00a6f5121c",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SBB/PaperFormalization/Ensemble.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 16 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 16,
+      "tier": "working-corpus",
+      "title": "Ensemble",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Finite-alphabet Shannon information measures This file develops, from first principles, the discrete (finite-alphabet, base-two) Shannon information quantities used by the Run-126 paper \"The Invariance Capacity Ceiling: Forbidden-Proxy Alignment Caps Predictive Information\"*. Mathlib (at the revision pinned by this project) contains no discrete entropy or mutual information API, so everything used by the formalized claims is built here: Viridis.Run126.PaperFormalization.Hs : Shannon entropy H(p) = -∑ p log₂ p of a finite mass function; Viridis.Run126.PaperFormalization.JointLaw ρ η σ : a joint probability law of the triple (R, Y, S) on finite alphabets ρ, η, σ; its six marginals and the associated entropies; the information quantities I(R;Y), I(R;S), I(R;Y|S), I(R;S|Y), H(Y|S), H(Y|R,S), each defined in divergence form (as an expectation of a log-ratio), i.e. *not* defined by the entropy-algebra identities that the paper's Theorem 1 asserts; the chain-rule lemmas converting each divergence form into an entropy combination; nonnegativity of conditional mutual information and of conditional entropy, via a Gibbs / log-sum inequality proved here (Viridis.Run126.PaperFormalization.sum_mul_logb_le). Conventions: Real.logb 2 0 = 0, so a mass-zero outcome contributes 0 to every sum, which is the standard 0 log 0 = 0 convention of information theory.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 7,
+      "digest": "56a5238b00da83fad2e8eb679d6ddfa953e7923d3698b716e05116017d62f582",
+      "doi": "10.5281/zenodo.21968337",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run126.PaperFormalization",
+      "lemma_count": 20,
+      "line_count": 249,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968337",
+      "path": "series/ICC/PaperFormalization/Entropy.lean",
+      "record_id": "series-icc-paperformalization-entropy",
+      "source_sha256": "84edfd84d01ec967cc052475cc014d82b3bd833fd79fef0f4467ab2bf56d07d0",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ICC/PaperFormalization/Entropy.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 21 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 1,
+      "tier": "working-corpus",
+      "title": "Entropy",
+      "visibility": "public"
+    },
+    {
+      "abstract": "C5 — the tight erasure family (Proposition 1) Paper statement (Proposition 1, Eq. 5): let S and U be independent fair bits, let Y = (S, U), and let L reveal S with probability q and otherwise output an erasure symbol. For R = (U, L), I(R;S) = q, H(Y|S) = 1, I(R;Y) = 1 + q, so the ceiling I(R;Y) ≤ H(Y|S) + δ of Corollary 1 is tight for every q ∈ [0,1] bit. Formalization: the alphabets are ρ = Bool × Option Bool (the pair (U, L), with none the erasure symbol), η = Bool × Bool (the pair (S, U)) and σ = Bool (the proxy S), and the joint mass function is p (u,l) (y₁,y₂) s = ¼ · leak q l s when y₁ = s and y₂ = u, and 0 otherwise.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "686502dfbc08c4537c8ce96572754572ac7c3fa59dfff1d0113db5d861624bb8",
+      "doi": "10.5281/zenodo.21968337",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Claims"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run126.PaperFormalization",
+      "lemma_count": 25,
+      "line_count": 214,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968337",
+      "path": "series/ICC/PaperFormalization/ErasureFamily.lean",
+      "record_id": "series-icc-paperformalization-erasurefamily",
+      "source_sha256": "39d35338f29245f425ce570eead3e485337de95bdd0a3996e53a711310b77351",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ICC/PaperFormalization/ErasureFamily.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 27 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 2,
+      "tier": "working-corpus",
+      "title": "Erasure Family",
       "visibility": "public"
     },
     {
@@ -1931,6 +2635,43 @@
       "theorem_count": 5,
       "tier": "working-corpus",
       "title": "Grokking Nucleation",
+      "visibility": "public"
+    },
+    {
+      "abstract": "A capacitated Hall / Gale supply–demand theorem This file develops, from scratch, the network-flow ingredient that the sealed paper (SEALED_paper.tex, Run-130, \"The Seed-Source Bottleneck Certificate\") invokes as \"max-flow/min-cut\" in its proof sketch of Proposition 1. Mathlib (revision recorded in TOOLCHAIN.md) contains Hall's marriage theorem but no max-flow/min-cut theorem and no capacitated Hall condition, so the required statement is proved here directly, by induction on the total size of the bipartite ground sets. Everything in this file is stated for arbitrary Finsets A of sites and B of sources so that the induction can shrink both sides; the paper-level statements in PaperFormalization/Certificate.lean are the special case A = univ, B = univ.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 3,
+      "digest": "e23a73c1524532e2fd670fd865dae1aeef2c7384b84d99801f9931fd1f50407b",
+      "doi": "10.5281/zenodo.21968480",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run130.Hall",
+      "lemma_count": 16,
+      "line_count": 575,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968480",
+      "path": "series/SSBC/PaperFormalization/Hall.lean",
+      "record_id": "series-ssbc-paperformalization-hall",
+      "source_sha256": "0fe965f3e834715b8a734fed1d307bf569794bd198e3df2365006f7dbb58423d",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SSBC/PaperFormalization/Hall.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 18 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 2,
+      "tier": "working-corpus",
+      "title": "Hall",
       "visibility": "public"
     },
     {
@@ -2341,6 +3082,80 @@
       "visibility": "public"
     },
     {
+      "abstract": "The change-time mixture M_n of Run-129 This file formalizes the recursion of Equation (2) in SEALED_paper.tex: A_0 = 0, A_n = Λ_n (A_{n-1} + π_n), M_n = A_n + t_n. Everything in this file is *pathwise* (no measure theory): the accumulator mixAcc, the mixture mixture, nonnegativity, M_0 = 1, adaptedness, and the component dominance bound M_n ≥ π_ν ∏_{i=ν}^{n} Λ_i of Equation (5). Λ is the sequence of likelihood ratios Λ_n = dP₁/dP₀(X_n); it is an arbitrary sequence of functions here, and all distributional assumptions are made where needed.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "0defc40a133b7c862b2f6172665dfd582a3bf42c502c1e4dd03421a770b08f28",
+      "doi": "10.5281/zenodo.21968301",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Prior"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run129.PaperFormalization",
+      "lemma_count": 12,
+      "line_count": 190,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "path": "series/ACC/PaperFormalization/Mixture.lean",
+      "record_id": "series-acc-paperformalization-mixture",
+      "source_sha256": "68f860dfe39a314ae34f5cee29cad344f70971f560d47fbc88ec050afb5eae65",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ACC/PaperFormalization/Mixture.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 13 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 1,
+      "tier": "working-corpus",
+      "title": "Mixture",
+      "visibility": "public"
+    },
+    {
+      "abstract": "The Run-127 model: definitions and assumptions This file fixes the definitions used to state the frozen claims of the sealed paper The Precautionary Capacity Reserve* (Run-127). Paper objects formalized here: the fixed positive scalars P, k_B, T of the model premise r ≤ C(D) = P D / (k_B T ln 2) (bundled in RateModel); the model ceiling C (RateModel.ceiling), Eq. (1); the required capacity d(r) = (k_B T ln 2 / P) r (RateModel.requiredCapacity), Eq. (2); the strict violation event 𝒱(r) = {r > C(D)} (RateModel.violationEvent), Eq. (3); the Cantelli factor √((1-α)/α) (cantelliFactor); the two-moment capacity floor d_α = [μ - σ √((1-α)/α)]_+ (capacityFloor), Eq. (4); the certified rate r_α = P d_α / (k_B T ln 2) (RateModel.certifiedRate), Eq. (5); the mean plug-in ceiling r_μ = P μ / (k_B T ln 2) (RateModel.meanPlugInCeiling); the coefficient of variation CV(D) = σ / μ (coeffVar).",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 2,
+      "digest": "8ccf237c8e44ceb7b93c8887816a8558947c0fe53f4e83b563e77f7dcff27169",
+      "doi": "10.5281/zenodo.21968347",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run127.PaperFormalization",
+      "lemma_count": 11,
+      "line_count": 129,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968347",
+      "path": "series/PCR/PaperFormalization/Model.lean",
+      "record_id": "series-pcr-paperformalization-model",
+      "source_sha256": "ed2c79195e5aa25ee30b430d228f82573d88f207015aaf7c05390768bfef7866",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/PCR/PaperFormalization/Model.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 11 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Model",
+      "visibility": "public"
+    },
+    {
       "abstract": "The Mutualist Co-Establishment Theorem (MCET) — clean analytic core Nightly science-engine Run 096 — [11] Afforestation Systems x Symbiosis (\"the Matchmaker\"). 38th Intelligence-Bound self-application. Afforestation is a TWO-BODY co-establishment event: a plant p and its obligate microbial symbiont s must arrive together at sufficient JOINT density, or neither takes hold. The physical bridge is the mass-action exchange flux J_exch = kappa * n_p * n_s (bilinear in the two densities); a self-sustaining mutualistic nucleus is viable only when this flux covers the fixed free-energy cost Phi of maintaining it. That single inequality generates the theory below. This file states the clean, well-posed, single-proposition core of MCET. Combinatorial / measure-dependent pieces (the exact convex separatrix of the bounded obligate-mutualism ODE, ER-network percolation) are DEFERRED as they were for the Mason (Run 095) — this core is the mass-action / closed-form layer. Named theorems (this file), keyed to the run's boxed results: R1 coestablishment_feasible_iff_product_geq_threshold (product-law joint threshold) R1 coestablishment_obligacy_forces_both_positive (obligacy: Theta>0 ==> both partners needed) R1 log_separatrix_is_unit_slope_halfplane (additive-in-log-density barrier) R2 min_seeding_cost_ge_two_sqrt_cp_cs_theta (BOXED: C >= 2 sqrt(c_p c_s Theta), AM-GM lower bound) R2 optimal_coinoculation_achieves_min_cost (the bound is attained -> tightness) R2 optimal_coinoculation_equal_spend (optimum spends equally on each partner) R2 optimal_ratio_eq_inverse_cost_ratio (n_p*/n_s* =…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
@@ -2415,6 +3230,319 @@
       "visibility": "public"
     },
     {
+      "abstract": "Explicit non-vacuity witnesses For each frozen target we exhibit a concrete instance in which *all* hypotheses hold and the conclusion is not degenerate: cantelli_capacity_certificate_nonvacuous / precautionary_rate_le_violation_budget_nonvacuous: a nonnegative law with σ > 0, a strictly positive capacity floor, and a violation event of strictly positive probability (4/13), so the certificate bound ≤ α = 1/2 is a genuine, non-trivial bound on a nonempty event; capacity_reserve_fraction_eq_nonvacuous: both branches of the positive part are realized (a strictly positive certified fraction 1/2 and a clipped fraction 0); positive_floor_sharp_two_point_counterexample_nonvacuous: the positive-floor hypotheses are satisfiable, and the produced counterexample is exhibited; mean_only_plugin_arbitrarily_unsafe_nonvacuous: a law whose violation probability exceeds 999/1000 at the full mean plug-in rate.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 1,
+      "digest": "ea78e0ecffd83c7d5a346751e934e4167df6116fda4dd3e1d0bbbec3db2ce025",
+      "doi": "10.5281/zenodo.21968347",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Targets"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run127.PaperFormalization",
+      "lemma_count": 9,
+      "line_count": 160,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968347",
+      "path": "series/PCR/PaperFormalization/NonVacuity.lean",
+      "record_id": "series-pcr-paperformalization-nonvacuity",
+      "source_sha256": "d6b5721858c803d7860a165e128cf9b22f105060d05c323b08c0a9205017f285",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/PCR/PaperFormalization/NonVacuity.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 14 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 5,
+      "tier": "working-corpus",
+      "title": "Non Vacuity",
+      "visibility": "public"
+    },
+    {
+      "abstract": "C1 and C2: the null martingale property and the anytime (Ville) certificate This file formalizes the two certificate claims of SEALED_paper.tex, §2: C1 anytime_change_mixture_martingale: under the declared null, (M_n) is a nonnegative martingale with M_0 = 1 and E₀[M_n] = 1 for all n. C2 anytime_change_ville_certificate (Equation 4): P₀(ever alarming) ≤ α when the alarm threshold is 1/α. Explicit assumptions and scope The paper's null is: X₁, X₂, … iid P₀, P₁ ≪ P₀, and Λ_n = dP₁/dP₀(X_n), from which it records the only distributional consequence it ever uses, namely E₀[Λ_n ∣ ℱ_{n-1}] = 1. We take exactly that consequence (hcondΛ below) as the hypothesis, together with nonnegativity, adaptedness and integrability. This is a faithful abstraction of the paper's null: no dependence structure beyond the displayed conditional-mean-one identity is used anywhere in §2. PaperFormalization.Witnesses exhibits a genuinely iid Bernoulli likelihood-ratio model satisfying all of these hypotheses, so nothing here is vacuous.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "fca9640d2d72f35f05210f3a6a5c2d305969b180bdc014303c35782a03b29ce7",
+      "doi": "10.5281/zenodo.21968301",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Mixture"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run129.PaperFormalization",
+      "lemma_count": 1,
+      "line_count": 269,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "path": "series/ACC/PaperFormalization/NullMartingale.lean",
+      "record_id": "series-acc-paperformalization-nullmartingale",
+      "source_sha256": "76ba31a5b7b1a286fec1cf0d1d4273ab7a73746c0c4b58378b94c60e12c3956d",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ACC/PaperFormalization/NullMartingale.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 5,
+      "tier": "working-corpus",
+      "title": "Null Martingale",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "b42af887270b8bc48ee4f94b76fe4424a7a47b9783848e4d810ed179dbb94f13",
+      "doi": "10.5281/zenodo.21968301",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Dominance",
+        "PaperFormalization.Mixture",
+        "PaperFormalization.NullMartingale",
+        "PaperFormalization.Prior",
+        "PaperFormalization.Wald",
+        "PaperFormalization.Witnesses"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "PaperFormalization",
+      "lemma_count": 0,
+      "line_count": 6,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "path": "series/ACC/PaperFormalization.lean",
+      "record_id": "series-acc-paperformalization",
+      "source_sha256": "6955d21f6a8d2c8386ca1504bf005ec9fa922f8cc74bbbea6db703dbf4bc8a0c",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ACC/PaperFormalization.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Paper Formalization",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "ffeeb3f423d6b07decb08aa0e6bbc886b5559900d7379d1d481541324c2c2e58",
+      "doi": "10.5281/zenodo.21968337",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.ChainRule",
+        "PaperFormalization.Claims",
+        "PaperFormalization.Entropy",
+        "PaperFormalization.ErasureFamily",
+        "PaperFormalization.ZeroCovariance"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "PaperFormalization",
+      "lemma_count": 0,
+      "line_count": 5,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968337",
+      "path": "series/ICC/PaperFormalization.lean",
+      "record_id": "series-icc-paperformalization",
+      "source_sha256": "fe79a19f104fb1e1252f13df3c31b1bb066f7e70c0232e4abeb6616a3e56e4ec",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ICC/PaperFormalization.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Paper Formalization",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Run-127 paper-to-Lean formalization Formalization of the frozen formal targets of the sealed paper The Precautionary Capacity Reserve: A Sharp Moment-Robust Stewardship Discount for an Intelligence-Rate Model* (Run-127), as listed in STATEMENT_CONTRACT.md. Contents PaperFormalization/Cantelli.lean — Cantelli's one-sided (lower-tail) inequality, proved from Markov's inequality (it is not available in the pinned Mathlib revision). PaperFormalization/Model.lean — the model definitions and assumptions of the paper: RateModel (P, k_B, T positive and fixed), RateModel.ceiling (Eq. 1), RateModel.requiredCapacity (Eq. 2), RateModel.violationEvent (Eq. 3), cantelliFactor, capacityFloor (Eq. 4), RateModel.certifiedRate (Eq. 5), RateModel.meanPlugInCeiling, coeffVar. PaperFormalization/TwoPoint.lean — nonnegative two-point laws and the Cantelli extremal two-point law used by the counterexample constructions. PaperFormalization/Targets.lean — the named frozen targets: cantelli_capacity_certificate (C1), precautionary_rate_le_violation_budget (paper's fifth target), capacity_reserve_fraction_eq (C2), positive_floor_sharp_two_point_counterexample (C3), mean_only_plugin_arbitrarily_unsafe (C4). PaperFormalization/NonVacuity.lean — explicit non-vacuity witnesses for every target. See LEAN_STATEMENT_CONTRACT.md for the exact statement contract, the assumptions used, the non-vacuity witnesses, the documented interpretation decisions, and the recorded toolchain and Mathlib revision. The development contains no sorry, admit, axiom, implemented_by, native_decide, unsafe or extern.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "821aee7ea3ffd36f77b47ef21a785d320ecf2c9f53ed3f6fca273bfb634debce",
+      "doi": "10.5281/zenodo.21968347",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Cantelli",
+        "PaperFormalization.Model",
+        "PaperFormalization.NonVacuity",
+        "PaperFormalization.Targets",
+        "PaperFormalization.TwoPoint"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "PaperFormalization",
+      "lemma_count": 0,
+      "line_count": 36,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968347",
+      "path": "series/PCR/PaperFormalization.lean",
+      "record_id": "series-pcr-paperformalization",
+      "source_sha256": "c39845a9f92402521fa37f758c65af95e5fdab65b24b5e92544d94c0296c8364",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/PCR/PaperFormalization.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Paper Formalization",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Run-128 — \"The Reciprocity Corridor: A Bilateral-Benefit Test for Directional Information Exchange\" (J. D. Hart, 12 August 2026) — Lean formalization This file formalizes the four frozen FORMAL_TARGET claims of STATEMENT_CONTRACT.md (paper Theorems 1–3 and Corollary 1), together with the auxiliary share-coordinate target share_coordinate_corridor_equivalence listed in SEALED_CLAIM_INVENTORY.json → proposed_lean_targets. Everything below is stated over the real numbers under the paper's explicit standing assumptions (Section 2 of the paper): one period, two partners X and Y; strictly positive directional flows x = TE(X→Y) > 0, y = TE(Y→X) > 0; strictly positive, known, constant coefficients vX, cX, vY, cY > 0; linear separable payoffs with zero disagreement utilities, uX = vX*y - cX*x and uY = vY*x - cY*y; no externalities. Only the algebraic content of the paper is formalized. The Gaussian measurement layer (paper Section 5, claim C5) is explicitly *not* a formal target of the contract (formal_status = NOT_A_NEW_FORMAL_CLAIM), and the numerical/control claims C6–C9 are not formal targets either; see BLOCKERS.md for the audit. mathlib revision: see MATHLIB_REVISION.txt / lake-manifest.json.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 8,
+      "digest": "ef00555d332c4e7c1eca7c8326d599341ae27bb573fef20d30feccd1a95404a7",
+      "doi": "10.5281/zenodo.21968361",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run128.PaperFormalization",
+      "lemma_count": 0,
+      "line_count": 362,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968361",
+      "path": "series/RC/PaperFormalization.lean",
+      "record_id": "series-rc-paperformalization",
+      "source_sha256": "1de8f6a1f2ac05dd8026ad92a646b910d17b8369ba72c3dc6ebf7628ba1696ee",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/RC/PaperFormalization.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 16 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 16,
+      "tier": "working-corpus",
+      "title": "Paper Formalization",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Run-125 — \"The Symbiotic Bandwidth Bound\": Lean formalization of the frozen claims This module contains the six formal targets named in STATEMENT_CONTRACT.md: shared_channel_inverse (C1, paper Theorem 1 / Eq. 5) directional_gain_bounds (C2, paper Theorem 1 / Eq. 6) rank_deficient_unit_gain (C3, paper Theorem 2) worstcase_deadline (C4, paper Theorem 2 / Eq. 7) top_subspace_mean_cost (C5, paper Theorem 3 / Eq. 8) isotropic_rank_fraction (C6, paper Eq. 9) All model notions (mobility, baselineCost, channelCost, capturedFraction, gain, meanCostTau, deadlineBound, IsOrthProjector) are defined in PaperFormalization/Defs.lean, together with the bridges certifying that sqNorm is the squared Euclidean norm and that meanCostTau is the ensemble average of the quadratic cost. Non-vacuity witnesses for every target are in PaperFormalization/Witnesses.lean. Toolchain and mathlib revision are recorded in TOOLCHAIN.md.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "1086ae4109fc081c3d269055676f8723cd19203a82c1453ebd78371221f51afd",
+      "doi": "10.5281/zenodo.21968383",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Algebra",
+        "PaperFormalization.Defs",
+        "PaperFormalization.Ensemble"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run125.PaperFormalization",
+      "lemma_count": 0,
+      "line_count": 262,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968383",
+      "path": "series/SBB/PaperFormalization.lean",
+      "record_id": "series-sbb-paperformalization",
+      "source_sha256": "0898b5d9fc9705c054e451267ea54376a5c67251613c38a6434515037587109d",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SBB/PaperFormalization.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 7 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 7,
+      "tier": "working-corpus",
+      "title": "Paper Formalization",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Run-130 — \"The Seed-Source Bottleneck Certificate\": Lean formalization This is the root module of the returned project. It collects the formalization of the four frozen formal targets of STATEMENT_CONTRACT.md (paper source: SEALED_paper.tex). PaperFormalization/Hall.lean — the network-flow ingredient (capacitated Hall / Gale supply–demand theorem), proved from scratch: Mathlib has no max-flow/min-cut theorem. PaperFormalization/Certificate.lean — the preregistered model, the cut certificate, and the four targets C1–C4. PaperFormalization/Witnesses.lean — explicit non-vacuity witnesses. Toolchain actually used is recorded in TOOLCHAIN.md; the exact Lean statement contract, including the assumptions carried by each target and the documented scope blockers, is in LEAN_STATEMENT_CONTRACT.md. No sorry, admit, new axiom, implemented_by, native_decide, unsafe or extern occurs anywhere in this project.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "3355259e10cd4f0192fd3e8e7671b83039575d75f2573b7cfd151b15f2e6c8c0",
+      "doi": "10.5281/zenodo.21968480",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Certificate",
+        "PaperFormalization.Hall",
+        "PaperFormalization.Witnesses"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run130.PaperFormalization",
+      "lemma_count": 0,
+      "line_count": 92,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968480",
+      "path": "series/SSBC/PaperFormalization.lean",
+      "record_id": "series-ssbc-paperformalization",
+      "source_sha256": "0a31250effb3ef00b1c61d022fa72b95bd66b4f4fd7099fcd568fa36ec80335d",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SSBC/PaperFormalization.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 4 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 4,
+      "tier": "working-corpus",
+      "title": "Paper Formalization",
+      "visibility": "public"
+    },
+    {
       "abstract": "The Plasticity Vitrification Theorem (PVT) — the Metronome Viridis Aristotle Forge · Nightly Run 103 · [06] Entropy-Driven Learning × 🔥 Thermodynamic 45th Intelligence-Bound self-application. Tempo twin of SST-102 (the Steward, level). INTENDED MEANING (formalized clean core). Continual-learning \"loss of plasticity\" is modeled as a renewable stock D(t) ∈ [0,1] cycling through a FORCING phase (continuous training, no reset, duration τ_F) and a REST phase (active regeneration, duration τ_R). During forcing, the effective fluctuation-dissipation ratio ages algebraically (Cugliandolo–Kurchan), so plasticity survives one forcing phase scaled by a factor a = a(τ_F) ∈ (0,1) (a = exp(-k·A(τ_F)), A(τ_F) = ∫₀^τ_F (1 - X(s)) ds, X(s) = (1+s/τ_g)^(-β)); during rest it relaxes toward 1 scaled by b = exp(-ρ·τ_R) ∈ (0,1). One reset-forcing cycle maps D ↦ 1 - (1 - a·D)·b, whose fixed point is the closed-form steady plasticity D⋆(a,b) = (1-b)/(1-ab) (R2, canon candidate — matched to 500-iterate simulation at 1.11e-16 in the source verify.py). Harvest accrues only during forcing at rate Ω·D; with a strictly positive per-cycle overhead cost c>0 (checkpointing/consolidation — the ingredient absent from Run 102's Clark model), the sustainable rate R̄(τ_F,τ_R) = Ω·D⋆(a(τ_F),b(τ_R))·I(τ_F) / (τ_F+τ_R+c) is the paper's Section 4 headline (R3) golden-rule objective, I(τ_F) the within-forcing cumulative-survival integral. The clean core (formalized): R2 Closed-form fixed point (canon candidate): D⋆(a,b) solves the one-cycle map; τ_R=0 ⟹ b=1 ⟹ D⋆=0 (never-reset-in-a-cycle collapse, exact algebra); a…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
@@ -2449,6 +3577,43 @@
       "theorem_count": 9,
       "tier": "working-corpus",
       "title": "Plasticity Vitrification",
+      "visibility": "public"
+    },
+    {
+      "abstract": "The heavy-tailed change-time prior of Run-129 This file formalizes Equation (1) of the sealed paper SEALED_paper.tex: π_k = 1 / (k (k+1)), t_n = ∑_{k > n} π_k = 1 / (n+1). changePrior is π and priorTail is t. Both are defined for every natural index; the paper only uses k ≥ 1 for π (and changePrior 0 = 0 in Lean, which is harmless since the index 0 never occurs in the recursion). The two facts that the rest of the development needs are changePrior_add_priorTail: π_{n+1} + t_{n+1} = t_n (the identity π_n + t_n = t_{n-1} used in the martingale computation), and hasSum_changePrior_tail: t_n really is the tail mass ∑_{k > n} π_k of the prior, so in particular (hasSum_changePrior) π is a probability distribution on {1, 2, …}.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "4ac798550280f02febc2d2de6748b93b333df8eb1988fdf03e25c6c40cf7866d",
+      "doi": "10.5281/zenodo.21968301",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run129.PaperFormalization",
+      "lemma_count": 5,
+      "line_count": 109,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "path": "series/ACC/PaperFormalization/Prior.lean",
+      "record_id": "series-acc-paperformalization-prior",
+      "source_sha256": "d05294efcd42645a43b5832c8c37538e1b00907d8d974202d0af780af8e4451a",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ACC/PaperFormalization/Prior.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 7 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 2,
+      "tier": "working-corpus",
+      "title": "Prior",
       "visibility": "public"
     },
     {
@@ -2597,6 +3762,45 @@
       "theorem_count": 10,
       "tier": "working-corpus",
       "title": "Symbiotic Speed Limit",
+      "visibility": "public"
+    },
+    {
+      "abstract": "The frozen formal targets of Run-127 This file states and proves the named Lean targets of STATEMENT_CONTRACT.md: cantelli_capacity_certificate (C1, paper Theorem 1); precautionary_rate_le_violation_budget (extra target listed in the paper, Theorem 1 restated through the required-capacity map of Eq. (2)); capacity_reserve_fraction_eq (C2, paper Corollary 1); positive_floor_sharp_two_point_counterexample (C3, paper Theorem 2); mean_only_plugin_arbitrarily_unsafe (C4, paper Proposition 1).",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "6d47f3cd217e3be358d1a8a674921474f93a4bd940f348fc6da3791b0b7ede96",
+      "doi": "10.5281/zenodo.21968347",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Cantelli",
+        "PaperFormalization.Model",
+        "PaperFormalization.TwoPoint"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run127.PaperFormalization",
+      "lemma_count": 0,
+      "line_count": 228,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968347",
+      "path": "series/PCR/PaperFormalization/Targets.lean",
+      "record_id": "series-pcr-paperformalization-targets",
+      "source_sha256": "859e22d3574fbe30fe3c1dc73bc1c94d56ba63e05d79d9c15f978a191f06ed18",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/PCR/PaperFormalization/Targets.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 6,
+      "tier": "working-corpus",
+      "title": "Targets",
       "visibility": "public"
     },
     {
@@ -2848,6 +4052,43 @@
       "visibility": "public"
     },
     {
+      "abstract": "Two-point laws on ℝ The counterexample constructions of the paper (Theorem 2 and Proposition 1) use two-point nonnegative laws. This file provides the measure twoPointLaw l h q = q δ_l + (1-q) δ_h together with its basic integral, mean, variance and tail-mass computations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "1bd1cc15bac6dae4ff4c157e3216e0b8ec8cdc9ec32e6f8a405538a676d94eb1",
+      "doi": "10.5281/zenodo.21968347",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run127.PaperFormalization",
+      "lemma_count": 15,
+      "line_count": 147,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968347",
+      "path": "series/PCR/PaperFormalization/TwoPoint.lean",
+      "record_id": "series-pcr-paperformalization-twopoint",
+      "source_sha256": "431368e91ff441c4d057b0c1303a20093b8acb9c6c2b49d76c3d2a328f3e845e",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/PCR/PaperFormalization/TwoPoint.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 15 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Two Point",
+      "visibility": "public"
+    },
+    {
       "abstract": "Universal Nucleation–Kramers Meta-Theorem (UNMT) Unifies the nucleation-Kramers canon family (GNT-090 grokking, SNT-091 stewardship/audit, FNT afforestation) into one cubic-well Classical-Nucleation-Theory object: Ψ(x) = σ · x^(2/3) − Δ · x (x, σ, Δ > 0) with a substrate-independent critical point, barrier height, and Kramers escape law, plus an information-thermodynamic (Landauer/IB) floor on completion time. Statements are stated; the substantive ones (Targets 1–4b) carry sorry for Aristotle. Acceptance = zero sorry + #print axioms ⊆ {propext, Classical.choice, Quot.sound}, Lean 4.28.0, Mathlib pin 8f9d9cff. FORGE NOTE (2026-07-09, integrity): the auto-queue skeleton's original Target 7 unc_nonmonotone_optimum was GATED OUT before submission — it asserted an interior minimizer of kramers σ Δ · τ₀ in T, but kramers as defined (τ₀·exp(barrier/T)) is strictly DECREASING in T, so no interior minimizer exists on (0,Td); the named Td,B basin-dissolution hypotheses never enter the definition, making the conclusion FALSE. The honest Forcing–Neglect optimum needs a τ(T) model carrying a basin-dissolution divergence as T→Td⁻ (a genuine model change) — deferred to Justin. The sound, non-vacuous core (critical point, barrier top, barrier height, Kramers monotonicity, IB floor, non-vacuity witness) is submitted here.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 4,
@@ -2919,6 +4160,156 @@
       "theorem_count": 8,
       "tier": "working-corpus",
       "title": "Verification Phase Transition",
+      "visibility": "public"
+    },
+    {
+      "abstract": "C4: the bounded-overshoot expected-delay corridor This file formalizes Equations (7)–(8) of SEALED_paper.tex: N_a = inf{ m ≥ 1 : ∑_{j=1}^m Z_j ≥ a }, a/D ≤ E₁[N_a] < (a + z_max)/D. Explicit assumptions The paper says: \"let post-change increments Z_i = log Λ_i be iid, bounded above by finite z_max > 0, and have mean D = E₁ Z_i = D(P₁‖P₀) > 0 … assume the usual Wald integrability conditions\". The hypotheses used here are exactly: hZbdd : the increments are bounded, |Z_j| ≤ B (the paper's \"bounded … increments\"; boundedness is what makes Z_j integrable and the dominating function below finite); hZmax : Z_j ≤ z_max (the paper's overshoot control); hZmean : every increment has the same mean D, and hD : 0 < D; hindep : Z_j is independent of the past σ-algebra 𝒢 j (the \"iid increments\" hypothesis in exactly the form Wald's identity consumes); hNstop : N is a stopping time for 𝒢; hNint : E[N] < ∞ — this is \"the usual Wald integrability condition\" that the paper assumes rather than derives; hfirst : N is a.s. the first time m ≥ 1 at which S_m ≥ a (Equation 7). Wald's identity itself (wald_identity) is *proved* here, not assumed.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "a6654af668adfe754f4a75dae5410df3a6bba8df2dec82f7a91a9cc16dab87d0",
+      "doi": "10.5281/zenodo.21968301",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Dominance"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run129.PaperFormalization",
+      "lemma_count": 10,
+      "line_count": 335,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "path": "series/ACC/PaperFormalization/Wald.lean",
+      "record_id": "series-acc-paperformalization-wald",
+      "source_sha256": "6087275d757f85442bdc92730dd8282b01394133fefb5d0d6687ae4a259d3c7a",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ACC/PaperFormalization/Wald.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 13 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 3,
+      "tier": "working-corpus",
+      "title": "Wald",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Non-vacuity witnesses Every formalized target (C1–C4) is instantiated here at an explicit model, so that none of the theorem statements is vacuously true. C3Witness: a deterministic likelihood-ratio path for which the mixture alarm time is strictly* earlier than the embedded component alarm time (1 < 2), so the dominance claim C3 is non-trivial. C4Witness: an explicit increment model, stopping time and boundary for which every hypothesis of C4 holds and the corridor reads 5/2 ≤ 3 < 7/2. C12Witness: the paper's preregistered Bernoulli instance P₀ = Bern(1/5), P₁ = Bern(3/5) realized as a genuinely iid sequence on ℕ → Bool under an infinite product measure. All hypotheses of C1 and C2 hold, the mixture is not identically 1, and the resulting Ville certificate is an instance of C2.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 1,
+      "digest": "e99f8e142bcc2ee3c8d281686871d6273919dac1d1f48946bb95500ac7af4661",
+      "doi": "10.5281/zenodo.21968301",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Dominance",
+        "PaperFormalization.NullMartingale",
+        "PaperFormalization.Wald"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run129.PaperFormalization",
+      "lemma_count": 13,
+      "line_count": 275,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968301",
+      "path": "series/ACC/PaperFormalization/Witnesses.lean",
+      "record_id": "series-acc-paperformalization-witnesses",
+      "source_sha256": "779ecdaa5aa785919222d147c96f8e24da718b3fce322e5cee037fc1d39f246c",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ACC/PaperFormalization/Witnesses.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 17 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 4,
+      "tier": "working-corpus",
+      "title": "Witnesses",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Non-vacuity witnesses For every formal target of STATEMENT_CONTRACT.md this file exhibits explicit data satisfying *all* hypotheses of the corresponding theorem, together with the concrete numerical conclusion obtained by instantiating the theorem at that data. This rules out vacuous formalizations. The running witness is the two-dimensional model m = 2 with the rank-one orthogonal projector P₂ = diag(1,0), mirroring the paper's own aligned / null-space controls (κ = 4.5 gives the aligned gain 5.5 and the orthogonal gain 1.0).",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 2,
+      "digest": "29d12e73e790bf627b3338f328d90a20a89ab110b1db66c29ba2983d1ebed6b0",
+      "doi": "10.5281/zenodo.21968383",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run125.PaperFormalization",
+      "lemma_count": 0,
+      "line_count": 151,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968383",
+      "path": "series/SBB/PaperFormalization/Witnesses.lean",
+      "record_id": "series-sbb-paperformalization-witnesses",
+      "source_sha256": "b725b377cd5ba484e4247af28389a8ae0dafba1d9b7b98b71636a8bd601fcfe9",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SBB/PaperFormalization/Witnesses.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 11 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 11,
+      "tier": "working-corpus",
+      "title": "Witnesses",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Non-vacuity witnesses Explicit instances showing that the hypotheses of each frozen target C1–C4 are satisfiable and that the conclusions are non-trivial. All witnesses use the paper's own negative control (Section 3.1 of SEALED_paper.tex): two unit-demand sites, two sources with capacities (1/10, 19/10), and the \"private\" eligibility graph in which source j may serve site i only if j = i. Total inventory equals total demand, yet the certified common fulfillment fraction is 1/10.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 3,
+      "digest": "418ad4ce837fd88c0cb18e543121184495502aa855ebb8ee03ca14da8855d138",
+      "doi": "10.5281/zenodo.21968480",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Certificate"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run130.Witnesses",
+      "lemma_count": 12,
+      "line_count": 265,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968480",
+      "path": "series/SSBC/PaperFormalization/Witnesses.lean",
+      "record_id": "series-ssbc-paperformalization-witnesses",
+      "source_sha256": "87f6d365f8b3be0812761a3c5c333bbf2a19837801cce27cdb3c51852cd5171e",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SSBC/PaperFormalization/Witnesses.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 22 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 10,
+      "tier": "working-corpus",
+      "title": "Witnesses",
       "visibility": "public"
     },
     {
@@ -3105,6 +4496,43 @@
       "tier": "working-corpus",
       "title": "Wu Wei Sampling",
       "visibility": "public"
+    },
+    {
+      "abstract": "The nonlinear negative control (paper claim C7) The paper's negative control (Section \"Boundary cases and controls\", inventory claim C7, evidence class NUMERIC) states: let S be uniform on {-1, 0, 1} and R = S². Then Cov(R, S) = 0 by symmetry, but R reveals whether S = 0, giving I(R;S) = H(R) = 0.918296… bit. This claim is *not* one of the five frozen formal targets, but it is formalized here as an exact statement: the covariance vanishes while the mutual information equals log₂ 3 - 2/3 = 0.9182958… bit, which is strictly positive.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 1,
+      "digest": "a833a245b5dd6172501d674fb0cd4e4c5d2e9238dd00a1257728ab27e1bf4d19",
+      "doi": "10.5281/zenodo.21968337",
+      "external_validation": "not-recorded",
+      "imports": [
+        "PaperFormalization.Claims"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Run126.PaperFormalization",
+      "lemma_count": 11,
+      "line_count": 109,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.21968337",
+      "path": "series/ICC/PaperFormalization/ZeroCovariance.lean",
+      "record_id": "series-icc-paperformalization-zerocovariance",
+      "source_sha256": "4990ab3d81b4209ec1247a30df9989f2d5313a4abd1a8be557a37db133b92ccd",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ICC/PaperFormalization/ZeroCovariance.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 12 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 1,
+      "tier": "working-corpus",
+      "title": "Zero Covariance",
+      "visibility": "public"
     }
   ],
   "release": "v10.2.0",
@@ -3113,11 +4541,11 @@
   "stats": {
     "flagships": 4,
     "quarantined": 1,
-    "records": 82,
+    "records": 120,
     "spine": 30,
-    "theorems_and_lemmas": 777,
+    "theorems_and_lemmas": 1148,
     "verified": 26,
-    "working": 55,
-    "working_corpus": 48
+    "working": 93,
+    "working_corpus": 86
   }
 }

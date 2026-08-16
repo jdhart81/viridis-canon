@@ -1,0 +1,8 @@
+import CognitiveSwitchingHysteresis
+
+#print axioms Viridis.Cognition.CognitiveSwitchingHysteresis.threshold_order
+#print axioms Viridis.Cognition.CognitiveSwitchingHysteresis.band_width_identity
+#print axioms Viridis.Cognition.CognitiveSwitchingHysteresis.closed_loop_area_identity
+#print axioms Viridis.Cognition.CognitiveSwitchingHysteresis.bias_translation
+#print axioms Viridis.Cognition.CognitiveSwitchingHysteresis.directional_cost_recovery
+#print axioms Viridis.Cognition.CognitiveSwitchingHysteresis.cshc_nonvacuous

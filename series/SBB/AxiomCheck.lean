@@ -1,0 +1,16 @@
+import PaperFormalization
+import PaperFormalization.Witnesses
+
+#print axioms Viridis.Run125.PaperFormalization.shared_channel_inverse
+#print axioms Viridis.Run125.PaperFormalization.directional_gain_bounds
+#print axioms Viridis.Run125.PaperFormalization.rank_deficient_unit_gain
+#print axioms Viridis.Run125.PaperFormalization.worstcase_deadline
+#print axioms Viridis.Run125.PaperFormalization.top_subspace_mean_cost
+#print axioms Viridis.Run125.PaperFormalization.isotropic_rank_fraction
+#print axioms Viridis.Run125.PaperFormalization.witness_shared_channel_inverse
+#print axioms Viridis.Run125.PaperFormalization.witness_directional_gain_aligned
+#print axioms Viridis.Run125.PaperFormalization.witness_directional_gain_orthogonal
+#print axioms Viridis.Run125.PaperFormalization.witness_rank_deficient_unit_gain
+#print axioms Viridis.Run125.PaperFormalization.witness_worstcase_deadline
+#print axioms Viridis.Run125.PaperFormalization.witness_top_subspace_mean_cost
+#print axioms Viridis.Run125.PaperFormalization.witness_isotropic_rank_fraction

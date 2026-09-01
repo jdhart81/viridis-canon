@@ -1,0 +1,7 @@
+import ResponseAdjustedAlignment
+
+#print axioms Viridis.Ecoservices.ResponseAdjustedAlignment.response_objective_completion
+#print axioms Viridis.Ecoservices.ResponseAdjustedAlignment.alignment_gap_identity
+#print axioms Viridis.Ecoservices.ResponseAdjustedAlignment.kantorovich_cross_multiplied_identity
+#print axioms Viridis.Ecoservices.ResponseAdjustedAlignment.alignment_bound_nonnegative
+#print axioms Viridis.Ecoservices.ResponseAdjustedAlignment.alignment_certificate_nonvacuous

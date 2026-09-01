@@ -1,0 +1,9 @@
+import SymbioticEqualization
+
+#print axioms Viridis.ThermodynamicSpeedLimits.SymbioticEqualization.slow_rate_characterization
+#print axioms Viridis.ThermodynamicSpeedLimits.SymbioticEqualization.slow_rate_lower_min
+#print axioms Viridis.ThermodynamicSpeedLimits.SymbioticEqualization.slow_rate_upper_mean
+#print axioms Viridis.ThermodynamicSpeedLimits.SymbioticEqualization.slow_rate_monotone
+#print axioms Viridis.ThermodynamicSpeedLimits.SymbioticEqualization.equal_rates_no_gain
+#print axioms Viridis.ThermodynamicSpeedLimits.SymbioticEqualization.finite_asymmetry_strict_mean
+#print axioms Viridis.ThermodynamicSpeedLimits.SymbioticEqualization.symbiotic_equalization_nonvacuous

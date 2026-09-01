@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "c0063db3886336f708b5314cbc9f618776b7b67d3479f425b4dbd626a68e2391",
+  "catalog_digest": "071309491dc4876d830e70a908c1ac7697367ec2ff8d43f1fe6ba4da0f035473",
   "concept_doi": "10.5281/zenodo.19317982",
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "human_publish_gate": true,
@@ -1559,6 +1559,80 @@
       "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
+      "digest": "3e187bd8b3ee8e3845046ce1cac7a3f0c7791b3a2c34eb8bba288f908fed9259",
+      "doi": "10.5281/zenodo.22236427",
+      "external_validation": "not-recorded",
+      "imports": [
+        "ResponseAdjustedAlignment"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "AxiomCheck",
+      "lemma_count": 0,
+      "line_count": 7,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236427",
+      "path": "series/RAAC/AxiomCheck.lean",
+      "record_id": "series-raac-axiomcheck",
+      "source_sha256": "a19b5fae8607e36444d0fcd836438fbb8d0f6387394f95bbe099411e10825f4e",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/RAAC/AxiomCheck.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Axiom Check",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "262def3498b58db76e9d3b0d0a75bafd67dc27ee18ec855f1dbe1b645e08d26e",
+      "doi": "10.5281/zenodo.22236427",
+      "external_validation": "not-recorded",
+      "imports": [
+        "ResponseAdjustedAlignment"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "AxiomCheck",
+      "lemma_count": 0,
+      "line_count": 7,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236427",
+      "path": "series/RAAC/RECOVERY_VRS-FORGE-RECOVERY-2/attempt-1_aristotle/AxiomCheck.lean",
+      "record_id": "series-raac-recovery-vrs-forge-recovery-2-attempt-1-aristotle-axiomcheck",
+      "source_sha256": "a19b5fae8607e36444d0fcd836438fbb8d0f6387394f95bbe099411e10825f4e",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/RAAC/RECOVERY_VRS-FORGE-RECOVERY-2/attempt-1_aristotle/AxiomCheck.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Axiom Check",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
       "digest": "de0d5c40027cbf864cc8fa14543448493c8c189a0cb07cffdb08a14d333ede34",
       "doi": "10.5281/zenodo.21971047",
       "external_validation": "not-recorded",
@@ -1618,6 +1692,43 @@
       "record_id": "series-sbb-axiomcheck",
       "source_sha256": "6aa9dadb059b8c33fa676a6104825f99b3a86cada83eb8f9117f7cfde7bfa2db",
       "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SBB/AxiomCheck.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 0,
+      "tier": "working-corpus",
+      "title": "Axiom Check",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "9293871750356638b17117457073659eab59b9e67367299a0e8beb0b3c9e597d",
+      "doi": "10.5281/zenodo.22236496",
+      "external_validation": "not-recorded",
+      "imports": [
+        "SymbioticEqualization"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "AxiomCheck",
+      "lemma_count": 0,
+      "line_count": 9,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236496",
+      "path": "series/SESL/AxiomCheck.lean",
+      "record_id": "series-sesl-axiomcheck",
+      "source_sha256": "42fc97ba02bd37bccff446301474f88958294fb589bf0d47d71e02dbb04e752b",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SESL/AxiomCheck.lean",
       "status": "working",
       "summary": "Machine-checked Lean research module with 0 theorem and lemma declarations.",
       "tags": [
@@ -1898,6 +2009,43 @@
       "visibility": "public"
     },
     {
+      "abstract": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 2,
+      "digest": "e973dd35ddfe292aef4a08edfc49cf1a701cdd9fcb94d6b34c41ba6e8366eb1f",
+      "doi": "10.5281/zenodo.22236441",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Computation.Thermodynamic",
+      "lemma_count": 0,
+      "line_count": 44,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236441",
+      "path": "series/RCBN/CheckpointBalance.lean",
+      "record_id": "series-rcbn-checkpointbalance",
+      "source_sha256": "21b6cbbc652b6e469099f3089e432a61e82e2cfa66525d56e3946b2179da85ed",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/RCBN/CheckpointBalance.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 6,
+      "tier": "working-corpus",
+      "title": "Checkpoint Balance",
+      "visibility": "public"
+    },
+    {
       "abstract": "The frozen Run-126 claims C1–C4 This file states and proves the first four named targets of STATEMENT_CONTRACT.md: mutual_information_chain_balance (C1, Theorem 1, Eq. 1); forbidden_proxy_capacity_ceiling (C2, Corollary 1, Eq. 2); capacity_ceiling_slack_decomposition (C3, Theorem 1, Eq. 3); perfect_invariance_target_proxy_collapse (C4, Boundary cases). Target C5 (erasure_family_tightness, Proposition 1) is in PaperFormalization.ErasureFamily. Each claim is followed by explicit non-vacuity witnesses: concrete finite joint laws for which the hypotheses hold and all quantities appearing in the statement are computed.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
@@ -2006,6 +2154,43 @@
       "theorem_count": 5,
       "tier": "working-corpus",
       "title": "Cognitive Throughput",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 1,
+      "digest": "abb09edb5a1b8d0c37f7259863170637faf6341c9bfd309c641751d36e7e317b",
+      "doi": "10.5281/zenodo.22236387",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.HDFMCorridors.Alignment",
+      "lemma_count": 0,
+      "line_count": 41,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236387",
+      "path": "series/BCAN/CorridorAlignment.lean",
+      "record_id": "series-bcan-corridoralignment",
+      "source_sha256": "621290dae7c84af88be4fdf4ec59e1639b17725ea470181eb28e1de73ddcba26",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/BCAN/CorridorAlignment.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 6,
+      "tier": "working-corpus",
+      "title": "Corridor Alignment",
       "visibility": "public"
     },
     {
@@ -3617,6 +3802,117 @@
       "visibility": "public"
     },
     {
+      "abstract": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "3827cb6b8c209da17d404e2876cdfa72e76485a1e15eeb3ad615e5cdb59571fb",
+      "doi": "10.5281/zenodo.22236427",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Ecoservices.ResponseAdjustedAlignment",
+      "lemma_count": 0,
+      "line_count": 37,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236427",
+      "path": "series/RAAC/RECOVERY_VRS-FORGE-RECOVERY-2/attempt-1_aristotle/ResponseAdjustedAlignment.lean",
+      "record_id": "series-raac-recovery-vrs-forge-recovery-2-attempt-1-aristotle-responseadjustedalignment",
+      "source_sha256": "67d50ed05fdd72153a3b73ad090c711f9d08acfb90d768150a24614211db2173",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/RAAC/RECOVERY_VRS-FORGE-RECOVERY-2/attempt-1_aristotle/ResponseAdjustedAlignment.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 5,
+      "tier": "working-corpus",
+      "title": "Response Adjusted Alignment",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "a66e92d6eee6d391051c8e541499c95b95ff90ad6acc0d0389474fa72ff877bf",
+      "doi": "10.5281/zenodo.22236427",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Ecoservices.ResponseAdjustedAlignment",
+      "lemma_count": 0,
+      "line_count": 37,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236427",
+      "path": "series/RAAC/ResponseAdjustedAlignment.lean",
+      "record_id": "series-raac-responseadjustedalignment",
+      "source_sha256": "67d50ed05fdd72153a3b73ad090c711f9d08acfb90d768150a24614211db2173",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/RAAC/ResponseAdjustedAlignment.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 5 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 5,
+      "tier": "working-corpus",
+      "title": "Response Adjusted Alignment",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 0,
+      "digest": "00a6a92a1a4d09bbd80ba29498c1a0c97317ab5e592900a5f34d0ac064edff37",
+      "doi": "10.5281/zenodo.22236458",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.IntelligenceCapacity.StewardshipBottleneckReserve",
+      "lemma_count": 0,
+      "line_count": 42,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236458",
+      "path": "series/SBRN/StewardshipBottleneckReserve.lean",
+      "record_id": "series-sbrn-stewardshipbottleneckreserve",
+      "source_sha256": "8a12a5d719bfbf75af88f546b2e9d5d0fa8bf17be9472c831c48254f411277b3",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SBRN/StewardshipBottleneckReserve.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 6,
+      "tier": "working-corpus",
+      "title": "Stewardship Bottleneck Reserve",
+      "visibility": "public"
+    },
+    {
       "abstract": "StewardshipRevisit.lean — The Stewardship Revisit Theorem (SRT), \"the Tender\" Viridis Nightly Science Engine, Run 087 — [04] D-Score Science × 🎯 Stewardship. The temporal completion of the monitoring calculus: when should a steward re-observe a *drifting* ecosystem? Site i's true certified slack drifts as an Ornstein–Uhlenbeck process; a D-Score certificate pins the estimate, after which the steward's conditional uncertainty grows as V(t) = (s^2 / (2θ)) · (1 − e^{−2θ t}), V∞ = s^2/(2θ). This file states the CLEAN, WELL-POSED, NON-VACUOUS core of SRT as deterministic claims about the conditional-variance curve V, the amortized renewal cost rate, and the Whittle scheduling index. Each theorem below has a genuinely non-trivial conclusion (see srt_nonvacuous for a concrete binding instance): 1. certificate_halflife_eq_ln2_over_2theta at t½ = ln2/(2θ) the conditional variance is exactly half its stationary value. Cadence tracks turnover θ, not the calendar. 2. ou_conditional_variance_growth_monotone V is strictly increasing in age (a certificate is a decaying asset). 3. sqrt_cadence_minimizes_amortized_cost in the diffusion regime the amortized cost rate C(τ) = c/τ + ½ κ s² τ is globally minimized at τ* = √(2c/(κ s²)) (EOQ/AM–GM). 4. whittle_index_form_eq_stakes_times_variance_rate the scheduling index W(t) = κ·V(t) (the accrued staleness-penalty rate) equals stakes × conditional variance and is strictly increasing in age (indexability of the restless bandit). 5. broadcast_clock_price_equalizes_marginal_penalty a single broadcast monitoring-clock price ν ∈ (0, κV∞) sets a…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
@@ -3688,6 +3984,43 @@
       "theorem_count": 5,
       "tier": "working-corpus",
       "title": "Symbiotic Corridor",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 10 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 1,
+      "digest": "ccddd339b2a01c1a232e616b1c33eaa8805330f4637c952fc9787a54b372b987",
+      "doi": "10.5281/zenodo.22236496",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.ThermodynamicSpeedLimits.SymbioticEqualization",
+      "lemma_count": 3,
+      "line_count": 110,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236496",
+      "path": "series/SESL/SymbioticEqualization.lean",
+      "record_id": "series-sesl-symbioticequalization",
+      "source_sha256": "e834af7336b4ef1d79af4609f354a9b408b0b4a8d385d79aa90e8d98ea07584d",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SESL/SymbioticEqualization.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 10 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 7,
+      "tier": "working-corpus",
+      "title": "Symbiotic Equalization",
       "visibility": "public"
     },
     {
@@ -4126,6 +4459,191 @@
       "visibility": "public"
     },
     {
+      "abstract": "Machine-checked Lean research module with 7 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 2,
+      "digest": "b674bc5621b0feb48a6aeedb22c35717183d37e6de01879d391e4fe7f1e893d2",
+      "doi": "10.5281/zenodo.22236361",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.AIWavefunctionCollapse.SymbioticAgreement",
+      "lemma_count": 0,
+      "line_count": 68,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236361",
+      "path": "series/ACCN/VERIFICATION_CANDIDATE.lean",
+      "record_id": "series-accn-verification-candidate",
+      "source_sha256": "0b9de4f168ad5089f6dadc6a0b12fd5b93adbc6dfa3805b82531705bfe291202",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ACCN/VERIFICATION_CANDIDATE.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 7 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 7,
+      "tier": "working-corpus",
+      "title": "VERIFICATION CANDIDATE",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 1,
+      "digest": "2fa3d2615fd3107c20f2b0b9a6518b6a00087c821397c42f724167e8b1d8e2c7",
+      "doi": "10.5281/zenodo.22236409",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.DScore.ComponentAlignment",
+      "lemma_count": 0,
+      "line_count": 69,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236409",
+      "path": "series/DCAE/VERIFICATION_CANDIDATE.lean",
+      "record_id": "series-dcae-verification-candidate",
+      "source_sha256": "044361760670eaee21c032c62d554eb36c28c9d0622e05c2b334d0086a8c22c2",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/DCAE/VERIFICATION_CANDIDATE.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 6,
+      "tier": "working-corpus",
+      "title": "VERIFICATION CANDIDATE",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 1,
+      "digest": "b4a53e0d02dce626dd20d8df2ead8d80f1a2ffa718d3056a965b773b36df088b",
+      "doi": "10.5281/zenodo.22236416",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Monitoring.FreshnessReserve",
+      "lemma_count": 0,
+      "line_count": 53,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236416",
+      "path": "series/FRCS/VERIFICATION_CANDIDATE.lean",
+      "record_id": "series-frcs-verification-candidate",
+      "source_sha256": "34a7bfcf02361a2900f95da1fb82383f91c71f005564d2384a79c94e8adbfc5c",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/FRCS/VERIFICATION_CANDIDATE.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 6,
+      "tier": "working-corpus",
+      "title": "VERIFICATION CANDIDATE",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 1,
+      "digest": "3384789d33c009a434ae9b4ed78cd1a8316d4d9acd5b90c02277d57fba7911f4",
+      "doi": "10.5281/zenodo.22236521",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Afforestation.SharedFacilitation",
+      "lemma_count": 0,
+      "line_count": 49,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236521",
+      "path": "series/SFB/VERIFICATION_CANDIDATE.lean",
+      "record_id": "series-sfb-verification-candidate",
+      "source_sha256": "eb55692ff2b129da6091d268faf522bdb1a2a72eea1223834b1ea804d7d6f062",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SFB/VERIFICATION_CANDIDATE.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 6,
+      "tier": "working-corpus",
+      "title": "VERIFICATION CANDIDATE",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 2,
+      "digest": "b5bba93022738f7271cc197b2f66117b9b098ee1ba0165db18a38ad0c127bed2",
+      "doi": "10.5281/zenodo.22236530",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.IntelligenceBound.DutyCycleLedger",
+      "lemma_count": 0,
+      "line_count": 48,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236530",
+      "path": "series/TDCIL/VERIFICATION_CANDIDATE.lean",
+      "record_id": "series-tdcil-verification-candidate",
+      "source_sha256": "95b9f439ca1092a908842ecfda70bfe1257ac5a2f35fec5f6c45d6b31a0ba76d",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/TDCIL/VERIFICATION_CANDIDATE.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 6,
+      "tier": "working-corpus",
+      "title": "VERIFICATION CANDIDATE",
+      "visibility": "public"
+    },
+    {
       "abstract": "The Verification Phase-Transition Theorem (VPT) — clean core Lean 4 / Mathlib formalization. Viridis LLC. For submission to Aristotle. CONTEXT (nightly Run 081, verification-phase-transition; [08] Ecoservices Platform × Symbiosis lens; 23rd IB self-application, \"the Verifier\"). A monitoring AI and the ecosystem it measures form a thermodynamic mutualism. Every attested credit-bit costs at least the Landauer quantum q = k_B · T · ln 2 ( > 0 ). There is a minimum self-sustaining ESU (ecosystem-service-unit) price p_crit = (δ + r_thermo) · q · H_eff / (η · P · κ), with all parameters positive: δ depreciation / leakage rate of attested capital, r_thermo endogenous thermodynamic discount rate (Run 080, the Appraiser; r_thermo → ∞ at tipping points), H_eff effective bits per attestation (entropy load), η verifier energy efficiency, P available power, κ Joule-to-value conversion. Below p_crit the credit market cannot bootstrap (a \"verification poverty trap\"); above it the AI–ecosystem–market triad self-funds. The crossing at p = p_crit is a TRANSCRITICAL bifurcation of the market-participation dynamics. Writing the participation density x ≥ 0, the bootstrap normal form is dx/dt = f(x) = s·(p − p_crit)·x − β·x², s, β > 0, with equilibria x = 0 and x* = s(p − p_crit)/β, and linearization f'(x) = s(p − p_crit) − 2β x, so f'(0) = s(p − p_crit) and f'(x*) = − s(p − p_crit): the two equilibria exchange stability exactly at p_crit. Engineering levers (proved below): ZK-MRV compression c ∈ (0,1] lowers p_crit proportionally (a thermodynamic subsidy); alignment-matched sensing lowers it…",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
@@ -4160,6 +4678,191 @@
       "theorem_count": 8,
       "tier": "working-corpus",
       "title": "Verification Phase Transition",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 7 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 2,
+      "digest": "6b426baaa2e69c55dd09964ee547b88c7b4a7e7c97bb1ec5522567ec5d6509ae",
+      "doi": "10.5281/zenodo.22236361",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.AIWavefunctionCollapse.SymbioticAgreement",
+      "lemma_count": 0,
+      "line_count": 45,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236361",
+      "path": "series/ACCN/VERIFICATION_STATEMENT.lean",
+      "record_id": "series-accn-verification-statement",
+      "source_sha256": "0c8e897b24a5cf6f538bfb3885a9b72f12c499de13f1ca807fc3784b98ae2bb5",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/ACCN/VERIFICATION_STATEMENT.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 7 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 7,
+      "tier": "working-corpus",
+      "title": "VERIFICATION STATEMENT",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 1,
+      "digest": "6ab21c7b4009b4581bc7e835bc8eb8a8558aab6fe5b8b290a2d770310859df42",
+      "doi": "10.5281/zenodo.22236409",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.DScore.ComponentAlignment",
+      "lemma_count": 0,
+      "line_count": 47,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236409",
+      "path": "series/DCAE/VERIFICATION_STATEMENT.lean",
+      "record_id": "series-dcae-verification-statement",
+      "source_sha256": "79de8ab7deb5e41768ec1dea23091a58a3606a7f921dd7415ed8754ea9805d5f",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/DCAE/VERIFICATION_STATEMENT.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 6,
+      "tier": "working-corpus",
+      "title": "VERIFICATION STATEMENT",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 1,
+      "digest": "f4985d1bbd69a8615e5baeded4a5aacf00c41b3bae1b687cc1aab94b78c815ef",
+      "doi": "10.5281/zenodo.22236416",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Monitoring.FreshnessReserve",
+      "lemma_count": 0,
+      "line_count": 43,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236416",
+      "path": "series/FRCS/VERIFICATION_STATEMENT.lean",
+      "record_id": "series-frcs-verification-statement",
+      "source_sha256": "761d3ecc2247bb45069943e2c7a56d90e0c70f4ebacb3ac5ea649f507c1f2783",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/FRCS/VERIFICATION_STATEMENT.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 6,
+      "tier": "working-corpus",
+      "title": "VERIFICATION STATEMENT",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 1,
+      "digest": "ba4ab92120bde7fd01274a890c6fa684b9deefad8b55b1db4baed3ab220fe231",
+      "doi": "10.5281/zenodo.22236521",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.Afforestation.SharedFacilitation",
+      "lemma_count": 0,
+      "line_count": 46,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236521",
+      "path": "series/SFB/VERIFICATION_STATEMENT.lean",
+      "record_id": "series-sfb-verification-statement",
+      "source_sha256": "4b2934ecadd243c31b19b33440b6b069789abe18b2276b6a5e8c9aa9e2ee1a67",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/SFB/VERIFICATION_STATEMENT.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 6,
+      "tier": "working-corpus",
+      "title": "VERIFICATION STATEMENT",
+      "visibility": "public"
+    },
+    {
+      "abstract": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
+      "definition_count": 2,
+      "digest": "304fe7a8703537798de5ad734f6c81174996ffe27256c351a8addc8e8254dc09",
+      "doi": "10.5281/zenodo.22236530",
+      "external_validation": "not-recorded",
+      "imports": [
+        "Mathlib"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.IntelligenceBound.DutyCycleLedger",
+      "lemma_count": 0,
+      "line_count": 44,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://doi.org/10.5281/zenodo.22236530",
+      "path": "series/TDCIL/VERIFICATION_STATEMENT.lean",
+      "record_id": "series-tdcil-verification-statement",
+      "source_sha256": "4965fc3c38c2ba30054f71343914fbe5da55c51ca85d4f244f5f3015b9faa9c2",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/TDCIL/VERIFICATION_STATEMENT.lean",
+      "status": "working",
+      "summary": "Machine-checked Lean research module with 6 theorem and lemma declarations.",
+      "tags": [
+        "lean4",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 6,
+      "tier": "working-corpus",
+      "title": "VERIFICATION STATEMENT",
       "visibility": "public"
     },
     {
@@ -4541,11 +5244,11 @@
   "stats": {
     "flagships": 4,
     "quarantined": 1,
-    "records": 120,
+    "records": 139,
     "spine": 30,
-    "theorems_and_lemmas": 1148,
+    "theorems_and_lemmas": 1248,
     "verified": 26,
-    "working": 93,
-    "working_corpus": 86
+    "working": 112,
+    "working_corpus": 105
   }
 }

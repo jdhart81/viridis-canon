@@ -1,0 +1,11 @@
+name = "SymbioticEqualization"
+version = "0.1.0"
+defaultTargets = ["SymbioticEqualization"]
+
+[[lean_lib]]
+name = "SymbioticEqualization"
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.28.0"

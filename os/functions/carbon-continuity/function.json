@@ -22,12 +22,12 @@
       }
     ],
     "theorems": [
-      "carbon_continuity_threshold_sufficient",
-      "carbon_continuity_threshold_necessary",
-      "carbon_continuity_threshold_iff",
       "carbon_continuity_boundary_stationary",
+      "carbon_continuity_nonvacuous",
       "carbon_continuity_strict_threshold_growth",
-      "carbon_continuity_nonvacuous"
+      "carbon_continuity_threshold_iff",
+      "carbon_continuity_threshold_necessary",
+      "carbon_continuity_threshold_sufficient"
     ],
     "verification_provider": "COMPARATOR_CLOUD",
     "verification_receipt_id": "40c58299-efeb-4cad-b332-2525b7c8d6d1"

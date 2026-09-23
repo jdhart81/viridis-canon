@@ -1,0 +1,162 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "geodesic-saturation-forcing-decomposition",
+  "kind": "theorem_function",
+  "name": "Geodesic saturation — forcing excess splits into speed and path excess",
+  "version": "1.0.0",
+  "summary": "Checks that the excess dissipation of a finite-time protocol above the geodesic minimum splits exactly into a non-negative speed-variation part and a non-negative path-length part.",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.19317982",
+  "lean": {
+    "module": "Viridis.GeodesicSaturation",
+    "sources": [
+      {
+        "path": "GeodesicSaturation.lean",
+        "sha256": "192af4cc32ba24fdef4593c74a819a142fd50f9ed84aeae04fd0603ad5f45d73"
+      }
+    ],
+    "theorems": [
+      "forcing_decomposition_nonneg"
+    ],
+    "verification_provider": "CANON_CI_SPINE_BUILD",
+    "verification_receipt_id": null
+  },
+  "inputs": [
+    {
+      "name": "tau",
+      "type": "number",
+      "unit": "time",
+      "help": "Protocol duration τ (positive).",
+      "required": true
+    },
+    {
+      "name": "dissipated_work",
+      "type": "number",
+      "unit": "energy",
+      "help": "Dissipated work W_diss.",
+      "required": true
+    },
+    {
+      "name": "path_length",
+      "type": "number",
+      "unit": "thermodynamic length",
+      "help": "Thermodynamic length L of the path taken.",
+      "required": true
+    },
+    {
+      "name": "geodesic_length",
+      "type": "number",
+      "unit": "thermodynamic length",
+      "help": "Geodesic (shortest) length L_g.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "tau_positive",
+      "statement": "τ > 0.",
+      "check": "tau > 0"
+    },
+    {
+      "id": "cauchy_schwarz",
+      "statement": "L²/τ ≤ W_diss (thermodynamic Cauchy–Schwarz).",
+      "check": "path_length ** 2 / tau <= dissipated_work"
+    },
+    {
+      "id": "geodesic_is_shortest",
+      "statement": "0 ≤ L_g ≤ L.",
+      "check": "0 <= geodesic_length <= path_length"
+    }
+  ],
+  "derived": [
+    {
+      "name": "total_excess",
+      "expression": "(dissipated_work - geodesic_length ** 2 / tau) / tau",
+      "unit": "energy/time"
+    },
+    {
+      "name": "speed_excess",
+      "expression": "(dissipated_work - path_length ** 2 / tau) / tau",
+      "unit": "energy/time"
+    },
+    {
+      "name": "path_excess",
+      "expression": "(path_length ** 2 - geodesic_length ** 2) / tau ** 2",
+      "unit": "energy/time"
+    }
+  ],
+  "conclusion": {
+    "statement": "excess = speed excess + path excess, both ≥ 0",
+    "check": "approx_eq(total_excess, speed_excess + path_excess, abs(dissipated_work / tau) + path_length ** 2 / tau ** 2) and approx_le(0, speed_excess, abs(dissipated_work / tau)) and approx_le(0, path_excess, path_length ** 2 / tau ** 2)",
+    "lean_theorem": "forcing_decomposition_nonneg"
+  },
+  "example": {
+    "inputs": {
+      "tau": 2,
+      "dissipated_work": 10,
+      "path_length": 4,
+      "geodesic_length": 3
+    },
+    "expected_outputs": {
+      "theorem": "forcing_decomposition_nonneg",
+      "hypotheses": {
+        "tau_positive": true,
+        "cauchy_schwarz": true,
+        "geodesic_is_shortest": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "total_excess": 2.75,
+        "speed_excess": 1.0,
+        "path_excess": 1.75
+      },
+      "conclusion": "excess = speed excess + path excess, both ≥ 0",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "geodesicsaturation",
+    "catalog_status": "verified",
+    "catalog_integrity": "gate-passed",
+    "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
+    "authored_by": "WS-20 theorem-function tier"
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "plasma-nfix-information-rate",
+  "kind": "theorem_function",
+  "name": "Plasma N-fixation — information-rate bound structure",
+  "version": "1.0.0",
+  "summary": "Checks that any information rate within the solar-powered system's bound P/(k_B·T·ln 2) consumes no more than the available power P.",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.19317982",
+  "lean": {
+    "module": "NitrogenFixation",
+    "sources": [
+      {
+        "path": "P7_PlasmaNFix/Integration.lean",
+        "sha256": "09612cf1c2f6ff9d06aacb577373822826515bc74ffacebe763e8482e5117884"
+      },
+      {
+        "path": "P7_PlasmaNFix/Foundations.lean",
+        "sha256": "d00ed89438dd55a25fc59fbd03a96c69ef91300db910a3da5547be9a15d9f82c"
+      }
+    ],
+    "theorems": [
+      "theorem10_info_bound_structure"
+    ],
+    "verification_provider": "CANON_CI_SPINE_BUILD",
+    "verification_receipt_id": null
+  },
+  "inputs": [
+    {
+      "name": "power",
+      "type": "number",
+      "unit": "W",
+      "help": "Available power P (≥ 0).",
+      "required": true
+    },
+    {
+      "name": "temperature",
+      "type": "number",
+      "unit": "K",
+      "help": "Operating temperature T (> 0).",
+      "required": true
+    },
+    {
+      "name": "rate",
+      "type": "number",
+      "unit": "bits/s",
+      "help": "Information rate.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "temperature_positive",
+      "statement": "T > 0.",
+      "check": "temperature > 0"
+    },
+    {
+      "id": "power_nonnegative",
+      "statement": "P ≥ 0.",
+      "check": "power >= 0"
+    },
+    {
+      "id": "rate_within_bound",
+      "statement": "rate ≤ P/(k_B·T·ln 2) with k_B = 1.380649e-23 J/K.",
+      "check": "rate <= power / (1.380649e-23 * temperature * real_log(2))"
+    }
+  ],
+  "derived": [
+    {
+      "name": "power_used",
+      "expression": "rate * (1.380649e-23 * temperature * real_log(2))",
+      "unit": "W"
+    }
+  ],
+  "conclusion": {
+    "statement": "rate·k_B·T·ln 2 ≤ P",
+    "check": "approx_le(power_used, power)",
+    "lean_theorem": "theorem10_info_bound_structure"
+  },
+  "example": {
+    "inputs": {
+      "power": 1e-12,
+      "temperature": 300,
+      "rate": 100000000.0
+    },
+    "expected_outputs": {
+      "theorem": "theorem10_info_bound_structure",
+      "hypotheses": {
+        "temperature_positive": true,
+        "power_nonnegative": true,
+        "rate_within_bound": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "power_used": 2.8709788850787237e-13
+      },
+      "conclusion": "rate·k_B·T·ln 2 ≤ P",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "p7-plasmanfix-integration",
+    "catalog_status": "verified",
+    "catalog_integrity": "gate-passed",
+    "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
+    "authored_by": "WS-20 theorem-function tier"
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "symbiotic-surplus",
+  "kind": "decision_kernel",
+  "name": "Symbiotic reciprocity and surplus audit",
+  "version": "0.3.0",
+  "summary": "Audits whether two cooperating partners generate real surplus from their exchange or merely shift cost between them, under an energy accounting.",
+  "line": "Symbiotic information exchange",
+  "decision_family": "governance-coordination",
+  "tier": "admitted",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.20764638",
+  "lean": {
+    "module": "Viridis.SymbioticIntelligenceBound",
+    "sources": [
+      {
+        "path": "SymbioticIntelligenceBound.lean",
+        "sha256": "c3b54a741ebcc7e3953dd9e15f2b7a3d1cb3529ae38c9bb8cb884fcfbe5ea938"
+      }
+    ],
+    "theorems": [
+      "joint_bound_from_partners",
+      "ness_reciprocity",
+      "symbiotic_surplus_threshold",
+      "cos_sq_extraction_bounded"
+    ],
+    "verification_provider": "ARISTOTLE_HISTORICAL",
+    "verification_receipt_id": "09f7fe35-a336-4947-adfa-38fc27e7cc93"
+  },
+  "inputs": [
+    {
+      "name": "epsilon_landauer",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "energy/information",
+      "help": "Per-bit energy cost (model units)."
+    },
+    {
+      "name": "partner_a_power",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "power",
+      "help": "Power available to partner A."
+    },
+    {
+      "name": "partner_a_dissipation",
+      "required": true,
+      "maximum": 1,
+      "minimum": 0,
+      "type": "number",
+      "unit": "dimensionless",
+      "help": "Dissipation of partner A."
+    },
+    {
+      "name": "partner_e_power",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "power",
+      "help": "Power available to partner E."
+    },
+    {
+      "name": "partner_e_dissipation",
+      "required": true,
+      "maximum": 1,
+      "minimum": 0,
+      "type": "number",
+      "unit": "dimensionless",
+      "help": "Dissipation of partner E."
+    },
+    {
+      "name": "subsidy_e_to_a",
+      "required": true,
+      "type": "number",
+      "unit": "information/time",
+      "help": "Transfer from E to A."
+    },
+    {
+      "name": "subsidy_a_to_e",
+      "required": true,
+      "type": "number",
+      "unit": "information/time",
+      "help": "Transfer from A to E."
+    },
+    {
+      "name": "housekeeping_dissipation",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "information/time",
+      "help": "Overhead dissipation of the partnership."
+    },
+    {
+      "name": "observed_rate_a",
+      "required": true,
+      "type": "number",
+      "unit": "information/time",
+      "help": "Observed information rate of A."
+    },
+    {
+      "name": "observed_rate_e",
+      "required": true,
+      "type": "number",
+      "unit": "information/time",
+      "help": "Observed information rate of E."
+    },
+    {
+      "name": "inner_product",
+      "required": true,
+      "type": "number",
+      "unit": "declared geometry",
+      "help": "Alignment between the partners' directions."
+    },
+    {
+      "name": "norm_a_squared",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "declared geometry",
+      "help": "Squared magnitude of A's direction."
+    },
+    {
+      "name": "norm_e_squared",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "declared geometry",
+      "help": "Squared magnitude of E's direction."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "reciprocity_residual",
+      "unit": "information/time"
+    },
+    {
+      "name": "reciprocal_fixed_point"
+    },
+    {
+      "name": "joint_rate_ceiling",
+      "unit": "information/time"
+    },
+    {
+      "name": "observed_joint_rate",
+      "unit": "information/time"
+    },
+    {
+      "name": "within_joint_ceiling"
+    },
+    {
+      "name": "symbiotic_surplus",
+      "unit": "information/time"
+    },
+    {
+      "name": "coupling_regime"
+    },
+    {
+      "name": "extraction_efficiency",
+      "unit": "dimensionless"
+    },
+    {
+      "name": "positive_net_subsidy"
+    },
+    {
+      "name": "scope"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "landauer_positive",
+      "statement": "The Landauer cost per bit is positive.",
+      "check": "epsilon_landauer > 0"
+    },
+    {
+      "id": "partners_declared",
+      "statement": "Partner powers are non-negative and dissipation fractions lie in [0, 1].",
+      "check": "partner_a_power >= 0 and partner_e_power >= 0 and 0 <= partner_a_dissipation <= 1 and 0 <= partner_e_dissipation <= 1"
+    },
+    {
+      "id": "cauchy_schwarz",
+      "statement": "The declared geometry satisfies the Cauchy–Schwarz premise.",
+      "check": "norm_a_squared > 0 and norm_e_squared > 0 and inner_product ** 2 <= norm_a_squared * norm_e_squared + 1e-12"
+    },
+    {
+      "id": "housekeeping_nonnegative",
+      "statement": "Housekeeping dissipation is non-negative.",
+      "check": "housekeeping_dissipation >= 0"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "epsilon_landauer": 1,
+      "partner_a_power": 2,
+      "partner_a_dissipation": 0.5,
+      "partner_e_power": 2,
+      "partner_e_dissipation": 0.5,
+      "subsidy_e_to_a": 1,
+      "subsidy_a_to_e": -1,
+      "housekeeping_dissipation": 0,
+      "observed_rate_a": 1,
+      "observed_rate_e": 1,
+      "inner_product": 1,
+      "norm_a_squared": 1,
+      "norm_e_squared": 1
+    },
+    "expected_outputs": {
+      "reciprocity_residual": 0,
+      "reciprocal_fixed_point": true,
+      "joint_rate_ceiling": 2,
+      "observed_joint_rate": 2,
+      "within_joint_ceiling": true,
+      "symbiotic_surplus": 0,
+      "coupling_regime": "MUTUALISTIC_WITHIN_MODEL",
+      "extraction_efficiency": 1,
+      "positive_net_subsidy": false,
+      "scope": "two-partner supplied-flow model; the joint ceiling requires exact reciprocal subsidy cancellation"
+    }
+  },
+  "scope": "Two-partner supplied-flow screen; mutualistic/parasitic labels apply only inside the declared model and do not establish consent, benefit sharing, or ecological causality.",
+  "boundary": "Formal coordination structure does not prove stakeholder consent, legal authority, fair distribution, or empirical task calibration. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "ADMITTED",
+    "doi_state": "READY"
+  }
+}

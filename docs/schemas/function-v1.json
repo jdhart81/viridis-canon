@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "title": "Viridis OS function manifest (v1)",
+  "description": "function.json — declares one callable result of the Viridis canon. Lives beside its Lean source (package directory) or under os/functions/<id>/. Validated by canon_core.function_schema; compiled into the OS bundle by `python -m canon_core build-os`. The compiler never writes manifests and never raises a tier.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "id", "kind", "name", "version", "summary", "decision_family",
+    "tier", "state", "reconciliation", "blocked", "doi", "lean", "inputs", "outputs",
+    "hypotheses", "example", "scope", "boundary", "empirical_validation", "runner"
+  ],
+  "properties": {
+    "$schema": { "const": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json" },
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 80 },
+    "kind": { "enum": ["decision_kernel", "theorem_function"] },
+    "name": { "type": "string", "minLength": 3 },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "summary": { "type": "string", "minLength": 20, "description": "Plain language: what question the function answers." },
+    "line": { "type": "string" },
+    "decision_family": { "type": ["string", "null"], "description": "An id from os/families.json, or null." },
+    "tier": {
+      "enum": ["reference", "callable", "admitted"],
+      "description": "reference: citable only. callable: valid manifest + runner, runs as an unsigned preview. admitted: listed in os/admissions.json by a human-authored commit; may appear in a reviewed analysis."
+    },
+    "state": { "enum": ["READY", "BLOCKED"] },
+    "reconciliation": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "note"],
+          "properties": {
+            "code": { "enum": ["CANON_CLASSIFICATION", "CANON_RECORD"] },
+            "note": { "type": "string", "minLength": 10 }
+          }
+        }
+      ]
+    },
+    "blocked": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["verdict", "reason"],
+          "properties": { "verdict": { "const": "BLOCKED" }, "reason": { "type": "string" } }
+        }
+      ]
+    },
+    "doi": { "type": "string", "pattern": "^10\\.[0-9]{4,9}/\\S+$" },
+    "lean": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["module", "sources", "theorems", "verification_provider", "verification_receipt_id"],
+      "properties": {
+        "module": { "type": "string" },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "sha256"],
+            "properties": {
+              "path": { "type": "string" },
+              "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+            }
+          }
+        },
+        "theorems": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "verification_provider": { "type": ["string", "null"] },
+        "verification_receipt_id": { "type": ["string", "null"] }
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type", "unit", "help", "required"],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+          "type": { "enum": ["number", "integer", "boolean", "string", "array", "object"] },
+          "unit": { "type": "string", "minLength": 1 },
+          "help": { "type": "string", "minLength": 3 },
+          "required": { "type": "boolean" },
+          "minimum": { "type": "number" },
+          "maximum": { "type": "number" },
+          "exclusiveMinimum": { "type": "number" },
+          "exclusiveMaximum": { "type": "number" },
+          "enum": { "type": "array" },
+          "items": { "type": "object" },
+          "minItems": { "type": "integer" },
+          "maxItems": { "type": "integer" },
+          "properties": { "type": "object" },
+          "additionalProperties": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "unit": { "type": "string" },
+          "description": { "type": "string" },
+          "input_echo": { "type": "boolean" }
+        }
+      }
+    },
+    "hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "statement", "check"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+          "statement": { "type": "string" },
+          "check": { "type": "string", "description": "Checkable-condition grammar (see os/lib/viridis_fn.py)." },
+          "lean": { "type": "string" }
+        }
+      }
+    },
+    "derived": {
+      "type": "array",
+      "description": "theorem_function only: values computed in order from inputs.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "expression"],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+          "expression": { "type": "string" },
+          "unit": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "conclusion": {
+      "type": "object",
+      "description": "theorem_function only: the Lean conclusion as a checkable condition.",
+      "additionalProperties": false,
+      "required": ["statement", "check", "lean_theorem"],
+      "properties": {
+        "statement": { "type": "string" },
+        "check": { "type": "string" },
+        "lean_theorem": { "type": "string" }
+      }
+    },
+    "example": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["inputs", "expected_outputs"],
+          "properties": { "inputs": { "type": "object" }, "expected_outputs": { "type": "object" } }
+        }
+      ]
+    },
+    "scope": { "type": "string", "minLength": 10 },
+    "boundary": { "type": "string", "minLength": 20, "description": "What the result does NOT establish." },
+    "empirical_validation": {
+      "oneOf": [
+        { "const": "NOT_VALIDATED" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "record"],
+          "properties": { "status": { "type": "string" }, "record": { "type": "string", "description": "Repository path of the validation record." } }
+        }
+      ]
+    },
+    "runner": { "type": ["string", "null"], "description": "'runner.py' beside the manifest, 'theorem' for the generic theorem-function runner, or null (reference / blocked)." },
+    "provenance": { "type": "object" }
+  }
+}

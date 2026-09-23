@@ -1,0 +1,143 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "biosphere-erasure-floor",
+  "kind": "theorem_function",
+  "name": "Biosphere erasure floor — total erasure cost is at least N·ε_L",
+  "version": "1.0.0",
+  "summary": "Checks that when every bit of biosphere order costs at least the Landauer quantum to erase, the total cost of erasing N bits is at least N times that quantum.",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.19317982",
+  "lean": {
+    "module": "Viridis.BiosphereErasureBound",
+    "sources": [
+      {
+        "path": "BiosphereErasureBound.lean",
+        "sha256": "5daf77e7ca767afe544d1bf112bf8fb22a7daec2b1005e2c0da566a2e55493b9"
+      }
+    ],
+    "theorems": [
+      "biosphere_erasure_floor"
+    ],
+    "verification_provider": "CANON_CI_SPINE_BUILD",
+    "verification_receipt_id": null
+  },
+  "inputs": [
+    {
+      "name": "epsilon_landauer",
+      "type": "number",
+      "unit": "J/bit",
+      "help": "Minimum energy to erase one bit (the Landauer quantum, k_B·T·ln 2).",
+      "required": true,
+      "exclusiveMinimum": 0
+    },
+    {
+      "name": "bit_costs",
+      "type": "array",
+      "unit": "J",
+      "help": "Declared erasure cost of each bit, one entry per bit.",
+      "required": true,
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 10000
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "each_bit_costs_at_least_quantum",
+      "statement": "Every bit's erasure cost is at least ε_L.",
+      "check": "all(epsilon_landauer <= c for c in bit_costs)"
+    }
+  ],
+  "derived": [
+    {
+      "name": "bit_count",
+      "expression": "len(bit_costs)",
+      "unit": "bits"
+    },
+    {
+      "name": "erasure_floor",
+      "expression": "len(bit_costs) * epsilon_landauer",
+      "unit": "J"
+    },
+    {
+      "name": "total_cost",
+      "expression": "sum(bit_costs)",
+      "unit": "J"
+    }
+  ],
+  "conclusion": {
+    "statement": "N·ε_L ≤ Σ cost_i",
+    "check": "approx_le(erasure_floor, total_cost)",
+    "lean_theorem": "biosphere_erasure_floor"
+  },
+  "example": {
+    "inputs": {
+      "epsilon_landauer": 2.87e-21,
+      "bit_costs": [
+        3e-21,
+        2.9e-21,
+        5e-21
+      ]
+    },
+    "expected_outputs": {
+      "theorem": "biosphere_erasure_floor",
+      "hypotheses": {
+        "each_bit_costs_at_least_quantum": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "bit_count": 3.0,
+        "erasure_floor": 8.61e-21,
+        "total_cost": 1.09e-20
+      },
+      "conclusion": "N·ε_L ≤ Σ cost_i",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "biosphereerasurebound",
+    "catalog_status": "verified",
+    "catalog_integrity": "gate-passed",
+    "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
+    "authored_by": "WS-20 theorem-function tier"
+  }
+}

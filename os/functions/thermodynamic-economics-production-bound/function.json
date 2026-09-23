@@ -1,0 +1,160 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "thermodynamic-economics-production-bound",
+  "kind": "theorem_function",
+  "name": "Thermodynamic economics — production cannot exceed P·D/(k_B·T·ln 2)",
+  "version": "1.0.0",
+  "summary": "Checks that thermodynamic production η·P·D/(k_B·T·ln 2) never exceeds the ceiling P·D/(k_B·T·ln 2) when efficiency and data richness are fractions.",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.19317982",
+  "lean": {
+    "module": "P4_ThermodynamicEconomics",
+    "sources": [
+      {
+        "path": "P4_ThermodynamicEconomics.lean",
+        "sha256": "3a82c580316b5194c13b0d04ccf67285e898c74bcd938fa9e27c40e1025de328"
+      }
+    ],
+    "theorems": [
+      "thermodynamic_production_bound"
+    ],
+    "verification_provider": "CANON_CI_SPINE_BUILD",
+    "verification_receipt_id": null
+  },
+  "inputs": [
+    {
+      "name": "efficiency",
+      "type": "number",
+      "unit": "fraction",
+      "help": "Efficiency η (0 ≤ η ≤ 1).",
+      "required": true,
+      "minimum": 0
+    },
+    {
+      "name": "power",
+      "type": "number",
+      "unit": "W",
+      "help": "Power P (≥ 0, finite).",
+      "required": true,
+      "minimum": 0
+    },
+    {
+      "name": "data_richness",
+      "type": "number",
+      "unit": "fraction",
+      "help": "Data richness D (0 ≤ D ≤ 1).",
+      "required": true,
+      "minimum": 0
+    },
+    {
+      "name": "kbt_ln2",
+      "type": "number",
+      "unit": "J/bit",
+      "help": "k_B·T·ln 2 (> 0, finite).",
+      "required": true,
+      "minimum": 0
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "efficiency_bounded",
+      "statement": "η ≤ 1.",
+      "check": "efficiency <= 1"
+    },
+    {
+      "id": "data_richness_bounded",
+      "statement": "D ≤ 1.",
+      "check": "data_richness <= 1"
+    },
+    {
+      "id": "positive_temperature",
+      "statement": "k_B·T·ln 2 > 0.",
+      "check": "kbt_ln2 > 0"
+    }
+  ],
+  "derived": [
+    {
+      "name": "production",
+      "expression": "efficiency * power * data_richness / kbt_ln2",
+      "unit": "bits/s"
+    },
+    {
+      "name": "ceiling",
+      "expression": "power * data_richness / kbt_ln2",
+      "unit": "bits/s"
+    }
+  ],
+  "conclusion": {
+    "statement": "η·P·D/(k_B T ln 2) ≤ P·D/(k_B T ln 2)",
+    "check": "approx_le(production, ceiling)",
+    "lean_theorem": "thermodynamic_production_bound"
+  },
+  "example": {
+    "inputs": {
+      "efficiency": 0.3,
+      "power": 100,
+      "data_richness": 0.6,
+      "kbt_ln2": 2.87e-21
+    },
+    "expected_outputs": {
+      "theorem": "thermodynamic_production_bound",
+      "hypotheses": {
+        "efficiency_bounded": true,
+        "data_richness_bounded": true,
+        "positive_temperature": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "production": 6.271777003484321e+21,
+        "ceiling": 2.0905923344947736e+22
+      },
+      "conclusion": "η·P·D/(k_B T ln 2) ≤ P·D/(k_B T ln 2)",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "thermodynamic-economics",
+    "catalog_status": "verified",
+    "catalog_integrity": "gate-passed",
+    "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
+    "authored_by": "WS-20 theorem-function tier"
+  }
+}

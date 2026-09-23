@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "standard": "VOS-DECISION-FAMILIES-1",
+  "families": [
+    {
+      "id": "restoration-design",
+      "name": "Restoration and planting design",
+      "label": "Restoration & planting",
+      "audience": "Conservation · land trusts · agencies",
+      "question": "Where should restoration effort be concentrated, and what supply bottleneck limits delivery?",
+      "decision_boundary": "Model outputs do not establish field suitability, seed availability, land rights, permits, or ecological success.",
+      "required_evidence": [
+        "site suitability and edge-cost evidence",
+        "seed demand and eligible supply network",
+        "project boundary and accountable owner"
+      ],
+      "function_order": [
+        "restoration",
+        "afforestation",
+        "seed-source-bottleneck"
+      ]
+    },
+    {
+      "id": "continuity-monitoring",
+      "name": "Continuity, monitoring, and intervention timing",
+      "label": "Continuity & timing",
+      "audience": "Conservation · industry operations",
+      "question": "Is the ecological function persisting, when should evidence trigger action, and how conservative should the operating limit be?",
+      "decision_boundary": "Thresholds remain conditional on supplied coefficients, observation models, uncertainty moments, and declared switching costs.",
+      "required_evidence": [
+        "versioned observations",
+        "calibrated coefficients or declared statistical model",
+        "monitoring cadence and intervention costs"
+      ],
+      "function_order": [
+        "carbon-continuity",
+        "tempo",
+        "precautionary-capacity",
+        "anytime-change",
+        "switching-hysteresis",
+        "shadow-price-capacity",
+        "decision-information-capacity"
+      ]
+    },
+    {
+      "id": "governance-coordination",
+      "name": "Governance, coordination, and information integrity",
+      "label": "Coordination & integrity",
+      "audience": "Industry · business · multi-party programs",
+      "question": "Can multiple actors coordinate without exceeding information, dissipation, or reciprocity constraints?",
+      "decision_boundary": "Formal coordination structure does not prove stakeholder consent, legal authority, fair distribution, or empirical task calibration.",
+      "required_evidence": [
+        "named actors and decision rights",
+        "cost, information, and channel assumptions",
+        "reciprocity or allocation boundary"
+      ],
+      "function_order": [
+        "harmonization",
+        "shared-channel-coverage",
+        "invariance-capacity",
+        "reciprocity-corridor",
+        "multi-ring-alignment-capacity",
+        "symbiotic-surplus"
+      ]
+    },
+    {
+      "id": "finance-risk",
+      "name": "Natural-capital finance and coupled risk",
+      "label": "Finance & risk",
+      "audience": "Business · funders · natural-capital finance",
+      "question": "What model-bound risk floor survives diversification, and what evidence is still required before a commercial decision?",
+      "decision_boundary": "No module prices insurance, creates a credit, establishes ownership, or supplies underwriting authority without a separate accepted product warrant.",
+      "required_evidence": [
+        "asset and portfolio boundary",
+        "dissipation and coupling evidence",
+        "commercial authority and independent review"
+      ],
+      "function_order": [
+        "mutualist",
+        "thermodynamic-economic-allocation"
+      ]
+    }
+  ]
+}

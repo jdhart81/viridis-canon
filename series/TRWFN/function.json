@@ -1,0 +1,271 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "thermodynamic-economic-allocation",
+  "kind": "decision_kernel",
+  "name": "Ecological-thermodynamic capital allocation",
+  "version": "1.0.0",
+  "summary": "Allocates a capital budget across candidate ecological assets by declared value, transition cost and friction, and shows the budget's shadow price.",
+  "line": "Ecological economics & capital allocation",
+  "decision_family": "finance-risk",
+  "tier": "admitted",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.22236785",
+  "lean": {
+    "module": "Viridis.ThermodynamicEconomics.RetrofitWaterFilling",
+    "sources": [
+      {
+        "path": "series/TRWFN/ViridisRun139.lean",
+        "sha256": "26144b575077db3d20d650a13321abf99d9fd5105d01209e760bdaa5130b8530"
+      }
+    ],
+    "theorems": [
+      "clippedAllocation_nonnegative",
+      "clippedAllocation_le_one",
+      "interior_stationarity",
+      "embodied_burden_lowers_benefit",
+      "retrofit_allocation_nonvacuous"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-139-ThermodynamicRetrofitWaterFilling-Comparator-attempt-1"
+  },
+  "inputs": [
+    {
+      "name": "budget_usd",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "USD",
+      "help": "Total capital available (USD)."
+    },
+    {
+      "name": "declared_evidence_ready",
+      "required": true,
+      "type": "boolean",
+      "unit": "bool",
+      "help": "Whether the declared values rest on authorized evidence (true/false)."
+    },
+    {
+      "name": "declared_price_authorized",
+      "required": true,
+      "type": "boolean",
+      "unit": "bool",
+      "help": "Whether the declared prices are authorized (true/false)."
+    },
+    {
+      "name": "assets",
+      "required": true,
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "asset_id": {
+            "type": "string"
+          },
+          "capital_cost_usd": {
+            "exclusiveMinimum": 0,
+            "type": "number"
+          },
+          "embodied_transition_cost_usd": {
+            "minimum": 0,
+            "type": "number"
+          },
+          "gross_avoided_value_usd": {
+            "minimum": 0,
+            "type": "number"
+          },
+          "transition_friction_usd": {
+            "exclusiveMinimum": 0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "asset_id",
+          "gross_avoided_value_usd",
+          "embodied_transition_cost_usd",
+          "capital_cost_usd",
+          "transition_friction_usd"
+        ],
+        "type": "object"
+      },
+      "maxItems": 25,
+      "minItems": 1,
+      "type": "array",
+      "unit": "list of declared alternatives (USD fields)",
+      "help": "Candidate assets with declared value and cost fields, as a list."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "allocation_status"
+    },
+    {
+      "name": "budget_shadow_price",
+      "unit": "dimensionless USD-objective per USD-budget"
+    },
+    {
+      "name": "budget_used_usd",
+      "unit": "USD"
+    },
+    {
+      "name": "budget_remaining_usd",
+      "unit": "USD"
+    },
+    {
+      "name": "scenario_objective_value_usd",
+      "unit": "declared USD objective"
+    },
+    {
+      "name": "assets"
+    },
+    {
+      "name": "implementation_checks"
+    },
+    {
+      "name": "formal_claims"
+    },
+    {
+      "name": "formal_scope"
+    },
+    {
+      "name": "empirical_status"
+    },
+    {
+      "name": "decision_lens"
+    },
+    {
+      "name": "claim_boundary"
+    },
+    {
+      "name": "allocated_capital_usd",
+      "unit": "USD",
+      "input_echo": true
+    },
+    {
+      "name": "allocation_fraction",
+      "unit": "fraction of full retrofit",
+      "input_echo": true
+    },
+    {
+      "name": "net_declared_benefit_usd",
+      "unit": "declared USD objective",
+      "input_echo": true
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "budget_nonnegative",
+      "statement": "The declared budget is non-negative.",
+      "check": "budget_usd >= 0"
+    },
+    {
+      "id": "alternatives_declared",
+      "statement": "Every alternative has positive capital cost and friction and non-negative burdens.",
+      "check": "len(assets) >= 1 and all(a['capital_cost_usd'] > 0 and a['transition_friction_usd'] > 0 and a['gross_avoided_value_usd'] >= 0 and a['embodied_transition_cost_usd'] >= 0 for a in assets)"
+    },
+    {
+      "id": "distinct_alternatives",
+      "statement": "Alternative identifiers are distinct.",
+      "check": "len(sorted(a['asset_id'] for a in assets)) == len(assets)"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "budget_usd": 100000,
+      "declared_evidence_ready": true,
+      "declared_price_authorized": true,
+      "assets": [
+        {
+          "asset_id": "wetland-a",
+          "gross_avoided_value_usd": 180000,
+          "embodied_transition_cost_usd": 30000,
+          "capital_cost_usd": 80000,
+          "transition_friction_usd": 70000
+        },
+        {
+          "asset_id": "forest-b",
+          "gross_avoided_value_usd": 120000,
+          "embodied_transition_cost_usd": 20000,
+          "capital_cost_usd": 60000,
+          "transition_friction_usd": 50000
+        },
+        {
+          "asset_id": "riparian-c",
+          "gross_avoided_value_usd": 70000,
+          "embodied_transition_cost_usd": 30000,
+          "capital_cost_usd": 50000,
+          "transition_friction_usd": 40000
+        }
+      ]
+    },
+    "expected_outputs": {
+      "allocation_status": "BUDGET_BINDING",
+      "budget_shadow_price": 1.171328671329,
+      "budget_used_usd": 100000,
+      "budget_remaining_usd": 0,
+      "scenario_objective_value_usd": 148601.3986013986,
+      "assets": [
+        {
+          "asset_id": "wetland-a",
+          "net_declared_benefit_usd": 150000,
+          "allocation_fraction": 0.804195804196,
+          "allocated_capital_usd": 64335.66433566434,
+          "objective_contribution_usd": 97993.78942735586,
+          "stationarity_residual_usd": 0
+        },
+        {
+          "asset_id": "forest-b",
+          "net_declared_benefit_usd": 100000,
+          "allocation_fraction": 0.594405594406,
+          "allocated_capital_usd": 35664.33566433567,
+          "objective_contribution_usd": 50607.609174042744,
+          "stationarity_residual_usd": 0
+        },
+        {
+          "asset_id": "riparian-c",
+          "net_declared_benefit_usd": 40000,
+          "allocation_fraction": 0,
+          "allocated_capital_usd": 0,
+          "objective_contribution_usd": 0,
+          "stationarity_residual_usd": -18566.43356643356
+        }
+      ],
+      "implementation_checks": {
+        "box_feasible": true,
+        "budget_feasible": true,
+        "coordinate_kkt_conditions": true,
+        "complementary_budget_regime": true,
+        "passed": true
+      },
+      "formal_claims": [
+        "clipped allocation remains between zero and one",
+        "interior coordinates satisfy the declared stationarity identity",
+        "increasing embodied transition burden lowers declared benefit"
+      ],
+      "formal_scope": "The Comparator certificate covers the listed algebraic Run-139 claims, not the input values or a real-world allocation decision.",
+      "empirical_status": "USER_SUPPLIED_UNVALIDATED",
+      "decision_lens": {
+        "ecologicalState": "DECLARED_BURDEN_SCENARIO",
+        "ecologicalSummary": "The result compares user-supplied avoided and embodied burden values; it does not measure ecological effects.",
+        "evidenceState": "DECLARED_READY_UNVERIFIED",
+        "businessState": "CAPITAL_SCENARIO_QUANTIFIED",
+        "businessSummary": "The model allocates $100,000.00 of the declared $100,000.00 budget across 3 divisible alternatives.",
+        "optionsState": "MODEL_RANKED_ALTERNATIVES",
+        "optionsSummary": "Compare the fractional allocations, shadow price, and zero-allocation alternatives within the declared one-budget model.",
+        "actionState": "INVESTIGATE",
+        "actionSummary": "Advance this scenario to accountable evidence review before any capital commitment."
+      },
+      "claim_boundary": "Scenario-only allocation for fixed, user-supplied coefficients. No appraisal, investment advice, empirical validation, price authorization, credit quantity, causal impact, or certification is produced."
+    }
+  },
+  "scope": "Run-139 one-period, divisible-retrofit, fixed-coefficient, quadratic-friction, single-budget scenario. All burden values, prices, costs, and authority flags are user-supplied and remain empirically unvalidated.",
+  "boundary": "No module prices insurance, creates a credit, establishes ownership, or supplies underwriting authority without a separate accepted product warrant. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "ADMITTED",
+    "doi_state": "READY"
+  }
+}

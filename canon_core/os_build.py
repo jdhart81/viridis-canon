@@ -183,6 +183,7 @@ def build_os(
     self_test: bool = True,
 ) -> dict[str, Any]:
     root = root.resolve()
+    out_dir = Path(out_dir).resolve()  # the self-test runs with the bundle as cwd
     context = RepoContext.load(root)
     errors: list[str] = []
 

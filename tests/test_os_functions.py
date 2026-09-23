@@ -283,6 +283,16 @@ class CompilerTests(unittest.TestCase):
         catalog = json.loads((ROOT / "docs/data/catalog.json").read_text(encoding="utf-8"))
         self.assertEqual(len(reference["records"]), len(catalog["records"]))
 
+    def test_relative_out_dir(self):
+        import os
+        cwd = os.getcwd()
+        try:
+            os.chdir(self.tmp)
+            result = build_os(ROOT, Path("rel-bundle"), source_ref="test")
+        finally:
+            os.chdir(cwd)
+        self.assertEqual(result["digest"], self.result_a["digest"])
+
     def test_bundle_self_test_and_dispatch(self):
         run = self.tmp / "a" / "run.py"
         proc = subprocess.run([sys.executable, "-I", "-B", str(run), "--self-test"], capture_output=True, text=True)

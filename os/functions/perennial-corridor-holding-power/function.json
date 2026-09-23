@@ -1,0 +1,142 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "perennial-corridor-holding-power",
+  "kind": "theorem_function",
+  "name": "Perennial corridor — holding power grows with decay rate",
+  "version": "1.0.0",
+  "summary": "Checks that holding a corridor against faster decay never takes less standing power (holding power δ·ε is monotone in the decay rate δ).",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.19317982",
+  "lean": {
+    "module": "Viridis.Corridors.PerennialCorridor",
+    "sources": [
+      {
+        "path": "PerennialCorridor.lean",
+        "sha256": "dd00d2360c7a2aa362d4151db994f69d6e8529994510c78dcbede6a6a0199dd7"
+      }
+    ],
+    "theorems": [
+      "holding_power_mono_in_decay"
+    ],
+    "verification_provider": "CANON_CI_SPINE_BUILD",
+    "verification_receipt_id": null
+  },
+  "inputs": [
+    {
+      "name": "decay_low",
+      "type": "number",
+      "unit": "1/time",
+      "help": "Lower decay rate δ₁.",
+      "required": true
+    },
+    {
+      "name": "decay_high",
+      "type": "number",
+      "unit": "1/time",
+      "help": "Higher decay rate δ₂.",
+      "required": true
+    },
+    {
+      "name": "maintenance_cost",
+      "type": "number",
+      "unit": "energy",
+      "help": "Maintenance cost ε per unit decay (≥ 0).",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "cost_nonnegative",
+      "statement": "ε ≥ 0.",
+      "check": "maintenance_cost >= 0"
+    },
+    {
+      "id": "decay_ordered",
+      "statement": "δ₁ ≤ δ₂.",
+      "check": "decay_low <= decay_high"
+    }
+  ],
+  "derived": [
+    {
+      "name": "holding_power_low",
+      "expression": "decay_low * maintenance_cost",
+      "unit": "power"
+    },
+    {
+      "name": "holding_power_high",
+      "expression": "decay_high * maintenance_cost",
+      "unit": "power"
+    }
+  ],
+  "conclusion": {
+    "statement": "P_hold(δ₁) ≤ P_hold(δ₂)",
+    "check": "approx_le(holding_power_low, holding_power_high)",
+    "lean_theorem": "holding_power_mono_in_decay"
+  },
+  "example": {
+    "inputs": {
+      "decay_low": 0.02,
+      "decay_high": 0.05,
+      "maintenance_cost": 1200
+    },
+    "expected_outputs": {
+      "theorem": "holding_power_mono_in_decay",
+      "hypotheses": {
+        "cost_nonnegative": true,
+        "decay_ordered": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "holding_power_low": 24.0,
+        "holding_power_high": 60.0
+      },
+      "conclusion": "P_hold(δ₁) ≤ P_hold(δ₂)",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "perennialcorridor",
+    "catalog_status": "verified",
+    "catalog_integrity": "gate-passed",
+    "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
+    "authored_by": "WS-20 theorem-function tier"
+  }
+}

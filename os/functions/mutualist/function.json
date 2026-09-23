@@ -1,0 +1,110 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "mutualist",
+  "kind": "decision_kernel",
+  "name": "Mutualist — natural-capital risk-premium pricing",
+  "version": "0.1.0",
+  "summary": "Prices a risk premium for natural-capital assets whose outcomes depend on a mutualist partner. Blocked until a product warrant is accepted.",
+  "line": "Valuation & Finance",
+  "decision_family": "finance-risk",
+  "tier": "reference",
+  "state": "BLOCKED",
+  "reconciliation": null,
+  "blocked": {
+    "verdict": "BLOCKED",
+    "reason": "BLOCKED_PRODUCT_WARRANT_REQUIRED: no accepted product warrant; no runner is published."
+  },
+  "doi": "10.5281/zenodo.21327066",
+  "lean": {
+    "module": "SymbioticRiskPremium",
+    "sources": [
+      {
+        "path": "series/SymbioticRiskPremium.lean",
+        "sha256": "7d2c830b8ac412592ce0b5d6bdbdfddbc410223c5e5269aa3321b946f97d31c7"
+      }
+    ],
+    "theorems": [
+      "risk_premium_tur_floor",
+      "mutualistic_iff_covariance_negative",
+      "diversification_wall_residual_positive",
+      "srpt_nonvacuous"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "run-093-srpt"
+  },
+  "inputs": [
+    {
+      "name": "rho",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "dimensionless correlation",
+      "help": "Observed correlation."
+    },
+    {
+      "name": "sigma",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "same units as returns",
+      "help": "Asset volatility."
+    },
+    {
+      "name": "sigma_tot",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "same units as returns",
+      "help": "Total portfolio volatility."
+    },
+    {
+      "name": "r_c",
+      "required": true,
+      "type": "number",
+      "unit": "same units as returns",
+      "help": "Critical correlation threshold."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "contagion_regime",
+      "unit": "categorical"
+    },
+    {
+      "name": "diversification_residual",
+      "unit": "same units as premium"
+    },
+    {
+      "name": "risk_premium_floor",
+      "unit": "J·K/(J) dimensionless-scaled"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "rho_nonnegative",
+      "statement": "The declared correlation magnitude is non-negative.",
+      "check": "rho >= 0"
+    },
+    {
+      "id": "sigma_positive",
+      "statement": "The partner volatility is positive.",
+      "check": "sigma > 0"
+    },
+    {
+      "id": "sigma_tot_positive",
+      "statement": "The total volatility is positive.",
+      "check": "sigma_tot > 0"
+    }
+  ],
+  "example": null,
+  "scope": "Deterministic theorem-backed computation; empirical input validity is external.",
+  "boundary": "No module prices insurance, creates a credit, establishes ownership, or supplies underwriting authority without a separate accepted product warrant. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": null,
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "BLOCKED",
+    "doi_state": "READY"
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "bounded-memory-erasure-floor",
+  "kind": "theorem_function",
+  "name": "Bounded-memory learning — erasure dissipation floor",
+  "version": "1.0.0",
+  "summary": "Checks that a learner with finite memory that acquired more bits than it can store must dissipate at least ε·(acquired − memory) as heat.",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.19317982",
+  "lean": {
+    "module": "Viridis.BoundedMemoryLearning",
+    "sources": [
+      {
+        "path": "BoundedMemoryLearning.lean",
+        "sha256": "910407243266a4a2793e78184679e9ed24f67a57efca7444d4be871f069514a6"
+      }
+    ],
+    "theorems": [
+      "erasure_dissipation_floor"
+    ],
+    "verification_provider": "CANON_CI_SPINE_BUILD",
+    "verification_receipt_id": null
+  },
+  "inputs": [
+    {
+      "name": "acquired_bits",
+      "type": "number",
+      "unit": "bits",
+      "help": "Information acquired over the period (A).",
+      "required": true
+    },
+    {
+      "name": "memory_bits",
+      "type": "number",
+      "unit": "bits",
+      "help": "Memory capacity retained (M).",
+      "required": true
+    },
+    {
+      "name": "erased_bits",
+      "type": "number",
+      "unit": "bits",
+      "help": "Bits erased over the period (E).",
+      "required": true
+    },
+    {
+      "name": "heat",
+      "type": "number",
+      "unit": "J",
+      "help": "Heat dissipated over the period (Q).",
+      "required": true
+    },
+    {
+      "name": "epsilon",
+      "type": "number",
+      "unit": "J/bit",
+      "help": "Energy dissipated per erased bit (ε > 0).",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "epsilon_positive",
+      "statement": "ε is positive.",
+      "check": "epsilon > 0"
+    },
+    {
+      "id": "heat_covers_erasure",
+      "statement": "The heat covers the erased bits: ε·E ≤ Q.",
+      "check": "epsilon * erased_bits <= heat"
+    },
+    {
+      "id": "memory_forces_erasure",
+      "statement": "Bits not retained were erased: A − M ≤ E.",
+      "check": "acquired_bits - memory_bits <= erased_bits"
+    }
+  ],
+  "derived": [
+    {
+      "name": "erasure_floor",
+      "expression": "epsilon * (acquired_bits - memory_bits)",
+      "unit": "J"
+    }
+  ],
+  "conclusion": {
+    "statement": "ε·(A − M) ≤ Q",
+    "check": "approx_le(erasure_floor, heat)",
+    "lean_theorem": "erasure_dissipation_floor"
+  },
+  "example": {
+    "inputs": {
+      "acquired_bits": 1000,
+      "memory_bits": 600,
+      "erased_bits": 450,
+      "heat": 5,
+      "epsilon": 0.01
+    },
+    "expected_outputs": {
+      "theorem": "erasure_dissipation_floor",
+      "hypotheses": {
+        "epsilon_positive": true,
+        "heat_covers_erasure": true,
+        "memory_forces_erasure": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "erasure_floor": 4.0
+      },
+      "conclusion": "ε·(A − M) ≤ Q",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "boundedmemorylearning",
+    "catalog_status": "verified",
+    "catalog_integrity": "gate-passed",
+    "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
+    "authored_by": "WS-20 theorem-function tier"
+  }
+}

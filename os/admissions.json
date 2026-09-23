@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "policy": "A function may declare tier 'admitted' only if it is listed here. Entries are added by human-authored commits reviewed by the repository owner (see CODEOWNERS). The OS compiler reads this file and never writes it.",
+  "admitted": [
+    {
+      "id": "restoration",
+      "tier": "admitted",
+      "warrant_verdict": "ADMITTED",
+      "evidence": "Product warrant ADMITTED with service state READY_UNSIGNED_PREVIEW in viridis-conservation-app@398b177 (backing receipt run-061-fnt).",
+      "human_gate": "Carried forward by the WS-20 migration; takes effect only when the repository owner merges the PR that adds this entry."
+    },
+    {
+      "id": "afforestation",
+      "tier": "admitted",
+      "warrant_verdict": "ADMITTED",
+      "evidence": "Product warrant ADMITTED with service state READY_UNSIGNED_PREVIEW in viridis-conservation-app@398b177 (backing receipt ast-sower).",
+      "human_gate": "Carried forward by the WS-20 migration; takes effect only when the repository owner merges the PR that adds this entry."
+    },
+    {
+      "id": "harmonization",
+      "tier": "admitted",
+      "warrant_verdict": "ADMITTED",
+      "evidence": "Product warrant ADMITTED with service state READY_UNSIGNED_PREVIEW in viridis-conservation-app@398b177 (backing receipt ght-harmonizer).",
+      "human_gate": "Carried forward by the WS-20 migration; takes effect only when the repository owner merges the PR that adds this entry."
+    },
+    {
+      "id": "carbon-continuity",
+      "tier": "admitted",
+      "warrant_verdict": "ADMITTED",
+      "evidence": "Product warrant ADMITTED with service state READY_UNSIGNED_PREVIEW in viridis-conservation-app@398b177 (backing receipt 40c58299-efeb-4cad-b332-2525b7c8d6d1).",
+      "human_gate": "Carried forward by the WS-20 migration; takes effect only when the repository owner merges the PR that adds this entry."
+    },
+    {
+      "id": "shadow-price-capacity",
+      "tier": "admitted",
+      "warrant_verdict": "ADMITTED",
+      "evidence": "Product warrant ADMITTED with service state READY_UNSIGNED_PREVIEW in viridis-conservation-app@398b177 (backing receipt canon-gate-passed:sha256:3b7d8eb4b43af18fa96571b8c11330eace642512d847dc6ae0810cf21c1ae9d1).",
+      "human_gate": "Carried forward by the WS-20 migration; takes effect only when the repository owner merges the PR that adds this entry."
+    },
+    {
+      "id": "multi-ring-alignment-capacity",
+      "tier": "admitted",
+      "warrant_verdict": "ADMITTED",
+      "evidence": "Product warrant ADMITTED with service state READY_UNSIGNED_PREVIEW in viridis-conservation-app@398b177 (backing receipt c4bf3cba-2b78-4aae-90f4-984c0368d60c).",
+      "human_gate": "Carried forward by the WS-20 migration; takes effect only when the repository owner merges the PR that adds this entry."
+    },
+    {
+      "id": "symbiotic-surplus",
+      "tier": "admitted",
+      "warrant_verdict": "ADMITTED",
+      "evidence": "Product warrant ADMITTED with service state READY_UNSIGNED_PREVIEW in viridis-conservation-app@398b177 (backing receipt 09f7fe35-a336-4947-adfa-38fc27e7cc93).",
+      "human_gate": "Carried forward by the WS-20 migration; takes effect only when the repository owner merges the PR that adds this entry."
+    },
+    {
+      "id": "decision-information-capacity",
+      "tier": "admitted",
+      "warrant_verdict": "ADMITTED",
+      "evidence": "Product warrant ADMITTED with service state READY_UNSIGNED_PREVIEW in viridis-conservation-app@398b177 (backing receipt canon-gate-passed:sha256:3f192275ee326f0fb2cf2dca3b4d97146044b3b12fca28ff18e07914fb4d9130).",
+      "human_gate": "Carried forward by the WS-20 migration; takes effect only when the repository owner merges the PR that adds this entry."
+    },
+    {
+      "id": "thermodynamic-economic-allocation",
+      "tier": "admitted",
+      "warrant_verdict": "ADMITTED",
+      "evidence": "Product warrant ADMITTED with service state READY_UNSIGNED_PREVIEW in viridis-conservation-app@398b177 (backing receipt Run-139-ThermodynamicRetrofitWaterFilling-Comparator-attempt-1).",
+      "human_gate": "Carried forward by the WS-20 migration; takes effect only when the repository owner merges the PR that adds this entry."
+    }
+  ]
+}

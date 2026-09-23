@@ -1,0 +1,158 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "mutualistic-attestation-throughput",
+  "kind": "theorem_function",
+  "name": "Mutualistic attestation — attester throughput speed limit",
+  "version": "1.0.0",
+  "summary": "Checks that an attester whose per-attestation cost is κ·H cannot attest faster than P·D/(κ·H) when its power budget covers the work.",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.19317982",
+  "lean": {
+    "module": "Viridis.Ecoservices.MutualisticAttestation",
+    "sources": [
+      {
+        "path": "MutualisticAttestation.lean",
+        "sha256": "913685f9c6ac3a54f580a868b6ede8d5c2e7c1e799692c74f66cb577b2aedca5"
+      }
+    ],
+    "theorems": [
+      "attester_ib_throughput_speed_limit"
+    ],
+    "verification_provider": "CANON_CI_SPINE_BUILD",
+    "verification_receipt_id": null
+  },
+  "inputs": [
+    {
+      "name": "power",
+      "type": "number",
+      "unit": "W",
+      "help": "Attester power P.",
+      "required": true
+    },
+    {
+      "name": "data_integrity",
+      "type": "number",
+      "unit": "dimensionless",
+      "help": "Data integrity D_AI.",
+      "required": true
+    },
+    {
+      "name": "kappa",
+      "type": "number",
+      "unit": "J/bit",
+      "help": "κ = k_B·T·ln 2 (> 0).",
+      "required": true
+    },
+    {
+      "name": "residual_entropy",
+      "type": "number",
+      "unit": "bits",
+      "help": "Residual entropy per attestation H (> 0).",
+      "required": true
+    },
+    {
+      "name": "throughput",
+      "type": "number",
+      "unit": "attestations/s",
+      "help": "Attestation throughput.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "kappa_positive",
+      "statement": "κ > 0.",
+      "check": "kappa > 0"
+    },
+    {
+      "id": "entropy_positive",
+      "statement": "H > 0.",
+      "check": "residual_entropy > 0"
+    },
+    {
+      "id": "power_budget",
+      "statement": "throughput·κ·H ≤ P·D_AI.",
+      "check": "throughput * (kappa * residual_entropy) <= power * data_integrity"
+    }
+  ],
+  "derived": [
+    {
+      "name": "ib_rate",
+      "expression": "power * data_integrity / (kappa * residual_entropy)",
+      "unit": "attestations/s"
+    }
+  ],
+  "conclusion": {
+    "statement": "throughput ≤ P·D_AI/(κ·H)",
+    "check": "approx_le(throughput, ib_rate)",
+    "lean_theorem": "attester_ib_throughput_speed_limit"
+  },
+  "example": {
+    "inputs": {
+      "power": 2,
+      "data_integrity": 0.8,
+      "kappa": 0.5,
+      "residual_entropy": 0.4,
+      "throughput": 7
+    },
+    "expected_outputs": {
+      "theorem": "attester_ib_throughput_speed_limit",
+      "hypotheses": {
+        "kappa_positive": true,
+        "entropy_positive": true,
+        "power_budget": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "ib_rate": 8.0
+      },
+      "conclusion": "throughput ≤ P·D_AI/(κ·H)",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "mutualisticattestation",
+    "catalog_status": "verified",
+    "catalog_integrity": "gate-passed",
+    "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
+    "authored_by": "WS-20 theorem-function tier"
+  }
+}

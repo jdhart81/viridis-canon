@@ -1,0 +1,190 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "universal-waterfilling-optimum",
+  "kind": "theorem_function",
+  "name": "Universal water-filling — the equimarginal split is optimal",
+  "version": "1.0.0",
+  "summary": "For two concave-quadratic uses of a budget R, reports the water-filling split x* and shadow price λ*, checks both marginals equal λ*, and checks that your proposed split x does no better than x*.",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.19317982",
+  "lean": {
+    "module": "Viridis.Meta.UniversalWaterfilling",
+    "sources": [
+      {
+        "path": "UniversalWaterfilling.lean",
+        "sha256": "14698b7ded717104f2570d5442adf614af4db45ec63efe23a30695545f435c3d"
+      }
+    ],
+    "theorems": [
+      "uwmt_concave_optimum_is_waterfilling"
+    ],
+    "verification_provider": "CANON_CI_SPINE_BUILD",
+    "verification_receipt_id": null
+  },
+  "inputs": [
+    {
+      "name": "c1",
+      "type": "number",
+      "unit": "value/unit",
+      "help": "Marginal value of the first use at zero (c₁).",
+      "required": true
+    },
+    {
+      "name": "c2",
+      "type": "number",
+      "unit": "value/unit",
+      "help": "Marginal value of the second use at zero (c₂).",
+      "required": true
+    },
+    {
+      "name": "k1",
+      "type": "number",
+      "unit": "value/unit²",
+      "help": "Curvature of the first use (k₁ > 0).",
+      "required": true
+    },
+    {
+      "name": "k2",
+      "type": "number",
+      "unit": "value/unit²",
+      "help": "Curvature of the second use (k₂ > 0).",
+      "required": true
+    },
+    {
+      "name": "budget",
+      "type": "number",
+      "unit": "units",
+      "help": "Budget R to split.",
+      "required": true
+    },
+    {
+      "name": "proposed_split",
+      "type": "number",
+      "unit": "units",
+      "help": "Your proposed allocation x to the first use.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "k1_positive",
+      "statement": "k₁ > 0.",
+      "check": "k1 > 0"
+    },
+    {
+      "id": "k2_positive",
+      "statement": "k₂ > 0.",
+      "check": "k2 > 0"
+    }
+  ],
+  "derived": [
+    {
+      "name": "x_star",
+      "expression": "(c1 - c2 + k2 * budget) / (k1 + k2)",
+      "unit": "units"
+    },
+    {
+      "name": "lambda_star",
+      "expression": "c1 - k1 * x_star",
+      "unit": "value/unit"
+    },
+    {
+      "name": "marginal_first",
+      "expression": "c1 - k1 * x_star",
+      "unit": "value/unit"
+    },
+    {
+      "name": "marginal_second",
+      "expression": "c2 - k2 * (budget - x_star)",
+      "unit": "value/unit"
+    },
+    {
+      "name": "value_proposed",
+      "expression": "(c1 * proposed_split - (k1 / 2) * proposed_split ** 2) + (c2 * (budget - proposed_split) - (k2 / 2) * (budget - proposed_split) ** 2)",
+      "unit": "value"
+    },
+    {
+      "name": "value_optimal",
+      "expression": "(c1 * x_star - (k1 / 2) * x_star ** 2) + (c2 * (budget - x_star) - (k2 / 2) * (budget - x_star) ** 2)",
+      "unit": "value"
+    }
+  ],
+  "conclusion": {
+    "statement": "c₁ − k₁x* = λ* = c₂ − k₂(R − x*) and V(x) ≤ V(x*)",
+    "check": "approx_eq(marginal_first, lambda_star, abs(c1) + abs(c2) + abs(k1 * budget) + abs(k2 * budget)) and approx_eq(marginal_second, lambda_star, abs(c1) + abs(c2) + abs(k1 * budget) + abs(k2 * budget)) and approx_le(value_proposed, value_optimal, abs(value_optimal) + abs(c1 * budget) + abs(c2 * budget) + k1 * budget ** 2 + k2 * budget ** 2 + k1 * proposed_split ** 2 + k2 * proposed_split ** 2)",
+    "lean_theorem": "uwmt_concave_optimum_is_waterfilling"
+  },
+  "example": {
+    "inputs": {
+      "c1": 10,
+      "c2": 6,
+      "k1": 2,
+      "k2": 1,
+      "budget": 5,
+      "proposed_split": 2
+    },
+    "expected_outputs": {
+      "theorem": "uwmt_concave_optimum_is_waterfilling",
+      "hypotheses": {
+        "k1_positive": true,
+        "k2_positive": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "x_star": 3.0,
+        "lambda_star": 4.0,
+        "marginal_first": 4.0,
+        "marginal_second": 4.0,
+        "value_proposed": 29.5,
+        "value_optimal": 31.0
+      },
+      "conclusion": "c₁ − k₁x* = λ* = c₂ − k₂(R − x*) and V(x) ≤ V(x*)",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "universalwaterfilling",
+    "catalog_status": "verified",
+    "catalog_integrity": "gate-passed",
+    "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
+    "authored_by": "WS-20 theorem-function tier"
+  }
+}

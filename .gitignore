@@ -20,3 +20,8 @@ lakefile.olean
 __pycache__/
 *.py[cod]
 .pytest_cache/
+
+# WS-20 OS bundle build output (attached to releases, vendored by the product)
+/os-bundle/
+/os-bundle-2/
+/os-bundle.tmp/

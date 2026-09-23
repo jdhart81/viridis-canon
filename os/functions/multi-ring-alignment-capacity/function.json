@@ -1,0 +1,181 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "multi-ring-alignment-capacity",
+  "kind": "decision_kernel",
+  "name": "Multi-ring alignment capacity audit",
+  "version": "0.3.0",
+  "summary": "Bounds how much aligned information a layered system can sustain when each layer dissipates and only partly aligns with the next.",
+  "line": "Alignment and information governance",
+  "decision_family": "governance-coordination",
+  "tier": "admitted",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.20800757",
+  "lean": {
+    "module": "MRAB",
+    "sources": [
+      {
+        "path": "MRAB.lean",
+        "sha256": "f56396bf4717d3264da534edd92f6cd77919d7377e7b24e56f8885a3d54db2e7"
+      }
+    ],
+    "theorems": [
+      "Dbar_le_arith_mean",
+      "mrab_bound_le_baseRate",
+      "mrab_saturation",
+      "mrab_reduces_to_IB"
+    ],
+    "verification_provider": "ARISTOTLE_HISTORICAL",
+    "verification_receipt_id": "c4bf3cba-2b78-4aae-90f4-984c0368d60c"
+  },
+  "inputs": [
+    {
+      "name": "power",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "power",
+      "help": "Available power."
+    },
+    {
+      "name": "boltzmann_constant",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "energy/temperature",
+      "help": "Boltzmann constant in the same units (1 for a dimensionless check)."
+    },
+    {
+      "name": "temperature",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "temperature",
+      "help": "Operating temperature."
+    },
+    {
+      "name": "dissipation_factors",
+      "required": true,
+      "items": {
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "type": "array",
+      "unit": "dimensionless",
+      "help": "Per-layer dissipation factors (0–1), as a list."
+    },
+    {
+      "name": "alignment_factors",
+      "required": true,
+      "items": {
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "type": "array",
+      "unit": "dimensionless",
+      "help": "Per-layer alignment factors (0–1), as a list."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "ring_count"
+    },
+    {
+      "name": "thermodynamic_factor",
+      "unit": "energy/information"
+    },
+    {
+      "name": "geometric_mean_dissipation",
+      "unit": "dimensionless"
+    },
+    {
+      "name": "alignment_product",
+      "unit": "dimensionless"
+    },
+    {
+      "name": "unaligned_base_rate",
+      "unit": "information/time"
+    },
+    {
+      "name": "aligned_rate_ceiling",
+      "unit": "information/time"
+    },
+    {
+      "name": "retained_fraction"
+    },
+    {
+      "name": "bottleneck_ring_index"
+    },
+    {
+      "name": "perfect_alignment"
+    },
+    {
+      "name": "ceiling_not_above_base"
+    },
+    {
+      "name": "scope"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "thermodynamic_constants",
+      "statement": "Power is non-negative; k_B and T are positive.",
+      "check": "power >= 0 and boltzmann_constant > 0 and temperature > 0"
+    },
+    {
+      "id": "factors_unit_interval",
+      "statement": "Every dissipation and alignment factor lies in [0, 1].",
+      "check": "all(0 <= x <= 1 for x in dissipation_factors) and all(0 <= x <= 1 for x in alignment_factors)"
+    },
+    {
+      "id": "one_factor_per_ring",
+      "statement": "Each ring has one dissipation and one alignment factor.",
+      "check": "len(dissipation_factors) == len(alignment_factors) and len(dissipation_factors) >= 1"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "power": 1,
+      "boltzmann_constant": 1,
+      "temperature": 1,
+      "dissipation_factors": [
+        1,
+        0.25
+      ],
+      "alignment_factors": [
+        1,
+        0.5
+      ]
+    },
+    "expected_outputs": {
+      "ring_count": 2,
+      "thermodynamic_factor": 0.69314718056,
+      "geometric_mean_dissipation": 0.5,
+      "alignment_product": 0.5,
+      "unaligned_base_rate": 0.721347520444,
+      "aligned_rate_ceiling": 0.360673760222,
+      "retained_fraction": 0.5,
+      "bottleneck_ring_index": 1,
+      "perfect_alignment": false,
+      "ceiling_not_above_base": true,
+      "scope": "finite multi-ring geometric-mean dissipation and multiplicative supplied alignment factors"
+    }
+  },
+  "scope": "Finite supplied factors in [0,1]; the result audits multiplicative alignment loss and does not validate ring definitions or measurements.",
+  "boundary": "Formal coordination structure does not prove stakeholder consent, legal authority, fair distribution, or empirical task calibration. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "ADMITTED",
+    "doi_state": "READY"
+  }
+}

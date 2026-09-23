@@ -1,0 +1,238 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "shadow-price-capacity",
+  "kind": "decision_kernel",
+  "name": "Inverse-square shadow-price and capacity planner",
+  "version": "0.3.0",
+  "summary": "Plans monitoring towers or sensors under a budget: how many, how far apart, and the implied price of one more unit of coverage.",
+  "line": "Intervention planning",
+  "decision_family": "continuity-monitoring",
+  "tier": "admitted",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.20006414",
+  "lean": {
+    "module": "P5_SLSPT.InverseSquare+ShadowPrice+ShadowPriceLevelCurves+IntelligenceBound+SLSPTTowerOrdering",
+    "sources": [
+      {
+        "path": "P5_SLSPT/InverseSquare.lean",
+        "sha256": "3b7d8eb4b43af18fa96571b8c11330eace642512d847dc6ae0810cf21c1ae9d1"
+      },
+      {
+        "path": "P5_SLSPT/ShadowPrice.lean",
+        "sha256": "1d2fba87285b50588dd3b4a38eec6080099b6504693b788aecf9230982c3a21f"
+      },
+      {
+        "path": "P5_SLSPT/ShadowPriceLevelCurves.lean",
+        "sha256": "faf3151d33cdc5e8b1c25faac0d973b0ed0d92737bbde0b90ce5cdf36be340bf"
+      },
+      {
+        "path": "P5_SLSPT/IntelligenceBound.lean",
+        "sha256": "ebd8980a134a28e49f4438081753fe1525d8af3b07377e690788646d162180fa"
+      },
+      {
+        "path": "P5_SLSPT/SLSPTTowerOrdering.lean",
+        "sha256": "cf15279d012c80cd84a35196734a542753b46f01b65953d17d0abb2cad646ba8"
+      }
+    ],
+    "theorems": [
+      "inv_sq_strict_mono_decreasing",
+      "shadow_price_strict_decreasing",
+      "shadow_price_level_curve",
+      "shadow_price_budget_tradeoff",
+      "prefactor_ordering",
+      "tower_ordering_trans",
+      "cap_nonneg",
+      "cap_strictMono_P",
+      "cap_strictMono_D",
+      "cap_strictAnti_C"
+    ],
+    "verification_provider": "CANON_PUBLISHED_LEAN",
+    "verification_receipt_id": "canon-gate-passed:sha256:3b7d8eb4b43af18fa96571b8c11330eace642512d847dc6ae0810cf21c1ae9d1"
+  },
+  "inputs": [
+    {
+      "name": "distance",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "declared distance",
+      "help": "Spacing between sensors (distance units)."
+    },
+    {
+      "name": "area",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "declared area",
+      "help": "Area to cover."
+    },
+    {
+      "name": "horizon",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "declared time",
+      "help": "Planning horizon (time units)."
+    },
+    {
+      "name": "tolerance",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "declared tolerance",
+      "help": "Acceptable error or gap."
+    },
+    {
+      "name": "budget",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "declared cost",
+      "help": "Total budget."
+    },
+    {
+      "name": "power",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "declared power",
+      "help": "Power available per unit."
+    },
+    {
+      "name": "dissipation_factor",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "dimensionless",
+      "help": "Fraction of power lost (0–1)."
+    },
+    {
+      "name": "capacity_cost",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "declared cost per rate",
+      "help": "Cost per unit of capacity."
+    },
+    {
+      "name": "tower_prefactors",
+      "required": true,
+      "items": {
+        "exclusiveMinimum": 0,
+        "type": "number"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "type": "array",
+      "unit": "declared cost*tolerance^2",
+      "help": "Per-tower scaling constants, as a list."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "shadow_prefactor",
+      "unit": "declared cost*tolerance^2"
+    },
+    {
+      "name": "shadow_price",
+      "unit": "declared cost"
+    },
+    {
+      "name": "inverse_square_factor",
+      "unit": "1/tolerance^2"
+    },
+    {
+      "name": "tolerance_at_budget",
+      "unit": "declared tolerance"
+    },
+    {
+      "name": "within_budget"
+    },
+    {
+      "name": "capacity_ceiling",
+      "unit": "declared rate"
+    },
+    {
+      "name": "tower_order"
+    },
+    {
+      "name": "tower_order_preserves_prefactors"
+    },
+    {
+      "name": "scope"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "geometry_positive",
+      "statement": "Distance, area, horizon, tolerance and budget are positive.",
+      "check": "distance > 0 and area > 0 and horizon > 0 and tolerance > 0 and budget > 0"
+    },
+    {
+      "id": "capacity_coefficients",
+      "statement": "Power and dissipation factor are non-negative; capacity cost is positive.",
+      "check": "power >= 0 and dissipation_factor >= 0 and capacity_cost > 0"
+    },
+    {
+      "id": "tower_prefactors_positive",
+      "statement": "Every tower prefactor is positive.",
+      "check": "len(tower_prefactors) >= 1 and all(x > 0 for x in tower_prefactors)"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "distance": 4,
+      "area": 2,
+      "horizon": 4,
+      "tolerance": 0.5,
+      "budget": 10,
+      "power": 12,
+      "dissipation_factor": 0.75,
+      "capacity_cost": 3,
+      "tower_prefactors": [
+        4,
+        1,
+        9
+      ]
+    },
+    "expected_outputs": {
+      "shadow_prefactor": 2,
+      "shadow_price": 8,
+      "inverse_square_factor": 4,
+      "tolerance_at_budget": 0.4472135955,
+      "within_budget": true,
+      "capacity_ceiling": 3,
+      "tower_order": [
+        {
+          "source_index": 1,
+          "prefactor": 1,
+          "shadow_price": 4
+        },
+        {
+          "source_index": 0,
+          "prefactor": 4,
+          "shadow_price": 16
+        },
+        {
+          "source_index": 2,
+          "prefactor": 9,
+          "shadow_price": 36
+        }
+      ],
+      "tower_order_preserves_prefactors": true,
+      "scope": "positive-coefficient inverse-square shadow-price and P*D/C capacity model"
+    }
+  },
+  "scope": "Positive supplied coefficients only; shadow cost, budget tolerance, and P*D/C capacity are model outputs, not field costs or ecological calibration.",
+  "boundary": "Thresholds remain conditional on supplied coefficients, observation models, uncertainty moments, and declared switching costs. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "ADMITTED",
+    "doi_state": "READY"
+  }
+}

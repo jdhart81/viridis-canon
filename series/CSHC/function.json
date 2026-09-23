@@ -1,0 +1,152 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "switching-hysteresis",
+  "kind": "decision_kernel",
+  "name": "Directional switching hysteresis certificate",
+  "version": "0.2.0",
+  "summary": "Shows how much evidence it takes to justify switching a management state, and why switching back and forth wastes effort.",
+  "line": "Decision stability",
+  "decision_family": "continuity-monitoring",
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": {
+    "code": "CANON_CLASSIFICATION",
+    "note": "The package's Lean status in the canon catalog is 'working' (not spine-admitted); the product warrant was admitted but the canon classification must be reconciled before admission as a function."
+  },
+  "blocked": null,
+  "doi": "10.5281/zenodo.21971042",
+  "lean": {
+    "module": "Viridis.Cognition.CognitiveSwitchingHysteresis",
+    "sources": [
+      {
+        "path": "series/CSHC/CognitiveSwitchingHysteresis.lean",
+        "sha256": "842943f1da4b1dc2e55b07d2f9eb0edbeffe381e82bc44b51cabd08296295412"
+      }
+    ],
+    "theorems": [
+      "statement",
+      "threshold_order",
+      "band_width_identity",
+      "closed_loop_area_identity",
+      "bias_translation",
+      "directional_cost_recovery",
+      "cshc_nonvacuous"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-131-CognitiveSwitchingHysteresis-Comparator-attempt-1"
+  },
+  "inputs": [
+    {
+      "name": "bias",
+      "required": true,
+      "type": "number",
+      "unit": "evidence",
+      "help": "Prior lean toward one state (0 = none)."
+    },
+    {
+      "name": "cost_plus_to_minus",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "evidence",
+      "help": "Cost of switching from + to -."
+    },
+    {
+      "name": "cost_minus_to_plus",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "evidence",
+      "help": "Cost of switching from - to +."
+    },
+    {
+      "name": "current_state",
+      "required": true,
+      "enum": [
+        -1,
+        1
+      ],
+      "type": "integer",
+      "unit": "state (-1 or 1)",
+      "help": "Current state: 1 or -1."
+    },
+    {
+      "name": "evidence",
+      "required": true,
+      "type": "number",
+      "unit": "evidence",
+      "help": "Signed evidence for switching (positive favours +, negative favours -)."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "down_switch_threshold",
+      "unit": "evidence"
+    },
+    {
+      "name": "up_switch_threshold",
+      "unit": "evidence"
+    },
+    {
+      "name": "history_band_width",
+      "unit": "evidence"
+    },
+    {
+      "name": "absolute_loop_integral",
+      "unit": "state-evidence"
+    },
+    {
+      "name": "inside_history_band"
+    },
+    {
+      "name": "next_state"
+    },
+    {
+      "name": "switch_recommended"
+    },
+    {
+      "name": "scope"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "switch_costs_nonnegative",
+      "statement": "Directional switching costs are non-negative.",
+      "check": "cost_plus_to_minus >= 0 and cost_minus_to_plus >= 0"
+    },
+    {
+      "id": "binary_state",
+      "statement": "The current state is −1 or +1.",
+      "check": "current_state == 1 or current_state == -1"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "bias": 0,
+      "cost_plus_to_minus": 2,
+      "cost_minus_to_plus": 2,
+      "current_state": 1,
+      "evidence": -2
+    },
+    "expected_outputs": {
+      "down_switch_threshold": -1,
+      "up_switch_threshold": 1,
+      "history_band_width": 2,
+      "absolute_loop_integral": 4,
+      "inside_history_band": false,
+      "next_state": -1,
+      "switch_recommended": true,
+      "scope": "two-state myopic retain-on-tie objective with fixed directional switch costs"
+    }
+  },
+  "scope": "Two-state scalar-evidence myopic model with fixed directional penalties and retain-on-tie choice.",
+  "boundary": "Thresholds remain conditional on supplied coefficients, observation models, uncertainty moments, and declared switching costs. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "ADMITTED",
+    "doi_state": "READY"
+  }
+}

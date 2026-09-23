@@ -1,0 +1,143 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "decoherent-selection-ambiguity-cost",
+  "kind": "theorem_function",
+  "name": "Decoherent selection — ambiguity cost is at most ln N",
+  "version": "1.0.0",
+  "summary": "Checks that the Shannon entropy (ambiguity cost, in nats) of a decision distribution over N options never exceeds ln N.",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.19317982",
+  "lean": {
+    "module": "Viridis.Decision.DecoherentSelection",
+    "sources": [
+      {
+        "path": "DecoherentSelection.lean",
+        "sha256": "16ee8fbfb30acff0e9ab1c1b1972b274cf81c08fd6d61434e0894426a4ab701c"
+      }
+    ],
+    "theorems": [
+      "ambiguity_cost_le_lnN"
+    ],
+    "verification_provider": "CANON_CI_SPINE_BUILD",
+    "verification_receipt_id": null
+  },
+  "inputs": [
+    {
+      "name": "probabilities",
+      "type": "array",
+      "unit": "probability",
+      "help": "Probability of each of the N options (non-negative, summing to 1).",
+      "required": true,
+      "items": {
+        "type": "number",
+        "minimum": 0
+      },
+      "minItems": 1,
+      "maxItems": 10000
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "nonempty",
+      "statement": "There is at least one option.",
+      "check": "len(probabilities) > 0"
+    },
+    {
+      "id": "nonnegative",
+      "statement": "Every probability is non-negative.",
+      "check": "all(p >= 0 for p in probabilities)"
+    },
+    {
+      "id": "normalized",
+      "statement": "The probabilities sum to 1.",
+      "check": "is_close(sum(probabilities), 1)"
+    }
+  ],
+  "derived": [
+    {
+      "name": "entropy_nats",
+      "expression": "sum(-p * real_log(p) for p in probabilities)",
+      "unit": "nats"
+    },
+    {
+      "name": "ln_n",
+      "expression": "real_log(len(probabilities))",
+      "unit": "nats"
+    }
+  ],
+  "conclusion": {
+    "statement": "H(p) ≤ ln N",
+    "check": "approx_le(entropy_nats, ln_n)",
+    "lean_theorem": "ambiguity_cost_le_lnN"
+  },
+  "example": {
+    "inputs": {
+      "probabilities": [
+        0.5,
+        0.25,
+        0.125,
+        0.125
+      ]
+    },
+    "expected_outputs": {
+      "theorem": "ambiguity_cost_le_lnN",
+      "hypotheses": {
+        "nonempty": true,
+        "nonnegative": true,
+        "normalized": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "entropy_nats": 1.2130075659799042,
+        "ln_n": 1.3862943611198906
+      },
+      "conclusion": "H(p) ≤ ln N",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "decoherentselection",
+    "catalog_status": "verified",
+    "catalog_integrity": "gate-passed",
+    "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
+    "authored_by": "WS-20 theorem-function tier"
+  }
+}

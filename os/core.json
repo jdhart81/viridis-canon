@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "standard": "VOS-CORE-KERNEL-BUSINESS-OS-1",
+  "purpose": "Operate Viridis Conservation from qualified client decision through evidence, kernel routing, accountable review, delivery, and research feedback.",
+  "snapshot_date": "2026-09-20",
+  "authority": {
+    "automatic_kernel_activation": false,
+    "automatic_ledger_mutation": false,
+    "automatic_market_release": false,
+    "automatic_production_certification": false,
+    "automatic_research_publication": false,
+    "operator_review_required": true
+  },
+  "map_authority": {
+    "automatic_decision_tree_activation": false,
+    "automatic_kernel_activation": false,
+    "production_certification": false,
+    "production_deployment_authorized": false
+  },
+  "runtime_rule": "A published result enters a callable Conservation path only with a DOI, exact proof receipt, closed schema, units, deterministic engine, tests, recomputation warrant, scope boundary, and reviewed decision-family binding.",
+  "service": {
+    "name": "Viridis Conservation decision-kernel previews",
+    "schema_version": "viridisos.conservation-decision-services.v1",
+    "access": "OPEN_REFERENCE",
+    "receipt_class": "UNSIGNED_PUBLIC_PREVIEW",
+    "public_run_authority": "UNSIGNED_NOT_VIRIDIS_REVIEWED",
+    "data_boundary": "Use synthetic, public, or de-identified values only. Do not submit customer records, credentials, or confidential evidence.",
+    "authority_boundary": "This is an unsigned deterministic preview. It is not a Viridis-reviewed decision, production certificate, empirical validation, registry determination, credit, insurance decision, or legal conclusion."
+  },
+  "function_order": [
+    "mutualist",
+    "restoration",
+    "afforestation",
+    "harmonization",
+    "carbon-continuity",
+    "tempo",
+    "shared-channel-coverage",
+    "invariance-capacity",
+    "precautionary-capacity",
+    "reciprocity-corridor",
+    "anytime-change",
+    "seed-source-bottleneck",
+    "switching-hysteresis",
+    "shadow-price-capacity",
+    "multi-ring-alignment-capacity",
+    "symbiotic-surplus",
+    "decision-information-capacity",
+    "thermodynamic-economic-allocation"
+  ],
+  "foundation_lean_modules": [
+    "P0_IntelligenceBound_COMPILED",
+    "Viridis.P0BoundedMemoryDissipation",
+    "Viridis.BoundedMemoryLearning",
+    "Viridis.BiosphereErasureBound",
+    "P4_ThermodynamicEconomics"
+  ],
+  "operating_tree": [
+    {
+      "gate": "Named decision owner, project boundary, deadline, and authority acknowledgement.",
+      "id": "qualify",
+      "name": "Qualify the decision",
+      "order": 1,
+      "outcomes": [
+        "ROUTE_TO_EVIDENCE",
+        "HOLD_SCOPE",
+        "REFUSE_NO_AUTHORITY"
+      ],
+      "question": "What bounded conservation decision must be made, by whom, and by when?",
+      "route": "/app/guide"
+    },
+    {
+      "gate": "Evidence manifest, hashes, units, dates, provenance class, uncertainty, and missing-data record.",
+      "id": "evidence",
+      "name": "Bind the evidence",
+      "order": 2,
+      "outcomes": [
+        "ROUTE_TO_KERNEL",
+        "HOLD_EVIDENCE",
+        "REFUSE_UNAUTHORIZED_DATA"
+      ],
+      "question": "Are the inputs source-labelled, current, authorized, and uncertainty-bounded?",
+      "route": "/app/decisions#decision-evidence"
+    },
+    {
+      "gate": "DOI-backed module, clean product warrant, closed schema, declared units, scope, and refusal boundary.",
+      "id": "route",
+      "name": "Route to admissible kernels",
+      "order": 3,
+      "outcomes": [
+        "RUN_PREVIEW",
+        "HOLD_KERNEL_GAP",
+        "REFUSE_OUT_OF_SCOPE"
+      ],
+      "question": "Which decision family and currently admitted kernels fit the bounded question?",
+      "route": "/app/decisions#route"
+    },
+    {
+      "gate": "Exact inputs, kernel version, output, provenance, recomputation receipt, and no undeclared fields.",
+      "id": "compute",
+      "name": "Compute and verify",
+      "order": 4,
+      "outcomes": [
+        "ROUTE_TO_REVIEW",
+        "HOLD_RECOMPUTE",
+        "REFUSE_INVALID_RECEIPT"
+      ],
+      "question": "Does deterministic recomputation reproduce the result and receipt digest?",
+      "route": "/app/decisions#decision-map"
+    },
+    {
+      "gate": "Accountable review records assumptions, alternatives, conflicts, missing authority, and the decision boundary.",
+      "id": "review",
+      "name": "Review the real decision",
+      "order": 5,
+      "outcomes": [
+        "SUPPORTED",
+        "HELD",
+        "REFUSED"
+      ],
+      "question": "Do evidence strength, uncertainty, external authority, and consequences support action?",
+      "route": "/app/requests"
+    },
+    {
+      "gate": "Signed-off deliverable, exact receipt set, authority labels, delivery acknowledgement, and immutable audit reference.",
+      "id": "deliver",
+      "name": "Deliver and record",
+      "order": 6,
+      "outcomes": [
+        "DELIVERED",
+        "HOLD_SIGNOFF",
+        "REFUSE_MISREPRESENTATION"
+      ],
+      "question": "Can the client receive a versioned decision packet without overstating certification or market status?",
+      "route": "/app/projects"
+    },
+    {
+      "gate": "Versioned observation, outcome comparison, anomaly/refusal record, and no automatic kernel activation.",
+      "id": "learn",
+      "name": "Monitor and create research pull",
+      "order": 7,
+      "outcomes": [
+        "MONITOR",
+        "OPEN_RESEARCH_PULL",
+        "RECALIBRATION_HOLD"
+      ],
+      "question": "What changed in the field, and which unresolved gap should return to the science foundry?",
+      "route": "/app/projects#follow-up"
+    }
+  ],
+  "held_science_proposals": [
+    {
+      "decision_family_id": "continuity-monitoring",
+      "doi": "10.5281/zenodo.21855724",
+      "kernel_role": "KNOWN_METHOD_FORMALIZATION",
+      "module_id": "delay-coherence-budget",
+      "name": "Delay-coherence budget",
+      "next_gate": "Run real D-Score timestamps and component weights through frozen fixtures and review the refusal threshold.",
+      "priority": 1,
+      "runtime_claim": "Validate timestamp and weight combinations against the classical characteristic-function delay-variance bound.",
+      "state": "HOLD_FIXTURE_VALIDATION"
+    },
+    {
+      "decision_family_id": "restoration-design",
+      "doi": "10.5281/zenodo.20777069",
+      "kernel_role": "KNOWN_METHOD_FORMALIZATION",
+      "module_id": "effective-resistance-stewardship",
+      "name": "Effective-resistance stewardship allocator",
+      "next_gate": "Remove IB/Landauer claims, narrow the deferred general sensitivity theorem, and pass a Circuitscape case-study fixture.",
+      "priority": 2,
+      "runtime_claim": "Preview edge-priority and square-root budget allocations under explicitly fixed network sensitivities.",
+      "state": "HOLD_CASE_STUDY_AND_SCOPE"
+    },
+    {
+      "decision_family_id": "restoration-design",
+      "doi": "10.5281/zenodo.21708530",
+      "kernel_role": "EMPIRICAL_VALIDATION_REQUIRED",
+      "module_id": "firebreak-circuit-rank",
+      "name": "Firebreak circuit-rank planner",
+      "next_gate": "Create a Canon-linked exact proof object and validate the fire-spread claim with FARSITE, FlamMap, or a real landscape.",
+      "priority": 3,
+      "runtime_claim": "Compare acyclic and cyclic corridor geometries as a planning preview, without claiming real-fire outcomes.",
+      "state": "HOLD_CANON_AND_EMPIRICAL_VALIDATION"
+    },
+    {
+      "decision_family_id": "governance-integrity",
+      "doi": "10.5281/zenodo.21609945",
+      "kernel_role": "MODEL_ASSUMPTION_KERNEL",
+      "module_id": "gaming-resistant-dscore-weights",
+      "name": "Gaming-resistant D-Score weights",
+      "next_gate": "Estimate at least one real elasticity vector, generalize the proof beyond three named channels, and freeze calibration provenance.",
+      "priority": 4,
+      "runtime_claim": "Compute conditional index weights from disclosed information values and independently estimated gaming elasticities.",
+      "state": "HOLD_EMPIRICAL_CALIBRATION"
+    },
+    {
+      "decision_family_id": "restoration-design",
+      "doi": "10.5281/zenodo.21609938",
+      "kernel_role": "MODEL_ASSUMPTION_KERNEL",
+      "module_id": "fragmentation-hysteresis",
+      "name": "Fragmentation-hysteresis restoration budget",
+      "next_gate": "Estimate q independently from an offset registry and remove circular calibration and thermodynamic-law language.",
+      "priority": 5,
+      "runtime_claim": "Preview restoration and information spending under an explicitly calibrated connectivity-efficiency parameter.",
+      "state": "HOLD_INDEPENDENT_Q_CALIBRATION"
+    },
+    {
+      "decision_family_id": "continuity-monitoring",
+      "doi": "10.5281/zenodo.21327070",
+      "kernel_role": "EMPIRICAL_VALIDATION_REQUIRED",
+      "module_id": "early-warning-observability",
+      "name": "Early-warning observability window",
+      "next_gate": "Reconcile the paper and Lean statistic, prove a maximum rather than a stationary point, and test published lake or coral series.",
+      "priority": 6,
+      "runtime_claim": "Expose the assumed OU observability proxy and its candidate sampling window as an unsigned preview.",
+      "state": "HOLD_EMPIRICAL_AND_FORMAL_RECONCILIATION"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "stewardship-setpoint-direction",
+  "kind": "theorem_function",
+  "name": "Stewardship setpoint — which way to move capacity toward D*",
+  "version": "1.0.0",
+  "summary": "Given regeneration rate ρ, carrying capacity K, discount r and current capacity D, reports the sustainable setpoint D* = (K/2)(1 − r/ρ) and checks that the marginal signal points toward it (raise capacity below D*, lower it above).",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.19317982",
+  "lean": {
+    "module": "Viridis.Stewardship.StewardshipSetpoint",
+    "sources": [
+      {
+        "path": "StewardshipSetpoint.lean",
+        "sha256": "ec445431680117ed9efb7b3b857071f55bf3704dcda980da39f372515d2fb6c8"
+      }
+    ],
+    "theorems": [
+      "orar_extremum_seeking_converges_to_Dstar"
+    ],
+    "verification_provider": "CANON_CI_SPINE_BUILD",
+    "verification_receipt_id": null
+  },
+  "inputs": [
+    {
+      "name": "rho",
+      "type": "number",
+      "unit": "1/time",
+      "help": "Intrinsic regeneration rate ρ (> 0).",
+      "required": true
+    },
+    {
+      "name": "carrying_capacity",
+      "type": "number",
+      "unit": "capacity units",
+      "help": "Carrying capacity K (> 0).",
+      "required": true
+    },
+    {
+      "name": "discount_rate",
+      "type": "number",
+      "unit": "1/time",
+      "help": "Discount rate r (0 ≤ r < ρ).",
+      "required": true
+    },
+    {
+      "name": "capacity",
+      "type": "number",
+      "unit": "capacity units",
+      "help": "Current capacity D.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "carrying_capacity_positive",
+      "statement": "K > 0.",
+      "check": "carrying_capacity > 0"
+    },
+    {
+      "id": "regeneration_positive",
+      "statement": "ρ > 0.",
+      "check": "rho > 0"
+    },
+    {
+      "id": "discount_below_regeneration",
+      "statement": "0 ≤ r < ρ.",
+      "check": "0 <= discount_rate < rho"
+    }
+  ],
+  "derived": [
+    {
+      "name": "d_star",
+      "expression": "(carrying_capacity / 2) * (1 - discount_rate / rho)",
+      "unit": "capacity units"
+    },
+    {
+      "name": "marginal_signal",
+      "expression": "rho * (1 - 2 * capacity / carrying_capacity) - discount_rate",
+      "unit": "1/time",
+      "description": "g′(D) − r"
+    }
+  ],
+  "conclusion": {
+    "statement": "D < D* ⇒ g′(D) − r > 0 and D > D* ⇒ g′(D) − r < 0",
+    "check": "(capacity >= d_star or approx_le(0, marginal_signal, rho)) and (capacity <= d_star or approx_le(marginal_signal, 0, rho))",
+    "lean_theorem": "orar_extremum_seeking_converges_to_Dstar"
+  },
+  "example": {
+    "inputs": {
+      "rho": 0.4,
+      "carrying_capacity": 1000,
+      "discount_rate": 0.05,
+      "capacity": 300
+    },
+    "expected_outputs": {
+      "theorem": "orar_extremum_seeking_converges_to_Dstar",
+      "hypotheses": {
+        "carrying_capacity_positive": true,
+        "regeneration_positive": true,
+        "discount_below_regeneration": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "d_star": 437.5,
+        "marginal_signal": 0.11000000000000003
+      },
+      "conclusion": "D < D* ⇒ g′(D) − r > 0 and D > D* ⇒ g′(D) − r < 0",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "stewardshipsetpoint",
+    "catalog_status": "verified",
+    "catalog_integrity": "gate-passed",
+    "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
+    "authored_by": "WS-20 theorem-function tier"
+  }
+}

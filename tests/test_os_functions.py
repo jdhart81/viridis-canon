@@ -381,12 +381,21 @@ class TheoremFunctionPropertyTests(unittest.TestCase):
         return held, faults
 
     def test_no_translation_faults(self):
-        theorem_functions = [m for m, _ in _manifests().values() if m["kind"] == "theorem_function"]
+        # Only executable theorem functions carry a conclusion check. Reference-tier
+        # manifests (runner: null) are citable records with no executable conclusion.
+        theorem_functions = [m for m, _ in _manifests().values()
+                             if m["kind"] == "theorem_function" and m.get("runner") == "theorem"]
         self.assertGreaterEqual(len(theorem_functions), 14)
         for manifest in theorem_functions:
             held, faults = self._faults(manifest)
             self.assertGreater(held, 50, f"{manifest['id']}: sampler rarely satisfies the hypotheses")
             self.assertEqual(faults, 0, manifest["id"])
+
+    def test_reference_theorem_functions_are_not_runnable(self):
+        for manifest, _ in _manifests().values():
+            if manifest["kind"] == "theorem_function" and manifest.get("runner") is None:
+                self.assertEqual(manifest["tier"], "reference", manifest["id"])
+                self.assertIsNone(manifest.get("example"), manifest["id"])
 
     def test_negative_control_detects_a_flipped_conclusion(self):
         manifest = copy.deepcopy(_manifests()["perennial-corridor-holding-power"][0])

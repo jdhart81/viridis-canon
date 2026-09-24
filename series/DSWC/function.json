@@ -1,0 +1,47 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "dswc-tv-range-certificate",
+  "kind": "theorem_function",
+  "name": "The D-Score Weight-Charter Certificate: A sharp rank-stability bound for precommitted composite indicators",
+  "version": "0.1.0",
+  "summary": "For simplex weights w and w0 and finite-dimensional contrast z, absolute score drift is at most total variation times range(z); the corollary is dimension-free within these assumptions.",
+  "decision_family": null,
+  "tier": "reference",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.22236741",
+  "lean": {
+    "module": "Viridis.DScore.WeightCharter",
+    "sources": [
+      {
+        "path": "series/DSWC/ViridisRun132.lean",
+        "sha256": "4fd0b4dd32d30d0383ffd06d9bc50b4cf53dfad8b4a017333a25cb3f0f46bd5e"
+      }
+    ],
+    "theorems": [
+      "tv_range_certificate"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-132-DScoreWeightCharter-Engine3-Correction-r1-attempt-3"
+  },
+  "inputs": [],
+  "outputs": [],
+  "hypotheses": [],
+  "example": null,
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values.",
+  "boundary": "Conditional mathematics about the supplied values only; not empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": null,
+  "provenance": {
+    "scaffolded_by": "tools/scaffold_function.py",
+    "run_id": "Run-132",
+    "theorem_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "certificate_sha256": "90792d1fc8ffda0466f76e0301a2e4487716eede064ec299baf450dc0c5503c8",
+    "catalog_title": "Viridis Run132",
+    "name_source": "2026-09-01.json#bundles/DSWC/title",
+    "summary_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "publication_date": "2026-09-01"
+  }
+}

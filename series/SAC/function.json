@@ -1,0 +1,47 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "sac-conjunctive-rate-upper-bound",
+  "kind": "theorem_function",
+  "name": "The Symbiotic Accounting Certificate: Complementarity Does Not Create Thermodynamic Capacity",
+  "version": "0.1.0",
+  "summary": "Any conjunctive task rate obeys R <= P/(epsilon sum_i w_i/d_i) under the frozen component and shared-budget inequalities.",
+  "decision_family": null,
+  "tier": "reference",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.22236768",
+  "lean": {
+    "module": "Viridis.IntelligenceBound.SymbioticAccounting",
+    "sources": [
+      {
+        "path": "series/SAC/ViridisRun137.lean",
+        "sha256": "afe2ac826cb598d998a4e32baa19c17ffba3df7706b8dc0015d36c1ff5c65daa"
+      }
+    ],
+    "theorems": [
+      "conjunctive_rate_upper_bound"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-137-SymbioticAccountingCorrection-r1-Comparator-attempt-1"
+  },
+  "inputs": [],
+  "outputs": [],
+  "hypotheses": [],
+  "example": null,
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values.",
+  "boundary": "Conditional mathematics about the supplied values only; not empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": null,
+  "provenance": {
+    "scaffolded_by": "tools/scaffold_function.py",
+    "run_id": "Run-137",
+    "theorem_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "certificate_sha256": "d92193d2b290e62fbfa8929243219665b06559448249cccec0be08bdf67ba529",
+    "catalog_title": "Viridis Run137",
+    "name_source": "2026-09-01.json#bundles/SAC/title",
+    "summary_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "publication_date": "2026-09-01"
+  }
+}

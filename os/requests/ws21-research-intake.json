@@ -1,0 +1,46 @@
+{
+  "add_records": [
+    {
+      "abbreviation": "PDC",
+      "doi": "10.5281/zenodo.22848682",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-165",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "CAIA",
+      "doi": "10.5281/zenodo.22848678",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-166",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "SPLR",
+      "doi": "10.5281/zenodo.22848693",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-169",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "RASL",
+      "doi": "10.5281/zenodo.22848685",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-171",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    }
+  ],
+  "admission_performed": false,
+  "automatic_adoption": false,
+  "base_file_sha256": "b2920c546c267185c743289b04192defbd578bd4ee2a855cf2cd7eb3a0b18fcf",
+  "kind": "HUMAN_GOVERNANCE_EDIT_REQUEST",
+  "requested_file": "os/research_intake.json",
+  "standard": "VRS-OS-KERNEL-UPDATE-2"
+}

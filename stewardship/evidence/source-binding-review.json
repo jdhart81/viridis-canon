@@ -1,0 +1,31 @@
+{
+  "evidence_class": "local exact-source comparison, not independent external review or runtime admission",
+  "utc": "2026-09-26T01:59:29.969360+00:00",
+  "baseline": "85505cfe7f2f8d3977a96e18ea6d27a6ae8dd692",
+  "reviews": [
+    {
+      "file": "StewardshipSetpoint.lean",
+      "old_theorem": "orar_extremum_seeking_converges_to_Dstar",
+      "new_theorem": "potential_derivative_points_toward_Dstar",
+      "declaration_and_proof_identical_modulo_name": true,
+      "normalized_declaration_sha256": "fde7affa55a86a2c6d22fc5136a186e9a4287351003fb28b0ff81af8a372dbc6",
+      "baseline_source_sha256": "ec445431680117ed9efb7b3b857071f55bf3704dcda980da39f372515d2fb6c8",
+      "current_source_sha256": "e54ff66a87b9a4a4fc36981afc0f9049359f7811de70f96da48c47c34339394b",
+      "manifest": "os/functions/stewardship-setpoint-direction/function.json",
+      "runtime_expressions_unchanged": true,
+      "admission_ledger_unchanged": true
+    },
+    {
+      "file": "ThermodynamicAttention.lean",
+      "old_theorem": "slow_modes_filled_first",
+      "new_theorem": "slow_modes_filled_first",
+      "declaration_and_proof_identical_modulo_name": true,
+      "normalized_declaration_sha256": "38e47109458055c2324c4a49a47d776ae1812c025171b4283a98bea8b46b36fd",
+      "baseline_source_sha256": "3c56af1a6bff69d2a567cc3a0cd221dfcd997fdd2136363d7ffaab76dc62a352",
+      "current_source_sha256": "7e75609e2384763e8902191aafee63258b0222e8df3d5c3acd762e82b0f6423c",
+      "manifest": "os/functions/thermodynamic-attention-waterfill/function.json",
+      "runtime_expressions_unchanged": true,
+      "admission_ledger_unchanged": true
+    }
+  ]
+}

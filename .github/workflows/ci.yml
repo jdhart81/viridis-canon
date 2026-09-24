@@ -72,6 +72,16 @@ jobs:
             || { echo "::error::AxiomAudit did not report PASSED"; exit 1; }
           echo "axiom allowlist enforced"
 
+      - name: Information-weighted stewardship candidate and enforcing audit
+        run: |
+          set -o pipefail
+          lake build InformationWeightedStewardship InformationWeightedStewardshipAudit 2>&1 | tee stewardship-lean.log
+          if grep -nE "declaration uses 'sorry'|sorryAx" stewardship-lean.log; then
+            echo "::error::candidate proof hole"; exit 1
+          fi
+          grep -q "Information-weighted stewardship axiom audit PASSED" stewardship-lean.log
+          python3 tools/vacuity_lint.py InformationWeightedStewardship.lean InformationWeightedStewardship/*.lean
+
   lean-build-p0:
     runs-on: ubuntu-latest
     timeout-minutes: 90
@@ -146,3 +156,24 @@ jobs:
           grep -q "Deposit axiom audit PASSED" deposit.log \
             || { echo "::error::DepositAudit did not report PASSED"; exit 1; }
           echo "deposit axiom allowlist enforced"
+
+  stewardship-numerics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+      - name: Install isolated benchmark dependencies
+        run: |
+          python -m venv .venv-stewardship
+          .venv-stewardship/bin/python -m pip install -r stewardship/requirements.txt
+      - name: Independent adversarial tests and benchmark
+        run: |
+          .venv-stewardship/bin/python -m unittest discover -s stewardship -p test_model.py -v
+          .venv-stewardship/bin/python stewardship/run.py --output stewardship-ci-results
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stewardship-independent-numerics
+          path: stewardship-ci-results

@@ -16,9 +16,11 @@ fail=0
 # Verified-spine files come from the canonical manifest (covers P5/P7 subdirs);
 # fall back to root-level glob (minus quarantined P9) if the manifest is absent.
 if [ -f "$DIR/SPINE_MANIFEST.txt" ]; then
-  mapfile -t SPINE < <(grep -vE '^[[:space:]]*(#|$)' "$DIR/SPINE_MANIFEST.txt" | sed "s|^|$DIR/|")
+  SPINE=()
+  while IFS= read -r entry; do SPINE+=("$entry"); done < <(grep -vE '^[[:space:]]*(#|$)' "$DIR/SPINE_MANIFEST.txt" | sed "s|^|$DIR/|")
 else
-  mapfile -t SPINE < <(ls "$DIR"/*.lean 2>/dev/null | grep -v 'P9_AI_Safety.lean')
+  SPINE=()
+  while IFS= read -r entry; do SPINE+=("$entry"); done < <(ls "$DIR"/*.lean 2>/dev/null | grep -v 'P9_AI_Safety.lean')
 fi
 
 strip_comments() {  # remove /- ... -/ block comments and -- line comments

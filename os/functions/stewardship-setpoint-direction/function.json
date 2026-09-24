@@ -4,8 +4,8 @@
   "id": "stewardship-setpoint-direction",
   "kind": "theorem_function",
   "name": "Stewardship setpoint — which way to move capacity toward D*",
-  "version": "1.0.0",
-  "summary": "Given regeneration rate ρ, carrying capacity K, discount r and current capacity D, reports the sustainable setpoint D* = (K/2)(1 − r/ρ) and checks that the marginal signal points toward it (raise capacity below D*, lower it above).",
+  "version": "1.1.0",
+  "summary": "Reports the raw potential setpoint D* = (K/2)(1 − r/ρ) and the sign of g′(D) − r. This is not a trajectory convergence, sustainable-rate, or lifetime-optimality claim.",
   "line": "Theorem functions",
   "decision_family": null,
   "tier": "callable",
@@ -18,11 +18,11 @@
     "sources": [
       {
         "path": "StewardshipSetpoint.lean",
-        "sha256": "ec445431680117ed9efb7b3b857071f55bf3704dcda980da39f372515d2fb6c8"
+        "sha256": "e54ff66a87b9a4a4fc36981afc0f9049359f7811de70f96da48c47c34339394b"
       }
     ],
     "theorems": [
-      "orar_extremum_seeking_converges_to_Dstar"
+      "potential_derivative_points_toward_Dstar"
     ],
     "verification_provider": "CANON_CI_SPINE_BUILD",
     "verification_receipt_id": null
@@ -116,7 +116,7 @@
   "conclusion": {
     "statement": "D < D* ⇒ g′(D) − r > 0 and D > D* ⇒ g′(D) − r < 0",
     "check": "(capacity >= d_star or approx_le(0, marginal_signal, rho)) and (capacity <= d_star or approx_le(marginal_signal, 0, rho))",
-    "lean_theorem": "orar_extremum_seeking_converges_to_Dstar"
+    "lean_theorem": "potential_derivative_points_toward_Dstar"
   },
   "example": {
     "inputs": {
@@ -126,7 +126,7 @@
       "capacity": 300
     },
     "expected_outputs": {
-      "theorem": "orar_extremum_seeking_converges_to_Dstar",
+      "theorem": "potential_derivative_points_toward_Dstar",
       "hypotheses": {
         "carrying_capacity_positive": true,
         "regeneration_positive": true,
@@ -152,6 +152,7 @@
     "catalog_status": "verified",
     "catalog_integrity": "gate-passed",
     "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
-    "authored_by": "WS-20 theorem-function tier"
+    "authored_by": "WS-20 theorem-function tier",
+    "local_source_binding_review": "stewardship/evidence/source-binding-review.json; declaration and proof unchanged except the documented stewardship rename; no admission or external review implied"
   }
 }

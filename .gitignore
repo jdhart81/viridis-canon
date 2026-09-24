@@ -25,3 +25,8 @@ __pycache__/
 /os-bundle/
 /os-bundle-2/
 /os-bundle.tmp/
+
+/.venv-stewardship/
+
+# Byte-exact execution captures are retained in stewardship/evidence/execution-logs.zip.
+/stewardship/evidence/**/*.log

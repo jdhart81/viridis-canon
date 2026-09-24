@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-09-26T01:27:07.418367+00:00",
+  "archive_expected_sha256": "6af21f66207ed9e20dfc11ef2b991d3cac077de066e9dde7b13f329c20021a9e",
+  "archive_status": "NOT_LOCATED; internal manifest unavailable; loose files are not authenticated as archive contents",
+  "loose_files": {
+    "/Users/justinhart/Desktop/theorem_and_proof.md": {
+      "sha256": "b6c86094206a2aa1d2233e991a0325c856cb54df9ed4d6c00e636ac32158492e",
+      "bytes": 16658
+    },
+    "/Users/justinhart/Desktop/results.json": {
+      "sha256": "0c6720c9063c748344e345e9c25777ff7e3ea93a2dc6707332ba9f6c42c3e941",
+      "bytes": 2963
+    }
+  },
+  "baseline": "85505cfe7f2f8d3977a96e18ea6d27a6ae8dd692",
+  "initial_tracked_and_untracked_state_before_evidence_directory": "clean",
+  "historical_comparison": "20b684f42a242d17a642fdcd16eda50cc9b650f8",
+  "historical_vs_current_SST_TAT": "git diff empty for both files"
+}

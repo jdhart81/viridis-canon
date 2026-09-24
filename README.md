@@ -92,8 +92,8 @@ API: https://aristotle.harmonic.fun
 | **PCT** | `PerennialCorridor.lean` | **0** | COMPILED — **spine v10.2.0 ("the Gardener")** | Perennial Corridor Theorem — Whittle-index corridor urgency ranking, band-convexity of the unimodal superlevel set, stewardship-dividend nonnegativity, and the IB floor on maintenance holding power. 15 thms; Run-098. |
 | **DST** | `DecoherentSelection.lean` | **0** | COMPILED — **spine v10.2.0 ("the Chooser")** | Decoherent Selection Theorem — decision cost vanishes iff the pointer-basis eigenstate is selected, is bounded by ln N, and the einselected basis is the unique zero-waste choice; IB throughput speed limit on collapse. 12 thms; Run-099. |
 | **MAT** | `MutualisticAttestation.lean` | **0** | COMPILED — **spine v10.2.0 ("the Attester")** | Mutualistic Attestation Theorem — attestation cost = kBT·ln2·(residual entropy); certification feedback has fold bistability (trap/mutualism stable states); optimal confidence is interior. 19 thms; Run-100 (100th nightly-run milestone). |
-| **TAT** | `ThermodynamicAttention.lean` | **0** | COMPILED — **spine v10.2.0 ("the Attuner")** | Thermodynamic Attention Theorem — the rational-inattention shadow price equals the Landauer quantum kBT; attention water-fills the einselected slow basis per KKT; Inattention Trap below a resolvability threshold C_crit. 12 thms; Run-101. |
-| **SST** | `StewardshipSetpoint.lean` | **0** | COMPILED — **spine v10.2.0 ("the Steward")** | Stewardship Setpoint Theorem — golden-rule sustainable ceiling for a living renewable stock (dD/dt=g(D)-phi*H); Tragedy collapse for phi*Omega>rho; act-budget twin of TAT. 13 thms; Run-102. |
+| **TAT** | `ThermodynamicAttention.lean` | **0** | COMPILED — **spine v10.2.0 ("the Attuner")** | Thermodynamic Attention: algebra under an assumed linear cost and allocation model; differentiating kBT·I does not derive a physical price. See stewardship/ERRATA.md. Historical Run-101. |
+| **SST** | `StewardshipSetpoint.lean` | **0** | COMPILED — **spine v10.2.0 ("the Steward")** | Stewardship Setpoint: raw potential maximum, stock fractions, positivity and negative drift; historical statements did not compare lifetime integrals or prove collapse limits. See stewardship/ERRATA.md. Historical Run-102. |
 
 The protected `main` branch requires the repository hygiene check, the current
 Lean build and axiom audit, the pinned historical P0 build and audit, and the
@@ -197,3 +197,16 @@ P9 note (corrected v9.1.0): `ai_conservation_alignment` is **vacuous** — it is
 - **Zenodo DOI:** 10.5281/zenodo.19317983 (P0 formalization)
 - **Historical submission record:** NJP-119954 (current venue status is not inferred here)
 - **Obsidian Log:** Inbox/Intelligence Bound/2026-04-05_Viridis-Formal-Invariant-Structure-v10-Day-One.md
+
+## Information-weighted stewardship — local review candidate
+
+The new [certificate](stewardship/MATHEMATICAL_CERTIFICATE.md) compares actual
+infinite-horizon integrals for locally absolutely continuous, already-admissible
+stock trajectories starting at D*=K(2α−r)/(3α). It requires positive parameters,
+0<r<2α and Ω≥(α+r)/(3φ). This is a conditional model theorem, not ecological
+validation, permanent memory, universal alignment, or scientific priority.
+The [claim map](stewardship/CLAIMS.md) separates Lean, analytical, numerical,
+physical and novelty statuses. [Reproduce](stewardship/REPRODUCE.md) the candidate
+with its separate enforcing audit. It has not been admitted to the published
+spine. The supplied continuation ZIP remains a provenance/reproduction blocker;
+independent checks are not described as reproducing missing source code.

@@ -1,39 +1,14 @@
 /-
-# The Thermodynamic Attention Theorem (TAT) — the Attuner
-Viridis Aristotle Forge · Nightly Run 101 · [02] Thermodynamic Economics × ☯️ Alignment
-43rd Intelligence-Bound self-application. Consumes the standing `[100]→[02]` flag from
-the Mutualistic Attestation Theorem (MAT, Run 100).
+# Thermodynamic Attention: algebra conditional on an assumed cost model
+Justin Hart / Viridis. Original proof provenance: Aristotle, Run 101.
+Lean 4.28 / Mathlib 8f9d9cff. Claim correction 2026-09-26.
 
-INTENDED MEANING (formalized clean core).
-A steward's *perception* — the mutual information she maintains about a drifting
-ecosystem's state — is not free. Identifying the rational-inattention shadow price
-(Sims 2003/2011) with the Landauer quantum (Still–Sivak 2012) gives
-`λ_attention = k_B T ln 2` per bit = `k_B T` per nat. The ☯️ (wu-wei) core:
-over-attention is pure dissipation — the optimal steward attends only to the
-predictive (slow, einselected) modes and lets the nonpredictive rest go. A finite
-attention budget is spent by water-filling over the uncertainty modes; the modes
-that clear the water level are the slow, most-predictive ones (which by einselection
-ARE the redundantly-recorded integrity pointer observables — a face of UWMT-084 on
-the *perception* budget). Near a tipping point the allocation focuses onto the
-diverging critical slow mode; below a capacity floor `C_crit = ½ log₂(1+SNR_crit)`
-the steward is structurally blind (the Inattention Trap, perception-side twin of
-MAT-100's Certification Trap). Hoarding nonpredictive information linearly throttles
-the steward's own Intelligence-Bound speed limit through `ρ = I_nonpred/I_pred`.
-
-NON-VACUITY. Every named statement is discharged over explicit, non-degenerate
-witnesses (positive temperatures, an active slow mode `v=4>λ=1`, a dropped fast mode
-`v=½<λ=1`, an interior VoI optimum with `c<μa`). `tat_nonvacuous` binds BOTH
-water-filling branches (active + inactive) plus a strictly positive trap threshold.
-
-DEFERRED (well-posedness gate — CITED, not re-proven): the Still–Sivak predictive-
-information decomposition `I_mem = I_pred + I_nonpred`, the Sims LQG rational-
-inattention water-fill derivation, and the quantum-Darwinist einselection geometry
-are cited literature. The forge load here is the IDENTIFICATION `λ = k_B T ln 2`, the
-wu-wei sufficiency result (R2), the perception-budget water-fill (R3), the Inattention
-Trap threshold (R4), the Attuner throughput bound (R5), the VoI interior optimum (R6),
-and the cos²Θ basis efficiency (R7 — an instance of the now-landed UPEM meta-theorem).
-
-Toolchain leanprover/lean4:v4.28.0 · Mathlib pin 8f9d9cff.
+attnCost is DEFINED as kB*T*I. Its derivative is a consequence of that
+linear model, not an independent derivation of a physical attention price.
+Still et al. (2012) do not make this a universal maintenance cost per learned bit.
+The water-fill, basis and prediction interpretations require additional model
+bridges; compiled algebra does not establish ecological or physical validity.
+See stewardship/ERRATA.md. Historical proof provenance and deposits are preserved.
 -/
 import Mathlib
 
@@ -75,10 +50,10 @@ noncomputable def attunerBound (P D kB T rho : ℝ) : ℝ :=
 noncomputable def netMon (mu a c n : ℝ) : ℝ := mu * (1 - Real.exp (-(a * n))) - c * n
 
 /-! ## R1 — Attention Cost Identity (canon candidate)
-The shadow price of attention is physical: the marginal cost of one nat is `k_B T`,
-one bit costs the Landauer quantum `k_B T ln 2`, and it is a strictly positive price. -/
+Under the defined linear cost model, the derivative is k_B T and evaluation at
+ln 2 is positive. This does not derive a physical price or a universal cost. -/
 
-theorem attention_shadow_price_eq_landauer_quantum
+theorem assumed_linear_attention_cost_derivative
     (kB T I : ℝ) (hkB : 0 < kB) (hT : 0 < T) :
     HasDerivAt (fun x => attnCost kB T x) (kB * T) I
       ∧ attnCost kB T (Real.log 2) = kB * T * Real.log 2
@@ -217,5 +192,8 @@ theorem tat_nonvacuous :
     0 < wf 4 1 ∧ wf (1 / 2 : ℝ) 1 = 0 ∧ 0 < Ccrit 1 := by
   norm_num [ wf, Ccrit ];
   exact ⟨ Real.logb_pos ( by norm_num ) ( by norm_num ), mul_nonpos_of_nonneg_of_nonpos ( by norm_num ) ( Real.logb_nonpos ( by norm_num ) ( by norm_num ) ( by norm_num ) ) ⟩
+
+@[deprecated assumed_linear_attention_cost_derivative (since := "2026-09-26")]
+alias attention_shadow_price_eq_landauer_quantum := assumed_linear_attention_cost_derivative
 
 end Viridis.Attention.ThermodynamicAttention

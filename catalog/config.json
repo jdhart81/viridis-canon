@@ -348,12 +348,26 @@
       ],
       "tier": "working-corpus",
       "title": "AI Safety — Quarantined"
+    },
+    "InformationWeightedStewardship.lean": {
+      "title": "Information-weighted stewardship: exact conditional optimality certificate",
+      "summary": "Local review candidate: a compiled AC infinite-horizon integral comparison, with exact regret and stock/control equality cases. Not canon-admitted; supplied ZIP reproduction is blocked.",
+      "abstract": "For already-admissible locally absolutely continuous stock trajectories, logistic regeneration and measurable observation effort, the certificate proves global optimality of holding D*=K(2 alpha-r)/(3 alpha) from that same initial stock. Parameters are positive, 0<r<2 alpha, and Omega>=(alpha+r)/(3 phi). The information channel is constructed, not measured. The raw-throughput counterpart is also formalized. Independent numerical checks do not authenticate or reproduce the missing supplied continuation archive.",
+      "paper_target": "stewardship/MATHEMATICAL_CERTIFICATE.md",
+      "tier": "working-corpus",
+      "caveat": "Conditional deterministic fluid model; no general initial-state optimal controller, empirical validation, universal information-energy price, or novelty claim. Local proof provenance only; no new Aristotle review or publication.",
+      "tags": [
+        "stewardship",
+        "optimal-control",
+        "review-candidate"
+      ]
     }
   },
   "exclude": [
     "AxiomAudit.lean",
     "DepositAudit.lean",
-    "P0AxiomAudit.lean"
+    "P0AxiomAudit.lean",
+    "InformationWeightedStewardshipAudit.lean"
   ],
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "include": [

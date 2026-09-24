@@ -4,8 +4,8 @@
   "id": "thermodynamic-attention-waterfill",
   "kind": "theorem_function",
   "name": "Thermodynamic attention — slower modes are filled first",
-  "version": "1.0.0",
-  "summary": "Checks that under attention water-filling, a mode with larger variance (slower, closer to a tipping point) never receives less attention capacity than a faster one.",
+  "version": "1.0.1",
+  "summary": "Under the defined water-filling model, larger positive variance receives no less allocation. Identification with slower ecological modes or a physical attention price needs separate evidence.",
   "line": "Theorem functions",
   "decision_family": null,
   "tier": "callable",
@@ -18,7 +18,7 @@
     "sources": [
       {
         "path": "ThermodynamicAttention.lean",
-        "sha256": "3c56af1a6bff69d2a567cc3a0cd221dfcd997fdd2136363d7ffaab76dc62a352"
+        "sha256": "7e75609e2384763e8902191aafee63258b0222e8df3d5c3acd762e82b0f6423c"
       }
     ],
     "theorems": [
@@ -143,6 +143,7 @@
     "catalog_status": "verified",
     "catalog_integrity": "gate-passed",
     "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
-    "authored_by": "WS-20 theorem-function tier"
+    "authored_by": "WS-20 theorem-function tier",
+    "local_source_binding_review": "stewardship/evidence/source-binding-review.json; declaration and proof unchanged except the documented stewardship rename; no admission or external review implied"
   }
 }

@@ -1,0 +1,150 @@
+{
+  "evidence_class": "independent numerical/symbolic model check; not supplied-package reproduction, Lean theorem, or empirical validation",
+  "parameters": {
+    "alpha": 0.5,
+    "K": 1.0,
+    "phi": 1.0,
+    "omega": 1.0,
+    "r": 0.1,
+    "m": 1
+  },
+  "initial_stock": 0.6,
+  "stationary": {
+    "stock": 0.6,
+    "attempt_rate": 0.12,
+    "duty": 0.19999999999999998,
+    "information_rate": 0.072,
+    "value": 0.7199999999999999
+  },
+  "forcing": {
+    "value": 0.2407207380857683,
+    "regret_integral": 0.4792792619142316,
+    "arbitrary_initial_upper_bound": 0.72,
+    "identity_residual": 5.551115123125783e-17,
+    "quadrature_error_estimate": 1.9198192354684163e-14,
+    "accounting_residual": 0.0
+  },
+  "raw_target": {
+    "value": 0.5844503257509175,
+    "regret_integral": 0.13554967424908257,
+    "arbitrary_initial_upper_bound": 0.72,
+    "identity_residual": -8.326672684688674e-17,
+    "quadrature_error_estimate": 1.3464028172829243e-12,
+    "accounting_residual": 1.1102230246251565e-16
+  },
+  "raw_transition_time": 0.5438674309672835,
+  "initial_forcing_rate": 0.36,
+  "ratio": 2.99101774830661,
+  "crossover": 4.0359697061540984,
+  "analytic_forcing_upper_bound": 0.3272727272727272,
+  "analytic_ratio_lower_bound": 2.2,
+  "independent_ode": {
+    "horizon": 300.0,
+    "value": 0.2407207380858103,
+    "stock": 2.690660990368433e-66,
+    "omitted_tail_analytic_bound_float": 9.357622968840175e-13,
+    "difference_from_infinite_quadrature": 4.1994185906446546e-14
+  },
+  "symbolic_checks": {
+    "information_cubic_gap": true,
+    "raw_square_gap": true,
+    "information_stationarity": true,
+    "raw_stationarity": true,
+    "held_rate_balance": true,
+    "information_held_duty": true,
+    "raw_held_duty": true
+  },
+  "schedules": {
+    "seed": 21444226,
+    "per_exponent": 128,
+    "exponents": [
+      0,
+      1,
+      2
+    ],
+    "total": 384,
+    "finite_stages": 12,
+    "tail": "infinite constant duty",
+    "max_absolute_residual": 1.1657341758564144e-15,
+    "minimum_regret": 0.053061608721013724
+  },
+  "channel": [
+    {
+      "q": 0.1,
+      "n": 100000,
+      "seed": 1000,
+      "mean_gain_bits": 0.10188,
+      "wilson_95": [
+        0.10002044595109488,
+        0.10377014010566826
+      ],
+      "interval_covers_stipulated_q": false,
+      "unique_target_count": 100000
+    },
+    {
+      "q": 0.3,
+      "n": 100000,
+      "seed": 1001,
+      "mean_gain_bits": 0.30126,
+      "wilson_95": [
+        0.29842402539730245,
+        0.3041112430466871
+      ],
+      "interval_covers_stipulated_q": true,
+      "unique_target_count": 100000
+    },
+    {
+      "q": 0.6,
+      "n": 100000,
+      "seed": 1002,
+      "mean_gain_bits": 0.59797,
+      "wilson_95": [
+        0.5949273884299987,
+        0.6010050849047218
+      ],
+      "interval_covers_stipulated_q": true,
+      "unique_target_count": 100000
+    },
+    {
+      "q": 0.9,
+      "n": 100000,
+      "seed": 1003,
+      "mean_gain_bits": 0.89944,
+      "wilson_95": [
+        0.8975606249922369,
+        0.9012886875403828
+      ],
+      "interval_covers_stipulated_q": true,
+      "unique_target_count": 100000
+    }
+  ],
+  "zero_damage": {
+    "full_rate": 8.535359837018671,
+    "one_fifth_rate": 1.7070719674037342,
+    "ratio": 5.0
+  },
+  "execution": {
+    "utc": "2026-09-26T02:01:10.278366+00:00",
+    "command": [
+      "stewardship/run.py",
+      "--output",
+      "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon/stewardship/evidence/final-verification-2/benchmark"
+    ],
+    "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "versions": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "sympy": "1.14.0"
+    },
+    "revision": "85505cfe7f2f8d3977a96e18ea6d27a6ae8dd692",
+    "dirty_state": " M .github/workflows/ci.yml\n M .gitignore\n M CLAIMS_MATRIX.md\n M README.md\n M REPRODUCE.md\n M StewardshipSetpoint.lean\n M ThermodynamicAttention.lean\n M catalog/config.json\n M docs/data/catalog.json\n M lakefile.toml\n M os/functions/stewardship-setpoint-direction/function.json\n M os/functions/thermodynamic-attention-waterfill/function.json\n M tools/check_spine_hygiene.sh\n?? InformationWeightedStewardship.lean\n?? InformationWeightedStewardship/\n?? InformationWeightedStewardshipAudit.lean\n?? compat/v4_24/lake-manifest.json\n?? stewardship/\n",
+    "source_sha256": {
+      "test_model.py": "e97c262dc2dfcef74a48b54deae470db64a7809cfce4596c813dd13b2e79bf56",
+      "run.py": "4bb60102ca73588e419ffa8586cc4bd09b4fbc0422f6f5e5f1a65a5c5f8c4153",
+      "verify_package.py": "c5ba501eb8f53753e3025b509f28fd39fc99a4f67987556b8cb3eaaefe5f4644",
+      "model.py": "a3b87d547415840b86578434ce0db3c107b38140e49bc11f6be6571717859df6",
+      "verify_local.py": "9cfa34ca2e0e7192b17fd3dded096ccdcf9762a1e18d1c25cac02ea0e320a438"
+    }
+  }
+}

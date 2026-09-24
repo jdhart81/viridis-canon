@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "6d992e8efe7735161d8f6ef9685ad4500ce810d0ed2ac4d6c6a9181f72536398",
+  "catalog_digest": "02fa3ac525d774155cd915626983500c2d83a844e7ea4dcc3ecaa9b8066a76f5",
   "concept_doi": "10.5281/zenodo.19317982",
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "human_publish_gate": true,
@@ -1068,10 +1068,10 @@
       "visibility": "public"
     },
     {
-      "abstract": "The Stewardship Setpoint Theorem (SST) — the Steward Viridis Aristotle Forge · Nightly Run 102 · [01] Intelligence Bound × 🎯 Stewardship 44th Intelligence-Bound self-application. FIRST-EVER [01]×🎯 pairing. Act-budget twin of TAT-101 (the Attuner, perceive-budget). INTENDED MEANING (formalized clean core). Every prior self-application of the Intelligence Bound dI/dt ≤ P·D/(k_B T ln2) reads D (the disequilibrium / usable free-energy stock the ecosystem provides) as a FIXED parameter. Here D is a living renewable stock that is DEGRADED by the very act of extracting intelligence from it: dD/dt = g(D) − φ·H, with logistic regeneration g(D) = ρ D (1 − D/K), where H is the harvested throughput and φ > 0 the degradation coefficient. Pouring the bound's instantaneous ceiling H ≤ Ω·D (with Ω = P/(k_B T ln2) > 0) into Clark's renewable-harvest problem with discount rate r yields a golden-rule STEADY operating point — the Stewardship Setpoint. The seven laws (clean core, formalized): R1 sustainable ceiling ⟨dI/dt⟩_sust = Ω·D⋆ < Ω·K (never the instantaneous max). R2 Stewardship Setpoint (canon candidate): the modified golden rule g'(D⋆) = r ⟺ D⋆ = (K/2)(1 − r/ρ), decreasing in the discount rate. R3 Tragedy of the Bound (HEADLINE canon candidate): running flat-out at the instantaneous ceiling (H = Ω·D, duty cycle u = 1) collapses the stock when φΩ > ρ; the setpoint policy strictly dominates the forcing policy in discounted value. R4 Clark collapse threshold: impatience r ≥ g'(0) = ρ erases the interior optimum. R5 O-R-A-R model-free stewardship: Φ(D) = g(D) − rD is strictly concave with…",
+      "abstract": "Historical Stewardship Setpoint algebra, with claim corrections (2026-09-26) Justin Hart / Viridis. Original proof provenance: Aristotle, Run 102. Lean 4.28 / Mathlib 8f9d9cff. Historical deposits are unchanged. This module proves algebra, positivity, derivative signs and a potential maximum. It does NOT compare lifetime policy integrals or prove trajectory limits. The general sustainable held rate is g(D*)/phi, feasible iff Omega >= (rho+r)/(2*phi), for 0<r<rho. Omega*D* is an instantaneous capacity ceiling. Legacy uStar assumes phi=1 and is retained for compatibility. Omega is an operating coefficient; a Landauer identification needs independent architecture and energy assumptions. D*/K is a stock ratio, not a sustainable throughput ratio. No scientific-priority or universal alignment claim is made. See stewardship/ERRATA.md and InformationWeightedStewardship for corrected work.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "ee728137ce6c17377ac668cff4d51c4c7303902f8a67745ccf130e53361c27e2",
+      "digest": "6e93d78136e55dfaa7fa1d1c5afffe9420dad8ccab215fa3814522cd6af524b8",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -1080,7 +1080,7 @@
       "integrity": "gate-passed",
       "lean_module": "Viridis.Stewardship.StewardshipSetpoint",
       "lemma_count": 0,
-      "line_count": 229,
+      "line_count": 195,
       "metadata": {
         "aristotle_id": "",
         "artifact_type": "lean4",
@@ -1090,7 +1090,7 @@
       "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/StewardshipSetpoint.lean",
       "path": "StewardshipSetpoint.lean",
       "record_id": "stewardshipsetpoint",
-      "source_sha256": "ec445431680117ed9efb7b3b857071f55bf3704dcda980da39f372515d2fb6c8",
+      "source_sha256": "e54ff66a87b9a4a4fc36981afc0f9049359f7811de70f96da48c47c34339394b",
       "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/StewardshipSetpoint.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 13 theorem and lemma declarations.",
@@ -1182,10 +1182,10 @@
       "visibility": "public"
     },
     {
-      "abstract": "The Thermodynamic Attention Theorem (TAT) — the Attuner Viridis Aristotle Forge · Nightly Run 101 · [02] Thermodynamic Economics × ☯️ Alignment 43rd Intelligence-Bound self-application. Consumes the standing [100]→[02] flag from the Mutualistic Attestation Theorem (MAT, Run 100). INTENDED MEANING (formalized clean core). A steward's *perception* — the mutual information she maintains about a drifting ecosystem's state — is not free. Identifying the rational-inattention shadow price (Sims 2003/2011) with the Landauer quantum (Still–Sivak 2012) gives λ_attention = k_B T ln 2 per bit = k_B T per nat. The ☯️ (wu-wei) core: over-attention is pure dissipation — the optimal steward attends only to the predictive (slow, einselected) modes and lets the nonpredictive rest go. A finite attention budget is spent by water-filling over the uncertainty modes; the modes that clear the water level are the slow, most-predictive ones (which by einselection ARE the redundantly-recorded integrity pointer observables — a face of UWMT-084 on the *perception* budget). Near a tipping point the allocation focuses onto the diverging critical slow mode; below a capacity floor C_crit = ½ log₂(1+SNR_crit) the steward is structurally blind (the Inattention Trap, perception-side twin of MAT-100's Certification Trap). Hoarding nonpredictive information linearly throttles the steward's own Intelligence-Bound speed limit through ρ = I_nonpred/I_pred. NON-VACUITY. Every named statement is discharged over explicit, non-degenerate witnesses (positive temperatures, an active slow mode v=4>λ=1, a dropped fast…",
+      "abstract": "Thermodynamic Attention: algebra conditional on an assumed cost model Justin Hart / Viridis. Original proof provenance: Aristotle, Run 101. Lean 4.28 / Mathlib 8f9d9cff. Claim correction 2026-09-26. attnCost is DEFINED as kB*T*I. Its derivative is a consequence of that linear model, not an independent derivation of a physical attention price. Still et al. (2012) do not make this a universal maintenance cost per learned bit. The water-fill, basis and prediction interpretations require additional model bridges; compiled algebra does not establish ecological or physical validity. See stewardship/ERRATA.md. Historical proof provenance and deposits are preserved.",
       "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 2,
-      "digest": "70664455f05a572c1b952649b709dac24188b0d8b688cfa437c9ee462b0fbec2",
+      "digest": "58feb214e96fda46d518060f304610b75909983711facfaadcb17e0c15a6aea6",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -1194,7 +1194,7 @@
       "integrity": "gate-passed",
       "lean_module": "Viridis.Attention.ThermodynamicAttention",
       "lemma_count": 0,
-      "line_count": 221,
+      "line_count": 199,
       "metadata": {
         "aristotle_id": "",
         "artifact_type": "lean4",
@@ -1204,7 +1204,7 @@
       "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/ThermodynamicAttention.lean",
       "path": "ThermodynamicAttention.lean",
       "record_id": "thermodynamicattention",
-      "source_sha256": "3c56af1a6bff69d2a567cc3a0cd221dfcd997fdd2136363d7ffaab76dc62a352",
+      "source_sha256": "7e75609e2384763e8902191aafee63258b0222e8df3d5c3acd762e82b0f6423c",
       "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/ThermodynamicAttention.lean",
       "status": "verified",
       "summary": "Machine-checked Lean research module with 12 theorem and lemma declarations.",
@@ -2968,6 +2968,46 @@
       "theorem_count": 4,
       "tier": "working-corpus",
       "title": "Harmonized Descent",
+      "visibility": "public"
+    },
+    {
+      "abstract": "For already-admissible locally absolutely continuous stock trajectories, logistic regeneration and measurable observation effort, the certificate proves global optimality of holding D*=K(2 alpha-r)/(3 alpha) from that same initial stock. Parameters are positive, 0<r<2 alpha, and Omega>=(alpha+r)/(3 phi). The information channel is constructed, not measured. The raw-throughput counterpart is also formalized. Independent numerical checks do not authenticate or reproduce the missing supplied continuation archive.",
+      "caveat": "Conditional deterministic fluid model; no general initial-state optimal controller, empirical validation, universal information-energy price, or novelty claim. Local proof provenance only; no new Aristotle review or publication.",
+      "definition_count": 0,
+      "digest": "a78392a3e22b47c0953bfc77312efe084f74503e3e467d4b528eeb0310b8bc02",
+      "doi": "",
+      "external_validation": "not-recorded",
+      "imports": [
+        "InformationWeightedStewardship.Raw"
+      ],
+      "integrity": "not-canon-admitted",
+      "lean_module": "Viridis.InformationWeightedStewardship",
+      "lemma_count": 0,
+      "line_count": 67,
+      "metadata": {
+        "aristotle_id": "",
+        "artifact_type": "lean4",
+        "paper_target": "stewardship/MATHEMATICAL_CERTIFICATE.md",
+        "source_decode_replacements": 0
+      },
+      "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/stewardship/MATHEMATICAL_CERTIFICATE.md",
+      "path": "InformationWeightedStewardship.lean",
+      "record_id": "informationweightedstewardship",
+      "source_sha256": "e448aeafeab38634662563f14c3d6f92bdb204bb82527b23ecece0732d14b778",
+      "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/InformationWeightedStewardship.lean",
+      "status": "working",
+      "summary": "Local review candidate: a compiled AC infinite-horizon integral comparison, with exact regret and stock/control equality cases. Not canon-admitted; supplied ZIP reproduction is blocked.",
+      "tags": [
+        "lean4",
+        "optimal-control",
+        "review-candidate",
+        "stewardship",
+        "working",
+        "working-corpus"
+      ],
+      "theorem_count": 3,
+      "tier": "working-corpus",
+      "title": "Information-weighted stewardship: exact conditional optimality certificate",
       "visibility": "public"
     },
     {
@@ -7694,11 +7734,11 @@
   "stats": {
     "flagships": 4,
     "quarantined": 1,
-    "records": 203,
+    "records": 204,
     "spine": 30,
-    "theorems_and_lemmas": 2120,
+    "theorems_and_lemmas": 2123,
     "verified": 26,
-    "working": 176,
-    "working_corpus": 169
+    "working": 177,
+    "working_corpus": 170
   }
 }

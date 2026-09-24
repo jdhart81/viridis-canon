@@ -169,3 +169,19 @@ than re-declared. Deferred to a forge pass (changes proof content).
 
 These are proof-content changes; per the Aristotle-first gate they require a fresh
 machine-checked pass and are **not** asserted as verified in this release.
+
+
+## Stewardship and attention correction (2026-09-26; review candidate)
+
+| Result | Exact conclusion | Assumptions / exclusions | Formal / interpretive status |
+|---|---|---|---|
+| Historical SST positivity (deprecated `setpoint_J_beats_forcing_J`) | 0<g(Dstar)/r | No forcing objective appears; φ absent | Derived positivity / no dominance established by that theorem |
+| Historical SST forcing statement | Negative instantaneous drift | No trajectory limit in its type | Conditional drift / no measured collapse |
+| Historical `sustCeiling`, `uStar` | ΩDstar; (α+r)/(2Ω) | Capacity, and duty only at φ=1; not general sustainable throughput | Definition-expansion / model interpretation corrected |
+| Historical TAT price statement | Derivative of kBT·I is kBT | Cost is defined; no microphysical derivation | Definition-expansion / Empirical-hypothesis |
+| `InformationWeightedStewardship.global_certificate` | Feasible stationary trajectory, actual objective integral, exact lifetime regret ≥0, equality iff stock fixed everywhere or control fixed a.e. | AC policy class; D(0)=D*; positive parameters; r<2α; Ω≥(α+r)/(3φ) | Conditional mathematics / Empirical-hypothesis for the apparatus |
+| `raw_lifetime_regret`, `raw_lifetime_optimal` | Raw-throughput exact square regret and feasible domination | Same AC model; D(0)=K(α−r)/(2α); 0<r<α; Ω≥(α+r)/(2φ) | Conditional mathematics / Empirical-hypothesis |
+
+See [candidate evidence map](stewardship/CLAIMS.md) and
+[traceable errata](stewardship/ERRATA.md). Compilation of a local candidate does
+not confer spine admission, publication, independent review, or priority.

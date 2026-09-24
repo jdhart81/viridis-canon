@@ -1,0 +1,267 @@
+{
+  "evidence_class": "local compiled/symbolic/numerical checks; not independent peer review, empirical evidence or supplied-package reproduction",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "revision": "85505cfe7f2f8d3977a96e18ea6d27a6ae8dd692",
+  "commands": [
+    {
+      "name": "dependencies",
+      "argv": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon/.venv-stewardship/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "stewardship/requirements.txt"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon",
+      "utc": "2026-09-26T02:01:08.498947+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "python-version",
+      "argv": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon/.venv-stewardship/bin/python",
+        "--version"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon",
+      "utc": "2026-09-26T02:01:08.672638+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "lean-version",
+      "argv": [
+        "lake",
+        "--version"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon",
+      "utc": "2026-09-26T02:01:08.679908+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "numerical-tests",
+      "argv": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon/.venv-stewardship/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "stewardship",
+        "-p",
+        "test_model.py",
+        "-v"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon",
+      "utc": "2026-09-26T02:01:08.709623+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "benchmark",
+      "argv": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon/.venv-stewardship/bin/python",
+        "stewardship/run.py",
+        "--output",
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon/stewardship/evidence/final-verification-2/benchmark"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon",
+      "utc": "2026-09-26T02:01:09.202002+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "spine-hygiene",
+      "argv": [
+        "bash",
+        "tools/check_spine_hygiene.sh",
+        "."
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon",
+      "utc": "2026-09-26T02:01:10.378582+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "candidate-vacuity",
+      "argv": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "tools/vacuity_lint.py",
+        "InformationWeightedStewardship.lean",
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon/InformationWeightedStewardship/Algebra.lean",
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon/InformationWeightedStewardship/Equality.lean",
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon/InformationWeightedStewardship/Lifetime.lean",
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon/InformationWeightedStewardship/Raw.lean",
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon/InformationWeightedStewardship/Trajectory.lean"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon",
+      "utc": "2026-09-26T02:01:11.459160+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "deposit-manifest",
+      "argv": [
+        "bash",
+        "tools/check_deposit_manifest.sh",
+        "."
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon",
+      "utc": "2026-09-26T02:01:11.477688+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "current-cache",
+      "argv": [
+        "lake",
+        "exe",
+        "cache",
+        "get"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon",
+      "utc": "2026-09-26T02:01:11.495289+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "current-build",
+      "argv": [
+        "lake",
+        "build"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon",
+      "utc": "2026-09-26T02:01:17.121674+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "candidate-build",
+      "argv": [
+        "lake",
+        "build",
+        "InformationWeightedStewardship",
+        "InformationWeightedStewardshipAudit"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon",
+      "utc": "2026-09-26T02:01:19.968532+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "deposit-build",
+      "argv": [
+        "lake",
+        "build",
+        "DepositAudit"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon",
+      "utc": "2026-09-26T02:01:22.682738+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "p0-version",
+      "argv": [
+        "lake",
+        "--version"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon/compat/v4_24",
+      "utc": "2026-09-26T02:01:24.751958+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "p0-cache",
+      "argv": [
+        "lake",
+        "exe",
+        "cache",
+        "get"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon/compat/v4_24",
+      "utc": "2026-09-26T02:01:24.786973+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "p0-build",
+      "argv": [
+        "lake",
+        "build"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon/compat/v4_24",
+      "utc": "2026-09-26T02:01:27.812079+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "repository-tests",
+      "argv": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon",
+      "utc": "2026-09-26T02:01:29.662156+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "catalog",
+      "argv": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "tools/build_research_portal.py",
+        "--check"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon",
+      "utc": "2026-09-26T02:01:40.489478+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "diff-whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/viridis-canon",
+      "utc": "2026-09-26T02:01:40.595907+00:00",
+      "exit_code": 0
+    }
+  ],
+  "audit_checks": {
+    "current-build": {
+      "audit_receipt_present": true,
+      "no_proof_hole_output": true
+    },
+    "candidate-build": {
+      "audit_receipt_present": true,
+      "no_proof_hole_output": true
+    },
+    "deposit-build": {
+      "audit_receipt_present": true,
+      "no_proof_hole_output": true
+    },
+    "p0-build": {
+      "audit_receipt_present": true,
+      "no_proof_hole_output": true
+    }
+  },
+  "source_sha256": {
+    "lakefile.toml": "349bfd08418b1a70e9674118a2471bb1bd6a9a59ba4514f890dd756c92a1104c",
+    "lake-manifest.json": "116c6ef00aa899fb38c08c5e4c92c0e434d0e7f9d574fcb5d4d42cc90ffb07cb",
+    "lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028",
+    "StewardshipSetpoint.lean": "e54ff66a87b9a4a4fc36981afc0f9049359f7811de70f96da48c47c34339394b",
+    "ThermodynamicAttention.lean": "7e75609e2384763e8902191aafee63258b0222e8df3d5c3acd762e82b0f6423c",
+    "InformationWeightedStewardship.lean": "e448aeafeab38634662563f14c3d6f92bdb204bb82527b23ecece0732d14b778",
+    "InformationWeightedStewardshipAudit.lean": "70c6f6b9e3b53496433d17aeed18cfa5ac1774cf7535b9c154f6268c5cf1a3bc",
+    "compat/v4_24/lean-toolchain": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434",
+    "compat/v4_24/lake-manifest.json": "7aedcdf48d2524815dded848614a3fdcce197fd1288564b9c01f61de6d91be40",
+    "stewardship/requirements.txt": "48b56515dfc301838195134a1f222cd71d80c402a1998261b009503a6dd8dc58",
+    "os/functions/stewardship-setpoint-direction/function.json": "50b981ebbcbce258e5f46cfd56452d54bdb29ee6e5d2b0f878f85adc6d94466c",
+    "os/functions/thermodynamic-attention-waterfill/function.json": "7adcb515923c5ba8900d5bb7a2905e6bb34705799f1cb3486f698de12fb0d513",
+    "InformationWeightedStewardship/Equality.lean": "340f716f7ac1c58bd5c59f4e3a9d507ee0a9f997727e88986bd29175a6a353ab",
+    "InformationWeightedStewardship/Lifetime.lean": "b1d578d6538b24977c775ea97323012ea45950416f5c67e653086e11d4e6b730",
+    "InformationWeightedStewardship/Trajectory.lean": "cb17d6ff1e13fab9a0c37b43c555375f9ebfe8aa17570cf5237142c34dcb5f17",
+    "InformationWeightedStewardship/Raw.lean": "f8fe2dd9d62a63c6b8186ccf5d9315a183c3fbaf248844ae1b3d30609c257fc0",
+    "InformationWeightedStewardship/Algebra.lean": "8ca74dd2dcd493678778f0d391f75877f7c1acc15859546a4240182ede3d2c9a",
+    "stewardship/test_model.py": "e97c262dc2dfcef74a48b54deae470db64a7809cfce4596c813dd13b2e79bf56",
+    "stewardship/run.py": "4bb60102ca73588e419ffa8586cc4bd09b4fbc0422f6f5e5f1a65a5c5f8c4153",
+    "stewardship/verify_package.py": "c5ba501eb8f53753e3025b509f28fd39fc99a4f67987556b8cb3eaaefe5f4644",
+    "stewardship/model.py": "a3b87d547415840b86578434ce0db3c107b38140e49bc11f6be6571717859df6",
+    "stewardship/verify_local.py": "9cfa34ca2e0e7192b17fd3dded096ccdcf9762a1e18d1c25cac02ea0e320a438"
+  },
+  "supplied_package_status": "NOT_LOCATED; hash/manifest/spec and original reproduction pending",
+  "checks_passed": true,
+  "milestone_complete": false
+}

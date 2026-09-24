@@ -1,51 +1,17 @@
 /-
-# The Stewardship Setpoint Theorem (SST) — the Steward
-Viridis Aristotle Forge · Nightly Run 102 · [01] Intelligence Bound × 🎯 Stewardship
-44th Intelligence-Bound self-application. FIRST-EVER [01]×🎯 pairing.
-Act-budget twin of TAT-101 (the Attuner, perceive-budget).
+# Historical Stewardship Setpoint algebra, with claim corrections (2026-09-26)
+Justin Hart / Viridis. Original proof provenance: Aristotle, Run 102.
+Lean 4.28 / Mathlib 8f9d9cff. Historical deposits are unchanged.
 
-INTENDED MEANING (formalized clean core).
-Every prior self-application of the Intelligence Bound `dI/dt ≤ P·D/(k_B T ln2)`
-reads `D` (the disequilibrium / usable free-energy stock the ecosystem provides) as
-a FIXED parameter. Here `D` is a living renewable stock that is DEGRADED by the very
-act of extracting intelligence from it:
-    `dD/dt = g(D) − φ·H`,  with logistic regeneration `g(D) = ρ D (1 − D/K)`,
-where `H` is the harvested throughput and `φ > 0` the degradation coefficient.
-Pouring the bound's instantaneous ceiling `H ≤ Ω·D` (with `Ω = P/(k_B T ln2) > 0`)
-into Clark's renewable-harvest problem with discount rate `r` yields a golden-rule
-STEADY operating point — the Stewardship Setpoint.
-
-The seven laws (clean core, formalized):
-  R1  sustainable ceiling `⟨dI/dt⟩_sust = Ω·D⋆ < Ω·K` (never the instantaneous max).
-  R2  Stewardship Setpoint (canon candidate): the modified golden rule `g'(D⋆) = r`
-      ⟺ `D⋆ = (K/2)(1 − r/ρ)`, decreasing in the discount rate.
-  R3  Tragedy of the Bound (HEADLINE canon candidate): running flat-out at the
-      instantaneous ceiling (`H = Ω·D`, duty cycle `u = 1`) collapses the stock when
-      `φΩ > ρ`; the setpoint policy strictly dominates the forcing policy in
-      discounted value.
-  R4  Clark collapse threshold: impatience `r ≥ g'(0) = ρ` erases the interior optimum.
-  R5  O-R-A-R model-free stewardship: `Φ(D) = g(D) − rD` is strictly concave with the
-      unique maximizer `D⋆`; an observer ignorant of `ρ, K` who ascends the observed
-      `Φ` is driven toward `D⋆` (the drift `Φ'` changes sign exactly at `D⋆`).
-  R6  the Steward (44th IB self-application): the sustainable-to-instantaneous
-      throughput ratio `D⋆/K = ½(1 − r/ρ) ≤ ½`, with equality iff perfectly patient.
-  R7  Max-power correspondence: the sustainable duty cycle satisfies
-      `0 < u⋆ < ρ/Ω < 1` and is non-decreasing in impatience — a steward never runs
-      the stock flat out, and myopia pushes harder on a smaller stock.
-
-NON-VACUITY. Every named statement is discharged over explicit, non-degenerate
-witnesses (positive `K, ρ, Ω, φ` and a patient-but-nonzero discount `0 ≤ r < ρ`;
-for R7 the structural cap needs `ρ < Ω`). `sst_nonvacuous` binds an interior
-setpoint `D⋆ = K/4` (at `r = ρ/2`), the strict ratio bound, and a duty cycle strictly
-between 0 and its cap, all simultaneously.
-
-DEFERRED (well-posedness gate — CITED, not re-proven): Clark bioeconomics
-(bang–singular optimal control, the modified golden rule as a Pontryagin condition)
-and finite-time / endoreversible thermodynamics (Curzon–Ahlborn max-power < Carnot)
-are cited literature. The forge load is the IB↔renewable-harvest synthesis and the
-seven closed-form laws above.
-
-Toolchain leanprover/lean4:v4.28.0 · Mathlib pin 8f9d9cff.
+This module proves algebra, positivity, derivative signs and a potential maximum.
+It does NOT compare lifetime policy integrals or prove trajectory limits.
+The general sustainable held rate is g(D*)/phi, feasible iff
+Omega >= (rho+r)/(2*phi), for 0<r<rho. Omega*D* is an instantaneous
+capacity ceiling. Legacy uStar assumes phi=1 and is retained for compatibility.
+Omega is an operating coefficient; a Landauer identification needs independent
+architecture and energy assumptions. D*/K is a stock ratio, not a sustainable
+throughput ratio. No scientific-priority or universal alignment claim is made.
+See stewardship/ERRATA.md and InformationWeightedStewardship for corrected work.
 -/
 import Mathlib
 
@@ -63,8 +29,7 @@ noncomputable def gPrime (rho K D : ℝ) : ℝ := rho * (1 - 2 * D / K)
     `D⋆ = (K/2)·(1 − r/ρ)`. -/
 noncomputable def Dstar (rho K r : ℝ) : ℝ := (K / 2) * (1 - r / rho)
 
-/-- Ω = P/(k_B T ln2): the instantaneous Intelligence-Bound throughput coefficient,
-    so the instantaneous ceiling is `H ≤ Ω·D`. -/
+/-- Legacy name: instantaneous capacity at the raw setpoint, not sustained output. -/
 noncomputable def sustCeiling (Omega rho K r : ℝ) : ℝ := Omega * Dstar rho K r
 
 /-- Discounted regeneration net of the opportunity cost of tied-up capacity:
@@ -72,14 +37,13 @@ noncomputable def sustCeiling (Omega rho K r : ℝ) : ℝ := Omega * Dstar rho K
     model-free (O-R-A-R) stewardship content. -/
 noncomputable def Phi (rho K r D : ℝ) : ℝ := g rho K D - r * D
 
-/-- Sustainable duty cycle `u⋆ = ρ·(1 − D⋆/K)/Ω = (ρ + r)/(2Ω)`. -/
+/-- Legacy phi=1 duty formula only. General duty is (rho+r)/(2*phi*Omega). -/
 noncomputable def uStar (Omega rho r : ℝ) : ℝ := (rho + r) / (2 * Omega)
 
-/-! ### R1 — Endogenous-D bound: the sustainable ceiling is `Ω·D⋆ < Ω·K`. -/
+/-! ### R1 — Endogenous-D bound: the instantaneous capacity is `Ω·D⋆ < Ω·K`. -/
 
-/-- **R1.** With `D` a renewable stock at its setpoint, the sustainable intelligence
-    throughput ceiling `Ω·D⋆` is strictly below the instantaneous ceiling `Ω·K`. -/
-theorem sustainable_ceiling_eq_omega_Dstar
+/-- Instantaneous capacity at the raw setpoint is below capacity at K; no sustained-rate claim. -/
+theorem capacity_at_raw_setpoint_lt_full_stock_capacity
     (Omega rho K r : ℝ) (hOmega : 0 < Omega) (hK : 0 < K)
     (hrho : 0 < rho) (hr0 : 0 ≤ r) (hr : r < rho) :
     sustCeiling Omega rho K r = Omega * Dstar rho K r ∧
@@ -118,11 +82,8 @@ theorem Dstar_decreasing_in_discount
 
 /-! ### R3 — Tragedy of the Bound (HEADLINE canon candidate). -/
 
-/-- **R3 (HEADLINE).** Under the forcing policy `H = Ω·D` (duty cycle `u = 1`, running
-    at the instantaneous ceiling), if `φΩ > ρ` then the net stock rate
-    `g(D) − φ·Ω·D = ρD(1 − D/K) − φΩD` is strictly negative for every live stock
-    `0 < D`, so `D → 0`: capacity collapses. -/
-theorem forcing_collapses_capacity_when_phiOmega_gt_rho
+/-- Negative instantaneous drift at positive stock; not a trajectory-limit theorem. -/
+theorem forcing_drift_negative_when_phiOmega_gt_rho
     (rho K phi Omega D : ℝ) (hK : 0 < K) (hrho : 0 < rho)
     (hphi : 0 < phi) (hOmega : 0 < Omega) (hD : 0 < D)
     (hforce : rho < phi * Omega) :
@@ -130,11 +91,8 @@ theorem forcing_collapses_capacity_when_phiOmega_gt_rho
   simp_all +decide [ g, mul_assoc ];
   nlinarith [ mul_pos hrho hD, mul_pos hrho hK, mul_pos hD hK, mul_div_cancel₀ D hK.ne' ]
 
-/-- **R3 (HEADLINE canon candidate).** The setpoint policy strictly dominates the
-    forcing policy in discounted value. With `J_set = g(D⋆)/r` (discounted sustainable
-    harvest) and the forcing policy driving the stock — hence its harvest — to zero
-    (`J_force = 0`), we have `J_set > J_force`. -/
-theorem setpoint_J_beats_forcing_J
+/-- Positivity of g(Dstar)/r. This omits phi and is not a comparison of objectives. -/
+theorem raw_setpoint_regeneration_discount_positive
     (rho K r : ℝ) (hK : 0 < K) (hrho : 0 < rho) (hr : 0 < r) (hrlt : r < rho) :
     (0 : ℝ) < g rho K (Dstar rho K r) / r := by
   refine' div_pos _ hr;
@@ -167,10 +125,8 @@ theorem phi_concave_unique_max
     field_simp;
     intro D hD; rw [ Ne.eq_def, eq_div_iff ] at hD <;> nlinarith [ mul_self_pos.mpr ( sub_ne_zero.mpr hD ), mul_pos hrho hK ] ;
 
-/-- **R5.** Extremum-seeking convergence: the drift `Φ'(D) = g'(D) − r` points toward
-    the setpoint — strictly positive below `D⋆` and strictly negative above it — so a
-    steward ignorant of `ρ, K` who ascends the observed `Φ` is driven to `D⋆`. -/
-theorem orar_extremum_seeking_converges_to_Dstar
+/-- The potential derivative has opposite signs on either side; no convergence result. -/
+theorem potential_derivative_points_toward_Dstar
     (rho K r D : ℝ) (hK : 0 < K) (hrho : 0 < rho) (hr0 : 0 ≤ r) (hr : r < rho) :
     (D < Dstar rho K r → 0 < gPrime rho K D - r) ∧
       (Dstar rho K r < D → gPrime rho K D - r < 0) := by
@@ -180,16 +136,15 @@ theorem orar_extremum_seeking_converges_to_Dstar
 
 /-! ### R6 — the Steward (44th IB self-application). -/
 
-/-- **R6.** The sustainable-to-instantaneous throughput ratio is at most one half:
-    `D⋆/K = ½(1 − r/ρ) ≤ ½`. Never harvest more than half the instantaneous ceiling. -/
-theorem sustainable_ratio_le_one_half
+/-- The raw setpoint stock fraction is at most one half; not a sustained-output ratio. -/
+theorem raw_stock_ratio_le_one_half
     (rho K r : ℝ) (hK : 0 < K) (hrho : 0 < rho) (hr0 : 0 ≤ r) (hr : r < rho) :
     Dstar rho K r / K ≤ 1 / 2 := by
   rw [ div_le_iff₀ ] <;> norm_num [ Dstar ] ; nlinarith [ mul_div_cancel₀ r hrho.ne' ] ;
   positivity
 
 /-- **R6 (44th IB self-application, the Steward).** Exact form and the equality case:
-    the throughput ratio equals `½(1 − r/ρ)`, and it saturates the one-half ceiling
+    the stock ratio equals `½(1 − r/ρ)`, and it saturates the one-half ceiling
     exactly when the steward is perfectly patient (`r = 0`). -/
 theorem steward_ib_self_application
     (rho K r : ℝ) (hK : 0 < K) (hrho : 0 < rho) (hr0 : 0 ≤ r) (hr : r < rho) :
@@ -200,7 +155,7 @@ theorem steward_ib_self_application
 
 /-! ### R7 — Max-power correspondence. -/
 
-/-- **R7.** The sustainable duty cycle is strictly interior and structurally capped:
+/-- **R7.** The phi=1 duty cycle is strictly interior and structurally capped:
     `0 < u⋆ < ρ/Ω < 1`, and it is non-decreasing in impatience (myopia pushes harder
     on a smaller stock). Requires the structural throughput cap `ρ < Ω`. -/
 theorem duty_cycle_lt_one
@@ -215,7 +170,7 @@ theorem duty_cycle_lt_one
 
 /-- **`sst_nonvacuous`.** All laws bind simultaneously on an explicit non-degenerate
     witness `ρ = 1, K = 4, Ω = 2, r = 1/2` (so `0 ≤ r < ρ < Ω`). Then the setpoint is
-    interior `D⋆ = 1 = K/4`, the sustainable ceiling `Ω·D⋆ = 2 < Ω·K = 8`, the
+    interior `D⋆ = 1 = K/4`, the instantaneous capacity `Ω·D⋆ = 2 < Ω·K = 8`, the
     throughput ratio `D⋆/K = 1/4 < 1/2`, and the duty cycle `u⋆ = 3/8` lies strictly
     in `(0, ρ/Ω) = (0, 1/2)` — witnessing that none of the laws is vacuous. -/
 theorem sst_nonvacuous :
@@ -225,5 +180,16 @@ theorem sst_nonvacuous :
       0 < uStar 2 1 (1/2) ∧ uStar 2 1 (1/2) < (1 : ℝ) / 2 := by
   unfold Dstar; unfold sustCeiling; unfold uStar; norm_num;
   unfold Dstar; norm_num;
+
+@[deprecated capacity_at_raw_setpoint_lt_full_stock_capacity (since := "2026-09-26")]
+alias sustainable_ceiling_eq_omega_Dstar := capacity_at_raw_setpoint_lt_full_stock_capacity
+@[deprecated forcing_drift_negative_when_phiOmega_gt_rho (since := "2026-09-26")]
+alias forcing_collapses_capacity_when_phiOmega_gt_rho := forcing_drift_negative_when_phiOmega_gt_rho
+@[deprecated raw_setpoint_regeneration_discount_positive (since := "2026-09-26")]
+alias setpoint_J_beats_forcing_J := raw_setpoint_regeneration_discount_positive
+@[deprecated potential_derivative_points_toward_Dstar (since := "2026-09-26")]
+alias orar_extremum_seeking_converges_to_Dstar := potential_derivative_points_toward_Dstar
+@[deprecated raw_stock_ratio_le_one_half (since := "2026-09-26")]
+alias sustainable_ratio_le_one_half := raw_stock_ratio_le_one_half
 
 end Viridis.Stewardship.StewardshipSetpoint

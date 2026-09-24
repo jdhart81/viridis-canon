@@ -64,3 +64,9 @@ Open an
 [external-validation report](https://github.com/jdhart81/viridis-canon/issues/new?template=external-validation.yml)
 with the commit SHA, operating system, toolchain output, and relevant logs.
 Clean, failed, and inconclusive reproductions are all preserved as evidence.
+
+## Information-weighted stewardship candidate
+
+See [the separate reproduction guide](stewardship/REPRODUCE.md). Its enforcing
+Lean audit and numerical tests are additional to all existing checks above.
+The unavailable supplied ZIP is explicitly separated from independent checks.

@@ -269,3 +269,12 @@ globs = ["series.DualCorridor"]
 [[lean_lib]]
 name = "DepositAudit"
 globs = ["DepositAudit"]
+
+# Local review candidate; no spine admission or publication implied.
+[[lean_lib]]
+name = "InformationWeightedStewardship"
+globs = ["InformationWeightedStewardship", "InformationWeightedStewardship.+"]
+
+[[lean_lib]]
+name = "InformationWeightedStewardshipAudit"
+globs = ["InformationWeightedStewardshipAudit"]

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "cast-conjunctive-chain-weakest-first",
+  "kind": "theorem_function",
+  "name": "The Conjunctive Audit Stewardship Theorem: Why Evidence Portfolios Reward Bundles Rather Than Scattered Greedy Checks",
+  "version": "0.1.0",
+  "summary": "For one independent conjunctive claim with equal audit costs, auditing the k smallest component-validity probabilities maximizes post-audit claim credibility.",
+  "decision_family": null,
+  "tier": "reference",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.22236735",
+  "lean": {
+    "module": "Viridis.Run120",
+    "sources": [
+      {
+        "path": "series/CAST/ViridisRun120.lean",
+        "sha256": "4b574148b3c4854ac85d0594915a536aa1cc372414c682a726b6ff60824b7c58"
+      }
+    ],
+    "theorems": [
+      "conjunctive_chain_weakest_first"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-120-PaperFormalizationProof-Comparator-attempt-4-alignment-upgrade"
+  },
+  "inputs": [],
+  "outputs": [],
+  "hypotheses": [],
+  "example": null,
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values.",
+  "boundary": "Conditional mathematics about the supplied values only; not empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": null,
+  "provenance": {
+    "scaffolded_by": "tools/scaffold_function.py",
+    "run_id": "Run-120",
+    "theorem_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "certificate_sha256": "cc2e032cb09a8d9446fe6cd0604cf76ce78d72b7b8b6939c09b822e1dffa7407",
+    "catalog_title": "Viridis Run120",
+    "name_source": "2026-09-01.json#bundles/CAST/title",
+    "summary_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "publication_date": "2026-09-01"
+  }
+}

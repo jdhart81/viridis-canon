@@ -25,3 +25,13 @@ __pycache__/
 /os-bundle/
 /os-bundle-2/
 /os-bundle.tmp/
+
+# Secret configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.p12
+service-account.json
+*.keystore

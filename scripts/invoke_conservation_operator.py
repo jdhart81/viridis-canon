@@ -10,6 +10,7 @@ Reads project from:
     01_MATHLIB/Aristotle-Pipeline/_pre-aristotle-drafts/2026-05-09_aristotle_ConservationOperator_run/
 Writes _run_meta.json with project_id.
 """
+from aristotle_env import get_api_key
 import asyncio, json, os, sys
 from pathlib import Path
 from datetime import datetime, timezone
@@ -80,10 +81,7 @@ explanation, but do NOT alter theorem signatures.
 """
 
 async def main() -> int:
-    key = os.environ.get("ARISTOTLE_API_KEY")
-    if not key:
-        print("ERROR: ARISTOTLE_API_KEY not set", file=sys.stderr)
-        return 1
+    key = get_api_key()
     set_api_key(key)
     print(f"[invoke_co] submitting {RUN_DIR} ...", flush=True)
     project = await Project.create_from_directory(

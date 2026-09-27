@@ -7,6 +7,7 @@ Usage:
     python3 poll_psit.py            # reads project_id from _run_meta.json
     python3 poll_psit.py <id>       # or pass an explicit project_id
 """
+from aristotle_env import get_api_key
 import asyncio, json, sys
 from pathlib import Path
 
@@ -22,10 +23,7 @@ RUN_DIR = HERE.parent / "_pre-aristotle-drafts" / "2026-05-20_aristotle_PSIT_run
 META = RUN_DIR / "_run_meta.json"
 
 async def main() -> int:
-    key = os.environ.get("ARISTOTLE_API_KEY")
-    if not key:
-        print("ERROR: ARISTOTLE_API_KEY not set", file=sys.stderr)
-        return 1
+    key = get_api_key()
     set_api_key(key)
     pid = sys.argv[1] if len(sys.argv) > 1 else json.loads(META.read_text())["project_id"]
     p = await Project.from_id(pid)

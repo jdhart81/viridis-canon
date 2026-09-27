@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Poll the in-flight MissionFeasibility Aristotle run."""
+from aristotle_env import get_api_key
 import asyncio, json, os, sys
 from pathlib import Path
 
@@ -13,9 +14,7 @@ RUN_DIR = HERE.parent / "_pre-aristotle-drafts" / "2026-05-07_aristotle_MissionF
 META = RUN_DIR / "_run_meta.json"
 
 async def main() -> int:
-    key = os.environ.get("ARISTOTLE_API_KEY")
-    if not key:
-        sys.exit("ERROR: ARISTOTLE_API_KEY not set.")
+    key = get_api_key()
     if not META.exists():
         sys.exit(f"ERROR: {META} missing.")
     set_api_key(key)

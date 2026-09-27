@@ -15,6 +15,7 @@ Reads project from:
 Writes the returned project_id and a poll script template to:
     01_MATHLIB/Aristotle-Pipeline/_pre-aristotle-drafts/2026-05-06_aristotle_KSCT_run/_run_meta.json
 """
+from aristotle_env import get_api_key
 import asyncio
 import json
 import os
@@ -56,10 +57,7 @@ Acceptance criteria:
 
 
 async def main() -> int:
-    key = os.environ.get("ARISTOTLE_API_KEY")
-    if not key:
-        print("ERROR: ARISTOTLE_API_KEY not set in environment.", file=sys.stderr)
-        return 1
+    key = get_api_key()
 
     set_api_key(key)
     print(f"[invoke_ksct] submitting {KSCT_DIR} ...", flush=True)

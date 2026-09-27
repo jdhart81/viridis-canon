@@ -26,6 +26,7 @@ any terminal with Python 3.10+ and aristotlelib installed
 """
 from __future__ import annotations
 
+from aristotle_env import get_api_key
 import argparse
 import asyncio
 import datetime as dt
@@ -64,9 +65,7 @@ def log(msg: str) -> None:
 
 
 def get_key() -> str:
-    key = os.environ.get("ARISTOTLE_API_KEY", "").strip()
-    if not key:
-        sys.exit("ERROR: ARISTOTLE_API_KEY env var not set. Export it first.")
+    key = get_api_key()
     return key
 
 

@@ -15,7 +15,7 @@ That's it. It will run every 2 hours, poll Aristotle, execute the new-leans work
 If you'd rather skip the scheduled task entirely:
 
 ```bash
-export ARISTOTLE_API_KEY=arstl_...   # rotate the key first if you haven't
+# Configure ARISTOTLE_API_KEY in the environment before running; never paste it here.
 cd "01_MATHLIB/Aristotle-Pipeline/scripts"
 python3 poll_p3.py --watch &          # backgrounds; checks every 30 min until done
 ```
@@ -30,23 +30,24 @@ You are the Aristotle P3 Follow-Up agent. Your single job: poll the Aristotle (H
 
 ## API key
 
-The Aristotle API key for this run lives in this prompt. **TREAT IT AS SECRET.** Do NOT echo it in any output, do NOT save it to any other file, do NOT include it in any markdown, log, or Obsidian note. Pass it to `set_api_key(...)` and that's it.
-
-```
-ARISTOTLE_API_KEY = "arstl_ipKAzQbga3PZ7svp4Dkd3HPDbiPqOfBqTFMzuFeS0lA"
-```
+Read `ARISTOTLE_API_KEY` from the process environment using `get_api_key()` in
+`scripts/aristotle_env.py`. **TREAT IT AS SECRET.** Do NOT echo it, save it to another
+file, or include it in markdown, logs, or Obsidian notes. There is no fallback:
+missing or empty configuration exits with a clear error. Configure the environment
+before starting the task; never paste a credential into this prompt.
 
 If Justin has rotated the key, this run will fail with 401. In that case: append a brief failure note to `01_MATHLIB/Aristotle-Pipeline/_pre-aristotle-drafts/P3_FOLLOWUP_LOG.md`, disable yourself, stop. Do not retry. Do not look for a new key.
 
 ## Each run, do this
 
 1. Ensure aristotlelib is installed: `pip install --break-system-packages aristotlelib` (silent; should already be there).
-2. Run this Python:
+2. Run this Python from the `scripts` directory with `ARISTOTLE_API_KEY` already in the environment:
 
 ```python
 import asyncio, json
+from aristotle_env import get_api_key
 from aristotlelib import set_api_key, Project
-set_api_key("arstl_ipKAzQbga3PZ7svp4Dkd3HPDbiPqOfBqTFMzuFeS0lA")
+set_api_key(get_api_key())
 p = asyncio.run(Project.from_id("a55260c8-fe1b-4a69-ad96-22d3ae1a5495"))
 print(json.dumps({
     "status": str(p.status),
@@ -66,8 +67,7 @@ Stop. No notification needed.
 ### B. `COMPLETE`
 The fastest way is to call the standalone script — it does the whole workflow:
 ```bash
-ARISTOTLE_API_KEY=arstl_ipKAzQbga3PZ7svp4Dkd3HPDbiPqOfBqTFMzuFeS0lA \
-  python3 "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/01_MATHLIB/Aristotle-Pipeline/scripts/poll_p3.py"
+python3 "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/01_MATHLIB/Aristotle-Pipeline/scripts/poll_p3.py"
 ```
 Then DISABLE this scheduled task via `update_scheduled_task` with `taskId=aristotle-p3-followup, enabled=false`.
 

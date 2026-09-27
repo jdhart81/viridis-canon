@@ -12,6 +12,7 @@ NB: COMPLETE_WITH_ERRORS does NOT mean failed proofs — it can mean Aristotle
 made structural improvements to definitions. Always read output_summary
 before judging.
 """
+from aristotle_env import get_api_key
 import asyncio
 import json
 import os
@@ -31,10 +32,7 @@ META = KSCT_DIR / "_run_meta.json"
 
 
 async def main() -> int:
-    key = os.environ.get("ARISTOTLE_API_KEY")
-    if not key:
-        print("ERROR: ARISTOTLE_API_KEY not set.", file=sys.stderr)
-        return 1
+    key = get_api_key()
     if not META.exists():
         print(f"ERROR: {META} missing — invoke_ksct.py first.", file=sys.stderr)
         return 1

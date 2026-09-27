@@ -6,6 +6,7 @@ Usage:
     export ARISTOTLE_API_KEY="arstl_..."
     python3 invoke_bridge_ecochain.py
 """
+from aristotle_env import get_api_key
 import asyncio, json, os, sys
 from pathlib import Path
 from datetime import datetime, timezone
@@ -73,10 +74,7 @@ explanation, but do NOT alter theorem signatures.
 """
 
 async def main() -> int:
-    key = os.environ.get("ARISTOTLE_API_KEY")
-    if not key:
-        print("ERROR: ARISTOTLE_API_KEY not set", file=sys.stderr)
-        return 1
+    key = get_api_key()
     set_api_key(key)
     print(f"[invoke_be] submitting {RUN_DIR} ...", flush=True)
     project = await Project.create_from_directory(

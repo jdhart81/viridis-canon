@@ -38,4 +38,6 @@ The formal core verifies the stated two-pool coupling threshold. It does not
 verify ecological response, treatment efficacy, market implications, carbon
 credits, empirical coefficients, or real-world truth.
 
-No DOI was minted and no external publication occurred during assembly.
+No DOI was minted during assembly. The package was subsequently published to
+Zenodo on 2026-08-08 as DOI 10.5281/zenodo.21855690 (version 0.2.0-formal,
+concept DOI 10.5281/zenodo.21855689).

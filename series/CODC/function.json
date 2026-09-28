@@ -1,0 +1,47 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "codc-synchrony-dividend-identity",
+  "kind": "theorem_function",
+  "name": "The Corridor Overlap Duality Certificate: An exact synchrony-diversification tradeoff for two shared habitat paths",
+  "version": "0.1.0",
+  "summary": "For two finite fixed paths under independent physical-edge survival, Q_A Q_B equals Q_union Q_intersection.",
+  "decision_family": null,
+  "tier": "reference",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.22665525",
+  "lean": {
+    "module": "Viridis.HDFM.CorridorOverlapDuality",
+    "sources": [
+      {
+        "path": "series/CODC/ViridisRun133.lean",
+        "sha256": "153531dbead8ae7e94e1bb5a98ceb73f6aed50d75498e70919500029a7e2d2aa"
+      }
+    ],
+    "theorems": [
+      "synchrony_dividend_identity"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-133-CorridorOverlapDuality-Comparator-attempt-1"
+  },
+  "inputs": [],
+  "outputs": [],
+  "hypotheses": [],
+  "example": null,
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values.",
+  "boundary": "Conditional mathematics about the supplied values only; not empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": null,
+  "provenance": {
+    "scaffolded_by": "tools/scaffold_function.py",
+    "run_id": "Run-133",
+    "theorem_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "certificate_sha256": "b0f97fbd1e1be0acb72952cf48a272f3eaa5070a7a3ca4d62ba3756a635ad09d",
+    "catalog_title": "Viridis Run133",
+    "name_source": "2026-09-08.json#bundles/CODC/title",
+    "summary_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "publication_date": "2026-09-08"
+  }
+}

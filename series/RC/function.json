@@ -1,0 +1,166 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "reciprocity-corridor",
+  "kind": "decision_kernel",
+  "name": "Bilateral-benefit reciprocity corridor",
+  "version": "0.2.0",
+  "summary": "Tests whether an exchange between two parties benefits both, given each side's value and cost, and what flow keeps it reciprocal.",
+  "line": "Symbiotic information exchange",
+  "decision_family": "governance-coordination",
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": {
+    "code": "CANON_CLASSIFICATION",
+    "note": "The package's Lean status in the canon catalog is 'working' (not spine-admitted); the product warrant was admitted but the canon classification must be reconciled before admission as a function."
+  },
+  "blocked": null,
+  "doi": "10.5281/zenodo.21971047",
+  "lean": {
+    "module": "Viridis.Run128.PaperFormalization",
+    "sources": [
+      {
+        "path": "series/RC/PaperFormalization.lean",
+        "sha256": "1de8f6a1f2ac05dd8026ad92a646b910d17b8369ba72c3dc6ebf7628ba1696ee"
+      }
+    ],
+    "theorems": [
+      "bilateral_benefit_iff_reciprocity_corridor",
+      "ratio_interval_nonempty_iff_product_condition",
+      "share_payoff_identities",
+      "nash_midpoint_unique_maximizer",
+      "bandwidth_scaling_cannot_restore_feasibility"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-128-ReciprocityCorridor-Comparator-attempt-1"
+  },
+  "inputs": [
+    {
+      "name": "value_x",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "value per unit flow",
+      "help": "Value to party X per unit of flow."
+    },
+    {
+      "name": "value_y",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "value per unit flow",
+      "help": "Value to party Y per unit of flow."
+    },
+    {
+      "name": "cost_x",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "cost per unit flow",
+      "help": "Cost to party X per unit."
+    },
+    {
+      "name": "cost_y",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "cost per unit flow",
+      "help": "Cost to party Y per unit."
+    },
+    {
+      "name": "total_flow",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "flow",
+      "help": "Total flow to be shared."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "corridor_nonempty"
+    },
+    {
+      "name": "flow_ratio_lower",
+      "unit": "dimensionless"
+    },
+    {
+      "name": "flow_ratio_upper",
+      "unit": "dimensionless"
+    },
+    {
+      "name": "y_flow_share_lower"
+    },
+    {
+      "name": "y_flow_share_upper"
+    },
+    {
+      "name": "nash_y_flow_share"
+    },
+    {
+      "name": "recommended_x_flow",
+      "unit": "flow"
+    },
+    {
+      "name": "recommended_y_flow",
+      "unit": "flow"
+    },
+    {
+      "name": "payoff_x"
+    },
+    {
+      "name": "payoff_y"
+    },
+    {
+      "name": "scope"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "values_positive",
+      "statement": "Both parties' values per unit flow are positive.",
+      "check": "value_x > 0 and value_y > 0"
+    },
+    {
+      "id": "costs_positive",
+      "statement": "Both parties' costs per unit flow are positive.",
+      "check": "cost_x > 0 and cost_y > 0"
+    },
+    {
+      "id": "flow_positive",
+      "statement": "Total flow is positive.",
+      "check": "total_flow > 0"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "value_x": 4,
+      "value_y": 4,
+      "cost_x": 1,
+      "cost_y": 1,
+      "total_flow": 10
+    },
+    "expected_outputs": {
+      "corridor_nonempty": true,
+      "flow_ratio_lower": 0.25,
+      "flow_ratio_upper": 4,
+      "y_flow_share_lower": 0.2,
+      "y_flow_share_upper": 0.8,
+      "nash_y_flow_share": 0.5,
+      "recommended_x_flow": 5,
+      "recommended_y_flow": 5,
+      "payoff_x": 15,
+      "payoff_y": 15,
+      "scope": "two-party one-period linear payoff model with zero disagreement utility"
+    }
+  },
+  "scope": "Two-party one-period linear payoff screen with known positive coefficients and a normative symmetric Nash rule.",
+  "boundary": "Formal coordination structure does not prove stakeholder consent, legal authority, fair distribution, or empirical task calibration. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "ADMITTED",
+    "doi_state": "READY"
+  }
+}

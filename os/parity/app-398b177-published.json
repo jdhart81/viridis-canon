@@ -1,0 +1,462 @@
+{
+ "schema_version": 1,
+ "source": "viridis-conservation-app@398b177: decisionKernelCatalog.ts EXAMPLES run through conservationDecisionRuntime.ts on Node 22 (V8 12.4)",
+ "published": {
+  "restoration": {
+   "inputs": {
+    "sigma": 1.5,
+    "delta_mu": 1
+   },
+   "outputs": {
+    "nucleation_number": 1.5,
+    "critical_nucleus_n_star": 3.375,
+    "recommendation": "RED",
+    "broadcast_fails": true
+   }
+  },
+  "afforestation": {
+   "inputs": {
+    "sigma": 1,
+    "delta_mu": 1.2,
+    "prep": 2,
+    "rate": 1.2,
+    "rate_max": 1
+   },
+   "outputs": {
+    "optimal_density": 13.824,
+    "site_prep_multiplier": 8,
+    "seeding_within_ib_ceiling": false
+   }
+  },
+  "harmonization": {
+   "inputs": {
+    "marginal_costs": [
+     1,
+     3,
+     2
+    ],
+    "command_overhead": 5,
+    "bandwidth": 0.5,
+    "ib_bound": 1
+   },
+   "outputs": {
+    "shadow_price": 3,
+    "wu_wei_dividend": 10,
+    "decentralization_cheaper": true,
+    "coordination_within_ib": true
+   }
+  },
+  "carbon-continuity": {
+   "inputs": {
+    "a": 0.6,
+    "d": 0.8,
+    "r": 0.5,
+    "p": 0.2
+   },
+   "outputs": {
+    "a": 0.6,
+    "d": 0.8,
+    "r": 0.5,
+    "p": 0.2,
+    "loop_gain": 0.1,
+    "leakage_product": 0.08,
+    "continuity_number": 1.25,
+    "threshold_met": true,
+    "regime": "CONTINUITY_CAPABLE_WITHIN_MODEL",
+    "witness_living": 0.5,
+    "witness_durable": 0.4,
+    "witness_next_living": 0.5,
+    "witness_next_durable": 0.42,
+    "witness_nondecreasing": true,
+    "market_use": "decision_support_only",
+    "formal_claim_type": "supplied_coefficient_threshold_evaluation",
+    "market_claim_status": "MODEL_OUTPUT_ONLY",
+    "empirically_calibrated": false,
+    "underwriting_advice": false,
+    "credit_quantity_tco2e": null,
+    "claim_boundary": "Model-scoped decision support only. Supplied coefficients require separate empirical justification; this output is not a carbon credit, project rating, insurance price, underwriting decision, or causal field claim."
+   }
+  },
+  "tempo": {
+   "inputs": {
+    "haste_cost": 4,
+    "neglect_cost": 1,
+    "cadence": 2
+   },
+   "outputs": {
+    "optimal_cadence": 2,
+    "tempo_floor": 4,
+    "cadence_cost": 4,
+    "normalized_cost": 1,
+    "haste_neglect_tax": 1,
+    "at_optimum": true
+   }
+  },
+  "shared-channel-coverage": {
+   "inputs": {
+    "dimension": 3,
+    "rank": 1,
+    "kappa": 3,
+    "captured_fraction": 1,
+    "baseline_cost": 8,
+    "dissipation_budget": 2
+   },
+   "outputs": {
+    "directional_cost_factor": 0.25,
+    "directional_gain": 4,
+    "directional_minimum_deadline": 1,
+    "baseline_minimum_deadline": 4,
+    "full_subspace_gain": 4,
+    "worst_case_gain": 1,
+    "coverage_complete": false,
+    "scope": "whitened quadratic dissipation with a fixed orthogonal-projector channel"
+   }
+  },
+  "invariance-capacity": {
+   "inputs": {
+    "conditional_task_entropy": 0.5,
+    "proxy_leakage_budget": 0.1,
+    "task_information_ceiling": 0.55,
+    "observed_task_information": 0.58
+   },
+   "outputs": {
+    "invariance_information_ceiling": 0.6,
+    "effective_information_ceiling": 0.55,
+    "observed_task_information": 0.58,
+    "within_declared_ceiling": false,
+    "ceiling_slack": -0.03,
+    "scope": "finite-variable mutual information with a separately justified leakage budget"
+   }
+  },
+  "precautionary-capacity": {
+   "inputs": {
+    "mean_capacity": 10,
+    "capacity_sd": 1,
+    "alpha": 0.2
+   },
+   "outputs": {
+    "precautionary_capacity": 8,
+    "absolute_discount": 2,
+    "capacity_fraction": 0.8,
+    "certified_rate_ceiling": null,
+    "violation_probability_bound": 0.2,
+    "positive_floor": true,
+    "scope": "one-period two-moment marginal Cantelli certificate"
+   }
+  },
+  "reciprocity-corridor": {
+   "inputs": {
+    "value_x": 4,
+    "value_y": 4,
+    "cost_x": 1,
+    "cost_y": 1,
+    "total_flow": 10
+   },
+   "outputs": {
+    "corridor_nonempty": true,
+    "flow_ratio_lower": 0.25,
+    "flow_ratio_upper": 4,
+    "y_flow_share_lower": 0.2,
+    "y_flow_share_upper": 0.8,
+    "nash_y_flow_share": 0.5,
+    "recommended_x_flow": 5,
+    "recommended_y_flow": 5,
+    "payoff_x": 15,
+    "payoff_y": 15,
+    "scope": "two-party one-period linear payoff model with zero disagreement utility"
+   }
+  },
+  "anytime-change": {
+   "inputs": {
+    "observations": [
+     1,
+     0,
+     1,
+     1,
+     0,
+     1,
+     1,
+     1
+    ],
+    "p0": 0.2,
+    "p1": 0.6,
+    "alpha": 0.05
+   },
+   "outputs": {
+    "current_mixture_evidence": 114.806349206349,
+    "maximum_mixture_evidence": 114.806349206349,
+    "alarm_threshold": 20,
+    "alarmed": true,
+    "alarm_index": 7,
+    "observations_processed": 8,
+    "false_alarm_probability_bound": 0.05,
+    "scope": "single frozen Bernoulli likelihood-ratio process under the declared iid null"
+   }
+  },
+  "seed-source-bottleneck": {
+   "inputs": {
+    "demands": [
+     4,
+     4
+    ],
+    "supplies": [
+     3,
+     10
+    ],
+    "edges": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      1
+     ]
+    ]
+   },
+   "outputs": {
+    "common_fulfillment_fraction": 0.75,
+    "full_fulfillment_feasible": false,
+    "bottleneck_site_indices": [
+     0
+    ],
+    "eligible_supply_indices": [
+     0
+    ],
+    "bottleneck_ratio": 0.75,
+    "scope": "continuous one-period frozen binary-eligibility supply network"
+   }
+  },
+  "switching-hysteresis": {
+   "inputs": {
+    "bias": 0,
+    "cost_plus_to_minus": 2,
+    "cost_minus_to_plus": 2,
+    "current_state": 1,
+    "evidence": -2
+   },
+   "outputs": {
+    "down_switch_threshold": -1,
+    "up_switch_threshold": 1,
+    "history_band_width": 2,
+    "absolute_loop_integral": 4,
+    "inside_history_band": false,
+    "next_state": -1,
+    "switch_recommended": true,
+    "scope": "two-state myopic retain-on-tie objective with fixed directional switch costs"
+   }
+  },
+  "shadow-price-capacity": {
+   "inputs": {
+    "distance": 4,
+    "area": 2,
+    "horizon": 4,
+    "tolerance": 0.5,
+    "budget": 10,
+    "power": 12,
+    "dissipation_factor": 0.75,
+    "capacity_cost": 3,
+    "tower_prefactors": [
+     4,
+     1,
+     9
+    ]
+   },
+   "outputs": {
+    "shadow_prefactor": 2,
+    "shadow_price": 8,
+    "inverse_square_factor": 4,
+    "tolerance_at_budget": 0.4472135955,
+    "within_budget": true,
+    "capacity_ceiling": 3,
+    "tower_order": [
+     {
+      "source_index": 1,
+      "prefactor": 1,
+      "shadow_price": 4
+     },
+     {
+      "source_index": 0,
+      "prefactor": 4,
+      "shadow_price": 16
+     },
+     {
+      "source_index": 2,
+      "prefactor": 9,
+      "shadow_price": 36
+     }
+    ],
+    "tower_order_preserves_prefactors": true,
+    "scope": "positive-coefficient inverse-square shadow-price and P*D/C capacity model"
+   }
+  },
+  "multi-ring-alignment-capacity": {
+   "inputs": {
+    "power": 1,
+    "boltzmann_constant": 1,
+    "temperature": 1,
+    "dissipation_factors": [
+     1,
+     0.25
+    ],
+    "alignment_factors": [
+     1,
+     0.5
+    ]
+   },
+   "outputs": {
+    "ring_count": 2,
+    "thermodynamic_factor": 0.69314718056,
+    "geometric_mean_dissipation": 0.5,
+    "alignment_product": 0.5,
+    "unaligned_base_rate": 0.721347520444,
+    "aligned_rate_ceiling": 0.360673760222,
+    "retained_fraction": 0.5,
+    "bottleneck_ring_index": 1,
+    "perfect_alignment": false,
+    "ceiling_not_above_base": true,
+    "scope": "finite multi-ring geometric-mean dissipation and multiplicative supplied alignment factors"
+   }
+  },
+  "symbiotic-surplus": {
+   "inputs": {
+    "epsilon_landauer": 1,
+    "partner_a_power": 2,
+    "partner_a_dissipation": 0.5,
+    "partner_e_power": 2,
+    "partner_e_dissipation": 0.5,
+    "subsidy_e_to_a": 1,
+    "subsidy_a_to_e": -1,
+    "housekeeping_dissipation": 0,
+    "observed_rate_a": 1,
+    "observed_rate_e": 1,
+    "inner_product": 1,
+    "norm_a_squared": 1,
+    "norm_e_squared": 1
+   },
+   "outputs": {
+    "reciprocity_residual": 0,
+    "reciprocal_fixed_point": true,
+    "joint_rate_ceiling": 2,
+    "observed_joint_rate": 2,
+    "within_joint_ceiling": true,
+    "symbiotic_surplus": 0,
+    "coupling_regime": "MUTUALISTIC_WITHIN_MODEL",
+    "extraction_efficiency": 1,
+    "positive_net_subsidy": false,
+    "scope": "two-partner supplied-flow model; the joint ceiling requires exact reciprocal subsidy cancellation"
+   }
+  },
+  "decision-information-capacity": {
+   "inputs": {
+    "predictive_richness": 0.5,
+    "observation_bandwidth": 10,
+    "maintenance_power": 2,
+    "temperature": 1,
+    "boltzmann_constant": 1,
+    "landauer_maintenance_assumption": true,
+    "observed_information_rate": 3
+   },
+   "outputs": {
+    "data_information_ceiling": 5,
+    "maintenance_information_ceiling": 2.885390081778,
+    "effective_information_ceiling": 2.885390081778,
+    "critical_maintenance_power": 3.4657359028,
+    "binding_regime": "MAINTENANCE_LIMITED",
+    "observed_information_rate": 3,
+    "within_effective_ceiling": false,
+    "landauer_maintenance_assumption_applied": true,
+    "scope": "predictive-richness data bound; thermodynamic minimum applies only to declared maintenance or erasure work"
+   }
+  },
+  "thermodynamic-economic-allocation": {
+   "inputs": {
+    "budget_usd": 100000,
+    "declared_evidence_ready": true,
+    "declared_price_authorized": true,
+    "assets": [
+     {
+      "asset_id": "wetland-a",
+      "gross_avoided_value_usd": 180000,
+      "embodied_transition_cost_usd": 30000,
+      "capital_cost_usd": 80000,
+      "transition_friction_usd": 70000
+     },
+     {
+      "asset_id": "forest-b",
+      "gross_avoided_value_usd": 120000,
+      "embodied_transition_cost_usd": 20000,
+      "capital_cost_usd": 60000,
+      "transition_friction_usd": 50000
+     },
+     {
+      "asset_id": "riparian-c",
+      "gross_avoided_value_usd": 70000,
+      "embodied_transition_cost_usd": 30000,
+      "capital_cost_usd": 50000,
+      "transition_friction_usd": 40000
+     }
+    ]
+   },
+   "outputs": {
+    "allocation_status": "BUDGET_BINDING",
+    "budget_shadow_price": 1.171328671329,
+    "budget_used_usd": 100000,
+    "budget_remaining_usd": 0,
+    "scenario_objective_value_usd": 148601.3986013986,
+    "assets": [
+     {
+      "asset_id": "wetland-a",
+      "net_declared_benefit_usd": 150000,
+      "allocation_fraction": 0.804195804196,
+      "allocated_capital_usd": 64335.66433566434,
+      "objective_contribution_usd": 97993.78942735586,
+      "stationarity_residual_usd": 0
+     },
+     {
+      "asset_id": "forest-b",
+      "net_declared_benefit_usd": 100000,
+      "allocation_fraction": 0.594405594406,
+      "allocated_capital_usd": 35664.33566433567,
+      "objective_contribution_usd": 50607.609174042744,
+      "stationarity_residual_usd": 0
+     },
+     {
+      "asset_id": "riparian-c",
+      "net_declared_benefit_usd": 40000,
+      "allocation_fraction": 0,
+      "allocated_capital_usd": 0,
+      "objective_contribution_usd": 0,
+      "stationarity_residual_usd": -18566.43356643356
+     }
+    ],
+    "implementation_checks": {
+     "box_feasible": true,
+     "budget_feasible": true,
+     "coordinate_kkt_conditions": true,
+     "complementary_budget_regime": true,
+     "passed": true
+    },
+    "formal_claims": [
+     "clipped allocation remains between zero and one",
+     "interior coordinates satisfy the declared stationarity identity",
+     "increasing embodied transition burden lowers declared benefit"
+    ],
+    "formal_scope": "The Comparator certificate covers the listed algebraic Run-139 claims, not the input values or a real-world allocation decision.",
+    "empirical_status": "USER_SUPPLIED_UNVALIDATED",
+    "decision_lens": {
+     "ecologicalState": "DECLARED_BURDEN_SCENARIO",
+     "ecologicalSummary": "The result compares user-supplied avoided and embodied burden values; it does not measure ecological effects.",
+     "evidenceState": "DECLARED_READY_UNVERIFIED",
+     "businessState": "CAPITAL_SCENARIO_QUANTIFIED",
+     "businessSummary": "The model allocates $100,000.00 of the declared $100,000.00 budget across 3 divisible alternatives.",
+     "optionsState": "MODEL_RANKED_ALTERNATIVES",
+     "optionsSummary": "Compare the fractional allocations, shadow price, and zero-allocation alternatives within the declared one-budget model.",
+     "actionState": "INVESTIGATE",
+     "actionSummary": "Advance this scenario to accountable evidence review before any capital commitment."
+    },
+    "claim_boundary": "Scenario-only allocation for fixed, user-supplied coefficients. No appraisal, investment advice, empirical validation, price authorization, credit quantity, causal impact, or certification is produced."
+   }
+  }
+ }
+}

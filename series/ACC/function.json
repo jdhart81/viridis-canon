@@ -1,0 +1,176 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "anytime-change",
+  "kind": "decision_kernel",
+  "name": "Anytime monitoring change certificate",
+  "version": "0.2.0",
+  "summary": "Tells you, from a sequence of yes/no observations, whether a change has happened with a controlled false-alarm rate — and how late you might be.",
+  "line": "Monitoring integrity",
+  "decision_family": "continuity-monitoring",
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": {
+    "code": "CANON_CLASSIFICATION",
+    "note": "The package's Lean status in the canon catalog is 'working' (not spine-admitted); the product warrant was admitted but the canon classification must be reconciled before admission as a function."
+  },
+  "blocked": null,
+  "doi": "10.5281/zenodo.21971041",
+  "lean": {
+    "module": "Viridis.Run129.PaperFormalization",
+    "sources": [
+      {
+        "path": "series/ACC/PaperFormalization.lean",
+        "sha256": "6955d21f6a8d2c8386ca1504bf005ec9fa922f8cc74bbbea6db703dbf4bc8a0c"
+      },
+      {
+        "path": "series/ACC/PaperFormalization/NullMartingale.lean",
+        "sha256": "76ba31a5b7b1a286fec1cf0d1d4273ab7a73746c0c4b58378b94c60e12c3956d"
+      },
+      {
+        "path": "series/ACC/PaperFormalization/Dominance.lean",
+        "sha256": "ea47f10d376cd6a3f2a8180a48f15f4f4b5f189e632a1991230c8341157fa24f"
+      },
+      {
+        "path": "series/ACC/PaperFormalization/Wald.lean",
+        "sha256": "6087275d757f85442bdc92730dd8282b01394133fefb5d0d6687ae4a259d3c7a"
+      }
+    ],
+    "theorems": [
+      "anytime_change_mixture_martingale",
+      "ville_inequality",
+      "anytime_change_ville_certificate",
+      "anytime_change_ville_certificate_sup",
+      "change_component_dominance_and_penalty",
+      "bounded_overshoot_expected_delay"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-129-AnytimeChange-Comparator-attempt-3-selective-imports-complete"
+  },
+  "inputs": [
+    {
+      "name": "observations",
+      "required": true,
+      "items": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer"
+      },
+      "maxItems": 100000,
+      "type": "array",
+      "unit": "binary (0/1)",
+      "help": "Sequence of 0/1 observations, oldest first."
+    },
+    {
+      "name": "p0",
+      "required": true,
+      "exclusiveMaximum": 1,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "probability",
+      "help": "Probability of a 1 before any change (0–1)."
+    },
+    {
+      "name": "p1",
+      "required": true,
+      "exclusiveMaximum": 1,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "probability",
+      "help": "Probability of a 1 after the change (0–1)."
+    },
+    {
+      "name": "alpha",
+      "required": true,
+      "exclusiveMaximum": 1,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "probability",
+      "help": "Acceptable false-alarm rate (0–1)."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "current_mixture_evidence",
+      "unit": "likelihood ratio"
+    },
+    {
+      "name": "maximum_mixture_evidence"
+    },
+    {
+      "name": "alarm_threshold",
+      "unit": "likelihood ratio"
+    },
+    {
+      "name": "alarmed"
+    },
+    {
+      "name": "alarm_index"
+    },
+    {
+      "name": "observations_processed"
+    },
+    {
+      "name": "false_alarm_probability_bound",
+      "unit": "probability"
+    },
+    {
+      "name": "scope"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "frozen_likelihoods",
+      "statement": "Pre- and post-change Bernoulli probabilities lie in (0, 1) and differ.",
+      "check": "0 < p0 < 1 and 0 < p1 < 1 and p0 != p1"
+    },
+    {
+      "id": "alarm_budget",
+      "statement": "The false-alarm budget α lies in (0, 1).",
+      "check": "0 < alpha < 1"
+    },
+    {
+      "id": "binary_observations",
+      "statement": "Every observation is 0 or 1.",
+      "check": "all(o == 0 or o == 1 for o in observations)"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "observations": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "p0": 0.2,
+      "p1": 0.6,
+      "alpha": 0.05
+    },
+    "expected_outputs": {
+      "current_mixture_evidence": 114.806349206349,
+      "maximum_mixture_evidence": 114.806349206349,
+      "alarm_threshold": 20,
+      "alarmed": true,
+      "alarm_index": 7,
+      "observations_processed": 8,
+      "false_alarm_probability_bound": 0.05,
+      "scope": "single frozen Bernoulli likelihood-ratio process under the declared iid null"
+    }
+  },
+  "scope": "Single frozen Bernoulli likelihood-ratio process; iid null and fixed model are load-bearing.",
+  "boundary": "Thresholds remain conditional on supplied coefficients, observation models, uncertainty moments, and declared switching costs. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "ADMITTED",
+    "doi_state": "READY"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "thermodynamic-attention-waterfill",
+  "kind": "theorem_function",
+  "name": "Thermodynamic attention — slower modes are filled first",
+  "version": "1.0.0",
+  "summary": "Checks that under attention water-filling, a mode with larger variance (slower, closer to a tipping point) never receives less attention capacity than a faster one.",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.19317982",
+  "lean": {
+    "module": "Viridis.Attention.ThermodynamicAttention",
+    "sources": [
+      {
+        "path": "ThermodynamicAttention.lean",
+        "sha256": "3c56af1a6bff69d2a567cc3a0cd221dfcd997fdd2136363d7ffaab76dc62a352"
+      }
+    ],
+    "theorems": [
+      "slow_modes_filled_first"
+    ],
+    "verification_provider": "CANON_CI_SPINE_BUILD",
+    "verification_receipt_id": null
+  },
+  "inputs": [
+    {
+      "name": "variance_high",
+      "type": "number",
+      "unit": "variance",
+      "help": "Variance v_i of the slower mode.",
+      "required": true
+    },
+    {
+      "name": "variance_low",
+      "type": "number",
+      "unit": "variance",
+      "help": "Variance v_j of the faster mode (> 0).",
+      "required": true
+    },
+    {
+      "name": "water_level",
+      "type": "number",
+      "unit": "variance",
+      "help": "Water level λ (> 0).",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "water_level_positive",
+      "statement": "λ > 0.",
+      "check": "water_level > 0"
+    },
+    {
+      "id": "low_variance_positive",
+      "statement": "v_j > 0.",
+      "check": "variance_low > 0"
+    },
+    {
+      "id": "ordered",
+      "statement": "v_j ≤ v_i.",
+      "check": "variance_low <= variance_high"
+    }
+  ],
+  "derived": [
+    {
+      "name": "capacity_high",
+      "expression": "(max(0, 0.5 * logb(2, variance_high / water_level)) if variance_high > 0 else 0)",
+      "unit": "bits"
+    },
+    {
+      "name": "capacity_low",
+      "expression": "(max(0, 0.5 * logb(2, variance_low / water_level)) if variance_low > 0 else 0)",
+      "unit": "bits"
+    }
+  ],
+  "conclusion": {
+    "statement": "wf(v_j) ≤ wf(v_i)",
+    "check": "approx_le(capacity_low, capacity_high)",
+    "lean_theorem": "slow_modes_filled_first"
+  },
+  "example": {
+    "inputs": {
+      "variance_high": 16,
+      "variance_low": 4,
+      "water_level": 1
+    },
+    "expected_outputs": {
+      "theorem": "slow_modes_filled_first",
+      "hypotheses": {
+        "water_level_positive": true,
+        "low_variance_positive": true,
+        "ordered": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "capacity_high": 2.0,
+        "capacity_low": 1.0
+      },
+      "conclusion": "wf(v_j) ≤ wf(v_i)",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "thermodynamicattention",
+    "catalog_status": "verified",
+    "catalog_integrity": "gate-passed",
+    "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
+    "authored_by": "WS-20 theorem-function tier"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "tempo",
+  "kind": "decision_kernel",
+  "name": "Tempo — stewardship cadence",
+  "version": "0.1.0",
+  "summary": "Finds the monitoring cadence that balances the cost of acting too early against the cost of acting too late.",
+  "line": "Stewardship & Governance",
+  "decision_family": "continuity-monitoring",
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": {
+    "code": "CANON_RECORD",
+    "note": "The StewardshipTempo Lean source behind DOI 10.5281/zenodo.20705183 is not in this repository; the function stays callable preview-only until the source is deposited here and its hash is recorded."
+  },
+  "blocked": null,
+  "doi": "10.5281/zenodo.20705183",
+  "lean": {
+    "module": "StewardshipTempo",
+    "sources": [],
+    "theorems": [
+      "Sigma_strictConvexOn",
+      "tempo_floor",
+      "tempo_optimum",
+      "tempo_unique_minimizer",
+      "haste_neglect_cosh",
+      "governability_tax"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "134d3df7-25b5-4ab5-80e5-f747db6e903f"
+  },
+  "inputs": [
+    {
+      "name": "haste_cost",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "cost per cycle",
+      "help": "Cost of visiting or intervening too often (per cycle)."
+    },
+    {
+      "name": "neglect_cost",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "cost per cycle",
+      "help": "Cost of waiting too long between visits (per cycle)."
+    },
+    {
+      "name": "cadence",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "time",
+      "help": "Your current interval between visits (time units)."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "optimal_cadence",
+      "unit": "time"
+    },
+    {
+      "name": "tempo_floor",
+      "unit": "cost"
+    },
+    {
+      "name": "cadence_cost",
+      "unit": "cost"
+    },
+    {
+      "name": "normalized_cost",
+      "unit": "dimensionless"
+    },
+    {
+      "name": "haste_neglect_tax",
+      "unit": "dimensionless"
+    },
+    {
+      "name": "at_optimum",
+      "unit": "boolean"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "costs_positive",
+      "statement": "Haste and neglect costs are positive.",
+      "check": "haste_cost > 0 and neglect_cost > 0"
+    },
+    {
+      "id": "cadence_positive",
+      "statement": "The current cadence is positive.",
+      "check": "cadence > 0"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "haste_cost": 4,
+      "neglect_cost": 1,
+      "cadence": 2
+    },
+    "expected_outputs": {
+      "optimal_cadence": 2,
+      "tempo_floor": 4,
+      "cadence_cost": 4,
+      "normalized_cost": 1,
+      "haste_neglect_tax": 1,
+      "at_optimum": true
+    }
+  },
+  "scope": "Deterministic theorem-backed computation; empirical input validity is external.",
+  "boundary": "Thresholds remain conditional on supplied coefficients, observation models, uncertainty moments, and declared switching costs. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "ADMITTED",
+    "doi_state": "READY"
+  }
+}

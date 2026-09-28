@@ -1,0 +1,47 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "zab-uniform-zeno-schedule-maximizes-success",
+  "kind": "theorem_function",
+  "name": "The Zeno Alignment Budget: Uniform Projective Steps and a Noise-Limited Measurement Count",
+  "version": "0.1.0",
+  "summary": "For fixed N and endpoint angle in the stated two-level geodesic model, equal angular increments uniquely maximize successful-branch probability.",
+  "decision_family": null,
+  "tier": "reference",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.22236789",
+  "lean": {
+    "module": "Viridis.Run122.PaperFormalization",
+    "sources": [
+      {
+        "path": "series/ZAB/ViridisRun122.lean",
+        "sha256": "14ebbfa7c73f86cb2eccaf1c83e8e18a139d45a9f4c5d244e0aa03b56b24ac13"
+      }
+    ],
+    "theorems": [
+      "uniform_zeno_schedule_maximizes_success"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-122-PaperFormalizationProof-Comparator-attempt-5-alignment-upgrade"
+  },
+  "inputs": [],
+  "outputs": [],
+  "hypotheses": [],
+  "example": null,
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values.",
+  "boundary": "Conditional mathematics about the supplied values only; not empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": null,
+  "provenance": {
+    "scaffolded_by": "tools/scaffold_function.py",
+    "run_id": "Run-122",
+    "theorem_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "certificate_sha256": "e11ea2635c1943e804f4452dabb8134244cc3f67316d585db41ccd56783fa907",
+    "catalog_title": "Viridis Run122",
+    "name_source": "2026-09-01.json#bundles/ZAB/title",
+    "summary_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "publication_date": "2026-09-01"
+  }
+}

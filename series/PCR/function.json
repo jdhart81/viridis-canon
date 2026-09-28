@@ -1,0 +1,153 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "precautionary-capacity",
+  "kind": "decision_kernel",
+  "name": "Moment-robust precautionary capacity certificate",
+  "version": "0.2.0",
+  "summary": "Sets a conservative operating ceiling on how much information a monitoring or decision system can rely on, given uncertainty about its capacity.",
+  "line": "Stewardship risk",
+  "decision_family": "continuity-monitoring",
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": {
+    "code": "CANON_CLASSIFICATION",
+    "note": "The package's Lean status in the canon catalog is 'working' (not spine-admitted); the product warrant was admitted but the canon classification must be reconciled before admission as a function."
+  },
+  "blocked": null,
+  "doi": "10.5281/zenodo.21971046",
+  "lean": {
+    "module": "Viridis.Run127.PaperFormalization",
+    "sources": [
+      {
+        "path": "series/PCR/PaperFormalization.lean",
+        "sha256": "c39845a9f92402521fa37f758c65af95e5fdab65b24b5e92544d94c0296c8364"
+      },
+      {
+        "path": "series/PCR/PaperFormalization/Targets.lean",
+        "sha256": "859e22d3574fbe30fe3c1dc73bc1c94d56ba63e05d79d9c15f978a191f06ed18"
+      }
+    ],
+    "theorems": [
+      "capacityFloor_violation_prob_le",
+      "cantelli_capacity_certificate",
+      "precautionary_rate_le_violation_budget",
+      "capacity_reserve_fraction_eq",
+      "positive_floor_sharp_two_point_counterexample",
+      "mean_only_plugin_arbitrarily_unsafe"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-127-PrecautionaryCapacity-Comparator-attempt-1"
+  },
+  "inputs": [
+    {
+      "name": "mean_capacity",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "declared capacity units",
+      "help": "Expected capacity (bits per time)."
+    },
+    {
+      "name": "capacity_sd",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "declared capacity units",
+      "help": "Uncertainty in that capacity (standard deviation)."
+    },
+    {
+      "name": "alpha",
+      "required": true,
+      "exclusiveMaximum": 1,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "probability",
+      "help": "How conservative to be (0–1; smaller is more cautious)."
+    },
+    {
+      "name": "power",
+      "required": false,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "W",
+      "help": "Available maintenance power (model units)."
+    },
+    {
+      "name": "temperature",
+      "required": false,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "K",
+      "help": "Operating temperature (model units)."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "precautionary_capacity",
+      "unit": "declared capacity units"
+    },
+    {
+      "name": "absolute_discount"
+    },
+    {
+      "name": "capacity_fraction"
+    },
+    {
+      "name": "certified_rate_ceiling",
+      "unit": "bits/time"
+    },
+    {
+      "name": "violation_probability_bound",
+      "unit": "probability"
+    },
+    {
+      "name": "positive_floor"
+    },
+    {
+      "name": "scope"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "moments_declared",
+      "statement": "Mean capacity and its standard deviation are non-negative.",
+      "check": "mean_capacity >= 0 and capacity_sd >= 0"
+    },
+    {
+      "id": "violation_budget",
+      "statement": "The violation probability α lies strictly between 0 and 1.",
+      "check": "0 < alpha < 1"
+    },
+    {
+      "id": "rate_pair",
+      "statement": "Power and temperature are supplied together or not at all.",
+      "check": "(power is None) == (temperature is None)"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "mean_capacity": 10,
+      "capacity_sd": 1,
+      "alpha": 0.2
+    },
+    "expected_outputs": {
+      "precautionary_capacity": 8,
+      "absolute_discount": 2,
+      "capacity_fraction": 0.8,
+      "certified_rate_ceiling": null,
+      "violation_probability_bound": 0.2,
+      "positive_floor": true,
+      "scope": "one-period two-moment marginal Cantelli certificate"
+    }
+  },
+  "scope": "One-period two-moment marginal certificate; support, dependence, and estimation uncertainty require separate treatment.",
+  "boundary": "Thresholds remain conditional on supplied coefficients, observation models, uncertainty moments, and declared switching costs. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "ADMITTED",
+    "doi_state": "READY"
+  }
+}

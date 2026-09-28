@@ -1,0 +1,47 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "hcf-kl-chain-rule-habitable-partition",
+  "kind": "theorem_function",
+  "name": "A Free-Energy Floor for Habitable-State Concentration: A Coarse-Grained Relative-Entropy Audit for Gaian Models",
+  "version": "0.1.0",
+  "summary": "KL decomposes exactly into the binary H versus H-complement divergence plus two conditional divergences.",
+  "decision_family": null,
+  "tier": "reference",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.22236755",
+  "lean": {
+    "module": "Viridis.Run123",
+    "sources": [
+      {
+        "path": "series/HCF/ViridisRun123.lean",
+        "sha256": "3d63f48e2b90ecbfe02b3a1b0e2e2df9630fd6db8fe2306f5d1e663976cb438d"
+      }
+    ],
+    "theorems": [
+      "kl_chain_rule_habitable_partition"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-123-HabitableConcentrationFloor-Comparator-attempt-4-alignment-upgrade"
+  },
+  "inputs": [],
+  "outputs": [],
+  "hypotheses": [],
+  "example": null,
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values.",
+  "boundary": "Conditional mathematics about the supplied values only; not empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": null,
+  "provenance": {
+    "scaffolded_by": "tools/scaffold_function.py",
+    "run_id": "Run-123",
+    "theorem_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "certificate_sha256": "1b78e3fb1686637a0d27b4adf3c125c2a8124997b888e6018924c8dc7718cf05",
+    "catalog_title": "Viridis Run123",
+    "name_source": "2026-09-01.json#bundles/HCF/title",
+    "summary_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "publication_date": "2026-09-01"
+  }
+}

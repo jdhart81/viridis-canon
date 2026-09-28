@@ -1,0 +1,160 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "hdfm-strahler-corridor-width",
+  "kind": "theorem_function",
+  "name": "HDFM — corridor width is monotone in Strahler order",
+  "version": "1.0.0",
+  "summary": "Checks that in a dendritic (HDFM) corridor network with widths W_min·α^(order−1) and α ≥ 1, a higher-order corridor is never narrower than a lower-order one.",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.19317982",
+  "lean": {
+    "module": "P2_HDFM_POC",
+    "sources": [
+      {
+        "path": "P2_HDFM_POC.lean",
+        "sha256": "1374d11ea0119bbb10efb8509299fb9c35ef502e6568908ed5c4d16c73e0712f"
+      }
+    ],
+    "theorems": [
+      "strahler_monotone_width"
+    ],
+    "verification_provider": "CANON_CI_SPINE_BUILD",
+    "verification_receipt_id": null
+  },
+  "inputs": [
+    {
+      "name": "min_width",
+      "type": "number",
+      "unit": "m",
+      "help": "Minimum corridor width W_min (> 0).",
+      "required": true,
+      "minimum": 0
+    },
+    {
+      "name": "alpha",
+      "type": "number",
+      "unit": "dimensionless",
+      "help": "Width growth factor per Strahler order (α ≥ 1).",
+      "required": true,
+      "minimum": 0
+    },
+    {
+      "name": "order_low",
+      "type": "integer",
+      "unit": "Strahler order",
+      "help": "Lower Strahler order s₁.",
+      "required": true,
+      "minimum": 0
+    },
+    {
+      "name": "order_high",
+      "type": "integer",
+      "unit": "Strahler order",
+      "help": "Higher Strahler order s₂.",
+      "required": true,
+      "minimum": 0
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "alpha_at_least_one",
+      "statement": "α ≥ 1.",
+      "check": "alpha >= 1"
+    },
+    {
+      "id": "width_positive",
+      "statement": "W_min > 0.",
+      "check": "min_width > 0"
+    },
+    {
+      "id": "orders_ordered",
+      "statement": "s₁ ≤ s₂.",
+      "check": "order_low <= order_high"
+    }
+  ],
+  "derived": [
+    {
+      "name": "width_low",
+      "expression": "min_width * alpha ** nat_sub(order_low, 1)",
+      "unit": "m"
+    },
+    {
+      "name": "width_high",
+      "expression": "min_width * alpha ** nat_sub(order_high, 1)",
+      "unit": "m"
+    }
+  ],
+  "conclusion": {
+    "statement": "W(s₁) ≤ W(s₂)",
+    "check": "approx_le(width_low, width_high)",
+    "lean_theorem": "strahler_monotone_width"
+  },
+  "example": {
+    "inputs": {
+      "min_width": 30,
+      "alpha": 1.6,
+      "order_low": 2,
+      "order_high": 4
+    },
+    "expected_outputs": {
+      "theorem": "strahler_monotone_width",
+      "hypotheses": {
+        "alpha_at_least_one": true,
+        "width_positive": true,
+        "orders_ordered": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "width_low": 48.0,
+        "width_high": 122.88000000000002
+      },
+      "conclusion": "W(s₁) ≤ W(s₂)",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "p2-hdfm-poc",
+    "catalog_status": "verified",
+    "catalog_integrity": "gate-passed",
+    "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
+    "authored_by": "WS-20 theorem-function tier"
+  }
+}

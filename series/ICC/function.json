@@ -1,0 +1,135 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "invariance-capacity",
+  "kind": "decision_kernel",
+  "name": "Forbidden-proxy information capacity audit",
+  "version": "0.2.0",
+  "summary": "Checks whether a forbidden proxy (a variable you must not use) is leaking into a decision, by comparing information ceilings.",
+  "line": "Alignment and information governance",
+  "decision_family": "governance-coordination",
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": {
+    "code": "CANON_CLASSIFICATION",
+    "note": "The package's Lean status in the canon catalog is 'working' (not spine-admitted); the product warrant was admitted but the canon classification must be reconciled before admission as a function."
+  },
+  "blocked": null,
+  "doi": "10.5281/zenodo.21971043",
+  "lean": {
+    "module": "Viridis.Run126.PaperFormalization",
+    "sources": [
+      {
+        "path": "series/ICC/PaperFormalization.lean",
+        "sha256": "fe79a19f104fb1e1252f13df3c31b1bb066f7e70c0232e4abeb6616a3e56e4ec"
+      },
+      {
+        "path": "series/ICC/PaperFormalization/Claims.lean",
+        "sha256": "bf9016e22d051c6abed92ef19d052f7674f097dc4ae799a5e17674ffb9cdf6e9"
+      }
+    ],
+    "theorems": [
+      "mutual_information_chain_balance",
+      "forbidden_proxy_capacity_ceiling",
+      "forbidden_proxy_capacity_ceiling_combined",
+      "capacity_ceiling_slack_decomposition",
+      "perfect_invariance_target_proxy_collapse"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-126-InvarianceCapacity-Comparator-attempt-1"
+  },
+  "inputs": [
+    {
+      "name": "conditional_task_entropy",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "bits",
+      "help": "Uncertainty in the task given permitted inputs (bits)."
+    },
+    {
+      "name": "proxy_leakage_budget",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "bits",
+      "help": "Maximum leakage allowed from the proxy (bits)."
+    },
+    {
+      "name": "observed_task_information",
+      "required": false,
+      "minimum": 0,
+      "type": "number",
+      "unit": "bits",
+      "help": "Task information observed (bits)."
+    },
+    {
+      "name": "task_information_ceiling",
+      "required": false,
+      "minimum": 0,
+      "type": "number",
+      "unit": "bits",
+      "help": "Ceiling on task information (bits)."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "invariance_information_ceiling",
+      "unit": "bits"
+    },
+    {
+      "name": "effective_information_ceiling",
+      "unit": "bits"
+    },
+    {
+      "name": "observed_task_information"
+    },
+    {
+      "name": "within_declared_ceiling"
+    },
+    {
+      "name": "ceiling_slack",
+      "unit": "bits"
+    },
+    {
+      "name": "scope"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "entropy_nonnegative",
+      "statement": "The conditional task entropy is non-negative.",
+      "check": "conditional_task_entropy >= 0"
+    },
+    {
+      "id": "leakage_budget_nonnegative",
+      "statement": "The proxy-leakage budget is non-negative and separately justified.",
+      "check": "proxy_leakage_budget >= 0"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "conditional_task_entropy": 0.5,
+      "proxy_leakage_budget": 0.1,
+      "task_information_ceiling": 0.55,
+      "observed_task_information": 0.58
+    },
+    "expected_outputs": {
+      "invariance_information_ceiling": 0.6,
+      "effective_information_ceiling": 0.55,
+      "observed_task_information": 0.58,
+      "within_declared_ceiling": false,
+      "ceiling_slack": -0.03,
+      "scope": "finite-variable mutual information with a separately justified leakage budget"
+    }
+  },
+  "scope": "Finite-variable mutual-information ceiling; leakage budget and measured information remain externally justified inputs.",
+  "boundary": "Formal coordination structure does not prove stakeholder consent, legal authority, fair distribution, or empirical task calibration. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "ADMITTED",
+    "doi_state": "READY"
+  }
+}

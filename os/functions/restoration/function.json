@@ -1,0 +1,101 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "restoration",
+  "kind": "decision_kernel",
+  "name": "Restoration — nucleation planting design (Θ go/no-go + n*)",
+  "version": "0.1.0",
+  "summary": "Tells you whether concentrating planting in a few large patches is likely to beat spreading it thin, and the smallest patch worth planting, given how strongly your site favors establishment.",
+  "line": "Restoration",
+  "decision_family": "restoration-design",
+  "tier": "admitted",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.20982979",
+  "lean": {
+    "module": "ForestNucleation",
+    "sources": [
+      {
+        "path": "series/ForestNucleation.lean",
+        "sha256": "667a826a2e5befac67964b69670435362de2d3d792e163807c3bb7c2aec28132"
+      }
+    ],
+    "theorems": [
+      "critical_nucleus",
+      "barrier_half_identity",
+      "broadcast_suboptimal",
+      "FNT_nonvacuous"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "run-061-fnt"
+  },
+  "inputs": [
+    {
+      "name": "sigma",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "dimensionless",
+      "help": "Site variability — how much establishment success varies across the site (0 = uniform). Dimensionless."
+    },
+    {
+      "name": "delta_mu",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "dimensionless",
+      "help": "Establishment advantage — how much the site favors growth over loss on average. Dimensionless; must be positive."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "nucleation_number",
+      "unit": "dimensionless"
+    },
+    {
+      "name": "critical_nucleus_n_star",
+      "unit": "patch-size"
+    },
+    {
+      "name": "recommendation",
+      "unit": "GREEN|AMBER|RED"
+    },
+    {
+      "name": "broadcast_fails"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "variability_nonnegative",
+      "statement": "Site variability σ is non-negative.",
+      "check": "sigma >= 0"
+    },
+    {
+      "id": "drive_positive",
+      "statement": "The establishment advantage Δμ is positive.",
+      "check": "delta_mu > 0"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "sigma": 1.5,
+      "delta_mu": 1
+    },
+    "expected_outputs": {
+      "nucleation_number": 1.5,
+      "critical_nucleus_n_star": 3.375,
+      "recommendation": "RED",
+      "broadcast_fails": true
+    }
+  },
+  "scope": "Deterministic theorem-backed computation; empirical input validity is external.",
+  "boundary": "Model outputs do not establish field suitability, seed availability, land rights, permits, or ecological success. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "ADMITTED",
+    "doi_state": "READY"
+  }
+}

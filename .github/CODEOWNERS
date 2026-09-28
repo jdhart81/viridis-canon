@@ -1,0 +1,4 @@
+# WS-20 — admission to the OS is a human act. The OS compiler never writes this file.
+/os/admissions.json @jdhart81
+/os/core.json @jdhart81
+/os/families.json @jdhart81

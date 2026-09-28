@@ -1,0 +1,174 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "effortless-equilibrium-forcing-time",
+  "kind": "theorem_function",
+  "name": "Effortless equilibrium — Intelligence Bound floor on forcing time",
+  "version": "1.0.0",
+  "summary": "Checks that steering a system with I bits of control information at a rate within the Intelligence Bound takes at least I·k_B·T·ln 2/(P·D) time.",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.19317982",
+  "lean": {
+    "module": "Viridis.Computation.EffortlessEquilibrium",
+    "sources": [
+      {
+        "path": "EffortlessEquilibrium.lean",
+        "sha256": "bdfeb671282f38f664e578799a442980dda2594ec344f9c2661460862f91d7ed"
+      }
+    ],
+    "theorems": [
+      "steersman_ib_floors_forcing_time"
+    ],
+    "verification_provider": "CANON_CI_SPINE_BUILD",
+    "verification_receipt_id": null
+  },
+  "inputs": [
+    {
+      "name": "control_bits",
+      "type": "number",
+      "unit": "bits",
+      "help": "Control information required (I ≥ 0).",
+      "required": true
+    },
+    {
+      "name": "boltzmann_constant",
+      "type": "number",
+      "unit": "J/K",
+      "help": "k_B (positive).",
+      "required": true
+    },
+    {
+      "name": "temperature",
+      "type": "number",
+      "unit": "K",
+      "help": "Temperature T (positive).",
+      "required": true
+    },
+    {
+      "name": "power",
+      "type": "number",
+      "unit": "W",
+      "help": "Power P (positive).",
+      "required": true
+    },
+    {
+      "name": "data_richness",
+      "type": "number",
+      "unit": "dimensionless",
+      "help": "Data richness D (positive).",
+      "required": true
+    },
+    {
+      "name": "rate",
+      "type": "number",
+      "unit": "bits/s",
+      "help": "Achieved control rate (positive).",
+      "required": true
+    },
+    {
+      "name": "time",
+      "type": "number",
+      "unit": "s",
+      "help": "Time taken t.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "positivity",
+      "statement": "I ≥ 0 and k_B, T, P, D, rate > 0.",
+      "check": "control_bits >= 0 and boltzmann_constant > 0 and temperature > 0 and power > 0 and data_richness > 0 and rate > 0"
+    },
+    {
+      "id": "rate_within_bound",
+      "statement": "rate ≤ P·D/(k_B·T·ln 2).",
+      "check": "rate <= power * data_richness / (boltzmann_constant * temperature * real_log(2))"
+    },
+    {
+      "id": "bits_delivered",
+      "statement": "I ≤ t·rate.",
+      "check": "control_bits <= time * rate"
+    }
+  ],
+  "derived": [
+    {
+      "name": "time_floor",
+      "expression": "control_bits * (boltzmann_constant * temperature * real_log(2)) / (power * data_richness)",
+      "unit": "s"
+    }
+  ],
+  "conclusion": {
+    "statement": "I·k_B·T·ln 2/(P·D) ≤ t",
+    "check": "approx_le(time_floor, time)",
+    "lean_theorem": "steersman_ib_floors_forcing_time"
+  },
+  "example": {
+    "inputs": {
+      "control_bits": 1000,
+      "boltzmann_constant": 1.380649e-23,
+      "temperature": 300,
+      "power": 1e-15,
+      "data_richness": 0.5,
+      "rate": 100,
+      "time": 12
+    },
+    "expected_outputs": {
+      "theorem": "steersman_ib_floors_forcing_time",
+      "hypotheses": {
+        "positivity": true,
+        "rate_within_bound": true,
+        "bits_delivered": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "time_floor": 0.005741957770157447
+      },
+      "conclusion": "I·k_B·T·ln 2/(P·D) ≤ t",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "effortlessequilibrium",
+    "catalog_status": "verified",
+    "catalog_integrity": "gate-passed",
+    "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
+    "authored_by": "WS-20 theorem-function tier"
+  }
+}

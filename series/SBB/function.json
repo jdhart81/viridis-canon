@@ -1,0 +1,169 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "shared-channel-coverage",
+  "kind": "decision_kernel",
+  "name": "Shared-channel coverage audit",
+  "version": "0.2.0",
+  "summary": "Audits whether a shared low-dimensional signal (a dashboard, a single index) can carry enough of what several parties need, within a dissipation budget.",
+  "line": "Thermodynamic control",
+  "decision_family": "governance-coordination",
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": {
+    "code": "CANON_CLASSIFICATION",
+    "note": "The package's Lean status in the canon catalog is 'working' (not spine-admitted); the product warrant was admitted but the canon classification must be reconciled before admission as a function."
+  },
+  "blocked": null,
+  "doi": "10.5281/zenodo.21971052",
+  "lean": {
+    "module": "Viridis.Run125.PaperFormalization",
+    "sources": [
+      {
+        "path": "series/SBB/PaperFormalization.lean",
+        "sha256": "0898b5d9fc9705c054e451267ea54376a5c67251613c38a6434515037587109d"
+      }
+    ],
+    "theorems": [
+      "shared_channel_inverse",
+      "directional_gain_bounds",
+      "rank_deficient_unit_gain",
+      "worstcase_deadline",
+      "top_subspace_mean_cost",
+      "isotropic_rank_fraction"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-125-SymbioticBandwidth-Comparator-attempt-2"
+  },
+  "inputs": [
+    {
+      "name": "dimension",
+      "required": true,
+      "minimum": 1,
+      "type": "integer",
+      "unit": "count",
+      "help": "Number of quantities parties need."
+    },
+    {
+      "name": "rank",
+      "required": true,
+      "minimum": 0,
+      "type": "integer",
+      "unit": "count",
+      "help": "Number of quantities the shared channel actually carries."
+    },
+    {
+      "name": "kappa",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "dimensionless",
+      "help": "Signal conditioning factor."
+    },
+    {
+      "name": "captured_fraction",
+      "required": true,
+      "maximum": 1,
+      "minimum": 0,
+      "type": "number",
+      "unit": "fraction",
+      "help": "Share of variance captured (0–1)."
+    },
+    {
+      "name": "baseline_cost",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "cost",
+      "help": "Cost of the baseline (uncoordinated) approach."
+    },
+    {
+      "name": "dissipation_budget",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "cost/time",
+      "help": "Dissipation allowed for the shared channel."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "directional_cost_factor"
+    },
+    {
+      "name": "directional_gain",
+      "unit": "dimensionless"
+    },
+    {
+      "name": "directional_minimum_deadline",
+      "unit": "time"
+    },
+    {
+      "name": "baseline_minimum_deadline"
+    },
+    {
+      "name": "full_subspace_gain"
+    },
+    {
+      "name": "worst_case_gain",
+      "unit": "dimensionless"
+    },
+    {
+      "name": "coverage_complete"
+    },
+    {
+      "name": "scope"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "dimension_positive",
+      "statement": "The control space has at least one dimension.",
+      "check": "dimension >= 1"
+    },
+    {
+      "id": "rank_within_dimension",
+      "statement": "The shared channel's rank is between 0 and the dimension.",
+      "check": "0 <= rank <= dimension"
+    },
+    {
+      "id": "rank_zero_captures_nothing",
+      "statement": "A rank-zero channel captures no fraction of the load.",
+      "check": "rank > 0 or captured_fraction == 0"
+    },
+    {
+      "id": "coefficients_in_range",
+      "statement": "κ is non-negative, the captured fraction lies in [0, 1], cost and budget are positive.",
+      "check": "kappa >= 0 and 0 <= captured_fraction <= 1 and baseline_cost > 0 and dissipation_budget > 0"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "dimension": 3,
+      "rank": 1,
+      "kappa": 3,
+      "captured_fraction": 1,
+      "baseline_cost": 8,
+      "dissipation_budget": 2
+    },
+    "expected_outputs": {
+      "directional_cost_factor": 0.25,
+      "directional_gain": 4,
+      "directional_minimum_deadline": 1,
+      "baseline_minimum_deadline": 4,
+      "full_subspace_gain": 4,
+      "worst_case_gain": 1,
+      "coverage_complete": false,
+      "scope": "whitened quadratic dissipation with a fixed orthogonal-projector channel"
+    }
+  },
+  "scope": "Whitened quadratic dissipation model with a fixed orthogonal-projector channel; not empirical task calibration.",
+  "boundary": "Formal coordination structure does not prove stakeholder consent, legal authority, fair distribution, or empirical task calibration. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "ADMITTED",
+    "doi_state": "READY"
+  }
+}

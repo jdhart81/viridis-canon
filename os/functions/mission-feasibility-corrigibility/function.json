@@ -1,0 +1,139 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "mission-feasibility-corrigibility",
+  "kind": "theorem_function",
+  "name": "Conservation feasibility — corrigibility rate ceiling under the Intelligence Bound",
+  "version": "1.0.0",
+  "summary": "Checks that if correcting an agent at rate Δ costs Δ·k_B·T·ln 2 of power and that fits in the available power P, then the correction rate cannot exceed P/(k_B·T·ln 2).",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.19317982",
+  "lean": {
+    "module": "P3_Impossibility",
+    "sources": [
+      {
+        "path": "P3_Impossibility.lean",
+        "sha256": "0bf9766985128788606428999c824ff1c6d1f585f313de9c016f2e057f8cb880"
+      }
+    ],
+    "theorems": [
+      "corrigibility_under_IB"
+    ],
+    "verification_provider": "CANON_CI_SPINE_BUILD",
+    "verification_receipt_id": null
+  },
+  "inputs": [
+    {
+      "name": "power",
+      "type": "number",
+      "unit": "W",
+      "help": "Available power P (finite, non-negative).",
+      "required": true,
+      "minimum": 0
+    },
+    {
+      "name": "kbt_ln2",
+      "type": "number",
+      "unit": "J/bit",
+      "help": "k_B·T·ln 2 (finite, positive).",
+      "required": true,
+      "minimum": 0
+    },
+    {
+      "name": "correction_rate",
+      "type": "number",
+      "unit": "bits/s",
+      "help": "Correction information rate Δ (non-negative).",
+      "required": true,
+      "minimum": 0
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "temperature_positive",
+      "statement": "k_B·T·ln 2 is positive and finite.",
+      "check": "kbt_ln2 > 0"
+    },
+    {
+      "id": "landauer_budget",
+      "statement": "Δ·k_B·T·ln 2 ≤ P.",
+      "check": "correction_rate * kbt_ln2 <= power"
+    }
+  ],
+  "derived": [
+    {
+      "name": "rate_ceiling",
+      "expression": "power / kbt_ln2",
+      "unit": "bits/s"
+    }
+  ],
+  "conclusion": {
+    "statement": "Δ ≤ P / (k_B·T·ln 2)",
+    "check": "approx_le(correction_rate, rate_ceiling)",
+    "lean_theorem": "corrigibility_under_IB"
+  },
+  "example": {
+    "inputs": {
+      "power": 1e-18,
+      "kbt_ln2": 2.87e-21,
+      "correction_rate": 200
+    },
+    "expected_outputs": {
+      "theorem": "corrigibility_under_IB",
+      "hypotheses": {
+        "temperature_positive": true,
+        "landauer_budget": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "rate_ceiling": 348.43205574912895
+      },
+      "conclusion": "Δ ≤ P / (k_B·T·ln 2)",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "mission-feasibility",
+    "catalog_status": "verified",
+    "catalog_integrity": "gate-passed",
+    "doi_scope": "Canon concept DOI: this spine record has no standalone deposit DOI; it is archived in the canon release.",
+    "authored_by": "WS-20 theorem-function tier"
+  }
+}

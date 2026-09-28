@@ -3,6 +3,7 @@
 Poll Aristotle for Bridge_EcoChainInstrument project status and download
 results when ready.
 """
+from aristotle_env import get_api_key
 import asyncio, json, os, sys
 from pathlib import Path
 
@@ -20,10 +21,7 @@ META = RUN_DIR / "_run_meta.json"
 OUT_DIR = PIPELINE.parent.parent / "new leans" / "2026-05-09_aristotle_BridgeEcoChain_run_aristotle"
 
 async def main() -> int:
-    key = os.environ.get("ARISTOTLE_API_KEY")
-    if not key:
-        print("ERROR: ARISTOTLE_API_KEY not set", file=sys.stderr)
-        return 1
+    key = get_api_key()
     if not META.exists():
         print(f"ERROR: missing {META} — run invoke first", file=sys.stderr)
         return 1

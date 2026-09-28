@@ -1,0 +1,412 @@
+{
+  "schema_version": 1,
+  "standard": "VOS-RESEARCH-INTAKE-1",
+  "records": [
+    {
+      "abbreviation": "CAST",
+      "doi": "10.5281/zenodo.22236735",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-120",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "ISB",
+      "doi": "10.5281/zenodo.22236761",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-121",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "ZAB",
+      "doi": "10.5281/zenodo.22236789",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-122",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "HCF",
+      "doi": "10.5281/zenodo.22236755",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-123",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "PCS",
+      "doi": "10.5281/zenodo.22665554",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-124",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "SBB",
+      "doi": "10.5281/zenodo.21971052",
+      "product_line": "Thermodynamic control",
+      "run_id": "Run-125",
+      "spine_admitted": false,
+      "state": "CERTIFICATION_READY",
+      "successor_version_candidate": "0.2.1-release-reconciled"
+    },
+    {
+      "abbreviation": "ICC",
+      "doi": "10.5281/zenodo.21971043",
+      "product_line": "Alignment and information governance",
+      "run_id": "Run-126",
+      "spine_admitted": false,
+      "state": "CERTIFICATION_READY",
+      "successor_version_candidate": "0.2.1-release-reconciled"
+    },
+    {
+      "abbreviation": "PCR",
+      "doi": "10.5281/zenodo.21971046",
+      "product_line": "Stewardship risk",
+      "run_id": "Run-127",
+      "spine_admitted": false,
+      "state": "CERTIFICATION_READY",
+      "successor_version_candidate": "0.2.1-release-reconciled"
+    },
+    {
+      "abbreviation": "RC",
+      "doi": "10.5281/zenodo.21971047",
+      "product_line": "Symbiotic information exchange",
+      "run_id": "Run-128",
+      "spine_admitted": false,
+      "state": "CERTIFICATION_READY",
+      "successor_version_candidate": "0.2.2-release-reconciled"
+    },
+    {
+      "abbreviation": "ACC",
+      "doi": "10.5281/zenodo.21971041",
+      "product_line": "Monitoring integrity",
+      "run_id": "Run-129",
+      "spine_admitted": false,
+      "state": "CERTIFICATION_READY",
+      "successor_version_candidate": "0.2.1-release-reconciled"
+    },
+    {
+      "abbreviation": "SSBC",
+      "doi": "10.5281/zenodo.21971057",
+      "product_line": "Restoration",
+      "run_id": "Run-130",
+      "spine_admitted": false,
+      "state": "CERTIFICATION_READY",
+      "successor_version_candidate": "0.2.1-release-reconciled"
+    },
+    {
+      "abbreviation": "CSHC",
+      "doi": "10.5281/zenodo.21971042",
+      "product_line": "Decision stability",
+      "run_id": "Run-131",
+      "spine_admitted": false,
+      "state": "CERTIFICATION_READY",
+      "successor_version_candidate": "0.2.1-release-reconciled"
+    },
+    {
+      "abbreviation": "DSWC",
+      "doi": "10.5281/zenodo.22236741",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-132",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "CODC",
+      "doi": "10.5281/zenodo.22665525",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-133",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "RAAC",
+      "doi": "10.5281/zenodo.22236427",
+      "product_line": "working-corpus",
+      "run_id": "Run-134",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "SSC",
+      "doi": "10.5281/zenodo.22236775",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-135",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "RFC",
+      "doi": "10.5281/zenodo.22665565",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-136",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "SAC",
+      "doi": "10.5281/zenodo.22236768",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-137",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "GACC",
+      "doi": "10.5281/zenodo.22236748",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-138",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "TRWFN",
+      "doi": "10.5281/zenodo.22236785",
+      "module_id": "thermodynamic-economic-allocation",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-139",
+      "spine_admitted": false,
+      "state": "KERNEL_IMPLEMENTATION_READY",
+      "successor_version_candidate": "1.0.0-runtime-admitted"
+    },
+    {
+      "abbreviation": "SOR",
+      "doi": "10.5281/zenodo.22236770",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-140",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "SESL",
+      "doi": "10.5281/zenodo.22236496",
+      "product_line": "Thermodynamic control methods",
+      "run_id": "Run-141",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "BCAN",
+      "doi": "10.5281/zenodo.22236387",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-142",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "RCBN",
+      "doi": "10.5281/zenodo.22236441",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-143",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "SBRN",
+      "doi": "10.5281/zenodo.22236458",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-144",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "ACCN",
+      "doi": "10.5281/zenodo.22236361",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-145",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "DCAE",
+      "doi": "10.5281/zenodo.22236409",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-146",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "TDCIL",
+      "doi": "10.5281/zenodo.22236530",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-147",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "FRCS",
+      "doi": "10.5281/zenodo.22236416",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-148",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "SFB",
+      "doi": "10.5281/zenodo.22236521",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-149",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "DPAC",
+      "doi": "10.5281/zenodo.22665538",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-150",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "DREAA",
+      "doi": "10.5281/zenodo.22736637",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-158",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "DSUR",
+      "doi": "10.5281/zenodo.22736650",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-160",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "MRRN",
+      "doi": "10.5281/zenodo.22736654",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-156",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "RCBX",
+      "doi": "10.5281/zenodo.22736656",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-161",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "RECB",
+      "doi": "10.5281/zenodo.22736660",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-164",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "RRFG",
+      "doi": "10.5281/zenodo.22736666",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-153",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "SARN",
+      "doi": "10.5281/zenodo.22736670",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-162",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "SBCN",
+      "doi": "10.5281/zenodo.22736676",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-154",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "SDPN",
+      "doi": "10.5281/zenodo.22736684",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-159",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "SVON",
+      "doi": "10.5281/zenodo.22736690",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-155",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "TCTSI",
+      "doi": "10.5281/zenodo.22736699",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-157",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "TLRC",
+      "doi": "10.5281/zenodo.22736706",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-151",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "TRSE",
+      "doi": "10.5281/zenodo.22736710",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-152",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "UDWL",
+      "doi": "10.5281/zenodo.22736716",
+      "product_line": "Verified computational methods",
+      "run_id": "Run-163",
+      "spine_admitted": false,
+      "state": "BACKLOG_NO_WRAPPER",
+      "successor_version_candidate": "unassigned"
+    }
+  ]
+}

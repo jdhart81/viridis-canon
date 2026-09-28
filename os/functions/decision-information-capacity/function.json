@@ -1,0 +1,173 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "decision-information-capacity",
+  "kind": "decision_kernel",
+  "name": "Decision-information capacity audit",
+  "version": "0.3.0",
+  "summary": "Checks whether the amount of information a decision process claims to use is physically consistent with the power spent maintaining it.",
+  "line": "Monitoring integrity",
+  "decision_family": "continuity-monitoring",
+  "tier": "admitted",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.19317982",
+  "lean": {
+    "module": "P0_IntelligenceBound_COMPILED",
+    "sources": [
+      {
+        "path": "P0_IntelligenceBound_COMPILED.lean",
+        "sha256": "3f192275ee326f0fb2cf2dca3b4d97146044b3b12fca28ff18e07914fb4d9130"
+      }
+    ],
+    "theorems": [
+      "intelligence_bound",
+      "data_bound_lemma_conditional",
+      "landauer_dissipation_bound",
+      "thermodynamic_bound_lemma"
+    ],
+    "verification_provider": "CANON_PUBLISHED_LEAN",
+    "verification_receipt_id": "canon-gate-passed:sha256:3f192275ee326f0fb2cf2dca3b4d97146044b3b12fca28ff18e07914fb4d9130"
+  },
+  "inputs": [
+    {
+      "name": "predictive_richness",
+      "required": true,
+      "maximum": 1,
+      "minimum": 0,
+      "type": "number",
+      "unit": "dimensionless",
+      "help": "How much of the observed signal is predictive (0–1)."
+    },
+    {
+      "name": "observation_bandwidth",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "information/time",
+      "help": "Observation rate (bits per time)."
+    },
+    {
+      "name": "maintenance_power",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "power",
+      "help": "Power spent maintaining the decision system."
+    },
+    {
+      "name": "temperature",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "temperature",
+      "help": "Operating temperature (model units)."
+    },
+    {
+      "name": "boltzmann_constant",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "energy/temperature",
+      "help": "Boltzmann constant in the same units (1 for a dimensionless check)."
+    },
+    {
+      "name": "landauer_maintenance_assumption",
+      "required": true,
+      "type": "boolean",
+      "unit": "bool",
+      "help": "Whether to assume the Landauer per-bit cost applies (true/false)."
+    },
+    {
+      "name": "observed_information_rate",
+      "required": true,
+      "minimum": 0,
+      "type": "number",
+      "unit": "information/time",
+      "help": "Information rate you claim to use (bits per time)."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "data_information_ceiling",
+      "unit": "information/time"
+    },
+    {
+      "name": "maintenance_information_ceiling",
+      "unit": "information/time"
+    },
+    {
+      "name": "effective_information_ceiling",
+      "unit": "information/time"
+    },
+    {
+      "name": "critical_maintenance_power",
+      "unit": "power"
+    },
+    {
+      "name": "binding_regime"
+    },
+    {
+      "name": "observed_information_rate",
+      "unit": "information/time"
+    },
+    {
+      "name": "within_effective_ceiling"
+    },
+    {
+      "name": "landauer_maintenance_assumption_applied"
+    },
+    {
+      "name": "scope"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "richness_unit_interval",
+      "statement": "Predictive richness lies in [0, 1].",
+      "check": "0 <= predictive_richness <= 1"
+    },
+    {
+      "id": "rates_nonnegative",
+      "statement": "Bandwidth, maintenance power and observed rate are non-negative.",
+      "check": "observation_bandwidth >= 0 and maintenance_power >= 0 and observed_information_rate >= 0"
+    },
+    {
+      "id": "thermodynamic_constants",
+      "statement": "k_B and T are positive.",
+      "check": "boltzmann_constant > 0 and temperature > 0"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "predictive_richness": 0.5,
+      "observation_bandwidth": 10,
+      "maintenance_power": 2,
+      "temperature": 1,
+      "boltzmann_constant": 1,
+      "landauer_maintenance_assumption": true,
+      "observed_information_rate": 3
+    },
+    "expected_outputs": {
+      "data_information_ceiling": 5,
+      "maintenance_information_ceiling": 2.885390081778,
+      "effective_information_ceiling": 2.885390081778,
+      "critical_maintenance_power": 3.4657359028,
+      "binding_regime": "MAINTENANCE_LIMITED",
+      "observed_information_rate": 3,
+      "within_effective_ceiling": false,
+      "landauer_maintenance_assumption_applied": true,
+      "scope": "predictive-richness data bound; thermodynamic minimum applies only to declared maintenance or erasure work"
+    }
+  },
+  "scope": "Predictive-richness data ceiling; the thermodynamic minimum is applied only when the caller explicitly declares maintenance or erasure work subject to the Landauer premise.",
+  "boundary": "Thresholds remain conditional on supplied coefficients, observation models, uncertainty moments, and declared switching costs. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "ADMITTED",
+    "doi_state": "READY"
+  }
+}

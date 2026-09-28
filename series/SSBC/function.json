@@ -1,0 +1,160 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "seed-source-bottleneck",
+  "kind": "decision_kernel",
+  "name": "Seed-source bottleneck certificate",
+  "version": "0.2.0",
+  "summary": "Checks whether your seed or seedling supply network can actually meet planting demand, and where the bottleneck is.",
+  "line": "Restoration",
+  "decision_family": "restoration-design",
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": {
+    "code": "CANON_CLASSIFICATION",
+    "note": "The package's Lean status in the canon catalog is 'working' (not spine-admitted); the product warrant was admitted but the canon classification must be reconciled before admission as a function."
+  },
+  "blocked": null,
+  "doi": "10.5281/zenodo.21971057",
+  "lean": {
+    "module": "Viridis.Run130.Hall",
+    "sources": [
+      {
+        "path": "series/SSBC/PaperFormalization.lean",
+        "sha256": "0a31250effb3ef00b1c61d022fa72b95bd66b4f4fd7099fcd568fa36ec80335d"
+      }
+    ],
+    "theorems": [
+      "seed_routing_common_fraction_eq_min_cut_ratio",
+      "seed_routing_feasible_iff_cut_conditions",
+      "capacity_outside_active_bottleneck_irrelevant",
+      "scenario_intersection_certificate_le_each_scenario"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-130-SeedSourceBottleneck-Comparator-attempt-1"
+  },
+  "inputs": [
+    {
+      "name": "demands",
+      "required": true,
+      "items": {
+        "exclusiveMinimum": 0,
+        "type": "number"
+      },
+      "maxItems": 20,
+      "minItems": 1,
+      "type": "array",
+      "unit": "seed units",
+      "help": "Demand at each planting site, as a list."
+    },
+    {
+      "name": "supplies",
+      "required": true,
+      "items": {
+        "minimum": 0,
+        "type": "number"
+      },
+      "minItems": 1,
+      "type": "array",
+      "unit": "seed units",
+      "help": "Available supply at each source, as a list."
+    },
+    {
+      "name": "edges",
+      "required": true,
+      "items": {
+        "items": {
+          "type": "integer"
+        },
+        "maxItems": 2,
+        "minItems": 2,
+        "type": "array"
+      },
+      "type": "array",
+      "unit": "index pairs [supply, site]",
+      "help": "Which source can serve which site, as [source, site] pairs."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "common_fulfillment_fraction",
+      "unit": "dimensionless"
+    },
+    {
+      "name": "full_fulfillment_feasible"
+    },
+    {
+      "name": "bottleneck_site_indices"
+    },
+    {
+      "name": "eligible_supply_indices"
+    },
+    {
+      "name": "bottleneck_ratio",
+      "unit": "dimensionless"
+    },
+    {
+      "name": "scope"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "demands_positive",
+      "statement": "Every restoration site demands a positive amount.",
+      "check": "len(demands) >= 1 and all(x > 0 for x in demands)"
+    },
+    {
+      "id": "supplies_nonnegative",
+      "statement": "Every seed source supplies a non-negative amount.",
+      "check": "len(supplies) >= 1 and all(x >= 0 for x in supplies)"
+    },
+    {
+      "id": "edges_in_range",
+      "statement": "Every eligibility edge names an existing source and site.",
+      "check": "all(0 <= e[0] < len(supplies) and 0 <= e[1] < len(demands) for e in edges)"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "demands": [
+        4,
+        4
+      ],
+      "supplies": [
+        3,
+        10
+      ],
+      "edges": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "expected_outputs": {
+      "common_fulfillment_fraction": 0.75,
+      "full_fulfillment_feasible": false,
+      "bottleneck_site_indices": [
+        0
+      ],
+      "eligible_supply_indices": [
+        0
+      ],
+      "bottleneck_ratio": 0.75,
+      "scope": "continuous one-period frozen binary-eligibility supply network"
+    }
+  },
+  "scope": "Continuous one-period frozen binary-eligibility network; no field establishment, legality, procurement, or cost claim.",
+  "boundary": "Model outputs do not establish field suitability, seed availability, land rights, permits, or ecological success. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "ADMITTED",
+    "doi_state": "READY"
+  }
+}

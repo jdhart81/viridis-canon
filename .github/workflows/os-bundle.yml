@@ -1,0 +1,108 @@
+name: viridis-os-bundle
+
+# WS-20 — Canon → OS compiler.
+#   verify-functions  every push/PR: validate every function.json, replay the
+#                     product parity fixtures, build the bundle twice and require
+#                     the same DIGEST (I5), and guard the admissions ledger (I3).
+#   release-bundle    on a release tag: build the bundle from the exact tagged
+#                     commit and attach os-bundle-<tag>.tar.gz + DIGEST + SHA256SUMS
+#                     to the GitHub release. The product pins that DIGEST.
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ "v*" ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [ published ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-functions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate every function manifest
+        run: python3 -m canon_core validate-functions
+
+      - name: Build the OS bundle (examples + parity fixtures + self-test)
+        run: python3 -m canon_core build-os --out os-bundle --source-ref "$GITHUB_SHA"
+
+      - name: Deterministic digest (I5) — rebuild and compare
+        run: |
+          python3 -m canon_core build-os --out os-bundle-2 --source-ref "$GITHUB_SHA" > /dev/null
+          diff -r os-bundle os-bundle-2
+          echo "digest $(cat os-bundle/DIGEST) reproduced"
+
+      - name: Independent verification of the written bundle
+        run: python3 -m canon_core verify-os os-bundle --expect-digest "$(cat os-bundle/DIGEST)"
+
+      - name: Admissions ledger is human-gated (I3)
+        if: github.event_name == 'pull_request'
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+        run: |
+          git fetch --no-tags origin "${{ github.base_ref }}"
+          if git diff --name-only "origin/${{ github.base_ref }}...HEAD" | grep -qx 'os/admissions.json'; then
+            case "$HEAD_REF" in
+              canon/*|engine/*|science-engine/*|lockstep/*)
+                echo "::error::os/admissions.json changed on automated branch '$HEAD_REF'. Admission is a human act: open a separate PR."; exit 1;;
+            esac
+            if [ "$AUTHOR" != "jdhart81" ]; then
+              echo "::error::os/admissions.json may only be changed in a PR opened by the repository owner (got '$AUTHOR')."; exit 1
+            fi
+            echo "admissions ledger change authored by $AUTHOR on $HEAD_REF — requires owner review (CODEOWNERS)"
+          else
+            echo "admissions ledger unchanged"
+          fi
+
+  release-bundle:
+    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'release'
+    needs: verify-functions
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Resolve tag
+        id: tag
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          if [ "${{ github.event_name }}" = "release" ]; then TAG="${{ github.event.release.tag_name }}"; fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+      - name: Build the bundle from the tagged commit
+        run: python3 -m canon_core build-os --out os-bundle --source-ref "$GITHUB_SHA" --release "${{ steps.tag.outputs.tag }}"
+      - name: Package deterministically
+        run: |
+          TAG="${{ steps.tag.outputs.tag }}"
+          tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner -cf - os-bundle \
+            | gzip -n > "os-bundle-${TAG}.tar.gz"
+          cp os-bundle/DIGEST "os-bundle-${TAG}.DIGEST"
+          cp os-bundle/SHA256SUMS "os-bundle-${TAG}.SHA256SUMS"
+          sha256sum "os-bundle-${TAG}.tar.gz" | tee "os-bundle-${TAG}.tar.gz.sha256"
+          echo "OS bundle digest: $(cat os-bundle/DIGEST)" >> "$GITHUB_STEP_SUMMARY"
+      - name: Attach to the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${{ steps.tag.outputs.tag }}"
+          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --verify-tag --title "$TAG" --notes "Canon release $TAG"
+          gh release upload "$TAG" --clobber \
+            "os-bundle-${TAG}.tar.gz" "os-bundle-${TAG}.tar.gz.sha256" \
+            "os-bundle-${TAG}.DIGEST" "os-bundle-${TAG}.SHA256SUMS"

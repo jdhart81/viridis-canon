@@ -1,0 +1,47 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "isb-information-symbiosis-chain-rule",
+  "kind": "theorem_function",
+  "name": "Information Symbiosis Balance: A Conditional-Dependence Criterion for Cooperative Learning",
+  "version": "0.1.0",
+  "summary": "For every finite joint distribution, B = I(Y;X1,X2)-I(Y;X1)-I(Y;X2) equals I(X1;X2|Y)-I(X1;X2).",
+  "decision_family": null,
+  "tier": "reference",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.22236761",
+  "lean": {
+    "module": "Viridis.Run121",
+    "sources": [
+      {
+        "path": "series/ISB/ViridisRun121.lean",
+        "sha256": "6d90c74247be843e629ce558b5863516f7eeba49ff8bb2f11efad02ac4463eb3"
+      }
+    ],
+    "theorems": [
+      "information_symbiosis_chain_rule"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-121-PaperFormalizationProof-Comparator-attempt-1-alignment-upgrade"
+  },
+  "inputs": [],
+  "outputs": [],
+  "hypotheses": [],
+  "example": null,
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values.",
+  "boundary": "Conditional mathematics about the supplied values only; not empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": null,
+  "provenance": {
+    "scaffolded_by": "tools/scaffold_function.py",
+    "run_id": "Run-121",
+    "theorem_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "certificate_sha256": "ff6faa562be525a34dd6484f7ab5942c9c098882c2a1b93f411f5eab60f5b69e",
+    "catalog_title": "Viridis Run121",
+    "name_source": "2026-09-01.json#bundles/ISB/title",
+    "summary_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "publication_date": "2026-09-01"
+  }
+}

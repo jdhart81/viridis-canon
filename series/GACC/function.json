@@ -1,0 +1,47 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "gacc-aggregate-residual-bound",
+  "kind": "theorem_function",
+  "name": "The Gaian Alignment Cone Certificate: When Local Directional Bounds Survive Aggregation",
+  "version": "0.1.0",
+  "summary": "Nonnegative weighted subsystem residuals obey the aggregate residual budget.",
+  "decision_family": null,
+  "tier": "reference",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.22236748",
+  "lean": {
+    "module": "Viridis.GaianSystems.AlignmentCone",
+    "sources": [
+      {
+        "path": "series/GACC/ViridisRun138.lean",
+        "sha256": "1830f9cf99db8a26fb394dcdd5d343c866803495856f70258680ec9977ed4a73"
+      }
+    ],
+    "theorems": [
+      "aggregate_residual_bound"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "Run-138-GaianAlignmentCone-Comparator-attempt-1"
+  },
+  "inputs": [],
+  "outputs": [],
+  "hypotheses": [],
+  "example": null,
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values.",
+  "boundary": "Conditional mathematics about the supplied values only; not empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": null,
+  "provenance": {
+    "scaffolded_by": "tools/scaffold_function.py",
+    "run_id": "Run-138",
+    "theorem_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "certificate_sha256": "c4e8d72018b5934e9128f2cf9e0677b0c733bf702e7b03260615ab0529c6bec0",
+    "catalog_title": "Viridis Run138",
+    "name_source": "2026-09-01.json#bundles/GACC/title",
+    "summary_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1",
+    "publication_date": "2026-09-01"
+  }
+}

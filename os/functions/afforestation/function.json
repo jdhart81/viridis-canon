@@ -1,0 +1,136 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "afforestation",
+  "kind": "decision_kernel",
+  "name": "Afforestation — cubic optimal-seeding law + site-prep lever",
+  "version": "0.1.0",
+  "summary": "Gives the seeding density that balances establishment against cost, and shows how much site preparation shifts it.",
+  "line": "Restoration",
+  "decision_family": "restoration-design",
+  "tier": "admitted",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.21168224",
+  "lean": {
+    "module": "AfforestationStewardship",
+    "sources": [
+      {
+        "path": "series/AfforestationStewardship.lean",
+        "sha256": "3ebe33bfd6bd74124e87b5d7e73448db58e1459207fd6ff5c00a90fc3ac9526f"
+      }
+    ],
+    "theorems": [
+      "establishment_efficiency_cubic_in_drive_over_tension",
+      "site_prep_halving_sigma_eightfolds_efficiency",
+      "homogeneous_limit_recovers_fnt",
+      "sower_IB_ceiling",
+      "seeding_efficiency_eq_cos2_theta"
+    ],
+    "verification_provider": "COMPARATOR_CLOUD",
+    "verification_receipt_id": "ast-sower"
+  },
+  "inputs": [
+    {
+      "name": "sigma",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "dimensionless",
+      "help": "Site variability of establishment (0 = uniform)."
+    },
+    {
+      "name": "delta_mu",
+      "required": true,
+      "exclusiveMinimum": 0,
+      "type": "number",
+      "unit": "dimensionless",
+      "help": "Establishment advantage — average growth minus loss. Positive."
+    },
+    {
+      "name": "prep",
+      "required": false,
+      "maximum": 2,
+      "minimum": 1,
+      "type": "number",
+      "unit": "×",
+      "help": "Site-preparation effort level, in the model's own units."
+    },
+    {
+      "name": "rate",
+      "required": false,
+      "minimum": 0,
+      "type": "number",
+      "unit": "declared seeding rate",
+      "help": "Current seeding rate (seedlings per area)."
+    },
+    {
+      "name": "rate_max",
+      "required": false,
+      "minimum": 0,
+      "type": "number",
+      "unit": "declared seeding rate",
+      "help": "Maximum seeding rate you can deliver."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "optimal_density",
+      "unit": "seedlings/area"
+    },
+    {
+      "name": "site_prep_multiplier",
+      "unit": "×"
+    },
+    {
+      "name": "seeding_within_ib_ceiling",
+      "unit": "bool"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "tension_positive",
+      "statement": "Site variability σ is positive.",
+      "check": "sigma > 0"
+    },
+    {
+      "id": "drive_positive",
+      "statement": "The establishment advantage Δμ is positive.",
+      "check": "delta_mu > 0"
+    },
+    {
+      "id": "prep_in_range",
+      "statement": "The site-preparation lever is between 1 and 2 when supplied.",
+      "check": "prep is None or 1 <= prep <= 2"
+    },
+    {
+      "id": "rates_nonnegative",
+      "statement": "Declared seeding rates are non-negative when supplied.",
+      "check": "(rate is None or rate >= 0) and (rate_max is None or rate_max >= 0)"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "sigma": 1,
+      "delta_mu": 1.2,
+      "prep": 2,
+      "rate": 1.2,
+      "rate_max": 1
+    },
+    "expected_outputs": {
+      "optimal_density": 13.824,
+      "site_prep_multiplier": 8,
+      "seeding_within_ib_ceiling": false
+    }
+  },
+  "scope": "Deterministic theorem-backed computation; empirical input validity is external.",
+  "boundary": "Model outputs do not establish field suitability, seed availability, land rights, permits, or ecological success. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "migrated_from": "viridis-conservation-app@398b177",
+    "warrant_verdict": "ADMITTED",
+    "doi_state": "READY"
+  }
+}

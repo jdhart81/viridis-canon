@@ -1,5 +1,7 @@
 # Aristotle-Pipeline — Viridis Formal Canon
 
+[![CI](https://github.com/jdhart81/viridis-canon/actions/workflows/ci.yml/badge.svg)](https://github.com/jdhart81/viridis-canon/actions/workflows/ci.yml) [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE) [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/jdhart81/viridis-canon/badge)](https://scorecard.dev/viewer/?uri=github.com/jdhart81/viridis-canon)
+
 **The canonical compiled Lean 4 artifacts underlying all Viridis science, methods, and publications.**
 
 > **What "verified" means here.** These modules are **Lean-checked conditional mathematics**: each theorem's *type* is machine-verified, but a Lean-checked theorem is not automatically a verified statement about physics, economics, or ecology. Every headline result is graded by formal strength in [`CLAIMS_MATRIX.md`](./CLAIMS_MATRIX.md) using the labels in [`THEOREM_STATUS_TAXONOMY.md`](./THEOREM_STATUS_TAXONOMY.md). Read the matrix before citing any result as established. Integrity Release **v9.1.0** (2026-06-21) quarantined P9 and de-escalated several overstated claims; see [`CHANGELOG_v9.1.0.md`](./CHANGELOG_v9.1.0.md).

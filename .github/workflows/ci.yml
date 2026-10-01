@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Spine hygiene (no sorry/admit, no homemade axioms, no vacuity)
         run: bash tools/check_spine_hygiene.sh .
@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Install elan / Lean
         run: |
@@ -79,7 +79,7 @@ jobs:
       run:
         working-directory: compat/v4_24
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Install elan / Lean
         run: |
@@ -117,7 +117,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Deposit manifest wiring
         run: bash tools/check_deposit_manifest.sh .

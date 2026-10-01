@@ -21,7 +21,7 @@ jobs:
       CANON_CLOUD_SYNC_SECRET: ${{ secrets.CANON_CLOUD_SYNC_SECRET }}
       GITHUB_SHA: ${{ github.event.workflow_run.head_sha }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
       - name: Synchronize deterministic catalog

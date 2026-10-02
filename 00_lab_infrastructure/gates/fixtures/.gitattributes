@@ -1,0 +1,2 @@
+# Preserve literal source bytes in audit fixtures, including original whitespace.
+*.lean.txt -whitespace

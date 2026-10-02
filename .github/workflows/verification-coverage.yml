@@ -1,0 +1,19 @@
+name: Verification coverage consumers
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  report-only-consumers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Coverage, labeling and immutable preparation regressions
+        run: python3 -m unittest discover -s 00_lab_infrastructure/gates -p 'test*.py' -v

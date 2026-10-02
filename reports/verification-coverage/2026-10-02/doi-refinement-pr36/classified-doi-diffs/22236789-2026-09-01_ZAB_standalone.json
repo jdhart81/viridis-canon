@@ -1,0 +1,84 @@
+{
+  "after_sha256": "0777a3d512f8852fdc385fc57448fee564f0a8b15b0288beb69d8cdc35495c8a",
+  "before_sha256": "c77870c679dc26acaeb66277ca2df9f1121de4e18a12d51a091a2947851912c8",
+  "classification": "VERIFICATION_STATUS_ONLY",
+  "classifier_version": "VRS-MANUSCRIPT-STRUCTURE-1",
+  "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/classified-doi-diffs/22236789-2026-09-01_ZAB_standalone.diff",
+  "diff_sha256": "30b607e740aca67cfbf3d4088107d5d438604c9ffb000a2f5c6837a8e123355b",
+  "doi": "10.5281/zenodo.22236789",
+  "edits": [
+    {
+      "after": [
+        "The exact declared Lean statements are Comparator-certified."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "All Lean targets remain unproved."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "The exact declared Lean statements are Comparator-certified.",
+        "Numerical agreement and formal certification remain distinct evidence paths."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "Finally, every analytic statement is an unproved Lean target; numerical agreement is not formal verification."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "The private Comparator certified the exact frozen Lean declarations; Aristotle was not required."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "Aristotle was not run.",
+        "All proposed Lean targets remain unproved."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "These are bounded analytic and numerical facts, not a universal controller, experiment, novelty claim, or publication decision; formal certification is limited to the declared Lean statements."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "These are bounded analytic and numerical facts, not a universal controller, experiment, formal proof, novelty claim, or publication decision."
+      ],
+      "operation": "replace"
+    }
+  ],
+  "protected_changes": [],
+  "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_ZAB_standalone/paper.tex",
+  "reason": "Only certification-status sentences and section titles differ",
+  "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-122/SEALED_paper.tex",
+  "section_titles": {
+    "after": [
+      "Introduction",
+      "Preregistration, model, and assumptions",
+      "Uniform alignment certificate",
+      "Noise-limited measurement count",
+      "Adversarial verification and negative controls",
+      "Predictions and tests",
+      "Discussion",
+      "Limitations",
+      "Reproducibility and declarations",
+      "Conclusion"
+    ],
+    "before": [
+      "Introduction",
+      "Preregistration, model, and assumptions",
+      "Uniform alignment certificate",
+      "Noise-limited measurement count",
+      "Adversarial verification and negative controls",
+      "Predictions and tests",
+      "Discussion",
+      "Limitations",
+      "Reproducibility and declarations",
+      "Conclusion"
+    ]
+  },
+  "status": "CLASSIFIED"
+}

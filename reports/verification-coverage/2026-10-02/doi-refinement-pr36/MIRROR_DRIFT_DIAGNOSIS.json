@@ -1,0 +1,254 @@
+{
+  "attribution_limit": "Filesystem timestamps plus byte-identical backups establish supported side/time attribution; no actor audit trail available.",
+  "corroborating_note": {
+    "birth_at_utc": "2026-08-01T18:19:42.336933+00:00",
+    "modified_at_utc": "2026-08-01T18:19:42.336995+00:00",
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/PDF_REBUILD_REQUIRED_2026-08-01.md",
+    "present": true,
+    "sha256": "6daa0a523e32ae3b2a8967230df22361ffc105309f3b4d44941ecb62bbe614e8"
+  },
+  "mode": "REPORT_ONLY",
+  "remediation_performed": false,
+  "runs": [
+    {
+      "errors": [],
+      "files": [
+        {
+          "cause": "Finder-format metadata; actor/process attribution unavailable. No scientific payload byte differences.",
+          "changed_side": "Mirror-only additional file",
+          "file": ".DS_Store",
+          "mirror": {
+            "birth_at_utc": "2026-07-19T17:59:33.717501+00:00",
+            "modified_at_utc": "2026-07-19T17:59:38.721881+00:00",
+            "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-102_stewardship-setpoint-theorem/.DS_Store",
+            "present": true,
+            "sha256": "4a601ac32e2cb5e15b0b35b586fb9fac9bd4933dcc16d1f3b808b896f7b23022"
+          },
+          "source": {
+            "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-102_stewardship-setpoint-theorem/.DS_Store",
+            "present": false
+          },
+          "timing_evidence": "Filesystem birth/mtime are observations, not cryptographically authenticated change events."
+        }
+      ],
+      "paper_pdf": {
+        "mirror": {
+          "birth_at_utc": "2026-07-18T07:14:51.655243+00:00",
+          "modified_at_utc": "2026-07-18T07:14:51.655243+00:00",
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-102_stewardship-setpoint-theorem/paper.pdf",
+          "present": true,
+          "sha256": "c2da928dc7e1747e6554796ecf6c44506b9774a611e74eaac1e88a6a51850d1b"
+        },
+        "source": {
+          "birth_at_utc": "2026-07-18T07:14:24.925711+00:00",
+          "modified_at_utc": "2026-07-18T07:14:51.655243+00:00",
+          "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-102_stewardship-setpoint-theorem/paper.pdf",
+          "present": true,
+          "sha256": "c2da928dc7e1747e6554796ecf6c44506b9774a611e74eaac1e88a6a51850d1b"
+        }
+      },
+      "run": "Run-102",
+      "scientific_cause": "No scientific drift; extra hidden OS metadata causes strict INV-8 hold.",
+      "status": "MIRROR_DRIFT"
+    },
+    {
+      "errors": [],
+      "files": [
+        {
+          "changed_side": "Mirror",
+          "diff": {
+            "birth_at_utc": "2026-10-02T22:50:23.758687+00:00",
+            "modified_at_utc": "2026-10-02T22:50:23.758775+00:00",
+            "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/Run-112-paper.tex.diff",
+            "present": true,
+            "sha256": "415a799fd99cb2c214c213dad7957c80f920fc91e3c85bef3aabb16b0796440e"
+          },
+          "file": "paper.tex",
+          "mirror": {
+            "birth_at_utc": "2026-07-28T13:39:08.215155+00:00",
+            "modified_at_utc": "2026-08-01T18:17:40.653999+00:00",
+            "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-112_ghost-credit-theorem/paper.tex",
+            "present": true,
+            "sha256": "12c49694be025382470e33eb2a166bfb5babe4519ac3dbadda03476ba9ad239e"
+          },
+          "mirror_backup": {
+            "birth_at_utc": "2026-07-28T13:39:08.215155+00:00",
+            "modified_at_utc": "2026-07-28T13:39:08.215155+00:00",
+            "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-112_ghost-credit-theorem/paper.tex.bak_2026-08-01_corr",
+            "present": true,
+            "sha256": "14069a39834b357e2586cd08baaead6f747527f0264bb6cc6ee29373998c47e1"
+          },
+          "source": {
+            "birth_at_utc": "2026-07-28T13:38:41.359051+00:00",
+            "modified_at_utc": "2026-07-28T13:39:08.215155+00:00",
+            "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-112_ghost-credit-theorem/paper.tex",
+            "present": true,
+            "sha256": "14069a39834b357e2586cd08baaead6f747527f0264bb6cc6ee29373998c47e1"
+          },
+          "timing_evidence": "Mirror modification timestamp corroborated by Aug-1 correction backup and contemporaneous PDF_REBUILD_REQUIRED_2026-08-01.md; actor unavailable."
+        },
+        {
+          "cause": "Historical pre-correction bytes retained in mirror; extra file also violates strict inventory parity.",
+          "changed_side": "Mirror-only additional correction backup",
+          "file": "paper.tex.bak_2026-08-01_corr",
+          "mirror": {
+            "birth_at_utc": "2026-07-28T13:39:08.215155+00:00",
+            "modified_at_utc": "2026-07-28T13:39:08.215155+00:00",
+            "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-112_ghost-credit-theorem/paper.tex.bak_2026-08-01_corr",
+            "present": true,
+            "sha256": "14069a39834b357e2586cd08baaead6f747527f0264bb6cc6ee29373998c47e1"
+          },
+          "source": {
+            "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-112_ghost-credit-theorem/paper.tex.bak_2026-08-01_corr",
+            "present": false
+          },
+          "timing_evidence": "Backup suffix records Aug-1 correction provenance; filesystem mtime can preserve original modification time. See birth timestamp and correction note."
+        }
+      ],
+      "paper_pdf": {
+        "mirror": {
+          "birth_at_utc": "2026-07-28T13:39:09.733150+00:00",
+          "modified_at_utc": "2026-07-28T13:39:09.733150+00:00",
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-112_ghost-credit-theorem/paper.pdf",
+          "present": true,
+          "sha256": "171923e8b41c30bd82c1858e49b31a07b89790c3f69ee43e70c92be9c03ea9bb"
+        },
+        "source": {
+          "birth_at_utc": "2026-07-28T13:38:45.717690+00:00",
+          "modified_at_utc": "2026-07-28T13:39:09.733150+00:00",
+          "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-112_ghost-credit-theorem/paper.pdf",
+          "present": true,
+          "sha256": "171923e8b41c30bd82c1858e49b31a07b89790c3f69ee43e70c92be9c03ea9bb"
+        }
+      },
+      "run": "Run-112",
+      "scientific_cause": "Mirror corrected boxed ghost-floor inequality to monotone bounds; source and both PDFs retain prior bytes.",
+      "status": "MIRROR_DRIFT"
+    },
+    {
+      "errors": [],
+      "files": [
+        {
+          "changed_side": "Mirror",
+          "diff": {
+            "birth_at_utc": "2026-10-02T22:50:23.763278+00:00",
+            "modified_at_utc": "2026-10-02T22:50:23.763324+00:00",
+            "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/Run-113-README.md.diff",
+            "present": true,
+            "sha256": "cf09ecd88f8d483bcb8c6081e53a9b63a45c80d0184bdae3c5210e12a92a46ef"
+          },
+          "file": "README.md",
+          "mirror": {
+            "birth_at_utc": "2026-07-29T07:23:24.266656+00:00",
+            "modified_at_utc": "2026-08-01T18:17:40.655383+00:00",
+            "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/README.md",
+            "present": true,
+            "sha256": "6a13acdd91bf2a2da30048e3622d48a00e5e9e70d35b6ee1247ecc19bbe925c7"
+          },
+          "mirror_backup": {
+            "birth_at_utc": "2026-07-29T07:23:24.266656+00:00",
+            "modified_at_utc": "2026-07-29T07:23:24.266656+00:00",
+            "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/README.md.bak_2026-08-01_corr",
+            "present": true,
+            "sha256": "48ee85b291e89aa9984d444ee404b541290b5c7d98ee11e3ec3ae96d2e45a3ba"
+          },
+          "source": {
+            "birth_at_utc": "2026-07-29T07:23:24.265713+00:00",
+            "modified_at_utc": "2026-07-29T07:23:24.266656+00:00",
+            "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/README.md",
+            "present": true,
+            "sha256": "48ee85b291e89aa9984d444ee404b541290b5c7d98ee11e3ec3ae96d2e45a3ba"
+          },
+          "timing_evidence": "Mirror modification timestamp corroborated by Aug-1 correction backup and contemporaneous PDF_REBUILD_REQUIRED_2026-08-01.md; actor unavailable."
+        },
+        {
+          "cause": "Historical pre-correction bytes retained in mirror; extra file also violates strict inventory parity.",
+          "changed_side": "Mirror-only additional correction backup",
+          "file": "README.md.bak_2026-08-01_corr",
+          "mirror": {
+            "birth_at_utc": "2026-07-29T07:23:24.266656+00:00",
+            "modified_at_utc": "2026-07-29T07:23:24.266656+00:00",
+            "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/README.md.bak_2026-08-01_corr",
+            "present": true,
+            "sha256": "48ee85b291e89aa9984d444ee404b541290b5c7d98ee11e3ec3ae96d2e45a3ba"
+          },
+          "source": {
+            "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/README.md.bak_2026-08-01_corr",
+            "present": false
+          },
+          "timing_evidence": "Backup suffix records Aug-1 correction provenance; filesystem mtime can preserve original modification time. See birth timestamp and correction note."
+        },
+        {
+          "changed_side": "Mirror",
+          "diff": {
+            "birth_at_utc": "2026-10-02T22:50:23.763793+00:00",
+            "modified_at_utc": "2026-10-02T22:50:23.763829+00:00",
+            "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/Run-113-paper.tex.diff",
+            "present": true,
+            "sha256": "7b172cbe9b89e056934d71c820c67dc0c11b0b6bb4104205813ce835d87bd6b4"
+          },
+          "file": "paper.tex",
+          "mirror": {
+            "birth_at_utc": "2026-07-29T07:21:16.935570+00:00",
+            "modified_at_utc": "2026-08-01T18:17:40.654683+00:00",
+            "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/paper.tex",
+            "present": true,
+            "sha256": "1695a87d1c67eb42ba73f071be502a054dfe2ecd1bdc200d595e820348b099d4"
+          },
+          "mirror_backup": {
+            "birth_at_utc": "2026-07-29T07:21:16.935570+00:00",
+            "modified_at_utc": "2026-07-29T07:21:16.935570+00:00",
+            "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/paper.tex.bak_2026-08-01_corr",
+            "present": true,
+            "sha256": "6fe6bef836f9d2c756fede65b24897f249ed325559ea5e07559b4546b8acbb33"
+          },
+          "source": {
+            "birth_at_utc": "2026-07-29T07:21:16.933841+00:00",
+            "modified_at_utc": "2026-07-29T07:21:16.935570+00:00",
+            "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/paper.tex",
+            "present": true,
+            "sha256": "6fe6bef836f9d2c756fede65b24897f249ed325559ea5e07559b4546b8acbb33"
+          },
+          "timing_evidence": "Mirror modification timestamp corroborated by Aug-1 correction backup and contemporaneous PDF_REBUILD_REQUIRED_2026-08-01.md; actor unavailable."
+        },
+        {
+          "cause": "Historical pre-correction bytes retained in mirror; extra file also violates strict inventory parity.",
+          "changed_side": "Mirror-only additional correction backup",
+          "file": "paper.tex.bak_2026-08-01_corr",
+          "mirror": {
+            "birth_at_utc": "2026-07-29T07:21:16.935570+00:00",
+            "modified_at_utc": "2026-07-29T07:21:16.935570+00:00",
+            "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/paper.tex.bak_2026-08-01_corr",
+            "present": true,
+            "sha256": "6fe6bef836f9d2c756fede65b24897f249ed325559ea5e07559b4546b8acbb33"
+          },
+          "source": {
+            "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/paper.tex.bak_2026-08-01_corr",
+            "present": false
+          },
+          "timing_evidence": "Backup suffix records Aug-1 correction provenance; filesystem mtime can preserve original modification time. See birth timestamp and correction note."
+        }
+      ],
+      "paper_pdf": {
+        "mirror": {
+          "birth_at_utc": "2026-07-29T07:21:18.232449+00:00",
+          "modified_at_utc": "2026-07-29T07:21:18.232449+00:00",
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/paper.pdf",
+          "present": true,
+          "sha256": "bb7f0d2a44218b8d84e839619dec5e490995aac72936bb4ad278e9fed9431ab6"
+        },
+        "source": {
+          "birth_at_utc": "2026-07-29T07:21:17.354471+00:00",
+          "modified_at_utc": "2026-07-29T07:21:18.232449+00:00",
+          "path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/paper.pdf",
+          "present": true,
+          "sha256": "bb7f0d2a44218b8d84e839619dec5e490995aac72936bb4ad278e9fed9431ab6"
+        }
+      },
+      "run": "Run-113",
+      "scientific_cause": "Mirror corrected equality locus to Tc in (0,Ta] and Landauer saturation, including README; source and both PDFs retain prior bytes.",
+      "status": "MIRROR_DRIFT"
+    }
+  ],
+  "source_read_purpose": "PARITY_ONLY_NOT_CERTIFICATION"
+}

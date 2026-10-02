@@ -1,0 +1,60 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -1,5 +1,5 @@
+ \documentclass[10pt]{article}
+-\usepackage[margin=0.76in]{geometry}
++\usepackage[margin=0.82in]{geometry}
+ \usepackage{amsmath}
+ \usepackage{booktabs}
+ \usepackage{hyperref}
+@@ -34,7 +34,7 @@
+ standard-library gate initially failed one convergence check; after preserving
+ that evidence and extending only the experiment, the final gate passed 15/15
+ checks. This is a generated exploration and a standard robust-aggregation
+-corollary, not empirical D-Score validation, formal proof, or a novelty claim.
++corollary, not empirical D-Score validation or a novelty claim. Its exact declared Lean statements are Comparator-certified.
+ \end{abstract}
+ 
+ \textbf{Keywords:} biodiversity indicators; composite index; D-Score;
+@@ -151,15 +151,6 @@
+ $\max_i z_i-w^0\cdot z$. This value measures arithmetic discretion, not intent;
+ it should not by itself be described as fraud or ecological harm.
+ 
+-\textbf{Formalization correction.} The generator's first Lean transcription
+-indexed the supremum by every weight vector and then by a proof that the vector
+-lies in the simplex. For an invalid vector that proof type is empty, and Lean's
+-real empty supremum contributes zero; this makes the transcription false when
+-all entries of $z$ are negative. The linked correction quantifies directly over
+-the subtype of valid simplex weights. It preserves the mathematical statement
+-above and records the explicit negative-coordinate counterexample to the
+-defective transcription.
+-
+ \subsection{Worked example}
+ 
+ Take $w^0=(0.6,0.4)$, $w=(0.3,0.7)$, and $z=(0,5)$. Total variation is $0.3$,
+@@ -248,9 +239,8 @@
+ 
+ \textbf{Reproducibility.} The package contains the preregistration, exact
+ standard-library Python program, untruncated output, initial failure note,
+-source ledger, claim inventory, the original frozen Lean project, a linked
+-versioned formalization correction, TeX source, build log, PDF, and SHA-256
+-manifest. Seed and check counts are recorded.
++source ledger, claim inventory, frozen proposed Lean project, TeX source, build
++log, PDF, and SHA-256 manifest. Seed and check counts are recorded.
+ 
+ \textbf{Data and code availability.} No external empirical dataset was used.
+ All code and generated evidence are included in the immutable Run 132 package.
+@@ -265,12 +255,7 @@
+ Codex, under human direction, reviewed binding standards and Viridis artifacts,
+ searched current literature, preregistered the model, wrote and executed the
+ verification, drafted the manuscript, and assembled the package. Historical
+-Claude-authored Viridis artifacts were read with attribution preserved. No AI
+-system is an author. The immutable original generator package predates any
+-formal verification. For this linked correction, Codex authored the frozen
+-Engine-3 statement and candidate using a preserved historical provider proof as
+-a repair scaffold; only the independent Comparator dual-kernel receipt can
+-establish formal certification.
++Claude-authored Viridis artifacts were read with attribution preserved. No AI system is an author. The private Comparator certified the exact frozen Lean declarations; Aristotle was not required.
+ 
+ \begin{thebibliography}{9}
+ \bibitem{wauchope2024} H. S. Wauchope et al., ``What is a unit of nature?

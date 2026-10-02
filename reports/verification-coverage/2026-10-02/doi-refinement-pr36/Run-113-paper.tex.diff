@@ -1,0 +1,32 @@
+--- Desktop generation source
++++ Cowork mirror
+@@ -213,8 +213,11 @@
+ \begin{equation}
+ T_{\mathrm{eff}} \;\geq\; T_a ,
+ \end{equation}
+-with equality if and only if $T_c = T_a$, $\varepsilon = \kB T_a \ln 2$ and
+-$\phi = 0$. Consequently
++with equality if and only if $\phi = 0$, $\varepsilon(T_c) = \kB T_c \ln 2$
++(Landauer saturation at the \emph{operating} temperature), $T_c \leq T_a$, and
++$\eta_2 = 1$ whenever $T_c < T_a$. The equality locus is therefore the entire
++interval $T_c \in (0, T_a]$ at Carnot efficiency, not the single point
++$T_c = T_a$. Consequently
+ \begin{equation}
+ \boxed{\;\frac{dI}{dt} \;\leq\; \frac{P \cdot D}{\kB\, T_a \ln 2}\;}
+ \label{eq:floor}
+@@ -228,8 +231,13 @@
+ $T_c \geq T_a$, the bracket is at least $T_c \geq T_a$. If $T_c < T_a$, the
+ bracket is at least $T_c + (T_a - T_c)/\eta_2 \geq T_c + (T_a - T_c) = T_a$,
+ since $\eta_2 \leq 1$. In both cases $T_{\mathrm{eff}} \geq \mu T_a \geq T_a$.
+-Equality forces $\mu = 1$, $\phi = 0$ and $\eta_2 = 1$ with the bracket
+-saturated, which occurs only at $T_c = T_a$.
++Equality forces $\mu = 1$ (Landauer saturation, $\varepsilon = \kB T_c \ln 2$),
++$\phi = 0$, and the bracket to equal $T_a$ exactly. For $T_c > T_a$ the bracket
++is $T_c > T_a$, so equality requires $T_c \leq T_a$; for $T_c < T_a$ the bracket
++is $T_c + (T_a - T_c)/\eta_2$, which equals $T_a$ if and only if $\eta_2 = 1$;
++at $T_c = T_a$ the bracket equals $T_a$ for every $\eta_2$. This is precisely the
++stated condition, and it is exactly the refrigeration-futility locus discussed
++below --- an interval, not a point.
+ \end{proof}
+ 
+ Two readings deserve emphasis. First, \emph{refrigeration futility}: at Carnot

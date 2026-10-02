@@ -1,0 +1,20 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -12,7 +12,7 @@
+ \maketitle
+ 
+ \begin{abstract}
+-For three supplied nonnegative partner contributions $a,b,c$, an additive service threshold $q$ survives arbitrary complete loss of one partner exactly when $q\le a+b$, $q\le a+c$, and $q\le b+c$. The guaranteed retained service is therefore the minimum pair sum, equivalently $a+b+c-\max\{a,b,c\}$. Equal total contribution does not imply equal loss reserve: $(5,5,0)$ and $(4,3,3)$ both total 10, but retain 5 and 6 after loss of the largest contributor. Exact enumeration and seeded replay pass 13 checks. Eight Lean targets and a zero-sorry candidate are frozen but uncertified. The result is direct accounting and is classified as a \texttt{METHODS\_NOTE}; it does not establish ecological persistence, structural stability, functional substitutability, or field benefit.
++For three supplied nonnegative partner contributions $a,b,c$, an additive service threshold $q$ survives arbitrary complete loss of one partner exactly when $q\le a+b$, $q\le a+c$, and $q\le b+c$. The guaranteed retained service is therefore the minimum pair sum, equivalently $a+b+c-\max\{a,b,c\}$. Equal total contribution does not imply equal loss reserve: $(5,5,0)$ and $(4,3,3)$ both total 10, but retain 5 and 6 after loss of the largest contributor. Exact enumeration and seeded replay pass 13 checks. Eight Lean targets and a zero-sorry candidate have exact-hash certification after private Comparator acceptance by nanoda and Lean's default kernel; the accompanying provenance receipts record manuscript review status. The result is direct accounting and is classified as a \texttt{METHODS\_NOTE}; it does not establish ecological persistence, structural stability, functional substitutability, or field benefit.
+ \end{abstract}
+ 
+ \textbf{Keywords:} mutualism; ecological networks; redundancy; concentration risk; partner loss; Gaian systems
+@@ -55,7 +55,7 @@
+ \section{Verification and formalization}
+ The standard-library verifier exhaustively checks 9,261 contribution triples and 287,091 threshold cases. It tests the reserve identity, three-pair equivalence, arbitrary-loss bound, all permutations, witnesses, a missing-partner counterexample, equal-total concentration control, boundaries, nonnegative-addition monotonicity, and 100,000 seeded random cases. The captured result is \texttt{13 PASS / 0 FAIL / 13 CHECKS}.
+ 
+-Eight exact Lean statements and a deterministic zero-sorry candidate are frozen under Lean 4.28.0 and the pinned Mathlib commit. No local Lean, Lake, Elan, or Mathlib process was run. Only exact-byte private Comparator acceptance by nanoda and Lean's default kernel can issue a certificate.
++The eight exact Lean statements now have exact-hash zero-sorry certification after private Comparator acceptance by nanoda and Lean's default kernel. They cover the loss-budget implication, the three single-loss component bounds, their combined single-partner-loss guarantee, nonnegative-addition monotonicity, the concrete witness, and the equal-total concentration counterexample. The certificate applies only to the declared formal statements; common units, additivity, substitutability, simultaneous availability, and ecological interpretation remain supplied assumptions. No local Lean, Lake, Elan, or Mathlib process was run. The accompanying provenance receipts record manuscript review status.
+ 
+ \section{Discussion, limitations, and falsification}
+ The ledger is falsified by an arithmetic counterexample under the stated additive model or by failed exact replay. Its ecological interpretation fails when services are non-substitutable, differently scaled, nonlinear, delayed, conditional on abundance, correlated, spatially inaccessible, or jointly lost. Competition, adaptation, network rewiring, partner quality, and temporal turnover are excluded.

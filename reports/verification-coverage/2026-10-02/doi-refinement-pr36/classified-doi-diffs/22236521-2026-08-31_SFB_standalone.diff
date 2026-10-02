@@ -1,0 +1,11 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -41,7 +41,7 @@
+ \section{Verification tests and formalization}
+ The exact-rational gate enumerates nonnegative half-unit demands and contributions, tests the identity and feasibility equivalence, checks isolated-to-pooled implication, exercises signed internal transfers, and preserves the pooled-but-not-isolated witness. The captured output is part of the immutable package.
+ 
+-The Engine-3 pair freezes six Lean declarations: pooled-margin identity, feasibility equivalence, isolated sufficiency, transfer conservation, double-counting identity, and the named non-vacuity witness. The candidate contains no \texttt{sorry} or \texttt{admit}. It is not called verified unless the private Comparator accepts the exact bytes with nanoda and Lean's default kernel and the certificate issuer binds the receipt.
++The Engine-3 pair freezes six Lean declarations: pooled-margin identity, feasibility equivalence, isolated sufficiency, transfer conservation, double-counting identity, and the named non-vacuity witness. The candidate contains no \texttt{sorry} or \texttt{admit}. The private Comparator accepted the exact frozen bytes with nanoda and Lean's default kernel, and the resulting zero-sorry certificate is bound to this reconciled package. This formal certification covers only the declared algebraic statements.
+ 
+ \section{Discussion, limitations, and falsifiability}
+ The ledger is meaningful only after a common support unit and actual transferability are independently justified. Shade, water, mulch, mycorrhizal association, protection, seed, labor, and time are not automatically substitutes. Spatial separation, seasonality, thresholds, nonlinear dose response, competition, asymmetric dependence, and transfer cost can invalidate the operational interpretation while leaving the algebra true. No field dataset is analyzed, and the note establishes no causal nurse-plant benefit, survival gain, biodiversity outcome, carbon effect, legal eligibility, procurement readiness, or commercial value. A real-number counterexample to an identity or disagreement in exact-rational replay would falsify the mathematical package.

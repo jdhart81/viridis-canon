@@ -31,9 +31,11 @@ class PublicationCoverageGateTests(unittest.TestCase):
         self.candidate.write_text("theorem meaningful (x : Nat) : x ≤ x := le_rfl\n"
                                   "theorem meaningful_witness : ∃ x : Nat, x ≤ x := ⟨0, le_rfl⟩\n")
         self.paper = self.run / "SEALED_paper.tex"
-        self.paper.write_text("A sealed Methods Note, not a fabricated research paper.")
+        self.paper.write_text(r"\begin{document}A sealed Methods Note.\end{document}")
+        self.pdf = self.run / "SEALED_paper.pdf"
+        self.pdf.write_bytes(b"%PDF-test fixture")
         self.cert = self.root / "LEAN_ZERO_SORRY_CERTIFICATE.json"
-        self.cert.write_text("{}")
+        self.cert.write_text(json.dumps({"issued_at_utc":"2026-01-01T00:00:00Z"}))
         self.expected_candidate_hash = digest(self.candidate)
         self.expected_paper_hash = digest(self.paper)
         self.entry = {"id": "Run-142", "kind": "PAPER", "path": "science-engine/07_nightly_engine/compound research papers/Run-142", "status": "CERTIFIED",
@@ -49,6 +51,15 @@ class PublicationCoverageGateTests(unittest.TestCase):
             "evidence_class": "FORMAL_TARGET", "aristotle_target": "meaningful"}]}))
         (self.run / "claim_binding.json").write_text(json.dumps(self.binding))
         (self.run / "metadata.json").write_text(json.dumps({"title": "Theorem relation", "description": "Theorem in Canon"}))
+        from publication_binding import draft_binding
+        receipt = draft_binding(self.run, self.inspected_fixture(self.cert, self.root), self.cert, self.root)
+        review = {k:receipt[k] for k in ('certificate','final_manuscript','allowed_diff_sha256')}
+        review.update(status='APPROVED_PUBLICATION_BINDING', pdf_correspondence_reviewed=True, scope='VERIFICATION_STATUS_TEXT_ONLY', reviewer={'identity':'independent test reviewer'}, reviewed_at_utc='2026-01-02T00:00:00Z')
+        self.review = self.root / 'independent-review.json'
+        self.review.write_text(json.dumps(review))
+        self.entry['approved_publication_binding_reviews']=[digest(self.review)]
+        receipt.update(status='PUBLICATION_BOUND', issued_at_utc='2026-01-03T00:00:00Z', review={'path':str(self.review),'sha256':digest(self.review)})
+        (self.run/'PUBLICATION_BINDING.json').write_text(json.dumps(receipt))
         import shutil
         self.generation_root = Path(self.tmp.name)/'author lab'
         self.source = self.generation_root/'07_nightly_engine/compound research papers/Run-142'
@@ -60,7 +71,7 @@ class PublicationCoverageGateTests(unittest.TestCase):
         return {"valid": digest(self.candidate) == self.expected_candidate_hash,
                 "reasons": [], "candidate_path": str(self.candidate), "source_run": "Run-142",
                 "certified_theorems": ["meaningful"], "nonvacuity": ["meaningful_witness"],
-                "sealed_paper_inputs": {"SEALED_paper.tex": {"path": str(self.paper), "sha256": self.expected_paper_hash},
+                "sealed_paper_inputs": {"SEALED_paper.pdf": {"path":str(self.pdf), "sha256":digest(self.pdf)}, "SEALED_paper.tex": {"path": str(self.paper), "sha256": self.expected_paper_hash},
                     "SEALED_CLAIM_INVENTORY.json": {"path": str(self.inventory), "sha256": digest(self.inventory)}}}
 
     def test_certified_bound_claim_positive(self):

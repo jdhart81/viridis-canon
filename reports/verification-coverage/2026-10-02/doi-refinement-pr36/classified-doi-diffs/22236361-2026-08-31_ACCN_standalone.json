@@ -1,0 +1,156 @@
+{
+  "after_sha256": "ec32519327fb0be0d4c66558fdf783b205897ea6c09cc608cabb40bda79ff80f",
+  "before_sha256": "b57b37b5935aa93dce0c4a7a36270d108873bb0c7499cf859aaad875fed777cd",
+  "classification": "CONTENT_CHANGED",
+  "classifier_version": "VRS-MANUSCRIPT-STRUCTURE-1",
+  "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/classified-doi-diffs/22236361-2026-08-31_ACCN_standalone.diff",
+  "diff_sha256": "0044a2750a6ec4c4f86b64cb0760f4c46bd62503f50b7a2a91e1b13b710b0fbf",
+  "doi": "10.5281/zenodo.22236361",
+  "edits": [
+    {
+      "after": [
+        "The exact gain is $C(p)-p=p(1-p)(2p-1)/M(p)$: agreement postselection helps precisely for an independently competent pair, while a copied-agent control provides no gain by model construction; the frozen Lean theorem named for that control certifies only reflexivity $p=p$."
+      ],
+      "allowed_verification_status_only": false,
+      "before": [
+        "The exact gain is $C(p)-p=p(1-p)(2p-1)/M(p)$: agreement postselection helps precisely for an independently competent pair, while copying provides no gain."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "This copied-agent statement is supported by the declared model and deterministic control, not by a substantive formal copied-agent theorem; the corresponding frozen Lean declaration proves only $p=p$."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [],
+      "operation": "insert"
+    },
+    {
+      "after": [
+        "The included exact-byte private Comparator receipt records acceptance by nanoda and Lean's default kernel and binds the issued certificate."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "Only an exact-byte private Comparator receipt accepted by nanoda and Lean's default kernel can issue the certificate."
+      ],
+      "operation": "replace"
+    }
+  ],
+  "protected_changes": [
+    {
+      "after": [
+        "p",
+        "M(p)=p^2+(1-p)^2",
+        "C(p)=p^2/M(p)",
+        "C(p)-p=p(1-p)(2p-1)/M(p)",
+        "p=p",
+        "p=3/4",
+        "5/8",
+        "9/10",
+        "Y\\in\\{0,1\\}",
+        "Y",
+        "A",
+        "B",
+        "p",
+        "A=B",
+        "p^2",
+        "(1-p)^2",
+        "Y",
+        "0<p<1",
+        "p",
+        "M(p)>0",
+        "2p-1",
+        "\\square",
+        "1/2<p<1",
+        "p=1/2",
+        "p=1",
+        "0<p<1/2",
+        "p=3/4",
+        "9/16",
+        "1/16",
+        "6/16",
+        "5/8",
+        "9/10",
+        "3/20",
+        "p^2=9/16",
+        "B",
+        "A",
+        "p",
+        "p=p",
+        "p=3/4",
+        "M(p)",
+        "C(p)"
+      ],
+      "before": [
+        "p",
+        "M(p)=p^2+(1-p)^2",
+        "C(p)=p^2/M(p)",
+        "C(p)-p=p(1-p)(2p-1)/M(p)",
+        "p=3/4",
+        "5/8",
+        "9/10",
+        "Y\\in\\{0,1\\}",
+        "Y",
+        "A",
+        "B",
+        "p",
+        "A=B",
+        "p^2",
+        "(1-p)^2",
+        "Y",
+        "0<p<1",
+        "p",
+        "M(p)>0",
+        "2p-1",
+        "\\square",
+        "1/2<p<1",
+        "p=1/2",
+        "p=1",
+        "0<p<1/2",
+        "p=3/4",
+        "9/16",
+        "1/16",
+        "6/16",
+        "5/8",
+        "9/10",
+        "3/20",
+        "p^2=9/16",
+        "B",
+        "A",
+        "p",
+        "p=3/4",
+        "M(p)",
+        "C(p)"
+      ],
+      "kind": "math"
+    }
+  ],
+  "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_ACCN_standalone/paper.tex",
+  "reason": "Protected mathematical/numeric/theorem content or other scientific prose differs",
+  "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-145/SEALED_paper.tex",
+  "section_titles": {
+    "after": [
+      "Introduction and relevant prior work",
+      "Model and preregistered question",
+      "Result",
+      "Worked witness and dependence controls",
+      "Verification",
+      "Predictions and falsification tests",
+      "Discussion and limitations",
+      "Reproducibility and declarations",
+      "Data and code availability"
+    ],
+    "before": [
+      "Introduction and relevant prior work",
+      "Model and preregistered question",
+      "Result",
+      "Worked witness and dependence controls",
+      "Verification",
+      "Predictions and falsification tests",
+      "Discussion and limitations",
+      "Reproducibility and declarations",
+      "Data and code availability"
+    ]
+  },
+  "status": "CLASSIFIED"
+}

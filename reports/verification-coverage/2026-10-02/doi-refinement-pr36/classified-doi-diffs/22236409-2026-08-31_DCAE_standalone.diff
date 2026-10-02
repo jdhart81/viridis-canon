@@ -1,0 +1,29 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -9,7 +9,7 @@
+ \date{29 August 2026}
+ \begin{document}\maketitle\vspace{-1.2em}
+ \begin{abstract}
+-Suppose a linear three-component biodiversity score uses nonnegative weights summing to one. If every observed component is aligned to its reference within a common absolute tolerance $\varepsilon$, then the composite is also within $\varepsilon$. The bound is sharp under a common shift, and a baseline threshold margin of $\varepsilon$ is therefore preserved. Normalization and nonnegativity are necessary for this certificate. The result is elementary convex-combination algebra and is conservatively classified as a methods note. It is not an empirical validation of D-Score, a justification of weights, a novelty claim, or a formal certificate; frozen Lean statements and a zero-sorry candidate await independent dual-kernel verification.
++Suppose a linear three-component biodiversity score uses nonnegative weights summing to one. If every observed component is aligned to its reference within a common absolute tolerance $\varepsilon$, then the composite is also within $\varepsilon$. The bound is sharp under a common shift, and a baseline threshold margin of $\varepsilon$ is therefore preserved. Normalization and nonnegativity are necessary for this certificate. The result is elementary convex-combination algebra and is conservatively classified as a methods note. It is not an empirical validation of D-Score, a justification of weights, or a novelty claim; the frozen Lean statements are formally certified by the included dual-kernel Comparator receipt.
+ \end{abstract}
+ \textbf{Keywords:} biodiversity indicator; composite score; calibration; uncertainty envelope; D-Score; alignment
+ 
+@@ -42,7 +42,7 @@
+ \section{Verification tests and failure boundaries}
+ A deterministic standard-library harness tested 50,000 seeded rational cases and exact boundary witnesses. It also retained two negative controls. Without normalization, weights $(1,1,1)$ amplify a common $\varepsilon$ shift to $3\varepsilon$. Without nonnegativity, weights $(2,-1,0)$ sum to one but an adversarial signed component shift produces $3\varepsilon$. These are assumption failures, not exceptions to the proposition.
+ 
+-The final capture reports 16 passes and zero failures. The numerical gate checks the algebra and controls; it does not constitute ecological evidence or kernel verification. Six theorem statements, including a sharp non-vacuity witness at weights $(1/2,1/3,1/6)$, are frozen for the Engine-3 Comparator lane. The candidate is untrusted until exact-byte acceptance by both nanoda and Lean's default kernel.
++The final capture reports 16 passes and zero failures. The numerical gate checks the algebra and controls; it does not constitute ecological evidence or kernel verification. Six theorem statements, including a sharp non-vacuity witness at weights $(1/2,1/3,1/6)$, are frozen for the Engine-3 Comparator lane. The exact candidate bytes were accepted by both nanoda and Lean's default kernel.
+ 
+ \section{Discussion, limitations, and falsifiable use}
+ The envelope is useful only when component semantics, scales, and reference times are already aligned. It says nothing about whether the reference is true, whether the weights are legitimate, whether the three components are sufficient, or whether uncertainty is correlated or distributional. Run 118's temporal-coherence problem remains separate, as does Run 132's governance problem for changing weights.
+@@ -50,7 +50,7 @@
+ A falsifiable operational use would declare component tolerances before observing a candidate dataset, compute the composite discrepancy, and reject the certificate if any component or the composite exceeds its budget. Field calibration could show that a common $\varepsilon$ is inappropriate; in that case component-specific budgets or a covariance model are required. No D-Score dataset was analyzed here.
+ 
+ \section*{Reproducibility, data and code availability}
+-The immutable Run 146 package includes the full Python verifier and captured output, manuscript source/PDF/log, source ledger, claim inventory, frozen Lean statement, zero-sorry candidate, exact toolchain and Mathlib pins, and SHA-256 manifest. No private data are used. The package is local and pre-certificate; no DOI or public release is implied.
++The immutable Run 146 package includes the full Python verifier and captured output, manuscript source/PDF/log, source ledger, claim inventory, frozen Lean statement, zero-sorry candidate, exact toolchain and Mathlib pins, and SHA-256 manifest. No private data are used. The package is local and Comparator-certified; no DOI or public release is implied.
+ 
+ \section*{Funding, conflicts of interest, authorship, and AI use}
+ No external funding supported this note. Justin D. Hart is Founder and CEO of Viridis LLC, which may commercialize D-Score services; that interest does not constitute scientific validation. Hart is the accountable author. Codex performed standards/corpus review, preregistration, derivation, verification, drafting, Lean candidate construction, packaging, and QA under Hart's direction. Historical Claude-authored Viridis artifacts were read with attribution preserved. Aristotle was not used. AI systems are tools, not authors.

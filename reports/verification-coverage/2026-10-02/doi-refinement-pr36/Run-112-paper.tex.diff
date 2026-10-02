@@ -1,0 +1,23 @@
+--- Desktop generation source
++++ Cowork mirror
+@@ -444,11 +444,15 @@
+ \begin{equation}
+ d \;\ge\; d_{\min} = \frac{I\,\kB T\ln 2}{P\,D},
+ \end{equation}
+-and hence, via Corollary~\ref{cor:product},
+-\begin{equation}
+-\boxed{\;G \;\ge\; \lambda\,\frac{I\,\kB T \ln 2}{P\,D}\;}
+-\end{equation}
+-so that every doubling of monitoring power halves the attainable ghost floor.
++and hence, since $G$ is strictly increasing in $L$ in the stochastic order
++(Theorem~\ref{thm:frac}) and, to leading order, bounded above by the
++hazard--latency product (Corollary~\ref{cor:product}),
++\begin{equation}
++\boxed{\;G(d_{\min}) \;\le\; G(d) \;\le\; \lambda d\;}
++\end{equation}
++The attainable ghost fraction is therefore floored by $G(d_{\min})$, which to leading
++order is $\lambda\,I\,\kB T\ln 2/(P\,D)$: every doubling of monitoring power halves
++$d_{\min}$ and hence, to leading order, the attainable floor.
+ 
+ Intellectual honesty requires stating how slack this bound is. At $D=1$,
+ acquiring $10^{12}$ bits at $1$~kW takes $2.9\times10^{-12}$~s; the Landauer

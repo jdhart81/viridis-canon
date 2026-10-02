@@ -1,0 +1,36 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -14,9 +14,8 @@
+ $E_{\rm bundle}=F+v_1+v_2$. The no-interaction saving is exactly $F$. With
+ bundle-specific interaction overhead $h$, the saving becomes $F-h$, so sharing
+ is cheaper only when $h<F$. A supplied per-bit lower bound propagates through
+-the same ledger. Exact-rational tests support the identities; a frozen Lean
+-statement and zero-hole candidate await private dual-kernel Comparator
+-certification. This is a methods note, not evidence that ecosystem services are
++the same ledger. Exact-rational tests support the identities; the eight frozen Lean declarations now have private dual-kernel Comparator
++certification bound to the exact proof bytes. This is a methods note, not evidence that ecosystem services are
+ additive, credits may be stacked, or a real MRV system saves energy or money.
+ \end{abstract}
+ \noindent\textbf{Keywords:} ecosystem services; verification overhead; MRV;
+@@ -92,12 +91,15 @@
+ at, and above $F$. A third grid propagates supplied marginal per-bit lower
+ bounds. No tolerance, random seed, external data, or network access is used.
+ 
+-The Lean statement freezes the two cost definitions, fixed and
+-interaction-adjusted savings, the strict-cheaper condition, the marginal floor,
+-the net-feasibility equivalence, and the numerical witness. The candidate has
+-no proof holes or placeholder axioms, but it is not certified until Comparator
+-accepts the exact bytes with both nanoda and Lean's default kernel and the
+-issuer binds a certificate.
++The eight named Lean declarations cover the two cost expansions, fixed and
++interaction-adjusted savings, the sufficient strict-cheaper condition, the
++marginal floor, net-feasibility equivalence, and the numerical witness.
++Comparator accepted the exact proof with nanoda and Lean's default kernel;
++the issuer bound the result in a zero-sorry certificate. The converse,
++break-even, and adverse-interaction cases discussed in the paper follow
++algebraically from the saving identity, but are not separately named
++certified declarations. This does not establish measured savings, valid
++credit stacking, physical calibration, or independent paper acceptance.
+ 
+ \section{Discussion, falsification, and limitations}
+ Equation~\eqref{eq:saving} is useful only after the ledger boundaries are

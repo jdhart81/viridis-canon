@@ -1,0 +1,83 @@
+{
+  "after_sha256": "634ab5b838c95ca952d3af5b0f75f65fa80ba8d1ac012f2cdae6bfa0ccc42546",
+  "before_sha256": "9e1ed89e5b8713a4a1f63127f9e131b7a5c7d49e73bdb066ddbed86cf437b3d3",
+  "classification": "VERIFICATION_STATUS_ONLY",
+  "classifier_version": "VRS-MANUSCRIPT-STRUCTURE-1",
+  "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/classified-doi-diffs/22236458-2026-08-31_SBRN_standalone.diff",
+  "diff_sha256": "46a966462783ea9fcb11cdf7f3a334a3b53cb1a70cebe489a970a60c8748ea77",
+  "doi": "10.5281/zenodo.22236458",
+  "edits": [
+    {
+      "after": [
+        "The result is a max--min progressive-filling specialization and is classified as a \\texttt{METHODS\\_NOTE}; novelty, significance, and empirical validity remain unassessed; the exact frozen Lean statements are Comparator-certified."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "The result is a max--min progressive-filling specialization and is classified as a \\texttt{METHODS\\_NOTE}; novelty, significance, empirical validity, and formal verification remain unassessed."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "Attainment and equality are supported by the analytical construction and the deterministic numerical gate, not by the frozen Lean upper-bound theorem."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "This evidence is numerical and algebraic, not Lean verification."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "Six exact Lean targets with named witnesses are formally certified by the private Comparator.",
+        "Nanoda and Lean's default kernel accepted the exact frozen bytes; no local Lean, Lake, Elan, or Mathlib process was used."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "Six exact Lean targets are frozen with named witnesses.",
+        "Aristotle has not run, and no local Lean, Lake, Elan, or Mathlib compilation was used.",
+        "Until Aristotle's provider evidence and an independent exact-byte cloud verifier both pass, the result remains certificate debt and must not be called formally verified."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "Comparator performed dual-kernel formal verification; Aristotle was not used."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "Aristotle did not participate in this generated stage."
+      ],
+      "operation": "replace"
+    }
+  ],
+  "protected_changes": [],
+  "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_SBRN_standalone/paper.tex",
+  "reason": "Only certification-status sentences and section titles differ",
+  "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-144/SEALED_paper.tex",
+  "section_titles": {
+    "after": [
+      "Introduction and related work",
+      "Model and preregistered question",
+      "Result",
+      "Worked examples and negative control",
+      "Verification",
+      "Predictions and falsification tests",
+      "Discussion and limitations",
+      "Reproducibility and declarations",
+      "Data and code availability"
+    ],
+    "before": [
+      "Introduction and related work",
+      "Model and preregistered question",
+      "Result",
+      "Worked examples and negative control",
+      "Verification",
+      "Predictions and falsification tests",
+      "Discussion and limitations",
+      "Reproducibility and declarations",
+      "Data and code availability"
+    ]
+  },
+  "status": "CLASSIFIED"
+}

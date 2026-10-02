@@ -1,0 +1,11 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -36,7 +36,7 @@
+ The formal claims fail if any admissible tuple violates the identities or bounds, if the inhabited witness does not normalize exactly, or if the exact Lean candidate fails either required Comparator kernel. A field use would additionally require estimating and validating $p,q,r$ under an explicit observation model; this paper does not perform that test.
+ 
+ \section{Discussion, conclusion, and limitations}
+-The accompanying Python program enumerates admissible rational-grid tuples and checks the identities and Fr\'echet-compatible bounds exactly. A frozen Lean statement and zero-sorry candidate are included, but formal verification remains pending until the private Comparator accepts the exact bytes with nanoda and Lean's default kernel.
++The accompanying Python program enumerates admissible rational-grid tuples and checks the identities and Fr\'echet-compatible bounds exactly. The exact frozen Lean statement and zero-sorry candidate have passed private Comparator verification with nanoda and Lean's default kernel, and a hash-bound certificate has been issued. This certifies the seven declared algebraic statements only; the accompanying provenance receipts record manuscript review status.
+ 
+ The model supplies rather than estimates $p,q,r$. It does not address false positives, closure violations, spatial or temporal dependence, heterogeneous availability, calibration drift, causal benefit, cost, or decision utility. Synthetic enumeration is not field evidence. ``Symbiosis'' names complementarity between monitoring methods; it does not establish biological mutualism or ecological improvement. No runtime kernel is justified.
+ 

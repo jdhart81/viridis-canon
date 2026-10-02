@@ -1,0 +1,11 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -40,7 +40,7 @@
+ \section{Verification, negative control, and falsification}
+ The Python regression uses exact rational arithmetic. It checks 12,000 randomly generated admissible componentwise ceilings, 6,000 monotone allocation pairs, 2,000 zero-allocation cases, and the named equality witness under a fixed seed. A negative control uses a negative weight and confirms that the claimed direction can fail, making the nonnegativity assumption load-bearing.
+ 
+-Five theorem statements and a zero-sorry candidate are frozen for Lean 4.28.0 and the pinned Mathlib commit. Formal status remains \texttt{FROZEN\_CANDIDATE\_UNCERTIFIED} until the private Comparator accepts the exact bytes with nanoda and Lean's default kernel and the deterministic issuer binds a certificate. No local Lean, Lake, Elan, or Mathlib execution occurred.
++Five theorem statements and a zero-sorry candidate are frozen for Lean 4.28.0 and the pinned Mathlib commit. The exact bytes now have a hash-bound certificate after private Comparator acceptance by nanoda and Lean's default kernel. The certificate covers only the declared nonnegativity, componentwise ceiling, allocation monotonicity, zero-allocation, and equality-witness statements. No local Lean, Lake, Elan, or Mathlib execution occurred.
+ 
+ The result is falsified by any exact-rational counterexample satisfying all premises or by rejection of a frozen theorem. It is not falsified by a real monitoring program exceeding its budget unless that program independently validates the units, coefficients, component mapping, and premises used here.
+ 

@@ -1,0 +1,33 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -16,8 +16,8 @@
+ be rescued by a positive partner only when helpful coupling exceeds its deficit
+ while feedback burden remains below the donor's intrinsic margin.  If both
+ intrinsic inputs are nonpositive, stable reciprocal amplification cannot create
+-a positive equilibrium.  Exact-rational tests support the algebra; a frozen
+-Lean statement and candidate await independent Comparator certification.  The
++a positive equilibrium.  Exact-rational tests support the algebra; the seven frozen Lean declarations now have an exact-hash private
++Comparator certificate from nanoda and the Lean default kernel.  The
+ result is a methods note, not an empirical Gaia law or network-stability claim.
+ \end{abstract}
+ \noindent\textbf{Keywords:} mutualism; feasibility; reciprocal support;
+@@ -78,11 +78,14 @@
+ witness.  Boundary $mn=1$ is retained as a negative control because the inverse
+ is singular.  The captured output is complete and byte-replayable.
+ 
+-The Lean statement freezes the same definitions and propositions.  The
+-candidate contains no proof holes or placeholder axioms, but it has not been
+-accepted by either production kernel.  Formal status remains a frozen,
+-uncertified candidate until an exact-hash Comparator receipt and certificate
+-exist.
++The private Comparator accepted the seven frozen Lean declarations with
++nanoda and Lean's default kernel; the certificate binds the exact successful
++proof bytes. The declarations cover the two equilibrium identities, sufficient
++positive-numerator conditions, the no-two-decliner result, the sufficient
++rescue window, the rational witness, and the singular unit-loop boundary.
++The converse sign implications in Proposition 1 are elementary paper
++derivations, not separately named certified declarations. Certification
++does not establish ecological validity, novelty, or independent paper acceptance.
+ 
+ \section{Discussion and limitations}
+ The result can serve as a bookkeeping diagnostic: reciprocal support needs a

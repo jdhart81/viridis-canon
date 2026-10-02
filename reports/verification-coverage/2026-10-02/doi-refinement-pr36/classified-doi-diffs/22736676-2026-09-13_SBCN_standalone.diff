@@ -1,0 +1,35 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -14,8 +14,7 @@
+ $E(w)=w e_1+(1-w)e_2$. If $e_1=-a$, $e_2=b$, and $a,b>0$, then the unique
+ zero-error weight is $w^*=b/(a+b)\in(0,1)$. If both errors share a weak sign,
+ every convex pool preserves that sign, so averaging alone cannot cancel a
+-common directional error. Exact-rational tests support the identities; a
+-frozen Lean statement and zero-hole candidate await private dual-kernel
++common directional error. Exact-rational tests support the identities; the eight named Lean declarations now have exact-hash private dual-kernel
+ Comparator certification. This is a methods note, not a probability-
+ calibration theorem, empirical cognitive model, or alignment guarantee.
+ \end{abstract}
+@@ -77,12 +76,16 @@
+ scale transformations, the rational witness, zero-boundary cases, and shared-
+ sign negative controls. The output file is complete and deterministic.
+ 
+-The Lean statement freezes the pool definition, endpoint identities, the
+-opposite-sign balance and cancellation identities, interior-weight bounds,
+-same-sign preservation, and a nonvacuity witness. The candidate contains no
+-proof holes or placeholder axioms, but it is not formally certified until the
+-private Comparator accepts the exact statement/candidate bytes with both
+-nanoda and Lean's default kernel and a hash-bound certificate is issued.
++The eight named Lean declarations have exact-hash zero-sorry certification
++from private Comparator acceptance with nanoda and Lean's default kernel.
++They cover endpoint recovery, opposite-sign balance and cancellation, interior
++weight bounds, weak-sign preservation, and the rational witness. Uniqueness
++is a paper-level consequence of the strictly negative affine slope for
++positive opposite-sign magnitudes; it is not a separately certified theorem.
++Scale and label symmetry are paper and numerical bookkeeping results, also
++not separately named certified declarations. Shared weak signs allow zero
++boundaries; strictly nonzero errors in the same direction cannot cancel in
++a convex pool. No calibration or empirical alignment claim is certified.
+ 
+ \section{Discussion, falsification, and limitations}
+ Equation~\eqref{eq:cancel} is retrospective bookkeeping. Using it prospectively

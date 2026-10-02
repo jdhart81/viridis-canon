@@ -1,0 +1,48 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -22,7 +22,10 @@
+ \min\{u\cdot v,w\cdot v\}\leq \sqrt{\frac{1+c}{2}}.
+ \]
+ The normalized bisector attains equality unless the directions are antipodal;
+-antipodes have ceiling zero. Positive-length aggregation preserves any
++antipodes have ceiling zero. The bound Comparator certificate covers the
++conditional scalar ceiling given its quadratic premise and the scalar
++bisector identity; it does not formalize the preceding vector derivation.
++Positive-length aggregation preserves any
+ segment-level common-alignment floor.  A deterministic standard-library gate
+ passed 16 of 16 checks after two narrow numerical-harness tolerances were
+ corrected with the first output preserved.  The result is elementary
+@@ -88,6 +91,13 @@
+ For the normalized bisector, both dot products equal the final expression.
+ \hfill$\square$
+ 
++\paragraph{Formal-certificate scope.} The frozen Lean declaration for the
++ceiling assumes the scalar quadratic premise
++$((a+b)/2)^2\leq(1+c)/2$; it certifies the resulting scalar implication,
++not the derivation of that premise from unit-vector geometry. The frozen
++bisector declaration certifies only $\min\{M(c),M(c)\}=M(c)$. The vector
++argument above is therefore an analytical proof outside the formal claim map.
++
+ If the separation angle is $\Delta\in[0,\pi]$, then $c=\cos\Delta$ and
+ $M(c)=\cos(\Delta/2)$. Coincident directions give one; orthogonal directions
+ give $1/\sqrt{2}$; antipodal directions give zero.  At antipodality the
+@@ -151,8 +161,8 @@
+ 
+ Novelty and scientific significance remain \texttt{UNASSESSED}.  The short
+ proof and mature planning literature support the conservative
+-\texttt{METHODS\_NOTE} disposition. Proposed Lean statements remain unproved
+-until a separate hash-bound Aristotle return passes the required audit.
++\texttt{METHODS\_NOTE} disposition. The six frozen Lean statements are formally certified by the exact-byte
++private Comparator receipt included with this versioned overlay.
+ 
+ \section{Reproducibility, data, and declarations}
+ 
+@@ -178,7 +188,7 @@
+ Codex performed corpus and standards review, literature search, preregistration,
+ derivation checks, code execution, drafting, and packaging under human
+ direction. Historical Claude-authored Viridis artifacts were read with their
+-attribution preserved. Aristotle has not been run and is not an author.
++attribution preserved. Comparator performed dual-kernel verification; Aristotle was not used and is not an author.
+ 
+ \begin{thebibliography}{9}
+ \bibitem{dilkina2017} B. Dilkina et al. Trade-offs and efficiencies in optimal

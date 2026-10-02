@@ -1,0 +1,22 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -86,11 +86,14 @@
+ checks pass. Exact fractions avoid floating-point tolerance. This output is a
+ package regression, not field evidence or formal proof.
+ 
+-Nine theorem statements and a zero-sorry candidate are frozen for Lean 4.28.0
+-and the pinned Mathlib commit. Formal status remains
+-\texttt{FROZEN\_CANDIDATE\_UNCERTIFIED} until the private Comparator accepts the
+-exact bytes with nanoda and Lean's default kernel and the deterministic issuer
+-writes a certificate. No local Lean execution was used.
++The nine frozen Lean declarations now have exact-hash zero-sorry
++certification from private Comparator acceptance with nanoda and Lean's
++default kernel. They cover the residual ledger, exchange identity and capacity
++preservation, ordered benefit and loss inequalities, fixed-budget bound,
++equal-rate invariance, and two witnesses. These algebraic statements do not
++validate the supplied rates or establish feasible workload in a real system;
++nonnegative time and available workload remain requirements of the application.
++No local Lean execution was used. Independent paper review remains pending.
+ 
+ \section{Discussion and limitations}
+ Equation~\ref{eq:exchange} is useful mainly because it exposes what a

@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "gates"))
 from claim_binding import CONJECTURE_LABEL, DISCLAIMER, ledger_entities, read_object, tree_root, inspect_entity_certificate
 from publication_gate import evaluate_publication
 
-STATUSES = ("UNSOUND", "HAS_SORRY", "DEBT", "NO_FORMALIZATION", "CLEAN_UNCERTIFIED", "CERTIFIED")
+STATUSES = ("MIRROR_DRIFT", "UNSOUND", "HAS_SORRY", "DEBT", "NO_FORMALIZATION", "CLEAN_UNCERTIFIED", "CERTIFIED")
 
 
 def escape_cell(value: Any) -> str:

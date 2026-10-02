@@ -10,8 +10,9 @@ import re
 from certificate_inspection import inspect_certificate
 from static_pregate import scan
 from run_flow import flow
+from mirror_parity import GENERATION_ROOT, run_parity
 
-PRIORITY = ('UNSOUND', 'HAS_SORRY', 'DEBT', 'NO_FORMALIZATION', 'CLEAN_UNCERTIFIED', 'CERTIFIED')
+PRIORITY = ('MIRROR_DRIFT', 'UNSOUND', 'HAS_SORRY', 'DEBT', 'NO_FORMALIZATION', 'CLEAN_UNCERTIFIED', 'CERTIFIED')
 DEFAULT_ROOT = Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0')
 
 
@@ -64,7 +65,7 @@ def file_status(result, certificate=None, expected=False):
     return partition_status(*conditions)
 
 
-def build(root, cert_root):
+def build(root, cert_root, generation_root=GENERATION_ROOT):
     root, cert_root = Path(root).resolve(), Path(cert_root).resolve()
     if not root.is_dir() or not cert_root.is_dir():
         raise ValueError('missing canonical root or certificate root')
@@ -122,7 +123,12 @@ def build(root, cert_root):
                 conditions.append('CLEAN_UNCERTIFIED')
             status = partition_status(*conditions)
             reasons = (cert or {}).get('reasons', []) + ['no valid certificate for immutable run envelope']
-        run_entities.append({'id': rid, 'kind': 'PAPER', 'entity_type': 'RUN', 'path': str(path.relative_to(root)),
+        underlying_status = status
+        parity = run_parity(root, path.relative_to(root), generation_root)
+        if parity['status'] != 'MATCH':
+            status = 'MIRROR_DRIFT'
+            reasons += ['source/mirror parity failed'] + parity['errors']
+        run_entities.append({'parity': parity, 'underlying_status': underlying_status, 'id': rid, 'kind': 'PAPER', 'entity_type': 'RUN', 'path': str(path.relative_to(root)),
             'status': status, 'source_file_ids': [f['id'] for f in members], 'certificate': cert['path'] if cert else None,
             'certificate_valid': bool(cert and cert['valid'] and status == 'CERTIFIED'),
             'certificate_artifacts': cert.get('sealed_paper_inputs', {}) if cert else {},
@@ -131,12 +137,14 @@ def build(root, cert_root):
     rows = [r for r in run_entities if r['kind'] == 'PAPER']
     for row in rows:
         row['flow'] = flow(root, row)
-    receipt = [r for r in rows if 116 <= int(r['id'].split('-')[1]) <= 183]
-    return {'schema_version': 'verification-coverage-v3', 'mode': 'REPORT_ONLY', 'tree_root': str(root),
-        'cert_root': str(cert_root), 'priority': list(PRIORITY), 'errors': errors, 'excluded_latest': excluded,
+    receipt = [r for r in rows if 116 <= int(r['id'].split('-')[1]) ]
+    return {'schema_version': 'verification-coverage-v4', 'mode': 'REPORT_ONLY', 'tree_root': str(root),
+        'cert_root': str(cert_root), 'generation_root_parity_only': str(generation_root), 'priority': list(PRIORITY), 'errors': errors, 'excluded_latest': excluded,
         'trust_boundary': 'Existing hash-bound Comparator certificates only; static scans cannot certify.',
         'run_scope': 'Immutable certified envelope when available; original WIP/challenge copies remain separate FILE entities.',
         'file_counts': counts(file_entities), 'run_counts': counts(rows), 'synthesis_count': sum(r['kind']=='SYNTHESIS' for r in run_entities),
+        'eligible_paper_runs': sum(r['status']!='MIRROR_DRIFT' for r in rows),
+        'mirror_drift': [r['id'] for r in rows if r['status']=='MIRROR_DRIFT'],
         'receipt_era': {'certified': sum(r['status']=='CERTIFIED' for r in receipt), 'total': len(receipt)},
         'recorded_certificate_counts': {'present': len(certs), 'current_existing_consumer': sum(c.get('recorded_certificate_current', False) for c in certs), 'current_witness_evidence_pass': sum(c['valid'] for c in certs)},
         'certificates': certs, 'file_entities': file_entities, 'run_entities': run_entities}
@@ -165,11 +173,12 @@ def main():
     parser.add_argument('command', choices=['build'])
     parser.add_argument('--root', type=Path, default=DEFAULT_ROOT)
     parser.add_argument('--cert-root', type=Path, default=Path('RESEARCH_PIPELINE_v2/lean_certificates'))
+    parser.add_argument('--generation-root', type=Path, default=GENERATION_ROOT, help='parity only, never certification')
     parser.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
     cert_root = args.cert_root if args.cert_root.is_absolute() else args.root / args.cert_root
     try:
-        ledger = build(args.root, cert_root)
+        ledger = build(args.root, cert_root, args.generation_root)
         args.out.parent.mkdir(parents=True, exist_ok=True)
         args.out.write_text(json.dumps(ledger, ensure_ascii=False, sort_keys=True, indent=2) + '\n')
         args.out.with_name('LEDGER.md').write_text(render_markdown(ledger))

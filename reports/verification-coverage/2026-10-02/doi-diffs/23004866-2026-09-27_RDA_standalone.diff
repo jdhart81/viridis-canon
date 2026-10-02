@@ -1,0 +1,11 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-176/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_RDA_standalone/paper.tex
+@@ -42,7 +42,7 @@
+ \]
+ A negative control sets $\lambda<0$ and breaks the floor, showing why weight nonnegativity is load-bearing. A separate scope control refuses to interpret the algebra as evidence about optimization or real systems.
+ 
+-Six theorem statements and a zero-sorry candidate are frozen for Lean 4.28.0 and the pinned Mathlib commit. Formal status remains \texttt{FROZEN\_CANDIDATE\_UNCERTIFIED} until private Comparator acceptance by nanoda and Lean's default kernel and deterministic certificate issuance. No local Lean, Lake, Elan, or Mathlib execution occurred.
++Six theorem statements and a zero-sorry candidate are frozen for Lean 4.28.0 and the pinned Mathlib commit. The exact bytes now have a hash-bound certificate after private Comparator acceptance by nanoda and Lean's default kernel. The certificate covers only the declared penalty nonnegativity, baseline floor, zero-weight identity, weight monotonicity, positive-weight equality condition, and named witness. No local Lean, Lake, Elan, or Mathlib execution occurred.
+ 
+ The result is falsified by any exact-rational counterexample satisfying its premises or by rejection of a frozen theorem. A trained peer system that improves accuracy does not falsify it, because training changes the quantities held fixed here.
+ 

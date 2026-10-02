@@ -1,0 +1,518 @@
+{
+  "autonomy": {
+    "resume_after_exact_authorization": true,
+    "reversible_transitions": "AUTHORIZED",
+    "scheduled_production_deployment": false,
+    "scheduled_publication": false
+  },
+  "comparator_data_egress_authorization": {
+    "authorization_id": "VIRIDIS-COMPARATOR-EGRESS-2026-08-28",
+    "authorization_sha256": "249d3015cfa3ace616ea335cee9f1941af9e1163710a7fdb9f58eace5f3112e0",
+    "covers_future_nightly_runs": true,
+    "destination_host": "root@138.197.18.27",
+    "failures": [],
+    "production_deployment_authorized": false,
+    "project": "viridis-lean-4.28",
+    "publication_authorized": false,
+    "status": "AUTHORIZED"
+  },
+  "counts": {
+    "human_gated": 5,
+    "machine_actionable": 8,
+    "submission_ready_packages": 2,
+    "total": 68,
+    "viridisos_kernel_packages": 36,
+    "viridisos_tracked": 55
+  },
+  "external_mutation": false,
+  "first_action": {
+    "detail": "Existing kernel package no longer binds current evidence; preserve it and review a versioned successor.",
+    "human_gate": false,
+    "next_action": "REVIEW_EXISTING_KERNEL_PACKAGE_BINDINGS",
+    "run_id": "Run-116",
+    "state": "KERNEL_PACKAGE_RECONCILIATION_REQUIRED"
+  },
+  "generated_at_utc": "2026-10-02T22:06:16.462342+00:00",
+  "items": [
+    {
+      "detail": "Existing kernel package no longer binds current evidence; preserve it and review a versioned successor.",
+      "human_gate": false,
+      "next_action": "REVIEW_EXISTING_KERNEL_PACKAGE_BINDINGS",
+      "run_id": "Run-116",
+      "state": "KERNEL_PACKAGE_RECONCILIATION_REQUIRED"
+    },
+    {
+      "detail": "Existing DOI/Git identity is sealed for reconciliation; never republish this run.",
+      "human_gate": true,
+      "next_action": "WAIT_FOR_EXACT_RECONCILIATION_AUTHORIZATION",
+      "run_id": "Run-117",
+      "state": "READY_FOR_EXISTING_IDENTITY_BINDING_AUTHORIZATION"
+    },
+    {
+      "detail": "Existing DOI/Git identity is sealed for reconciliation; never republish this run.",
+      "human_gate": true,
+      "next_action": "WAIT_FOR_EXACT_RECONCILIATION_AUTHORIZATION",
+      "run_id": "Run-118",
+      "state": "READY_FOR_EXISTING_IDENTITY_BINDING_AUTHORIZATION"
+    },
+    {
+      "detail": "Existing DOI/Git identity is sealed for reconciliation; never republish this run.",
+      "human_gate": true,
+      "next_action": "WAIT_FOR_EXACT_RECONCILIATION_AUTHORIZATION",
+      "run_id": "Run-119",
+      "state": "READY_FOR_EXISTING_IDENTITY_BINDING_AUTHORIZATION"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-120",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-121",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-122",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-123",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-124",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-125",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-126",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-127",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-128",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-129",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-130",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-131",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-132",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-133",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-134",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-135",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-136",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-137",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-138",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-139",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-140",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-141",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-142",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-143",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-144",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-145",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-146",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-147",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-148",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-149",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-150",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-151",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-152",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-153",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-154",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-155",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-156",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-157",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-158",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-159",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-160",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-161",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-162",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-163",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-164",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-165",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-166",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Existing kernel package no longer binds current evidence; preserve it and review a versioned successor.",
+      "human_gate": false,
+      "next_action": "REVIEW_EXISTING_KERNEL_PACKAGE_BINDINGS",
+      "run_id": "Run-167",
+      "state": "KERNEL_PACKAGE_RECONCILIATION_REQUIRED"
+    },
+    {
+      "detail": "Existing kernel package no longer binds current evidence; preserve it and review a versioned successor.",
+      "human_gate": false,
+      "next_action": "REVIEW_EXISTING_KERNEL_PACKAGE_BINDINGS",
+      "run_id": "Run-168",
+      "state": "KERNEL_PACKAGE_RECONCILIATION_REQUIRED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-169",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "A later independent invocation must rank the science and review its exact paper, Comparator certificate, runtime role, empirical status, decision family, scope, and refusal boundary.",
+      "human_gate": false,
+      "next_action": "REVIEW_KERNEL_ADMISSION",
+      "run_id": "Run-170",
+      "state": "KERNEL_ADMISSION_REVIEW_REQUIRED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-171",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-172",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-173",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-174",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-175",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-176",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Open nightly package lacks a clean certificate; the active standing authorization covers exact frozen transport to the private Comparator.",
+      "human_gate": false,
+      "next_action": "CERTIFY_COMPARATOR_FIFO",
+      "run_id": "Run-177",
+      "state": "CERTIFICATE_REQUIRED"
+    },
+    {
+      "detail": "Published DOI is in ViridisOS intake; maintain LIVE, PREVIEW/BLOCKED, or BACKLOG_NO_WRAPPER.",
+      "human_gate": false,
+      "next_action": "VERIFY_WRAPPER_OR_EXPLICIT_BACKLOG",
+      "run_id": "Run-178",
+      "state": "VIRIDISOS_TRACKED"
+    },
+    {
+      "detail": "Seal a hash-bound runtime adapter package or an explicit NO_RUNTIME_KERNEL disposition before release assembly.",
+      "human_gate": false,
+      "next_action": "BUILD_VIRIDISOS_KERNEL_PACKAGE",
+      "run_id": "Run-179",
+      "state": "VIRIDISOS_KERNEL_PACKAGE_REQUIRED"
+    },
+    {
+      "detail": "Exact license, proposed ledger row, and artifact hashes are sealed; no binding or publication has occurred.",
+      "human_gate": true,
+      "next_action": "WAIT_FOR_EXACT_RELEASE_BINDING_AUTHORIZATION",
+      "run_id": "Run-180",
+      "state": "READY_FOR_RELEASE_BINDING_AUTHORIZATION"
+    },
+    {
+      "detail": "Exact license, proposed ledger row, and artifact hashes are sealed; no binding or publication has occurred.",
+      "human_gate": true,
+      "next_action": "WAIT_FOR_EXACT_RELEASE_BINDING_AUTHORIZATION",
+      "run_id": "Run-181",
+      "state": "READY_FOR_RELEASE_BINDING_AUTHORIZATION"
+    },
+    {
+      "detail": "Open nightly package lacks a clean certificate; the active standing authorization covers exact frozen transport to the private Comparator.",
+      "human_gate": false,
+      "next_action": "CERTIFY_COMPARATOR_FIFO",
+      "run_id": "Run-183",
+      "state": "CERTIFICATE_REQUIRED"
+    },
+    {
+      "detail": "Open nightly package lacks a clean certificate; the active standing authorization covers exact frozen transport to the private Comparator.",
+      "human_gate": false,
+      "next_action": "CERTIFY_COMPARATOR_FIFO",
+      "run_id": "Run-184",
+      "state": "CERTIFICATE_REQUIRED"
+    }
+  ],
+  "scheduler_id": "viridis-nightly-science-generator",
+  "schema_version": 1,
+  "standard": "VRS-AUTONOMOUS-PIPELINE-STATE-1",
+  "submission_readiness_definition": "All reversible science, review, reconciliation, routing, and package work is complete; only an exact irreversible release binding or publication transaction remains."
+}

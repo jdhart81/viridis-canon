@@ -32,6 +32,8 @@ def resolve_binding(binding, root):
         raise ValueError('missing path/hash binding')
     path = Path(binding['path'])
     choices = [path] if path.is_absolute() else [root / path, root / 'RESEARCH_PIPELINE_v2' / path]
+    if any(not p.resolve().is_relative_to(root.resolve()) for p in choices):
+        raise ValueError('certificate binding outside mirror/certification root: ' + binding['path'])
     matching = [p.resolve() for p in choices if p.is_file() and hashlib.sha256(p.read_bytes()).hexdigest() == binding.get('sha256')]
     if not matching:
         raise ValueError('missing/hash-mismatched binding: ' + binding['path'])
@@ -46,8 +48,18 @@ def inspect_certificate(path, tree_root):
     result = {'path': str(path), 'valid': False, 'reasons': [], 'bindings': [],
               'certified_theorems': [], 'nonvacuity': [], 'sealed_paper_inputs': {}}
     try:
-        proof_track, issuer = pipeline_modules(root)
+        if not path.is_relative_to(root):
+            raise ValueError("certificate outside mirror/certification root")
         cert = json.loads(path.read_text())
+        def check_locations(value):
+            if isinstance(value, dict):
+                if "path" in value:
+                    resolve_binding(value, root)
+                else:
+                    for child in value.values():
+                        check_locations(child)
+        check_locations(cert.get("bindings", {}))
+        proof_track, issuer = pipeline_modules(root)
         result.update(run_id=cert.get('run_id'), sha256=hashlib.sha256(path.read_bytes()).hexdigest(), recorded_certificate_current=False)
         result['candidate_sha256'] = cert.get('bindings', {}).get('candidate_proof', {}).get('sha256')
         if not re.fullmatch(r'Run-\d+', str(cert.get('run_id', ''))):

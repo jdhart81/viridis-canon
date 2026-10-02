@@ -1,0 +1,20 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-148/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_FRCS_standalone/paper.tex
+@@ -1,6 +1,7 @@
+ \documentclass[10pt]{article}
+ \usepackage[margin=0.82in]{geometry}
+-\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref}
++\usepackage{amsmath,amssymb,amsthm,booktabs}
++\usepackage[hidelinks]{hyperref}
+ \newtheorem{proposition}{Proposition}
+ \title{A Freshness Reserve Capacity Note for Stewardship Monitoring}
+ \author{Justin D. Hart\\Viridis Research}
+@@ -38,7 +39,7 @@
+ \section{Verification tests and formalization}
+ The exact-rational gate enumerates nonnegative record counts, positive rational horizons, rational capacities, and reserve multipliers. It checks the equivalence, sufficiency, headroom identity, sharp boundary, shortfall, and the rejected zero-horizon control. The captured output is part of the immutable package.
+ 
+-The accompanying Engine-3 pair freezes six Lean declarations: the equivalence, nominal identity, reserve sufficiency, headroom identity, positive shortfall, and the named sharp witness. The candidate contains no \texttt{sorry} or \texttt{admit}. It is not called verified unless the private Comparator accepts the exact bytes with nanoda and Lean's default kernel and the certificate issuer binds the receipt.
++The accompanying Engine-3 pair freezes six Lean declarations: the equivalence, nominal identity, reserve sufficiency, headroom identity, positive shortfall, and the named sharp witness. The candidate contains no \texttt{sorry} or \texttt{admit}. The private Comparator accepted the exact bytes with nanoda and Lean's default kernel, and the included certificate binds that receipt.
+ 
+ \section{Discussion, limitations, and falsifiability}
+ The condition is necessary and sufficient only for this divisible common-horizon ledger. It does not construct an integer schedule. Heterogeneous deadlines can create packing constraints; network loss and service-time variance can require more capacity; travel and setup can dominate field monitoring; and an update can be fresh yet inaccurate. The note makes no claim about anomaly detection, causal attribution, habitat outcomes, registry eligibility, field validation, or customer value. A positive-horizon algebraic counterexample or exact-rational disagreement would falsify the formal claim.

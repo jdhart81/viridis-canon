@@ -1,0 +1,20 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-139/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_TRWFN_standalone/paper.tex
+@@ -8,7 +8,7 @@
+ \maketitle
+ 
+ \begin{abstract}
+-We give a transparent allocation rule for fractional retrofit decisions when each asset has a discounted avoided thermodynamic burden, a smooth transition friction, a positive capital price, and all assets share one budget. The resulting strictly concave program admits a clipped affine response to one nonnegative shadow price. A deterministic verifier checks the benefit integral, feasibility, complementary regimes, stationarity, objective comparisons, boundary cases, scaling, and a non-vacuity witness. The result is an established convex resource-allocation specialization and is therefore retained as a methods note. Numerical success is not formal proof, empirical validation, novelty, or evidence of adoption.
++We give a transparent allocation rule for fractional retrofit decisions when each asset has a discounted avoided thermodynamic burden, a smooth transition friction, a positive capital price, and all assets share one budget. The resulting strictly concave program admits a clipped affine response to one nonnegative shadow price. A deterministic verifier checks the benefit integral, feasibility, complementary regimes, stationarity, objective comparisons, boundary cases, scaling, and a non-vacuity witness. The result is an established convex resource-allocation specialization and is therefore retained as a methods note. Numerical success is not empirical validation, novelty, or evidence of adoption. The exact declared Lean statements are Comparator-certified.
+ \end{abstract}
+ 
+ \noindent\textbf{Keywords:} thermodynamic economics; retrofit allocation; shadow price; convex optimization; reproducibility
+@@ -55,7 +55,7 @@
+ \section{Discussion and limitations}
+ The audit is only as legitimate as its inputs. It assumes additive objective units, divisible retrofits, fixed coefficients, quadratic friction, one static budget, and no network, rebound, learning, option, salvage, financing, or integer effects. It does not establish that an asset should be replaced, that a quoted shadow price is socially authorized, or that avoided burden is measured without leakage. The core water-filling structure is mature, so novelty and significance remain unassessed and the disposition is \texttt{METHODS\_NOTE}.
+ 
+-The frozen Lean project states algebraic clipping and improvement targets with explicit assumptions and a named non-vacuity witness. It contains proof holes and was not locally compiled. Aristotle was not run during generation. No theorem, proof certificate, Canon admission, product deployment, demand, delivery, payment, repeat behavior, subscription, MRR, or revenue is claimed.
++The frozen Lean project states algebraic clipping and improvement targets with explicit assumptions and a named non-vacuity witness. The private Comparator certified the exact frozen declarations with zero sorry or admit; no local Lean execution occurred and Aristotle was not required. No broader theorem, Canon admission, Canon admission, product deployment, demand, delivery, payment, repeat behavior, subscription, MRR, or revenue is claimed.
+ 
+ \section{Reproducibility and declarations}
+ \textbf{Reproducibility.} Run \texttt{python3 verification.py}; the complete output and preregistration are included. \textbf{Data and code availability.} The package contains all generated code and uses no private data. \textbf{Funding.} No external funding is declared. \textbf{Conflicts of interest.} The author declares no conflict specific to this note. \textbf{Authorship accountability.} Justin D. Hart is the accountable author. \textbf{AI-use disclosure.} Codex performed standards review, literature search, model checking, code execution, drafting, and packaging under human direction. Historical Viridis artifacts attributable to Claude were consulted without rewriting their authorship.

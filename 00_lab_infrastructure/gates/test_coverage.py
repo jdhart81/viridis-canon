@@ -11,7 +11,7 @@ from certificate_inspection import resolve_binding, inspect_certificate
 
 class CoverageTests(unittest.TestCase):
     def test_status_partition_priority(self):
-        self.assertEqual(partition_status(*PRIORITY), 'UNSOUND')
+        self.assertEqual(partition_status(*PRIORITY), 'MIRROR_DRIFT')
         self.assertEqual(partition_status('HAS_SORRY','DEBT'), 'HAS_SORRY')
         self.assertEqual(partition_status('NO_FORMALIZATION','DEBT'), 'DEBT')
         self.assertEqual(partition_status('CERTIFIED','CLEAN_UNCERTIFIED'), 'CLEAN_UNCERTIFIED')
@@ -24,7 +24,11 @@ class CoverageTests(unittest.TestCase):
             for name in ('Run-001_test', 'Run-META-001_canon-synthesis','_LATEST'):
                 (papers/name).mkdir(parents=True)
             (papers/'_LATEST/stale.lean').write_text('axiom wrong : False')
-            ledger=build(root,root/'certs')
+            source=root/'author lab/07_nightly_engine/compound research papers/Run-001_test'
+            source.mkdir(parents=True)
+            (source/'paper.tex').write_text('paper')
+            (papers/'Run-001_test/paper.tex').write_text('paper')
+            ledger=build(root,root/'certs',root/'author lab')
             self.assertEqual(ledger['file_entities'],[])
             self.assertEqual(ledger['run_counts']['NO_FORMALIZATION'],1)
             self.assertEqual(ledger['synthesis_count'],1)

@@ -73,6 +73,15 @@ def inspect_entity_certificate(
     if entity.get("has_sorry") is True or entity.get("status") == "UNSOUND":
         raise ValueError("quarantined or incomplete objects cannot carry certified claims")
     root = tree_root(ledger)
+    rid = entity.get('run_id') or entity.get('id')
+    if isinstance(rid, str) and re.fullmatch(r'Run-\d+', rid) and int(rid[4:]) < 900:
+        from mirror_parity import run_parity, GENERATION_ROOT
+        matches = [r for r in ledger.get('run_entities', []) if r.get('id') == rid]
+        if len(matches) != 1 or matches[0].get('status') == 'MIRROR_DRIFT':
+            raise ValueError('missing or drifted run parity entity')
+        parity = run_parity(root, matches[0]['path'], Path(ledger.get('generation_root_parity_only', str(GENERATION_ROOT))))
+        if parity['status'] != 'MATCH':
+            raise ValueError('source/mirror parity failed at publication time')
     cert_value = entity.get("certificate")
     if not isinstance(cert_value, str) or not cert_value:
         raise ValueError("ledger entity has no certificate path")

@@ -1,0 +1,11 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-150/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_DPAC_standalone/paper.tex
+@@ -50,7 +50,7 @@
+ \section{Verification tests and formalization}
+ The exact-rational verifier enumerates half-unit grids for prices, quantities, and costs; checks the gap, absolute-gap, and dual-acceptance identities; then tests 50,000 seeded two-project ledgers. Boundary, positive, split-decision, negative-quantity, and project-specific-price controls are retained. The captured output belongs to the immutable package.
+ 
+-The Engine-3 pair freezes six Lean declarations: the signed and absolute gap, the joint-acceptance equivalence, the two-project aggregate identity, and two named witnesses. The candidate contains no \texttt{sorry} or \texttt{admit}. It is not verified unless the private Comparator accepts the exact bytes with nanoda and Lean's default kernel and the certificate issuer binds that receipt.
++The Engine-3 pair freezes six Lean declarations: the signed and absolute gap, the joint-acceptance equivalence, the two-project aggregate identity, and two named witnesses. The private Comparator accepted the exact statement and candidate bytes with nanoda and Lean's default kernel, and the local certificate issuer bound the successful receipt. The certified declarations contain zero \texttt{sorry} or \texttt{admit}; certification is limited to those exact declarations.
+ 
+ \section{Discussion, limitations, and falsifiability}
+ The screen is conditional on supplied scalar prices, a supplied nonnegative quantity, and commensurate units. It does not select a social cost of carbon, estimate exergy destruction, model price endogeneity, discounting, capital turnover, uncertainty distributions, interactions, leakage, rebound, or distributional effects. Negative $q$ reverses the lower-price ordering; project-specific price pairs do not share the simple portfolio factorization. No dataset is analyzed. A real-number counterexample to an identity or a mismatch in exact-rational replay would falsify the mathematical package.

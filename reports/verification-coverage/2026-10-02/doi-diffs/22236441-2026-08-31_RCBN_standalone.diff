@@ -1,0 +1,27 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-143/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_RCBN_standalone/paper.tex
+@@ -13,7 +13,7 @@
+ \[
+ J(\tau)=\frac{q}{\tau}+\frac{\lambda r\tau}{2}.
+ \]
+-The unique minimizer is $\tau^\star=\sqrt{2q/(\lambda r)}$, with floor $J^\star=\sqrt{2q\lambda r}$ and normalized mistuning penalty $J(\tau)/J^\star=(u+u^{-1})/2=\cosh(\log u)$ for $u=\tau/\tau^\star$. This is the classical Young--Daly square-root checkpoint structure expressed in energy-rate units, and the same $A/\tau+B\tau$ mechanism already appears in Viridis Run 060. We therefore assign \texttt{METHODS\_NOTE}; novelty and significance remain \texttt{UNASSESSED}. Six Lean statements are frozen but unproved. Deterministic verification passes 16/16 checks. No operational, thermodynamic-device, or publication claim is made.
++The unique minimizer is $\tau^\star=\sqrt{2q/(\lambda r)}$, with floor $J^\star=\sqrt{2q\lambda r}$ and normalized mistuning penalty $J(\tau)/J^\star=(u+u^{-1})/2=\cosh(\log u)$ for $u=\tau/\tau^\star$. This is the classical Young--Daly square-root checkpoint structure expressed in energy-rate units, and the same $A/\tau+B\tau$ mechanism already appears in Viridis Run 060. We therefore assign \texttt{METHODS\_NOTE}; novelty and significance remain \texttt{UNASSESSED}. Six frozen Lean statements are certified by the private Comparator dual-kernel receipt. Deterministic verification passes 16/16 checks. No operational, thermodynamic-device, or publication claim is made.
+ \end{abstract}
+ 
+ \noindent\textbf{Keywords:} checkpointing; recomputation; fault tolerance; thermodynamics of computation; energy-rate model
+@@ -61,13 +61,13 @@
+ \section{Discussion and limitations}
+ This note is useful chiefly as an accounting identity. It translates a standard time-overhead law into energy-rate variables and makes model failure visible. It does not model multiple failures per interval, correlated faults, variable checkpoint size, restart latency, storage retention, cooling, communication, or useful-work slowdown. Daly's higher-order analysis is the relevant warning against treating Eq.~\eqref{eq:loss} as universal. The Landauer floor is many orders below typical device costs and becomes inapplicable as written when the implementation avoids the declared irreversible overwrite.
+ 
+-The triviality probe finds a proof in fewer than five lines, the same convex mechanism appears in Run 060, and the checkpoint result is mature prior art. The correct disposition is \texttt{METHODS\_NOTE}. The six proposed Lean targets remain unproved pending the serialized Aristotle lane. Numerical success is not formal proof, operational validation, Canon admission, publication, adoption, or revenue.
++The triviality probe finds a proof in fewer than five lines, the same convex mechanism appears in Run 060, and the checkpoint result is mature prior art. The correct disposition is \texttt{METHODS\_NOTE}. The six Lean targets are formally certified by the exact-byte Comparator receipt. Numerical success is not formal proof, operational validation, Canon admission, publication, adoption, or revenue.
+ 
+ \section*{Reproducibility and data and code availability}
+ All code, frozen inputs, output, claim inventory, source ledger, formal statement contract, and build artifacts are included in this immutable Run 143 package. No external dataset was used. Run \texttt{python3 verification.py} to reproduce the checks.
+ 
+ \section*{Funding, conflicts, authorship, and AI use disclosure}
+-No external funding supported this note. The author declares no conflict of interest. Justin D. Hart is the accountable human author. Codex performed corpus and literature search, preregistration, derivation checks, code execution, manuscript drafting, packaging, and QA under human direction. Historical Claude-authored Viridis artifacts were read with attribution preserved. Aristotle has not been run and no formal proof is claimed.
++No external funding supported this note. The author declares no conflict of interest. Justin D. Hart is the accountable human author. Codex performed corpus and literature search, preregistration, derivation checks, code execution, manuscript drafting, packaging, and QA under human direction. Historical Claude-authored Viridis artifacts were read with attribution preserved. Comparator performed dual-kernel formal verification; Aristotle was not used.
+ 
+ \begin{thebibliography}{9}
+ \bibitem{young1974} J. W. Young, ``A first order approximation to the optimum checkpoint interval,'' \emph{Communications of the ACM} \textbf{17}(9), 530--531 (1974). DOI: \href{https://doi.org/10.1145/361147.361115}{10.1145/361147.361115}.

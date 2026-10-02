@@ -1,0 +1,50 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-122/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_ZAB_standalone/paper.tex
+@@ -16,7 +16,7 @@
+ \title{\vspace{-1.2em}\textbf{The Zeno Alignment Budget}\\
+ \large Uniform projective steps and a noise-limited measurement count}
+ \author{Justin D. Hart\\\small Viridis Research}
+-\date{7 August 2026\\\small Pre-Aristotle generated exploration; novelty unassessed}
++\date{7 August 2026\\\small Comparator-certified working-corpus draft; novelty unassessed}
+ 
+ \begin{document}
+ \maketitle
+@@ -47,8 +47,7 @@
+ depends on angle or history, a nonuniform schedule can win; that retained
+ counterexample blocks universal interpretation.  The result is a special-case
+ audit certificate inside established Zeno-dragging literature, not an
+-experiment, a general controller, or a novelty claim.  All Lean targets remain
+-unproved.
++experiment, a general controller, or a novelty claim.  The exact declared Lean statements are Comparator-certified.
+ \end{abstract}
+ 
+ \textbf{Keywords:} quantum Zeno dynamics; projective measurement; state
+@@ -279,8 +278,7 @@
+ success is not unconditional fidelity or throughput.  The high-quality scaling
+ is asymptotic.  No quantum hardware or customer data were analyzed.  No AI
+ policy was trained.  The literature search is not an independent novelty
+-review.  Finally, every analytic statement is an unproved Lean target;
+-numerical agreement is not formal verification.
++review.  The exact declared Lean statements are Comparator-certified. Numerical agreement and formal certification remain distinct evidence paths.
+ 
+ \section{Reproducibility and declarations}
+ 
+@@ -310,7 +308,7 @@
+ the preregistration, wrote and executed verification code, analyzed results,
+ drafted the manuscript, and performed package QA.  Historical Claude-authored
+ Viridis artifacts were read with attribution preserved and not rewritten.
+-Aristotle was not run.  All proposed Lean targets remain unproved.
++The private Comparator certified the exact frozen Lean declarations; Aristotle was not required.
+ 
+ \section{Conclusion}
+ 
+@@ -320,8 +318,7 @@
+ ever finer steps; any constant per-step loss produces a finite optimum that is
+ found from one scalar root and two adjacent integers.  The retained
+ schedule-dependent-quality counterexample defines the boundary.  These are
+-bounded analytic and numerical facts, not a universal controller, experiment,
+-formal proof, novelty claim, or publication decision.  The correct next state
++bounded analytic and numerical facts, not a universal controller, experiment, novelty claim, or publication decision; formal certification is limited to the declared Lean statements.  The correct next state
+ is independent significance review.
+ 
+ \begin{thebibliography}{9}

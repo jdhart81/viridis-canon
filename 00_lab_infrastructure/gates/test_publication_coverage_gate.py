@@ -25,8 +25,8 @@ class PublicationCoverageGateTests(unittest.TestCase):
         self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name) / "canonical tree"
         self.root.mkdir()
-        self.run = self.root / "Run-142"
-        self.run.mkdir()
+        self.run = self.root / "science-engine/07_nightly_engine/compound research papers/Run-142"
+        self.run.mkdir(parents=True)
         self.candidate = self.root / "VERIFICATION_CANDIDATE.lean"
         self.candidate.write_text("theorem meaningful (x : Nat) : x ≤ x := le_rfl\n"
                                   "theorem meaningful_witness : ∃ x : Nat, x ≤ x := ⟨0, le_rfl⟩\n")
@@ -36,7 +36,7 @@ class PublicationCoverageGateTests(unittest.TestCase):
         self.cert.write_text("{}")
         self.expected_candidate_hash = digest(self.candidate)
         self.expected_paper_hash = digest(self.paper)
-        self.entry = {"id": "Run-142", "kind": "PAPER", "path": "Run-142", "status": "CERTIFIED",
+        self.entry = {"id": "Run-142", "kind": "PAPER", "path": "science-engine/07_nightly_engine/compound research papers/Run-142", "status": "CERTIFIED",
                       "certificate_valid": True, "certificate": self.cert.name,
                       "certified_theorems": ["meaningful"], "nonvacuity": ["meaningful_witness"]}
         self.ledger = {"tree_root": str(self.root), "file_entities": [], "run_entities": [self.entry]}
@@ -49,6 +49,11 @@ class PublicationCoverageGateTests(unittest.TestCase):
             "evidence_class": "FORMAL_TARGET", "aristotle_target": "meaningful"}]}))
         (self.run / "claim_binding.json").write_text(json.dumps(self.binding))
         (self.run / "metadata.json").write_text(json.dumps({"title": "Theorem relation", "description": "Theorem in Canon"}))
+        import shutil
+        self.generation_root = Path(self.tmp.name)/'author lab'
+        self.source = self.generation_root/'07_nightly_engine/compound research papers/Run-142'
+        shutil.copytree(self.run, self.source)
+        self.ledger['generation_root_parity_only'] = str(self.generation_root)
 
     def inspected_fixture(self, path, root):
         # Deliberately an injected evidence consumer fixture, never a verifier.
@@ -59,6 +64,8 @@ class PublicationCoverageGateTests(unittest.TestCase):
                     "SEALED_CLAIM_INVENTORY.json": {"path": str(self.inventory), "sha256": digest(self.inventory)}}}
 
     def test_certified_bound_claim_positive(self):
+        import shutil
+        shutil.copytree(self.run, self.source, dirs_exist_ok=True)
         result = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture)
         self.assertEqual(result["status"], "PASS")
         self.assertTrue(result["canon_eligible"])
@@ -114,6 +121,8 @@ class PublicationCoverageGateTests(unittest.TestCase):
         inventory = json.loads(self.inventory.read_text())
         inventory["claims"].append({"id": "C2", "claim": "An observed empirical trend.", "evidence_class": "NUMERIC"})
         self.inventory.write_text(json.dumps(inventory))
+        import shutil
+        shutil.copytree(self.run, self.source, dirs_exist_ok=True)
         result = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture)
         self.assertEqual(result["status"], "PASS")
         item = result["proposed_metadata"]["unverified_claims"][0]

@@ -1,0 +1,40 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-123/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_HCF_standalone/paper.tex
+@@ -16,7 +16,7 @@
+ \title{\vspace{-1.2em}\textbf{A Free-Energy Floor for Habitable-State Concentration}\\
+ \large A coarse-grained relative-entropy audit for Gaian models}
+ \author{Justin D. Hart\\\small Viridis Research}
+-\date{8 August 2026\\\small Pre-Aristotle generated exploration; novelty unassessed}
++\date{8 August 2026\\\small Comparator-certified working-corpus draft; novelty unassessed}
+ 
+ \begin{document}
+ \maketitle
+@@ -42,8 +42,7 @@
+ simplex search, equality and convergence tests, and negative controls for
+ nonuniform references, below-baseline thresholds, and stability without
+ habitability.  The result is a standard relative-entropy specialization, not a
+-new information-theory theorem, an empirical Earth-system law, a maintenance-
+-power claim, or formal verification.  Its value is an explicit audit boundary:
++new information-theory theorem, an empirical Earth-system law, or a maintenance-power claim. Its exact declared Lean statements are Comparator-certified.  Its value is an explicit audit boundary:
+ the viable set and reference ensemble must be declared, and all unresolved
+ within-class structure appears as additional cost.
+ \end{abstract}
+@@ -295,8 +294,7 @@
+ preregistered the bounded hypothesis, wrote and executed verification code,
+ drafted the manuscript, and packaged the artifacts under human direction.
+ Historical Claude-authored Viridis materials were read with their attribution
+-preserved.  No Aristotle submission was made; every proposed Lean target is
+-unproved.  AI output was checked against the executable gate and cited sources,
++preserved.  The private Comparator certified the exact frozen Lean declarations; Aristotle was not required.  AI output was checked against the executable gate and cited sources,
+ but no independent peer or significance review has occurred.
+ 
+ \section{Conclusion}
+@@ -308,7 +306,7 @@
+ exact but modest: it does not turn stability into habitability, a static bound
+ into maintenance power, or standard KL geometry into a novelty claim.  The
+ appropriate next state is independent significance review, not canon,
+-publication, or formal-verification language.
++publication or a broader formal-verification claim beyond the declared Lean statements.
+ 
+ \begin{thebibliography}{9}
+ \bibitem{csiszar1975}

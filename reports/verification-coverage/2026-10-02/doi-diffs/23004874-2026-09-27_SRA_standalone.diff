@@ -1,0 +1,20 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-172/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_SRA_standalone/paper.tex
+@@ -24,7 +24,7 @@
+ This does not authorize spending from $r$; it merely states that the gross ledger remains ordered when the protected balance is reported separately. If $a=0$, Equation~\ref{eq:premise} forces $x=0$. For $r_1\le r_2$, monotonicity gives $x+r_1\le x+r_2$. The witness $(x,a,r)=(4,7,6)$ is positive and nonvacuous.
+ 
+ \section{Verification, tests, and falsification}
+-The Python regression exhaustively checks 27,131 admissible triples, 101 zero-spendable cases, 7,161 reserve-monotonicity cases, and the named witness using exact integers. A negative control records that a reserve balance is not evidence of ecological delivery. Four theorem statements and a zero-sorry candidate are frozen for Lean 4.28.0 and the pinned Mathlib commit. Formal status remains \texttt{FROZEN\_CANDIDATE\_UNCERTIFIED} until the private Comparator accepts the exact bytes with nanoda and Lean's default kernel and the deterministic issuer binds a certificate. No local Lean, Lake, Elan, or Mathlib execution occurred.
++The Python regression exhaustively checks 26,691 admissible triples, 101 zero-spendable cases, 7,161 reserve-monotonicity cases, and the named witness using exact integers. A negative control records that a reserve balance is not evidence of ecological delivery. The four exact Lean statements received exact-hash zero-sorry certification after private Comparator acceptance by nanoda and Lean's default kernel; permitted axioms, zero-hole, non-vacuity, statement-alignment, and binding checks passed. The certificate covers only the declared arithmetic statements. No local Lean, Lake, Elan, or Mathlib execution occurred.
+ 
+ \section{Discussion and limitations}
+ The model assumes units are nonnegative, commensurate, correctly classified, and observed without error. It omits time, discounting, uncertainty, leakage, legal enforceability, governance capture, investment returns, administrative cost, additionality, and ecological measurement. A real reserve can be mislabeled, diverted, impaired, or economically inadequate even when the arithmetic passes. The note therefore supplies no validated runtime kernel and no project recommendation.
+@@ -36,6 +36,6 @@
+ 
+ \small\begin{thebibliography}{9}
+ \bibitem{helm2019} D. Helm, ``The ownership and funding of natural capital: the case for trusts and a public natural capital fund,'' \emph{International Journal of Public Policy} 15, 125--135 (2019), doi:10.1504/IJPP.2019.099050.
+-\bibitem{gann2021} Gann et al., ``An Ecological Accounting System for Integrated Aquatic Planning and Habitat Banking,'' \emph{Environmental Management} (2021), doi:10.1007/s00267-021-01531-5.
+-\bibitem{garel2025} A. Garel et al., ``Biodiversity finance,'' \emph{Journal of Financial Economics} 164, 103987 (2025), doi:10.1016/j.jfineco.2024.103987.
++\bibitem{gann2021} Doka et al., ``An Ecological Accounting System for Integrated Aquatic Planning and Habitat Banking,'' \emph{Environmental Management} (2022), doi:10.1007/s00267-021-01531-5.
++\bibitem{garel2025} C. Flammer, T. Giroux, and G. Heal, ``Biodiversity finance,'' \emph{Journal of Financial Economics} 164, 103987 (2025), doi:10.1016/j.jfineco.2024.103987.
+ \end{thebibliography}\end{document}

@@ -1,0 +1,33 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-144/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_SBRN_standalone/paper.tex
+@@ -12,7 +12,7 @@
+ \maketitle
+ 
+ \begin{abstract}
+-We study a deliberately small allocation problem motivated by an Intelligence Capacity model with compute, informative-data, and irreversible-update bottlenecks. An accountable operator must withhold a fixed reserve across the three commensurable lanes while preserving the largest authorized worst-lane rate. The optimal residual is the smaller of the original bottleneck and one third of total post-reserve capacity. Reserve is first drawn from slack above the original bottleneck; after that slack is exhausted, the three residual lanes equalize. A deterministic gate passes 16 of 16 checks. The result is a max--min progressive-filling specialization and is classified as a \texttt{METHODS\_NOTE}; novelty, significance, empirical validity, and formal verification remain unassessed.
++We study a deliberately small allocation problem motivated by an Intelligence Capacity model with compute, informative-data, and irreversible-update bottlenecks. An accountable operator must withhold a fixed reserve across the three commensurable lanes while preserving the largest authorized worst-lane rate. The optimal residual is the smaller of the original bottleneck and one third of total post-reserve capacity. Reserve is first drawn from slack above the original bottleneck; after that slack is exhausted, the three residual lanes equalize. A deterministic gate passes 16 of 16 checks. The result is a max--min progressive-filling specialization and is classified as a \texttt{METHODS\_NOTE}; novelty, significance, and empirical validity remain unassessed; the exact frozen Lean statements are Comparator-certified.
+ \end{abstract}
+ 
+ \textbf{Keywords:} intelligence capacity; stewardship; reserve allocation; max--min fairness; bottleneck audit
+@@ -53,7 +53,7 @@
+ At $B=12>S$, reserve $r=(1,4,7)$ leaves $(1,1,1)$, equal to $(15-12)/3=1$. At full reserve $B=15$, authorized capacity is zero.
+ 
+ \section{Verification}
+-The preregistered standard-library program tests exact boundaries, 50,000 random constructive instances, 100,000 arbitrary feasible residual allocations against the upper bound, 20,000 permutation/scale/monotonicity trials, 7,424 exhaustive quarter-grid cases, the plateau and equalization regimes, worked witnesses, conservation, and the equal-reserve negative control. It returns \texttt{16 PASS / 0 FAIL / 16 CHECKS}. The exhaustive grid is conservative: its discrete optimum never exceeds the continuous formula and lies within one grid step. This evidence is numerical and algebraic, not Lean verification.
++The preregistered standard-library program tests exact boundaries, 50,000 random constructive instances, 100,000 arbitrary feasible residual allocations against the upper bound, 20,000 permutation/scale/monotonicity trials, 7,424 exhaustive quarter-grid cases, the plateau and equalization regimes, worked witnesses, conservation, and the equal-reserve negative control. It returns \texttt{16 PASS / 0 FAIL / 16 CHECKS}. The exhaustive grid is conservative: its discrete optimum never exceeds the continuous formula and lies within one grid step. Attainment and equality are supported by the analytical construction and the deterministic numerical gate, not by the frozen Lean upper-bound theorem.
+ 
+ \section{Predictions and falsification tests}
+ Within the declared model, reserve use has two testable signatures: a flat residual bottleneck while the budget is no larger than aggregate slack, followed by slope $-1/3$ after slack is exhausted. The identity is falsified for a claimed instance if any feasible allocation exceeds the stated ceiling or if the constructive slack-first/equalizing allocation violates a lane bound or reserve conservation. Empirical use would require separate tests of lane measurability, commensurability, divisibility, and time stability; failure of any one invalidates the interpretation without contradicting the algebra.
+@@ -63,10 +63,10 @@
+ 
+ The model excludes uncertainty, indivisibilities, cross-lane conversion losses, replenishment, time coupling, strategic behavior, distributional impacts, ecological externalities, and estimation error. Run 127 addresses a different one-period moment-robust capacity certificate; Run 139 addresses a different concave retrofit water-filling program. Progressive filling and max--min allocation are established, so this note is not promoted beyond \texttt{METHODS\_NOTE}.
+ 
+-Six exact Lean targets are frozen with named witnesses. Aristotle has not run, and no local Lean, Lake, Elan, or Mathlib compilation was used. Until Aristotle's provider evidence and an independent exact-byte cloud verifier both pass, the result remains certificate debt and must not be called formally verified.
++Six exact Lean targets with named witnesses are formally certified by the private Comparator. Nanoda and Lean's default kernel accepted the exact frozen bytes; no local Lean, Lake, Elan, or Mathlib process was used.
+ 
+ \section*{Reproducibility and declarations}
+-Code, complete output, preregistration, claim inventory, prior-art table, frozen Lean request, and SHA-256 manifest accompany this paper. No external dataset was used. Funding: no specific external funding. Conflicts of interest: none declared. Accountable human author: Justin D. Hart. Substantive AI use: Codex performed standards review, literature search, derivation checks, code, manuscript, packaging, and QA under human direction; historical Claude-authored Viridis artifacts were read with attribution preserved. Aristotle did not participate in this generated stage.
++Code, complete output, preregistration, claim inventory, prior-art table, frozen Lean request, and SHA-256 manifest accompany this paper. No external dataset was used. Funding: no specific external funding. Conflicts of interest: none declared. Accountable human author: Justin D. Hart. Substantive AI use: Codex performed standards review, literature search, derivation checks, code, manuscript, packaging, and QA under human direction; historical Claude-authored Viridis artifacts were read with attribution preserved. Comparator performed dual-kernel formal verification; Aristotle was not used.
+ 
+ \section*{Data and code availability}
+ All generated code and captured output are included in the immutable Run 144 package. No private or customer data were used.

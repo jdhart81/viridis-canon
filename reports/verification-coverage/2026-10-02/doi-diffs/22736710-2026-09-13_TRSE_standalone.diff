@@ -1,0 +1,11 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-152/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_TRSE_standalone/paper.tex
+@@ -59,7 +59,7 @@
+ \section{Verification tests and falsification}
+ The standard-library verifier uses exact rational arithmetic. It exhaustively checks small half-unit grids whenever the balance point is feasible, then checks 50,000 seeded feasible instances, arbitrary allocations, the gap identity, global max--min inequality, both deficit branches, scale equivariance, boundaries, the non-midpoint witness, and assumption-breaking controls. It passed 665,912 checks; the complete captured output is included.
+ 
+-The Engine-3 formalization freezes eight Lean declarations: balance equality, the affine gap identity, left and right bottleneck identities, the global max--min bound, both exact deficit identities, and the non-midpoint witness. The candidate contains no \texttt{sorry} or \texttt{admit}. These are formal targets only unless the private Comparator accepts the exact frozen statement/candidate bytes with nanoda and Lean's default kernel and the certificate issuer binds the result.
++The Engine-3 formalization freezes eight Lean declarations: balance equality, the affine gap identity, left and right bottleneck identities, the global max--min bound, both exact deficit identities, and the non-midpoint witness. The private Comparator accepted the exact frozen statement and candidate with nanoda and Lean's default kernel, and the deterministic issuer bound the successful receipt in an exact-hash zero-sorry certificate. Certification covers only those declarations and their explicit assumptions; it does not establish ecological calibration, field benefit, novelty, or production readiness. No local Lean, Lake, Elan, or Mathlib execution was used.
+ 
+ \section{Discussion, limitations, and falsifiability}
+ The main use of Eq.~\eqref{eq:deficit} is diagnostic. If a candidate plan departs from balance, the model reports which route is limiting and the exact declared service sacrificed. The unequal slopes also make clear why ``split the budget equally'' is not a general stewardship rule.

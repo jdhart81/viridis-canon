@@ -1,0 +1,29 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-171/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_RASL_standalone/paper.tex
+@@ -9,7 +9,7 @@
+ \maketitle
+ 
+ \begin{abstract}
+-Thermodynamic speed limits relate finite-time state change to physical quantities such as entropy production and calibrated dynamical activity. We isolate a smaller audit question: what follows when an operator reports a gross discrete activity budget but explicitly reserves part of that activity for non-progress work? For nonnegative integers, a supplied progress bound $d\le n u$ and the decomposition $g=u+r$ imply $d+n r\le n g$. The result is addition monotonicity and distributivity, so the triviality probe classifies it as a methods note. Exhaustive checks and a frozen Lean candidate test only this accounting statement. They do not derive a stochastic-thermodynamic speed limit, calibrate physical activity, or validate an ecological application.
++Thermodynamic speed limits relate finite-time state change to physical quantities such as entropy production and calibrated dynamical activity. We isolate a smaller audit question: what follows when an operator reports a gross discrete activity budget but explicitly reserves part of that activity for non-progress work? For nonnegative integers, a supplied progress bound $d\le n u$ and the decomposition $g=u+r$ imply $d+n r\le n g$. The result is addition monotonicity and distributivity, so the triviality probe classifies it as a methods note. Exhaustive checks and exact-hash dual-kernel certification cover only this accounting statement; the accompanying provenance receipts record manuscript review status. They do not derive a stochastic-thermodynamic speed limit, calibrate physical activity, or validate an ecological application.
+ \end{abstract}
+ 
+ \noindent\textbf{Keywords:} thermodynamic speed limits; dynamical activity; finite-time transport; reserve accounting; methods note.
+@@ -35,7 +35,7 @@
+ \section{Verification and negative controls}
+ The deterministic Python gate exhaustively checks bounded tuples satisfying Eq.~\eqref{eq:premise}, zero usable activity, reserve monotonicity, the named positive witness, and exact gross-partition identities. It also records the identifiability negative control: the same gross activity can be split into different usable and reserved components.
+ 
+-The complete captured result is \texttt{6 PASS / 0 FAIL / 6 CHECKS}. This is numerical and symbolic evidence, not formal verification. Exact Lean statements and a zero-sorry candidate are frozen with the paper. Only the private Comparator may execute them; certification requires nanoda and Lean's default kernel, permitted axioms, zero holes, non-vacuity, and exact hashes.
++The complete captured result is \texttt{6 PASS / 0 FAIL / 6 CHECKS}. The numerical and symbolic checks are separate from formal verification. The four exact Lean statements now have exact-hash zero-sorry certification after private Comparator acceptance by nanoda and Lean's default kernel, with permitted axioms, zero holes, non-vacuity, and binding checks passing. The certificate covers only the declared arithmetic statements; the accompanying provenance receipts record manuscript review status.
+ 
+ \section{Interpretation and limitations}
+ The arithmetic can prevent a reporting overclaim, but it cannot tell an investigator which events are useful, what distance is being traversed, how activity relates to mobility, or how much entropy is produced. Those are empirical and model-selection questions. Heterogeneous event weights, signed progress, reserve events that also advance the endpoint, continuous time, stochastic dependence, state-dependent mobility, and measurement error all lie outside the model.
+@@ -58,7 +58,7 @@
+ No external funding supported this generated exploration. The accountable author declares no conflict of interest for this methods note.
+ 
+ \section*{Authorship and AI-use disclosure}
+-Justin D. Hart is the accountable human author. Codex, under human direction, performed standards and corpus review, primary-source search, preregistration, derivation, verification code, manuscript drafting, Lean statement/candidate drafting, packaging, and quality checks. Historical Claude-authored Viridis artifacts were consulted with attribution preserved. AI output was treated as fallible and remains subject to exact Comparator verification and later independent review.
++Justin D. Hart is the accountable human author. Codex, under human direction, performed standards and corpus review, primary-source search, preregistration, derivation, verification code, manuscript drafting, Lean statement/candidate drafting, packaging, and quality checks. Historical Claude-authored Viridis artifacts were consulted with attribution preserved. AI output was treated as fallible; the four declared Lean statements received exact Comparator verification, while manuscript review status is recorded in the accompanying provenance receipts.
+ 
+ \begin{thebibliography}{9}
+ \bibitem{shiraishi2018} N. Shiraishi, K. Funo, and K. Saito, ``Speed Limit for Classical Stochastic Processes,'' \emph{Phys. Rev. Lett.} \textbf{121}, 070601 (2018), doi:10.1103/PhysRevLett.121.070601.

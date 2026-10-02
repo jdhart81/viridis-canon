@@ -1,0 +1,48 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-121/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_ISB_standalone/paper.tex
+@@ -16,7 +16,7 @@
+ \title{\vspace{-1.2em}\textbf{Information Symbiosis Balance}\\
+ \large A conditional-dependence criterion for cooperative learning}
+ \author{Justin D. Hart\\\small Viridis Research}
+-\date{6 August 2026\\\small Pre-Aristotle generated exploration; novelty unassessed}
++\date{6 August 2026\\\small Comparator-certified working-corpus draft; novelty unassessed}
+ 
+ \begin{document}
+ \maketitle
+@@ -44,7 +44,7 @@
+ unique information ($0$ bit), 12,000 seeded stress cases, negative controls,
+ and convergence.  The balance is signed co-information, not a complete partial
+ information decomposition, a causal or physical thermodynamic law, or an
+-empirical validation.  All Lean targets remain unproved.
++empirical validation.  The exact declared Lean statements are Comparator-certified.
+ \end{abstract}
+ 
+ \textbf{Keywords:} cooperative learning; interaction information; conditional
+@@ -253,7 +253,7 @@
+ requires a portfolio of predictive value, resilience, and cost rather than a
+ single signed number.
+ 
+-\section{Falsifiable empirical program}
++\section{Predictions and tests}
+ 
+ The result suggests four tests rather than a present-tense empirical claim.
+ 
+@@ -285,8 +285,7 @@
+ the two-source restriction omits higher-order atoms observed in current
+ learning research \cite{combrisson2025}.  Fifth, $c$ is assumed to be in bits;
+ no operational thermodynamic conversion is established.  Sixth, no neural,
+-ecological, or machine-learning dataset was analyzed.  Seventh, the analytic
+-statements are proposed Lean targets and remain unproved.  Finally, the
++ecological, or machine-learning dataset was analyzed.  Seventh, the exact declared Lean statements are Comparator-certified; that certificate does not establish empirical validity or novelty.  Finally, the
+ chain-rule identity is standard, so novelty and significance are unassessed;
+ the honest next gate is independent significance review, not publication.
+ 
+@@ -317,7 +316,7 @@
+ the preregistration, wrote and executed verification code, analyzed results,
+ drafted the manuscript, and performed package QA.  Historical Claude-authored
+ Viridis artifacts were read with attribution preserved and were not rewritten.
+-Aristotle was not run.  All proposed Lean targets are unproved.
++The private Comparator certified the exact frozen Lean declarations; Aristotle was not required.
+ 
+ \section{Conclusion}
+ 

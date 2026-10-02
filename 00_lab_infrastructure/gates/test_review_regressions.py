@@ -115,7 +115,7 @@ class IndependentCoverageReview(unittest.TestCase):
         inventory = directory / 'SEALED_CLAIM_INVENTORY.json'
         inspected = {'sealed_paper_inputs': {'SEALED_CLAIM_INVENTORY.json': {'path': str(inventory), 'sha256': sha(inventory)}}}
         outcomes = [{**claim, 'status': 'PASS'} for claim in fixture.claims['claims']]
-        result = claim_binding._check_inventory(inspected, {'tree_root': str(fixture.root)}, outcomes, ['addition_identity','positive_witness'])
+        result = claim_binding._check_inventory(inspected, {'tree_root': str(fixture.root.parent)}, outcomes, ['addition_identity','positive_witness'])
         self.assertEqual(result, [])
 
     def test_parenthesized_and_multiline_vacuity_fail_static(self):

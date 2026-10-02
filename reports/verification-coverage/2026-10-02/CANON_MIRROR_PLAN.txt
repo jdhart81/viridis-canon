@@ -1,0 +1,11 @@
+2026-09-27: 6 bundles, 30 git files
+  DMEC  10.5281/zenodo.23004852  (5 git files; reviewed by CODEX)
+  FOIEB 10.5281/zenodo.23004858  (5 git files; reviewed by OpenAI Codex)
+  JMSF  10.5281/zenodo.23004862  (5 git files; reviewed by CODEX)
+  RDA   10.5281/zenodo.23004866  (5 git files; reviewed by CODEX)
+  SFMC  10.5281/zenodo.23004870  (5 git files; reviewed by CODEX)
+  SRA   10.5281/zenodo.23004874  (5 git files; reviewed by CODEX)
+
+Recovery/verification mode: all DOI files already exist; Zenodo will not run.
+
+DRY RUN — no network calls or writes.

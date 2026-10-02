@@ -1,0 +1,3 @@
+
+# Preserve exact unified manuscript evidence, including blank context lines.
+reports/verification-coverage/*/doi-diffs/*.diff -whitespace

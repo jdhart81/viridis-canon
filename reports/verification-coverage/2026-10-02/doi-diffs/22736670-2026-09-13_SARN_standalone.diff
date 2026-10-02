@@ -1,0 +1,22 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-162/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SARN_standalone/paper.tex
+@@ -79,11 +79,14 @@
+ and exact witnesses. Negative controls reject an additive-loss shortcut and
+ show that a factor above one defeats the retention-bound interpretation.
+ 
+-Eight Lean declarations freeze the same definitions, bounds, identities, and
+-witnesses. The companion candidate contains no proof holes, but formal status
+-remains uncertified until the private Comparator accepts the exact bytes with
+-nanoda and Lean's default kernel and a hash-bound certificate is issued. No
+-local Lean execution was used.
++The eight frozen Lean declarations now have exact-hash zero-sorry
++certification after private Comparator acceptance with nanoda and Lean's
++default kernel. They cover retained-capacity nonnegativity and upper bounds,
++serial loss decomposition, scalar stage-order and total-attribution identities,
++and two witnesses. These identities do not establish that real screens retain
++the same factors after their order changes. Individual reversed-stage losses
++in the paper are arithmetic examples, not separate named certified claims.
++No local Lean execution was used. Independent manuscript review remains pending.
+ 
+ \section{Discussion}
+ The ledger prevents a common arithmetic error: charging the second-stage loss

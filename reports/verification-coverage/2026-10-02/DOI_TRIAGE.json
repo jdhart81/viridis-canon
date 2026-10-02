@@ -1,0 +1,4230 @@
+{
+  "counts": {
+    "COSMETIC": 0,
+    "CURABLE_BY_JOIN": 0,
+    "SUBSTANTIVE": 46,
+    "TRUE_CONJECTURE": 52
+  },
+  "evidence_scope": "Local DOI receipts/registry and deposited manuscript copies. Public readback recorded separately; no Zenodo writes.",
+  "mode": "REPORT_ONLY",
+  "policy": "TRUE_CONJECTURE includes missing/unavailable binding evidence; it does not assert mathematical falsity. COSMETIC requires unchanged manuscript-body assertions. All buckets remain publication HOLD pending claim binding and exact manuscript certification.",
+  "records": [
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [],
+      "doi": "10.5281/zenodo.20008839",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "Formal Verification of Plasma-Mediated N2 Fixation - Viridis Applied Proofs Series 1"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [],
+      "doi": "10.5281/zenodo.20010754",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "Formal Verification of the Non-Substitutability Theorem - Viridis Applied Proofs Series 3"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [],
+      "doi": "10.5281/zenodo.20320324",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "Thermodynamic Slack Decomposition of the Intelligence Bound"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [],
+      "doi": "10.5281/zenodo.20399676",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "Co-Measurement: Human-AI Dialogue as an Adaptive Measurement Instrument in the Data-Limited Regime of the Intelligence Bound"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [],
+      "doi": "10.5281/zenodo.20400274",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "Verdigraph NeuroGenesis: A Software Framework for Self-Evolving AI-Agent Cognitive Substrates, with Mechanically Verified Operational Invariants (v0.2.0)"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [],
+      "doi": "10.5281/zenodo.20412507",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "Co-Measurement Formal Verification Companion: Seven Lean 4 Theorems Supporting the Co-Measurement Framework"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [],
+      "doi": "10.5281/zenodo.20422179",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "Verdigraph NeuroGenesis: A Software Framework for Self-Evolving AI-Agent Cognitive Substrates"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [],
+      "doi": "10.5281/zenodo.20467431",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "Viridis Compiled Theorem Stack - Canon v5 (Dendritic Corridor Formation)"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [],
+      "doi": "10.5281/zenodo.20479012",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "A Thermodynamic Speed Limit on Planetary Restoration: Machine-Checked Foundations from the Second Law to the Intelligence Bound"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-06-10_SAT_standalone"
+      ],
+      "doi": "10.5281/zenodo.20632180",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": false,
+          "matches_public_files": [],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-06-10_SAT_standalone/Hart_2026_Stewardship_Allocation_Theorem.pdf",
+          "sha256": "b4401c09b8164335d835667c9797b8abf6502b1b094b4ddceb17374f05671556"
+        },
+        {
+          "confirmed": false,
+          "matches_public_files": [],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-06-10_SAT_standalone/Hart_2026_Stewardship_Allocation_Theorem.tex",
+          "sha256": "df28d54d7fb88e9d89c78d1945e9aa9741452f4ebee11b6c97ef670323881dbe"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-065"
+      ],
+      "status": "HOLD",
+      "title": "The Stewardship Allocation Theorem: Conservation Budgeting as Projected Dual Mirror Descent on an Emergent Price of Stewardship"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-06-15_S2_Surveyor_MWT_DRAFT"
+      ],
+      "doi": "10.5281/zenodo.20704853",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Surveyor: A Monitoring Water-Filling Theorem for Conservation Portfolios"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-06-17_S4_SOT"
+      ],
+      "doi": "10.5281/zenodo.20735555",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Self-Orchestration Theorem: Minimally-Forcing Governance of an Autonomous Conservation Engine"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-06-17_S3_ETT"
+      ],
+      "doi": "10.5281/zenodo.20735557",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Ecopoietic Threshold Theorem: Terraforming as a Driven Nonequilibrium Phase Transition"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-06-17_CTT_standalone"
+      ],
+      "doi": "10.5281/zenodo.20763323",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Cognitive Throughput Theorem: An Inverse Square-Root Bound on Cognitive Information Acquisition and the Cognitive Face of the Intelligence Bound"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-06-19_SIB_standalone"
+      ],
+      "doi": "10.5281/zenodo.20764639",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-072"
+      ],
+      "status": "HOLD",
+      "title": "The Symbiotic Intelligence Bound: Mutualistic Learning, the Thermodynamic Good Regulator, and Why Cooperation Requires Complementarity"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-06-19_SIB_standalone"
+      ],
+      "doi": "10.5281/zenodo.20765022",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-072"
+      ],
+      "status": "HOLD",
+      "title": "The Symbiotic Intelligence Bound: Mutualistic Learning, the Thermodynamic Good Regulator, and Why Cooperation Requires Complementarity"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-06-22_MRAB_standalone"
+      ],
+      "doi": "10.5281/zenodo.20800757",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Multi-Ring Alignment Bound: The Polymath Paradox, the Wu-Wei Limit, and the Universal Reduction of a Many-Domain Intelligence to the Master Bound"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-06-24_WuWeiDominance_standalone"
+      ],
+      "doi": "10.5281/zenodo.20838923",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "Wu Wei Dominance: Why Rate-Matched Intervention Strictly Out-Diversifies Aggression in Ecosystem Restoration and Value Formation"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-03_GaianHarmonization_standalone"
+      ],
+      "doi": "10.5281/zenodo.21168212",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Gaian Harmonization Theorem: A Single Thermodynamic Shadow Price Decentralizes Planetary Stewardship to the Social Optimum"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-03_AfforestationStewardship_standalone"
+      ],
+      "doi": "10.5281/zenodo.21168224",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Afforestation Stewardship Theorem: Cubic Optimal Seeding and an Intelligence-Bound Ceiling for Nucleation-Limited Reforestation"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-03_CapacityHarmonization_standalone"
+      ],
+      "doi": "10.5281/zenodo.21168241",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Capacity Harmonization Theorem: A Forcing-Harmonizing Duality and Exact Curvature Gap in Intelligence-Bounded Capacity Allocation"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-06_canon_v10.1"
+      ],
+      "doi": "10.5281/zenodo.21223021",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "Viridis Compiled Theorem Stack \u2014 Canon v10.1.0 (The Keystone Wave: Universal Water-Filling Meta-Theorem + Geodesic Saturation Theorem folded into the spine)"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-06_MutualisticInferenceNetwork_standalone"
+      ],
+      "doi": "10.5281/zenodo.21223160",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Mutualistic Inference Network Theorem: Lifting Symbiotic Inference to N-Agent Predictive Commons under the Intelligence Bound"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-06_StewardshipRevisit_standalone"
+      ],
+      "doi": "10.5281/zenodo.21223204",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Stewardship Revisit Theorem: An Optimal Re-Observation Cadence for Drifting Monitoring Certificates"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-06_IntelligenceExergy_standalone"
+      ],
+      "doi": "10.5281/zenodo.21223218",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Intelligence Exergy Theorem: A Cognitive Gouy-Stodola Relation for the Intelligence Bound"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-06_SymbioticCorridor_standalone"
+      ],
+      "doi": "10.5281/zenodo.21223226",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Symbiotic Corridor Theorem: Co-Design Dominance and a Single Broadcast Price for Mutualistic Corridor Networks"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-06_GrokkingNucleation_standalone"
+      ],
+      "doi": "10.5281/zenodo.21223240",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Grokking Nucleation Theorem: A Classical-Nucleation-Theory Account of the Grokking Transition and a Goldilocks Temperature"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/v10.2.0_bundle"
+      ],
+      "doi": "10.5281/zenodo.21444226",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "Viridis Compiled Theorem Stack \u2014 Canon v10.2.0 (The Equilibrium Wave: Effortless Equilibrium + Perennial Corridor + Decoherent Selection + Mutualistic Attestation + Thermodynamic Attention + Stewardship Setpoint folded into the spine)"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-26_DCT_standalone"
+      ],
+      "doi": "10.5281/zenodo.21609934",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:035f79a6e6d79c989cc6eeb3421ef6fe",
+              "name": "DCT_paper.pdf",
+              "size": 436810
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-26_DCT_standalone/DCT_paper.pdf",
+          "sha256": "52fec4325e95fb02be01fd1a6ec7fd4a88c6303aa34a5a4ab1a6ea66544a21d2"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-106"
+      ],
+      "status": "HOLD",
+      "title": "The Deadline-Carnot Theorem: A Finite-Time Thermodynamics of Compute-Optimal Training Under a Wall-Clock Constraint"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-26_FHT_standalone"
+      ],
+      "doi": "10.5281/zenodo.21609938",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:3a81cc48816c1cb887b405fb3b5d5cdb",
+              "name": "FHT_paper.pdf",
+              "size": 439590
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-26_FHT_standalone/FHT_paper.pdf",
+          "sha256": "692c552c6c19d2187f27b4c37b57f01952a8086614d3bea05a3a860a9ef24913"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-109"
+      ],
+      "status": "HOLD",
+      "title": "The Fragmentation Hysteresis Theorem: Restoration Debt, a Latent Heat of Habitat Loss, and the Information Price of Putting a Landscape Back"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-26_GMST_standalone"
+      ],
+      "doi": "10.5281/zenodo.21609942",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:8015e1fb3b629aeb3959f6946072fae0",
+              "name": "GMST_paper.pdf",
+              "size": 428088
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-26_GMST_standalone/GMST_paper.pdf",
+          "sha256": "47f3665eb111d9938c5e20be60072b5dabca326a10334c635eace4bfe5036693"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-104"
+      ],
+      "status": "HOLD",
+      "title": "The Gaian Mutualism Selection Theorem: Partner Fidelity as the Continuum Between Darwinian and Survivorship Selection for Planetary Self-Regulation"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-26_MPWT_standalone"
+      ],
+      "doi": "10.5281/zenodo.21609945",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:8ebcb81ebadb68a28910eb9eee7bf45d",
+              "name": "MPWT_paper.pdf",
+              "size": 414791
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-26_MPWT_standalone/MPWT_paper.pdf",
+          "sha256": "b36e62b30b87ef3fe065807b1e4c4217dbc3a54404339166a055d64e09bfb287"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-105"
+      ],
+      "status": "HOLD",
+      "title": "The Manipulation-Proof Weighting Theorem: Gaming-Elasticity-Adjusted Design of Composite Biodiversity Indices"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-26_PVT_standalone"
+      ],
+      "doi": "10.5281/zenodo.21609947",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:d132d0d518111aa02680ae7aff072bbb",
+              "name": "PVT_paper.pdf",
+              "size": 445552
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-26_PVT_standalone/PVT_paper.pdf",
+          "sha256": "102c10261667bffb2b5c1597ca41ebc84f8dd492d0186a070d82d8384a13251a"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-103"
+      ],
+      "status": "HOLD",
+      "title": "The Plasticity Vitrification Theorem: Continual-Learning Capacity as a Glass-Transitioning Renewable Stock, and the Golden-Rule Reset Duty Cycle"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-26_SSLT_standalone"
+      ],
+      "doi": "10.5281/zenodo.21609949",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:e6ebefb8c4f73de407912b22796cca57",
+              "name": "SSLT_paper.pdf",
+              "size": 424056
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-26_SSLT_standalone/SSLT_paper.pdf",
+          "sha256": "723f5e746e20b8741d8710df6ff85fbd064444d160528b223f3955d418904290"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-107"
+      ],
+      "status": "HOLD",
+      "title": "The Symbiotic Speed Limit: Optimal-Transport Bounds on the Co-Adaptation of Coupled Thermodynamic Systems"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-26_WWIT_standalone"
+      ],
+      "doi": "10.5281/zenodo.21609952",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:9ab3ab005a7cc32f72d8cf7c220ae4f5",
+              "name": "WWIT_paper.pdf",
+              "size": 437151
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-26_WWIT_standalone/WWIT_paper.pdf",
+          "sha256": "bac77519c4b63d02510595b800b24d2bc279c552f7b99624efd2061710da4ae7"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-108"
+      ],
+      "status": "HOLD",
+      "title": "The Wu-Wei Inference Theorem: Effortless Cognition as a Thermodynamic Optimum Between Forcing and Drift"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-07-29_TreesCannotCut_standalone"
+      ],
+      "doi": "10.5281/zenodo.21686447",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "2026-07-29_TreesCannotCut_standalone"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_ACC_standalone"
+      ],
+      "doi": "10.5281/zenodo.21968301",
+      "evidence": [
+        {
+          "certificate": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-129/LEAN_ZERO_SORRY_CERTIFICATE.json",
+          "lean_bindings": [
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-129/VERIFICATION_CANDIDATE_V3.lean",
+              "deposited_matches": [],
+              "sha256": "d5ac9ca2978b106699038d4d2672e3cf99939cbc8a0b7fedcd2e4fc01cf2b72b"
+            },
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-129/VERIFICATION_CHALLENGE_ALIGNED_V3.lean",
+              "deposited_matches": [],
+              "sha256": "d68413572ef573abdcecf422c1bfb8ab5c958c4281bccce268fae89aa783aa0e"
+            }
+          ],
+          "run_id": "Run-129"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:166ccdec49564a558bdea205a70659f6",
+              "name": "paper.pdf",
+              "size": 89484
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_ACC_standalone/paper.pdf",
+          "sha256": "ccf88634f35814c63947e91c2ca59382fbe9baca6e000755099dac3a672da85d"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:2a7a284f59b4e4bc24b5e9a67d63ac7b",
+              "name": "paper.tex",
+              "size": 13845
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_ACC_standalone/paper.tex",
+          "sha256": "862626ea8e6192be9b9e031f02b83cafdf60617c9403a5c7e8cc669257b0e816"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-129"
+      ],
+      "status": "HOLD",
+      "title": "The Anytime Change Certificate: False-alarm control, a late-change penalty, and a bounded erasure budget for continuous monitoring"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_CSHC_standalone"
+      ],
+      "doi": "10.5281/zenodo.21968331",
+      "evidence": [
+        {
+          "certificate": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-131/LEAN_ZERO_SORRY_CERTIFICATE.json",
+          "lean_bindings": [
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-131/VERIFICATION_CANDIDATE.lean",
+              "deposited_matches": [
+                {
+                  "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_CSHC_standalone/CognitiveSwitchingHysteresis.lean",
+                  "sha256": "842943f1da4b1dc2e55b07d2f9eb0edbeffe381e82bc44b51cabd08296295412"
+                },
+                {
+                  "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_CSHC_standalone/reproduction/formal_project/CognitiveSwitchingHysteresis.lean",
+                  "sha256": "842943f1da4b1dc2e55b07d2f9eb0edbeffe381e82bc44b51cabd08296295412"
+                }
+              ],
+              "sha256": "842943f1da4b1dc2e55b07d2f9eb0edbeffe381e82bc44b51cabd08296295412"
+            },
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-131/VERIFICATION_CHALLENGE_ALIGNED.lean",
+              "deposited_matches": [],
+              "sha256": "13803e64077b8a4c7919af31f348aeb19b785f14dabb59fe876cffc6210d98c8"
+            }
+          ],
+          "run_id": "Run-131"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:2876263a5ff01025e2c2a70fd4c7bee1",
+              "name": "paper.pdf",
+              "size": 89214
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_CSHC_standalone/paper.pdf",
+          "sha256": "4de9f038a22d0cc585324910b3b867409e57674a4728b3621c180bf5d4193dc3"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:97fa8e52f4b02bd91d8d598d17d25d7f",
+              "name": "paper.tex",
+              "size": 17729
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_CSHC_standalone/paper.tex",
+          "sha256": "a8504e95c81ccb97c362d46ad28699b3a3d8a9554fbd4563ef2ffb8104c6c2fe"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-131"
+      ],
+      "status": "HOLD",
+      "title": "The Cognitive Switching Hysteresis Certificate: Exact loop geometry under directional state-change penalties"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_ICC_standalone"
+      ],
+      "doi": "10.5281/zenodo.21968337",
+      "evidence": [
+        {
+          "certificate": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-126/LEAN_ZERO_SORRY_CERTIFICATE.json",
+          "lean_bindings": [
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-126/VERIFICATION_CANDIDATE.lean",
+              "deposited_matches": [],
+              "sha256": "e8dc8803fb3c1e465b354b575886c0acf67ba19b28434d16e5abb4c62910101a"
+            },
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-126/VERIFICATION_STATEMENT_V2.lean",
+              "deposited_matches": [],
+              "sha256": "a3016266e251f570721253ebfae431c1d76bc88e88d8da6eb5b6afc9d0913e03"
+            }
+          ],
+          "run_id": "Run-126"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:d7596151b0d6a9523bf60c2d9a9d5f9b",
+              "name": "paper.pdf",
+              "size": 89990
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_ICC_standalone/paper.pdf",
+          "sha256": "8b5131be83830afc3d96872c188be7c75e529b0a4174fa17d3423a268d09a6a6"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:b8fe9664e26c033ec77c78e2786429c8",
+              "name": "paper.tex",
+              "size": 16855
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_ICC_standalone/paper.tex",
+          "sha256": "f1240d2d9d75ac7b0c33a004878a7372bc7a7a731cf3c2fb287741b5c8986641"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-126"
+      ],
+      "status": "HOLD",
+      "title": "The Invariance Capacity Ceiling: Forbidden-Proxy Alignment Caps Predictive Information"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_PCR_standalone"
+      ],
+      "doi": "10.5281/zenodo.21968347",
+      "evidence": [
+        {
+          "certificate": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-127/LEAN_ZERO_SORRY_CERTIFICATE.json",
+          "lean_bindings": [
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-127/VERIFICATION_CANDIDATE.lean",
+              "deposited_matches": [],
+              "sha256": "e930944c7b5efe69cecc90884243a8aca6a09a6930442196347b6d4227334d9a"
+            },
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-127/VERIFICATION_CHALLENGE_ALIGNED.lean",
+              "deposited_matches": [],
+              "sha256": "cb9a966f3d2130bb5a91a15baaa809dc976f35713623190116a235f4867a1b44"
+            }
+          ],
+          "run_id": "Run-127"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:600d4a9ffb39ff436f6df0a169e8d56d",
+              "name": "paper.pdf",
+              "size": 104301
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_PCR_standalone/paper.pdf",
+          "sha256": "8ad6603e457b777cbbef71b216f8d31431b716363ebf4c7d2d4d0d990dab3469"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:a2a24bed2697e4e78f4e7a5de10c1f27",
+              "name": "paper.tex",
+              "size": 19063
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_PCR_standalone/paper.tex",
+          "sha256": "984055f1949fe74b7413af56569a97857823f907d62465f54f47c17aa8d9e17d"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-127"
+      ],
+      "status": "HOLD",
+      "title": "The Precautionary Capacity Reserve: A Sharp Moment-Robust Stewardship Discount for an Intelligence-Rate Model"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_RC_standalone"
+      ],
+      "doi": "10.5281/zenodo.21968361",
+      "evidence": [
+        {
+          "certificate": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-128/LEAN_ZERO_SORRY_CERTIFICATE.json",
+          "lean_bindings": [
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-128/VERIFICATION_CANDIDATE.lean",
+              "deposited_matches": [
+                {
+                  "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_RC_standalone/PaperFormalization.lean",
+                  "sha256": "1de8f6a1f2ac05dd8026ad92a646b910d17b8369ba72c3dc6ebf7628ba1696ee"
+                },
+                {
+                  "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_RC_standalone/reproduction/formal_project/PaperFormalization.lean",
+                  "sha256": "1de8f6a1f2ac05dd8026ad92a646b910d17b8369ba72c3dc6ebf7628ba1696ee"
+                }
+              ],
+              "sha256": "1de8f6a1f2ac05dd8026ad92a646b910d17b8369ba72c3dc6ebf7628ba1696ee"
+            },
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-128/VERIFICATION_CHALLENGE_ALIGNED.lean",
+              "deposited_matches": [],
+              "sha256": "20188ee7c055802711586a9fce3b6d8abce2c6f4a54560460e2890ba300fa0e8"
+            }
+          ],
+          "run_id": "Run-128"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:df40bd0693be02ca3ef425f6294fdfb9",
+              "name": "paper.pdf",
+              "size": 85292
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_RC_standalone/paper.pdf",
+          "sha256": "2988e84115a914079c5b77ceae94ab93dd3e4f1ae20658bcedd8f7e913396b1b"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:00a3a3cdb92768adfbc55cbbcf946feb",
+              "name": "paper.tex",
+              "size": 16715
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_RC_standalone/paper.tex",
+          "sha256": "7ce67198f34c725e8bffefc0f1d43a5005b34197d80ef3e4f15049508cddafd4"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-128"
+      ],
+      "status": "HOLD",
+      "title": "The Reciprocity Corridor: A Bilateral-Benefit Test for Directional Information Exchange"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_SBB_standalone"
+      ],
+      "doi": "10.5281/zenodo.21968383",
+      "evidence": [
+        {
+          "certificate": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-125/LEAN_ZERO_SORRY_CERTIFICATE.json",
+          "lean_bindings": [
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-125/VERIFICATION_CANDIDATE_V2.lean",
+              "deposited_matches": [],
+              "sha256": "adb5eb9b25d9be09f75aa3fc2de64d982e2787b9d2d8de453745b22e601ac6ed"
+            },
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-125/VERIFICATION_CHALLENGE_ALIGNED_V2.lean",
+              "deposited_matches": [],
+              "sha256": "2b958be648f24ffebb06af4c28abe31046ea1f52ea67832346fac150b5e80644"
+            }
+          ],
+          "run_id": "Run-125"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:57a15e0fc8352303b866400bcc00bc26",
+              "name": "paper.pdf",
+              "size": 103122
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_SBB_standalone/paper.pdf",
+          "sha256": "f12c802d0c0787411954a37cb67fe349f3e94ac9a4dbd9ea2320882ef31273a1"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:94b805168cecc4305354bd98856db2fe",
+              "name": "paper.tex",
+              "size": 17805
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_SBB_standalone/paper.tex",
+          "sha256": "2cf85ad92e3d7276163b4b7017f3f4ef0a5c3b6b231600649b9b48c1fafd1856"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-125"
+      ],
+      "status": "HOLD",
+      "title": "The Symbiotic Bandwidth Bound: Low-Rank Shared Channels Cannot Remove Worst-Case Thermodynamic Speed Limits"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_SSBC_standalone"
+      ],
+      "doi": "10.5281/zenodo.21968480",
+      "evidence": [
+        {
+          "certificate": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-130/LEAN_ZERO_SORRY_CERTIFICATE.json",
+          "lean_bindings": [
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-130/VERIFICATION_CANDIDATE.lean",
+              "deposited_matches": [],
+              "sha256": "1260b3565b55ec536a94c59b13ac55cfadaa6e17f6b01b965e5d1014e609bd36"
+            },
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-130/VERIFICATION_CHALLENGE_ALIGNED.lean",
+              "deposited_matches": [],
+              "sha256": "2ef5f3d081483d3a6e12c69bc9f78e1b84b778dd40a4ba7c11d69c73c9c883c9"
+            }
+          ],
+          "run_id": "Run-130"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:ae81301b531e27a5f65da19275126129",
+              "name": "paper.pdf",
+              "size": 80068
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_SSBC_standalone/paper.pdf",
+          "sha256": "30774d8b2e3c2a73338dbfe6edbae7aa42a6006e5c7652870e585f72b1a56216"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:64b267f2b8d0cfa88e6e8320b42618e0",
+              "name": "paper.tex",
+              "size": 15860
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-15_SSBC_standalone/paper.tex",
+          "sha256": "2ef3d98419886e1b339cd28145c59f021c387341f657a3d8356e3f7d8566ceb6"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-130"
+      ],
+      "status": "HOLD",
+      "title": "The Seed-Source Bottleneck Certificate: A cut condition for climate-aligned afforestation supply networks"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/ACC"
+      ],
+      "doi": "10.5281/zenodo.21971041",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:166ccdec49564a558bdea205a70659f6",
+              "name": "paper.pdf",
+              "size": 89484
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/ACC/paper.pdf",
+          "sha256": "ccf88634f35814c63947e91c2ca59382fbe9baca6e000755099dac3a672da85d"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:2a7a284f59b4e4bc24b5e9a67d63ac7b",
+              "name": "paper.tex",
+              "size": 13845
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/ACC/paper.tex",
+          "sha256": "862626ea8e6192be9b9e031f02b83cafdf60617c9403a5c7e8cc669257b0e816"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Anytime Change Certificate: False-alarm control, a late-change penalty, and a bounded erasure budget for continuous monitoring"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/CSHC"
+      ],
+      "doi": "10.5281/zenodo.21971042",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:2876263a5ff01025e2c2a70fd4c7bee1",
+              "name": "paper.pdf",
+              "size": 89214
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/CSHC/paper.pdf",
+          "sha256": "4de9f038a22d0cc585324910b3b867409e57674a4728b3621c180bf5d4193dc3"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:97fa8e52f4b02bd91d8d598d17d25d7f",
+              "name": "paper.tex",
+              "size": 17729
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/CSHC/paper.tex",
+          "sha256": "a8504e95c81ccb97c362d46ad28699b3a3d8a9554fbd4563ef2ffb8104c6c2fe"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Cognitive Switching Hysteresis Certificate: Exact loop geometry under directional state-change penalties"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/ICC"
+      ],
+      "doi": "10.5281/zenodo.21971043",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:d7596151b0d6a9523bf60c2d9a9d5f9b",
+              "name": "paper.pdf",
+              "size": 89990
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/ICC/paper.pdf",
+          "sha256": "8b5131be83830afc3d96872c188be7c75e529b0a4174fa17d3423a268d09a6a6"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:b8fe9664e26c033ec77c78e2786429c8",
+              "name": "paper.tex",
+              "size": 16855
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/ICC/paper.tex",
+          "sha256": "f1240d2d9d75ac7b0c33a004878a7372bc7a7a731cf3c2fb287741b5c8986641"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Invariance Capacity Ceiling: Forbidden-Proxy Alignment Caps Predictive Information"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/PCR"
+      ],
+      "doi": "10.5281/zenodo.21971046",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:600d4a9ffb39ff436f6df0a169e8d56d",
+              "name": "paper.pdf",
+              "size": 104301
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/PCR/paper.pdf",
+          "sha256": "8ad6603e457b777cbbef71b216f8d31431b716363ebf4c7d2d4d0d990dab3469"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:a2a24bed2697e4e78f4e7a5de10c1f27",
+              "name": "paper.tex",
+              "size": 19063
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/PCR/paper.tex",
+          "sha256": "984055f1949fe74b7413af56569a97857823f907d62465f54f47c17aa8d9e17d"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Precautionary Capacity Reserve: A Sharp Moment-Robust Stewardship Discount for an Intelligence-Rate Model"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/RC"
+      ],
+      "doi": "10.5281/zenodo.21971047",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:df40bd0693be02ca3ef425f6294fdfb9",
+              "name": "paper.pdf",
+              "size": 85292
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/RC/paper.pdf",
+          "sha256": "2988e84115a914079c5b77ceae94ab93dd3e4f1ae20658bcedd8f7e913396b1b"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:00a3a3cdb92768adfbc55cbbcf946feb",
+              "name": "paper.tex",
+              "size": 16715
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/RC/paper.tex",
+          "sha256": "7ce67198f34c725e8bffefc0f1d43a5005b34197d80ef3e4f15049508cddafd4"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Reciprocity Corridor: A Bilateral-Benefit Test for Directional Information Exchange"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/SBB"
+      ],
+      "doi": "10.5281/zenodo.21971052",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:57a15e0fc8352303b866400bcc00bc26",
+              "name": "paper.pdf",
+              "size": 103122
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/SBB/paper.pdf",
+          "sha256": "f12c802d0c0787411954a37cb67fe349f3e94ac9a4dbd9ea2320882ef31273a1"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:94b805168cecc4305354bd98856db2fe",
+              "name": "paper.tex",
+              "size": 17805
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/SBB/paper.tex",
+          "sha256": "2cf85ad92e3d7276163b4b7017f3f4ef0a5c3b6b231600649b9b48c1fafd1856"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Symbiotic Bandwidth Bound: Low-Rank Shared Channels Cannot Remove Worst-Case Thermodynamic Speed Limits"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/SSBC"
+      ],
+      "doi": "10.5281/zenodo.21971057",
+      "evidence": [],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:ae81301b531e27a5f65da19275126129",
+              "name": "paper.pdf",
+              "size": 80068
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/SSBC/paper.pdf",
+          "sha256": "30774d8b2e3c2a73338dbfe6edbae7aa42a6006e5c7652870e585f72b1a56216"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:64b267f2b8d0cfa88e6e8320b42618e0",
+              "name": "paper.tex",
+              "size": 15860
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/REPAIR_STAGING/2026-08-15-rights-status-reconciliation/SSBC/paper.tex",
+          "sha256": "2ef3d98419886e1b339cd28145c59f021c387341f657a3d8356e3f7d8566ceb6"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [],
+      "status": "HOLD",
+      "title": "The Seed-Source Bottleneck Certificate: A cut condition for climate-aligned afforestation supply networks"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_ACCN_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236361",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236361-2026-08-31_ACCN_standalone.diff",
+          "diff_sha256": "24bb466181b4f0aa5cbf3c0d3d6b2706a8e54a74a96293981637f6d77bdc2a7a",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_ACCN_standalone/paper.tex",
+          "published_sha256": "ec32519327fb0be0d4c66558fdf783b205897ea6c09cc608cabb40bda79ff80f",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-145/SEALED_paper.tex",
+          "sealed_sha256": "b57b37b5935aa93dce0c4a7a36270d108873bb0c7499cf859aaad875fed777cd"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:862ac0af988f7772e123a4c2bc19df24",
+              "name": "paper.pdf",
+              "size": 67958
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_ACCN_standalone/paper.pdf",
+          "sha256": "aee8afbce9d58ffd7fdbd5b36294519266c4af9cb8b93bd992e24481cab193be"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:52321438b573df3cd8d3bbd1176d1d72",
+              "name": "paper.tex",
+              "size": 8829
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_ACCN_standalone/paper.tex",
+          "sha256": "ec32519327fb0be0d4c66558fdf783b205897ea6c09cc608cabb40bda79ff80f"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-145"
+      ],
+      "status": "HOLD",
+      "title": "An Agreement-Conditioned Collapse Note"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_BCAN_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236387",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236387-2026-08-31_BCAN_standalone.diff",
+          "diff_sha256": "af33d9a8b17f617f62e4d40831603fb668f41cbe7428b651cbf702405ec8e5ca",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_BCAN_standalone/paper.tex",
+          "published_sha256": "4591fd42c44a18943e2c3a5ebdc61253b4f14ea4f47cf3b42f4717c7cd89c9fd",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-142/SEALED_paper.tex",
+          "sealed_sha256": "613c7ba6dec48ae7dc1663d261251a8d27ef0b6d0df2d5b9ed7750e1e6db2982"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:5834a4f7147b83d16d93698279c4feb4",
+              "name": "paper.pdf",
+              "size": 71678
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_BCAN_standalone/paper.pdf",
+          "sha256": "a8e9115404e05de56b04bd64b3747db4a757e83b94eb8cceea9384e69562936a"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:5abbaaeb738bef50e446bbcdbc973c65",
+              "name": "paper.tex",
+              "size": 10584
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_BCAN_standalone/paper.tex",
+          "sha256": "4591fd42c44a18943e2c3a5ebdc61253b4f14ea4f47cf3b42f4717c7cd89c9fd"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-142"
+      ],
+      "status": "HOLD",
+      "title": "A Bisector Corridor Alignment Note"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_DCAE_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236409",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236409-2026-08-31_DCAE_standalone.diff",
+          "diff_sha256": "e59a08d006fb59ee36c7916eb7733fa0ceb84d980108fae76d255d6acb90d494",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_DCAE_standalone/paper.tex",
+          "published_sha256": "39716b157787fcaac31259f4bd4830ac42724bca10825ffb5baceb3529f74096",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-146/SEALED_paper.tex",
+          "sealed_sha256": "464018ddd29b7afcf8427d1baae9708998c1a3fc3fa1ac90174c444a0df90887"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:96fd77ec81eb413b312ad756a79d1efc",
+              "name": "paper.pdf",
+              "size": 52911
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_DCAE_standalone/paper.pdf",
+          "sha256": "b534b405258422e9cf7ed86b66098adcf3764f735d850605501136cfe47c5c2d"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:c1c75bc33dacc02131a0b8611955757c",
+              "name": "paper.tex",
+              "size": 6613
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_DCAE_standalone/paper.tex",
+          "sha256": "39716b157787fcaac31259f4bd4830ac42724bca10825ffb5baceb3529f74096"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-146"
+      ],
+      "status": "HOLD",
+      "title": "A D-Score Component-Alignment Envelope Note"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_FRCS_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236416",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236416-2026-08-31_FRCS_standalone.diff",
+          "diff_sha256": "ce68735928f442c0e23019765a1569bd0f2241b2769c32e656a9ee9b976fbda1",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_FRCS_standalone/paper.tex",
+          "published_sha256": "733558e6fcadf50b9a5477860e41447492ced00c4bbdc7be9305bdbeb1bea8e8",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-148/SEALED_paper.tex",
+          "sealed_sha256": "cdc39497d6a8661feae6312099406e44aed4bc3d341b6ef5ceacc22e8d7dc74c"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:5f7090e738804e0e6740fdcadcd9db5d",
+              "name": "paper.pdf",
+              "size": 57198
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_FRCS_standalone/paper.pdf",
+          "sha256": "d75cf446b5e76de6f685702d386535e105736fd45e69c8ae49f5e7a552517b61"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:49a317db0884e5d0e14eea61d42473c3",
+              "name": "paper.tex",
+              "size": 5445
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_FRCS_standalone/paper.tex",
+          "sha256": "733558e6fcadf50b9a5477860e41447492ced00c4bbdc7be9305bdbeb1bea8e8"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-148"
+      ],
+      "status": "HOLD",
+      "title": "A Freshness Reserve Capacity Note for Stewardship Monitoring"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_RAAC_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236427",
+      "evidence": [
+        {
+          "certificate": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-134/LEAN_ZERO_SORRY_CERTIFICATE.json",
+          "lean_bindings": [
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-134/VERIFICATION_CANDIDATE.lean",
+              "deposited_matches": [],
+              "sha256": "ea168f66e934bcba28554eb3c005e64757b7f6d44048c145ed156b8103ae99a5"
+            },
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-134/VERIFICATION_CHALLENGE_ALIGNED.lean",
+              "deposited_matches": [],
+              "sha256": "967272460d72310cc15b86eb7fb18b0ea5b86fd92540745a6a10e292cd322bdf"
+            }
+          ],
+          "run_id": "Run-134"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:37d7de126c52fc4545d308d5b04fda83",
+              "name": "paper.pdf",
+              "size": 76446
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_RAAC_standalone/paper.pdf",
+          "sha256": "47af4374dc985290ae26d00f85466a4501cd97da6b663f3cf0ad42bdf451c44b"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:1129345af64ef5769238cd4a8111da73",
+              "name": "paper.tex",
+              "size": 9193
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_RAAC_standalone/paper.tex",
+          "sha256": "50aead92a9ae8cb40b2b5d989ce1fd711f4e22976efe0bb5611b2057a7ffb8e0"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-134"
+      ],
+      "status": "HOLD",
+      "title": "The Response-Adjusted Alignment Certificate: A condition-number bound for ecosystem-service incentive weights"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_RCBN_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236441",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236441-2026-08-31_RCBN_standalone.diff",
+          "diff_sha256": "26597fa6e70880ebfba2679128f39f5b52370e77be692abba26e9df7007c9763",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_RCBN_standalone/paper.tex",
+          "published_sha256": "e68b373b8066ef6b133973b16a2f50ab32416d43936d8c45c8138ea0fd342b76",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-143/SEALED_paper.tex",
+          "sealed_sha256": "498ebc95a3b54d696d4e0ebb22cbcd168693067c980086557740c3cf852dcc9e"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:2f2f3fada1d555049818c7427a21e8bc",
+              "name": "paper.pdf",
+              "size": 76233
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_RCBN_standalone/paper.pdf",
+          "sha256": "687907198494bbae6d1d40acbbb0ed1766169c79d8e4b347aa84e821859b7ac9"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:a7fbcc5261a7c4fa06e2ded47984afbb",
+              "name": "paper.tex",
+              "size": 8483
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_RCBN_standalone/paper.tex",
+          "sha256": "e68b373b8066ef6b133973b16a2f50ab32416d43936d8c45c8138ea0fd342b76"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-143"
+      ],
+      "status": "HOLD",
+      "title": "A Recomputation Checkpoint Balance Note"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_SBRN_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236458",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236458-2026-08-31_SBRN_standalone.diff",
+          "diff_sha256": "502b9efcc34a17f230bd68c42958ffd24f5278ad4a85e267ec4e575ed28fe173",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_SBRN_standalone/paper.tex",
+          "published_sha256": "634ab5b838c95ca952d3af5b0f75f65fa80ba8d1ac012f2cdae6bfa0ccc42546",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-144/SEALED_paper.tex",
+          "sealed_sha256": "9e1ed89e5b8713a4a1f63127f9e131b7a5c7d49e73bdb066ddbed86cf437b3d3"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:cb8a3d550d9c10592ca1d7b5f9d8cccf",
+              "name": "paper.pdf",
+              "size": 66029
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_SBRN_standalone/paper.pdf",
+          "sha256": "a918fe71e806920f07adf07b25ad5552c9e99a03470d2f86f7a5a765154c3849"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:f286f454283e0efd60fc2cd27fc15110",
+              "name": "paper.tex",
+              "size": 8217
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_SBRN_standalone/paper.tex",
+          "sha256": "634ab5b838c95ca952d3af5b0f75f65fa80ba8d1ac012f2cdae6bfa0ccc42546"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-144"
+      ],
+      "status": "HOLD",
+      "title": "A Stewardship Bottleneck Reserve Note"
+    },
+    {
+      "bucket": "TRUE_CONJECTURE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_SESL_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236496",
+      "evidence": [
+        {
+          "certificate": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/LEAN_ZERO_SORRY_CERTIFICATE.json",
+          "lean_bindings": [
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CANDIDATE.lean",
+              "deposited_matches": [
+                {
+                  "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_SESL_standalone/SymbioticEqualization.lean",
+                  "sha256": "e834af7336b4ef1d79af4609f354a9b408b0b4a8d385d79aa90e8d98ea07584d"
+                },
+                {
+                  "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_SESL_standalone/reproduction/formal_project/SymbioticEqualization.lean",
+                  "sha256": "e834af7336b4ef1d79af4609f354a9b408b0b4a8d385d79aa90e8d98ea07584d"
+                }
+              ],
+              "sha256": "e834af7336b4ef1d79af4609f354a9b408b0b4a8d385d79aa90e8d98ea07584d"
+            },
+            {
+              "certificate_binding": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CHALLENGE_ALIGNED.lean",
+              "deposited_matches": [],
+              "sha256": "406baad5ccf1f6608547eb4df337d9ab05501c6f2b92dd3104dccd673d11e5b8"
+            }
+          ],
+          "run_id": "Run-141"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": false,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:b311d37702401aefda8a92e50b02a652",
+              "name": "paper.pdf",
+              "size": 64091
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_SESL_standalone/paper.pdf",
+          "sha256": "e65ed0f0dadc36797851588e34ae589eeed5e23e64ff4ae60ad7f01bb29019e7"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:5996b465554197571fc6aeff4d9577e1",
+              "name": "paper.tex",
+              "size": 8880
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_SESL_standalone/paper.tex",
+          "sha256": "12d04240b65e5ea32e13f1612e5d8340d37964a702949205c284fd1fcd5d216e"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "No valid Run-join certificate binds both deposited proof and statement; unavailable joins remain conjecture HOLD"
+      ],
+      "run_ids": [
+        "Run-141"
+      ],
+      "status": "HOLD",
+      "title": "A Symbiotic Equalization Speed-Limit Note"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_SFB_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236521",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236521-2026-08-31_SFB_standalone.diff",
+          "diff_sha256": "2611b25821d828f0ccb7109f114fcfa2a2220ec93582860f4a9f0a8ccc4185f8",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_SFB_standalone/paper.tex",
+          "published_sha256": "de929c3c5b42c5dd0f48720317f0eba815765ad3fa11ac7626367e6b1e58e06c",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-149/SEALED_paper.tex",
+          "sealed_sha256": "93c042480546c1284553e228a4bc4a9375a560f2a741b26ad9c019bf98353c9f"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:d39f29fbdc0181ae4e9b8ca262a96cc0",
+              "name": "paper.pdf",
+              "size": 57517
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_SFB_standalone/paper.pdf",
+          "sha256": "6639573851aa35a197281ade98bd5b4e7b68f75381899492f5315909279c85f1"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:68c73dbe5a8013b6a345b4dafaa71b94",
+              "name": "paper.tex",
+              "size": 6240
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_SFB_standalone/paper.tex",
+          "sha256": "de929c3c5b42c5dd0f48720317f0eba815765ad3fa11ac7626367e6b1e58e06c"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-149"
+      ],
+      "status": "HOLD",
+      "title": "A Shared Facilitation Budget Note for Afforestation Cohorts"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_TDCIL_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236530",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236530-2026-08-31_TDCIL_standalone.diff",
+          "diff_sha256": "15d90618eb9a3efff92faa076d7a379f462f7b31c193878a04360d07d06a0ce2",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_TDCIL_standalone/paper.tex",
+          "published_sha256": "ca6888d2451775931019be79b8faab81a5507face14fd486a2e083b186989c9a",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-147/SEALED_paper.tex",
+          "sealed_sha256": "0c747bc3e6880ad219cad046c3e52c38cc21a65c868159d876b7d71453c79d52"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:929686037bc9eebc7ca6e2651c4b56e2",
+              "name": "paper.pdf",
+              "size": 59349
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_TDCIL_standalone/paper.pdf",
+          "sha256": "680bba689612664cd8ea0c3650d556692ee6fe21d8cdf9a2bbe8e4ed59ee4f9a"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:5f5bb6466753289fcf7df9baae136da2",
+              "name": "paper.tex",
+              "size": 7261
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_TDCIL_standalone/paper.tex",
+          "sha256": "ca6888d2451775931019be79b8faab81a5507face14fd486a2e083b186989c9a"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-147"
+      ],
+      "status": "HOLD",
+      "title": "A Thermodynamic Duty-Cycle Ledger Note for the Intelligence Bound"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_CAST_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236735",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236735-2026-09-01_CAST_standalone.diff",
+          "diff_sha256": "6f126b3e9ba97eb48d7cba0185aaf0587ff6208813e34fc2ca169eaec8409674",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_CAST_standalone/paper.tex",
+          "published_sha256": "e66ba7f8dcc289151098ebeac9a44b9cbfe3947b27f9b3add4a75cd2df7fa369",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-120/SEALED_paper.tex",
+          "sealed_sha256": "3f455193edb0193a97950c9eccbe1a99f436cb6ef0728133130e6f55ae94d601"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:c16906adaad6566f0b133fad05651126",
+              "name": "paper.pdf",
+              "size": 86503
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_CAST_standalone/paper.pdf",
+          "sha256": "307c4c62ba1a6030e0fd63aaec8032cf9eb68a891720a6b41de55eece6225bcf"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:fb1214e5f91760889fd13b5e57042660",
+              "name": "paper.tex",
+              "size": 16951
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_CAST_standalone/paper.tex",
+          "sha256": "e66ba7f8dcc289151098ebeac9a44b9cbfe3947b27f9b3add4a75cd2df7fa369"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-120"
+      ],
+      "status": "HOLD",
+      "title": "The Conjunctive Audit Stewardship Theorem: Why Evidence Portfolios Reward Bundles Rather Than Scattered Greedy Checks"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_DSWC_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236741",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236741-2026-09-01_DSWC_standalone.diff",
+          "diff_sha256": "5e31239a904c784e394d8eea5c1b569124bedcbb108da7364fdae2b5d51a3d9e",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_DSWC_standalone/paper.tex",
+          "published_sha256": "1bf38361afc6da4c6fdd188a223d66d09d6b6dc363405f4be6bb1824913aa276",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-132/SEALED_paper.tex",
+          "sealed_sha256": "cb1e9db3a2ae2fa9a0253cf10dd2c47180ee5dd0c81177cd9a1f4090c97b12fb"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:955a0d93e8b43ad275cc7d4de09664b4",
+              "name": "paper.pdf",
+              "size": 82747
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_DSWC_standalone/paper.pdf",
+          "sha256": "3f34e1814e02a9ed7004878483afd6796916474f595b7441216c048c96ee8da4"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:0f5a2a5bb76dd467c6844563d5f6760d",
+              "name": "paper.tex",
+              "size": 14297
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_DSWC_standalone/paper.tex",
+          "sha256": "1bf38361afc6da4c6fdd188a223d66d09d6b6dc363405f4be6bb1824913aa276"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-132"
+      ],
+      "status": "HOLD",
+      "title": "The D-Score Weight-Charter Certificate: A sharp rank-stability bound for precommitted composite indicators"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_GACC_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236748",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236748-2026-09-01_GACC_standalone.diff",
+          "diff_sha256": "5368dab8ec320ee789d0c273829ff22887ae765b876ea83ea0016bb023702a87",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_GACC_standalone/paper.tex",
+          "published_sha256": "d88fa5f9fc99f30ea2e28d4b05c55e2156a636b213ca7fb7ac5d3652995e132a",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-138/SEALED_paper.tex",
+          "sealed_sha256": "5e84af5435cb09aa72dea63f01e5828766e2b2b43ec9074607ae4734b8578b3d"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:c9372cb50149dba6848b0d47a45a5466",
+              "name": "paper.pdf",
+              "size": 61443
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_GACC_standalone/paper.pdf",
+          "sha256": "e3013c587a20e81204ad91f5b5b88f09e2d2a5b1307a77349f88d6fb1562d21d"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:fa16f4d87c14b81b3cf690d94b892e43",
+              "name": "paper.tex",
+              "size": 11328
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_GACC_standalone/paper.tex",
+          "sha256": "d88fa5f9fc99f30ea2e28d4b05c55e2156a636b213ca7fb7ac5d3652995e132a"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-138"
+      ],
+      "status": "HOLD",
+      "title": "The Gaian Alignment Cone Certificate: When Local Directional Bounds Survive Aggregation"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_HCF_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236755",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236755-2026-09-01_HCF_standalone.diff",
+          "diff_sha256": "082bced04f0c679232bf34eaa6a25d649101711e81953d615de1012d5b086001",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_HCF_standalone/paper.tex",
+          "published_sha256": "c8c84ddd9b10c84b81869ea1c11d2d9af18d201260e14198c6337f668bcc276f",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-123/SEALED_paper.tex",
+          "sealed_sha256": "56827dfd909521ea6acd45c5a511546b62b7e1f18c3b19e0dcf0bb7b97f072dc"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:be7ee9fb1fb09e309b07222a7f9357cf",
+              "name": "paper.pdf",
+              "size": 87390
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_HCF_standalone/paper.pdf",
+          "sha256": "f1b9b8c5ba4f85b4d4e2ffda41b8102f48317c7d804838d286bc5cb9e951fec1"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:cc1f32e8efe8980cc370bb3f9d9ad158",
+              "name": "paper.tex",
+              "size": 16872
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_HCF_standalone/paper.tex",
+          "sha256": "c8c84ddd9b10c84b81869ea1c11d2d9af18d201260e14198c6337f668bcc276f"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-123"
+      ],
+      "status": "HOLD",
+      "title": "A Free-Energy Floor for Habitable-State Concentration: A Coarse-Grained Relative-Entropy Audit for Gaian Models"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_ISB_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236761",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236761-2026-09-01_ISB_standalone.diff",
+          "diff_sha256": "bb219becf13dbe578465792878fd63c34e62c4e242308bb0978eda3607b7460d",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_ISB_standalone/paper.tex",
+          "published_sha256": "fdfdf860de45b5c42ed5940cdad13def0ba6320604b235fe09038040ebd256de",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-121/SEALED_paper.tex",
+          "sealed_sha256": "c2369b55def3b370e86b40e4ccd6eb3d4b13c51c390a4622b1064b5fe8d37331"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:70cc1e7c9b33751dddd9ceebf19524a4",
+              "name": "paper.pdf",
+              "size": 83243
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_ISB_standalone/paper.pdf",
+          "sha256": "d11674ffbdafb0c2e9ade2782c40fb5b674dbc15680504a1eae1a2ee2696f42f"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:0d7d2f968e92dba17631c28a6e379a05",
+              "name": "paper.tex",
+              "size": 18096
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_ISB_standalone/paper.tex",
+          "sha256": "fdfdf860de45b5c42ed5940cdad13def0ba6320604b235fe09038040ebd256de"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-121"
+      ],
+      "status": "HOLD",
+      "title": "Information Symbiosis Balance: A Conditional-Dependence Criterion for Cooperative Learning"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_SAC_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236768",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236768-2026-09-01_SAC_standalone.diff",
+          "diff_sha256": "f041c49016ea6b86dab85153638da0a20319a155a89685b9093ec83b0aa20308",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_SAC_standalone/paper.tex",
+          "published_sha256": "de1d7c3df553281f18003102ebe08afb7247b9859af3ae739a298e68d995d184",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/pre_aristotle_corrections/Run-137_symbiotic-accounting-certificate-r1/SEALED_paper.tex",
+          "sealed_sha256": "f1d3f71e95174e43422c9cc9add4b844e5d12beed803fe502d453d76eecf919d"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:d3b51d4666f1f3a5c3e53a62831ea697",
+              "name": "paper.pdf",
+              "size": 73713
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_SAC_standalone/paper.pdf",
+          "sha256": "fe748f936a8a29d3d7753b4309cc389481f81fe20a58e370146988543c3e6b28"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:611ed2cf844bbfb7d0e5e56f37affd3b",
+              "name": "paper.tex",
+              "size": 11537
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_SAC_standalone/paper.tex",
+          "sha256": "de1d7c3df553281f18003102ebe08afb7247b9859af3ae739a298e68d995d184"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-137"
+      ],
+      "status": "HOLD",
+      "title": "The Symbiotic Accounting Certificate: Complementarity Does Not Create Thermodynamic Capacity"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_SOR_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236770",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236770-2026-09-01_SOR_standalone.diff",
+          "diff_sha256": "e8e51445f25705b2cd2f1fa6ae66e1d11d5785094ddf8687909c596eeaf2ca05",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_SOR_standalone/paper.tex",
+          "published_sha256": "082e53be6d8678d3237dce0c7e5011a3181bda1c848d1e0588ff09cb5f42381f",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-140/SEALED_paper.tex",
+          "sealed_sha256": "ef70901c73ff156bdf77b03df5abcdb8cb077df2fd69966c1b5216d49afebf1a"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:6d9581f5ef97177166ca64a697ad1deb",
+              "name": "paper.pdf",
+              "size": 52256
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_SOR_standalone/paper.pdf",
+          "sha256": "9ecbcd89e4d56b589bee82bcddd12c9aa7c7de848f4579464e7f027c5963a4d3"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:9e72c91be3be286decf98069c3238e2a",
+              "name": "paper.tex",
+              "size": 5170
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_SOR_standalone/paper.tex",
+          "sha256": "082e53be6d8678d3237dce0c7e5011a3181bda1c848d1e0588ff09cb5f42381f"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-140"
+      ],
+      "status": "HOLD",
+      "title": "The Stewardship Option-Reserve Note"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_SSC_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236775",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236775-2026-09-01_SSC_standalone.diff",
+          "diff_sha256": "46f24d5569a159f42025e680436fb30de90ad28de3a93974a1b8b727904cab55",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_SSC_standalone/paper.tex",
+          "published_sha256": "bec553845bc328f38d455b7e6ddda953d2030d1d6541264c7e6faaf15bda8a31",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-135/SEALED_paper.tex",
+          "sealed_sha256": "d7a2bb6413083ac1300e2ecbc0308dc396a252c85b7c218d91fcc94ad23118e0"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:50235efa2decca03b3d0b5302535befa",
+              "name": "paper.pdf",
+              "size": 68687
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_SSC_standalone/paper.pdf",
+          "sha256": "84441bb0d3d2b5ab6cbb3e14c249f4eae5981784d3e3e306c84ed1eaaa031d44"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:151984ab6cc66140daf9559d90c74080",
+              "name": "paper.tex",
+              "size": 8784
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_SSC_standalone/paper.tex",
+          "sha256": "bec553845bc328f38d455b7e6ddda953d2030d1d6541264c7e6faaf15bda8a31"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-135"
+      ],
+      "status": "HOLD",
+      "title": "The Sufficient Sanitization Certificate: Task Information, Data Minimization, and an Ideal Erasure Gap"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_TRWFN_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236785",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236785-2026-09-01_TRWFN_standalone.diff",
+          "diff_sha256": "51b609bf4460ee9424ccbd613796c5fdd8222a95910c856919f3a241f0de7891",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_TRWFN_standalone/paper.tex",
+          "published_sha256": "48808ce50835c810cf4a7cab200f0b8b7b87efe92f489e825c52f5b999ae18e5",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-139/SEALED_paper.tex",
+          "sealed_sha256": "1c9406c3a050e71311d49ff1bd250ddf4caead1bbc46cc0ff23b20d92997438e"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:5e050c75e45e4fdba2ed17618560bd3a",
+              "name": "paper.pdf",
+              "size": 59241
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_TRWFN_standalone/paper.pdf",
+          "sha256": "ef73f67e71687df6f54a01acd9d4fc0ef26f0896d9f7c469e0e0f5e276b8cc71"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:a8847d242f5cad6ee5b53eecdb6d3165",
+              "name": "paper.tex",
+              "size": 8149
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_TRWFN_standalone/paper.tex",
+          "sha256": "48808ce50835c810cf4a7cab200f0b8b7b87efe92f489e825c52f5b999ae18e5"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-139"
+      ],
+      "status": "HOLD",
+      "title": "The Thermodynamic Retrofit Water-Filling Note"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_ZAB_standalone"
+      ],
+      "doi": "10.5281/zenodo.22236789",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22236789-2026-09-01_ZAB_standalone.diff",
+          "diff_sha256": "7da92472e10fd1f1fc9e51353336dedfbdaed04ae3e42e7afdf54d447cd8df81",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_ZAB_standalone/paper.tex",
+          "published_sha256": "0777a3d512f8852fdc385fc57448fee564f0a8b15b0288beb69d8cdc35495c8a",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-122/SEALED_paper.tex",
+          "sealed_sha256": "c77870c679dc26acaeb66277ca2df9f1121de4e18a12d51a091a2947851912c8"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:4653379898a33814a44431f1453bb4d7",
+              "name": "paper.pdf",
+              "size": 90225
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_ZAB_standalone/paper.pdf",
+          "sha256": "bcf58d84eeff8fa8db35b29003455f66757d5b00badd0993363f5e4c8b641700"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:614f2a8189112392d4feb8a83b6134f9",
+              "name": "paper.tex",
+              "size": 18088
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_ZAB_standalone/paper.tex",
+          "sha256": "0777a3d512f8852fdc385fc57448fee564f0a8b15b0288beb69d8cdc35495c8a"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-122"
+      ],
+      "status": "HOLD",
+      "title": "The Zeno Alignment Budget: Uniform Projective Steps and a Noise-Limited Measurement Count"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_CODC_standalone"
+      ],
+      "doi": "10.5281/zenodo.22665525",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22665525-2026-09-08_CODC_standalone.diff",
+          "diff_sha256": "561e6a9392ca496d22f184935c5c86b3c0315c1d240c1f248b2281e1eeb35934",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_CODC_standalone/paper.tex",
+          "published_sha256": "7af9e240a331d63bdcece7d5d3287c983c631b54d0712c8031d571233d3eeba9",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-133/SEALED_paper.tex",
+          "sealed_sha256": "e9fce1d1f623fdabd96bb2de61e93d59c0f4e9bc8c4786ad130e639601fc6c9d"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:a016e4f7d3ed1159d54bfb208d2a3d7c",
+              "name": "paper.pdf",
+              "size": 69540
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_CODC_standalone/paper.pdf",
+          "sha256": "e7511198ec945d49ef1f9ae5039e1727fc475c14b4458bff7a31711f0ff247a9"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:44cb72dee9d05ed601092bc2bab2d6d2",
+              "name": "paper.tex",
+              "size": 10010
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_CODC_standalone/paper.tex",
+          "sha256": "7af9e240a331d63bdcece7d5d3287c983c631b54d0712c8031d571233d3eeba9"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-133"
+      ],
+      "status": "HOLD",
+      "title": "The Corridor Overlap Duality Certificate: An exact synchrony-diversification tradeoff for two shared habitat paths"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_DPAC_standalone"
+      ],
+      "doi": "10.5281/zenodo.22665538",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22665538-2026-09-08_DPAC_standalone.diff",
+          "diff_sha256": "ae08871180dd1416f0412289782ed2b6300c814bebcd4eecd678faee2ebeda04",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_DPAC_standalone/paper.tex",
+          "published_sha256": "f737689587ac2bad85ae6f3bf063fe8be9c78c7ca835a95b9ea1666baf282def",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-150/SEALED_paper.tex",
+          "sealed_sha256": "7ffe7fac86ff6179e4edac81a8f45384978631a6ebd75a1720fa1060900e3914"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:7592bc1b1b9be987c8651ba31aaa1b9a",
+              "name": "paper.pdf",
+              "size": 61692
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_DPAC_standalone/paper.pdf",
+          "sha256": "817d9f1ad8450ac2b4514cc18d98546b696963fb4dcd2a6851c2e926601d158c"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:5cf8033611ea38aa72d8fc40608dd889",
+              "name": "paper.tex",
+              "size": 6055
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_DPAC_standalone/paper.tex",
+          "sha256": "f737689587ac2bad85ae6f3bf063fe8be9c78c7ca835a95b9ea1666baf282def"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-150"
+      ],
+      "status": "HOLD",
+      "title": "A Dual-Price Alignment Corridor Note for Thermodynamic Project Ledgers"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_PCS_standalone"
+      ],
+      "doi": "10.5281/zenodo.22665554",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22665554-2026-09-08_PCS_standalone.diff",
+          "diff_sha256": "49d99b0cecb0390d0bac199c77bed614a98fc555f106d2a320e4c679235ca89d",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_PCS_standalone/paper.tex",
+          "published_sha256": "00fd76c7d512e4781299aaa07abc1453234de48323cf0a1e63c74ebfe1204b9f",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-124/SEALED_paper.tex",
+          "sealed_sha256": "225720480220a38583409f221870da31b6ae04cb663d9f161cb5cdf48c8e4c3c"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:a416193d735171dea7a9718200d81e45",
+              "name": "paper.pdf",
+              "size": 82501
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_PCS_standalone/paper.pdf",
+          "sha256": "b6c5b19cedc01033e7b57a4e3d265e746c5efbce11008addeebdddf97ba28d3e"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:fb761a2009cb7e48723b4ec6fcd13a4c",
+              "name": "paper.tex",
+              "size": 13217
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_PCS_standalone/paper.tex",
+          "sha256": "00fd76c7d512e4781299aaa07abc1453234de48323cf0a1e63c74ebfe1204b9f"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-124"
+      ],
+      "status": "HOLD",
+      "title": "Pivotal Corridor Stewardship: Exact Reliability Gradients and a Failure-Aware Priority Rule"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_RFC_standalone"
+      ],
+      "doi": "10.5281/zenodo.22665565",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22665565-2026-09-08_RFC_standalone.diff",
+          "diff_sha256": "73efdf47b91b1176500e42014d062a698f7bb3efa868b1ac17e5ab20116adf81",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_RFC_standalone/paper.tex",
+          "published_sha256": "f976f82528e10c88ce6226aeab932eff4e82ccd37d70929b644d11631c6928f6",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-136/SEALED_paper.tex",
+          "sealed_sha256": "344953da454ce80aa4b60399e43f7eaad0640e62fba85b26bbe934d3e014b666"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:5b46e84904f0a402a26660574a18bdc5",
+              "name": "paper.pdf",
+              "size": 73060
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_RFC_standalone/paper.pdf",
+          "sha256": "ff72346248eff62713d7fc40bf4110b11ae9cdc8dbe53a52c2c0f8af7219902f"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:7142ec23768ffdad27af27cd8791c42f",
+              "name": "paper.tex",
+              "size": 11683
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_RFC_standalone/paper.tex",
+          "sha256": "f976f82528e10c88ce6226aeab932eff4e82ccd37d70929b644d11631c6928f6"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-136"
+      ],
+      "status": "HOLD",
+      "title": "The Retention Floor Certificate: Hazard-Proportional Refresh for Max-Min Knowledge Stewardship"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_DREAA_standalone"
+      ],
+      "doi": "10.5281/zenodo.22736637",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22736637-2026-09-13_DREAA_standalone.diff",
+          "diff_sha256": "78fc10f30730dd4eb3e5784f2e5d1ea97b176278266c383dfc3b4a4847b91283",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_DREAA_standalone/paper.tex",
+          "published_sha256": "0ac2fdd1e9c8ce79599d7506af2fc3d5a258d94eca2510a67b1217c5e0f4dcc9",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-158/attempts/attempt-2/SEALED_paper.tex",
+          "sealed_sha256": "f358222e2ce9305fa1a25518dadf4cc9e3d9e4188bdc38d29d1a9ba029ea518a"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:3496d2ffd91e485768eba0aa2a3f226b",
+              "name": "paper.pdf",
+              "size": 56654
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_DREAA_standalone/paper.pdf",
+          "sha256": "f368c71f6a76b668f1eeb0cbb8f52b779f44355f9b7907b4c3836175c6a30c1a"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:2e4d8fc5680f444ef30d7643e583872f",
+              "name": "paper.tex",
+              "size": 8095
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_DREAA_standalone/paper.tex",
+          "sha256": "0ac2fdd1e9c8ce79599d7506af2fc3d5a258d94eca2510a67b1217c5e0f4dcc9"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-158"
+      ],
+      "status": "HOLD",
+      "title": "A Deference-Reserve Equalization Note for Autonomous Applications"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_DSUR_standalone"
+      ],
+      "doi": "10.5281/zenodo.22736650",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22736650-2026-09-13_DSUR_standalone.diff",
+          "diff_sha256": "6b543f8552b88b008899207a98d1c5167a638bd3e7a55e93d61abf4ecb6862cc",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_DSUR_standalone/paper.tex",
+          "published_sha256": "1b5352cf36c0d89603f1ffbf0da7bec4624b71ce48789c5b4b92e9482822cb82",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-160/SEALED_paper.tex",
+          "sealed_sha256": "b8d5c7223cb065f3a15984aea23895f5f79d820d74f4ca28d923976d75f2bfd3"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:70f65391d62ed2ce18faca5c1b5d6bec",
+              "name": "paper.pdf",
+              "size": 59093
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_DSUR_standalone/paper.pdf",
+          "sha256": "d639b539810b8e904d5702daa12fe9db503c799d90734e799ee61e97390c2cf0"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:b686040f485797a57bd3ca4c91f38511",
+              "name": "paper.tex",
+              "size": 8447
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_DSUR_standalone/paper.tex",
+          "sha256": "1b5352cf36c0d89603f1ffbf0da7bec4624b71ce48789c5b4b92e9482822cb82"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-160"
+      ],
+      "status": "HOLD",
+      "title": "A D-Score Stewardship Uncertainty-Reserve Note"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_MRRN_standalone"
+      ],
+      "doi": "10.5281/zenodo.22736654",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22736654-2026-09-13_MRRN_standalone.diff",
+          "diff_sha256": "3de42c3519c4cb0f3a4aa00b71d8bc0ac36062b789d5d819c7212377629c3f06",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_MRRN_standalone/paper.tex",
+          "published_sha256": "8de3647bafb24a9f88060e4b865a517a9cef2c9c3cc0b8c84432656001553897",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-156/attempts/attempt-2/SEALED_paper.tex",
+          "sealed_sha256": "454b28c31ae1f70870bce2a93d7e71cdfe08b6e4edaffe0a8bd8b1aec179d2b3"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:84646dc542272c6da449b8115f55fca5",
+              "name": "paper.pdf",
+              "size": 64473
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_MRRN_standalone/paper.pdf",
+          "sha256": "294a975e44a534190461ff79fe9e970843a31edd22e1ac19e3ca6a08b87bad6d"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:9d7a79e71cd0b0986159d908d0c206d9",
+              "name": "paper.tex",
+              "size": 8946
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_MRRN_standalone/paper.tex",
+          "sha256": "8de3647bafb24a9f88060e4b865a517a9cef2c9c3cc0b8c84432656001553897"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-156"
+      ],
+      "status": "HOLD",
+      "title": "A Monitoring-to-Response Reserve Note for Conservation Stewardship"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_RCBX_standalone"
+      ],
+      "doi": "10.5281/zenodo.22736656",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22736656-2026-09-13_RCBX_standalone.diff",
+          "diff_sha256": "62aa41847208b3fbb9c5d70b0b83a279cefd057fd2ddf0d4f4aa25a14ffe046f",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_RCBX_standalone/paper.tex",
+          "published_sha256": "a5ae2094869c3fabb126049ca3a057a8ea58c7d8b0ffaadca81320adfd811959",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-161/attempts/attempt-2/SEALED_paper.tex",
+          "sealed_sha256": "6f793bb8bc9d0585bd09d88464959a57adfc151e12e53f9a76917f1eb4ef0518"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:e6eb068baca8aabce43af1971abfe384",
+              "name": "paper.pdf",
+              "size": 54591
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_RCBX_standalone/paper.pdf",
+          "sha256": "691d01ae1642f78cc0b56a62a5a0fe8dee6bab078829cd7367e252b566c6e9ef"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:50c4c289437e60873e1028289ee0dcfe",
+              "name": "paper.tex",
+              "size": 7953
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_RCBX_standalone/paper.tex",
+          "sha256": "a5ae2094869c3fabb126049ca3a057a8ea58c7d8b0ffaadca81320adfd811959"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-161"
+      ],
+      "status": "HOLD",
+      "title": "A Reciprocal Corridor Bottleneck Note"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_RECB_standalone"
+      ],
+      "doi": "10.5281/zenodo.22736660",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22736660-2026-09-13_RECB_standalone.diff",
+          "diff_sha256": "7f1cd4a359dfce4205bfbb4a74a715c702741e7aecf0546c3fb593aaf9769ce7",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_RECB_standalone/paper.tex",
+          "published_sha256": "ae5aa73520d08e35d0918e9e2edc84e383e9a994ec8ef68f1a9b21a0f1ccc51b",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-164/attempts/attempt-2/SEALED_paper.tex",
+          "sealed_sha256": "72647c50a2d5f4c1197f7a152ccbd7b8ff2dbee6e30f774d7c498d82323c1439"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:ca34eb4d6931056f2d706c670a3ddd53",
+              "name": "paper.pdf",
+              "size": 65385
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_RECB_standalone/paper.pdf",
+          "sha256": "a801eadcae1831f9fc35519c29a9b4a93e31b06d128f4b1a463b1f945fff08a7"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:15d363b59e9f407a198941175f50d13e",
+              "name": "paper.tex",
+              "size": 7368
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_RECB_standalone/paper.tex",
+          "sha256": "ae5aa73520d08e35d0918e9e2edc84e383e9a994ec8ef68f1a9b21a0f1ccc51b"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-164"
+      ],
+      "status": "HOLD",
+      "title": "A Relative-Entropy Change-Budget Note for Stewarded Learning"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_RRFG_standalone"
+      ],
+      "doi": "10.5281/zenodo.22736666",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22736666-2026-09-13_RRFG_standalone.diff",
+          "diff_sha256": "084b80c3de49a4cb53d810b3b84e3586b02dc549565fe028478bda495b05edca",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_RRFG_standalone/paper.tex",
+          "published_sha256": "2309ba13610a1c57b012d58e7cbba8a9aecb6dbc8fc42848a0de022095c54059",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-153/attempts/attempt-2/SEALED_paper.tex",
+          "sealed_sha256": "c0d372788f3bb5865e4f9d575ab50fab97ae88b500185afc66ff35476755af89"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:3c7a52b960eb3e4c86c7b453bae256d2",
+              "name": "paper.pdf",
+              "size": 58643
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_RRFG_standalone/paper.pdf",
+          "sha256": "27efa6fa332757810024dc8d685adeeee56c37e6be79885b8d99b5a36a792418"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:be7368328ec8d7919a13161d7058f6fa",
+              "name": "paper.tex",
+              "size": 6678
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_RRFG_standalone/paper.tex",
+          "sha256": "2309ba13610a1c57b012d58e7cbba8a9aecb6dbc8fc42848a0de022095c54059"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-153"
+      ],
+      "status": "HOLD",
+      "title": "A Reciprocal Rescue Feasibility Note for Gaian Mutualisms"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SARN_standalone"
+      ],
+      "doi": "10.5281/zenodo.22736670",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22736670-2026-09-13_SARN_standalone.diff",
+          "diff_sha256": "1af3f582a2c898984876e9caaf2b2a2c67b2e72db0387f3d5902facee2e9869b",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SARN_standalone/paper.tex",
+          "published_sha256": "9e4f3e3b7b1ff0a9a0142051b535baac4bf05dbd5a8ce288606cb214891ee456",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-162/SEALED_paper.tex",
+          "sealed_sha256": "8cc877e18876b99b49247da265f7739820872eb2e002b2c4a0bfb148e0311387"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:a34cbdde47e99ea615e358b05e819952",
+              "name": "paper.pdf",
+              "size": 60556
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SARN_standalone/paper.pdf",
+          "sha256": "7b6ebd2efd240cb998be0146aac7a5ac7afd899ee2f52266ac3a0495e1d9746c"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:77ac09345ff6d89a4da361cfb7864380",
+              "name": "paper.tex",
+              "size": 7309
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SARN_standalone/paper.tex",
+          "sha256": "9e4f3e3b7b1ff0a9a0142051b535baac4bf05dbd5a8ce288606cb214891ee456"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-162"
+      ],
+      "status": "HOLD",
+      "title": "A Sequential Alignment-Retention Note"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SBCN_standalone"
+      ],
+      "doi": "10.5281/zenodo.22736676",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22736676-2026-09-13_SBCN_standalone.diff",
+          "diff_sha256": "8cc716fee3dc6c532677e3f1c6644f4346b29a2d1a83e76ad59d4de13bcbdfa7",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SBCN_standalone/paper.tex",
+          "published_sha256": "817ec5c0e06ff802c186d79caa305c9d66ee4bd5e4ce3f8efcceb49da451c411",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-154/attempts/attempt-2/SEALED_paper.tex",
+          "sealed_sha256": "557f588eac9f315eb18dae503231f87a294372fa294a23ee321afa88b21e73a6"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:40fbbbc7c8b2d6824538787283e3d88c",
+              "name": "paper.pdf",
+              "size": 65308
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SBCN_standalone/paper.pdf",
+          "sha256": "e16101487b4484beb822866eb52b80728dbc18684b26743348a9c1ad30e222fc"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:5da6620abd1053405524a56d345f5c61",
+              "name": "paper.tex",
+              "size": 7696
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SBCN_standalone/paper.tex",
+          "sha256": "817ec5c0e06ff802c186d79caa305c9d66ee4bd5e4ce3f8efcceb49da451c411"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-154"
+      ],
+      "status": "HOLD",
+      "title": "A Signed-Bias Cancellation Note for Aligned Cognitive Ensembles"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SDPN_standalone"
+      ],
+      "doi": "10.5281/zenodo.22736684",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22736684-2026-09-13_SDPN_standalone.diff",
+          "diff_sha256": "0175ed22641fac55904da0c7f127b3b40ffbbefe0145bb6a3f2c2c96efbebcf3",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SDPN_standalone/paper.tex",
+          "published_sha256": "5e1a5ba6b422b39975d2a695cba12973cec58f33e7dfb277475e903ba1d67b95",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-159/SEALED_paper.tex",
+          "sealed_sha256": "fbd94c8dbf1f4c567c3164df3e9710a82973090bf7fde2036e7933a17f725273"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:e1b936d95ecbda7fb76dd9509e0ddb49",
+              "name": "paper.pdf",
+              "size": 65494
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SDPN_standalone/paper.pdf",
+          "sha256": "807933d6f59820484dc71db3233fe211ecb820c4f6f99c1cc3015d9ff9ce1425"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:d1d649e85df24575518ddf9dc1666f2b",
+              "name": "paper.tex",
+              "size": 9199
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SDPN_standalone/paper.tex",
+          "sha256": "5e1a5ba6b422b39975d2a695cba12973cec58f33e7dfb277475e903ba1d67b95"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-159"
+      ],
+      "status": "HOLD",
+      "title": "A Switching-Dissipation Payback Note for Thermodynamic Project Ledgers"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SVON_standalone"
+      ],
+      "doi": "10.5281/zenodo.22736690",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22736690-2026-09-13_SVON_standalone.diff",
+          "diff_sha256": "fb0cc4dfdccfa753fbc1b9a2c1833279b9d87f436bbfdff0bd7854e1999a20a0",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SVON_standalone/paper.tex",
+          "published_sha256": "69e931e0517c5f88352e654263e0308e8813050f82ce07258a32aa468c6eabb1",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-155/attempts/attempt-2/SEALED_paper.tex",
+          "sealed_sha256": "d6e0c47d9175ed4783f5748360cdb81e08da7ac2d571526572a964d34ffcb412"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:5786076a76146b4eb9999a6b3397217d",
+              "name": "paper.pdf",
+              "size": 67566
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SVON_standalone/paper.pdf",
+          "sha256": "b226c1ac72df1682c19c682f42d405bf919c213bd4961e2fdde4874068c3ea0f"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:96e2e2aa01298dd34f0f1e2837cf62a5",
+              "name": "paper.tex",
+              "size": 8152
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SVON_standalone/paper.tex",
+          "sha256": "69e931e0517c5f88352e654263e0308e8813050f82ce07258a32aa468c6eabb1"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-155"
+      ],
+      "status": "HOLD",
+      "title": "A Shared Verification-Overhead Note for Ecosystem-Service Bundles"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_TCTSI_standalone"
+      ],
+      "doi": "10.5281/zenodo.22736699",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22736699-2026-09-13_TCTSI_standalone.diff",
+          "diff_sha256": "b36d2a99466e138f3cbea47121e3ff441d79b06d90ba4e7d28d8dd8d173ff2dd",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_TCTSI_standalone/paper.tex",
+          "published_sha256": "b12b12b974a9c3b0a91f4322fda59d924c6582a456efe0ce674d40655222e80e",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-157/attempts/attempt-2/SEALED_paper.tex",
+          "sealed_sha256": "1dd5b82960a38dbe39f618860a2286ff7a55723c8bd4f0a81992025188cd835c"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:7a62b369dc6d70173b46343ee62a5a89",
+              "name": "paper.pdf",
+              "size": 55300
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_TCTSI_standalone/paper.pdf",
+          "sha256": "6259fee3e856e3798345ac5ef32c75ab438c68c63cb339d7283f8b23fed8c158"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:bc8298def9816b91a8de5e6b1b69bcc8",
+              "name": "paper.tex",
+              "size": 7132
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_TCTSI_standalone/paper.tex",
+          "sha256": "b12b12b974a9c3b0a91f4322fda59d924c6582a456efe0ce674d40655222e80e"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-157"
+      ],
+      "status": "HOLD",
+      "title": "A Transfer-Cost Threshold Note for Symbiotic Intelligence"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_TLRC_standalone"
+      ],
+      "doi": "10.5281/zenodo.22736706",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22736706-2026-09-13_TLRC_standalone.diff",
+          "diff_sha256": "afbdf64933b7b4940dc2b689403c2a2edb059309977efb464fe9f153c9fdcb63",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_TLRC_standalone/paper.tex",
+          "published_sha256": "43e823baf2054f375be14dff7bde016ad4dbae33cfb0bfb63d73b07a01a668c8",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-151/SEALED_paper.tex",
+          "sealed_sha256": "4995dd5644aba406f444152d9bbaf8fc91c4f6a42c51ce7528ff7522a5ccfe65"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:b4e4a5a33c943be8bbfa8895666d454b",
+              "name": "paper.pdf",
+              "size": 62544
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_TLRC_standalone/paper.pdf",
+          "sha256": "c4a554dd06931b925ff4e0c849b45735861de841dfc0abffe241c7885e1f1d83"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:467ad668c926a98c5562661e08d36925",
+              "name": "paper.tex",
+              "size": 7330
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_TLRC_standalone/paper.tex",
+          "sha256": "43e823baf2054f375be14dff7bde016ad4dbae33cfb0bfb63d73b07a01a668c8"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-151"
+      ],
+      "status": "HOLD",
+      "title": "A Thermal Learning-Rate Corridor Note for Entropy-Driven Learning"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_TRSE_standalone"
+      ],
+      "doi": "10.5281/zenodo.22736710",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22736710-2026-09-13_TRSE_standalone.diff",
+          "diff_sha256": "2aa9be682ac6f9083a8ccea75a539cca91128b7e34c1954e04959491ea9dddc9",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_TRSE_standalone/paper.tex",
+          "published_sha256": "ae3b74a4b7b9df56cc8c6e2052757f104598b4bd52f017b9e8657b3eaa1daed8",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-152/SEALED_paper.tex",
+          "sealed_sha256": "efee8abafbb77a194550333742dc5becda123c834f8f2a8796e2d3e958e13d1a"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:0dcc9eade376db7b4128c3caacfdde72",
+              "name": "paper.pdf",
+              "size": 66923
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_TRSE_standalone/paper.pdf",
+          "sha256": "811d399aee47b9737fb695fe29d723c3e65d7d7c9bcbcc72b1431377d56981b9"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:2eec9a81aecf0894f36c335e2a807dc3",
+              "name": "paper.tex",
+              "size": 8662
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_TRSE_standalone/paper.tex",
+          "sha256": "ae3b74a4b7b9df56cc8c6e2052757f104598b4bd52f017b9e8657b3eaa1daed8"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-152"
+      ],
+      "status": "HOLD",
+      "title": "A Two-Route Stewardship Equalization Note for Corridor Resilience"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_UDWL_standalone"
+      ],
+      "doi": "10.5281/zenodo.22736716",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22736716-2026-09-13_UDWL_standalone.diff",
+          "diff_sha256": "fcf7300df3f18afad3db18c11b7017017dd0747792bc234515fd8db6f42d7913",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_UDWL_standalone/paper.tex",
+          "published_sha256": "a1eeca947e9b9a62a5f4f5247fa297d25e0eca9749952fa601014aedb70bd0e0",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-163/attempts/attempt-2/SEALED_paper.tex",
+          "sealed_sha256": "44fb6fd911ab9ae025f73a68708796212890af0523e9f3a1e8c318ec8904b9c5"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:fc666f93378dad1db711357e8ae411dc",
+              "name": "paper.pdf",
+              "size": 67287
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_UDWL_standalone/paper.pdf",
+          "sha256": "d63e624d531272635bf2d6a2816b3048e74b5ae113222b09b6bbcfcaad15aea3"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:08b7fe1fa0a0005c3fec50c19141f1e4",
+              "name": "paper.tex",
+              "size": 8075
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_UDWL_standalone/paper.tex",
+          "sha256": "a1eeca947e9b9a62a5f4f5247fa297d25e0eca9749952fa601014aedb70bd0e0"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-163"
+      ],
+      "status": "HOLD",
+      "title": "A Useful-Dissipated Work Ledger Note for Staged Ecopoiesis"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_CAIA_standalone"
+      ],
+      "doi": "10.5281/zenodo.22848678",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22848678-2026-09-19_CAIA_standalone.diff",
+          "diff_sha256": "8fd2ffe5ddb8b1a80e76f06f4187efc0f009ad5401a509ead12220253f4ff2b6",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_CAIA_standalone/paper.tex",
+          "published_sha256": "40ae26793b9543a0cebeddbdc28c450604133448bbbc620b82add3bc87f692ec",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-166/SEALED_paper.tex",
+          "sealed_sha256": "7a833f109e4a70a836a2596a9251ec1e673351c0ad63defdea91ab7a26fa748d"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:5bb4bab1c5dcc7a4da52ea38acc63725",
+              "name": "paper.pdf",
+              "size": 56142
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_CAIA_standalone/paper.pdf",
+          "sha256": "1b05d466743bc13b8a5248d6c6ec621f51905d5df54a0ddfc4bc0323bb481bf4"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:d61428af2d78f7a33efed7237a494f3f",
+              "name": "paper.tex",
+              "size": 5697
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_CAIA_standalone/paper.tex",
+          "sha256": "40ae26793b9543a0cebeddbdc28c450604133448bbbc620b82add3bc87f692ec"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-166"
+      ],
+      "status": "HOLD",
+      "title": "Checker Agreement Is Not Accuracy: A Boolean Oversight Methods Note"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_PDC_standalone"
+      ],
+      "doi": "10.5281/zenodo.22848682",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22848682-2026-09-19_PDC_standalone.diff",
+          "diff_sha256": "bb5ac62691cc912ae620222db85aa3fca829d610b83643be148bdf95190e6632",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_PDC_standalone/paper.tex",
+          "published_sha256": "4fc8e01daddb9281f0dc1118a9c6b1c0833b395a9b1a850a913858d6c7861081",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-165/SEALED_paper.tex",
+          "sealed_sha256": "ede9bbb41a661837f0dfd8503dee8b6ab7d16df0c15b03be229f1badaf84ed92"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:8462bee2c97f14e7893a5c170957a285",
+              "name": "paper.pdf",
+              "size": 52759
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_PDC_standalone/paper.pdf",
+          "sha256": "71474c73fe7d094014b5e1cd868699d3ef6c73f7f1a95e6a8badfb9d67e75696"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:380db84ea86e00218f727ff97181af1b",
+              "name": "paper.tex",
+              "size": 5473
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_PDC_standalone/paper.tex",
+          "sha256": "4fc8e01daddb9281f0dc1118a9c6b1c0833b395a9b1a850a913858d6c7861081"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-165"
+      ],
+      "status": "HOLD",
+      "title": "A Paired-Detector Coverage Note for Cooperative Ecological Monitoring"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_RASL_standalone"
+      ],
+      "doi": "10.5281/zenodo.22848685",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22848685-2026-09-19_RASL_standalone.diff",
+          "diff_sha256": "0b37a50ec49f9fad7d27fdcca99dbaf46fb08b3e716b4fa9a49d001a7fe3a8a6",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_RASL_standalone/paper.tex",
+          "published_sha256": "f445e56f1432ecf2ba9811bc0c63890b328de6d195e5775357a2d9975eeff900",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-171/SEALED_paper.tex",
+          "sealed_sha256": "2acc861d9f59658a5a3480add400c68c0ed968cdd1c308628c24f0c6e1f63268"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:826f4b0d4882491b41f033803b2d4c3a",
+              "name": "paper.pdf",
+              "size": 47138
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_RASL_standalone/paper.pdf",
+          "sha256": "51afaa534687a8c5047fbf4e8b9f79f0f6f486b1e9822149e171603fb153e231"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:1073a860afe3623269bb6734f06bb9bf",
+              "name": "paper.tex",
+              "size": 7731
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_RASL_standalone/paper.tex",
+          "sha256": "f445e56f1432ecf2ba9811bc0c63890b328de6d195e5775357a2d9975eeff900"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-171"
+      ],
+      "status": "HOLD",
+      "title": "A Reserved-Activity Speed-Limit Note for Finite-Time Transport"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_SPLR_standalone"
+      ],
+      "doi": "10.5281/zenodo.22848693",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/22848693-2026-09-19_SPLR_standalone.diff",
+          "diff_sha256": "bb66a3eb1c7ea3cea1aaa184e04c6c6c0be7daed26af362817963edf9c3bd41d",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_SPLR_standalone/paper.tex",
+          "published_sha256": "b82f912839e9cfd6a6f6d26d59df5a098d955f2f95dd20728ec358c2ed8f654e",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-169/SEALED_paper.tex",
+          "sealed_sha256": "1737e0186ff933bc7003b47b2eef055f520ebc83983317172b1e45509c8855ab"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:8d01520ee73299d74c0c058949a8edc2",
+              "name": "paper.pdf",
+              "size": 63034
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_SPLR_standalone/paper.pdf",
+          "sha256": "22441e8ceb9111a04a629b32bec75dbb74d6786d02c551b3303a185a56655341"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:cf4a326e6095f3ac6f863e40af23f819",
+              "name": "paper.tex",
+              "size": 7504
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_SPLR_standalone/paper.tex",
+          "sha256": "b82f912839e9cfd6a6f6d26d59df5a098d955f2f95dd20728ec358c2ed8f654e"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-169"
+      ],
+      "status": "HOLD",
+      "title": "A Single-Partner-Loss Reserve Note for Gaian Mutualisms"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_DMEC_standalone"
+      ],
+      "doi": "10.5281/zenodo.23004852",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/23004852-2026-09-27_DMEC_standalone.diff",
+          "diff_sha256": "03abd37a339e1437c56f5e08c7c131a25be34717cc656cd941c617a19d3c1804",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_DMEC_standalone/paper.tex",
+          "published_sha256": "baffc76c919a3680fde613fe57d29ed237048bcaf50b93821ae32813816fe9d4",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-175/SEALED_paper.tex",
+          "sealed_sha256": "eef38107f413a69870c6b9a2c0a18f266bda311d78769de8b464aecfeed197dd"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:abb920050e23e7ace92e0601464b6d68",
+              "name": "paper.pdf",
+              "size": 65481
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_DMEC_standalone/paper.pdf",
+          "sha256": "bb2bf82e7f3bbd7a25e441e21f3000a6a492475a002ba169b0223f1ec520fafa"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:71430b88d462cc43b8a4a4fa75293507",
+              "name": "paper.tex",
+              "size": 7593
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_DMEC_standalone/paper.tex",
+          "sha256": "baffc76c919a3680fde613fe57d29ed237048bcaf50b93821ae32813816fe9d4"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-175"
+      ],
+      "status": "HOLD",
+      "title": "A Componentwise Measurement-Energy Ceiling Note for D-Score"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_FOIEB_standalone"
+      ],
+      "doi": "10.5281/zenodo.23004858",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/23004858-2026-09-27_FOIEB_standalone.diff",
+          "diff_sha256": "5b7561714b61b7101575bead97422e9df8848bf49cbc0e5319f0fa6e54b23d1a",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_FOIEB_standalone/paper.tex",
+          "published_sha256": "ca4bc8b56fc5ec7e4a8cef0621e40db9051dcb0a195af1c799417367af0fa869",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-178/SEALED_paper.tex",
+          "sealed_sha256": "a3d2acf647ea28f2f976b19095b0f361fcec5d23671b21677d2149c32aa7b797"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:f5953027a27a281316e93ffafc007966",
+              "name": "paper.pdf",
+              "size": 59024
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_FOIEB_standalone/paper.pdf",
+          "sha256": "8bb85cf8a8448d024d46121681e7da2184a19b5105abf11ac9332f5b42eee223"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:9c15100b24e07ac4f63a20411efa7853",
+              "name": "paper.tex",
+              "size": 7361
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_FOIEB_standalone/paper.tex",
+          "sha256": "ca4bc8b56fc5ec7e4a8cef0621e40db9051dcb0a195af1c799417367af0fa869"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-178"
+      ],
+      "status": "HOLD",
+      "title": "A Fixed-Overhead Information-Energy Budget Note"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_JMSF_standalone"
+      ],
+      "doi": "10.5281/zenodo.23004862",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/23004862-2026-09-27_JMSF_standalone.diff",
+          "diff_sha256": "0009a5789647d3a470a012961e585b8da97084985b8ffa2d238dc52c9f3c9f24",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_JMSF_standalone/paper.tex",
+          "published_sha256": "bfb200b288d3c5716073482029b15409b115c95799b658c315333e235bab46c9",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-174/SEALED_paper.tex",
+          "sealed_sha256": "4e166cd699c4d9006169dcde12cd8c5f851231b0e22be9e0ce7bfa791e878225"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:a5fb2af870cb73e5dcb1afaf0386b61e",
+              "name": "paper.pdf",
+              "size": 47865
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_JMSF_standalone/paper.pdf",
+          "sha256": "45db81054714f1ba32eaa436ec11cf57318142a8a9f3674fc00f65d83fce2f56"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:26df19cfdbe12836335ef5c8bf9bf474",
+              "name": "paper.tex",
+              "size": 7105
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_JMSF_standalone/paper.tex",
+          "sha256": "bfb200b288d3c5716073482029b15409b115c95799b658c315333e235bab46c9"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-174"
+      ],
+      "status": "HOLD",
+      "title": "A Joint Minimum-Service Floor Note for Stakeholder Alignment"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_RDA_standalone"
+      ],
+      "doi": "10.5281/zenodo.23004866",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/23004866-2026-09-27_RDA_standalone.diff",
+          "diff_sha256": "503c6a97d6a0adbc56d28bdba1159ca57b2f77ea7415a30990ad87b164e6ffe3",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_RDA_standalone/paper.tex",
+          "published_sha256": "cc958edb9647f3010a8b2a85b6042cc9ad24a98b0d5d731ae2d593c829e503ac",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-176/SEALED_paper.tex",
+          "sealed_sha256": "6ecf981ea3019433e2264afaee2addd6976c971bbf8e6b58f13f0d373a63633f"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:90a680fbfacd502ca33f4e75ce71fb67",
+              "name": "paper.pdf",
+              "size": 68489
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_RDA_standalone/paper.pdf",
+          "sha256": "73719f29a722d24b97f239a46641abc333b02a777f35ee5327d70eb3d2abadb4"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:0161d6281be94c1ada017c4be571231b",
+              "name": "paper.tex",
+              "size": 7838
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_RDA_standalone/paper.tex",
+          "sha256": "cc958edb9647f3010a8b2a85b6042cc9ad24a98b0d5d731ae2d593c829e503ac"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-176"
+      ],
+      "status": "HOLD",
+      "title": "A Reciprocal Distillation Accounting Note"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_SFMC_standalone"
+      ],
+      "doi": "10.5281/zenodo.23004870",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/23004870-2026-09-27_SFMC_standalone.diff",
+          "diff_sha256": "e01a3cfc1c80f4a067115d41544e47194bc7e52822f999e2d3a8b822e9cf6a61",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_SFMC_standalone/paper.tex",
+          "published_sha256": "ecbc0d58268c8acad354c3edd446d37c825a5fe53c88c8e7ea84d3d6c54f2f4b",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-173/SEALED_paper.tex",
+          "sealed_sha256": "e55bd1cda25219b45c53512044b757becb057c449163901434cbdcff6b7d76f6"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:44ef1a4d6b7192bcc3e9c990c7825a4c",
+              "name": "paper.pdf",
+              "size": 47351
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_SFMC_standalone/paper.pdf",
+          "sha256": "26e6dc83b887e73f9cc4a94edfd69ee00850a87b9c21decc57c240ac8cbfb211"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:5b9fb792444ba7d5ccc332bbdd50a561",
+              "name": "paper.tex",
+              "size": 7146
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_SFMC_standalone/paper.tex",
+          "sha256": "ecbc0d58268c8acad354c3edd446d37c825a5fe53c88c8e7ea84d3d6c54f2f4b"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-173"
+      ],
+      "status": "HOLD",
+      "title": "A Shared-Footprint Accounting Note for Multispecies Corridors"
+    },
+    {
+      "bucket": "SUBSTANTIVE",
+      "deposit_paths": [
+        "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_SRA_standalone"
+      ],
+      "doi": "10.5281/zenodo.23004874",
+      "evidence": [
+        {
+          "bucket": "SUBSTANTIVE",
+          "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/verification-coverage-report-only-20261002-v4/doi-diffs/23004874-2026-09-27_SRA_standalone.diff",
+          "diff_sha256": "bda7755d69f725a4cb12770b9d64d359740907fc6aa2b80a988b086c81f4e0ea",
+          "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_SRA_standalone/paper.tex",
+          "published_sha256": "be489da93e36d1ffceb58eb3803301507c13c729cb86c78b48b48f31da746c30",
+          "reason": "Manuscript body assertions changed; certification assertions count as claims",
+          "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-172/SEALED_paper.tex",
+          "sealed_sha256": "d7f7c5be309a007ce8b2a0b2dd44c9e9bffa20c5c71e6b2bf93184ed677b947b"
+        }
+      ],
+      "mode": "REPORT_ONLY",
+      "proof_certificate_present_valid": true,
+      "public_manuscript_checksums": [
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:e64e18af4e19de7a2c83425ab5c5cb21",
+              "name": "paper.pdf",
+              "size": 54215
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_SRA_standalone/paper.pdf",
+          "sha256": "c3553e093a7549319915cf7b3cd6e41f7bc38fdadb67c8808f42dc0f77d097ee"
+        },
+        {
+          "confirmed": true,
+          "matches_public_files": [
+            {
+              "checksum": "md5:d333e4afab8422f12bcdecfa3b675198",
+              "name": "paper.tex",
+              "size": 5230
+            }
+          ],
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_SRA_standalone/paper.tex",
+          "sha256": "be489da93e36d1ffceb58eb3803301507c13c729cb86c78b48b48f31da746c30"
+        }
+      ],
+      "public_readback_status": "READ",
+      "reasons": [
+        "Manuscript body assertions changed; certification assertions count as claims"
+      ],
+      "run_ids": [
+        "Run-172"
+      ],
+      "status": "HOLD",
+      "title": "A Ring-Fenced Stewardship Reserve Accounting Note"
+    }
+  ],
+  "tree_root": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0"
+}

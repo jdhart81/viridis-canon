@@ -1,0 +1,14 @@
+{
+  "authorization_sentence": null,
+  "date": "2026-10-03",
+  "decision": "NONE",
+  "errors": [
+    "packet seal is incomplete"
+  ],
+  "external_mutation": false,
+  "package": "NOT_READY",
+  "publication_receipt": null,
+  "science": "HOLD",
+  "science_detail": "3/6 proof-gate cleared; 3/6 finalized reviewed packages; 3 unresolved",
+  "state": "HOLD_SCIENCE"
+}

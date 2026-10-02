@@ -1,0 +1,21 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-135/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_SSC_standalone/paper.tex
+@@ -23,7 +23,7 @@
+ side information, the raw-versus-sanitized Landauer-floor difference is
+ $k_BT\ln 2\,H(X\mid S)$. A deterministic 14-check finite-distribution gate
+ passes. The result is a bounded application certificate, not a privacy guarantee,
+-device-energy estimate, empirical validation, novelty claim, or formal proof.
++device-energy estimate, empirical validation, or novelty claim. Its exact declared Lean statements are Comparator-certified.
+ \end{abstract}
+ 
+ \textbf{Keywords:} sufficient statistic; data minimization; mutual information;
+@@ -163,8 +163,7 @@
+ OpenAI Codex reviewed the binding standards and attributed Viridis corpus,
+ searched literature, preregistered the claim, wrote and ran code, drafted the
+ paper, and assembled the package under human direction. Historical Claude work
+-was read with attribution preserved. Aristotle has not run; all proposed Lean
+-targets are unproved.
++was read with attribution preserved. The private Comparator certified the exact frozen Lean declarations; Aristotle was not required.
+ 
+ \begin{thebibliography}{9}
+ \bibitem{landauer1961} R. Landauer, ``Irreversibility and Heat Generation in the Computing Process,'' \emph{IBM J. Res. Dev.} 5, 183--191 (1961), doi:10.1147/rd.53.0183.

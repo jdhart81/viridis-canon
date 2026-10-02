@@ -1,0 +1,31 @@
+{
+  "continuity_warnings": [
+    "rolling certificate debt must be drained in parallel; missing current independent zero-sorry certificates: Run-177, Run-182, Run-183, Run-184"
+  ],
+  "directive": {
+    "area_id": "05",
+    "kind": "area",
+    "lens": "Alignment",
+    "reason": "scored_selection",
+    "run": 185
+  },
+  "failures": [],
+  "foundry_mode": "CONTINUOUS_GENERATION_ROLLING_CERTIFICATION",
+  "generation_blocked_by_certificate_debt": false,
+  "latest_path": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-184_covariance-threshold-paired-sensor-note",
+  "latest_run": 184,
+  "next_run": 185,
+  "proof_obligations": {
+    "missing_certificate": [
+      177,
+      182,
+      183,
+      184
+    ],
+    "missing_mirror": [],
+    "missing_request": []
+  },
+  "science_root": "/Users/justinhart/Desktop/science ",
+  "state_current_run": 184,
+  "status": "READY"
+}

@@ -1,0 +1,44 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-133/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_CODC_standalone/paper.tex
+@@ -35,7 +35,7 @@
+ \textbf{Keywords:} habitat corridors; multispecies connectivity; reliability;
+ shared infrastructure; redundancy; conservation planning
+ 
+-\section{Problem and prior work}
++\section{Introduction and prior work}
+ 
+ Corridors are species- and movement-process-specific, yet conservation budgets
+ create pressure to reuse alignments across taxa. Joint multispecies optimization
+@@ -139,11 +139,9 @@
+ 
+ The gate includes disjoint and identical paths, zero and perfect shared edges,
+ strict-overlap cases, unchanged path marginals, probability bounds, cost-unit
+-scaling, and a dependence counterexample. These are numerical and symbolic
+-checks, not a Lean proof. Six exact Lean targets are frozen with explicit
+-\texttt{sorry} placeholders and have not been submitted to Aristotle.
+-
+-\section{Interpretation and falsifiable next tests}
++scaling, and a dependence counterexample. These numerical and symbolic checks remain distinct from formal certification. The private Comparator certified the six exact frozen Lean declarations with zero sorry or admit; Aristotle was not required.
++
++\section{Discussion and falsifiable next tests}
+ 
+ For HDFM, the certificate suggests a two-axis planning report. The first axis is
+ the shared-segment cost dividend $C_I$. The second is the shared-fate certificate
+@@ -171,7 +169,7 @@
+ adoption, or revenue. Novelty and significance remain unassessed because the
+ core structure lies inside mature reliability and multispecies-planning work.
+ 
+-\section*{Reproducibility, data, and code}
++\section*{Reproducibility and data and code availability}
+ 
+ The immutable Run 133 package contains the preregistration, exact Python script,
+ complete captured output, source ledger, claim inventory, frozen Lean contract,
+@@ -184,7 +182,7 @@
+ performed standards review, literature search, preregistration, code execution,
+ drafting, packaging, and artifact checks under human direction. Historical
+ Viridis materials produced with Claude were read with attribution preserved.
+-Aristotle did not run on this package.
++The private Comparator certified the exact frozen Lean declarations; Aristotle was not required.
+ 
+ \begin{thebibliography}{9}
+ \bibitem{rushdi2015} A. M. A. Rushdi and A. K. Hassan,

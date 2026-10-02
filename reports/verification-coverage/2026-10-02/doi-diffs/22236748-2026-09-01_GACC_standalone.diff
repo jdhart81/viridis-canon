@@ -1,0 +1,32 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-138/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_GACC_standalone/paper.tex
+@@ -25,8 +25,7 @@
+ sharp for co-directional residuals and improves under cancellation. Negative
+ weights, anti-aligned components, and magnitude-blind voting invalidate the
+ certificate. A deterministic preregistered program passed 16 of 16 checks.
+-All eight Lean statements are frozen but unproved; novelty and significance are
+-unassessed. The result is not a model of nonlinear Earth-system dynamics and does
++All eight declared Lean statements are Comparator-certified; novelty and significance remain unassessed. The result is not a model of nonlinear Earth-system dynamics and does
+ not establish safety, justice, agency, or legitimate target selection.
+ \end{abstract}
+ 
+@@ -181,8 +180,7 @@
+ library runtime and compare the complete output byte-for-byte with
+ \texttt{verification\_output.txt}. Build the manuscript with Tectonic 0.17.0 using
+ \texttt{tectonic --keep-logs paper.tex}. The exact Lean toolchain and Mathlib commit
+-are frozen under \texttt{formalization/}; the source deliberately contains
+-\texttt{sorry} placeholders and has not been run locally.
++are frozen under \texttt{formalization/}; the exact statement and candidate bytes are bound to a zero-sorry Comparator certificate; no local Lean execution occurred.
+ 
+ \section{Data and code availability}
+ 
+@@ -201,8 +199,7 @@
+ Codex performed standards review, Viridis corpus comparison, current literature
+ search, preregistration, code generation and execution, manuscript drafting,
+ packaging, and integrity checks under human direction. Historical Claude-produced
+-Viridis artifacts were read with attribution preserved. Aristotle has not run and
+-is not an author. All generated claims remain subject to human and independent
++Viridis artifacts were read with attribution preserved. The private Comparator certified the exact frozen Lean declarations; Aristotle was not required and is not an author. All generated claims remain subject to human and independent
+ scientific review.
+ 
+ \sloppy

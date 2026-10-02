@@ -1,0 +1,20 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-151/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_TLRC_standalone/paper.tex
+@@ -10,7 +10,7 @@
+ \begin{document}
+ \maketitle
+ \begin{abstract}
+-Thermodynamic descriptions of learning require optimization gain and physical dissipation to remain distinct. We isolate a minimal one-step audit. For a supplied gain scale $a\ge0$, balance step $q\ge0$, and update step $\eta$, define the local surrogate $G(\eta)=a\eta(2q-\eta)$. Then $G(q)-G(\eta)=a(\eta-q)^2$, so the gain is nonnegative on $0\le\eta\le2q$, peaks at $\eta=q$, and is symmetric under equal mistuning around the peak. A separately supplied heat proxy $H(\eta)=d\eta^2$ scales quadratically. The result is elementary bookkeeping. It does not derive a physical law, calibrate $a,q,d$, validate an optimizer, or establish energy savings.
++Thermodynamic descriptions of learning require optimization gain and physical dissipation to remain distinct. We isolate a minimal one-step audit. For a supplied gain scale $a\ge0$, balance step $q\ge0$, and update step $\eta$, define the local surrogate $G(\eta)=a\eta(2q-\eta)$. Then $G(q)-G(\eta)=a(\eta-q)^2$, so the gain is nonnegative on $0\le\eta\le2q$, has a (possibly nonunique) global maximum at $\eta=q$, and is symmetric under equal mistuning around the peak. A separately supplied heat proxy $H(\eta)=d\eta^2$ scales quadratically. The result is elementary bookkeeping. It does not derive a physical law, calibrate $a,q,d$, validate an optimizer, or establish energy savings.
+ \end{abstract}
+ \noindent\textbf{Keywords:} entropy-driven learning; thermodynamics of learning; learning rate; quadratic surrogate; dissipation proxy.
+ 
+@@ -48,7 +48,7 @@
+ \section{Verification tests and formalization}
+ The exact-rational verifier enumerates half-unit grids for $a$, $q$, and $\eta$, checking the peak-deficit identity, global peak bound, and corridor sign. It then tests 100,000 seeded rational instances of the deficit identity, symmetry, and heat scaling. Boundary, peak, overshoot, negative-scale, negative-dissipation, and negative-step controls are retained. The captured output belongs to the immutable package.
+ 
+-The Engine-3 pair freezes seven Lean declarations: the peak-deficit identity, corridor sign, peak upper bound, mistuning symmetry, heat scaling, and two named witnesses. The candidate contains no \texttt{sorry} or \texttt{admit}. It is not verified unless the private Comparator accepts the exact bytes with nanoda and Lean's default kernel and the certificate issuer binds that receipt.
++The Engine-3 pair freezes seven Lean declarations: the peak-deficit identity, corridor sign, peak upper bound, mistuning symmetry, heat scaling, and two named witnesses. The private Comparator accepted the exact statement and the versioned attempt-2 candidate with nanoda and Lean's default kernel, and the local certificate issuer bound the successful receipt. The sole candidate change reversed one equality rewrite inside \texttt{gain\_peak\_upper\_bound}; the frozen definitions, assumptions, and theorem statements are unchanged. Certification covers only these seven declarations and their explicit assumptions; it does not establish physical calibration, empirical energy savings, novelty, or production readiness. The original failed attempt remains preserved.
+ 
+ \section{Discussion, limitations, and falsifiability}
+ Equation~\eqref{eq:gain} resembles the decrease certificate obtained by applying a smoothness upper bound to a one-dimensional gradient step, but this note does not establish that derivation for any particular loss. The balance step $q$ is not an observed optimal learning rate, $a$ is not predictive information, and $d$ is not a measured friction or device-energy coefficient. Stochastic gradients, curvature drift, momentum, adaptive preconditioning, minibatching, hardware state, wall-clock time, and thermal coupling are absent.

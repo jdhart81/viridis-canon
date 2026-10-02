@@ -1,0 +1,29 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-147/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_TDCIL_standalone/paper.tex
+@@ -9,7 +9,7 @@
+ \date{29 August 2026}
+ \begin{document}\maketitle\vspace{-1.2em}
+ \begin{abstract}
+-Suppose three operating windows each obey a declared energy-per-information floor $\varepsilon>0$: $\varepsilon i_j\le e_j$. Adding the inequalities gives a schedule-independent aggregate ceiling $I_{\rm tot}\le E_{\rm tot}/\varepsilon$. A zero-energy idle window cannot carry a positive charged increment, and redistributing fixed total energy between windows cannot change the ceiling. The result is elementary bookkeeping and is conservatively classified as a methods note. Its thermodynamic meaning is conditional on which operations are charged: reversible computation, finite-reservoir corrections, leakage, and device overhead are outside the theorem. Frozen Lean statements and a zero-sorry candidate await independent dual-kernel verification.
++Suppose three operating windows each obey a declared energy-per-information floor $\varepsilon>0$: $\varepsilon i_j\le e_j$. Adding the inequalities gives a schedule-independent aggregate ceiling $I_{\rm tot}\le E_{\rm tot}/\varepsilon$. A zero-energy idle window cannot carry a positive charged increment, and redistributing fixed total energy between windows cannot change the ceiling. The result is elementary bookkeeping and is conservatively classified as a methods note. Its thermodynamic meaning is conditional on which operations are charged: reversible computation, finite-reservoir corrections, leakage, and device overhead are outside the theorem. The frozen Lean statements are formally certified by the included dual-kernel Comparator receipt.
+ \end{abstract}
+ \textbf{Keywords:} Intelligence Bound; Landauer principle; duty cycle; energy ledger; information ceiling; methods note
+ 
+@@ -40,7 +40,7 @@
+ \section{Verification tests and failure boundaries}
+ A deterministic exact-rational harness checked 50,000 seeded feasible ledgers, equality witnesses, redistribution, scaling, idle windows, target infeasibility, and boundary cases. It retained two assumption-breaking controls. If one window constraint is omitted, that window's information can grow without appearing in the energy budget. If $\varepsilon=0$, no finite division ceiling follows. These are failures of the declared model, not exceptions to Proposition 1.
+ 
+-The final capture reports 17 passes and zero failures. The numerical gate checks the arithmetic and controls; it is not a physical-device experiment or kernel certificate. Six theorem statements, including a strictly positive equality witness, are frozen for the Engine-3 Comparator lane. The candidate is untrusted until exact-byte acceptance by both nanoda and Lean's default kernel.
++The final capture reports 17 passes and zero failures. The numerical gate checks the arithmetic and controls; it is not a physical-device experiment or kernel certificate. Six theorem statements, including a strictly positive equality witness, are frozen for the Engine-3 Comparator lane. The exact candidate bytes were accepted by both nanoda and Lean's default kernel.
+ 
+ \section{Discussion, limitations, and falsifiable use}
+ The ledger is conditional on classifying charged operations correctly. Bennett's reversibility boundary prohibits interpreting it as a universal energy tax on every logic step. Real systems may add leakage, refresh, communication, cooling, finite-reservoir corrections, and nonuniform floors. The three-window model also omits time-coupled storage and thermal state.
+@@ -48,7 +48,7 @@
+ A falsifiable operational use would predeclare the charged-operation class and $\varepsilon$, measure energy and completed information for each window, and reject the ledger model if any window violates $\varepsilon i_j\le e_j$. A device study could falsify the chosen floor or show that a single common floor is inappropriate. No device trace, ecological dataset, or customer workload was analyzed.
+ 
+ \section*{Reproducibility, data and code availability}
+-The immutable Run 147 package includes the full Python verifier and captured output, manuscript source/PDF/log, source ledger, claim inventory, frozen Lean statement, zero-sorry candidate, exact toolchain and Mathlib pins, and SHA-256 manifest. No private data are used. The package is local and pre-certificate; no DOI or public release is implied.
++The immutable Run 147 package includes the full Python verifier and captured output, manuscript source/PDF/log, source ledger, claim inventory, frozen Lean statement, zero-sorry candidate, exact toolchain and Mathlib pins, and SHA-256 manifest. No private data are used. The package is local and Comparator-certified; no DOI or public release is implied.
+ 
+ \section*{Funding, conflicts of interest, authorship, and AI use}
+ No external funding supported this note. Justin D. Hart is Founder and CEO of Viridis LLC, which may commercialize compute-assurance services; that interest does not constitute scientific validation. Hart is the accountable author. Codex performed standards/corpus review, literature search, preregistration, derivation, verification, drafting, Lean candidate construction, packaging, and QA under Hart's direction. Historical Claude-authored Viridis artifacts were read with attribution preserved. Aristotle was not used. AI systems are tools, not authors.

@@ -1,0 +1,16 @@
+--- /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-174/SEALED_paper.tex
++++ /Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_JMSF_standalone/paper.tex
+@@ -69,9 +69,10 @@
+ 
+ Five Lean statements freeze Equation~\eqref{eq:iff}, the two dominance
+ corollaries, minimality, and a positive witness. The candidate contains no
+-\texttt{sorry} or \texttt{admit}. This manuscript does not call the targets
+-verified: only an exact-hash private Comparator receipt showing acceptance by
+-nanoda and Lean's default kernel, followed by certificate issuance, can do so.
++\texttt{sorry} or \texttt{admit}. The five declared targets now have exact-hash certification after private
++Comparator acceptance by nanoda and Lean's default kernel. The certificate
++covers only the stated scalar floor identities, dominance results, minimality,
++and named witness.
+ No local Lean execution was performed.
+ 
+ \section{Predictions and falsification tests}

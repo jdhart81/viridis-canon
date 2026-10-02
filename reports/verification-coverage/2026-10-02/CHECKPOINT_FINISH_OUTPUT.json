@@ -1,0 +1,152 @@
+{
+  "agent_owned_actions": [
+    {
+      "detail": "Existing kernel package no longer binds current evidence; preserve it and review a versioned successor.",
+      "human_gate": false,
+      "next_action": "REVIEW_EXISTING_KERNEL_PACKAGE_BINDINGS",
+      "run_id": "Run-116",
+      "state": "KERNEL_PACKAGE_RECONCILIATION_REQUIRED"
+    },
+    {
+      "detail": "Existing kernel package no longer binds current evidence; preserve it and review a versioned successor.",
+      "human_gate": false,
+      "next_action": "REVIEW_EXISTING_KERNEL_PACKAGE_BINDINGS",
+      "run_id": "Run-167",
+      "state": "KERNEL_PACKAGE_RECONCILIATION_REQUIRED"
+    },
+    {
+      "detail": "Existing kernel package no longer binds current evidence; preserve it and review a versioned successor.",
+      "human_gate": false,
+      "next_action": "REVIEW_EXISTING_KERNEL_PACKAGE_BINDINGS",
+      "run_id": "Run-168",
+      "state": "KERNEL_PACKAGE_RECONCILIATION_REQUIRED"
+    },
+    {
+      "detail": "A later independent invocation must rank the science and review its exact paper, Comparator certificate, runtime role, empirical status, decision family, scope, and refusal boundary.",
+      "human_gate": false,
+      "next_action": "REVIEW_KERNEL_ADMISSION",
+      "run_id": "Run-170",
+      "state": "KERNEL_ADMISSION_REVIEW_REQUIRED"
+    },
+    {
+      "detail": "Open nightly package lacks a clean certificate; the active standing authorization covers exact frozen transport to the private Comparator.",
+      "human_gate": false,
+      "next_action": "CERTIFY_COMPARATOR_FIFO",
+      "run_id": "Run-177",
+      "state": "CERTIFICATE_REQUIRED"
+    },
+    {
+      "detail": "Seal a hash-bound runtime adapter package or an explicit NO_RUNTIME_KERNEL disposition before release assembly.",
+      "human_gate": false,
+      "next_action": "BUILD_VIRIDISOS_KERNEL_PACKAGE",
+      "run_id": "Run-179",
+      "state": "VIRIDISOS_KERNEL_PACKAGE_REQUIRED"
+    },
+    {
+      "detail": "Open nightly package lacks a clean certificate; the active standing authorization covers exact frozen transport to the private Comparator.",
+      "human_gate": false,
+      "next_action": "CERTIFY_COMPARATOR_FIFO",
+      "run_id": "Run-183",
+      "state": "CERTIFICATE_REQUIRED"
+    },
+    {
+      "detail": "Open nightly package lacks a clean certificate; the active standing authorization covers exact frozen transport to the private Comparator.",
+      "human_gate": false,
+      "next_action": "CERTIFY_COMPARATOR_FIFO",
+      "run_id": "Run-184",
+      "state": "CERTIFICATE_REQUIRED"
+    }
+  ],
+  "certification": {
+    "cleared_prior_debt": [],
+    "ready": true,
+    "recent": false,
+    "remaining_debt": [
+      "Run-177",
+      "Run-182",
+      "Run-183",
+      "Run-184"
+    ],
+    "target": 2,
+    "target_runs": [
+      "Run-177",
+      "Run-182"
+    ]
+  },
+  "completed_at_utc": "2026-10-02T22:10:40.323449+00:00",
+  "external_mutation": false,
+  "finish_receipt": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/nightly_checkpoints/verification-coverage-report-only-20261002-v4/FINISH.json",
+  "generation": {
+    "age_hours": 17.005,
+    "certificate_debt_blocks_generation": false,
+    "due": false,
+    "fresh": true,
+    "generated_at_utc": "2026-10-02T05:10:21+00:00",
+    "latest_run": "Run-184",
+    "preflight_failures": [],
+    "preflight_status": "READY",
+    "ready": true,
+    "slo_hours": 36,
+    "window": {
+      "ends_at_utc": "2026-10-03T05:00:00+00:00",
+      "generation_due": false,
+      "overdue": false,
+      "recovery_deadline_utc": "2026-10-02T11:00:00+00:00",
+      "rule": "one sealed paper in [window start, next window start); never use the 36-hour freshness SLO to skip a due window",
+      "satisfied": true,
+      "standard": "VRS-NIGHTLY-WINDOW-1",
+      "starts_at_utc": "2026-10-02T05:00:00+00:00",
+      "timezone": "America/New_York",
+      "window_id": "2026-10-02"
+    }
+  },
+  "incidents": [
+    "HOLD_CERTIFICATION_OVERDUE",
+    "HOLD_FIFO_CERTIFICATION_TARGET_NOT_MET",
+    "HOLD_REVERSIBLE_PACKAGE_WORK_REMAINS"
+  ],
+  "invocation_id": "verification-coverage-report-only-20261002-v4",
+  "standard": "VRS-NIGHTLY-CHECKPOINT-1",
+  "start_receipt_sha256": "3605187018a932b6480d3e757c624f42aa0a71d92f64efb1c31a738bc441abb4",
+  "started_at_utc": "2026-10-02T22:05:41.723024+00:00",
+  "status": "HOLD_NIGHTLY_PROGRESS",
+  "submission_ready_packages": 2,
+  "truth_boundary": "Progress is measured from current validated certificates and sealed runs; a receipt refresh or executor exit zero is not progress.",
+  "unresolved_package_work": [
+    {
+      "detail": "Existing kernel package no longer binds current evidence; preserve it and review a versioned successor.",
+      "human_gate": false,
+      "next_action": "REVIEW_EXISTING_KERNEL_PACKAGE_BINDINGS",
+      "run_id": "Run-116",
+      "state": "KERNEL_PACKAGE_RECONCILIATION_REQUIRED"
+    },
+    {
+      "detail": "Existing kernel package no longer binds current evidence; preserve it and review a versioned successor.",
+      "human_gate": false,
+      "next_action": "REVIEW_EXISTING_KERNEL_PACKAGE_BINDINGS",
+      "run_id": "Run-167",
+      "state": "KERNEL_PACKAGE_RECONCILIATION_REQUIRED"
+    },
+    {
+      "detail": "Existing kernel package no longer binds current evidence; preserve it and review a versioned successor.",
+      "human_gate": false,
+      "next_action": "REVIEW_EXISTING_KERNEL_PACKAGE_BINDINGS",
+      "run_id": "Run-168",
+      "state": "KERNEL_PACKAGE_RECONCILIATION_REQUIRED"
+    },
+    {
+      "detail": "A later independent invocation must rank the science and review its exact paper, Comparator certificate, runtime role, empirical status, decision family, scope, and refusal boundary.",
+      "human_gate": false,
+      "next_action": "REVIEW_KERNEL_ADMISSION",
+      "run_id": "Run-170",
+      "state": "KERNEL_ADMISSION_REVIEW_REQUIRED"
+    },
+    {
+      "detail": "Seal a hash-bound runtime adapter package or an explicit NO_RUNTIME_KERNEL disposition before release assembly.",
+      "human_gate": false,
+      "next_action": "BUILD_VIRIDISOS_KERNEL_PACKAGE",
+      "run_id": "Run-179",
+      "state": "VIRIDISOS_KERNEL_PACKAGE_REQUIRED"
+    }
+  ]
+}

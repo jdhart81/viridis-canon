@@ -1,0 +1,28 @@
+{
+  "mode": "REPORT_ONLY",
+  "snapshots": [
+    {
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/publish_dated_bundles.py",
+      "before_path": "before/_ZENODO_DEPOSITS/publish_dated_bundles.py",
+      "sha256": "6deccda5434ff7d94207e3fdfe2876bae08dfd9735e0bc1b2a0086532afdb372",
+      "installed_path": "installed/_ZENODO_DEPOSITS/publish_dated_bundles.py",
+      "installed_sha256": "8d0cec379f8fbce959873f0f7524bb36d6ee0440c85fafde40ca57176e804668"
+    },
+    {
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/weekend_canon_lockstep.py",
+      "before_path": "before/_ZENODO_DEPOSITS/weekend_canon_lockstep.py",
+      "sha256": "5a1acd9a2d192621a9b2bf855e8da56ca335ff0183b54950b1d086150bf40a4e",
+      "installed_path": "installed/_ZENODO_DEPOSITS/weekend_canon_lockstep.py",
+      "installed_sha256": "c0cb623e9c58f0db191abe82a8047bf7e6dabfcab869f9923e44c850f1a6741e"
+    },
+    {
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/nightly_checkpoint.py",
+      "before_path": "before/RESEARCH_PIPELINE_v2/nightly_checkpoint.py",
+      "sha256": "b4132a77cf97d3496497333a0acaa5df1eebbc88b79d3820097500b99ee7f75f",
+      "installed_path": "installed/RESEARCH_PIPELINE_v2/nightly_checkpoint.py",
+      "installed_sha256": "e22068a8f9e587fe4e3ab5382c80197237dbc4c2a8f4b7ad0b066d908683042c",
+      "previous_installed_sha256": "fcfc4252d68a5d16c529988d25177a11836a9613ca94da36ddfa83b761028f73",
+      "previous_installed_path": "report_only_v1/RESEARCH_PIPELINE_v2/nightly_checkpoint.py"
+    }
+  ]
+}

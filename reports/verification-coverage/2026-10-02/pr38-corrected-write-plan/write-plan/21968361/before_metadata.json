@@ -1,0 +1,57 @@
+{
+  "access_right": "open",
+  "communities": [
+    {
+      "id": "viridis-canon"
+    }
+  ],
+  "creators": [
+    {
+      "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+      "name": "Hart, Justin D.",
+      "orcid": "0009-0008-3082-2482"
+    }
+  ],
+  "description": "Proof-reconciled generated exploration of a two-party linear bilateral-benefit corridor for directional predictive-information exchange; not peer reviewed, empirically validated, significant, novel, causal, rights-cleared, ledger-approved, or published.",
+  "doi": "10.5281/zenodo.21968361",
+  "keywords": [
+    "transfer entropy",
+    "reciprocity",
+    "bilateral benefit",
+    "Nash bargaining",
+    "information thermodynamics",
+    "common-driver control"
+  ],
+  "language": "eng",
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "notes": "The paired Lean proof is audited verified. Significance remains uncleared; no empirical, adoption, commercial, rights, ledger, canon, or publication evidence is inferred.",
+  "publication_date": "2026-08-16",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.19317982",
+      "relation": "isDerivedFrom",
+      "scheme": "doi"
+    }
+  ],
+  "relations": {
+    "version": [
+      {
+        "index": 0,
+        "is_last": false,
+        "parent": {
+          "pid_type": "recid",
+          "pid_value": "21968360"
+        }
+      }
+    ]
+  },
+  "resource_type": {
+    "subtype": "preprint",
+    "title": "Preprint",
+    "type": "publication"
+  },
+  "title": "The Reciprocity Corridor: A Bilateral-Benefit Test for Directional Information Exchange",
+  "version": "0.2.1-proof-reconciled"
+}

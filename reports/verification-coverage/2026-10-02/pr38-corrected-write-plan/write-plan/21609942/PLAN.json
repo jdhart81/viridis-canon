@@ -1,0 +1,225 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Paper supported by machine-verified Lean 4.</strong> The Gaia hypothesis has long been challenged by a levels-of-selection objection: natural selection acts on reproducing individuals, not on planets, so environment-regulating biospheres seem to demand an implausible planetary-level selection. The modern reply invokes non-Darwinian mechanisms—<em>selection by survival</em> and <em>sequential selection</em>—in which destabilising configurations are simply short-lived. We show that this systemic, survivorship mechanism and the individual-level <em>partner-fidelity feedback</em> (PFF) of mutualism theory are not rivals but the two limits of a single control parameter: the <em>fidelity coefficient</em> <em>rho_fin[0,1]</em>, the fraction of the environmental benefit a lineage generates that returns privately to that same lineage. We prove a transcritical <em>Fidelity–Survival Bifurcation</em> at <em>rho_f^ast=c/b</em> separating a fast, deterministic <em>Darwinian Gaia</em> (<em>rho_f&gt;rho_f^ast</em>) from a slow, stochastic <em>dice-playing Gaia</em> (<em>rho_f). We derive a <em>Landauer Fidelity Ceiling</em> <em>rho_fle 1-e^-I_mathrmsus</em>, set by the thermodynamic cost of the environmental memory that carries fidelity against a mixing rate <em>kappa_mathrmmix</em>, which forbids Darwinian Gaia in fast-mixing reservoirs while permitting it on slow, structured substrates. A <em>Gaian externality</em> <em>Delta_G=r_mathrmsoc-r_mathrmpriv&gt;0</em> quantifies the regulation individual selection under-provides. A reciprocity reading of the Watson–Lovelock Daisyworld, driven by individual selection alone, reproduces temperature regulation <em>iff</em> fidelity is positive, with regulation bandwidth monotone in fidelity. All results are numerically verified (<em>35/35</em>) and cast as an Intelligence-Bound self-application, the Symbiont. The framework partitions Earth's regulatory feedbacks by mechanism and grounds conservation-finance instruments in the physics of what a biosphere cannot regulate on its own.</em></p>",
+    "doi": "10.5281/zenodo.21609942",
+    "keywords": [
+      "mutualism",
+      "partner fidelity",
+      "Gaia",
+      "survivorship selection",
+      "Price equation",
+      "planetary self-regulation",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification",
+      "uncertified"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Machine-verified: module GaianMutualismSelection (15 named theorems), landed new leans/2026-07-20_aristotle_GMST_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 35/35 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21609941"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Gaian Mutualism Selection Theorem: Partner Fidelity as the Continuum Between Darwinian and Survivorship Selection for Planetary Self-Regulation",
+    "version": "1.0.0"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "Read actual authenticated deposition base and validate exact record identity; not executed",
+      "url": "https://zenodo.org/api/deposit/depositions/21609942"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21609942/actions/edit"
+    },
+    {
+      "execution": "UNAUTHORIZED_PLAN_ONLY; revalidate against authenticated deposition base and approve resolved exact hash",
+      "method": "PUT",
+      "payload_file": "deposition_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/21609942"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21609942/actions/publish"
+    },
+    {
+      "method": "GET",
+      "required_assertions": [
+        "title == before.title",
+        "doi == before.doi",
+        "relations == before.relations",
+        "all other fields except description/keywords semantically exact, including original license/resource_type/custom/alternate_identifiers"
+      ],
+      "url": "https://zenodo.org/api/records/21609942"
+    }
+  ],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Paper supported by machine-verified Lean 4.</strong> The Gaia hypothesis has long been challenged by a levels-of-selection objection: natural selection acts on reproducing individuals, not on planets, so environment-regulating biospheres seem to demand an implausible planetary-level selection. The modern reply invokes non-Darwinian mechanisms—<em>selection by survival</em> and <em>sequential selection</em>—in which destabilising configurations are simply short-lived. We show that this systemic, survivorship mechanism and the individual-level <em>partner-fidelity feedback</em> (PFF) of mutualism theory are not rivals but the two limits of a single control parameter: the <em>fidelity coefficient</em> <em>rho_fin[0,1]</em>, the fraction of the environmental benefit a lineage generates that returns privately to that same lineage. We prove a transcritical <em>Fidelity–Survival Bifurcation</em> at <em>rho_f^ast=c/b</em> separating a fast, deterministic <em>Darwinian Gaia</em> (<em>rho_f&gt;rho_f^ast</em>) from a slow, stochastic <em>dice-playing Gaia</em> (<em>rho_f). We derive a <em>Landauer Fidelity Ceiling</em> <em>rho_fle 1-e^-I_mathrmsus</em>, set by the thermodynamic cost of the environmental memory that carries fidelity against a mixing rate <em>kappa_mathrmmix</em>, which forbids Darwinian Gaia in fast-mixing reservoirs while permitting it on slow, structured substrates. A <em>Gaian externality</em> <em>Delta_G=r_mathrmsoc-r_mathrmpriv&gt;0</em> quantifies the regulation individual selection under-provides. A reciprocity reading of the Watson–Lovelock Daisyworld, driven by individual selection alone, reproduces temperature regulation <em>iff</em> fidelity is positive, with regulation bandwidth monotone in fidelity. All results are numerically verified (<em>35/35</em>) and cast as an Intelligence-Bound self-application, the Symbiont. The framework partitions Earth's regulatory feedbacks by mechanism and grounds conservation-finance instruments in the physics of what a biosphere cannot regulate on its own.</em></p>",
+    "doi": "10.5281/zenodo.21609942",
+    "keywords": [
+      "mutualism",
+      "partner fidelity",
+      "Gaia",
+      "survivorship selection",
+      "Price equation",
+      "planetary self-regulation",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Machine-verified: module GaianMutualismSelection (15 named theorems), landed new leans/2026-07-20_aristotle_GMST_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 35/35 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21609941"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Gaian Mutualism Selection Theorem: Partner Fidelity as the Continuum Between Darwinian and Survivorship Selection for Planetary Self-Regulation",
+    "version": "1.0.0"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:33.539861+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "concept_id": "21609941",
+  "doi": "10.5281/zenodo.21609942",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "latest_observed_record_id": "21609942",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "ef1401da2959fd9aa4755d9344f4e4ce3a7d8c37d0527772180992a06fcafa20",
+    "after_payload.json": "e569df7ca92fadc1ab9ebd2d2c7d15e3ed4e33d486933b39d0ce053aaeaaddb2",
+    "before_metadata.json": "d6b552fdc8b741d5be7c0c4858ba3905221f56be962d5af78c1c8dffffca6db5",
+    "deposition_payload.json": "96320d1c3bb16c33a61b164763d2a0393eb108bddc8c6109c1070315f3dd0981",
+    "rollback_expected_public.json": "cba12aab2523723137a74370998340bc492573a258e34e21eba6d13b6be68bad",
+    "rollback_payload.json": "509595ec723ff1e6c659b811f75a772723f1bbd3e5ccc5384ea4283642aa112a"
+  },
+  "preconditions": [
+    "Justin approves these exact immutable titles and exact payload SHA256 values",
+    "Complete sandbox edit -> PUT -> publish and one newversion readback",
+    "Authenticated production GET must map this exact DOI and provide the actual deposition metadata base",
+    "Merge only description/keywords into the authenticated base; server version graph, DOI, license and all other public fields must survive readback",
+    "Reject any unjustified field conversion, error, timeout, conflict or unknown outcome; do not publish or retry blindly",
+    "Server version graph preservation requires sandbox and authenticated deposition readback"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "21609942",
+  "rollback": "Before republish: separately approved POST https://zenodo.org/api/deposit/depositions/21609942/actions/discard. After republish: separately approved edit -> PUT the rollback deposition projection based on authenticated metadata -> publish; verify original public metadata and unchanged files. Exact prior metadata and rollback hashes remain in this row. No production rollback was executed.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

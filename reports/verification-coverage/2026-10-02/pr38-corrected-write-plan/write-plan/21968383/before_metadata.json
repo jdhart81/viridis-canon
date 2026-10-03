@@ -1,0 +1,57 @@
+{
+  "access_right": "open",
+  "communities": [
+    {
+      "id": "viridis-canon"
+    }
+  ],
+  "creators": [
+    {
+      "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+      "name": "Hart, Justin D.",
+      "orcid": "0009-0008-3082-2482"
+    }
+  ],
+  "description": "Proof-reconciled generated exploration of low-rank shared mobility channels under a bounded quadratic model; not empirically validated, independently significant, novel, rights-cleared, canon-admitted, or published.",
+  "doi": "10.5281/zenodo.21968383",
+  "keywords": [
+    "thermodynamic speed limits",
+    "symbiosis",
+    "low-rank mobility",
+    "partial control",
+    "co-adaptation",
+    "distribution shift"
+  ],
+  "language": "eng",
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "notes": "The paired Lean proof is audited verified. Significance remains uncleared; no empirical, adoption, revenue, rights, ledger, canon, spine, publication, or journal status is inferred.",
+  "publication_date": "2026-08-16",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.19317982",
+      "relation": "isDerivedFrom",
+      "scheme": "doi"
+    }
+  ],
+  "relations": {
+    "version": [
+      {
+        "index": 0,
+        "is_last": false,
+        "parent": {
+          "pid_type": "recid",
+          "pid_value": "21968382"
+        }
+      }
+    ]
+  },
+  "resource_type": {
+    "subtype": "preprint",
+    "title": "Preprint",
+    "type": "publication"
+  },
+  "title": "The Symbiotic Bandwidth Bound: Low-Rank Shared Channels Cannot Remove Worst-Case Thermodynamic Speed Limits",
+  "version": "0.2.0-proof-reconciled"
+}

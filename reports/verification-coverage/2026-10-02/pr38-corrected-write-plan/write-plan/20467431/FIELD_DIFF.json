@@ -1,0 +1,333 @@
+[
+  {
+    "after_expected_public": "open",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "open",
+    "deposition_wire": "open",
+    "field": "access_right",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    "before": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "viridis-canon"
+      }
+    ],
+    "field": "communities",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "field": "creators",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>The Viridis Canon — Lean-Checked Conditional Mathematics for the Intelligence Bound.</strong> A machine-checked formal corpus underpinning the Viridis research program on the thermodynamics of intelligence and its application to planetary conservation. Its spine is the <em>Intelligence Bound</em> — a Landauer/erasure-grounded limit on the rate of intelligence creation — formalized in Lean 4 and extended through a stack of modules spanning information theory (the D-Score biodiversity metric), graph-theoretic landscape optimality (HDFM / dendritic corridors), thermodynamic economics, alignment-as-feasibility (Goodhart impossibility), the speed-limit shadow-price tower, and the recovered post-Wolpert erasure-side footing.</p><p>Every theorem's <em>type</em> is machine-verified in Lean 4 (pinned toolchain; axioms audited to {propext, Classical.choice, Quot.sound}). The canon deliberately distinguishes proof validity from physical and empirical validity: it is <strong>conditional mathematics with explicit assumptions</strong>, not a claim that those assumptions describe nature. Headline results are graded by formal strength in <code>CLAIMS_MATRIX.md</code> via the labels in <code>THEOREM_STATUS_TAXONOMY.md</code> (Derived / Conditional / Definition-expansion / Bridge-assumption / Empirical-hypothesis / Conjecture / Exploratory), with separate formal and interpretive status. Empirical validation is reserved for the companion papers and field studies.</p><p>Concept DOI <strong>10.5281/zenodo.19317982</strong> always resolves to the latest version. Source mirror: <a href=\"https://github.com/jdhart81/viridis-canon\">github.com/jdhart81/viridis-canon</a>. Co-authored with Aristotle (Harmonic).</p>\n<p><strong>This version (v5).</strong> Added EcoChain dendritic-corridor formation (18 modules). Superseded as head by v9.1.1; the concept DOI resolves to the latest version.</p>",
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": "<p><strong>The Viridis Canon — Lean-Checked Conditional Mathematics for the Intelligence Bound.</strong> A machine-checked formal corpus underpinning the Viridis research program on the thermodynamics of intelligence and its application to planetary conservation. Its spine is the <em>Intelligence Bound</em> — a Landauer/erasure-grounded limit on the rate of intelligence creation — formalized in Lean 4 and extended through a stack of modules spanning information theory (the D-Score biodiversity metric), graph-theoretic landscape optimality (HDFM / dendritic corridors), thermodynamic economics, alignment-as-feasibility (Goodhart impossibility), the speed-limit shadow-price tower, and the recovered post-Wolpert erasure-side footing.</p><p>Every theorem's <em>type</em> is machine-verified in Lean 4 (pinned toolchain; axioms audited to {propext, Classical.choice, Quot.sound}). The canon deliberately distinguishes proof validity from physical and empirical validity: it is <strong>conditional mathematics with explicit assumptions</strong>, not a claim that those assumptions describe nature. Headline results are graded by formal strength in <code>CLAIMS_MATRIX.md</code> via the labels in <code>THEOREM_STATUS_TAXONOMY.md</code> (Derived / Conditional / Definition-expansion / Bridge-assumption / Empirical-hypothesis / Conjecture / Exploratory), with separate formal and interpretive status. Empirical validation is reserved for the companion papers and field studies.</p><p>Concept DOI <strong>10.5281/zenodo.19317982</strong> always resolves to the latest version. Source mirror: <a href=\"https://github.com/jdhart81/viridis-canon\">github.com/jdhart81/viridis-canon</a>. Co-authored with Aristotle (Harmonic).</p>\n<p><strong>This version (v5).</strong> Added EcoChain dendritic-corridor formation (18 modules). Superseded as head by v9.1.1; the concept DOI resolves to the latest version.</p>",
+    "deposition_wire": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>The Viridis Canon — Lean-Checked Conditional Mathematics for the Intelligence Bound.</strong> A machine-checked formal corpus underpinning the Viridis research program on the thermodynamics of intelligence and its application to planetary conservation. Its spine is the <em>Intelligence Bound</em> — a Landauer/erasure-grounded limit on the rate of intelligence creation — formalized in Lean 4 and extended through a stack of modules spanning information theory (the D-Score biodiversity metric), graph-theoretic landscape optimality (HDFM / dendritic corridors), thermodynamic economics, alignment-as-feasibility (Goodhart impossibility), the speed-limit shadow-price tower, and the recovered post-Wolpert erasure-side footing.</p><p>Every theorem's <em>type</em> is machine-verified in Lean 4 (pinned toolchain; axioms audited to {propext, Classical.choice, Quot.sound}). The canon deliberately distinguishes proof validity from physical and empirical validity: it is <strong>conditional mathematics with explicit assumptions</strong>, not a claim that those assumptions describe nature. Headline results are graded by formal strength in <code>CLAIMS_MATRIX.md</code> via the labels in <code>THEOREM_STATUS_TAXONOMY.md</code> (Derived / Conditional / Definition-expansion / Bridge-assumption / Empirical-hypothesis / Conjecture / Exploratory), with separate formal and interpretive status. Empirical validation is reserved for the companion papers and field studies.</p><p>Concept DOI <strong>10.5281/zenodo.19317982</strong> always resolves to the latest version. Source mirror: <a href=\"https://github.com/jdhart81/viridis-canon\">github.com/jdhart81/viridis-canon</a>. Co-authored with Aristotle (Harmonic).</p>\n<p><strong>This version (v5).</strong> Added EcoChain dendritic-corridor formation (18 modules). Superseded as head by v9.1.1; the concept DOI resolves to the latest version.</p>",
+    "field": "description",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "10.5281/zenodo.20467431",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "10.5281/zenodo.20467431",
+    "deposition_wire": "10.5281/zenodo.20467431",
+    "field": "doi",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      "Lean 4",
+      "formal verification",
+      "thermodynamics",
+      "intelligence bound",
+      "asymmetric reward",
+      "conservation operator",
+      "AI safety",
+      "alignment",
+      "biodiversity",
+      "conservation biology",
+      "biodiversity credits",
+      "payment for ecosystem services",
+      "smallholder conservation",
+      "Landauer",
+      "Goodhart impossibility",
+      "Aristotle Harmonic",
+      "Mathlib",
+      "EcoChain",
+      "uncertified"
+    ],
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": [
+      "Lean 4",
+      "formal verification",
+      "thermodynamics",
+      "intelligence bound",
+      "asymmetric reward",
+      "conservation operator",
+      "AI safety",
+      "alignment",
+      "biodiversity",
+      "conservation biology",
+      "biodiversity credits",
+      "payment for ecosystem services",
+      "smallholder conservation",
+      "Landauer",
+      "Goodhart impossibility",
+      "Aristotle Harmonic",
+      "Mathlib",
+      "EcoChain"
+    ],
+    "deposition_wire": [
+      "Lean 4",
+      "formal verification",
+      "thermodynamics",
+      "intelligence bound",
+      "asymmetric reward",
+      "conservation operator",
+      "AI safety",
+      "alignment",
+      "biodiversity",
+      "conservation biology",
+      "biodiversity credits",
+      "payment for ecosystem services",
+      "smallholder conservation",
+      "Landauer",
+      "Goodhart impossibility",
+      "Aristotle Harmonic",
+      "Mathlib",
+      "EcoChain",
+      "uncertified"
+    ],
+    "field": "keywords",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "eng",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "eng",
+    "deposition_wire": "eng",
+    "field": "language",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "id": "apache2.0"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    "before": {
+      "id": "apache2.0"
+    },
+    "deposition_wire": "apache2.0",
+    "field": "license",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "2026-05-30",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "2026-05-30",
+    "deposition_wire": "2026-05-30",
+    "field": "publication_date",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isNewVersionOf",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.19317983",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isNewVersionOf",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.19317983",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isNewVersionOf",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.19317983",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "field": "related_identifiers",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "version": [
+        {
+          "index": 4,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "19317982"
+          }
+        }
+      ]
+    },
+    "assessment": {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    },
+    "before": {
+      "version": [
+        {
+          "index": 4,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "19317982"
+          }
+        }
+      ]
+    },
+    "deposition_wire": null,
+    "field": "relations",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": {
+      "title": "Software",
+      "type": "software"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    "before": {
+      "title": "Software",
+      "type": "software"
+    },
+    "deposition_wire": null,
+    "field": "resource_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "Viridis Compiled Theorem Stack — Canon v5 (Dendritic Corridor Formation)",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "Viridis Compiled Theorem Stack — Canon v5 (Dendritic Corridor Formation)",
+    "deposition_wire": "Viridis Compiled Theorem Stack — Canon v5 (Dendritic Corridor Formation)",
+    "field": "title",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": null,
+    "assessment": {
+      "classification": "DOCUMENTED_RESOURCE_TYPE_TRANSPORT_FIELD"
+    },
+    "before": null,
+    "deposition_wire": "software",
+    "field": "upload_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "5.0.0",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "5.0.0",
+    "deposition_wire": "5.0.0",
+    "field": "version",
+    "logical_change": false,
+    "transport_change": false
+  }
+]

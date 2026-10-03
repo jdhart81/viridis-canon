@@ -1,0 +1,67 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Series S4 (Stewardship &amp; Governance) of the Viridis Canon — standalone record; the core IB canon spine is unchanged.</strong> Proves the Self-Orchestration Theorem (SOT): an autonomous conservation engine governing its own attention is a restless multi-armed bandit whose optimal, minimally-forcing policy is a single broadcast shadow price. The governance objective is strictly concave with a unique optimal price &#955;*=a/b, and the cost of sovereign over-forcing equals a nonnegative legibility debt (a KL Pythagorean identity). The 12th Intelligence-Bound self-application (the <em>Steersman</em>).</p><p><strong>Scope.</strong> Lean 4 (Aristotle-verified, zero <code>sorry</code>) certifies the optimization and information-geometry results, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "doi": "10.5281/zenodo.20735555",
+    "keywords": [
+      "Intelligence Bound",
+      "governance",
+      "restless multi-armed bandit",
+      "Whittle index",
+      "KL divergence",
+      "I-projection",
+      "minimal forcing",
+      "AI alignment",
+      "Lean 4",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Viridis Canon, Series S4 (Stewardship &amp; Governance). Lean 4 proofs (Aristotle project 07905c3b-989b-45f4-abe8-8180f324c4c2, zero sorry, axioms within {propext, Classical.choice, Quot.sound}) certify: (T1) J(lam)=a*log lam - b*lam is strictly concave on (0,inf) and uniquely maximized at the interior broadcast price lam*=a/b; (T2) under the I-projection orthogonality condition, the forcing gap A_sov - A_wu = D_KL(nu||mu) - D_KL(nu||mu_lam*) equals the legibility debt D_KL(mu*||mu) (Pythagorean identity) and is nonnegative (Gibbs). They do not certify empirical magnitudes. Working paper, not peer-reviewed. Does NOT modify the core canon spine (frozen at v9).",
+    "publication_date": "2026-06-17",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20735554"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Self-Orchestration Theorem: Minimally-Forcing Governance of an Autonomous Conservation Engine",
+    "version": "S4-SOT-v1"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "identifier": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Standalone thematic-series record of the Viridis Canon (Gaian Systems). The core Intelligence-Bound canon spine is unchanged (frozen at v10.0.0, record 20801185); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>.</strong></p><p>Gaia has no central controller. The Gaian Harmonization Theorem (GHT) asks how <em>N</em> uncoordinated local stewards &mdash; none observing the global planetary state &mdash; realize the <em>centralized</em> minimum-dissipation planetary optimum. The answer is a decentralized welfare theorem: every agent best-responding to a <strong>single shared scalar shadow price</strong> &lambda;&#42; reproduces the centralized social optimum exactly, with no duality gap. The price is not abstract &mdash; it is the regulated variable&rsquo;s own deviation, broadcast for free by the shared environment. The model is a separable, strictly convex quadratic planetary resource-allocation program: each agent <em>i</em> picks an effort <em>x<sub>i</sub></em> with private dissipation (<em>a<sub>i</sub></em>/2)(<em>x<sub>i</sub></em>&minus;<em>b<sub>i</sub></em>)&sup2; (<em>a<sub>i</sub></em>&nbsp;&gt;&nbsp;0) under one planetary coupling constraint &sum;<sub>i</sub>&nbsp;<em>x<sub>i</sub></em>&nbsp;=&nbsp;<em>X</em>.</p><p>Ten statements are machine-checked in Lean 4 (Aristotle, zero <code>sorry</code>, axioms &sube; {<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>}). <strong>R1 (welfare / strong duality):</strong> the price-taking best response globally minimizes each agent&rsquo;s Lagrangian (<code>ght_best_response_minimizes</code>); a single scalar price clears the planetary constraint (<code>ght_market_clears</code>); marginal dissipations equalize to the common price (<code>ght_equimarginal</code>); the decentralized price equilibrium <em>is</em> the centralized minimum-dissipation optimum, no duality gap (<code>ght_strong_duality_decentralized_eq_centralized</code>); and a single scalar is a sufficient coordinating statistic, dimension independent of <em>N</em> (<code>ght_scalar_price_minimal_sufficient</code>). <strong>R2 (IB bandwidth ceiling):</strong> the coordination ceiling &omega;<sub>H</sub>&nbsp;=&nbsp;<em>P</em>&middot;<em>D</em>/(<em>k<sub>B</sub>T</em>&thinsp;ln&thinsp;2&middot;<em>C</em><sub>&lambda;</sub>) is strictly positive (<code>ght_harmonization_bandwidth_from_IB</code>) and antitone in temperature &mdash; a hotter planet tolerates a slower drift (<code>ght_bandwidth_antitone_temp</code>). <strong>R3 (wu-wei robustness paradox):</strong> the decentralized/centralized message-complexity ratio is <code>&ge; 1</code> (<code>ght_wuwei_robustness_ratio_ge_one</code>) and strict for <em>N</em>&nbsp;&ge;&nbsp;2 (<code>ght_wuwei_robustness_strict</code>): scalar-price coordination is strictly cheaper than central command &mdash; letting go makes the planet more robust. The theorem is non-vacuous via a concrete <em>N</em>&nbsp;=&nbsp;2 binding instance (<code>ght_nonvacuous</code>).</p><p>GHT is the 24th self-application of the Intelligence Bound (&ldquo;the Harmonizer&rdquo;), importing the canon keystone shadow price and the throughput ceiling <em>P</em>&middot;<em>D</em>/(<em>k<sub>B</sub>T</em>&thinsp;ln&thinsp;2) into the Gaian Systems area for the first time. The headline: a single thermodynamic shadow price decentralizes planetary stewardship to the social optimum, at a coordination cost that is Intelligence-Bound-limited and strictly favors light-touch (wu-wei) price signals over central command. Deferred to future runs: continuous-time primal&ndash;dual (t&acirc;tonnement) Lyapunov convergence of the price, and the information-theoretic minimality lower bound of the scalar statistic (only sufficiency is proven here).</p><p><strong>Scope.</strong> The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "doi": "10.5281/zenodo.21168212",
+    "keywords": [
+      "gaian harmonization",
+      "planetary resource allocation",
+      "shadow price",
+      "strong duality",
+      "decentralized welfare theorem",
+      "equimarginal principle",
+      "Intelligence Bound",
+      "coordination bandwidth",
+      "wu wei",
+      "mechanism design",
+      "Lean 4",
+      "formal verification",
+      "uncertified"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "Viridis Canon, standalone thematic-series record (route standalone NEW-CATEGORY / Gaian Systems). Source: nightly Science Engine Run 082 (2026-06-27), convergence event [07] Gaian Systems x Alignment; the 24th Intelligence-Bound self-application (\"the Harmonizer\"); ledger row 36. v11 spine candidate, but deposits standalone now -- the spine is unchanged (frozen at v10.0.0, record 20801185); this record links to the spine only via isDerivedFrom the concept DOI 10.5281/zenodo.19317982 and references the frozen spine v10. Lean 4 proofs (Aristotle (Harmonic) project ce91f80d-36c6-4a76-881d-5c3a498fbb4c, task aa562f45-6c06-425f-96e2-e3eda29b3bc2, COMPLETE @100%, completed 2026-06-27T12:34Z; zero sorry; no admit, native_decide, or axiom declarations; #print axioms within {propext, Classical.choice, Quot.sound} on every theorem; toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff) certify a separable, strictly convex quadratic planetary resource-allocation program in which N uncoordinated stewards each pick an effort x_i with private dissipation (a_i/2)(x_i - b_i)^2 (a_i &gt; 0) under one planetary coupling constraint sum_i x_i = X. Ten statements are proven verbatim. R1 (decentralized welfare / strong duality): (1) ght_best_response_minimizes -- the price-taking best response globally minimizes each agent's private Lagrangian; (2) ght_market_clears -- a single scalar price lamStar clears the coupling constraint; (3) ght_equimarginal -- at the optimum every agent's marginal dissipation equals the common price; (4) ght_strong_duality_decentralized_eq_centralized -- the decentralized price equilibrium IS the centralized minimum-dissipation optimum, no duality gap; (5) ght_scalar_price_minimal_sufficient -- a single scalar reconstructs the entire N-vector optimum agent-by-agent (sufficiency, dimension independent of N). R2 (IB harmonization bandwidth ceiling): (6) ght_harmonization_bandwidth_from_IB -- the coordination ceiling omega_H = P.D/(kB.T.ln2.C_lam) is strictly positive (a genuine, finite ceiling); (7) ght_bandwidth_antitone_temp -- omega_H is antitone in temperature (a hotter, more dissipative planet tolerates a slower drift -- the IB scaling). R3 (wu-wei robustness paradox): (8) ght_wuwei_robustness_ratio_ge_one -- the decentralized/centralized message-complexity ratio R(N) = N/1 &gt;= 1; (9) ght_wuwei_robustness_strict -- strict for N &gt;= 2, scalar-price coordination strictly cheaper than central command (letting go makes the planet more robust). Non-vacuity: (10) ght_nonvacuous exhibits a concrete N=2 binding instance (the coupling constraint binds, xStar i != b i), so every hypothesis is satisfiable and no conclusion is trivial. Supporting defs: central_messages, decentralized_messages. DEFERRED (not in this record): ght_primal_dual_lyapunov_convergence (continuous-time tatonnement / primal-dual gradient-flow convergence) and the information-theoretic minimality lower bound of the scalar coordinating statistic (only sufficiency is proven here). Scope: the Lean proofs certify the validity of the reasoning, not empirical magnitudes; the theorems are qualitative and structural (no numerical bandwidth, price, or allocation is asserted). Working paper; not peer-reviewed.",
+    "publication_date": "2026-07-03",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20801185",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "title": "The Gaian Harmonization Theorem: A Single Thermodynamic Shadow Price Decentralizes Planetary Stewardship to the Social Optimum",
+    "upload_type": "publication",
+    "version": "GaianHarmonization-v1"
+  }
+}

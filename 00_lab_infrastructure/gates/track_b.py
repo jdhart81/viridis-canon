@@ -206,7 +206,8 @@ def command_plan(root: Path, destination: Path) -> list[list[str]]:
 
 def prepare(*, source: Path, claim_binding: Path, run_id: str, root: Path,
             out: Path, enforce: bool = False, pdf_writer: Callable[[list[str]], bytes] | None = None,
-            scanner: Callable[[Path], dict] | None = None) -> dict[str, Any]:
+            scanner: Callable[[Path], dict] | None = None,
+            paper_tex: Path | None = None, paper_pdf: Path | None = None) -> dict[str, Any]:
     if re.fullmatch(r"Run-9[0-9]{2}", run_id) is None:
         raise PreparationError("Track B requires an explicit reserved ID Run-900 through Run-999")
     root = root.absolute()
@@ -223,6 +224,21 @@ def prepare(*, source: Path, claim_binding: Path, run_id: str, root: Path,
         regular_path(root / "RESEARCH_PIPELINE_v2" / name)
     raw = source.read_bytes()
     binding_raw = claim_binding.read_bytes()
+    if (paper_tex is None) != (paper_pdf is None):
+        raise PreparationError("a supplied Methods Note requires both TeX and PDF")
+    supplied_paper = None
+    if paper_tex is not None:
+        paper_tex, paper_pdf = regular_path(paper_tex), regular_path(paper_pdf)
+        if not all(p.is_relative_to(root) for p in (paper_tex, paper_pdf)):
+            raise PreparationError("supplied Methods Note must be inside the canonical root")
+        if paper_tex.suffix != ".tex" or paper_pdf.suffix != ".pdf":
+            raise PreparationError("supplied Methods Note requires .tex and .pdf files")
+        supplied_paper = {"tex": paper_tex.read_bytes(), "pdf": paper_pdf.read_bytes()}
+        note = supplied_paper["tex"].decode("utf-8")
+        if "Methods Note" not in note or "logical validity given the model, not empirical validation of its assumptions" not in note:
+            raise PreparationError("supplied Methods Note must identify scope and print the model disclaimer")
+        if not supplied_paper["pdf"].startswith(b"%PDF-") or b"%%EOF" not in supplied_paper["pdf"][-1024:]:
+            raise PreparationError("supplied Methods Note PDF is invalid")
     # Avoid a second promotion of bytes already represented by an issued
     # certificate. A matching recorded binding is enough to hold preparation;
     # it is not accepted here as proof or a valid certificate.
@@ -264,15 +280,20 @@ def prepare(*, source: Path, claim_binding: Path, run_id: str, root: Path,
               "certified": False, "local_lean_execution": False, "transport_performed": False,
               "transport_authorization_required": True, "external_mutation": False,
               "command_plan": command_plan(root, destination)}
+    if supplied_paper is not None:
+        result["supplied_methods_note"] = {
+            "tex": {"path": str(paper_tex), "sha256": digest(supplied_paper["tex"])},
+            "pdf": {"path": str(paper_pdf), "sha256": digest(supplied_paper["pdf"])},
+            "correspondence_review_required": True}
     if not enforce:
         return result
     lines = note_lines(run_id, source, digest(raw), claims, targets)
-    pdf = (pdf_writer or methods_pdf)(lines)
+    pdf = supplied_paper["pdf"] if supplied_paper is not None else (pdf_writer or methods_pdf)(lines)
     if not isinstance(pdf, bytes) or not pdf.startswith(b"%PDF-") or b"%%EOF" not in pdf[-1024:]:
         raise PreparationError("Methods Note PDF writer returned invalid bytes")
     payloads = {"VERIFICATION_CANDIDATE.lean": raw, "VERIFICATION_STATEMENT.lean": challenge_raw,
                 "VERIFICATION_CHALLENGE_ALIGNED.lean": challenge_raw, "claim_binding.json": json_bytes({"claims": claims}),
-                "SEALED_paper.tex": tex_bytes(lines), "SEALED_paper.pdf": pdf}
+                "SEALED_paper.tex": supplied_paper["tex"] if supplied_paper is not None else tex_bytes(lines), "SEALED_paper.pdf": pdf}
     payloads["SEALED_CLAIM_INVENTORY.json"] = json_bytes({
         "schema_version": "VRS-TRACK-B-CLAIM-INVENTORY-1", "artifact_kind": "METHODS_NOTE",
         "verification_status": "PENDING_COMPARATOR", "claims": [
@@ -326,6 +347,9 @@ def prepare(*, source: Path, claim_binding: Path, run_id: str, root: Path,
     # destination if an I/O error occurs; it is a HOLD, never a resumable pass.
     if source.read_bytes() != raw or claim_binding.read_bytes() != binding_raw:
         raise PreparationError("source or claim binding changed before freezing")
+    if supplied_paper is not None and (paper_tex.read_bytes() != supplied_paper["tex"] or
+                                       paper_pdf.read_bytes() != supplied_paper["pdf"]):
+        raise PreparationError("supplied Methods Note changed before freezing")
     regular_path(destination, must_exist=False)
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.mkdir(exist_ok=False)
@@ -348,11 +372,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--root", type=Path, default=CANONICAL_ROOT)
     parser.add_argument("--out", required=True, type=Path, help="Parent directory for immutable Run-NNN envelope")
+    parser.add_argument("--paper-tex", type=Path, help="Explicit complete Methods Note TeX to seal")
+    parser.add_argument("--paper-pdf", type=Path, help="Matching final PDF; correspondence requires independent review")
     parser.add_argument("--enforce", action="store_true", help="Freeze envelope only; never transmit or certify")
     args = parser.parse_args(argv)
     try:
         result = prepare(source=args.source, claim_binding=args.claim_binding, run_id=args.run_id,
-                         root=args.root, out=args.out, enforce=args.enforce)
+                         root=args.root, out=args.out, enforce=args.enforce,
+                         paper_tex=args.paper_tex, paper_pdf=args.paper_pdf)
         code = 0
     except Exception as exc:
         result = {"status": "HOLD", "certified": False, "mode": "ENFORCING" if args.enforce else "REPORT_ONLY",

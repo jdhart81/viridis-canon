@@ -94,6 +94,58 @@ class TrackBPreparationTests(unittest.TestCase):
         self.assertEqual(inventory["claims"][0]["empirical_content"]["evidence_class"], "DEFERRED")
         self.assertFalse((directory / "LEAN_ZERO_SORRY_CERTIFICATE.json").exists())
 
+    def supplied_note(self):
+        tex = self.root / "MethodsNote.tex"
+        pdf = self.root / "MethodsNote.pdf"
+        tex.write_text("Methods Note: corrected science\nlogical validity given the model, not empirical validation of its assumptions")
+        pdf.write_bytes(fixture_pdf([]))
+        return tex, pdf
+
+    def test_supplied_note_is_exactly_sealed_and_report_only_stays_read_only(self):
+        tex, pdf = self.supplied_note()
+        report = self.prepare(paper_tex=tex, paper_pdf=pdf)
+        self.assertFalse(self.out.exists())
+        self.assertTrue(report["supplied_methods_note"]["correspondence_review_required"])
+        def no_render(_):
+            raise AssertionError("must seal exact supplied bytes")
+        self.prepare(paper_tex=tex, paper_pdf=pdf, enforce=True, pdf_writer=no_render)
+        dest = self.out / "Run-900"
+        for original, name in [(tex, "SEALED_paper.tex"), (pdf, "SEALED_paper.pdf")]:
+            self.assertEqual(original.read_bytes(), (dest / name).read_bytes())
+        request = json.loads((dest / "ENGINE3_VERIFICATION_REQUEST.json").read_text())
+        for name in track_b.SEALED_NAMES:
+            self.assertEqual(request["input_sha256"][name], track_b.digest((dest/name).read_bytes()))
+        self.assertFalse((dest / "LEAN_ZERO_SORRY_CERTIFICATE.json").exists())
+
+    def test_supplied_note_pair_scope_and_pdf_fail_closed(self):
+        tex, pdf = self.supplied_note()
+        for args in [dict(paper_tex=tex), dict(paper_pdf=pdf)]:
+            with self.assertRaises(track_b.PreparationError): self.prepare(**args)
+        pdf.write_bytes(b"not PDF")
+        with self.assertRaises(track_b.PreparationError): self.prepare(paper_tex=tex,paper_pdf=pdf,enforce=True)
+        pdf.write_bytes(fixture_pdf([]));tex.write_text("scope omitted")
+        with self.assertRaises(track_b.PreparationError): self.prepare(paper_tex=tex,paper_pdf=pdf,enforce=True)
+        self.assertFalse(self.out.exists())
+
+    def test_supplied_note_does_not_bypass_source_quarantine(self):
+        tex,pdf = self.supplied_note()
+        self.source.write_text(CLEAN.replace("  simpa", "  sorry"))
+        with self.assertRaises(track_b.PreparationError): self.prepare(paper_tex=tex,paper_pdf=pdf,enforce=True)
+        self.assertFalse(self.out.exists())
+
+    def test_supplied_note_outside_root_and_input_race_hold(self):
+        tex,pdf = self.supplied_note()
+        outside = self.base / "outside.tex"
+        outside.write_bytes(tex.read_bytes())
+        with self.assertRaises(track_b.PreparationError): self.prepare(paper_tex=outside,paper_pdf=pdf,enforce=True)
+        def mutating_scanner(path):
+            result = static_pregate.scan(path)
+            tex.write_text(tex.read_text() + "changed after capture")
+            return result
+        with self.assertRaises(track_b.PreparationError):
+            self.prepare(paper_tex=tex,paper_pdf=pdf,enforce=True,scanner=mutating_scanner)
+        self.assertFalse(self.out.exists())
+
     def test_existing_envelope_is_preserved(self):
         self.prepare(enforce=True, pdf_writer=fixture_pdf)
         before = {p.name: p.read_bytes() for p in (self.out / "Run-900").iterdir()}

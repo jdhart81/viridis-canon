@@ -1,0 +1,17 @@
+{
+  "status": "FOLLOWUP_LOCAL_VERIFICATION_PASS_NOT_DEPLOYED",
+  "base_merged_commit": "8b7ca7281eb76c95f7df8597771ef73ffe963ca8",
+  "python_tests_passed": 157,
+  "node_fake_process_tests_passed": 15,
+  "regression_fails_against_previous_launcher": true,
+  "full_server_typecheck": "PASS",
+  "protected_source_hashes_unchanged": {
+    "comparator-deploy/comparator_cloud_lean_verifier.py": "b745e90ad147a0d5bd6787e20049e9bbb49a694837172851c77958b271718202",
+    "00_lab_infrastructure/gates/fixtures/comparator_issuer_unchanged.py": "789cb903c972a9c10731360769ccff56055b3257de9491a75b92c0d549b5c438"
+  },
+  "droplet_contacts": 0,
+  "droplet_writes": 0,
+  "restarts": 0,
+  "certification_submissions": 0,
+  "v008_reruns": 0
+}

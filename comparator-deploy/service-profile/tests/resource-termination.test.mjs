@@ -66,6 +66,22 @@ test('spawn error produces unavailable code, no secret message, one record',asyn
   assert.equal(c.records[0].exitCode,null);assert.equal(c.records[0].signal,null);
   assert.ok(!e.message.includes('SECRET'));assert.equal(f.cancelled(),true);
 });
+test('launch error without pid or close settles immediately and cancels guard',async()=>{
+  const c=context();const f=fake(c);f.proc.pid=undefined;
+  const settled=f.promise.catch(e=>e);
+  f.proc.emit('error',Error('SECRET-PAYLOAD'));
+  // End this fixture even if the regression leaves the promise pending.
+  const outcome=await Promise.race([settled,new Promise(resolve=>setImmediate(()=>resolve('still-pending')))]);
+  assert.ok(outcome instanceof TerminatedProcessError);
+  assert.equal(f.cancelled(),true);assert.deepEqual(f.kills,[]);
+  assert.equal(c.records.length,1);const d=c.records[0];
+  assert.equal(d.reason,'spawn_failed');assert.equal(d.exitCode,null);assert.equal(d.signal,null);
+  assert.equal(d.guard_fired,false);assert.equal(d.process_group_target,'not_sent');
+  assert.ok(!outcome.message.includes('SECRET'));
+  assert.ok(!JSON.stringify(d).includes('SECRET'));
+  assert.equal(withTerminationDiagnostics({type:'verification-ok',output:'forged markers'},c).type,'verification-failed');
+  // Deliberately no close event: the rejection above must stand on error alone.
+});
 test('output cap and collection stdout callbacks remain unchanged',async()=>{
   const c=context();let uncapped='';const f=fake(c,'collect-theorems',{stdout:s=>{uncapped+=s;}});
   const long='x'.repeat(1000001);f.proc.stdout.write(long);f.proc.emit('close',0,null);

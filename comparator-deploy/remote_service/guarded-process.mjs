@@ -61,7 +61,11 @@ export function runGuarded(command, args, options, dependencies = {}) {
     }
     proc.stdout.on('data',data => { const s=data.toString('utf8'); options.stdout?.(s); append(s); });
     proc.stderr.on('data',data => { const s=data.toString('utf8'); options.stderr?.(s); append(s); });
-    proc.on('error',() => { spawnFailed = true; }); // Close follows error; retain one record only.
+    proc.on('error',() => {
+      spawnFailed = true;
+      // No process was launched; close is not required to release the queue.
+      if (proc.pid === undefined) finish(null, null);
+    });
     proc.on('close',(code,signal) => finish(code,signal));
     timer = schedule(() => {
       fired = true;

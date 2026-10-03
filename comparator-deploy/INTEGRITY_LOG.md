@@ -27,3 +27,7 @@ Deploy only after this PR merges, verify the old hash immediately before deploym
 ## 2026-10-03 — FOUNDATION F2h deployed drift reconciliation approval
 
 Justin explicitly approved the foundation-only resource profile, diagnostic receipt fields and deployed-script snapshots. Every deployed launcher, delivery wrapper, source component and service fragment/drop-in was snapshotted with SHA-256 before change; see F2H_DRIFT_RECONCILIATION.md and the protected baseline `deployed_pre_f2h_sha256`. Deployed bytes are the pre-change operational authority. No droplet changes in this commit.
+
+## FOUNDATION F2h — foundational resource profile
+
+Approved by Justin: only Run-900–999 may select a 600-second comparator wall allowance. Nightly/default, compile/collection guards remain 285 seconds; deployed launchers and service limits remain byte-identical. Source-run routing is derived from the frozen request outside the byte-identical client verify() function; the server schema and worker both reject a nightly foundational selection. In-flight routing is partitioned by run/profile. Old hashes are in deployed_pre_f2h_sha256 and the previous commit; new hashes are in protected_remote_implementation_sha256. The profile is recorded in provider receipts as non-acceptance metadata.

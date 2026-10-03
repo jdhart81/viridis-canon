@@ -7,6 +7,7 @@ import { promisify } from "node:util";
 import { z } from "zod";
 
 import { IS_DEVELOPMENT, PROJ_ROOT } from "./env.ts";
+import { comparatorWallMilliseconds } from "./resource-profile.mjs";
 import { buildJobEvidence } from "./job-attestation.mjs";
 
 export interface VerifyTask {
@@ -105,7 +106,7 @@ function spawnPromise(
     } catch {
       proc.kill("SIGKILL");
     }
-  }, BACKUP_SIGKILL_MS);
+  }, description === "Comparator" ? comparatorWallMilliseconds(BACKUP_SIGKILL_MS) : BACKUP_SIGKILL_MS);
   return new Promise((resolve, reject) => {
     proc.on("error", (err) => {
       reject(new CheckingError(`${description} failed: ${err.message}`, output.join("")));

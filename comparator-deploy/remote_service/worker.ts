@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 import { KEEP_COMPARATOR_TEMP_FILES, USE_MOCK_VERIFICATION } from "./env.ts";
 import { CheckingError, cleanup, collectThms, comparator, compile, createTaskDir, executionEvidenceForTask } from "./exec.ts";
 import { isEvidenceCacheEligible, observeFile } from "./job-attestation.mjs";
+import { withResourceProfile, currentResourceProfile } from "./resource-profile.mjs";
 import { doMockWork } from "./mockworker.ts";
 
 const workerSourceAtLoad = await observeFile(fileURLToPath(import.meta.url));
@@ -163,7 +164,7 @@ async function doUncachedWork(
   }
 }
 
-export async function doWork(
+async function doWorkInternal(
   taskId: string,
   request: StartVerifyRequest,
 ): Promise<VerifyResult> {
@@ -173,7 +174,9 @@ export async function doWork(
     request.solution,
     request.theoremNames,
   );
-  const existing = inFlightByHash.get(key);
+  // Keep operational profiles/run bindings isolated; scientific cache hash is unchanged.
+  const flightKey = key + "\0" + currentResourceProfile().name + "\0" + (request.runId ?? "");
+  const existing = inFlightByHash.get(flightKey);
   if (existing) {
     const result = await existing;
     return { ...result, executionEvidence: {
@@ -183,7 +186,7 @@ export async function doWork(
   }
 
   const work = doUncachedWork(taskId, request);
-  inFlightByHash.set(key, work);
+  inFlightByHash.set(flightKey, work);
   try {
     const result = await work;
     return { ...result, executionEvidence: {
@@ -191,6 +194,13 @@ export async function doWork(
       delivery: { mode: "FRESH_EXECUTION", servedForRequestId: taskId },
     } };
   } finally {
-    if (inFlightByHash.get(key) === work) inFlightByHash.delete(key);
+    if (inFlightByHash.get(flightKey) === work) inFlightByHash.delete(flightKey);
   }
+}
+
+export async function doWork(taskId: string, request: StartVerifyRequest): Promise<VerifyResult> {
+  return withResourceProfile(request, async () => {
+    const result = await doWorkInternal(taskId, request);
+    return { ...result, resourceProfile: currentResourceProfile() };
+  });
 }

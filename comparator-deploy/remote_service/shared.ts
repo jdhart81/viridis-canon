@@ -4,7 +4,13 @@ export const zStartVerifyRequest = z.object({
   project: z.string(),
   challenge: z.string(),
   solution: z.string(),
+  runId: z.string().regex(/^Run-\d{3}$/).optional(),
+  resourceProfile: z.enum(["nightly", "foundational"]).optional(),
   theoremNames: z.array(z.string().min(1)).min(1).max(256).optional(),
+}).superRefine((request, context) => {
+  if (request.resourceProfile === "foundational" && !/^Run-9\d{2}$/.test(request.runId ?? "")) {
+    context.addIssue({ code: "custom", message: "Foundational profile requires Run-900–999" });
+  }
 });
 export type StartVerifyRequest = z.infer<typeof zStartVerifyRequest>;
 
@@ -22,12 +28,14 @@ const zVerifyPossibilities = [
     type: z.literal("verification-ok"),
     theoremNames: z.array(z.string()),
     output: z.optional(z.string()),
+    resourceProfile: z.optional(z.record(z.string(), z.unknown())),
     executionEvidence: z.optional(z.record(z.string(), z.unknown())),
   }),
   z.object({
     type: z.literal("verification-failed"),
     description: z.string(),
     output: z.optional(z.string()),
+    resourceProfile: z.optional(z.record(z.string(), z.unknown())),
     executionEvidence: z.optional(z.record(z.string(), z.unknown())),
   }),
 ] as const;

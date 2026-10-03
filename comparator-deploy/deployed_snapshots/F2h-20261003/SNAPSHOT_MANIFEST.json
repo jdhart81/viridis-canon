@@ -1,0 +1,288 @@
+{
+  "files": [
+    {
+      "path": "/opt/viridis/comparator-live/server/scripts/comparator.sh",
+      "sha256": "91ad643fec763c518b05f54314e17ac141d0145658a1283792116ad8c8e70900",
+      "mode": "0o755",
+      "uid": 982,
+      "gid": 982,
+      "snapshot": "comparator-deploy/deployed_snapshots/F2h-20261003/comparator.sh",
+      "comparison": [
+        {
+          "copy": "repository",
+          "path": "/private/tmp/viridis-f2f-delivery/comparator-deploy/comparator.sh",
+          "status": "ABSENT"
+        },
+        {
+          "copy": "generation_tree_deployment_copy",
+          "path": "/Users/justinhart/Desktop/science /comparator-deploy/comparator.sh",
+          "sha256": "edc80d36f2d66178b16f5257240805c7b8d6881269db4800b370f04cdf20d374",
+          "matches_deployed": false
+        }
+      ],
+      "authority": "Deployed bytes are the pre-change operational authority; repository release after review is the future deployment authority."
+    },
+    {
+      "path": "/opt/viridis/comparator-live/server/scripts/compile.sh",
+      "sha256": "2b0409411edea0137822f1853250ee91267c9b08d9ea4c79c6fd257c737f0919",
+      "mode": "0o755",
+      "uid": 0,
+      "gid": 0,
+      "snapshot": "comparator-deploy/deployed_snapshots/F2h-20261003/compile.sh",
+      "comparison": [
+        {
+          "copy": "repository",
+          "path": "/private/tmp/viridis-f2f-delivery/comparator-deploy/compile.sh",
+          "status": "ABSENT"
+        },
+        {
+          "copy": "generation_tree_deployment_copy",
+          "path": "/Users/justinhart/Desktop/science /comparator-deploy/compile.sh",
+          "sha256": "2b0409411edea0137822f1853250ee91267c9b08d9ea4c79c6fd257c737f0919",
+          "matches_deployed": true
+        }
+      ],
+      "authority": "Deployed bytes are the pre-change operational authority; repository release after review is the future deployment authority."
+    },
+    {
+      "path": "/opt/viridis/comparator-live/server/scripts/collectThms.sh",
+      "sha256": "2c77c1dd66e77354b356ab1d91483be84925da8151509aeedb8bee6a657e4531",
+      "mode": "0o755",
+      "uid": 0,
+      "gid": 0,
+      "snapshot": "comparator-deploy/deployed_snapshots/F2h-20261003/collectThms.sh",
+      "comparison": [
+        {
+          "copy": "repository",
+          "path": "/private/tmp/viridis-f2f-delivery/comparator-deploy/collectThms.sh",
+          "status": "ABSENT"
+        },
+        {
+          "copy": "generation_tree_deployment_copy",
+          "path": "/Users/justinhart/Desktop/science /comparator-deploy/collectThms.sh",
+          "sha256": "2c77c1dd66e77354b356ab1d91483be84925da8151509aeedb8bee6a657e4531",
+          "matches_deployed": true
+        }
+      ],
+      "authority": "Deployed bytes are the pre-change operational authority; repository release after review is the future deployment authority."
+    },
+    {
+      "path": "/usr/local/bin/viridis-comparator-verify",
+      "sha256": "245e5f053e5d3c5276da528ed2a82e7a07e2b0046135dc2362cfa8816bf3d4cb",
+      "mode": "0o755",
+      "uid": 0,
+      "gid": 0,
+      "snapshot": "comparator-deploy/deployed_snapshots/F2h-20261003/viridis-comparator-verify",
+      "comparison": [
+        {
+          "copy": "repository",
+          "path": "comparator-deploy/viridis-comparator-verify",
+          "sha256": "245e5f053e5d3c5276da528ed2a82e7a07e2b0046135dc2362cfa8816bf3d4cb",
+          "matches_deployed": true
+        },
+        {
+          "copy": "generation_tree_deployment_copy",
+          "path": "/Users/justinhart/Desktop/science /comparator-deploy/viridis-comparator-verify",
+          "sha256": "b448e91bd4f5389f19358e21cb7f9c7b23e4be89d2ff79343bdb0d0ba63a09d9",
+          "matches_deployed": false
+        }
+      ],
+      "authority": "Deployed bytes are the pre-change operational authority; repository release after review is the future deployment authority."
+    },
+    {
+      "path": "/opt/viridis/comparator-live/server/src/exec.ts",
+      "sha256": "1d87221a644df128b73011e45bc28391558d802d7ca7645a3919a9adcbfed607",
+      "mode": "0o644",
+      "uid": 982,
+      "gid": 982,
+      "snapshot": "comparator-deploy/deployed_snapshots/F2h-20261003/exec.ts",
+      "comparison": [
+        {
+          "copy": "repository",
+          "path": "/private/tmp/viridis-f2f-delivery/comparator-deploy/exec.ts",
+          "status": "ABSENT"
+        },
+        {
+          "copy": "generation_tree_deployment_copy",
+          "path": "/Users/justinhart/Desktop/science /comparator-deploy/exec.ts",
+          "sha256": "1d87221a644df128b73011e45bc28391558d802d7ca7645a3919a9adcbfed607",
+          "matches_deployed": true
+        }
+      ],
+      "authority": "Deployed bytes are the pre-change operational authority; repository release after review is the future deployment authority."
+    },
+    {
+      "path": "/opt/viridis/comparator-live/server/src/worker.ts",
+      "sha256": "2d288baedf40cc718f42417c99c3a1dc3788f36c6fead05a150837bd84e41cdc",
+      "mode": "0o644",
+      "uid": 982,
+      "gid": 982,
+      "snapshot": "comparator-deploy/deployed_snapshots/F2h-20261003/worker.ts",
+      "comparison": [
+        {
+          "copy": "repository",
+          "path": "/private/tmp/viridis-f2f-delivery/comparator-deploy/worker.ts",
+          "status": "ABSENT"
+        },
+        {
+          "copy": "generation_tree_deployment_copy",
+          "path": "/Users/justinhart/Desktop/science /comparator-deploy/worker.ts",
+          "sha256": "2d288baedf40cc718f42417c99c3a1dc3788f36c6fead05a150837bd84e41cdc",
+          "matches_deployed": true
+        }
+      ],
+      "authority": "Deployed bytes are the pre-change operational authority; repository release after review is the future deployment authority."
+    },
+    {
+      "path": "/opt/viridis/comparator-live/server/src/app.ts",
+      "sha256": "a6ed0b0712154b0ce94f241ee445f6428c94ca8d90769ef05701acb34a857ae2",
+      "mode": "0o644",
+      "uid": 982,
+      "gid": 982,
+      "snapshot": "comparator-deploy/deployed_snapshots/F2h-20261003/app.ts",
+      "comparison": [
+        {
+          "copy": "repository",
+          "path": "/private/tmp/viridis-f2f-delivery/comparator-deploy/app.ts",
+          "status": "ABSENT"
+        },
+        {
+          "copy": "generation_tree_deployment_copy",
+          "path": "/Users/justinhart/Desktop/science /comparator-deploy/app.ts",
+          "status": "ABSENT"
+        }
+      ],
+      "authority": "Deployed bytes are the pre-change operational authority; repository release after review is the future deployment authority."
+    },
+    {
+      "path": "/opt/viridis/comparator-live/server/src/env.ts",
+      "sha256": "c0427b9c20f936950c1c833e4a0f3f10f6e44e24fb00c8ba8ec985f07ed50820",
+      "mode": "0o644",
+      "uid": 0,
+      "gid": 0,
+      "snapshot": "comparator-deploy/deployed_snapshots/F2h-20261003/env.ts",
+      "comparison": [
+        {
+          "copy": "repository",
+          "path": "/private/tmp/viridis-f2f-delivery/comparator-deploy/env.ts",
+          "status": "ABSENT"
+        },
+        {
+          "copy": "generation_tree_deployment_copy",
+          "path": "/Users/justinhart/Desktop/science /comparator-deploy/env.ts",
+          "status": "ABSENT"
+        }
+      ],
+      "authority": "Deployed bytes are the pre-change operational authority; repository release after review is the future deployment authority."
+    },
+    {
+      "path": "/opt/viridis/comparator-live/server/src/workqueue.ts",
+      "sha256": "78b712346718e7e086331555d18d6c8f4c577de20816f6eaa272caca30995633",
+      "mode": "0o644",
+      "uid": 982,
+      "gid": 982,
+      "snapshot": "comparator-deploy/deployed_snapshots/F2h-20261003/workqueue.ts",
+      "comparison": [
+        {
+          "copy": "repository",
+          "path": "/private/tmp/viridis-f2f-delivery/comparator-deploy/workqueue.ts",
+          "status": "ABSENT"
+        },
+        {
+          "copy": "generation_tree_deployment_copy",
+          "path": "/Users/justinhart/Desktop/science /comparator-deploy/workqueue.ts",
+          "status": "ABSENT"
+        }
+      ],
+      "authority": "Deployed bytes are the pre-change operational authority; repository release after review is the future deployment authority."
+    },
+    {
+      "path": "/opt/viridis/comparator-live/shared/shared.ts",
+      "sha256": "93e84d5060d34724ca79a2512a18d97903c3ee26bbe35249ddd811621a6fa055",
+      "mode": "0o644",
+      "uid": 982,
+      "gid": 982,
+      "snapshot": "comparator-deploy/deployed_snapshots/F2h-20261003/shared.ts",
+      "comparison": [
+        {
+          "copy": "repository",
+          "path": "/private/tmp/viridis-f2f-delivery/comparator-deploy/shared.ts",
+          "status": "ABSENT"
+        },
+        {
+          "copy": "generation_tree_deployment_copy",
+          "path": "/Users/justinhart/Desktop/science /comparator-deploy/shared.ts",
+          "sha256": "93e84d5060d34724ca79a2512a18d97903c3ee26bbe35249ddd811621a6fa055",
+          "matches_deployed": true
+        }
+      ],
+      "authority": "Deployed bytes are the pre-change operational authority; repository release after review is the future deployment authority."
+    },
+    {
+      "path": "/etc/systemd/system/viridis-comparator.service",
+      "sha256": "2fa644023c3234683a3a504270d835d533373e2626c81463e019d0fc48822a52",
+      "mode": "0o644",
+      "uid": 0,
+      "gid": 0,
+      "snapshot": "comparator-deploy/deployed_snapshots/F2h-20261003/viridis-comparator.service",
+      "comparison": [
+        {
+          "copy": "repository",
+          "path": "/private/tmp/viridis-f2f-delivery/comparator-deploy/viridis-comparator.service",
+          "status": "ABSENT"
+        },
+        {
+          "copy": "generation_tree_deployment_copy",
+          "path": "/Users/justinhart/Desktop/science /comparator-deploy/viridis-comparator.service",
+          "sha256": "2fa644023c3234683a3a504270d835d533373e2626c81463e019d0fc48822a52",
+          "matches_deployed": true
+        }
+      ],
+      "authority": "Deployed bytes are the pre-change operational authority; repository release after review is the future deployment authority."
+    },
+    {
+      "path": "/etc/systemd/system.control/viridis-comparator.service.d/50-CPUQuota.conf",
+      "sha256": "45124f085822a0c5fa67b2cda71fa60a2cea0623789d43643cd016ef90710293",
+      "mode": "0o644",
+      "uid": 0,
+      "gid": 0,
+      "snapshot": "comparator-deploy/deployed_snapshots/F2h-20261003/50-CPUQuota.conf",
+      "comparison": [
+        {
+          "copy": "repository",
+          "path": "/private/tmp/viridis-f2f-delivery/comparator-deploy/50-CPUQuota.conf",
+          "status": "ABSENT"
+        },
+        {
+          "copy": "generation_tree_deployment_copy",
+          "path": "/Users/justinhart/Desktop/science /comparator-deploy/50-CPUQuota.conf",
+          "status": "ABSENT"
+        }
+      ],
+      "authority": "Deployed bytes are the pre-change operational authority; repository release after review is the future deployment authority."
+    },
+    {
+      "path": "/etc/systemd/system.control/viridis-comparator.service.d/50-MemoryMax.conf",
+      "sha256": "635683a39731e57b27a11fa8b3b565c8fdaae31e33e43c0a306c581734b1c77e",
+      "mode": "0o644",
+      "uid": 0,
+      "gid": 0,
+      "snapshot": "comparator-deploy/deployed_snapshots/F2h-20261003/50-MemoryMax.conf",
+      "comparison": [
+        {
+          "copy": "repository",
+          "path": "/private/tmp/viridis-f2f-delivery/comparator-deploy/50-MemoryMax.conf",
+          "status": "ABSENT"
+        },
+        {
+          "copy": "generation_tree_deployment_copy",
+          "path": "/Users/justinhart/Desktop/science /comparator-deploy/50-MemoryMax.conf",
+          "status": "ABSENT"
+        }
+      ],
+      "authority": "Deployed bytes are the pre-change operational authority; repository release after review is the future deployment authority."
+    }
+  ],
+  "service_config_paths": "FragmentPath=/etc/systemd/system/viridis-comparator.service\nDropInPaths=/etc/systemd/system.control/viridis-comparator.service.d/50-CPUQuota.conf /etc/systemd/system.control/viridis-comparator.service.d/50-MemoryMax.conf\n",
+  "service_status": "MainPID=363849\nNRestarts=0\n"
+}

@@ -1,0 +1,199 @@
+--- /Users/justinhart/Desktop/science /comparator-deploy/viridis-comparator-verify
++++ /usr/local/bin/viridis-comparator-verify
+@@ -27,7 +27,7 @@
+             health_value = json.load(response)
+         with urllib.request.urlopen(f"{BASE_URL}/projects", timeout=10) as response:
+             projects = json.load(response)
+-    except (OSError, urllib.error.URLError, json.JSONDecodeError) as exc:
++    except (OSError, urllib.error.URLError, ValueError) as exc:
+         return fail(f"health probe failed: {type(exc).__name__}")
+     project_ready = isinstance(projects, list) and any(
+         isinstance(item, dict) and item.get("project") == PROJECT for item in projects
+@@ -42,13 +42,118 @@
+     return 0 if project_ready else 2
+ 
+ 
++OPERATION_SECONDS = 1200
++STREAM_SECONDS = 30
++POLL_INTERVAL = 2
++
++
++def _diagnostic(message):
++    print(message, file=sys.stderr)
++
++
++def verify_request(payload, *, open_url=urllib.request.urlopen, clock=time.monotonic,
++                   sleep=time.sleep, operation_seconds=OPERATION_SECONDS,
++                   stream_seconds=STREAM_SECONDS, diagnostic=_diagnostic):
++    """Delivery only: one submission, one enqueue stream, same-ID bounded polling."""
++    deadline = clock() + operation_seconds
++    request_id = None
++    def remaining():
++        return max(0, deadline - clock())
++    def error(message):
++        value = {"type": "client-error", "description": message}
++        if request_id is not None:
++            value.update(requestId=request_id, project=PROJECT)
++        return 2, value
++    def terminal(event, recovered=False):
++        if not isinstance(event, dict) or event.get("type") not in TERMINAL_TYPES:
++            return None
++        if event.get("requestId", request_id) != request_id:
++            return error("terminal result belongs to another request")
++        if event.get("type") == "verification-ok":
++            evidence = event.get("executionEvidence")
++            delivery = evidence.get("delivery") if isinstance(evidence, dict) else None
++            if (not isinstance(delivery, dict) or evidence.get("cacheEligible") is not False
++                or delivery.get("mode") not in {"FRESH_EXECUTION", "IN_FLIGHT_REUSE"}
++                or delivery.get("servedForRequestId") != request_id):
++                return error("terminal delivery provenance invalid or disk cache inadmissible")
++        # Same envelope augmentation as the pre-change wrapper.
++        event = dict(event)
++        event.update(requestId=request_id, project=PROJECT)
++        if recovered:
++            event["recoveredFromTerminalJournal"] = True
++        return (0 if event.get("type") == "verification-ok" else 2), event
++    if remaining() <= 0:
++        return error("verification operation deadline exhausted before submit")
++    request = urllib.request.Request(
++        f"{BASE_URL}/start",
++        data=json.dumps({"project": PROJECT, "challenge": payload["challenge"],
++                         "solution": payload["solution"],
++                         "theoremNames": payload["theoremNames"]}).encode(),
++        headers={"Content-Type": "application/json"}, method="POST")
++    try:
++        with open_url(request, timeout=min(30, remaining())) as response:
++            started = json.load(response)
++    except (OSError, urllib.error.URLError, ValueError) as exc:
++        return error(f"could not start verification: {type(exc).__name__}")
++    if not isinstance(started, dict) or started.get("type") != "ready":
++        return error("service did not reserve a verification request")
++    request_id = started.get("requestId")
++    if not isinstance(request_id, str) or not request_id:
++        request_id = None
++        return error("service returned no request identifier")
++    # Reject URL traversal; use exactly the UUID assigned by this single /start.
++    import uuid
++    try:
++        if str(uuid.UUID(request_id)) != request_id:
++            return error("service returned an invalid request identifier")
++    except ValueError:
++        return error("service returned an invalid request identifier")
++    stream_deadline = min(deadline, clock() + stream_seconds)
++    if remaining() <= 0:
++        return error("verification operation deadline exhausted before enqueue")
++    try:
++        # /track is the enqueue trigger in the existing API. Never open it twice.
++        with open_url(f"{BASE_URL}/track/{request_id}",
++                      timeout=min(10, remaining(), max(0.001, stream_deadline-clock()))) as response:
++            for raw_line in response:
++                # Check on EVERY line, before filtering ':' keepalives.
++                if clock() >= stream_deadline or remaining() <= 0:
++                    diagnostic("bounded stream interval exhausted; polling same request")
++                    break
++                line = raw_line.decode("utf-8").strip()
++                if not line.startswith("data:"):
++                    continue
++                event = json.loads(line.removeprefix("data:").strip())
++                result = terminal(event)
++                if result is not None:
++                    return result
++    except (OSError, urllib.error.URLError, ValueError) as exc:
++        diagnostic("stream delivery interrupted: " + type(exc).__name__)
++    # Stream closure/time limit only changes delivery; durable work is untouched.
++    while remaining() > 0:
++        try:
++            with open_url(f"{BASE_URL}/result/{request_id}",
++                          timeout=min(10, remaining())) as response:
++                event = json.load(response)
++            if remaining() <= 0:
++                break
++            result = terminal(event, recovered=True)
++            if result is not None:
++                return result
++        except (OSError, urllib.error.URLError, ValueError) as exc:
++            diagnostic("terminal poll pending/unavailable: " + type(exc).__name__)
++        # A pending result is never returned as successful verification.
++        sleep(min(POLL_INTERVAL, remaining()))
++    return error("verification operation deadline exhausted; no terminal result delivered")
++
++
+ def verify() -> int:
+     try:
+         raw = sys.stdin.buffer.read(MAX_SOURCE_BYTES * 2 + 4096)
+         if len(raw) > MAX_SOURCE_BYTES * 2:
+             return fail("request exceeds the verifier input limit")
+         payload = json.loads(raw)
+-    except (OSError, json.JSONDecodeError):
++    except (OSError, ValueError):
+         return fail("stdin must contain one JSON request")
+     if not isinstance(payload, dict):
+         return fail("request root must be an object")
+@@ -66,61 +171,13 @@
+     if len(challenge.encode()) > MAX_SOURCE_BYTES or len(solution.encode()) > MAX_SOURCE_BYTES:
+         return fail("one source exceeds the verifier input limit")
+ 
+-    request = urllib.request.Request(
+-        f"{BASE_URL}/start",
+-        data=json.dumps({
+-            "project": PROJECT,
+-            "challenge": challenge,
+-            "solution": solution,
+-            "theoremNames": theorem_names,
+-        }).encode(),
+-        headers={"Content-Type": "application/json"},
+-        method="POST",
+-    )
+     try:
+-        with urllib.request.urlopen(request, timeout=30) as response:
+-            started = json.load(response)
+-    except (OSError, urllib.error.URLError, json.JSONDecodeError) as exc:
+-        return fail(f"could not start verification: {type(exc).__name__}")
+-    if not isinstance(started, dict) or started.get("type") != "ready":
+-        print(json.dumps(started, sort_keys=True))
+-        return 2
+-    request_id = started.get("requestId")
+-    if not isinstance(request_id, str) or not request_id:
+-        return fail("service returned no request identifier")
+-
+-    deadline = time.monotonic() + 300
+-    try:
+-        with urllib.request.urlopen(f"{BASE_URL}/track/{request_id}", timeout=300) as response:
+-            for raw_line in response:
+-                line = raw_line.decode("utf-8").strip()
+-                if not line.startswith("data:"):
+-                    continue
+-                event = json.loads(line.removeprefix("data:").strip())
+-                if isinstance(event, dict) and event.get("type") in TERMINAL_TYPES:
+-                    event["requestId"] = request_id
+-                    event["project"] = PROJECT
+-                    print(json.dumps(event, sort_keys=True))
+-                    return 0 if event.get("type") == "verification-ok" else 2
+-                if time.monotonic() >= deadline:
+-                    break
+-    except (OSError, urllib.error.URLError, json.JSONDecodeError) as exc:
+-        tracking_error = type(exc).__name__
+-    else:
+-        tracking_error = "stream-ended-without-terminal"
+-
+-    try:
+-        with urllib.request.urlopen(f"{BASE_URL}/result/{request_id}", timeout=30) as response:
+-            event = json.load(response)
+-        if isinstance(event, dict) and event.get("type") in TERMINAL_TYPES:
+-            event["requestId"] = request_id
+-            event["project"] = PROJECT
+-            event["recoveredFromTerminalJournal"] = True
+-            print(json.dumps(event, sort_keys=True))
+-            return 0 if event.get("type") == "verification-ok" else 2
+-    except (OSError, urllib.error.URLError, json.JSONDecodeError):
+-        pass
+-    return fail(f"verification tracking failed and no terminal journal was available: {tracking_error}")
++        returncode, event = verify_request(payload)
++    except Exception as exc:
++        _diagnostic("delivery wrapper failure: " + type(exc).__name__)
++        return fail("delivery wrapper failed: " + type(exc).__name__)
++    print(json.dumps(event, sort_keys=True))
++    return returncode
+ 
+ 
+ if __name__ == "__main__":

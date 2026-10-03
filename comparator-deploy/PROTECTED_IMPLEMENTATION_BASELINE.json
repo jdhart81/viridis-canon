@@ -11,7 +11,7 @@
     "engine3_align_challenge.py": "d8d06e582d80bddae73dbb68a23a866ed8cac241f5c9780c3bc779a50fcd4870",
     "job_observation_policy.py": "63aa5ad5ccd0b3c299b1a262d0a7ebd2ff96ff46294a73c86600ea8db47e73c8"
   },
-  "approval": "Justin FOUNDATION F2f: diagnostics-only client capture; acceptance byte-identical; separately approved delivery wrapper repair.",
+  "approval": "Justin FOUNDATION F2h: foundation-only 600-second comparator wall profile, diagnostic receipt fields, deployed drift reconciliation; acceptance unchanged.",
   "protected_remote_implementation_sha256": {
     "/usr/local/bin/viridis-comparator-verify": "245e5f053e5d3c5276da528ed2a82e7a07e2b0046135dc2362cfa8816bf3d4cb"
   },
@@ -26,5 +26,21 @@
     "single_track_enqueue": true,
     "same_request_id_only": true,
     "disk_cache_admitted": false
-  }
+  },
+  "deployed_pre_f2h_sha256": {
+    "/opt/viridis/comparator-live/server/scripts/comparator.sh": "91ad643fec763c518b05f54314e17ac141d0145658a1283792116ad8c8e70900",
+    "/opt/viridis/comparator-live/server/scripts/compile.sh": "2b0409411edea0137822f1853250ee91267c9b08d9ea4c79c6fd257c737f0919",
+    "/opt/viridis/comparator-live/server/scripts/collectThms.sh": "2c77c1dd66e77354b356ab1d91483be84925da8151509aeedb8bee6a657e4531",
+    "/usr/local/bin/viridis-comparator-verify": "245e5f053e5d3c5276da528ed2a82e7a07e2b0046135dc2362cfa8816bf3d4cb",
+    "/opt/viridis/comparator-live/server/src/exec.ts": "1d87221a644df128b73011e45bc28391558d802d7ca7645a3919a9adcbfed607",
+    "/opt/viridis/comparator-live/server/src/worker.ts": "2d288baedf40cc718f42417c99c3a1dc3788f36c6fead05a150837bd84e41cdc",
+    "/opt/viridis/comparator-live/server/src/app.ts": "a6ed0b0712154b0ce94f241ee445f6428c94ca8d90769ef05701acb34a857ae2",
+    "/opt/viridis/comparator-live/server/src/env.ts": "c0427b9c20f936950c1c833e4a0f3f10f6e44e24fb00c8ba8ec985f07ed50820",
+    "/opt/viridis/comparator-live/server/src/workqueue.ts": "78b712346718e7e086331555d18d6c8f4c577de20816f6eaa272caca30995633",
+    "/opt/viridis/comparator-live/shared/shared.ts": "93e84d5060d34724ca79a2512a18d97903c3ee26bbe35249ddd811621a6fa055",
+    "/etc/systemd/system/viridis-comparator.service": "2fa644023c3234683a3a504270d835d533373e2626c81463e019d0fc48822a52",
+    "/etc/systemd/system.control/viridis-comparator.service.d/50-CPUQuota.conf": "45124f085822a0c5fa67b2cda71fa60a2cea0623789d43643cd016ef90710293",
+    "/etc/systemd/system.control/viridis-comparator.service.d/50-MemoryMax.conf": "635683a39731e57b27a11fa8b3b565c8fdaae31e33e43c0a306c581734b1c77e"
+  },
+  "deployment_snapshot_manifest": "comparator-deploy/deployed_snapshots/F2h-20261003/SNAPSHOT_MANIFEST.json"
 }

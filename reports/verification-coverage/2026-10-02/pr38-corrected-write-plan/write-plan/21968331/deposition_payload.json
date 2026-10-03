@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "identifier": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled generated exploration of a bounded two-state relay model; not empirically validated, novel, significant, peer reviewed, rights-cleared, ledger-approved, canon-admitted, or published.",
+    "doi": "10.5281/zenodo.21968331",
+    "keywords": [
+      "cognitive switching",
+      "choice hysteresis",
+      "switching cost",
+      "rate-independent systems",
+      "thermodynamics of computation"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "The paired Lean proof is audited verified. Significance remains uncleared; no empirical, adoption, commercial, rights, ledger, canon, or publication evidence is inferred.",
+    "publication_date": "2026-08-16",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "title": "The Cognitive Switching Hysteresis Certificate: Exact loop geometry under directional state-change penalties",
+    "upload_type": "publication",
+    "version": "0.2.0-proof-reconciled"
+  }
+}

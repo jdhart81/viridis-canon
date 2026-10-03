@@ -1,0 +1,180 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled generated exploration of a one-period two-moment chance certificate for uncertain effective capacity under an assumed information-rate model. This public working-corpus release includes the reviewed manuscript and paired Lean evidence. It is not peer reviewed or empirically validated; significance and novelty have not been independently established.",
+    "doi": "10.5281/zenodo.21971046",
+    "keywords": [
+      "chance constraint",
+      "Cantelli inequality",
+      "distributional robustness",
+      "uncertainty reserve",
+      "information thermodynamics",
+      "stewardship"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "The paired Lean proof is audited verified and checks the stated mathematics under declared assumptions. This standalone working-corpus record is licensed CC BY 4.0. It is not an Intelligence Bound Canon spine admission, and no empirical, ecological, causal, adoption, commercial, procurement, or legal outcome is inferred.",
+    "publication_date": "2026-08-17",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 1,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21968346"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Precautionary Capacity Reserve: A Sharp Moment-Robust Stewardship Discount for an Intelligence-Rate Model",
+    "version": "0.2.1-release-reconciled"
+  },
+  "api_calls": [],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled generated exploration of a one-period two-moment chance certificate for uncertain effective capacity under an assumed information-rate model. This public working-corpus release includes the reviewed manuscript and paired Lean evidence. It is not peer reviewed or empirically validated; significance and novelty have not been independently established.",
+    "doi": "10.5281/zenodo.21971046",
+    "keywords": [
+      "chance constraint",
+      "Cantelli inequality",
+      "distributional robustness",
+      "uncertainty reserve",
+      "information thermodynamics",
+      "stewardship"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "The paired Lean proof is audited verified and checks the stated mathematics under declared assumptions. This standalone working-corpus record is licensed CC BY 4.0. It is not an Intelligence Bound Canon spine admission, and no empirical, ecological, causal, adoption, commercial, procurement, or legal outcome is inferred.",
+    "publication_date": "2026-08-17",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 1,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21968346"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Precautionary Capacity Reserve: A Sharp Moment-Robust Stewardship Discount for an Intelligence-Rate Model",
+    "version": "0.2.1-release-reconciled"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:35.609213+00:00",
+  "bucket": "CURABLE_BY_NEW_VERSION",
+  "concept_id": "21968346",
+  "deposition_payload_execution": "FORBIDDEN_PENDING_PUBLICATION_BINDING",
+  "doi": "10.5281/zenodo.21971046",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "future_bundle": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971046",
+  "future_latest_parent": "21971046",
+  "latest_observed_record_id": "21971046",
+  "mode": "DRY_RUN_ONLY",
+  "note": "after_payload is an unchanged identity snapshot, not an interim unverified reissue. A VERIFIED payload is intentionally not prepared before valid publication binding.",
+  "old_prepared_bundle_sha256": "7f911b81d3b007732ca7ced27178bb54e21e6434382574fa49381e778f1ffe00",
+  "operation": "NEW_VERSION",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "31c423ebff7bc27393860151913577affb874df0514ce61f0808a3b128a65c8b",
+    "after_payload.json": "1c56b2d270eeb439904dab3b3c68130af87ef8ca15c335b7b0b29e4be405d09a",
+    "before_metadata.json": "1e5a37ef2bc63ff581d9e290375d32f60818136a6718c58a3dea52647052736c",
+    "deposition_payload.json": "7da88acdefe72be4e42bfdd0793876567c12620226732546ad1b254dd132ceb8",
+    "rollback_expected_public.json": "1c56b2d270eeb439904dab3b3c68130af87ef8ca15c335b7b0b29e4be405d09a",
+    "rollback_payload.json": "7da88acdefe72be4e42bfdd0793876567c12620226732546ad1b254dd132ceb8"
+  },
+  "preconditions": [
+    "One reviewed PUBLICATION_BINDING receipt for the final manuscript per chain",
+    "Current valid exact proof/statement certificate, nontrivial one-claim/one-theorem map and model fidelity",
+    "No interim uncertified new version",
+    "One new version per concept chain, labeled verified only after all evidence passes",
+    "Titles remain exact original; final payload must receive a new exact hash approval"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "21971046",
+  "rollback": "No transaction is proposed now. Before a future approved publish, discard only the identified unpublished draft. After publication, preserve the version and prepare an independently approved correction; no deletion rollback.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_PUBLICATION_BINDING_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

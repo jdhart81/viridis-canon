@@ -1,0 +1,287 @@
+[
+  {
+    "after_expected_public": "open",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "open",
+    "deposition_wire": "open",
+    "field": "access_right",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    "before": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "viridis-canon"
+      }
+    ],
+    "field": "communities",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "field": "creators",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p>Machine-verified Lean 4 / Mathlib proofs for the thermodynamic analysis of plasma-mediated atmospheric nitrogen fixation (Hart 2026). 38 theorems, lemmas, corollaries, and system invariants. Zero sorry statements. Axioms: propext, Classical.choice, Quot.sound. Part of the Viridis Applied Proofs Series, supplementing the Intelligence Bound foundational canon (DOI: 10.5281/zenodo.20006414). Formal verification performed by Aristotle (Harmonic), project ID 7fc5f57e-1abb-4126-80fd-86daf035063e. Notable finding: verification uncovered a minor unit-conversion inconsistency in Theorem 4 (T4) of the paper, with all downstream arithmetic internally consistent.",
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": "Machine-verified Lean 4 / Mathlib proofs for the thermodynamic analysis of plasma-mediated atmospheric nitrogen fixation (Hart 2026). 38 theorems, lemmas, corollaries, and system invariants. Zero sorry statements. Axioms: propext, Classical.choice, Quot.sound. Part of the Viridis Applied Proofs Series, supplementing the Intelligence Bound foundational canon (DOI: 10.5281/zenodo.20006414). Formal verification performed by Aristotle (Harmonic), project ID 7fc5f57e-1abb-4126-80fd-86daf035063e. Notable finding: verification uncovered a minor unit-conversion inconsistency in Theorem 4 (T4) of the paper, with all downstream arithmetic internally consistent.",
+    "deposition_wire": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p>Machine-verified Lean 4 / Mathlib proofs for the thermodynamic analysis of plasma-mediated atmospheric nitrogen fixation (Hart 2026). 38 theorems, lemmas, corollaries, and system invariants. Zero sorry statements. Axioms: propext, Classical.choice, Quot.sound. Part of the Viridis Applied Proofs Series, supplementing the Intelligence Bound foundational canon (DOI: 10.5281/zenodo.20006414). Formal verification performed by Aristotle (Harmonic), project ID 7fc5f57e-1abb-4126-80fd-86daf035063e. Notable finding: verification uncovered a minor unit-conversion inconsistency in Theorem 4 (T4) of the paper, with all downstream arithmetic internally consistent.",
+    "field": "description",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "10.5281/zenodo.20008839",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "10.5281/zenodo.20008839",
+    "deposition_wire": "10.5281/zenodo.20008839",
+    "field": "doi",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      "formal verification",
+      "Lean 4",
+      "Mathlib",
+      "Aristotle Harmonic",
+      "plasma chemistry",
+      "nitrogen fixation",
+      "thermodynamics",
+      "Haber-Bosch alternative",
+      "energy efficiency",
+      "atmospheric N2",
+      "Viridis canon",
+      "machine-checked proof",
+      "P7 module",
+      "sustainable agriculture",
+      "green chemistry",
+      "uncertified"
+    ],
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": [
+      "formal verification",
+      "Lean 4",
+      "Mathlib",
+      "Aristotle Harmonic",
+      "plasma chemistry",
+      "nitrogen fixation",
+      "thermodynamics",
+      "Haber-Bosch alternative",
+      "energy efficiency",
+      "atmospheric N2",
+      "Viridis canon",
+      "machine-checked proof",
+      "P7 module",
+      "sustainable agriculture",
+      "green chemistry"
+    ],
+    "deposition_wire": [
+      "formal verification",
+      "Lean 4",
+      "Mathlib",
+      "Aristotle Harmonic",
+      "plasma chemistry",
+      "nitrogen fixation",
+      "thermodynamics",
+      "Haber-Bosch alternative",
+      "energy efficiency",
+      "atmospheric N2",
+      "Viridis canon",
+      "machine-checked proof",
+      "P7 module",
+      "sustainable agriculture",
+      "green chemistry",
+      "uncertified"
+    ],
+    "field": "keywords",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "id": "cc-by-4.0"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    "before": {
+      "id": "cc-by-4.0"
+    },
+    "deposition_wire": "cc-by-4.0",
+    "field": "license",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "2026-05-03",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "2026-05-03",
+    "deposition_wire": "2026-05-03",
+    "field": "publication_date",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "field": "related_identifiers",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20008838"
+          }
+        }
+      ]
+    },
+    "assessment": {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    },
+    "before": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20008838"
+          }
+        }
+      ]
+    },
+    "deposition_wire": null,
+    "field": "relations",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": {
+      "title": "Software",
+      "type": "software"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    "before": {
+      "title": "Software",
+      "type": "software"
+    },
+    "deposition_wire": null,
+    "field": "resource_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "Formal Verification of Plasma-Mediated N₂ Fixation — Viridis Applied Proofs Series 1",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "Formal Verification of Plasma-Mediated N₂ Fixation — Viridis Applied Proofs Series 1",
+    "deposition_wire": "Formal Verification of Plasma-Mediated N₂ Fixation — Viridis Applied Proofs Series 1",
+    "field": "title",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": null,
+    "assessment": {
+      "classification": "DOCUMENTED_RESOURCE_TYPE_TRANSPORT_FIELD"
+    },
+    "before": null,
+    "deposition_wire": "software",
+    "field": "upload_type",
+    "logical_change": false,
+    "transport_change": true
+  }
+]

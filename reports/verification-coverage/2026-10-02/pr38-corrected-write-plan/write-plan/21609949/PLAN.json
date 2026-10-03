@@ -1,0 +1,225 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Paper supported by machine-verified Lean 4.</strong> Thermodynamic speed limits set an absolute floor on the dissipation required to drive a single system between two states in finite time. Yet the systems that matter most in biology and in engineered ecology—host and symbiont, learner and environment, an AI monitor and the landscape it steers—rarely evolve alone; they <em>co-adapt</em> through a shared channel. We ask what the speed limit becomes for two coupled systems, and answer it by writing the joint minimum dissipation as the multivariate optimal-transport (Onsager) geodesic cost under a coupled mobility matrix whose off-diagonal element <em>rhosqrttheta_Atheta_B</em> encodes the symbiotic channel. Four closed-form results follow. (i) The <em>sign</em> of the partners' correlated motion determines whether coupling helps or harms: cooperative co-motion lowers the joint cost (mutualism), antagonistic motion raises it (parasitism). (ii) The dissipation-optimal coupling is <em>rho^ast=min(u_A,u_B)/max(u_A,u_B)</em>, the ratio of the partners' reduced displacements, and at <em>rho^ast</em> <em>the pair co-adapts at the solo cost of the larger partner alone</em>—the weaker partner is carried, for free, through the coupling. (iii) The efficiency gain is bounded, <em>1le G(rho^ast)=1+rho^ast 2le 2</em>: symbiosis can at most <em>double</em> co-adaptation efficiency, the ceiling reached only for equal partners. (iv) Sustaining the coupling costs information against the channel's mixing rate, giving a Landauer ceiling <em>rhole 1-e^-I_rm cpl</em> that <em>forbids</em> the symbiotic speedup in well-mixed reservoirs and permits it only in structured, low-mixing substrates. We cast the joint system as an Intelligence Bound self-application, the Weaver, with a fidelity-weighted capacity <em>D_rm mut(rho)=D_A+D_B+rhosqrtD_A D_B</em>. All results are numerically verified (18/18). We close with three falsifiable predictions and discuss applications to multi-agent AI co-training, digital-twin/ecosystem feedback loops, and mycorrhizal afforestation.</p>",
+    "doi": "10.5281/zenodo.21609949",
+    "keywords": [
+      "speed limit",
+      "optimal transport",
+      "Wasserstein",
+      "co-adaptation",
+      "symbiosis",
+      "thermodynamic speed limit",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification",
+      "uncertified"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Machine-verified: module SymbioticSpeedLimit (11 named theorems), landed new leans/2026-07-23_aristotle_SymbioticSpeedLimit_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 18/18 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21609948"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Symbiotic Speed Limit: Optimal-Transport Bounds on the Co-Adaptation of Coupled Thermodynamic Systems",
+    "version": "1.0.0"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "Read actual authenticated deposition base and validate exact record identity; not executed",
+      "url": "https://zenodo.org/api/deposit/depositions/21609949"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21609949/actions/edit"
+    },
+    {
+      "execution": "UNAUTHORIZED_PLAN_ONLY; revalidate against authenticated deposition base and approve resolved exact hash",
+      "method": "PUT",
+      "payload_file": "deposition_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/21609949"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21609949/actions/publish"
+    },
+    {
+      "method": "GET",
+      "required_assertions": [
+        "title == before.title",
+        "doi == before.doi",
+        "relations == before.relations",
+        "all other fields except description/keywords semantically exact, including original license/resource_type/custom/alternate_identifiers"
+      ],
+      "url": "https://zenodo.org/api/records/21609949"
+    }
+  ],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Paper supported by machine-verified Lean 4.</strong> Thermodynamic speed limits set an absolute floor on the dissipation required to drive a single system between two states in finite time. Yet the systems that matter most in biology and in engineered ecology—host and symbiont, learner and environment, an AI monitor and the landscape it steers—rarely evolve alone; they <em>co-adapt</em> through a shared channel. We ask what the speed limit becomes for two coupled systems, and answer it by writing the joint minimum dissipation as the multivariate optimal-transport (Onsager) geodesic cost under a coupled mobility matrix whose off-diagonal element <em>rhosqrttheta_Atheta_B</em> encodes the symbiotic channel. Four closed-form results follow. (i) The <em>sign</em> of the partners' correlated motion determines whether coupling helps or harms: cooperative co-motion lowers the joint cost (mutualism), antagonistic motion raises it (parasitism). (ii) The dissipation-optimal coupling is <em>rho^ast=min(u_A,u_B)/max(u_A,u_B)</em>, the ratio of the partners' reduced displacements, and at <em>rho^ast</em> <em>the pair co-adapts at the solo cost of the larger partner alone</em>—the weaker partner is carried, for free, through the coupling. (iii) The efficiency gain is bounded, <em>1le G(rho^ast)=1+rho^ast 2le 2</em>: symbiosis can at most <em>double</em> co-adaptation efficiency, the ceiling reached only for equal partners. (iv) Sustaining the coupling costs information against the channel's mixing rate, giving a Landauer ceiling <em>rhole 1-e^-I_rm cpl</em> that <em>forbids</em> the symbiotic speedup in well-mixed reservoirs and permits it only in structured, low-mixing substrates. We cast the joint system as an Intelligence Bound self-application, the Weaver, with a fidelity-weighted capacity <em>D_rm mut(rho)=D_A+D_B+rhosqrtD_A D_B</em>. All results are numerically verified (18/18). We close with three falsifiable predictions and discuss applications to multi-agent AI co-training, digital-twin/ecosystem feedback loops, and mycorrhizal afforestation.</p>",
+    "doi": "10.5281/zenodo.21609949",
+    "keywords": [
+      "speed limit",
+      "optimal transport",
+      "Wasserstein",
+      "co-adaptation",
+      "symbiosis",
+      "thermodynamic speed limit",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Machine-verified: module SymbioticSpeedLimit (11 named theorems), landed new leans/2026-07-23_aristotle_SymbioticSpeedLimit_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 18/18 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21609948"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Symbiotic Speed Limit: Optimal-Transport Bounds on the Co-Adaptation of Coupled Thermodynamic Systems",
+    "version": "1.0.0"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:33.789196+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "concept_id": "21609948",
+  "doi": "10.5281/zenodo.21609949",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "latest_observed_record_id": "21609949",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "189a1f2a10f3b0a678c970ba3ce3aa55eae291a5ca368ac59b9721bf3051c521",
+    "after_payload.json": "eaea499479c7130e3f139c676566aca7e4d17a23c4419e228aae220f1625a66b",
+    "before_metadata.json": "c03b19895fe25ff214f0cbf19d6d23ce17923b2a0e5ccb378bcff90aaad6ea5f",
+    "deposition_payload.json": "fd4c9b8bff69bcf1a195bf71c28ff7a82a2027c638341ebb1bba7d3b94eaa736",
+    "rollback_expected_public.json": "e946f2d4b766d71b8731e6725d3ef2ad89fa4621d092c5711c4769f82e2c29a4",
+    "rollback_payload.json": "3a533a36595388908948e87301b6c27bc5d3ab2d4572d9f725e66093e1fa92d4"
+  },
+  "preconditions": [
+    "Justin approves these exact immutable titles and exact payload SHA256 values",
+    "Complete sandbox edit -> PUT -> publish and one newversion readback",
+    "Authenticated production GET must map this exact DOI and provide the actual deposition metadata base",
+    "Merge only description/keywords into the authenticated base; server version graph, DOI, license and all other public fields must survive readback",
+    "Reject any unjustified field conversion, error, timeout, conflict or unknown outcome; do not publish or retry blindly",
+    "Server version graph preservation requires sandbox and authenticated deposition readback"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "21609949",
+  "rollback": "Before republish: separately approved POST https://zenodo.org/api/deposit/depositions/21609949/actions/discard. After republish: separately approved edit -> PUT the rollback deposition projection based on authenticated metadata -> publish; verify original public metadata and unchanged files. Exact prior metadata and rollback hashes remain in this row. No production rollback was executed.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

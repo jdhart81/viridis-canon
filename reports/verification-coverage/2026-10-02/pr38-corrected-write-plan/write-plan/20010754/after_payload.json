@@ -1,0 +1,64 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p>Machine-verified Lean 4 / Mathlib v4.28.0 proof of the Non-Substitutability Theorem from the Viridis Intelligence Bound framework. Proves that data richness D cannot be substituted by power P: as D → 0, the intelligence bound P·D/(k_B·T·ln 2) → 0 regardless of P. Zero sorry statements. Includes constructive ε-M proof of compensation_diverges with explicit δ witness. Part of the Viridis Applied Proofs Series, supplementing the foundational Intelligence Bound canon (10.5281/zenodo.20006414). Aristotle project ID: 2ad31dc8-a9ba-4687-a167-9660a9209d2b.",
+    "doi": "10.5281/zenodo.20010754",
+    "keywords": [
+      "formal verification",
+      "Lean 4",
+      "Mathlib",
+      "Aristotle Harmonic",
+      "Intelligence Bound",
+      "non-substitutability",
+      "thermodynamic economics",
+      "Landauer limit",
+      "compensation divergence",
+      "data richness",
+      "Viridis canon",
+      "machine-checked proof",
+      "kernel-clean",
+      "P3 module",
+      "uncertified"
+    ],
+    "license": {
+      "id": "mit-license"
+    },
+    "publication_date": "2026-05-03",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20010753"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "title": "Software",
+      "type": "software"
+    },
+    "title": "Formal Verification of the Non-Substitutability Theorem — Viridis Applied Proofs Series 3"
+  }
+}

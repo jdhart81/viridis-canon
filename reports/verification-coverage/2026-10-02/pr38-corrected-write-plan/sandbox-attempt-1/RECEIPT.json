@@ -1,0 +1,9 @@
+{
+  "calls": [],
+  "payload_sha256": {},
+  "production_writes": 0,
+  "reason": "sandbox-specific credential unavailable",
+  "sandbox_writes": 0,
+  "status": "HOLD",
+  "tests_executed": false
+}

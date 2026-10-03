@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "identifier": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Paper supported by machine-verified Lean 4.</strong> Continually trained neural networks progressively lose the ability to learn new tasks – units go dormant, representational rank collapses, and the degradation is not undone by ordinary continued training or passive regularization, only by active intervention (parameter resets, continual backpropagation, weight regeneration). This \"loss of plasticity\" is a well-documented empirical phenomenon in modern deep learning. We model it as an instance of the Viridis Stewardship Setpoint Theorem (SST): plasticity is a renewable deployment-capacity stock <em>D(t)</em> that intelligence-producing extraction (the Intelligence Bound, <em>dI/dt leq P D/(k_B T ln 2)</em>) degrades and that regeneration replenishes. The new physical ingredient this paper contributes is that the degradation is not smooth logistic decay but a genuine <em>aging/vitrification</em> process: under sustained forcing (continuous training with no reset), the fluctuation–dissipation ratio of the effective training dynamics ages algebraically in Cugliandolo–Kurchan form, <em>X(s)=(1+s/tau_g)^-beta</em>, driving plasticity toward a dormant state that does not spontaneously recover. Modeling training as an alternating forcing/reset cycle, we derive a closed-form one-cycle fixed point <em>D^ast</em> (verified against direct simulation to <em>10^-16</em>) and a <em>golden-rule reset duty cycle</em> <em>u^astin(0,1)</em> that maximizes sustainable learning throughput – the <em>45</em>th self-application of the Intelligence Bound, <em>the Metronome</em>. Verification forced two honest corrections to our initial hypotheses: (i) without an explicit per-cycle reset-overhead cost, the optimum degenerates to infinite reset frequency, so the overhead cost – not the aging physics alone – is what makes the golden rule well-posed; (ii) contrary to the analogous result in the prior Stewardship Setpoint paper, impatience (higher discount rate) <em>lowers</em> the optimal duty cycle here, because aging erodes the quality of the very harvest being sought within a forcing burst, not just future stock. We give three falsifiable, experimentally testable predictions and verify all numerical claims with a numpy-only harness (17/17 checks).</p>",
+    "doi": "10.5281/zenodo.21609947",
+    "keywords": [
+      "plasticity",
+      "vitrification",
+      "glass transition",
+      "duty cycle",
+      "golden rule",
+      "continual learning",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification",
+      "uncertified"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "Machine-verified: module PlasticityVitrification (9 named theorems), landed new leans/2026-07-19_aristotle_PVT_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 17/17 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "title": "The Plasticity Vitrification Theorem: Continual-Learning Capacity as a Glass-Transitioning Renewable Stock, and the Golden-Rule Reset Duty Cycle",
+    "upload_type": "publication",
+    "version": "1.0.0"
+  }
+}

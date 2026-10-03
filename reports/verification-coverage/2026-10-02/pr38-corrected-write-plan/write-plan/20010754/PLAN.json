@@ -1,0 +1,219 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p>Machine-verified Lean 4 / Mathlib v4.28.0 proof of the Non-Substitutability Theorem from the Viridis Intelligence Bound framework. Proves that data richness D cannot be substituted by power P: as D → 0, the intelligence bound P·D/(k_B·T·ln 2) → 0 regardless of P. Zero sorry statements. Includes constructive ε-M proof of compensation_diverges with explicit δ witness. Part of the Viridis Applied Proofs Series, supplementing the foundational Intelligence Bound canon (10.5281/zenodo.20006414). Aristotle project ID: 2ad31dc8-a9ba-4687-a167-9660a9209d2b.",
+    "doi": "10.5281/zenodo.20010754",
+    "keywords": [
+      "formal verification",
+      "Lean 4",
+      "Mathlib",
+      "Aristotle Harmonic",
+      "Intelligence Bound",
+      "non-substitutability",
+      "thermodynamic economics",
+      "Landauer limit",
+      "compensation divergence",
+      "data richness",
+      "Viridis canon",
+      "machine-checked proof",
+      "kernel-clean",
+      "P3 module",
+      "uncertified"
+    ],
+    "license": {
+      "id": "mit-license"
+    },
+    "publication_date": "2026-05-03",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20010753"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "title": "Software",
+      "type": "software"
+    },
+    "title": "Formal Verification of the Non-Substitutability Theorem — Viridis Applied Proofs Series 3"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "Read actual authenticated deposition base and validate exact record identity; not executed",
+      "url": "https://zenodo.org/api/deposit/depositions/20010754"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20010754/actions/edit"
+    },
+    {
+      "execution": "UNAUTHORIZED_PLAN_ONLY; revalidate against authenticated deposition base and approve resolved exact hash",
+      "method": "PUT",
+      "payload_file": "deposition_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/20010754"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20010754/actions/publish"
+    },
+    {
+      "method": "GET",
+      "required_assertions": [
+        "title == before.title",
+        "doi == before.doi",
+        "relations == before.relations",
+        "all other fields except description/keywords semantically exact, including original license/resource_type/custom/alternate_identifiers"
+      ],
+      "url": "https://zenodo.org/api/records/20010754"
+    }
+  ],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Machine-verified Lean 4 / Mathlib v4.28.0 proof of the Non-Substitutability Theorem from the Viridis Intelligence Bound framework. Proves that data richness D cannot be substituted by power P: as D → 0, the intelligence bound P·D/(k_B·T·ln 2) → 0 regardless of P. Zero sorry statements. Includes constructive ε-M proof of compensation_diverges with explicit δ witness. Part of the Viridis Applied Proofs Series, supplementing the foundational Intelligence Bound canon (10.5281/zenodo.20006414). Aristotle project ID: 2ad31dc8-a9ba-4687-a167-9660a9209d2b.",
+    "doi": "10.5281/zenodo.20010754",
+    "keywords": [
+      "formal verification",
+      "Lean 4",
+      "Mathlib",
+      "Aristotle Harmonic",
+      "Intelligence Bound",
+      "non-substitutability",
+      "thermodynamic economics",
+      "Landauer limit",
+      "compensation divergence",
+      "data richness",
+      "Viridis canon",
+      "machine-checked proof",
+      "kernel-clean",
+      "P3 module"
+    ],
+    "license": {
+      "id": "mit-license"
+    },
+    "publication_date": "2026-05-03",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20010753"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "title": "Software",
+      "type": "software"
+    },
+    "title": "Formal Verification of the Non-Substitutability Theorem — Viridis Applied Proofs Series 3"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:29.758781+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "concept_id": "20010753",
+  "doi": "10.5281/zenodo.20010754",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "latest_observed_record_id": "20010754",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "2ff22b2907bc08e53e42705d211784a5c5b82785eb62363a9113616adbb83864",
+    "after_payload.json": "12e7a65f56c43d76c202565a74dfd0b95f51be3a57f55ca47fd5cc24cdced75c",
+    "before_metadata.json": "56b11a56a46e70d918e5061c0181a9f15b3a46d391ccf37a6f743718d3f9e0b0",
+    "deposition_payload.json": "f95107a3a0c3b6201da84b6a77f22e93043536c368bf47a2d6bbbbef6d21c689",
+    "rollback_expected_public.json": "9eec2c9b05fd2e9d41a904055c2d216735ac72cb5244718fad06efaca652d344",
+    "rollback_payload.json": "f1ad09070e955b625a115b3e2b793a0105696e7df02cc37b89f597f0c8308408"
+  },
+  "preconditions": [
+    "Justin approves these exact immutable titles and exact payload SHA256 values",
+    "Complete sandbox edit -> PUT -> publish and one newversion readback",
+    "Authenticated production GET must map this exact DOI and provide the actual deposition metadata base",
+    "Merge only description/keywords into the authenticated base; server version graph, DOI, license and all other public fields must survive readback",
+    "Reject any unjustified field conversion, error, timeout, conflict or unknown outcome; do not publish or retry blindly",
+    "Server version graph preservation requires sandbox and authenticated deposition readback"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "20010754",
+  "rollback": "Before republish: separately approved POST https://zenodo.org/api/deposit/depositions/20010754/actions/discard. After republish: separately approved edit -> PUT the rollback deposition projection based on authenticated metadata -> publish; verify original public metadata and unchanged files. Exact prior metadata and rollback hashes remain in this row. No production rollback was executed.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

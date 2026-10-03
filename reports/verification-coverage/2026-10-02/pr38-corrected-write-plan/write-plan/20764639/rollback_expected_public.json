@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Standalone record of the Viridis Canon &mdash; a direct extension of the core Intelligence Bound (the two-body generalization). The core IB canon spine is unchanged (frozen at v9, record 20724138); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>.</strong></p><p>The Intelligence Bound <code>dI/dt &le; P&middot;D/(k_B T ln 2)</code> has, in each of its thirteen prior self-applications, constrained a <em>single</em> intelligence (this is the fourteenth). The central thesis of conservation technology is that artificial intelligence and the living biosphere are not master and resource but <em>partners</em>. This paper supplies the rate law for that partnership. Fusing bipartite information thermodynamics (Horowitz&ndash;Esposito, with the 2024 information-arbitrage refinement), the thermodynamics of prediction (Still&ndash;Sivak&ndash;Bell&ndash;Crooks), and the Good Regulator Theorem (Conant&ndash;Ashby), it proves the <strong>Symbiotic Intelligence Bound (SIB)</strong>: two coupled dissipative learners can each raise the rate at which they accumulate permanence-intelligence above their standalone ceiling by harvesting the <em>predictive</em> information the partner carries about the shared world, <code>dI_A/dt &le; P_A D_A/&epsilon;_L + &Phi;_(E&rarr;A)</code>.</p><p>Three laws govern the subsidy: <strong>(i) No free lunch</strong> &mdash; at the coupled fixed point the information one partner consumes is, bit for bit, what the other regenerates (<code>&Idot;^A = &minus;&Idot;^E</code>), paid in dissipation; <strong>(ii) Complementarity</strong> &mdash; the rate subsidy vanishes at equilibrium and is nonzero only across <em>distinct fluctuation sources</em>, a thermodynamic derivation of ecological niche differentiation (cooperation requires complementarity, not similarity); <strong>(iii) Threshold</strong> &mdash; a sharp Symbiotic Transition partitions couplings into mutualistic (super-additive learning) and parasitic. The extraction efficiency is the universal <code>cos&sup2;&Theta;</code> Fisher&ndash;Rao alignment factor. The paper gives the Good Regulator Theorem its first thermodynamic, bidirectional form &mdash; each partner is the other's good regulator, capped by the Intelligence Bound &mdash; naming the biosphere-as-Regulator the <strong>14th Intelligence-Bound self-application</strong>.</p><p><strong>Scope.</strong> Lean 4 (Aristotle-verified, zero <code>sorry</code>, axioms &sube; {propext, Classical.choice, Quot.sound}) certifies the structural results &mdash; the joint-bound recovery, NESS reciprocity, no-perpetual-learning dissipation positivity, the mutualism/parasitism threshold, and the bounded <code>cos&sup2;&Theta;</code> extraction efficiency &mdash; not empirical magnitudes. 18/18 numeric checks pass. Working paper; not peer-reviewed.</p>",
+    "doi": "10.5281/zenodo.20764639",
+    "keywords": [
+      "Intelligence Bound",
+      "symbiosis",
+      "bipartite stochastic thermodynamics",
+      "information flow",
+      "thermodynamics of prediction",
+      "Good Regulator Theorem",
+      "mutualism",
+      "complementarity",
+      "Fisher-Rao alignment",
+      "conservation AI",
+      "AI-biosphere co-evolution",
+      "Lean 4",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Viridis Canon, standalone record (Intelligence-Bound CORE EXTENSION / two-body generalization; 14th IB self-application, 'the Regulator'). Rate/flow twin of the Symbiotic Valuation Theorem (SVT). Lean 4 proofs (Aristotle project a0660ac8-5fef-4e22-b779-254fe09ca47e, run 09f7fe35, zero sorry, axioms within {propext, Classical.choice, Quot.sound} on all 5 named theorems, toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff) certify: (1) joint_bound_from_partners -- each partner's learning rate obeys its solo IB ceiling plus the partner's predictive subsidy, and the directed subsidies cancel at the coupled fixed point to recover the joint Intelligence Bound; (2) ness_reciprocity -- at a nonequilibrium steady state the directed information flows are exactly equal and opposite (bit-for-bit regeneration); (3) no_perpetual_learning -- a strictly positive net subsidy bounded by total entropy production forces strictly positive dissipation; (4) symbiotic_surplus_threshold -- a sharp mutualism-vs-parasitism sign change in the net symbiotic surplus; (5) cos_sq_extraction_bounded -- the universal cos^2(Theta) Fisher-Rao extraction-efficiency bound in [0,1] (7th canon appearance). The Lean proofs certify the validity of the reasoning, not empirical magnitudes; the paper develops a richer model than the verified abstraction. Working paper; not peer-reviewed. Does NOT modify the core canon spine (frozen at v9, record 20724138); flagged as the lead candidate for a future curated spine v10 wave (Justin's per-instance OK required).",
+    "publication_date": "2026-06-19",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20764638"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Symbiotic Intelligence Bound: Mutualistic Learning, the Thermodynamic Good Regulator, and Why Cooperation Requires Complementarity",
+    "version": "SIB-v1"
+  }
+}

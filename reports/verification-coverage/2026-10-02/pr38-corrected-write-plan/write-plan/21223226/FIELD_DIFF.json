@@ -1,0 +1,363 @@
+[
+  {
+    "after_expected_public": "open",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "open",
+    "deposition_wire": "open",
+    "field": "access_right",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    "before": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "viridis-canon"
+      }
+    ],
+    "field": "communities",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "field": "creators",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Series S5 (Corridors &amp; Spatial) of the Viridis Canon. The core Intelligence-Bound canon spine is unchanged (frozen at v10.1.0 &ldquo;The Keystone Wave&rdquo;, record 21223021); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>, and references the S5 series anchor, the Corridor Siting Theorem (record 20777068).</strong></p><p>Conservation corridors linking two or more mutualistic species have lacked a formal answer to a governance question: should the species' corridor networks be designed jointly, or can each be optimized in isolation and simply overlaid? The <strong>Symbiotic Corridor Theorem (SCT)</strong>, &ldquo;the Loom,&rdquo; the 31st Intelligence-Bound self-application, proves that the joint per-edge objective is concave (so a unique co-design optimum exists), derives a clean sign law for when geometric-mean coupling between species is supermodular, and shows co-design strictly dominates siloed design exactly when that supermodularity condition holds &mdash; with demand across the coupled network governed, as in the single-species case, by one broadcast shadow price.</p><p>Five results are machine-checked in Lean 4 (Aristotle, zero <code>sorry</code>, axioms &sube; {<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>}), namespace <code>Viridis.SymbioticCorridor</code>: (i) <code>joint_objective_concave</code> &mdash; the per-edge joint objective is concave; (ii) <code>coupling_sign_law</code> &mdash; geometric-mean coupling is supermodular iff &mu; &ge; 0; (iii) <code>codesign_dominates_siloed_iff_supermodular</code> &mdash; co-design strictly dominates siloed allocation iff supermodular; (iv) <code>coupled_waterfilling_single_price</code> &mdash; the decoupled limit recovers the prior single-species corridor result, with demand antitone in one broadcast price; (v) <code>sct_nonvacuous</code> &mdash; an explicit strict interior mutualistic witness.</p><p>Deferred (measure-dependent, not in this record): the NODF-nestedness / critical-coupling argmax layer, and a tracking-rate-dynamics extension flagged for duplicate/vacuity risk against the IB core.</p><p><strong>Scope.</strong> The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": "<p><strong>Series S5 (Corridors &amp; Spatial) of the Viridis Canon. The core Intelligence-Bound canon spine is unchanged (frozen at v10.1.0 &ldquo;The Keystone Wave&rdquo;, record 21223021); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>, and references the S5 series anchor, the Corridor Siting Theorem (record 20777068).</strong></p><p>Conservation corridors linking two or more mutualistic species have lacked a formal answer to a governance question: should the species' corridor networks be designed jointly, or can each be optimized in isolation and simply overlaid? The <strong>Symbiotic Corridor Theorem (SCT)</strong>, &ldquo;the Loom,&rdquo; the 31st Intelligence-Bound self-application, proves that the joint per-edge objective is concave (so a unique co-design optimum exists), derives a clean sign law for when geometric-mean coupling between species is supermodular, and shows co-design strictly dominates siloed design exactly when that supermodularity condition holds &mdash; with demand across the coupled network governed, as in the single-species case, by one broadcast shadow price.</p><p>Five results are machine-checked in Lean 4 (Aristotle, zero <code>sorry</code>, axioms &sube; {<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>}), namespace <code>Viridis.SymbioticCorridor</code>: (i) <code>joint_objective_concave</code> &mdash; the per-edge joint objective is concave; (ii) <code>coupling_sign_law</code> &mdash; geometric-mean coupling is supermodular iff &mu; &ge; 0; (iii) <code>codesign_dominates_siloed_iff_supermodular</code> &mdash; co-design strictly dominates siloed allocation iff supermodular; (iv) <code>coupled_waterfilling_single_price</code> &mdash; the decoupled limit recovers the prior single-species corridor result, with demand antitone in one broadcast price; (v) <code>sct_nonvacuous</code> &mdash; an explicit strict interior mutualistic witness.</p><p>Deferred (measure-dependent, not in this record): the NODF-nestedness / critical-coupling argmax layer, and a tracking-rate-dynamics extension flagged for duplicate/vacuity risk against the IB core.</p><p><strong>Scope.</strong> The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "deposition_wire": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Series S5 (Corridors &amp; Spatial) of the Viridis Canon. The core Intelligence-Bound canon spine is unchanged (frozen at v10.1.0 &ldquo;The Keystone Wave&rdquo;, record 21223021); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>, and references the S5 series anchor, the Corridor Siting Theorem (record 20777068).</strong></p><p>Conservation corridors linking two or more mutualistic species have lacked a formal answer to a governance question: should the species' corridor networks be designed jointly, or can each be optimized in isolation and simply overlaid? The <strong>Symbiotic Corridor Theorem (SCT)</strong>, &ldquo;the Loom,&rdquo; the 31st Intelligence-Bound self-application, proves that the joint per-edge objective is concave (so a unique co-design optimum exists), derives a clean sign law for when geometric-mean coupling between species is supermodular, and shows co-design strictly dominates siloed design exactly when that supermodularity condition holds &mdash; with demand across the coupled network governed, as in the single-species case, by one broadcast shadow price.</p><p>Five results are machine-checked in Lean 4 (Aristotle, zero <code>sorry</code>, axioms &sube; {<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>}), namespace <code>Viridis.SymbioticCorridor</code>: (i) <code>joint_objective_concave</code> &mdash; the per-edge joint objective is concave; (ii) <code>coupling_sign_law</code> &mdash; geometric-mean coupling is supermodular iff &mu; &ge; 0; (iii) <code>codesign_dominates_siloed_iff_supermodular</code> &mdash; co-design strictly dominates siloed allocation iff supermodular; (iv) <code>coupled_waterfilling_single_price</code> &mdash; the decoupled limit recovers the prior single-species corridor result, with demand antitone in one broadcast price; (v) <code>sct_nonvacuous</code> &mdash; an explicit strict interior mutualistic witness.</p><p>Deferred (measure-dependent, not in this record): the NODF-nestedness / critical-coupling argmax layer, and a tracking-rate-dynamics extension flagged for duplicate/vacuity risk against the IB core.</p><p><strong>Scope.</strong> The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "field": "description",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "10.5281/zenodo.21223226",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "10.5281/zenodo.21223226",
+    "deposition_wire": "10.5281/zenodo.21223226",
+    "field": "doi",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      "corridor design",
+      "mutualism",
+      "supermodularity",
+      "co-design",
+      "water-filling",
+      "shadow price",
+      "Intelligence Bound",
+      "HDFM",
+      "conservation corridors",
+      "Lean 4",
+      "formal verification",
+      "uncertified"
+    ],
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": [
+      "corridor design",
+      "mutualism",
+      "supermodularity",
+      "co-design",
+      "water-filling",
+      "shadow price",
+      "Intelligence Bound",
+      "HDFM",
+      "conservation corridors",
+      "Lean 4",
+      "formal verification"
+    ],
+    "deposition_wire": [
+      "corridor design",
+      "mutualism",
+      "supermodularity",
+      "co-design",
+      "water-filling",
+      "shadow price",
+      "Intelligence Bound",
+      "HDFM",
+      "conservation corridors",
+      "Lean 4",
+      "formal verification",
+      "uncertified"
+    ],
+    "field": "keywords",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "eng",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "eng",
+    "deposition_wire": "eng",
+    "field": "language",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "id": "cc-by-4.0"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    "before": {
+      "id": "cc-by-4.0"
+    },
+    "deposition_wire": "cc-by-4.0",
+    "field": "license",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "Viridis Canon, Series S5 (Corridors &amp; Spatial) member. Routed from Nightly Run-089 (2026-07-04); ledger row 45. 31st Intelligence-Bound self-application, governance layer, CONVERGENCE EVENT [03] HDFM Corridors x Symbiosis. Spine unchanged (frozen at v10.1.0, record 21223021, 'The Keystone Wave'); this record links to the spine via isDerivedFrom the concept DOI 10.5281/zenodo.19317982, references the S5 series anchor (CST, 20777068), and references the current spine head. Lean 4 proofs (Aristotle project 2e14c48a-ab78-47a9-9426-7f1705beba57, task b8362a6f-17b0-4b10-872b-09486a856e83, VERIFIED CLEAN, COMPLETE @100%, toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff) certify the analytic core of SCT, namespace Viridis.SymbioticCorridor. The five verified theorems, statements preserved verbatim: (1) joint_objective_concave -- the per-edge joint objective is concave on the positive quadrant, via geometric-mean super-additivity plus degree-1 homogeneity combined with concavity of log(1+.), as a nonnegatively-weighted sum of concave functions; (2) coupling_sign_law -- the R2 cross-difference sign law: geometric-mean coupling is supermodular iff the coupling parameter mu &gt;= 0; (3) codesign_dominates_siloed_iff_supermodular -- the R2 value-level sign law: co-design strictly dominates siloed allocation iff the coupling is supermodular; (4) coupled_waterfilling_single_price -- the R1 beta=0 decoupling reduces to the prior CST-074 single-species result, with demand antitone in the single broadcast price; (5) sct_nonvacuous -- an explicit strict interior mutualistic witness. All conclusions non-vacuous; three preserved-verbatim hypotheses generate only benign unused-variable lint warnings, kept to honor verbatim statement preservation. Deferred (out of clean core, NOT in this record, gated out per the non-vacuity rule as measure-dependent): nestedness_of_mutualistic_optimum (R3/R4 NODF + critical-coupling argmax) and ib_bounds_corridor_coadaptation (R5 tracking-rate dynamics; duplicate/vacuity risk vs the IB core). The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "Viridis Canon, Series S5 (Corridors &amp; Spatial) member. Routed from Nightly Run-089 (2026-07-04); ledger row 45. 31st Intelligence-Bound self-application, governance layer, CONVERGENCE EVENT [03] HDFM Corridors x Symbiosis. Spine unchanged (frozen at v10.1.0, record 21223021, 'The Keystone Wave'); this record links to the spine via isDerivedFrom the concept DOI 10.5281/zenodo.19317982, references the S5 series anchor (CST, 20777068), and references the current spine head. Lean 4 proofs (Aristotle project 2e14c48a-ab78-47a9-9426-7f1705beba57, task b8362a6f-17b0-4b10-872b-09486a856e83, VERIFIED CLEAN, COMPLETE @100%, toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff) certify the analytic core of SCT, namespace Viridis.SymbioticCorridor. The five verified theorems, statements preserved verbatim: (1) joint_objective_concave -- the per-edge joint objective is concave on the positive quadrant, via geometric-mean super-additivity plus degree-1 homogeneity combined with concavity of log(1+.), as a nonnegatively-weighted sum of concave functions; (2) coupling_sign_law -- the R2 cross-difference sign law: geometric-mean coupling is supermodular iff the coupling parameter mu &gt;= 0; (3) codesign_dominates_siloed_iff_supermodular -- the R2 value-level sign law: co-design strictly dominates siloed allocation iff the coupling is supermodular; (4) coupled_waterfilling_single_price -- the R1 beta=0 decoupling reduces to the prior CST-074 single-species result, with demand antitone in the single broadcast price; (5) sct_nonvacuous -- an explicit strict interior mutualistic witness. All conclusions non-vacuous; three preserved-verbatim hypotheses generate only benign unused-variable lint warnings, kept to honor verbatim statement preservation. Deferred (out of clean core, NOT in this record, gated out per the non-vacuity rule as measure-dependent): nestedness_of_mutualistic_optimum (R3/R4 NODF + critical-coupling argmax) and ib_bounds_corridor_coadaptation (R5 tracking-rate dynamics; duplicate/vacuity risk vs the IB core). The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.",
+    "deposition_wire": "Viridis Canon, Series S5 (Corridors &amp; Spatial) member. Routed from Nightly Run-089 (2026-07-04); ledger row 45. 31st Intelligence-Bound self-application, governance layer, CONVERGENCE EVENT [03] HDFM Corridors x Symbiosis. Spine unchanged (frozen at v10.1.0, record 21223021, 'The Keystone Wave'); this record links to the spine via isDerivedFrom the concept DOI 10.5281/zenodo.19317982, references the S5 series anchor (CST, 20777068), and references the current spine head. Lean 4 proofs (Aristotle project 2e14c48a-ab78-47a9-9426-7f1705beba57, task b8362a6f-17b0-4b10-872b-09486a856e83, VERIFIED CLEAN, COMPLETE @100%, toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff) certify the analytic core of SCT, namespace Viridis.SymbioticCorridor. The five verified theorems, statements preserved verbatim: (1) joint_objective_concave -- the per-edge joint objective is concave on the positive quadrant, via geometric-mean super-additivity plus degree-1 homogeneity combined with concavity of log(1+.), as a nonnegatively-weighted sum of concave functions; (2) coupling_sign_law -- the R2 cross-difference sign law: geometric-mean coupling is supermodular iff the coupling parameter mu &gt;= 0; (3) codesign_dominates_siloed_iff_supermodular -- the R2 value-level sign law: co-design strictly dominates siloed allocation iff the coupling is supermodular; (4) coupled_waterfilling_single_price -- the R1 beta=0 decoupling reduces to the prior CST-074 single-species result, with demand antitone in the single broadcast price; (5) sct_nonvacuous -- an explicit strict interior mutualistic witness. All conclusions non-vacuous; three preserved-verbatim hypotheses generate only benign unused-variable lint warnings, kept to honor verbatim statement preservation. Deferred (out of clean core, NOT in this record, gated out per the non-vacuity rule as measure-dependent): nestedness_of_mutualistic_optimum (R3/R4 NODF + critical-coupling argmax) and ib_bounds_corridor_coadaptation (R5 tracking-rate dynamics; duplicate/vacuity risk vs the IB core). The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.",
+    "field": "notes",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "2026-07-06",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "2026-07-06",
+    "deposition_wire": "2026-07-06",
+    "field": "publication_date",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": null,
+    "assessment": {
+      "classification": "DOCUMENTED_RESOURCE_TYPE_TRANSPORT_FIELD"
+    },
+    "before": null,
+    "deposition_wire": "preprint",
+    "field": "publication_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20777068",
+        "relation": "references",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21223021",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20777068",
+        "relation": "references",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21223021",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20777068",
+        "relation": "references",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21223021",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "field": "related_identifiers",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21223225"
+          }
+        }
+      ]
+    },
+    "assessment": {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    },
+    "before": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21223225"
+          }
+        }
+      ]
+    },
+    "deposition_wire": null,
+    "field": "relations",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    "before": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "deposition_wire": null,
+    "field": "resource_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "The Symbiotic Corridor Theorem: Co-Design Dominance and a Single Broadcast Price for Mutualistic Corridor Networks",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "The Symbiotic Corridor Theorem: Co-Design Dominance and a Single Broadcast Price for Mutualistic Corridor Networks",
+    "deposition_wire": "The Symbiotic Corridor Theorem: Co-Design Dominance and a Single Broadcast Price for Mutualistic Corridor Networks",
+    "field": "title",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": null,
+    "assessment": {
+      "classification": "DOCUMENTED_RESOURCE_TYPE_TRANSPORT_FIELD"
+    },
+    "before": null,
+    "deposition_wire": "publication",
+    "field": "upload_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "S5-SCT-v1",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "S5-SCT-v1",
+    "deposition_wire": "S5-SCT-v1",
+    "field": "version",
+    "logical_change": false,
+    "transport_change": false
+  }
+]

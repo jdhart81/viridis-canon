@@ -6,6 +6,11 @@ The separate failed-launch follow-up must be reviewed, merged and green before
 it is included in the deployment. Its merge is not authorized by this plan.
 The candidate overlay file hashes are in F2G_OVERLAY_MANIFEST.json; the final
 merged release commit and archive SHA256 must be recorded before deployment.
+The final merged release commit and overlay archive SHA256 remain explicitly
+pending Justin’s #44 merge; neither is substituted with a branch commit or a
+repository patch hash. After that merge, build the allowlisted overlay archive
+from the exact merge commit, revalidate its contents/hashes, record both final
+identities here and in the manifest, then stop for deployment go.
 No droplet contact, backup, installation, restart or certification submission
 has been performed in preparing this checkpoint.
 
@@ -165,3 +170,20 @@ backup SHA256 on both hosts, overlay/unchanged hash readbacks, service health,
 watch evidence and explicit zero proof submissions / zero v008 reruns. Stop
 for Justin's separate go on any certification attempt. Today remains
 WAITING_FOR_JUSTIN_GO: all actions above are a checkpoint plan, not execution.
+
+## #43 CI exceptions (verified from the final PR check results)
+
+The final #43 head was 442ab5e66189df99d96683053ba1acf800617cd7.
+Nine reported checks succeeded; these three jobs were skipped by workflow
+conditions rather than executed:
+
+| Job | Workflow | Reason |
+|---|---|---|
+| dco | DCO | Only fork contributions run this job; #43 came from a branch in jdhart81/viridis-canon. Condition: head repository must differ from github.repository. |
+| deploy-pages | research-catalog-and-pages | Requires a non-PR event on refs/heads/main; #43 was a pull_request event. |
+| release-bundle | viridis-os-bundle | Requires a refs/tags/v tag or release event; #43 was neither. |
+
+No final #43 check was pending, cancelled, failed or otherwise unexecuted
+besides those three skips. This describes the PR head checks, not a claim
+that Pages publication or release publication occurred. Workflow conditions
+are recorded in .github/workflows/dco.yml, research-portal.yml and os-bundle.yml.

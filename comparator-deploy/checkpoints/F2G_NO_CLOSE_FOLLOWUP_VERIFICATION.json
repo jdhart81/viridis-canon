@@ -2,7 +2,7 @@
   "status": "FOLLOWUP_LOCAL_VERIFICATION_PASS_NOT_DEPLOYED",
   "base_merged_commit": "8b7ca7281eb76c95f7df8597771ef73ffe963ca8",
   "python_tests_passed": 157,
-  "node_fake_process_tests_passed": 15,
+  "node_fake_process_tests_passed": 16,
   "regression_fails_against_previous_launcher": true,
   "full_server_typecheck": "PASS",
   "protected_source_hashes_unchanged": {
@@ -13,5 +13,6 @@
   "droplet_writes": 0,
   "restarts": 0,
   "certification_submissions": 0,
-  "v008_reruns": 0
+  "v008_reruns": 0,
+  "running_process_error_preserves_guard_signal": "PASS"
 }

@@ -31,7 +31,7 @@
     {
       "source": "comparator-deploy/remote_service/guarded-process.mjs",
       "destination": "server/src/guarded-process.mjs",
-      "sha256": "9c2445b84fbc9dda9517f99996f2f76d54544c2c74838dfeafe8ee20f5d153d3"
+      "sha256": "544ac5bfb3ca631e7cb3fb5aef531efca4d83a9cbb98c818125b10dbffe83015"
     },
     {
       "source": "comparator-deploy/remote_service/guarded-process.d.mts",

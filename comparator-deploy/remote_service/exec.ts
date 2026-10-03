@@ -7,7 +7,7 @@ import { promisify } from "node:util";
 import { z } from "zod";
 
 import { IS_DEVELOPMENT, PROJ_ROOT } from "./env.ts";
-import { comparatorWallMilliseconds } from "./resource-profile.mjs";
+import { comparatorWallMilliseconds, beginProcess, markDeadline, closeProcess } from "./resource-profile.mjs";
 import { buildJobEvidence } from "./job-attestation.mjs";
 
 export interface VerifyTask {
@@ -95,8 +95,12 @@ function spawnPromise(
     handleStr(str);
   });
 
+  const wallMilliseconds = description === "Comparator" ? comparatorWallMilliseconds(BACKUP_SIGKILL_MS) : BACKUP_SIGKILL_MS;
+  const diagnostic = beginProcess(description, wallMilliseconds);
+
   // The process will be killed after an appropriate delay
   const cancelKill = setTimeout(() => {
+    markDeadline(diagnostic);
     if (proc.pid === undefined) {
       proc.kill("SIGKILL");
       return;
@@ -106,12 +110,13 @@ function spawnPromise(
     } catch {
       proc.kill("SIGKILL");
     }
-  }, description === "Comparator" ? comparatorWallMilliseconds(BACKUP_SIGKILL_MS) : BACKUP_SIGKILL_MS);
+  }, wallMilliseconds);
   return new Promise((resolve, reject) => {
     proc.on("error", (err) => {
       reject(new CheckingError(`${description} failed: ${err.message}`, output.join("")));
     });
-    proc.on("close", () => {
+    proc.on("close", (code, signal) => {
+      closeProcess(diagnostic, code, signal);
       // Close event always fires last (after exit *or* error) so if we make
       // it here we don't need the SIGKILL anymore
       clearTimeout(cancelKill);

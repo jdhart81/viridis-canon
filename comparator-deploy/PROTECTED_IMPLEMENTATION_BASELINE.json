@@ -14,10 +14,11 @@
   "approval": "Justin FOUNDATION F2h: foundation-only 600-second comparator wall profile, diagnostic receipt fields, deployed drift reconciliation; acceptance unchanged.",
   "protected_remote_implementation_sha256": {
     "/usr/local/bin/viridis-comparator-verify": "9e7a384df16c4c80170ff117f63e90cae09b7f923dbf3296ed36158bd1126f02",
-    "/opt/viridis/comparator-live/server/src/exec.ts": "f2ddeffc369a9bff386622893534cec0e5325bd42ab3aaf19861b5798c48c688",
-    "/opt/viridis/comparator-live/server/src/worker.ts": "f6f96b383a55efcaf96ea2d6ad1990dc8de01134750c188a7fb39e0ef6162271",
-    "/opt/viridis/comparator-live/shared/shared.ts": "9b8dc6fda08cf3e457774cc69f8b53fa42fbe572c600f097644fb078fedb0a6e",
-    "/opt/viridis/comparator-live/server/src/resource-profile.mjs": "091467357b0b8085850b49aa5dcc5da4db9a25f03babeb8223519cdd39e99233"
+    "/opt/viridis/comparator-live/server/src/exec.ts": "c6282bc7ee10a9d8717c22892beb24d239e7129331df47cc7c07379c19cb9941",
+    "/opt/viridis/comparator-live/server/src/worker.ts": "6ed027bef98e254ba181587c156bff9e5ce9ab0d29f66a265f2c6561b3862448",
+    "/opt/viridis/comparator-live/shared/shared.ts": "70922cfc75b6cc24d2d8bb102dcb405aaed9baf57fd14261d86482f99dc3808a",
+    "/opt/viridis/comparator-live/server/src/resource-profile.mjs": "a399885225e15ddb896294ab135d777a8d56727d31fa5fb3976b1f1e02cc88fc",
+    "/opt/viridis/comparator-live/server/src/app.ts": "9a11661de61ab1c2d0941b5c32d2b5e179d6cb17c48440f823dae5b6f8c536ed"
   },
   "prechange_remote_implementation_sha256": {
     "/usr/local/bin/viridis-comparator-verify": "b448e91bd4f5389f19358e21cb7f9c7b23e4be89d2ff79343bdb0d0ba63a09d9"
@@ -54,5 +55,17 @@
     "compile_collection_wall_seconds": 285,
     "cpu_ulimit_seconds": 600,
     "receipt_profile_is_acceptance_evidence": false
-  }
+  },
+  "receipt_diagnostics_policy": {
+    "fields": [
+      "exitCode",
+      "signal",
+      "phaseReached",
+      "elapsedSeconds"
+    ],
+    "acceptance_evidence": false,
+    "pass_and_fail": true,
+    "unavailable_is_null": true
+  },
+  "acceptance_verify_function_sha256": "4ede83be9b0a083c1b5107ceb7ac33a4cc0616fe7bf9cc5069d4bb472390ad43"
 }

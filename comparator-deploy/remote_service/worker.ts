@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 import { KEEP_COMPARATOR_TEMP_FILES, USE_MOCK_VERIFICATION } from "./env.ts";
 import { CheckingError, cleanup, collectThms, comparator, compile, createTaskDir, executionEvidenceForTask } from "./exec.ts";
 import { isEvidenceCacheEligible, observeFile } from "./job-attestation.mjs";
-import { withResourceProfile, currentResourceProfile } from "./resource-profile.mjs";
+import { withResourceProfile, currentResourceProfile, processDiagnostics } from "./resource-profile.mjs";
 import { doMockWork } from "./mockworker.ts";
 
 const workerSourceAtLoad = await observeFile(fileURLToPath(import.meta.url));
@@ -201,6 +201,6 @@ async function doWorkInternal(
 export async function doWork(taskId: string, request: StartVerifyRequest): Promise<VerifyResult> {
   return withResourceProfile(request, async () => {
     const result = await doWorkInternal(taskId, request);
-    return { ...result, resourceProfile: currentResourceProfile() };
+    return { ...result, resourceProfile: currentResourceProfile(), processDiagnostics: processDiagnostics() };
   });
 }

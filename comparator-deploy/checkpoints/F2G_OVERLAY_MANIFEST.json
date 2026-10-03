@@ -1,0 +1,47 @@
+{
+  "status": "PREPARED_NOT_DEPLOYED",
+  "base_merged_commit": "8b7ca7281eb76c95f7df8597771ef73ffe963ca8",
+  "final_merge_commit": "pending follow-up review and merge",
+  "files": [
+    {
+      "source": "comparator-deploy/remote_service/app.ts",
+      "destination": "server/src/app.ts",
+      "sha256": "b8bdfe6cee8f334f13be3f8315533d08eda3a59161cd0e51dfc14daec3340701"
+    },
+    {
+      "source": "comparator-deploy/remote_service/exec.ts",
+      "destination": "server/src/exec.ts",
+      "sha256": "d3cef70035b949f13a811013530a3e6e22d3434b5699b11f844591081fa853d2"
+    },
+    {
+      "source": "comparator-deploy/remote_service/worker.ts",
+      "destination": "server/src/worker.ts",
+      "sha256": "d370bf959992234c92d35540149be1dfda74d9d825006076fd0ba8ac0514a305"
+    },
+    {
+      "source": "comparator-deploy/remote_service/resource-profile.mjs",
+      "destination": "server/src/resource-profile.mjs",
+      "sha256": "a506ea2f0b5edf1dce5b0e526804b285e261db8c296d593b4725523ed78e3c88"
+    },
+    {
+      "source": "comparator-deploy/remote_service/resource-profile.d.mts",
+      "destination": "server/src/resource-profile.d.mts",
+      "sha256": "bb22f5f88f7d8c2d16541bb01889f7b0d5f822ed4db55c64339f632e2aad5ef4"
+    },
+    {
+      "source": "comparator-deploy/remote_service/guarded-process.mjs",
+      "destination": "server/src/guarded-process.mjs",
+      "sha256": "544ac5bfb3ca631e7cb3fb5aef531efca4d83a9cbb98c818125b10dbffe83015"
+    },
+    {
+      "source": "comparator-deploy/remote_service/guarded-process.d.mts",
+      "destination": "server/src/guarded-process.d.mts",
+      "sha256": "9e83fd6a1728ad6907b734960d0cec3b80cdba39f952ef5a48e60155ec06cfed"
+    },
+    {
+      "source": "comparator-deploy/remote_service/shared.ts",
+      "destination": "shared/shared.ts",
+      "sha256": "a3fe5a7596e0fd546dd53bc6b6bbc504ea21463605ffbff2efd5f9a12f3f6dc7"
+    }
+  ]
+}

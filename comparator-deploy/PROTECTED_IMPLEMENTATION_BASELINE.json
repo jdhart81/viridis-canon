@@ -11,5 +11,20 @@
     "engine3_align_challenge.py": "d8d06e582d80bddae73dbb68a23a866ed8cac241f5c9780c3bc779a50fcd4870",
     "job_observation_policy.py": "63aa5ad5ccd0b3c299b1a262d0a7ebd2ff96ff46294a73c86600ea8db47e73c8"
   },
-  "approval": "Justin FOUNDATION F2f: diagnostics-only client capture; acceptance byte-identical; separately approved delivery wrapper repair."
+  "approval": "Justin FOUNDATION F2f: diagnostics-only client capture; acceptance byte-identical; separately approved delivery wrapper repair.",
+  "protected_remote_implementation_sha256": {
+    "/usr/local/bin/viridis-comparator-verify": "245e5f053e5d3c5276da528ed2a82e7a07e2b0046135dc2362cfa8816bf3d4cb"
+  },
+  "prechange_remote_implementation_sha256": {
+    "/usr/local/bin/viridis-comparator-verify": "b448e91bd4f5389f19358e21cb7f9c7b23e4be89d2ff79343bdb0d0ba63a09d9"
+  },
+  "delivery_policy": {
+    "operation_seconds": 1200,
+    "stream_seconds": 30,
+    "poll_interval_seconds": 2,
+    "single_start": true,
+    "single_track_enqueue": true,
+    "same_request_id_only": true,
+    "disk_cache_admitted": false
+  }
 }

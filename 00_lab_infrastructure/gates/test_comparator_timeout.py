@@ -24,7 +24,7 @@ class TimeoutTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
-        self.root = Path(self.tmp.name)
+        self.root = Path(self.tmp.name).resolve()
         self.key = self.root / 'fake-test-key'
         self.key.write_text('not a credential')
         self.candidate = self.root / 'candidate.lean'
@@ -65,15 +65,15 @@ class TimeoutTests(unittest.TestCase):
         self.assertEqual(verify.call_args.kwargs['timeout'],300)
 
     def test_ssh_wall_clock_is_timeout_plus_60(self):
-        with patch.object(client.subprocess,'run',return_value=types.SimpleNamespace(returncode=0,stdout='{}')) as run:
+        with patch.object(client.subprocess,'run',return_value=types.SimpleNamespace(returncode=0,stdout=b'{}',stderr=b'')) as run:
             client.ssh_transport({}, 'test.invalid', self.key, 1800)
         self.assertEqual(run.call_args.kwargs['timeout'],1860)
 
     def test_receipts_identical_to_prechange_client_and_extended_wait(self):
         # Reconstruct the exact previously protected source solely in this test.
         new = (DEPLOY/'comparator_cloud_lean_verifier.py').read_text()
-        old = new.replace('if not 1 <= timeout <= 1800:', 'if not 1 <= timeout <= 300:').replace('timeout must be between 1 and 1800 seconds', 'timeout must be between 1 and 300 seconds')
-        self.assertEqual(hashlib.sha256(old.encode()).hexdigest(),'121debeb61ca1c456002413e57a3667e75427a24e849706805bd74568f93fa2a')
+        old = (Path(__file__).parent/'fixtures/comparator_client_f2d.py').read_text()
+        self.assertEqual(hashlib.sha256(old.encode()).hexdigest(),'04b51c869205a66c452241bffce76945c2b735cf90cae15c645fdbadb2f7a606')
         previous = types.ModuleType('prechange_test_only')
         exec(compile(old,'prechange_test_only','exec'),previous.__dict__)
         before = previous.verify(**self.kw,transport=self.fake_transport)

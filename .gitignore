@@ -35,3 +35,6 @@ __pycache__/
 .p12
 service-account.json
 *.keystore
+
+# Private attempt-local transport failure bytes and manifests
+**/transport-diagnostics/

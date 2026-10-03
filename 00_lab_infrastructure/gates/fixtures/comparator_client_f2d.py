@@ -5,13 +5,6 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
-import contextvars
-import functools
-import locale
-import os
-import stat
-import time
-import uuid
 import hashlib
 import json
 import re
@@ -99,95 +92,6 @@ def contains_name(source: str, name: str) -> bool:
     return re.search(rf"\b(?:theorem|lemma|def)\s+(?:[\w.]+\.)?{re.escape(name)}\b", source) is not None
 
 
-DIAGNOSTIC_CAP = 1024 * 1024
-_DIAGNOSTICS_DIR = contextvars.ContextVar("comparator_attempt_diagnostics", default=None)
-
-
-def _attempt_diagnostics(function):
-    """Bind only the caller's known output parent; acceptance body is untouched."""
-    @functools.wraps(function)
-    def invoke(*args, **kwargs):
-        output = kwargs.get("output_path")
-        token = _DIAGNOSTICS_DIR.set(Path(output).parent if output is not None else None)
-        try:
-            return function(*args, **kwargs)
-        finally:
-            _DIAGNOSTICS_DIR.reset(token)
-    return invoke
-
-
-def _persist_transport_diagnostics(stdout, stderr, *, started, elapsed, timeout,
-                                   returncode=None, exception_class=None, complete=True):
-    """Private failure evidence only; never part of a verification receipt."""
-    base = _DIAGNOSTICS_DIR.get()
-    if base is None:
-        return
-    base = Path(base)
-    if ".." in base.parts:
-        raise OSError("diagnostic traversal rejected")
-    base = Path(os.path.abspath(base))
-    if any(p.is_symlink() for p in (base, *base.parents)):
-        raise OSError("diagnostic symlink rejected")
-    flags = os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW
-    descriptors = []
-    try:
-        parent = os.open(base, flags)
-        descriptors.append(parent)
-        try:
-            os.mkdir("transport-diagnostics", 0o700, dir_fd=parent)
-        except FileExistsError:
-            pass
-        root = os.open("transport-diagnostics", flags, dir_fd=parent)
-        descriptors.append(root)
-        mode = os.fstat(root)
-        if stat.S_IMODE(mode.st_mode) != 0o700 or mode.st_uid != os.getuid():
-            raise OSError("insecure diagnostic directory")
-        name = uuid.uuid4().hex
-        os.mkdir(name, 0o700, dir_fd=root)
-        directory = os.open(name, flags, dir_fd=root)
-        descriptors.append(directory)
-        manifest = {
-            "standard": "VRS-TRANSPORT-FAILURE-DIAGNOSTICS-1",
-            "started_at_utc": started,
-            "ended_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
-            "elapsed_seconds": elapsed, "configured_wait_seconds": timeout,
-            "ssh_wall_clock_seconds": timeout + 60, "returncode": returncode,
-            "signal": -returncode if returncode is not None and returncode < 0 else None,
-            "exception_class": exception_class, "capture_complete": complete,
-            "hash_scope": "captured bytes only; no assertion about uncaptured bytes",
-            "streams": {}, "receipt_evidence": False,
-        }
-        def write(filename, data):
-            fd = os.open(filename, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW,
-                         0o600, dir_fd=directory)
-            with os.fdopen(fd, "wb") as stream:
-                stream.write(data)
-        for label, data in (("stdout", stdout), ("stderr", stderr)):
-            if data is None:
-                manifest["streams"][label] = {"available": False}
-                continue
-            if not isinstance(data, bytes):
-                raise TypeError("diagnostics require raw bytes")
-            retained = data[:DIAGNOSTIC_CAP]
-            write(label + ".bin", retained)
-            manifest["streams"][label] = {
-                "available": True, "captured_length": len(data),
-                "captured_sha256": hashlib.sha256(data).hexdigest(),
-                "retained_length": len(retained),
-                "retained_sha256": hashlib.sha256(retained).hexdigest(),
-                "truncated": len(data) > len(retained), "filename": label + ".bin",
-            }
-        write("manifest.json", canonical_json_bytes(manifest))
-    finally:
-        for fd in reversed(descriptors):
-            os.close(fd)
-
-
-def _text_mode_decode(data, encoding):
-    # Same strict encoding and universal-newline conversion as subprocess text=True.
-    return data.decode(encoding).replace("\r\n", "\n").replace("\r", "\n")
-
-
 def ssh_transport(
     payload: dict[str, Any], host: str, key: Path, timeout: int
 ) -> tuple[int, dict[str, Any]]:
@@ -206,61 +110,25 @@ def ssh_transport(
         host,
         REMOTE_COMMAND,
     ]
-    started = dt.datetime.now(dt.timezone.utc).isoformat()
-    began = time.monotonic()
-    saved = False
-    def capture(stdout, stderr, **metadata):
-        nonlocal saved
-        if saved:
-            return
-        saved = True
-        try:
-            _persist_transport_diagnostics(
-                stdout, stderr, started=started, elapsed=time.monotonic() - began,
-                timeout=timeout, **metadata)
-        except Exception as logging_error:
-            # Diagnostic storage failure cannot mask or alter the transport result.
-            try:
-                print("Comparator diagnostic capture unavailable: " + type(logging_error).__name__,
-                      file=sys.stderr)
-            except Exception:
-                pass  # Even a closed diagnostic stderr must not mask the original failure.
-    encoding = locale.getpreferredencoding(False)
     try:
         result = subprocess.run(
             command,
-            input=json.dumps(payload).encode(encoding),
+            input=json.dumps(payload),
+            text=True,
             capture_output=True,
             timeout=timeout + 60,
             check=False,
         )
     except (OSError, subprocess.SubprocessError) as exc:
-        capture(getattr(exc, "stdout", None), getattr(exc, "stderr", None),
-                exception_class=type(exc).__name__, complete=False)
         raise VerificationError(f"Comparator SSH transport failed: {type(exc).__name__}") from exc
-    if result.returncode != 0:
-        capture(result.stdout, result.stderr, returncode=result.returncode)
     try:
-        stdout = _text_mode_decode(result.stdout, encoding)
-        _text_mode_decode(result.stderr, encoding)
-    except UnicodeError as exc:
-        capture(result.stdout, result.stderr, returncode=result.returncode,
-                exception_class=type(exc).__name__)
-        raise
-    try:
-        response = json.loads(stdout)
+        response = json.loads(result.stdout)
     except json.JSONDecodeError as exc:
-        capture(result.stdout, result.stderr, returncode=result.returncode,
-                exception_class=type(exc).__name__)
         raise VerificationError("Comparator returned non-JSON data") from exc
     if not isinstance(response, dict):
-        capture(result.stdout, result.stderr, returncode=result.returncode,
-                exception_class="VerificationError")
         raise VerificationError("Comparator response root is not an object")
     return result.returncode, response
 
-
-@_attempt_diagnostics
 
 def verify(
     *,

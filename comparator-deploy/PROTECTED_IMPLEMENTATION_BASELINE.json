@@ -2,7 +2,7 @@
   "standard": "VRS-PROTECTED-IMPLEMENTATION-BASELINE-1",
   "canonical_pipeline_root": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2",
   "protected_implementation_sha256": {
-    "comparator_cloud_lean_verifier.py": "04b51c869205a66c452241bffce76945c2b735cf90cae15c645fdbadb2f7a606",
+    "comparator_cloud_lean_verifier.py": "f76bcb501b252aa111a4910d54a7ac06259e543fe083ef3f8523bf436ac80ab4",
     "issue_lean_zero_sorry_certificate.py": "789cb903c972a9c10731360769ccff56055b3257de9491a75b92c0d549b5c438",
     "engine3_align_challenge.py": "d8d06e582d80bddae73dbb68a23a866ed8cac241f5c9780c3bc779a50fcd4870",
     "LEAN_VERIFIER_BACKENDS.json": "18bdb07daf662c0da819b8bb33f2243f9425337eadb73fac1f8ffc42ed6a902e"
@@ -11,5 +11,20 @@
     "engine3_align_challenge.py": "d8d06e582d80bddae73dbb68a23a866ed8cac241f5c9780c3bc779a50fcd4870",
     "job_observation_policy.py": "63aa5ad5ccd0b3c299b1a262d0a7ebd2ff96ff46294a73c86600ea8db47e73c8"
   },
-  "approval": "Justin: FOUNDATION F2d \u2014 approved protected change: raise the verifier client timeout ceiling. Specific change only."
+  "approval": "Justin FOUNDATION F2f: diagnostics-only client capture; acceptance byte-identical; separately approved delivery wrapper repair.",
+  "protected_remote_implementation_sha256": {
+    "/usr/local/bin/viridis-comparator-verify": "245e5f053e5d3c5276da528ed2a82e7a07e2b0046135dc2362cfa8816bf3d4cb"
+  },
+  "prechange_remote_implementation_sha256": {
+    "/usr/local/bin/viridis-comparator-verify": "b448e91bd4f5389f19358e21cb7f9c7b23e4be89d2ff79343bdb0d0ba63a09d9"
+  },
+  "delivery_policy": {
+    "operation_seconds": 1200,
+    "stream_seconds": 30,
+    "poll_interval_seconds": 2,
+    "single_start": true,
+    "single_track_enqueue": true,
+    "same_request_id_only": true,
+    "disk_cache_admitted": false
+  }
 }

@@ -1,0 +1,212 @@
+{
+  "after_deposition_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p><strong>Paper supported by machine-verified Lean 4.</strong> Continually trained neural networks progressively lose the ability to learn new tasks – units go dormant, representational rank collapses, and the degradation is not undone by ordinary continued training or passive regularization, only by active intervention (parameter resets, continual backpropagation, weight regeneration). This \"loss of plasticity\" is a well-documented empirical phenomenon in modern deep learning. We model it as an instance of the Viridis Stewardship Setpoint Theorem (SST): plasticity is a renewable deployment-capacity stock <em>D(t)</em> that intelligence-producing extraction (the Intelligence Bound, <em>dI/dt leq P D/(k_B T ln 2)</em>) degrades and that regeneration replenishes. The new physical ingredient this paper contributes is that the degradation is not smooth logistic decay but a genuine <em>aging/vitrification</em> process: under sustained forcing (continuous training with no reset), the fluctuation–dissipation ratio of the effective training dynamics ages algebraically in Cugliandolo–Kurchan form, <em>X(s)=(1+s/tau_g)^-beta</em>, driving plasticity toward a dormant state that does not spontaneously recover. Modeling training as an alternating forcing/reset cycle, we derive a closed-form one-cycle fixed point <em>D^ast</em> (verified against direct simulation to <em>10^-16</em>) and a <em>golden-rule reset duty cycle</em> <em>u^astin(0,1)</em> that maximizes sustainable learning throughput – the <em>45</em>th self-application of the Intelligence Bound, <em>the Metronome</em>. Verification forced two honest corrections to our initial hypotheses: (i) without an explicit per-cycle reset-overhead cost, the optimum degenerates to infinite reset frequency, so the overhead cost – not the aging physics alone – is what makes the golden rule well-posed; (ii) contrary to the analogous result in the prior Stewardship Setpoint paper, impatience (higher discount rate) <em>lowers</em> the optimal duty cycle here, because aging erodes the quality of the very harvest being sought within a forcing burst, not just future stock. We give three falsifiable, experimentally testable predictions and verify all numerical claims with a numpy-only harness (17/17 checks).</p>",
+    "keywords": [
+      "plasticity",
+      "vitrification",
+      "glass transition",
+      "duty cycle",
+      "golden rule",
+      "continual learning",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "Machine-verified: module PlasticityVitrification (9 named theorems), landed new leans/2026-07-19_aristotle_PVT_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 17/17 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: The Plasticity Vitrification candidate: Continual-Learning Capacity as a Glass-Transitioning Renewable Stock, and the Golden-Rule Reset Duty Cycle",
+    "upload_type": "publication",
+    "version": "1.0.0"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "validate exact DOI, metadata, file inventory, edit support for this version",
+      "url": "https://zenodo.org/api/deposit/depositions/21609947"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21609947/actions/edit"
+    },
+    {
+      "method": "PUT",
+      "payload_file": "after_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/21609947"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "precondition": "separate exact metadata approval and unchanged public files",
+      "url": "https://zenodo.org/api/deposit/depositions/21609947/actions/publish"
+    }
+  ],
+  "api_payload": {
+    "metadata": {
+      "access_right": "open",
+      "communities": [
+        {
+          "id": "viridis-canon"
+        }
+      ],
+      "creators": [
+        {
+          "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+          "name": "Hart, Justin D.",
+          "orcid": "0009-0008-3082-2482"
+        },
+        {
+          "affiliation": "Automated theorem prover (Lean 4 verification)",
+          "name": "Aristotle (Harmonic)"
+        }
+      ],
+      "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p><strong>Paper supported by machine-verified Lean 4.</strong> Continually trained neural networks progressively lose the ability to learn new tasks – units go dormant, representational rank collapses, and the degradation is not undone by ordinary continued training or passive regularization, only by active intervention (parameter resets, continual backpropagation, weight regeneration). This \"loss of plasticity\" is a well-documented empirical phenomenon in modern deep learning. We model it as an instance of the Viridis Stewardship Setpoint Theorem (SST): plasticity is a renewable deployment-capacity stock <em>D(t)</em> that intelligence-producing extraction (the Intelligence Bound, <em>dI/dt leq P D/(k_B T ln 2)</em>) degrades and that regeneration replenishes. The new physical ingredient this paper contributes is that the degradation is not smooth logistic decay but a genuine <em>aging/vitrification</em> process: under sustained forcing (continuous training with no reset), the fluctuation–dissipation ratio of the effective training dynamics ages algebraically in Cugliandolo–Kurchan form, <em>X(s)=(1+s/tau_g)^-beta</em>, driving plasticity toward a dormant state that does not spontaneously recover. Modeling training as an alternating forcing/reset cycle, we derive a closed-form one-cycle fixed point <em>D^ast</em> (verified against direct simulation to <em>10^-16</em>) and a <em>golden-rule reset duty cycle</em> <em>u^astin(0,1)</em> that maximizes sustainable learning throughput – the <em>45</em>th self-application of the Intelligence Bound, <em>the Metronome</em>. Verification forced two honest corrections to our initial hypotheses: (i) without an explicit per-cycle reset-overhead cost, the optimum degenerates to infinite reset frequency, so the overhead cost – not the aging physics alone – is what makes the golden rule well-posed; (ii) contrary to the analogous result in the prior Stewardship Setpoint paper, impatience (higher discount rate) <em>lowers</em> the optimal duty cycle here, because aging erodes the quality of the very harvest being sought within a forcing burst, not just future stock. We give three falsifiable, experimentally testable predictions and verify all numerical claims with a numpy-only harness (17/17 checks).</p>",
+      "keywords": [
+        "plasticity",
+        "vitrification",
+        "glass transition",
+        "duty cycle",
+        "golden rule",
+        "continual learning",
+        "Intelligence Bound",
+        "Lean 4",
+        "formal verification",
+        "conjecture",
+        "verification coverage review"
+      ],
+      "language": "eng",
+      "license": "cc-by-4.0",
+      "notes": "Machine-verified: module PlasticityVitrification (9 named theorems), landed new leans/2026-07-19_aristotle_PVT_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 17/17 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+      "publication_date": "2026-07-26",
+      "publication_type": "preprint",
+      "related_identifiers": [
+        {
+          "identifier": "10.5281/zenodo.19317982",
+          "relation": "isDerivedFrom",
+          "scheme": "doi"
+        }
+      ],
+      "title": "CONJECTURE — not machine-verified: The Plasticity Vitrification candidate: Continual-Learning Capacity as a Glass-Transitioning Renewable Stock, and the Golden-Rule Reset Duty Cycle",
+      "upload_type": "publication",
+      "version": "1.0.0"
+    }
+  },
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Paper supported by machine-verified Lean 4.</strong> Continually trained neural networks progressively lose the ability to learn new tasks – units go dormant, representational rank collapses, and the degradation is not undone by ordinary continued training or passive regularization, only by active intervention (parameter resets, continual backpropagation, weight regeneration). This \"loss of plasticity\" is a well-documented empirical phenomenon in modern deep learning. We model it as an instance of the Viridis Stewardship Setpoint Theorem (SST): plasticity is a renewable deployment-capacity stock <em>D(t)</em> that intelligence-producing extraction (the Intelligence Bound, <em>dI/dt leq P D/(k_B T ln 2)</em>) degrades and that regeneration replenishes. The new physical ingredient this paper contributes is that the degradation is not smooth logistic decay but a genuine <em>aging/vitrification</em> process: under sustained forcing (continuous training with no reset), the fluctuation–dissipation ratio of the effective training dynamics ages algebraically in Cugliandolo–Kurchan form, <em>X(s)=(1+s/tau_g)^-beta</em>, driving plasticity toward a dormant state that does not spontaneously recover. Modeling training as an alternating forcing/reset cycle, we derive a closed-form one-cycle fixed point <em>D^ast</em> (verified against direct simulation to <em>10^-16</em>) and a <em>golden-rule reset duty cycle</em> <em>u^astin(0,1)</em> that maximizes sustainable learning throughput – the <em>45</em>th self-application of the Intelligence Bound, <em>the Metronome</em>. Verification forced two honest corrections to our initial hypotheses: (i) without an explicit per-cycle reset-overhead cost, the optimum degenerates to infinite reset frequency, so the overhead cost – not the aging physics alone – is what makes the golden rule well-posed; (ii) contrary to the analogous result in the prior Stewardship Setpoint paper, impatience (higher discount rate) <em>lowers</em> the optimal duty cycle here, because aging erodes the quality of the very harvest being sought within a forcing burst, not just future stock. We give three falsifiable, experimentally testable predictions and verify all numerical claims with a numpy-only harness (17/17 checks).</p>",
+    "doi": "10.5281/zenodo.21609947",
+    "keywords": [
+      "plasticity",
+      "vitrification",
+      "glass transition",
+      "duty cycle",
+      "golden rule",
+      "continual learning",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Machine-verified: module PlasticityVitrification (9 named theorems), landed new leans/2026-07-19_aristotle_PVT_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 17/17 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21609946"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Plasticity Vitrification Theorem: Continual-Learning Capacity as a Glass-Transitioning Renewable Stock, and the Golden-Rule Reset Duty Cycle",
+    "version": "1.0.0"
+  },
+  "before_metadata_sha256": "0cbc6bdc08e1f3fb8ba747c461453103e4d7484a3ac7d60e83cf3761dd8d35c2",
+  "before_read_at_utc": "2026-10-03T00:16:33.762587+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "chain_decision": "HOLD_EXACT_RECORD_METADATA_REVIEW",
+  "concept_id": "21609946",
+  "doi": "10.5281/zenodo.21609947",
+  "excluded_read_only_or_server_metadata_fields": [
+    "doi",
+    "relations"
+  ],
+  "latest_observed_record_id": "21609947",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "CONJECTURE_METADATA_AMENDMENT",
+  "payload_sha256": "e938162fceef3b91973c9ea45af9297ecec291ca59c34ae60dac224b4b4c7cc5",
+  "preconditions": [
+    "Justin must approve exact metadata and file hashes before any write",
+    "Authenticated read must confirm deposition ID maps to this exact DOI",
+    "Fresh before-metadata/file inventory must match captured public readback",
+    "Stop on any error, timeout, missing response, mismatch or version conflict; no weaker pass"
+  ],
+  "ready_to_execute": false,
+  "record_id": "21609947",
+  "rollback": "If edit is unpublished: POST /api/deposit/depositions/21609947/actions/discard after separately approved exact draft identification. If metadata republished: separately authorize edit -> PUT rollback_payload.json -> publish. File bytes must stay identical; preserve both readbacks and responses.",
+  "rollback_payload_sha256": "93a9aa5a949b6b1818863c8b6c50ccb53a9000b3a898b0a89367c79f47fd3bf9",
+  "writes_executed": 0
+}

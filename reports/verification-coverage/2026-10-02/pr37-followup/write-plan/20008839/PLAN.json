@@ -1,0 +1,206 @@
+{
+  "after_deposition_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p>Machine-verified Lean 4 / Mathlib proofs for the thermodynamic analysis of plasma-mediated atmospheric nitrogen fixation (Hart 2026). 38 theorems, lemmas, corollaries, and system invariants. Zero sorry statements. Axioms: propext, Classical.choice, Quot.sound. Part of the Viridis Applied Proofs Series, supplementing the Intelligence Bound foundational canon (DOI: 10.5281/zenodo.20006414). Formal verification performed by Aristotle (Harmonic), project ID 7fc5f57e-1abb-4126-80fd-86daf035063e. Notable finding: verification uncovered a minor unit-conversion inconsistency in Theorem 4 (T4) of the paper, with all downstream arithmetic internally consistent.",
+    "keywords": [
+      "formal verification",
+      "Lean 4",
+      "Mathlib",
+      "Aristotle Harmonic",
+      "plasma chemistry",
+      "nitrogen fixation",
+      "thermodynamics",
+      "Haber-Bosch alternative",
+      "energy efficiency",
+      "atmospheric N2",
+      "Viridis canon",
+      "machine-checked proof",
+      "P7 module",
+      "sustainable agriculture",
+      "green chemistry",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "license": "cc-by-4.0",
+    "publication_date": "2026-05-03",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: Formal Verification of Plasma-Mediated N₂ Fixation — Viridis Applied Proofs Series 1",
+    "upload_type": "software"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "validate exact DOI, metadata, file inventory, edit support for this version",
+      "url": "https://zenodo.org/api/deposit/depositions/20008839"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20008839/actions/edit"
+    },
+    {
+      "method": "PUT",
+      "payload_file": "after_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/20008839"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "precondition": "separate exact metadata approval and unchanged public files",
+      "url": "https://zenodo.org/api/deposit/depositions/20008839/actions/publish"
+    }
+  ],
+  "api_payload": {
+    "metadata": {
+      "access_right": "open",
+      "communities": [
+        {
+          "id": "viridis-canon"
+        }
+      ],
+      "creators": [
+        {
+          "affiliation": "Viridis LLC",
+          "name": "Hart, Justin",
+          "orcid": "0009-0008-3082-2482"
+        }
+      ],
+      "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p>Machine-verified Lean 4 / Mathlib proofs for the thermodynamic analysis of plasma-mediated atmospheric nitrogen fixation (Hart 2026). 38 theorems, lemmas, corollaries, and system invariants. Zero sorry statements. Axioms: propext, Classical.choice, Quot.sound. Part of the Viridis Applied Proofs Series, supplementing the Intelligence Bound foundational canon (DOI: 10.5281/zenodo.20006414). Formal verification performed by Aristotle (Harmonic), project ID 7fc5f57e-1abb-4126-80fd-86daf035063e. Notable finding: verification uncovered a minor unit-conversion inconsistency in Theorem 4 (T4) of the paper, with all downstream arithmetic internally consistent.",
+      "keywords": [
+        "formal verification",
+        "Lean 4",
+        "Mathlib",
+        "Aristotle Harmonic",
+        "plasma chemistry",
+        "nitrogen fixation",
+        "thermodynamics",
+        "Haber-Bosch alternative",
+        "energy efficiency",
+        "atmospheric N2",
+        "Viridis canon",
+        "machine-checked proof",
+        "P7 module",
+        "sustainable agriculture",
+        "green chemistry",
+        "conjecture",
+        "verification coverage review"
+      ],
+      "license": "cc-by-4.0",
+      "publication_date": "2026-05-03",
+      "related_identifiers": [
+        {
+          "identifier": "10.5281/zenodo.20006414",
+          "relation": "isSupplementTo",
+          "scheme": "doi"
+        }
+      ],
+      "title": "CONJECTURE — not machine-verified: Formal Verification of Plasma-Mediated N₂ Fixation — Viridis Applied Proofs Series 1",
+      "upload_type": "software"
+    }
+  },
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Machine-verified Lean 4 / Mathlib proofs for the thermodynamic analysis of plasma-mediated atmospheric nitrogen fixation (Hart 2026). 38 theorems, lemmas, corollaries, and system invariants. Zero sorry statements. Axioms: propext, Classical.choice, Quot.sound. Part of the Viridis Applied Proofs Series, supplementing the Intelligence Bound foundational canon (DOI: 10.5281/zenodo.20006414). Formal verification performed by Aristotle (Harmonic), project ID 7fc5f57e-1abb-4126-80fd-86daf035063e. Notable finding: verification uncovered a minor unit-conversion inconsistency in Theorem 4 (T4) of the paper, with all downstream arithmetic internally consistent.",
+    "doi": "10.5281/zenodo.20008839",
+    "keywords": [
+      "formal verification",
+      "Lean 4",
+      "Mathlib",
+      "Aristotle Harmonic",
+      "plasma chemistry",
+      "nitrogen fixation",
+      "thermodynamics",
+      "Haber-Bosch alternative",
+      "energy efficiency",
+      "atmospheric N2",
+      "Viridis canon",
+      "machine-checked proof",
+      "P7 module",
+      "sustainable agriculture",
+      "green chemistry"
+    ],
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "publication_date": "2026-05-03",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20008838"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "title": "Software",
+      "type": "software"
+    },
+    "title": "Formal Verification of Plasma-Mediated N₂ Fixation — Viridis Applied Proofs Series 1"
+  },
+  "before_metadata_sha256": "071b965a6ace55d25389e83d8716ee1aab3b5acef8698a2ddadef277adc00bfb",
+  "before_read_at_utc": "2026-10-03T00:16:29.789566+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "chain_decision": "HOLD_EXACT_RECORD_METADATA_REVIEW",
+  "concept_id": "20008838",
+  "doi": "10.5281/zenodo.20008839",
+  "excluded_read_only_or_server_metadata_fields": [
+    "doi",
+    "relations"
+  ],
+  "latest_observed_record_id": "20008839",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "CONJECTURE_METADATA_AMENDMENT",
+  "payload_sha256": "5ad64de64b396708e2e8194fa710a0f4fe821c25c80cc5fa793c43f65767656f",
+  "preconditions": [
+    "Justin must approve exact metadata and file hashes before any write",
+    "Authenticated read must confirm deposition ID maps to this exact DOI",
+    "Fresh before-metadata/file inventory must match captured public readback",
+    "Stop on any error, timeout, missing response, mismatch or version conflict; no weaker pass"
+  ],
+  "ready_to_execute": false,
+  "record_id": "20008839",
+  "rollback": "If edit is unpublished: POST /api/deposit/depositions/20008839/actions/discard after separately approved exact draft identification. If metadata republished: separately authorize edit -> PUT rollback_payload.json -> publish. File bytes must stay identical; preserve both readbacks and responses.",
+  "rollback_payload_sha256": "6634fc8041607d4e53280c5b027d85df7bb3e229462f8a6e80ff0f42ef1aa8e8",
+  "writes_executed": 0
+}

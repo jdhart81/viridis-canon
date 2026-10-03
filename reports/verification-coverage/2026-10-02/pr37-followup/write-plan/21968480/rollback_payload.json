@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled generated exploration applying an established capacitated Hall/min-cut construction to declared seed-routing inputs; not peer reviewed, empirically validated, significant, novel, rights-cleared, ledger-approved, or published.",
+    "keywords": [
+      "afforestation",
+      "seed sourcing",
+      "provenance",
+      "assisted migration",
+      "max flow min cut",
+      "capacitated matching"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "The paired Lean proof is audited verified. Significance remains uncleared; no empirical, procurement, commercial, rights, ledger, canon, or publication evidence is inferred.",
+    "publication_date": "2026-08-16",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "title": "The Seed-Source Bottleneck Certificate: A cut condition for climate-aligned afforestation supply networks",
+    "upload_type": "publication",
+    "version": "0.2.0-proof-reconciled"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "mode": "REPORT_ONLY",
+  "enforcement": false,
+  "publication_binding_wired": false,
+  "zenodo_writes": 0,
+  "files": [
+    {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/claim_binding.py",
+      "before_sha256": "2369c9e9e9e0c2880728d654b9910e7ec6c03ad81bd58a1d98451d26c7458925",
+      "after_sha256": "3f041f2d60631e055d1c174c8e5939e12ad0a76ba419b8a33649f97473f741bb",
+      "before_snapshot": "00_lab_infrastructure/gates/production_snapshots/pr37-followup/before/claim_binding.py",
+      "after_snapshot": "00_lab_infrastructure/gates/production_snapshots/pr37-followup/after/claim_binding.py"
+    },
+    {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/mirror_parity.py",
+      "before_sha256": "bdcbe01073d82adf58cbc275f0eb34224bac8cf83cc674b9961119b120183726",
+      "after_sha256": "77033a9303519bc47493f4efc2b0872fff805baa9aa35aa61e34467f66336e80",
+      "before_snapshot": "00_lab_infrastructure/gates/production_snapshots/pr37-followup/before/mirror_parity.py",
+      "after_snapshot": "00_lab_infrastructure/gates/production_snapshots/pr37-followup/after/mirror_parity.py"
+    },
+    {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/theorem_coverage.py",
+      "before_sha256": null,
+      "after_sha256": "62bb9e87b10b8ef317616e4b906878d03f06752ab4e7d2dff90bdf9dfb27e99d",
+      "before_snapshot": null,
+      "after_snapshot": "00_lab_infrastructure/gates/production_snapshots/pr37-followup/after/theorem_coverage.py"
+    }
+  ],
+  "production_publisher_scripts_changed": false
+}

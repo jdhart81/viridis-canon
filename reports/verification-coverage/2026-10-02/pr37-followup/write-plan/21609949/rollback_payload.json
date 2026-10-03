@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Paper supported by machine-verified Lean 4.</strong> Thermodynamic speed limits set an absolute floor on the dissipation required to drive a single system between two states in finite time. Yet the systems that matter most in biology and in engineered ecology—host and symbiont, learner and environment, an AI monitor and the landscape it steers—rarely evolve alone; they <em>co-adapt</em> through a shared channel. We ask what the speed limit becomes for two coupled systems, and answer it by writing the joint minimum dissipation as the multivariate optimal-transport (Onsager) geodesic cost under a coupled mobility matrix whose off-diagonal element <em>rhosqrttheta_Atheta_B</em> encodes the symbiotic channel. Four closed-form results follow. (i) The <em>sign</em> of the partners' correlated motion determines whether coupling helps or harms: cooperative co-motion lowers the joint cost (mutualism), antagonistic motion raises it (parasitism). (ii) The dissipation-optimal coupling is <em>rho^ast=min(u_A,u_B)/max(u_A,u_B)</em>, the ratio of the partners' reduced displacements, and at <em>rho^ast</em> <em>the pair co-adapts at the solo cost of the larger partner alone</em>—the weaker partner is carried, for free, through the coupling. (iii) The efficiency gain is bounded, <em>1le G(rho^ast)=1+rho^ast 2le 2</em>: symbiosis can at most <em>double</em> co-adaptation efficiency, the ceiling reached only for equal partners. (iv) Sustaining the coupling costs information against the channel's mixing rate, giving a Landauer ceiling <em>rhole 1-e^-I_rm cpl</em> that <em>forbids</em> the symbiotic speedup in well-mixed reservoirs and permits it only in structured, low-mixing substrates. We cast the joint system as an Intelligence Bound self-application, the Weaver, with a fidelity-weighted capacity <em>D_rm mut(rho)=D_A+D_B+rhosqrtD_A D_B</em>. All results are numerically verified (18/18). We close with three falsifiable predictions and discuss applications to multi-agent AI co-training, digital-twin/ecosystem feedback loops, and mycorrhizal afforestation.</p>",
+    "keywords": [
+      "speed limit",
+      "optimal transport",
+      "Wasserstein",
+      "co-adaptation",
+      "symbiosis",
+      "thermodynamic speed limit",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "Machine-verified: module SymbioticSpeedLimit (11 named theorems), landed new leans/2026-07-23_aristotle_SymbioticSpeedLimit_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 18/18 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "title": "The Symbiotic Speed Limit: Optimal-Transport Bounds on the Co-Adaptation of Coupled Thermodynamic Systems",
+    "upload_type": "publication",
+    "version": "1.0.0"
+  }
+}

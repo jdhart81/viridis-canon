@@ -1,0 +1,7 @@
+PASS reserve_preserved cases=26691
+PASS zero_spendable_forces_zero cases=101
+PASS reserve_monotone cases=7161
+PASS named_witness spend=4 spendable=7 reserve=6
+PASS negative_control reserve is not evidence of ecological delivery
+SUMMARY 5 PASS / 0 FAIL / 5 CHECKS
+STATUS NUMERICAL_GATE_PASS

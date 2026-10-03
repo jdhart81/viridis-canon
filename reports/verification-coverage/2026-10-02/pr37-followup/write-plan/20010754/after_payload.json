@@ -1,0 +1,47 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p>Machine-verified Lean 4 / Mathlib v4.28.0 proof of the Non-Substitutability Theorem from the Viridis Intelligence Bound framework. Proves that data richness D cannot be substituted by power P: as D → 0, the intelligence bound P·D/(k_B·T·ln 2) → 0 regardless of P. Zero sorry statements. Includes constructive ε-M proof of compensation_diverges with explicit δ witness. Part of the Viridis Applied Proofs Series, supplementing the foundational Intelligence Bound canon (10.5281/zenodo.20006414). Aristotle project ID: 2ad31dc8-a9ba-4687-a167-9660a9209d2b.",
+    "keywords": [
+      "formal verification",
+      "Lean 4",
+      "Mathlib",
+      "Aristotle Harmonic",
+      "Intelligence Bound",
+      "non-substitutability",
+      "thermodynamic economics",
+      "Landauer limit",
+      "compensation divergence",
+      "data richness",
+      "Viridis canon",
+      "machine-checked proof",
+      "kernel-clean",
+      "P3 module",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "license": "mit-license",
+    "publication_date": "2026-05-03",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: Formal Verification of the Non-Substitutability candidate — Viridis Applied Proofs Series 3",
+    "upload_type": "software"
+  }
+}

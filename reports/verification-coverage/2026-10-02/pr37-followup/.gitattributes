@@ -1,0 +1,5 @@
+# Preserve exact unified-diff context bytes, including blank context lines.
+PRECHANGE_DIFFS.md -whitespace
+Run-112-paper.tex.patch -whitespace
+Run-113-paper.tex.patch -whitespace
+Run-113-README.md.patch -whitespace

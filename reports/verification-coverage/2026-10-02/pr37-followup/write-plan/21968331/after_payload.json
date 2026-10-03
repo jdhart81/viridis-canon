@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This version prepares the exact existing Comparator-certified proof and frozen statement. Public scientific claims remain conjectural pending claim mapping, nontriviality review and a reviewed PUBLICATION_BINDING receipt.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p>Proof-reconciled generated exploration of a bounded two-state relay model; not empirically validated, novel, significant, peer reviewed, rights-cleared, ledger-approved, canon-admitted, or published.",
+    "keywords": [
+      "cognitive switching",
+      "choice hysteresis",
+      "switching cost",
+      "rate-independent systems",
+      "thermodynamics of computation",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "The paired Lean proof is audited verified. Significance remains uncleared; no empirical, adoption, commercial, rights, ledger, canon, or publication evidence is inferred.",
+    "publication_date": "2026-08-16",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: The Cognitive Switching Hysteresis Certificate: Exact loop geometry under directional state-change penalties",
+    "upload_type": "publication",
+    "version": "verification-coverage-correction-1"
+  }
+}

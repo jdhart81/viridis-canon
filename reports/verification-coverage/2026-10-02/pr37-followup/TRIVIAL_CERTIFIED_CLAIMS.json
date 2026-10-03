@@ -1,0 +1,1272 @@
+{
+  "affected_claim_rows": 9,
+  "certified_target_count": 465,
+  "certifies": false,
+  "claim_classification_counts": {
+    "CERTIFIED_TRIVIAL": 5,
+    "MIXED_BINDING_REQUIRES_SPLIT": 4
+  },
+  "claims": [
+    {
+      "bound_targets": [
+        "kl_chain_rule_habitable_partition"
+      ],
+      "claim": "KL decomposes exactly into the binary H versus H-complement divergence plus two conditional divergences.",
+      "claim_id": "C1",
+      "classification": "CERTIFIED_TRIVIAL",
+      "original_evidence_class": "FORMAL_TARGET",
+      "proposed_formally_verified": "FORBIDDEN_FOR_TRIVIAL_TARGETS",
+      "run": "Run-123",
+      "trivial_targets": [
+        "kl_chain_rule_habitable_partition"
+      ]
+    },
+    {
+      "bound_targets": [
+        "copied_agent_no_gain"
+      ],
+      "claim": "A copied agent supplies no independent confidence gain.",
+      "claim_id": "C6",
+      "classification": "CERTIFIED_TRIVIAL",
+      "original_evidence_class": "FORMAL_TARGET",
+      "proposed_formally_verified": "FORBIDDEN_FOR_TRIVIAL_TARGETS",
+      "run": "Run-145",
+      "trivial_targets": [
+        "copied_agent_no_gain"
+      ]
+    },
+    {
+      "bound_targets": [
+        "bundled_cost_expansion",
+        "separate_cost_expansion"
+      ],
+      "claim": "Two separate verification processes pay the fixed setup burden twice, while one shared process pays it once.",
+      "claim_id": "C1",
+      "classification": "MIXED_BINDING_REQUIRES_SPLIT",
+      "original_evidence_class": "FORMAL_TARGET",
+      "proposed_formally_verified": "FORBIDDEN_FOR_TRIVIAL_TARGETS",
+      "run": "Run-155",
+      "trivial_targets": [
+        "bundled_cost_expansion"
+      ]
+    },
+    {
+      "bound_targets": [
+        "blind_window_definition"
+      ],
+      "claim": "Monitoring interval and response latency add to the blind stewardship window.",
+      "claim_id": "C1",
+      "classification": "CERTIFIED_TRIVIAL",
+      "original_evidence_class": "FORMAL_TARGET",
+      "proposed_formally_verified": "FORBIDDEN_FOR_TRIVIAL_TARGETS",
+      "run": "Run-156",
+      "trivial_targets": [
+        "blind_window_definition"
+      ]
+    },
+    {
+      "bound_targets": [
+        "coverage_definition"
+      ],
+      "claim": "Paired coverage equals p+q-r by definition.",
+      "claim_id": "C1",
+      "classification": "CERTIFIED_TRIVIAL",
+      "original_evidence_class": "FORMAL_TARGET",
+      "proposed_formally_verified": "FORBIDDEN_FOR_TRIVIAL_TARGETS",
+      "run": "Run-165",
+      "trivial_targets": [
+        "coverage_definition"
+      ]
+    },
+    {
+      "bound_targets": [
+        "lower_corner_attains",
+        "upper_corner_attains"
+      ],
+      "claim": "The opposing corners attain the two endpoint expressions.",
+      "claim_id": "C2",
+      "classification": "CERTIFIED_TRIVIAL",
+      "original_evidence_class": "FORMAL_TARGET",
+      "proposed_formally_verified": "FORBIDDEN_FOR_TRIVIAL_TARGETS",
+      "run": "Run-167",
+      "trivial_targets": [
+        "lower_corner_attains",
+        "upper_corner_attains"
+      ]
+    },
+    {
+      "bound_targets": [
+        "fixed_overhead_positive_witness",
+        "overhead_composition",
+        "process_cost_decomposition"
+      ],
+      "claim": "Declared fixed overheads compose additively; the exact boundary witness attains four modeled units.",
+      "claim_id": "C4",
+      "classification": "MIXED_BINDING_REQUIRES_SPLIT",
+      "original_evidence_class": "FORMAL_TARGET",
+      "proposed_formally_verified": "FORBIDDEN_FOR_TRIVIAL_TARGETS",
+      "run": "Run-178",
+      "trivial_targets": [
+        "process_cost_decomposition"
+      ]
+    },
+    {
+      "bound_targets": [
+        "delegated_cost_decomposition",
+        "delegated_payload_bound"
+      ],
+      "claim": "A feasible additive ledger bounds the sum of two delegated work allocations by the budget remaining after the audit reserve.",
+      "claim_id": "C1",
+      "classification": "MIXED_BINDING_REQUIRES_SPLIT",
+      "original_evidence_class": "FORMAL_TARGET",
+      "proposed_formally_verified": "FORBIDDEN_FOR_TRIVIAL_TARGETS",
+      "run": "Run-179",
+      "trivial_targets": [
+        "delegated_cost_decomposition"
+      ]
+    },
+    {
+      "bound_targets": [
+        "joint_cost_decomposition",
+        "shared_payload_bound"
+      ],
+      "claim": "A feasible additive joint ledger bounds the sum of two application workloads by the budget remaining after one shared-interface charge.",
+      "claim_id": "C1",
+      "classification": "MIXED_BINDING_REQUIRES_SPLIT",
+      "original_evidence_class": "FORMAL_TARGET",
+      "proposed_formally_verified": "FORBIDDEN_FOR_TRIVIAL_TARGETS",
+      "run": "Run-180",
+      "trivial_targets": [
+        "joint_cost_decomposition"
+      ]
+    }
+  ],
+  "inventory_gaps": [
+    {
+      "reason": "MISSING_CLAIM_INVENTORY",
+      "run": "Run-116"
+    },
+    {
+      "reason": "CORRECTION_MANIFEST_ONLY",
+      "run": "Run-136"
+    },
+    {
+      "reason": "CORRECTION_MANIFEST_ONLY",
+      "run": "Run-137"
+    }
+  ],
+  "limits": "Sealed historical FORMAL_TARGET inventories are not previously approved public FORMALLY_VERIFIED claims. Mixed bindings require separation. No-syntactic-pattern is not proof of nontriviality; unrestricted simplifier cases remain unresolved.",
+  "mode": "REPORT_ONLY",
+  "runs": [
+    {
+      "candidate_sha256": "f4009eb361227c36912306dcf915e96aa7ac4084a3b9d7b80c51e8f94aea603a",
+      "certificate_sha256": "0740fb0dad1cd463f6ecf531a04c66e585d2b814dd1b28026918ac4ae15d70e6",
+      "run": "Run-116",
+      "theorem_labels": {
+        "bandMeasure_eq_endpoint_difference": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "bandMeasure_pos": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "bandMeasure_strictAnti_period": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "bounded_relief": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "bounded_relief_tight": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "fire_exponent_eq_ten": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "fire_relief_infimum_eq": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "fire_relief_still_inadmissible": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "fisheries_exponent_eq_fifteen_halves": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "fisheries_threshold_gt_fire_threshold": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "gCrit_rpow_eq": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "gCrit_strictAnti_exponent": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "gcrit_elasticity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "log_gCrit_eq": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "no_coverage_of_slower_band": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "one_lt_rho_iff": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "regime_shift_forced": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "regime_shift_not_forced_below": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "relocation_exponent_alpha_free": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "relocation_exponent_alpha_invariant": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "required_power_elasticity_D": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "required_power_strictMono_temperature": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "rho_eq_one_of_eq_period": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "rho_factorization": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "rho_strictAnti_receiving_width": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "rho_unbounded_as_receiving_width_shrinks": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "stewardship_moral_horizon": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "suppression_is_relocated_not_removed": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "theta_eq_one_iff_solvent": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "theta_mem_Ioc": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "theta_overstatement_factor": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "throughput_feasible_iff_power_sufficient": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "total_relief_fraction": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "transferred_liability_pos_iff": "TRIVIALITY_UNRESOLVED",
+        "waterbed_amplification": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "waterbed_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "33c52fb5e837b37adc0f85c896375f8087e2ced2836222ad78c353778108b732",
+      "certificate_sha256": "91fb4f7f06edd0b46269cf93d1ddbea01a6fcf008bce65f5f8fe5cf88b6bf2d9",
+      "run": "Run-117",
+      "theorem_labels": {
+        "ecopoietic_hedge_nonvacuous": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "identical_strains_zero_diversification_gain": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reciprocal_diversification_gain": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reciprocal_two_regime_maximin_equal_split": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "target_probability_dose_saving": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "uniform_dominance_implies_monoculture_optimal": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "bce0b84e350694d345ab2fc439c3f6a532d530e453c15ae539d8f76e96c7aa61",
+      "certificate_sha256": "3f3b710d1e0ca13df5c2ab0c35b7734eb949e765189890709bc8385ef6a2463b",
+      "run": "Run-118",
+      "theorem_labels": {
+        "alignment_budget_sufficient_for_band": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "alignment_efficiency_unit_interval": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "delay_variance_bounds_alignment_loss": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "equal_delay_perfect_alignment": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "phasor_energy_pairwise_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "two_channel_half_period_cancellation": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "70c1dbfb1f86f3247e5084165e27dd9ec03ec8646c7bd45f7112a4dd7f98df4d",
+      "certificate_sha256": "c0c261ca2050e9efd323798903b871888c35e9bdfbb2f591b3715094834d9f7a",
+      "run": "Run-119",
+      "theorem_labels": {
+        "logsumexp_bounds_max_age": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "max_age_minimizes_next_logsumexp": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reset_partition_function_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "scheduler_free_energy_nonvacuous": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "tied_maxima_equal_next_potential": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "unique_max_age_unique_minimizer": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "4b574148b3c4854ac85d0594915a536aa1cc372414c682a726b6ff60824b7c58",
+      "certificate_sha256": "3adfb5d113f1024be399d04caa777fc1e4b0cf52c20c6d5d0ba1b389a9902724",
+      "run": "Run-120",
+      "theorem_labels": {
+        "conjunctive_chain_weakest_first": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "conjunctive_chain_weakest_first_budget": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "conjunctive_chain_weakest_first_unique": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "conjunctive_portfolio_increasing_marginals": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "conjunctive_portfolio_monotone": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "conjunctive_portfolio_supermodular": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "greedy_family_optimal_improvement": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "greedy_family_optimum": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "greedy_family_optimum_budget": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "greedy_first_pick_is_distractor": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "greedy_improvement": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "greedy_improvement_ratio": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "greedy_ratio_tendsto_zero": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "marginal_greedy_counterexample_family": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "6d90c74247be843e629ce558b5863516f7eeba49ff8bb2f11efad02ac4463eb3",
+      "certificate_sha256": "b20a1bdfa8b5be94ff33401616c709215885dad31f23a60e97d204f455616032",
+      "run": "Run-121",
+      "theorem_labels": {
+        "conditional_independence_no_positive_balance": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "duplicate_and_xor_extremes": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "information_symbiosis_chain_rule": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "net_symbiosis_cost_criterion": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "14ebbfa7c73f86cb2eccaf1c83e8e18a139d45a9f4c5d244e0aa03b56b24ac13",
+      "certificate_sha256": "009fe16b9e0360abdcf9f8c528deca68fc32269ad63941b9935bb82dbcac7b01",
+      "run": "Run-122",
+      "theorem_labels": {
+        "ideal_zeno_uniform_success_tendsto_one": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "noisy_zeno_high_quality_asymptotic": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "noisy_zeno_integer_optimum_floor_or_ceil": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "noisy_zeno_log_objective_strictConcave": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "uniform_zeno_schedule_maximizes_success": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "zeno_schedule_log_gap_ge_variance": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "3d63f48e2b90ecbfe02b3a1b0e2e2df9630fd6db8fe2306f5d1e663976cb438d",
+      "certificate_sha256": "2c8b64b4de2bc372b27fce3240526c924e673de85b96133f16afa649f4ef2e90",
+      "run": "Run-123",
+      "theorem_labels": {
+        "binary_kl_monotone_above_reference": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "equality_iff_reference_conditionals": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "habitable_threshold_free_energy_floor": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "kl_chain_rule_habitable_partition": "CERTIFIED_TRIVIAL",
+        "kl_ge_binary_habitable_mass": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reference_shaped_conditionals_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "within_class_excess_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": [
+        {
+          "certifies": false,
+          "classification": "CERTIFIED_TRIVIAL",
+          "line": 33,
+          "mode": "REPORT_ONLY",
+          "name": "kl_chain_rule_habitable_partition",
+          "proof": "by\n  rfl",
+          "reason": "Proof is reflexivity alone.",
+          "signature": "theorem kl_chain_rule_habitable_partition\n    (q alpha withinH withinC : ℝ) :\n    partitionLedger q alpha withinH withinC =\n      binaryKL q alpha + q * withinH + (1 - q) * withinC",
+          "target": "kl_chain_rule_habitable_partition"
+        }
+      ]
+    },
+    {
+      "candidate_sha256": "ede2d3f68dcc19d77508ab1be245c3be763e32ae4eb69605023b9f3faa31df17",
+      "certificate_sha256": "9e3524f05e7bfae713586f6ce0d1a9c3e7c106e2fe07b40f14ac7276f9fa46d2",
+      "run": "Run-124",
+      "theorem_labels": {
+        "equal_marginals_do_not_identify_reliability": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "local_linear_budget_gain_le_best_ratio": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "pivotal_probability_independent_of_own_probability": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reliability_derivative_eq_pivotal_probability": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "series_parallel_mixed_difference_signs": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "witness_C1": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "witness_C2": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "witness_C3": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "witness_C4": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "adb5eb9b25d9be09f75aa3fc2de64d982e2787b9d2d8de453745b22e601ac6ed",
+      "certificate_sha256": "244886ec54c4eba7dff2cdcde987f1d11a722806a10ab0903764c7633f84e6dd",
+      "run": "Run-125",
+      "theorem_labels": {
+        "directional_gain_bounds": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "isotropic_rank_fraction": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "rank_deficient_unit_gain": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "shared_channel_inverse": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "top_subspace_mean_cost": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "worstcase_deadline": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "e8dc8803fb3c1e465b354b575886c0acf67ba19b28434d16e5abb4c62910101a",
+      "certificate_sha256": "ee6317774bf2a021c5de6d5afb5115006579cfbbb2ed98fad1aa6727b701fc62",
+      "run": "Run-126",
+      "theorem_labels": {
+        "capacity_ceiling_slack_decomposition": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "erasure_family_tightness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "forbidden_proxy_capacity_ceiling": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "mutual_information_chain_balance": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "perfect_invariance_target_proxy_collapse": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "e930944c7b5efe69cecc90884243a8aca6a09a6930442196347b6d4227334d9a",
+      "certificate_sha256": "b9f10f5798a7adc9de6c1e8e93cc27190a0beff41284401620960181e2b088f3",
+      "run": "Run-127",
+      "theorem_labels": {
+        "cantelli_capacity_certificate": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "capacity_reserve_fraction_eq": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "mean_only_plugin_arbitrarily_unsafe": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "positive_floor_sharp_two_point_counterexample": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "precautionary_rate_le_violation_budget": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "1de8f6a1f2ac05dd8026ad92a646b910d17b8369ba72c3dc6ebf7628ba1696ee",
+      "certificate_sha256": "0ce6474c22e80fa40a8f718fae6c9cac536cc950c4274b9037c3ade9979b8754",
+      "run": "Run-128",
+      "theorem_labels": {
+        "bandwidth_scaling_cannot_restore_feasibility": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "bilateral_benefit_iff_reciprocity_corridor": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "nash_midpoint_unique_maximizer": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "share_coordinate_corridor_equivalence": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "strict_corridor_nonempty_iff_product_condition": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "d5ac9ca2978b106699038d4d2672e3cf99939cbc8a0b7fedcd2e4fc01cf2b72b",
+      "certificate_sha256": "9abbf500f4df1683cb083cceb4092b5d3f0df94b8a1644abbc4afe6754232e6a",
+      "run": "Run-129",
+      "theorem_labels": {
+        "anytime_change_mixture_martingale": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "anytime_change_ville_certificate": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "bounded_overshoot_expected_delay": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "change_component_dominance_and_penalty": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "1260b3565b55ec536a94c59b13ac55cfadaa6e17f6b01b965e5d1014e609bd36",
+      "certificate_sha256": "73c0617ac6bf935a92fe3d03b301007c988b923b753bdd06876e277bea6eda41",
+      "run": "Run-130",
+      "theorem_labels": {
+        "capacity_outside_active_bottleneck_irrelevant": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "scenario_intersection_certificate_le_each_scenario": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "seed_routing_common_fraction_eq_min_cut_ratio": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "seed_routing_feasible_iff_cut_conditions": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "842943f1da4b1dc2e55b07d2f9eb0edbeffe381e82bc44b51cabd08296295412",
+      "certificate_sha256": "d037306a68e5e623a418d6084c7610b697628d5a147d344aac5e57a1a1580a15",
+      "run": "Run-131",
+      "theorem_labels": {
+        "band_width_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "bias_translation": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "closed_loop_area_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "directional_cost_recovery": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "threshold_order": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "4fd0b4dd32d30d0383ffd06d9bc50b4cf53dfad8b4a017333a25cb3f0f46bd5e",
+      "certificate_sha256": "90792d1fc8ffda0466f76e0301a2e4487716eede064ec299baf450dc0c5503c8",
+      "run": "Run-132",
+      "theorem_labels": {
+        "charter_nonvacuous": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "strict_rank_stability": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "tv_range_certificate": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "unrestricted_simplex_optimum": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "unrestricted_simplex_optimum_counterexample": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "unrestricted_simplex_optimum_max": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "153531dbead8ae7e94e1bb5a98ceb73f6aed50d75498e70919500029a7e2d2aa",
+      "certificate_sha256": "b0f97fbd1e1be0acb72952cf48a272f3eaa5070a7a3ca4d62ba3756a635ad09d",
+      "run": "Run-133",
+      "theorem_labels": {
+        "additive_shared_cost_saving": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "availability_penalty_eq_synchrony_dividend": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "corridor_overlap_nonvacuous": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "overlap_tradeoff_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "overlap_tradeoff_strict": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "synchrony_dividend_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "ea168f66e934bcba28554eb3c005e64757b7f6d44048c145ed156b8103ae99a5",
+      "certificate_sha256": "c7a4c76769523c2e8239bde7da795bbb971a2e21c98a6d70632834e4897cf19b",
+      "run": "Run-134",
+      "theorem_labels": {
+        "alignment_bound_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "alignment_certificate_nonvacuous": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "alignment_gap_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "kantorovich_cross_multiplied_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "response_objective_completion": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "e95ad53230883a723f5e3f0cc1d744e329ff5a36e91635f7f67eaf3703d5b21c",
+      "certificate_sha256": "ea2f42c2d4022b7ad78b7778e41141375955020953ce467d1c98a30c3255553b",
+      "run": "Run-135",
+      "theorem_labels": {
+        "approximate_sufficiency_loss_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "entropy_decomposition_deterministic": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "exact_sufficiency_preserves_relevance": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "relevance_chain_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "sufficient_sanitization_nonvacuous": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "4d733e4ca7ebae4a7296304aeec76210b6d1cf7f79e12ad8493b72e3324d6c2d",
+      "certificate_sha256": "ef5d3626438154d24c1cbd3359c3c4f3c82bfb1aaf7d68a96ed34f77bf2f1174",
+      "run": "Run-136",
+      "theorem_labels": {
+        "floor_requirement": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "hazard_proportional_attains_floor": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "retention_floor_nonvacuous": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "retention_floor_unique": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "retention_floor_unique_as_frozen_is_false": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "retention_floor_upper_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "retention_floor_upper_bound_as_frozen_is_false": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "stationary_availability_balance": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "afe2ac826cb598d998a4e32baa19c17ffba3df7706b8dc0015d36c1ff5c65daa",
+      "certificate_sha256": "d92193d2b290e62fbfa8929243219665b06559448249cccec0be08bdf67ba529",
+      "run": "Run-137",
+      "theorem_labels": {
+        "additive_rate_upper_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "additive_rate_upper_bound_as_frozen_is_false": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "conjunctive_rate_upper_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "conjunctive_rate_upper_bound_as_frozen_is_false": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "normalized_rates_equal": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "symbiotic_accounting_nonvacuous": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "symbiotic_allocation_attains": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "two_partner_closed_form": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "weighted_harmonic_le_max": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "1830f9cf99db8a26fb394dcdd5d343c866803495856f70258680ec9977ed4a73",
+      "certificate_sha256": "c4e8d72018b5934e9128f2cf9e0677b0c733bf702e7b03260615ab0529c6bec0",
+      "run": "Run-138",
+      "theorem_labels": {
+        "aggregate_projection_positive": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "aggregate_residual_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "alignment_floor_of_residual_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "cancellation_gives_perfect_alignment": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "common_cone_closed_under_weighted_sum": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "gaian_alignment_nonvacuous": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "magnitude_masking_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "uniform_cone_alignment_floor": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "26144b575077db3d20d650a13321abf99d9fd5105d01209e760bdaa5130b8530",
+      "certificate_sha256": "96e904170d2a9d00727afdfe6d1b041fe7d997bceca031db38eef5189fff6078",
+      "run": "Run-139",
+      "theorem_labels": {
+        "clippedAllocation_le_one": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "clippedAllocation_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "coordinate_improvement_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "embodied_burden_lowers_benefit": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "interior_stationarity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "retrofit_allocation_nonvacuous": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "400126167b2f6fb02886765fd7317e4ef2bf7ba3df5cc3bc66d57360076a30ff",
+      "certificate_sha256": "0c7fc8941f74ed87acb31b7944b7e74435ab9302578cccd2642a918ef34d3e90",
+      "run": "Run-140",
+      "theorem_labels": {
+        "option_value_antitone_cost": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "option_value_antitone_stage": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "option_value_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reserve_bound_iff": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "staging_preferred_iff": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "stewardship_option_nonvacuous": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "e834af7336b4ef1d79af4609f354a9b408b0b4a8d385d79aa90e8d98ea07584d",
+      "certificate_sha256": "174a2d939dea38385e072bc939e6262618e67b2ca4d6991d9413662ec31dace2",
+      "run": "Run-141",
+      "theorem_labels": {
+        "equal_rates_no_gain": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "finite_asymmetry_strict_mean": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "slow_rate_characterization": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "slow_rate_lower_min": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "slow_rate_monotone": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "slow_rate_upper_mean": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "symbiotic_equalization_nonvacuous": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "b7fa8d2fae89d43572db263abe8c16d7b08b150fcd46d0319906175bf59750ce",
+      "certificate_sha256": "22e627600351643caaa03e03375b1d7a5e9245b55936b2f39fa93db24c7c7cc8",
+      "run": "Run-142",
+      "theorem_labels": {
+        "antipodal_ceiling_zero": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "bisector_scalar_attains_ceiling": "TRIVIALITY_UNRESOLVED",
+        "minimum_le_average": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "orthogonal_alignment_nonvacuous": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "two_direction_alignment_ceiling": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "two_segment_alignment_persists": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "e2604eb2cd1a8ee6db999a7a28e959ee9fd1e3cb124890100a559c8b193db3b4",
+      "certificate_sha256": "2b2bf3c0827beb465b277e8942d34c3066d6be3f9f07cdf7ecd059ff305e739c",
+      "run": "Run-143",
+      "theorem_labels": {
+        "checkpoint_balance_floor": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "landauer_checkpoint_component": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "normalized_penalty_eq_one_iff": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "normalized_penalty_floor": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reciprocal_mistuning_symmetry": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "worked_nonvacuity": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "0d3a41780efc41358a28f2fb4fe17de90f9d0057f9516a4026e583ac7d548c58",
+      "certificate_sha256": "30a5c729cd4d027378f6448d6ff5bc79db8c82d9f028c64e501caa3603f01760",
+      "run": "Run-144",
+      "theorem_labels": {
+        "equalization_regime_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "slack_regime_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "stewardedCapacity_le_averageRemainder": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "stewardedCapacity_le_baseBottleneck": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "stewardship_upper_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "worked_nonvacuity": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "3a00f9e4472f160542c64d330ddac3fae4ca88b28e5a38fd5f2c8a0a77eb1334",
+      "certificate_sha256": "6a1c9e637ec30a8cd09534bf4264b5679987d22d6b8bad186df0a61414c11905",
+      "run": "Run-145",
+      "theorem_labels": {
+        "agreement_gain_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "agreement_mass_positive": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "agreement_witness_three_quarters": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "competent_agreement_not_worse": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "competent_interior_strict_gain": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "copied_agent_no_gain": "CERTIFIED_TRIVIAL",
+        "disagreement_probability_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": [
+        {
+          "certifies": false,
+          "classification": "CERTIFIED_TRIVIAL",
+          "line": 61,
+          "mode": "REPORT_ONLY",
+          "name": "copied_agent_no_gain",
+          "proof": "by\n  rfl",
+          "reason": "Proof is reflexivity alone.",
+          "signature": "theorem copied_agent_no_gain (p : ℝ) : p = p",
+          "target": "copied_agent_no_gain"
+        }
+      ]
+    },
+    {
+      "candidate_sha256": "25d49d1e8bd8055adb35e52f2034bd8c79917ce5b1ac82b737ad6903477bbc14",
+      "certificate_sha256": "8497be51c5f0629e583e352214e05aff7ee57a83823800ed3d18fbbe48f36745",
+      "run": "Run-146",
+      "theorem_labels": {
+        "aligned_component_envelope": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "aligned_margin_preserves_threshold": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "common_shift_exact": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "dscore_difference_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "envelope_sharp_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "zero_weight_component_inert": "TRIVIALITY_UNRESOLVED"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "95b9f439ca1092a908842ecfda70bfe1257ac5a2f35fec5f6c45d6b31a0ba76d",
+      "certificate_sha256": "97dd84ce0271f9095db9a745ccf7951543e641eaf253f35929da341e57ea67d3",
+      "run": "Run-147",
+      "theorem_labels": {
+        "aggregate_information_ceiling": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "duty_cycle_sharp_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "idle_window_forces_zero_information": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "redistribution_preserves_aggregate_ceiling": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "target_above_budget_impossible": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "window_energy_ledger": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "34a7bfcf02361a2900f95da1fb82383f91c71f005564d2384a79c94e8adbfc5c",
+      "certificate_sha256": "e71b77ff23b91f84fd3567a9669c6ca6102ce7321f32587eaa06fdb7fda76277",
+      "run": "Run-148",
+      "theorem_labels": {
+        "capacity_shortfall_positive": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "freshness_capacity_equiv": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "freshness_reserve_sharp_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "nominal_capacity_exact": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reserve_capacity_sufficient": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reserve_headroom_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "eb55692ff2b129da6091d268faf522bdb1a2a72eea1223834b1ea804d7d6f062",
+      "certificate_sha256": "49f40063ea40ec436e8c4109c5c9dfe22466ef5ecb88c0603494356af94e5453",
+      "run": "Run-149",
+      "theorem_labels": {
+        "full_pool_double_count_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "isolated_feasible_implies_pooled": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "pooled_feasible_iff_margin_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "pooled_margin_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "shared_facilitation_nonvacuous_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "transfer_conserves_pooled_margin": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "c839ffd23143561fbe2cb2b709b086959bf6fc6fa1b941e0304c8a853d02fcb4",
+      "certificate_sha256": "6e6d0485c12cdf62afcacdd94d2839c71a1299e8da7ec4ce88291ecf0f0a47a0",
+      "run": "Run-150",
+      "theorem_labels": {
+        "dual_acceptance_iff_corridor": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "dual_price_mismatch_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "dual_price_positive_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "two_project_gap_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "valuation_gap_abs": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "valuation_gap_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "1e63ef236c7fdeab1d4b811d36d1232446d474682a318bfe4841d142e92a9628",
+      "certificate_sha256": "ea08387a76ed313986fc823d2d7ccb375716f29ba9569ae393e431687877ffd9",
+      "run": "Run-151",
+      "theorem_labels": {
+        "gain_nonnegative_corridor": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "gain_peak_deficit_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "gain_peak_upper_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "gain_symmetric_mistuning": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "heat_quadratic_scaling": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "thermal_corridor_overshoot_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "thermal_corridor_positive_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "424586946e1a56f3774b36cc5dd70b18cd6be596fabce21e84494b34accabba5",
+      "certificate_sha256": "02232d708aa9d69ca99cef0a3c5eb10aeeae27c1983c2164430a3d9e067572e4",
+      "run": "Run-152",
+      "theorem_labels": {
+        "allocation_gap_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "balance_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "balanced_bottleneck_maximal": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "bottleneck_deficit_left": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "bottleneck_deficit_right": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "left_bottleneck": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "nonmidpoint_balance_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "right_bottleneck": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "d9906858150239657ef2facfc90a24030c63eead694c26eca1763d0a99766cd8",
+      "certificate_sha256": "e839528a187ea9a60b45be2260cfb9c7e29def8f2abc31b9ec7e18d4001247df",
+      "run": "Run-153",
+      "theorem_labels": {
+        "equilibrium_balance_a": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "equilibrium_balance_b": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "no_two_decliner_positive_equilibrium": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "one_sided_rescue_window": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "positive_equilibrium_of_positive_numerators": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reciprocal_rescue_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "unit_loop_boundary": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "2a0a448ed5c6c44467e68136cd42a44cf8544bf939da998ae8c15615e94e978e",
+      "certificate_sha256": "e86d6441cf1884cbfc9b0cf988bb0981068095042e22ec4f45f3d4ed58ff4408",
+      "run": "Run-154",
+      "theorem_labels": {
+        "cancellation_weight_balance": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "cancellation_weight_interior": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "opposite_error_cancellation": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "pooled_error_at_one": "TRIVIALITY_UNRESOLVED",
+        "pooled_error_at_zero": "TRIVIALITY_UNRESOLVED",
+        "same_sign_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "same_sign_nonpositive": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "signed_bias_cancellation_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "4d2ce1821e24f16cb21dd8e0abb2dbb6e8763aee624eb460fc7359cd216de1c2",
+      "certificate_sha256": "3cd4eda3666191e450f9a0f969765ba2dec3a793be74949d97365eac9e58025d",
+      "run": "Run-155",
+      "theorem_labels": {
+        "bundled_cost_expansion": "CERTIFIED_TRIVIAL",
+        "bundled_marginal_floor": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "interaction_adjusted_saving": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "net_service_nonnegative_iff": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "separate_cost_expansion": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "shared_verification_saving": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "shared_verification_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "sharing_strictly_cheaper": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": [
+        {
+          "certifies": false,
+          "classification": "CERTIFIED_TRIVIAL",
+          "line": 17,
+          "mode": "REPORT_ONLY",
+          "name": "bundled_cost_expansion",
+          "proof": "by\n  rfl",
+          "reason": "Proof is reflexivity alone.",
+          "signature": "theorem bundled_cost_expansion (fixed v1 v2 : ℝ) :\n    bundledCost fixed v1 v2 = fixed + v1 + v2",
+          "target": "bundled_cost_expansion"
+        }
+      ]
+    },
+    {
+      "candidate_sha256": "4291d5d3bf03f0d0d4c7b74b55a0de0b602a87a90f598e197e9333eab8f10521",
+      "certificate_sha256": "e44cd68fe7d6d0f351dd9136d64773508380d096c3fa2f45ff1fb07cd0ad3a8b",
+      "run": "Run-156",
+      "theorem_labels": {
+        "active_share_floor": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "balanced_cycle_nonincrease": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "blind_loss_decomposition": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "blind_window_definition": "CERTIFIED_TRIVIAL",
+        "late_response_negative_control": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "residual_reserve_safe_iff": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "response_delay_monotone": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "response_delay_penalty": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "response_reserve_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": [
+        {
+          "certifies": false,
+          "classification": "CERTIFIED_TRIVIAL",
+          "line": 14,
+          "mode": "REPORT_ONLY",
+          "name": "blind_window_definition",
+          "proof": "by\n  rfl",
+          "reason": "Proof is reflexivity alone.",
+          "signature": "theorem blind_window_definition (monitorDelay responseDelay : ℝ) :\n    blindWindow monitorDelay responseDelay = monitorDelay + responseDelay",
+          "target": "blind_window_definition"
+        }
+      ]
+    },
+    {
+      "candidate_sha256": "503e47c5882b8ef6992a712a55f9587a4562ee74e712d900d7360772b109f3e8",
+      "certificate_sha256": "25e7030d78d15f0bc21002af83d73b3bca59fa275431dfec27b14c4048b75037",
+      "run": "Run-157",
+      "theorem_labels": {
+        "bottleneck_formula": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "bottleneck_reduction": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "cooperation_gain_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "coordination_cost_negative_control": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "effective_gap_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "nonnegative_bottleneck_iff": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "ordered_effective_rates": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "positive_gain_iff": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "symbiotic_transfer_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "transfer_efficiency_monotone": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "aebdd2147eb58df5fa8ed87c8f7880d75fea851f9ad7eb240c93f388acbb670b",
+      "certificate_sha256": "7d650673286c3c6f24118185e47b4434846e91068a7803aec7fc6db8940b7f0a",
+      "run": "Run-158",
+      "theorem_labels": {
+        "deference_reserve_positive_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "equal_rate_allocation_invariant": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "exchange_gain_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "exchange_preserves_capacity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "full_first_dominates_split": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "ordered_exchange_not_worse": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "ordered_exchange_reduces_loss": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "residual_loss_decomposition": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "wrong_priority_negative_control": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "349cb6ba4171db9d4d36f1440e831797f8c1bed59a45a98b23b9e5b06d5a6a79",
+      "certificate_sha256": "955812d237c285caf61dffa30a519ae4160c8b1fb20f23d6b82e875cbf8a063c",
+      "run": "Run-159",
+      "theorem_labels": {
+        "backward_switch_profitable_outside_band": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "break_even_iff": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "forward_switch_profitable_outside_band": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "longer_horizon_not_worse": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "no_churn_band": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "omitting_transition_overstates_gain": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "payback_boundary_zero_gain": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "round_trip_net_loss": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "switching_gain_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "switching_payback_positive_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "transition_charge_reduces_gain": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "5b6f324502a0001e1fb7edb32bb2b1472a3e70a681d039e87a9e4809bce7773a",
+      "certificate_sha256": "dfc3aaa81dc1fc951b9a573fe1de126dab49683e97398b71c76f944718f3e9c3",
+      "run": "Run-160",
+      "theorem_labels": {
+        "componentwise_error_envelope": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "lower_corner_exact": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "lower_corner_threshold_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "lower_score_positive_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reserve_monotone": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reserve_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "score_difference_identity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "stewardship_floor_sound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "upper_corner_exact": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "zero_uncertainty_recovers_nominal": "TRIVIALITY_UNRESOLVED"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "fee55b9b6736205276e2053cb582a3112fc00761008dc7fcf0eb442dc55f3e88",
+      "certificate_sha256": "c2f7b2e371e5850df6e5a795f0a0dfc1adbca5be86f02818089f37285a695c02",
+      "run": "Run-161",
+      "theorem_labels": {
+        "balanced_iff_tight": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "balanced_positive_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "imbalance_deficit_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "left_deficit_decomposition": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reciprocal_budget_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reciprocal_service_le_left": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reciprocal_service_le_right": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reciprocal_service_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "right_deficit_decomposition": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "56743dd0c0b8d3d63395f8fe2a6b86b77f4c756ff96816a2fd6e187f1220fa14",
+      "certificate_sha256": "517cd157069e8e126952bf3e38e0cfd6e8c7327c2ec3780bde7b5d78c78975e7",
+      "run": "Run-162",
+      "theorem_labels": {
+        "attribution_sum_invariant": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "full_retention_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "partial_retention_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "retained_le_after_first": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "retained_le_capacity": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "retained_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "serial_loss_decomposition": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "stage_order_invariant": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "36531a31de52283ab665e04675b424e63c2ff4968c81d0ccf51a2d4dd158b10a",
+      "certificate_sha256": "771464aa07fe9b9796c89a9d81d2347fc33d75e66cbae6e937e571a11590660a",
+      "run": "Run-163",
+      "theorem_labels": {
+        "dissipation_le_supplied": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "modeled_dissipation_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "partial_partition_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "target_floor_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "target_requires_supply": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "uniform_efficiency_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "useful_le_supplied": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "useful_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "work_partition": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "5aa4a3eaf8972f41fc07e3b53f18015f1cb0dd6edcf28de0dc0f9618c5c5cde6",
+      "certificate_sha256": "1c88ba92027aba2e075d0a4df5d1cbe9d702aafb7551510c89a08361a6b79218",
+      "run": "Run-164",
+      "theorem_labels": {
+        "balanced_change_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "budget_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "budgeted_load_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "change_partition": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "load_le_total": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "load_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "modeled_slack_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "slack_le_total": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "uniform_weight_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "31db8476e072cfce6196036abc0d425b8ed374ab7106c0ce44874ce3729bf2b5",
+      "certificate_sha256": "5683c21b36db8aa439b010fa859bf3b73f9a342ce3915f0b7adaef97d9625026",
+      "run": "Run-165",
+      "theorem_labels": {
+        "coverage_antitone_in_overlap": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "coverage_definition": "CERTIFIED_TRIVIAL",
+        "coverage_ge_first": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "coverage_ge_second": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "gain_over_first": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "gain_over_second": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "paired_detector_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": [
+        {
+          "certifies": false,
+          "classification": "CERTIFIED_TRIVIAL",
+          "line": 7,
+          "mode": "REPORT_ONLY",
+          "name": "coverage_definition",
+          "proof": "by\n  rfl",
+          "reason": "Proof is reflexivity alone.",
+          "signature": "theorem coverage_definition (p q overlap : ℝ) : coverage p q overlap = p + q - overlap",
+          "target": "coverage_definition"
+        }
+      ]
+    },
+    {
+      "candidate_sha256": "668f9abac988a57dc119245a4149eaebcde94b605209b94b8a7631de9b66ce1a",
+      "certificate_sha256": "c3c8b90395ff3d7ce010023887f3330a6847de61245b1521eb3fee1d6466f732",
+      "run": "Run-166",
+      "theorem_labels": {
+        "agreement_with_left_soundness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "agreement_with_right_soundness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "disagreement_exposes_error": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "shared_wrong_agreement_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "10ec3023d7dbb1c4985c7d985bce3167ed2513c480d0ce41971a373e2b39b3d1",
+      "certificate_sha256": "bf9afa3bd80c2739283a75ea6cb6500a43af345fb7c69de854db4886a457d907",
+      "run": "Run-167",
+      "theorem_labels": {
+        "carbon_only_counterexample": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "lower_corner_attains": "CERTIFIED_TRIVIAL",
+        "net_lower_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "net_upper_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "positive_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "robust_positive_iff": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "upper_corner_attains": "CERTIFIED_TRIVIAL"
+      },
+      "trivial_targets": [
+        {
+          "certifies": false,
+          "classification": "CERTIFIED_TRIVIAL",
+          "line": 10,
+          "mode": "REPORT_ONLY",
+          "name": "lower_corner_attains",
+          "proof": "by\n  rfl",
+          "reason": "Proof is reflexivity alone.",
+          "signature": "theorem lower_corner_attains (cL aU : ℝ) : cL-aU = cL-aU",
+          "target": "lower_corner_attains"
+        },
+        {
+          "certifies": false,
+          "classification": "CERTIFIED_TRIVIAL",
+          "line": 13,
+          "mode": "REPORT_ONLY",
+          "name": "upper_corner_attains",
+          "proof": "by\n  rfl",
+          "reason": "Proof is reflexivity alone.",
+          "signature": "theorem upper_corner_attains (cU aL : ℝ) : cU-aL = cU-aL",
+          "target": "upper_corner_attains"
+        }
+      ]
+    },
+    {
+      "candidate_sha256": "0a780e25b4670ae51c3dfcadb8fea737380a43dd1c32aa35c97a1b034680dad4",
+      "certificate_sha256": "8b0e00606258003380482c1569d580b4895da22714f5bc7a1f68a800eb4c8d92",
+      "run": "Run-168",
+      "theorem_labels": {
+        "five_record_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "four_record_counterexample": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "independence_gain_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reserve_condition_iff": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reserve_monotone": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reserve_shortfall": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "068492251538894bb720ee1e7f3e101bfeded69a6c4f91e49892c78119b49ece",
+      "certificate_sha256": "c3dc67f673e89435be10bff35e07e5a5c92d0199ca9428f57a8f8134310cde94",
+      "run": "Run-169",
+      "theorem_labels": {
+        "concentrated_total_counterexample": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "loss_budget_guarantee": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "loss_of_a": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "loss_of_b": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "loss_of_c": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reserve_monotone_new_partner": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "single_partner_loss_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "three_partner_single_loss_guarantee": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "d47c2bd849519c9013d306b138d68553cee063d31a69b1704aab63ac72f64c2e",
+      "certificate_sha256": "168b9062a515fc0d9bc319e3988d84acb59b32ad5e6b1ce90d2aa493f3a3690b",
+      "run": "Run-170",
+      "theorem_labels": {
+        "common_mode_product_counterexample": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "identical_common_mode": "TRIVIALITY_UNRESOLVED",
+        "jointMiss_le_left": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "jointMiss_le_min": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "jointMiss_le_right": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "2c49eaff46ed034080e2bd59c334c93437bd0413c973dc63d686b0fd9512ebfa",
+      "certificate_sha256": "5867124cb777b8cf8558de2172ae22418d5a853bfb98d9244acdd511bd8dd80d",
+      "run": "Run-171",
+      "theorem_labels": {
+        "reserve_monotone": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reserved_activity_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reserved_activity_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "zero_usable_forces_zero": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "83bcd018520a3fc27a8d3d2d24531d605be71c2421733fb088d7de0e2de89fc9",
+      "certificate_sha256": "5a378c341cb3adf84b3192f95cfe7910bceca8c59f9006a872884b26cbd4c8b4",
+      "run": "Run-172",
+      "theorem_labels": {
+        "reserve_monotone": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reserve_preserved": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "stewardship_reserve_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "zero_spendable_forces_zero": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "b2aec63bfa1ab8b99bcac299d4152ed3fe0243e923b44a6e720be8c49dbbadda",
+      "certificate_sha256": "c72d07d61db8723d1d9357a678e80d16806975ca5ec333e9ede314894bd0b126",
+      "run": "Run-173",
+      "theorem_labels": {
+        "combined_covers_left": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "combined_covers_right": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "combined_le_gross": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "left_footprint_contained": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "shared_corridor_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "shared_saving": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "5914ede7a3ee10ca962cdbc6508fd5191a0324581828944c74d5d31d9d2a1a11",
+      "certificate_sha256": "c150c8a25baaefd890e542bafa284417f1bc1d4c65cab338519bd8f2f2c78f25",
+      "run": "Run-174",
+      "theorem_labels": {
+        "agreed_floor_sufficient": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "joint_floor_dominates_left": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "joint_floor_dominates_right": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "joint_floor_iff": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "joint_floor_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "92bb2d236c3d34b97cdf4bb68e0adfb50b9b141b5999966739c3f65e54d678dc",
+      "certificate_sha256": "242ec6552f4f194b2be6f698581aaed2f0248ff63928e8770fcb7cd64c735829",
+      "run": "Run-175",
+      "theorem_labels": {
+        "componentwise_energy_ceiling": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "energy_ceiling_positive_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "energy_envelope_monotone": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "energy_envelope_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "zero_energy_envelope": "TRIVIALITY_UNRESOLVED"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "fc168804abcbfbb620f323e9d69db5927e9727c4d8189f200e77600f2c7148c0",
+      "certificate_sha256": "083865d9c7c6f7a67fc4d96664590f82fe6d1f1652469e4ed8fcfea15dab6a0f",
+      "run": "Run-176",
+      "theorem_labels": {
+        "mutual_objective_eq_baseline_iff": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "mutual_objective_ge_baseline": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "mutual_objective_monotone_weight": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "mutual_objective_zero_weight": "TRIVIALITY_UNRESOLVED",
+        "reciprocal_objective_positive_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "reciprocity_penalty_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    },
+    {
+      "candidate_sha256": "412bf9973f747ee6d7b4b04ab814ad2cca8ee6b3b143d775b366919b58c02b30",
+      "certificate_sha256": "20d7f527e400a7bba5c3a09f149e974c76094598262a1edd03c4bbb260f2079d",
+      "run": "Run-178",
+      "theorem_labels": {
+        "capacity_quotient_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "fixed_overhead_positive_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "overhead_composition": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "payload_energy_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "process_cost_decomposition": "CERTIFIED_TRIVIAL",
+        "residual_budget_monotone": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "residual_energy_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": [
+        {
+          "certifies": false,
+          "classification": "CERTIFIED_TRIVIAL",
+          "line": 12,
+          "mode": "REPORT_ONLY",
+          "name": "process_cost_decomposition",
+          "proof": "by\n  rfl",
+          "reason": "Proof is reflexivity alone.",
+          "signature": "theorem process_cost_decomposition (units unitCost overhead : ℝ) :\n    processCost units unitCost overhead = overhead + units * unitCost",
+          "target": "process_cost_decomposition"
+        }
+      ]
+    },
+    {
+      "candidate_sha256": "e144f7f4cbccb14ff2e2578be1ca6e9bbc41327090bc8bd4e4d0608df80afeb8",
+      "certificate_sha256": "a06bfa3ed8df99a4a0e5e0e54889449b860c95e059c02d30c49c9fecae76baa7",
+      "run": "Run-179",
+      "theorem_labels": {
+        "audit_reserve_antitone": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "audit_reserve_nonnegative": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "delegated_cost_decomposition": "CERTIFIED_TRIVIAL",
+        "delegated_payload_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "delegated_stewardship_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "delegation_no_amplification": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "delegation_transfer_invariant": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": [
+        {
+          "certifies": false,
+          "classification": "CERTIFIED_TRIVIAL",
+          "line": 12,
+          "mode": "REPORT_ONLY",
+          "name": "delegated_cost_decomposition",
+          "proof": "by\n  rfl",
+          "reason": "Proof is reflexivity alone.",
+          "signature": "theorem delegated_cost_decomposition (firstWork secondWork auditReserve : ℝ) :\n    delegatedCost firstWork secondWork auditReserve =\n      auditReserve + firstWork + secondWork",
+          "target": "delegated_cost_decomposition"
+        }
+      ]
+    },
+    {
+      "candidate_sha256": "8b45a320ceae6003e3e00cb01a1a8bf67d97db66dc6d441d50d3b62ca1d6f218",
+      "certificate_sha256": "90efef12b3712e67448c5fd712266d03384555d3c64903ee01ff082ce9bd3750",
+      "run": "Run-180",
+      "theorem_labels": {
+        "joint_cost_decomposition": "CERTIFIED_TRIVIAL",
+        "joint_not_more_costly": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "joint_transfer_invariant": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "separate_transfer_invariant": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "shared_interface_savings": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "shared_interface_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "shared_payload_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": [
+        {
+          "certifies": false,
+          "classification": "CERTIFIED_TRIVIAL",
+          "line": 12,
+          "mode": "REPORT_ONLY",
+          "name": "joint_cost_decomposition",
+          "proof": "by\n  rfl",
+          "reason": "Proof is reflexivity alone.",
+          "signature": "theorem joint_cost_decomposition (leftWork rightWork sharedInterface : ℝ) :\n    jointCost leftWork rightWork sharedInterface =\n      leftWork + rightWork + sharedInterface",
+          "target": "joint_cost_decomposition"
+        }
+      ]
+    },
+    {
+      "candidate_sha256": "9b241b105f5442e151d6e1800d9f56a8f3baf762e15cab2e5374930aa37b3d03",
+      "certificate_sha256": "d4b9a2ce5627847612422fdb48ed6e000d027a6aa16cd80df03f7df2a122ad7d",
+      "run": "Run-181",
+      "theorem_labels": {
+        "aggregate_benefit_transfer_invariant": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "aggregate_not_individual_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "individual_participation_implies_aggregate": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "individually_aligned_witness": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "party_one_direct_burden_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+        "party_two_direct_burden_bound": "NO_SYNTACTIC_TRIVIAL_PATTERN"
+      },
+      "trivial_targets": []
+    }
+  ],
+  "target_classification_counts": {
+    "CERTIFIED_TRIVIAL": 10,
+    "NO_SYNTACTIC_TRIVIAL_PATTERN": 446,
+    "TRIVIALITY_UNRESOLVED": 9
+  },
+  "valid_certificate_runs": 65
+}

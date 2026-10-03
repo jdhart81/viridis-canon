@@ -1,0 +1,281 @@
+{
+  "after_deposition_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This version prepares the exact existing Comparator-certified proof and frozen statement. Public scientific claims remain conjectural pending claim mapping, nontriviality review and a reviewed PUBLICATION_BINDING receipt.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p>Proof-reconciled generated exploration of a two-party linear bilateral-benefit corridor for directional predictive-information exchange; not peer reviewed, empirically validated, significant, novel, causal, rights-cleared, ledger-approved, or published.",
+    "keywords": [
+      "transfer entropy",
+      "reciprocity",
+      "bilateral benefit",
+      "Nash bargaining",
+      "information thermodynamics",
+      "common-driver control",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "The paired Lean proof is audited verified. Significance remains uncleared; no empirical, adoption, commercial, rights, ledger, canon, or publication evidence is inferred.",
+    "publication_date": "2026-08-16",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: The Reciprocity Corridor: A Bilateral-Benefit Test for Directional Information Exchange",
+    "upload_type": "publication",
+    "version": "verification-coverage-correction-1"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "confirm latest published deposition, exact DOI and current metadata; read only",
+      "url": "https://zenodo.org/api/deposit/depositions/21971047"
+    },
+    {
+      "body": {},
+      "capture": "response.links.latest_draft; validate same concept; do not invent draft ID",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21971047/actions/newversion"
+    },
+    {
+      "method": "GET",
+      "purpose": "resolve exact draft ID, bucket URL and file inventory; all symbols must resolve before any subsequent action",
+      "url": "${NEWVERSION_RESPONSE.links.latest_draft}"
+    },
+    {
+      "method": "PUT",
+      "payload_file": "after_payload.json",
+      "url": "${VALIDATED_DRAFT.links.self}"
+    },
+    {
+      "method": "DELETE",
+      "scope": "ONLY obsolete inherited files explicitly approved in final inventory; repeat for enumerated IDs after GET; pending, not guessed",
+      "url": "https://zenodo.org/api/deposit/depositions/${VALIDATED_DRAFT.id}/files/${VALIDATED_DRAFT.files[i].id}"
+    },
+    {
+      "method": "PUT",
+      "upload": {
+        "filename": "PREPARED_NEW_VERSION_BUNDLE.zip",
+        "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/pr37-followup/write-plan/21968361/PREPARED_NEW_VERSION_BUNDLE.zip",
+        "role": "provisional evidence package, HOLD, not approved final publication",
+        "sha256": "768b8f9fcb2951e66924c4270fc5f84c6be0ac695e428b41e311a39875d31ccb",
+        "size": 299990
+      },
+      "url": "${VALIDATED_DRAFT.links.bucket}/PREPARED_NEW_VERSION_BUNDLE.zip"
+    },
+    {
+      "method": "PUT",
+      "upload": {
+        "filename": "VERIFICATION_CANDIDATE.lean",
+        "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968361/VERIFICATION_CANDIDATE.lean",
+        "role": "existing exact evidence",
+        "sha256": "1de8f6a1f2ac05dd8026ad92a646b910d17b8369ba72c3dc6ebf7628ba1696ee",
+        "size": 16144
+      },
+      "url": "${VALIDATED_DRAFT.links.bucket}/VERIFICATION_CANDIDATE.lean"
+    },
+    {
+      "method": "PUT",
+      "upload": {
+        "filename": "VERIFICATION_STATEMENT.lean",
+        "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968361/VERIFICATION_STATEMENT.lean",
+        "role": "existing exact evidence",
+        "sha256": "20188ee7c055802711586a9fce3b6d8abce2c6f4a54560460e2890ba300fa0e8",
+        "size": 13282
+      },
+      "url": "${VALIDATED_DRAFT.links.bucket}/VERIFICATION_STATEMENT.lean"
+    },
+    {
+      "method": "PUT",
+      "upload": {
+        "filename": "LEAN_ZERO_SORRY_CERTIFICATE.json",
+        "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968361/LEAN_ZERO_SORRY_CERTIFICATE.json",
+        "role": "existing exact evidence",
+        "sha256": "0ce6474c22e80fa40a8f718fae6c9cac536cc950c4274b9037c3ade9979b8754",
+        "size": 3455
+      },
+      "url": "${VALIDATED_DRAFT.links.bucket}/LEAN_ZERO_SORRY_CERTIFICATE.json"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "precondition": "separate exact-hash approval, finalized manuscript receipt and no HOLD; NEVER execute this plan automatically",
+      "url": "https://zenodo.org/api/deposit/depositions/${VALIDATED_DRAFT.id}/actions/publish"
+    }
+  ],
+  "api_payload": {
+    "metadata": {
+      "access_right": "open",
+      "communities": [
+        {
+          "id": "viridis-canon"
+        }
+      ],
+      "creators": [
+        {
+          "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+          "name": "Hart, Justin D.",
+          "orcid": "0009-0008-3082-2482"
+        }
+      ],
+      "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This version prepares the exact existing Comparator-certified proof and frozen statement. Public scientific claims remain conjectural pending claim mapping, nontriviality review and a reviewed PUBLICATION_BINDING receipt.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p>Proof-reconciled generated exploration of a two-party linear bilateral-benefit corridor for directional predictive-information exchange; not peer reviewed, empirically validated, significant, novel, causal, rights-cleared, ledger-approved, or published.",
+      "keywords": [
+        "transfer entropy",
+        "reciprocity",
+        "bilateral benefit",
+        "Nash bargaining",
+        "information thermodynamics",
+        "common-driver control",
+        "conjecture",
+        "verification coverage review"
+      ],
+      "language": "eng",
+      "license": "cc-by-4.0",
+      "notes": "The paired Lean proof is audited verified. Significance remains uncleared; no empirical, adoption, commercial, rights, ledger, canon, or publication evidence is inferred.",
+      "publication_date": "2026-08-16",
+      "publication_type": "preprint",
+      "related_identifiers": [
+        {
+          "identifier": "10.5281/zenodo.19317982",
+          "relation": "isDerivedFrom",
+          "scheme": "doi"
+        }
+      ],
+      "title": "CONJECTURE — not machine-verified: The Reciprocity Corridor: A Bilateral-Benefit Test for Directional Information Exchange",
+      "upload_type": "publication",
+      "version": "verification-coverage-correction-1"
+    }
+  },
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled generated exploration of a two-party linear bilateral-benefit corridor for directional predictive-information exchange; not peer reviewed, empirically validated, significant, novel, causal, rights-cleared, ledger-approved, or published.",
+    "doi": "10.5281/zenodo.21968361",
+    "keywords": [
+      "transfer entropy",
+      "reciprocity",
+      "bilateral benefit",
+      "Nash bargaining",
+      "information thermodynamics",
+      "common-driver control"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "The paired Lean proof is audited verified. Significance remains uncleared; no empirical, adoption, commercial, rights, ledger, canon, or publication evidence is inferred.",
+    "publication_date": "2026-08-16",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21968360"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Reciprocity Corridor: A Bilateral-Benefit Test for Directional Information Exchange",
+    "version": "0.2.1-proof-reconciled"
+  },
+  "before_metadata_sha256": "af3bafde46de3488ec6789f98f91173362e11bc02b0ce21004e1d04cc02a7b2a",
+  "before_read_at_utc": "2026-10-03T00:16:34.928208+00:00",
+  "bucket": "CURABLE_BY_NEW_VERSION",
+  "bundle_source": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968361",
+  "chain_decision": "HOLD_SUPERSEDED_AUDIT_ROW_NO_SEPARATE_TRANSACTION",
+  "concept_id": "21968360",
+  "doi": "10.5281/zenodo.21968361",
+  "excluded_read_only_or_server_metadata_fields": [
+    "doi",
+    "relations"
+  ],
+  "latest_observed_record_id": "21971047",
+  "mode": "DRY_RUN_ONLY",
+  "new_version_parent_id": "21971047",
+  "operation": "NEW_VERSION",
+  "payload_sha256": "6238da7be6fe80cf48cb8c8a6b160ab02120b88cc2c9fc38ab90cf35ff133466",
+  "preconditions": [
+    "Justin must approve exact metadata and file hashes before any write",
+    "Authenticated read must confirm deposition ID maps to this exact DOI",
+    "Fresh before-metadata/file inventory must match captured public readback",
+    "Stop on any error, timeout, missing response, mismatch or version conflict; no weaker pass",
+    "Choose only one new-version transaction per concept chain; older and repair DOI audit rows share that transaction",
+    "Final reviewed manuscript, claim map and PUBLICATION_BINDING are currently unavailable; keep HOLD",
+    "The prepared zip includes historical/provisional artifacts; approve final public file inventory separately before upload"
+  ],
+  "ready_to_execute": false,
+  "record_id": "21968361",
+  "rollback": "Before publish: preserve receipts, discard/delete only the explicitly identified unpublished draft under a new authorization. Existing published versions stay intact. After publish: no delete rollback; correction requires a separately approved new version. Restore prior version metadata only through a separately authorized edit, never conceal the audit history.",
+  "rollback_payload_sha256": "bf9c66961f6e4c02e4eb59563ec8dd83f58992cae6834efb20df7b5cf33c32cd",
+  "uploads": [
+    {
+      "filename": "PREPARED_NEW_VERSION_BUNDLE.zip",
+      "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/pr37-followup/write-plan/21968361/PREPARED_NEW_VERSION_BUNDLE.zip",
+      "role": "provisional evidence package, HOLD, not approved final publication",
+      "sha256": "768b8f9fcb2951e66924c4270fc5f84c6be0ac695e428b41e311a39875d31ccb",
+      "size": 299990
+    },
+    {
+      "filename": "VERIFICATION_CANDIDATE.lean",
+      "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968361/VERIFICATION_CANDIDATE.lean",
+      "role": "existing exact evidence",
+      "sha256": "1de8f6a1f2ac05dd8026ad92a646b910d17b8369ba72c3dc6ebf7628ba1696ee",
+      "size": 16144
+    },
+    {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968361/VERIFICATION_STATEMENT.lean",
+      "role": "existing exact evidence",
+      "sha256": "20188ee7c055802711586a9fce3b6d8abce2c6f4a54560460e2890ba300fa0e8",
+      "size": 13282
+    },
+    {
+      "filename": "LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968361/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "role": "existing exact evidence",
+      "sha256": "0ce6474c22e80fa40a8f718fae6c9cac536cc950c4274b9037c3ade9979b8754",
+      "size": 3455
+    }
+  ],
+  "writes_executed": 0
+}

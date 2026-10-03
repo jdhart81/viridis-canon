@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p>Machine-verified Lean 4 / Mathlib proofs for the thermodynamic analysis of plasma-mediated atmospheric nitrogen fixation (Hart 2026). 38 theorems, lemmas, corollaries, and system invariants. Zero sorry statements. Axioms: propext, Classical.choice, Quot.sound. Part of the Viridis Applied Proofs Series, supplementing the Intelligence Bound foundational canon (DOI: 10.5281/zenodo.20006414). Formal verification performed by Aristotle (Harmonic), project ID 7fc5f57e-1abb-4126-80fd-86daf035063e. Notable finding: verification uncovered a minor unit-conversion inconsistency in Theorem 4 (T4) of the paper, with all downstream arithmetic internally consistent.",
+    "keywords": [
+      "formal verification",
+      "Lean 4",
+      "Mathlib",
+      "Aristotle Harmonic",
+      "plasma chemistry",
+      "nitrogen fixation",
+      "thermodynamics",
+      "Haber-Bosch alternative",
+      "energy efficiency",
+      "atmospheric N2",
+      "Viridis canon",
+      "machine-checked proof",
+      "P7 module",
+      "sustainable agriculture",
+      "green chemistry",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "license": "cc-by-4.0",
+    "publication_date": "2026-05-03",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: Formal Verification of Plasma-Mediated N₂ Fixation — Viridis Applied Proofs Series 1",
+    "upload_type": "software"
+  }
+}

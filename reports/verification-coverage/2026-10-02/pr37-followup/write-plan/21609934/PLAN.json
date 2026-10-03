@@ -1,0 +1,212 @@
+{
+  "after_deposition_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p><strong>Paper supported by machine-verified Lean 4.</strong> Compute-optimal scaling laws (Kaplan et al.; Hoffmann et al., \"Chinchilla\") prescribe a model-size/data-size split that minimizes loss for a fixed FLOP budget, implicitly assuming the training run may take arbitrarily long wall-clock time to realize that budget. Real training is instead bound by a hard deadline: a competitive release date, a funding window, a fixed rental period on a GPU fleet. We show that once training is required to finish within a wall-clock time <em>tau</em>, McCandlish et al.'s gradient-noise-scale theory of the steps/examples tradeoff becomes formally an <em>endoreversible heat engine</em>: batch size plays the role of a throttle, the number of optimizer steps plays the role of cycle time, and there is an absolute, un-crossable wall-clock floor <em>tau_rm floor=S_min,t_1,N</em> below which no finite batch size — however large — can complete training. The resulting <em>data efficiency</em> <em>eta(tau)equiv D_min/D_rm used(tau)</em> takes the exact Carnot functional form <em>eta(tau)=1-tau_rm floor/tau</em>, with the deadline <em>tau</em> playing the role of a hot reservoir and <em>tau_rm floor</em> the role of a cold one. Pricing wall-clock time against extra data tokens and minimizing total cost yields a closed-form <em>golden-rule deadline</em> <em>tau^ast=tau_rm floor+sqrtc_D D_mintau_rm floor/c_tau</em> — a genuine Curzon–Ahlborn-flavored square-root correction, derived rather than assumed, from the same generic near-a-critical-floor optimization that produces efficiency-at-maximum-power in physical heat engines. The theorem directly explains, in direction and mechanism, a 2026 empirical finding that wall-clock-constrained optimal model size grows differently than Chinchilla's FLOP-based prediction. All results are numerically verified (21/21); for an illustrative 18-billion-parameter model the golden-rule deadline sits at <em>approx 30</em> days against an <em>approx 18</em>-day absolute floor, at a striking <em>approx</em>62% Deadline Tax in extra compute. We cast the construction as a new Intelligence Bound self-application, the Stoker, close with four testable predictions, and discuss implications for AI training infrastructure, conservation-model retraining under field-season deadlines, and the canon's own thermodynamic-economics program.</p>",
+    "keywords": [
+      "finite-time thermodynamics",
+      "Curzon-Ahlborn",
+      "compute-optimal training",
+      "deadline",
+      "scaling laws",
+      "Carnot",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "Machine-verified: module DeadlineCarnot (17 named theorems), landed new leans/2026-07-22_aristotle_DeadlineCarnot_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 21/21 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: The Deadline-Carnot candidate: A Finite-Time Thermodynamics of Compute-Optimal Training Under a Wall-Clock Constraint",
+    "upload_type": "publication",
+    "version": "1.0.0"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "validate exact DOI, metadata, file inventory, edit support for this version",
+      "url": "https://zenodo.org/api/deposit/depositions/21609934"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21609934/actions/edit"
+    },
+    {
+      "method": "PUT",
+      "payload_file": "after_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/21609934"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "precondition": "separate exact metadata approval and unchanged public files",
+      "url": "https://zenodo.org/api/deposit/depositions/21609934/actions/publish"
+    }
+  ],
+  "api_payload": {
+    "metadata": {
+      "access_right": "open",
+      "communities": [
+        {
+          "id": "viridis-canon"
+        }
+      ],
+      "creators": [
+        {
+          "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+          "name": "Hart, Justin D.",
+          "orcid": "0009-0008-3082-2482"
+        },
+        {
+          "affiliation": "Automated theorem prover (Lean 4 verification)",
+          "name": "Aristotle (Harmonic)"
+        }
+      ],
+      "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p><strong>Paper supported by machine-verified Lean 4.</strong> Compute-optimal scaling laws (Kaplan et al.; Hoffmann et al., \"Chinchilla\") prescribe a model-size/data-size split that minimizes loss for a fixed FLOP budget, implicitly assuming the training run may take arbitrarily long wall-clock time to realize that budget. Real training is instead bound by a hard deadline: a competitive release date, a funding window, a fixed rental period on a GPU fleet. We show that once training is required to finish within a wall-clock time <em>tau</em>, McCandlish et al.'s gradient-noise-scale theory of the steps/examples tradeoff becomes formally an <em>endoreversible heat engine</em>: batch size plays the role of a throttle, the number of optimizer steps plays the role of cycle time, and there is an absolute, un-crossable wall-clock floor <em>tau_rm floor=S_min,t_1,N</em> below which no finite batch size — however large — can complete training. The resulting <em>data efficiency</em> <em>eta(tau)equiv D_min/D_rm used(tau)</em> takes the exact Carnot functional form <em>eta(tau)=1-tau_rm floor/tau</em>, with the deadline <em>tau</em> playing the role of a hot reservoir and <em>tau_rm floor</em> the role of a cold one. Pricing wall-clock time against extra data tokens and minimizing total cost yields a closed-form <em>golden-rule deadline</em> <em>tau^ast=tau_rm floor+sqrtc_D D_mintau_rm floor/c_tau</em> — a genuine Curzon–Ahlborn-flavored square-root correction, derived rather than assumed, from the same generic near-a-critical-floor optimization that produces efficiency-at-maximum-power in physical heat engines. The theorem directly explains, in direction and mechanism, a 2026 empirical finding that wall-clock-constrained optimal model size grows differently than Chinchilla's FLOP-based prediction. All results are numerically verified (21/21); for an illustrative 18-billion-parameter model the golden-rule deadline sits at <em>approx 30</em> days against an <em>approx 18</em>-day absolute floor, at a striking <em>approx</em>62% Deadline Tax in extra compute. We cast the construction as a new Intelligence Bound self-application, the Stoker, close with four testable predictions, and discuss implications for AI training infrastructure, conservation-model retraining under field-season deadlines, and the canon's own thermodynamic-economics program.</p>",
+      "keywords": [
+        "finite-time thermodynamics",
+        "Curzon-Ahlborn",
+        "compute-optimal training",
+        "deadline",
+        "scaling laws",
+        "Carnot",
+        "Intelligence Bound",
+        "Lean 4",
+        "formal verification",
+        "conjecture",
+        "verification coverage review"
+      ],
+      "language": "eng",
+      "license": "cc-by-4.0",
+      "notes": "Machine-verified: module DeadlineCarnot (17 named theorems), landed new leans/2026-07-22_aristotle_DeadlineCarnot_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 21/21 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+      "publication_date": "2026-07-26",
+      "publication_type": "preprint",
+      "related_identifiers": [
+        {
+          "identifier": "10.5281/zenodo.19317982",
+          "relation": "isDerivedFrom",
+          "scheme": "doi"
+        }
+      ],
+      "title": "CONJECTURE — not machine-verified: The Deadline-Carnot candidate: A Finite-Time Thermodynamics of Compute-Optimal Training Under a Wall-Clock Constraint",
+      "upload_type": "publication",
+      "version": "1.0.0"
+    }
+  },
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Paper supported by machine-verified Lean 4.</strong> Compute-optimal scaling laws (Kaplan et al.; Hoffmann et al., \"Chinchilla\") prescribe a model-size/data-size split that minimizes loss for a fixed FLOP budget, implicitly assuming the training run may take arbitrarily long wall-clock time to realize that budget. Real training is instead bound by a hard deadline: a competitive release date, a funding window, a fixed rental period on a GPU fleet. We show that once training is required to finish within a wall-clock time <em>tau</em>, McCandlish et al.'s gradient-noise-scale theory of the steps/examples tradeoff becomes formally an <em>endoreversible heat engine</em>: batch size plays the role of a throttle, the number of optimizer steps plays the role of cycle time, and there is an absolute, un-crossable wall-clock floor <em>tau_rm floor=S_min,t_1,N</em> below which no finite batch size — however large — can complete training. The resulting <em>data efficiency</em> <em>eta(tau)equiv D_min/D_rm used(tau)</em> takes the exact Carnot functional form <em>eta(tau)=1-tau_rm floor/tau</em>, with the deadline <em>tau</em> playing the role of a hot reservoir and <em>tau_rm floor</em> the role of a cold one. Pricing wall-clock time against extra data tokens and minimizing total cost yields a closed-form <em>golden-rule deadline</em> <em>tau^ast=tau_rm floor+sqrtc_D D_mintau_rm floor/c_tau</em> — a genuine Curzon–Ahlborn-flavored square-root correction, derived rather than assumed, from the same generic near-a-critical-floor optimization that produces efficiency-at-maximum-power in physical heat engines. The theorem directly explains, in direction and mechanism, a 2026 empirical finding that wall-clock-constrained optimal model size grows differently than Chinchilla's FLOP-based prediction. All results are numerically verified (21/21); for an illustrative 18-billion-parameter model the golden-rule deadline sits at <em>approx 30</em> days against an <em>approx 18</em>-day absolute floor, at a striking <em>approx</em>62% Deadline Tax in extra compute. We cast the construction as a new Intelligence Bound self-application, the Stoker, close with four testable predictions, and discuss implications for AI training infrastructure, conservation-model retraining under field-season deadlines, and the canon's own thermodynamic-economics program.</p>",
+    "doi": "10.5281/zenodo.21609934",
+    "keywords": [
+      "finite-time thermodynamics",
+      "Curzon-Ahlborn",
+      "compute-optimal training",
+      "deadline",
+      "scaling laws",
+      "Carnot",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Machine-verified: module DeadlineCarnot (17 named theorems), landed new leans/2026-07-22_aristotle_DeadlineCarnot_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 21/21 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21609933"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Deadline-Carnot Theorem: A Finite-Time Thermodynamics of Compute-Optimal Training Under a Wall-Clock Constraint",
+    "version": "1.0.0"
+  },
+  "before_metadata_sha256": "a5b435b66a31af8b5a4b4eb557ce4d0dc329667e9dcb8c465ddde38662a2c959",
+  "before_read_at_utc": "2026-10-03T00:16:33.290615+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "chain_decision": "HOLD_EXACT_RECORD_METADATA_REVIEW",
+  "concept_id": "21609933",
+  "doi": "10.5281/zenodo.21609934",
+  "excluded_read_only_or_server_metadata_fields": [
+    "doi",
+    "relations"
+  ],
+  "latest_observed_record_id": "21609934",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "CONJECTURE_METADATA_AMENDMENT",
+  "payload_sha256": "48fbfbf69ec1bf27d4926bad3ed53466ec1e822b6f5e0d2a57a4b2771a573d02",
+  "preconditions": [
+    "Justin must approve exact metadata and file hashes before any write",
+    "Authenticated read must confirm deposition ID maps to this exact DOI",
+    "Fresh before-metadata/file inventory must match captured public readback",
+    "Stop on any error, timeout, missing response, mismatch or version conflict; no weaker pass"
+  ],
+  "ready_to_execute": false,
+  "record_id": "21609934",
+  "rollback": "If edit is unpublished: POST /api/deposit/depositions/21609934/actions/discard after separately approved exact draft identification. If metadata republished: separately authorize edit -> PUT rollback_payload.json -> publish. File bytes must stay identical; preserve both readbacks and responses.",
+  "rollback_payload_sha256": "7adf60be7dca4266bb64e8f9787d6494dfa4b99b072b9e8b6e5e51102d678147",
+  "writes_executed": 0
+}

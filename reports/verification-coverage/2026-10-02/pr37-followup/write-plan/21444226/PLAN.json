@@ -1,0 +1,263 @@
+{
+  "after_deposition_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p><strong>The Viridis Canon — Lean-Checked Conditional Mathematics for the Intelligence Bound.</strong> A machine-checked formal corpus underpinning the Viridis research program on the thermodynamics of intelligence and its application to planetary conservation. Its spine is the <em>Intelligence Bound</em> — a Landauer/erasure-grounded limit on the rate of intelligence creation — formalized in Lean 4 and extended through a stack of modules spanning information theory (the D-Score biodiversity metric), graph-theoretic landscape optimality (HDFM / dendritic corridors), thermodynamic economics, alignment-as-feasibility (Goodhart impossibility), the speed-limit shadow-price tower, and the recovered post-Wolpert erasure-side footing.</p>\n<p>Every theorem's <em>type</em> is machine-verified in Lean 4 (pinned toolchain; axioms audited to {propext, Classical.choice, Quot.sound}). The canon deliberately distinguishes proof validity from physical and empirical validity: it is <strong>conditional mathematics with explicit assumptions</strong>, not a claim that those assumptions describe nature. Headline results are graded by formal strength in <code>CLAIMS_MATRIX.md</code> via the labels in <code>THEOREM_STATUS_TAXONOMY.md</code> (Derived / Conditional / Definition-expansion / Bridge-assumption / Empirical-hypothesis / Conjecture / Exploratory), with separate formal and interpretive status. Empirical validation is reserved for the companion papers and field studies.</p>\n<p>Concept DOI <strong>10.5281/zenodo.19317982</strong> always resolves to the latest version. Source mirror: <a href=\"https://github.com/jdhart81/viridis-canon\">github.com/jdhart81/viridis-canon</a>. Co-authored with Aristotle (Harmonic).</p>\n\n\n\n\n<p><strong>This version (v10.2.0).</strong> \"The Equilibrium Wave\" — folds six Intelligence-Bound core-extensions into the verified spine: the <strong>Effortless Equilibrium Theorem</strong> (EET, \"the Steersman\"; wu-wei rest states exist and are exactly the zero-holding-power configurations; 11 named results), the <strong>Perennial Corridor Theorem</strong> (PCT, \"the Gardener\"; Whittle-index corridor urgency ranking and the IB floor on maintenance holding power; 15 named results), the <strong>Decoherent Selection Theorem</strong> (DST, \"the Chooser\"; decision cost is bounded by ln N and vanishes only at the einselected pointer basis; 12 named results), the <strong>Mutualistic Attestation Theorem</strong> (MAT, \"the Attester\"; attestation cost = k<sub>B</sub>T&middot;ln2&middot;(residual entropy), with certification feedback exhibiting fold bistability; 19 named results), the <strong>Thermodynamic Attention Theorem</strong> (TAT, \"the Attuner\"; the rational-inattention shadow price equals the Landauer quantum k<sub>B</sub>T, with attention water-filling the einselected slow basis; 12 named results), and the <strong>Stewardship Setpoint Theorem</strong> (SST, \"the Steward\"; golden-rule sustainable ceiling for a living renewable stock, the first-ever Intelligence Bound x Stewardship pairing and act-budget twin of TAT; 13 named results). All six are zero <code>sorry</code> with axioms &sube; {propext, Classical.choice, Quot.sound}, added to SPINE_MANIFEST.txt, lakefile defaultTargets, and AxiomAudit.lean. Spine version bump authorized by J. D. Hart 2026-07-19 (\"push the updated spine version\"), applied to the full ready nightly-forge backlog (ledger rows 55&ndash;58, 60&ndash;61). MINOR bump only (v10.1&rarr;v10.2); no MAJOR trigger in play. UPEM, the &eta;=cos&sup2;(&Theta;) meta-theorem unifying four of these six, is verified clean but held back pending a journal-quality paper (INV-PAPER). See CHANGELOG_v10.2.0.md.</p>",
+    "keywords": [
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification",
+      "thermodynamics",
+      "Landauer",
+      "wu wei",
+      "stewardship",
+      "decoherence",
+      "attention",
+      "attestation",
+      "corridor design",
+      "conservation",
+      "AI alignment",
+      "canon",
+      "axiom audit",
+      "reproducibility",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "Canon v10.2.0 is a milestone spine merge (third version since the v9 freeze), authorized by J. D. Hart 2026-07-19 (\"push the updated spine version\"), applied to ledger rows 55-58 and 60-61 after standing spine+branch curation classification. Folds six Intelligence-Bound core-extensions into the verified spine: EffortlessEquilibrium (Run-097, Aristotle 65ae007a, 11 named results), PerennialCorridor (Run-098, 15 named results), DecoherentSelection (Run-099, 12 named results), MutualisticAttestation (Run-100, 19 named results), ThermodynamicAttention (Run-101, 12 named results), StewardshipSetpoint (Run-102, 13 named results). All zero sorry, axioms within {propext, Classical.choice, Quot.sound}; toolchain leanprover/lean4:v4.28.0. UPEM (ledger row 59) held back pending INV-PAPER compliance. git commit 20b684f, tag canon-v10.2. Lean certifies the reasoning, not empirical magnitudes; working corpus, not peer-reviewed.",
+    "publication_date": "2026-07-19",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isVersionOf",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "https://github.com/jdhart81/viridis-canon",
+        "relation": "isSupplementedBy",
+        "scheme": "url"
+      },
+      {
+        "identifier": "10.5281/zenodo.21223021",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: Viridis Compiled candidate — candidate v10.2.0 (The Equilibrium Wave: Effortless Equilibrium + Perennial Corridor + Decoherent Selection + Mutualistic Attestation + Thermodynamic Attention + Stewardship Setpoint folded into the spine)",
+    "upload_type": "publication",
+    "version": "10.2.0"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "validate exact DOI, metadata, file inventory, edit support for this version",
+      "url": "https://zenodo.org/api/deposit/depositions/21444226"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21444226/actions/edit"
+    },
+    {
+      "method": "PUT",
+      "payload_file": "after_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/21444226"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "precondition": "separate exact metadata approval and unchanged public files",
+      "url": "https://zenodo.org/api/deposit/depositions/21444226/actions/publish"
+    }
+  ],
+  "api_payload": {
+    "metadata": {
+      "access_right": "open",
+      "communities": [
+        {
+          "id": "viridis-canon"
+        }
+      ],
+      "creators": [
+        {
+          "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+          "name": "Hart, Justin D.",
+          "orcid": "0009-0008-3082-2482"
+        },
+        {
+          "affiliation": "Automated theorem prover (Lean 4 verification)",
+          "name": "Aristotle (Harmonic)"
+        }
+      ],
+      "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p><strong>The Viridis Canon — Lean-Checked Conditional Mathematics for the Intelligence Bound.</strong> A machine-checked formal corpus underpinning the Viridis research program on the thermodynamics of intelligence and its application to planetary conservation. Its spine is the <em>Intelligence Bound</em> — a Landauer/erasure-grounded limit on the rate of intelligence creation — formalized in Lean 4 and extended through a stack of modules spanning information theory (the D-Score biodiversity metric), graph-theoretic landscape optimality (HDFM / dendritic corridors), thermodynamic economics, alignment-as-feasibility (Goodhart impossibility), the speed-limit shadow-price tower, and the recovered post-Wolpert erasure-side footing.</p>\n<p>Every theorem's <em>type</em> is machine-verified in Lean 4 (pinned toolchain; axioms audited to {propext, Classical.choice, Quot.sound}). The canon deliberately distinguishes proof validity from physical and empirical validity: it is <strong>conditional mathematics with explicit assumptions</strong>, not a claim that those assumptions describe nature. Headline results are graded by formal strength in <code>CLAIMS_MATRIX.md</code> via the labels in <code>THEOREM_STATUS_TAXONOMY.md</code> (Derived / Conditional / Definition-expansion / Bridge-assumption / Empirical-hypothesis / Conjecture / Exploratory), with separate formal and interpretive status. Empirical validation is reserved for the companion papers and field studies.</p>\n<p>Concept DOI <strong>10.5281/zenodo.19317982</strong> always resolves to the latest version. Source mirror: <a href=\"https://github.com/jdhart81/viridis-canon\">github.com/jdhart81/viridis-canon</a>. Co-authored with Aristotle (Harmonic).</p>\n\n\n\n\n<p><strong>This version (v10.2.0).</strong> \"The Equilibrium Wave\" — folds six Intelligence-Bound core-extensions into the verified spine: the <strong>Effortless Equilibrium Theorem</strong> (EET, \"the Steersman\"; wu-wei rest states exist and are exactly the zero-holding-power configurations; 11 named results), the <strong>Perennial Corridor Theorem</strong> (PCT, \"the Gardener\"; Whittle-index corridor urgency ranking and the IB floor on maintenance holding power; 15 named results), the <strong>Decoherent Selection Theorem</strong> (DST, \"the Chooser\"; decision cost is bounded by ln N and vanishes only at the einselected pointer basis; 12 named results), the <strong>Mutualistic Attestation Theorem</strong> (MAT, \"the Attester\"; attestation cost = k<sub>B</sub>T&middot;ln2&middot;(residual entropy), with certification feedback exhibiting fold bistability; 19 named results), the <strong>Thermodynamic Attention Theorem</strong> (TAT, \"the Attuner\"; the rational-inattention shadow price equals the Landauer quantum k<sub>B</sub>T, with attention water-filling the einselected slow basis; 12 named results), and the <strong>Stewardship Setpoint Theorem</strong> (SST, \"the Steward\"; golden-rule sustainable ceiling for a living renewable stock, the first-ever Intelligence Bound x Stewardship pairing and act-budget twin of TAT; 13 named results). All six are zero <code>sorry</code> with axioms &sube; {propext, Classical.choice, Quot.sound}, added to SPINE_MANIFEST.txt, lakefile defaultTargets, and AxiomAudit.lean. Spine version bump authorized by J. D. Hart 2026-07-19 (\"push the updated spine version\"), applied to the full ready nightly-forge backlog (ledger rows 55&ndash;58, 60&ndash;61). MINOR bump only (v10.1&rarr;v10.2); no MAJOR trigger in play. UPEM, the &eta;=cos&sup2;(&Theta;) meta-theorem unifying four of these six, is verified clean but held back pending a journal-quality paper (INV-PAPER). See CHANGELOG_v10.2.0.md.</p>",
+      "keywords": [
+        "Intelligence Bound",
+        "Lean 4",
+        "formal verification",
+        "thermodynamics",
+        "Landauer",
+        "wu wei",
+        "stewardship",
+        "decoherence",
+        "attention",
+        "attestation",
+        "corridor design",
+        "conservation",
+        "AI alignment",
+        "canon",
+        "axiom audit",
+        "reproducibility",
+        "conjecture",
+        "verification coverage review"
+      ],
+      "language": "eng",
+      "license": "cc-by-4.0",
+      "notes": "Canon v10.2.0 is a milestone spine merge (third version since the v9 freeze), authorized by J. D. Hart 2026-07-19 (\"push the updated spine version\"), applied to ledger rows 55-58 and 60-61 after standing spine+branch curation classification. Folds six Intelligence-Bound core-extensions into the verified spine: EffortlessEquilibrium (Run-097, Aristotle 65ae007a, 11 named results), PerennialCorridor (Run-098, 15 named results), DecoherentSelection (Run-099, 12 named results), MutualisticAttestation (Run-100, 19 named results), ThermodynamicAttention (Run-101, 12 named results), StewardshipSetpoint (Run-102, 13 named results). All zero sorry, axioms within {propext, Classical.choice, Quot.sound}; toolchain leanprover/lean4:v4.28.0. UPEM (ledger row 59) held back pending INV-PAPER compliance. git commit 20b684f, tag canon-v10.2. Lean certifies the reasoning, not empirical magnitudes; working corpus, not peer-reviewed.",
+      "publication_date": "2026-07-19",
+      "publication_type": "preprint",
+      "related_identifiers": [
+        {
+          "identifier": "10.5281/zenodo.19317982",
+          "relation": "isVersionOf",
+          "scheme": "doi"
+        },
+        {
+          "identifier": "https://github.com/jdhart81/viridis-canon",
+          "relation": "isSupplementedBy",
+          "scheme": "url"
+        },
+        {
+          "identifier": "10.5281/zenodo.21223021",
+          "relation": "references",
+          "scheme": "doi"
+        }
+      ],
+      "title": "CONJECTURE — not machine-verified: Viridis Compiled candidate — candidate v10.2.0 (The Equilibrium Wave: Effortless Equilibrium + Perennial Corridor + Decoherent Selection + Mutualistic Attestation + Thermodynamic Attention + Stewardship Setpoint folded into the spine)",
+      "upload_type": "publication",
+      "version": "10.2.0"
+    }
+  },
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>The Viridis Canon — Lean-Checked Conditional Mathematics for the Intelligence Bound.</strong> A machine-checked formal corpus underpinning the Viridis research program on the thermodynamics of intelligence and its application to planetary conservation. Its spine is the <em>Intelligence Bound</em> — a Landauer/erasure-grounded limit on the rate of intelligence creation — formalized in Lean 4 and extended through a stack of modules spanning information theory (the D-Score biodiversity metric), graph-theoretic landscape optimality (HDFM / dendritic corridors), thermodynamic economics, alignment-as-feasibility (Goodhart impossibility), the speed-limit shadow-price tower, and the recovered post-Wolpert erasure-side footing.</p>\n<p>Every theorem's <em>type</em> is machine-verified in Lean 4 (pinned toolchain; axioms audited to {propext, Classical.choice, Quot.sound}). The canon deliberately distinguishes proof validity from physical and empirical validity: it is <strong>conditional mathematics with explicit assumptions</strong>, not a claim that those assumptions describe nature. Headline results are graded by formal strength in <code>CLAIMS_MATRIX.md</code> via the labels in <code>THEOREM_STATUS_TAXONOMY.md</code> (Derived / Conditional / Definition-expansion / Bridge-assumption / Empirical-hypothesis / Conjecture / Exploratory), with separate formal and interpretive status. Empirical validation is reserved for the companion papers and field studies.</p>\n<p>Concept DOI <strong>10.5281/zenodo.19317982</strong> always resolves to the latest version. Source mirror: <a href=\"https://github.com/jdhart81/viridis-canon\">github.com/jdhart81/viridis-canon</a>. Co-authored with Aristotle (Harmonic).</p>\n\n\n\n\n<p><strong>This version (v10.2.0).</strong> \"The Equilibrium Wave\" — folds six Intelligence-Bound core-extensions into the verified spine: the <strong>Effortless Equilibrium Theorem</strong> (EET, \"the Steersman\"; wu-wei rest states exist and are exactly the zero-holding-power configurations; 11 named results), the <strong>Perennial Corridor Theorem</strong> (PCT, \"the Gardener\"; Whittle-index corridor urgency ranking and the IB floor on maintenance holding power; 15 named results), the <strong>Decoherent Selection Theorem</strong> (DST, \"the Chooser\"; decision cost is bounded by ln N and vanishes only at the einselected pointer basis; 12 named results), the <strong>Mutualistic Attestation Theorem</strong> (MAT, \"the Attester\"; attestation cost = k<sub>B</sub>T&middot;ln2&middot;(residual entropy), with certification feedback exhibiting fold bistability; 19 named results), the <strong>Thermodynamic Attention Theorem</strong> (TAT, \"the Attuner\"; the rational-inattention shadow price equals the Landauer quantum k<sub>B</sub>T, with attention water-filling the einselected slow basis; 12 named results), and the <strong>Stewardship Setpoint Theorem</strong> (SST, \"the Steward\"; golden-rule sustainable ceiling for a living renewable stock, the first-ever Intelligence Bound x Stewardship pairing and act-budget twin of TAT; 13 named results). All six are zero <code>sorry</code> with axioms &sube; {propext, Classical.choice, Quot.sound}, added to SPINE_MANIFEST.txt, lakefile defaultTargets, and AxiomAudit.lean. Spine version bump authorized by J. D. Hart 2026-07-19 (\"push the updated spine version\"), applied to the full ready nightly-forge backlog (ledger rows 55&ndash;58, 60&ndash;61). MINOR bump only (v10.1&rarr;v10.2); no MAJOR trigger in play. UPEM, the &eta;=cos&sup2;(&Theta;) meta-theorem unifying four of these six, is verified clean but held back pending a journal-quality paper (INV-PAPER). See CHANGELOG_v10.2.0.md.</p>",
+    "doi": "10.5281/zenodo.21444226",
+    "keywords": [
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification",
+      "thermodynamics",
+      "Landauer",
+      "wu wei",
+      "stewardship",
+      "decoherence",
+      "attention",
+      "attestation",
+      "corridor design",
+      "conservation",
+      "AI alignment",
+      "canon",
+      "axiom audit",
+      "reproducibility"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Canon v10.2.0 is a milestone spine merge (third version since the v9 freeze), authorized by J. D. Hart 2026-07-19 (\"push the updated spine version\"), applied to ledger rows 55-58 and 60-61 after standing spine+branch curation classification. Folds six Intelligence-Bound core-extensions into the verified spine: EffortlessEquilibrium (Run-097, Aristotle 65ae007a, 11 named results), PerennialCorridor (Run-098, 15 named results), DecoherentSelection (Run-099, 12 named results), MutualisticAttestation (Run-100, 19 named results), ThermodynamicAttention (Run-101, 12 named results), StewardshipSetpoint (Run-102, 13 named results). All zero sorry, axioms within {propext, Classical.choice, Quot.sound}; toolchain leanprover/lean4:v4.28.0. UPEM (ledger row 59) held back pending INV-PAPER compliance. git commit 20b684f, tag canon-v10.2. Lean certifies the reasoning, not empirical magnitudes; working corpus, not peer-reviewed.",
+    "publication_date": "2026-07-19",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isVersionOf",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "https://github.com/jdhart81/viridis-canon",
+        "relation": "isSupplementedBy",
+        "scheme": "url"
+      },
+      {
+        "identifier": "10.5281/zenodo.21223021",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 14,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "19317982"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "Viridis Compiled Theorem Stack — Canon v10.2.0 (The Equilibrium Wave: Effortless Equilibrium + Perennial Corridor + Decoherent Selection + Mutualistic Attestation + Thermodynamic Attention + Stewardship Setpoint folded into the spine)",
+    "version": "10.2.0"
+  },
+  "before_metadata_sha256": "d2edab11810de7ea6ceae23ffead05becf341b00ee2285f08aa439c46c159ec7",
+  "before_read_at_utc": "2026-10-03T00:16:33.190564+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "chain_decision": "HOLD_EXACT_RECORD_METADATA_REVIEW",
+  "concept_id": "19317982",
+  "doi": "10.5281/zenodo.21444226",
+  "excluded_read_only_or_server_metadata_fields": [
+    "doi",
+    "relations"
+  ],
+  "latest_observed_record_id": "21444226",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "CONJECTURE_METADATA_AMENDMENT",
+  "payload_sha256": "7fb46efdbc34af748a4ec9f2e9a87a568c2eb35262043c5027a56d7ac0768ce0",
+  "preconditions": [
+    "Justin must approve exact metadata and file hashes before any write",
+    "Authenticated read must confirm deposition ID maps to this exact DOI",
+    "Fresh before-metadata/file inventory must match captured public readback",
+    "Stop on any error, timeout, missing response, mismatch or version conflict; no weaker pass"
+  ],
+  "ready_to_execute": false,
+  "record_id": "21444226",
+  "rollback": "If edit is unpublished: POST /api/deposit/depositions/21444226/actions/discard after separately approved exact draft identification. If metadata republished: separately authorize edit -> PUT rollback_payload.json -> publish. File bytes must stay identical; preserve both readbacks and responses.",
+  "rollback_payload_sha256": "6f31fd09d369614e011f5d73d4403c2c809f607385ef7661980feda4ff8ac3be",
+  "writes_executed": 0
+}

@@ -1,0 +1,281 @@
+{
+  "after_deposition_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This version prepares the exact existing Comparator-certified proof and frozen statement. Public scientific claims remain conjectural pending claim mapping, nontriviality review and a reviewed PUBLICATION_BINDING receipt.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p>Proof-reconciled generated exploration applying an established capacitated Hall/min-cut construction to declared seed-routing inputs. This public working-corpus release includes the reviewed manuscript and paired Lean evidence. It is not peer reviewed or empirically validated; significance and novelty have not been independently established.",
+    "keywords": [
+      "afforestation",
+      "seed sourcing",
+      "provenance",
+      "assisted migration",
+      "max flow min cut",
+      "capacitated matching",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "The paired Lean proof is audited verified and checks the stated mathematics under declared assumptions. This standalone working-corpus record is licensed CC BY 4.0. It is not an Intelligence Bound Canon spine admission, and no empirical, ecological, causal, adoption, commercial, procurement, or legal outcome is inferred.",
+    "publication_date": "2026-08-17",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: The Seed-Source Bottleneck Certificate: A cut condition for climate-aligned afforestation supply networks",
+    "upload_type": "publication",
+    "version": "verification-coverage-correction-1"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "confirm latest published deposition, exact DOI and current metadata; read only",
+      "url": "https://zenodo.org/api/deposit/depositions/21971057"
+    },
+    {
+      "body": {},
+      "capture": "response.links.latest_draft; validate same concept; do not invent draft ID",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21971057/actions/newversion"
+    },
+    {
+      "method": "GET",
+      "purpose": "resolve exact draft ID, bucket URL and file inventory; all symbols must resolve before any subsequent action",
+      "url": "${NEWVERSION_RESPONSE.links.latest_draft}"
+    },
+    {
+      "method": "PUT",
+      "payload_file": "after_payload.json",
+      "url": "${VALIDATED_DRAFT.links.self}"
+    },
+    {
+      "method": "DELETE",
+      "scope": "ONLY obsolete inherited files explicitly approved in final inventory; repeat for enumerated IDs after GET; pending, not guessed",
+      "url": "https://zenodo.org/api/deposit/depositions/${VALIDATED_DRAFT.id}/files/${VALIDATED_DRAFT.files[i].id}"
+    },
+    {
+      "method": "PUT",
+      "upload": {
+        "filename": "PREPARED_NEW_VERSION_BUNDLE.zip",
+        "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/pr37-followup/write-plan/21971057/PREPARED_NEW_VERSION_BUNDLE.zip",
+        "role": "provisional evidence package, HOLD, not approved final publication",
+        "sha256": "c439f7b3a6f14c3b62df7fa2f98da05ed587c8dcc398ba4d3b1cffc5397ad7f5",
+        "size": 317495
+      },
+      "url": "${VALIDATED_DRAFT.links.bucket}/PREPARED_NEW_VERSION_BUNDLE.zip"
+    },
+    {
+      "method": "PUT",
+      "upload": {
+        "filename": "VERIFICATION_CANDIDATE.lean",
+        "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971057/VERIFICATION_CANDIDATE.lean",
+        "role": "existing exact evidence",
+        "sha256": "1260b3565b55ec536a94c59b13ac55cfadaa6e17f6b01b965e5d1014e609bd36",
+        "size": 52994
+      },
+      "url": "${VALIDATED_DRAFT.links.bucket}/VERIFICATION_CANDIDATE.lean"
+    },
+    {
+      "method": "PUT",
+      "upload": {
+        "filename": "VERIFICATION_STATEMENT.lean",
+        "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971057/VERIFICATION_STATEMENT.lean",
+        "role": "existing exact evidence",
+        "sha256": "2ef5f3d081483d3a6e12c69bc9f78e1b84b778dd40a4ba7c11d69c73c9c883c9",
+        "size": 52028
+      },
+      "url": "${VALIDATED_DRAFT.links.bucket}/VERIFICATION_STATEMENT.lean"
+    },
+    {
+      "method": "PUT",
+      "upload": {
+        "filename": "LEAN_ZERO_SORRY_CERTIFICATE.json",
+        "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971057/LEAN_ZERO_SORRY_CERTIFICATE.json",
+        "role": "existing exact evidence",
+        "sha256": "73c0617ac6bf935a92fe3d03b301007c988b923b753bdd06876e277bea6eda41",
+        "size": 3680
+      },
+      "url": "${VALIDATED_DRAFT.links.bucket}/LEAN_ZERO_SORRY_CERTIFICATE.json"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "precondition": "separate exact-hash approval, finalized manuscript receipt and no HOLD; NEVER execute this plan automatically",
+      "url": "https://zenodo.org/api/deposit/depositions/${VALIDATED_DRAFT.id}/actions/publish"
+    }
+  ],
+  "api_payload": {
+    "metadata": {
+      "access_right": "open",
+      "communities": [
+        {
+          "id": "viridis-canon"
+        }
+      ],
+      "creators": [
+        {
+          "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+          "name": "Hart, Justin D.",
+          "orcid": "0009-0008-3082-2482"
+        }
+      ],
+      "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This version prepares the exact existing Comparator-certified proof and frozen statement. Public scientific claims remain conjectural pending claim mapping, nontriviality review and a reviewed PUBLICATION_BINDING receipt.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p>Proof-reconciled generated exploration applying an established capacitated Hall/min-cut construction to declared seed-routing inputs. This public working-corpus release includes the reviewed manuscript and paired Lean evidence. It is not peer reviewed or empirically validated; significance and novelty have not been independently established.",
+      "keywords": [
+        "afforestation",
+        "seed sourcing",
+        "provenance",
+        "assisted migration",
+        "max flow min cut",
+        "capacitated matching",
+        "conjecture",
+        "verification coverage review"
+      ],
+      "language": "eng",
+      "license": "cc-by-4.0",
+      "notes": "The paired Lean proof is audited verified and checks the stated mathematics under declared assumptions. This standalone working-corpus record is licensed CC BY 4.0. It is not an Intelligence Bound Canon spine admission, and no empirical, ecological, causal, adoption, commercial, procurement, or legal outcome is inferred.",
+      "publication_date": "2026-08-17",
+      "publication_type": "preprint",
+      "related_identifiers": [
+        {
+          "identifier": "10.5281/zenodo.19317982",
+          "relation": "isDerivedFrom",
+          "scheme": "doi"
+        }
+      ],
+      "title": "CONJECTURE — not machine-verified: The Seed-Source Bottleneck Certificate: A cut condition for climate-aligned afforestation supply networks",
+      "upload_type": "publication",
+      "version": "verification-coverage-correction-1"
+    }
+  },
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled generated exploration applying an established capacitated Hall/min-cut construction to declared seed-routing inputs. This public working-corpus release includes the reviewed manuscript and paired Lean evidence. It is not peer reviewed or empirically validated; significance and novelty have not been independently established.",
+    "doi": "10.5281/zenodo.21971057",
+    "keywords": [
+      "afforestation",
+      "seed sourcing",
+      "provenance",
+      "assisted migration",
+      "max flow min cut",
+      "capacitated matching"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "The paired Lean proof is audited verified and checks the stated mathematics under declared assumptions. This standalone working-corpus record is licensed CC BY 4.0. It is not an Intelligence Bound Canon spine admission, and no empirical, ecological, causal, adoption, commercial, procurement, or legal outcome is inferred.",
+    "publication_date": "2026-08-17",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 1,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21968479"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Seed-Source Bottleneck Certificate: A cut condition for climate-aligned afforestation supply networks",
+    "version": "0.2.1-release-reconciled"
+  },
+  "before_metadata_sha256": "f0885bc56e6cc2abab8ec7c628b0d22aecfc49691b22b365a1faedb0f18e301f",
+  "before_read_at_utc": "2026-10-03T00:16:36.108432+00:00",
+  "bucket": "CURABLE_BY_NEW_VERSION",
+  "bundle_source": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971057",
+  "chain_decision": "HOLD_REVIEW_ONE_PROPOSED_TRANSACTION_PER_CHAIN",
+  "concept_id": "21968479",
+  "doi": "10.5281/zenodo.21971057",
+  "excluded_read_only_or_server_metadata_fields": [
+    "doi",
+    "relations"
+  ],
+  "latest_observed_record_id": "21971057",
+  "mode": "DRY_RUN_ONLY",
+  "new_version_parent_id": "21971057",
+  "operation": "NEW_VERSION",
+  "payload_sha256": "8f515b9190ff8d22ade2a5cbb22571fb187b06d4e8375ac03df724282622fc6c",
+  "preconditions": [
+    "Justin must approve exact metadata and file hashes before any write",
+    "Authenticated read must confirm deposition ID maps to this exact DOI",
+    "Fresh before-metadata/file inventory must match captured public readback",
+    "Stop on any error, timeout, missing response, mismatch or version conflict; no weaker pass",
+    "Choose only one new-version transaction per concept chain; older and repair DOI audit rows share that transaction",
+    "Final reviewed manuscript, claim map and PUBLICATION_BINDING are currently unavailable; keep HOLD",
+    "The prepared zip includes historical/provisional artifacts; approve final public file inventory separately before upload"
+  ],
+  "ready_to_execute": false,
+  "record_id": "21971057",
+  "rollback": "Before publish: preserve receipts, discard/delete only the explicitly identified unpublished draft under a new authorization. Existing published versions stay intact. After publish: no delete rollback; correction requires a separately approved new version. Restore prior version metadata only through a separately authorized edit, never conceal the audit history.",
+  "rollback_payload_sha256": "68da7270463ef5400f2b9103617f2250d261d48417b67144b9d91caebe1ccdae",
+  "uploads": [
+    {
+      "filename": "PREPARED_NEW_VERSION_BUNDLE.zip",
+      "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/pr37-followup/write-plan/21971057/PREPARED_NEW_VERSION_BUNDLE.zip",
+      "role": "provisional evidence package, HOLD, not approved final publication",
+      "sha256": "c439f7b3a6f14c3b62df7fa2f98da05ed587c8dcc398ba4d3b1cffc5397ad7f5",
+      "size": 317495
+    },
+    {
+      "filename": "VERIFICATION_CANDIDATE.lean",
+      "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971057/VERIFICATION_CANDIDATE.lean",
+      "role": "existing exact evidence",
+      "sha256": "1260b3565b55ec536a94c59b13ac55cfadaa6e17f6b01b965e5d1014e609bd36",
+      "size": 52994
+    },
+    {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971057/VERIFICATION_STATEMENT.lean",
+      "role": "existing exact evidence",
+      "sha256": "2ef5f3d081483d3a6e12c69bc9f78e1b84b778dd40a4ba7c11d69c73c9c883c9",
+      "size": 52028
+    },
+    {
+      "filename": "LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "local_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971057/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "role": "existing exact evidence",
+      "sha256": "73c0617ac6bf935a92fe3d03b301007c988b923b753bdd06876e277bea6eda41",
+      "size": 3680
+    }
+  ],
+  "writes_executed": 0
+}

@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p><strong>Standalone record of the Viridis Canon (Mutualistic Inference Networks). The core Intelligence-Bound canon spine is unchanged (frozen at v10.1.0 &ldquo;The Keystone Wave&rdquo;, record 21223021); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>.</strong></p><p>We formalize the Mutualistic Inference Network Theorem (MINT), &ldquo;the Mutualist&rdquo; &mdash; the 27th Intelligence-Bound self-application. MINT lifts the Symbiotic Inference Theorem (SIT, a two-agent result) to an <em>N</em>-agent predictive commons: a network of agents that share partial information about a shared environment, each paying an inference cost and each drawing a synergistic subsidy from the group's redundancy and synergy structure.</p><p>Six results are machine-checked in Lean 4 (Aristotle, zero <code>sorry</code>, axioms &sube; {<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>}), namespace <code>Viridis.MutualisticInference</code>: (i) <code>mint_network_ledger_no_penalty</code> &mdash; the predictive commons never penalizes a participant relative to going it alone; (ii) <code>mint_dyad_recovers_sit</code> &mdash; the N=2 floor recovers the certified SIT dyad value exactly (3/2), pinning the network result to prior canon and witnessing non-vacuity; (iii) <code>mint_pid_subsidy_nonneg_le_total</code> &mdash; the synergistic subsidy is well-defined and bounded, 0 &le; S &le; I_total; (iv) <code>mint_group_markov_blanket_ceiling</code> &mdash; an additive group Markov-blanket ceiling; (v) <code>mint_efficiency_eq_cos2_theta</code> &mdash; allocation efficiency is a discrete cos&sup2;&Theta; alignment measure in [0,1] via Cauchy&ndash;Schwarz; (vi) <code>mint_mutualist_IB_ceiling</code> &mdash; the headline result: the group's total information-acquisition rate is Intelligence-Bound-limited, and open, mutual prediction strictly beats solo inference whenever the subsidy is positive.</p><p>MINT sits alongside the Universal Water-Filling Meta-Theorem (UWMT) and Geodesic Saturation Theorem (GST), both admitted to spine v10.1.0, as a downstream application of the water-filling/shadow-price machinery to the cognitive-modeling &times; symbiosis domain, rather than a domain-defining extension itself &mdash; hence its standalone (not spine) routing.</p><p><strong>Scope.</strong> The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "keywords": [
+      "mutualistic inference",
+      "symbiotic inference",
+      "predictive commons",
+      "N-agent networks",
+      "partial information decomposition",
+      "Markov blanket",
+      "shadow price",
+      "Intelligence Bound",
+      "cognitive modeling",
+      "thermodynamic ceiling",
+      "Lean 4",
+      "formal verification",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "Viridis Canon, standalone record (NEW category: Mutualistic Inference Networks; \"the Mutualist\", 27th Intelligence-Bound self-application). Routed standalone from Nightly Run-085 (2026-07-02); ledger row 42. CONVERGENCE EVENT: lifts the Symbiotic Inference Theorem (SIT, Run-062) dyad result to an N-agent predictive commons. Spine unchanged (frozen at v10.1.0, record 21223021, 'The Keystone Wave'); this record links to the spine only via isDerivedFrom the concept DOI 10.5281/zenodo.19317982 and references the current spine head. Lean 4 proofs (Aristotle project 71b77385-316c-460d-8255-c87713250db8, task a592bd11-fb71-4bb6-b4ea-15a4819432f8, COMPLETE @100%, completed 2026-07-02T00:13:04Z; zero sorry; #print axioms within {propext, Classical.choice, Quot.sound} for every named theorem; toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff) certify the analytic core of MINT, namespace Viridis.MutualisticInference. The six verified theorems, statements verbatim: (1) mint_network_ledger_no_penalty -- the edge-subsidy ledger (sum Inon) - (sum E Ipred) - sHigher &lt;= sum Inon: the predictive commons never penalizes participants; (2) mint_dyad_recovers_sit -- the N=2 floor equals 2 - 1/2 - 0 = 3/2, exactly the certified SIT dyad floor, pinning the network limit to the prior result and witnessing non-vacuity; (3) mint_pid_subsidy_nonneg_le_total -- partial-information-decomposition atoms nonnegative implies the synergistic subsidy S obeys 0 &lt;= S &lt;= I_total (measure-robust sum identity; the redundancy/synergy split itself is not asserted); (4) mint_group_markov_blanket_ceiling -- additive group ceiling: ceil_j &lt;= sum ceil_i for each positive ceiling; (5) mint_efficiency_eq_cos2_theta -- allocation efficiency eta = (sum a.b)^2 / ((sum a^2)(sum b^2)) in [0,1] via discrete Cauchy-Schwarz, eta=1 iff proportional allocations (Fisher angle Theta=0); (6) mint_mutualist_IB_ceiling -- the 27th IB self-application: sum dI_i &lt;= sum ceil_i, and (sum ceil - subsidy) &lt; sum ceil strictly whenever subsidy&gt;0 -- open science / mutual prediction is a strict thermodynamic improvement over solo inference. All conclusions non-vacuous. Deferred (out of clean core, NOT in this record): legibility_percolation_threshold, per_agent_cost_sublinear, synergy_vanishes (ER mean-field / measure-dependent); water-fill + envelope machinery inherited from UWMT (Run-084, now spine v10.1.0). The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.",
+    "publication_date": "2026-07-06",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21223021",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: The Mutualistic Inference Network candidate: Lifting Symbiotic Inference to N-Agent Predictive Commons under the Intelligence Bound",
+    "upload_type": "publication",
+    "version": "MINT-v1"
+  }
+}

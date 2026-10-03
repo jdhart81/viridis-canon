@@ -1,0 +1,62 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -16,7 +16,7 @@
+ \title{\vspace{-1.2em}\textbf{The Conjunctive Audit Stewardship Theorem}\\
+ \large Why evidence portfolios reward bundles rather than scattered greedy checks}
+ \author{Justin D. Hart\\\small Viridis Research}
+-\date{5 August 2026\\\small Pre-Aristotle generated exploration; novelty unassessed}
++\date{5 August 2026\\\small Comparator-certified working-corpus draft; novelty unassessed}
+ 
+ \begin{document}
+ \maketitle
+@@ -37,9 +37,9 @@
+ $(3\epsilon-\epsilon^2)/(1-\epsilon^2)\to0$.  An exact-rational Python gate
+ passed 14 of 14 aggregate checks, including more than 233,000 nested-set
+ marginal comparisons, repeated exhaustive stability suites, a disjunctive
+-negative control, and a perfect-correlation control.  The result is a stylized
+-decision certificate, not a formal proof, measured scientific reliability, or
+-a validated audit policy.  Correlation, imperfect audits, unequal costs,
++negative control, and a perfect-correlation control.  The result is a stylized decision certificate. Its exact declared Lean
++statements are Comparator-certified; measured scientific reliability and a
++validated audit policy remain unestablished.  Correlation, imperfect audits, unequal costs,
+ adaptive observations, and empirical calibration remain open.
+ \end{abstract}
+ 
+@@ -99,8 +99,8 @@
+ and a disjunctive-support control was required to display diminishing returns.
+ 
+ The exit condition is numerical/symbolic gate passage only.  The analytic
+-statements below are proposed Lean targets and remain unproved.  Aristotle was
+-not run.
++statements below are exact Comparator-certified Lean declarations. The
++certificate covers only those declarations; Aristotle was not required.
+ 
+ \section{Model}
+ 
+@@ -254,7 +254,7 @@
+ outcome without worsening the others beyond a declared margin.  Correlation
+ groups, shared tooling, and common data provenance must be modeled explicitly.
+ 
+-\section{Limitations and interpretation}
++\section{Discussion, conclusion, and limitations}
+ 
+ Independence is often false: evidence artifacts share authors, data, libraries,
+ assumptions, and review processes.  A perfect audit is an idealization; tests
+@@ -283,7 +283,7 @@
+ generator-stage code and synthetic instances are included in the immutable
+ Run 120 package.  Public availability has not been authorized.
+ 
+-\textbf{Funding and conflicts.}  No external funding supported this generated
++\textbf{Funding and conflicts of interest.}  No external funding supported this generated
+ exploration.  No conflicts of interest are declared.
+ 
+ \textbf{Accountable authorship and AI use.}  Justin D. Hart is the accountable
+@@ -291,7 +291,7 @@
+ preregistration, code generation, execution, analysis, manuscript drafting,
+ packaging, and QA under human direction.  Historical Claude-authored Viridis
+ materials were read with their attribution preserved and were not rewritten.
+-Aristotle was not used.  The accountable human remains responsible for every
++The private Comparator certified the exact frozen Lean declarations; Aristotle was not required.  The accountable human remains responsible for every
+ claim and for any later decision to review, revise, submit, or publish.
+ 
+ \begin{thebibliography}{9}

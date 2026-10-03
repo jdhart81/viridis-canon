@@ -1,0 +1,11 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -41,7 +41,7 @@
+ \section{Verification, controls, and falsification}
+ The deterministic Python gate uses exact rational arithmetic. It checks 25,000 feasible ledgers for Equations~\ref{eq:payload} and \ref{eq:capacity}, budget monotonicity, and overhead composition; it also checks the boundary witness and 41 zero-overhead identities. A negative control takes $E=3$ and $H=5$, producing residual $-2$ and demonstrating that a nonnegative-residual interpretation requires $H\le E$.
+ 
+-Seven statements and a zero-sorry candidate are frozen for Lean 4.28.0 and the pinned Mathlib commit. Formal status remains \texttt{FROZEN\_CANDIDATE\_UNCERTIFIED} until private Comparator acceptance by nanoda and Lean's default kernel and deterministic certificate issuance. No local Lean, Lake, Elan, or Mathlib execution occurred.
++Seven statements and a zero-sorry candidate are frozen for Lean 4.28.0 and the pinned Mathlib commit. The exact bytes now have a hash-bound certificate after private Comparator acceptance by nanoda and Lean's default kernel. The certificate covers only the declared cost decomposition, payload and capacity bounds, residual nonnegativity and budget monotonicity, additive overhead composition, and named witness. No local Lean, Lake, Elan, or Mathlib execution occurred.
+ 
+ The algebra is falsified by an exact-rational counterexample or rejection of a frozen statement. A physical device dissipating more than a claimed floor, a reversible implementation, or a mismatch between processed units and predictive information would instead invalidate an attempted interpretation of the supplied inputs, not the conditional arithmetic.
+ 

@@ -1,0 +1,70 @@
+{
+  "after_sha256": "b82f912839e9cfd6a6f6d26d59df5a098d955f2f95dd20728ec358c2ed8f654e",
+  "before_sha256": "1737e0186ff933bc7003b47b2eef055f520ebc83983317172b1e45509c8855ab",
+  "classification": "VERIFICATION_STATUS_ONLY",
+  "classifier_version": "VRS-MANUSCRIPT-STRUCTURE-1",
+  "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/classified-doi-diffs/22848693-2026-09-19_SPLR_standalone.diff",
+  "diff_sha256": "1a091bd0154f01b3361ec82fa5038451fad60d9f48e5f1af9331b62c03a5b668",
+  "doi": "10.5281/zenodo.22848693",
+  "edits": [
+    {
+      "after": [
+        "Eight Lean targets and a zero-sorry candidate have exact-hash certification after private Comparator acceptance by nanoda and Lean's default kernel; the accompanying provenance receipts record manuscript review status."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "Eight Lean targets and a zero-sorry candidate are frozen but uncertified."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "The eight exact Lean statements now have exact-hash zero-sorry certification after private Comparator acceptance by nanoda and Lean's default kernel.",
+        "They cover the loss-budget implication, the three single-loss component bounds, their combined single-partner-loss guarantee, nonnegative-addition monotonicity, the concrete witness, and the equal-total concentration counterexample.",
+        "The certificate applies only to the declared formal statements; common units, additivity, substitutability, simultaneous availability, and ecological interpretation remain supplied assumptions."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "Eight exact Lean statements and a deterministic zero-sorry candidate are frozen under Lean 4.28.0 and the pinned Mathlib commit."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "The accompanying provenance receipts record manuscript review status."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "Only exact-byte private Comparator acceptance by nanoda and Lean's default kernel can issue a certificate."
+      ],
+      "operation": "replace"
+    }
+  ],
+  "protected_changes": [],
+  "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-19_SPLR_standalone/paper.tex",
+  "reason": "Only certification-status sentences and section titles differ",
+  "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-169/SEALED_paper.tex",
+  "section_titles": {
+    "after": [
+      "Introduction and prior work",
+      "Preregistered model",
+      "Result and triviality classification",
+      "Concentration control and witnesses",
+      "Verification and formalization",
+      "Discussion, limitations, and falsification",
+      "Reproducibility and declarations",
+      "Data and code availability"
+    ],
+    "before": [
+      "Introduction and prior work",
+      "Preregistered model",
+      "Result and triviality classification",
+      "Concentration control and witnesses",
+      "Verification and formalization",
+      "Discussion, limitations, and falsification",
+      "Reproducibility and declarations",
+      "Data and code availability"
+    ]
+  },
+  "status": "CLASSIFIED"
+}

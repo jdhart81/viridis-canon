@@ -1,0 +1,26 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -12,7 +12,7 @@
+ \maketitle
+ 
+ \begin{abstract}
+-We study a deliberately classical two-agent decision gate under the AI Wavefunction Collapse and Symbiosis intersection. Two calibrated binary agents independently inspect the same balanced latent state, each with symmetric accuracy $p$, and the system acts only when they agree. Its acting probability is $M(p)=p^2+(1-p)^2$ and its conditional correctness is $C(p)=p^2/M(p)$. The exact gain is $C(p)-p=p(1-p)(2p-1)/M(p)$: agreement postselection helps precisely for an independently competent pair, while copying provides no gain. At $p=3/4$, the gate acts on $5/8$ of cases with correctness $9/10$. A deterministic gate passes 16 of 16 checks. This is established aggregation algebra and is classified as a \texttt{METHODS\_NOTE}; ``collapse'' denotes an operational state update, not microscopic quantum dynamics.
++We study a deliberately classical two-agent decision gate under the AI Wavefunction Collapse and Symbiosis intersection. Two calibrated binary agents independently inspect the same balanced latent state, each with symmetric accuracy $p$, and the system acts only when they agree. Its acting probability is $M(p)=p^2+(1-p)^2$ and its conditional correctness is $C(p)=p^2/M(p)$. The exact gain is $C(p)-p=p(1-p)(2p-1)/M(p)$: agreement postselection helps precisely for an independently competent pair, while a copied-agent control provides no gain by model construction; the frozen Lean theorem named for that control certifies only reflexivity $p=p$. At $p=3/4$, the gate acts on $5/8$ of cases with correctness $9/10$. A deterministic gate passes 16 of 16 checks. This is established aggregation algebra and is classified as a \texttt{METHODS\_NOTE}; ``collapse'' denotes an operational state update, not microscopic quantum dynamics.
+ \end{abstract}
+ 
+ \textbf{Keywords:} agreement conditioning; abstention; ensemble diversity; calibrated confidence; quantum cognition boundary
+@@ -47,12 +47,12 @@
+ \section{Worked witness and dependence controls}
+ At $p=3/4$, both-correct mass is $9/16$, both-wrong mass is $1/16$, and disagreement mass is $6/16$. The system acts on $5/8$ of cases and is correct on $9/10$ of those, a conditional gain of $3/20$ over either individual. The unconditional mass of correct acted cases remains $p^2=9/16$; abstention is the price of the higher conditional confidence.
+ 
+-If $B$ copies $A$, agreement is automatic and conditional correctness is only $p$. If errors are perfectly anticorrelated, agreement never occurs. Between these extremes the independence formula is not licensed without a dependence model. A two-agent headcount is therefore not evidence of symbiosis; independently informative error structure is.
++If $B$ copies $A$, agreement is automatic and conditional correctness is only $p$. This copied-agent statement is supported by the declared model and deterministic control, not by a substantive formal copied-agent theorem; the corresponding frozen Lean declaration proves only $p=p$. If errors are perfectly anticorrelated, agreement never occurs. Between these extremes the independence formula is not licensed without a dependence model. A two-agent headcount is therefore not evidence of symbiosis; independently informative error structure is.
+ 
+ \section{Verification}
+ The preregistered standard-library program checks exact rational-grid gain and partition identities, competent and incompetent regimes, chance and perfect boundaries, the $p=3/4$ witness, monotonicity, a heterogeneous competent pair, label-accuracy duality, one million seeded Bernoulli-pair trials across four accuracies, copied and anticorrelated controls, acted-correct mass, and 100,000 random floating-point replays. It returns \texttt{16 PASS / 0 FAIL / 16 CHECKS}. These checks support the declared algebra and simulation harness, not empirical calibration or formal certification.
+ 
+-Seven exact Lean statements and a deterministic zero-sorry candidate are frozen under Lean 4.28.0 and the pinned Mathlib commit. No local Lean, Lake, Elan, or Mathlib process was run. Only an exact-byte private Comparator receipt accepted by nanoda and Lean's default kernel can issue the certificate.
++Seven exact Lean statements and a deterministic zero-sorry candidate are frozen under Lean 4.28.0 and the pinned Mathlib commit. No local Lean, Lake, Elan, or Mathlib process was run. The included exact-byte private Comparator receipt records acceptance by nanoda and Lean's default kernel and binds the issued certificate.
+ 
+ \section{Predictions and falsification tests}
+ For a held-out binary task satisfying the assumptions, the observed act rate should approach $M(p)$ and conditional correctness should approach $C(p)$ within preregistered sampling uncertainty. The interpretation fails if class balance or calibration is wrong, errors are conditionally dependent, agents use asymmetric thresholds, the latent label is unstable, or abstention changes the data-generating process. Such failures invalidate the operational confidence claim without contradicting the algebra.

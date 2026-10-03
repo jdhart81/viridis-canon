@@ -1,0 +1,42 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -25,6 +25,8 @@
+ significance are unassessed. Fifteen preregistered numerical and symbolic checks
+ support the algebra but do not constitute a formal proof or empirical validation.
+ \end{abstract}
++
++\textbf{Keywords:} knowledge stewardship; retention floor; max-min allocation; hazard-proportional refresh; continual learning
+ 
+ \section{Introduction}
+ Knowledge stewardship often asks a different question from average accuracy:
+@@ -118,8 +120,7 @@
+ negative controls; deterministic-periodic and cross-task-interference scope
+ controls; and transient convergence. The captured result is 15 PASS, 0 FAIL.
+ An initial floating-point endpoint defect in the grid harness was preserved and
+-repaired without changing the theorem or data-generating process. Numerical
+-success is not Lean proof, novelty, or evidence about a deployed learner.
++repaired without changing the theorem or data-generating process. Numerical success is distinct from formal certification and is not evidence of novelty or a deployed learner. The exact corrected Lean declarations are separately Comparator-certified.
+ 
+ The original frozen Lean source named six proposed targets, including the
+ stationary balance, upper bound, attainment, uniqueness, and a nonvacuity
+@@ -130,10 +131,7 @@
+ uniqueness target omitted the paper's constraint $r_i\geq0$; with two unit-cost,
+ unit-hazard items, $B=2$, and rates $(-2,1)$, its attainment premise holds while
+ uniqueness fails. Correction r1 adds only those two missing hypotheses and
+-preserves explicit Lean counterexamples to the frozen forms. The resulting
+-zero-sorry candidate remains subject to fresh exact-byte dual-kernel Comparator
+-verification; this correction does not itself claim certification, novelty, or
+-publication readiness.
++preserves explicit Lean counterexamples to the frozen forms. The private Comparator accepted the resulting zero-sorry candidate and exact corrected statement bytes with both required kernels, and the local issuer bound that receipt. The certificate remains limited to those exact declarations and does not establish novelty or publication readiness.
+ 
+ \section{Falsifiable predictions and tests}
+ Within the declared process, four observations would falsify the certificate:
+@@ -182,7 +180,7 @@
+ 
+ \section{Declarations}
+ \textbf{Funding.} No specific external funding supported this work.
+-\textbf{Conflicts.} The author develops Viridis research and product concepts;
++\textbf{Conflicts of interest.} The author develops Viridis research and product concepts;
+ no customer or revenue evidence supports this result.
+ \textbf{Authorship and AI use.} Justin D. Hart is the accountable author.
+ OpenAI Codex assisted with literature search, preregistration, verification,

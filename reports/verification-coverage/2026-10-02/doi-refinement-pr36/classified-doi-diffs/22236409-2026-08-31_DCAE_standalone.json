@@ -1,0 +1,64 @@
+{
+  "after_sha256": "39716b157787fcaac31259f4bd4830ac42724bca10825ffb5baceb3529f74096",
+  "before_sha256": "464018ddd29b7afcf8427d1baae9708998c1a3fc3fa1ac90174c444a0df90887",
+  "classification": "VERIFICATION_STATUS_ONLY",
+  "classifier_version": "VRS-MANUSCRIPT-STRUCTURE-1",
+  "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/classified-doi-diffs/22236409-2026-08-31_DCAE_standalone.diff",
+  "diff_sha256": "03688914bbda073ac7d7b2dd442d8ede1ab9d8d488d799f56dcd5a001afa3386",
+  "doi": "10.5281/zenodo.22236409",
+  "edits": [
+    {
+      "after": [
+        "It is not an empirical validation of D-Score, a justification of weights, or a novelty claim; the frozen Lean statements are formally certified by the included dual-kernel Comparator receipt."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "It is not an empirical validation of D-Score, a justification of weights, a novelty claim, or a formal certificate; frozen Lean statements and a zero-sorry candidate await independent dual-kernel verification."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "The exact candidate bytes were accepted by both nanoda and Lean's default kernel."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "The candidate is untrusted until exact-byte acceptance by both nanoda and Lean's default kernel."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "The package is local and Comparator-certified; no DOI or public release is implied."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "The package is local and pre-certificate; no DOI or public release is implied."
+      ],
+      "operation": "replace"
+    }
+  ],
+  "protected_changes": [],
+  "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_DCAE_standalone/paper.tex",
+  "reason": "Only certification-status sentences and section titles differ",
+  "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-146/SEALED_paper.tex",
+  "section_titles": {
+    "after": [
+      "Introduction and prior work",
+      "Model and assumptions",
+      "Verification tests and failure boundaries",
+      "Discussion, limitations, and falsifiable use",
+      "Reproducibility, data and code availability",
+      "Funding, conflicts of interest, authorship, and AI use"
+    ],
+    "before": [
+      "Introduction and prior work",
+      "Model and assumptions",
+      "Verification tests and failure boundaries",
+      "Discussion, limitations, and falsifiable use",
+      "Reproducibility, data and code availability",
+      "Funding, conflicts of interest, authorship, and AI use"
+    ]
+  },
+  "status": "CLASSIFIED"
+}

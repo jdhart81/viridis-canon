@@ -1,0 +1,64 @@
+{
+  "after_sha256": "9e4f3e3b7b1ff0a9a0142051b535baac4bf05dbd5a8ce288606cb214891ee456",
+  "before_sha256": "8cc877e18876b99b49247da265f7739820872eb2e002b2c4a0bfb148e0311387",
+  "classification": "CONTENT_CHANGED",
+  "classifier_version": "VRS-MANUSCRIPT-STRUCTURE-1",
+  "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/classified-doi-diffs/22736670-2026-09-13_SARN_standalone.diff",
+  "diff_sha256": "5caecb6ef70fd62f0ab4a5def1988590996331e9d20053adc446783a7e3b4b40",
+  "doi": "10.5281/zenodo.22736670",
+  "edits": [
+    {
+      "after": [
+        "The eight frozen Lean declarations now have exact-hash zero-sorry certification after private Comparator acceptance with nanoda and Lean's default kernel.",
+        "They cover retained-capacity nonnegativity and upper bounds, serial loss decomposition, scalar stage-order and total-attribution identities, and two witnesses.",
+        "These identities do not establish that real screens retain the same factors after their order changes.",
+        "Individual reversed-stage losses in the paper are arithmetic examples, not separate named certified claims."
+      ],
+      "allowed_verification_status_only": false,
+      "before": [
+        "Eight Lean declarations freeze the same definitions, bounds, identities, and witnesses.",
+        "The companion candidate contains no proof holes, but formal status remains uncertified until the private Comparator accepts the exact bytes with nanoda and Lean's default kernel and a hash-bound certificate is issued."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "Independent manuscript review remains pending."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [],
+      "operation": "insert"
+    }
+  ],
+  "protected_changes": [],
+  "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SARN_standalone/paper.tex",
+  "reason": "Protected mathematical/numeric/theorem content or other scientific prose differs",
+  "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-162/SEALED_paper.tex",
+  "section_titles": {
+    "after": [
+      "Introduction",
+      "Related work and novelty boundary",
+      "Model and assumptions",
+      "Main result",
+      "Verification and falsification",
+      "Discussion",
+      "Limitations",
+      "Reproducibility",
+      "Data and code availability",
+      "Funding, conflicts, authorship, and AI use"
+    ],
+    "before": [
+      "Introduction",
+      "Related work and novelty boundary",
+      "Model and assumptions",
+      "Main result",
+      "Verification and falsification",
+      "Discussion",
+      "Limitations",
+      "Reproducibility",
+      "Data and code availability",
+      "Funding, conflicts, authorship, and AI use"
+    ]
+  },
+  "status": "CLASSIFIED"
+}

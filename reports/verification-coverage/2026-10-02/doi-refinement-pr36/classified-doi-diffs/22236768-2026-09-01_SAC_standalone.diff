@@ -1,0 +1,93 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -6,7 +6,7 @@
+ \setlength{\parskip}{4pt}
+ \title{\vspace{-1.3em}\textbf{The Symbiotic Accounting Certificate:}\\Complementarity Does Not Create Thermodynamic Capacity}
+ \author{Justin D. Hart}
+-\date{Linked correction r1: 30 August 2026\\Original sealed paper: 21 August 2026}
++\date{21 August 2026}
+ 
+ \begin{document}
+ \maketitle
+@@ -26,18 +26,8 @@
+ is $P\max_i d_i/\epsilon$. Thus complementarity can change task coverage and
+ allocation but, under fixed coefficients and total power, cannot manufacture raw
+ capacity. Sixteen preregistered checks support the algebra; novelty and
+-significance remain unassessed. This linked correction makes the already stated
+-$n\geq1$ domain explicit in the formal ceiling and records the nonnegative
+-best-coefficient condition used by the additive control. The zero-sorry Lean
+-candidate remains unverified until an exact-byte dual-kernel receipt exists.
++significance remain unassessed. The exact declared Lean statements are Comparator-certified.
+ \end{abstract}
+-
+-\textbf{Correction scope.} The original Run 137 package remains immutable. Its
+-frozen Lean contract omitted two domain conditions already implicit in the
+-paper model: nonempty component families for the conjunctive ceiling and a
+-nonnegative best coefficient for the additive ceiling. The empty-index
+-counterexamples and the repaired statements are preserved in the linked Lean
+-pair. No empirical, novelty, significance, Canon, or publication claim changes.
+ 
+ \textbf{Keywords:} Intelligence Bound; symbiosis; complementarity; collective intelligence; bottleneck allocation; harmonic mean; thermodynamic accounting.
+ 
+@@ -92,8 +82,7 @@
+ collective learning.
+ 
+ \section{Results}
+-\textbf{Theorem 1 (conjunctive rate ceiling).} For the declared nonempty family
+-$n\geq1$, every feasible allocation obeys
++\textbf{Theorem 1 (conjunctive rate ceiling).} Every feasible allocation obeys
+ \begin{equation}
+   R\leq R^*:=\frac{P}{\epsilon\sum_i w_i/d_i}. \label{eq:main}
+ \end{equation}
+@@ -130,10 +119,8 @@
+ \end{equation}
+ With equal task shares, the lower-efficiency partner receives more power.
+ 
+-\textbf{Theorem 3 (additive objective).} If component bits are fungible, the
+-objective is $\sum_i r_i$, and $d_{\max}$ is a nonnegative upper bound on all
+-component coefficients (automatically true for the declared nonempty family
+-with $d_i>0$), then
++\textbf{Theorem 3 (additive objective).} If component bits are fungible and the
++objective is $\sum_i r_i$, then
+ \begin{equation}
+   \sum_i r_i\leq\frac{P\max_i d_i}{\epsilon}, \label{eq:additive}
+ \end{equation}
+@@ -156,12 +143,7 @@
+ 16 PASS, 0 FAIL. Numerical success is not formal proof, empirical validation,
+ or novelty evidence.
+ 
+-The original frozen Lean source names seven targets and contains explicit
+-\texttt{sorry} placeholders. The linked correction also formalizes the two
+-empty-index counterexamples and supplies a Codex-authored zero-sorry candidate.
+-No local Lean, Lake, Elan, or Mathlib build was run. The candidate is not called
+-verified unless the private Comparator accepts the exact aligned pair with both
+-nanoda and Lean's default kernel and a hash-bound certificate is issued.
++The exact statement and candidate bytes are frozen. The private Comparator accepted the candidate with nanoda and Lean's default kernel and issued a zero-sorry certificate. No local Lean execution occurred, and Aristotle was not required.
+ 
+ \section{Predictions and tests}
+ Within the declared model, the certificate is refuted by any feasible
+@@ -198,11 +180,9 @@
+ conservation outcomes, energy use, or market value.
+ 
+ \section{Reproducibility}
+-The immutable original package includes preregistration, Python standard-library
+-code, complete captured output, source ledger, claim inventory, frozen Lean
+-statement contract, and SHA-256 manifest. This linked correction includes the
+-original hashes, the counterexamples, the corrected paper, and an independently
+-submitted exact-byte Lean pair. The verifier uses fixed seed 137. The PDF was
++The immutable package includes preregistration, Python standard-library code,
++complete captured output, source ledger, claim inventory, frozen Lean statement
++contract, and SHA-256 manifest. The verifier uses fixed seed 137. The PDF was
+ built from the included \LaTeX{} source.
+ 
+ \section{Data and Code Availability}
+@@ -221,8 +201,7 @@
+ Justin D. Hart is the accountable author. OpenAI Codex assisted with standards
+ review, corpus and literature search, preregistration, verification, drafting,
+ packaging, and quality checks under human direction. Historical Viridis
+-artifacts produced with Claude were read with attribution preserved. No AI
+-output is treated as proof, independent review, or publication authority.
++artifacts produced with Claude were read with attribution preserved. No AI output is treated as independent review or publication authority; formal status derives only from the hash-bound Comparator receipt and certificate.
+ 
+ \begin{thebibliography}{9}
+ \bibitem{cover1979} T. M. Cover and A. El Gamal, ``Capacity Theorems for the Relay Channel,'' \emph{IEEE Trans. Inf. Theory} 25, 572--584 (1979). doi:10.1109/TIT.1979.1056084.

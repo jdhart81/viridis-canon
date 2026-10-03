@@ -1,0 +1,39 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -16,7 +16,9 @@
+ Ecological circuit models rank landscape elements by deterministic flow, while corridor failures introduce a different question: which marginal survival improvement most increases the probability that habitat terminals remain connected? For a finite undirected multigraph with independent Bernoulli edge states, we condition on one edge to show that the derivative of two-terminal reliability with respect to its survival probability equals its pivotal probability. Under an infinitesimal linear stewardship budget, pivotal probability per marginal cost is therefore the exact local priority. A three-edge adversarial example reverses the ranking from equal-conductance electrical current: the highest-current edge has pivotal probability $0.19$, while two lower-current edges each have pivotal probability $0.81$. Series and parallel controls yield opposite mixed-interaction signs, and equal-marginal correlated controls demonstrate that independence is indispensable. Complete enumeration over 54 small graphs, 500 seeded random graphs, and Monte Carlo convergence produced 13 passes and no failures. The derivative is established Birnbaum reliability importance; the HDFM specialization has unassessed novelty and requires empirical calibration and independent significance review.
+ \end{abstract}
+ 
+-\section{Preregistered scope and prior work}
++\textbf{Keywords:} habitat corridors; reliability; pivotal probability; conservation planning; stewardship priority
++
++\section{Introduction and preregistered prior work}
+ 
+ Connectivity models based on electrical circuits treat movement through a resistance landscape as current flow \cite{mcrae2008}. Current ecological work combines edge removal, patch stability, and network robustness to allocate limited conservation inputs \cite{jiang2024}; independent validation can materially change recommended corridors even when resistance surfaces are correlated \cite{poor2024}. Dynamic analyses further warn that static priorities can miss long-horizon climate and land-use exposure \cite{xu2026}. Budgeted generalized-flow models and robust green-bridge design address related finite optimization and single-failure protection questions \cite{hamonic2023,ellmies2026}.
+ 
+@@ -86,7 +88,7 @@
+ 
+ The standard-library Python gate enumerated every edge state. Forced-edge differences and direct pivotal-state sums agreed on all 54 connected simple terminal graphs on two through four vertices, with worst absolute discrepancy $2.22\times10^{-16}$. They also agreed on 500 seeded connected random graphs with three through six vertices and at most ten edges, with worst error $1.61\times10^{-15}$. Centered finite differences, own-probability invariance, series/parallel signs, 1,000 random linear-budget instances, and the ranking reversal passed.
+ 
+-For an eight-edge test graph, pivotality Monte Carlo RMSE across 24 seeded replicates fell from $8.28\times10^{-3}$ at 2,000 samples to $4.92\times10^{-3}$ at 8,000 and $1.91\times10^{-3}$ at 32,000. RMSE times $\sqrt N$ remained within a factor of 1.5. The final tally was 13 PASS and 0 FAIL. This is numerical evidence, not Lean proof.
++For an eight-edge test graph, pivotality Monte Carlo RMSE across 24 seeded replicates fell from $8.28\times10^{-3}$ at 2,000 samples to $4.92\times10^{-3}$ at 8,000 and $1.91\times10^{-3}$ at 32,000. RMSE times $\sqrt N$ remained within a factor of 1.5. The final tally was 13 PASS and 0 FAIL. This numerical evidence is distinct from formal certification; the exact declared Lean statements are separately Comparator-certified.
+ 
+ \paragraph{Dependence-breaking negative control.}
+ Two series edges with identical marginals $q=0.9$ have reliability $0.81$ under independence but $0.9$ when their states are perfectly correlated. Two parallel edges have reliability $0.99$ under independence but $0.9$ under perfect correlation. Marginals alone therefore do not identify reliability, pivotality, or priority under shared hazards.
+@@ -97,13 +99,13 @@
+ 
+ Other limitations are substantial. Survival probabilities and costs are treated as known; only a Boolean two-terminal endpoint is modeled; habitat quality, capacity, dispersal, population dynamics, recovery, equity, and multi-species objectives are omitted; enumeration is exponential; the budget rule is infinitesimal; and no field data were used. A credible next test needs one real corridor graph, independent movement or persistence validation, explicit shared-hazard scenarios, and a finite-budget comparison against existing priorities \cite{poor2024}.
+ 
+-Six Lean targets are proposed but unproved: affine edge dependence, the pivotal derivative, own-probability independence, the local budget bound, series/parallel mixed signs, and the equal-marginal non-identification control. Novelty and scientific significance remain unassessed.
++The private Comparator certified the exact frozen declarations covering affine edge dependence with the pivotal derivative, own-probability independence, the local budget bound, series/parallel mixed signs, and equal-marginal non-identification. Novelty and scientific significance remain unassessed.
+ 
+-\section*{Reproducibility and data/code availability}
++\section*{Reproducibility and data and code availability}
+ 
+ The immutable Run 124 package contains the preregistration, exact Python source, untruncated output, claim inventory, source ledger, manuscript source, build log, PDF, and SHA-256 manifest. The code uses only Python's standard library and fixed seeds. No external dataset was generated or analyzed.
+ 
+-\section*{Funding, conflicts, authorship, and AI disclosure}
++\section*{Funding, conflicts of interest, authorship, and AI use}
+ 
+ No external funding supported this exploration. The accountable author declares no known financial conflict specific to this result. Justin D. Hart is the accountable human author and retains responsibility for interpretation, rights, and any later submission decision. OpenAI Codex searched the Viridis corpus and current literature, drafted the preregistration, wrote and executed verification code, drafted the manuscript, and assembled the package under human direction. Historical Claude-authored Viridis artifacts were read with attribution preserved and were not rewritten. All mathematical and citation claims require human and independent review before external use.
+ 

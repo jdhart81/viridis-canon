@@ -1,0 +1,25 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -15,8 +15,7 @@
+ double counting a supplied shared footprint.  If two nonnegative corridor-area
+ counts are $a$ and $b$, and a validated intersection has count $s\leq a,b$,
+ then the unique combined footprint is $u=a+b-s$.  The saving relative to gross
+-addition is exactly $s$, with $\max(a,b)\leq u\leq a+b$.  Exact bounded tests
+-and six frozen Lean targets accompany the note.  The result is standard
++addition is exactly $s$, with $\max(a,b)\leq u\leq a+b$.  Exact bounded tests and exact-hash dual-kernel certification of six Lean targets accompany the note.  The result is standard
+ inclusion--exclusion and is classified as a methods note.  It does not infer
+ functional connectivity, ecological benefit, species interaction, restoration
+ priority, or field performance.
+@@ -74,11 +73,7 @@
+ footprint $5$, demonstrating why the subset premise cannot be omitted.
+ 
+ Six Lean statements freeze the saving identity, gross upper bound, both lower
+-bounds, containment case, and a positive witness.  The candidate contains no
+-\texttt{sorry} or \texttt{admit}.  This manuscript does not call those targets
+-verified: only an exact-hash private Comparator receipt showing acceptance by
+-nanoda and Lean's default kernel, followed by certificate issuance, can do so.
+-No local Lean execution was performed.
++bounds, containment case, and a positive witness.  The private Comparator accepted the exact frozen statement and candidate bytes with nanoda and Lean's default kernel, and the local issuer bound the receipt in a zero-sorry certificate.  Certification is limited to the six declared arithmetic statements.  No local Lean execution was performed.
+ 
+ \section{Predictions and falsification tests}
+ For a valid pair of raster or polygon masks in a common area unit, a direct

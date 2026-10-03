@@ -1,0 +1,57 @@
+{
+  "after_sha256": "5e1a5ba6b422b39975d2a695cba12973cec58f33e7dfb277475e903ba1d67b95",
+  "before_sha256": "fbd94c8dbf1f4c567c3164df3e9710a82973090bf7fde2036e7933a17f725273",
+  "classification": "VERIFICATION_STATUS_ONLY",
+  "classifier_version": "VRS-MANUSCRIPT-STRUCTURE-1",
+  "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/classified-doi-diffs/22736684-2026-09-13_SDPN_standalone.diff",
+  "diff_sha256": "8ef1927224423c9db05fe24d2162dd58a6d0db2454870f38447ea3ee4623b64c",
+  "doi": "10.5281/zenodo.22736684",
+  "edits": [
+    {
+      "after": [
+        "The eleven frozen Lean declarations now have exact-hash zero-sorry certification after private Comparator acceptance with nanoda and Lean's default kernel.",
+        "They cover the gain identity, break-even equivalence, charge and horizon monotonicity, boundary case, two-direction band and outside-band implications, round-trip identity, and named witness and omission result.",
+        "These are statements about the supplied ledger, not measured project returns or an optimal stopping rule."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "Eleven theorem statements and a zero-sorry candidate are frozen for Lean 4.28.0 and the pinned Mathlib commit.",
+        "Formal status remains \\texttt{FROZEN\\_CANDIDATE\\_UNCERTIFIED} until the private Comparator accepts the exact bytes with nanoda and Lean's default kernel and the deterministic issuer writes an exact-hash certificate."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "Independent review of the reconciled manuscript remains pending."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [],
+      "operation": "insert"
+    }
+  ],
+  "protected_changes": [],
+  "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SDPN_standalone/paper.tex",
+  "reason": "Only certification-status sentences and section titles differ",
+  "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-159/SEALED_paper.tex",
+  "section_titles": {
+    "after": [
+      "Introduction and prior work",
+      "Model and assumptions",
+      "Results",
+      "Verification and falsification",
+      "Discussion and limitations",
+      "Reproducibility and data and code availability",
+      "Declarations"
+    ],
+    "before": [
+      "Introduction and prior work",
+      "Model and assumptions",
+      "Results",
+      "Verification and falsification",
+      "Discussion and limitations",
+      "Reproducibility and data and code availability",
+      "Declarations"
+    ]
+  },
+  "status": "CLASSIFIED"
+}

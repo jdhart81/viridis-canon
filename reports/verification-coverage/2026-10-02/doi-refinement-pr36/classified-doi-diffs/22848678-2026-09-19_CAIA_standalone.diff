@@ -1,0 +1,11 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -28,7 +28,7 @@
+ \paragraph{Triviality probe.} The argument is equality substitution plus finite Boolean case analysis in fewer than five substantive mathematical lines. It is correctly classified as \texttt{METHODS\_NOTE}; novelty and significance remain unassessed.
+ 
+ \section{Verification and falsification}
+-The standard-library verifier enumerates every $(t,a,b)$ assignment, checks the disagreement implication and both soundness-transfer implications, and requires the shared-error witness. It reports 25 pass checks and no failure. A single counterexample would hold the package. The separate zero-sorry Lean candidate remains uncertified until private Comparator accepts its exact bytes with nanoda and Lean's default kernel and the issuer seals a matching certificate.
++The standard-library verifier enumerates every $(t,a,b)$ assignment, checks the disagreement implication and both soundness-transfer implications, and requires the shared-error witness. It reports 25 pass checks and no failure. A single counterexample would hold the package. The separate zero-sorry Lean candidate has passed private Comparator verification with nanoda and Lean's default kernel, and the issuer has sealed a matching certificate for all four declared Boolean statements. The accompanying provenance receipts record manuscript review status; empirical oversight and safety claims are not established.
+ 
+ An empirical oversight claim would need task-specific reference labels, preregistered checker populations, dependence estimates, calibration, distribution-shift tests, and failure-severity analysis. This note provides none of those.
+ 

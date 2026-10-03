@@ -1,0 +1,43 @@
+{
+  "after_sha256": "baffc76c919a3680fde613fe57d29ed237048bcaf50b93821ae32813816fe9d4",
+  "before_sha256": "eef38107f413a69870c6b9a2c0a18f266bda311d78769de8b464aecfeed197dd",
+  "classification": "VERIFICATION_STATUS_ONLY",
+  "classifier_version": "VRS-MANUSCRIPT-STRUCTURE-1",
+  "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/classified-doi-diffs/23004852-2026-09-27_DMEC_standalone.diff",
+  "diff_sha256": "a6fbe8efbd11f334cbe0b13436315fd405ba8dec20b2556b63e71fcf6c1e16f3",
+  "doi": "10.5281/zenodo.23004852",
+  "edits": [
+    {
+      "after": [
+        "The exact bytes now have a hash-bound certificate after private Comparator acceptance by nanoda and Lean's default kernel.",
+        "The certificate covers only the declared nonnegativity, componentwise ceiling, allocation monotonicity, zero-allocation, and equality-witness statements."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "Formal status remains \\texttt{FROZEN\\_CANDIDATE\\_UNCERTIFIED} until the private Comparator accepts the exact bytes with nanoda and Lean's default kernel and the deterministic issuer binds a certificate."
+      ],
+      "operation": "replace"
+    }
+  ],
+  "protected_changes": [],
+  "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_DMEC_standalone/paper.tex",
+  "reason": "Only certification-status sentences and section titles differ",
+  "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-175/SEALED_paper.tex",
+  "section_titles": {
+    "after": [
+      "Introduction and prior work",
+      "Model and preregistered claim",
+      "Verification, negative control, and falsification",
+      "Discussion and limitations",
+      "Reproducibility and declarations"
+    ],
+    "before": [
+      "Introduction and prior work",
+      "Model and preregistered claim",
+      "Verification, negative control, and falsification",
+      "Discussion and limitations",
+      "Reproducibility and declarations"
+    ]
+  },
+  "status": "CLASSIFIED"
+}

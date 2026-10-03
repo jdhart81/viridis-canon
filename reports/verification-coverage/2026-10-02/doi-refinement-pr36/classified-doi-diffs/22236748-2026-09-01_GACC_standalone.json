@@ -1,0 +1,76 @@
+{
+  "after_sha256": "d88fa5f9fc99f30ea2e28d4b05c55e2156a636b213ca7fb7ac5d3652995e132a",
+  "before_sha256": "5e84af5435cb09aa72dea63f01e5828766e2b2b43ec9074607ae4734b8578b3d",
+  "classification": "VERIFICATION_STATUS_ONLY",
+  "classifier_version": "VRS-MANUSCRIPT-STRUCTURE-1",
+  "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/classified-doi-diffs/22236748-2026-09-01_GACC_standalone.diff",
+  "diff_sha256": "3ba3568866ccb14bb081a5dc4164d3862532236449845f13667d3fcf838bea4f",
+  "doi": "10.5281/zenodo.22236748",
+  "edits": [
+    {
+      "after": [
+        "All eight declared Lean statements are Comparator-certified; novelty and significance remain unassessed."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "All eight Lean statements are frozen but unproved; novelty and significance are unassessed."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "The exact Lean toolchain and Mathlib commit are frozen under \\texttt{formalization/}; the exact statement and candidate bytes are bound to a zero-sorry Comparator certificate; no local Lean execution occurred."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "The exact Lean toolchain and Mathlib commit are frozen under \\texttt{formalization/}; the source deliberately contains \\texttt{sorry} placeholders and has not been run locally."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "The private Comparator certified the exact frozen Lean declarations; Aristotle was not required and is not an author."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "Aristotle has not run and is not an author."
+      ],
+      "operation": "replace"
+    }
+  ],
+  "protected_changes": [],
+  "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_GACC_standalone/paper.tex",
+  "reason": "Only certification-status sentences and section titles differ",
+  "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-138/SEALED_paper.tex",
+  "section_titles": {
+    "after": [
+      "Introduction",
+      "Prior work",
+      "Methods and assumptions",
+      "Main results",
+      "Sharpness and cancellation",
+      "Falsifiable predictions and tests",
+      "Computational verification",
+      "Discussion and conclusion",
+      "Limitations and falsifiable scope",
+      "Reproducibility",
+      "Data and code availability",
+      "Declarations"
+    ],
+    "before": [
+      "Introduction",
+      "Prior work",
+      "Methods and assumptions",
+      "Main results",
+      "Sharpness and cancellation",
+      "Falsifiable predictions and tests",
+      "Computational verification",
+      "Discussion and conclusion",
+      "Limitations and falsifiable scope",
+      "Reproducibility",
+      "Data and code availability",
+      "Declarations"
+    ]
+  },
+  "status": "CLASSIFIED"
+}

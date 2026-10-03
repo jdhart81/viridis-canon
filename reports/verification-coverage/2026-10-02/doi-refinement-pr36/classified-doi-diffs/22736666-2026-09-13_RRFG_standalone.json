@@ -1,0 +1,154 @@
+{
+  "after_sha256": "2309ba13610a1c57b012d58e7cbba8a9aecb6dbc8fc42848a0de022095c54059",
+  "before_sha256": "c0d372788f3bb5865e4f9d575ab50fab97ae88b500185afc66ff35476755af89",
+  "classification": "CONTENT_CHANGED",
+  "classifier_version": "VRS-MANUSCRIPT-STRUCTURE-1",
+  "diff_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/classified-doi-diffs/22736666-2026-09-13_RRFG_standalone.diff",
+  "diff_sha256": "a8208d685fd8ccaae0bcae27fb8212aad177bfe0425838deeac74ba9f1ee7de7",
+  "doi": "10.5281/zenodo.22736666",
+  "edits": [
+    {
+      "after": [
+        "Exact-rational tests support the algebra; the seven frozen Lean declarations now have an exact-hash private Comparator certificate from nanoda and the Lean default kernel."
+      ],
+      "allowed_verification_status_only": true,
+      "before": [
+        "Exact-rational tests support the algebra; a frozen Lean statement and candidate await independent Comparator certification."
+      ],
+      "operation": "replace"
+    },
+    {
+      "after": [
+        "The private Comparator accepted the seven frozen Lean declarations with nanoda and Lean's default kernel; the certificate binds the exact successful proof bytes.",
+        "The declarations cover the two equilibrium identities, sufficient positive-numerator conditions, the no-two-decliner result, the sufficient rescue window, the rational witness, and the singular unit-loop boundary.",
+        "The converse sign implications in Proposition 1 are elementary paper derivations, not separately named certified declarations.",
+        "Certification does not establish ecological validity, novelty, or independent paper acceptance."
+      ],
+      "allowed_verification_status_only": false,
+      "before": [
+        "The Lean statement freezes the same definitions and propositions.",
+        "The candidate contains no proof holes or placeholder axioms, but it has not been accepted by either production kernel.",
+        "Formal status remains a frozen, uncertified candidate until an exact-hash Comparator receipt and certificate exist."
+      ],
+      "operation": "replace"
+    }
+  ],
+  "protected_changes": [
+    {
+      "after": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "1",
+        "1,",
+        "3,",
+        "1",
+        "2,",
+        "1",
+        "4",
+        "7",
+        "8",
+        "4",
+        "7,22",
+        "7",
+        "1",
+        "1",
+        "1",
+        "9",
+        "345",
+        "2014",
+        "1253497",
+        "10.1126",
+        "1253497",
+        "8",
+        "2017",
+        "14389",
+        "10.1038",
+        "172",
+        "2023",
+        "113507",
+        "10.1016",
+        "2023.113507"
+      ],
+      "before": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "1",
+        "1,",
+        "3,",
+        "1",
+        "2,",
+        "1",
+        "4",
+        "7",
+        "8",
+        "4",
+        "7,22",
+        "7",
+        "1",
+        "1",
+        "9",
+        "345",
+        "2014",
+        "1253497",
+        "10.1126",
+        "1253497",
+        "8",
+        "2017",
+        "14389",
+        "10.1038",
+        "172",
+        "2023",
+        "113507",
+        "10.1016",
+        "2023.113507"
+      ],
+      "kind": "numbers"
+    }
+  ],
+  "published_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_RRFG_standalone/paper.tex",
+  "reason": "Protected mathematical/numeric/theorem content or other scientific prose differs",
+  "sealed_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-153/attempts/attempt-2/SEALED_paper.tex",
+  "section_titles": {
+    "after": [
+      "Introduction and prior work",
+      "Model and preregistered claims",
+      "Proposition 1 (feasibility signs).",
+      "Proposition 2 (one-sided rescue window).",
+      "Proposition 3 (no two-decliner rescue).",
+      "Verification tests and negative controls",
+      "Discussion and limitations",
+      "Reproducibility and declarations"
+    ],
+    "before": [
+      "Introduction and prior work",
+      "Model and preregistered claims",
+      "Proposition 1 (feasibility signs).",
+      "Proposition 2 (one-sided rescue window).",
+      "Proposition 3 (no two-decliner rescue).",
+      "Verification tests and negative controls",
+      "Discussion and limitations",
+      "Reproducibility and declarations"
+    ]
+  },
+  "status": "CLASSIFIED"
+}

@@ -1,0 +1,250 @@
+{
+  "bundles": [
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.21968301",
+      "manifest_sha256": "515a9b428fc1c87310cfd32eb3ae6959feb79a79957e2cb5e60179970f54c6a6",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968301",
+      "status": "DRAFT_HOLD"
+    },
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.21968331",
+      "manifest_sha256": "f933d1c8931b3145bc2bce521a0ac5bc6b4dba5bf4535781da104c87a356d52e",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968331",
+      "status": "DRAFT_HOLD"
+    },
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.21968337",
+      "manifest_sha256": "7e488eea46989fdce843832c69bbbfc6d03f1dbf5980613cdbb37322b4ef904c",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968337",
+      "status": "DRAFT_HOLD"
+    },
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.21968347",
+      "manifest_sha256": "32f08a3eaa24935c7ca23c2d540aed7012e56453eb59a450a7162f87ad39fb95",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968347",
+      "status": "DRAFT_HOLD"
+    },
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.21968361",
+      "manifest_sha256": "d2e7ba77bd8b5e6f6a58799631a3a5d1ebcb382f8efe85df7c32e73771fdfe94",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968361",
+      "status": "DRAFT_HOLD"
+    },
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.21968383",
+      "manifest_sha256": "ef3db93575736a72feea96f4f42ecb1191eec785cc0fe613407a66f1962ba83d",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968383",
+      "status": "DRAFT_HOLD"
+    },
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.21968480",
+      "manifest_sha256": "edaba529ea565d682e3e1d09a4db04e774e9f3adb44e72e37f2431330703bb13",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968480",
+      "status": "DRAFT_HOLD"
+    },
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.21971041",
+      "manifest_sha256": "b231ed7a425f2105f24c7a2e2799ca7845419902e491a606c195051866512854",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971041",
+      "status": "DRAFT_HOLD"
+    },
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.21971042",
+      "manifest_sha256": "b7b90ff5dbffc02404b87eb8e2bae526ecf46d0f6347b6842a4375957b39a0d9",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971042",
+      "status": "DRAFT_HOLD"
+    },
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.21971043",
+      "manifest_sha256": "da71e018a7ba3bea39a9206fb5a1e63ae825d7110201166f303b68804b4d2c58",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971043",
+      "status": "DRAFT_HOLD"
+    },
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.21971046",
+      "manifest_sha256": "61b3a62d4d6befc20046684aaf1a93111a9463d4676225e4b777aea0f19eaeab",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971046",
+      "status": "DRAFT_HOLD"
+    },
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.21971047",
+      "manifest_sha256": "3501a8ed5309ff4434b0ed92d7ba4a7d7c8d7ed4afe31370a827b2c22833dbee",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971047",
+      "status": "DRAFT_HOLD"
+    },
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.21971052",
+      "manifest_sha256": "00b4608b597ce2cf2eec769df5a2bab206515982d6995a47b7989a4b6331e07e",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971052",
+      "status": "DRAFT_HOLD"
+    },
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.21971057",
+      "manifest_sha256": "5172654eac0c7bf4cc34f438c257cd044cc54a237280c4c66b916673267c0ed2",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971057",
+      "status": "DRAFT_HOLD"
+    },
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.22236427",
+      "manifest_sha256": "9aec981a941cea8ac1009751665aa7c1340dba97131a0cd1b087f497575300c3",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/22236427",
+      "status": "DRAFT_HOLD"
+    },
+    {
+      "certified_files_hash_match": true,
+      "doi": "10.5281/zenodo.22236496",
+      "manifest_sha256": "abf94e40d30c2b0a0afa5b5a135ecd33e130fa7f29d6e5d5ea757f8e3f3f3bf8",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/22236496",
+      "status": "DRAFT_HOLD"
+    }
+  ],
+  "counts": {
+    "CONTENT_CHANGED": 19,
+    "CURABLE_BY_NEW_VERSION": 16,
+    "TRUE_CONJECTURE": 36,
+    "VERIFICATION_STATUS_ONLY": 27
+  },
+  "created_at_utc": "2026-10-02T22:54:57.807194+00:00",
+  "enforcement": false,
+  "independent_review_approvals_issued": 0,
+  "mode": "REPORT_ONLY",
+  "new_binding_installed": false,
+  "new_version_subtypes": {
+    "CANDIDATE_BYTES_DIFFER": 11,
+    "CANDIDATE_MATCHES_STATEMENT_MISSING": 5
+  },
+  "pr36": {
+    "merge_commit": "281ae4e542164d78972fc937fcb7e05ff6951777",
+    "merged_at_utc": "2026-10-02T22:42:17Z",
+    "state": "MERGED"
+  },
+  "production_runtime_and_hooks": [
+    {
+      "current_sha256": "8d0cec379f8fbce959873f0f7524bb36d6ee0440c85fafde40ca57176e804668",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/publish_dated_bundles.py",
+      "recorded_sha256": "8d0cec379f8fbce959873f0f7524bb36d6ee0440c85fafde40ca57176e804668",
+      "unchanged": true
+    },
+    {
+      "current_sha256": "c0cb623e9c58f0db191abe82a8047bf7e6dabfcab869f9923e44c850f1a6741e",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/weekend_canon_lockstep.py",
+      "recorded_sha256": "c0cb623e9c58f0db191abe82a8047bf7e6dabfcab869f9923e44c850f1a6741e",
+      "unchanged": true
+    },
+    {
+      "current_sha256": "e22068a8f9e587fe4e3ab5382c80197237dbc4c2a8f4b7ad0b066d908683042c",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/nightly_checkpoint.py",
+      "recorded_sha256": "e22068a8f9e587fe4e3ab5382c80197237dbc4c2a8f4b7ad0b066d908683042c",
+      "unchanged": true
+    },
+    {
+      "current_sha256": "a7e3d2fcd167865b129529fce7e3599acf045a190cbc2107e87f39b0a3623ec8",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/certificate_inspection.py",
+      "recorded_sha256": "a7e3d2fcd167865b129529fce7e3599acf045a190cbc2107e87f39b0a3623ec8",
+      "unchanged": true
+    },
+    {
+      "current_sha256": "2369c9e9e9e0c2880728d654b9910e7ec6c03ad81bd58a1d98451d26c7458925",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/claim_binding.py",
+      "recorded_sha256": "2369c9e9e9e0c2880728d654b9910e7ec6c03ad81bd58a1d98451d26c7458925",
+      "unchanged": true
+    },
+    {
+      "current_sha256": "297d83ce31a3d8057c9e965eba683a9b7f3abe59fd316fb365cb0fbcb06e21a0",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/corpus_ledger.py",
+      "recorded_sha256": "297d83ce31a3d8057c9e965eba683a9b7f3abe59fd316fb365cb0fbcb06e21a0",
+      "unchanged": true
+    },
+    {
+      "current_sha256": "23173076f35f62ca0696544c3a5c7ee2bcf7bc39a8a649390ec8e616c2c06f29",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_audit.py",
+      "recorded_sha256": "23173076f35f62ca0696544c3a5c7ee2bcf7bc39a8a649390ec8e616c2c06f29",
+      "unchanged": true
+    },
+    {
+      "current_sha256": "86d9d1e65286ff13038dc75ab3150a616d5acc7515b1ee4fcf04644f1db171ca",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_triage.py",
+      "recorded_sha256": "86d9d1e65286ff13038dc75ab3150a616d5acc7515b1ee4fcf04644f1db171ca",
+      "unchanged": true
+    },
+    {
+      "current_sha256": "bdcbe01073d82adf58cbc275f0eb34224bac8cf83cc674b9961119b120183726",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/mirror_parity.py",
+      "recorded_sha256": "bdcbe01073d82adf58cbc275f0eb34224bac8cf83cc674b9961119b120183726",
+      "unchanged": true
+    },
+    {
+      "current_sha256": "3c595fd12515e4ca46b13f652d5642758f87352c37048042d32bf806516d93b0",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/production_hooks.py",
+      "recorded_sha256": "3c595fd12515e4ca46b13f652d5642758f87352c37048042d32bf806516d93b0",
+      "unchanged": true
+    },
+    {
+      "current_sha256": "e731c8d61741d53caca7f627f0d400c8238c15fb57bf2bf9b23fc38d0d2ceca7",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/public_metadata_readback.py",
+      "recorded_sha256": "e731c8d61741d53caca7f627f0d400c8238c15fb57bf2bf9b23fc38d0d2ceca7",
+      "unchanged": true
+    },
+    {
+      "current_sha256": "a1fb8a88129be2aa286a2652e3de426a721de04cc6838e4e416637e05604e610",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/publication_gate.py",
+      "recorded_sha256": "a1fb8a88129be2aa286a2652e3de426a721de04cc6838e4e416637e05604e610",
+      "unchanged": true
+    },
+    {
+      "current_sha256": "c309d2c5087242792dfdc79ed1c7efbf99c2f8d6ab22660bca20fa0552275be3",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/run_flow.py",
+      "recorded_sha256": "c309d2c5087242792dfdc79ed1c7efbf99c2f8d6ab22660bca20fa0552275be3",
+      "unchanged": true
+    },
+    {
+      "current_sha256": "659e2d66a45af24a846a5fafe26564ccf713492d0d06be0fb8172e961e862153",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/static_pregate.py",
+      "recorded_sha256": "659e2d66a45af24a846a5fafe26564ccf713492d0d06be0fb8172e961e862153",
+      "unchanged": true
+    },
+    {
+      "current_sha256": "faed81a12261607af23ec24e81286a208d11f5b0c8c1fd69b65a518d3a304bca",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/track_b.py",
+      "recorded_sha256": "faed81a12261607af23ec24e81286a208d11f5b0c8c1fd69b65a518d3a304bca",
+      "unchanged": true
+    }
+  ],
+  "protected_verifier_issuer": [
+    {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/comparator_cloud_lean_verifier.py",
+      "sha256": "121debeb61ca1c456002413e57a3667e75427a24e849706805bd74568f93fa2a",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/issue_lean_zero_sorry_certificate.py",
+      "sha256": "789cb903c972a9c10731360769ccff56055b3257de9491a75b92c0d549b5c438",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/LEAN_VERIFIER_BACKENDS.json",
+      "sha256": "18bdb07daf662c0da819b8bb33f2243f9425337eadb73fac1f8ffc42ed6a902e",
+      "unchanged": true
+    }
+  ],
+  "tests": {
+    "command": "python3 -m unittest discover -s 00_lab_infrastructure/gates -p 'test*.py'",
+    "passed": 70
+  },
+  "zenodo_write_operations": 0
+}

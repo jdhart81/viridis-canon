@@ -1,0 +1,18 @@
+--- certified sealed paper
++++ deposited published paper
+@@ -84,11 +84,10 @@
+ witnesses.  Negative controls reject weights above one, negative supplied
+ change, and substitution of an accounting magnitude for empirical harm.
+ 
+-Nine Lean declarations freeze the same definitions and claims.  The candidate
+-contains no proof holes, but it remains uncertified until the private Comparator
+-accepts the exact statement/candidate bytes with nanoda and Lean's default
+-kernel and the deterministic issuer writes a hash-bound certificate.  No local
+-Lean, Lake, Elan, or Mathlib execution was used.
++The nine frozen Lean declarations now have exact-hash zero-sorry
++certification after private Comparator acceptance with nanoda and Lean's
++default kernel. They cover load and modeled-slack nonnegativity, their partition and upper bounds, a uniform-weight ceiling, budget propagation, and two witnesses. Relative entropy is an upstream interpretation of supplied numbers; no KL-divergence theorem or policy-safety result is certified.
++No local Lean execution was used. Independent manuscript review remains pending.
+ 
+ \section{Discussion and limitations}
+ The certificate can expose a hidden modeling choice: a small global change

@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VRS-COMPARATOR-TERMINATION-1",
+  "type": "object",
+  "required": [
+    "standard",
+    "requestId",
+    "profile",
+    "capture_status",
+    "records"
+  ],
+  "properties": {
+    "standard": {
+      "const": "VRS-COMPARATOR-TERMINATION-1"
+    },
+    "requestId": {
+      "type": "string"
+    },
+    "profile": {
+      "enum": [
+        "nightly-default",
+        "foundation-run900-approved-v1",
+        "unavailable"
+      ]
+    },
+    "capture_status": {
+      "enum": [
+        "RECORDED",
+        "FAILED",
+        "UNAVAILABLE"
+      ]
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    },
+    "unavailableReason": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "usage": {
+      "type": "object",
+      "required": [
+        "available",
+        "scope",
+        "user_cpu_seconds",
+        "system_cpu_seconds",
+        "max_rss_bytes",
+        "reason"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "available": {
+          "const": false
+        },
+        "scope": {
+          "type": "string"
+        },
+        "user_cpu_seconds": {
+          "type": "null"
+        },
+        "system_cpu_seconds": {
+          "type": "null"
+        },
+        "max_rss_bytes": {
+          "type": "null"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "record": {
+      "type": "object",
+      "required": [
+        "phase",
+        "requestId",
+        "start",
+        "end",
+        "elapsed_ms",
+        "exitCode",
+        "signal",
+        "guard_fired",
+        "reason",
+        "guard_reason",
+        "process_group_target",
+        "profile",
+        "limits",
+        "accounting",
+        "kernel_process_accounting"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "elapsed_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "exitCode": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "signal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "guard_fired": {
+          "type": "boolean"
+        },
+        "reason": {
+          "enum": [
+            "exited",
+            "signaled",
+            "spawn_failed",
+            "phase_wall_limit",
+            "foundation_operation_budget"
+          ]
+        },
+        "guard_reason": {
+          "enum": [
+            null,
+            "phase_wall_limit",
+            "foundation_operation_budget"
+          ]
+        },
+        "process_group_target": {
+          "enum": [
+            "not_sent",
+            "detached_process_group",
+            "child_fallback"
+          ]
+        },
+        "profile": {
+          "enum": [
+            "nightly-default",
+            "foundation-run900-approved-v1"
+          ]
+        },
+        "limits": {
+          "type": "object",
+          "required": [
+            "wall_ms",
+            "configured_phase_wall_ms",
+            "operation_wrapper_seconds",
+            "policy_client_wait_seconds",
+            "operation_reserve_ms",
+            "comparator_cpu_seconds",
+            "memory_max_bytes",
+            "toolchain",
+            "source",
+            "guard_reason"
+          ],
+          "properties": {
+            "wall_ms": {
+              "type": "number",
+              "minimum": 0
+            },
+            "configured_phase_wall_ms": {
+              "enum": [
+                285000,
+                600000
+              ]
+            },
+            "operation_wrapper_seconds": {
+              "const": 1200
+            },
+            "policy_client_wait_seconds": {
+              "enum": [
+                300,
+                1200
+              ]
+            },
+            "operation_reserve_ms": {
+              "enum": [
+                null,
+                15000
+              ]
+            },
+            "comparator_cpu_seconds": {
+              "const": 600
+            },
+            "memory_max_bytes": {
+              "const": 7864320000
+            },
+            "toolchain": {
+              "const": "leanprover/lean4:v4.28.0"
+            },
+            "source": {
+              "const": "server-allowlist"
+            },
+            "guard_reason": {
+              "enum": [
+                "phase_wall_limit",
+                "foundation_operation_budget"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "accounting": {
+          "$ref": "#/$defs/usage"
+        },
+        "kernel_process_accounting": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/usage"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "signal": {
+                "type": "string"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "exitCode": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    }
+  }
+}

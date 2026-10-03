@@ -154,7 +154,10 @@ app.get("/comparator/api/track/:requestId", (req, res) => {
     void sendTerminal(
       requestId.data,
       { type: "verification-failed", description: "Unexpected failure", output: error,
-        resourceProfile: { name: readyJob.job.resourceProfile ?? "nightly", runId: readyJob.job.runId ?? null, acceptanceEvidence: false },
+        resourceProfile: { name: "unavailable", acceptanceEvidence: false },
+        terminationDiagnostics: { standard: "VRS-COMPARATOR-TERMINATION-1", requestId: requestId.data,
+          profile: "unavailable", capture_status: "UNAVAILABLE", records: [],
+          unavailableReason: "Queue failed outside subprocess result path" },
         processDiagnostics: { acceptanceEvidence: false, phaseReached: "unavailable", elapsedSeconds: null,
           comparator: { exitCode: null, signal: null, elapsedSeconds: null, unavailableReason: "Queue failed outside subprocess result path" } } },
       sendMsg,

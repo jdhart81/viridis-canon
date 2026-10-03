@@ -1,0 +1,297 @@
+--- a/server/src/exec.ts
++++ b/server/src/exec.ts
+@@ -10 +10,2 @@
+-import { comparatorWallMilliseconds, beginProcess, markDeadline, closeProcess } from "./resource-profile.mjs";
++import { currentExecutionContext } from "./resource-profile.mjs";
++import { runGuarded } from "./guarded-process.mjs";
+@@ -41,96 +42,11 @@
+-const BUFFER_LIMIT = 1_000_000;
+-// Reserve 15 seconds of the five-minute end-to-end SLO for journal delivery,
+-// SSH return, and receipt validation. Proofs that miss this bound fail closed.
+-const BACKUP_SIGKILL_MS = 285_000;
+-
+-/**
+- * Spawns with limited options and returns a promise with combined output
+- * (stdout/stderr combined). This will be truncated at `BUFFER_LIMIT`,
+- * the `stdout` and `stderr` callback options can be used to get non-truncated
+- * output for individual streams, if specified they are called whenever a
+- * "data" event is received from the process.
+- */
+-function spawnPromise(
+-  command: string,
+-  args?: readonly string[],
+-  options?: {
+-    description?: string;
+-    stdout?: (data: string) => void;
+-    stderr?: (data: string) => void;
+-    cwd?: string;
+-    env?: NodeJS.ProcessEnv;
+-  },
+-) {
+-  const description = options?.description ?? "Process";
+-  const proc = spawn(command, args, {
+-    cwd: options?.cwd,
+-    env: options?.env ?? process.env,
+-    // A verifier script launches sandbox and Lean descendants. A dedicated
+-    // process group lets the wall-time guard terminate the complete tree.
+-    detached: true,
+-  });
+-  let size = 0;
+-  let overflow = false;
+-  const output: string[] = [];
+-  const handleStr = (str: string) => {
+-    if (overflow) return;
+-    if (str.length + size > BUFFER_LIMIT) {
+-      overflow = true;
+-      output.push(str.slice(0, BUFFER_LIMIT - size) + "\n...clipped...");
+-      size = BUFFER_LIMIT;
+-    } else {
+-      output.push(str);
+-      size += str.length;
+-    }
+-  };
+-
+-  proc.stdout.on("data", (data) => {
+-    const str = data instanceof Buffer ? data.toString("utf8") : String(data);
+-    options?.stdout?.(str);
+-    handleStr(str);
+-  });
+-  proc.stderr.on("data", (data) => {
+-    const str = data instanceof Buffer ? data.toString("utf8") : String(data);
+-    options?.stderr?.(str);
+-    handleStr(str);
+-  });
+-
+-  const wallMilliseconds = description === "Comparator" ? comparatorWallMilliseconds(BACKUP_SIGKILL_MS) : BACKUP_SIGKILL_MS;
+-  const diagnostic = beginProcess(description, wallMilliseconds);
+-
+-  // The process will be killed after an appropriate delay
+-  const cancelKill = setTimeout(() => {
+-    markDeadline(diagnostic);
+-    if (proc.pid === undefined) {
+-      proc.kill("SIGKILL");
+-      return;
+-    }
+-    try {
+-      process.kill(-proc.pid, "SIGKILL");
+-    } catch {
+-      proc.kill("SIGKILL");
+-    }
+-  }, wallMilliseconds);
+-  return new Promise((resolve, reject) => {
+-    proc.on("error", (err) => {
+-      reject(new CheckingError(`${description} failed: ${err.message}`, output.join("")));
+-    });
+-    proc.on("close", (code, signal) => {
+-      closeProcess(diagnostic, code, signal);
+-      // Close event always fires last (after exit *or* error) so if we make
+-      // it here we don't need the SIGKILL anymore
+-      clearTimeout(cancelKill);
+-      resolve(undefined);
+-    });
+-  })
+-    .then(() => {
+-      if (proc.exitCode !== 0) {
+-        throw new CheckingError(
+-          `${description} returned a non-zero exit code, indicating failure`,
+-          output.join(""),
+-        );
+-      }
+-    })
+-    .then(() => {
+-      return output.join("");
+-    });
++/** Keep stage guards unchanged except for the exact server-approved comparator profile. */
++function spawnPromise(command: string, args: readonly string[], options: {
++  description?: string; stdout?: (data: string) => void; stderr?: (data: string) => void;
++  cwd?: string; env?: NodeJS.ProcessEnv;
++}): Promise<string> {
++  const description = options.description ?? "Process";
++  const phase = description === "Comparator" ? "compare-kernels" :
++    description === "Challenge theorem collection" ? "collect-theorems" :
++    description.startsWith("Compilation of olean for ") ? "compile-" + description.slice(25) : description;
++  return runGuarded(command, args, { ...options, phase, context: currentExecutionContext() })
++    .catch((err: { message: string; output: string }) => { throw new CheckingError(err.message, err.output); });
+--- a/server/src/worker.ts
++++ b/server/src/worker.ts
+@@ -8 +8 @@
+-import { KEEP_COMPARATOR_TEMP_FILES, USE_MOCK_VERIFICATION } from "./env.ts";
++import { KEEP_COMPARATOR_TEMP_FILES, USE_MOCK_VERIFICATION, PROJ_ROOT } from "./env.ts";
+@@ -11 +11 @@
+-import { withResourceProfile, currentResourceProfile, processDiagnostics } from "./resource-profile.mjs";
++import { withResourceProfile, currentResourceProfile, currentExecutionContext, processDiagnostics, withTerminationDiagnostics } from "./resource-profile.mjs";
+@@ -204,3 +204,5 @@
+-    return { ...result, resourceProfile: currentResourceProfile(), processDiagnostics: processDiagnostics() };
+-  });
+-}
++    return { ...withTerminationDiagnostics<VerifyResult>(result, currentExecutionContext()),
++      resourceProfile: { ...currentResourceProfile() }, processDiagnostics: processDiagnostics(),
++    };
++  }, taskId, PROJ_ROOT);
++}
+--- a/server/src/shared.ts
++++ b/server/src/shared.ts
+@@ -30,0 +31 @@
++    terminationDiagnostics: z.optional(z.record(z.string(), z.unknown())),
+@@ -38,0 +40 @@
++    terminationDiagnostics: z.optional(z.record(z.string(), z.unknown())),
+--- a/server/src/resource-profile.mjs
++++ b/server/src/resource-profile.mjs
+@@ -1 +0,0 @@
+-/** Operational budgets only; never used as mathematical acceptance evidence. */
+@@ -3,6 +2,82 @@
+-const contexts = new AsyncLocalStorage();
+-export function selectResourceProfile(request) {
+-  const name = request.resourceProfile ?? 'nightly';
+-  if (!['nightly', 'foundational'].includes(name)) throw new Error('Unknown resource profile');
+-  if (name === 'foundational' && !/^Run-9\d{2}$/.test(request.runId ?? '')) {
+-    throw new Error('Foundational profile requires reserved Run-900–999');
++import { createHash } from 'node:crypto';
++import { readFileSync } from 'node:fs';
++import { join } from 'node:path';
++
++// Server-owned policy. No request timeout/profile field is consulted.
++export const DEFAULT_PROFILE = Object.freeze({
++  name: 'nightly-default', client_wait_seconds: 300, wrapper_seconds: 1200, comparator_wall_ms: 285000,
++  compile_wall_ms: 285000, collection_wall_ms: 285000,
++  comparator_cpu_seconds: 600, memory_max_bytes: 7864320000,
++  toolchain: 'leanprover/lean4:v4.28.0',
++});
++export const FOUNDATION_PROFILE = Object.freeze({
++  ...DEFAULT_PROFILE, name: 'foundation-run900-approved-v1',
++  client_wait_seconds: 1200, comparator_wall_ms: 600000,
++});
++export const PROJECT_POLICY = Object.freeze({
++  project: 'viridis-lean-4.28', toolchain: DEFAULT_PROFILE.toolchain,
++  project_manifest_sha256: '5124c8ab00b060f01073494d149b13b9a24d4781c1de43ff3d53b84a7a3ecf52',
++  toolchain_file_sha256: 'db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028',
++  mathlib_revision: '8f9d9cff6bd728b17a24e163c9402775d9e6a365',
++  challenge_sha256: 'c9c95d12784f13d9a3912fceef254c9a004e52b8a4ef3e54195f1adcd2eb19f0',
++  solution_sha256: '04169bd8217aaadbef4e3369a0b11dad918b1bda46231832f8e2bdd89e90b965',
++  // Exact ordered wire exports, including the client's repeated witness names.
++  theorem_names: Object.freeze(["thermodynamic_bound_lemma", "finite_memory_dissipation", "learning_dissipation_link", "indep_self_implies_indep_any", "mutualInformation_eq_zero_iff_indep", "entropy_eq_zero_iff_indep_self", "entropy_eq_zero_implies_mutualInformation_eq_zero", "mutualInformation_eq_zero_of_entropy_eq_zero", "eventually_finite_entropy", "ennreal_div_eq_div_mul_div", "decomposition_lemma_pointwise", "intelligence_rate_eq_product_eventually", "limsup_decomposition", "data_bound_lemma_conditional", "intelligence_bound", "thermodynamic_factor_pos_finite", "phase_transition_algebra", "phase_transition_regimes", "prediction1_rho_dependence", "data_wall", "conditional_conservation_core", "conditional_conservation", "intelligence_bound_joint_witness", "phase_joint_witness", "conservation_joint_witness", "intelligence_bound_joint_witness", "phase_joint_witness", "conservation_joint_witness"]),
++});
++const sha256 = value => createHash('sha256').update(value).digest('hex');
++// This digest resolver is for trusted server observations, never API input.
++export function resolveObservedPolicy(project, observation) {
++  const p = PROJECT_POLICY;
++  return project === p.project && observation?.project_manifest_sha256 === p.project_manifest_sha256 &&
++    observation.toolchain_file_sha256 === p.toolchain_file_sha256 && observation.challenge_sha256 === p.challenge_sha256 &&
++    observation.solution_sha256 === p.solution_sha256 &&
++    JSON.stringify(observation.theorem_names) === JSON.stringify(p.theorem_names)
++    ? FOUNDATION_PROFILE : DEFAULT_PROFILE;
++}
++export function selectResourceProfile(request, observedProjectPolicy = null) {
++  if (typeof request?.challenge !== 'string' || typeof request?.solution !== 'string') return DEFAULT_PROFILE;
++  return resolveObservedPolicy(request.project, {
++    project_manifest_sha256: observedProjectPolicy?.project_manifest_sha256,
++    toolchain_file_sha256: observedProjectPolicy?.toolchain_file_sha256,
++    challenge_sha256: sha256(request.challenge), solution_sha256: sha256(request.solution),
++    theorem_names: request.theoremNames,
++  });
++}
++export function observeProjectPolicy(projectRoot, project) {
++  if (!projectRoot || project !== PROJECT_POLICY.project) return null;
++  try {
++    return { project_manifest_sha256: sha256(readFileSync(join(projectRoot, project, 'lake-manifest.json'))),
++      toolchain_file_sha256: sha256(readFileSync(join(projectRoot, project, 'lean-toolchain'))) };
++  } catch { return null; } // Missing/drifted policy gets no elevated allowance.
++}
++export function makeExecutionContext(requestId, request, clock = () => performance.now(), projectRoot) {
++  const startedMono = clock();
++  const profile = selectResourceProfile(request, observeProjectPolicy(projectRoot, request.project));
++  return { requestId, profile, records: [], startedMono, clock };
++}
++export function phaseLimits(context, phase) {
++  const p = context.profile;
++  const configured = phase === 'compare-kernels' ? p.comparator_wall_ms :
++    phase === 'collect-theorems' ? p.collection_wall_ms : p.compile_wall_ms;
++  // Only foundation has the new operation clamp. Reserve 15 s for delivery/cleanup.
++  const remaining = p === FOUNDATION_PROFILE ?
++    Math.max(0, p.wrapper_seconds * 1000 - 15000 - (context.clock() - context.startedMono)) : Infinity;
++  return {
++    wall_ms: Math.min(configured, remaining), configured_phase_wall_ms: configured,
++    operation_wrapper_seconds: p.wrapper_seconds, policy_client_wait_seconds: p.client_wait_seconds,
++    operation_reserve_ms: p === FOUNDATION_PROFILE ? 15000 : null,
++    comparator_cpu_seconds: p.comparator_cpu_seconds, memory_max_bytes: p.memory_max_bytes,
++    toolchain: p.toolchain, source: 'server-allowlist',
++    guard_reason: remaining < configured ? 'foundation_operation_budget' : 'phase_wall_limit',
++  };
++}
++export function successfulTermination(d) {
++  return d.exitCode === 0 && d.signal === null && !d.guard_fired && d.reason === 'exited';
++}
++export function withTerminationDiagnostics(result, context) {
++  const records = [...context.records].sort((a,b) => a.phase.localeCompare(b.phase));
++  const diagnostics = { standard: 'VRS-COMPARATOR-TERMINATION-1', requestId: context.requestId,
++    profile: context.profile.name, capture_status: context.diagnosticCaptureFailed ? 'FAILED' : 'RECORDED', records };
++  if (result.type === 'verification-ok' && (context.diagnosticCaptureFailed || records.some(d => !successfulTermination(d)))) {
++    return { type: 'verification-failed', description: 'Incomplete or terminated verifier phase',
++      output: result.output, terminationDiagnostics: diagnostics };
+@@ -10,12 +85 @@
+-  return Object.freeze({name, runId: request.runId ?? null,
+-    comparatorWallSeconds: name === 'foundational' ? 600 : 285,
+-    acceptanceEvidence: false});
+-}
+-export function withResourceProfile(request, action) {
+-  return contexts.run({profile: selectResourceProfile(request), began: performance.now(), phaseReached: 'not-started', processes: []}, action);
+-}
+-export function currentResourceProfile() {
+-  return contexts.getStore()?.profile ?? selectResourceProfile({});
+-}
+-export function comparatorWallMilliseconds(defaultMilliseconds) {
+-  return currentResourceProfile().name === 'foundational' ? 600_000 : defaultMilliseconds;
++  return { ...result, terminationDiagnostics: diagnostics };
+@@ -24,13 +88,4 @@
+-export function beginProcess(description, wallMilliseconds) {
+-  try {
+-    const context = contexts.getStore();
+-    if (!context) return null;
+-    const phase = description === 'Comparator' ? 'compare-kernels'
+-      : description === 'Challenge theorem collection' ? 'collect-theorems'
+-      : description.startsWith('Compilation of olean for ') ? 'compile-' + description.slice(25) : description;
+-    const record = {phase, exitCode: null, signal: null, elapsedSeconds: null,
+-      wallSeconds: wallMilliseconds / 1000, deadlineFired: false, complete: false};
+-    context.phaseReached = phase;
+-    context.processes.push(record);
+-    return {record, began: performance.now()};
+-  } catch { return null; }
++// Context is created by the worker with the server project root, never API policy fields.
++const contexts = new AsyncLocalStorage();
++export function withResourceProfile(request, action, requestId = 'unavailable', projectRoot) {
++  return contexts.run(makeExecutionContext(requestId, request, undefined, projectRoot), action);
+@@ -38,2 +93,4 @@
+-export function markDeadline(handle) {
+-  try { if (handle) handle.record.deadlineFired = true; } catch { /* diagnostics never change verdict */ }
++export function currentExecutionContext() {
++  const context = contexts.getStore();
++  if (!context) throw new Error('Missing worker execution context');
++  return context;
+@@ -41,7 +98 @@
+-export function closeProcess(handle, code, signal) {
+-  try {
+-    if (!handle) return;
+-    Object.assign(handle.record, {exitCode: code ?? null, signal: signal ?? null,
+-      elapsedSeconds: (performance.now() - handle.began) / 1000, complete: true});
+-  } catch { /* diagnostics never change verdict */ }
+-}
++export function currentResourceProfile() { return contexts.getStore()?.profile ?? DEFAULT_PROFILE; }
+@@ -50,6 +101,4 @@
+-  return {acceptanceEvidence: false, phaseReached: context?.phaseReached ?? 'unavailable',
+-    elapsedSeconds: context ? (performance.now() - context.began) / 1000 : null,
+-    comparator: context?.processes.findLast(p => p.phase === 'compare-kernels') ?? {
+-      phase: 'compare-kernels', exitCode: null, signal: null, elapsedSeconds: null,
+-      complete: false, unavailableReason: 'Comparator not reached or no current-request subprocess'},
+-    processes: (context?.processes ?? []).map(p => ({...p}))};
++  return context ? withTerminationDiagnostics({}, context).terminationDiagnostics : {
++    standard: 'VRS-COMPARATOR-TERMINATION-1', requestId: 'unavailable',
++    profile: DEFAULT_PROFILE.name, capture_status: 'UNAVAILABLE', records: [],
++  };
+--- a/server/src/app.ts
++++ b/server/src/app.ts
+@@ -157 +157,4 @@
+-        resourceProfile: { name: readyJob.job.resourceProfile ?? "nightly", runId: readyJob.job.runId ?? null, acceptanceEvidence: false },
++        resourceProfile: { name: "unavailable", acceptanceEvidence: false },
++        terminationDiagnostics: { standard: "VRS-COMPARATOR-TERMINATION-1", requestId: requestId.data,
++          profile: "unavailable", capture_status: "UNAVAILABLE", records: [],
++          unavailableReason: "Queue failed outside subprocess result path" },

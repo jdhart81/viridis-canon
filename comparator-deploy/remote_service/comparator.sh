@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+
+set -euo pipefail # realpath or dirname failure should abort
+
+PROJECT_DIR="$(realpath "$1")" # Read-only project source
+shift
+WORK_DIR="$(realpath "$1")"    # Task-specific temporary directory
+shift
+NANODA_DIR="$(realpath "$1")"  # Path to nanoda
+shift
+
+GIT_PATH=$(dirname $(realpath $(which git)))
+DIRNAME_PATH=$(dirname $(realpath $(which dirname)))
+WHICH_PATH=$(dirname $(realpath $(which which)))
+LANDRUN=$(realpath $(which landrun))
+
+cd $PROJECT_DIR
+LEAN_ROOT="$(lean --print-prefix)"
+
+# Record the exact paths selected for this job before entering its sandbox.
+# The observer only reads/hashes files; a missing observation stops the job.
+ATTESTATION_HELPER="$(dirname "$(realpath "$0")")/../src/job-attestation.mjs"
+node "$ATTESTATION_HELPER" "compare-kernels" "$PROJECT_DIR" "$WORK_DIR" "$LEAN_ROOT" "$(realpath "$0")" "$NANODA_DIR"
+
+
+SH=$(realpath $(which sh))
+SCRIPT=$(cat <<EOF
+ulimit -t 600      # bounded allowance for full Viridis paper-level dual-kernel checks
+ulimit -u 65536    # 65536 subprocesses spawnable (lake can use a lot here!)
+ulimit -f 524288   # File output size limits
+exec /lean/bin/lake env comparator/.lake/build/bin/comparator config.json
+EOF
+)
+
+
+
+
+
+
+
+
+
+
+
+mkdir -p "$WORK_DIR/Comparator"
+mkdir -p "$WORK_DIR/Comparator-staging"
+while IFS= read -r -d '' BUILD_DIR; do
+     mkdir -p "$WORK_DIR/Comparator/$BUILD_DIR"
+done < <(cd "$PROJECT_DIR/.lake/build" && find . -type d -print0)
+chmod -R 0777 "$WORK_DIR/Comparator" "$WORK_DIR/Comparator-staging"
+
+exec bwrap \
+     --ro-bind /nix /nix \
+     --ro-bind "$LEAN_ROOT" /lean \
+     --ro-bind "$NANODA_DIR" /nanoda \
+     --dir /landrun \
+     --ro-bind "$LANDRUN" /landrun/landrun \
+     \
+     --dev /dev \
+     --tmpfs /tmp \
+     --proc /proc \
+     \
+     --clearenv \
+     --setenv HOME "/tmp" \
+     --setenv LEAN_NUM_THREADS "4" \
+     --setenv PATH "$GIT_PATH:$DIRNAME_PATH:/lean/bin:$WHICH_PATH:/landrun:/nanoda" \
+     --setenv COMPARATOR_LEAN4EXPORT "/project/lean4export/.lake/build/bin/lean4export" \
+     --setenv COMPARATOR_NANODA "/nanoda/nanoda_bin" \
+     \
+     --ro-bind "$PROJECT_DIR" /project \
+     --ro-bind "$WORK_DIR/Challenge/config.json" /project/config.json \
+     --ro-bind "$WORK_DIR/Challenge/Challenge.lean" /project/Challenge.lean \
+     --ro-bind "$WORK_DIR/Solution/Solution.lean" /project/Solution.lean \
+     --overlay-src "$PROJECT_DIR/.lake/build" \
+     --overlay-src "$WORK_DIR/Solution/.lake/build" \
+     --overlay-src "$WORK_DIR/Challenge/.lake/build" \
+     --overlay "$WORK_DIR/Comparator" "$WORK_DIR/Comparator-staging" /project/.lake/build \
+     \
+     --unshare-all \
+     --new-session \
+     --die-with-parent \
+     --hostname sandbox \
+     --uid 65534 \
+     --gid 65534 \
+     --cap-drop ALL \
+     --chdir /project \
+     \
+     "$SH" -c "$SCRIPT"

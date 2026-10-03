@@ -100,6 +100,7 @@ def contains_name(source: str, name: str) -> bool:
 
 
 DIAGNOSTIC_CAP = 1024 * 1024
+_RESOURCE_REQUEST = contextvars.ContextVar("comparator_resource_request", default={})
 _DIAGNOSTICS_DIR = contextvars.ContextVar("comparator_attempt_diagnostics", default=None)
 
 
@@ -109,11 +110,30 @@ def _attempt_diagnostics(function):
     def invoke(*args, **kwargs):
         output = kwargs.get("output_path")
         token = _DIAGNOSTICS_DIR.set(Path(output).parent if output is not None else None)
+        resource_token = _RESOURCE_REQUEST.set(_resource_request(kwargs.get("request_path")))
         try:
             return function(*args, **kwargs)
         finally:
+            _RESOURCE_REQUEST.reset(resource_token)
             _DIAGNOSTICS_DIR.reset(token)
     return invoke
+
+
+
+def _resource_request(request_path):
+    # Routing metadata from the existing frozen request; verification body stays byte-identical.
+    # Invalid/missing requests retain their existing acceptance errors.
+    try:
+        source_run = json.loads(Path(request_path).read_text(encoding="utf-8")).get("source_run")
+    except (OSError, ValueError, TypeError, AttributeError):
+        return {}
+    if not isinstance(source_run, str):
+        return {}
+    match = re.fullmatch(r"Run-(\d{3})(?:[_-].*)?", source_run)
+    if match is None:
+        return {}
+    run_id = "Run-" + match.group(1)
+    return {"runId": run_id, "resourceProfile": "foundational" if 900 <= int(match.group(1)) <= 999 else "nightly"}
 
 
 def _persist_transport_diagnostics(stdout, stderr, *, started, elapsed, timeout,
@@ -206,6 +226,7 @@ def ssh_transport(
         host,
         REMOTE_COMMAND,
     ]
+    payload = {**payload, **_RESOURCE_REQUEST.get()}
     started = dt.datetime.now(dt.timezone.utc).isoformat()
     began = time.monotonic()
     saved = False

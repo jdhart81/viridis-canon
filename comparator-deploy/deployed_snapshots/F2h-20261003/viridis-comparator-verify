@@ -84,18 +84,11 @@ def verify_request(payload, *, open_url=urllib.request.urlopen, clock=time.monot
         return (0 if event.get("type") == "verification-ok" else 2), event
     if remaining() <= 0:
         return error("verification operation deadline exhausted before submit")
-    submitted = {"project": PROJECT, "challenge": payload["challenge"],
-                 "solution": payload["solution"], "theoremNames": payload["theoremNames"]}
-    for name in ("runId", "resourceProfile"):
-        if name in payload:
-            submitted[name] = payload[name]
-    import re
-    if submitted.get("resourceProfile") == "foundational" and not re.fullmatch(
-            r"Run-9\d{2}", submitted.get("runId", "")):
-        return error("foundational profile requires reserved Run-900–999")
     request = urllib.request.Request(
         f"{BASE_URL}/start",
-        data=json.dumps(submitted).encode(),
+        data=json.dumps({"project": PROJECT, "challenge": payload["challenge"],
+                         "solution": payload["solution"],
+                         "theoremNames": payload["theoremNames"]}).encode(),
         headers={"Content-Type": "application/json"}, method="POST")
     try:
         with open_url(request, timeout=min(30, remaining())) as response:

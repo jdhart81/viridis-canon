@@ -2,7 +2,7 @@
   "standard": "VRS-PROTECTED-IMPLEMENTATION-BASELINE-1",
   "canonical_pipeline_root": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2",
   "protected_implementation_sha256": {
-    "comparator_cloud_lean_verifier.py": "f76bcb501b252aa111a4910d54a7ac06259e543fe083ef3f8523bf436ac80ab4",
+    "comparator_cloud_lean_verifier.py": "b745e90ad147a0d5bd6787e20049e9bbb49a694837172851c77958b271718202",
     "issue_lean_zero_sorry_certificate.py": "789cb903c972a9c10731360769ccff56055b3257de9491a75b92c0d549b5c438",
     "engine3_align_challenge.py": "d8d06e582d80bddae73dbb68a23a866ed8cac241f5c9780c3bc779a50fcd4870",
     "LEAN_VERIFIER_BACKENDS.json": "18bdb07daf662c0da819b8bb33f2243f9425337eadb73fac1f8ffc42ed6a902e"
@@ -11,9 +11,14 @@
     "engine3_align_challenge.py": "d8d06e582d80bddae73dbb68a23a866ed8cac241f5c9780c3bc779a50fcd4870",
     "job_observation_policy.py": "63aa5ad5ccd0b3c299b1a262d0a7ebd2ff96ff46294a73c86600ea8db47e73c8"
   },
-  "approval": "Justin FOUNDATION F2f: diagnostics-only client capture; acceptance byte-identical; separately approved delivery wrapper repair.",
+  "approval": "Justin FOUNDATION F2h: foundation-only 600-second comparator wall profile, diagnostic receipt fields, deployed drift reconciliation; acceptance unchanged.",
   "protected_remote_implementation_sha256": {
-    "/usr/local/bin/viridis-comparator-verify": "245e5f053e5d3c5276da528ed2a82e7a07e2b0046135dc2362cfa8816bf3d4cb"
+    "/usr/local/bin/viridis-comparator-verify": "9e7a384df16c4c80170ff117f63e90cae09b7f923dbf3296ed36158bd1126f02",
+    "/opt/viridis/comparator-live/server/src/exec.ts": "c6282bc7ee10a9d8717c22892beb24d239e7129331df47cc7c07379c19cb9941",
+    "/opt/viridis/comparator-live/server/src/worker.ts": "6ed027bef98e254ba181587c156bff9e5ce9ab0d29f66a265f2c6561b3862448",
+    "/opt/viridis/comparator-live/shared/shared.ts": "70922cfc75b6cc24d2d8bb102dcb405aaed9baf57fd14261d86482f99dc3808a",
+    "/opt/viridis/comparator-live/server/src/resource-profile.mjs": "a399885225e15ddb896294ab135d777a8d56727d31fa5fb3976b1f1e02cc88fc",
+    "/opt/viridis/comparator-live/server/src/app.ts": "9a11661de61ab1c2d0941b5c32d2b5e179d6cb17c48440f823dae5b6f8c536ed"
   },
   "prechange_remote_implementation_sha256": {
     "/usr/local/bin/viridis-comparator-verify": "b448e91bd4f5389f19358e21cb7f9c7b23e4be89d2ff79343bdb0d0ba63a09d9"
@@ -26,5 +31,41 @@
     "single_track_enqueue": true,
     "same_request_id_only": true,
     "disk_cache_admitted": false
-  }
+  },
+  "deployed_pre_f2h_sha256": {
+    "/opt/viridis/comparator-live/server/scripts/comparator.sh": "91ad643fec763c518b05f54314e17ac141d0145658a1283792116ad8c8e70900",
+    "/opt/viridis/comparator-live/server/scripts/compile.sh": "2b0409411edea0137822f1853250ee91267c9b08d9ea4c79c6fd257c737f0919",
+    "/opt/viridis/comparator-live/server/scripts/collectThms.sh": "2c77c1dd66e77354b356ab1d91483be84925da8151509aeedb8bee6a657e4531",
+    "/usr/local/bin/viridis-comparator-verify": "245e5f053e5d3c5276da528ed2a82e7a07e2b0046135dc2362cfa8816bf3d4cb",
+    "/opt/viridis/comparator-live/server/src/exec.ts": "1d87221a644df128b73011e45bc28391558d802d7ca7645a3919a9adcbfed607",
+    "/opt/viridis/comparator-live/server/src/worker.ts": "2d288baedf40cc718f42417c99c3a1dc3788f36c6fead05a150837bd84e41cdc",
+    "/opt/viridis/comparator-live/server/src/app.ts": "a6ed0b0712154b0ce94f241ee445f6428c94ca8d90769ef05701acb34a857ae2",
+    "/opt/viridis/comparator-live/server/src/env.ts": "c0427b9c20f936950c1c833e4a0f3f10f6e44e24fb00c8ba8ec985f07ed50820",
+    "/opt/viridis/comparator-live/server/src/workqueue.ts": "78b712346718e7e086331555d18d6c8f4c577de20816f6eaa272caca30995633",
+    "/opt/viridis/comparator-live/shared/shared.ts": "93e84d5060d34724ca79a2512a18d97903c3ee26bbe35249ddd811621a6fa055",
+    "/etc/systemd/system/viridis-comparator.service": "2fa644023c3234683a3a504270d835d533373e2626c81463e019d0fc48822a52",
+    "/etc/systemd/system.control/viridis-comparator.service.d/50-CPUQuota.conf": "45124f085822a0c5fa67b2cda71fa60a2cea0623789d43643cd016ef90710293",
+    "/etc/systemd/system.control/viridis-comparator.service.d/50-MemoryMax.conf": "635683a39731e57b27a11fa8b3b565c8fdaae31e33e43c0a306c581734b1c77e"
+  },
+  "deployment_snapshot_manifest": "comparator-deploy/deployed_snapshots/F2h-20261003/SNAPSHOT_MANIFEST.json",
+  "resource_profile_policy": {
+    "nightly_comparator_wall_seconds": 285,
+    "foundation_comparator_wall_seconds": 600,
+    "reserved_run_id_pattern": "^Run-9[0-9]{2}$",
+    "compile_collection_wall_seconds": 285,
+    "cpu_ulimit_seconds": 600,
+    "receipt_profile_is_acceptance_evidence": false
+  },
+  "receipt_diagnostics_policy": {
+    "fields": [
+      "exitCode",
+      "signal",
+      "phaseReached",
+      "elapsedSeconds"
+    ],
+    "acceptance_evidence": false,
+    "pass_and_fail": true,
+    "unavailable_is_null": true
+  },
+  "acceptance_verify_function_sha256": "4ede83be9b0a083c1b5107ceb7ac33a4cc0616fe7bf9cc5069d4bb472390ad43"
 }

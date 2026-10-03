@@ -1,0 +1,19 @@
+--- /Users/justinhart/Desktop/science /comparator-deploy/comparator.sh
++++ /opt/viridis/comparator-live/server/scripts/comparator.sh
+@@ -17,10 +17,15 @@
+ cd $PROJECT_DIR
+ LEAN_ROOT="$(lean --print-prefix)"
+ 
++# Record the exact paths selected for this job before entering its sandbox.
++# The observer only reads/hashes files; a missing observation stops the job.
++ATTESTATION_HELPER="$(dirname "$(realpath "$0")")/../src/job-attestation.mjs"
++node "$ATTESTATION_HELPER" "compare-kernels" "$PROJECT_DIR" "$WORK_DIR" "$LEAN_ROOT" "$(realpath "$0")" "$NANODA_DIR"
++
+ 
+ SH=$(realpath $(which sh))
+ SCRIPT=$(cat <<EOF
+-ulimit -t 60       # 60 seconds
++ulimit -t 600      # bounded allowance for full Viridis paper-level dual-kernel checks
+ ulimit -u 65536    # 65536 subprocesses spawnable (lake can use a lot here!)
+ ulimit -f 524288   # File output size limits
+ exec /lean/bin/lake env comparator/.lake/build/bin/comparator config.json

@@ -1,0 +1,33 @@
+[Unit]
+Description=Viridis dual-kernel Lean Comparator
+After=network.target
+
+[Service]
+Type=simple
+User=viridis-lean
+Group=viridis-lean
+WorkingDirectory=/opt/viridis/comparator-live
+Environment=NODE_ENV=production
+Environment=PORT=3100
+Environment=HOST=127.0.0.1
+Environment=HOME=/var/lib/viridis-lean
+Environment=COMPARATOR_PROJECT_BASE_PATH=/opt/viridis/comparator-projects
+Environment=PATH=/opt/viridis/node-profile/bin:/usr/local/libexec/viridis:/opt/viridis/runtime-profile/bin:/opt/viridis/lean-4.28-nix/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/opt/viridis/node-profile/bin/node /opt/viridis/comparator-live/server/src/start.js
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=30s
+UMask=0077
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/viridis-lean
+MemoryMax=3G
+CPUQuota=180%
+TasksMax=65536
+LimitNPROC=65536
+
+[Install]
+WantedBy=multi-user.target

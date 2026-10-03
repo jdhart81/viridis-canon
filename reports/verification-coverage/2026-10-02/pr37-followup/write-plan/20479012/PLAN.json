@@ -1,0 +1,179 @@
+{
+  "after_deposition_metadata": {
+    "access_right": "open",
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p>Popular and policy reasoning about climate rests on a chain of thermodynamic inferences - entropy increases, feedbacks amplify, thresholds tip, balance sets temperature - that are stated qualitatively and asked to be trusted. This paper isolates the deductive skeleton of that chain and verifies it mechanically. Twelve theorems, condensed from the trade book \"Heat and Disorder: How Thermodynamics Shapes Our Climate's Future\", are formalized in Lean 4 against Mathlib and discharged by the Aristotle (Harmonic) automated proving system with zero unproved steps and an axiom audit limited to {propext, Classical.choice, Quot.sound}.</p>\n<p>&nbsp;</p>\n<p>Seven theorems establish the qualitative spine: entropy monotonicity (the second law), the positive/negative feedback dichotomy, a saddle-node tipping threshold, and uniqueness of the radiative-equilibrium temperature. Five constitute a first-principles layer: a strict Clausius production inequality with monotonicity in the temperature gap, the Planck climate sensitivity derived from Stefan-Boltzmann, and the central result - a thermodynamic speed limit on ecological restoration. Treating biospheric recovery as the controlled production of order at rate dI/dt, the Landauer-form Intelligence Bound dI/dt &lt;= P<em>D/(k_B T ln 2) implies that any target gain Delta-I requires at least time Delta-I </em>&nbsp;k_B T ln 2 / (P*D): restoring a degraded biosphere has a finite maximum speed set by available free power, system temperature, and Landauer's constant.</p>\n<p>&nbsp;</p>\n<p>The paper is explicit about scope: the theorems certify the validity of the reasoning, not the empirical magnitudes, which remain measured rather than derived. Verification: Lean v4.28.0; Mathlib pin 8f9d9cff. Aristotle projects b18b368f (foundation, 7 theorems) and a9312b60 (first-principles layer, 5 theorems); zero sorry. The Lean source (Book_HeatAndDisorder.lean) and Aristotle run summaries are included. Builds on the Viridis Intelligence Bound; concept DOI 10.5281/zenodo.19317982. Co-verification: Aristotle (Harmonic).</p>",
+    "keywords": [
+      "thermodynamics",
+      "intelligence bound",
+      "ecological restoration",
+      "restoration speed limit",
+      "Landauer principle",
+      "formal verification",
+      "Lean 4",
+      "climate sensitivity",
+      "Aristotle Harmonic",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "license": "apache2.0",
+    "publication_date": "2026-05-31",
+    "publication_type": "article",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isSupplementTo",
+        "resource_type": "software",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: A Thermodynamic Speed Limit on Planetary Restoration: Machine-Checked Foundations from the Second Law to the Intelligence Bound",
+    "upload_type": "publication"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "validate exact DOI, metadata, file inventory, edit support for this version",
+      "url": "https://zenodo.org/api/deposit/depositions/20479012"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20479012/actions/edit"
+    },
+    {
+      "method": "PUT",
+      "payload_file": "after_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/20479012"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "precondition": "separate exact metadata approval and unchanged public files",
+      "url": "https://zenodo.org/api/deposit/depositions/20479012/actions/publish"
+    }
+  ],
+  "api_payload": {
+    "metadata": {
+      "access_right": "open",
+      "creators": [
+        {
+          "affiliation": "Viridis LLC",
+          "name": "Hart, Justin D.",
+          "orcid": "0009-0008-3082-2482"
+        }
+      ],
+      "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p>Popular and policy reasoning about climate rests on a chain of thermodynamic inferences - entropy increases, feedbacks amplify, thresholds tip, balance sets temperature - that are stated qualitatively and asked to be trusted. This paper isolates the deductive skeleton of that chain and verifies it mechanically. Twelve theorems, condensed from the trade book \"Heat and Disorder: How Thermodynamics Shapes Our Climate's Future\", are formalized in Lean 4 against Mathlib and discharged by the Aristotle (Harmonic) automated proving system with zero unproved steps and an axiom audit limited to {propext, Classical.choice, Quot.sound}.</p>\n<p>&nbsp;</p>\n<p>Seven theorems establish the qualitative spine: entropy monotonicity (the second law), the positive/negative feedback dichotomy, a saddle-node tipping threshold, and uniqueness of the radiative-equilibrium temperature. Five constitute a first-principles layer: a strict Clausius production inequality with monotonicity in the temperature gap, the Planck climate sensitivity derived from Stefan-Boltzmann, and the central result - a thermodynamic speed limit on ecological restoration. Treating biospheric recovery as the controlled production of order at rate dI/dt, the Landauer-form Intelligence Bound dI/dt &lt;= P<em>D/(k_B T ln 2) implies that any target gain Delta-I requires at least time Delta-I </em>&nbsp;k_B T ln 2 / (P*D): restoring a degraded biosphere has a finite maximum speed set by available free power, system temperature, and Landauer's constant.</p>\n<p>&nbsp;</p>\n<p>The paper is explicit about scope: the theorems certify the validity of the reasoning, not the empirical magnitudes, which remain measured rather than derived. Verification: Lean v4.28.0; Mathlib pin 8f9d9cff. Aristotle projects b18b368f (foundation, 7 theorems) and a9312b60 (first-principles layer, 5 theorems); zero sorry. The Lean source (Book_HeatAndDisorder.lean) and Aristotle run summaries are included. Builds on the Viridis Intelligence Bound; concept DOI 10.5281/zenodo.19317982. Co-verification: Aristotle (Harmonic).</p>",
+      "keywords": [
+        "thermodynamics",
+        "intelligence bound",
+        "ecological restoration",
+        "restoration speed limit",
+        "Landauer principle",
+        "formal verification",
+        "Lean 4",
+        "climate sensitivity",
+        "Aristotle Harmonic",
+        "conjecture",
+        "verification coverage review"
+      ],
+      "license": "apache2.0",
+      "publication_date": "2026-05-31",
+      "publication_type": "article",
+      "related_identifiers": [
+        {
+          "identifier": "10.5281/zenodo.19317982",
+          "relation": "isSupplementTo",
+          "resource_type": "software",
+          "scheme": "doi"
+        }
+      ],
+      "title": "CONJECTURE — not machine-verified: A Thermodynamic Speed Limit on Planetary Restoration: Machine-Checked Foundations from the Second Law to the Intelligence Bound",
+      "upload_type": "publication"
+    }
+  },
+  "before_metadata": {
+    "access_right": "open",
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p>Popular and policy reasoning about climate rests on a chain of thermodynamic inferences - entropy increases, feedbacks amplify, thresholds tip, balance sets temperature - that are stated qualitatively and asked to be trusted. This paper isolates the deductive skeleton of that chain and verifies it mechanically. Twelve theorems, condensed from the trade book \"Heat and Disorder: How Thermodynamics Shapes Our Climate's Future\", are formalized in Lean 4 against Mathlib and discharged by the Aristotle (Harmonic) automated proving system with zero unproved steps and an axiom audit limited to {propext, Classical.choice, Quot.sound}.</p>\n<p>&nbsp;</p>\n<p>Seven theorems establish the qualitative spine: entropy monotonicity (the second law), the positive/negative feedback dichotomy, a saddle-node tipping threshold, and uniqueness of the radiative-equilibrium temperature. Five constitute a first-principles layer: a strict Clausius production inequality with monotonicity in the temperature gap, the Planck climate sensitivity derived from Stefan-Boltzmann, and the central result - a thermodynamic speed limit on ecological restoration. Treating biospheric recovery as the controlled production of order at rate dI/dt, the Landauer-form Intelligence Bound dI/dt &lt;= P<em>D/(k_B T ln 2) implies that any target gain Delta-I requires at least time Delta-I </em>&nbsp;k_B T ln 2 / (P*D): restoring a degraded biosphere has a finite maximum speed set by available free power, system temperature, and Landauer's constant.</p>\n<p>&nbsp;</p>\n<p>The paper is explicit about scope: the theorems certify the validity of the reasoning, not the empirical magnitudes, which remain measured rather than derived. Verification: Lean v4.28.0; Mathlib pin 8f9d9cff. Aristotle projects b18b368f (foundation, 7 theorems) and a9312b60 (first-principles layer, 5 theorems); zero sorry. The Lean source (Book_HeatAndDisorder.lean) and Aristotle run summaries are included. Builds on the Viridis Intelligence Bound; concept DOI 10.5281/zenodo.19317982. Co-verification: Aristotle (Harmonic).</p>",
+    "doi": "10.5281/zenodo.20479012",
+    "keywords": [
+      "thermodynamics",
+      "intelligence bound",
+      "ecological restoration",
+      "restoration speed limit",
+      "Landauer principle",
+      "formal verification",
+      "Lean 4",
+      "climate sensitivity",
+      "Aristotle Harmonic"
+    ],
+    "license": {
+      "id": "apache2.0"
+    },
+    "publication_date": "2026-05-31",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isSupplementTo",
+        "resource_type": "software",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20479011"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "article",
+      "title": "Journal article",
+      "type": "publication"
+    },
+    "title": "A Thermodynamic Speed Limit on Planetary Restoration: Machine-Checked Foundations from the Second Law to the Intelligence Bound"
+  },
+  "before_metadata_sha256": "7c3603fd7fb9b97695f56f90d54b1bdc0bcaa9b07335436f27cb5b595b8d152b",
+  "before_read_at_utc": "2026-10-03T00:16:30.774587+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "chain_decision": "HOLD_EXACT_RECORD_METADATA_REVIEW",
+  "concept_id": "20479011",
+  "doi": "10.5281/zenodo.20479012",
+  "excluded_read_only_or_server_metadata_fields": [
+    "doi",
+    "relations"
+  ],
+  "latest_observed_record_id": "20479012",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "CONJECTURE_METADATA_AMENDMENT",
+  "payload_sha256": "b817ed4e81a2c1f45f992c9779818d5348db3bb8358d2713833fdaf45a83c2d5",
+  "preconditions": [
+    "Justin must approve exact metadata and file hashes before any write",
+    "Authenticated read must confirm deposition ID maps to this exact DOI",
+    "Fresh before-metadata/file inventory must match captured public readback",
+    "Stop on any error, timeout, missing response, mismatch or version conflict; no weaker pass"
+  ],
+  "ready_to_execute": false,
+  "record_id": "20479012",
+  "rollback": "If edit is unpublished: POST /api/deposit/depositions/20479012/actions/discard after separately approved exact draft identification. If metadata republished: separately authorize edit -> PUT rollback_payload.json -> publish. File bytes must stay identical; preserve both readbacks and responses.",
+  "rollback_payload_sha256": "589e4fc506be889b5a59b1bdba01d076bf090c46f3b6f0bdc95536a68494d416",
+  "writes_executed": 0
+}

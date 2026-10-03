@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "contributors": [
+      {
+        "affiliation": null,
+        "name": "Aristotle (Harmonic)",
+        "type": "Other"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p>Three machine-checked Lean 4 theorems on connectivity-weighted conservation budgeting, derived as an application of the Viridis Intelligence Bound (dI/dt &le; P&middot;D/(k_B T ln 2)). <strong>equimarginal_of_optimal</strong> (KKT/equimarginal first-order optimality), <strong>strictConcave_unique_max</strong> (uniqueness of the maximizer under strict concavity), and <strong>linear_regime_corner</strong> (linear-yield regime forces a full-enrollment corner optimum). Verified by the Aristotle (Harmonic) automated proving system: zero <code>sorry</code>; axiom audit limited to {propext, Classical.choice, Quot.sound}; Lean toolchain v4.28.0; Mathlib pin 8f9d9cff. Aristotle project 452756cd-9b51-4bb7-9c43-e6b7365d2457. The proofs certify the validity of the reasoning, not empirical magnitudes. Part of the Viridis canon; concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>.</p>",
+    "keywords": [
+      "Lean 4",
+      "formal verification",
+      "intelligence bound",
+      "conservation finance",
+      "equimarginal allocation",
+      "KKT",
+      "Aristotle Harmonic",
+      "Mathlib",
+      "Viridis",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "language": "eng",
+    "license": "apache2.0",
+    "publication_date": "2026-06-10",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: The Stewardship Allocation candidate (SAT): An Aristotle-Verified Lean 4 Module",
+    "upload_type": "software"
+  }
+}

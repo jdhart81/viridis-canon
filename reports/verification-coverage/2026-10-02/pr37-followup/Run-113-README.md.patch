@@ -1,0 +1,12 @@
+--- README.md
++++ README.md
+@@ -25,7 +25,8 @@
+ ```
+ dI/dt ≤ P·D / (k_B · T_a · ln 2)     for EVERY refrigeration architecture
+ ```
+-with `T_eff ≥ T_a`, equality iff `T_c = T_a`, `ε = k_B T_a ln2`, `φ = 0`.
++with `T_eff ≥ T_a`, equality iff `φ = 0 ∧ ε = k_B T_c ln2 ∧ T_c ≤ T_a ∧ (T_c < T_a → η₂ = 1)`
++— the equality locus is the full interval `T_c ∈ (0, T_a]` at Carnot, not a point.
+ *Refrigeration futility:* at `η₂ = 1` with a Landauer device, `T_eff = T_a` exactly
+ at every operating temperature — 1 K, 77 K, 299 K alike.
+ 

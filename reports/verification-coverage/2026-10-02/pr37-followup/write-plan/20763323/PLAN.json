@@ -1,0 +1,218 @@
+{
+  "after_deposition_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p><strong>Standalone record of the Viridis Canon (Cognition / Intelligence-Bound self-application) &mdash; the core IB canon spine is unchanged (frozen at v9).</strong> Proves the Cognitive Throughput Theorem (CTT): an embodied cognitive system modeled as an open quantum (GKSL/Lindblad) process on a Fisher&ndash;Rao manifold, performing simultaneous Pierra&ndash;Censor&ndash;Elfving Bregman multiprojection onto sensory, model, and motor constraint sets, has a maximum certified information-acquisition rate that obeys an inverse square-root envelope <code>dI_cog/dt|max(N) = K_cog &middot; N^(&minus;1/2)</code>, with throughput constant <code>K_cog = &radic;(2&middot;W_attn&middot;&Phi;_eco/(k_B T ln 2))</code>. The decoupled/coupled dichotomy &mdash; <em>&Phi;_eco = 0 &rArr; K_cog = 0</em> versus <em>&Phi;_eco &gt; 0 &rArr; K_cog &gt; 0</em> &mdash; is the cognitive face of the Intelligence Bound: cognitive throughput is gated by physical/ecological coupling, giving a thermodynamic foundation for the necessity of AI&ndash;ecology co-evolution. The 13th Intelligence-Bound self-application (the <em>Knower</em>).</p><p><strong>Scope.</strong> Lean 4 (Aristotle-verified, zero <code>sorry</code>, axioms &sube; {propext, Classical.choice, Quot.sound}) certifies the structural results &mdash; the inverse-&radic; scaling law, the conserved throughput invariant, strict antitonicity (the attentional iris), and the decoupled/coupled coupling dichotomy &mdash; not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "keywords": [
+      "Intelligence Bound",
+      "cognitive throughput",
+      "GKSL Lindblad dynamics",
+      "Fisher-Rao manifold",
+      "Bregman multiprojection",
+      "inverse square-root law",
+      "active inference",
+      "AI alignment",
+      "symbiotic AI",
+      "Lean 4",
+      "formal verification",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "Viridis Canon, standalone record (Cognition / Intelligence-Bound self-application). Lean 4 proofs (Aristotle project b04c2897-6470-4a34-b9a7-1a15e6b373a7, zero sorry, axioms within {propext, Classical.choice, Quot.sound}) certify: (T1) the throughput envelope R(K,N)=K/sqrt(N) satisfies the inverse-square-root homogeneity R(K, c*N)=R(K,N)/sqrt(c); (T2) the conserved attention-budget invariant R(K,N)*sqrt(N)=K; (T3) strict antitonicity of the envelope in observation count (the attentional iris); (T4) a decoupled agent (Phi_eco=0) has zero throughput constant; (T5) any ecological coupling (Phi_eco&gt;0, positive attention power and temperature) yields a strictly positive throughput constant K_cog=sqrt(2*W_attn*Phi_eco/(k_B*T*ln2)). The Lean proofs certify the validity of the reasoning, not empirical magnitudes; the paper develops a richer constant (with an explicit decoherence rate) than the verified abstraction. Working paper; not peer-reviewed. Does NOT modify the core canon spine (frozen at v9, record 20724138).",
+    "publication_date": "2026-06-19",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: The Cognitive Throughput candidate: An Inverse Square-Root Bound on Cognitive Information Acquisition and the Cognitive Face of the Intelligence Bound",
+    "upload_type": "publication",
+    "version": "CTT-v1"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "validate exact DOI, metadata, file inventory, edit support for this version",
+      "url": "https://zenodo.org/api/deposit/depositions/20763323"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20763323/actions/edit"
+    },
+    {
+      "method": "PUT",
+      "payload_file": "after_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/20763323"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "precondition": "separate exact metadata approval and unchanged public files",
+      "url": "https://zenodo.org/api/deposit/depositions/20763323/actions/publish"
+    }
+  ],
+  "api_payload": {
+    "metadata": {
+      "access_right": "open",
+      "communities": [
+        {
+          "id": "viridis-canon"
+        }
+      ],
+      "creators": [
+        {
+          "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+          "name": "Hart, Justin D.",
+          "orcid": "0009-0008-3082-2482"
+        },
+        {
+          "affiliation": "Automated theorem prover (Lean 4 verification)",
+          "name": "Aristotle (Harmonic)"
+        }
+      ],
+      "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p><strong>Standalone record of the Viridis Canon (Cognition / Intelligence-Bound self-application) &mdash; the core IB canon spine is unchanged (frozen at v9).</strong> Proves the Cognitive Throughput Theorem (CTT): an embodied cognitive system modeled as an open quantum (GKSL/Lindblad) process on a Fisher&ndash;Rao manifold, performing simultaneous Pierra&ndash;Censor&ndash;Elfving Bregman multiprojection onto sensory, model, and motor constraint sets, has a maximum certified information-acquisition rate that obeys an inverse square-root envelope <code>dI_cog/dt|max(N) = K_cog &middot; N^(&minus;1/2)</code>, with throughput constant <code>K_cog = &radic;(2&middot;W_attn&middot;&Phi;_eco/(k_B T ln 2))</code>. The decoupled/coupled dichotomy &mdash; <em>&Phi;_eco = 0 &rArr; K_cog = 0</em> versus <em>&Phi;_eco &gt; 0 &rArr; K_cog &gt; 0</em> &mdash; is the cognitive face of the Intelligence Bound: cognitive throughput is gated by physical/ecological coupling, giving a thermodynamic foundation for the necessity of AI&ndash;ecology co-evolution. The 13th Intelligence-Bound self-application (the <em>Knower</em>).</p><p><strong>Scope.</strong> Lean 4 (Aristotle-verified, zero <code>sorry</code>, axioms &sube; {propext, Classical.choice, Quot.sound}) certifies the structural results &mdash; the inverse-&radic; scaling law, the conserved throughput invariant, strict antitonicity (the attentional iris), and the decoupled/coupled coupling dichotomy &mdash; not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+      "keywords": [
+        "Intelligence Bound",
+        "cognitive throughput",
+        "GKSL Lindblad dynamics",
+        "Fisher-Rao manifold",
+        "Bregman multiprojection",
+        "inverse square-root law",
+        "active inference",
+        "AI alignment",
+        "symbiotic AI",
+        "Lean 4",
+        "formal verification",
+        "conjecture",
+        "verification coverage review"
+      ],
+      "language": "eng",
+      "license": "cc-by-4.0",
+      "notes": "Viridis Canon, standalone record (Cognition / Intelligence-Bound self-application). Lean 4 proofs (Aristotle project b04c2897-6470-4a34-b9a7-1a15e6b373a7, zero sorry, axioms within {propext, Classical.choice, Quot.sound}) certify: (T1) the throughput envelope R(K,N)=K/sqrt(N) satisfies the inverse-square-root homogeneity R(K, c*N)=R(K,N)/sqrt(c); (T2) the conserved attention-budget invariant R(K,N)*sqrt(N)=K; (T3) strict antitonicity of the envelope in observation count (the attentional iris); (T4) a decoupled agent (Phi_eco=0) has zero throughput constant; (T5) any ecological coupling (Phi_eco&gt;0, positive attention power and temperature) yields a strictly positive throughput constant K_cog=sqrt(2*W_attn*Phi_eco/(k_B*T*ln2)). The Lean proofs certify the validity of the reasoning, not empirical magnitudes; the paper develops a richer constant (with an explicit decoherence rate) than the verified abstraction. Working paper; not peer-reviewed. Does NOT modify the core canon spine (frozen at v9, record 20724138).",
+      "publication_date": "2026-06-19",
+      "publication_type": "preprint",
+      "related_identifiers": [
+        {
+          "identifier": "10.5281/zenodo.19317982",
+          "relation": "isDerivedFrom",
+          "scheme": "doi"
+        }
+      ],
+      "title": "CONJECTURE — not machine-verified: The Cognitive Throughput candidate: An Inverse Square-Root Bound on Cognitive Information Acquisition and the Cognitive Face of the Intelligence Bound",
+      "upload_type": "publication",
+      "version": "CTT-v1"
+    }
+  },
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Standalone record of the Viridis Canon (Cognition / Intelligence-Bound self-application) &mdash; the core IB canon spine is unchanged (frozen at v9).</strong> Proves the Cognitive Throughput Theorem (CTT): an embodied cognitive system modeled as an open quantum (GKSL/Lindblad) process on a Fisher&ndash;Rao manifold, performing simultaneous Pierra&ndash;Censor&ndash;Elfving Bregman multiprojection onto sensory, model, and motor constraint sets, has a maximum certified information-acquisition rate that obeys an inverse square-root envelope <code>dI_cog/dt|max(N) = K_cog &middot; N^(&minus;1/2)</code>, with throughput constant <code>K_cog = &radic;(2&middot;W_attn&middot;&Phi;_eco/(k_B T ln 2))</code>. The decoupled/coupled dichotomy &mdash; <em>&Phi;_eco = 0 &rArr; K_cog = 0</em> versus <em>&Phi;_eco &gt; 0 &rArr; K_cog &gt; 0</em> &mdash; is the cognitive face of the Intelligence Bound: cognitive throughput is gated by physical/ecological coupling, giving a thermodynamic foundation for the necessity of AI&ndash;ecology co-evolution. The 13th Intelligence-Bound self-application (the <em>Knower</em>).</p><p><strong>Scope.</strong> Lean 4 (Aristotle-verified, zero <code>sorry</code>, axioms &sube; {propext, Classical.choice, Quot.sound}) certifies the structural results &mdash; the inverse-&radic; scaling law, the conserved throughput invariant, strict antitonicity (the attentional iris), and the decoupled/coupled coupling dichotomy &mdash; not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "doi": "10.5281/zenodo.20763323",
+    "keywords": [
+      "Intelligence Bound",
+      "cognitive throughput",
+      "GKSL Lindblad dynamics",
+      "Fisher-Rao manifold",
+      "Bregman multiprojection",
+      "inverse square-root law",
+      "active inference",
+      "AI alignment",
+      "symbiotic AI",
+      "Lean 4",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Viridis Canon, standalone record (Cognition / Intelligence-Bound self-application). Lean 4 proofs (Aristotle project b04c2897-6470-4a34-b9a7-1a15e6b373a7, zero sorry, axioms within {propext, Classical.choice, Quot.sound}) certify: (T1) the throughput envelope R(K,N)=K/sqrt(N) satisfies the inverse-square-root homogeneity R(K, c*N)=R(K,N)/sqrt(c); (T2) the conserved attention-budget invariant R(K,N)*sqrt(N)=K; (T3) strict antitonicity of the envelope in observation count (the attentional iris); (T4) a decoupled agent (Phi_eco=0) has zero throughput constant; (T5) any ecological coupling (Phi_eco&gt;0, positive attention power and temperature) yields a strictly positive throughput constant K_cog=sqrt(2*W_attn*Phi_eco/(k_B*T*ln2)). The Lean proofs certify the validity of the reasoning, not empirical magnitudes; the paper develops a richer constant (with an explicit decoherence rate) than the verified abstraction. Working paper; not peer-reviewed. Does NOT modify the core canon spine (frozen at v9, record 20724138).",
+    "publication_date": "2026-06-19",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20763322"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Cognitive Throughput Theorem: An Inverse Square-Root Bound on Cognitive Information Acquisition and the Cognitive Face of the Intelligence Bound",
+    "version": "CTT-v1"
+  },
+  "before_metadata_sha256": "4c16d14f510e7c9c3a6888d22e525501c36af9fdfa41c8a163ccd4833cc69e16",
+  "before_read_at_utc": "2026-10-03T00:16:31.286521+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "chain_decision": "HOLD_EXACT_RECORD_METADATA_REVIEW",
+  "concept_id": "20763322",
+  "doi": "10.5281/zenodo.20763323",
+  "excluded_read_only_or_server_metadata_fields": [
+    "doi",
+    "relations"
+  ],
+  "latest_observed_record_id": "20763323",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "CONJECTURE_METADATA_AMENDMENT",
+  "payload_sha256": "84debe14dbeb8271434adc143345ad9ad71084e6d16be0e27665e29f812261a1",
+  "preconditions": [
+    "Justin must approve exact metadata and file hashes before any write",
+    "Authenticated read must confirm deposition ID maps to this exact DOI",
+    "Fresh before-metadata/file inventory must match captured public readback",
+    "Stop on any error, timeout, missing response, mismatch or version conflict; no weaker pass"
+  ],
+  "ready_to_execute": false,
+  "record_id": "20763323",
+  "rollback": "If edit is unpublished: POST /api/deposit/depositions/20763323/actions/discard after separately approved exact draft identification. If metadata republished: separately authorize edit -> PUT rollback_payload.json -> publish. File bytes must stay identical; preserve both readbacks and responses.",
+  "rollback_payload_sha256": "713d43ba749c4c50c1fb6d7a919ae5196c5e9c6b25b997b6a9b360ca9a6e8f18",
+  "writes_executed": 0
+}

@@ -1,0 +1,8 @@
+{
+  "mode": "REPORT_ONLY",
+  "old_ledger_sha256": "6159adab8c2d2e848ce9739d7ec8abe54aca38d8949194daadd43f70ea244a44",
+  "new_ledger_sha256": "90369d091bfb23dc298e50f88e4d228cead18aac66e2a84efdc91b6b45aef291",
+  "before_snapshot": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/pr37-followup/ledger-before/corpus_ledger.before.json",
+  "zenodo_writes": 0,
+  "enforcement": false
+}

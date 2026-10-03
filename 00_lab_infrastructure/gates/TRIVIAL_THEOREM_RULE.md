@@ -1,0 +1,7 @@
+# Trivial certified theorem eligibility
+
+A valid Comparator certificate proves the named statement under its model; it does not make a definition or reflexivity identity useful evidence for a public scientific claim. Recognized reflexivity-only, local-definition-only and simple aliases of such results receive CERTIFIED_TRIVIAL. claim_binding holds these claims and forbids FORMALLY_VERIFIED. Existing certificate bytes and ledger proof statuses are unchanged. Mixed inventory bindings require independent one-claim/one-theorem separation.
+
+This consumer performs syntactic coverage analysis only: no Lean execution, proof search, elaboration, theorem equivalence or new certificate. An unparsed target, missing classification, exception or unrestricted simplifier case is HOLD. NO_SYNTACTIC_TRIVIAL_PATTERN means only that the supported patterns did not match; it is not a proof of nontriviality. All existing certificate, witness, fidelity, disclaimer and publication-binding conditions still apply.
+
+The existing runtime received only claim_binding.py, theorem_coverage.py and mirror_parity.py in report-only mode, with before/after snapshots. Publication-binding consumer wiring and enforcement remain off. Source parity ignores only an extra regular .DS_Store with the Finder format signature and an unchanged inventory hash. Other file differences, both-sided metadata differences and any read error remain MIRROR_DRIFT.

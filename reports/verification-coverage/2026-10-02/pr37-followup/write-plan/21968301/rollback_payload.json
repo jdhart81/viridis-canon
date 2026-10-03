@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled generated exploration of a heavy-tailed anytime-valid change-time mixture with explicit iid/model-mismatch controls and model-limited erasure accounting; not peer reviewed, empirically validated, significant, novel, rights-cleared, ledger-approved, or published.",
+    "keywords": [
+      "continuous monitoring",
+      "quickest change detection",
+      "test martingale",
+      "anytime validity",
+      "likelihood ratio",
+      "Landauer principle"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "The paired Lean proof is audited verified. Significance remains uncleared; no empirical, adoption, commercial, rights, ledger, canon, or publication evidence is inferred.",
+    "publication_date": "2026-08-16",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "title": "The Anytime Change Certificate: False-alarm control, a late-change penalty, and a bounded erasure budget for continuous monitoring",
+    "upload_type": "publication",
+    "version": "0.2.0-proof-reconciled"
+  }
+}

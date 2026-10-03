@@ -1,0 +1,266 @@
+{
+  "after_deposition_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "contributors": [
+      {
+        "affiliation": "Automated theorem prover — Lean 4 verification",
+        "name": "Aristotle (Harmonic)",
+        "type": "Other"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p><strong>Paper supported by machine-verified Lean 4.</strong> Landscape fuel management and habitat-connectivity planning are usually treated as competing claims on the same land. We show the tension between them is not primarily an optimisation trade-off but a <em>topological</em> one, governed by a single integer.</p><p>Represent a conserved corridor network as a compact set <em>C</em> in a landscape <em>&Omega;</em>, and the untreated fuel matrix as <em>&Omega; \\ C</em>. Habitat connectivity is a property of <em>C</em>; fuel discontinuity is a property of its complement. By Alexander duality the number of connected components of <em>&Omega; \\ C</em> is exactly rank <em>H</em><sub>1</sub>(<em>C</em> &cup; &part;&Omega;) &mdash; for a corridor strictly interior to the landscape, <em>&mu;</em>(<em>C</em>) + 1, where <em>&mu;</em> is the circuit rank. Five consequences follow.</p><p><strong>(1) An interior tree cannot cut.</strong> Any corridor that is a spanning tree in the landscape interior &mdash; including the minimum-spanning-tree and space-colonisation dendrites now standard in corridor design &mdash; has <em>&mu;</em> = 0 and therefore leaves the fuel matrix in exactly one connected component, no matter how much area it occupies. Every hectare of such a corridor is, from the standpoint of fuel continuity, spent on nothing. <strong>(2)</strong> Compartment count is exactly <em>&mu;</em> + 1: containment is bought in integer units of circuit rank, not in hectares. <strong>(3)</strong> Achieving <em>n</em> compartments and spanning <em>m</em> terminals cost the same order of corridor length, so a dual-function network is a constant-factor surcharge, not a second land budget. <strong>(4) Disjoint support.</strong> Connectivity criticality and fuel-cut capacity are carried by disjoint edge sets &mdash; removing a bridge provably cannot merge fuel compartments &mdash; so the two objectives never compete for the same edge. <strong>(5) Boundary anchoring.</strong> A tree meeting the landscape boundary in <em>b</em> arcs partitions the landscape into exactly <em>b</em> compartments while its circuit rank stays zero; cycles closed <em>through</em> the boundary or through any existing non-fuel feature cost a fraction of interior cycles.</p><p><strong>Numerical support.</strong> Lattice experiments (140&times;140 cells, 30 m grain, up to 12 landscapes per test) support four of the five; Proposition 3 is asymptotic and a single lattice size cannot test it. For interior tree corridors the largest fuel component equals 1 &minus; <em>&phi;</em> to machine precision in 12 of 12 landscapes. Holding conserved fraction at <em>&phi;</em> &asymp; 0.25 and connectivity at 18/18 terminals, raising <em>&mu;</em> from 0 to 34 cuts the largest fuel component from 0.74 to 0.40 and mean simulated burned area from 0.39 to 0.18 &mdash; a 54% reduction bought with no additional land and no loss of connectivity. Across 316 corridor edges, all 89 bridges had area-controlled cut capacity of exactly zero. Boundary anchoring dominated interior augmentation: six anchors on an otherwise unchanged <em>&mu;</em> = 0 dendrite took the largest fuel component from 0.74 to 0.22 for a conserved-fraction increase of 0.26 to 0.29.</p><p><strong>The practical implication inverts current practice.</strong> Existing joint approaches treat the habitat corridor as an exclusion zone to be routed <em>around</em>; we show the corridor should be routed <em>as</em> the fuel break, and that doing so requires closing cycles in a network that connectivity optimisation alone would leave as a tree &mdash; cheapest first through the landscape boundary and existing non-fuel inclusions, and only then through interior links.</p><p><strong>Verification status.</strong> All twenty-one named results of the combinatorial core are machine-verified in Lean 4 against Mathlib, with zero <code>sorry</code> and a clean per-theorem axiom audit (<code>{propext, Classical.choice, Quot.sound}</code>). The standing hypothesis is exhibited as inhabited, so no result is vacuously true. <strong>Two things are assumed and stated as such:</strong> the topological step (Alexander duality) is carried as an explicit hypothesis and is not proved &mdash; the exhibited witness is the tautological model and establishes non-vacuity only, not that the geometric compartment count satisfies the relation; and Proposition 3 is not formalised. The deposit includes the complete Lean development, the axiom-audit log, the simulation code and seeds, and the raw output of all three Aristotle runs &mdash; including the two that failed &mdash; so the provenance is checkable rather than asserted.</p><p><em>Theorems co-authored with Aristotle (Harmonic). Part of the Viridis Canon; derives from the Intelligence Bound spine (<a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>) and belongs to Series S5 &mdash; Corridors &amp; Spatial (<a href=\"https://doi.org/10.5281/zenodo.20777068\">10.5281/zenodo.20777068</a>). Correspondence: Justin@viridisconservation.com</em></p>",
+    "keywords": [
+      "fuel treatment",
+      "landscape connectivity",
+      "circuit rank",
+      "cyclomatic number",
+      "Alexander duality",
+      "percolation",
+      "corridor design",
+      "dendritic networks",
+      "wildfire",
+      "old growth",
+      "Lean 4",
+      "Mathlib",
+      "formal verification",
+      "Intelligence Bound",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "AUTHORSHIP: Justin D. Hart is the sole author and accountable human creator. Aristotle (Harmonic) performed the Lean 4 machine verification and is credited as a contributor, not an author; Claude assisted with adversarial review and editorial revision. No AI system is an author. (Metadata corrected 2026-07-30: Aristotle was originally deposited in the creators field, which contradicted the manuscript's own attribution statement.) Machine-verified: module DualCorridor, 21 named results, Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound} (full log shipped as lean/axiom_audit.log). Non-vacuity gate PASS: the standing FaceCount hypothesis is exhibited as inhabited by FaceCount.ofCircuitRank, itself axiom-clean. SCOPE, stated explicitly: (i) the topological step — that geometric compartment count equals circuit rank plus one, by Alexander duality — is carried as an EXPLICIT HYPOTHESIS and is NOT proved; the exhibited witness is the tautological model and establishes non-vacuity only. (ii) Proposition 3 (length scaling) is asymptotic analysis and is not formalised. (iii) The numerical results are lattice simulation and are independent of the Lean development. Lean certifies the reasoning, not empirical magnitudes. Provenance: Aristotle runs 1 and 2 FAILED to close the keystone lemma and their raw output is included in the deposit; run 3 (project f07e765b-02f1-4cfc-9f40-6bae222150fe) closed it. One lemma, circuitRank_eq_zero_iff_isAcyclic, was closed by hand from run-3 lemmas rather than by the prover; it is axiom-clean and re-verified in the artifact as shipped. Working paper, not peer-reviewed. Target venue: Landscape Ecology. Correspondence: Justin@viridisconservation.com",
+    "publication_date": "2026-07-29",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20777068",
+        "relation": "isPartOf",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20838923",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: Trees Cannot Cut: Circuit Rank as the Design Variable Reconciling Habitat Connectivity and Fuel Discontinuity in Managed Forest Landscapes",
+    "upload_type": "publication",
+    "version": "1.0.0"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "validate exact DOI, metadata, file inventory, edit support for this version",
+      "url": "https://zenodo.org/api/deposit/depositions/21686447"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21686447/actions/edit"
+    },
+    {
+      "method": "PUT",
+      "payload_file": "after_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/21686447"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "precondition": "separate exact metadata approval and unchanged public files",
+      "url": "https://zenodo.org/api/deposit/depositions/21686447/actions/publish"
+    }
+  ],
+  "api_payload": {
+    "metadata": {
+      "access_right": "open",
+      "communities": [
+        {
+          "id": "viridis-canon"
+        }
+      ],
+      "contributors": [
+        {
+          "affiliation": "Automated theorem prover — Lean 4 verification",
+          "name": "Aristotle (Harmonic)",
+          "type": "Other"
+        }
+      ],
+      "creators": [
+        {
+          "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+          "name": "Hart, Justin D.",
+          "orcid": "0009-0008-3082-2482"
+        }
+      ],
+      "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p><strong>Paper supported by machine-verified Lean 4.</strong> Landscape fuel management and habitat-connectivity planning are usually treated as competing claims on the same land. We show the tension between them is not primarily an optimisation trade-off but a <em>topological</em> one, governed by a single integer.</p><p>Represent a conserved corridor network as a compact set <em>C</em> in a landscape <em>&Omega;</em>, and the untreated fuel matrix as <em>&Omega; \\ C</em>. Habitat connectivity is a property of <em>C</em>; fuel discontinuity is a property of its complement. By Alexander duality the number of connected components of <em>&Omega; \\ C</em> is exactly rank <em>H</em><sub>1</sub>(<em>C</em> &cup; &part;&Omega;) &mdash; for a corridor strictly interior to the landscape, <em>&mu;</em>(<em>C</em>) + 1, where <em>&mu;</em> is the circuit rank. Five consequences follow.</p><p><strong>(1) An interior tree cannot cut.</strong> Any corridor that is a spanning tree in the landscape interior &mdash; including the minimum-spanning-tree and space-colonisation dendrites now standard in corridor design &mdash; has <em>&mu;</em> = 0 and therefore leaves the fuel matrix in exactly one connected component, no matter how much area it occupies. Every hectare of such a corridor is, from the standpoint of fuel continuity, spent on nothing. <strong>(2)</strong> Compartment count is exactly <em>&mu;</em> + 1: containment is bought in integer units of circuit rank, not in hectares. <strong>(3)</strong> Achieving <em>n</em> compartments and spanning <em>m</em> terminals cost the same order of corridor length, so a dual-function network is a constant-factor surcharge, not a second land budget. <strong>(4) Disjoint support.</strong> Connectivity criticality and fuel-cut capacity are carried by disjoint edge sets &mdash; removing a bridge provably cannot merge fuel compartments &mdash; so the two objectives never compete for the same edge. <strong>(5) Boundary anchoring.</strong> A tree meeting the landscape boundary in <em>b</em> arcs partitions the landscape into exactly <em>b</em> compartments while its circuit rank stays zero; cycles closed <em>through</em> the boundary or through any existing non-fuel feature cost a fraction of interior cycles.</p><p><strong>Numerical support.</strong> Lattice experiments (140&times;140 cells, 30 m grain, up to 12 landscapes per test) support four of the five; Proposition 3 is asymptotic and a single lattice size cannot test it. For interior tree corridors the largest fuel component equals 1 &minus; <em>&phi;</em> to machine precision in 12 of 12 landscapes. Holding conserved fraction at <em>&phi;</em> &asymp; 0.25 and connectivity at 18/18 terminals, raising <em>&mu;</em> from 0 to 34 cuts the largest fuel component from 0.74 to 0.40 and mean simulated burned area from 0.39 to 0.18 &mdash; a 54% reduction bought with no additional land and no loss of connectivity. Across 316 corridor edges, all 89 bridges had area-controlled cut capacity of exactly zero. Boundary anchoring dominated interior augmentation: six anchors on an otherwise unchanged <em>&mu;</em> = 0 dendrite took the largest fuel component from 0.74 to 0.22 for a conserved-fraction increase of 0.26 to 0.29.</p><p><strong>The practical implication inverts current practice.</strong> Existing joint approaches treat the habitat corridor as an exclusion zone to be routed <em>around</em>; we show the corridor should be routed <em>as</em> the fuel break, and that doing so requires closing cycles in a network that connectivity optimisation alone would leave as a tree &mdash; cheapest first through the landscape boundary and existing non-fuel inclusions, and only then through interior links.</p><p><strong>Verification status.</strong> All twenty-one named results of the combinatorial core are machine-verified in Lean 4 against Mathlib, with zero <code>sorry</code> and a clean per-theorem axiom audit (<code>{propext, Classical.choice, Quot.sound}</code>). The standing hypothesis is exhibited as inhabited, so no result is vacuously true. <strong>Two things are assumed and stated as such:</strong> the topological step (Alexander duality) is carried as an explicit hypothesis and is not proved &mdash; the exhibited witness is the tautological model and establishes non-vacuity only, not that the geometric compartment count satisfies the relation; and Proposition 3 is not formalised. The deposit includes the complete Lean development, the axiom-audit log, the simulation code and seeds, and the raw output of all three Aristotle runs &mdash; including the two that failed &mdash; so the provenance is checkable rather than asserted.</p><p><em>Theorems co-authored with Aristotle (Harmonic). Part of the Viridis Canon; derives from the Intelligence Bound spine (<a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>) and belongs to Series S5 &mdash; Corridors &amp; Spatial (<a href=\"https://doi.org/10.5281/zenodo.20777068\">10.5281/zenodo.20777068</a>). Correspondence: Justin@viridisconservation.com</em></p>",
+      "keywords": [
+        "fuel treatment",
+        "landscape connectivity",
+        "circuit rank",
+        "cyclomatic number",
+        "Alexander duality",
+        "percolation",
+        "corridor design",
+        "dendritic networks",
+        "wildfire",
+        "old growth",
+        "Lean 4",
+        "Mathlib",
+        "formal verification",
+        "Intelligence Bound",
+        "conjecture",
+        "verification coverage review"
+      ],
+      "language": "eng",
+      "license": "cc-by-4.0",
+      "notes": "AUTHORSHIP: Justin D. Hart is the sole author and accountable human creator. Aristotle (Harmonic) performed the Lean 4 machine verification and is credited as a contributor, not an author; Claude assisted with adversarial review and editorial revision. No AI system is an author. (Metadata corrected 2026-07-30: Aristotle was originally deposited in the creators field, which contradicted the manuscript's own attribution statement.) Machine-verified: module DualCorridor, 21 named results, Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound} (full log shipped as lean/axiom_audit.log). Non-vacuity gate PASS: the standing FaceCount hypothesis is exhibited as inhabited by FaceCount.ofCircuitRank, itself axiom-clean. SCOPE, stated explicitly: (i) the topological step — that geometric compartment count equals circuit rank plus one, by Alexander duality — is carried as an EXPLICIT HYPOTHESIS and is NOT proved; the exhibited witness is the tautological model and establishes non-vacuity only. (ii) Proposition 3 (length scaling) is asymptotic analysis and is not formalised. (iii) The numerical results are lattice simulation and are independent of the Lean development. Lean certifies the reasoning, not empirical magnitudes. Provenance: Aristotle runs 1 and 2 FAILED to close the keystone lemma and their raw output is included in the deposit; run 3 (project f07e765b-02f1-4cfc-9f40-6bae222150fe) closed it. One lemma, circuitRank_eq_zero_iff_isAcyclic, was closed by hand from run-3 lemmas rather than by the prover; it is axiom-clean and re-verified in the artifact as shipped. Working paper, not peer-reviewed. Target venue: Landscape Ecology. Correspondence: Justin@viridisconservation.com",
+      "publication_date": "2026-07-29",
+      "publication_type": "preprint",
+      "related_identifiers": [
+        {
+          "identifier": "10.5281/zenodo.19317982",
+          "relation": "isDerivedFrom",
+          "scheme": "doi"
+        },
+        {
+          "identifier": "10.5281/zenodo.20777068",
+          "relation": "isPartOf",
+          "scheme": "doi"
+        },
+        {
+          "identifier": "10.5281/zenodo.20838923",
+          "relation": "references",
+          "scheme": "doi"
+        }
+      ],
+      "title": "CONJECTURE — not machine-verified: Trees Cannot Cut: Circuit Rank as the Design Variable Reconciling Habitat Connectivity and Fuel Discontinuity in Managed Forest Landscapes",
+      "upload_type": "publication",
+      "version": "1.0.0"
+    }
+  },
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "contributors": [
+      {
+        "affiliation": "Automated theorem prover — Lean 4 verification",
+        "name": "Aristotle (Harmonic)",
+        "type": "Other"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>Paper supported by machine-verified Lean 4.</strong> Landscape fuel management and habitat-connectivity planning are usually treated as competing claims on the same land. We show the tension between them is not primarily an optimisation trade-off but a <em>topological</em> one, governed by a single integer.</p><p>Represent a conserved corridor network as a compact set <em>C</em> in a landscape <em>&Omega;</em>, and the untreated fuel matrix as <em>&Omega; \\ C</em>. Habitat connectivity is a property of <em>C</em>; fuel discontinuity is a property of its complement. By Alexander duality the number of connected components of <em>&Omega; \\ C</em> is exactly rank <em>H</em><sub>1</sub>(<em>C</em> &cup; &part;&Omega;) &mdash; for a corridor strictly interior to the landscape, <em>&mu;</em>(<em>C</em>) + 1, where <em>&mu;</em> is the circuit rank. Five consequences follow.</p><p><strong>(1) An interior tree cannot cut.</strong> Any corridor that is a spanning tree in the landscape interior &mdash; including the minimum-spanning-tree and space-colonisation dendrites now standard in corridor design &mdash; has <em>&mu;</em> = 0 and therefore leaves the fuel matrix in exactly one connected component, no matter how much area it occupies. Every hectare of such a corridor is, from the standpoint of fuel continuity, spent on nothing. <strong>(2)</strong> Compartment count is exactly <em>&mu;</em> + 1: containment is bought in integer units of circuit rank, not in hectares. <strong>(3)</strong> Achieving <em>n</em> compartments and spanning <em>m</em> terminals cost the same order of corridor length, so a dual-function network is a constant-factor surcharge, not a second land budget. <strong>(4) Disjoint support.</strong> Connectivity criticality and fuel-cut capacity are carried by disjoint edge sets &mdash; removing a bridge provably cannot merge fuel compartments &mdash; so the two objectives never compete for the same edge. <strong>(5) Boundary anchoring.</strong> A tree meeting the landscape boundary in <em>b</em> arcs partitions the landscape into exactly <em>b</em> compartments while its circuit rank stays zero; cycles closed <em>through</em> the boundary or through any existing non-fuel feature cost a fraction of interior cycles.</p><p><strong>Numerical support.</strong> Lattice experiments (140&times;140 cells, 30 m grain, up to 12 landscapes per test) support four of the five; Proposition 3 is asymptotic and a single lattice size cannot test it. For interior tree corridors the largest fuel component equals 1 &minus; <em>&phi;</em> to machine precision in 12 of 12 landscapes. Holding conserved fraction at <em>&phi;</em> &asymp; 0.25 and connectivity at 18/18 terminals, raising <em>&mu;</em> from 0 to 34 cuts the largest fuel component from 0.74 to 0.40 and mean simulated burned area from 0.39 to 0.18 &mdash; a 54% reduction bought with no additional land and no loss of connectivity. Across 316 corridor edges, all 89 bridges had area-controlled cut capacity of exactly zero. Boundary anchoring dominated interior augmentation: six anchors on an otherwise unchanged <em>&mu;</em> = 0 dendrite took the largest fuel component from 0.74 to 0.22 for a conserved-fraction increase of 0.26 to 0.29.</p><p><strong>The practical implication inverts current practice.</strong> Existing joint approaches treat the habitat corridor as an exclusion zone to be routed <em>around</em>; we show the corridor should be routed <em>as</em> the fuel break, and that doing so requires closing cycles in a network that connectivity optimisation alone would leave as a tree &mdash; cheapest first through the landscape boundary and existing non-fuel inclusions, and only then through interior links.</p><p><strong>Verification status.</strong> All twenty-one named results of the combinatorial core are machine-verified in Lean 4 against Mathlib, with zero <code>sorry</code> and a clean per-theorem axiom audit (<code>{propext, Classical.choice, Quot.sound}</code>). The standing hypothesis is exhibited as inhabited, so no result is vacuously true. <strong>Two things are assumed and stated as such:</strong> the topological step (Alexander duality) is carried as an explicit hypothesis and is not proved &mdash; the exhibited witness is the tautological model and establishes non-vacuity only, not that the geometric compartment count satisfies the relation; and Proposition 3 is not formalised. The deposit includes the complete Lean development, the axiom-audit log, the simulation code and seeds, and the raw output of all three Aristotle runs &mdash; including the two that failed &mdash; so the provenance is checkable rather than asserted.</p><p><em>Theorems co-authored with Aristotle (Harmonic). Part of the Viridis Canon; derives from the Intelligence Bound spine (<a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>) and belongs to Series S5 &mdash; Corridors &amp; Spatial (<a href=\"https://doi.org/10.5281/zenodo.20777068\">10.5281/zenodo.20777068</a>). Correspondence: Justin@viridisconservation.com</em></p>",
+    "doi": "10.5281/zenodo.21686447",
+    "keywords": [
+      "fuel treatment",
+      "landscape connectivity",
+      "circuit rank",
+      "cyclomatic number",
+      "Alexander duality",
+      "percolation",
+      "corridor design",
+      "dendritic networks",
+      "wildfire",
+      "old growth",
+      "Lean 4",
+      "Mathlib",
+      "formal verification",
+      "Intelligence Bound"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "AUTHORSHIP: Justin D. Hart is the sole author and accountable human creator. Aristotle (Harmonic) performed the Lean 4 machine verification and is credited as a contributor, not an author; Claude assisted with adversarial review and editorial revision. No AI system is an author. (Metadata corrected 2026-07-30: Aristotle was originally deposited in the creators field, which contradicted the manuscript's own attribution statement.) Machine-verified: module DualCorridor, 21 named results, Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound} (full log shipped as lean/axiom_audit.log). Non-vacuity gate PASS: the standing FaceCount hypothesis is exhibited as inhabited by FaceCount.ofCircuitRank, itself axiom-clean. SCOPE, stated explicitly: (i) the topological step — that geometric compartment count equals circuit rank plus one, by Alexander duality — is carried as an EXPLICIT HYPOTHESIS and is NOT proved; the exhibited witness is the tautological model and establishes non-vacuity only. (ii) Proposition 3 (length scaling) is asymptotic analysis and is not formalised. (iii) The numerical results are lattice simulation and are independent of the Lean development. Lean certifies the reasoning, not empirical magnitudes. Provenance: Aristotle runs 1 and 2 FAILED to close the keystone lemma and their raw output is included in the deposit; run 3 (project f07e765b-02f1-4cfc-9f40-6bae222150fe) closed it. One lemma, circuitRank_eq_zero_iff_isAcyclic, was closed by hand from run-3 lemmas rather than by the prover; it is axiom-clean and re-verified in the artifact as shipped. Working paper, not peer-reviewed. Target venue: Landscape Ecology. Correspondence: Justin@viridisconservation.com",
+    "publication_date": "2026-07-29",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20777068",
+        "relation": "isPartOf",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20838923",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21686446"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "Trees Cannot Cut: Circuit Rank as the Design Variable Reconciling Habitat Connectivity and Fuel Discontinuity in Managed Forest Landscapes",
+    "version": "1.0.0"
+  },
+  "before_metadata_sha256": "3d807f67a7fb91fdb32e8536b77ee44d7ba1f4696a8fcb30a096b350cfb48500",
+  "before_read_at_utc": "2026-10-03T00:16:34.295894+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "chain_decision": "HOLD_EXACT_RECORD_METADATA_REVIEW",
+  "concept_id": "21686446",
+  "doi": "10.5281/zenodo.21686447",
+  "excluded_read_only_or_server_metadata_fields": [
+    "doi",
+    "relations"
+  ],
+  "latest_observed_record_id": null,
+  "mode": "DRY_RUN_ONLY",
+  "operation": "CONJECTURE_METADATA_AMENDMENT",
+  "payload_sha256": "b14244477767249d01c13c646e2bca31654d61be87e7bdb77b37d8ca27824635",
+  "preconditions": [
+    "Justin must approve exact metadata and file hashes before any write",
+    "Authenticated read must confirm deposition ID maps to this exact DOI",
+    "Fresh before-metadata/file inventory must match captured public readback",
+    "Stop on any error, timeout, missing response, mismatch or version conflict; no weaker pass"
+  ],
+  "ready_to_execute": false,
+  "record_id": "21686447",
+  "rollback": "If edit is unpublished: POST /api/deposit/depositions/21686447/actions/discard after separately approved exact draft identification. If metadata republished: separately authorize edit -> PUT rollback_payload.json -> publish. File bytes must stay identical; preserve both readbacks and responses.",
+  "rollback_payload_sha256": "466537e619fe4e61102d642cd8a6a6512836fd27491783eca0830a36a6531d91",
+  "writes_executed": 0
+}

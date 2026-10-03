@@ -1,0 +1,239 @@
+{
+  "after_deposition_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p>The Intelligence Bound (IB) master inequality dI/dt &lt;= P*D/(kB T ln 2) governs the rate at which any open thermodynamic system can accumulate Shannon information. Prior Viridis canon established five disjoint IB-saturation conditions, each pinned to a separate physical mechanism: Fisher-extremal observation channels (GIB), rank-1 Lindbladian dynamics (SSCT), Heisenberg-saturating measurement (SMT), maximal Gaian purity (KSCT), and the full mutualistic learner-environment cross-term (MELT). Whether these conditions are independent has been an open question. This paper proves the Thermodynamic Slack Decomposition Theorem (TSDT): the IB slack epsilon := P*D/(kB T ln 2) - dI/dt decomposes uniquely and additively into five non-negative, pairwise Fisher-Rao-orthogonal components -- epsilon = epsilon_geom + epsilon_rank + epsilon_meas + epsilon_decoh + epsilon_mut -- each a thermodynamic functional in closed form. The Five-Saturation Corollary characterises IB-saturating stewardship systems by the simultaneous vanishing of all five components. The paper presents three corollaries (independence, pricing, D-Score normalisation), four testable predictions, and a regulatory and financial productisation stack. TSDT is the foundational decomposition on which the symplectic-conjugation theorem of the companion paper PSIT (Planetary Symbiotic Intelligence, Run 035) is built. Part of the Viridis research canon (concept DOI 10.5281/zenodo.19317982).</p>",
+    "keywords": [
+      "Intelligence Bound",
+      "thermodynamic slack decomposition",
+      "entropy production",
+      "Fisher information",
+      "Landauer bound",
+      "planetary stewardship",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "license": "cc-by-4.0",
+    "publication_date": "2026-05-21",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isPartOf",
+        "resource_type": "publication",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20100595",
+        "relation": "isDerivedFrom",
+        "resource_type": "publication",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20399676",
+        "relation": "cites",
+        "resource_type": "publication",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20412507",
+        "relation": "isCitedBy",
+        "resource_type": "software",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: Thermodynamic Slack Decomposition of the Intelligence Bound: A Five-Component Additive Accounting of Geometric, Computational, Measurement, Decoherence, and Mutualistic Inefficiency",
+    "upload_type": "publication"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "validate exact DOI, metadata, file inventory, edit support for this version",
+      "url": "https://zenodo.org/api/deposit/depositions/20320324"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20320324/actions/edit"
+    },
+    {
+      "method": "PUT",
+      "payload_file": "after_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/20320324"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "precondition": "separate exact metadata approval and unchanged public files",
+      "url": "https://zenodo.org/api/deposit/depositions/20320324/actions/publish"
+    }
+  ],
+  "api_payload": {
+    "metadata": {
+      "access_right": "open",
+      "communities": [
+        {
+          "id": "viridis-canon"
+        }
+      ],
+      "creators": [
+        {
+          "affiliation": "Viridis LLC",
+          "name": "Hart, Justin D.",
+          "orcid": "0009-0008-3082-2482"
+        }
+      ],
+      "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p>The Intelligence Bound (IB) master inequality dI/dt &lt;= P*D/(kB T ln 2) governs the rate at which any open thermodynamic system can accumulate Shannon information. Prior Viridis canon established five disjoint IB-saturation conditions, each pinned to a separate physical mechanism: Fisher-extremal observation channels (GIB), rank-1 Lindbladian dynamics (SSCT), Heisenberg-saturating measurement (SMT), maximal Gaian purity (KSCT), and the full mutualistic learner-environment cross-term (MELT). Whether these conditions are independent has been an open question. This paper proves the Thermodynamic Slack Decomposition Theorem (TSDT): the IB slack epsilon := P*D/(kB T ln 2) - dI/dt decomposes uniquely and additively into five non-negative, pairwise Fisher-Rao-orthogonal components -- epsilon = epsilon_geom + epsilon_rank + epsilon_meas + epsilon_decoh + epsilon_mut -- each a thermodynamic functional in closed form. The Five-Saturation Corollary characterises IB-saturating stewardship systems by the simultaneous vanishing of all five components. The paper presents three corollaries (independence, pricing, D-Score normalisation), four testable predictions, and a regulatory and financial productisation stack. TSDT is the foundational decomposition on which the symplectic-conjugation theorem of the companion paper PSIT (Planetary Symbiotic Intelligence, Run 035) is built. Part of the Viridis research canon (concept DOI 10.5281/zenodo.19317982).</p>",
+      "keywords": [
+        "Intelligence Bound",
+        "thermodynamic slack decomposition",
+        "entropy production",
+        "Fisher information",
+        "Landauer bound",
+        "planetary stewardship",
+        "conjecture",
+        "verification coverage review"
+      ],
+      "license": "cc-by-4.0",
+      "publication_date": "2026-05-21",
+      "publication_type": "preprint",
+      "related_identifiers": [
+        {
+          "identifier": "10.5281/zenodo.19317982",
+          "relation": "isPartOf",
+          "resource_type": "publication",
+          "scheme": "doi"
+        },
+        {
+          "identifier": "10.5281/zenodo.20100595",
+          "relation": "isDerivedFrom",
+          "resource_type": "publication",
+          "scheme": "doi"
+        },
+        {
+          "identifier": "10.5281/zenodo.20399676",
+          "relation": "cites",
+          "resource_type": "publication",
+          "scheme": "doi"
+        },
+        {
+          "identifier": "10.5281/zenodo.20412507",
+          "relation": "isCitedBy",
+          "resource_type": "software",
+          "scheme": "doi"
+        }
+      ],
+      "title": "CONJECTURE — not machine-verified: Thermodynamic Slack Decomposition of the Intelligence Bound: A Five-Component Additive Accounting of Geometric, Computational, Measurement, Decoherence, and Mutualistic Inefficiency",
+      "upload_type": "publication"
+    }
+  },
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p>The Intelligence Bound (IB) master inequality dI/dt &lt;= P*D/(kB T ln 2) governs the rate at which any open thermodynamic system can accumulate Shannon information. Prior Viridis canon established five disjoint IB-saturation conditions, each pinned to a separate physical mechanism: Fisher-extremal observation channels (GIB), rank-1 Lindbladian dynamics (SSCT), Heisenberg-saturating measurement (SMT), maximal Gaian purity (KSCT), and the full mutualistic learner-environment cross-term (MELT). Whether these conditions are independent has been an open question. This paper proves the Thermodynamic Slack Decomposition Theorem (TSDT): the IB slack epsilon := P*D/(kB T ln 2) - dI/dt decomposes uniquely and additively into five non-negative, pairwise Fisher-Rao-orthogonal components -- epsilon = epsilon_geom + epsilon_rank + epsilon_meas + epsilon_decoh + epsilon_mut -- each a thermodynamic functional in closed form. The Five-Saturation Corollary characterises IB-saturating stewardship systems by the simultaneous vanishing of all five components. The paper presents three corollaries (independence, pricing, D-Score normalisation), four testable predictions, and a regulatory and financial productisation stack. TSDT is the foundational decomposition on which the symplectic-conjugation theorem of the companion paper PSIT (Planetary Symbiotic Intelligence, Run 035) is built. Part of the Viridis research canon (concept DOI 10.5281/zenodo.19317982).</p>",
+    "doi": "10.5281/zenodo.20320324",
+    "keywords": [
+      "Intelligence Bound",
+      "thermodynamic slack decomposition",
+      "entropy production",
+      "Fisher information",
+      "Landauer bound",
+      "planetary stewardship"
+    ],
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "publication_date": "2026-05-21",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isPartOf",
+        "resource_type": "publication",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20100595",
+        "relation": "isDerivedFrom",
+        "resource_type": "publication",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20399676",
+        "relation": "cites",
+        "resource_type": "publication",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20412507",
+        "relation": "isCitedBy",
+        "resource_type": "software",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20320323"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "Thermodynamic Slack Decomposition of the Intelligence Bound: A Five-Component Additive Accounting of Geometric, Computational, Measurement, Decoherence, and Mutualistic Inefficiency"
+  },
+  "before_metadata_sha256": "8fc1efe5ec0a1ac3582e83ebe219ae48f9abbe726882bc1a427fbd5eb14f8806",
+  "before_read_at_utc": "2026-10-03T00:16:29.768570+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "chain_decision": "HOLD_EXACT_RECORD_METADATA_REVIEW",
+  "concept_id": "20320323",
+  "doi": "10.5281/zenodo.20320324",
+  "excluded_read_only_or_server_metadata_fields": [
+    "doi",
+    "relations"
+  ],
+  "latest_observed_record_id": "20320324",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "CONJECTURE_METADATA_AMENDMENT",
+  "payload_sha256": "acf22a5f8824ab6feb43463d7833157e4c56dce38f43a16bd0c2b61fb19933a8",
+  "preconditions": [
+    "Justin must approve exact metadata and file hashes before any write",
+    "Authenticated read must confirm deposition ID maps to this exact DOI",
+    "Fresh before-metadata/file inventory must match captured public readback",
+    "Stop on any error, timeout, missing response, mismatch or version conflict; no weaker pass"
+  ],
+  "ready_to_execute": false,
+  "record_id": "20320324",
+  "rollback": "If edit is unpublished: POST /api/deposit/depositions/20320324/actions/discard after separately approved exact draft identification. If metadata republished: separately authorize edit -> PUT rollback_payload.json -> publish. File bytes must stay identical; preserve both readbacks and responses.",
+  "rollback_payload_sha256": "d8a8dae6752d16f2ff54d68498d63c13fae9de1e09197c022c43fcf7c1d14b02",
+  "writes_executed": 0
+}

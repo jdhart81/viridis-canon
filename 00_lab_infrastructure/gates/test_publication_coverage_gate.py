@@ -28,8 +28,8 @@ class PublicationCoverageGateTests(unittest.TestCase):
         self.run = self.root / "science-engine/07_nightly_engine/compound research papers/Run-142"
         self.run.mkdir(parents=True)
         self.candidate = self.root / "VERIFICATION_CANDIDATE.lean"
-        self.candidate.write_text("theorem meaningful (x : Nat) : x ≤ x := le_rfl\n"
-                                  "theorem meaningful_witness : ∃ x : Nat, x ≤ x := ⟨0, le_rfl⟩\n")
+        self.candidate.write_text("theorem meaningful (x : Nat) : x ≤ x + 1 := Nat.le_succ x\n"
+                                  "theorem meaningful_witness : ∃ x : Nat, x ≤ x + 1 := ⟨0, Nat.le_succ 0⟩\n")
         self.paper = self.run / "SEALED_paper.tex"
         self.paper.write_text(r"\begin{document}A sealed Methods Note.\end{document}")
         self.pdf = self.run / "SEALED_paper.pdf"
@@ -42,12 +42,12 @@ class PublicationCoverageGateTests(unittest.TestCase):
                       "certificate_valid": True, "certificate": self.cert.name,
                       "certified_theorems": ["meaningful"], "nonvacuity": ["meaningful_witness"]}
         self.ledger = {"tree_root": str(self.root), "file_entities": [], "run_entities": [self.entry]}
-        self.binding = {"claims": [{"english_claim": "The model relation is reflexive.",
+        self.binding = {"claims": [{"english_claim": "The model successor dominates its input.",
                          "lean_theorem": "meaningful", "nonvacuity_obligation": "meaningful_witness",
                          "model_fidelity": {"defined": ["model_relation"], "empirically_identified": []},
                          "disclaimer": DISCLAIMER}]}
         self.inventory = self.root / "SEALED_CLAIM_INVENTORY.json"
-        self.inventory.write_text(json.dumps({"claims": [{"id": "C1", "claim": "The model relation is reflexive.",
+        self.inventory.write_text(json.dumps({"claims": [{"id": "C1", "claim": "The model successor dominates its input.",
             "evidence_class": "FORMAL_TARGET", "aristotle_target": "meaningful"}]}))
         (self.run / "claim_binding.json").write_text(json.dumps(self.binding))
         (self.run / "metadata.json").write_text(json.dumps({"title": "Theorem relation", "description": "Theorem in Canon"}))

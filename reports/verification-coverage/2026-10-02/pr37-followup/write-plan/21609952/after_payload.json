@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p><strong>Paper supported by machine-verified Lean 4.</strong> An inferring agent must decide how hard to update its beliefs on incoming evidence—how much gain, or precision, to place on prediction error. Intuition and much of machine practice treat more precision as strictly better: trust the data, minimize error, force the model onto the world. We show this intuition is thermodynamically and epistemically wrong. Modeling an agent that tracks a fluctuating environment with a constant-gain (precision <em>g</em>) filter, and reading its dissipation through the Still–Sivak–Bell–Crooks thermodynamics of prediction—dissipated work equals the <em>non-predictive</em> information the agent retains—we prove that optimal cognition sits at an interior point of restraint. First, the Bayes/Kalman-optimal gain is strictly less than one: fully trusting noisy evidence <em>degrades</em> tracking, so even error-minimizing inference already \"lets go\" (<em>g_K&lt;1</em>). Second, and paradoxically, driving the gain past <em>g_K</em> toward maximal precision <em>lowers</em> the predictive information the agent holds about the future—a measurable <em>forcing tax</em>, <em>dI_rm pred/dg&lt;0</em> for <em>g&gt;g_K</em>. Third, once the metabolic cost of maintaining precision is priced, the net-predictive optimum—the <em>Wu-Wei gain</em> <em>g^ast</em>—falls strictly below the Bayes gain, <em>g^ast, and decreases monotonically as effort becomes dearer. The effortless first-order condition equates the marginal predictive gain to the marginal cost of forcing, <em>dI_rm pred/dg=2kappa g^ast</em>. We name the Intelligence-Bound self-application the <em>Harmonizer</em>: the useful predictive-intelligence rate is the raw bound throttled by an <em>effortlessness</em> <em>eta=I_rm pred/I_rm memin(0,1)</em>, so the bound is spent on prediction only at the harmonized gain. All results are numerically verified (21/21) against a Monte-Carlo of the exact filter. We give three falsifiable predictions spanning attention neuroscience, machine regularization, and ecological monitoring.</em></p>",
+    "keywords": [
+      "wu wei",
+      "effortless action",
+      "predictive inference",
+      "free energy",
+      "forcing",
+      "drift",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "Machine-verified: module WuWeiInference (14 named theorems), landed new leans/2026-07-24_aristotle_WuWeiInference_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 21/21 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: The Wu-Wei Inference candidate: Effortless Cognition as a Thermodynamic Optimum Between Forcing and Drift",
+    "upload_type": "publication",
+    "version": "1.0.0"
+  }
+}

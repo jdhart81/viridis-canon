@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Series S3 (Gaian) of the Viridis Canon — standalone record; the core IB canon spine is unchanged.</strong> Proves the Ecopoietic Threshold Theorem (ETT): terraforming/ecopoiesis is a driven nonequilibrium phase transition. There is a dissipation floor below which ignition is impossible regardless of time or intelligence; drive and control-information are Landauer-priced substitutes on a convex frontier; permanence is a barrier height (Kramers), not a biomass stock; and ignition time diverges with an exact -1/2 critical exponent near threshold. Names the <em>Gardener</em> (13th Intelligence-Bound self-application).</p><p><strong>Scope.</strong> Lean 4 (Aristotle-verified, zero <code>sorry</code>) certifies the analytic results, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "keywords": [
+      "ecopoiesis",
+      "terraforming",
+      "nonequilibrium phase transition",
+      "cusp catastrophe",
+      "dissipation floor",
+      "Kramers permanence",
+      "critical slowing down",
+      "Intelligence Bound",
+      "astrobiology",
+      "Lean 4"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "Viridis Canon, Series S3 (Gaian). Lean 4 proofs (Aristotle project 4ea92a60-6c51-48a7-b208-d0d7452c201b, zero sorry, axioms within {propext, Classical.choice, Quot.sound}) certify five results: ignition requires drive above a dissipation floor (iff, Phi_crit=Trad*(sigma_int-sigma_exp)); the drive&lt;-&gt;information substitution frontier k/(Phi-Phi_maint) is strictly convex; Kramers permanence biconditional dV&gt;=kT*ln(t_m/tau0); ignition time diverges as (Phi-Phi_c)^(-1/2) (critical slowing down); and the exact -1/2 critical exponent. They do not certify empirical magnitudes. Working paper, not peer-reviewed. Does NOT modify the core canon spine (frozen at v9).",
+    "publication_date": "2026-06-17",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "title": "The Ecopoietic Threshold Theorem: Terraforming as a Driven Nonequilibrium Phase Transition",
+    "upload_type": "publication",
+    "version": "S3-ETT-v1"
+  }
+}

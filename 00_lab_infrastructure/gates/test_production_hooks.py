@@ -52,6 +52,27 @@ class ProductionHooksTests(unittest.TestCase):
             with patch.object(Path,'read_bytes',side_effect=AssertionError('outside file must not be read')):
                 with self.assertRaises(ValueError):resolve_binding({'path':str(source),'sha256':'x'},root)
 
+    def test_extra_finder_metadata_exception_does_not_mask_proof_drift(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            a=Path(tmp)/'a';b=Path(tmp)/'b';a.mkdir();b.mkdir()
+            (a/'proof.lean').write_bytes(b'proof');(b/'proof.lean').write_bytes(b'proof')
+            (b/'.DS_Store').write_bytes(b'\x00\x00\x00\x01Bud1'+b'finder')
+            report=check_parity(a,b)
+            self.assertEqual(report['status'],'MATCH')
+            self.assertEqual(len(report['ignored_metadata_differences']),1)
+            (a/'proof.lean').write_bytes(b'Proof')
+            self.assertEqual(check_parity(a,b)['status'],'MIRROR_DRIFT')
+
+    def test_finder_name_alone_and_two_sided_metadata_difference_fail_closed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            a=Path(tmp)/'a';b=Path(tmp)/'b';a.mkdir();b.mkdir()
+            (a/'paper').write_text('same');(b/'paper').write_text('same')
+            (b/'.DS_Store').write_bytes(b'not Finder metadata')
+            self.assertEqual(check_parity(a,b)['status'],'MIRROR_DRIFT')
+            (b/'.DS_Store').write_bytes(b'\x00\x00\x00\x01Bud1B')
+            (a/'.DS_Store').write_bytes(b'\x00\x00\x00\x01Bud1A')
+            self.assertEqual(check_parity(a,b)['status'],'MIRROR_DRIFT')
+
     def test_missing_runtime_inputs_report_hold_without_metadata_write(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);artifact=root/'deposit';artifact.mkdir();meta=artifact/'zenodo_metadata.json';meta.write_text('{"title":"Canon"}')

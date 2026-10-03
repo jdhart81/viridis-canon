@@ -1,0 +1,215 @@
+{
+  "after_deposition_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p><strong>Series S4 (Stewardship &amp; Governance) of the Viridis Canon — standalone record; the core IB canon spine is unchanged.</strong> Proves the Self-Orchestration Theorem (SOT): an autonomous conservation engine governing its own attention is a restless multi-armed bandit whose optimal, minimally-forcing policy is a single broadcast shadow price. The governance objective is strictly concave with a unique optimal price &#955;*=a/b, and the cost of sovereign over-forcing equals a nonnegative legibility debt (a KL Pythagorean identity). The 12th Intelligence-Bound self-application (the <em>Steersman</em>).</p><p><strong>Scope.</strong> Lean 4 (Aristotle-verified, zero <code>sorry</code>) certifies the optimization and information-geometry results, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "keywords": [
+      "Intelligence Bound",
+      "governance",
+      "restless multi-armed bandit",
+      "Whittle index",
+      "KL divergence",
+      "I-projection",
+      "minimal forcing",
+      "AI alignment",
+      "Lean 4",
+      "formal verification",
+      "conjecture",
+      "verification coverage review"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "Viridis Canon, Series S4 (Stewardship &amp; Governance). Lean 4 proofs (Aristotle project 07905c3b-989b-45f4-abe8-8180f324c4c2, zero sorry, axioms within {propext, Classical.choice, Quot.sound}) certify: (T1) J(lam)=a*log lam - b*lam is strictly concave on (0,inf) and uniquely maximized at the interior broadcast price lam*=a/b; (T2) under the I-projection orthogonality condition, the forcing gap A_sov - A_wu = D_KL(nu||mu) - D_KL(nu||mu_lam*) equals the legibility debt D_KL(mu*||mu) (Pythagorean identity) and is nonnegative (Gibbs). They do not certify empirical magnitudes. Working paper, not peer-reviewed. Does NOT modify the core canon spine (frozen at v9).",
+    "publication_date": "2026-06-17",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "title": "CONJECTURE — not machine-verified: The Self-Orchestration candidate: Minimally-Forcing Governance of an Autonomous Conservation Engine",
+    "upload_type": "publication",
+    "version": "S4-SOT-v1"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "validate exact DOI, metadata, file inventory, edit support for this version",
+      "url": "https://zenodo.org/api/deposit/depositions/20735555"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20735555/actions/edit"
+    },
+    {
+      "method": "PUT",
+      "payload_file": "after_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/20735555"
+    },
+    {
+      "body": {},
+      "method": "POST",
+      "precondition": "separate exact metadata approval and unchanged public files",
+      "url": "https://zenodo.org/api/deposit/depositions/20735555/actions/publish"
+    }
+  ],
+  "api_payload": {
+    "metadata": {
+      "access_right": "open",
+      "communities": [
+        {
+          "id": "viridis-canon"
+        }
+      ],
+      "creators": [
+        {
+          "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+          "name": "Hart, Justin D.",
+          "orcid": "0009-0008-3082-2482"
+        },
+        {
+          "affiliation": "Automated theorem prover (Lean 4 verification)",
+          "name": "Aristotle (Harmonic)"
+        }
+      ],
+      "description": "<p><strong>CONJECTURE — not machine-verified</strong></p><p>This deposited artifact does not have a valid exact hash-bound certificate for its public scientific claims. Historical proof claims require review.</p><p>Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.</p><p>logical validity given the model, not empirical validation of its assumptions</p><hr/><p><strong>Historical description (verification assertions below are not current certification labels):</strong></p><p><strong>Series S4 (Stewardship &amp; Governance) of the Viridis Canon — standalone record; the core IB canon spine is unchanged.</strong> Proves the Self-Orchestration Theorem (SOT): an autonomous conservation engine governing its own attention is a restless multi-armed bandit whose optimal, minimally-forcing policy is a single broadcast shadow price. The governance objective is strictly concave with a unique optimal price &#955;*=a/b, and the cost of sovereign over-forcing equals a nonnegative legibility debt (a KL Pythagorean identity). The 12th Intelligence-Bound self-application (the <em>Steersman</em>).</p><p><strong>Scope.</strong> Lean 4 (Aristotle-verified, zero <code>sorry</code>) certifies the optimization and information-geometry results, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+      "keywords": [
+        "Intelligence Bound",
+        "governance",
+        "restless multi-armed bandit",
+        "Whittle index",
+        "KL divergence",
+        "I-projection",
+        "minimal forcing",
+        "AI alignment",
+        "Lean 4",
+        "formal verification",
+        "conjecture",
+        "verification coverage review"
+      ],
+      "language": "eng",
+      "license": "cc-by-4.0",
+      "notes": "Viridis Canon, Series S4 (Stewardship &amp; Governance). Lean 4 proofs (Aristotle project 07905c3b-989b-45f4-abe8-8180f324c4c2, zero sorry, axioms within {propext, Classical.choice, Quot.sound}) certify: (T1) J(lam)=a*log lam - b*lam is strictly concave on (0,inf) and uniquely maximized at the interior broadcast price lam*=a/b; (T2) under the I-projection orthogonality condition, the forcing gap A_sov - A_wu = D_KL(nu||mu) - D_KL(nu||mu_lam*) equals the legibility debt D_KL(mu*||mu) (Pythagorean identity) and is nonnegative (Gibbs). They do not certify empirical magnitudes. Working paper, not peer-reviewed. Does NOT modify the core canon spine (frozen at v9).",
+      "publication_date": "2026-06-17",
+      "publication_type": "preprint",
+      "related_identifiers": [
+        {
+          "identifier": "10.5281/zenodo.19317982",
+          "relation": "isDerivedFrom",
+          "scheme": "doi"
+        }
+      ],
+      "title": "CONJECTURE — not machine-verified: The Self-Orchestration candidate: Minimally-Forcing Governance of an Autonomous Conservation Engine",
+      "upload_type": "publication",
+      "version": "S4-SOT-v1"
+    }
+  },
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Series S4 (Stewardship &amp; Governance) of the Viridis Canon — standalone record; the core IB canon spine is unchanged.</strong> Proves the Self-Orchestration Theorem (SOT): an autonomous conservation engine governing its own attention is a restless multi-armed bandit whose optimal, minimally-forcing policy is a single broadcast shadow price. The governance objective is strictly concave with a unique optimal price &#955;*=a/b, and the cost of sovereign over-forcing equals a nonnegative legibility debt (a KL Pythagorean identity). The 12th Intelligence-Bound self-application (the <em>Steersman</em>).</p><p><strong>Scope.</strong> Lean 4 (Aristotle-verified, zero <code>sorry</code>) certifies the optimization and information-geometry results, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "doi": "10.5281/zenodo.20735555",
+    "keywords": [
+      "Intelligence Bound",
+      "governance",
+      "restless multi-armed bandit",
+      "Whittle index",
+      "KL divergence",
+      "I-projection",
+      "minimal forcing",
+      "AI alignment",
+      "Lean 4",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Viridis Canon, Series S4 (Stewardship &amp; Governance). Lean 4 proofs (Aristotle project 07905c3b-989b-45f4-abe8-8180f324c4c2, zero sorry, axioms within {propext, Classical.choice, Quot.sound}) certify: (T1) J(lam)=a*log lam - b*lam is strictly concave on (0,inf) and uniquely maximized at the interior broadcast price lam*=a/b; (T2) under the I-projection orthogonality condition, the forcing gap A_sov - A_wu = D_KL(nu||mu) - D_KL(nu||mu_lam*) equals the legibility debt D_KL(mu*||mu) (Pythagorean identity) and is nonnegative (Gibbs). They do not certify empirical magnitudes. Working paper, not peer-reviewed. Does NOT modify the core canon spine (frozen at v9).",
+    "publication_date": "2026-06-17",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20735554"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Self-Orchestration Theorem: Minimally-Forcing Governance of an Autonomous Conservation Engine",
+    "version": "S4-SOT-v1"
+  },
+  "before_metadata_sha256": "bde921661d8e91baec73bc1d07258c64af8b53298040f146e070cd764f1e7acf",
+  "before_read_at_utc": "2026-10-03T00:16:31.030146+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "chain_decision": "HOLD_EXACT_RECORD_METADATA_REVIEW",
+  "concept_id": "20735554",
+  "doi": "10.5281/zenodo.20735555",
+  "excluded_read_only_or_server_metadata_fields": [
+    "doi",
+    "relations"
+  ],
+  "latest_observed_record_id": "20735555",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "CONJECTURE_METADATA_AMENDMENT",
+  "payload_sha256": "fb888093512a873568d9490db909c274b00223bda0382ee86ea0a7a8c68f163a",
+  "preconditions": [
+    "Justin must approve exact metadata and file hashes before any write",
+    "Authenticated read must confirm deposition ID maps to this exact DOI",
+    "Fresh before-metadata/file inventory must match captured public readback",
+    "Stop on any error, timeout, missing response, mismatch or version conflict; no weaker pass"
+  ],
+  "ready_to_execute": false,
+  "record_id": "20735555",
+  "rollback": "If edit is unpublished: POST /api/deposit/depositions/20735555/actions/discard after separately approved exact draft identification. If metadata republished: separately authorize edit -> PUT rollback_payload.json -> publish. File bytes must stay identical; preserve both readbacks and responses.",
+  "rollback_payload_sha256": "426c82fdf28e3248ecf353ec212311a8bfa1f7607db15905154e627e6c4526f2",
+  "writes_executed": 0
+}

@@ -1,0 +1,44 @@
+{
+  "files": [
+    {
+      "after_sha256": "12c49694be025382470e33eb2a166bfb5babe4519ac3dbadda03476ba9ad239e",
+      "applied": true,
+      "backup_sha256": "14069a39834b357e2586cd08baaead6f747527f0264bb6cc6ee29373998c47e1",
+      "before_sha256": "14069a39834b357e2586cd08baaead6f747527f0264bb6cc6ee29373998c47e1",
+      "mirror": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-112_ghost-credit-theorem/paper.tex",
+      "patch": "/private/tmp/viridis-pr37-review/Run-112-paper.tex.patch",
+      "run": "Run-112",
+      "source": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-112_ghost-credit-theorem/paper.tex",
+      "source_backup_to_add": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-112_ghost-credit-theorem/paper.tex.bak_2026-08-01_corr",
+      "source_to_mirror_sync": "PENDING_HASH_CHECK"
+    },
+    {
+      "after_sha256": "1695a87d1c67eb42ba73f071be502a054dfe2ecd1bdc200d595e820348b099d4",
+      "applied": true,
+      "backup_sha256": "6fe6bef836f9d2c756fede65b24897f249ed325559ea5e07559b4546b8acbb33",
+      "before_sha256": "6fe6bef836f9d2c756fede65b24897f249ed325559ea5e07559b4546b8acbb33",
+      "mirror": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/paper.tex",
+      "patch": "/private/tmp/viridis-pr37-review/Run-113-paper.tex.patch",
+      "run": "Run-113",
+      "source": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/paper.tex",
+      "source_backup_to_add": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/paper.tex.bak_2026-08-01_corr",
+      "source_to_mirror_sync": "PENDING_HASH_CHECK"
+    },
+    {
+      "after_sha256": "6a13acdd91bf2a2da30048e3622d48a00e5e9e70d35b6ee1247ecc19bbe925c7",
+      "applied": true,
+      "backup_sha256": "48ee85b291e89aa9984d444ee404b541290b5c7d98ee11e3ec3ae96d2e45a3ba",
+      "before_sha256": "48ee85b291e89aa9984d444ee404b541290b5c7d98ee11e3ec3ae96d2e45a3ba",
+      "mirror": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/README.md",
+      "patch": "/private/tmp/viridis-pr37-review/Run-113-README.md.patch",
+      "run": "Run-113",
+      "source": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/README.md",
+      "source_backup_to_add": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem/README.md.bak_2026-08-01_corr",
+      "source_to_mirror_sync": "PENDING_HASH_CHECK"
+    }
+  ],
+  "mode": "REPORT_ONLY",
+  "pdfs_modified": false,
+  "source_to_mirror_sync": "NO_COPY_NEEDED_SOURCE_AND_MIRROR_IDENTICAL",
+  "zenodo_writes": 0
+}

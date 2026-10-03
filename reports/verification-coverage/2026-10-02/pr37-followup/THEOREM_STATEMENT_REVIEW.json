@@ -1,0 +1,633 @@
+{
+  "certifies_equivalence": false,
+  "mode": "REPORT_ONLY",
+  "records": [
+    {
+      "assessment": {
+        "flags": [
+          "CERTIFIED_TRIVIAL_COPIED_AGENT",
+          "CERTIFICATE_SCOPE_GAP_NEGATIVE_AND_BOUNDARY_CASES"
+        ],
+        "mappings": [
+          [
+            "Proposition 1",
+            "agreement_mass_positive",
+            "agreement_gain_identity",
+            "disagreement_probability_identity"
+          ],
+          [
+            "Corollary 1",
+            "competent_agreement_not_worse",
+            "competent_interior_strict_gain"
+          ]
+        ],
+        "summary": "Agreement-mass and gain statements carry p in (0,1). The positive/interior certified declarations cover those domains. Harm below 1/2 and neutral boundary claims are algebraic consequences, not separately named certified declarations. The copied-agent scientific claim maps only to p=p, so its certificate cannot establish a dependence model."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "6a1c9e637ec30a8cd09534bf4264b5679987d22d6b8bad186df0a61414c11905",
+      "comparison": "statement-comparisons/22236361.md",
+      "doi": "10.5281/zenodo.22236361",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_ACCN_standalone/paper.tex",
+      "paper_sha256": "ec32519327fb0be0d4c66558fdf783b205897ea6c09cc608cabb40bda79ff80f",
+      "run": "Run-145",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-145/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "statement_sha256": "0c8e897b24a5cf6f538bfb3885a9b72f12c499de13f1ca807fc3784b98ae2bb5"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "PUBLISHED_STRONGER_THAN_CERTIFIED",
+          "MISSING_MACHINE_CHECKED_VECTOR_TO_HQUAD_BRIDGE",
+          "FINITE_AGGREGATION_VS_TWO_SEGMENTS",
+          "BOUND_DIRECTION_RISK"
+        ],
+        "mappings": [
+          [
+            "Proposition 1",
+            "two_direction_alignment_ceiling",
+            "bisector_scalar_attains_ceiling"
+          ],
+          [
+            "Proposition 2",
+            "two_segment_alignment_persists"
+          ]
+        ],
+        "summary": "Proposition 1 is a vector-geometric theorem, whereas two_direction_alignment_ceiling assumes hc:-1<=c and hquad:((a+b)/2)^2<=(1+c)/2. Unit-vector geometry is not modeled by this Lean declaration. The publication expressly disclaims formalization of that vector derivation. Proposition 2 states finite aggregation, while the named Lean target proves the scalar two-segment case only. Its length-floor inference also needs review: an alignment lower bound does not establish a necessary length lower bound without an extra premise."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "22e627600351643caaa03e03375b1d7a5e9245b55936b2f39fa93db24c7c7cc8",
+      "comparison": "statement-comparisons/22236387.md",
+      "doi": "10.5281/zenodo.22236387",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-08-31_BCAN_standalone/paper.tex",
+      "paper_sha256": "4591fd42c44a18943e2c3a5ebdc61253b4f14ea4f47cf3b42f4717c7cd89c9fd",
+      "run": "Run-142",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-142/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "statement_sha256": "621290dae7c84af88be4fdf4ec59e1639b17725ea470181eb28e1de73ddcba26"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "MODEL_CONTEXT_REQUIRED"
+        ],
+        "mappings": [
+          [
+            "Theorem 1",
+            "conjunctive_chain_weakest_first",
+            "conjunctive_chain_weakest_first_unique"
+          ],
+          [
+            "Theorem 2",
+            "conjunctive_portfolio_monotone",
+            "conjunctive_portfolio_supermodular"
+          ],
+          [
+            "Theorem 3",
+            "marginal_greedy_counterexample_family"
+          ]
+        ],
+        "summary": "The three published targets are modeled by the certified weakest-first, monotonicity/supermodularity, and explicit greedy-family targets. Probability positivity/upper bounds, nonnegative weights, cardinality/cutoff conditions and uniqueness are explicit in the formal source and stated in the model or theorem. Retain the exact combined family declaration and supporting uniqueness theorem rather than matching by a short title alone."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "3adfb5d113f1024be399d04caa777fc1e4b0cf52c20c6d5d0ba1b389a9902724",
+      "comparison": "statement-comparisons/22236735.md",
+      "doi": "10.5281/zenodo.22236735",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_CAST_standalone/paper.tex",
+      "paper_sha256": "e66ba7f8dcc289151098ebeac9a44b9cbfe3947b27f9b3add4a75cd2df7fa369",
+      "run": "Run-120",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-120/VERIFICATION_STATEMENT_V4.lean",
+      "statement_sha256": "4b574148b3c4854ac85d0594915a536aa1cc372414c682a726b6ff60824b7c58"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "MODEL_CONTEXT_REQUIRED",
+          "RANK_DIFFERENCE_BRIDGE_NOT_SEPARATELY_BOUND"
+        ],
+        "mappings": [
+          [
+            "Proposition 1",
+            "tv_range_certificate"
+          ],
+          [
+            "Corollary 1",
+            "strict_rank_stability"
+          ],
+          [
+            "unrestricted simplex optimum",
+            "unrestricted_simplex_optimum"
+          ]
+        ],
+        "summary": "Proposition 1 requires nonzero n, nonnegative weights and both sums one; membership in the declared simplex supplies the weight assumptions and excludes the empty family. Rank stability uses z=x-y and score linearity in addition to strict_rank_stability. The corrected certified supremum uses a simplex subtype, avoiding the refuted proof-indexed supremum; the printed max over Delta is consistent with that intended domain. A formal claim map must expose these bridges; do not match the historical false supremum."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "90792d1fc8ffda0466f76e0301a2e4487716eede064ec299baf450dc0c5503c8",
+      "comparison": "statement-comparisons/22236741.md",
+      "doi": "10.5281/zenodo.22236741",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_DSWC_standalone/paper.tex",
+      "paper_sha256": "1bf38361afc6da4c6fdd188a223d66d09d6b6dc363405f4be6bb1824913aa276",
+      "run": "Run-132-correction-r1",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-132/VERIFICATION_CHALLENGE_ALIGNED_ATTEMPT_3.lean",
+      "statement_sha256": "95e0bede5f1ec5277a5543468bdc67d63d444a49d7c93369871bddedd877d30b"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "PUBLISHED_STRONGER_THAN_CERTIFIED_STANDALONE",
+          "GLOBAL_MODEL_RETAINS_N_AND_D_POSITIVITY",
+          "MISSING_EXPLICIT_HDEN_HD_MAX_BRIDGES",
+          "CERTIFICATE_SCOPE_GAP_ATTAINMENT_EQUALITY"
+        ],
+        "mappings": [
+          [
+            "Theorem 1",
+            "conjunctive_rate_upper_bound"
+          ],
+          [
+            "Theorem 2",
+            "symbiotic_allocation_attains",
+            "normalized_rates_equal"
+          ],
+          [
+            "Corollary 1",
+            "weighted_harmonic_le_max"
+          ],
+          [
+            "Corollary 2",
+            "two_partner_closed_form"
+          ],
+          [
+            "Theorem 3",
+            "additive_rate_upper_bound"
+          ]
+        ],
+        "summary": "Theorem 1 omits hden>0 locally; Theorem 3 omits hdmax0 (0≤dmax) and the explicit hdmax upper-bound premise locally. However Methods explicitly retains n>=1, w_i>0, d_i>0, positive epsilon, component ceilings and power budget. These supply the intended nonempty positive-efficiency model; do NOT claim that d_i>0 or n>=1 was deleted from the whole publication. The printed max is intended as the actual maximum, not an arbitrary dmax. Standalone theorem reuse without Methods is stronger than the certified declarations; model-to-denominator and finite-maximum bridges must be explicit in claim binding. Additive attainment, harmonic-mean equality and part of the two-partner power claim are not individually named Lean conclusions."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "d92193d2b290e62fbfa8929243219665b06559448249cccec0be08bdf67ba529",
+      "comparison": "statement-comparisons/22236768.md",
+      "doi": "10.5281/zenodo.22236768",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_SAC_standalone/paper.tex",
+      "paper_sha256": "de1d7c3df553281f18003102ebe08afb7247b9859af3ae739a298e68d995d184",
+      "run": "Run-137",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/pre_aristotle_corrections/Run-137_symbiotic-accounting-certificate-r1/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "statement_sha256": "914947efc9341f44104a52c6283ac6d4ac1c96c33226381d07ac3d55a5f53cbb"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "PUBLISHED_STRONGER_THAN_CERTIFIED",
+          "GLOBAL_OPTIMIZER_CONCLUSION_NOT_CERTIFIED"
+        ],
+        "mappings": [
+          [
+            "Allocation result",
+            "clippedAllocation_nonnegative",
+            "clippedAllocation_le_one",
+            "interior_stationarity",
+            "coordinate_improvement_identity"
+          ]
+        ],
+        "summary": "The allocation result states existence and uniqueness of a full constrained maximizing portfolio via KKT/strict concavity. The certified targets only cover scalar clipping bounds, conditional interior stationarity with q!=0, a coordinate improvement identity, burden monotonicity and a witness. No certified target proves the global optimizer/existence/uniqueness or existence of the budget multiplier."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "96e904170d2a9d00727afdfe6d1b041fe7d997bceca031db38eef5189fff6078",
+      "comparison": "statement-comparisons/22236785.md",
+      "doi": "10.5281/zenodo.22236785",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-01_TRWFN_standalone/paper.tex",
+      "paper_sha256": "48808ce50835c810cf4a7cab200f0b8b7b87efe92f489e825c52f5b999ae18e5",
+      "run": "Run-139",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-139/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "statement_sha256": "4a36080607c0be7b17a5eceade22711c8127031e741f3d74ebcf8b98590ad617"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "MODEL_CONTEXT_REQUIRED",
+          "CERTIFICATE_SCOPE_GAP_RANKING_EXAMPLE"
+        ],
+        "mappings": [
+          [
+            "Pivotal corridor derivative",
+            "reliability_derivative_eq_pivotal_probability"
+          ],
+          [
+            "own-probability corollary",
+            "pivotal_probability_independent_of_own_probability"
+          ],
+          [
+            "Local stewardship rule",
+            "local_linear_budget_gain_le_best_ratio"
+          ]
+        ],
+        "summary": "The pivotal derivative theorem uses finite independent edge states and an increasing Boolean event, represented by reliability's product weights and Monotone phi. The own-probability corollary and local linear-budget optimum have corresponding formal targets; strictly positive costs, nonnegative budget and a nonempty edge family remain needed. Opposite interaction signs and the exact current/pivotality ranking example require separate numerical/algebraic labeling unless named in the certified list."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "9e3524f05e7bfae713586f6ce0d1a9c3e7c106e2fe07b40f14ac7276f9fa46d2",
+      "comparison": "statement-comparisons/22665554.md",
+      "doi": "10.5281/zenodo.22665554",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_PCS_standalone/paper.tex",
+      "paper_sha256": "00fd76c7d512e4781299aaa07abc1453234de48323cf0a1e63c74ebfe1204b9f",
+      "run": "Run-124",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-124/VERIFICATION_CHALLENGE_ALIGNED_V7.lean",
+      "statement_sha256": "c905cf767bf3788369ac95f4dc0661ee8098ec76e8eb1e400eebe2cc4fe311ec"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "MODEL_CONTEXT_REQUIRED",
+          "USE_CORRECTED_CONTRACT_ONLY"
+        ],
+        "mappings": [
+          [
+            "Theorem 1",
+            "retention_floor_upper_bound"
+          ],
+          [
+            "Theorem 2",
+            "hazard_proportional_attains_floor",
+            "retention_floor_unique"
+          ]
+        ],
+        "summary": "The corrected certified upper-bound statement adds hn:0<n; uniqueness adds hr:forall i,0<=r_i. The publication's model declares n>=1 and nonnegative rates, so those repairs restore rather than weaken the intended model. B>0 is local in Theorem 2; positive hazards/costs and L>0 must be carried from Methods. Historical refuted contracts are not equivalent to the corrected targets."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "ef5d3626438154d24c1cbd3359c3c4f3c82bfb1aaf7d68a96ed34f77bf2f1174",
+      "comparison": "statement-comparisons/22665565.md",
+      "doi": "10.5281/zenodo.22665565",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-08_RFC_standalone/paper.tex",
+      "paper_sha256": "f976f82528e10c88ce6226aeab932eff4e82ccd37d70929b644d11631c6928f6",
+      "run": "Run-136",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-136/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "statement_sha256": "a2ce1a8fe8d16cddf480427200c955cd06502ad720d229c5bbc06e76f6b00b87"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "LOCAL_HTWO_OMISSION_MODEL_CONTEXT_REQUIRED"
+        ],
+        "mappings": [
+          [
+            "Proposition 1",
+            "exchange_gain_identity",
+            "exchange_preserves_capacity",
+            "ordered_exchange_not_worse",
+            "ordered_exchange_reduces_loss"
+          ],
+          [
+            "Proposition 2",
+            "full_first_dominates_split",
+            "equal_rate_allocation_invariant"
+          ]
+        ],
+        "summary": "Proposition 1's exchange identity and capacity preservation are unconditional real algebra; ordered benefit/loss conclusions require rateTwo<=rateOne and delta>=0, stated locally. Proposition 2's full-first bound additionally requires timeTwo>=0, carried by feasible nonnegative time in Methods but omitted locally. Available-workload and optimizer selection are application assumptions, not certified deployment results."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "7d650673286c3c6f24118185e47b4434846e91068a7803aec7fc6db8940b7f0a",
+      "comparison": "statement-comparisons/22736637.md",
+      "doi": "10.5281/zenodo.22736637",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_DREAA_standalone/paper.tex",
+      "paper_sha256": "0ac2fdd1e9c8ce79599d7506af2fc3d5a258d94eca2510a67b1217c5e0f4dcc9",
+      "run": "Run-158",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-158/attempts/attempt-2/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "statement_sha256": "b5730c54f9073339ff4d79272dc452f884caf6de46d0104bc9d625da7624ff29"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "CERTIFICATE_SCOPE_GAP_OPTIMIZATION_BRIDGE"
+        ],
+        "mappings": [
+          [
+            "Main result",
+            "componentwise_error_envelope",
+            "stewardship_floor_sound",
+            "lower_corner_exact",
+            "upper_corner_exact"
+          ]
+        ],
+        "summary": "The envelope and floor implication match certified targets under nonnegative weights and componentwise error bounds. Exact minimum over the box combines envelope and corner identities with corner feasibility using nonnegative radii. The formal target list contains no single optimization/exact-minimum theorem; this conjunction-to-optimization bridge remains outside an exact one-theorem public binding."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "dfc3aaa81dc1fc951b9a573fe1de126dab49683e97398b71c76f944718f3e9c3",
+      "comparison": "statement-comparisons/22736650.md",
+      "doi": "10.5281/zenodo.22736650",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_DSUR_standalone/paper.tex",
+      "paper_sha256": "1b5352cf36c0d89603f1ffbf0da7bec4624b71ce48789c5b4b92e9482822cb82",
+      "run": "Run-160",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-160/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "statement_sha256": "8e959303446045cb06d5fdd7eea4323f7abfe33e7b19f1112e0941feba382b61"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "BLIND_WINDOW_DEFINITION_CERTIFIED_TRIVIAL"
+        ],
+        "mappings": [
+          [
+            "Proposition 1",
+            "blind_loss_decomposition",
+            "response_delay_penalty",
+            "response_delay_monotone"
+          ],
+          [
+            "Proposition 2",
+            "residual_reserve_safe_iff"
+          ],
+          [
+            "Proposition 3",
+            "balanced_cycle_nonincrease",
+            "active_share_floor"
+          ]
+        ],
+        "summary": "Blind-loss decomposition, response penalty, reserve iff, and response monotonicity match their named declarations with the displayed nonnegative rate premise. Cycle nonincrease requires rate*passiveTime<=repairRate*activeTime; the paper states that premise. The undivided share inequality is an algebraic consequence, rather than requiring division by a possibly zero denominator."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "e44cd68fe7d6d0f351dd9136d64773508380d096c3fa2f45ff1fb07cd0ad3a8b",
+      "comparison": "statement-comparisons/22736654.md",
+      "doi": "10.5281/zenodo.22736654",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_MRRN_standalone/paper.tex",
+      "paper_sha256": "8de3647bafb24a9f88060e4b865a517a9cef2c9c3cc0b8c84432656001553897",
+      "run": "Run-156",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-156/attempts/attempt-2/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "statement_sha256": "9689215c8d0ae34b630a21077f2eaeaafebc83921fadb184fdf252fb629e9a70"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "EXTERNAL_BUDGET_BRIDGE_REQUIRES_FULL_SPEND_PRESENT"
+        ],
+        "mappings": [
+          [
+            "Main result",
+            "reciprocal_budget_bound",
+            "left_deficit_decomposition",
+            "right_deficit_decomposition",
+            "balanced_iff_tight"
+          ]
+        ],
+        "summary": "The budget and deficit statements match nonnegative cost, spend<=budget and ordered x/y hypotheses. The certified tightness iff equates (c+d)min(x,y) to modeled spend, not external B; the publication explicitly adds full spend S=B for equality with B. This hypothesis is retained rather than omitted."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "c2f7b2e371e5850df6e5a795f0a0dfc1adbca5be86f02818089f37285a695c02",
+      "comparison": "statement-comparisons/22736656.md",
+      "doi": "10.5281/zenodo.22736656",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_RCBX_standalone/paper.tex",
+      "paper_sha256": "a5ae2094869c3fabb126049ca3a057a8ea58c7d8b0ffaadca81320adfd811959",
+      "run": "Run-161",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-161/attempts/attempt-2/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "statement_sha256": "3a481413a65408f86dd914274e3e3a118eae0e4789f34d27606256b5327fba36"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "PUBLISHED_STRONGER_THAN_CERTIFIED",
+          "IFF_REVERSE_DIRECTION_NOT_NAMED"
+        ],
+        "mappings": [
+          [
+            "Proposition 1",
+            "positive_equilibrium_of_positive_numerators"
+          ],
+          [
+            "Proposition 2",
+            "one_sided_rescue_window"
+          ],
+          [
+            "Proposition 3",
+            "no_two_decliner_positive_equilibrium"
+          ]
+        ],
+        "summary": "Proposition 1 prints an iff, but positive_equilibrium_of_positive_numerators certifies only the sufficient direction under positive denominator. Reverse necessity is an algebraic paper-level argument, not a named certified target. Proposition 2 states both strict numerator conditions and mn<1; Proposition 3 includes nonpositive rates and nonnegative couplings. Those match their certified forward implications."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "e839528a187ea9a60b45be2260cfb9c7e29def8f2abc31b9ec7e18d4001247df",
+      "comparison": "statement-comparisons/22736666.md",
+      "doi": "10.5281/zenodo.22736666",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_RRFG_standalone/paper.tex",
+      "paper_sha256": "2309ba13610a1c57b012d58e7cbba8a9aecb6dbc8fc42848a0de022095c54059",
+      "run": "Run-153",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-153/attempts/attempt-2/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "statement_sha256": "25c32b4dddbbf0214dab4f35df6f0f1fe10a4cb5800d8eb6b504e6a6f9734a59"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "MODEL_CONTEXT_REQUIRED",
+          "CERTIFICATE_SCOPE_GAP_REVERSED_EXAMPLE"
+        ],
+        "mappings": [
+          [
+            "Main result",
+            "retained_nonnegative",
+            "retained_le_after_first",
+            "retained_le_capacity",
+            "serial_loss_decomposition",
+            "stage_order_invariant",
+            "attribution_sum_invariant"
+          ]
+        ],
+        "summary": "Retained-capacity nonnegativity and upper bounds require C>=0 and a,b in [0,1], stated in Methods. Decomposition/order/total-attribution identities are unconditional scalar algebra. Applying the reversed-stage identity to physical screens requires unchanged factors after order changes; the publication explicitly refuses that inference. Individual reversed-stage losses are examples, not named certified targets."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "517cd157069e8e126952bf3e38e0cfd6e8c7327c2ec3780bde7b5d78c78975e7",
+      "comparison": "statement-comparisons/22736670.md",
+      "doi": "10.5281/zenodo.22736670",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SARN_standalone/paper.tex",
+      "paper_sha256": "9e4f3e3b7b1ff0a9a0142051b535baac4bf05dbd5a8ce288606cb214891ee456",
+      "run": "Run-162",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-162/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "statement_sha256": "c9be27d3af0221fe736c5d0a7cab3ed2ef9719b02332022a568b7e78230a1ad2"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "CERTIFICATE_SCOPE_GAP_SCALE_AND_SYMMETRY"
+        ],
+        "mappings": [
+          [
+            "Proposition 1",
+            "cancellation_weight_balance",
+            "opposite_error_cancellation",
+            "cancellation_weight_interior"
+          ],
+          [
+            "Proposition 2",
+            "same_sign_nonnegative",
+            "same_sign_nonpositive"
+          ],
+          [
+            "Proposition 3"
+          ]
+        ],
+        "summary": "Opposite-sign cancellation uses a+b!=0, supplied by a,b>0; interior weight also requires both positive values, stated locally. Shared-sign results need w in [0,1], supplied in the printed theorem/model. Scale and label symmetry are not among the eight certified declarations; paper explicitly calls them bookkeeping rather than generalization."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "e86d6441cf1884cbfc9b0cf988bb0981068095042e22ec4f45f3d4ed58ff4408",
+      "comparison": "statement-comparisons/22736676.md",
+      "doi": "10.5281/zenodo.22736676",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SBCN_standalone/paper.tex",
+      "paper_sha256": "817ec5c0e06ff802c186d79caa305c9d66ee4bd5e4ce3f8efcceb49da451c411",
+      "run": "Run-154",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-154/attempts/attempt-2/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "statement_sha256": "02afabeb366d5abb83a86352c021830c4056adae2efba5462c35a0f1c29ba54d"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "CERTIFICATE_SCOPE_GAP_REVERSE_BREAK_EVEN_CASES"
+        ],
+        "mappings": [
+          [
+            "Proposition 1",
+            "shared_verification_saving"
+          ],
+          [
+            "Proposition 2",
+            "interaction_adjusted_saving",
+            "sharing_strictly_cheaper"
+          ],
+          [
+            "Proposition 3",
+            "bundled_marginal_floor"
+          ],
+          [
+            "Proposition 4",
+            "net_service_nonnegative_iff"
+          ]
+        ],
+        "summary": "Saving and interaction identities match the exact cost definitions. The strict-cheaper theorem is sufficient under interaction<fixed; reverse/break-even/adverse cases rely on the identity but are not separately named certified claims. The marginal floor retains both epsilon*b_i<=v_i premises locally; no physical Landauer application is established by Lean. Net nonnegativity iff matches the modeled ledger."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "3cd4eda3666191e450f9a0f969765ba2dec3a793be74949d97365eac9e58025d",
+      "comparison": "statement-comparisons/22736690.md",
+      "doi": "10.5281/zenodo.22736690",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_SVON_standalone/paper.tex",
+      "paper_sha256": "69e931e0517c5f88352e654263e0308e8813050f82ce07258a32aa468c6eabb1",
+      "run": "Run-155",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-155/attempts/attempt-2/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "statement_sha256": "e4dcb4939466d22ad8a7510b6a8e1608976944d3c292c464da5ff1cbe3cd5e8b"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "MODEL_CONTEXT_REQUIRED",
+          "ZERO_A_NONUNIQUE_MAXIMUM"
+        ],
+        "mappings": [
+          [
+            "Thermal learning-rate corridor",
+            "gain_peak_deficit_identity",
+            "gain_peak_upper_bound",
+            "gain_nonnegative_corridor",
+            "gain_symmetric_mistuning",
+            "heat_quadratic_scaling"
+          ]
+        ],
+        "summary": "Square deficit, maximum bound, nonnegative corridor, symmetry and heat scaling match named scalar targets with a>=0 and eta in [0,2q] where needed. A=0 produces a flat objective; the published inequality does not assert a unique global maximum. Model parameters are supplied rather than empirically validated."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "ea08387a76ed313986fc823d2d7ccb375716f29ba9569ae393e431687877ffd9",
+      "comparison": "statement-comparisons/22736706.md",
+      "doi": "10.5281/zenodo.22736706",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_TLRC_standalone/paper.tex",
+      "paper_sha256": "43e823baf2054f375be14dff7bde016ad4dbae33cfb0bfb63d73b07a01a668c8",
+      "run": "Run-151",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-151/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "statement_sha256": "f8f385ed78660995b6a88c0c0403f513a2cc54d63ef558d7aeaa0e0c926e9c90"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "MODEL_CONTEXT_REQUIRED",
+          "NECESSARY_NOT_SUFFICIENT"
+        ],
+        "mappings": [
+          [
+            "Main result",
+            "work_partition",
+            "useful_nonnegative",
+            "modeled_dissipation_nonnegative",
+            "useful_le_supplied",
+            "dissipation_le_supplied",
+            "uniform_efficiency_bound",
+            "target_requires_supply"
+          ]
+        ],
+        "summary": "Partition and bounds match supplied nonnegative work and efficiencies in [0,1]. The target supply floor requires a strictly positive emax, component efficiencies<=emax and target<=useful; carry all into the public claim. Necessary supply is not sufficient ecological success, which the manuscript explicitly disclaims."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "771464aa07fe9b9796c89a9d81d2347fc33d75e66cbae6e937e571a11590660a",
+      "comparison": "statement-comparisons/22736716.md",
+      "doi": "10.5281/zenodo.22736716",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-13_UDWL_standalone/paper.tex",
+      "paper_sha256": "a1eeca947e9b9a62a5f4f5247fa297d25e0eca9749952fa601014aedb70bd0e0",
+      "run": "Run-163",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-163/attempts/attempt-2/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "statement_sha256": "1734b954ac1a882653fca3b26546958960686af2b254777c68d455f030bfa77f"
+    },
+    {
+      "assessment": {
+        "flags": [
+          "NUMERICAL_COUNT_CORRECTION_CONFIRMED"
+        ],
+        "mappings": [
+          [
+            "Model and result",
+            "reserve_preserved",
+            "zero_spendable_forces_zero",
+            "reserve_monotone",
+            "stewardship_reserve_witness"
+          ]
+        ],
+        "summary": "The Nat domain supplies nonnegativity. Reserve preservation uses spend<=spendable; the zero case uses spend<=0; reserve monotonicity uses reserve1<=reserve2. All are printed in Model and result. Regression re-run confirms 26,691 admissible triples, not the sealed manuscript's 27,131. This is a numerical-report correction, not a stronger Lean theorem."
+      },
+      "certificate_current": true,
+      "certificate_sha256": "5a378c341cb3adf84b3192f95cfe7910bceca8c59f9006a872884b26cbd4c8b4",
+      "comparison": "statement-comparisons/23004874.md",
+      "doi": "10.5281/zenodo.23004874",
+      "equivalence_verdict": "HOLD_INDEPENDENT_SEMANTIC_REVIEW_REQUIRED",
+      "mode": "REPORT_ONLY",
+      "paper_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/2026-09-27_SRA_standalone/paper.tex",
+      "paper_sha256": "be489da93e36d1ffceb58eb3803301507c13c729cb86c78b48b48f31da746c30",
+      "run": "Run-172",
+      "statement_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-172/VERIFICATION_STATEMENT.lean",
+      "statement_sha256": "7f9a9c7ee6f8431e9a3e49c82a543f819c8ac4072965dc1e93ad8df7d5cccb3e"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+[
+  {
+    "run": "Run-102",
+    "status": "MATCH",
+    "source": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-102_stewardship-setpoint-theorem",
+    "mirror": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-102_stewardship-setpoint-theorem",
+    "purpose": "PARITY_ONLY_NOT_CERTIFICATION",
+    "differences": [],
+    "errors": [],
+    "file_count": 12,
+    "source_hashes": {
+      "paper.pdf": "c2da928dc7e1747e6554796ecf6c44506b9774a611e74eaac1e88a6a51850d1b",
+      "viridis-journal.cls": "fcc173c211306d3248a8dfa8faec5ec150f0525d9ecea01e70d9bb25bff83959",
+      "paper.out": "2d4a28289fb69a59fa0d990ac2a94e8c85625875a8d01c2c6411c4352269547f",
+      "paper.tex": "f30a96fc8018838167d35c0ca201aae5c64937d8bf14d42a90707b2dfe49b6e2",
+      "README.md": "95a96e396d0114fe1100fa91b4a31529da28be97728cdb85752e509f0174711c",
+      "business_EV-102.md": "096adcf35b63447e275cd3503ff217dd0aad490db70f3aff8d76fad204707a7e",
+      "finding.md": "06d9d3adcf52731eababd38ab936ce2b364628cc0870d6c5f9fe2b1bf56ea61b",
+      "verify_output.txt": "7f2c6835361829c8a82dec67188594b25a835646fc78298b9990543257ca9c94",
+      "paper.aux": "daac2b56bd265962e1a87f389e94b5dde767dc096ffea162928d6b26b71f9297",
+      "verify.py": "910c90d5d7d3173865733736c50493540d627e3802c70c9e2b3b165e0400908d",
+      "paper.log": "6df7dc0956f6adf8f45baacfaa92f001d8b282813ad26daaf660d0588236e4e7",
+      "_wtest": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+    },
+    "mirror_hashes": {
+      "paper.pdf": "c2da928dc7e1747e6554796ecf6c44506b9774a611e74eaac1e88a6a51850d1b",
+      ".DS_Store": "4a601ac32e2cb5e15b0b35b586fb9fac9bd4933dcc16d1f3b808b896f7b23022",
+      "viridis-journal.cls": "fcc173c211306d3248a8dfa8faec5ec150f0525d9ecea01e70d9bb25bff83959",
+      "paper.out": "2d4a28289fb69a59fa0d990ac2a94e8c85625875a8d01c2c6411c4352269547f",
+      "paper.tex": "f30a96fc8018838167d35c0ca201aae5c64937d8bf14d42a90707b2dfe49b6e2",
+      "README.md": "95a96e396d0114fe1100fa91b4a31529da28be97728cdb85752e509f0174711c",
+      "business_EV-102.md": "096adcf35b63447e275cd3503ff217dd0aad490db70f3aff8d76fad204707a7e",
+      "finding.md": "06d9d3adcf52731eababd38ab936ce2b364628cc0870d6c5f9fe2b1bf56ea61b",
+      "verify_output.txt": "7f2c6835361829c8a82dec67188594b25a835646fc78298b9990543257ca9c94",
+      "paper.aux": "daac2b56bd265962e1a87f389e94b5dde767dc096ffea162928d6b26b71f9297",
+      "verify.py": "910c90d5d7d3173865733736c50493540d627e3802c70c9e2b3b165e0400908d",
+      "paper.log": "6df7dc0956f6adf8f45baacfaa92f001d8b282813ad26daaf660d0588236e4e7",
+      "_wtest": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+    },
+    "ignored_metadata_differences": [
+      {
+        "path": ".DS_Store",
+        "source_sha256": null,
+        "mirror_sha256": "4a601ac32e2cb5e15b0b35b586fb9fac9bd4933dcc16d1f3b808b896f7b23022",
+        "reason": "EXTRA_FINDER_METADATA_ONLY"
+      }
+    ]
+  },
+  {
+    "run": "Run-112",
+    "status": "MATCH",
+    "source": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-112_ghost-credit-theorem",
+    "mirror": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-112_ghost-credit-theorem",
+    "purpose": "PARITY_ONLY_NOT_CERTIFICATION",
+    "differences": [],
+    "errors": [],
+    "file_count": 12,
+    "source_hashes": {
+      "paper.pdf": "171923e8b41c30bd82c1858e49b31a07b89790c3f69ee43e70c92be9c03ea9bb",
+      "viridis-journal.cls": "6f016433ecb1df5cf132e71ebd983f33226268d6e792413edf58c5c707014e7f",
+      "paper.out": "c200f5aec1469d1dd380872ddfb65faacdfb54e8249c0576a85706cb982da7c7",
+      "paper.tex.bak_2026-08-01_corr": "14069a39834b357e2586cd08baaead6f747527f0264bb6cc6ee29373998c47e1",
+      "paper.tex": "12c49694be025382470e33eb2a166bfb5babe4519ac3dbadda03476ba9ad239e",
+      "README.md": "be41b78a8c229f6a3d0cc1ccec6da07ce25d26148b4bd60f2dcceb5e43d1ca12",
+      "business_EV-112.md": "7de13ba80777a1eefbc798d64abd3b7b949eaa74dbf26846130c488be59516ce",
+      "finding.md": "610618472b82a19ee83a65e5c2e831ad66534ea69c62154988361f3f0e05bd66",
+      "verify_output.txt": "7bc47b5179c56d3f38d7761340ce6eb92017c6ced47feb8846faabfd4473acb4",
+      "paper.aux": "19602257dd2302ef8ab6434cdbe6de51aa431d0f69003270b508b7d4684d13c4",
+      "verify.py": "611d2c59e4f1ba799cc36f4ea33b38e1aaedafca187631cc411127d7aee1b308",
+      "paper.log": "73229faf8745530d41c3205db699256f4e43d079a5c36e35ed4114e24aa09dfb"
+    },
+    "mirror_hashes": {
+      "paper.pdf": "171923e8b41c30bd82c1858e49b31a07b89790c3f69ee43e70c92be9c03ea9bb",
+      "viridis-journal.cls": "6f016433ecb1df5cf132e71ebd983f33226268d6e792413edf58c5c707014e7f",
+      "paper.out": "c200f5aec1469d1dd380872ddfb65faacdfb54e8249c0576a85706cb982da7c7",
+      "paper.tex.bak_2026-08-01_corr": "14069a39834b357e2586cd08baaead6f747527f0264bb6cc6ee29373998c47e1",
+      "paper.tex": "12c49694be025382470e33eb2a166bfb5babe4519ac3dbadda03476ba9ad239e",
+      "README.md": "be41b78a8c229f6a3d0cc1ccec6da07ce25d26148b4bd60f2dcceb5e43d1ca12",
+      "business_EV-112.md": "7de13ba80777a1eefbc798d64abd3b7b949eaa74dbf26846130c488be59516ce",
+      "finding.md": "610618472b82a19ee83a65e5c2e831ad66534ea69c62154988361f3f0e05bd66",
+      "verify_output.txt": "7bc47b5179c56d3f38d7761340ce6eb92017c6ced47feb8846faabfd4473acb4",
+      "paper.aux": "19602257dd2302ef8ab6434cdbe6de51aa431d0f69003270b508b7d4684d13c4",
+      "verify.py": "611d2c59e4f1ba799cc36f4ea33b38e1aaedafca187631cc411127d7aee1b308",
+      "paper.log": "73229faf8745530d41c3205db699256f4e43d079a5c36e35ed4114e24aa09dfb"
+    },
+    "ignored_metadata_differences": []
+  },
+  {
+    "run": "Run-113",
+    "status": "MATCH",
+    "source": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem",
+    "mirror": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/science-engine/07_nightly_engine/compound research papers/Run-113_ambient-floor-theorem",
+    "purpose": "PARITY_ONLY_NOT_CERTIFICATION",
+    "differences": [],
+    "errors": [],
+    "file_count": 13,
+    "source_hashes": {
+      "paper.pdf": "bb7f0d2a44218b8d84e839619dec5e490995aac72936bb4ad278e9fed9431ab6",
+      "viridis-journal.cls": "d0f67812212cd72326f612fc18a14324c7c1c30e9f6c6366fbc92fb221bb0f6c",
+      "README.md.bak_2026-08-01_corr": "48ee85b291e89aa9984d444ee404b541290b5c7d98ee11e3ec3ae96d2e45a3ba",
+      "paper.out": "569d92bc21468408431c91a288fc0dcd163bde102c6ffbbaf36376fb79217268",
+      "paper.tex.bak_2026-08-01_corr": "6fe6bef836f9d2c756fede65b24897f249ed325559ea5e07559b4546b8acbb33",
+      "paper.tex": "1695a87d1c67eb42ba73f071be502a054dfe2ecd1bdc200d595e820348b099d4",
+      "README.md": "6a13acdd91bf2a2da30048e3622d48a00e5e9e70d35b6ee1247ecc19bbe925c7",
+      "business_EV-113.md": "b2a7354c7315cf0af7c7704330e4ddebe3e150629b0b6802956433a4ae9ca967",
+      "finding.md": "2ba180a209a96902b3ad97f38267e87703c2386b8db63d4c9becb36b34942c58",
+      "verification_gate.log": "f4c1bff177d326d24c12f88af1ceaaae4bc67dcd173fc4cba3df27291caa7138",
+      "paper.aux": "6818c123eb8472a76e18c9a79c60adf4c71ef832ac8418fc7b017dced9c8f709",
+      "paper.log": "0ed32fbc56abf606980bbdb228d6c572b2eedf108d51358aca375e820b5d7a67",
+      "verify_113.py": "e7d20be5cf46aa2725fbfeedd27f4342c84011364b66e3f4bfa7ea8c084c4746"
+    },
+    "mirror_hashes": {
+      "paper.pdf": "bb7f0d2a44218b8d84e839619dec5e490995aac72936bb4ad278e9fed9431ab6",
+      "viridis-journal.cls": "d0f67812212cd72326f612fc18a14324c7c1c30e9f6c6366fbc92fb221bb0f6c",
+      "README.md.bak_2026-08-01_corr": "48ee85b291e89aa9984d444ee404b541290b5c7d98ee11e3ec3ae96d2e45a3ba",
+      "paper.out": "569d92bc21468408431c91a288fc0dcd163bde102c6ffbbaf36376fb79217268",
+      "paper.tex.bak_2026-08-01_corr": "6fe6bef836f9d2c756fede65b24897f249ed325559ea5e07559b4546b8acbb33",
+      "paper.tex": "1695a87d1c67eb42ba73f071be502a054dfe2ecd1bdc200d595e820348b099d4",
+      "README.md": "6a13acdd91bf2a2da30048e3622d48a00e5e9e70d35b6ee1247ecc19bbe925c7",
+      "business_EV-113.md": "b2a7354c7315cf0af7c7704330e4ddebe3e150629b0b6802956433a4ae9ca967",
+      "finding.md": "2ba180a209a96902b3ad97f38267e87703c2386b8db63d4c9becb36b34942c58",
+      "verification_gate.log": "f4c1bff177d326d24c12f88af1ceaaae4bc67dcd173fc4cba3df27291caa7138",
+      "paper.aux": "6818c123eb8472a76e18c9a79c60adf4c71ef832ac8418fc7b017dced9c8f709",
+      "paper.log": "0ed32fbc56abf606980bbdb228d6c572b2eedf108d51358aca375e820b5d7a67",
+      "verify_113.py": "e7d20be5cf46aa2725fbfeedd27f4342c84011364b66e3f4bfa7ea8c084c4746"
+    },
+    "ignored_metadata_differences": []
+  }
+]

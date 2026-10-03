@@ -1,3 +1,4 @@
+import { AsyncLocalStorage } from 'node:async_hooks';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -82,4 +83,23 @@ export function withTerminationDiagnostics(result, context) {
       output: result.output, terminationDiagnostics: diagnostics };
   }
   return { ...result, terminationDiagnostics: diagnostics };
+}
+
+// Context is created by the worker with the server project root, never API policy fields.
+const contexts = new AsyncLocalStorage();
+export function withResourceProfile(request, action, requestId = 'unavailable', projectRoot) {
+  return contexts.run(makeExecutionContext(requestId, request, undefined, projectRoot), action);
+}
+export function currentExecutionContext() {
+  const context = contexts.getStore();
+  if (!context) throw new Error('Missing worker execution context');
+  return context;
+}
+export function currentResourceProfile() { return contexts.getStore()?.profile ?? DEFAULT_PROFILE; }
+export function processDiagnostics() {
+  const context = contexts.getStore();
+  return context ? withTerminationDiagnostics({}, context).terminationDiagnostics : {
+    standard: 'VRS-COMPARATOR-TERMINATION-1', requestId: 'unavailable',
+    profile: DEFAULT_PROFILE.name, capture_status: 'UNAVAILABLE', records: [],
+  };
 }

@@ -22,31 +22,27 @@ def load_client():
 
 class FoundationalProfileTests(unittest.TestCase):
     def test_server_selection_boundaries_and_async_isolation(self):
-        program = '''
+        program = """
 import assert from 'node:assert/strict';
-import {selectResourceProfile,withResourceProfile,currentResourceProfile,comparatorWallMilliseconds} from './comparator-deploy/remote_service/resource-profile.mjs';
-for (const runId of ['Run-001','Run-185','Run-899']) {
- assert.equal(selectResourceProfile({runId}).comparatorWallSeconds,285);
- assert.throws(()=>selectResourceProfile({runId,resourceProfile:'foundational'}));
+import {selectResourceProfile,withResourceProfile,currentResourceProfile,DEFAULT_PROFILE,FOUNDATION_PROFILE,resolveObservedPolicy,PROJECT_POLICY} from './comparator-deploy/remote_service/resource-profile.mjs';
+for (const runId of ['Run-001','Run-185','Run-899','Run-900','Run-999']) {
+ assert.equal(selectResourceProfile({runId,resourceProfile:'foundational',timeout:1200}),DEFAULT_PROFILE);
 }
-for (const runId of ['Run-900','Run-901','Run-999']) {
- assert.equal(selectResourceProfile({runId,resourceProfile:'foundational'}).comparatorWallSeconds,600);
+assert.equal(selectResourceProfile({resourceProfile:'unbounded'}),DEFAULT_PROFILE);
+assert.equal(resolveObservedPolicy(PROJECT_POLICY.project,PROJECT_POLICY),FOUNDATION_PROFILE);
+for (const field of ['project_manifest_sha256','toolchain_file_sha256','challenge_sha256','solution_sha256','theorem_names']) {
+ assert.equal(resolveObservedPolicy(PROJECT_POLICY.project,{...PROJECT_POLICY,[field]:null}),DEFAULT_PROFILE);
 }
-for (const runId of [undefined,'Run-1000','Run-900x','run-900','Run-0900','Run-899']) {
- assert.throws(()=>selectResourceProfile({runId,resourceProfile:'foundational'}));
-}
-assert.throws(()=>selectResourceProfile({resourceProfile:'unbounded'}));
 await Promise.all([
  withResourceProfile({runId:'Run-900',resourceProfile:'foundational'},async()=>{
-  await new Promise(r=>setTimeout(r,5));assert.equal(comparatorWallMilliseconds(285000),600000);
-  assert.equal(currentResourceProfile().acceptanceEvidence,false);
- }),
+  await new Promise(r=>setTimeout(r,5));assert.equal(currentResourceProfile(),DEFAULT_PROFILE);
+ },'fixture-foundation-forgery'),
  withResourceProfile({runId:'Run-185',resourceProfile:'nightly'},async()=>{
-  await new Promise(r=>setTimeout(r,1));assert.equal(comparatorWallMilliseconds(285000),285000);
- })
+  await new Promise(r=>setTimeout(r,1));assert.equal(currentResourceProfile(),DEFAULT_PROFILE);
+ },'fixture-nightly')
 ]);
-assert.equal(comparatorWallMilliseconds(285000),285000);
-'''
+assert.equal(currentResourceProfile(),DEFAULT_PROFILE);
+"""
         subprocess.run(['node','--input-type=module','-e',program],cwd=ROOT,check=True,capture_output=True)
 
     def test_client_verify_acceptance_function_byte_identical(self):
@@ -62,8 +58,10 @@ assert.equal(comparatorWallMilliseconds(285000),285000);
             self.assertEqual((SNAPSHOT/name).read_bytes(),(REMOTE/name).read_bytes())
         self.assertIn('ulimit -t 600',(REMOTE/'comparator.sh').read_text())
         source=(REMOTE/'exec.ts').read_text()
-        self.assertIn('const BACKUP_SIGKILL_MS = 285_000;',source)
-        self.assertIn('description === "Comparator" ? comparatorWallMilliseconds(BACKUP_SIGKILL_MS) : BACKUP_SIGKILL_MS',source)
+        self.assertIn('context: currentExecutionContext()',source)
+        policy=(REMOTE/'resource-profile.mjs').read_text()
+        self.assertIn('comparator_wall_ms: 285000',policy)
+        self.assertIn('compile_wall_ms: 285000, collection_wall_ms: 285000',policy)
 
     def test_frozen_request_routing_only_reserved_run_ids(self):
         client=load_client()

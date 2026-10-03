@@ -78,16 +78,16 @@ failure result; missing records are not claimed as observed success.
 
 ## Reviewable application recipe (not executed on the droplet)
 
-`service.patch` targets only `server/src/exec.ts` and `server/src/worker.ts`.
-`BASELINE.json` binds both captured live inputs and candidate outputs. A future
-separately approved application must verify the exact input hashes first, then
-apply the context-free patch with `git apply --unidiff-zero` at the Comparator
-source root and copy the four `.mjs`/`.d.mts`
-source files from `src/` into `server/src/`. Do not apply against drifted source.
-The comparator/compile/collection scripts, systemd unit, project/toolchain,
-wrapper, client and issuer are not patched. No automatic apply/deploy script is
-provided. The operator must preserve the existing server project policy/pins;
-this PR is not a migration to another project.
+The canonical reviewed candidate is `comparator-deploy/remote_service/`.
+`service.patch` additionally records the changes to exec.ts, worker.ts, shared.ts,
+resource-profile.mjs and app.ts against merged main #42; BASELINE.json records
+those exact before/after hashes. It must not be applied to the older live source.
+A future deployment requires a separate drift reconciliation and approval.
+The four `.mjs`/`.d.mts` files are registered in remote_service and identical to
+src/ here; a regression enforces that registration. The scripts, systemd unit,
+project/toolchain, wrapper, client and issuer are unchanged. No apply/deploy
+command is provided. Queue failure outside the worker reports unavailable
+profile/capture rather than repeating an untrusted requested profile.
 
 ## Validation
 

@@ -19,13 +19,15 @@
     "profile": {
       "enum": [
         "nightly-default",
-        "foundation-run900-approved-v1"
+        "foundation-run900-approved-v1",
+        "unavailable"
       ]
     },
     "capture_status": {
       "enum": [
         "RECORDED",
-        "FAILED"
+        "FAILED",
+        "UNAVAILABLE"
       ]
     },
     "records": {
@@ -33,6 +35,9 @@
       "items": {
         "$ref": "#/$defs/record"
       }
+    },
+    "unavailableReason": {
+      "type": "string"
     }
   },
   "additionalProperties": false,

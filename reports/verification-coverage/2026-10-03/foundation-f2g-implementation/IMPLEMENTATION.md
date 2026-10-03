@@ -19,20 +19,36 @@ or guard-fired execution cannot produce verification-ok or a certificate,
 even with forged kernel markers or fake exit zero. No arguments, payloads,
 environment or raw error messages enter the new diagnostics.
 
-Implementation: comparator-deploy/service-profile/README.md describes the
-hash-bound review overlay. Only exec.ts/worker.ts are patched; four module/type
-files are registered for a future separately approved application. No automatic
-remote application is included. Exact source hashes and validation results are
-in VERIFICATION.json and service-profile/BASELINE.json.
+Implementation: the canonical candidate is comparator-deploy/remote_service.
+This PR is rebased onto main 7b08c5a418a27372ca3539574e989d8175dccd81,
+which includes concurrently merged #42. It replaces caller-selected Run-900–999
+budget elevation with the authorized exact-input/server-project allowlist.
+The existing doUncachedWork scientific acceptance body stays byte-identical;
+only its launcher and enclosing diagnostic wrapper change. Shared terminal
+schemas register the new extension; queue failure reports unavailable metadata.
+BASELINE.json and service.patch bind the merged source, not the live droplet.
+No automatic remote application is included.
 
-Validation: 149 local Python gate tests; 14 fake-process tests; full server
-TypeScript check; patch application against the captured source; offline exact
-approved-input/project-observation match and changed-byte refusal; strict
-termination schema; zero secret findings. No existing assertion was modified
-except the explicitly requested limit test, retained under its original name in
-the PR's acceptance suite. It now checks the unchanged nightly/default promise,
-explicit foundation limit, phase-budget isolation and forged-profile rejection. The
-local authoritative test/runtime files are not installed from this PR.
+Validation: 157 local Python gate tests; 14 fake-process tests; full server
+TypeScript check (scratch paths resolve the candidate shared package); local
+patch replay; offline exact approved-input/project-observation match and
+changed-byte refusal; strict diagnostic schema; zero secret findings.
+The named five-minute test is retained and rewritten as expressly authorized.
+
+Merged #42 operational test expectations updated for the authorized rule:
+- Run-900–999 plus caller resourceProfile -> foundation: now default unless
+  actual approved bytes, ordered exports and trusted server pins match. Caller
+  labels never authorize elevated limits; unrelated labels are ignored.
+- Old spawnPromise source-string assertions -> guarded launcher delegation,
+  unchanged compile/collection/default guards, and unchanged script bytes.
+- Reconstructed old/new launcher comparison -> the exact current guarded
+  launcher, with distinct 0/nonzero/SIGXCPU/SIGKILL, guard-fired fake zero,
+  group/fallback kill, unavailable accounting and capture-failure regressions.
+These tighten operational tests. Scientific acceptance and issuer assertions,
+including the unchanged doUncachedWork body assertion, remain intact.
+The new full-client hash regression pins the rebased main b745e90a baseline;
+its acceptance-function hash remains the original 5588b110 baseline. #42's
+client metadata changes are in main, not authored by this PR.
 
 The client verify() acceptance source is byte-identical, and its entire file
 hash is unchanged. The issuer fixture exactly matches the protected canonical

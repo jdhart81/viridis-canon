@@ -7,7 +7,8 @@ import { promisify } from "node:util";
 import { z } from "zod";
 
 import { IS_DEVELOPMENT, PROJ_ROOT } from "./env.ts";
-import { comparatorWallMilliseconds, beginProcess, markDeadline, closeProcess } from "./resource-profile.mjs";
+import { currentExecutionContext } from "./resource-profile.mjs";
+import { runGuarded } from "./guarded-process.mjs";
 import { buildJobEvidence } from "./job-attestation.mjs";
 
 export interface VerifyTask {
@@ -38,102 +39,17 @@ export class CheckingError extends Error {
   }
 }
 
-const BUFFER_LIMIT = 1_000_000;
-// Reserve 15 seconds of the five-minute end-to-end SLO for journal delivery,
-// SSH return, and receipt validation. Proofs that miss this bound fail closed.
-const BACKUP_SIGKILL_MS = 285_000;
-
-/**
- * Spawns with limited options and returns a promise with combined output
- * (stdout/stderr combined). This will be truncated at `BUFFER_LIMIT`,
- * the `stdout` and `stderr` callback options can be used to get non-truncated
- * output for individual streams, if specified they are called whenever a
- * "data" event is received from the process.
- */
-function spawnPromise(
-  command: string,
-  args?: readonly string[],
-  options?: {
-    description?: string;
-    stdout?: (data: string) => void;
-    stderr?: (data: string) => void;
-    cwd?: string;
-    env?: NodeJS.ProcessEnv;
-  },
-) {
-  const description = options?.description ?? "Process";
-  const proc = spawn(command, args, {
-    cwd: options?.cwd,
-    env: options?.env ?? process.env,
-    // A verifier script launches sandbox and Lean descendants. A dedicated
-    // process group lets the wall-time guard terminate the complete tree.
-    detached: true,
-  });
-  let size = 0;
-  let overflow = false;
-  const output: string[] = [];
-  const handleStr = (str: string) => {
-    if (overflow) return;
-    if (str.length + size > BUFFER_LIMIT) {
-      overflow = true;
-      output.push(str.slice(0, BUFFER_LIMIT - size) + "\n...clipped...");
-      size = BUFFER_LIMIT;
-    } else {
-      output.push(str);
-      size += str.length;
-    }
-  };
-
-  proc.stdout.on("data", (data) => {
-    const str = data instanceof Buffer ? data.toString("utf8") : String(data);
-    options?.stdout?.(str);
-    handleStr(str);
-  });
-  proc.stderr.on("data", (data) => {
-    const str = data instanceof Buffer ? data.toString("utf8") : String(data);
-    options?.stderr?.(str);
-    handleStr(str);
-  });
-
-  const wallMilliseconds = description === "Comparator" ? comparatorWallMilliseconds(BACKUP_SIGKILL_MS) : BACKUP_SIGKILL_MS;
-  const diagnostic = beginProcess(description, wallMilliseconds);
-
-  // The process will be killed after an appropriate delay
-  const cancelKill = setTimeout(() => {
-    markDeadline(diagnostic);
-    if (proc.pid === undefined) {
-      proc.kill("SIGKILL");
-      return;
-    }
-    try {
-      process.kill(-proc.pid, "SIGKILL");
-    } catch {
-      proc.kill("SIGKILL");
-    }
-  }, wallMilliseconds);
-  return new Promise((resolve, reject) => {
-    proc.on("error", (err) => {
-      reject(new CheckingError(`${description} failed: ${err.message}`, output.join("")));
-    });
-    proc.on("close", (code, signal) => {
-      closeProcess(diagnostic, code, signal);
-      // Close event always fires last (after exit *or* error) so if we make
-      // it here we don't need the SIGKILL anymore
-      clearTimeout(cancelKill);
-      resolve(undefined);
-    });
-  })
-    .then(() => {
-      if (proc.exitCode !== 0) {
-        throw new CheckingError(
-          `${description} returned a non-zero exit code, indicating failure`,
-          output.join(""),
-        );
-      }
-    })
-    .then(() => {
-      return output.join("");
-    });
+/** Keep stage guards unchanged except for the exact server-approved comparator profile. */
+function spawnPromise(command: string, args: readonly string[], options: {
+  description?: string; stdout?: (data: string) => void; stderr?: (data: string) => void;
+  cwd?: string; env?: NodeJS.ProcessEnv;
+}): Promise<string> {
+  const description = options.description ?? "Process";
+  const phase = description === "Comparator" ? "compare-kernels" :
+    description === "Challenge theorem collection" ? "collect-theorems" :
+    description.startsWith("Compilation of olean for ") ? "compile-" + description.slice(25) : description;
+  return runGuarded(command, args, { ...options, phase, context: currentExecutionContext() })
+    .catch((err: { message: string; output: string }) => { throw new CheckingError(err.message, err.output); });
 }
 
 const staging = (module: string) => `${module}-staging`;

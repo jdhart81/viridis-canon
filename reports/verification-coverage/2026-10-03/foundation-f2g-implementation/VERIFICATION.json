@@ -1,9 +1,9 @@
 {
-  "base_main": "d11621eda0c735c4866b02a9b79760e6bc8f1aeb",
-  "python_gates_passed": 149,
+  "base_main": "7b08c5a418a27372ca3539574e989d8175dccd81",
+  "python_gates_passed": 157,
   "node_fake_process_tests_passed": 14,
-  "server_typecheck": "PASS against captured live inputs and existing dependencies",
-  "patch_applies": "PASS; local scratch only",
+  "server_typecheck": "PASS; complete merged candidate, candidate shared package resolved locally",
+  "patch_applies": "PASS against merged main; scratch only",
   "diagnostic_schema": "PASS (local jsonschema validation)",
   "approved_request_binding": {
     "approved_wire_exports": 28,
@@ -23,20 +23,22 @@
   },
   "acceptance_source_byte_identical": true,
   "acceptance_function_sha256": "5588b110d1a7f3bebc66193305d5f3c83c19e80e0f96fab4bf14a2042274216d",
-  "client_before_sha256": "f76bcb501b252aa111a4910d54a7ac06259e543fe083ef3f8523bf436ac80ab4",
-  "client_after_sha256": "f76bcb501b252aa111a4910d54a7ac06259e543fe083ef3f8523bf436ac80ab4",
+  "client_before_sha256": "b745e90ad147a0d5bd6787e20049e9bbb49a694837172851c77958b271718202",
+  "client_after_sha256": "b745e90ad147a0d5bd6787e20049e9bbb49a694837172851c77958b271718202",
   "issuer_before_sha256": "789cb903c972a9c10731360769ccff56055b3257de9491a75b92c0d549b5c438",
   "issuer_after_sha256": "789cb903c972a9c10731360769ccff56055b3257de9491a75b92c0d549b5c438",
   "overlay_sha256": {
     "src/guarded-process.d.mts": "9e83fd6a1728ad6907b734960d0cec3b80cdba39f952ef5a48e60155ec06cfed",
     "src/guarded-process.mjs": "d062a28da6470f82667fea065a28173b14c67656351fdf5ea54c0713ab568885",
-    "src/resource-profile.d.mts": "e70c15e8cd8b95691d47e11fee163d03d5e9671232c35538fd39dc83c381a3c5",
-    "src/resource-profile.mjs": "9d06ed8f7988f51ed099ed4faf44dc9df0db242ab6f2837742db49477fcee978",
-    "service.patch": "16b30a3240901661d9fc4fe52eb0fcc3c35fce3294f12602e270cbf219b0803b"
+    "src/resource-profile.d.mts": "bb22f5f88f7d8c2d16541bb01889f7b0d5f822ed4db55c64339f632e2aad5ef4",
+    "src/resource-profile.mjs": "a506ea2f0b5edf1dce5b0e526804b285e261db8c296d593b4725523ed78e3c88",
+    "service.patch": "11155de9d8bec0986df9fe41d573a4f58a5b0388902868ccfadb185f11be8e20"
   },
   "secret_findings": 0,
   "droplet_writes": 0,
   "droplet_restarts": 0,
   "certification_submissions": 0,
-  "v008_rerun": false
+  "v008_rerun": false,
+  "scientific_worker_body_byte_identical": true,
+  "concurrent_merged_baseline_pr": 42
 }

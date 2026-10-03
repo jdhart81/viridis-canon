@@ -40,16 +40,19 @@ console.log(JSON.stringify(withTerminationDiagnostics({type:'verification-ok',pr
         extract=lambda s:s[s.index(b'def verify('):s.index(b'\ndef main(')]
         self.assertEqual(extract(before),extract(after))
         self.assertEqual(hashlib.sha256(extract(before)).digest(),hashlib.sha256(extract(after)).digest())
-        self.assertEqual(hashlib.sha256(after).hexdigest(),'f76bcb501b252aa111a4910d54a7ac06259e543fe083ef3f8523bf436ac80ab4')
+        self.assertEqual(hashlib.sha256(after).hexdigest(),'b745e90ad147a0d5bd6787e20049e9bbb49a694837172851c77958b271718202')
         self.assertEqual(hashlib.sha256((Path(__file__).parent/'fixtures/comparator_issuer_unchanged.py').read_bytes()).hexdigest(),'789cb903c972a9c10731360769ccff56055b3257de9491a75b92c0d549b5c438')
 
     def test_patch_scope_contains_no_script_toolchain_memory_or_acceptance_edit(self):
         patch=(PROFILE/'service.patch').read_text()
         changed=[line[6:] for line in patch.splitlines() if line.startswith('+++ b/')]
-        self.assertEqual(changed,['server/src/exec.ts','server/src/worker.ts'])
+        self.assertEqual(changed,['server/src/exec.ts','server/src/worker.ts','server/src/shared.ts','server/src/resource-profile.mjs','server/src/app.ts'])
         self.assertNotIn('ulimit',patch)
         self.assertNotIn('MemoryMax',patch)
-        self.assertNotIn('lean-toolchain',patch)
+        for name in ['comparator.sh', 'compile.sh', 'collectThms.sh']:
+            self.assertEqual((DEPLOY/'remote_service'/name).read_bytes(), (DEPLOY/'deployed_snapshots/F2h-20261003'/name).read_bytes())
+        for name in ['resource-profile.mjs','resource-profile.d.mts','guarded-process.mjs','guarded-process.d.mts']:
+            self.assertEqual((PROFILE/'src'/name).read_bytes(),(DEPLOY/'remote_service'/name).read_bytes())
 
     def test_forbidden_axioms_and_sealed_hash_drift_still_block_issuer(self):
         request=json.loads(self.request.read_text())

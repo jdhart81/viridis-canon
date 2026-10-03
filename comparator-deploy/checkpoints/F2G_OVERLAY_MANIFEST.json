@@ -1,7 +1,7 @@
 {
   "status": "PREPARED_NOT_DEPLOYED",
   "base_merged_commit": "8b7ca7281eb76c95f7df8597771ef73ffe963ca8",
-  "final_merge_commit": "pending follow-up review and merge",
+  "final_merge_commit": "b84f62a84bc2ee4a5c94453d4d00edf584a250b3",
   "files": [
     {
       "source": "comparator-deploy/remote_service/app.ts",
@@ -43,5 +43,24 @@
       "destination": "shared/shared.ts",
       "sha256": "a3fe5a7596e0fd546dd53bc6b6bbc504ea21463605ffbff2efd5f9a12f3f6dc7"
     }
-  ]
+  ],
+  "archive": {
+    "filename": "f2g-overlay-b84f62a84bc2ee4a5c94453d4d00edf584a250b3.tar.gz",
+    "sha256": "8c850a9f2273de39eedb6b07d983095cbf5fe8057db7e42e7721b9537ce3e9fb",
+    "size_bytes": 12032,
+    "format": "USTAR tar + gzip",
+    "built_on": "Mac (Darwin)",
+    "source_commit": "b84f62a84bc2ee4a5c94453d4d00edf584a250b3",
+    "file_count": 8,
+    "build_recipe": "git show exact release commit per source; sort by native destination; USTAR regular files, mode 0644, uid/gid/mtime 0, uname/gname empty; gzip level 9, mtime 0, filename empty",
+    "python_version": "3.14.3",
+    "repeated_build_byte_identical": true
+  },
+  "verification": {
+    "all_eight_manifest_hashes_match_commit": true,
+    "all_eight_archive_files_byte_identical_to_commit": true,
+    "archive_readback_sha256_matches": true,
+    "extra_archive_members": 0,
+    "droplet_contact": false
+  }
 }

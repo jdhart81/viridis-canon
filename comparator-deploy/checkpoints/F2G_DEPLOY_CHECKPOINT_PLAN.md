@@ -2,15 +2,23 @@
 
 Status: WAITING_FOR_JUSTIN_GO. #43 merged at
 `8b7ca7281eb76c95f7df8597771ef73ffe963ca8` after every CI job that ran passed.
-The separate failed-launch follow-up must be reviewed, merged and green before
-it is included in the deployment. Its merge is not authorized by this plan.
-The candidate overlay file hashes are in F2G_OVERLAY_MANIFEST.json; the final
-merged release commit and archive SHA256 must be recorded before deployment.
-The final merged release commit and overlay archive SHA256 remain explicitly
-pending Justin’s #44 merge; neither is substituted with a branch commit or a
-repository patch hash. After that merge, build the allowlisted overlay archive
-from the exact merge commit, revalidate its contents/hashes, record both final
-identities here and in the manifest, then stop for deployment go.
+Justin merged #44; the final merged release on main is
+`b84f62a84bc2ee4a5c94453d4d00edf584a250b3`. The overlay archive was built locally on the Mac
+from the eight exact Git blobs in that commit, not from uncommitted files.
+
+- Archive: `f2g-overlay-b84f62a84bc2ee4a5c94453d4d00edf584a250b3.tar.gz`
+- Archive SHA256: `8c850a9f2273de39eedb6b07d983095cbf5fe8057db7e42e7721b9537ce3e9fb`
+- Compressed size: 12032 bytes; eight regular files, no extra members.
+- All eight file SHA256 values in F2G_OVERLAY_MANIFEST.json match the commit.
+- Archive readback confirms every native destination's bytes match that commit.
+- Two local builds are byte-identical. Recipe: sorted native destinations,
+  USTAR mode 0644, uid/gid/mtime 0 and empty owner names; gzip level 9 with
+  mtime 0 and empty filename. Archive metadata is not deployment ownership.
+
+The archive is retained on the Mac in the local evidence report folder
+`reports/verification-coverage/2026-10-03/foundation-f2g-release/`.
+This record PR changes documentation only; the deployed code candidate remains
+that exact #44 merge commit. Justin's separate deployment go is still required.
 No droplet contact, backup, installation, restart or certification submission
 has been performed in preparing this checkpoint.
 

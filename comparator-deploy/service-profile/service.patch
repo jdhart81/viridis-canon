@@ -1,0 +1,163 @@
+--- a/server/src/exec.ts
++++ b/server/src/exec.ts
+@@ -10,0 +11,2 @@
++import { runGuarded } from "./guarded-process.mjs";
++import type { ExecutionContext } from "./resource-profile.mjs";
+@@ -40,91 +42,9 @@
+-const BUFFER_LIMIT = 1_000_000;
+-// Reserve 15 seconds of the five-minute end-to-end SLO for journal delivery,
+-// SSH return, and receipt validation. Proofs that miss this bound fail closed.
+-const BACKUP_SIGKILL_MS = 285_000;
+-
+-/**
+- * Spawns with limited options and returns a promise with combined output
+- * (stdout/stderr combined). This will be truncated at `BUFFER_LIMIT`,
+- * the `stdout` and `stderr` callback options can be used to get non-truncated
+- * output for individual streams, if specified they are called whenever a
+- * "data" event is received from the process.
+- */
+-function spawnPromise(
+-  command: string,
+-  args?: readonly string[],
+-  options?: {
+-    description?: string;
+-    stdout?: (data: string) => void;
+-    stderr?: (data: string) => void;
+-    cwd?: string;
+-    env?: NodeJS.ProcessEnv;
+-  },
+-) {
+-  const description = options?.description ?? "Process";
+-  const proc = spawn(command, args, {
+-    cwd: options?.cwd,
+-    env: options?.env ?? process.env,
+-    // A verifier script launches sandbox and Lean descendants. A dedicated
+-    // process group lets the wall-time guard terminate the complete tree.
+-    detached: true,
+-  });
+-  let size = 0;
+-  let overflow = false;
+-  const output: string[] = [];
+-  const handleStr = (str: string) => {
+-    if (overflow) return;
+-    if (str.length + size > BUFFER_LIMIT) {
+-      overflow = true;
+-      output.push(str.slice(0, BUFFER_LIMIT - size) + "\n...clipped...");
+-      size = BUFFER_LIMIT;
+-    } else {
+-      output.push(str);
+-      size += str.length;
+-    }
+-  };
+-
+-  proc.stdout.on("data", (data) => {
+-    const str = data instanceof Buffer ? data.toString("utf8") : String(data);
+-    options?.stdout?.(str);
+-    handleStr(str);
+-  });
+-  proc.stderr.on("data", (data) => {
+-    const str = data instanceof Buffer ? data.toString("utf8") : String(data);
+-    options?.stderr?.(str);
+-    handleStr(str);
+-  });
+-
+-  // The process will be killed after an appropriate delay
+-  const cancelKill = setTimeout(() => {
+-    if (proc.pid === undefined) {
+-      proc.kill("SIGKILL");
+-      return;
+-    }
+-    try {
+-      process.kill(-proc.pid, "SIGKILL");
+-    } catch {
+-      proc.kill("SIGKILL");
+-    }
+-  }, BACKUP_SIGKILL_MS);
+-  return new Promise((resolve, reject) => {
+-    proc.on("error", (err) => {
+-      reject(new CheckingError(`${description} failed: ${err.message}`, output.join("")));
+-    });
+-    proc.on("close", () => {
+-      // Close event always fires last (after exit *or* error) so if we make
+-      // it here we don't need the SIGKILL anymore
+-      clearTimeout(cancelKill);
+-      resolve(undefined);
+-    });
+-  })
+-    .then(() => {
+-      if (proc.exitCode !== 0) {
+-        throw new CheckingError(
+-          `${description} returned a non-zero exit code, indicating failure`,
+-          output.join(""),
+-        );
+-      }
+-    })
+-    .then(() => {
+-      return output.join("");
+-    });
++/** Capture termination at the launcher; scientific verification remains in the same tools. */
++function spawnPromise(command: string, args: readonly string[], options: {
++  context: ExecutionContext; phase: string; description?: string;
++  stdout?: (data: string) => void; stderr?: (data: string) => void;
++  cwd?: string; env?: NodeJS.ProcessEnv;
++}): Promise<string> {
++  return runGuarded(command, args, options).catch((err: { message: string; output: string }) => {
++    throw new CheckingError(err.message, err.output);
++  });
+@@ -169,0 +90 @@
++  context: ExecutionContext,
+@@ -199,4 +120,5 @@
+-  });
+-}
+-
+-export async function collectThms(taskId: string, project: string) {
++    context, phase: `compile-${module}`,
++  });
++}
++
++export async function collectThms(taskId: string, project: string, context: ExecutionContext) {
+@@ -224,0 +147 @@
++    context, phase: "collect-theorems",
+@@ -231 +154 @@
+-export async function comparator(taskId: string, project: string, theoremNames: string[]) {
++export async function comparator(taskId: string, project: string, theoremNames: string[], context: ExecutionContext) {
+@@ -288,0 +212 @@
++    context, phase: "compare-kernels",
+--- a/server/src/worker.ts
++++ b/server/src/worker.ts
+@@ -8 +8 @@
+-import { KEEP_COMPARATOR_TEMP_FILES, USE_MOCK_VERIFICATION } from "./env.ts";
++import { KEEP_COMPARATOR_TEMP_FILES, USE_MOCK_VERIFICATION, PROJ_ROOT } from "./env.ts";
+@@ -10,0 +11 @@
++import { makeExecutionContext, withTerminationDiagnostics } from "./resource-profile.mjs";
+@@ -118,0 +120 @@
++  const context = makeExecutionContext(taskId, { project, challenge, solution, theoremNames: requestedTheoremNames }, undefined, PROJ_ROOT);
+@@ -129,2 +131,2 @@
+-      compile(taskId, project, "Challenge", challenge),
+-      compile(taskId, project, "Solution", solution),
++      compile(taskId, project, "Challenge", challenge, context),
++      compile(taskId, project, "Solution", solution, context),
+@@ -134 +136 @@
+-      await collectThms(taskId, project),
++      await collectThms(taskId, project, context),
+@@ -138 +140 @@
+-    const output = await comparator(taskId, project, theoremNames);
++    const output = await comparator(taskId, project, theoremNames, context);
+@@ -141 +143 @@
+-      return { type: "verification-failed", description: "Per-job runtime/source observation failed integrity checks", output, executionEvidence };
++      return withTerminationDiagnostics<VerifyResult>({ type: "verification-failed", description: "Per-job runtime/source observation failed integrity checks", output, executionEvidence }, context);
+@@ -143 +145 @@
+-    const result: VerifyResult = { type: "verification-ok", theoremNames, output, executionEvidence };
++    const result: VerifyResult = withTerminationDiagnostics<VerifyResult>({ type: "verification-ok", theoremNames, output, executionEvidence }, context);
+@@ -148 +150 @@
+-      return {
++      return withTerminationDiagnostics<VerifyResult>({
+@@ -152 +154 @@
+-      };
++      }, context);
+@@ -154 +156 @@
+-    return {
++    return withTerminationDiagnostics<VerifyResult>({
+@@ -158 +160 @@
+-    };
++    }, context);

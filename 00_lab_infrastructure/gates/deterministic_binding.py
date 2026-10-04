@@ -65,6 +65,7 @@ def issue(artifact,certificate,root,authority_file,output_dir):
     rp=artifact/'PUBLICATION_BINDING.json'
     if rp.exists():raise ValueError('preserve existing binding; use a new immutable release directory')
     rp.write_text(json.dumps(receipt,indent=2,ensure_ascii=False)+'\n')
+    inspection=inspect_certificate(certificate,root)
     validate_publication_binding(artifact,inspection,certificate,root,[h])
     result.update(binding_receipt=str(rp),binding_sha256=hashlib.sha256(rp.read_bytes()).hexdigest(),approved_review_sha256=h)
     (output_dir/'RESULT.json').write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n')

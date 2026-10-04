@@ -36,7 +36,8 @@ class ZenodoTransport:
         self.opener=opener or urllib.request.build_opener(NoRedirect())
         self.sequence=0
 
-    def request(self, method, url, body=None, expected_sha256=None, content_type='application/json', authorized=False):
+    def request(self, method, url, body=None, expected_sha256=None, content_type='application/json', authorized=False, accept='application/json'):
+        if accept not in ('application/json','application/vnd.inveniordm.v1+json'):raise TransportHold('HOLD_ACCEPT_MEDIA_TYPE')
         parsed=urllib.parse.urlsplit(url)
         if parsed.scheme!='https' or parsed.hostname!=self.host or parsed.port not in (None,443) or parsed.username or parsed.password or parsed.query or parsed.fragment:
             raise TransportHold('HOLD_URL_BOUNDARY')
@@ -48,10 +49,10 @@ class ZenodoTransport:
             if not isinstance(body,bytes) or hashlib.sha256(body).hexdigest()!=expected_sha256:
                 raise TransportHold('HOLD_BODY_HASH')
         self.sequence+=1
-        receipt={'method':method,'url':url,'request_body_sha256':expected_sha256,'environment':self.host,'status':'STARTED_NO_RETRY'}
+        receipt={'method':method,'url':url,'request_body_sha256':expected_sha256,'environment':self.host,'accept':accept,'status':'STARTED_NO_RETRY'}
         path=self.out/f'{self.sequence:03d}_{method}.json'
         path.write_text(json.dumps(receipt,indent=2)+'\n')
-        req=urllib.request.Request(url,data=body,method=method,headers={'Authorization':'Bearer '+self._token,'Accept':'application/json',**({'Content-Type':content_type} if body is not None else {})})
+        req=urllib.request.Request(url,data=body,method=method,headers={'Authorization':'Bearer '+self._token,'Accept':accept,**({'Content-Type':content_type} if body is not None else {})})
         try:
             with self.opener.open(req,timeout=120) as response:
                 code=response.status;raw=response.read()

@@ -50,3 +50,9 @@ class TransportTests(unittest.TestCase):
         receipt=json.loads(next(Path(self.tmp.name).iterdir()).read_text())
         self.assertEqual(receipt['http_status'],400)
         self.assertEqual(receipt['error_response']['message'],'[REDACTED_CREDENTIAL]')
+    def test_native_media_type_preserves_transport_and_is_recorded(self):
+        self.t.request('GET','https://sandbox.zenodo.org/api/x',accept='application/vnd.inveniordm.v1+json')
+        self.assertEqual(self.fake.calls[0].get_header('Accept'),'application/vnd.inveniordm.v1+json')
+    def test_unrecognized_media_type_rejected_before_network(self):
+        with self.assertRaises(TransportHold):self.t.request('GET','https://sandbox.zenodo.org/api/x',accept='unexpected')
+        self.assertEqual(self.fake.calls,[])

@@ -1,0 +1,172 @@
+{
+  "after_files": [
+    {
+      "checksum": "md5:2fb2ffe82f4bd4f673847d1a63b496b4",
+      "id": "044a9fd2-cb50-4cd8-9f16-51a167c4533a",
+      "key": "SANDBOX_FIXTURE_2.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_2.txt/content"
+      },
+      "size": 40
+    },
+    {
+      "checksum": "md5:e0bf052b6df7e3f195efc2c02b6365c4",
+      "id": "64a0d20b-fd1e-4a25-a99a-7cc93f344c27",
+      "key": "SANDBOX_FIXTURE_6.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_6.txt/content"
+      },
+      "size": 40
+    },
+    {
+      "checksum": "md5:c459c2f24a3ea8c8106e7f74be9a7c54",
+      "id": "09f05071-eaed-4254-81ab-d011d95e6528",
+      "key": "SANDBOX_FIXTURE_5.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_5.txt/content"
+      },
+      "size": 40
+    },
+    {
+      "checksum": "md5:ccec10f5d1377ad9e6fe23da21851966",
+      "id": "08600070-95cc-4981-911b-a3c32fd35113",
+      "key": "SANDBOX_FIXTURE_3.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_3.txt/content"
+      },
+      "size": 40
+    },
+    {
+      "checksum": "md5:e43750fe9a1566b96c26f30f2eb7f59e",
+      "id": "d7eed9ab-1b83-4e19-8e78-d295cd70a02e",
+      "key": "SANDBOX_FIXTURE_4.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_4.txt/content"
+      },
+      "size": 40
+    },
+    {
+      "checksum": "md5:165ba969f90d0fadc037b7729bda6461",
+      "id": "d79f0ebf-9e38-458f-8220-b946732a9167",
+      "key": "SANDBOX_FIXTURE_1.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_1.txt/content"
+      },
+      "size": 40
+    }
+  ],
+  "before_files": [
+    {
+      "checksum": "md5:2fb2ffe82f4bd4f673847d1a63b496b4",
+      "id": "044a9fd2-cb50-4cd8-9f16-51a167c4533a",
+      "key": "SANDBOX_FIXTURE_2.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_2.txt/content"
+      },
+      "size": 40
+    },
+    {
+      "checksum": "md5:165ba969f90d0fadc037b7729bda6461",
+      "id": "d79f0ebf-9e38-458f-8220-b946732a9167",
+      "key": "SANDBOX_FIXTURE_1.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_1.txt/content"
+      },
+      "size": 40
+    },
+    {
+      "checksum": "md5:e0bf052b6df7e3f195efc2c02b6365c4",
+      "id": "64a0d20b-fd1e-4a25-a99a-7cc93f344c27",
+      "key": "SANDBOX_FIXTURE_6.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_6.txt/content"
+      },
+      "size": 40
+    },
+    {
+      "checksum": "md5:c459c2f24a3ea8c8106e7f74be9a7c54",
+      "id": "09f05071-eaed-4254-81ab-d011d95e6528",
+      "key": "SANDBOX_FIXTURE_5.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_5.txt/content"
+      },
+      "size": 40
+    },
+    {
+      "checksum": "md5:ccec10f5d1377ad9e6fe23da21851966",
+      "id": "08600070-95cc-4981-911b-a3c32fd35113",
+      "key": "SANDBOX_FIXTURE_3.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_3.txt/content"
+      },
+      "size": 40
+    },
+    {
+      "checksum": "md5:e43750fe9a1566b96c26f30f2eb7f59e",
+      "id": "d7eed9ab-1b83-4e19-8e78-d295cd70a02e",
+      "key": "SANDBOX_FIXTURE_4.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_4.txt/content"
+      },
+      "size": 40
+    }
+  ],
+  "forced_reordered_files": [
+    {
+      "checksum": "md5:165ba969f90d0fadc037b7729bda6461",
+      "id": "d79f0ebf-9e38-458f-8220-b946732a9167",
+      "key": "SANDBOX_FIXTURE_1.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_1.txt/content"
+      },
+      "size": 40
+    },
+    {
+      "checksum": "md5:e43750fe9a1566b96c26f30f2eb7f59e",
+      "id": "d7eed9ab-1b83-4e19-8e78-d295cd70a02e",
+      "key": "SANDBOX_FIXTURE_4.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_4.txt/content"
+      },
+      "size": 40
+    },
+    {
+      "checksum": "md5:ccec10f5d1377ad9e6fe23da21851966",
+      "id": "08600070-95cc-4981-911b-a3c32fd35113",
+      "key": "SANDBOX_FIXTURE_3.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_3.txt/content"
+      },
+      "size": 40
+    },
+    {
+      "checksum": "md5:c459c2f24a3ea8c8106e7f74be9a7c54",
+      "id": "09f05071-eaed-4254-81ab-d011d95e6528",
+      "key": "SANDBOX_FIXTURE_5.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_5.txt/content"
+      },
+      "size": 40
+    },
+    {
+      "checksum": "md5:e0bf052b6df7e3f195efc2c02b6365c4",
+      "id": "64a0d20b-fd1e-4a25-a99a-7cc93f344c27",
+      "key": "SANDBOX_FIXTURE_6.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_6.txt/content"
+      },
+      "size": 40
+    },
+    {
+      "checksum": "md5:2fb2ffe82f4bd4f673847d1a63b496b4",
+      "id": "044a9fd2-cb50-4cd8-9f16-51a167c4533a",
+      "key": "SANDBOX_FIXTURE_2.txt",
+      "links": {
+        "self": "https://sandbox.zenodo.org/api/records/613098/files/SANDBOX_FIXTURE_2.txt/content"
+      },
+      "size": 40
+    }
+  ],
+  "record_id": "613098",
+  "source": "Actual sandbox edit/PUT/publish public readback; forced array reversal and checksum corruption are test inputs only"
+}

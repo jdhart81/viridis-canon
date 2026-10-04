@@ -18,6 +18,14 @@ def flow(root, row):
     try:
         certdir = root / 'RESEARCH_PIPELINE_v2/lean_certificates' / rid
         cloud_path = certdir / 'COMPARATOR_CLOUD_RECEIPT.json'
+        if row.get('certificate_valid') is True:
+            from certificate_inspection import inspect_certificate, resolve_binding
+            certificate = Path(row['certificate'])
+            inspected = inspect_certificate(certificate, root)
+            if inspected.get('valid') is not True:
+                raise ValueError('current certificate failed fresh inspection')
+            evidence = json.loads(certificate.read_text())['bindings']['independent_cloud_receipt']
+            cloud_path = resolve_binding(evidence, root)
         if cloud_path.is_file():
             cloud = json.loads(cloud_path.read_text())
             result['receipts'].append(binding(cloud_path))
@@ -26,7 +34,7 @@ def flow(root, row):
                 raw = cloud.get('provider_response', {})
                 errors = re.findall(r'error:[^\n]+', raw.get('output', ''))
                 result['causes'] += errors or ['Comparator verification did not pass']
-        if rid == 'Run-177':
+        if rid == 'Run-177' and row.get('certificate_valid') is not True:
             holds = sorted((root/'RESEARCH_PIPELINE_v2/nightly_checkpoints').glob('*/RUN177_ATTEMPT2_TRANSPORT_SECURITY_HOLD.json'))
             if holds:
                 path = holds[-1]

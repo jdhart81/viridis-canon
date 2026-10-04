@@ -73,3 +73,8 @@ class ReleasePacketTests(unittest.TestCase):
                     if k not in ('description','keywords'):self.assertEqual(a[k],b[k])
                 self.assertEqual(a['description'].count(LABEL),1)
                 self.assertEqual(digest(r['api_payload']),r['payload_sha256'])
+                table={f['field']:f for f in r['field_preservation']}
+                for name in b:
+                    self.assertEqual(table[name]['before_value'],b[name])
+                    self.assertEqual(table[name]['expected_readback_value'],a[name])
+                    self.assertEqual(table[name]['public_changed'],b[name]!=a[name])

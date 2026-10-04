@@ -1,0 +1,10 @@
+{
+  "mode": "REPORT_ONLY",
+  "protected": false,
+  "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/run_flow.py",
+  "before_sha256": "c309d2c5087242792dfdc79ed1c7efbf99c2f8d6ab22660bca20fa0552275be3",
+  "after_sha256": "082e6ca62ec3a476c9691b1d1e5d68e0657326ec4eb3f48637e844bffec492a3",
+  "source_pr": "https://github.com/jdhart81/viridis-canon/pull/47",
+  "reason": "Nightly report consumer follows the current valid certificate binding instead of an old failed receipt. No generation, proof submission, acceptance, publication or enforcement added.",
+  "install_after_snapshot_pr_merge": true
+}

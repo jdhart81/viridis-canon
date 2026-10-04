@@ -103,6 +103,11 @@ def deposition_projection(metadata, new_version=False):
 def prepare_amendment(before):
     after=amendment(before)
     payload,table,reasons=deposition_projection(after)
+    for field in table:
+        name=field['field']
+        field['before_value']=deepcopy(before.get(name))
+        field['expected_readback_value']=deepcopy(after.get(name))
+        field['public_changed']=before.get(name)!=after.get(name)
     rollback,_,rollback_reasons=deposition_projection(before)
     return {'mode':'DRY_RUN_ONLY','execution_authorized':False,'writes_executed':0,
             'status':'HOLD' if reasons else 'PREPARED_AWAITING_APPROVAL',

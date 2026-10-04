@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import html
 import json
+import re
 from pathlib import Path
 
 LABEL = ("UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. "
@@ -33,7 +34,13 @@ def amendment(before):
     historical=before['description']
     # Make repeat preparation idempotent without rewriting the original title.
     prefix='<p><strong>'+html.escape(LABEL, quote=False)+'</strong></p>'+SEPARATOR
-    if historical.startswith(prefix):historical=historical[len(prefix):]
+    while True:
+        match=re.match(r"\s*<p>\s*<strong>(.*?)</strong>\s*</p>",historical,re.S)
+        if not match or html.unescape(match.group(1)).strip()!=LABEL:break
+        tail=historical[match.end():]
+        separator=re.match(r"\s*(?:<hr\s*/?>\s*)?<p>\s*<strong>(Historical description \(verification assertions below are not current certification labels\):)</strong>\s*</p>\s*",tail,re.S)
+        if not separator:raise ValueError('existing label without recognized historical separator')
+        historical=tail[separator.end():]
     after['description']=prefix+historical
     keywords=before.get('keywords',[])
     if not isinstance(keywords,list) or any(not isinstance(k,str) for k in keywords):

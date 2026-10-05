@@ -17,6 +17,10 @@ def _parser() -> argparse.ArgumentParser:
     build.add_argument("--root", type=Path, default=Path("."))
     build.add_argument("--config", type=Path)
     build.add_argument("--output", type=Path, default=Path("docs/data/catalog.json"))
+    build.add_argument("--ledger", type=Path, help="current canonical corpus_ledger.json; missing evidence holds eligibility")
+    build.add_argument("--source-prefix", help="exact ledger path prefix for this catalog source root")
+    build.add_argument("--enforce-coverage", action="store_true",
+                       help="admit only records passing current certificate, manuscript binding and claim gates")
     build.add_argument(
         "--include-private",
         action="store_true",
@@ -25,6 +29,10 @@ def _parser() -> argparse.ArgumentParser:
 
     verify = sub.add_parser("verify", help="verify an existing catalog and its digests")
     verify.add_argument("catalog", type=Path)
+    verify.add_argument("--root", type=Path, help="current catalog sources required for protected eligibility")
+    verify.add_argument("--config", type=Path)
+    verify.add_argument("--ledger", type=Path, help="current canonical corpus_ledger.json required for protected eligibility")
+    verify.add_argument("--source-prefix", help="exact ledger path prefix for this catalog source root")
 
     build_os = sub.add_parser("build-os", help="compile function manifests into the Viridis OS bundle")
     build_os.add_argument("--root", type=Path, default=Path("."))
@@ -60,6 +68,9 @@ def main(argv: list[str] | None = None) -> int:
             args.output,
             config_path=args.config,
             include_private=args.include_private,
+            ledger_path=args.ledger,
+            source_prefix=args.source_prefix,
+            enforce_coverage=args.enforce_coverage,
         )
         stats = document["stats"]
         print(
@@ -135,7 +146,8 @@ def main(argv: list[str] | None = None) -> int:
         return 1 if problems else 0
 
     document = json.loads(args.catalog.read_text(encoding="utf-8"))
-    errors = validate_catalog(document)
+    errors = validate_catalog(document, root=args.root, config_path=args.config,
+                              ledger_path=args.ledger, source_prefix=args.source_prefix)
     if errors:
         for error in errors:
             print(f"ERROR: {error}")

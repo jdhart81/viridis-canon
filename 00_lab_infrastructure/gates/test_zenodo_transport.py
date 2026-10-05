@@ -56,3 +56,36 @@ class TransportTests(unittest.TestCase):
     def test_unrecognized_media_type_rejected_before_network(self):
         with self.assertRaises(TransportHold):self.t.request('GET','https://sandbox.zenodo.org/api/x',accept='unexpected')
         self.assertEqual(self.fake.calls,[])
+    def test_authorization_must_be_literal_true(self):
+        body=b'{}'
+        with self.assertRaises(TransportHold):self.t.request('PUT','https://sandbox.zenodo.org/api/x',body,hashlib.sha256(body).hexdigest(),authorized=1)
+        self.assertEqual(self.fake.calls,[])
+    def test_ordinary_delete_rejected_even_with_exact_hash_and_authorization(self):
+        for url in ('/api/records/1','/api/deposit/depositions/2','/api/deposit/depositions/2/files/abc-123'):
+            with self.assertRaises(TransportHold):self.t.request('DELETE','https://sandbox.zenodo.org'+url,b'',hashlib.sha256(b'').hexdigest(),authorized=True)
+        self.assertEqual(self.fake.calls,[])
+    def test_get_body_rejected_before_network(self):
+        with self.assertRaises(TransportHold):self.t.request('GET','https://sandbox.zenodo.org/api/x',b'{}')
+        self.assertEqual(self.fake.calls,[])
+    def test_invalid_json_or_scalar_response_not_retried(self):
+        for raw in (b'not json',b'null',b'true',b'42',b'"text"'):
+            with self.subTest(response=raw):
+                class InvalidResponse(Response):
+                    def read(self):return raw
+                class InvalidOpener(Opener):
+                    def open(self,req,timeout):self.calls.append(req);return InvalidResponse()
+                invalid=InvalidOpener();self.t.opener=invalid
+                with self.assertRaisesRegex(TransportHold,'NO_RETRY'):self.t.request('GET','https://sandbox.zenodo.org/api/x')
+                self.assertEqual(len(invalid.calls),1)
+    def test_success_response_token_is_redacted_in_receipt(self):
+        class EchoResponse(Response):
+            def read(self):return b'{"unexpected":"test-secret-never-logged"}'
+        class EchoOpener(Opener):
+            def open(self,req,timeout):self.calls.append(req);return EchoResponse()
+        self.t.opener=EchoOpener()
+        self.t.request('GET','https://sandbox.zenodo.org/api/x')
+        from pathlib import Path
+        raw=next(Path(self.tmp.name).iterdir()).read_text();receipt=json.loads(raw)
+        self.assertNotIn('test-secret-never-logged',raw)
+        self.assertEqual(receipt['response']['unexpected'],'[REDACTED_CREDENTIAL]')
+        self.assertEqual(receipt['status'],'HTTP_SUCCESS_ONLY_NOT_PUBLICATION_CLEARANCE')

@@ -1,0 +1,54 @@
+{
+  "at_utc": "2026-10-05T22:13:49.467186+00:00",
+  "authority": "GAME_PLAN Byte-derivable file metadata principle \u2014 2026-10-05",
+  "before_manifest_sha256": "60d7133b8a10da2a051f1bc83a8351dcd0c57c1eefd9456c77d532d01776edf1",
+  "before_snapshots_modified": false,
+  "focused_module_tests": 105,
+  "full_gate_tests": 521,
+  "installer_manifest_sha256": "a881ae2973421db2401fd7b768893365f5bff2d476ad6e4b8a93722a0188d427",
+  "installer_targets_unchanged": 22,
+  "live_install": false,
+  "network_writes": false,
+  "parser_dependency": "pypdf==6.10.0",
+  "previous_supporting_manifest": {
+    "path": "/private/tmp/byte-metadata-supporting-freeze-20261005-v001/UI_EXECUTION_DEPENDENCIES_MANIFEST_20261004.json",
+    "sha256": "9b5f80f445c6d678ee9c0fbdf9a092976677bb6bc991fb8bc5c5b71af596c7b2"
+  },
+  "runtime_dependency_hashes": {
+    "publication_preservation.py": "4fb48f40fd76cae1f973dca66253813bfd1c8edcdffa07c02945d28ddf170e2b",
+    "zenodo_transport.py": "69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65"
+  },
+  "scope": "Supporting dependency for reviewed Phase5 reconciliation/execution drivers; not a nightly production import or an added installer target.",
+  "snapshots": [
+    {
+      "matches_frozen_source": true,
+      "previous_snapshot_sha256": "74aa1e2eab88acee68a0686227f5ef830e8633ce970457de244a650814c5ab61",
+      "sha256": "ce8ad2002a11938966201a44d2714ee866bb922649cd572e36f09e8cc0f062a1",
+      "snapshot_path": "after/production_execution_dependencies/server_managed_fields.py",
+      "source_path": "/private/tmp/viridis-f2f-delivery/00_lab_infrastructure/gates/server_managed_fields.py"
+    },
+    {
+      "matches_frozen_source": true,
+      "previous_snapshot_sha256": "6bcdf90ef0d3a136020961069d36e79d4bf3b13ddd32f51b1daa95dc40d8492d",
+      "sha256": "7011fb7b668b8ec0c103423ebdecfa2b4cbf1bc8f19b3cb4119ed936d32be973",
+      "snapshot_path": "after/production_execution_dependencies/test_server_managed_fields.py",
+      "source_path": "/private/tmp/viridis-f2f-delivery/00_lab_infrastructure/gates/test_server_managed_fields.py"
+    },
+    {
+      "matches_frozen_source": true,
+      "previous_snapshot_sha256": null,
+      "sha256": "4a21de5efd74531b135682f92ce4d49b1d8ad71d044795548ea9877756fa50ef",
+      "snapshot_path": "after/production_execution_dependencies/file_byte_metadata.py",
+      "source_path": "/private/tmp/viridis-f2f-delivery/00_lab_infrastructure/gates/file_byte_metadata.py"
+    },
+    {
+      "matches_frozen_source": true,
+      "previous_snapshot_sha256": null,
+      "sha256": "3ec8922905dc4e3a10c3b46bd7fba023c37ffc309d51c6bed2a13ec3e98177fd",
+      "snapshot_path": "after/production_execution_dependencies/byte_metadata_requirements.txt",
+      "source_path": "/private/tmp/viridis-f2f-delivery/00_lab_infrastructure/gates/byte_metadata_requirements.txt"
+    }
+  ],
+  "standard": "VRS-PHASE5-SUPPORTING-EXECUTION-DEPENDENCIES-1",
+  "status": "PREPARED_NOT_DEPLOYED"
+}

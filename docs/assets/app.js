@@ -548,6 +548,27 @@ function bindControls() {
   byId("reset-map").addEventListener("click", resetResearchGraph);
 }
 
+function renderPublicationPointers(publications) {
+  const target = byId("publication-links");
+  const cards = publications.map((publication) => {
+    const card = document.createElement("article");
+    card.className = "record-card";
+    const title = document.createElement("h3");
+    const link = document.createElement("a");
+    link.href = `https://doi.org/${publication.doi}`;
+    link.textContent = publication.title;
+    link.rel = "noreferrer";
+    title.append(link);
+    const scope = document.createElement("p");
+    scope.textContent = publication.claim_scope;
+    const caveat = document.createElement("p");
+    caveat.textContent = publication.disclaimer;
+    card.append(title, scope, caveat);
+    return card;
+  });
+  target.replaceChildren(...cards);
+}
+
 async function init() {
   bindControls();
   try {
@@ -556,6 +577,7 @@ async function init() {
     state.catalog = await response.json();
     state.records = state.catalog.records || [];
     populateMetrics(state.catalog);
+    renderPublicationPointers(state.catalog.publications || []);
     renderCatalog();
     renderResearchGraph(state.records);
 

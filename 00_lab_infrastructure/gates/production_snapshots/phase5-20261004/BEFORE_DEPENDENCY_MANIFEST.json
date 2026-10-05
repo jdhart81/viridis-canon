@@ -1,0 +1,69 @@
+{
+  "at_utc": "2026-10-04T17:14:07.743049+00:00",
+  "snapshots": [
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/certificate_inspection.py",
+      "after_sha256": "a7e3d2fcd167865b129529fce7e3599acf045a190cbc2107e87f39b0a3623ec8",
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/certificate_inspection.py",
+      "before_sha256": "a7e3d2fcd167865b129529fce7e3599acf045a190cbc2107e87f39b0a3623ec8",
+      "changed": false,
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/certificate_inspection.py",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/certificate_inspection.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_audit.py",
+      "after_sha256": "23173076f35f62ca0696544c3a5c7ee2bcf7bc39a8a649390ec8e616c2c06f29",
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_audit.py",
+      "before_sha256": "23173076f35f62ca0696544c3a5c7ee2bcf7bc39a8a649390ec8e616c2c06f29",
+      "changed": false,
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_audit.py",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_audit.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_triage.py",
+      "after_sha256": "86d9d1e65286ff13038dc75ab3150a616d5acc7515b1ee4fcf04644f1db171ca",
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_triage.py",
+      "before_sha256": "86d9d1e65286ff13038dc75ab3150a616d5acc7515b1ee4fcf04644f1db171ca",
+      "changed": false,
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_triage.py",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_triage.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/mirror_parity.py",
+      "after_sha256": "77033a9303519bc47493f4efc2b0872fff805baa9aa35aa61e34467f66336e80",
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/mirror_parity.py",
+      "before_sha256": "77033a9303519bc47493f4efc2b0872fff805baa9aa35aa61e34467f66336e80",
+      "changed": false,
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/mirror_parity.py",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/mirror_parity.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/static_pregate.py",
+      "after_sha256": "659e2d66a45af24a846a5fafe26564ccf713492d0d06be0fb8172e961e862153",
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/static_pregate.py",
+      "before_sha256": "659e2d66a45af24a846a5fafe26564ccf713492d0d06be0fb8172e961e862153",
+      "changed": false,
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/static_pregate.py",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/static_pregate.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/theorem_coverage.py",
+      "after_sha256": "62bb9e87b10b8ef317616e4b906878d03f06752ab4e7d2dff90bdf9dfb27e99d",
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/theorem_coverage.py",
+      "before_sha256": "62bb9e87b10b8ef317616e4b906878d03f06752ab4e7d2dff90bdf9dfb27e99d",
+      "changed": false,
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/theorem_coverage.py",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/theorem_coverage.py"
+    },
+    {
+      "after_path": "after/_ZENODO_DEPOSITS/release_coherence.py",
+      "after_sha256": "348bc1f54ed027c6768efe512717bbc66976b7c658198383803d7e2bb8535060",
+      "before_path": "before/_ZENODO_DEPOSITS/release_coherence.py",
+      "before_sha256": "348bc1f54ed027c6768efe512717bbc66976b7c658198383803d7e2bb8535060",
+      "changed": false,
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/release_coherence.py",
+      "relative_path": "_ZENODO_DEPOSITS/release_coherence.py"
+    }
+  ],
+  "status": "UNCHANGED_RUNTIME_DEPENDENCIES_SNAPSHOTTED"
+}

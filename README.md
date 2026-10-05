@@ -21,8 +21,8 @@ de-escalated several overstated claims; see
 
 ## Current coverage and scoped publications
 
-The [public catalog](https://jdhart81.github.io/viridis-canon/data/catalog.json)
-lists, at this 2026-10-05 labeling review, **215 legacy source records, 0
+The prepared [public catalog](https://jdhart81.github.io/viridis-canon/data/catalog.json)
+lists, in this 2026-10-05 labeling review, **215 legacy source records, 0
 verified source records, and 0 admitted spine records**. These source counts are separate from published
 release pointers and the nightly paper-run denominator. Current status comes
 from `corpus_ledger.json` and the existing certificate, claim, and publication

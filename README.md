@@ -4,8 +4,8 @@
 
 **Public Lean sources, historical build records, and a coverage index for Viridis research.**
 
-**UNCERTIFIED — the 215 legacy source records in the public catalog are not
-admitted as Comparator-certified claims.** Historical compilation, an Aristotle
+**UNCERTIFIED — the 215 legacy source records in the prepared public catalog
+are not admitted as Comparator-certified claims.** Historical compilation, an Aristotle
 identifier, a zero-sorry count, and membership in `SPINE_MANIFEST.txt` do not
 establish current certification. The Viridis Comparator remains the sole
 verifier of record. A certified public scope requires its exact candidate,
@@ -78,12 +78,13 @@ version is v10.2.0; a version number does not establish certification.
 
 This repository now includes **Viridis Canon Core**, a standard-library Python
 package that converts the checked-in research artifacts into a deterministic,
-machine-readable catalog. The accompanying GitHub Pages explorer makes the
+machine-readable catalog. The prepared GitHub Pages explorer exposes the
 historical module layout, selected flagships, working corpus, quarantine state, caveats,
 source hashes, and record hashes inspectable without reading the repository
 tree by hand. Every public record includes a readable abstract and a full-paper
 or full-source action, and the research map exposes tier, import, and topic
-relationships as an interactive graph.
+relationships as an interactive graph. This coverage update remains prepared
+until its final catalog is deployed.
 
 - Public explorer: `https://jdhart81.github.io/viridis-canon/`
 - Machine interface: `https://jdhart81.github.io/viridis-canon/data/catalog.json`

@@ -14,7 +14,7 @@ class Phase5InstallTests(unittest.TestCase):
         base = Path(self.tmp.name).resolve()
         self.root = base/'runtime'; self.root.mkdir()
         self.snapshots = base/'snapshots'
-        shutil.copytree(Path(__file__).parent/'production_snapshots/phase5-20261004', self.snapshots)
+        shutil.copytree(Path(__file__).parent/'production_snapshots/phase5-20261005-oai-cutover', self.snapshots)
         mp = self.snapshots/'AFTER_MANIFEST.json'; manifest = json.loads(mp.read_text())
         existing = {row['relative_path'] for row in manifest['snapshots']}
         for relative in sorted(TARGETS-existing):

@@ -12,7 +12,7 @@ class PreparedRuntimeImportsTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory(); self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name)/'canonical runtime'
-        source = Path(__file__).parent/'production_snapshots/phase5-20261004/after'
+        source = Path(__file__).parent/'production_snapshots/phase5-20261005-oai-cutover/after'
         shutil.copytree(source, self.root)
         # Existing pinned runtime support is not an installation target. Seed
         # this isolated fixture only from the exact reviewed protected bytes.

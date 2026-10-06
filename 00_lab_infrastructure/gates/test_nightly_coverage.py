@@ -12,6 +12,7 @@ from zoneinfo import ZoneInfo
 
 import nightly_coverage
 import run_flow
+from test_activation_guard import ActivationFixture
 
 
 class GenuineNightlyWindowsTests(unittest.TestCase):
@@ -21,6 +22,7 @@ class GenuineNightlyWindowsTests(unittest.TestCase):
         self.root = Path(self.tmp.name)
         self.now = dt.datetime(2026, 10, 11, 12, tzinfo=dt.timezone.utc)
         self.reports = []
+        self.activation_fixture = ActivationFixture(self, self.root)
 
     def receipt(self, day, suffix='a', clean=True):
         timezone = ZoneInfo('America/New_York')
@@ -39,7 +41,7 @@ class GenuineNightlyWindowsTests(unittest.TestCase):
                   'start_receipt_sha256': nightly_coverage.binding(sp)['sha256'],
                   'status': 'NIGHTLY_PROGRESS_PASS' if clean else 'HOLD_NIGHTLY_PROGRESS',
                   'incidents': [] if clean else ['HOLD_PACKAGE'],
-                  'generation': {'generated_at_utc': (lower + dt.timedelta(minutes=5)).isoformat(),
+                  'generation': {'latest_run': 'Run-188', 'generated_at_utc': (lower + dt.timedelta(minutes=5)).isoformat(),
                                  'window': {'standard': 'VRS-NIGHTLY-WINDOW-1', 'window_id': day,
                                             'timezone': 'America/New_York', 'satisfied': True,
                                             'starts_at_utc': lower.isoformat(), 'ends_at_utc': upper.isoformat()}}}
@@ -50,6 +52,7 @@ class GenuineNightlyWindowsTests(unittest.TestCase):
                   'coverage': {'errors': [], 'mirror_drift': [], 'receipt_era': {'total': 71, 'certified': 71}},
                   'new_artifact_publication_gate': {'status': 'PASS', 'exact_publication_binding': True,
                                                    'claim_gate': {'status': 'PASS'}}}
+        self.activation_fixture.attach(report, day)
         rp = self.root / 'reports/verification-coverage' / invocation / 'NIGHTLY_CYCLE_REPORT.json'
         rp.parent.mkdir(parents=True); rp.write_text(json.dumps(report)); self.reports.append(rp)
         return rp, fp, sp
@@ -161,7 +164,7 @@ class EnforcingRoutingTests(unittest.TestCase):
             run_flow.main()
 
     def test_prepared_checkpoint_routes_flag_and_propagates_failure(self):
-        path = Path(__file__).parent/'production_snapshots/phase5-20261004/after/RESEARCH_PIPELINE_v2/nightly_checkpoint.py'
+        path = Path(__file__).parent/'production_snapshots/phase5-20261005-oai-cutover/after/RESEARCH_PIPELINE_v2/nightly_checkpoint.py'
         continuity = types.ModuleType('science_foundry_continuity'); continuity.evaluate = lambda: {}
         controller = types.ModuleType('autonomous_pipeline_controller'); controller.build_state = lambda: {}
         spec = importlib.util.spec_from_file_location('prepared_nightly_checkpoint', path)
@@ -188,12 +191,19 @@ class CoverageCycleIntegrationTests(unittest.TestCase):
         self.checkpoint = self.root/'RESEARCH_PIPELINE_v2/nightly_checkpoints/invocation/FINISH.json'
         self.checkpoint.parent.mkdir(parents=True)
         self.checkpoint.write_text(json.dumps({'invocation_id': 'invocation', 'status': 'NIGHTLY_PROGRESS_PASS',
-                                               'incidents': [], 'generation': {'latest_run': 'Run-186'}}))
+                                               'incidents': [], 'generation': {'latest_run': 'Run-186',
+                                                   'generated_at_utc': '2026-09-30T06:00:00+00:00',
+                                                   'window': {'starts_at_utc': '2026-09-30T05:00:00+00:00'}}}))
+        self.checkpoint.with_name('START.json').write_text(json.dumps({'started_at_utc': '2026-09-30T05:01:00+00:00'}))
         self.ledger = {'file_counts': {}, 'run_counts': {}, 'receipt_era': {'total': 71, 'certified': 71},
                        'mirror_drift': [], 'errors': [], 'run_entities': [
                            {'id': 'Run-186', 'kind': 'PAPER', 'path': 'science-engine/Run-186', 'status': 'CERTIFIED'}]}
         self.gate = {'status': 'PASS', 'exact_publication_binding': True, 'claim_gate': {'status': 'PASS'}}
-        self.patches = [patch('corpus_ledger.build', return_value=self.ledger),
+        self.activation = {'binding': {'path': 'reports/verification-coverage/TEST_ONLY.json', 'sha256': 'a'*64},
+                           'activated_at_utc': '2026-01-01T05:00:00+00:00'}
+        (self.root/'RESEARCH_PIPELINE_v2/corpus_ledger.json').write_text(json.dumps(self.ledger))
+        self.patches = [patch('nightly_coverage.load_enforcement_activation', return_value=self.activation),
+                        patch('corpus_ledger.build', return_value=self.ledger),
                         patch('corpus_ledger.render_markdown', return_value='Ledger'),
                         patch('doi_audit.build_audit', return_value={'published_records': []}),
                         patch('doi_audit.render_markdown', return_value='Audit'),

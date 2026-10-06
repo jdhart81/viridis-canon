@@ -12,7 +12,7 @@ from unittest.mock import patch
 
 class PreparedProductionAdaptersTests(unittest.TestCase):
     def load(self, filename):
-        path = Path(__file__).parent/'production_snapshots/phase5-20261004/after/_ZENODO_DEPOSITS'/filename
+        path = Path(__file__).parent/'production_snapshots/phase5-20261005-oai-cutover/after/_ZENODO_DEPOSITS'/filename
         module_name = 'prepared_' + filename.removesuffix('.py')
         stub = types.ModuleType('release_coherence')
         stub.CoherenceError = type('CoherenceError', (ValueError,), {})
@@ -32,7 +32,7 @@ class PreparedProductionAdaptersTests(unittest.TestCase):
         (self.bundle/'zenodo_metadata.json').write_text(json.dumps(self.payload))
 
     def test_all_prepared_snapshot_hashes_match_manifest(self):
-        base = Path(__file__).parent/'production_snapshots/phase5-20261004'
+        base = Path(__file__).parent/'production_snapshots/phase5-20261005-oai-cutover'
         manifest = json.loads((base/'AFTER_MANIFEST.json').read_text())
         self.assertEqual(len(manifest['snapshots']), 22)
         for row in manifest['snapshots']:
@@ -46,6 +46,38 @@ class PreparedProductionAdaptersTests(unittest.TestCase):
                 if '/verification_coverage_gates/' in row['relative_path']:
                     current = Path(__file__).parent/Path(row['relative_path']).name
                     self.assertEqual(current.read_bytes(), after.read_bytes())
+
+    def test_historical_22_target_manifest_and_original_before_bytes_remain_exact(self):
+        root=Path(__file__).parent/'production_snapshots'
+        original=root/'phase5-20261004';current=root/'phase5-20261005-oai-cutover'
+        old_after='a881ae2973421db2401fd7b768893365f5bff2d476ad6e4b8a93722a0188d427'
+        old_before='60d7133b8a10da2a051f1bc83a8351dcd0c57c1eefd9456c77d532d01776edf1'
+        digest=lambda path:hashlib.sha256(path.read_bytes()).hexdigest()
+        self.assertEqual(digest(original/'AFTER_MANIFEST.json'),old_after)
+        self.assertEqual(digest(current/'AFTER_MANIFEST_PRE_CUTOVER_20261005.json'),old_after)
+        self.assertEqual(digest(original/'BEFORE_MANIFEST.json'),old_before)
+        self.assertEqual((original/'BEFORE_MANIFEST.json').read_bytes(),(current/'BEFORE_MANIFEST.json').read_bytes())
+        old=json.loads((original/'AFTER_MANIFEST.json').read_text());new=json.loads((current/'AFTER_MANIFEST.json').read_text())
+        from install_phase5_hooks import TARGETS
+        self.assertEqual(len(old['snapshots']),22);self.assertEqual(len(new['snapshots']),22)
+        self.assertEqual({e['relative_path'] for e in old['snapshots']},TARGETS)
+        self.assertEqual({e['relative_path'] for e in new['snapshots']},TARGETS)
+        self.assertEqual(new['preserved_pre_cutover_manifest'],{'path':'AFTER_MANIFEST_PRE_CUTOVER_20261005.json','sha256':old_after})
+        old_rows={e['relative_path']:e for e in old['snapshots']};changed=[]
+        for row in new['snapshots']:
+            previous=old_rows[row['relative_path']]
+            with self.subTest(file=row['relative_path']):
+                self.assertEqual(digest(original/previous['after_path']),previous['after_sha256'])
+                self.assertEqual(row['before_path'],previous['before_path'])
+                self.assertEqual(row['before_sha256'],previous['before_sha256'])
+                if row['before_path'] is not None:
+                    self.assertEqual((original/previous['before_path']).read_bytes(),(current/row['before_path']).read_bytes())
+                    self.assertEqual(digest(original/previous['before_path']),previous['before_sha256'])
+                if row['after_sha256']!=previous['after_sha256']:
+                    changed.append(Path(row['relative_path']).name)
+                else:
+                    self.assertEqual((original/previous['after_path']).read_bytes(),(current/row['after_path']).read_bytes())
+        self.assertEqual(sorted(changed),['corpus_ledger.py','nightly_coverage.py','run_flow.py'])
 
     def test_attempt_local_raw_diagnostics_never_enter_upload_inventory(self):
         (self.bundle/'paper.pdf').write_bytes(b'%PDF fixture')

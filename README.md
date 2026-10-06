@@ -4,7 +4,7 @@
 
 **Public Lean sources, historical build records, and a coverage index for Viridis research.**
 
-**UNCERTIFIED — the 215 legacy source records in the prepared public catalog
+**UNCERTIFIED — the 215 legacy source records in the public catalog
 are not admitted as Comparator-certified claims.** Historical compilation, an Aristotle
 identifier, a zero-sorry count, and membership in `SPINE_MANIFEST.txt` do not
 establish current certification. The Viridis Comparator remains the sole
@@ -21,7 +21,7 @@ de-escalated several overstated claims; see
 
 ## Current coverage and scoped publications
 
-The prepared [public catalog](https://jdhart81.github.io/viridis-canon/data/catalog.json)
+The [public catalog](https://jdhart81.github.io/viridis-canon/data/catalog.json)
 lists, in this 2026-10-05 labeling review, **215 legacy source records, 0
 verified source records, and 0 admitted spine records**. These source counts are separate from published
 release pointers and the nightly paper-run denominator. Current status comes
@@ -37,11 +37,14 @@ These links identify the exact published releases. Their certification applies
 only to their reviewed bound claims and named premises. It does not promote the
 older P0, BCAN, or other repository sources, establish a broader matrix claim,
 or certify the whole historical Canon collection. The
-prepared [scoped-publications section](https://jdhart81.github.io/viridis-canon/#scoped-publications)
-will show the receipt-bound claim scopes after the publication joins and catalog
-deployment complete. See the [coverage-gate documentation](./00_lab_infrastructure/gates/README.md)
-for the evidence and admission requirements. Publication joins and enforcement
-remain pending the current production readback HOLD.
+[scoped-publications section](https://jdhart81.github.io/viridis-canon/#scoped-publications)
+shows these two receipt-bound claim scopes separately from the 215 legacy source
+records. The catalog pins each publication's public readback, certificate, and
+manuscript binding by SHA-256. The 25 other registered publications remain
+`HOLD_NO_CLAIM_MAP` with an explicit public UNCERTIFIED banner; their certificates
+do not certify their deposited claims. See the
+[coverage-gate documentation](./00_lab_infrastructure/gates/README.md) for the
+evidence and admission requirements.
 
 ## Start here
 
@@ -78,13 +81,13 @@ version is v10.2.0; a version number does not establish certification.
 
 This repository now includes **Viridis Canon Core**, a standard-library Python
 package that converts the checked-in research artifacts into a deterministic,
-machine-readable catalog. The prepared GitHub Pages explorer exposes the
+machine-readable catalog. The GitHub Pages explorer exposes the
 historical module layout, selected flagships, working corpus, quarantine state, caveats,
 source hashes, and record hashes inspectable without reading the repository
 tree by hand. Every public record includes a readable abstract and a full-paper
 or full-source action, and the research map exposes tier, import, and topic
-relationships as an interactive graph. This coverage update remains prepared
-until its final catalog is deployed.
+relationships as an interactive graph. Scoped publication pointers do not
+change the certification status or canon eligibility of the legacy sources.
 
 - Public explorer: `https://jdhart81.github.io/viridis-canon/`
 - Machine interface: `https://jdhart81.github.io/viridis-canon/data/catalog.json`

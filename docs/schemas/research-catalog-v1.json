@@ -18,34 +18,84 @@
       "const": true
     },
     "publication_scope": {
-      "enum": ["public", "workspace"]
+      "enum": [
+        "public",
+        "workspace"
+      ]
     },
     "records": {
       "items": {
         "additionalProperties": true,
         "properties": {
-          "abstract": {"minLength": 1, "type": "string"},
-          "caveat": {"type": "string"},
-          "digest": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+          "abstract": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "caveat": {
+            "type": "string"
+          },
+          "digest": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
           "paper_url": {
             "anyOf": [
-              {"pattern": "^https://", "type": "string"},
-              {"const": ""}
+              {
+                "pattern": "^https://",
+                "type": "string"
+              },
+              {
+                "const": ""
+              }
             ]
           },
-          "path": {"minLength": 1, "type": "string"},
-          "record_id": {"minLength": 1, "type": "string"},
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "record_id": {
+            "minLength": 1,
+            "type": "string"
+          },
           "source_url": {
             "anyOf": [
-              {"pattern": "^https://", "type": "string"},
-              {"const": ""}
+              {
+                "pattern": "^https://",
+                "type": "string"
+              },
+              {
+                "const": ""
+              }
             ]
           },
-          "source_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
-          "status": {"enum": ["verified", "working", "quarantined"]},
-          "tier": {"enum": ["spine", "flagship", "working-corpus"]},
-          "title": {"minLength": 1, "type": "string"},
-          "visibility": {"enum": ["public", "private"]}
+          "source_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "verified",
+              "working",
+              "quarantined"
+            ]
+          },
+          "tier": {
+            "enum": [
+              "spine",
+              "flagship",
+              "working-corpus"
+            ]
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "visibility": {
+            "enum": [
+              "public",
+              "private"
+            ]
+          }
         },
         "required": [
           "record_id",
@@ -64,10 +114,73 @@
       },
       "type": "array"
     },
-    "release": {"type": "string"},
-    "repository": {"type": "string"},
-    "schema": {"const": "https://jdhart81.github.io/viridis-canon/schemas/research-catalog-v1.json"},
-    "stats": {"type": "object"}
+    "release": {
+      "type": "string"
+    },
+    "repository": {
+      "type": "string"
+    },
+    "schema": {
+      "const": "https://jdhart81.github.io/viridis-canon/schemas/research-catalog-v1.json"
+    },
+    "stats": {
+      "type": "object"
+    },
+    "publications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "entity_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "claim_scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "record_id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$"
+          },
+          "doi": {
+            "type": "string",
+            "pattern": "^10\\.5281/zenodo\\.[1-9][0-9]*$"
+          },
+          "disclaimer": {
+            "const": "logical validity given the model, not empirical validation of its assumptions"
+          },
+          "public_readback_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "publication_binding_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "certificate_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "certificate_sha256",
+          "claim_scope",
+          "disclaimer",
+          "doi",
+          "entity_id",
+          "public_readback_sha256",
+          "publication_binding_sha256",
+          "record_id",
+          "title"
+        ]
+      }
+    }
   },
   "required": [
     "schema",
@@ -79,7 +192,8 @@
     "human_publish_gate",
     "stats",
     "records",
-    "catalog_digest"
+    "catalog_digest",
+    "publications"
   ],
   "title": "Viridis research catalog v1",
   "type": "object"

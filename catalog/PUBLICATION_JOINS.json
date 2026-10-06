@@ -1,0 +1,27 @@
+{
+  "publications": [
+    {
+      "certificate_sha256": "f8eae567b536fac4dba32456f448de99e7e59b1d2e14ecae2b7234ba92f1e130",
+      "claim_scope": "Explicit Landauer and richness premises imply the minimum rate bound Supplied richness and Landauer premises imply the data-wall ceiling The explicit fair-bit KL process has intelligence creation rate log two. Supplied erasure dominance transfers the supplied Landauer power inequality, without a memory inference. Given positive K and named supplied physical premises PL (R_obs*K <= P) and PD (rate <= R_obs*D), the product-form inequality rate <= P*D/K holds. The physical premises are not derived.",
+      "disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+      "doi": "10.5281/zenodo.23141592",
+      "entity_id": "publication:foundation-standalone-20261004",
+      "public_readback_sha256": "39cda257486570d9d16abac089d1f9be560f0a35e29198490843234876e293c3",
+      "publication_binding_sha256": "cdfdd79ac4149786421c0f66943ed2050f146c68e8648833938be7eb7130ea96",
+      "record_id": "23141592",
+      "title": "The Intelligence Bound: Thermodynamic Limits on Learning Rate and Implications for Biosphere Information"
+    },
+    {
+      "certificate_sha256": "3242b7a1642392e039c386d3db1d693d9f59227aefba73ea580478924eb77073",
+      "claim_scope": "Given real a,b,c with -1<=c and ((a+b)/2)^2<=(1+c)/2, the scalar minimum min(a,b) is at most sqrt((1+c)/2). No vector-to-scalar premise is proved. Given nonnegative l1,l2 and m<=a1,m<=a2, m*(l1+l2)<=l1*a1+l2*a2. This is a two-segment scalar inequality, not arbitrary aggregation.",
+      "disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+      "doi": "10.5281/zenodo.23141980",
+      "entity_id": "publication:bcan-scalar-corrected-20261004",
+      "public_readback_sha256": "9ae43228c63d6fc747b3b67b0a58fbb38ef7054fa349026672dbbc3aae1090d7",
+      "publication_binding_sha256": "192625eb944e17f93ae695d12bd85c537be0029c299938cd005226aae6d09e1b",
+      "record_id": "23141980",
+      "title": "A Bisector Corridor Alignment Note"
+    }
+  ],
+  "standard": "PUBLIC_SCOPED_PUBLICATION_POINTERS_1"
+}

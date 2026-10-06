@@ -1,0 +1,13 @@
+{
+  "consecutive_clean_closed_windows": 0,
+  "counting_rule": "Distinct closed America/New_York 01:00 nightly windows; all enforcing reports in a counted window must be clean; missing dates break the streak.",
+  "last_closed_window": "2026-10-03",
+  "observed_at_utc": "2026-10-04T18:17:46.576209+00:00",
+  "proof_execution": false,
+  "rejected": [],
+  "required": 7,
+  "standard": "VRS-SEVEN-NIGHTLY-WINDOWS-1",
+  "status": "PENDING_GENUINE_NIGHTLY_WINDOWS",
+  "windows": {},
+  "zenodo_writes": false
+}

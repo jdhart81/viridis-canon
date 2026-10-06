@@ -15,8 +15,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "00_lab_infrastruct
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "gates"))
 from claim_binding import CONJECTURE_LABEL, DISCLAIMER, ledger_entities, read_object, tree_root, inspect_entity_certificate
 from publication_gate import evaluate_publication
+from mirror_parity import GENERATION_ROOT
 
-STATUSES = ("MIRROR_DRIFT", "UNSOUND", "HAS_SORRY", "DEBT", "NO_FORMALIZATION", "CLEAN_UNCERTIFIED", "CERTIFIED")
+STATUSES = ("MIRROR_DRIFT", "UNSOUND_ENVIRONMENT", "UNSOUND", "HAS_SORRY", "DEBT", "NO_FORMALIZATION", "CLEAN_UNCERTIFIED", "CERTIFIED")
+
+
+def _quarantined(entry: dict[str, Any]) -> bool:
+    from claim_binding import _static_vacuity
+    return entry.get("status") in {"UNSOUND", "UNSOUND_ENVIRONMENT"} or _static_vacuity({}, entry)
 
 
 def escape_cell(value: Any) -> str:
@@ -34,6 +40,33 @@ def _safe_entities(ledger: dict[str, Any]) -> tuple[list[dict[str, Any]], list[d
             if entity.get("status") not in STATUSES:
                 raise ValueError(f"unpartitioned ledger status for {entity['id']}")
     return files, runs
+
+
+def _public_strings(value: Any, root: Path) -> Any:
+    """Keep diagnostics and claim scope while hiding local roots in public text.
+
+    This rendering projection never touches ledger or gate evidence. Replace
+    only the two known roots, retaining relative filenames and every reason.
+    """
+    prefixes = ((str(root.resolve()), "[canonical mirror]"),
+                (str(root), "[canonical mirror]"),
+                (str(Path(GENERATION_ROOT).resolve()), "[generation root]"),
+                (str(GENERATION_ROOT), "[generation root]"))
+    if isinstance(value, str):
+        for prefix, label in prefixes:
+            value = value.replace(prefix, label)
+        return value
+    if isinstance(value, list):
+        return [_public_strings(item, root) for item in value]
+    if isinstance(value, dict):
+        result = {}
+        for key, item in value.items():
+            public_key = _public_strings(key, root)
+            if public_key in result:
+                raise ValueError("public diagnostic root projection collides")
+            result[public_key] = _public_strings(item, root)
+        return result
+    return value
 
 
 def render_index(
@@ -64,9 +97,9 @@ def render_index(
                 "proposed_description": result["proposed_metadata"]["description"],
                 "published_doi_requires_human_decision": result["published_doi_requires_human_decision"]}
         public.append(item)
-        if result["canon_eligible"]:
+        if result["canon_eligible"] and not _quarantined(entry):
             canon.append({**item, "claims": result["claim_gate"]["claims"]})
-    lines = ["# Verification coverage and public index", "", f"Scanned tree: `{root}`", "",
+    lines = ["# Verification coverage and public index", "", "Scanned tree: canonical certification mirror.", "",
              "This file is generated from corpus_ledger.json. Source changes belong in that ledger.", "",
              DISCLAIMER, "", "## Ledger snapshot coverage", "",
              "Snapshot counts record the ledger at scan time. Current proof statuses below are re-inspected before rendering.", "", "| Status | Lean files | Paper runs |", "|---|---:|---:|"]
@@ -81,13 +114,32 @@ def render_index(
             for claim in item["claims"]:
                 lines.append(f"  - {claim['english_claim']} (bound declaration: `{claim['lean_theorem']}`; witness: `{claim['nonvacuity_obligation']}`).")
     else:
-        lines.append("No artifact currently passes the certificate, paper-byte, and public claim gates.")
+        lines.append("No paper-run artifact currently passes the certificate, paper-byte, and public claim gates.")
     lines.extend(["", "## Paper publication labels", "", "| Entity | Proof status | Public label |", "|---|---|---|"])
     for item in public:
         lines.append(f"| {escape_cell(item['id'])} | {item['proof_status']} | {item['label']} |")
+    lines.extend(["", "## Explicit publication registrations", "",
+                  "Publication registrations are separate from the paper-run denominator. Only the exact registered artifact and current claim gate can qualify a published scope.", "",
+                  "| Publication | DOI | Claim status |", "|---|---|---|"])
+    registrations = []
+    for entry in sorted(ledger.get("publication_entities", []), key=lambda value: value["id"]):
+        gate = evaluate_publication(root / entry["path"], ledger, entity_id=entry["id"], inspector=inspector)
+        passed = (entry.get("registration_revalidated") is True
+                  and entry.get("publication_registration_status") == "PASS"
+                  and gate.get("status") == "PASS"
+                  and gate.get("exact_publication_binding") is True
+                  and isinstance(entry.get("doi"), str) and bool(entry["doi"])
+                  and gate.get("doi") == entry["doi"] and not _quarantined(entry))
+        status = "CERTIFIED_SCOPED_CLAIMS" if passed else "UNCERTIFIED"
+        item = {"id": entry["id"], "doi": entry.get("doi"), "label": status,
+                "disclaimer": DISCLAIMER, "gate_reasons": gate.get("reasons", [])}
+        registrations.append(item)
+        lines.append(f"| {escape_cell(entry['id'])} | {escape_cell(entry.get('doi') or 'unpublished')} | {status} |")
+        if passed:
+            canon.append({**item, "claims": gate["claim_gate"]["claims"]})
     lines.extend(["", "## Quarantined source files", ""])
-    quarantined = sorted((entry for entry in files if entry["status"] == "UNSOUND"), key=lambda entry: entry["id"])
-    lines.extend(f"- `{escape_cell(entry['path'])}` — UNSOUND; promotion is prohibited." for entry in quarantined)
+    quarantined = sorted((entry for entry in files if _quarantined(entry)), key=lambda entry: entry["id"])
+    lines.extend(f"- `{escape_cell(entry['path'])}` — {escape_cell(entry['status'])}; unsound or vacuous source promotion is prohibited." for entry in quarantined)
     if not quarantined:
         lines.append("None recorded.")
     lines.extend(["", "## Synthesis artifacts", ""])
@@ -95,9 +147,13 @@ def render_index(
     if not syntheses:
         lines.append("None recorded.")
     lines.extend(["", "Published DOI amendments require a separate human decision. These outputs are successor proposals only.", ""])
-    return {"README.md": "\n".join(lines),
+    public_root = Path(ledger["tree_root"])
+    public = _public_strings(public, public_root)
+    registrations = _public_strings(registrations, public_root)
+    canon = _public_strings(canon, public_root)
+    return {"README.md": _public_strings("\n".join(lines), public_root),
             "ZENODO_DESCRIPTIONS.json": json.dumps({"generated_from": "corpus_ledger.json", "publication_mode": "REPORT_ONLY",
-                "disclaimer": DISCLAIMER, "artifacts": public}, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
+                "disclaimer": DISCLAIMER, "artifacts": public, "publication_registrations": registrations}, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
             "CANON_INDEX.json": json.dumps({"generated_from": "corpus_ledger.json", "disclaimer": DISCLAIMER,
                 "entries": canon, "quarantined": [entry["id"] for entry in quarantined]}, indent=2, ensure_ascii=False, sort_keys=True) + "\n"}
 

@@ -53,14 +53,16 @@ class CatalogTests(unittest.TestCase):
         self.assertEqual(len(records), len({record["record_id"] for record in records}))
         self.assertEqual(len(records), len({record["path"] for record in records}))
 
-    def test_intelligence_bound_is_spine(self) -> None:
+    def test_historical_spine_needs_current_bound_evidence(self) -> None:
         record = next(
             record
             for record in self.catalog["records"]
             if record["record_id"] == "intelligence-bound"
         )
-        self.assertEqual(record["status"], "verified")
-        self.assertEqual(record["tier"], "spine")
+        self.assertEqual(record["status"], "working")
+        self.assertEqual(record["tier"], "working-corpus")
+        self.assertEqual(record["metadata"]["historical_tier"], "spine")
+        self.assertFalse(record["metadata"]["verification_coverage"]["canon_eligible"])
 
     def test_ai_safety_is_quarantined(self) -> None:
         record = next(
@@ -80,11 +82,11 @@ class CatalogTests(unittest.TestCase):
         verified = [
             record for record in self.catalog["records"] if record["status"] == "verified"
         ]
-        self.assertTrue(verified)
+        self.assertFalse(verified)  # CI has no canonical corpus ledger or binding evidence.
         self.assertTrue(
-            all(record["external_validation"] == "not-recorded" for record in verified)
+            all(record["external_validation"] == "not-recorded" for record in self.catalog["records"])
         )
-        self.assertTrue(all("empirical" in record["caveat"].lower() for record in verified))
+        self.assertTrue(all("empirical" in record["caveat"].lower() for record in self.catalog["records"]))
 
     def test_every_record_carries_source_and_record_digests(self) -> None:
         for record in self.catalog["records"]:

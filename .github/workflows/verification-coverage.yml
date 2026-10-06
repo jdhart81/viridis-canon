@@ -15,5 +15,7 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
+      - name: Install the pinned independent file metadata parser
+        run: python3 -m pip install --disable-pip-version-check -r 00_lab_infrastructure/gates/byte_metadata_requirements.txt
       - name: Coverage, labeling and immutable preparation regressions
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates -p 'test*.py' -v

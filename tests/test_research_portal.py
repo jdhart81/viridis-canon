@@ -6,7 +6,7 @@ import unittest
 from html.parser import HTMLParser
 from pathlib import Path
 
-from canon_core.catalog import build_catalog
+from canon_core.catalog import validate_catalog, validate_catalog_sources
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -65,7 +65,8 @@ class ResearchPortalTests(unittest.TestCase):
 
     def test_checked_in_catalog_matches_source(self) -> None:
         actual = json.loads((DOCS / "data" / "catalog.json").read_text(encoding="utf-8"))
-        self.assertEqual(actual, build_catalog(ROOT))
+        self.assertEqual(validate_catalog(actual, root=ROOT), [])
+        self.assertEqual(validate_catalog_sources(actual, ROOT), [])
 
     def test_public_catalog_contains_no_local_absolute_paths(self) -> None:
         rendered = (DOCS / "data" / "catalog.json").read_text(encoding="utf-8")
@@ -100,6 +101,12 @@ class ResearchPortalTests(unittest.TestCase):
         self.assertIn("living mind map", self.index)
         self.assertIn("renderResearchGraph", self.app)
         self.assertIn("filterResearchGraph", self.app)
+
+    def test_scoped_publications_are_separate_from_source_admission(self) -> None:
+        self.assertIn("scoped-publications", self.parser.ids)
+        self.assertIn("renderPublicationPointers", self.app)
+        self.assertIn("do not admit older repository modules", self.index)
+        self.assertIn("named Landauer and richness premises", self.index)
 
 
 if __name__ == "__main__":

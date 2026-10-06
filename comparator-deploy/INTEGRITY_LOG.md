@@ -49,3 +49,22 @@ Approved by Justin: preserve actual close-event exit code/signal, reached phase 
 | Client | `f76bcb501b252aa111a4910d54a7ac06259e543fe083ef3f8523bf436ac80ab4` | `b745e90ad147a0d5bd6787e20049e9bbb49a694837172851c77958b271718202` |
 
 Client verify() acceptance-function SHA-256: `4ede83be9b0a083c1b5107ceb7ac33a4cc0616fe7bf9cc5069d4bb472390ad43`, unchanged.
+
+## 2026-10-04 — INV-9 protected issuer intake approval
+
+Justin explicitly approved new-nightly premise-declaration intake in GAME_PLAN.md, section “Premise-declaration gate (INV-9) — 2026-10-04”. The authoritative unversioned production issuer was imported first with SHA-256 `789cb903c972a9c10731360769ccff56055b3257de9491a75b92c0d549b5c438`; the approved intake revision is `96c5c70d7d9de31c537ac4dc4a405d5f2c38a7ba03389c93dac1efb28cfc5ebe`. The new explicit `--require-premise-declaration` flag checks the four already hash-bound sealed inputs and records `foundation_basis` plus its static intake report in the certificate. Default remains off for historical callers; the entire existing proof/receipt/kernel/axiom/alignment/hash acceptance block and witness-evidence helper remain byte-identical. Tests compare historical certificate output byte-for-byte and preserve all prior proof rejections. No verifier, kernel, permitted-axiom list, alignment implementation, proof source or existing certificate changes. Runtime installation is deferred to the merged, hash-checked Phase 5 closure.
+
+## 2026-10-04 — already deployed F2G overlay baseline reconciliation
+
+The protected remote baseline still listed pre-overlay hashes. This entry reconciles it to previously merged release `b84f62a84bc2ee4a5c94453d4d00edf584a250b3`, not a new deployment or protected-code change. Authority: `/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-03/foundation-f2g-cold-retry-20261004T001801Z/evidence/DEPLOYMENT_STATUS.json` (SHA-256 `cfd4068c2e31f2d7b65c40942ca57947ee1c81424ce489782d2406446f80bbd1`) and `checkpoints/F2G_OVERLAY_MANIFEST.json` (SHA-256 `534582acd73e893d14aa70413e24da907e39109e8ced91619d880e43e7abd3de`). Every local overlay source matches its previously recorded release hash. A fresh read-only deployed hash probe is recorded separately by the parent task.
+
+| Deployed component | Prior baseline SHA-256 | Already deployed SHA-256 |
+| --- | --- | --- |
+| `/opt/viridis/comparator-live/server/src/app.ts` | `9a11661de61ab1c2d0941b5c32d2b5e179d6cb17c48440f823dae5b6f8c536ed` | `b8bdfe6cee8f334f13be3f8315533d08eda3a59161cd0e51dfc14daec3340701` |
+| `/opt/viridis/comparator-live/server/src/exec.ts` | `c6282bc7ee10a9d8717c22892beb24d239e7129331df47cc7c07379c19cb9941` | `d3cef70035b949f13a811013530a3e6e22d3434b5699b11f844591081fa853d2` |
+| `/opt/viridis/comparator-live/server/src/worker.ts` | `6ed027bef98e254ba181587c156bff9e5ce9ab0d29f66a265f2c6561b3862448` | `d370bf959992234c92d35540149be1dfda74d9d825006076fd0ba8ac0514a305` |
+| `/opt/viridis/comparator-live/server/src/resource-profile.mjs` | `a399885225e15ddb896294ab135d777a8d56727d31fa5fb3976b1f1e02cc88fc` | `a506ea2f0b5edf1dce5b0e526804b285e261db8c296d593b4725523ed78e3c88` |
+| `/opt/viridis/comparator-live/server/src/resource-profile.d.mts` | `ABSENT` | `bb22f5f88f7d8c2d16541bb01889f7b0d5f822ed4db55c64339f632e2aad5ef4` |
+| `/opt/viridis/comparator-live/server/src/guarded-process.mjs` | `ABSENT` | `544ac5bfb3ca631e7cb3fb5aef531efca4d83a9cbb98c818125b10dbffe83015` |
+| `/opt/viridis/comparator-live/server/src/guarded-process.d.mts` | `ABSENT` | `9e83fd6a1728ad6907b734960d0cec3b80cdba39f952ef5a48e60155ec06cfed` |
+| `/opt/viridis/comparator-live/shared/shared.ts` | `70922cfc75b6cc24d2d8bb102dcb405aaed9baf57fd14261d86482f99dc3808a` | `a3fe5a7596e0fd546dd53bc6b6bbc504ea21463605ffbff2efd5f9a12f3f6dc7` |

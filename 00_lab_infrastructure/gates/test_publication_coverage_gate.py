@@ -5,13 +5,16 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "00_lab_infrastructure" / "gates"))
 sys.path.insert(0, str(REPO / "gates"))
 sys.path.insert(0, str(REPO / "scripts"))
 from claim_binding import DISCLAIMER, CONJECTURE_LABEL, check_bindings, check_run
-from publication_gate import evaluate_publication, stage_result
+from publication_gate import (evaluate_publication, stage_result, UNCERTIFIED_LABEL,
+                              require_new_artifact_publication, PublicationGateHold,
+                              _premise_required)
 from generate_public_index import generate, render_index
 
 
@@ -83,14 +86,145 @@ class PublicationCoverageGateTests(unittest.TestCase):
         self.assertEqual(result["verification_status"], "CERTIFIED")
         self.assertIn(DISCLAIMER, result["proposed_metadata"]["description"])
 
-    def test_no_certificate_downgrades_title_abstract_and_metadata(self):
+    def test_premise_cutover_exempts_historical_and_foundational_runs(self):
+        self.ledger['premise_declaration_cutover_run'] = 'Run-187'
+        result = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture)
+        self.assertEqual(result['status'], 'PASS')
+        self.assertFalse(result['premise_declaration_required'])
+        self.assertEqual(result['premise_declaration']['status'], 'EXEMPT')
+        for rid, required in [('Run-186', False), ('Run-187', True), ('Run-188', True),
+                              ('Run-899', True), ('Run-900', False), ('Run-903', False)]:
+            with self.subTest(run=rid):
+                self.assertIs(_premise_required(self.ledger, {'run_id':rid}, False), required)
+
+    def test_premise_cutover_holds_a_new_nightly_without_declaration(self):
+        self.ledger['premise_declaration_cutover_run'] = 'Run-142'
+        result = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture, enforce=True)
+        self.assertEqual(result['status'], 'HOLD')
+        self.assertTrue(result['premise_declaration_required'])
+        self.assertIn('required sealed premise input missing', str(result['reasons']))
+        self.assertFalse(result['release_eligible'])
+        with self.assertRaises(PublicationGateHold):require_new_artifact_publication(result)
+
+    def test_explicit_premise_requirement_cannot_be_exempted(self):
+        with patch('premise_declaration.validate_artifact', return_value={'status':'EXEMPT', 'reasons':[]}) as intake:
+            result = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture,
+                                          require_premise_declaration=True)
+        self.assertEqual(result['status'], 'HOLD')
+        self.assertTrue(result['premise_declaration_required'])
+        self.assertTrue(intake.call_args.kwargs['required'])
+
+    def test_declared_premise_mismatch_is_not_a_historical_exemption(self):
+        with patch('premise_declaration.validate_artifact', return_value={
+                'status':'HOLD', 'foundation_basis':'THEOREM', 'reasons':['PREMISE_UNDERDECLARED']}):
+            result = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture)
+        self.assertEqual(result['status'], 'HOLD')
+        self.assertIn('PREMISE_UNDERDECLARED', str(result['reasons']))
+
+    def test_passing_premise_basis_propagates_without_bypassing_claim_binding(self):
+        premise = {'status':'PASS', 'foundation_basis':'CONDITIONAL_PL_PD', 'reasons':[]}
+        with patch('premise_declaration.validate_artifact', return_value=premise):
+            result = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture,
+                                          require_premise_declaration=True)
+            self.assertEqual(result['status'], 'PASS')
+            self.assertEqual(result['foundation_basis'], 'CONDITIONAL_PL_PD')
+            (self.run/'claim_binding.json').unlink()
+            (self.source/'claim_binding.json').unlink()
+            result = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture,
+                                          require_premise_declaration=True)
+        self.assertEqual(result['status'], 'HOLD')
+        self.assertIn('claim-binding gate', str(result['reasons']))
+
+    def test_malformed_premise_cutover_and_nonboolean_flag_fail_closed(self):
+        for cutover in ('Run-0187', 'Run-0', 'Run-900', 187, True, '187'):
+            with self.subTest(cutover=cutover):
+                self.ledger['premise_declaration_cutover_run'] = cutover
+                result = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture)
+                self.assertEqual(result['status'], 'HOLD')
+                self.assertIn('cutover', str(result['reasons']))
+        self.ledger.pop('premise_declaration_cutover_run')
+        result = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture,
+                                      require_premise_declaration=1)
+        self.assertEqual(result['status'], 'HOLD')
+        self.assertIn('boolean', str(result['reasons']))
+
+    def test_no_certificate_labels_metadata_but_preserves_title_and_historical_claims(self):
         self.entry.update(status="DEBT", certificate_valid=False, certificate=None)
         result = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture)
-        self.assertEqual(result["verification_status"], "CONJECTURE")
-        self.assertTrue(result["proposed_metadata"]["title"].startswith(CONJECTURE_LABEL))
-        self.assertNotIn("Theorem", result["proposed_metadata"]["title"])
-        self.assertNotIn("Canon", result["proposed_metadata"]["description"])
+        self.assertEqual(result["verification_status"], "UNCERTIFIED")
+        self.assertEqual(result["proposed_metadata"]["title"], "Theorem relation")
+        self.assertIn("Theorem in Canon", result["proposed_metadata"]["description"])
+        self.assertEqual(result["proposed_metadata"]["description"].count(UNCERTIFIED_LABEL), 1)
+        self.assertIn("Historical description", result["proposed_metadata"]["description"])
+        self.assertNotIn(DISCLAIMER, result["proposed_metadata"]["description"])
+        self.assertIsNone(result["disclaimer"])
+        self.assertEqual(result["proposed_metadata"]["keywords"], ["uncertified"])
         self.assertFalse(result["canon_eligible"])
+
+    def test_report_only_pass_does_not_authorize_new_artifact_release(self):
+        result = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture)
+        self.assertEqual(result["mode"], "REPORT_ONLY")
+        self.assertFalse(result["enforcement"])
+        self.assertFalse(result["blocking"])
+        with self.assertRaises(PublicationGateHold):
+            require_new_artifact_publication(result)
+
+    def test_explicit_enforcement_passes_only_current_certificate_binding_and_claims(self):
+        result = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture, enforce=True)
+        self.assertEqual(result["mode"], "ENFORCING")
+        require_new_artifact_publication(result)
+        (self.run / "PUBLICATION_BINDING.json").unlink()
+        result = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture, enforce=True)
+        self.assertTrue(result["blocking"])
+        with self.assertRaises(PublicationGateHold):
+            require_new_artifact_publication(result)
+
+    def test_held_banner_is_idempotent_and_removes_only_old_leading_gate_text(self):
+        self.entry.update(status="DEBT", certificate_valid=False)
+        meta = {"title":"Viridis Compiled Theorem Stack — Canon v5", "description":CONJECTURE_LABEL + "\n\n" + DISCLAIMER + "\n\nHistorical scientific claim. Theorem x = y.", "keywords":["conjecture", "model"]}
+        (self.run / "metadata.json").write_text(json.dumps(meta))
+        first = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture)
+        after = first["proposed_metadata"]
+        self.assertEqual(after["title"], meta["title"])
+        self.assertNotIn(CONJECTURE_LABEL, after["description"])
+        self.assertNotIn(DISCLAIMER, after["description"])
+        self.assertIn("Theorem x = y.", after["description"])
+        (self.run / "metadata.json").write_text(json.dumps(after))
+        second = evaluate_publication(self.run, self.ledger, inspector=self.inspected_fixture)
+        self.assertEqual(after["description"], second["proposed_metadata"]["description"])
+        self.assertEqual(after["keywords"], ["model", "uncertified"])
+
+    def test_publication_entity_lookup_does_not_inherit_a_run_approval(self):
+        import shutil
+        artifact = self.root / "new release"
+        shutil.copytree(self.run, artifact)
+        entry = {**self.entry, "id":"publication:one", "kind":"PUBLICATION", "run_id":"Run-142", "path":"new release"}
+        del entry["approved_publication_binding_reviews"]
+        self.ledger["publication_entities"] = [entry]
+        result = evaluate_publication(artifact, self.ledger, entity_id=entry["id"], inspector=self.inspected_fixture)
+        self.assertEqual(result["status"], "HOLD")
+        self.assertIn("ledger approval", str(result["reasons"]))
+        entry["approved_publication_binding_reviews"] = [digest(self.review)]
+        result = evaluate_publication(artifact, self.ledger, entity_id=entry["id"], inspector=self.inspected_fixture)
+        self.assertEqual(result["status"], "PASS")
+
+    def test_explicit_entity_id_cannot_grant_approval_to_an_unregistered_copy(self):
+        import shutil
+        artifact = self.root / "unregistered release"
+        shutil.copytree(self.run, artifact)
+        result = evaluate_publication(artifact, self.ledger, entity_id=self.entry["id"], inspector=self.inspected_fixture)
+        self.assertEqual(result["status"], "HOLD")
+        self.assertIn("exactly one ledger entity", str(result["reasons"]))
+
+    def test_publication_entity_run_join_must_equal_its_certificate(self):
+        import shutil
+        artifact = self.root / "new release"
+        shutil.copytree(self.run, artifact)
+        entry = {**self.entry, "id":"publication:one", "kind":"PUBLICATION", "run_id":"Run-900", "path":"new release"}
+        self.ledger["publication_entities"] = [entry]
+        result = evaluate_publication(artifact, self.ledger, inspector=self.inspected_fixture)
+        self.assertEqual(result["status"], "HOLD")
+        self.assertIn("different run", str(result["reasons"]))
 
     def test_static_clean_is_insufficient_and_unsound_never_promotes(self):
         for status in ("CLEAN_UNCERTIFIED", "UNSOUND", "HAS_SORRY"):

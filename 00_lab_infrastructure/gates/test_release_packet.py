@@ -78,3 +78,20 @@ class ReleasePacketTests(unittest.TestCase):
                     self.assertEqual(table[name]['before_value'],b[name])
                     self.assertEqual(table[name]['expected_readback_value'],a[name])
                     self.assertEqual(table[name]['public_changed'],b[name]!=a[name])
+
+    def test_entity_encoded_label_and_server_whitespace_are_idempotent(self):
+        b=self.fixture()
+        b['description']='<p><strong>'+LABEL.replace('—','&mdash;')+'</strong></p>\n\n'+"<p><strong>Historical description (verification assertions below are not current certification labels):</strong></p>\n<p>Historical content.</p>"
+        a=amendment(b)
+        import html
+        self.assertEqual(html.unescape(a['description']).count(LABEL),1)
+        self.assertEqual(a['description'].count('Historical description'),1)
+        self.assertIn('<p>Historical content.</p>',a['description'])
+        self.assertEqual(a['title'],b['title'])
+
+    def test_repeated_exact_banners_removed_without_changing_historical_claims(self):
+        b=self.fixture();a=amendment(b)
+        b['description']=a['description'].replace('<hr/>','\n')
+        b['description']=amendment(b)['description']
+        self.assertEqual(amendment(b)['description'].count(LABEL),1)
+        self.assertIn('Original historical claims.',amendment(b)['description'])

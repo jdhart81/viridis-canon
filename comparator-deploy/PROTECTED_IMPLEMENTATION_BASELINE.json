@@ -3,7 +3,7 @@
   "canonical_pipeline_root": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2",
   "protected_implementation_sha256": {
     "comparator_cloud_lean_verifier.py": "b745e90ad147a0d5bd6787e20049e9bbb49a694837172851c77958b271718202",
-    "issue_lean_zero_sorry_certificate.py": "789cb903c972a9c10731360769ccff56055b3257de9491a75b92c0d549b5c438",
+    "issue_lean_zero_sorry_certificate.py": "96c5c70d7d9de31c537ac4dc4a405d5f2c38a7ba03389c93dac1efb28cfc5ebe",
     "engine3_align_challenge.py": "d8d06e582d80bddae73dbb68a23a866ed8cac241f5c9780c3bc779a50fcd4870",
     "LEAN_VERIFIER_BACKENDS.json": "18bdb07daf662c0da819b8bb33f2243f9425337eadb73fac1f8ffc42ed6a902e"
   },
@@ -14,11 +14,14 @@
   "approval": "Justin FOUNDATION F2h: foundation-only 600-second comparator wall profile, diagnostic receipt fields, deployed drift reconciliation; acceptance unchanged.",
   "protected_remote_implementation_sha256": {
     "/usr/local/bin/viridis-comparator-verify": "9e7a384df16c4c80170ff117f63e90cae09b7f923dbf3296ed36158bd1126f02",
-    "/opt/viridis/comparator-live/server/src/exec.ts": "c6282bc7ee10a9d8717c22892beb24d239e7129331df47cc7c07379c19cb9941",
-    "/opt/viridis/comparator-live/server/src/worker.ts": "6ed027bef98e254ba181587c156bff9e5ce9ab0d29f66a265f2c6561b3862448",
-    "/opt/viridis/comparator-live/shared/shared.ts": "70922cfc75b6cc24d2d8bb102dcb405aaed9baf57fd14261d86482f99dc3808a",
-    "/opt/viridis/comparator-live/server/src/resource-profile.mjs": "a399885225e15ddb896294ab135d777a8d56727d31fa5fb3976b1f1e02cc88fc",
-    "/opt/viridis/comparator-live/server/src/app.ts": "9a11661de61ab1c2d0941b5c32d2b5e179d6cb17c48440f823dae5b6f8c536ed"
+    "/opt/viridis/comparator-live/server/src/exec.ts": "d3cef70035b949f13a811013530a3e6e22d3434b5699b11f844591081fa853d2",
+    "/opt/viridis/comparator-live/server/src/worker.ts": "d370bf959992234c92d35540149be1dfda74d9d825006076fd0ba8ac0514a305",
+    "/opt/viridis/comparator-live/shared/shared.ts": "a3fe5a7596e0fd546dd53bc6b6bbc504ea21463605ffbff2efd5f9a12f3f6dc7",
+    "/opt/viridis/comparator-live/server/src/resource-profile.mjs": "a506ea2f0b5edf1dce5b0e526804b285e261db8c296d593b4725523ed78e3c88",
+    "/opt/viridis/comparator-live/server/src/app.ts": "b8bdfe6cee8f334f13be3f8315533d08eda3a59161cd0e51dfc14daec3340701",
+    "/opt/viridis/comparator-live/server/src/resource-profile.d.mts": "bb22f5f88f7d8c2d16541bb01889f7b0d5f822ed4db55c64339f632e2aad5ef4",
+    "/opt/viridis/comparator-live/server/src/guarded-process.mjs": "544ac5bfb3ca631e7cb3fb5aef531efca4d83a9cbb98c818125b10dbffe83015",
+    "/opt/viridis/comparator-live/server/src/guarded-process.d.mts": "9e83fd6a1728ad6907b734960d0cec3b80cdba39f952ef5a48e60155ec06cfed"
   },
   "prechange_remote_implementation_sha256": {
     "/usr/local/bin/viridis-comparator-verify": "b448e91bd4f5389f19358e21cb7f9c7b23e4be89d2ff79343bdb0d0ba63a09d9"
@@ -67,5 +70,68 @@
     "pass_and_fail": true,
     "unavailable_is_null": true
   },
-  "acceptance_verify_function_sha256": "4ede83be9b0a083c1b5107ceb7ac33a4cc0616fe7bf9cc5069d4bb472390ad43"
+  "acceptance_verify_function_sha256": "4ede83be9b0a083c1b5107ceb7ac33a4cc0616fe7bf9cc5069d4bb472390ad43",
+  "premise_declaration_intake_approval": {
+    "approved_by": "Justin",
+    "approved_on": "2026-10-04",
+    "authority": "reports/verification-coverage/GAME_PLAN.md § Premise-declaration gate (INV-9) — 2026-10-04",
+    "component": "issue_lean_zero_sorry_certificate.py",
+    "old_sha256": "789cb903c972a9c10731360769ccff56055b3257de9491a75b92c0d549b5c438",
+    "new_sha256": "96c5c70d7d9de31c537ac4dc4a405d5f2c38a7ba03389c93dac1efb28cfc5ebe",
+    "scope": "Explicit new-nightly sealed-premise intake and certificate foundation_basis metadata only; historical default output unchanged.",
+    "verifier_kernel_axiom_changes": false
+  },
+  "deployed_f2g_baseline_reconciliation": {
+    "recorded_on": "2026-10-04",
+    "release_commit": "b84f62a84bc2ee4a5c94453d4d00edf584a250b3",
+    "overlay_manifest_sha256": "534582acd73e893d14aa70413e24da907e39109e8ced91619d880e43e7abd3de",
+    "prior_deployment_evidence": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-03/foundation-f2g-cold-retry-20261004T001801Z/evidence/DEPLOYMENT_STATUS.json",
+      "sha256": "cfd4068c2e31f2d7b65c40942ca57947ee1c81424ce489782d2406446f80bbd1"
+    },
+    "changes": [
+      {
+        "path": "/opt/viridis/comparator-live/server/src/app.ts",
+        "prior_baseline_sha256": "9a11661de61ab1c2d0941b5c32d2b5e179d6cb17c48440f823dae5b6f8c536ed",
+        "deployed_authority_sha256": "b8bdfe6cee8f334f13be3f8315533d08eda3a59161cd0e51dfc14daec3340701"
+      },
+      {
+        "path": "/opt/viridis/comparator-live/server/src/exec.ts",
+        "prior_baseline_sha256": "c6282bc7ee10a9d8717c22892beb24d239e7129331df47cc7c07379c19cb9941",
+        "deployed_authority_sha256": "d3cef70035b949f13a811013530a3e6e22d3434b5699b11f844591081fa853d2"
+      },
+      {
+        "path": "/opt/viridis/comparator-live/server/src/worker.ts",
+        "prior_baseline_sha256": "6ed027bef98e254ba181587c156bff9e5ce9ab0d29f66a265f2c6561b3862448",
+        "deployed_authority_sha256": "d370bf959992234c92d35540149be1dfda74d9d825006076fd0ba8ac0514a305"
+      },
+      {
+        "path": "/opt/viridis/comparator-live/server/src/resource-profile.mjs",
+        "prior_baseline_sha256": "a399885225e15ddb896294ab135d777a8d56727d31fa5fb3976b1f1e02cc88fc",
+        "deployed_authority_sha256": "a506ea2f0b5edf1dce5b0e526804b285e261db8c296d593b4725523ed78e3c88"
+      },
+      {
+        "path": "/opt/viridis/comparator-live/server/src/resource-profile.d.mts",
+        "prior_baseline_sha256": null,
+        "deployed_authority_sha256": "bb22f5f88f7d8c2d16541bb01889f7b0d5f822ed4db55c64339f632e2aad5ef4"
+      },
+      {
+        "path": "/opt/viridis/comparator-live/server/src/guarded-process.mjs",
+        "prior_baseline_sha256": null,
+        "deployed_authority_sha256": "544ac5bfb3ca631e7cb3fb5aef531efca4d83a9cbb98c818125b10dbffe83015"
+      },
+      {
+        "path": "/opt/viridis/comparator-live/server/src/guarded-process.d.mts",
+        "prior_baseline_sha256": null,
+        "deployed_authority_sha256": "9e83fd6a1728ad6907b734960d0cec3b80cdba39f952ef5a48e60155ec06cfed"
+      },
+      {
+        "path": "/opt/viridis/comparator-live/shared/shared.ts",
+        "prior_baseline_sha256": "70922cfc75b6cc24d2d8bb102dcb405aaed9baf57fd14261d86482f99dc3808a",
+        "deployed_authority_sha256": "a3fe5a7596e0fd546dd53bc6b6bbc504ea21463605ffbff2efd5f9a12f3f6dc7"
+      }
+    ],
+    "new_remote_writes": false,
+    "authority": "Already merged and deployed F2G overlay; reconciliation only. Fresh read-only live recheck is separate evidence."
+  }
 }

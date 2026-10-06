@@ -32,7 +32,7 @@ class PreparedProductionAdaptersTests(unittest.TestCase):
         (self.bundle/'zenodo_metadata.json').write_text(json.dumps(self.payload))
 
     def test_all_prepared_snapshot_hashes_match_manifest(self):
-        base = Path(__file__).parent/'production_snapshots/phase5-20261005-oai-cutover'
+        base = Path(__file__).parent/'production_snapshots/phase5-20261005-provenance-closure'
         manifest = json.loads((base/'AFTER_MANIFEST.json').read_text())
         self.assertEqual(len(manifest['snapshots']), 22)
         for row in manifest['snapshots']:
@@ -46,6 +46,31 @@ class PreparedProductionAdaptersTests(unittest.TestCase):
                 if '/verification_coverage_gates/' in row['relative_path']:
                     current = Path(__file__).parent/Path(row['relative_path']).name
                     self.assertEqual(current.read_bytes(), after.read_bytes())
+
+    def test_provenance_successor_preserves_original_and_other_21_targets(self):
+        root = Path(__file__).parent/'production_snapshots'
+        original = root/'phase5-20261005-oai-cutover'
+        successor = root/'phase5-20261005-provenance-closure'
+        original_raw = (original/'AFTER_MANIFEST.json').read_bytes()
+        self.assertEqual(hashlib.sha256(original_raw).hexdigest(),
+                         '8abfd4f5264c7c6f9c61b0a79c810a7a725d74ce7100b4d209fabaa9d6b1b677')
+        self.assertEqual((successor/'AFTER_MANIFEST_PRE_PROVENANCE_20261005.json').read_bytes(), original_raw)
+        self.assertEqual((successor/'BEFORE_MANIFEST.json').read_bytes(),
+                         (original/'BEFORE_MANIFEST.json').read_bytes())
+        before = {row['relative_path']: row for row in json.loads(original_raw)['snapshots']}
+        after = {row['relative_path']: row for row in json.loads((successor/'AFTER_MANIFEST.json').read_bytes())['snapshots']}
+        from install_phase5_hooks import TARGETS
+        self.assertEqual(set(before), TARGETS)
+        self.assertEqual(set(after), TARGETS)
+        guard = 'RESEARCH_PIPELINE_v2/verification_coverage_gates/nightly_coverage.py'
+        self.assertEqual([path for path in sorted(TARGETS)
+                          if before[path]['after_sha256'] != after[path]['after_sha256']], [guard])
+        for path in TARGETS - {guard}:
+            with self.subTest(path=path):
+                self.assertEqual(after[path], before[path])
+        self.assertEqual(after[guard]['before_sha256'], before[guard]['after_sha256'])
+        self.assertEqual((successor/after[guard]['before_path']).read_bytes(),
+                         (original/before[guard]['after_path']).read_bytes())
 
     def test_historical_22_target_manifest_and_original_before_bytes_remain_exact(self):
         root=Path(__file__).parent/'production_snapshots'

@@ -1,0 +1,36 @@
+{
+  "at_utc": "2026-10-04T17:10:17.289395+00:00",
+  "mode": "READ_ONLY_INTAKE_AUDIT",
+  "production_edits": 0,
+  "records": [
+    {
+      "artifact": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/finalized_runs/Run-185",
+      "certificate_issued": false,
+      "explicit_claim_map_present": false,
+      "local_lean_execution": false,
+      "reasons": [
+        "ValueError: post-Lean review is not passing: HOLD_REFERENCE_AUTHOR_IDENTITY"
+      ],
+      "review_sha256": "42a27b42b4a281d817fb1e9774ee3fd79764f5ab11749a76edabcb0d930bfc73",
+      "run_id": "Run-185",
+      "standard": "VRS-NIGHTLY-PUBLICATION-INTAKE-1",
+      "status": "HOLD",
+      "zenodo_writes": false
+    },
+    {
+      "artifact": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/finalized_runs/Run-186",
+      "certificate_issued": false,
+      "explicit_claim_map_present": false,
+      "local_lean_execution": false,
+      "reasons": [
+        "ValueError: post-Lean review is not passing: HOLD_STALE_INDEPENDENT_REVIEW_PENDING_LANGUAGE"
+      ],
+      "review_sha256": "c35cef00eb23eee29966d395e618db67a07ae48c5ac7f0564895be66614af210",
+      "run_id": "Run-186",
+      "standard": "VRS-NIGHTLY-PUBLICATION-INTAKE-1",
+      "status": "HOLD",
+      "zenodo_writes": false
+    }
+  ],
+  "zenodo_writes": false
+}

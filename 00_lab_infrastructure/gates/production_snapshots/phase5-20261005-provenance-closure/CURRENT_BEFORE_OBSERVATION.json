@@ -1,0 +1,121 @@
+{
+  "activation_evidence": false,
+  "historical_observations_are_data": true,
+  "observed_at_utc": "2026-10-06T01:58:29.629313+00:00",
+  "recorded_root": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0",
+  "runtime_changes": 0,
+  "standard": "ACTUAL_PRE_PROVENANCE_RUNTIME_OBSERVATION_1",
+  "status": "ALL22_ORIGINAL_INSTALLED_HASHES_MATCH",
+  "targets": [
+    {
+      "bytes": 17948,
+      "recorded_path": "RESEARCH_PIPELINE_v2/issue_lean_zero_sorry_certificate.py",
+      "recorded_sha256": "96c5c70d7d9de31c537ac4dc4a405d5f2c38a7ba03389c93dac1efb28cfc5ebe"
+    },
+    {
+      "bytes": 10733,
+      "recorded_path": "RESEARCH_PIPELINE_v2/nightly_checkpoint.py",
+      "recorded_sha256": "f550c0f808bb15e603b875aed55962b0297731e5a2e4edf4aac99f33eab959df"
+    },
+    {
+      "bytes": 10153,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/certificate_inspection.py",
+      "recorded_sha256": "a7e3d2fcd167865b129529fce7e3599acf045a190cbc2107e87f39b0a3623ec8"
+    },
+    {
+      "bytes": 17169,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/claim_binding.py",
+      "recorded_sha256": "d0bac6e9739c41c5cc40cc57b932f1d15ac7a86f457a0ee3fecdc0ef7a2b7240"
+    },
+    {
+      "bytes": 28206,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/corpus_ledger.py",
+      "recorded_sha256": "d9d68fbb90605c975a006c070a448c3b843efb05a52b164c816d232dd6e583d9"
+    },
+    {
+      "bytes": 27949,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_audit.py",
+      "recorded_sha256": "23173076f35f62ca0696544c3a5c7ee2bcf7bc39a8a649390ec8e616c2c06f29"
+    },
+    {
+      "bytes": 7829,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_triage.py",
+      "recorded_sha256": "86d9d1e65286ff13038dc75ab3150a616d5acc7515b1ee4fcf04644f1db171ca"
+    },
+    {
+      "bytes": 6733,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/manuscript_structure.py",
+      "recorded_sha256": "3177a850997c760ca65e23416116fa4920cf35f238753f63fa63d3a7e4b300a9"
+    },
+    {
+      "bytes": 3632,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/mirror_parity.py",
+      "recorded_sha256": "77033a9303519bc47493f4efc2b0872fff805baa9aa35aa61e34467f66336e80"
+    },
+    {
+      "bytes": 35032,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/nightly_coverage.py",
+      "recorded_sha256": "02f87445c836b02ba5cbda03631e98448dd88b2357098af2cfa87ab6dd6d925c"
+    },
+    {
+      "bytes": 13749,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/nightly_publication_intake.py",
+      "recorded_sha256": "9f3aa3c7f438f22b1c07242e9c548f6a9917ecbc2999ffe817256a602f472ba8"
+    },
+    {
+      "bytes": 17324,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/premise_declaration.py",
+      "recorded_sha256": "c4cdba028df6c34fb117c02ff57d303a26b899b59892fcbbadc9457175232445"
+    },
+    {
+      "bytes": 2817,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/production_hooks.py",
+      "recorded_sha256": "9b0a3d48e2cabff04c58a9020c07db2a9afe7e7f8c7cbde5e034d56d0b77db81"
+    },
+    {
+      "bytes": 5952,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/publication_binding.py",
+      "recorded_sha256": "1fb3d5bc1d0df57445b8d7fed8a034e7bab7f1aeb0314db21e3cedd5e237df2e"
+    },
+    {
+      "bytes": 13370,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/publication_gate.py",
+      "recorded_sha256": "a44fe11deccc4d1246d4d2b0fc53621807e1f06061eafff1fb684615fcff7fef"
+    },
+    {
+      "bytes": 9809,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/release_packet.py",
+      "recorded_sha256": "972cc9816e3f2d1c3f93120666358421c9163535afd143a6f401725fc3545357"
+    },
+    {
+      "bytes": 19226,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/run_flow.py",
+      "recorded_sha256": "00a6d309360aabda0e27f37a0cd757e103c1c502497b3f2553e28d2070b98b04"
+    },
+    {
+      "bytes": 3835,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/static_pregate.py",
+      "recorded_sha256": "659e2d66a45af24a846a5fafe26564ccf713492d0d06be0fb8172e961e862153"
+    },
+    {
+      "bytes": 4233,
+      "recorded_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/theorem_coverage.py",
+      "recorded_sha256": "62bb9e87b10b8ef317616e4b906878d03f06752ab4e7d2dff90bdf9dfb27e99d"
+    },
+    {
+      "bytes": 12571,
+      "recorded_path": "_ZENODO_DEPOSITS/publish_dated_bundles.py",
+      "recorded_sha256": "4f099eaffb9a35fbd24e5c57ef34801391fabcd5c3272b58a379d7ac52b35e94"
+    },
+    {
+      "bytes": 7057,
+      "recorded_path": "_ZENODO_DEPOSITS/release_coherence.py",
+      "recorded_sha256": "348bc1f54ed027c6768efe512717bbc66976b7c658198383803d7e2bb8535060"
+    },
+    {
+      "bytes": 54476,
+      "recorded_path": "_ZENODO_DEPOSITS/weekend_canon_lockstep.py",
+      "recorded_sha256": "36b23f17c4ef4a9758f587caeb52f16c72d149fb49776e4e2fc920f5d2e32bec"
+    }
+  ]
+}

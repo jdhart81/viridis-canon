@@ -1,0 +1,59 @@
+{
+  "at_utc": "2026-10-04T16:28:43.677365+00:00",
+  "authority": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/GAME_PLAN.md",
+  "authority_sha256": "90c85f8cc499b81877ddc4712ef66f22333501e65ced075ac52bc5ee0b868953",
+  "enforcement_activated": false,
+  "mode": "PREPARE_ONLY",
+  "production_edits": 0,
+  "snapshots": [
+    {
+      "before_path": "before/_ZENODO_DEPOSITS/publish_dated_bundles.py",
+      "before_sha256": "8d0cec379f8fbce959873f0f7524bb36d6ee0440c85fafde40ca57176e804668",
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/publish_dated_bundles.py",
+      "relative_path": "_ZENODO_DEPOSITS/publish_dated_bundles.py"
+    },
+    {
+      "before_path": "before/_ZENODO_DEPOSITS/weekend_canon_lockstep.py",
+      "before_sha256": "c0cb623e9c58f0db191abe82a8047bf7e6dabfcab869f9923e44c850f1a6741e",
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/weekend_canon_lockstep.py",
+      "relative_path": "_ZENODO_DEPOSITS/weekend_canon_lockstep.py"
+    },
+    {
+      "before_path": "before/RESEARCH_PIPELINE_v2/nightly_checkpoint.py",
+      "before_sha256": "e22068a8f9e587fe4e3ab5382c80197237dbc4c2a8f4b7ad0b066d908683042c",
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/nightly_checkpoint.py",
+      "relative_path": "RESEARCH_PIPELINE_v2/nightly_checkpoint.py"
+    },
+    {
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/run_flow.py",
+      "before_sha256": "082e6ca62ec3a476c9691b1d1e5d68e0657326ec4eb3f48637e844bffec492a3",
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/run_flow.py",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/run_flow.py"
+    },
+    {
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/production_hooks.py",
+      "before_sha256": "3c595fd12515e4ca46b13f652d5642758f87352c37048042d32bf806516d93b0",
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/production_hooks.py",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/production_hooks.py"
+    },
+    {
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/publication_gate.py",
+      "before_sha256": "a1fb8a88129be2aa286a2652e3de426a721de04cc6838e4e416637e05604e610",
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/publication_gate.py",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/publication_gate.py"
+    },
+    {
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/claim_binding.py",
+      "before_sha256": "3f041f2d60631e055d1c174c8e5939e12ad0a76ba419b8a33649f97473f741bb",
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/claim_binding.py",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/claim_binding.py"
+    },
+    {
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/corpus_ledger.py",
+      "before_sha256": "297d83ce31a3d8057c9e965eba683a9b7f3abe59fd316fb365cb0fbcb06e21a0",
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/corpus_ledger.py",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/corpus_ledger.py"
+    }
+  ],
+  "status": "BEFORE_SNAPSHOTS_SEALED"
+}

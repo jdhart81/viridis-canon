@@ -26,7 +26,7 @@ class Fixture:
   self.section=b'## Phase 7 \xe2\x80\x94 Claude audit of release packet v002 \xe2\x80\x94 2026-10-07\n\nSYNTHETIC UNIT AUTHORITY, NOT REAL REVIEW\n'
   self.write('reports/verification-coverage/GAME_PLAN.md',b'# Synthetic\n'+self.section+b'\n## Next\nLater\n');self.write('evidence/authority.md',self.section)
   self.write('evidence/baseline.json',encoded({'synthetic':True}));self.protected={'status':'LIVE_PROTECTED_HASH_READBACK_PASS','at_utc':'2026-10-07T13:00:00Z','baseline_sha256':m.sha(self.root/'evidence/baseline.json'),'remote_script_writes':0,'restarts':0,'certification_attempts':0,'checks':[{'path':'/synthetic/protected/%s'%i,'surface':'DEPLOYED_DROPLET' if i<17 else 'LOCAL','expected_sha256':hashlib.sha256(str(i).encode()).hexdigest(),'actual_sha256':hashlib.sha256(str(i).encode()).hexdigest(),'match':True}for i in range(22)]}
-  self.write('evidence/original_protected.json',encoded(self.protected));self.write('evidence/current_protected.json',encoded(self.protected));self.write('evidence/original_manifest.json',encoded({'snapshots':self.base}))
+  self.write('evidence/original_protected.json',encoded(self.protected));self.protected['at_utc']='2026-10-07T13:50:00Z';self.write('evidence/current_protected.json',encoded(self.protected));self.write('evidence/original_manifest.json',encoded({'snapshots':self.base}))
   self.original={'standard':'SYNTHETIC_NOT_ACTIVATION','activated_at_utc':'2026-10-06T12:00:00Z','proofs':{'after_manifest':self.bound('evidence/original_manifest.json'),'protected_baseline':self.bound('evidence/baseline.json')},'sources':{'protected_readback':self.bound('evidence/original_protected.json')}}
   self.write('evidence/original_activation.json',encoded(self.original))
   self.pr={'state':'MERGED','baseRefName':'main','url':'https://github.com/jdhart81/viridis-canon/pull/56','number':56,'mergeCommit':{'oid':'a'*40},'statusCheckRollup':[{'name':n,'status':'COMPLETED','conclusion':'SUCCESS'}for n in sorted(m.REQUIRED_CHECKS)],'files':self.prfiles}
@@ -61,6 +61,7 @@ class RuntimeUpdateTests(unittest.TestCase):
  def test_game_plan_current_section_changed_holds(self):self.f.write('reports/verification-coverage/GAME_PLAN.md',self.f.section+b'CHANGED');self.hold()
  def test_future_install_holds(self):self.f.r['installed_at_utc']='2026-10-08T13:30:00Z';self.f.commit();self.hold()
  def test_naive_install_holds(self):self.f.r['installed_at_utc']='2026-10-07T13:30:00';self.f.commit();self.hold()
+ def test_readback_before_install_holds(self):self.f.protected['at_utc']='2026-10-07T13:29:00Z';self.f.commit();self.hold()
  def test_foreign_pr_holds(self):self.f.pr['url']='https://github.com/foreign/repo/pull/56';self.f.commit();self.hold()
  def test_foreign_selector_pr_holds(self):self.f.selector['url']='https://github.com/foreign/repo/pull/55';self.f.commit();self.hold()
  def test_unmerged_pr_holds(self):self.f.pr['state']='OPEN';self.f.commit();self.hold()
@@ -114,6 +115,7 @@ class PolicyFixture(Fixture):
   for v in previous['runtime_targets']+previous['additional_modules']:
    archived='evidence/prior/'+Path(v['source']['path']).name;self.write(archived,(self.root/v['source']['path']).read_bytes());v['source']=self.bound(archived)
   self.write('evidence/pr57.json',encoded(self.pr));previous['pull_request_readback']=self.bound('evidence/pr57.json')
+  self.write('evidence/prior/protected_readback.json',(self.root/previous['protected_readback']['path']).read_bytes());previous['protected_readback']=self.bound('evidence/prior/protected_readback.json')
   self.write('evidence/prior_update.json',encoded(previous));self.previous=previous
   self.patches.extend([patch.object(m,'PREVIOUS_SELECTOR_RECEIPT_SHA256',m.sha(self.root/'evidence/prior_update.json')),patch.object(m,'GUARD_SHA256',m.sha(self.root/(m.GATE_PREFIX+'nightly_coverage.py'))),patch.object(m,'CLOSEOUT_SHA256',m.sha(self.root/(m.GATE_PREFIX+'closeout_streak.py')))])
   for p in self.patches[-3:]:p.start()
@@ -172,6 +174,7 @@ class PolicyUpdateTests(unittest.TestCase):
  def test_new_pr_reuses_selector_pr_holds(self):self.f.pr.update(number=57,url='https://github.com/jdhart81/viridis-canon/pull/57',mergeCommit={'oid':m.PREVIOUS_SELECTOR_MERGE_COMMIT});self.f.commit();self.hold()
  def test_policy_before_prior_install_holds(self):self.f.r['installed_at_utc']='2026-10-07T13:20:00Z';self.f.commit();self.hold()
  def test_policy_future_install_holds(self):self.f.r['installed_at_utc']='2026-10-08T13:20:00Z';self.f.commit();self.hold()
+ def test_policy_readback_before_install_holds(self):self.f.protected['at_utc']='2026-10-07T13:44:00Z';self.f.commit();self.hold()
  def test_new_module_source_wrong_blob_holds(self):next(v for v in self.f.pr['files'] if v['path'].endswith('methods_digest.py'))['sha']='c'*40;self.f.commit();self.hold()
  def test_premise_wrong_merged_blob_holds(self):self.f.pr['files'][0]['sha']='c'*40;self.f.commit();self.hold()
  def test_data_contract_wrong_merged_blob_holds(self):next(v for v in self.f.pr['files'] if v['path'].endswith('.json'))['sha']='c'*40;self.f.commit();self.hold()

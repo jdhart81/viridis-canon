@@ -1,0 +1,36 @@
+{
+  "activation_successor": "Exact original activation plus a hash-bound authorized runtime update. Historical activation and mandatory checks stay unchanged.",
+  "additional_modules": [
+    {
+      "path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/phase7_runtime_update.py",
+      "sha256": "b74da7279148fd279f22116b728e25786b51d27007d9959756f1e6f643ace403"
+    },
+    {
+      "after_sha256": "9663c006df997e368373f64e0f10e324661893d7b9246ea92a6c8dfec0b7ec3b",
+      "before_sha256": "b8b21f1d8a6df3b53f3f1b18f2dfd5a087169d8bc2ce4060bc72dbad86f5fd17",
+      "path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/closeout_streak.py"
+    }
+  ],
+  "authority_section_sha256": "0b90da9172c726cef65de5905fb289b79ec2367d0117b012f8ad74b324441390",
+  "before_manifest_sha256": "4f5aca7a952c5e3ebe37ed4a0f34e7ee2c8c9639bf3453bbb091ad13e0daf141",
+  "local_lean_execution": false,
+  "mode": "PREPARED_NOT_INSTALLED",
+  "selector_previously_merged_pr": 55,
+  "standard": "VRS-PHASE7-RUN187-SELECTOR-INSTALL-1",
+  "targets": [
+    {
+      "after_sha256": "bfd2ec16c1e9c39ebcd39fdb45ccf9683b6864a95d3496109df49f9a7639a173",
+      "before_sha256": "d9d68fbb90605c975a006c070a448c3b843efb05a52b164c816d232dd6e583d9",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/corpus_ledger.py"
+    },
+    {
+      "after_sha256": "fd9a4fe406445f3181391ca83f462c4889fb3392c4c93d5ac0d54838c223484f",
+      "before_sha256": "d25e051fe9d2d4e6da04d46cd16d18a101ac4ae2fee49f38596ab2ce04926ea9",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/nightly_coverage.py"
+    }
+  ],
+  "unchanged_other_runtime_targets": 20,
+  "unchanged_protected_targets": 22,
+  "verifier_changes": false,
+  "zenodo_writes": 0
+}

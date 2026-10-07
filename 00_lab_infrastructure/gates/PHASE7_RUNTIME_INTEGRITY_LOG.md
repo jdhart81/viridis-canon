@@ -10,3 +10,17 @@ Runtime-update module SHA-256: b74da7279148fd279f22116b728e25786b51d27007d995975
 Reporting-only closeout pin: b8b21f1d8a6df3b53f3f1b18f2dfd5a087169d8bc2ce4060bc72dbad86f5fd17 → 9663c006df997e368373f64e0f10e324661893d7b9246ea92a6c8dfec0b7ec3b (guard literal only).
 
 Fresh protected readback must follow the actual installation timestamp; a pre-install readback cannot clear the successor.
+
+2026-10-07 evening: Justin approved the source-bound probe/witness separation, closed Run-130 probe HOLD and the appended weekly-push simplification. Per-claim witnesses/depth are optional background evidence; the existing main certificate and issuer run-level nonvacuity, exact claim scope, INV-9, disclaimer, publication binding and strict readback remain required. No protected implementation changes or droplet deployment.
+
+The mechanical integration preserves the actual 22-target installed predecessor from PR57, including the original publication_binding (1fb3d5bc1d0df57445b8d7fed8a034e7bab7f1aeb0314db21e3cedd5e237df2e). The older prepared scoped binding (80e5e44e5f331cc50685cce2a9cedbc4d2a4f8a95928c8d6313dd69300327522) remains a distinct source-only proposal. Four further runtime consumers change; all 17 targets outside the five reviewed names remain unchanged. Original snapshots and the INV-9 fixture are byte-bound; assertions are retained.
+
+- phase7_audit_policy.py: 053f9aa1184116ec59f381737649a3b09113f50f7c79fb8d6328a079aa8c19c7
+- phase7_runtime_update.py: 0dbd20d6232287a9bfd15bf0ebbf0ab665829c15b7b9ff82db57b078d393729a
+- methods_digest_registration.py: 66cc830f4814ee943c616d754d61cff9be5a65607e0a26ec4f91acd23ce630d7
+- methods_digest.py: 5fcdc53f68d008357e0aef1dbb93f74695aa91119792f78151a8c61a0a9e05e5
+- scoped_release.py: a6e5fe9b1213d91987a5cf125d1f591e643e3e68eb5bac05492196b77e7e3ea8
+- phase7_claim_label_render.py: b80b1c7c32bddbf176f08fd5250a7a4c1e610a4848de075397397d7106786141
+- probe_observations.py: ebbe0ffff1570acec84bcaf18570e69c9a66938cee932999d9a6729208abb4de
+
+Authority section SHA-256: decoupling ba56d7254744843b9e7512b61f0d80161cf33b366f076d516aa451ba21c8325a; simplification 483fddbd90eb1782911db43de477c161d35214fd033061a83a87b9dec503652a. The immutable runtime-snapshot closure is fafa0a9b4c1675701dcb3f9d972c8e22e565afc2059a5d6d6c39d2b30378721a. Source-only first-digest executor freeze: f4468f5380fae88304c31c61494f43f97551fc279484a7756966a7e91c819c4b. Actual install follows the merged exact head and fresh protected hash closure.

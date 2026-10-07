@@ -45,14 +45,52 @@ class PreparedProductionAdaptersTests(unittest.TestCase):
                     self.assertFalse(row['before_exists'])
                 if '/verification_coverage_gates/' in row['relative_path']:
                     current = Path(__file__).parent/Path(row['relative_path']).name
-                    if current.name == 'nightly_coverage.py':
-                        successor = Path(__file__).parent/'production_snapshots/phase7-20261007-run187-selector'
-                        update = json.loads((successor/'MANIFEST.json').read_text())
-                        target = next(v for v in update['targets'] if v['relative_path'] == row['relative_path'])
-                        after = successor/'after'/row['relative_path']
-                        self.assertEqual(hashlib.sha256(after.read_bytes()).hexdigest(), target['after_sha256'])
-                        self.assertEqual(target['before_sha256'], row['after_sha256'])
-                    self.assertEqual(current.read_bytes(), after.read_bytes())
+                    successor = Path(__file__).parent/'production_snapshots/phase7-20261007-decoupled-policy'
+                    update = json.loads((successor/'AFTER_MANIFEST.json').read_text())
+                    target = next(v for v in update['snapshots'] if v['relative_path'] == row['relative_path'])
+                    after = successor/target['after_path']
+                    self.assertEqual(hashlib.sha256(after.read_bytes()).hexdigest(), target['after_sha256'])
+                    if current.name == 'publication_binding.py':
+                        self.assertEqual(current.read_bytes(), (base/row['after_path']).read_bytes())
+                        self.assertEqual(target['before_sha256'],target['after_sha256'])
+                    else:
+                        self.assertEqual(current.read_bytes(), after.read_bytes())
+
+    def test_decoupled_successor_closes_exact_22_targets_and_preserves_every_prior_snapshot(self):
+        root=Path(__file__).parent/'production_snapshots'
+        old=root/'phase7-20261006-scoped-consumers'
+        selector=root/'phase7-20261007-run187-selector'
+        new=root/'phase7-20261007-decoupled-policy'
+        old_raw=(old/'AFTER_MANIFEST.json').read_bytes()
+        selector_raw=(selector/'MANIFEST.json').read_bytes()
+        self.assertEqual((new/'PREDECESSOR_AFTER_MANIFEST.json').read_bytes(),old_raw)
+        self.assertEqual((new/'SELECTOR_MANIFEST.json').read_bytes(),selector_raw)
+        prior={r['relative_path']:r for r in json.loads(old_raw)['snapshots']}
+        runtime_raw=(new/'SELECTOR_RUNTIME_RECEIPT.json').read_bytes()
+        self.assertEqual(hashlib.sha256(runtime_raw).hexdigest(),'02957fbd6ea67e02e7e6979a06f0d07d4e3d46be6dbe8b783b847fb9ba9192b9')
+        approved={r['path']:r for r in json.loads(runtime_raw)['runtime_targets']}
+        self.assertEqual(len(approved),22)
+        manifest=json.loads((new/'AFTER_MANIFEST.json').read_bytes())
+        rows=manifest['snapshots'];self.assertEqual(len(rows),22)
+        from install_phase5_hooks import TARGETS
+        self.assertEqual({r['relative_path']for r in rows},TARGETS)
+        reviewed={'corpus_ledger.py','nightly_coverage.py','premise_declaration.py','publication_gate.py','doi_audit.py'}
+        self.assertEqual(set(manifest['reviewed_consumer_names']),reviewed)
+        self.assertFalse(manifest['protected_verifier_issuer_changed'])
+        changed=[]
+        for row in rows:
+            rel=row['relative_path'];previous=prior[rel]
+            expected_before=approved[rel]['after_sha256']
+            self.assertEqual(row['before_sha256'],expected_before)
+            self.assertEqual(hashlib.sha256((new/row['before_path']).read_bytes()).hexdigest(),expected_before)
+            self.assertEqual(hashlib.sha256((new/row['after_path']).read_bytes()).hexdigest(),row['after_sha256'])
+            self.assertEqual(hashlib.sha256((old/previous['after_path']).read_bytes()).hexdigest(),previous['after_sha256'])
+            if row['before_sha256']!=row['after_sha256']:changed.append(Path(rel).name)
+            if Path(rel).name not in reviewed:
+                self.assertEqual(row['before_sha256'],row['after_sha256'])
+                self.assertEqual((new/row['before_path']).read_bytes(),(new/row['after_path']).read_bytes())
+        self.assertEqual(sorted(changed),['corpus_ledger.py','doi_audit.py','premise_declaration.py','publication_gate.py'])
+        self.assertEqual(manifest['unchanged_outside_reviewed_targets'],17)
 
     def test_phase7_successor_preserves_frozen_predecessor_and_only_three_consumers_change(self):
         root=Path(__file__).parent/'production_snapshots'

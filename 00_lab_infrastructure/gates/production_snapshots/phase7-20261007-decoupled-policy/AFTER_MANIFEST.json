@@ -1,0 +1,207 @@
+{
+  "at_utc": "2026-10-07T23:08:03.902568+00:00",
+  "changed_runtime_consumers": [
+    "corpus_ledger.py",
+    "doi_audit.py",
+    "premise_declaration.py",
+    "publication_gate.py"
+  ],
+  "historical_prepared_binding_not_installed": {
+    "git_path": "00_lab_infrastructure/gates/publication_binding.py",
+    "installed_binding_sha256": "1fb3d5bc1d0df57445b8d7fed8a034e7bab7f1aeb0314db21e3cedd5e237df2e",
+    "sha256": "80e5e44e5f331cc50685cce2a9cedbc4d2a4f8a95928c8d6313dd69300327522"
+  },
+  "production_root": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0",
+  "protected_verifier_issuer_changed": false,
+  "remote_changes": 0,
+  "reviewed_consumer_names": [
+    "corpus_ledger.py",
+    "doi_audit.py",
+    "nightly_coverage.py",
+    "premise_declaration.py",
+    "publication_gate.py"
+  ],
+  "selector_runtime_receipt_sha256": "02957fbd6ea67e02e7e6979a06f0d07d4e3d46be6dbe8b783b847fb9ba9192b9",
+  "snapshots": [
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/issue_lean_zero_sorry_certificate.py",
+      "after_sha256": "96c5c70d7d9de31c537ac4dc4a405d5f2c38a7ba03389c93dac1efb28cfc5ebe",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/issue_lean_zero_sorry_certificate.py",
+      "before_sha256": "96c5c70d7d9de31c537ac4dc4a405d5f2c38a7ba03389c93dac1efb28cfc5ebe",
+      "relative_path": "RESEARCH_PIPELINE_v2/issue_lean_zero_sorry_certificate.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/nightly_checkpoint.py",
+      "after_sha256": "f550c0f808bb15e603b875aed55962b0297731e5a2e4edf4aac99f33eab959df",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/nightly_checkpoint.py",
+      "before_sha256": "f550c0f808bb15e603b875aed55962b0297731e5a2e4edf4aac99f33eab959df",
+      "relative_path": "RESEARCH_PIPELINE_v2/nightly_checkpoint.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/certificate_inspection.py",
+      "after_sha256": "a7e3d2fcd167865b129529fce7e3599acf045a190cbc2107e87f39b0a3623ec8",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/certificate_inspection.py",
+      "before_sha256": "a7e3d2fcd167865b129529fce7e3599acf045a190cbc2107e87f39b0a3623ec8",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/certificate_inspection.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/claim_binding.py",
+      "after_sha256": "d0bac6e9739c41c5cc40cc57b932f1d15ac7a86f457a0ee3fecdc0ef7a2b7240",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/claim_binding.py",
+      "before_sha256": "d0bac6e9739c41c5cc40cc57b932f1d15ac7a86f457a0ee3fecdc0ef7a2b7240",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/claim_binding.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/corpus_ledger.py",
+      "after_sha256": "f204d0a45a9571e59ec64359ce137f088aa47445a19607838897832d3d3258ca",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/corpus_ledger.py",
+      "before_sha256": "bfd2ec16c1e9c39ebcd39fdb45ccf9683b6864a95d3496109df49f9a7639a173",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/corpus_ledger.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_audit.py",
+      "after_sha256": "72a78e3b305fdf78114414e6dce0a13594d09628f5ea06e04b098dbd49f6a743",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_audit.py",
+      "before_sha256": "23173076f35f62ca0696544c3a5c7ee2bcf7bc39a8a649390ec8e616c2c06f29",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_audit.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_triage.py",
+      "after_sha256": "86d9d1e65286ff13038dc75ab3150a616d5acc7515b1ee4fcf04644f1db171ca",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_triage.py",
+      "before_sha256": "86d9d1e65286ff13038dc75ab3150a616d5acc7515b1ee4fcf04644f1db171ca",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_triage.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/manuscript_structure.py",
+      "after_sha256": "3177a850997c760ca65e23416116fa4920cf35f238753f63fa63d3a7e4b300a9",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/manuscript_structure.py",
+      "before_sha256": "3177a850997c760ca65e23416116fa4920cf35f238753f63fa63d3a7e4b300a9",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/manuscript_structure.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/mirror_parity.py",
+      "after_sha256": "77033a9303519bc47493f4efc2b0872fff805baa9aa35aa61e34467f66336e80",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/mirror_parity.py",
+      "before_sha256": "77033a9303519bc47493f4efc2b0872fff805baa9aa35aa61e34467f66336e80",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/mirror_parity.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/nightly_coverage.py",
+      "after_sha256": "fd9a4fe406445f3181391ca83f462c4889fb3392c4c93d5ac0d54838c223484f",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/nightly_coverage.py",
+      "before_sha256": "fd9a4fe406445f3181391ca83f462c4889fb3392c4c93d5ac0d54838c223484f",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/nightly_coverage.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/nightly_publication_intake.py",
+      "after_sha256": "9f3aa3c7f438f22b1c07242e9c548f6a9917ecbc2999ffe817256a602f472ba8",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/nightly_publication_intake.py",
+      "before_sha256": "9f3aa3c7f438f22b1c07242e9c548f6a9917ecbc2999ffe817256a602f472ba8",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/nightly_publication_intake.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/premise_declaration.py",
+      "after_sha256": "e00404ad578efa7dcd9299a5d947be594f36c15e53fd44479d22d578caab5137",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/premise_declaration.py",
+      "before_sha256": "c4cdba028df6c34fb117c02ff57d303a26b899b59892fcbbadc9457175232445",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/premise_declaration.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/production_hooks.py",
+      "after_sha256": "9b0a3d48e2cabff04c58a9020c07db2a9afe7e7f8c7cbde5e034d56d0b77db81",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/production_hooks.py",
+      "before_sha256": "9b0a3d48e2cabff04c58a9020c07db2a9afe7e7f8c7cbde5e034d56d0b77db81",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/production_hooks.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/publication_binding.py",
+      "after_sha256": "1fb3d5bc1d0df57445b8d7fed8a034e7bab7f1aeb0314db21e3cedd5e237df2e",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/publication_binding.py",
+      "before_sha256": "1fb3d5bc1d0df57445b8d7fed8a034e7bab7f1aeb0314db21e3cedd5e237df2e",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/publication_binding.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/publication_gate.py",
+      "after_sha256": "4166653c08e8e06e20fe004592df56152c407ab36b8003ecd3380ee8bf94a0f1",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/publication_gate.py",
+      "before_sha256": "a44fe11deccc4d1246d4d2b0fc53621807e1f06061eafff1fb684615fcff7fef",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/publication_gate.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/release_packet.py",
+      "after_sha256": "972cc9816e3f2d1c3f93120666358421c9163535afd143a6f401725fc3545357",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/release_packet.py",
+      "before_sha256": "972cc9816e3f2d1c3f93120666358421c9163535afd143a6f401725fc3545357",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/release_packet.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/run_flow.py",
+      "after_sha256": "00a6d309360aabda0e27f37a0cd757e103c1c502497b3f2553e28d2070b98b04",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/run_flow.py",
+      "before_sha256": "00a6d309360aabda0e27f37a0cd757e103c1c502497b3f2553e28d2070b98b04",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/run_flow.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/static_pregate.py",
+      "after_sha256": "659e2d66a45af24a846a5fafe26564ccf713492d0d06be0fb8172e961e862153",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/static_pregate.py",
+      "before_sha256": "659e2d66a45af24a846a5fafe26564ccf713492d0d06be0fb8172e961e862153",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/static_pregate.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/theorem_coverage.py",
+      "after_sha256": "62bb9e87b10b8ef317616e4b906878d03f06752ab4e7d2dff90bdf9dfb27e99d",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/verification_coverage_gates/theorem_coverage.py",
+      "before_sha256": "62bb9e87b10b8ef317616e4b906878d03f06752ab4e7d2dff90bdf9dfb27e99d",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/theorem_coverage.py"
+    },
+    {
+      "after_path": "after/_ZENODO_DEPOSITS/publish_dated_bundles.py",
+      "after_sha256": "4f099eaffb9a35fbd24e5c57ef34801391fabcd5c3272b58a379d7ac52b35e94",
+      "before_exists": true,
+      "before_path": "before/_ZENODO_DEPOSITS/publish_dated_bundles.py",
+      "before_sha256": "4f099eaffb9a35fbd24e5c57ef34801391fabcd5c3272b58a379d7ac52b35e94",
+      "relative_path": "_ZENODO_DEPOSITS/publish_dated_bundles.py"
+    },
+    {
+      "after_path": "after/_ZENODO_DEPOSITS/release_coherence.py",
+      "after_sha256": "348bc1f54ed027c6768efe512717bbc66976b7c658198383803d7e2bb8535060",
+      "before_exists": true,
+      "before_path": "before/_ZENODO_DEPOSITS/release_coherence.py",
+      "before_sha256": "348bc1f54ed027c6768efe512717bbc66976b7c658198383803d7e2bb8535060",
+      "relative_path": "_ZENODO_DEPOSITS/release_coherence.py"
+    },
+    {
+      "after_path": "after/_ZENODO_DEPOSITS/weekend_canon_lockstep.py",
+      "after_sha256": "36b23f17c4ef4a9758f587caeb52f16c72d149fb49776e4e2fc920f5d2e32bec",
+      "before_exists": true,
+      "before_path": "before/_ZENODO_DEPOSITS/weekend_canon_lockstep.py",
+      "before_sha256": "36b23f17c4ef4a9758f587caeb52f16c72d149fb49776e4e2fc920f5d2e32bec",
+      "relative_path": "_ZENODO_DEPOSITS/weekend_canon_lockstep.py"
+    }
+  ],
+  "standard": "VRS-PHASE7-DECOUPLED-RUNTIME-SNAPSHOT-CLOSURE-1",
+  "status": "PREPARED_NOT_INSTALLED",
+  "unchanged_outside_reviewed_targets": 17,
+  "zenodo_writes": 0
+}

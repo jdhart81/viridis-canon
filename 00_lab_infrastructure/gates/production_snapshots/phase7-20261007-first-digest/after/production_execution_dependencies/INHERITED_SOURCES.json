@@ -1,0 +1,41 @@
+{
+  "changes": [
+    "Closed registration evidence adapter calls current fresh registrar",
+    "Source-bound existing community custom fields",
+    "Actual own public file URLs required",
+    "Portable offline tests"
+  ],
+  "direct_predecessor": {
+    "directory": "/private/tmp/phase7-first-digest-publisher-20261007-v002",
+    "freeze_sha256": "c4bf8181fe12027bb70dd706960c7e3b1846a2748ea61dc183c42821beb81f53"
+  },
+  "files": [
+    {
+      "name": "first_digest_publisher.py",
+      "sha256": "c8999c45f2050eea300e8cdf1a30b2e837f84a8a9fdfaf2eb25d082942f2824a",
+      "source_path": "/private/tmp/phase7-first-digest-publisher-20261007-v001/first_digest_publisher.py"
+    },
+    {
+      "name": "first_digest_state.py",
+      "sha256": "174ccf3d8ed68016d212de9f2a03ea75ac51959714637c5de85e9a04239c0d35",
+      "source_path": "/private/tmp/phase7-first-digest-publisher-20261007-v001/first_digest_state.py"
+    },
+    {
+      "name": "readonly_account.py",
+      "sha256": "daa36ca7fa4c40d923be5b411cf47463f5ef61162bf7fb6e50b6a27ebb638720",
+      "source_path": "/private/tmp/phase7-first-digest-publisher-20261007-v001/readonly_account.py"
+    },
+    {
+      "name": "mutation_journal_writer.py",
+      "sha256": "a2a72c49b5bc67a5c7535320bab5b6513b8cbfac3cf6c19d39b2e0c3d5d5c4e8",
+      "source_path": "/private/tmp/phase7-first-digest-publisher-20261007-v001/mutation_journal_writer.py"
+    },
+    {
+      "name": "digest_metadata.py",
+      "sha256": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe",
+      "source_path": "/private/tmp/phase7-first-digest-publisher-20261007-v001/digest_metadata.py"
+    }
+  ],
+  "source_directory": "/private/tmp/phase7-first-digest-publisher-20261007-v001",
+  "standard": "OFFLINE_PUBLISHER_DERIVATIVE_SOURCE_RECORD"
+}

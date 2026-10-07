@@ -111,7 +111,8 @@ def ambient_context(source, target_line):
     return [row for frame in frames for row in frame]
 
 
-def assess(artifact, root, *, inspector=None, reviewed_witness_assignments=None):
+def assess(artifact, root, *, inspector=None, reviewed_witness_assignments=None,
+           claim_rule_consumer=None, premise_rule_consumer=None):
     """Read-only draft checks; never grants acceptance or publishing authority."""
     result = {'standard': STANDARD, 'status': 'HOLD', 'reasons': [],
               'local_lean_execution': False, 'certifies': False, 'zenodo_writes': False}
@@ -283,24 +284,66 @@ def assess(artifact, root, *, inspector=None, reviewed_witness_assignments=None)
             if aligner.normalized_signature(candidate_text, name) != aligner.normalized_signature(formal_text, name):
                 raise ValueError('frozen aligned statement differs')
             witness = claim.get('nonvacuity_obligation')
-            if witness is None:
-                if not isinstance(reviewed_witness_assignments, dict):
-                    raise ValueError('per-claim nonvacuity assignment awaiting independent review')
-                witness = reviewed_witness_assignments.get(name)
-            witness = _one_name(witness, witness_names, 'nonvacuity obligation')
-            if reviewed_witness_assignments is not None and name in reviewed_witness_assignments:
-                if _one_name(reviewed_witness_assignments[name], witness_names, 'review nonvacuity obligation') != witness:
-                    raise ValueError('review nonvacuity conflicts with explicit assignment')
-            documented_witness = documented.get('nonvacuity_obligation')
-            if 'nonvacuity_obligation' not in documented:
-                raise ValueError('inventory explicit nonvacuity field missing')
-            if documented_witness is not None and _one_name(documented_witness, witness_names, 'inventory nonvacuity obligation') != witness:
-                raise ValueError('inventory nonvacuity differs from scoped assignment')
+            rule_result = None
+            if claim_rule_consumer is not None:
+                # Rule execution is read-only draft evidence. Only the named
+                # approved policy can subsequently issue a publication binding.
+                rule_result = claim_rule_consumer(claim=claim, declaration=declaration,
+                    candidate_text=candidate_text, formal_text=formal_text,
+                    certificate=manifest['certificate'], inspection=inspection,
+                    ambient_source_context=context)
+                if (not isinstance(rule_result, dict)
+                        or set(rule_result) != {'lean_theorem','semantic_tier','nonvacuity'}
+                        or rule_result['lean_theorem'] != name
+                        or rule_result['semantic_tier'] not in {'DEFINITIONAL','ROUTINE','SUBSTANTIVE','UNCLASSIFIED','DEPTH_NOT_ASSESSED'}):
+                    raise ValueError('closed fresh claim rule execution required')
+                nv = rule_result['nonvacuity']
+                if not isinstance(nv,dict):
+                    raise ValueError('fresh nonvacuity classification missing')
+                if nv.get('tier') == 'TIER0':
+                    if (set(nv) != {'tier','status','domains'} or nv['status'] != 'NO_HYPOTHESES'
+                            or not isinstance(nv['domains'],list) or not nv['domains']
+                            or any(not isinstance(d,str) or not d for d in nv['domains'])):
+                        raise ValueError('closed nonempty-domain discharge required')
+                    if witness is not None:
+                        raise ValueError('Tier0 rule cannot relabel an explicitly assigned witness')
+                elif nv.get('tier') == 'TIER1' and nv.get('status') == 'CERTIFIED_WITNESS':
+                    if (set(nv) != {'tier','status','witness_theorem','certificate'}
+                            or not isinstance(nv['witness_theorem'],str) or not nv['witness_theorem']):
+                        raise ValueError('closed witness rule result required')
+                    resolve_binding(nv['certificate'],root)
+                    if witness is not None:
+                        actual_witness = _one_name(witness,witness_names,'nonvacuity obligation')
+                        if nv['witness_theorem'] != actual_witness or nv['certificate'] != manifest['certificate']:
+                            raise ValueError('explicit existing witness must retain its actual certificate')
+                elif nv.get('tier') == 'TIER1' and nv.get('status') == 'NOT_DEMONSTRATED':
+                    if set(nv) != {'tier','status'} or witness is not None:
+                        raise ValueError('unproved witness rule state differs')
+                else:
+                    raise ValueError('unrecognized nonvacuity rule state')
+                if 'nonvacuity_obligation' not in documented or documented['nonvacuity_obligation'] != witness:
+                    raise ValueError('inventory original witness field changed by rule execution')
+            else:
+                if witness is None:
+                    if not isinstance(reviewed_witness_assignments, dict):
+                        raise ValueError('per-claim nonvacuity assignment awaiting independent review')
+                    witness = reviewed_witness_assignments.get(name)
+                witness = _one_name(witness, witness_names, 'nonvacuity obligation')
+                if reviewed_witness_assignments is not None and name in reviewed_witness_assignments:
+                    if _one_name(reviewed_witness_assignments[name], witness_names, 'review nonvacuity obligation') != witness:
+                        raise ValueError('review nonvacuity conflicts with explicit assignment')
+                documented_witness = documented.get('nonvacuity_obligation')
+                if 'nonvacuity_obligation' not in documented:
+                    raise ValueError('inventory explicit nonvacuity field missing')
+                if documented_witness is not None and _one_name(documented_witness, witness_names, 'inventory nonvacuity obligation') != witness:
+                    raise ValueError('inventory nonvacuity differs from scoped assignment')
             classification = declaration['classification']
             evidence = claim.get('evidence_class')
             if classification == 'CERTIFIED_TRIVIAL' and evidence != 'CERTIFIED_TRIVIAL':
                 raise ValueError('trivial theorem cannot carry FORMALLY_VERIFIED')
-            if classification == 'TRIVIALITY_UNRESOLVED':
+            if rule_result is not None and rule_result['semantic_tier'] == 'DEFINITIONAL' and evidence != 'CERTIFIED_TRIVIAL':
+                raise ValueError('defs-only probe cannot carry FORMALLY_VERIFIED')
+            if classification == 'TRIVIALITY_UNRESOLVED' and rule_result is None:
                 raise ValueError('existing triviality consumer requires further review')
             if evidence not in {'FORMALLY_VERIFIED', 'CERTIFIED_TRIVIAL'}:
                 raise ValueError('unknown release evidence class')
@@ -331,7 +374,8 @@ def assess(artifact, root, *, inspector=None, reviewed_witness_assignments=None)
             elif any(not _inline_present(row['source_text'], tex_text) for row in context):
                 raise ValueError('printed paper omits a live ambient hypothesis/context')
             checked.append({'lean_theorem': name, 'nonvacuity_obligation': witness,
-                            'evidence_class': evidence})
+                            'evidence_class': evidence,
+                            **({} if rule_result is None else {'approved_rule_classification': rule_result})})
         if {v.get('lean_theorem') for v in mapped} != seen:
             raise ValueError('claim map contains unbound or missing scope statements')
         if {v.get('lean_theorem') for v in declarations} != seen:
@@ -345,7 +389,13 @@ def assess(artifact, root, *, inspector=None, reviewed_witness_assignments=None)
         full_inv9 = evaluate(inv9_inputs, inv9_claims, paper_text=tex_text, **args)
         projection_sha = None
         actual = full_inv9
-        if full_inv9.get('status') != 'PASS':
+        if full_inv9.get('status') != 'PASS' and premise_rule_consumer is not None:
+            actual = premise_rule_consumer(full_inv9=full_inv9, manifest=manifest,
+                candidate_text=candidate_text, formal_text=formal_text,
+                paper_text=tex_text, basis=basis)
+            if not isinstance(actual,dict):
+                raise ValueError('fresh exact premise rule classification required')
+        elif full_inv9.get('status') != 'PASS':
             # Phase 7 permits explicitly uncertified archival remarks. A
             # projection is only draft evidence until independent whole-paper
             # review approves its exact hash; the full unchanged Lean source

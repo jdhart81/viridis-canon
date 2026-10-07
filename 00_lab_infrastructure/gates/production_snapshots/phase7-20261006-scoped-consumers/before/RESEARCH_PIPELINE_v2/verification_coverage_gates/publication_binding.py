@@ -53,17 +53,6 @@ def draft_binding(artifact, inspection, certificate, root):
 
 
 def validate_publication_binding(artifact, inspection, certificate, root, approved_review_hashes):
-    # Explicit Phase-7 path: immutable narrowing is allowed only under an
-    # independently audited exact-scope review and publish-time receipt.
-    # All legacy status-only binding checks below remain unchanged.
-    if (Path(artifact)/'SCOPED_RELEASE_MANIFEST.json').exists() or (Path(artifact)/'SCOPED_RELEASE_MANIFEST.json').is_symlink():
-        from scoped_release import require_publication_bound
-        current = require_publication_bound(artifact, root, approved_review_hashes)
-        expected = {'path': str(Path(certificate).resolve()), 'sha256': sha(certificate)}
-        if inspection.get('valid') is not True or current['certificate'] != expected:
-            raise ValueError('scoped receipt differs from registered certificate')
-        return [{'path': str((Path(artifact)/row['filename']).resolve()), 'sha256': row['sha256']}
-                for row in current['uploads']]
     current=assessment(artifact,inspection,certificate,root)
     path=Path(artifact)/'PUBLICATION_BINDING.json'
     if path.is_symlink():raise ValueError('binding receipt symlink refused')

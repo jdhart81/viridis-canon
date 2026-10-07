@@ -1,0 +1,17 @@
+{
+  "certified_theorems": [
+    "slow_rate_characterization",
+    "slow_rate_lower_min",
+    "slow_rate_upper_mean",
+    "slow_rate_monotone",
+    "equal_rates_no_gain",
+    "finite_asymmetry_strict_mean",
+    "symbiotic_equalization_nonvacuous"
+  ],
+  "fixture_status": "PUBLIC_SOURCE_SNAPSHOT_FOR_SYNTHETIC_UNIT_TEST_ONLY_NOT_CERTIFICATION_EVIDENCE",
+  "issued_at_utc": "2026-08-30T20:14:19+00:00",
+  "nonvacuity": [
+    "symbiotic_equalization_nonvacuous"
+  ],
+  "run_id": "Run-141"
+}

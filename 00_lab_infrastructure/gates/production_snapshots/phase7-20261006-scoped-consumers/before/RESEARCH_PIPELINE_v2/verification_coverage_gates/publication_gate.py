@@ -7,7 +7,6 @@ proof status and claim publication eligibility are deliberately separate.
 from __future__ import annotations
 
 import argparse
-from copy import deepcopy
 import hashlib
 import html
 import json
@@ -79,89 +78,6 @@ def _uncertified_description(description: str) -> str:
     return '<p><strong>' + html.escape(UNCERTIFIED_LABEL, quote=False) + '</strong></p>' + SEPARATOR + historical
 
 
-
-SCOPED_HISTORICAL_SEPARATOR = ('<hr><p><strong>Historical metadata — UNCERTIFIED provenance: '
-    'the title, description, abstract and keywords below are archival and are not part '
-    'of the certified scope.</strong></p><pre>')
-SCOPED_HISTORY_FIELDS = {'title','description','abstract','keywords'}
-
-
-def _scoped_metadata_prefix(scope: dict[str, Any]) -> str:
-    """Closed public statement; no free-form scientific prose is affirmative."""
-    from scoped_release import DISCLAIMER as SCOPED_DISCLAIMER
-    claims=scope.get('statement_scope',scope.get('claim_gate',{}).get('claims'))
-    basis=scope.get('foundation_basis')
-    if (not isinstance(claims,list) or not claims or basis not in {'INDEPENDENT','THEOREM','CONDITIONAL_PL_PD'}
-            or any(not isinstance(v,dict)or not isinstance(v.get('lean_theorem'),str)
-                   or not v['lean_theorem'] for v in claims)):
-        raise ValueError('exact scope theorem names and declared basis required')
-    names=[v['lean_theorem']for v in claims]
-    if len(set(names))!=len(names):raise ValueError('duplicate public scope theorem name')
-    label='SCOPED CERTIFIED — mathematical claims: '+', '.join(names)
-    return ('<p><strong>'+html.escape(label,quote=False)+'</strong></p>'
-        +'<p>'+html.escape(SCOPED_DISCLAIMER,quote=False)+'</p>'
-        +'<p>Foundation basis: '+html.escape(basis,quote=False)+'.</p>')
-
-
-def _encode_scoped_history(historical: dict[str, Any]) -> str:
-    return html.escape(json.dumps(historical,ensure_ascii=False,sort_keys=True,indent=2),quote=False)
-
-
-def _validate_closed_scoped_metadata(metadata: dict[str, Any], scope: dict[str, Any]) -> dict[str, Any]:
-    """Require final reviewed bytes; this never repairs a publish payload."""
-    if not isinstance(metadata.get('title'),str) or not metadata['title'].strip():
-        raise ValueError('exact preserved nonempty public title required')
-    description=metadata.get('description')
-    prefix=_scoped_metadata_prefix(scope)
-    if not isinstance(description,str) or not description.startswith(prefix):
-        raise ValueError('final metadata description is not the closed reviewed scoped statement')
-    tail=description[len(prefix):]
-    historical={}
-    if tail:
-        if not tail.startswith(SCOPED_HISTORICAL_SEPARATOR) or not tail.endswith('</pre>'):
-            raise ValueError('unqualified text outside the closed historical metadata archive')
-        encoded=tail[len(SCOPED_HISTORICAL_SEPARATOR):-len('</pre>')]
-        historical=json.loads(html.unescape(encoded))
-        if (not isinstance(historical,dict) or not historical
-                or not set(historical).issubset(SCOPED_HISTORY_FIELDS)
-                or _encode_scoped_history(historical)!=encoded):
-            raise ValueError('historical metadata must be one canonical escaped JSON archive')
-        if any(not isinstance(historical[k],str)for k in ('title','description','abstract')if k in historical):
-            raise ValueError('historical textual metadata must be strings')
-        if 'keywords'in historical and (not isinstance(historical['keywords'],list)
-                or any(not isinstance(k,str)for k in historical['keywords'])):
-            raise ValueError('historical keywords must be strings')
-    for key in ('title','keywords'):
-        if (key in metadata)!= (key in historical) or (key in metadata and metadata[key]!=historical[key]):
-            raise ValueError('final '+key+' differs from preserved historical metadata')
-    if 'abstract'in metadata and metadata['abstract']!=description:
-        raise ValueError('final scoped abstract must equal the exact closed description')
-    if description!=prefix+(SCOPED_HISTORICAL_SEPARATOR+_encode_scoped_history(historical)+'</pre>'if historical else ''):
-        raise ValueError('final scoped description is not canonical')
-    return historical
-
-
-def scoped_metadata_proposal(before: dict[str, Any], scope: dict[str, Any]) -> dict[str, Any]:
-    """Report-only before→safe-after constructor; no PASS, receipt or writes.
-
-    Freeze this proposal's exact metadata file and obtain a fresh independent
-    review and publication binding before invoking the publication gate. Already
-    canonical metadata is returned unchanged, never nested as its own history.
-    """
-    if not isinstance(before,dict):raise ValueError('original metadata object required')
-    proposal=deepcopy(before)
-    if isinstance(before.get('description'),str) and before['description'].startswith(_scoped_metadata_prefix(scope)):
-        _validate_closed_scoped_metadata(before,scope)
-        return proposal
-    historical={key:deepcopy(before[key])for key in ('title','description','abstract','keywords')if key in before}
-    description=_scoped_metadata_prefix(scope)
-    if historical:description+=SCOPED_HISTORICAL_SEPARATOR+_encode_scoped_history(historical)+'</pre>'
-    proposal['description']=description
-    if 'abstract'in proposal:proposal['abstract']=description
-    _validate_closed_scoped_metadata(proposal,scope)
-    return proposal
-
-
 def require_new_artifact_publication(result: dict[str, Any]) -> None:
     """Check release eligibility only; this grants no remote-write authority."""
     if result.get("enforcement") is not True or result.get("mode") != "ENFORCING":
@@ -203,8 +119,6 @@ def evaluate_publication(
         "published_doi_requires_human_decision": False, "local_lean_execution": False,
     }
     metadata: dict[str, Any] = {}
-    metadata_binding = None
-    scoped_publication = False
     try:
         if not artifact.is_dir():
             raise ValueError("artifact must be a directory")
@@ -212,7 +126,6 @@ def evaluate_publication(
         if not metadata_path.exists():
             metadata_path = artifact / "metadata.json"
         if metadata_path.exists():
-            metadata_binding = {'filename':metadata_path.name,'sha256':sha256(metadata_path)}
             metadata = read_object(metadata_path)
             if isinstance(metadata.get("metadata"), dict):
                 metadata = metadata["metadata"]
@@ -225,63 +138,24 @@ def evaluate_publication(
             result["published_doi_requires_human_decision"] = True
         inspection = inspect_entity_certificate(entity, ledger, inspector)
         root = tree_root(ledger)
-        if (artifact/'SCOPED_RELEASE_MANIFEST.json').exists() or (artifact/'SCOPED_RELEASE_MANIFEST.json').is_symlink():
-            from scoped_release import require_publication_bound, DISCLAIMER as SCOPED_DISCLAIMER
-            scoped = require_publication_bound(artifact, root,
-                entity.get('approved_publication_binding_reviews', []), inspector=inspector)
-            if scoped['certificate'] != {'path': str((root/entity['certificate']).resolve()),
-                                         'sha256': sha256(root/entity['certificate'])}:
-                raise ValueError('scoped review differs from SSOT certificate')
-            present_metadata=[artifact/name for name in ('zenodo_metadata.json','metadata.json')
-                if (artifact/name).exists() or (artifact/name).is_symlink()]
-            if len(present_metadata)>1:raise ValueError('ambiguous public metadata files')
-            if present_metadata:
-                path=present_metadata[0]
-                if (path.is_symlink() or not path.is_file() or metadata_binding is None
-                        or metadata_binding not in scoped['uploads']
-                        or scoped.get('metadata_binding')!=metadata_binding
-                        or sha256(path)!=metadata_binding['sha256']
-                        or scoped.get('metadata_claim_completeness')is not True):
-                    raise ValueError('public metadata missing exact independently reviewed binding')
-            else:
-                raise ValueError('final independently reviewed public metadata file required')
-            historical_fields=_validate_closed_scoped_metadata(metadata,scoped)
-            historical_claims=[{'english_claim':'Historical public metadata is UNCERTIFIED provenance, outside the certified scope.',
-                'metadata_fields':historical_fields,'evidence_class':'UNCERTIFIED_HISTORICAL_METADATA',
-                'verification_status':'NOT_FORMALLY_VERIFIED'}]if historical_fields else []
-            result['paper_bindings'] = [{'path': str(artifact/v['filename']), 'sha256': v['sha256']}
-                                        for v in scoped['uploads']]
-            result['premise_declaration_required'] = True
-            result['premise_declaration'] = {'status':'PASS', 'foundation_basis':scoped['foundation_basis'],
-                'scope':'Independently reviewed fresh narrowed scope; historical certificate unchanged'}
-            result['foundation_basis'] = scoped['foundation_basis']
-            result['exact_publication_binding'] = True
-            result['claim_gate'] = {'status':'PASS', 'claims':scoped['statement_scope'],
-                'unverified_claims':historical_claims, 'independent_review':scoped['review'],
-                'scope':'Only listed exact source statements; every historical remainder is UNCERTIFIED'}
-            result.update(status='PASS', verification_status='CERTIFIED',
-                label='SCOPED CERTIFIED — mathematical claims: '+', '.join(v['lean_theorem'] for v in scoped['statement_scope']),
-                disclaimer=SCOPED_DISCLAIMER)
-            scoped_publication = True
-        else:
-            from premise_declaration import validate_artifact
-            required = _premise_required(ledger, entity, require_premise_declaration)
-            premise = validate_artifact(artifact, inspection, (root / entity['certificate']).resolve(strict=True), root, required=required)
-            result['premise_declaration_required'] = required
-            result['premise_declaration'] = premise
-            if premise.get('status') not in ('PASS', 'EXEMPT') or required and premise.get('status') != 'PASS':
-                raise ValueError('premise-declaration gate held: ' + '; '.join(premise.get('reasons', [])))
-            if premise.get('foundation_basis') is not None:
-                result['foundation_basis'] = premise['foundation_basis']
-            result["paper_bindings"] = validate_publication_binding(
-                artifact, inspection, (root / entity["certificate"]).resolve(strict=True), root,
-                entity.get("approved_publication_binding_reviews", []))
-            result["exact_publication_binding"] = True
-            claims = check_run(artifact, ledger, entity_id=entity.get("id"), inspector=inspector)
-            result["claim_gate"] = claims
-            if claims["status"] != "PASS":
-                raise ValueError("claim-binding gate held: " + "; ".join(claims["reasons"]))
-            result.update(status="PASS", verification_status="CERTIFIED", label="CERTIFIED", disclaimer=DISCLAIMER)
+        from premise_declaration import validate_artifact
+        required = _premise_required(ledger, entity, require_premise_declaration)
+        premise = validate_artifact(artifact, inspection, (root / entity['certificate']).resolve(strict=True), root, required=required)
+        result['premise_declaration_required'] = required
+        result['premise_declaration'] = premise
+        if premise.get('status') not in ('PASS', 'EXEMPT') or required and premise.get('status') != 'PASS':
+            raise ValueError('premise-declaration gate held: ' + '; '.join(premise.get('reasons', [])))
+        if premise.get('foundation_basis') is not None:
+            result['foundation_basis'] = premise['foundation_basis']
+        result["paper_bindings"] = validate_publication_binding(
+            artifact, inspection, (root / entity["certificate"]).resolve(strict=True), root,
+            entity.get("approved_publication_binding_reviews", []))
+        result["exact_publication_binding"] = True
+        claims = check_run(artifact, ledger, entity_id=entity.get("id"), inspector=inspector)
+        result["claim_gate"] = claims
+        if claims["status"] != "PASS":
+            raise ValueError("claim-binding gate held: " + "; ".join(claims["reasons"]))
+        result.update(status="PASS", verification_status="CERTIFIED", label="CERTIFIED", disclaimer=DISCLAIMER)
     except Exception as exc:
         result["reasons"].append(f"{type(exc).__name__}: {exc}")
     proposed = dict(metadata)
@@ -301,21 +175,13 @@ def evaluate_publication(
             result["reasons"].append("malformed keywords; release remains held")
             keywords = []
         proposed["keywords"] = [keyword for keyword in keywords if keyword.lower() not in ("conjecture", "uncertified")] + ["uncertified"]
-    elif scoped_publication:
-        proposed["model_validity_disclaimer"] = result['disclaimer']
-        # The final API fields remain exactly the independently reviewed input.
-        # Bookkeeping is returned separately; no metadata transformation on PASS.
-        result['public_metadata']=deepcopy(metadata)
-        result['public_metadata_binding']=metadata_binding
-        result['public_metadata_unchanged']=True
-        proposed['historical_metadata_verification_status']='UNCERTIFIED_PROVENANCE_NOT_CERTIFIED_SCOPE'
     else:
         proposed["model_validity_disclaimer"] = DISCLAIMER
         proposed["description"] = result["label"] + "\n\n" + DISCLAIMER + "\n\n" + description
         if proposed["unverified_claims"]:
             proposed["description"] += "\n\nNot formally verified; empirical validation is not established by the Lean certificate:\n"
             proposed["description"] += "\n".join("- " + item["english_claim"] for item in proposed["unverified_claims"])
-    if "abstract" in proposed and not scoped_publication:
+    if "abstract" in proposed:
         proposed["abstract"] = proposed["description"]
     result["blocking"] = enforce and result["status"] != "PASS"
     result["release_eligible"] = result["status"] == "PASS"

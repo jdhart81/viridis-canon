@@ -10,8 +10,7 @@ from pathlib import Path
 import re
 import tempfile
 from urllib.parse import urlsplit
-from certificate_inspection import inspect_certificate, pipeline_modules
-from certificate_selection import certificate_selection_paths
+from certificate_inspection import inspect_certificate
 from static_pregate import scan
 from run_flow import flow
 from mirror_parity import GENERATION_ROOT, run_parity
@@ -143,9 +142,7 @@ def _publication_registration_status(ledger, entity):
     root = Path(ledger['tree_root']).resolve()
     artifact = root / entity['path']
     claim_map = artifact / 'claim_binding.json'
-    if (not claim_map.exists() and not claim_map.is_symlink()
-            and not (artifact/'SCOPED_RELEASE_MANIFEST.json').exists()
-            and not (artifact/'SCOPED_RELEASE_MANIFEST.json').is_symlink()):
+    if not claim_map.exists() and not claim_map.is_symlink():
         entity.update(publication_registration_status='HOLD_NO_CLAIM_MAP',
                       publication_registration_reasons=['claim_binding.json is absent; manuscript binding is not claim approval'])
         try:
@@ -325,8 +322,7 @@ def build(root, cert_root, generation_root=GENERATION_ROOT, previous_ledger=None
     papers = root / 'science-engine/07_nightly_engine/compound research papers'
     if not papers.is_dir():
         raise ValueError('missing canonical nightly paper root: ' + str(papers))
-    certs = [inspect_certificate(p, root) for p in certificate_selection_paths(
-        root, cert_root, lambda tree, rid: pipeline_modules(tree)[0].current_certificate(tree, rid))]
+    certs = [inspect_certificate(p, root) for p in sorted(cert_root.glob('Run-*/LEAN_ZERO_SORRY_CERTIFICATE.json'))]
     by_hash = {c['candidate_sha256']: c for c in certs if c['valid']}
     by_run = {c['run_id']: c for c in certs if c.get('run_id')}
     paths, errors, excluded = discover(root)

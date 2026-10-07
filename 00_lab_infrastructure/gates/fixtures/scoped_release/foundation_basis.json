@@ -1,0 +1,22 @@
+{
+  "actual_existing_inv9": {
+    "certifies": false,
+    "findings": [],
+    "foundation_basis": "INDEPENDENT",
+    "historical_exemption": false,
+    "local_lean_execution": false,
+    "reasons": [],
+    "standard": "VRS-PREMISE-DECLARATION-1",
+    "status": "PASS"
+  },
+  "foundation_basis": "INDEPENDENT",
+  "historical_certificate_retrofitted": false,
+  "imports": [
+    "import Mathlib"
+  ],
+  "matched_55_entry": null,
+  "physical_interpretation": "UNCERTIFIED; no product/min-form physical theorem inherited",
+  "reason": "Only the defined scalar slowRate function and its displayed inequalities and polynomial residual are covered. No matrix eigenpair, eigenvalue ordering, empirical rate identification or realized coupling payoff is asserted.",
+  "source": "FRESH_MATH_MODEL_REVIEW_NO_MATCHING_55_ENTRY",
+  "status": "DRAFT_SCOPE_CLASSIFICATION"
+}

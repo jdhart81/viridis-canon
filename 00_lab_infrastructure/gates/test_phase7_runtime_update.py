@@ -24,7 +24,7 @@ class Fixture:
   self.ccraw=("INSTALLED_GUARD_SHA256 = '"+m.sha(self.root/(m.GATE_PREFIX+'nightly_coverage.py'))+"'\n").encode();self.write(m.GATE_PREFIX+'closeout_streak.py',self.ccraw);self.write('evidence/source/closeout_streak.py',self.ccraw);self.prfiles.append({'path':'00_lab_infrastructure/gates/closeout_streak.py','sha':gitblob(self.ccraw)})
   self.section=b'## Phase 7 \xe2\x80\x94 Claude audit of release packet v002 \xe2\x80\x94 2026-10-07\n\nSYNTHETIC UNIT AUTHORITY, NOT REAL REVIEW\n'
   self.write('reports/verification-coverage/GAME_PLAN.md',b'# Synthetic\n'+self.section+b'\n## Next\nLater\n');self.write('evidence/authority.md',self.section)
-  self.write('evidence/baseline.json',encoded({'synthetic':True}));self.protected={'status':'LIVE_PROTECTED_HASH_READBACK_PASS','at_utc':'2026-10-07T13:00:00Z','baseline_sha256':m.sha(self.root/'evidence/baseline.json'),'remote_script_writes':0,'restarts':0,'certification_attempts':0,'checks':[{'path':'/synthetic/protected/%s'%i,'surface':'DEPLOYED_DROPLET' if i<17 else 'LOCAL','expected_sha256':hashlib.sha256(str(i).encode()).hexdigest(),'actual_sha256':hashlib.sha256(str(i).encode()).hexdigest(),'match':True}for i in range(22)]}
+  self.write('evidence/baseline.json',encoded({'synthetic':True}));self.protected={'status':'LIVE_PROTECTED_HASH_READBACK_PASS','at_utc':'2026-10-07T13:45:00Z','baseline_sha256':m.sha(self.root/'evidence/baseline.json'),'remote_script_writes':0,'restarts':0,'certification_attempts':0,'checks':[{'path':'/synthetic/protected/%s'%i,'surface':'DEPLOYED_DROPLET' if i<17 else 'LOCAL','expected_sha256':hashlib.sha256(str(i).encode()).hexdigest(),'actual_sha256':hashlib.sha256(str(i).encode()).hexdigest(),'match':True}for i in range(22)]}
   self.write('evidence/original_protected.json',encoded(self.protected));self.write('evidence/current_protected.json',encoded(self.protected));self.write('evidence/original_manifest.json',encoded({'snapshots':self.base}))
   self.original={'standard':'SYNTHETIC_NOT_ACTIVATION','activated_at_utc':'2026-10-06T12:00:00Z','proofs':{'after_manifest':self.bound('evidence/original_manifest.json'),'protected_baseline':self.bound('evidence/baseline.json')},'sources':{'protected_readback':self.bound('evidence/original_protected.json')}}
   self.write('evidence/original_activation.json',encoded(self.original))
@@ -70,6 +70,7 @@ class RuntimeUpdateTests(unittest.TestCase):
  def test_duplicate_protected_holds(self):self.f.protected['checks'][-1]=copy.deepcopy(self.f.protected['checks'][0]);self.f.commit();self.hold()
  def test_foreign_protected_holds(self):self.f.protected['checks'][0]['path']='/foreign/path';self.f.commit();self.hold()
  def test_protected_hash_change_even_matching_holds(self):self.f.protected['checks'][0]['actual_sha256']='d'*64;self.f.protected['checks'][0]['expected_sha256']='d'*64;self.f.commit();self.hold()
+ def test_preinstall_protected_readback_holds(self):self.f.protected['at_utc']='2026-10-07T13:00:00Z';self.f.commit();self.hold()
  def test_future_protected_holds(self):self.f.protected['at_utc']='2026-10-08T13:00:00Z';self.f.commit();self.hold()
  def test_protected_write_holds(self):self.f.protected['remote_script_writes']=1;self.f.commit();self.hold()
  def test_certification_attempt_holds(self):self.f.protected['certification_attempts']=1;self.f.commit();self.hold()

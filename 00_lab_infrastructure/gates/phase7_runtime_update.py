@@ -139,8 +139,8 @@ def validate(root, ledger, original_receipt, *, now=None):
         raise ValueError('exact unchanged protected hash closure required')
     protected_at = dt.datetime.fromisoformat(protected['at_utc'].replace('Z', '+00:00'))
     activated = dt.datetime.fromisoformat(original['activated_at_utc'].replace('Z', '+00:00'))
-    if protected_at.tzinfo is None or not activated <= protected_at <= now:
-        raise ValueError('protected readback precedes activation or is future')
+    if protected_at.tzinfo is None or not activated <= installed <= protected_at <= now:
+        raise ValueError('protected readback precedes installation or is future')
     return {'targets': actual, 'installed_at_utc': r['installed_at_utc'], 'binding': reference, 'profile': r['profile']}
 
 def current_runtime_binding(root, relative, original_hash, original_receipt, *, now=None):

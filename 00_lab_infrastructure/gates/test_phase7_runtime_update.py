@@ -9,7 +9,7 @@ def gitblob(raw):return hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).
 
 class Fixture:
  def __init__(self):
-  self.tmp=tempfile.TemporaryDirectory(dir='/private/tmp');self.root=Path(self.tmp.name).resolve();self.now=dt.datetime(2026,10,7,14,tzinfo=dt.timezone.utc)
+  self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name).resolve();self.now=dt.datetime(2026,10,7,14,tzinfo=dt.timezone.utc)
   self.paths={};self.rows=[];self.base=[];self.live={};self.prfiles=[];self.selectorfiles=[]
   for i in range(22):
    name=('corpus_ledger.py','nightly_coverage.py')[i] if i<2 else 'unchanged_%02d.py'%i

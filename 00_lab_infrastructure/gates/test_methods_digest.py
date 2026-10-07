@@ -9,7 +9,7 @@ def save(p,v):p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(m.raw_jso
 
 class Fixture:
  def __init__(self):
-  self.tmp=tempfile.TemporaryDirectory(dir='/private/tmp');self.root=Path(self.tmp.name).resolve();self.out=self.root/'RESEARCH_PIPELINE_v2/science_release_queue/digests/2026-W41/attempt-v001'
+  self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name).resolve();self.out=self.root/'RESEARCH_PIPELINE_v2/science_release_queue/digests/2026-W41/attempt-v001'
   self.authority=self.root/'SYNTHETIC_AUDIT_AUTHORITY.json';save(self.authority,{'standard':'UNIT_NOT_ACTUAL_AUDIT','model':None,'review_timestamp':None});self.authority_binding=m.binding(self.authority);self.records={};self.specs=[]
   for rid in ('Run-125','Run-126'):
    p=self.root/'notes'/rid;p.mkdir(parents=True);cert=self.root/'certs'/rid/'cert.json';save(cert,{'run_id':rid,'status':'SYNTHETIC_NOT_CERTIFICATION'})

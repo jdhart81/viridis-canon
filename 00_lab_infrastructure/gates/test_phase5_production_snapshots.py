@@ -45,6 +45,13 @@ class PreparedProductionAdaptersTests(unittest.TestCase):
                     self.assertFalse(row['before_exists'])
                 if '/verification_coverage_gates/' in row['relative_path']:
                     current = Path(__file__).parent/Path(row['relative_path']).name
+                    if current.name == 'nightly_coverage.py':
+                        successor = Path(__file__).parent/'production_snapshots/phase7-20261007-run187-selector'
+                        update = json.loads((successor/'MANIFEST.json').read_text())
+                        target = next(v for v in update['targets'] if v['relative_path'] == row['relative_path'])
+                        after = successor/'after'/row['relative_path']
+                        self.assertEqual(hashlib.sha256(after.read_bytes()).hexdigest(), target['after_sha256'])
+                        self.assertEqual(target['before_sha256'], row['after_sha256'])
                     self.assertEqual(current.read_bytes(), after.read_bytes())
 
     def test_phase7_successor_preserves_frozen_predecessor_and_only_three_consumers_change(self):

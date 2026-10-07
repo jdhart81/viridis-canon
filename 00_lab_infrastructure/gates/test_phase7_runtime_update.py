@@ -115,6 +115,7 @@ class PolicyFixture(Fixture):
   for v in previous['runtime_targets']+previous['additional_modules']:
    archived='evidence/prior/'+Path(v['source']['path']).name;self.write(archived,(self.root/v['source']['path']).read_bytes());v['source']=self.bound(archived)
   self.write('evidence/pr57.json',encoded(self.pr));previous['pull_request_readback']=self.bound('evidence/pr57.json')
+  self.write('evidence/prior/protected_readback.json',(self.root/previous['protected_readback']['path']).read_bytes());previous['protected_readback']=self.bound('evidence/prior/protected_readback.json')
   self.write('evidence/prior_update.json',encoded(previous));self.previous=previous
   self.patches.extend([patch.object(m,'PREVIOUS_SELECTOR_RECEIPT_SHA256',m.sha(self.root/'evidence/prior_update.json')),patch.object(m,'GUARD_SHA256',m.sha(self.root/(m.GATE_PREFIX+'nightly_coverage.py'))),patch.object(m,'CLOSEOUT_SHA256',m.sha(self.root/(m.GATE_PREFIX+'closeout_streak.py')))])
   for p in self.patches[-3:]:p.start()

@@ -1,6 +1,6 @@
 """Independently compute a closed set of file facts from approved local bytes.
 
-Optional execution dependency: pypdf==6.10.0. No network, server metadata,
+Optional execution dependency: pypdf==6.19.0. No network, server metadata,
 Lean execution or certificate verdict is consumed here. Unknown facts fail closed.
 """
 from __future__ import annotations
@@ -13,7 +13,7 @@ from pathlib import Path
 import re
 import threading
 
-PYPDF_VERSION = '6.10.0'
+PYPDF_VERSION = '6.19.0'
 PARSER_NAME = 'ViridisApprovedPDFByteFacts'
 PARSER_VERSION = '1'
 SUPPORTED_FIELDS = frozenset({'width', 'height', 'page_count', 'number_of_pages',

@@ -1331,13 +1331,48 @@ class ServerManagedFieldsTests(unittest.TestCase):
             report=self.preview_audit(actual,expected,ctx)
             with self.subTest(representation=representation):self.assertEqual(report['status'],'SERVER_MANAGED_READBACK_PASS',report)
             detail=report['checks']['derived_previews']['detail']['provenance']['byte_metadata'][0]
-            self.assertEqual(detail['parser_output']['parser']['dependency_version'],'6.10.0')
+            self.assertEqual(detail['parser_output']['parser']['dependency_version'],'6.19.0')
             self.assertEqual(detail['parser_output']['parser']['name'],'ViridisApprovedPDFByteFacts')
             self.assertEqual(detail['parser_output']['facts']['page_count']['value'],2)
             self.assertEqual(detail['parser_output']['facts']['width']['decimal'],'612')
             projection=require_derived_previews(actual,expected,host='zenodo.org',record_id='1001',operation='AMENDMENT',derived_preview_context=ctx)
             self.assertEqual(projection['normalized_actual']['files'],expected['files'])
             self.assertEqual(projection['normalized_actual']['files']['count'],2)
+
+    def test_byte_metadata_current_dependency_pin_matches_installed_parser(self):
+        import pypdf
+        import file_byte_metadata as parser
+        requirement = (Path(__file__).parent/'byte_metadata_requirements.txt').read_text().strip()
+        self.assertEqual(requirement, 'pypdf==' + parser.PYPDF_VERSION)
+        self.assertEqual(pypdf.__version__, parser.PYPDF_VERSION)
+
+    def test_byte_metadata_previous_dependency_version_is_hold(self):
+        import pypdf
+        from unittest.mock import patch
+        from file_byte_metadata import ByteMetadataHold, compute_pdf_facts
+        with patch.object(pypdf, '__version__', '6.10.0'):
+            with self.assertRaisesRegex(ByteMetadataHold, 'PINNED_PARSER_VERSION_MISMATCH'):
+                compute_pdf_facts(self.pdf_bytes())
+
+    def test_byte_metadata_strict_reader_warning_is_hold_and_hook_restored(self):
+        import logging
+        from unittest.mock import patch
+        import pypdf
+        from pypdf.generic import NumberObject
+        from file_byte_metadata import ByteMetadataHold, compute_pdf_facts
+        original = NumberObject.read_from_stream
+        native_reader = pypdf.PdfReader
+        calls = []
+        def warning_reader(*args, **kwargs):
+            calls.append(kwargs.copy())
+            result = native_reader(*args, **kwargs)
+            logging.getLogger('pypdf').warning('unsupported PDF warning fixture')
+            return result
+        with patch.object(pypdf, 'PdfReader', warning_reader):
+            with self.assertRaisesRegex(ByteMetadataHold, 'PDF_PARSER_WARNING_UNSUPPORTED'):
+                compute_pdf_facts(self.pdf_bytes())
+        self.assertEqual(calls, [{'strict': True}])
+        self.assertIs(NumberObject.read_from_stream, original)
 
     def test_byte_metadata_generalized_computable_page_and_format_facts_pass(self):
         expected,actual,ctx=self.byte_metadata_fixture()

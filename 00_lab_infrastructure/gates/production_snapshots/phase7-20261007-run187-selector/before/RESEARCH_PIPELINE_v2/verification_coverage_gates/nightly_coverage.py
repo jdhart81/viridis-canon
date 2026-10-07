@@ -521,9 +521,6 @@ def validate_activation_receipt(root, receipt, *, now):
     root = Path(root).resolve(strict=True)
     expected_keys = {'standard', 'status', 'tree_root', 'generation_root', 'scheduler_id', 'timezone',
                      'activated_at_utc', 'premise_declaration_cutover_run', 'first_eligible_window', 'sources', 'proofs'}
-    if isinstance(receipt, dict) and set(receipt) == expected_keys | {'authorized_runtime_update'}:
-        from phase7_runtime_update import unwrap_activation
-        receipt = unwrap_activation(root, receipt, now=now)
     if not isinstance(receipt, dict) or set(receipt) != expected_keys:
         raise ValueError('closed enforcement activation receipt fields required')
     if receipt['standard'] != ACTIVATION_STANDARD or receipt['status'] != 'ENFORCEMENT_ACTIVATED':
@@ -574,8 +571,7 @@ def validate_activation_receipt(root, receipt, *, now):
     for relative, entry in target_rows.items():
         if _sha(entry.get('after_sha256')) != _sha(manifest_rows[relative].get('after_sha256')):
             raise ValueError('installed target hash differs from reviewed final manifest')
-        from phase7_runtime_update import current_runtime_binding
-        _source_path(root, current_runtime_binding(root, relative, entry['after_sha256'], receipt, now=now))
+        _source_path(root, {'path': relative, 'sha256': entry['after_sha256']})
     if (merge.get('standard') != 'VRS-PHASE5-MERGE-REVIEW-1' or merge.get('status') != 'MERGED_REQUIRED_CHECKS_PASS'
             or not isinstance(merge.get('release_commit'), str) or re.fullmatch(r'[0-9a-f]{40}', merge['release_commit']) is None):
         raise ValueError('independently captured merge and required CI proof required')

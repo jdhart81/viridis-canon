@@ -15,7 +15,7 @@ import sys
 import nightly_coverage as nc
 
 CANONICAL_ROOT = Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0')
-INSTALLED_GUARD_SHA256 = 'fd9a4fe406445f3181391ca83f462c4889fb3392c4c93d5ac0d54838c223484f'
+INSTALLED_GUARD_SHA256 = 'd25e051fe9d2d4e6da04d46cd16d18a101ac4ae2fee49f38596ab2ce04926ea9'
 TZ = nc.TZ
 
 

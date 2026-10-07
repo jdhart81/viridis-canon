@@ -1,0 +1,12 @@
+{
+  "canonical_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/nightly_proof_track.py",
+  "executed_ast_nodes_in_tests": [
+    "read_json",
+    "sha256_file",
+    "binding_is_current",
+    "current_certificate"
+  ],
+  "purpose": "Test-only exact unchanged current_certificate source; runtime always loads canonical consumer",
+  "runtime_module_replaced": false,
+  "sha256": "b63c3866db0e3538f6462ca32f0bbf916a6e80081d1bdf74514b1fa6c7dc2b06"
+}

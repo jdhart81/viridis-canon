@@ -1,0 +1,211 @@
+{
+  "declarations": [
+    {
+      "ambient_source_context": [],
+      "candidate_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CANDIDATE.lean",
+        "sha256": "e834af7336b4ef1d79af4609f354a9b408b0b4a8d385d79aa90e8d98ea07584d"
+      },
+      "claim_id": "S141-01",
+      "conclusion": "r^2 - (a + b + 2*k) * r + a*b + k*(a+b) = 0",
+      "elaborated_type_dump_available": false,
+      "exact_source_signature": "theorem slow_rate_characterization\n    (a b k r : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k)\n    (hr : r = slowRate a b k) :\n    r^2 - (a + b + 2*k) * r + a*b + k*(a+b) = 0",
+      "exact_witness_source_signature": "theorem symbiotic_equalization_nonvacuous :\n    1 < slowRate 1 4 1 ∧ slowRate 1 4 1 < (1 + 4) / 2",
+      "explicit_binders_and_hypotheses": "(a b k r : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k)\n    (hr : r = slowRate a b k)",
+      "formal_statement_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CHALLENGE_ALIGNED.lean",
+        "sha256": "406baad5ccf1f6608547eb4df337d9ab05501c6f2b92dd3104dccd673d11e5b8"
+      },
+      "frozen_aligned_signature": "theorem slow_rate_characterization\n    (a b k r : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k)\n    (hr : r = slowRate a b k) :\n    r^2 - (a + b + 2*k) * r + a*b + k*(a+b) = 0",
+      "fully_qualified_lean_theorem": "Viridis.ThermodynamicSpeedLimits.SymbioticEqualization.slow_rate_characterization",
+      "lean_theorem": "slow_rate_characterization",
+      "nonvacuity_contract_receipt_validated": true,
+      "nonvacuity_obligation": "symbiotic_equalization_nonvacuous",
+      "normalized_signature": "theorem slow_rate_characterization (a b k r : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k) (hr : r = slowRate a b k) : r^2 - (a + b + 2*k) * r + a*b + k*(a+b) = 0",
+      "source_line": 28,
+      "triviality": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+      "triviality_reason": "No recognized reflexivity/definition-only proof; certificate validity remains independently assessed.",
+      "type_evidence": "FROZEN_SOURCE_SIGNATURE_PLUS_ALL_LIVE_SECTION_VARIABLES; independent audit must not infer omitted context",
+      "witness_semantic_per_target_review": "PENDING_INDEPENDENT_SCOPE_AUDIT"
+    },
+    {
+      "ambient_source_context": [],
+      "candidate_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CANDIDATE.lean",
+        "sha256": "e834af7336b4ef1d79af4609f354a9b408b0b4a8d385d79aa90e8d98ea07584d"
+      },
+      "claim_id": "S141-02",
+      "conclusion": "min a b ≤ slowRate a b k",
+      "elaborated_type_dump_available": false,
+      "exact_source_signature": "theorem slow_rate_lower_min\n    (a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k) :\n    min a b ≤ slowRate a b k",
+      "exact_witness_source_signature": "theorem symbiotic_equalization_nonvacuous :\n    1 < slowRate 1 4 1 ∧ slowRate 1 4 1 < (1 + 4) / 2",
+      "explicit_binders_and_hypotheses": "(a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k)",
+      "formal_statement_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CHALLENGE_ALIGNED.lean",
+        "sha256": "406baad5ccf1f6608547eb4df337d9ab05501c6f2b92dd3104dccd673d11e5b8"
+      },
+      "frozen_aligned_signature": "theorem slow_rate_lower_min\n    (a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k) :\n    min a b ≤ slowRate a b k",
+      "fully_qualified_lean_theorem": "Viridis.ThermodynamicSpeedLimits.SymbioticEqualization.slow_rate_lower_min",
+      "lean_theorem": "slow_rate_lower_min",
+      "nonvacuity_contract_receipt_validated": true,
+      "nonvacuity_obligation": "symbiotic_equalization_nonvacuous",
+      "normalized_signature": "theorem slow_rate_lower_min (a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k) : min a b ≤ slowRate a b k",
+      "source_line": 36,
+      "triviality": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+      "triviality_reason": "No recognized reflexivity/definition-only proof; certificate validity remains independently assessed.",
+      "type_evidence": "FROZEN_SOURCE_SIGNATURE_PLUS_ALL_LIVE_SECTION_VARIABLES; independent audit must not infer omitted context",
+      "witness_semantic_per_target_review": "PENDING_INDEPENDENT_SCOPE_AUDIT"
+    },
+    {
+      "ambient_source_context": [],
+      "candidate_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CANDIDATE.lean",
+        "sha256": "e834af7336b4ef1d79af4609f354a9b408b0b4a8d385d79aa90e8d98ea07584d"
+      },
+      "claim_id": "S141-03",
+      "conclusion": "slowRate a b k ≤ (a + b) / 2",
+      "elaborated_type_dump_available": false,
+      "exact_source_signature": "theorem slow_rate_upper_mean\n    (a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k) :\n    slowRate a b k ≤ (a + b) / 2",
+      "exact_witness_source_signature": "theorem symbiotic_equalization_nonvacuous :\n    1 < slowRate 1 4 1 ∧ slowRate 1 4 1 < (1 + 4) / 2",
+      "explicit_binders_and_hypotheses": "(a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k)",
+      "formal_statement_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CHALLENGE_ALIGNED.lean",
+        "sha256": "406baad5ccf1f6608547eb4df337d9ab05501c6f2b92dd3104dccd673d11e5b8"
+      },
+      "frozen_aligned_signature": "theorem slow_rate_upper_mean\n    (a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k) :\n    slowRate a b k ≤ (a + b) / 2",
+      "fully_qualified_lean_theorem": "Viridis.ThermodynamicSpeedLimits.SymbioticEqualization.slow_rate_upper_mean",
+      "lean_theorem": "slow_rate_upper_mean",
+      "nonvacuity_contract_receipt_validated": true,
+      "nonvacuity_obligation": "symbiotic_equalization_nonvacuous",
+      "normalized_signature": "theorem slow_rate_upper_mean (a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k) : slowRate a b k ≤ (a + b) / 2",
+      "source_line": 52,
+      "triviality": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+      "triviality_reason": "No recognized reflexivity/definition-only proof; certificate validity remains independently assessed.",
+      "type_evidence": "FROZEN_SOURCE_SIGNATURE_PLUS_ALL_LIVE_SECTION_VARIABLES; independent audit must not infer omitted context",
+      "witness_semantic_per_target_review": "PENDING_INDEPENDENT_SCOPE_AUDIT"
+    },
+    {
+      "ambient_source_context": [],
+      "candidate_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CANDIDATE.lean",
+        "sha256": "e834af7336b4ef1d79af4609f354a9b408b0b4a8d385d79aa90e8d98ea07584d"
+      },
+      "claim_id": "S141-04",
+      "conclusion": "slowRate a b k₁ ≤ slowRate a b k₂",
+      "elaborated_type_dump_available": false,
+      "exact_source_signature": "theorem slow_rate_monotone\n    (a b k₁ k₂ : ℝ) (ha : 0 < a) (hb : 0 < b)\n    (hk₁ : 0 ≤ k₁) (hord : k₁ ≤ k₂) :\n    slowRate a b k₁ ≤ slowRate a b k₂",
+      "exact_witness_source_signature": "theorem symbiotic_equalization_nonvacuous :\n    1 < slowRate 1 4 1 ∧ slowRate 1 4 1 < (1 + 4) / 2",
+      "explicit_binders_and_hypotheses": "(a b k₁ k₂ : ℝ) (ha : 0 < a) (hb : 0 < b)\n    (hk₁ : 0 ≤ k₁) (hord : k₁ ≤ k₂)",
+      "formal_statement_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CHALLENGE_ALIGNED.lean",
+        "sha256": "406baad5ccf1f6608547eb4df337d9ab05501c6f2b92dd3104dccd673d11e5b8"
+      },
+      "frozen_aligned_signature": "theorem slow_rate_monotone\n    (a b k₁ k₂ : ℝ) (ha : 0 < a) (hb : 0 < b)\n    (hk₁ : 0 ≤ k₁) (hord : k₁ ≤ k₂) :\n    slowRate a b k₁ ≤ slowRate a b k₂",
+      "fully_qualified_lean_theorem": "Viridis.ThermodynamicSpeedLimits.SymbioticEqualization.slow_rate_monotone",
+      "lean_theorem": "slow_rate_monotone",
+      "nonvacuity_contract_receipt_validated": true,
+      "nonvacuity_obligation": "symbiotic_equalization_nonvacuous",
+      "normalized_signature": "theorem slow_rate_monotone (a b k₁ k₂ : ℝ) (ha : 0 < a) (hb : 0 < b) (hk₁ : 0 ≤ k₁) (hord : k₁ ≤ k₂) : slowRate a b k₁ ≤ slowRate a b k₂",
+      "source_line": 59,
+      "triviality": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+      "triviality_reason": "No recognized reflexivity/definition-only proof; certificate validity remains independently assessed.",
+      "type_evidence": "FROZEN_SOURCE_SIGNATURE_PLUS_ALL_LIVE_SECTION_VARIABLES; independent audit must not infer omitted context",
+      "witness_semantic_per_target_review": "PENDING_INDEPENDENT_SCOPE_AUDIT"
+    },
+    {
+      "ambient_source_context": [],
+      "candidate_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CANDIDATE.lean",
+        "sha256": "e834af7336b4ef1d79af4609f354a9b408b0b4a8d385d79aa90e8d98ea07584d"
+      },
+      "claim_id": "S141-05",
+      "conclusion": "slowRate a a k = a",
+      "elaborated_type_dump_available": false,
+      "exact_source_signature": "theorem equal_rates_no_gain\n    (a k : ℝ) (ha : 0 < a) (hk : 0 ≤ k) :\n    slowRate a a k = a",
+      "exact_witness_source_signature": "theorem symbiotic_equalization_nonvacuous :\n    1 < slowRate 1 4 1 ∧ slowRate 1 4 1 < (1 + 4) / 2",
+      "explicit_binders_and_hypotheses": "(a k : ℝ) (ha : 0 < a) (hk : 0 ≤ k)",
+      "formal_statement_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CHALLENGE_ALIGNED.lean",
+        "sha256": "406baad5ccf1f6608547eb4df337d9ab05501c6f2b92dd3104dccd673d11e5b8"
+      },
+      "frozen_aligned_signature": "theorem equal_rates_no_gain\n    (a k : ℝ) (ha : 0 < a) (hk : 0 ≤ k) :\n    slowRate a a k = a",
+      "fully_qualified_lean_theorem": "Viridis.ThermodynamicSpeedLimits.SymbioticEqualization.equal_rates_no_gain",
+      "lean_theorem": "equal_rates_no_gain",
+      "nonvacuity_contract_receipt_validated": true,
+      "nonvacuity_obligation": "symbiotic_equalization_nonvacuous",
+      "normalized_signature": "theorem equal_rates_no_gain (a k : ℝ) (ha : 0 < a) (hk : 0 ≤ k) : slowRate a a k = a",
+      "source_line": 75,
+      "triviality": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+      "triviality_reason": "No recognized reflexivity/definition-only proof; certificate validity remains independently assessed.",
+      "type_evidence": "FROZEN_SOURCE_SIGNATURE_PLUS_ALL_LIVE_SECTION_VARIABLES; independent audit must not infer omitted context",
+      "witness_semantic_per_target_review": "PENDING_INDEPENDENT_SCOPE_AUDIT"
+    },
+    {
+      "ambient_source_context": [],
+      "candidate_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CANDIDATE.lean",
+        "sha256": "e834af7336b4ef1d79af4609f354a9b408b0b4a8d385d79aa90e8d98ea07584d"
+      },
+      "claim_id": "S141-06",
+      "conclusion": "slowRate a b k < (a + b) / 2",
+      "elaborated_type_dump_available": false,
+      "exact_source_signature": "theorem finite_asymmetry_strict_mean\n    (a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k) (hab : a ≠ b) :\n    slowRate a b k < (a + b) / 2",
+      "exact_witness_source_signature": "theorem symbiotic_equalization_nonvacuous :\n    1 < slowRate 1 4 1 ∧ slowRate 1 4 1 < (1 + 4) / 2",
+      "explicit_binders_and_hypotheses": "(a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k) (hab : a ≠ b)",
+      "formal_statement_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CHALLENGE_ALIGNED.lean",
+        "sha256": "406baad5ccf1f6608547eb4df337d9ab05501c6f2b92dd3104dccd673d11e5b8"
+      },
+      "frozen_aligned_signature": "theorem finite_asymmetry_strict_mean\n    (a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k) (hab : a ≠ b) :\n    slowRate a b k < (a + b) / 2",
+      "fully_qualified_lean_theorem": "Viridis.ThermodynamicSpeedLimits.SymbioticEqualization.finite_asymmetry_strict_mean",
+      "lean_theorem": "finite_asymmetry_strict_mean",
+      "nonvacuity_contract_receipt_validated": true,
+      "nonvacuity_obligation": "symbiotic_equalization_nonvacuous",
+      "normalized_signature": "theorem finite_asymmetry_strict_mean (a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k) (hab : a ≠ b) : slowRate a b k < (a + b) / 2",
+      "source_line": 83,
+      "triviality": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+      "triviality_reason": "No recognized reflexivity/definition-only proof; certificate validity remains independently assessed.",
+      "type_evidence": "FROZEN_SOURCE_SIGNATURE_PLUS_ALL_LIVE_SECTION_VARIABLES; independent audit must not infer omitted context",
+      "witness_semantic_per_target_review": "PENDING_INDEPENDENT_SCOPE_AUDIT"
+    },
+    {
+      "ambient_source_context": [],
+      "candidate_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CANDIDATE.lean",
+        "sha256": "e834af7336b4ef1d79af4609f354a9b408b0b4a8d385d79aa90e8d98ea07584d"
+      },
+      "claim_id": "S141-07",
+      "conclusion": "1 < slowRate 1 4 1 ∧ slowRate 1 4 1 < (1 + 4) / 2",
+      "elaborated_type_dump_available": false,
+      "exact_source_signature": "theorem symbiotic_equalization_nonvacuous :\n    1 < slowRate 1 4 1 ∧ slowRate 1 4 1 < (1 + 4) / 2",
+      "exact_witness_source_signature": "theorem symbiotic_equalization_nonvacuous :\n    1 < slowRate 1 4 1 ∧ slowRate 1 4 1 < (1 + 4) / 2",
+      "explicit_binders_and_hypotheses": "",
+      "formal_statement_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CHALLENGE_ALIGNED.lean",
+        "sha256": "406baad5ccf1f6608547eb4df337d9ab05501c6f2b92dd3104dccd673d11e5b8"
+      },
+      "frozen_aligned_signature": "theorem symbiotic_equalization_nonvacuous :\n    1 < slowRate 1 4 1 ∧ slowRate 1 4 1 < (1 + 4) / 2",
+      "fully_qualified_lean_theorem": "Viridis.ThermodynamicSpeedLimits.SymbioticEqualization.symbiotic_equalization_nonvacuous",
+      "lean_theorem": "symbiotic_equalization_nonvacuous",
+      "nonvacuity_contract_receipt_validated": true,
+      "nonvacuity_obligation": "symbiotic_equalization_nonvacuous",
+      "normalized_signature": "theorem symbiotic_equalization_nonvacuous : 1 < slowRate 1 4 1 ∧ slowRate 1 4 1 < (1 + 4) / 2",
+      "source_line": 96,
+      "triviality": "NO_SYNTACTIC_TRIVIAL_PATTERN",
+      "triviality_reason": "No recognized reflexivity/definition-only proof; certificate validity remains independently assessed.",
+      "type_evidence": "FROZEN_SOURCE_SIGNATURE_PLUS_ALL_LIVE_SECTION_VARIABLES; independent audit must not infer omitted context",
+      "witness_semantic_per_target_review": "PENDING_INDEPENDENT_SCOPE_AUDIT"
+    }
+  ],
+  "model_definitions_source": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/VERIFICATION_CANDIDATE.lean",
+    "sha256": "e834af7336b4ef1d79af4609f354a9b408b0b4a8d385d79aa90e8d98ea07584d"
+  },
+  "nonvacuity_contract": [
+    "symbiotic_equalization_nonvacuous"
+  ],
+  "run_id": "Run-141",
+  "standard": "VRS-PHASE7-SOURCE-STATEMENT-SCOPE-DRAFT-1",
+  "status": "DRAFT_NO_ELABORATION_OR_PROOF_ATTEMPT",
+  "unicode_display_is_injective": true
+}

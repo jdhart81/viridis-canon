@@ -1,0 +1,342 @@
+{
+  "approved": false,
+  "certificate": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/LEAN_ZERO_SORRY_CERTIFICATE.json",
+    "sha256": "174a2d939dea38385e072bc939e6262618e67b2ca4d6991d9413662ec31dace2"
+  },
+  "claims": [
+    {
+      "claim_id": "S141-01",
+      "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+      "english_claim": "Within the frozen defined model and under every explicit and live ambient hypothesis printed for slow_rate_characterization, the exact displayed conditional statement slow_rate_characterization holds.",
+      "evidence_class": "FORMALLY_VERIFIED_SCOPED_DRAFT",
+      "lean_theorem": "slow_rate_characterization",
+      "model_fidelity": {
+        "defined": [
+          "a",
+          "b",
+          "ha",
+          "hb",
+          "hk",
+          "hr",
+          "k",
+          "r",
+          "slowRate"
+        ],
+        "empirically_identified": []
+      },
+      "nonvacuity_obligation": "symbiotic_equalization_nonvacuous",
+      "paper_locator": "Certified-scope statement S141-01",
+      "publication_disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+      "status": "DRAFT_AWAITING_INDEPENDENT_SCOPE_AUDIT"
+    },
+    {
+      "claim_id": "S141-02",
+      "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+      "english_claim": "Within the frozen defined model and under every explicit and live ambient hypothesis printed for slow_rate_lower_min, the exact displayed conditional statement slow_rate_lower_min holds.",
+      "evidence_class": "FORMALLY_VERIFIED_SCOPED_DRAFT",
+      "lean_theorem": "slow_rate_lower_min",
+      "model_fidelity": {
+        "defined": [
+          "a",
+          "b",
+          "ha",
+          "hb",
+          "hk",
+          "k",
+          "slowRate"
+        ],
+        "empirically_identified": []
+      },
+      "nonvacuity_obligation": "symbiotic_equalization_nonvacuous",
+      "paper_locator": "Certified-scope statement S141-02",
+      "publication_disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+      "status": "DRAFT_AWAITING_INDEPENDENT_SCOPE_AUDIT"
+    },
+    {
+      "claim_id": "S141-03",
+      "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+      "english_claim": "Within the frozen defined model and under every explicit and live ambient hypothesis printed for slow_rate_upper_mean, the exact displayed conditional statement slow_rate_upper_mean holds.",
+      "evidence_class": "FORMALLY_VERIFIED_SCOPED_DRAFT",
+      "lean_theorem": "slow_rate_upper_mean",
+      "model_fidelity": {
+        "defined": [
+          "a",
+          "b",
+          "ha",
+          "hb",
+          "hk",
+          "k",
+          "slowRate"
+        ],
+        "empirically_identified": []
+      },
+      "nonvacuity_obligation": "symbiotic_equalization_nonvacuous",
+      "paper_locator": "Certified-scope statement S141-03",
+      "publication_disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+      "status": "DRAFT_AWAITING_INDEPENDENT_SCOPE_AUDIT"
+    },
+    {
+      "claim_id": "S141-04",
+      "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+      "english_claim": "Within the frozen defined model and under every explicit and live ambient hypothesis printed for slow_rate_monotone, the exact displayed conditional statement slow_rate_monotone holds.",
+      "evidence_class": "FORMALLY_VERIFIED_SCOPED_DRAFT",
+      "lean_theorem": "slow_rate_monotone",
+      "model_fidelity": {
+        "defined": [
+          "a",
+          "b",
+          "ha",
+          "hb",
+          "hk₁",
+          "hord",
+          "k₁",
+          "k₂",
+          "slowRate"
+        ],
+        "empirically_identified": []
+      },
+      "nonvacuity_obligation": "symbiotic_equalization_nonvacuous",
+      "paper_locator": "Certified-scope statement S141-04",
+      "publication_disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+      "status": "DRAFT_AWAITING_INDEPENDENT_SCOPE_AUDIT"
+    },
+    {
+      "claim_id": "S141-05",
+      "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+      "english_claim": "Within the frozen defined model and under every explicit and live ambient hypothesis printed for equal_rates_no_gain, the exact displayed conditional statement equal_rates_no_gain holds.",
+      "evidence_class": "FORMALLY_VERIFIED_SCOPED_DRAFT",
+      "lean_theorem": "equal_rates_no_gain",
+      "model_fidelity": {
+        "defined": [
+          "a",
+          "ha",
+          "hk",
+          "k",
+          "slowRate"
+        ],
+        "empirically_identified": []
+      },
+      "nonvacuity_obligation": "symbiotic_equalization_nonvacuous",
+      "paper_locator": "Certified-scope statement S141-05",
+      "publication_disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+      "status": "DRAFT_AWAITING_INDEPENDENT_SCOPE_AUDIT"
+    },
+    {
+      "claim_id": "S141-06",
+      "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+      "english_claim": "Within the frozen defined model and under every explicit and live ambient hypothesis printed for finite_asymmetry_strict_mean, the exact displayed conditional statement finite_asymmetry_strict_mean holds.",
+      "evidence_class": "FORMALLY_VERIFIED_SCOPED_DRAFT",
+      "lean_theorem": "finite_asymmetry_strict_mean",
+      "model_fidelity": {
+        "defined": [
+          "a",
+          "b",
+          "ha",
+          "hab",
+          "hb",
+          "hk",
+          "k",
+          "slowRate"
+        ],
+        "empirically_identified": []
+      },
+      "nonvacuity_obligation": "symbiotic_equalization_nonvacuous",
+      "paper_locator": "Certified-scope statement S141-06",
+      "publication_disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+      "status": "DRAFT_AWAITING_INDEPENDENT_SCOPE_AUDIT"
+    },
+    {
+      "claim_id": "S141-07",
+      "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+      "english_claim": "Within the frozen defined model and under every explicit and live ambient hypothesis printed for symbiotic_equalization_nonvacuous, the exact displayed conditional statement symbiotic_equalization_nonvacuous holds.",
+      "evidence_class": "FORMALLY_VERIFIED_SCOPED_DRAFT",
+      "lean_theorem": "symbiotic_equalization_nonvacuous",
+      "model_fidelity": {
+        "defined": [
+          "slowRate"
+        ],
+        "empirically_identified": []
+      },
+      "nonvacuity_obligation": "symbiotic_equalization_nonvacuous",
+      "paper_locator": "Certified-scope statement S141-07",
+      "publication_disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+      "status": "DRAFT_AWAITING_INDEPENDENT_SCOPE_AUDIT"
+    }
+  ],
+  "formal_section_spans": [
+    {
+      "claim_id": "S141-01",
+      "end_offset": 2986,
+      "section_sha256": "a3014529add22680bee116d7b49b0c7f6edefb9d6f09f55e5eae7c5e42a38429",
+      "start_offset": 1848
+    },
+    {
+      "claim_id": "S141-02",
+      "end_offset": 4059,
+      "section_sha256": "e0e07781e5cb8a4ee2aebb6b8491046a4520bdbf5838420e869405b09aaf4ba2",
+      "start_offset": 2986
+    },
+    {
+      "claim_id": "S141-03",
+      "end_offset": 5139,
+      "section_sha256": "575ba263a8b2557821ef1af2a9229f6b5ee0ddfca486cec2d423ffa38ca71699",
+      "start_offset": 4059
+    },
+    {
+      "claim_id": "S141-04",
+      "end_offset": 6288,
+      "section_sha256": "b85f0c8c11302f36b0a0c68be88267f683b5a14dc81739d28fef6cca92b0c15d",
+      "start_offset": 5139
+    },
+    {
+      "claim_id": "S141-05",
+      "end_offset": 7335,
+      "section_sha256": "b5da8180ebca12ed4577a82a7f86507645add74d7f002e1d68c732d468bc899a",
+      "start_offset": 6288
+    },
+    {
+      "claim_id": "S141-06",
+      "end_offset": 8453,
+      "section_sha256": "45474767f96cb1ea6a4bd86aa8c307f99c0b0917a3452af025e259840e09d170",
+      "start_offset": 7335
+    },
+    {
+      "claim_id": "S141-07",
+      "end_offset": 9526,
+      "section_sha256": "8a588aef1cc06d0b70dbb3e0e021afb25909b7a0c007a6db66a7c9f441e04a02",
+      "start_offset": 8453
+    }
+  ],
+  "local_lean_execution": false,
+  "nonclaim_regions": [
+    "title: historical provenance only",
+    "draft status and source-format instructions",
+    "publication prerequisites"
+  ],
+  "original_sealed_paper": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-141/SEALED_paper.tex",
+    "sha256": "1444ddacfebcaabcbd7d9ad2b2e34d564fc47603562ea361b219b59302cb3173"
+  },
+  "paper": {
+    "path": "/private/tmp/phase7-wave-c-20261006-v001/scoped-v004/Run-141/paper.tex",
+    "sha256": "981065759791a438cec74ad738b82d7a535790df52e6cee49e89b12b004c8f7a"
+  },
+  "run_id": "Run-141",
+  "standard": "VRS-PHASE7-WHOLE-PAPER-SCOPE-DRAFT-1",
+  "status": "DRAFT_AWAITING_CLAUDE_SPOT_AUDIT",
+  "uncertified_remarks": [
+    {
+      "claim_id": "C1",
+      "lean_theorem": null,
+      "original_claim": "The smaller eigenvalue of the declared matrix equals the stated closed form.",
+      "original_evidence_class": "FORMAL_TARGET",
+      "original_paper_locator": "Model and Proposition 1",
+      "original_target": "slow_rate_characterization",
+      "paper_locator": "Conjectures / uncertified remarks: C1",
+      "reason": "Proves a scalar characteristic-polynomial residual under r=defined slowRate. It does not state a matrix eigenpair or ordering of two eigenvalues.",
+      "status": "UNCERTIFIED_AS_ORIGINALLY_WORDED_NOT_ASSERTED_IN_SUCCESSOR"
+    },
+    {
+      "claim_id": "C2",
+      "lean_theorem": null,
+      "original_claim": "For positive intrinsic rates and nonnegative coupling, the slow rate is at least min(a,b).",
+      "original_evidence_class": "FORMAL_TARGET",
+      "original_paper_locator": "Proposition 1",
+      "original_target": "slow_rate_lower_min",
+      "paper_locator": "Conjectures / uncertified remarks: C2",
+      "reason": "Matches positive a,b and nonnegative k.",
+      "status": "UNCERTIFIED_AS_ORIGINALLY_WORDED_NOT_ASSERTED_IN_SUCCESSOR"
+    },
+    {
+      "claim_id": "C3",
+      "lean_theorem": null,
+      "original_claim": "The slow rate is at most the arithmetic mean of the intrinsic rates.",
+      "original_evidence_class": "FORMAL_TARGET",
+      "original_paper_locator": "Proposition 1",
+      "original_target": "slow_rate_upper_mean",
+      "paper_locator": "Conjectures / uncertified remarks: C3",
+      "reason": "Matches positive a,b and nonnegative k.",
+      "status": "UNCERTIFIED_AS_ORIGINALLY_WORDED_NOT_ASSERTED_IN_SUCCESSOR"
+    },
+    {
+      "claim_id": "C4",
+      "lean_theorem": null,
+      "original_claim": "The slow rate is nondecreasing in symmetric coupling.",
+      "original_evidence_class": "FORMAL_TARGET",
+      "original_paper_locator": "Proposition 2",
+      "original_target": "slow_rate_monotone",
+      "paper_locator": "Conjectures / uncertified remarks: C4",
+      "reason": "Matches k1>=0 and k1<=k2, with positive rates.",
+      "status": "UNCERTIFIED_AS_ORIGINALLY_WORDED_NOT_ASSERTED_IN_SUCCESSOR"
+    },
+    {
+      "claim_id": "C5",
+      "lean_theorem": null,
+      "original_claim": "When a=b, symmetric coupling produces no slow-rate gain.",
+      "original_evidence_class": "FORMAL_TARGET",
+      "original_paper_locator": "Proposition 2",
+      "original_target": "equal_rates_no_gain",
+      "paper_locator": "Conjectures / uncertified remarks: C5",
+      "reason": "Matches a>0 and k>=0.",
+      "status": "UNCERTIFIED_AS_ORIGINALLY_WORDED_NOT_ASSERTED_IN_SUCCESSOR"
+    },
+    {
+      "claim_id": "C6",
+      "lean_theorem": null,
+      "original_claim": "For unequal rates and finite nonnegative coupling, the slow rate is strictly below their mean.",
+      "original_evidence_class": "FORMAL_TARGET",
+      "original_paper_locator": "Proposition 2",
+      "original_target": "finite_asymmetry_strict_mean",
+      "paper_locator": "Conjectures / uncertified remarks: C6",
+      "reason": "Matches positive rates, k>=0 and a != b.",
+      "status": "UNCERTIFIED_AS_ORIGINALLY_WORDED_NOT_ASSERTED_IN_SUCCESSOR"
+    },
+    {
+      "claim_id": "C7",
+      "lean_theorem": null,
+      "original_claim": "The parameters a=1,b=4,k=1 give a positive strict-improvement witness below the mean.",
+      "original_evidence_class": "FORMAL_TARGET",
+      "original_paper_locator": "Worked witness",
+      "original_target": "symbiotic_equalization_nonvacuous",
+      "paper_locator": "Conjectures / uncertified remarks: C7",
+      "reason": "Matches 1 < slowRate 1 4 1 < (1+4)/2.",
+      "status": "UNCERTIFIED_AS_ORIGINALLY_WORDED_NOT_ASSERTED_IN_SUCCESSOR"
+    },
+    {
+      "claim_id": "C8",
+      "lean_theorem": null,
+      "original_claim": "The executable gate completed 16 PASS / 0 FAIL / 16 CHECKS.",
+      "original_evidence_class": "NUMERIC",
+      "original_paper_locator": "Verification",
+      "original_target": null,
+      "paper_locator": "Conjectures / uncertified remarks: C8",
+      "reason": "Computational, cited, physical/model or business claim has no certified theorem mapping in the intended release. Explicitly mark deferred for formal verification or conditional in the manuscript.",
+      "status": "UNCERTIFIED_AS_ORIGINALLY_WORDED_NOT_ASSERTED_IN_SUCCESSOR"
+    },
+    {
+      "claim_id": "C9",
+      "lean_theorem": null,
+      "original_claim": "Novelty and scientific significance are unassessed.",
+      "original_evidence_class": "DEFERRED",
+      "original_paper_locator": "Abstract and Discussion",
+      "original_target": null,
+      "paper_locator": "Conjectures / uncertified remarks: C9",
+      "reason": "Computational, cited, physical/model or business claim has no certified theorem mapping in the intended release. Explicitly mark deferred for formal verification or conditional in the manuscript.",
+      "status": "UNCERTIFIED_AS_ORIGINALLY_WORDED_NOT_ASSERTED_IN_SUCCESSOR"
+    },
+    {
+      "claim_id": "C10",
+      "lean_theorem": null,
+      "original_claim": "A future coupling-payoff audit could create buyer value.",
+      "original_evidence_class": "CONJECTURED",
+      "original_paper_locator": "business_EV-141.md only",
+      "original_target": null,
+      "paper_locator": "Conjectures / uncertified remarks: C10",
+      "reason": "Computational, cited, physical/model or business claim has no certified theorem mapping in the intended release. Explicitly mark deferred for formal verification or conditional in the manuscript.",
+      "status": "UNCERTIFIED_AS_ORIGINALLY_WORDED_NOT_ASSERTED_IN_SUCCESSOR"
+    }
+  ],
+  "whole_document_policy": "This newly written note contains only exact frozen conditional statement listings and individually qualified historical claims; all old narrative is removed by scope.diff. No universal completeness is inferred from the sealed inventory.",
+  "whole_hub_verified": false
+}

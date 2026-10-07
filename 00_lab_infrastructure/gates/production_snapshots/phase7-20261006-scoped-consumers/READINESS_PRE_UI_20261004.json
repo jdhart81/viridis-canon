@@ -1,0 +1,143 @@
+{
+  "acceptance_evidence": [
+    "Issuer proof/receipt/kernel/axiom/alignment/hash acceptance source block and witness helper remain exact bytes of protected pre-INV9 fixture.",
+    "Historical default certificate output byte-equivalence and original rejection tests pass.",
+    "Comparator client verify() acceptance source remains byte-identical; diagnostics and timeout regressions pass."
+  ],
+  "at_utc": "2026-10-04T23:19:16.202980+00:00",
+  "installation_state": "PREPARED_NOT_INSTALLED",
+  "issuer_approval": {
+    "approved_by": "Justin",
+    "approved_on": "2026-10-04",
+    "authority": "reports/verification-coverage/GAME_PLAN.md § Premise-declaration gate (INV-9) — 2026-10-04",
+    "component": "issue_lean_zero_sorry_certificate.py",
+    "new_sha256": "96c5c70d7d9de31c537ac4dc4a405d5f2c38a7ba03389c93dac1efb28cfc5ebe",
+    "old_sha256": "789cb903c972a9c10731360769ccff56055b3257de9491a75b92c0d549b5c438",
+    "scope": "Explicit new-nightly sealed-premise intake and certificate foundation_basis metadata only; historical default output unchanged.",
+    "verifier_kernel_axiom_changes": false
+  },
+  "manifest": {
+    "all_after_bytes_match_final_sources": true,
+    "changed_targets": 15,
+    "gate_modules": 17,
+    "original_before_snapshots_preserved": true,
+    "path": "/private/tmp/viridis-f2f-delivery/00_lab_infrastructure/gates/production_snapshots/phase5-20261004/AFTER_MANIFEST.json",
+    "prior20_target_manifest": {
+      "path": "AFTER_MANIFEST_PRE_INV9_20261004.json",
+      "sha256": "c89d83b5447aaac73edff31234907b19140078484a102c09e6eeb48e92c5c449"
+    },
+    "sha256": "a881ae2973421db2401fd7b768893365f5bff2d476ad6e4b8a93722a0188d427",
+    "target_count": 22
+  },
+  "private_evidence_exclusion": {
+    "git_check_ignore": {
+      "env": true,
+      "key": true,
+      "pem": true,
+      "transport_diagnostics_manifest": true,
+      "transport_diagnostics_stdout": true
+    },
+    "prepared_publisher_upload_inventory_excludes_nested_diagnostics": "PASS regression with stdout.bin/stderr.bin/manifest.json under attempt-local directory",
+    "raw_diagnostics_or_secrets_added_to_review_packet": false
+  },
+  "protected_sources": {
+    "comparator_cloud_lean_verifier.py": {
+      "current_sha256": "b745e90ad147a0d5bd6787e20049e9bbb49a694837172851c77958b271718202",
+      "matches_protected_baseline": true
+    },
+    "engine3_align_challenge.py": {
+      "current_sha256": "d8d06e582d80bddae73dbb68a23a866ed8cac241f5c9780c3bc779a50fcd4870",
+      "matches_protected_baseline": true
+    },
+    "issue_lean_zero_sorry_certificate.py": {
+      "current_sha256": "96c5c70d7d9de31c537ac4dc4a405d5f2c38a7ba03389c93dac1efb28cfc5ebe",
+      "matches_protected_baseline": true
+    }
+  },
+  "read_only_live_install_preflight": {
+    "already_after": 7,
+    "new_writes": false,
+    "reasons": [],
+    "status": "READY"
+  },
+  "readiness_limits": [
+    "Remote branch checks must pass, including Linux spine hygiene, current/P0/deposit Lean CI and pinned secret-scan workflow.",
+    "No merge, install, scheduler/enforcement change, network write, certification attempt or source-generation edit performed by this preparation.",
+    "Next-nightly cutover must be freshly verified and activated by the parent after merge and hash-checked install.",
+    "Existing unresolved imported foundation names remain HOLD; exact frozen declarations or explicit matching PL/PD are required."
+  ],
+  "secret_scans": {
+    "history_commits_scanned": 105,
+    "history_findings": 0,
+    "redaction": true,
+    "scanner": "gitleaks 8.30.1 locally; CI pins8.21.2",
+    "worktree_findings": 0
+  },
+  "standard": "VRS-PHASE5-PREPARED-CLOSURE-READINESS-1",
+  "status": "READY_FOR_PR_REVIEW_REMOTE_CI_REQUIRED",
+  "test_logs_private_paths": {
+    "INV9_FULL_GATE_SUITE_20261004.txt": {
+      "path": "/private/tmp/INV9_FULL_GATE_SUITE_20261004.txt",
+      "sha256": "f1046ea732583fc3a6ab5ef00141e7d24f402482aab243ecd3c1a131495477fb"
+    },
+    "INV9_HISTORY_SECRET_SCAN_20261004.txt": {
+      "path": "/private/tmp/INV9_HISTORY_SECRET_SCAN_20261004.txt",
+      "sha256": "0d61b71b420373dcffb132c5962b3d423126f41c3ace8870dc80e21ec293439e"
+    },
+    "INV9_REPOSITORY_SUITE_20261004.txt": {
+      "path": "/private/tmp/INV9_REPOSITORY_SUITE_20261004.txt",
+      "sha256": "777ef2d7fc78c17208200d9ec077cec8ac4ee0c7093dbb0089bf75f5d65b30ac"
+    },
+    "INV9_WORKTREE_SECRET_SCAN_20261004.txt": {
+      "path": "/private/tmp/INV9_WORKTREE_SECRET_SCAN_20261004.txt",
+      "sha256": "1a5817d1e3841f8a6a835b738e1e520d9e219eda1e44ad95e649a5777c65e5be"
+    }
+  },
+  "tests": {
+    "catalog_current": {
+      "digest_prefix": "562d107eafd2c448",
+      "records": 215,
+      "result": "PASS"
+    },
+    "deposit_manifest": {
+      "count": 1,
+      "result": "PASS"
+    },
+    "diff_whitespace": {
+      "result": "PASS"
+    },
+    "full_gate_suite": {
+      "result": "PASS",
+      "skipped": 0,
+      "tests": 462
+    },
+    "function_manifests": {
+      "count": 42,
+      "result": "PASS"
+    },
+    "isolated_prepared_runtime_import_and_missing_dependency": {
+      "corrupted_signature_parser_HOLD": true,
+      "new_issuer_uses_pinned_existing_runtime_helpers": true,
+      "result": "PASS",
+      "tests": 4
+    },
+    "native_macos_spine_hygiene": {
+      "reason": "macOS Bash has no mapfile; unmodified script aborts before lint with unbound SPINE array. Not waived; required Linux CI must pass.",
+      "result": "ENVIRONMENT_FAILURE"
+    },
+    "repository_suite": {
+      "result": "PASS",
+      "tests": 88
+    },
+    "required_lean_ci": {
+      "reason": "No-local-Lean invariant; repository remote CI remains required before merge.",
+      "result": "NOT_RUN_LOCALLY"
+    },
+    "vacuity_lint": {
+      "critical": 0,
+      "result": "PASS",
+      "review": 0,
+      "spine_files": 33
+    }
+  }
+}

@@ -1,0 +1,168 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath,amssymb}
+\title{A Symbiotic Equalization Speed-Limit Note}
+\author{Justin D. Hart}
+\date{Scoped Methods Note --- staged October 6, 2026}
+\begin{document}\maketitle
+\noindent\textbf{DRAFT FOR INDEPENDENT SCOPE AUDIT; UNPUBLISHED.} This immutable successor narrows the manuscript to the existing certificate's displayed mathematical statements. It has no approved successor publication binding. Its historical title is preserved as provenance and is not an additional certified claim.
+\begin{abstract}
+Foundation basis: INDEPENDENT for the displayed defined-model mathematics. Every retained formal statement below includes its explicit binders and live ambient source assumptions. Every historical claim reproduced from the original sealed inventory is individually marked uncertified and not asserted by this successor; all other original narrative is removed by the scope diff. Only the defined scalar slowRate function and its displayed inequalities and polynomial residual are covered. No matrix eigenpair, eigenvalue ordering, empirical rate identification or realized coupling payoff is asserted.
+\end{abstract}
+\section*{Reading the exact statement contract}
+The UTF-8 signatures, hypotheses, conclusions and source bindings are in statement\_inventory.json. For portable typesetting, every non-ASCII codepoint is rendered below as its literal Unicode escape; this display changes no frozen Lean bytes. The displayed ambient variables are a conservative source-context list, not an independently elaborated type dump. No omitted hypothesis may be inferred from a shortened English description. The named certificate witnesses were validated by the existing issuer receipt; their per-statement model correspondence remains part of independent scope audit.
+\section*{Certified-scope statement S141-01}
+Within the frozen defined model and under every explicit and live ambient hypothesis printed for slow\_rate\_characterization, the exact displayed conditional statement slow\_rate\_characterization holds.
+\par\noindent\textbf{Exact frozen declaration (Unicode escapes in display):}
+\begin{verbatim}
+theorem slow_rate_characterization
+    (a b k r : \u211d) (ha : 0 < a) (hb : 0 < b) (hk : 0 \u2264 k)
+    (hr : r = slowRate a b k) :
+    r^2 - (a + b + 2*k) * r + a*b + k*(a+b) = 0
+\end{verbatim}
+\noindent\textbf{All live ambient source variables and hypotheses:}
+None beyond the explicit declaration binders.
+\noindent\textbf{Existing named non-vacuity obligation:} symbiotic\_equalization\_nonvacuous.
+\begin{verbatim}
+theorem symbiotic_equalization_nonvacuous :
+    1 < slowRate 1 4 1 \u2227 slowRate 1 4 1 < (1 + 4) / 2
+\end{verbatim}
+\noindent Syntactic triviality classification: NO\_SYNTACTIC\_TRIVIAL\_PATTERN. This label is coverage only; the Comparator remains the proof verifier of record.
+\par\noindent logical validity given the model, not empirical validation of its assumptions
+\section*{Certified-scope statement S141-02}
+Within the frozen defined model and under every explicit and live ambient hypothesis printed for slow\_rate\_lower\_min, the exact displayed conditional statement slow\_rate\_lower\_min holds.
+\par\noindent\textbf{Exact frozen declaration (Unicode escapes in display):}
+\begin{verbatim}
+theorem slow_rate_lower_min
+    (a b k : \u211d) (ha : 0 < a) (hb : 0 < b) (hk : 0 \u2264 k) :
+    min a b \u2264 slowRate a b k
+\end{verbatim}
+\noindent\textbf{All live ambient source variables and hypotheses:}
+None beyond the explicit declaration binders.
+\noindent\textbf{Existing named non-vacuity obligation:} symbiotic\_equalization\_nonvacuous.
+\begin{verbatim}
+theorem symbiotic_equalization_nonvacuous :
+    1 < slowRate 1 4 1 \u2227 slowRate 1 4 1 < (1 + 4) / 2
+\end{verbatim}
+\noindent Syntactic triviality classification: NO\_SYNTACTIC\_TRIVIAL\_PATTERN. This label is coverage only; the Comparator remains the proof verifier of record.
+\par\noindent logical validity given the model, not empirical validation of its assumptions
+\section*{Certified-scope statement S141-03}
+Within the frozen defined model and under every explicit and live ambient hypothesis printed for slow\_rate\_upper\_mean, the exact displayed conditional statement slow\_rate\_upper\_mean holds.
+\par\noindent\textbf{Exact frozen declaration (Unicode escapes in display):}
+\begin{verbatim}
+theorem slow_rate_upper_mean
+    (a b k : \u211d) (ha : 0 < a) (hb : 0 < b) (hk : 0 \u2264 k) :
+    slowRate a b k \u2264 (a + b) / 2
+\end{verbatim}
+\noindent\textbf{All live ambient source variables and hypotheses:}
+None beyond the explicit declaration binders.
+\noindent\textbf{Existing named non-vacuity obligation:} symbiotic\_equalization\_nonvacuous.
+\begin{verbatim}
+theorem symbiotic_equalization_nonvacuous :
+    1 < slowRate 1 4 1 \u2227 slowRate 1 4 1 < (1 + 4) / 2
+\end{verbatim}
+\noindent Syntactic triviality classification: NO\_SYNTACTIC\_TRIVIAL\_PATTERN. This label is coverage only; the Comparator remains the proof verifier of record.
+\par\noindent logical validity given the model, not empirical validation of its assumptions
+\section*{Certified-scope statement S141-04}
+Within the frozen defined model and under every explicit and live ambient hypothesis printed for slow\_rate\_monotone, the exact displayed conditional statement slow\_rate\_monotone holds.
+\par\noindent\textbf{Exact frozen declaration (Unicode escapes in display):}
+\begin{verbatim}
+theorem slow_rate_monotone
+    (a b k\u2081 k\u2082 : \u211d) (ha : 0 < a) (hb : 0 < b)
+    (hk\u2081 : 0 \u2264 k\u2081) (hord : k\u2081 \u2264 k\u2082) :
+    slowRate a b k\u2081 \u2264 slowRate a b k\u2082
+\end{verbatim}
+\noindent\textbf{All live ambient source variables and hypotheses:}
+None beyond the explicit declaration binders.
+\noindent\textbf{Existing named non-vacuity obligation:} symbiotic\_equalization\_nonvacuous.
+\begin{verbatim}
+theorem symbiotic_equalization_nonvacuous :
+    1 < slowRate 1 4 1 \u2227 slowRate 1 4 1 < (1 + 4) / 2
+\end{verbatim}
+\noindent Syntactic triviality classification: NO\_SYNTACTIC\_TRIVIAL\_PATTERN. This label is coverage only; the Comparator remains the proof verifier of record.
+\par\noindent logical validity given the model, not empirical validation of its assumptions
+\section*{Certified-scope statement S141-05}
+Within the frozen defined model and under every explicit and live ambient hypothesis printed for equal\_rates\_no\_gain, the exact displayed conditional statement equal\_rates\_no\_gain holds.
+\par\noindent\textbf{Exact frozen declaration (Unicode escapes in display):}
+\begin{verbatim}
+theorem equal_rates_no_gain
+    (a k : \u211d) (ha : 0 < a) (hk : 0 \u2264 k) :
+    slowRate a a k = a
+\end{verbatim}
+\noindent\textbf{All live ambient source variables and hypotheses:}
+None beyond the explicit declaration binders.
+\noindent\textbf{Existing named non-vacuity obligation:} symbiotic\_equalization\_nonvacuous.
+\begin{verbatim}
+theorem symbiotic_equalization_nonvacuous :
+    1 < slowRate 1 4 1 \u2227 slowRate 1 4 1 < (1 + 4) / 2
+\end{verbatim}
+\noindent Syntactic triviality classification: NO\_SYNTACTIC\_TRIVIAL\_PATTERN. This label is coverage only; the Comparator remains the proof verifier of record.
+\par\noindent logical validity given the model, not empirical validation of its assumptions
+\section*{Certified-scope statement S141-06}
+Within the frozen defined model and under every explicit and live ambient hypothesis printed for finite\_asymmetry\_strict\_mean, the exact displayed conditional statement finite\_asymmetry\_strict\_mean holds.
+\par\noindent\textbf{Exact frozen declaration (Unicode escapes in display):}
+\begin{verbatim}
+theorem finite_asymmetry_strict_mean
+    (a b k : \u211d) (ha : 0 < a) (hb : 0 < b) (hk : 0 \u2264 k) (hab : a \u2260 b) :
+    slowRate a b k < (a + b) / 2
+\end{verbatim}
+\noindent\textbf{All live ambient source variables and hypotheses:}
+None beyond the explicit declaration binders.
+\noindent\textbf{Existing named non-vacuity obligation:} symbiotic\_equalization\_nonvacuous.
+\begin{verbatim}
+theorem symbiotic_equalization_nonvacuous :
+    1 < slowRate 1 4 1 \u2227 slowRate 1 4 1 < (1 + 4) / 2
+\end{verbatim}
+\noindent Syntactic triviality classification: NO\_SYNTACTIC\_TRIVIAL\_PATTERN. This label is coverage only; the Comparator remains the proof verifier of record.
+\par\noindent logical validity given the model, not empirical validation of its assumptions
+\section*{Certified-scope statement S141-07}
+Within the frozen defined model and under every explicit and live ambient hypothesis printed for symbiotic\_equalization\_nonvacuous, the exact displayed conditional statement symbiotic\_equalization\_nonvacuous holds.
+\par\noindent\textbf{Exact frozen declaration (Unicode escapes in display):}
+\begin{verbatim}
+theorem symbiotic_equalization_nonvacuous :
+    1 < slowRate 1 4 1 \u2227 slowRate 1 4 1 < (1 + 4) / 2
+\end{verbatim}
+\noindent\textbf{All live ambient source variables and hypotheses:}
+None beyond the explicit declaration binders.
+\noindent\textbf{Existing named non-vacuity obligation:} symbiotic\_equalization\_nonvacuous.
+\begin{verbatim}
+theorem symbiotic_equalization_nonvacuous :
+    1 < slowRate 1 4 1 \u2227 slowRate 1 4 1 < (1 + 4) / 2
+\end{verbatim}
+\noindent Syntactic triviality classification: NO\_SYNTACTIC\_TRIVIAL\_PATTERN. This label is coverage only; the Comparator remains the proof verifier of record.
+\par\noindent logical validity given the model, not empirical validation of its assumptions
+\section*{Conjectures / uncertified remarks}
+Each historical claim below is excluded from the proposed certified scope. Historical numeric, novelty, scientific, physical and business assertions retain no formal-verification credit here. They are listed to preserve provenance rather than silently disappearing.
+\subsection*{Historical claim C1 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} The smaller eigenvalue of the declared matrix equals the stated closed form.
+\par Scope reason: Proves a scalar characteristic-polynomial residual under r=defined slowRate. It does not state a matrix eigenpair or ordering of two eigenvalues.
+\subsection*{Historical claim C2 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} For positive intrinsic rates and nonnegative coupling, the slow rate is at least min(a,b).
+\par Scope reason: Matches positive a,b and nonnegative k.
+\subsection*{Historical claim C3 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} The slow rate is at most the arithmetic mean of the intrinsic rates.
+\par Scope reason: Matches positive a,b and nonnegative k.
+\subsection*{Historical claim C4 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} The slow rate is nondecreasing in symmetric coupling.
+\par Scope reason: Matches k1>=0 and k1<=k2, with positive rates.
+\subsection*{Historical claim C5 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} When a=b, symmetric coupling produces no slow-rate gain.
+\par Scope reason: Matches a>0 and k>=0.
+\subsection*{Historical claim C6 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} For unequal rates and finite nonnegative coupling, the slow rate is strictly below their mean.
+\par Scope reason: Matches positive rates, k>=0 and a != b.
+\subsection*{Historical claim C7 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} The parameters a=1,b=4,k=1 give a positive strict-improvement witness below the mean.
+\par Scope reason: Matches 1 < slowRate 1 4 1 < (1+4)/2.
+\subsection*{Historical claim C8 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} The executable gate completed 16 PASS / 0 FAIL / 16 CHECKS.
+\par Scope reason: Computational, cited, physical/model or business claim has no certified theorem mapping in the intended release. Explicitly mark deferred for formal verification or conditional in the manuscript.
+\subsection*{Historical claim C9 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} Novelty and scientific significance are unassessed.
+\par Scope reason: Computational, cited, physical/model or business claim has no certified theorem mapping in the intended release. Explicitly mark deferred for formal verification or conditional in the manuscript.
+\subsection*{Historical claim C10 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} A future coupling-payoff audit could create buyer value.
+\par Scope reason: Computational, cited, physical/model or business claim has no certified theorem mapping in the intended release. Explicitly mark deferred for formal verification or conditional in the manuscript.
+\section*{Publication and model prerequisites}
+Only an independently audited whole-paper scope receipt and an exact publication-time binding can authorize a scoped certified label. The final PDF, TeX, exact unchanged candidate, frozen statement, certificate and reviewed claim map must be hash-bound before a publish operation. The current public UNCERTIFIED banner remains until that binding validates. This Methods Note belongs in the weekly Viridis Methods Digest; it is not a new standalone science DOI without an explicit override.
+\end{document}

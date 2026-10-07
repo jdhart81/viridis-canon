@@ -32,7 +32,7 @@ class PreparedProductionAdaptersTests(unittest.TestCase):
         (self.bundle/'zenodo_metadata.json').write_text(json.dumps(self.payload))
 
     def test_all_prepared_snapshot_hashes_match_manifest(self):
-        base = Path(__file__).parent/'production_snapshots/phase5-20261005-provenance-closure'
+        base = Path(__file__).parent/'production_snapshots/phase7-20261006-scoped-consumers'
         manifest = json.loads((base/'AFTER_MANIFEST.json').read_text())
         self.assertEqual(len(manifest['snapshots']), 22)
         for row in manifest['snapshots']:
@@ -46,6 +46,23 @@ class PreparedProductionAdaptersTests(unittest.TestCase):
                 if '/verification_coverage_gates/' in row['relative_path']:
                     current = Path(__file__).parent/Path(row['relative_path']).name
                     self.assertEqual(current.read_bytes(), after.read_bytes())
+
+    def test_phase7_successor_preserves_frozen_predecessor_and_only_three_consumers_change(self):
+        root=Path(__file__).parent/'production_snapshots'
+        old=root/'phase5-20261005-provenance-closure';new=root/'phase7-20261006-scoped-consumers'
+        self.assertEqual((new/'PREDECESSOR_AFTER_MANIFEST.json').read_bytes(),(old/'AFTER_MANIFEST.json').read_bytes())
+        before={r['relative_path']:r for r in json.loads((old/'AFTER_MANIFEST.json').read_text())['snapshots']}
+        manifest=json.loads((new/'AFTER_MANIFEST.json').read_text())
+        after={r['relative_path']:r for r in manifest['snapshots']}
+        from install_phase5_hooks import TARGETS
+        self.assertEqual(set(before),TARGETS);self.assertEqual(set(after),TARGETS)
+        changed=[p for p in sorted(TARGETS) if before[p]['after_sha256']!=after[p]['after_sha256']]
+        self.assertEqual([Path(p).name for p in changed],['corpus_ledger.py','publication_binding.py','publication_gate.py'])
+        self.assertFalse(manifest['protected_verifier_issuer_changed'])
+        for p in TARGETS-set(changed):self.assertEqual(before[p],after[p])
+        for p in changed:
+            self.assertEqual(after[p]['before_sha256'],before[p]['after_sha256'])
+            self.assertEqual((new/after[p]['before_path']).read_bytes(),(old/before[p]['after_path']).read_bytes())
 
     def test_provenance_successor_preserves_original_and_other_21_targets(self):
         root = Path(__file__).parent/'production_snapshots'

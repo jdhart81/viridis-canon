@@ -1,0 +1,28 @@
+{
+  "at_utc": "2026-10-04T23:14:26.066891+00:00",
+  "network_writes": false,
+  "original_before_snapshots_preserved": true,
+  "snapshot_rows": [
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/issue_lean_zero_sorry_certificate.py",
+      "after_sha256": "96c5c70d7d9de31c537ac4dc4a405d5f2c38a7ba03389c93dac1efb28cfc5ebe",
+      "before_exists": true,
+      "before_path": "before/RESEARCH_PIPELINE_v2/issue_lean_zero_sorry_certificate.py",
+      "before_sha256": "789cb903c972a9c10731360769ccff56055b3257de9491a75b92c0d549b5c438",
+      "changed": true,
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/issue_lean_zero_sorry_certificate.py",
+      "relative_path": "RESEARCH_PIPELINE_v2/issue_lean_zero_sorry_certificate.py"
+    },
+    {
+      "after_path": "after/RESEARCH_PIPELINE_v2/verification_coverage_gates/premise_declaration.py",
+      "after_sha256": "c4cdba028df6c34fb117c02ff57d303a26b899b59892fcbbadc9457175232445",
+      "before_exists": false,
+      "before_path": null,
+      "before_sha256": null,
+      "changed": true,
+      "production_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/premise_declaration.py",
+      "relative_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/premise_declaration.py"
+    }
+  ],
+  "status": "READ_ONLY_LIVE_BASELINE_SNAPSHOTTED"
+}

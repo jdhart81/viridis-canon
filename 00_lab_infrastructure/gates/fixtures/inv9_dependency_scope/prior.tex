@@ -1,0 +1,198 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{fvextra}
+\title{The Precautionary Capacity Reserve: A Sharp Moment-Robust Stewardship Discount for an Intelligence-Rate Model}
+\author{Justin D. Hart}
+\date{Scoped Methods Note --- staged October 6, 2026}
+% VRS review layout only: preserve prose and frozen listings; allow names to wrap.
+\emergencystretch=4em
+\AtBeginDocument{\sloppy}
+
+\begin{document}\maketitle
+\noindent\textbf{Publication scope is limited to the listed frozen mathematical statements; the accompanying claim map and PUBLICATION\_\allowbreak{}BINDING.json control publication clearance.} This immutable successor narrows the manuscript to the existing certificate's displayed mathematical statements. Its historical title is preserved as provenance and is not an additional certified claim.
+\begin{abstract}
+Foundation basis: INDEPENDENT for the displayed defined-model mathematics. Every retained formal statement below includes its explicit binders and live ambient source assumptions. Every historical claim reproduced from the original sealed inventory is individually marked uncertified and not asserted by this successor; all other original narrative is removed by the scope diff. Only the supplied RateModel definitions and stated probability/moment assumptions are covered. The physical product-form rate identification is an uncertified interpretation, not an exported PL/PD theorem.
+\end{abstract}
+\section*{Reading the exact statement contract}
+The UTF-8 signatures, hypotheses, conclusions and source bindings are in statement\_\allowbreak{}inventory.json. For portable typesetting, every non-ASCII codepoint is rendered below as its literal Unicode escape; this display changes no frozen Lean bytes. The displayed ambient variables are a conservative source-context list, not an independently elaborated type dump. No omitted hypothesis may be inferred from a shortened English description. The named certificate witnesses were validated by the existing issuer receipt; their per-statement model correspondence remains part of independent scope audit.
+\section*{Certified-scope statement S127-01}
+Within the frozen defined model and under every explicit and live ambient hypothesis printed for cantelli\_\allowbreak{}capacity\_\allowbreak{}certificate, the exact displayed conditional statement cantelli\_\allowbreak{}capacity\_\allowbreak{}certificate holds.
+\par\noindent\textbf{Exact frozen declaration (Unicode escapes in display):}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize]
+theorem cantelli_capacity_certificate (M : RateModel) {D : Omega \u2192 \u211d}
+    (hD0 : 0 \u2264\u1d50[P] D) (hD2 : MemLp D 2 P) {mu sigma alpha : \u211d}
+    (ha0 : 0 < alpha) (ha1 : alpha < 1) (hmu : mu = P[D])
+    (hsigma : sigma = Real.sqrt (Var[D; P])) :
+    (P (M.violationEvent D (M.certifiedRate mu sigma alpha))).toReal \u2264 alpha
+\end{Verbatim}
+\noindent\textbf{All live ambient source variables and hypotheses:}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize]
+variable {Omega : Type*} [MeasurableSpace Omega] {P : Measure Omega} [IsProbabilityMeasure P]
+\end{Verbatim}
+\noindent\textbf{Existing named non-vacuity obligation:} cantelli\_\allowbreak{}capacity\_\allowbreak{}certificate\_\allowbreak{}nonvacuous.
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize]
+theorem cantelli_capacity_certificate_nonvacuous :
+    (0 \u2264\u1d50[witnessLaw] fun x : \u211d => x) \u2227
+    MemLp (fun x : \u211d => x) 2 witnessLaw \u2227
+    (0 : \u211d) < 1 / 2 \u2227 (1 / 2 : \u211d) < 1 \u2227
+    (1 : \u211d) = \u222b x, x \u2202witnessLaw \u2227
+    (1 / 2 : \u211d) = Real.sqrt (Var[fun x : \u211d => x; witnessLaw]) \u2227
+    (0 : \u211d) < 1 / 2 \u2227
+    0 < capacityFloor 1 (1 / 2) (1 / 2) \u2227
+    (witnessLaw (witnessModel.violationEvent (fun x : \u211d => x)
+        (witnessModel.certifiedRate 1 (1 / 2) (1 / 2)))).toReal = 4 / 13 \u2227
+    (0 : \u211d) < (witnessLaw (witnessModel.violationEvent (fun x : \u211d => x)
+        (witnessModel.certifiedRate 1 (1 / 2) (1 / 2)))).toReal \u2227
+    (witnessLaw (witnessModel.violationEvent (fun x : \u211d => x)
+        (witnessModel.certifiedRate 1 (1 / 2) (1 / 2)))).toReal \u2264 1 / 2
+\end{Verbatim}
+\noindent Syntactic triviality classification: NO\_\allowbreak{}SYNTACTIC\_\allowbreak{}TRIVIAL\_\allowbreak{}PATTERN. This label is coverage only; the Comparator remains the proof verifier of record.
+\par\noindent logical validity given the model, not empirical validation of its assumptions
+\section*{Certified-scope statement S127-02}
+Within the frozen defined model and under every explicit and live ambient hypothesis printed for precautionary\_\allowbreak{}rate\_\allowbreak{}le\_\allowbreak{}violation\_\allowbreak{}budget, the exact displayed conditional statement precautionary\_\allowbreak{}rate\_\allowbreak{}le\_\allowbreak{}violation\_\allowbreak{}budget holds.
+\par\noindent\textbf{Exact frozen declaration (Unicode escapes in display):}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize]
+theorem precautionary_rate_le_violation_budget (M : RateModel) {D : Omega \u2192 \u211d}
+    (hD0 : 0 \u2264\u1d50[P] D) (hD2 : MemLp D 2 P) {mu sigma alpha : \u211d}
+    (ha0 : 0 < alpha) (ha1 : alpha < 1) (hmu : mu = P[D])
+    (hsigma : sigma = Real.sqrt (Var[D; P])) :
+    M.requiredCapacity (M.certifiedRate mu sigma alpha) = capacityFloor mu sigma alpha \u2227
+      (P {omega | D omega < M.requiredCapacity (M.certifiedRate mu sigma alpha)}).toReal
+        \u2264 alpha
+\end{Verbatim}
+\noindent\textbf{All live ambient source variables and hypotheses:}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize]
+variable {Omega : Type*} [MeasurableSpace Omega] {P : Measure Omega} [IsProbabilityMeasure P]
+\end{Verbatim}
+\noindent\textbf{Existing named non-vacuity obligation:} precautionary\_\allowbreak{}rate\_\allowbreak{}le\_\allowbreak{}violation\_\allowbreak{}budget\_\allowbreak{}nonvacuous.
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize]
+theorem precautionary_rate_le_violation_budget_nonvacuous :
+    witnessModel.requiredCapacity (witnessModel.certifiedRate 1 (1 / 2) (1 / 2)) = 1 / 2
+\u2227
+    (witnessLaw {x : \u211d |
+        x < witnessModel.requiredCapacity (witnessModel.certifiedRate 1 (1 / 2) (1 /
+2))}).toReal
+      = 4 / 13 \u2227
+    (witnessLaw {x : \u211d |
+        x < witnessModel.requiredCapacity (witnessModel.certifiedRate 1 (1 / 2) (1 /
+2))}).toReal
+      \u2264 1 / 2
+\end{Verbatim}
+\noindent Syntactic triviality classification: NO\_\allowbreak{}SYNTACTIC\_\allowbreak{}TRIVIAL\_\allowbreak{}PATTERN. This label is coverage only; the Comparator remains the proof verifier of record.
+\par\noindent logical validity given the model, not empirical validation of its assumptions
+\section*{Certified-scope statement S127-03}
+Within the frozen defined model and under every explicit and live ambient hypothesis printed for capacity\_\allowbreak{}reserve\_\allowbreak{}fraction\_\allowbreak{}eq, the exact displayed conditional statement capacity\_\allowbreak{}reserve\_\allowbreak{}fraction\_\allowbreak{}eq holds.
+\par\noindent\textbf{Exact frozen declaration (Unicode escapes in display):}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize]
+theorem capacity_reserve_fraction_eq (M : RateModel) {mu sigma alpha : \u211d} (hmu : 0 < mu)
+:
+    M.certifiedRate mu sigma alpha / M.meanPlugInCeiling mu
+      = posPart (1 - coeffVar mu sigma * cantelliFactor alpha)
+\end{Verbatim}
+\noindent\textbf{All live ambient source variables and hypotheses:}
+None beyond the explicit declaration binders.
+\noindent\textbf{Existing named non-vacuity obligation:} capacity\_\allowbreak{}reserve\_\allowbreak{}fraction\_\allowbreak{}eq\_\allowbreak{}nonvacuous.
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize]
+theorem capacity_reserve_fraction_eq_nonvacuous :
+    witnessModel.certifiedRate 1 (1 / 2) (1 / 2) / witnessModel.meanPlugInCeiling 1 = 1 / 2
+\u2227
+    posPart (1 - coeffVar 1 (1 / 2) * cantelliFactor (1 / 2)) = 1 / 2 \u2227
+    witnessModel.certifiedRate 1 2 (1 / 2) / witnessModel.meanPlugInCeiling 1 = 0 \u2227
+    posPart (1 - coeffVar 1 2 * cantelliFactor (1 / 2)) = 0
+\end{Verbatim}
+\noindent Syntactic triviality classification: NO\_\allowbreak{}SYNTACTIC\_\allowbreak{}TRIVIAL\_\allowbreak{}PATTERN. This label is coverage only; the Comparator remains the proof verifier of record.
+\par\noindent logical validity given the model, not empirical validation of its assumptions
+\section*{Certified-scope statement S127-04}
+Within the frozen defined model and under every explicit and live ambient hypothesis printed for positive\_\allowbreak{}floor\_\allowbreak{}sharp\_\allowbreak{}two\_\allowbreak{}point\_\allowbreak{}counterexample, the exact displayed conditional statement positive\_\allowbreak{}floor\_\allowbreak{}sharp\_\allowbreak{}two\_\allowbreak{}point\_\allowbreak{}counterexample holds.
+\par\noindent\textbf{Exact frozen declaration (Unicode escapes in display):}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize]
+theorem positive_floor_sharp_two_point_counterexample {mu sigma alpha : \u211d}
+    (ha0 : 0 < alpha) (ha1 : alpha < 1) (hsigma : 0 < sigma)
+    (hfloor : 0 < capacityFloor mu sigma alpha) {d : \u211d} (hd : capacityFloor mu sigma
+alpha < d) :
+    \u2203 l h q : \u211d, 0 \u2264 l \u2227 0 \u2264 h \u2227 0 < q \u2227 q < 1 \u2227
+      IsProbabilityMeasure (twoPointLaw l h q) \u2227
+      twoPointLaw l h q {x : \u211d | 0 \u2264 x} = 1 \u2227
+      \u222b x, x \u2202(twoPointLaw l h q) = mu \u2227
+      Var[fun x : \u211d => x; twoPointLaw l h q] = sigma ^ 2 \u2227
+      alpha < (twoPointLaw l h q {x : \u211d | x < d}).toReal
+\end{Verbatim}
+\noindent\textbf{All live ambient source variables and hypotheses:}
+None beyond the explicit declaration binders.
+\noindent\textbf{Existing named non-vacuity obligation:} positive\_\allowbreak{}floor\_\allowbreak{}sharp\_\allowbreak{}two\_\allowbreak{}point\_\allowbreak{}counterexample\_\allowbreak{}nonvacuous.
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize]
+theorem positive_floor_sharp_two_point_counterexample_nonvacuous :
+    0 < capacityFloor 1 (1 / 2) (1 / 2) \u2227 capacityFloor 1 (1 / 2) (1 / 2) < 3 / 4 \u2227
+    \u2203 l h q : \u211d, 0 \u2264 l \u2227 0 \u2264 h \u2227 0 < q \u2227 q < 1 \u2227
+      IsProbabilityMeasure (twoPointLaw l h q) \u2227
+      twoPointLaw l h q {x : \u211d | 0 \u2264 x} = 1 \u2227
+      \u222b x, x \u2202(twoPointLaw l h q) = 1 \u2227
+      Var[fun x : \u211d => x; twoPointLaw l h q] = (1 / 2 : \u211d) ^ 2 \u2227
+      (1 / 2 : \u211d) < (twoPointLaw l h q {x : \u211d | x < 3 / 4}).toReal
+\end{Verbatim}
+\noindent Syntactic triviality classification: NO\_\allowbreak{}SYNTACTIC\_\allowbreak{}TRIVIAL\_\allowbreak{}PATTERN. This label is coverage only; the Comparator remains the proof verifier of record.
+\par\noindent logical validity given the model, not empirical validation of its assumptions
+\section*{Certified-scope statement S127-05}
+Within the frozen defined model and under every explicit and live ambient hypothesis printed for mean\_\allowbreak{}only\_\allowbreak{}plugin\_\allowbreak{}arbitrarily\_\allowbreak{}unsafe, the exact displayed conditional statement mean\_\allowbreak{}only\_\allowbreak{}plugin\_\allowbreak{}arbitrarily\_\allowbreak{}unsafe holds.
+\par\noindent\textbf{Exact frozen declaration (Unicode escapes in display):}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize]
+theorem mean_only_plugin_arbitrarily_unsafe (M : RateModel) {mu : \u211d} (hmu : 0 < mu)
+    {theta : \u211d} (htheta : 0 < theta) {beta : \u211d} (hbeta : beta < 1) :
+    \u2203 l h q : \u211d, 0 \u2264 l \u2227 0 \u2264 h \u2227 0 < q \u2227 q < 1 \u2227
+      IsProbabilityMeasure (twoPointLaw l h q) \u2227
+      twoPointLaw l h q {x : \u211d | 0 \u2264 x} = 1 \u2227
+      \u222b x, x \u2202(twoPointLaw l h q) = mu \u2227
+      beta < (twoPointLaw l h q
+        (M.violationEvent (fun x : \u211d => x) (theta * M.meanPlugInCeiling mu))).toReal
+\end{Verbatim}
+\noindent\textbf{All live ambient source variables and hypotheses:}
+None beyond the explicit declaration binders.
+\noindent\textbf{Existing named non-vacuity obligation:} mean\_\allowbreak{}only\_\allowbreak{}plugin\_\allowbreak{}arbitrarily\_\allowbreak{}unsafe\_\allowbreak{}nonvacuous.
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize]
+theorem mean_only_plugin_arbitrarily_unsafe_nonvacuous :
+    \u2203 l h q : \u211d, 0 \u2264 l \u2227 0 \u2264 h \u2227 0 < q \u2227 q < 1 \u2227
+      IsProbabilityMeasure (twoPointLaw l h q) \u2227
+      twoPointLaw l h q {x : \u211d | 0 \u2264 x} = 1 \u2227
+      \u222b x, x \u2202(twoPointLaw l h q) = 1 \u2227
+      (999 / 1000 : \u211d) < (twoPointLaw l h q
+        (witnessModel.violationEvent (fun x : \u211d => x)
+          (1 * witnessModel.meanPlugInCeiling 1))).toReal
+\end{Verbatim}
+\noindent Syntactic triviality classification: NO\_\allowbreak{}SYNTACTIC\_\allowbreak{}TRIVIAL\_\allowbreak{}PATTERN. This label is coverage only; the Comparator remains the proof verifier of record.
+\par\noindent logical validity given the model, not empirical validation of its assumptions
+\section*{Conjectures / uncertified remarks}
+Each historical claim below is excluded from the proposed certified scope. Historical numeric, novelty, scientific, physical and business assertions retain no formal-verification credit here. They are listed to preserve provenance rather than silently disappearing.
+\subsection*{Historical claim C1 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} The two-moment capacity floor yields a one-period violation probability at most alpha under the stated model and assumptions.
+\par Scope reason: Matches under probability measure, D nonnegative a.e., MemLp D 2, alpha in (0,1), exact mean and standard deviation; RateModel is a supplied model.
+\subsection*{Historical claim C2 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} The certified rate fraction relative to the mean plug-in ceiling is [1-CV(D)*sqrt((1-alpha)/alpha)]\_\allowbreak{}+.
+\par Scope reason: Matches rate fraction with strictly positive mean.
+\subsection*{Historical claim C3 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} In the positive-floor regime, every strictly larger threshold has a nonnegative two-point counterexample with the same moments and violation probability above alpha.
+\par Scope reason: Matches positive sigma, positive capacity floor, and strictly larger d with exact moments and violation > alpha.
+\subsection*{Historical claim C4 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} A mean-only plug-in capacity can have violation probability arbitrarily close to one.
+\par Scope reason: Matches positive mean and rate fraction theta, arbitrary beta < 1, nonnegative two-point distribution.
+\subsection*{Historical claim C5 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} The executable preregistered gate completed 14 PASS / 0 FAIL / 14 CHECKS.
+\par Scope reason: Computational, cited, physical/model or business claim has no certified theorem mapping in the intended release. Explicitly mark deferred for formal verification or conditional in the manuscript.
+\subsection*{Historical claim C6 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} Known support, a known Gaussian law, temporal dependence, and sampling uncertainty alter the interpretation or conservatism of a two-moment marginal certificate.
+\par Scope reason: Computational, cited, physical/model or business claim has no certified theorem mapping in the intended release. Explicitly mark deferred for formal verification or conditional in the manuscript.
+\subsection*{Historical claim C7 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} Cantelli and distributionally robust chance-constraint theory are established prior art, including current higher-moment refinements.
+\par Scope reason: Computational, cited, physical/model or business claim has no certified theorem mapping in the intended release. Explicitly mark deferred for formal verification or conditional in the manuscript.
+\subsection*{Historical claim C8 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} The Viridis instantaneous rate inequality is a model premise for this run.
+\par Scope reason: Computational, cited, physical/model or business claim has no certified theorem mapping in the intended release. Explicitly mark deferred for formal verification or conditional in the manuscript.
+\subsection*{Historical claim C9 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} A Capacity Risk Certificate could create buyer value.
+\par Scope reason: Computational, cited, physical/model or business claim has no certified theorem mapping in the intended release. Explicitly mark deferred for formal verification or conditional in the manuscript.
+\subsection*{Historical claim C10 --- UNCERTIFIED}
+\textbf{UNCERTIFIED; not asserted by this successor:} Novelty and scientific significance are unassessed.
+\par Scope reason: Computational, cited, physical/model or business claim has no certified theorem mapping in the intended release. Explicitly mark deferred for formal verification or conditional in the manuscript.
+\section*{Publication and model prerequisites}
+Only an independently audited whole-paper scope receipt and an exact publication-time binding can authorize a scoped certified label. The final PDF, TeX, exact unchanged candidate, frozen statement, certificate and reviewed claim map must be hash-bound before a publish operation. The current public UNCERTIFIED banner remains until that binding validates. This Methods Note belongs in the weekly Viridis Methods Digest; it is not a new standalone science DOI without an explicit override.
+\end{document}

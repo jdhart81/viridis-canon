@@ -1,0 +1,28 @@
+{
+  "consulted_sources_after": {
+    "digest_metadata.py": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe",
+    "methods_digest.py": "5fcdc53f68d008357e0aef1dbb93f74695aa91119792f78151a8c61a0a9e05e5",
+    "methods_digest_registration.py": "66cc830f4814ee943c616d754d61cff9be5a65607e0a26ec4f91acd23ce630d7",
+    "phase7_mutation_baseline.py": "f48dfff1cbb3ca72ce88766f0d9e56664bb7fea17a0f60d8a5f60e21095f7145",
+    "publication_preservation.py": "4fb48f40fd76cae1f973dca66253813bfd1c8edcdffa07c02945d28ddf170e2b"
+  },
+  "consulted_sources_before": {
+    "digest_metadata.py": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe",
+    "methods_digest.py": "5fcdc53f68d008357e0aef1dbb93f74695aa91119792f78151a8c61a0a9e05e5",
+    "methods_digest_registration.py": "66cc830f4814ee943c616d754d61cff9be5a65607e0a26ec4f91acd23ce630d7",
+    "phase7_mutation_baseline.py": "f48dfff1cbb3ca72ce88766f0d9e56664bb7fea17a0f60d8a5f60e21095f7145",
+    "publication_preservation.py": "4fb48f40fd76cae1f973dca66253813bfd1c8edcdffa07c02945d28ddf170e2b"
+  },
+  "consulted_sources_unchanged": true,
+  "coordinator_tests": 43,
+  "credentials_read": false,
+  "fake_admission_and_server_schema_seams_are_not_live_evidence": true,
+  "inherited_guard_tests": 51,
+  "local_lean_execution": false,
+  "production_network_writes": 0,
+  "sandbox_network_writes": 0,
+  "standard": "VRS-PHASE7-OFFLINE-PUBLISHER-TESTS-1",
+  "status": "PASS_OFFLINE_PROTOCOL_ONLY",
+  "test_log_sha256": "7a6d5e9438b451edc0fc2ac52cae714475050bfa322680779d01935745b4ffac",
+  "total_tests": 94
+}

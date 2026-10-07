@@ -1,0 +1,119 @@
+{
+  "actual_digest_package_created": false,
+  "actual_registration_issued": false,
+  "approved_resolution_and_simplification_sha256": "a862c17ffc43bb5998e25a109fa5d608744a69f3961e6fcbfc37407d3a6a782a",
+  "automatic_retry": false,
+  "canonical_sources_modified": false,
+  "certification_attempts": 0,
+  "conservative_rounded_timestamp_accounting": "HOLD without guessed timestamp correction or deduplication",
+  "deployment_performed": false,
+  "files": [
+    {
+      "bytes": 5948,
+      "filename": "readonly_account.py",
+      "sha256": "daa36ca7fa4c40d923be5b411cf47463f5ef61162bf7fb6e50b6a27ebb638720"
+    },
+    {
+      "bytes": 6564,
+      "filename": "mutation_journal_writer.py",
+      "sha256": "a2a72c49b5bc67a5c7535320bab5b6513b8cbfac3cf6c19d39b2e0c3d5d5c4e8"
+    },
+    {
+      "bytes": 6511,
+      "filename": "digest_metadata.py",
+      "sha256": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe"
+    },
+    {
+      "bytes": 11143,
+      "filename": "first_digest_state.py",
+      "sha256": "41889d8b69d610c2619bb92b647f321b1afad0b7f1c6ebbaf253f4fef9fe0786"
+    },
+    {
+      "bytes": 32970,
+      "filename": "first_digest_publisher.py",
+      "sha256": "6b838bc1ab12c0d66ef99e5e51c53181f1e0ba70ceb92b8f8d0506476005b345"
+    },
+    {
+      "bytes": 1493,
+      "filename": "publisher_previews.py",
+      "sha256": "f33df8657ef9a25174af360d54139f536d39d7ee1a463eea68bff4a3c2fc2c22"
+    },
+    {
+      "bytes": 6431,
+      "filename": "publisher_recovery.py",
+      "sha256": "fd75fa40fe52d157b3516bf8a96b9acdd203e1d76fff58c3949f667a6d44153c"
+    },
+    {
+      "bytes": 32103,
+      "filename": "test_coordinator.py",
+      "sha256": "c1f20b5e27bd0776ec81c1031446e99a51305a80b8b5f93c1ef79f638440cf85"
+    },
+    {
+      "bytes": 16186,
+      "filename": "test_publisher_guards.py",
+      "sha256": "74f97b06a4f527d7937fa81c02229dab6333c7be5b67e41032042da9052d7951"
+    },
+    {
+      "bytes": 1776,
+      "filename": "INHERITED_SOURCES.json",
+      "sha256": "5e989e5b434086c2159e32c59bdf0c4fbcca51cdfd534cc3238534066ae4b650"
+    },
+    {
+      "bytes": 1574,
+      "filename": "TESTS.json",
+      "sha256": "f5ec94b7440c5f8f9f67a7b054b321a9f42dbb3bd210f5551eb80c30e6ce5ac9"
+    },
+    {
+      "bytes": 4267,
+      "filename": "ROOT_EXECUTION_NOTES.md",
+      "sha256": "9623f71a30c8d6cfe3d7159ec008067d3799e6e0a69e5dcc7f6939240ccd0410"
+    },
+    {
+      "bytes": 1005,
+      "filename": "API_ENCODING.md",
+      "sha256": "c695b59c943779f596302b0ce6fb184831dc394ed2a1bb2b72a0f62cea382eb0"
+    }
+  ],
+  "frozen_at_utc": "2026-10-07T23:05:58.378045+00:00",
+  "production_network_writes": 0,
+  "protected_sources_modified": false,
+  "publication_bindings_issued": 0,
+  "remaining_execution_requirements": [
+    "Actual main-certificate/scope/INV-9/binding/disclaimer admission",
+    "Merged installed runtime and reviewed executor source closure",
+    "Complete fresh read-only account discovery under journal lock",
+    "Nine available mutation slots proven by actual current journal",
+    "Actual own strict public readback then preserving SSOT insertion and fresh scan"
+  ],
+  "sandbox_network_writes": 0,
+  "standard": "VRS-PHASE7-OFFLINE-PUBLISHER-FREEZE-1",
+  "status": "TESTED_OFFLINE_NOT_EXECUTED",
+  "tests": {
+    "consulted_sources_after": {
+      "digest_metadata.py": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe",
+      "methods_digest.py": "5fcdc53f68d008357e0aef1dbb93f74695aa91119792f78151a8c61a0a9e05e5",
+      "methods_digest_registration.py": "66cc830f4814ee943c616d754d61cff9be5a65607e0a26ec4f91acd23ce630d7",
+      "phase7_mutation_baseline.py": "f48dfff1cbb3ca72ce88766f0d9e56664bb7fea17a0f60d8a5f60e21095f7145",
+      "publication_preservation.py": "4fb48f40fd76cae1f973dca66253813bfd1c8edcdffa07c02945d28ddf170e2b"
+    },
+    "consulted_sources_before": {
+      "digest_metadata.py": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe",
+      "methods_digest.py": "5fcdc53f68d008357e0aef1dbb93f74695aa91119792f78151a8c61a0a9e05e5",
+      "methods_digest_registration.py": "66cc830f4814ee943c616d754d61cff9be5a65607e0a26ec4f91acd23ce630d7",
+      "phase7_mutation_baseline.py": "f48dfff1cbb3ca72ce88766f0d9e56664bb7fea17a0f60d8a5f60e21095f7145",
+      "publication_preservation.py": "4fb48f40fd76cae1f973dca66253813bfd1c8edcdffa07c02945d28ddf170e2b"
+    },
+    "consulted_sources_unchanged": true,
+    "coordinator_tests": 43,
+    "credentials_read": false,
+    "fake_admission_and_server_schema_seams_are_not_live_evidence": true,
+    "inherited_guard_tests": 51,
+    "local_lean_execution": false,
+    "production_network_writes": 0,
+    "sandbox_network_writes": 0,
+    "standard": "VRS-PHASE7-OFFLINE-PUBLISHER-TESTS-1",
+    "status": "PASS_OFFLINE_PROTOCOL_ONLY",
+    "test_log_sha256": "7a6d5e9438b451edc0fc2ac52cae714475050bfa322680779d01935745b4ffac",
+    "total_tests": 94
+  }
+}

@@ -1,0 +1,5 @@
+# Documented API encoding
+
+The unchanged source metadata is a public representation: resource_type identifies publication/preprint and license has an id. The proposed deposition input encodes the same controlled type as upload_type=publication and publication_type=preprint, and the same license ID as a string. This follows the [Zenodo deposition metadata API](https://developers.zenodo.org/#deposit-metadata). Creators, access, community mirror and other approved source values retain their exact meaning; this mapping confers no scientific clearance.
+
+The [Zenodo create endpoint](https://developers.zenodo.org/#create) documents a metadata object when creating a deposition. Subsequent metadata update, file upload and publication operations remain separate. This proposal relies on the own creation response for the newly reserved DOI and bucket; it cannot borrow a prior record's identity. HTTP success alone is never publication clearance. These documentation checks are not a live protocol proof.

@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """Anonymous GET-only public readback. No token, draft API, upload or publication."""
+
+import methods_digest_registration
 import argparse
 from concurrent.futures import ThreadPoolExecutor
 import datetime as dt
@@ -10,7 +12,7 @@ import urllib.request
 import re
 
 
-def read_record(row):
+def _read_record_legacy(row):
     doi=row['doi']; result={'doi':doi,'status':'UNAVAILABLE','proposed_label':'CONJECTURE — not machine-verified',
         'observed_at_utc':dt.datetime.now(dt.timezone.utc).isoformat(),'local_manuscript_public_checksum_matches':[]}
     try:
@@ -40,13 +42,21 @@ def read_record(row):
     return result
 
 
-def readback(audit):
+def read_record(row):
+    return methods_digest_registration.public_label_read_record(row, legacy=_read_record_legacy)
+
+
+def _readback_legacy(audit):
     with ThreadPoolExecutor(max_workers=4) as pool:rows=list(pool.map(read_record,audit['published_records']))
     return {'mode':'REPORT_ONLY','method':'Anonymous HTTPS GET /api/records/{id} only','zenodo_writes':False,
             'counts':{'records':len(rows),'read':sum(r['status']=='READ' for r in rows),
                       'unavailable':sum(r['status']!='READ' for r in rows),
                       'label_disagreements':sum(r.get('proposed_label_disagrees',False) for r in rows),
                       'locally_deposited_manuscripts_confirmed_public':sum(any(m['confirmed'] for m in r['local_manuscript_public_checksum_matches']) for r in rows)},'records':rows}
+
+
+def readback(audit):
+    return methods_digest_registration.public_label_readback(audit, legacy=_readback_legacy)
 
 
 def main():

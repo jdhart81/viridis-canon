@@ -1,0 +1,46 @@
+{
+  "basis": "INDEPENDENT",
+  "exact_certificate": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-127/LEAN_ZERO_SORRY_CERTIFICATE.json",
+    "sha256": "b9f10f5798a7adc9de6c1e8e93cc27190a0beff41284401620960181e2b088f3"
+  },
+  "final_successor_pdf_pending": true,
+  "original_pdf_retired_from_successor": true,
+  "run_id": "Run-127",
+  "source_manifest": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-06/phase-7-science-catchup-v001/review-metadata-successors-v001/packages/Run-127/SCOPED_RELEASE_MANIFEST.json",
+    "sha256": "ef59fed8ec102feaa6f0c4318304fdef3849589455768dce63fa6ee1286bd625"
+  },
+  "statement_scope": [
+    {
+      "ambient_source_context": [],
+      "conclusion": "∃ l h q : ℝ, 0 ≤ l ∧ 0 ≤ h ∧ 0 < q ∧ q < 1 ∧\n      IsProbabilityMeasure (twoPointLaw l h q) ∧\n      twoPointLaw l h q {x : ℝ | 0 ≤ x} = 1 ∧\n      ∫ x, x ∂(twoPointLaw l h q) = mu ∧\n      Var[fun x : ℝ => x; twoPointLaw l h q] = sigma ^ 2 ∧\n      alpha < (twoPointLaw l h q {x : ℝ | x < d}).toReal",
+      "english_claim": "Within the frozen defined model and under every explicit and live ambient hypothesis printed for positive_floor_sharp_two_point_counterexample, the exact displayed conditional statement positive_floor_sharp_two_point_counterexample holds.",
+      "evidence_class": "FORMALLY_VERIFIED",
+      "exact_source_signature": "theorem positive_floor_sharp_two_point_counterexample {mu sigma alpha : ℝ}\n    (ha0 : 0 < alpha) (ha1 : alpha < 1) (hsigma : 0 < sigma)\n    (hfloor : 0 < capacityFloor mu sigma alpha) {d : ℝ} (hd : capacityFloor mu sigma alpha < d) :\n    ∃ l h q : ℝ, 0 ≤ l ∧ 0 ≤ h ∧ 0 < q ∧ q < 1 ∧\n      IsProbabilityMeasure (twoPointLaw l h q) ∧\n      twoPointLaw l h q {x : ℝ | 0 ≤ x} = 1 ∧\n      ∫ x, x ∂(twoPointLaw l h q) = mu ∧\n      Var[fun x : ℝ => x; twoPointLaw l h q] = sigma ^ 2 ∧\n      alpha < (twoPointLaw l h q {x : ℝ | x < d}).toReal",
+      "explicit_binders_and_hypotheses": "{mu sigma alpha : ℝ}\n    (ha0 : 0 < alpha) (ha1 : alpha < 1) (hsigma : 0 < sigma)\n    (hfloor : 0 < capacityFloor mu sigma alpha) {d : ℝ} (hd : capacityFloor mu sigma alpha < d)",
+      "lean_theorem": "positive_floor_sharp_two_point_counterexample",
+      "model_fidelity": {
+        "defined": [
+          "alpha",
+          "capacityFloor",
+          "d",
+          "ha0",
+          "ha1",
+          "hd",
+          "hfloor",
+          "hsigma",
+          "mu",
+          "sigma",
+          "twoPointLaw",
+          "x"
+        ],
+        "empirically_identified": []
+      },
+      "nonvacuity_obligation": "positive_floor_sharp_two_point_counterexample_nonvacuous",
+      "printed_disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+      "scope_status": "PROPOSAL_ONLY_NOT_APPROVED"
+    }
+  ],
+  "status": "PROPOSED_NARROWING_NOT_PUBLICATION_BOUND"
+}

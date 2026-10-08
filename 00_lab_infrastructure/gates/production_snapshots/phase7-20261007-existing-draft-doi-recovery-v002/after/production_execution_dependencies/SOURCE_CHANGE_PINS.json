@@ -1,0 +1,23 @@
+{
+  "digest_metadata.py": {
+    "allowed_existing_body_changes": [],
+    "before_sha256": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe",
+    "proposed_sha256": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe"
+  },
+  "first_digest_publisher.py": {
+    "allowed_existing_body_changes": [
+      "require_plan API encoder wrapper",
+      "_execute.mutation operation_id line"
+    ],
+    "before_sha256": "6b838bc1ab12c0d66ef99e5e51c53181f1e0ba70ceb92b8f8d0506476005b345",
+    "proposed_sha256": "551674f989688a5076d49308044c46e3294421fadf2c205381f20e14544631ba"
+  },
+  "first_digest_state.py": {
+    "allowed_existing_body_changes": [
+      "initial_expected",
+      "four new request-codec helpers"
+    ],
+    "before_sha256": "41889d8b69d610c2619bb92b647f321b1afad0b7f1c6ebbaf253f4fef9fe0786",
+    "proposed_sha256": "cbd6aa9034e8d2e775c3b2f3226c9c41dbb39ccce1d7a59150ca52414ca8dfb2"
+  }
+}

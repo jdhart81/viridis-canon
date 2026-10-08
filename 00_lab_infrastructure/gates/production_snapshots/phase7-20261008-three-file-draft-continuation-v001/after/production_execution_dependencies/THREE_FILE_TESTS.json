@@ -1,0 +1,22 @@
+{
+  "actual_saved_pair_precheck": {
+    "path": "/private/tmp/phase7-three-file-actual-source-precheck-20261008-v003/RESULT.json",
+    "sha256": "ad3e90734d25b734dcdecc406c0a242e92d5cb06362b61c7195f325ad7ad382d"
+  },
+  "actual_source_pins": {
+    "first_digest_three_file_draft.py": "d29358c61c86273e1857965a7c2b1a7ef39ddc53e62d553778b7d8f853dae82c",
+    "owned_archive_wait.py": "6c55843295c9f3eca72d376afaca96032d19cac61fec335f401ed31f9b743f36",
+    "three_file_draft_continuation.py": "3ef52280d4be92d04e2047a54e100f258ec23d7ab6577928be8e35114540d316"
+  },
+  "canonical_writes": 0,
+  "certificate_attempts": 0,
+  "certifies": false,
+  "inherited_tests": 277,
+  "new_tests": 38,
+  "production_writes": 0,
+  "result": "----------------------------------------------------------------------\nRan 315 tests in 102.201s\n\nOK\n",
+  "result_stdout_sha256": "816c4976b82fe4bfefedb716ea3013f404532ef19f718d4f49c593bf96f6d32e",
+  "standard": "SOURCE_ONLY_OFFLINE_TEST_RESULT_1",
+  "status": "PASS_OFFLINE_NOT_PUBLICATION",
+  "tests": 315
+}

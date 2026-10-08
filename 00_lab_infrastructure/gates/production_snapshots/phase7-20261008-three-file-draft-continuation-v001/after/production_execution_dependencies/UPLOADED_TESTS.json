@@ -1,0 +1,35 @@
+{
+  "actual_saved_source_replay": {
+    "filename": "UPLOADED_ACTUAL_WHOLE_PAIR_PRECHECK.json",
+    "full_native_and_private_guards_pass": true,
+    "independent_pdf_geometry": [
+      612,
+      792
+    ],
+    "sha256": "4b9c855a00ff2dcb68b7bfbc648a977ead40ea2fe0aae5cb2471b101657ca84d"
+  },
+  "all_passed": true,
+  "covered_failures": [
+    "foreign/changed/missing native preview size,URL,host,file,RID",
+    "incomplete/HOLD native17-check audit",
+    "foreign/missing/extra legacy aliases",
+    "main checksum/download mismatch",
+    "content/private/public PID mismatch",
+    "missing/changed actual context and hashes",
+    "extra prior budget slot,eleventh attempt,rollover/concurrent usage",
+    "duplicate identity,consumed output,uncertain upload/publish no replay",
+    "CREATE,reserve,metadataPUT,manuscript reupload stage refusal",
+    "snapshot adoption does not duplicate prior mutation events"
+  ],
+  "duration_seconds": 82.649,
+  "fake_clock_test": "synthetic receipt modified/updated dates and journal dates agree; unchanged complete consumer counts all immutable history once; actual tomorrow budget0->5 and lifecycle9 separate",
+  "inherited_tests": 248,
+  "isolated_repository_test_parser": "pypdf6.19.0 only source CI",
+  "new_protocol_tests": 29,
+  "production_writes": 0,
+  "sandbox_writes": 0,
+  "snapshot_offline_tests": 277,
+  "source_runtime_parser": "pypdf6.10.0 historical actual replay",
+  "standard": "VRS_SOURCE_ONLY_UPLOADED_DRAFT_CONTINUATION_TESTS_1",
+  "test_log_sha256": "c973d17d95c9a161815251c79829c84f94c2717cd03888ff7c19901a0dbfadd6"
+}

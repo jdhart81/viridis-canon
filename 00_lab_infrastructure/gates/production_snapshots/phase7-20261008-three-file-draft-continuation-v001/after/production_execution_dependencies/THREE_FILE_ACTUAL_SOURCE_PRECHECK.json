@@ -1,0 +1,1268 @@
+{
+  "archive_retry_history": {
+    "attempts": 1,
+    "automatic_retry": false,
+    "retry_budget_maximum": 2,
+    "status": "SOURCE_BOUND_ARCHIVE_RETRY_COUNT_PASS"
+  },
+  "audits": [
+    {
+      "file": "paper.tex",
+      "native_audit": {
+        "acceptance_authority": false,
+        "checks": {
+          "content_metadata": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "created_updated_revision_id": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "custom_fields.legacy:communities": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "deletion_status": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "derived_previews": {
+            "detail": {
+              "diff_appendix": [],
+              "main_inventory_separate": true,
+              "own_record": false,
+              "provenance": {}
+            },
+            "status": "PASS"
+          },
+          "expires_at": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "file_entry_order": {
+            "detail": {
+              "mode": "EXACT_NATIVE_FILES_OBJECT"
+            },
+            "status": "PASS"
+          },
+          "links_and_stats": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "minted_doi_and_existing_concept": {
+            "detail": "No published minted-identifier claim; PIDs remain exact",
+            "status": "PASS"
+          },
+          "pids.oai": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "record_identity": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "revision_id": {
+            "detail": {
+              "phase": "DRAFT",
+              "revision": 7
+            },
+            "status": "PASS"
+          },
+          "swh": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "ui.is_draft": {
+            "detail": {
+              "is_draft": true,
+              "phase": "DRAFT"
+            },
+            "status": "PASS"
+          },
+          "ui_display_fields": {
+            "detail": {
+              "date_checks": [
+                {
+                  "path": "ui.access_status.embargo_date_l10n",
+                  "unchanged_null_no_calendar_date": true
+                },
+                {
+                  "display_date": "2026-10-08",
+                  "display_day_offset": 0,
+                  "path": "ui.created_date_l10n_long",
+                  "source_path": "created",
+                  "source_utc_date": "2026-10-08"
+                },
+                {
+                  "display_date": "2026-10-07",
+                  "display_day_offset": 0,
+                  "path": "ui.publication_date_l10n_long",
+                  "source_path": "metadata.publication_date",
+                  "source_utc_date": "2026-10-07"
+                },
+                {
+                  "display_date": "2026-10-07",
+                  "display_day_offset": 0,
+                  "path": "ui.publication_date_l10n_medium",
+                  "source_path": "metadata.publication_date",
+                  "source_utc_date": "2026-10-07"
+                },
+                {
+                  "display_date": "2026-10-08",
+                  "display_day_offset": 0,
+                  "path": "ui.updated_date_l10n_long",
+                  "source_path": "updated",
+                  "source_utc_date": "2026-10-08"
+                }
+              ],
+              "diff_appendix": [],
+              "own_operation_record_id": "23226761",
+              "own_record": true,
+              "source_comparison_authoritative": true
+            },
+            "status": "PASS"
+          },
+          "unlisted_fields": {
+            "detail": "Every remaining field is exact",
+            "status": "PASS"
+          },
+          "versions_index_latest_parent": {
+            "detail": null,
+            "status": "PASS"
+          }
+        },
+        "derived_preview_diff_appendix": [],
+        "operation": "NEW_VERSION",
+        "phase": "DRAFT",
+        "reasons": [],
+        "record_id": "23226761",
+        "status": "SERVER_MANAGED_READBACK_PASS",
+        "ui_diff_appendix": []
+      },
+      "private_guard_pass": true,
+      "upload_receipt": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v004/transport/007_PUT.json",
+        "sha256": "e246005e6ac1cb9321d23b8dc9c2bb1a0cfd9e079d604d5202f455f375dabc08"
+      }
+    },
+    {
+      "file": "paper.pdf",
+      "native_audit": {
+        "acceptance_authority": false,
+        "checks": {
+          "content_metadata": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "created_updated_revision_id": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "custom_fields.legacy:communities": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "deletion_status": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "derived_previews": {
+            "detail": {
+              "diff_appendix": [
+                {
+                  "after": {
+                    "10": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E10,/0/default.jpg",
+                    "100": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E100,/0/default.jpg",
+                    "1200": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E1200,/0/default.jpg",
+                    "250": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E250,/0/default.jpg",
+                    "50": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E50,/0/default.jpg",
+                    "750": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E750,/0/default.jpg"
+                  },
+                  "after_present": true,
+                  "before": null,
+                  "before_present": false,
+                  "path": "links.thumbnails"
+                },
+                {
+                  "after": 792,
+                  "after_present": true,
+                  "before": null,
+                  "before_present": false,
+                  "path": "files.entries.paper.pdf.metadata.height"
+                },
+                {
+                  "after": 612,
+                  "after_present": true,
+                  "before": null,
+                  "before_present": false,
+                  "path": "files.entries.paper.pdf.metadata.width"
+                }
+              ],
+              "main_inventory_separate": true,
+              "own_record": true,
+              "provenance": {
+                "approved_inventory": {
+                  "main_count": 6,
+                  "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v005/APPROVED_SIX_FILES.json",
+                  "sha256": "598c35f86bb1a17104230d940f70814aca8743ea62f97210dccf112af2c23e26"
+                },
+                "approved_removal_inventory": null,
+                "byte_metadata": [
+                  {
+                    "changed_fields": [
+                      "height",
+                      "width"
+                    ],
+                    "diff_appendix": [
+                      {
+                        "after": 792,
+                        "after_present": true,
+                        "before": null,
+                        "before_present": false,
+                        "path": "files.entries.paper.pdf.metadata.height"
+                      },
+                      {
+                        "after": 612,
+                        "after_present": true,
+                        "before": null,
+                        "before_present": false,
+                        "path": "files.entries.paper.pdf.metadata.width"
+                      }
+                    ],
+                    "file_key": "paper.pdf",
+                    "own_upload": {
+                      "raw_response_sha256": "9021ed904a250e49f8e4255e90c77f8778d3ba6e76cc67f764da01640926908a",
+                      "receipt_file_sha256": "6ea9b01ec11180505741fae0dad6d88e98c50c19593809b673629c60d2ff6fce",
+                      "receipt_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v004/transport/014_PUT.json",
+                      "transport_contract_sha256": "69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65"
+                    },
+                    "parser_output": {
+                      "acceptance_authority": false,
+                      "facts": {
+                        "format": {
+                          "type": "STRING",
+                          "value": "PDF"
+                        },
+                        "height": {
+                          "decimal": "792",
+                          "type": "NUMBER"
+                        },
+                        "mime_type": {
+                          "type": "STRING",
+                          "value": "application/pdf"
+                        },
+                        "mimetype": {
+                          "type": "STRING",
+                          "value": "application/pdf"
+                        },
+                        "num_pages": {
+                          "type": "INTEGER",
+                          "value": 3
+                        },
+                        "number_of_pages": {
+                          "type": "INTEGER",
+                          "value": 3
+                        },
+                        "page_count": {
+                          "type": "INTEGER",
+                          "value": 3
+                        },
+                        "pdf_version": {
+                          "type": "STRING",
+                          "value": "1.5"
+                        },
+                        "width": {
+                          "decimal": "612",
+                          "type": "NUMBER"
+                        }
+                      },
+                      "format": "PDF",
+                      "page_geometries": [
+                        {
+                          "cropbox": [
+                            "0",
+                            "0",
+                            "612",
+                            "792"
+                          ],
+                          "cropbox_present": false,
+                          "height_points": "792",
+                          "mediabox": [
+                            "0",
+                            "0",
+                            "612",
+                            "792"
+                          ],
+                          "page": 1,
+                          "rotation_applied": "0",
+                          "selected_box": "MediaBox",
+                          "user_unit": "1",
+                          "width_points": "612"
+                        },
+                        {
+                          "cropbox": [
+                            "0",
+                            "0",
+                            "612",
+                            "792"
+                          ],
+                          "cropbox_present": false,
+                          "height_points": "792",
+                          "mediabox": [
+                            "0",
+                            "0",
+                            "612",
+                            "792"
+                          ],
+                          "page": 2,
+                          "rotation_applied": "0",
+                          "selected_box": "MediaBox",
+                          "user_unit": "1",
+                          "width_points": "612"
+                        },
+                        {
+                          "cropbox": [
+                            "0",
+                            "0",
+                            "612",
+                            "792"
+                          ],
+                          "cropbox_present": false,
+                          "height_points": "792",
+                          "mediabox": [
+                            "0",
+                            "0",
+                            "612",
+                            "792"
+                          ],
+                          "page": 3,
+                          "rotation_applied": "0",
+                          "selected_box": "MediaBox",
+                          "user_unit": "1",
+                          "width_points": "612"
+                        }
+                      ],
+                      "parser": {
+                        "dependency_name": "pypdf",
+                        "dependency_version": "6.10.0",
+                        "mode": "strict; exact numeric tokens; uniform matching boxes; zero rotation; unit one",
+                        "name": "ViridisApprovedPDFByteFacts",
+                        "version": "1"
+                      },
+                      "source_checksum": "md5:e2dad7632e6df916762840b665d9c1d7",
+                      "source_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/science_release_queue/digests/2026-W41-first-v002/paper.pdf",
+                      "source_sha256": "25c96684504e56100e9fa3fc79132e5e52d1328c62af8204e9aae536d6f99943",
+                      "source_size": 15484
+                    },
+                    "post_upload_native_readbacks": [
+                      {
+                        "raw_response_sha256": "07c5619c0a767dba1c17c6439bff78bc784593158a114f0cf6b5cb79ce3bd561",
+                        "receipt_file_sha256": "eb7b8e06b71492b70c6a2d465589c0df283c862ef9a6c3499fef363425fab789",
+                        "receipt_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v004/transport/016_GET.json",
+                        "transport_contract_sha256": "69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65"
+                      }
+                    ],
+                    "source_checksum": "md5:e2dad7632e6df916762840b665d9c1d7",
+                    "source_comparison_authoritative": true,
+                    "source_file_id": "bc97d010-205b-4c80-95aa-bc11ea3205fb",
+                    "source_size": 15484
+                  }
+                ],
+                "deletions": [],
+                "lineage": {
+                  "raw_response_sha256": "ec5145fb882f15a99b5b97912123929f858b0fe65ea2a1ae245297f2dd945238",
+                  "receipt_file_sha256": "42cd70a797b9b1deb10f96e131e5b4ffbb19b3681fefb6a21a206543f485ab1f",
+                  "receipt_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v002/transport/003_POST.json",
+                  "transport_contract_sha256": "69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65"
+                },
+                "own_record_id": "23226761",
+                "publish": null,
+                "source_readbacks": [
+                  {
+                    "raw_response_sha256": "9c53a8a92f3281d2525c0d3f0950d293d43e112d20dead845f2748a5b968747a",
+                    "receipt_file_sha256": "7b9c8d7e4ce595dd4efa525c7e0bd543b202034af77d50703391fcb9bab886f7",
+                    "receipt_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v004/transport/008_GET.json",
+                    "transport_contract_sha256": "69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65"
+                  },
+                  {
+                    "raw_response_sha256": "a4b3205591e01a701ca46ed1c07fc9142c699ce78c4e980b7449ed4733eff0c8",
+                    "receipt_file_sha256": "c7b6bdf0a0f4b0ce3fa7a4adf089d16f60019b7c8f44ac2bfe51909bd07f0c25",
+                    "receipt_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v004/transport/009_GET.json",
+                    "transport_contract_sha256": "69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65"
+                  },
+                  {
+                    "raw_response_sha256": "4ed4a37ac04c3982339f23d22d8d59243862178d22d630e5df12a7e9a8dea28a",
+                    "receipt_file_sha256": "e77c056b5ca47ae5bb98687f5ccae5b23564858f88b4364ac3436d8d1beba978",
+                    "receipt_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v004/transport/015_GET.json",
+                    "transport_contract_sha256": "69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65"
+                  },
+                  {
+                    "raw_response_sha256": "07c5619c0a767dba1c17c6439bff78bc784593158a114f0cf6b5cb79ce3bd561",
+                    "receipt_file_sha256": "eb7b8e06b71492b70c6a2d465589c0df283c862ef9a6c3499fef363425fab789",
+                    "receipt_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v004/transport/016_GET.json",
+                    "transport_contract_sha256": "69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65"
+                  }
+                ],
+                "uploads": [
+                  {
+                    "key": "paper.tex",
+                    "raw_response_sha256": "32509df0a9133a32666a1477d828a80aac31dad9d68e6404af54c69557887ff7",
+                    "receipt_file_sha256": "e246005e6ac1cb9321d23b8dc9c2bb1a0cfd9e079d604d5202f455f375dabc08",
+                    "receipt_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v004/transport/007_PUT.json",
+                    "transport_contract_sha256": "69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65"
+                  },
+                  {
+                    "key": "paper.pdf",
+                    "raw_response_sha256": "9021ed904a250e49f8e4255e90c77f8778d3ba6e76cc67f764da01640926908a",
+                    "receipt_file_sha256": "6ea9b01ec11180505741fae0dad6d88e98c50c19593809b673629c60d2ff6fce",
+                    "receipt_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v004/transport/014_PUT.json",
+                    "transport_contract_sha256": "69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65"
+                  }
+                ]
+              }
+            },
+            "status": "PASS"
+          },
+          "expires_at": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "file_entry_order": {
+            "detail": {
+              "mode": "EXACT_NATIVE_FILES_OBJECT"
+            },
+            "status": "PASS"
+          },
+          "links_and_stats": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "minted_doi_and_existing_concept": {
+            "detail": "No published minted-identifier claim; PIDs remain exact",
+            "status": "PASS"
+          },
+          "pids.oai": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "record_identity": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "revision_id": {
+            "detail": {
+              "phase": "DRAFT",
+              "revision": 7
+            },
+            "status": "PASS"
+          },
+          "swh": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "ui.is_draft": {
+            "detail": {
+              "is_draft": true,
+              "phase": "DRAFT"
+            },
+            "status": "PASS"
+          },
+          "ui_display_fields": {
+            "detail": {
+              "date_checks": [
+                {
+                  "path": "ui.access_status.embargo_date_l10n",
+                  "unchanged_null_no_calendar_date": true
+                },
+                {
+                  "display_date": "2026-10-08",
+                  "display_day_offset": 0,
+                  "path": "ui.created_date_l10n_long",
+                  "source_path": "created",
+                  "source_utc_date": "2026-10-08"
+                },
+                {
+                  "display_date": "2026-10-07",
+                  "display_day_offset": 0,
+                  "path": "ui.publication_date_l10n_long",
+                  "source_path": "metadata.publication_date",
+                  "source_utc_date": "2026-10-07"
+                },
+                {
+                  "display_date": "2026-10-07",
+                  "display_day_offset": 0,
+                  "path": "ui.publication_date_l10n_medium",
+                  "source_path": "metadata.publication_date",
+                  "source_utc_date": "2026-10-07"
+                },
+                {
+                  "display_date": "2026-10-08",
+                  "display_day_offset": 0,
+                  "path": "ui.updated_date_l10n_long",
+                  "source_path": "updated",
+                  "source_utc_date": "2026-10-08"
+                }
+              ],
+              "diff_appendix": [],
+              "own_operation_record_id": "23226761",
+              "own_record": true,
+              "source_comparison_authoritative": true
+            },
+            "status": "PASS"
+          },
+          "unlisted_fields": {
+            "detail": "Every remaining field is exact",
+            "status": "PASS"
+          },
+          "versions_index_latest_parent": {
+            "detail": null,
+            "status": "PASS"
+          }
+        },
+        "derived_preview_diff_appendix": [
+          {
+            "after": {
+              "10": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E10,/0/default.jpg",
+              "100": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E100,/0/default.jpg",
+              "1200": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E1200,/0/default.jpg",
+              "250": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E250,/0/default.jpg",
+              "50": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E50,/0/default.jpg",
+              "750": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E750,/0/default.jpg"
+            },
+            "after_present": true,
+            "before": null,
+            "before_present": false,
+            "path": "links.thumbnails"
+          },
+          {
+            "after": 792,
+            "after_present": true,
+            "before": null,
+            "before_present": false,
+            "path": "files.entries.paper.pdf.metadata.height"
+          },
+          {
+            "after": 612,
+            "after_present": true,
+            "before": null,
+            "before_present": false,
+            "path": "files.entries.paper.pdf.metadata.width"
+          }
+        ],
+        "operation": "NEW_VERSION",
+        "phase": "DRAFT",
+        "reasons": [],
+        "record_id": "23226761",
+        "status": "SERVER_MANAGED_READBACK_PASS",
+        "ui_diff_appendix": []
+      },
+      "private_guard_pass": true,
+      "upload_receipt": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v004/transport/014_PUT.json",
+        "sha256": "6ea9b01ec11180505741fae0dad6d88e98c50c19593809b673629c60d2ff6fce"
+      }
+    },
+    {
+      "native_audit": {
+        "acceptance_authority": false,
+        "checks": {
+          "content_metadata": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "created_updated_revision_id": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "custom_fields.legacy:communities": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "deletion_status": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "derived_previews": {
+            "detail": {
+              "diff_appendix": [],
+              "main_inventory_separate": true,
+              "own_record": false,
+              "provenance": {}
+            },
+            "status": "PASS"
+          },
+          "expires_at": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "file_entry_order": {
+            "detail": {
+              "mode": "EXACT_NATIVE_FILES_OBJECT"
+            },
+            "status": "PASS"
+          },
+          "links_and_stats": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "minted_doi_and_existing_concept": {
+            "detail": "No published minted-identifier claim; PIDs remain exact",
+            "status": "PASS"
+          },
+          "pids.oai": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "record_identity": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "revision_id": {
+            "detail": {
+              "phase": "DRAFT",
+              "revision": 7
+            },
+            "status": "PASS"
+          },
+          "swh": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "ui.is_draft": {
+            "detail": {
+              "is_draft": true,
+              "phase": "DRAFT"
+            },
+            "status": "PASS"
+          },
+          "ui_display_fields": {
+            "detail": {
+              "date_checks": [
+                {
+                  "path": "ui.access_status.embargo_date_l10n",
+                  "unchanged_null_no_calendar_date": true
+                },
+                {
+                  "display_date": "2026-10-08",
+                  "display_day_offset": 0,
+                  "path": "ui.created_date_l10n_long",
+                  "source_path": "created",
+                  "source_utc_date": "2026-10-08"
+                },
+                {
+                  "display_date": "2026-10-07",
+                  "display_day_offset": 0,
+                  "path": "ui.publication_date_l10n_long",
+                  "source_path": "metadata.publication_date",
+                  "source_utc_date": "2026-10-07"
+                },
+                {
+                  "display_date": "2026-10-07",
+                  "display_day_offset": 0,
+                  "path": "ui.publication_date_l10n_medium",
+                  "source_path": "metadata.publication_date",
+                  "source_utc_date": "2026-10-07"
+                },
+                {
+                  "display_date": "2026-10-08",
+                  "display_day_offset": 0,
+                  "path": "ui.updated_date_l10n_long",
+                  "source_path": "updated",
+                  "source_utc_date": "2026-10-08"
+                }
+              ],
+              "diff_appendix": [],
+              "own_operation_record_id": "23226761",
+              "own_record": true,
+              "source_comparison_authoritative": true
+            },
+            "status": "PASS"
+          },
+          "unlisted_fields": {
+            "detail": "Every remaining field is exact",
+            "status": "PASS"
+          },
+          "versions_index_latest_parent": {
+            "detail": null,
+            "status": "PASS"
+          }
+        },
+        "derived_preview_diff_appendix": [],
+        "operation": "NEW_VERSION",
+        "phase": "DRAFT",
+        "reasons": [],
+        "record_id": "23226761",
+        "status": "SERVER_MANAGED_READBACK_PASS",
+        "ui_diff_appendix": []
+      },
+      "private_guard_pass": true,
+      "stage": "SAVED_METADATA_201"
+    },
+    {
+      "native_audit": {
+        "acceptance_authority": false,
+        "checks": {
+          "content_metadata": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "created_updated_revision_id": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "custom_fields.legacy:communities": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "deletion_status": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "derived_previews": {
+            "detail": {
+              "diff_appendix": [],
+              "main_inventory_separate": true,
+              "own_record": false,
+              "provenance": {}
+            },
+            "status": "PASS"
+          },
+          "expires_at": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "file_entry_order": {
+            "detail": {
+              "mode": "EXACT_NATIVE_FILES_OBJECT"
+            },
+            "status": "PASS"
+          },
+          "links_and_stats": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "minted_doi_and_existing_concept": {
+            "detail": "No published minted-identifier claim; PIDs remain exact",
+            "status": "PASS"
+          },
+          "pids.oai": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "record_identity": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "revision_id": {
+            "detail": {
+              "phase": "DRAFT",
+              "revision": 7
+            },
+            "status": "PASS"
+          },
+          "swh": {
+            "detail": null,
+            "status": "PASS"
+          },
+          "ui.is_draft": {
+            "detail": {
+              "is_draft": true,
+              "phase": "DRAFT"
+            },
+            "status": "PASS"
+          },
+          "ui_display_fields": {
+            "detail": {
+              "date_checks": [
+                {
+                  "path": "ui.access_status.embargo_date_l10n",
+                  "unchanged_null_no_calendar_date": true
+                },
+                {
+                  "display_date": "2026-10-08",
+                  "display_day_offset": 0,
+                  "path": "ui.created_date_l10n_long",
+                  "source_path": "created",
+                  "source_utc_date": "2026-10-08"
+                },
+                {
+                  "display_date": "2026-10-07",
+                  "display_day_offset": 0,
+                  "path": "ui.publication_date_l10n_long",
+                  "source_path": "metadata.publication_date",
+                  "source_utc_date": "2026-10-07"
+                },
+                {
+                  "display_date": "2026-10-07",
+                  "display_day_offset": 0,
+                  "path": "ui.publication_date_l10n_medium",
+                  "source_path": "metadata.publication_date",
+                  "source_utc_date": "2026-10-07"
+                },
+                {
+                  "display_date": "2026-10-08",
+                  "display_day_offset": 0,
+                  "path": "ui.updated_date_l10n_long",
+                  "source_path": "updated",
+                  "source_utc_date": "2026-10-08"
+                }
+              ],
+              "diff_appendix": [],
+              "own_operation_record_id": "23226761",
+              "own_record": true,
+              "source_comparison_authoritative": true
+            },
+            "status": "PASS"
+          },
+          "unlisted_fields": {
+            "detail": "Every remaining field is exact",
+            "status": "PASS"
+          },
+          "versions_index_latest_parent": {
+            "detail": null,
+            "status": "PASS"
+          }
+        },
+        "derived_preview_diff_appendix": [],
+        "operation": "NEW_VERSION",
+        "phase": "DRAFT",
+        "reasons": [],
+        "record_id": "23226761",
+        "status": "SERVER_MANAGED_READBACK_PASS",
+        "ui_diff_appendix": []
+      },
+      "private_guard_pass": true,
+      "stage": "ACTUAL_ABSENCE_PAIR"
+    }
+  ],
+  "canonical_writes": 0,
+  "certifies": false,
+  "context": {
+    "absence_legacy_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-v005-archive-readonly-adjudication-v001/transport/001_GET.json",
+      "sha256": "02c738b6e8bad7b2b551a6576b871c423774802391e4de8ce313ca875af5d22b"
+    },
+    "absence_native_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-v005-archive-readonly-adjudication-v001/transport/002_GET.json",
+      "sha256": "4e53ada3018a118eede41b7c375b360744282455032ac9b3e8e09d25498c8120"
+    },
+    "adjudication_diff": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-v005-archive-readonly-adjudication-v001/FULL_PAIR_DIFF.json",
+      "sha256": "32a31e031a7d332cd88c015e2d761ee5dd6cf2a09157ec4261a6d27e3fdbe625"
+    },
+    "adjudication_result": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-v005-archive-readonly-adjudication-v001/RESULT.json",
+      "sha256": "ed7ca424ff339686af2b729c12873642ea34baa7e07391cc52342b712e20fe80"
+    },
+    "metadata_legacy_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v005/transport/012_GET.json",
+      "sha256": "02c738b6e8bad7b2b551a6576b871c423774802391e4de8ce313ca875af5d22b"
+    },
+    "metadata_native_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v005/transport/013_GET.json",
+      "sha256": "4e53ada3018a118eede41b7c375b360744282455032ac9b3e8e09d25498c8120"
+    },
+    "metadata_upload_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v005/transport/007_PUT.json",
+      "sha256": "5f323966431c6ebc4e9a88bd97ce3a88ebbccde99090d5bc49849ee00b005a24"
+    },
+    "terminal_hold": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v005/RESULT.json",
+      "sha256": "cfe832914ed73cd83baadf6413e7e7a1b298d2076b98cb3845f5a22cf5585caa"
+    },
+    "uncertain_archive_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v005/transport/014_PUT.json",
+      "sha256": "784d73f3c876fe8a84ca8bb7360b0e48208b6a9cabbc2e9a92ed35516942e904"
+    }
+  },
+  "main_files": [
+    "metadata.json",
+    "paper.pdf",
+    "paper.tex"
+  ],
+  "new_certification_attempts": 0,
+  "original_runtime_pins": [
+    {
+      "name": "autonomous_pipeline_controller.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py",
+      "sha256": "58e9c93920ff27c3d6035038bd77c53a1ff4bb075c991f2e2e02221d36b515f8"
+    },
+    {
+      "name": "certificate_inspection.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/certificate_inspection.py",
+      "sha256": "a7e3d2fcd167865b129529fce7e3599acf045a190cbc2107e87f39b0a3623ec8"
+    },
+    {
+      "name": "certificate_selection.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/certificate_selection.py",
+      "sha256": "9f243a1025498ca03e22b0c94a711165d21554037ea434abe6cb9720ff8fbd07"
+    },
+    {
+      "name": "claim_binding.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/claim_binding.py",
+      "sha256": "d0bac6e9739c41c5cc40cc57b932f1d15ac7a86f457a0ee3fecdc0ef7a2b7240"
+    },
+    {
+      "name": "closeout_streak.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/closeout_streak.py",
+      "sha256": "9663c006df997e368373f64e0f10e324661893d7b9246ea92a6c8dfec0b7ec3b"
+    },
+    {
+      "name": "comparator_data_egress_authorization.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/comparator_data_egress_authorization.py",
+      "sha256": "5c799813e8b42b4667a1288ef98a9cccd4bfb00fd266fd16aac7aece6903fcd3"
+    },
+    {
+      "name": "completion_links.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/completion_links.py",
+      "sha256": "c295a80b8602860c4a1acfaf962c01af2188c85e517c3a4eec761b478229c505"
+    },
+    {
+      "name": "corpus_ledger.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/corpus_ledger.py",
+      "sha256": "f204d0a45a9571e59ec64359ce137f088aa47445a19607838897832d3d3258ca"
+    },
+    {
+      "name": "digest_metadata.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/digest_metadata.py",
+      "sha256": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe"
+    },
+    {
+      "name": "doi_audit.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_audit.py",
+      "sha256": "72a78e3b305fdf78114414e6dce0a13594d09628f5ea06e04b098dbd49f6a743"
+    },
+    {
+      "name": "doi_triage.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/doi_triage.py",
+      "sha256": "86d9d1e65286ff13038dc75ab3150a616d5acc7515b1ee4fcf04644f1db171ca"
+    },
+    {
+      "name": "draft_reservation.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-recovery-executor-v001/draft_reservation.py",
+      "sha256": "5916611b496e4a9b14bdfb27ad3f2c2d6914d7a8f8d546bc23597adbc726fbc9"
+    },
+    {
+      "name": "engine3_align_challenge.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/engine3_align_challenge.py",
+      "sha256": "d8d06e582d80bddae73dbb68a23a866ed8cac241f5c9780c3bc779a50fcd4870"
+    },
+    {
+      "name": "file_byte_metadata.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-05/game-plan-completion/canon-hub-successor-execution-v003/file_byte_metadata.py",
+      "sha256": "4a21de5efd74531b135682f92ce4d49b1d8ad71d044795548ea9877756fa50ef"
+    },
+    {
+      "name": "first_digest_existing_draft.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-recovery-executor-v001/first_digest_existing_draft.py",
+      "sha256": "eec6af9af33ecc65f782f76bcabd48dd9ed0e97038862414f8ab6b3532916f5a"
+    },
+    {
+      "name": "first_digest_publisher.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-executor-v002/first_digest_publisher.py",
+      "sha256": "551674f989688a5076d49308044c46e3294421fadf2c205381f20e14544631ba"
+    },
+    {
+      "name": "first_digest_reserved_draft.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-uploaded-executor-v001/first_digest_reserved_draft.py",
+      "sha256": "da56918eb1a4a21ab912c8c98ca87e98e80e589b4e5d9212ce812db806ddfd79"
+    },
+    {
+      "name": "first_digest_state.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-executor-v002/first_digest_state.py",
+      "sha256": "cbd6aa9034e8d2e775c3b2f3226c9c41dbb39ccce1d7a59150ca52414ca8dfb2"
+    },
+    {
+      "name": "first_digest_uploaded_draft.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-uploaded-executor-v001/first_digest_uploaded_draft.py",
+      "sha256": "284a4ed37232cdae6b695e5eaab9a35ddc616511791f10cc45f2aaf8db12eb25"
+    },
+    {
+      "name": "inv9_dependency_scope.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/inv9_dependency_scope.py",
+      "sha256": "1b47d3ced31f7f18ffd33e69f1e0855c3935e02b1fb29a9ba3a86ac2e098c3b3"
+    },
+    {
+      "name": "inv9_title_basis.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/inv9_title_basis.py",
+      "sha256": "5c9981fe2536a6cde3c8a1d2e7cdc9684c1369aeb145be4fda635c8af8dfec81"
+    },
+    {
+      "name": "issue_lean_zero_sorry_certificate.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/issue_lean_zero_sorry_certificate.py",
+      "sha256": "96c5c70d7d9de31c537ac4dc4a405d5f2c38a7ba03389c93dac1efb28cfc5ebe"
+    },
+    {
+      "name": "job_observation_policy.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/job_observation_policy.py",
+      "sha256": "63aa5ad5ccd0b3c299b1a262d0a7ebd2ff96ff46294a73c86600ea8db47e73c8"
+    },
+    {
+      "name": "legacy_preview_aliases.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-uploaded-executor-v001/legacy_preview_aliases.py",
+      "sha256": "8459ac27550c35376a38bd32a5254bd301ebdc9800d99ffb38ea9b27f0460e24"
+    },
+    {
+      "name": "manuscript_structure.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/manuscript_structure.py",
+      "sha256": "3177a850997c760ca65e23416116fa4920cf35f238753f63fa63d3a7e4b300a9"
+    },
+    {
+      "name": "methods_digest.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/methods_digest.py",
+      "sha256": "5fcdc53f68d008357e0aef1dbb93f74695aa91119792f78151a8c61a0a9e05e5"
+    },
+    {
+      "name": "methods_digest_registration.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/methods_digest_registration.py",
+      "sha256": "66cc830f4814ee943c616d754d61cff9be5a65607e0a26ec4f91acd23ce630d7"
+    },
+    {
+      "name": "mirror_parity.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/mirror_parity.py",
+      "sha256": "77033a9303519bc47493f4efc2b0872fff805baa9aa35aa61e34467f66336e80"
+    },
+    {
+      "name": "mutation_journal_writer.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-executor-v002/mutation_journal_writer.py",
+      "sha256": "a2a72c49b5bc67a5c7535320bab5b6513b8cbfac3cf6c19d39b2e0c3d5d5c4e8"
+    },
+    {
+      "name": "nightly_checkpoint.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/nightly_checkpoint.py",
+      "sha256": "f550c0f808bb15e603b875aed55962b0297731e5a2e4edf4aac99f33eab959df"
+    },
+    {
+      "name": "nightly_coverage.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/nightly_coverage.py",
+      "sha256": "fd9a4fe406445f3181391ca83f462c4889fb3392c4c93d5ac0d54838c223484f"
+    },
+    {
+      "name": "nightly_generation_window.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/nightly_generation_window.py",
+      "sha256": "fb0f66442bf3eb17547ec5738ea9b62a8212e6a172170cd381fffa460f51881f"
+    },
+    {
+      "name": "nightly_proof_track.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/nightly_proof_track.py",
+      "sha256": "b63c3866db0e3538f6462ca32f0bbf916a6e80081d1bdf74514b1fa6c7dc2b06"
+    },
+    {
+      "name": "nightly_publication_intake.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/nightly_publication_intake.py",
+      "sha256": "9f3aa3c7f438f22b1c07242e9c548f6a9917ecbc2999ffe817256a602f472ba8"
+    },
+    {
+      "name": "nightly_science_preflight.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/nightly_science_preflight.py",
+      "sha256": "a41945368e682012cdc41d8a206d6a8a0c66e12baddb082326bf755d626e2f83"
+    },
+    {
+      "name": "nonvacuity_tier0.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/nonvacuity_tier0.py",
+      "sha256": "2c8400e23696d5cf112a0644ff33187de74a82ec5c65eaf4545d5796f439e526"
+    },
+    {
+      "name": "phase7_audit_policy.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/phase7_audit_policy.py",
+      "sha256": "053f9aa1184116ec59f381737649a3b09113f50f7c79fb8d6328a079aa8c19c7"
+    },
+    {
+      "name": "phase7_claim_label_render.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/phase7_claim_label_render.py",
+      "sha256": "b80b1c7c32bddbf176f08fd5250a7a4c1e610a4848de075397397d7106786141"
+    },
+    {
+      "name": "phase7_mutation_baseline.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/phase7_mutation_baseline.py",
+      "sha256": "f48dfff1cbb3ca72ce88766f0d9e56664bb7fea17a0f60d8a5f60e21095f7145"
+    },
+    {
+      "name": "phase7_policy_versions.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/phase7_policy_versions.py",
+      "sha256": "d83ff264e2ebd5a6849be2d1b95123d1cdcf0a2ef9a53cbaaaeff4c9da168f7c"
+    },
+    {
+      "name": "phase7_runtime_update.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/phase7_runtime_update.py",
+      "sha256": "ae9af64d0940ce2a764a2dd9be61951211b2bf668b957aedf88563301d704194"
+    },
+    {
+      "name": "premise_declaration.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/premise_declaration.py",
+      "sha256": "e00404ad578efa7dcd9299a5d947be594f36c15e53fd44479d22d578caab5137"
+    },
+    {
+      "name": "probe_observations.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/probe_observations.py",
+      "sha256": "ebbe0ffff1570acec84bcaf18570e69c9a66938cee932999d9a6729208abb4de"
+    },
+    {
+      "name": "production_hooks.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/production_hooks.py",
+      "sha256": "9b0a3d48e2cabff04c58a9020c07db2a9afe7e7f8c7cbde5e034d56d0b77db81"
+    },
+    {
+      "name": "public_metadata_readback.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/public_metadata_readback.py",
+      "sha256": "8365c8d2474c4b1bb3e7da8c332da61bd6378694ccfba0629084cff9512b3b30"
+    },
+    {
+      "name": "publication_binding.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/publication_binding.py",
+      "sha256": "1fb3d5bc1d0df57445b8d7fed8a034e7bab7f1aeb0314db21e3cedd5e237df2e"
+    },
+    {
+      "name": "publication_gate.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/publication_gate.py",
+      "sha256": "4166653c08e8e06e20fe004592df56152c407ab36b8003ecd3380ee8bf94a0f1"
+    },
+    {
+      "name": "publication_preservation.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/late-version-chain-consolidated-review-v004/implementation/publication_preservation.py",
+      "sha256": "4fb48f40fd76cae1f973dca66253813bfd1c8edcdffa07c02945d28ddf170e2b"
+    },
+    {
+      "name": "publish_dated_bundles.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/publish_dated_bundles.py",
+      "sha256": "4f099eaffb9a35fbd24e5c57ef34801391fabcd5c3272b58a379d7ac52b35e94"
+    },
+    {
+      "name": "publisher_previews.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-executor-v002/publisher_previews.py",
+      "sha256": "f33df8657ef9a25174af360d54139f536d39d7ee1a463eea68bff4a3c2fc2c22"
+    },
+    {
+      "name": "publisher_recovery.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-executor-v002/publisher_recovery.py",
+      "sha256": "fd75fa40fe52d157b3516bf8a96b9acdd203e1d76fff58c3949f667a6d44153c"
+    },
+    {
+      "name": "readonly_account.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-executor-v002/readonly_account.py",
+      "sha256": "daa36ca7fa4c40d923be5b411cf47463f5ef61162bf7fb6e50b6a27ebb638720"
+    },
+    {
+      "name": "release_coherence.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/release_coherence.py",
+      "sha256": "348bc1f54ed027c6768efe512717bbc66976b7c658198383803d7e2bb8535060"
+    },
+    {
+      "name": "release_packet.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/release_packet.py",
+      "sha256": "972cc9816e3f2d1c3f93120666358421c9163535afd143a6f401725fc3545357"
+    },
+    {
+      "name": "reserved_draft_continuation.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-uploaded-executor-v001/reserved_draft_continuation.py",
+      "sha256": "31cd5b5cc9b708ae9ed78fa4c469bc3e74008e365dc7ffdc76f9b0ccda458d3c"
+    },
+    {
+      "name": "run_flow.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/run_flow.py",
+      "sha256": "00a6d309360aabda0e27f37a0cd757e103c1c502497b3f2553e28d2070b98b04"
+    },
+    {
+      "name": "science_foundry_continuity.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/science_foundry_continuity.py",
+      "sha256": "933d224faf1991e8e609e993feb11ec65bcdc32acf166854d8656f0c623e8fcc"
+    },
+    {
+      "name": "science_release_queue.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/science_release_queue.py",
+      "sha256": "04e50fe03aa7e2e5858fd1c4523632c1fff36a2f2f5c8833f80460c198f42e1d"
+    },
+    {
+      "name": "science_release_stage.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/science_release_stage.py",
+      "sha256": "f531c2c71b6b146fdacf8193877abbad953e6e2900891134d724d80e339000c6"
+    },
+    {
+      "name": "scientific_advisories.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/scientific_advisories.py",
+      "sha256": "86de1c6346e8c185773b039f9977c8dfb61aa2c7f42c58075360f855dc409eb5"
+    },
+    {
+      "name": "scientific_reconciliation.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/scientific_reconciliation.py",
+      "sha256": "2910690f865a1bd7ef25cdd967b90c3f50797328cd68bccc7c4ed93048b85142"
+    },
+    {
+      "name": "scoped_release.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/scoped_release.py",
+      "sha256": "a6e5fe9b1213d91987a5cf125d1f591e643e3e68eb5bac05492196b77e7e3ea8"
+    },
+    {
+      "name": "scoped_statement_text.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/scoped_statement_text.py",
+      "sha256": "8a820419f94f295485a65f00f7ea3c207604a0d159639bce64628aeefbb72a03"
+    },
+    {
+      "name": "server_managed_fields.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-05/game-plan-completion/canon-hub-successor-execution-v003/server_managed_fields.py",
+      "sha256": "ce8ad2002a11938966201a44d2714ee866bb922649cd572e36f09e8cc0f062a1"
+    },
+    {
+      "name": "static_pregate.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/static_pregate.py",
+      "sha256": "659e2d66a45af24a846a5fafe26564ccf713492d0d06be0fb8172e961e862153"
+    },
+    {
+      "name": "theorem_coverage.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/theorem_coverage.py",
+      "sha256": "62bb9e87b10b8ef317616e4b906878d03f06752ab4e7d2dff90bdf9dfb27e99d"
+    },
+    {
+      "name": "track_b.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/track_b.py",
+      "sha256": "faed81a12261607af23ec24e81286a208d11f5b0c8c1fd69b65a518d3a304bca"
+    },
+    {
+      "name": "uploaded_draft_continuation.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-digest-uploaded-executor-v001/uploaded_draft_continuation.py",
+      "sha256": "35c3ec3101f9b8026d7355c984e0bf31b194811f9aeab23800efabecdbf17306"
+    },
+    {
+      "name": "verification_state_metadata.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_state_metadata.py",
+      "sha256": "3abd5a597d003f4b7538de14c9b6ea27b4acc506e5ac9876f2bee498f446a2b8"
+    },
+    {
+      "name": "viridis_paths.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/viridis_paths.py",
+      "sha256": "a15ef655091ebd72910a060cdef1d0f727d18b7a7223dcbbc2192c18e39fe57c"
+    },
+    {
+      "name": "viridisos_kernel_packager.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/viridisos_kernel_packager.py",
+      "sha256": "6a74449ef46e2b48ad525f44b274cb5385cc1202b50e2ea119192442de21f02c"
+    },
+    {
+      "name": "weekend_canon_lockstep.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/weekend_canon_lockstep.py",
+      "sha256": "36b23f17c4ef4a9758f587caeb52f16c72d149fb49776e4e2fc920f5d2e32bec"
+    },
+    {
+      "name": "zenodo_transport.py",
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-05/game-plan-completion/canon-hub-successor-execution-v003/zenodo_transport.py",
+      "sha256": "69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65"
+    }
+  ],
+  "parser": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-05/game-plan-completion/canon-hub-successor-execution-v003/server_managed_fields.py",
+    "sha256": "ce8ad2002a11938966201a44d2714ee866bb922649cd572e36f09e8cc0f062a1"
+  },
+  "prior_uploaded_plan": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-seven-uploaded-draft-plan-v001/PLAN.json",
+    "sha256": "2f67aa3c0d7e4d606ef4c01513dc827b13acb528533810c377919ed1fb43bcac"
+  },
+  "public_writes": 0,
+  "source_hashes": {
+    "first_digest_three_file_draft.py": "d29358c61c86273e1857965a7c2b1a7ef39ddc53e62d553778b7d8f853dae82c",
+    "owned_archive_wait.py": "6c55843295c9f3eca72d376afaca96032d19cac61fec335f401ed31f9b743f36",
+    "three_file_draft_continuation.py": "3ef52280d4be92d04e2047a54e100f258ec23d7ab6577928be8e35114540d316"
+  },
+  "standard": "SOURCE_ONLY_ACTUAL_THREE_FILE_PRECHECK_NOT_EXECUTION_1",
+  "status": "ACTUAL_SAVED_PAIR_FULL_GUARDS_AND_BOUND_DIGEST_PASS"
+}

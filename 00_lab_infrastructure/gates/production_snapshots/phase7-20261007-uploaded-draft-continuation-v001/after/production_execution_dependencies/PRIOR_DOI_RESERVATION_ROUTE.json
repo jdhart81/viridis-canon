@@ -1,0 +1,42 @@
+{
+  "automatic_retry": false,
+  "current_transport": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-05/game-plan-completion/canon-hub-successor-execution-v003/zenodo_transport.py",
+    "sha256": "69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65"
+  },
+  "empty_body_hex": "7b7d",
+  "empty_body_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "foundation_datacite_identifier": "10.5281/zenodo.23141592",
+  "foundation_record_id": "23141592",
+  "historical_transport_and_current_transport_claimed_identical": false,
+  "native_request_media_type": "application/vnd.inveniordm.v1+json",
+  "prior_evidence": {
+    "foundation_empty_native": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/foundation-publication-execution-v001/resume-001/transport/002_GET.json",
+      "sha256": "8873ef8e4bfca5aabb2167d38632016cc083c849c3c03803042e375a5c06c9a3"
+    },
+    "foundation_mutation_authority": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/foundation-publication-execution-v001/MUTATIONS.json",
+      "sha256": "5f268d8644a2aeb36c09a03db06ac75d56199245ce93cc06942a88f1b7989c49"
+    },
+    "foundation_native_reserve": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/foundation-publication-execution-v001/resume-001/transport/003_POST.json",
+      "sha256": "5a3995910d0dc6a227baec29680e1d00a047ed6caeb606262f73684835cca25f"
+    },
+    "foundation_reserved_native": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/foundation-publication-execution-v001/resume-001/transport/004_GET.json",
+      "sha256": "7421aef2d5eb1e7090ae77718ad42f3bb819aca744132282886f07b76ddd4eb4"
+    },
+    "sandbox_native_reserve": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/sandbox-community-member-v001/community-review/002_POST.json",
+      "sha256": "816d1c3986ba70eddde6a6f3a6599a432988dce462d39dbfe4a12bada33f6670"
+    }
+  },
+  "private_after_reserve_foundation_fixture_exists": false,
+  "public_pid_rule_changed": false,
+  "sandbox_datacite_identifier": "10.5072/zenodo.613086",
+  "sandbox_record_id": "613086",
+  "standard": "VRS_PRIOR_SOURCE_BOUND_DOI_LIFECYCLE_REFERENCES_1",
+  "status": "PRIOR_ROUTE_EVIDENCE_NOT_A_NEW_TRANSPORT_RECEIPT",
+  "writes": 0
+}

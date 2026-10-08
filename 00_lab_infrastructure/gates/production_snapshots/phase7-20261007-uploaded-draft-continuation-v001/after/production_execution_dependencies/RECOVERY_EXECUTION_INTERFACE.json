@@ -1,0 +1,74 @@
+{
+  "automatic_retry": false,
+  "create_calls": 0,
+  "credentials_read": false,
+  "date_total": "Actual bound INITIAL_DAILY_BUDGET used2 plus eight attempts; FINAL_DAILY_BUDGET verifies unchanged NY date and computed used10",
+  "execution_plan_filename": "PLAN.json",
+  "expected_writes": 8,
+  "function": "execute(root,package,plan_binding,output,token,reviewed_driver_sha256=...)",
+  "metadata_put_calls": 0,
+  "module": "first_digest_existing_draft.py",
+  "module_sha256": "eec6af9af33ecc65f782f76bcabd48dd9ed0e97038862414f8ab6b3532916f5a",
+  "native_reserve_body_hex": "7b7d",
+  "original_plan": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v002/PLAN.json",
+    "sha256": "b82e231676b217aee55f04a5202356edcc41171996bc4fcf89f4d88fdb6590bd"
+  },
+  "own_context": {
+    "api_metadata_payload": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v002/API_METADATA_PAYLOAD.json",
+      "sha256": "7de637798416a70c21da3823fb428c19a37c068d64f3e0bd75b43d99cb1c87dc"
+    },
+    "creation_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v002/transport/003_POST.json",
+      "sha256": "42cd70a797b9b1deb10f96e131e5b4ffbb19b3681fefb6a21a206543f485ab1f"
+    },
+    "initial_legacy_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v002/transport/004_GET.json",
+      "sha256": "d74f1e88801fceab4fdb232cdbb0dca9aed1a52e0ead9421173d503e16eb1a29"
+    },
+    "initial_native_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v002/transport/005_GET.json",
+      "sha256": "1ee2ddcb4f8750562093a7bf7dc8d05263f909de43b68446dc3745b58eccb36b"
+    },
+    "terminal_hold": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v002/RESULT.json",
+      "sha256": "ebb585667a4202752fd80d8746db8f75f05a2d5beddab43bd7d7fe21c7d95267"
+    }
+  },
+  "own_lifecycle_attempts": 9,
+  "prior_daily_attempts": 2,
+  "production_writes": 0,
+  "protected_changes": 0,
+  "record_id": "23226761",
+  "recovery_plan_fields": [
+    "standard",
+    "status",
+    "canonical_root",
+    "package_path",
+    "original_plan",
+    "own_context",
+    "runtime_pins",
+    "record_id",
+    "expected_writes",
+    "prior_daily_attempts"
+  ],
+  "recovery_plan_filename": "RECOVERY_PLAN.json",
+  "recovery_plan_standard": "VRS-PHASE7-FIRST-DIGEST-EXISTING-DRAFT-PLAN-1",
+  "registration_status": "FRESH_CONSUMER_PASS_NOT_SSOT_WRITTEN only after complete strict public PASS",
+  "remaining_stages": [
+    "RESERVE_DOI",
+    "UPLOAD_paper.tex",
+    "UPLOAD_paper.pdf",
+    "UPLOAD_metadata.json",
+    "UPLOAD_METHODS_NOTES.zip",
+    "UPLOAD_DIGEST_MANIFEST.json",
+    "UPLOAD_PUBLICATION_BINDING.json",
+    "PUBLISH"
+  ],
+  "reservation_module_sha256": "5916611b496e4a9b14bdfb27ad3f2c2d6914d7a8f8d546bc23597adbc726fbc9",
+  "runtime_plan_mutation": "Only runtime_pins replace the original plan pins, science/payload fields byte-identical",
+  "source_formatting_only_successor": true,
+  "standard": "VRS_CLOSED_EXISTING_DRAFT_RECOVERY_INTERFACE_1",
+  "status": "SOURCE_ONLY_NOT_ADOPTED_OR_EXECUTED"
+}

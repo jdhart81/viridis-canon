@@ -1,0 +1,23 @@
+{
+  "activated_digest_metadata_sha256": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe",
+  "actual_closure_duplicate_same_source_pass_and_changed_source_hold": true,
+  "added_tests": 52,
+  "canonical_sources_modified": false,
+  "credentials_read": false,
+  "daily_cap_blocks_eleventh_attempt": true,
+  "fake_gate_admission_and_server_seams_are_not_live_evidence": true,
+  "first_digest_publisher_sha256": "551674f989688a5076d49308044c46e3294421fadf2c205381f20e14544631ba",
+  "first_digest_state_sha256": "cbd6aa9034e8d2e775c3b2f3226c9c41dbb39ccce1d7a59150ca52414ca8dfb2",
+  "inherited_coordinator_tests": 43,
+  "inherited_guard_tests": 51,
+  "no_new_preappend_guard": true,
+  "production_network_writes": 0,
+  "same_body_duplicate_rejected_by_unchanged_consumer": true,
+  "sandbox_network_writes": 0,
+  "source_bound_public_native_guards_byte_identical": true,
+  "spent_old_request_cost_one_new_nine_attempts_cost_total_ten": true,
+  "standard": "VRS-PHASE7-COMMUNITY-API-OFFLINE-TESTS-1",
+  "status": "PASS_OFFLINE_PROTOCOL_ONLY",
+  "test_log_sha256": "b9d4b45547ffa96d1098635d9b0e61b97931d9e4d5f1f1635d91353c29b195e7",
+  "total_tests": 146
+}

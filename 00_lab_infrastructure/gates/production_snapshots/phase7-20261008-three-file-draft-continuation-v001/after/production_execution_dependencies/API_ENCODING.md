@@ -1,0 +1,5 @@
+# Closed first-digest API encoding — source-only successor
+
+The activated digest_metadata.py is byte-identical to the prior e5c5 source. Its existing resource_type/upload_type and license mappings remain unchanged. first_digest_state.encode_api_communities only encodes preserved singleton public {id:VALUE} rows to documented request {identifier:VALUE} rows, keeping all other API fields and exact order/case/values. A strict inverse is used only for the existing source-custom-fields equality guard. The publisher calls the codec after closed_payload and uses exact full request-body SHA for its reservation identity. Private expected metadata stays identifier; source/public/native membership stays id. Original API/whole-record checks remain unchanged.
+
+The already reviewed613086 fixture proves identifier requests and id public readback. See COMMUNITY_613086_FIXTURE.json and tests. Official primary contract checked read-only: https://developers.zenodo.org/#deposit-metadata. Documentation and offline tests do not establish live acceptance. Only actual own strict public readback after publication can do that.

@@ -1,0 +1,22 @@
+{
+  "actual_metadata_payload_binding": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v002/API_METADATA_PAYLOAD.json",
+    "sha256": "7de637798416a70c21da3823fb428c19a37c068d64f3e0bd75b43d99cb1c87dc"
+  },
+  "credentials_retrieved": false,
+  "only_one_literal_spelling_changed": true,
+  "production_functions_and_values_unchanged": true,
+  "scanner_configuration_changed": false,
+  "source_only_false_positive_location": {
+    "commit": "d13753803518e5209a09717a146429110063cfaa",
+    "filename": "draft_reservation.py",
+    "line": 21,
+    "rule": "generic-api-key"
+  },
+  "standard": "VRS_NONCREDENTIAL_SOURCE_HASH_EXPRESSION_PROOF_1",
+  "status": "SOURCE_SPELLING_ONLY_NO_SCANNER_EXCEPTION",
+  "v001_source_sha256": "647ba7ddad45a93f525096cbd35aa690ca1a0a0a368bf30f7b47921c6be3f6e1",
+  "v002_source_sha256": "5916611b496e4a9b14bdfb27ad3f2c2d6914d7a8f8d546bc23597adbc726fbc9",
+  "value_equals_payload_content_digest": true,
+  "writes": 0
+}

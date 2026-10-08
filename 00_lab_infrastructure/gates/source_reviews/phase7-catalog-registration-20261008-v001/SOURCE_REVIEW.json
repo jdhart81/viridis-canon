@@ -1,0 +1,31 @@
+{
+  "align_challenge_changed": false,
+  "archives_preserved": [
+    "053f9aa1184116ec59f381737649a3b09113f50f7c79fb8d6328a079aa8c19c7",
+    "5d1832efb6d399d89e6d88d50034f8de10d46fc4247f1dd9f35fdabce3119768"
+  ],
+  "authority_difference": "exact independently hash-bound approved appendix and one terminal five-byte Markdown delimiter only",
+  "backend_config_changed": false,
+  "base_commit": "2dc1fbd616121c9fed3576f061e0069e2c41c050",
+  "catalog_difference": "optional non-certifying closed append-only provenance header; existing row values and scoped claim consumer remain exact",
+  "clean_nights_credited": 0,
+  "default_registrar_changed": false,
+  "field_allowlist_changed": false,
+  "issuer_changed": false,
+  "new_archive": "66f9c7133a82aec937392086b6102a616370ea17817a14ecc18e7a1d72c99654",
+  "private_streams_or_credentials_in_packet": false,
+  "protected_verifier_changed": false,
+  "runtime_installation": false,
+  "scientific_gate_changed": false,
+  "source_sha256": {
+    "corpus_ledger.py": "497aa58f686c48389ef5b4d62e00fa2621cdf45eff45ace4d8e79202076e94cf",
+    "phase7_audit_policy.py": "66f9c7133a82aec937392086b6102a616370ea17817a14ecc18e7a1d72c99654",
+    "phase7_policy_versions.py": "9eb67790edfab0760601133a3994dc1dbb24f7aa60c44661804525abf330859f",
+    "phase7_runtime_update.py": "7aa7a7920f8be5bdb37e91a3efa56acda689c2a5dd7991953691ae56c9274f42",
+    "registration_imports.py": "37fd17b61a869c8343d5cd035dbbf87f05ed259a9aa3ddb3a5d83da8796fc707"
+  },
+  "ssot_changes": false,
+  "standard": "PHASE7_ORDINARY_CATALOG_REGISTRATION_SOURCE_REVIEW_1",
+  "status": "ROOT_REVIEWED_SOURCE_ONLY_NOT_INSTALLED",
+  "zenodo_writes": 0
+}

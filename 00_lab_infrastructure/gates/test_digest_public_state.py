@@ -194,7 +194,26 @@ class SourcePreservationTests(unittest.TestCase):
    if name not in {'assemble_evidence','_check_public'}:
     with self.subTest(name=name):self.assertEqual(new[name],body)
  def test_runtimehelper_only_closed_exactnamed_module_addition(self):
-  here=Path(__file__).parent;old=(here/'testdata/digest_public_state/phase7_runtime_update_before.txt').read_text();new=(here/'phase7_runtime_update.py').read_text();expected=old.replace("'phase7_policy_versions.py',\n})","'phase7_policy_versions.py', 'digest_public_state.py',\n})",1);self.assertEqual(new,expected)
+  import ast,hashlib
+  here=Path(__file__).parent;old=(here/'testdata/digest_public_state/phase7_runtime_update_before.txt').read_text();new=(here/'phase7_runtime_update.py').read_text()
+  pins={'audit_section': '3c9ca762aafde21e0a90c8f0e3d482436efda6a76222c703af6820842b23b578', 'corpus_preservation': '6141a5d6f94d0a61394b8ff1aed5276d46e10ee03077f7f1d533127f65357ab9'}
+  def split_functions(raw):
+   lines=raw.splitlines(keepends=True);tree=ast.parse(raw);functions={n.name:ast.get_source_segment(raw,n)for n in tree.body if isinstance(n,(ast.FunctionDef,ast.ClassDef))};excluded=set()
+   for node in tree.body:
+    if isinstance(node,ast.FunctionDef)and node.name in pins:excluded.update(range(node.lineno-1,node.end_lineno))
+   return functions,''.join(v for i,v in enumerate(lines)if i not in excluded)
+  previous,outside=split_functions(old)
+  expected=outside.replace("'phase7_policy_versions.py',\n})","'phase7_policy_versions.py', 'digest_public_state.py', 'registration_imports.py',\n})",1)
+  self.assertNotEqual(expected,outside)
+  def closed(candidate):
+   current,remaining=split_functions(candidate);self.assertEqual(remaining,expected);self.assertEqual(set(current),set(previous))
+   for name,body in previous.items():
+    if name not in pins:self.assertEqual(current[name],body)
+   for name,pin in pins.items():self.assertEqual(hashlib.sha256(current[name].encode()).hexdigest(),pin)
+  closed(new)
+  for before,after in [("'registration_imports.py'","'unknown_imports.py'"),("CORPUS_SHA256 =","CHANGED_CORPUS_SHA256 ="),("raw = normalize_authority_plan(raw)","raw = raw"),("exact approved import caller/alias body required","body bypass")]:
+   self.assertIn(before,new)
+   with self.subTest(change=before),self.assertRaises(AssertionError):closed(new.replace(before,after,1))
 
 class PreviewAndOaiPredictionTests(unittest.TestCase):
  setUp=PublicStateTests.setUp

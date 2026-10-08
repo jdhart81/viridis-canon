@@ -569,6 +569,41 @@ function renderPublicationPointers(publications) {
   target.replaceChildren(...cards);
 }
 
+function renderMethodsDigestPointers(digests) {
+  const target = byId("methods-digest-links");
+  const cards = digests.map((digest) => {
+    const card = document.createElement("article");
+    card.className = "record-card";
+    const title = document.createElement("h3");
+    const link = document.createElement("a");
+    link.href = `https://doi.org/${digest.doi}`;
+    link.textContent = digest.title;
+    link.rel = "noreferrer";
+    title.append(link);
+    const notice = document.createElement("p");
+    notice.textContent = "Methods Digest — aggregate uncertified; certificates cover only the listed note scopes.";
+    card.append(title, notice);
+    for (const note of digest.notes) {
+      const section = document.createElement("details");
+      const heading = document.createElement("summary");
+      heading.textContent = `${note.run_id}: ${note.title} — listed note scope only`;
+      const basis = document.createElement("p");
+      basis.textContent = `Foundation basis: ${note.foundation_basis}. ${note.disclaimer}`;
+      const labels = document.createElement("p");
+      const printedTier = { UNCLASSIFIED: "UNCLASSIFIED (probe resource-limited)", DEPTH_NOT_ASSESSED: "depth not yet assessed" };
+      labels.textContent = note.semantic_labels.map((claim) =>
+        `${claim.lean_theorem}: ${printedTier[claim.semantic_tier] || claim.semantic_tier}; ${claim.nonvacuity_label}; ${claim.headline_eligible ? "headline eligible" : "appendix/non-headline"}`
+      ).join("\n");
+      const scope = document.createElement("pre");
+      scope.textContent = note.claim_scope;
+      section.append(heading, basis, labels, scope);
+      card.append(section);
+    }
+    return card;
+  });
+  target.replaceChildren(...cards);
+}
+
 async function init() {
   bindControls();
   try {
@@ -578,6 +613,7 @@ async function init() {
     state.records = state.catalog.records || [];
     populateMetrics(state.catalog);
     renderPublicationPointers(state.catalog.publications || []);
+    renderMethodsDigestPointers(state.catalog.methods_digests || []);
     renderCatalog();
     renderResearchGraph(state.records);
 

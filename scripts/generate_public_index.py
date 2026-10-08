@@ -13,9 +13,12 @@ from typing import Any, Callable
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "00_lab_infrastructure" / "gates"))
 # Support the isolated component staging tree as well as the repository layout.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "gates"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from claim_binding import CONJECTURE_LABEL, DISCLAIMER, ledger_entities, read_object, tree_root, inspect_entity_certificate
 from publication_gate import evaluate_publication
 from mirror_parity import GENERATION_ROOT
+from scripts.methods_digest_index import registered_digest_pointers, ROUTES as DIGEST_ROUTES
+from canon_core.methods_digests import STANDARD as DIGEST_POINTER_STANDARD, TIER_PRINT
 
 STATUSES = ("MIRROR_DRIFT", "UNSOUND_ENVIRONMENT", "UNSOUND", "HAS_SORRY", "DEBT", "NO_FORMALIZATION", "CLEAN_UNCERTIFIED", "CERTIFIED")
 
@@ -122,7 +125,20 @@ def render_index(
                   "Publication registrations are separate from the paper-run denominator. Only the exact registered artifact and current claim gate can qualify a published scope.", "",
                   "| Publication | DOI | Claim status |", "|---|---|---|"])
     registrations = []
+    methods_digests, digest_failures = registered_digest_pointers(root, ledger)
+    digest_ids = {row["entity_id"] for row in methods_digests}
+    digest_ids.update(note["entity_id"] for row in methods_digests for note in row["notes"])
     for entry in sorted(ledger.get("publication_entities", []), key=lambda value: value["id"]):
+        if entry.get("registration_route") in DIGEST_ROUTES:
+            passed = entry["id"] in digest_ids
+            group = entry["registration_route"] == "METHODS_DIGEST_GROUP_V1"
+            status = ("SCOPED_DIGEST — aggregate uncertified" if group else "CERTIFIED_LISTED_NOTE_SCOPE_ONLY") if passed else "UNCERTIFIED"
+            item = {"id": entry["id"], "doi": entry.get("doi"), "label": status,
+                    "certifies": False if group or not passed else "LISTED_NOTE_SCOPE_ONLY",
+                    "disclaimer": DISCLAIMER, "gate_reasons": digest_failures.get(entry["id"], [])}
+            registrations.append(item)
+            lines.append(f"| {escape_cell(entry['id'])} | {escape_cell(entry.get('doi') or 'unpublished')} | {status} |")
+            continue
         gate = evaluate_publication(root / entry["path"], ledger, entity_id=entry["id"], inspector=inspector)
         passed = (entry.get("registration_revalidated") is True
                   and entry.get("publication_registration_status") == "PASS"
@@ -137,6 +153,16 @@ def render_index(
         lines.append(f"| {escape_cell(entry['id'])} | {escape_cell(entry.get('doi') or 'unpublished')} | {status} |")
         if passed:
             canon.append({**item, "claims": gate["claim_gate"]["claims"]})
+    lines.extend(["", "## Methods Digests", "",
+                  "Each shared DOI is a collection of individually bound notes. The aggregate has no theorem certificate and does not admit repository sources into the Canon spine.", ""])
+    for digest in methods_digests:
+        lines.append(f"- {escape_cell(digest['title'])}: {digest['doi']} — aggregate uncertified.")
+        for note in digest["notes"]:
+            lines.append(f"  - {note['run_id']}: listed note scope only; basis {note['foundation_basis']}. {DISCLAIMER}")
+            for label in note["semantic_labels"]:
+                lines.append(f"    - `{escape_cell(label['lean_theorem'])}`: {escape_cell(TIER_PRINT.get(label['semantic_tier'], label['semantic_tier']))}; {escape_cell(label['nonvacuity_label'])}.")
+    if not methods_digests:
+        lines.append("No Methods Digest registration currently passes fresh complete readback and per-note admission.")
     lines.extend(["", "## Quarantined source files", ""])
     quarantined = sorted((entry for entry in files if _quarantined(entry)), key=lambda entry: entry["id"])
     lines.extend(f"- `{escape_cell(entry['path'])}` — {escape_cell(entry['status'])}; unsound or vacuous source promotion is prohibited." for entry in quarantined)
@@ -151,11 +177,15 @@ def render_index(
     public = _public_strings(public, public_root)
     registrations = _public_strings(registrations, public_root)
     canon = _public_strings(canon, public_root)
+    methods_digests = _public_strings(methods_digests, public_root)
     return {"README.md": _public_strings("\n".join(lines), public_root),
             "ZENODO_DESCRIPTIONS.json": json.dumps({"generated_from": "corpus_ledger.json", "publication_mode": "REPORT_ONLY",
-                "disclaimer": DISCLAIMER, "artifacts": public, "publication_registrations": registrations}, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
+                "disclaimer": DISCLAIMER, "artifacts": public, "publication_registrations": registrations,
+                "methods_digests": methods_digests}, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
             "CANON_INDEX.json": json.dumps({"generated_from": "corpus_ledger.json", "disclaimer": DISCLAIMER,
-                "entries": canon, "quarantined": [entry["id"] for entry in quarantined]}, indent=2, ensure_ascii=False, sort_keys=True) + "\n"}
+                "entries": canon, "methods_digests": methods_digests,
+                "quarantined": [entry["id"] for entry in quarantined]}, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
+            "METHODS_DIGESTS.json": json.dumps({"standard": DIGEST_POINTER_STANDARD, "methods_digests": methods_digests}, indent=2, ensure_ascii=False, sort_keys=True) + "\n"}
 
 
 def generate(ledger_path: Path, output_dir: Path, *, enforce: bool = False,

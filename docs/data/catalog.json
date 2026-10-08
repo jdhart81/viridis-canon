@@ -1,8 +1,9 @@
 {
-  "catalog_digest": "8ffa2a6b06dd523e2497422f4f62430432392900c72571f8866a6edd14c82330",
+  "catalog_digest": "066143ea5d7ab221942654e20b9034424c1f30bf86636c2d266ea8d7a3d48197",
   "concept_doi": "10.5281/zenodo.19317982",
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "human_publish_gate": true,
+  "methods_digests": [],
   "publication_scope": "public",
   "publications": [
     {

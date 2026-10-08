@@ -14,6 +14,7 @@ from urllib.parse import quote
 from .canonical import canonical_digest
 from .model import ResearchRecord
 from .publications import load_publication_joins
+from .methods_digests import load_methods_digest_joins, validate_methods_digests, require_disjoint_publications
 
 
 SCHEMA = "https://jdhart81.github.io/viridis-canon/schemas/research-catalog-v1.json"
@@ -448,6 +449,9 @@ def build_catalog(
             record.theorem_count + record.lemma_count for record in selected_records
         ),
     }
+    publications = load_publication_joins(root, config)
+    methods_digests = load_methods_digest_joins(root, config)
+    require_disjoint_publications(publications, methods_digests)
     payload = {
         "schema": SCHEMA,
         "publication_scope": "workspace" if include_private else "public",
@@ -458,7 +462,8 @@ def build_catalog(
         "human_publish_gate": True,
         "stats": stats,
         "records": [record.to_dict() for record in selected_records],
-        "publications": load_publication_joins(root, config),
+        "publications": publications,
+        "methods_digests": methods_digests,
     }
     return {**payload, "catalog_digest": canonical_digest(payload)}
 
@@ -480,6 +485,11 @@ def validate_catalog(
     payload = {key: value for key, value in document.items() if key != "catalog_digest"}
     if digest != canonical_digest(payload):
         errors.append("catalog_digest does not match the canonical payload")
+    try:
+        validate_methods_digests(document.get("methods_digests", []))
+        require_disjoint_publications(document.get("publications", []), document.get("methods_digests", []))
+    except (ValueError, TypeError, KeyError) as exc:
+        errors.append("Methods Digest pointer projection rejected: " + str(exc))
 
     records = document.get("records")
     if not isinstance(records, list):
@@ -614,7 +624,9 @@ def validate_catalog_sources(
     errors = []
     if document.get("publications", []) != expected["publications"]:
         errors.append("explicit publication pointers differ from current configured source")
-    for key in ("schema", "release", "concept_doi", "repository", "honesty_notice", "human_publish_gate", "publications"):
+    if document.get("methods_digests", []) != expected["methods_digests"]:
+        errors.append("Methods Digest pointers differ from current configured source")
+    for key in ("schema", "release", "concept_doi", "repository", "honesty_notice", "human_publish_gate", "publications", "methods_digests"):
         if key in document and document[key] != expected[key]:
             errors.append(f"current catalog configuration field differs: {key}")
     evidence_fields = {"digest", "status", "tier", "integrity", "tags", "caveat", "metadata"}

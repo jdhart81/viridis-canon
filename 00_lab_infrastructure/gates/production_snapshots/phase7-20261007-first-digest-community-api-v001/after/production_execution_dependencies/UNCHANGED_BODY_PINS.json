@@ -1,0 +1,22 @@
+{
+  "digest_metadata.py": {
+    "MetadataHold": "e34a195509b27b08c623db5bcb038322702447ca789ce4de8b2a7bf14754b767",
+    "check": "e52fbd0f1fdf8c486ecd3afcc7aa20bc07d7a643a5066dccb2cb03d8cecb97c8",
+    "closed_payload": "a7c94fbf7e067b855c59e9d33074b4586d2a763e6ae404a607c71ddeb1b7ff97",
+    "creator_projection": "9cd120c9acee694bf5fd8f21d3a44b19405749a6863a503e8aea2949fe147ac5",
+    "exact": "0351084614c9374e244051f3dc40495343ce0c753ba29ae8584ed9ce32b0ae7e",
+    "license_id": "ec2019f10eb834b060fd9bca97e6fbda43d4775b820ab09edeab084b8338949e",
+    "native_metadata": "7ba0195ca7449c97fccff190ef27b916eb5c5847cc2993be3d4a5fbb0eca02c6"
+  },
+  "first_digest_state.py": {
+    "file_from_upload": "a98cb91b793f47e2cdedfb7f3e888a751911a96e80efa5ecafa8581af06a691c",
+    "identifier": "e6ef932f7d2bb11feec8580483c30eb4f94fae5227334e2a073fb4b3682630ad",
+    "private_file_compare_rows": "51223230c359d14165f2f6053f4cf5ea75825bc0ccc89302ece40a3e8d1f1b9c",
+    "private_metadata_expected": "52444cad3b8db228746e7aa0b5e0b28dd29232afd8c5305f4297ab97e714d3ee",
+    "public_legacy_projection": "9b166c4c2b6051fbc00c9ac7a4af3705c3011549b40bb567274a9b806e9bc82f",
+    "public_projection": "daea3779879e1c0cfa0ea348ca260bc9b088efcee16f0d5551e050b48c3f205e",
+    "refresh_totals": "81bab633a4c3950542474e159cf693a42c3262eba32a8dc0463c80ebae13a967",
+    "require_private_source": "384201ca1acfcd44c3f95f560273e52f3fd0fbb2f1ba0fcad0a7df22bd146b90",
+    "require_public_legacy": "40e5573fbdeb652028f75f4e54afd1436ded44a52f806d1e2be97e0221784731"
+  }
+}

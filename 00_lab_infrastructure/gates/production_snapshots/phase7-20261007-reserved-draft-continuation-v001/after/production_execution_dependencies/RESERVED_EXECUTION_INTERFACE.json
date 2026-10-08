@@ -1,0 +1,57 @@
+{
+  "arguments": [
+    "root",
+    "package",
+    "plan_binding",
+    "output",
+    "token"
+  ],
+  "budget_standard": "VRS_SOURCE_BOUND_RESERVED_DRAFT_CONTINUATION_BUDGET_1",
+  "entrypoint": "first_digest_reserved_draft.execute",
+  "envelope_counts": {
+    "continuation_mutations": 7,
+    "mutations": 9,
+    "prior_own_creation_mutations": 1,
+    "prior_own_reservation_mutations": 1
+  },
+  "expected_writes": 7,
+  "keyword_arguments": [
+    "reviewed_driver_sha256"
+  ],
+  "no_automatic_retry": true,
+  "no_create_or_reserve_or_metadata_put": true,
+  "no_ssot_write": true,
+  "original_plan_sha256": "b82e231676b217aee55f04a5202356edcc41171996bc4fcf89f4d88fdb6590bd",
+  "parent_controls_execution": true,
+  "plan_fields": [
+    "standard",
+    "status",
+    "canonical_root",
+    "package_path",
+    "original_plan",
+    "own_context",
+    "reserved_context",
+    "runtime_pins",
+    "record_id",
+    "expected_writes",
+    "prior_daily_attempts"
+  ],
+  "plan_output": "RESERVED_CONTINUATION_PLAN.json",
+  "plan_standard": "VRS-PHASE7-FIRST-DIGEST-RESERVED-DRAFT-PLAN-1",
+  "prior_daily_attempts": 3,
+  "record_id": "23226761",
+  "reserved_context_fields": [
+    "reservation_receipt",
+    "reserved_legacy_receipt",
+    "reserved_native_receipt",
+    "terminal_hold"
+  ],
+  "result_counts": {
+    "continuation_attempts": 7,
+    "prior_other_daily_attempts": 1,
+    "prior_own_create_attempts": 1,
+    "prior_own_reserve_attempts": 1,
+    "writes": 7
+  },
+  "standard": "VRS_SOURCE_ONLY_RESERVED_DRAFT_INTERFACE_1"
+}

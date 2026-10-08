@@ -1,0 +1,29 @@
+{
+  "activated_metadata": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/digest_metadata.py",
+    "sha256": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe"
+  },
+  "all_other_original_function_bodies_byte_identical": true,
+  "allowed_publisher_line_changes": [
+    "require_plan API codec wrapper",
+    "mutation exact request-body hash in operation_id"
+  ],
+  "baseline_uniqueness_consumer_or_writer_changed": false,
+  "canonical_or_git_changes": false,
+  "credentials_read": false,
+  "first_digest_state_sha256": "cbd6aa9034e8d2e775c3b2f3226c9c41dbb39ccce1d7a59150ca52414ca8dfb2",
+  "main_scientific_files_and_public_native_metadata_changed": false,
+  "no_preappend_guard_added": true,
+  "no_production_or_sandbox_http_performed": true,
+  "old_snapshot_freeze": {
+    "path": "/private/tmp/phase7-first-digest-publisher-20261007-v003/FREEZE.json",
+    "sha256": "f4468f5380fae88304c31c61494f43f97551fc279484a7756966a7e91c819c4b"
+  },
+  "original_publisher_sha256": "6b838bc1ab12c0d66ef99e5e51c53181f1e0ba70ceb92b8f8d0506476005b345",
+  "status": "SOURCE_ONLY_SUCCESSOR_NO_RUNTIME_CHANGE",
+  "successor_metadata": {
+    "filename": "digest_metadata.py",
+    "sha256": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe"
+  },
+  "successor_publisher_sha256": "551674f989688a5076d49308044c46e3294421fadf2c205381f20e14544631ba"
+}

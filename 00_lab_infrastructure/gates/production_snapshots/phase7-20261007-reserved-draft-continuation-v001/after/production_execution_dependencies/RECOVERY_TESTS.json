@@ -1,0 +1,30 @@
+{
+  "actual_context_and_complete_initial_guards_precheck": "ACTUAL_INITIAL_SOURCE_PRECHECK.json",
+  "actual_dated_budget_two_plus_eight": true,
+  "all_inherited_21_files_byte_identical": true,
+  "create_calls_in_recovery": 0,
+  "credentials_read": false,
+  "daily_cap_tenth_spent_eleventh_rejected": true,
+  "inherited_tests": 146,
+  "metadata_puts": 0,
+  "new_recovery_tests": 58,
+  "no_ssot_write": true,
+  "no_transport_receipt_echo": true,
+  "own_lifecycle_attempts": 9,
+  "production_module_sha256": {
+    "draft_reservation.py": "5916611b496e4a9b14bdfb27ad3f2c2d6914d7a8f8d546bc23597adbc726fbc9",
+    "first_digest_existing_draft.py": "eec6af9af33ecc65f782f76bcabd48dd9ed0e97038862414f8ab6b3532916f5a"
+  },
+  "production_writes": 0,
+  "protected_or_flat_sources_modified": false,
+  "real_pid_and_whole_native_validator_pass_and_must_fail": true,
+  "real_source_accounting_and_budget": true,
+  "recovery_attempts": 8,
+  "source_adoption_keeps_used_two": true,
+  "source_literal_semantics_identical_without_scanner_exception": true,
+  "standard": "VRS_OFFLINE_EXISTING_DRAFT_RECOVERY_TESTS_1",
+  "status": "PASS_OFFLINE_PROTOCOL_ONLY",
+  "synthetic_gate_and_fake_server_protocol_seams_not_live_evidence": true,
+  "test_log_sha256": "5cb052cac1d28d5f3343b54c0895b682eae56c8d475f4bf73714a906f1bedeac",
+  "total_tests": 204
+}

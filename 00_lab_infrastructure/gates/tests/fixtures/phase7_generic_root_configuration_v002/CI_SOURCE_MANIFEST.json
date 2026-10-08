@@ -1,0 +1,190 @@
+{
+  "actual_admission": false,
+  "expected_cases": 32,
+  "fixtures": [
+    {
+      "path": "test_exact_source_delta.py",
+      "sha256": "ff01f2026960e4be836beb6bdeadbd7e5139b43ebf501de2c59423a67ec252e7"
+    },
+    {
+      "path": "test_merge_copy_references.py",
+      "sha256": "5493f0e727e9adc04e40776b563271d9bd8e5ed3e03a583847f0744eb46a0061"
+    },
+    {
+      "path": "test_root_purpose_specs.py",
+      "sha256": "58df408fae3b318a893831d263a0c621295640b6f58b20d6cbd7d954a1b6635b"
+    },
+    {
+      "path": "test_root_weekly_configuration.py",
+      "sha256": "ab6d579c919d2c22c1b12f62b29a8ea02e6115cf9e52cc90d5420ec0c2924145"
+    }
+  ],
+  "source_rows": [
+    {
+      "from": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-merge-evidence-rebinding/after/root_weekly_configuration.py",
+      "sha256": "29b3e0ee65c1f47084c6035b2151c8dc2be4178182d17c33c557783c7a2c0e99",
+      "to": "root_weekly_configuration.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-merge-evidence-rebinding/after/root_weekly_purpose_specs.py",
+      "sha256": "f10b8b7eb4e8127ea6c79c1a6ce24a73887e7de633b04be24edf732c39a26bbc",
+      "to": "root_weekly_purpose_specs.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/weekly_digest_executor.py",
+      "sha256": "ce284d24ab309650a3f98b19a5edb8fd6c0912d40bb19bb868bb3bec7c6da28d",
+      "to": "repo_sources/production/weekly_digest_executor.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/weekly_digest_boundary.py",
+      "sha256": "7b3c20bbf5d58a1715c69ebe811dd048105a25386f58d9e85218dd83a43b9b94",
+      "to": "repo_sources/production/weekly_digest_boundary.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/weekly_digest_runtime.py",
+      "sha256": "869bae5001fda493a8f7690eddac1cc3eb489329bb8543bf964ef83d4df2479b",
+      "to": "repo_sources/production/weekly_digest_runtime.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/weekly_checkpoint_replay.py",
+      "sha256": "86de42bbe3d216dabefa68e4d79f2896c3f1712b7e6ff5a834d9f9c073eb1530",
+      "to": "repo_sources/production/weekly_checkpoint_replay.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/prepare_weekly_digest_plan.py",
+      "sha256": "8bee9b1123e7cf9fcc860d6a02780c251d548c83bd429574d67e8bdfb49e758f",
+      "to": "repo_sources/production/prepare_weekly_digest_plan.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/invoke_weekly_digest.py",
+      "sha256": "58b90ef7012750274abcf17dcceff9d5de80442798b594962032b1646233df47",
+      "to": "repo_sources/production/invoke_weekly_digest.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/weekly_archive_wait.py",
+      "sha256": "179cd1f897c8f4f68eb3dc2c7473c2fd28e6defef154d88541d9fa27540ed055",
+      "to": "repo_sources/production/weekly_archive_wait.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/weekly_digest_queue.py",
+      "sha256": "24ef923a0dbd0da460d1e322d57c0fa2a706be2ba5964461d24277362889ec59",
+      "to": "repo_sources/production/weekly_digest_queue.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/prepare_weekly_configuration.py",
+      "sha256": "821dabc5aca3da8fbb18dfc9cd5bd063f01538475c0255634e66b81a28371061",
+      "to": "repo_sources/production/prepare_weekly_configuration.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/capture_weekly_inputs.py",
+      "sha256": "987aec5ccb80db8222dc526ee9c361d510b4c8229f68f5bb7f525efed045e415",
+      "to": "repo_sources/production/capture_weekly_inputs.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/weekly_pending_discovery.py",
+      "sha256": "f016dfbfbc875b4effa39862006895d195a4d4cc7f0b360b353914d68f75cfd6",
+      "to": "repo_sources/production/weekly_pending_discovery.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/owned_digest_machine.py",
+      "sha256": "0ed1b5aae979b5db69d001783f77900bf3a9e9c7d9591c27ea08f8aae0396b2b",
+      "to": "repo_sources/production/owned_digest_machine.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/owned_journal_writer.py",
+      "sha256": "711cef68f1b67aed468d5f975535cb218f7bf7cc69fe2cc8bc069e6a526d83a5",
+      "to": "repo_sources/production/owned_journal_writer.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/owned_legacy_preview_aliases.py",
+      "sha256": "0739cf7351501062f8342e376d6e6e0db21096d35170a2a998858e6846cec775",
+      "to": "repo_sources/production/owned_legacy_preview_aliases.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/owned_prior_legacy.py",
+      "sha256": "260ade5bcbb55bd2abe278d25df698cb0de7156ebe68b0ca939045600f3e50ca",
+      "to": "repo_sources/production/owned_prior_legacy.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/owned_weekly_discovery.py",
+      "sha256": "18bb000d76258a3a5a04bbdd85a4274bbc3128bdee370c906515c5aa86653213",
+      "to": "repo_sources/production/owned_weekly_discovery.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/runtime_closure_view.py",
+      "sha256": "1bc540543f0058eeff6e3d5e80bdee20858be387b0a9e36bc11019407747d771",
+      "to": "repo_sources/production/runtime_closure_view.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/production_snapshots/phase7-20261007-existing-draft-doi-recovery-v002/after/production_execution_dependencies/first_digest_publisher.py",
+      "sha256": "551674f989688a5076d49308044c46e3294421fadf2c205381f20e14544631ba",
+      "to": "repo_sources/original/first_digest_publisher.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/production_snapshots/phase7-20261007-existing-draft-doi-recovery-v002/after/production_execution_dependencies/publisher_previews.py",
+      "sha256": "f33df8657ef9a25174af360d54139f536d39d7ee1a463eea68bff4a3c2fc2c22",
+      "to": "repo_sources/original/publisher_previews.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/production_snapshots/phase7-20261007-existing-draft-doi-recovery-v002/after/production_execution_dependencies/publisher_recovery.py",
+      "sha256": "fd75fa40fe52d157b3516bf8a96b9acdd203e1d76fff58c3949f667a6d44153c",
+      "to": "repo_sources/original/publisher_recovery.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/production_snapshots/phase7-20261007-existing-draft-doi-recovery-v002/after/production_execution_dependencies/readonly_account.py",
+      "sha256": "daa36ca7fa4c40d923be5b411cf47463f5ef61162bf7fb6e50b6a27ebb638720",
+      "to": "repo_sources/original/readonly_account.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/production_snapshots/phase7-20261007-existing-draft-doi-recovery-v002/after/production_execution_dependencies/mutation_journal_writer.py",
+      "sha256": "a2a72c49b5bc67a5c7535320bab5b6513b8cbfac3cf6c19d39b2e0c3d5d5c4e8",
+      "to": "repo_sources/original/mutation_journal_writer.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/prepare_first_seven_plan.py",
+      "sha256": "da1856adeb85c36677fa5ff7ab91045bf606c1bebc3bc3943586ad6a38b1d740",
+      "to": "repo_sources/original/prepare_first_seven_plan.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/runtime_successor.py",
+      "sha256": "daeb140dc581104127f2e9eeacf6efb56f016ab381c0202a52ea67a97f183599",
+      "to": "repo_sources/original/runtime_successor.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/nightly_release_checkpoint.py",
+      "sha256": "35c2d8ba078aec91100a3b7cb987cadc7e3d172405eeab48fc08ced232ba2c9f",
+      "to": "repo_sources/purpose/nightly_release_checkpoint.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/prepare_nightly_note.py",
+      "sha256": "f2421402521d9316d61895b84ab033d8e3cc7f744f4b77c15502a445775cc2a2",
+      "to": "repo_sources/purpose/prepare_nightly_note.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/digest_weekly_render.py",
+      "sha256": "03bb0f605d42fcb46a1ef3be68f6bf7e9f5556af4b7805eeefeced39e63c9443",
+      "to": "repo_sources/purpose/digest_weekly_render.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/digest_metadata.py",
+      "sha256": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe",
+      "to": "repo_sources/runtime/digest_metadata.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/digest_weekly_state.py",
+      "sha256": "91fa6a62913f50082f13e6672fcd5ec4468d8a602e49ce259fa6a4555bb02482",
+      "to": "repo_sources/runtime/digest_weekly_state.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/first_digest_state.py",
+      "sha256": "cbd6aa9034e8d2e775c3b2f3226c9c41dbb39ccce1d7a59150ca52414ca8dfb2",
+      "to": "repo_sources/runtime/first_digest_state.py"
+    },
+    {
+      "from": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-generic-weekly-execution/after/root_weekly_configuration.py",
+      "sha256": "51095e7c1d0e5db31eefcc530f0262bbfe6bd96a21f477f8629ca8edf079e1f4",
+      "to": "repo_sources/predecessor/root_weekly_configuration.py"
+    }
+  ],
+  "standard": "SOURCE_ONLY_ROOT_CONFIG_MERGE_REFERENCE_COPY_FIXTURE_CI-1"
+}

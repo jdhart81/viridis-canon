@@ -1,0 +1,33 @@
+{
+  "actual_server_validator_sha256": "ce8ad2002a11938966201a44d2714ee866bb922649cd572e36f09e8cc0f062a1",
+  "actual_transport_sha256": "69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65",
+  "audit_status": "SERVER_MANAGED_READBACK_PASS",
+  "context_bindings": {
+    "api_metadata_payload": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v002/API_METADATA_PAYLOAD.json",
+      "sha256": "7de637798416a70c21da3823fb428c19a37c068d64f3e0bd75b43d99cb1c87dc"
+    },
+    "creation_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v002/transport/003_POST.json",
+      "sha256": "42cd70a797b9b1deb10f96e131e5b4ffbb19b3681fefb6a21a206543f485ab1f"
+    },
+    "initial_legacy_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v002/transport/004_GET.json",
+      "sha256": "d74f1e88801fceab4fdb232cdbb0dca9aed1a52e0ead9421173d503e16eb1a29"
+    },
+    "initial_native_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v002/transport/005_GET.json",
+      "sha256": "1ee2ddcb4f8750562093a7bf7dc8d05263f909de43b68446dc3745b58eccb36b"
+    },
+    "terminal_hold": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v002/RESULT.json",
+      "sha256": "ebb585667a4202752fd80d8746db8f75f05a2d5beddab43bd7d7fe21c7d95267"
+    }
+  },
+  "http_requests": 0,
+  "not_runtime_install_or_execution": true,
+  "own_record_id": "23226761",
+  "standard": "VRS_READONLY_ACTUAL_OWN_CREATION_PURE_PRECHECK_1",
+  "status": "ACTUAL_CONTEXT_AND_UNCHANGED_FULL_INITIAL_GUARDS_PASS",
+  "writes": 0
+}

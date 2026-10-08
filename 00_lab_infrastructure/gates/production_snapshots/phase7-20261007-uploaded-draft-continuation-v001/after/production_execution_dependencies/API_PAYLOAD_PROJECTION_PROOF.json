@@ -1,0 +1,44 @@
+{
+  "activated_flat_metadata_byte_identical": true,
+  "before_payload": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v001/API_METADATA_PAYLOAD.json",
+    "sha256": "a428805f66c1c486a95f17cdc12e3b815149e672de1be7021636d07bd2986002"
+  },
+  "before_request_communities": [
+    {
+      "id": "viridis-canon"
+    }
+  ],
+  "codec_module": "first_digest_state.py",
+  "digest_manifest": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/science_release_queue/digests/2026-W41-first-v002/DIGEST_MANIFEST.json",
+    "sha256": "88102cd5aa2c72b9849b7a67a86da81d1c528684b63400c24f19a934e81ba733"
+  },
+  "manifest_unchanged_for_identity_recovery": true,
+  "mutations_executed_by_this_proposal": 0,
+  "no_claim_or_model_fidelity_change": true,
+  "not_evidence_of_no_residual_draft": true,
+  "old_spent_operation_id": "phase7-digest:2026-W41:88102cd5aa2c72b9:1",
+  "only_changed_request_metadata_field": "communities",
+  "proposed_operation_id": "phase7-digest:2026-W41:88102cd5aa2c72b9:7de637798416a70c21da3823fb428c19a37c068d64f3e0bd75b43d99cb1c87dc:1",
+  "proposed_payload": {
+    "path": "/private/tmp/phase7-community-api-encoding-proposal-20261007-v003/PROPOSED_API_METADATA_PAYLOAD.json",
+    "sha256": "7de637798416a70c21da3823fb428c19a37c068d64f3e0bd75b43d99cb1c87dc"
+  },
+  "proposed_request_communities": [
+    {
+      "identifier": "viridis-canon"
+    }
+  ],
+  "public_and_native_policy_changed": false,
+  "saved_http400": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-publication-v001/transport/003_POST.json",
+    "sha256": "adfee2cc60f4d97efcff3692e9dcdf3dfaf3a7f22c2f34fc34dd50111c723aa1"
+  },
+  "source_before_metadata": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-06/phase-7-science-catchup-v001/review-metadata-successors-v001/metadata_evidence/Run-125/before_metadata.json",
+    "sha256": "6659b27ab9cdc0463953f74e0a54a3c34e84be5583335578e0b1ca3bd9fe3d8a"
+  },
+  "source_public_membership_exact": true,
+  "status": "OFFLINE_API_ENCODING_ONLY"
+}

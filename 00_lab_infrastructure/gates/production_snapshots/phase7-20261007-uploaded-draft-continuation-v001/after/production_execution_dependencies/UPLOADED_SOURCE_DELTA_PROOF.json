@@ -1,0 +1,44 @@
+{
+  "all_predecessor_members_byte_identical": true,
+  "draft_guard_only_order_delta": "complete native validation then source-bound closed legacy alias projection then unchanged complete private validation; independent main-byte downloads remain",
+  "new_modules": [
+    "first_digest_uploaded_draft.py",
+    "uploaded_draft_continuation.py",
+    "legacy_preview_aliases.py"
+  ],
+  "predecessor_freeze_sha256": "41d96e8f52a19b77df80e91579620f9abf00127c7b1987d109eaa824635d32ed",
+  "predecessor_members": 39,
+  "protected_changes": false,
+  "scientific_bytes_changed": false,
+  "server_managed_rule_changes": false,
+  "standard": "VRS_SOURCE_ONLY_UPLOADED_DRAFT_CONTINUATION_DELTA_1",
+  "unchanged_full_line_blocks": [
+    {
+      "bytes": 4023,
+      "end": "            own_publish=deepcopy",
+      "extraction": "entire lines, start containing exact marker inclusive; next end marker line exclusive",
+      "name": "original_native_public_preview_and_legacy",
+      "sha256": "0d7e044504d9a6a7ce9eadc814adb4fceb08e958388c5eade07244d30c751843",
+      "start": "            result['phase']='PUBLISH'"
+    },
+    {
+      "bytes": 2271,
+      "end": "    except Exception as exc:",
+      "extraction": "entire lines, start containing exact marker inclusive; next end marker line exclusive",
+      "name": "original_registration_tail",
+      "sha256": "c149157683e5877088906438d23d12c79125ba660a95a6cb002970ac2a43e39a",
+      "start": "            # This is an input adapter"
+    }
+  ],
+  "unchanged_nested_functions": {
+    "checkpoint": "69a4a9b2b49babb5c82bdf5446f032f0dbd75051b2a4d91b25963db0518b7459",
+    "emit": "675ef078bbab05a7accb6fba2cb6cd92fd28a135b000fb28242aa7435e1212d7",
+    "ev": "2390140c39c5d9d2258b8a47eacd5e404e858c1c0a8812f0dc6572158e63ce8e",
+    "fresh": "7c2a72352e38e1377f3b7a38c38c5d643d29a04476770b6a5facbbfc55ec0aa4",
+    "own_pair": "ff85dfdc1621e61a70f2850326d9754adfacf96954b27e2fc81f7f361350dadd",
+    "preview_context": "fec7069f89814e25ae67dd3885c9e36caeabb34957b9869d53362b8d8c348d17",
+    "read_source": "bbe37013f14845b31c523816ab714666cb5fe93918fa59a9d0c58de763ef15e7",
+    "saved": "63a0eed32397bb483c79d0b688cad885b978156f4593f2b4ed90be53d585d249"
+  },
+  "writes": 0
+}

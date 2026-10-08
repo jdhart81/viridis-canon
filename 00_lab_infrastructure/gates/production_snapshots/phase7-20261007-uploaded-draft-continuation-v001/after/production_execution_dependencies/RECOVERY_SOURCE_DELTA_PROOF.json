@@ -1,0 +1,147 @@
+{
+  "activated_digest_metadata_sha256": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe",
+  "baseline_freeze_sha256": "c8d5c371830c7ade86363e9274dd1a7b9d07bf4ee387ff4ae3c76117eaa41c4f",
+  "byte_identical_inherited_files": [
+    {
+      "bytes": 1121,
+      "filename": "API_ENCODING.md",
+      "sha256": "3364b1f8f9809d32b0a4d41c03ca1d181070837209648e2bd98bbb9cb5bc0134"
+    },
+    {
+      "bytes": 2307,
+      "filename": "API_PAYLOAD_PROJECTION_PROOF.json",
+      "sha256": "f8fc10cea07dbd451289d2c3a82fc33dca7779c519299cb421fe35b37b4146e1"
+    },
+    {
+      "bytes": 3795,
+      "filename": "CLOSURE_CONSUMER_FIXTURE.json",
+      "sha256": "7dd2eb82800f90abe26e9711e6fa9fe776578d21210110f81e4b8b2add37973d"
+    },
+    {
+      "bytes": 57975,
+      "filename": "COMMUNITY_613086_FIXTURE.json",
+      "sha256": "f6d1698839aa97733e4de4959c80f1ee264a4ffd57a968c7a3ec297e3c6e0e1d"
+    },
+    {
+      "bytes": 11720,
+      "filename": "COMMUNITY_API_AUTHORITY.json",
+      "sha256": "00419b079150249b61e4a67b70c242f9e8578b6e8e195e43949fe90d38e15a9d"
+    },
+    {
+      "bytes": 1776,
+      "filename": "INHERITED_SOURCES.json",
+      "sha256": "5e989e5b434086c2159e32c59bdf0c4fbcca51cdfd534cc3238534066ae4b650"
+    },
+    {
+      "bytes": 4128,
+      "filename": "ROOT_EXECUTION_NOTES.md",
+      "sha256": "9872a4a088b28a2431f1940569c576c90ceb32e01896b37552ab52ae456df4a2"
+    },
+    {
+      "bytes": 1432,
+      "filename": "SOURCE_BASELINE_PROOF.json",
+      "sha256": "d1d134e5da2d259b44f44bc973255c26818b10e1b01eb064d502158ab3f1ac5f"
+    },
+    {
+      "bytes": 927,
+      "filename": "SOURCE_CHANGE_PINS.json",
+      "sha256": "58c87fd8b41f2d45479af8a82ac8d35c75c077e883d88e8bd513c20fedd96ca4"
+    },
+    {
+      "bytes": 1163,
+      "filename": "TESTS.json",
+      "sha256": "21fa7bc8b864a93c2b70b8fe7ea68c699e7834add62233016527bf2cf1a5827e"
+    },
+    {
+      "bytes": 1535,
+      "filename": "UNCHANGED_BODY_PINS.json",
+      "sha256": "eaea3a8183734b8a38a7c5b4300e92dcb6572a1b6e099570285d3efa031696b2"
+    },
+    {
+      "bytes": 6511,
+      "filename": "digest_metadata.py",
+      "sha256": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe"
+    },
+    {
+      "bytes": 33037,
+      "filename": "first_digest_publisher.py",
+      "sha256": "551674f989688a5076d49308044c46e3294421fadf2c205381f20e14544631ba"
+    },
+    {
+      "bytes": 12342,
+      "filename": "first_digest_state.py",
+      "sha256": "cbd6aa9034e8d2e775c3b2f3226c9c41dbb39ccce1d7a59150ca52414ca8dfb2"
+    },
+    {
+      "bytes": 6564,
+      "filename": "mutation_journal_writer.py",
+      "sha256": "a2a72c49b5bc67a5c7535320bab5b6513b8cbfac3cf6c19d39b2e0c3d5d5c4e8"
+    },
+    {
+      "bytes": 1493,
+      "filename": "publisher_previews.py",
+      "sha256": "f33df8657ef9a25174af360d54139f536d39d7ee1a463eea68bff4a3c2fc2c22"
+    },
+    {
+      "bytes": 6431,
+      "filename": "publisher_recovery.py",
+      "sha256": "fd75fa40fe52d157b3516bf8a96b9acdd203e1d76fff58c3949f667a6d44153c"
+    },
+    {
+      "bytes": 5948,
+      "filename": "readonly_account.py",
+      "sha256": "daa36ca7fa4c40d923be5b411cf47463f5ef61162bf7fb6e50b6a27ebb638720"
+    },
+    {
+      "bytes": 18997,
+      "filename": "test_community_api_encoding.py",
+      "sha256": "9e312b09b95791f53a2a121f03d94b2dc81738d7fb68964eef834096e9f08d3c"
+    },
+    {
+      "bytes": 32247,
+      "filename": "test_coordinator.py",
+      "sha256": "5647f4811bb449a727222f061cd4e3cb2b262ee45691fbeaff4fb65ea07f3ce1"
+    },
+    {
+      "bytes": 16186,
+      "filename": "test_publisher_guards.py",
+      "sha256": "74f97b06a4f527d7937fa81c02229dab6333c7be5b67e41032042da9052d7951"
+    }
+  ],
+  "new_production_modules": [
+    "draft_reservation.py",
+    "first_digest_existing_draft.py"
+  ],
+  "protected_or_flat_sources_changed": false,
+  "standard": "VRS_SCOPED_SOURCE_ONLY_RECOVERY_DELTA_1",
+  "status": "EXACT_BASELINE_AND_STRICT_BODY_PRESERVATION_PROVEN",
+  "unchanged_execution_functions": [
+    "emit",
+    "checkpoint",
+    "saved",
+    "ev",
+    "preview_context",
+    "read_source",
+    "own_pair",
+    "draft_guard",
+    "fresh"
+  ],
+  "unchanged_execution_segments": [
+    {
+      "end": "require(set(current",
+      "start": "for number,row in enumerate(uploads,1):",
+      "unchanged_sha256": "c28b7220b514c17ea68beb4779066288d3fe8408153009628b399633a57ccd88"
+    },
+    {
+      "end": "require(result['writes']==",
+      "start": "# This is the FIRST authenticated native public GET",
+      "unchanged_sha256": "cb709c33664728d47fb289b09c2bbf0f4a87fa0902f2035b9f15adcf7cd7daa2"
+    },
+    {
+      "end": "except Exception as exc:",
+      "start": "# This is an input adapter",
+      "unchanged_sha256": "c149157683e5877088906438d23d12c79125ba660a95a6cb002970ac2a43e39a"
+    }
+  ],
+  "writes": 0
+}

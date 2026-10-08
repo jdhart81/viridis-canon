@@ -590,8 +590,9 @@ function renderMethodsDigestPointers(digests) {
       const basis = document.createElement("p");
       basis.textContent = `Foundation basis: ${note.foundation_basis}. ${note.disclaimer}`;
       const labels = document.createElement("p");
+      const printedTier = { UNCLASSIFIED: "UNCLASSIFIED (probe resource-limited)", DEPTH_NOT_ASSESSED: "depth not yet assessed" };
       labels.textContent = note.semantic_labels.map((claim) =>
-        `${claim.lean_theorem}: ${claim.semantic_tier}; ${claim.nonvacuity_label}; ${claim.headline_eligible ? "headline eligible" : "appendix/non-headline"}`
+        `${claim.lean_theorem}: ${printedTier[claim.semantic_tier] || claim.semantic_tier}; ${claim.nonvacuity_label}; ${claim.headline_eligible ? "headline eligible" : "appendix/non-headline"}`
       ).join("\n");
       const scope = document.createElement("pre");
       scope.textContent = note.claim_scope;

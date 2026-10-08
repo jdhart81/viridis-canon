@@ -20,6 +20,7 @@ NOTE_FIELDS = {"entity_id", "run_id", "title", "claim_scope", "foundation_basis"
                "disclaimer", "certificate_sha256", "publication_binding_sha256", "semantic_labels"}
 LABEL_FIELDS = {"lean_theorem", "semantic_tier", "nonvacuity_label", "headline_eligible"}
 TIERS = {"DEFINITIONAL", "ROUTINE", "SUBSTANTIVE", "UNCLASSIFIED", "DEPTH_NOT_ASSESSED"}
+TIER_PRINT = {"UNCLASSIFIED": "UNCLASSIFIED (probe resource-limited)", "DEPTH_NOT_ASSESSED": "depth not yet assessed"}
 
 
 def _text(value):

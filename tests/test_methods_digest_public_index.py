@@ -205,6 +205,19 @@ class RegisteredProjectionTests(unittest.TestCase):
         self.assertEqual(pointers,[]);self.assertEqual(len(held),3)
         self.assertTrue(all('metadata changed'in value[0]for value in held.values()))
 
+    def test_missing_optional_probe_or_witness_labels_are_honest_and_nonblocking(self):
+        for tier,printed in [('UNCLASSIFIED','UNCLASSIFIED (probe resource-limited)'),
+                             ('DEPTH_NOT_ASSESSED','depth not yet assessed')]:
+            label=self.current['manifest']['notes'][0]['claim_table'][0]
+            label.update(semantic_tier=tier,nonvacuity_label='certified; nonvacuity not demonstrated',headline_eligible=False)
+            with self.subTest(tier=tier),patch.object(projection,'_registrar',return_value=self.registrar):
+                rendered=index.render_index(self.ledger)
+                digest=json.loads(rendered['METHODS_DIGESTS.json'])['methods_digests'][0]
+                self.assertEqual(digest['notes'][0]['semantic_labels'][0]['semantic_tier'],tier)
+                self.assertEqual(digest['notes'][0]['certifies'],'LISTED_NOTE_SCOPE_ONLY')
+                self.assertIn(printed,rendered['README.md'])
+                self.assertIs(digest['certifies'],False)
+
     def test_public_scope_projection_redacts_local_roots_without_editing_evidence(self):
         claim=self.current['manifest']['notes'][0]['statement_scope'][0];claim['diagnostic']=str(self.root)+'/note'
         with patch.object(projection,'_registrar',return_value=self.registrar):rendered=index.render_index(self.ledger)

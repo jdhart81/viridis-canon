@@ -18,7 +18,7 @@ from claim_binding import CONJECTURE_LABEL, DISCLAIMER, ledger_entities, read_ob
 from publication_gate import evaluate_publication
 from mirror_parity import GENERATION_ROOT
 from scripts.methods_digest_index import registered_digest_pointers, ROUTES as DIGEST_ROUTES
-from canon_core.methods_digests import STANDARD as DIGEST_POINTER_STANDARD
+from canon_core.methods_digests import STANDARD as DIGEST_POINTER_STANDARD, TIER_PRINT
 
 STATUSES = ("MIRROR_DRIFT", "UNSOUND_ENVIRONMENT", "UNSOUND", "HAS_SORRY", "DEBT", "NO_FORMALIZATION", "CLEAN_UNCERTIFIED", "CERTIFIED")
 
@@ -160,7 +160,7 @@ def render_index(
         for note in digest["notes"]:
             lines.append(f"  - {note['run_id']}: listed note scope only; basis {note['foundation_basis']}. {DISCLAIMER}")
             for label in note["semantic_labels"]:
-                lines.append(f"    - `{escape_cell(label['lean_theorem'])}`: {escape_cell(label['semantic_tier'])}; {escape_cell(label['nonvacuity_label'])}.")
+                lines.append(f"    - `{escape_cell(label['lean_theorem'])}`: {escape_cell(TIER_PRINT.get(label['semantic_tier'], label['semantic_tier']))}; {escape_cell(label['nonvacuity_label'])}.")
     if not methods_digests:
         lines.append("No Methods Digest registration currently passes fresh complete readback and per-note admission.")
     lines.extend(["", "## Quarantined source files", ""])

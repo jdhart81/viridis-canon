@@ -1,0 +1,22 @@
+{
+  "files": [
+    {
+      "bytes": 23540,
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/manual_hash_checked_dependencies/e0ebe49d/runtime_successor.py",
+      "role": "e0ebe49d",
+      "sha256": "e0ebe49d167f886f0a159743f177a7963b188a233f03602225979051d3a961d6",
+      "source_path": "/private/tmp/phase7-authority-import-runtime-successor-20261008-v001/runtime_successor.py"
+    },
+    {
+      "bytes": 26716,
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/manual_hash_checked_dependencies/99453df4/runtime_successor.py",
+      "role": "99453df4",
+      "sha256": "99453df4fc6f62cab92e4604765a0ca492a0ad89903a21789a292874c417db5f",
+      "source_path": "/private/tmp/phase7-public-state-runtime-installer-20261008-v003/runtime_successor.py"
+    }
+  ],
+  "runtime_writes": 0,
+  "standard": "VRS-ORDINARY-MANUAL-HASHED-DEPENDENCY-SNAPSHOT-1",
+  "status": "EXACT_SNAPSHOT_NOT_IMPORTED_ALIAS_OR_INSTALLATION",
+  "zenodo_writes": 0
+}

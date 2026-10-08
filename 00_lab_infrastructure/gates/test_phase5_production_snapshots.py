@@ -50,7 +50,17 @@ class PreparedProductionAdaptersTests(unittest.TestCase):
                     target = next(v for v in update['snapshots'] if v['relative_path'] == row['relative_path'])
                     after = successor/target['after_path']
                     self.assertEqual(hashlib.sha256(after.read_bytes()).hexdigest(), target['after_sha256'])
-                    if current.name == 'publication_binding.py':
+                    if current.name == 'corpus_ledger.py':
+                        # The historical frozen bytes remain proven above.
+                        # Its registry alias and every selector/legacy body
+                        # are retained under the exact approved new caller.
+                        from phase7_runtime_update import corpus_preservation, _preserved_functions
+                        baseline=(Path(__file__).parent/'fixtures/registration_baselines/corpus_ledger.py').read_bytes()
+                        proof=corpus_preservation(baseline,current.read_bytes())
+                        self.assertEqual(proof['registry_import_caller']['status'],'EXACT_ORIGINAL_ALIAS_AND_APPROVED_NAMESPACE_WRAPPER')
+                        *_,functions=_preserved_functions(after.read_bytes(),current.read_bytes(),{'preserve_publication_registrations':'_preserve_publication_registrations_source_original'})
+                        self.assertEqual(len(functions),len([n for n in __import__('ast').parse(after.read_bytes()).body if isinstance(n,__import__('ast').FunctionDef)]))
+                    elif current.name == 'publication_binding.py':
                         self.assertEqual(current.read_bytes(), (base/row['after_path']).read_bytes())
                         self.assertEqual(target['before_sha256'],target['after_sha256'])
                     else:

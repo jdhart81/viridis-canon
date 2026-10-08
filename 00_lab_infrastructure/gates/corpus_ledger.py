@@ -314,7 +314,7 @@ def _preserve_publication_registrations_legacy(ledger, previous):
     return ledger
 
 
-def preserve_publication_registrations(ledger, previous):
+def _preserve_publication_registrations_source_original(ledger, previous):
     return methods_digest_registration.preserve(ledger, previous, legacy=_preserve_publication_registrations_legacy)
 
 
@@ -459,6 +459,17 @@ def main():
     print(json.dumps({k: ledger[k] for k in ('file_counts','run_counts','receipt_era','synthesis_count','errors')}, indent=2))
     return 1 if ledger['errors'] else 0
 
+
+
+
+def preserve_publication_registrations(ledger, previous):
+ """Keep every original consumer; compose only the approved private namespace."""
+ rows = previous.get('publication_entities', []) if isinstance(previous, dict) else None
+ if not isinstance(rows, list) or not any(isinstance(v, dict) and v.get('registration_route') in {methods_digest_registration.GROUP_ROUTE, methods_digest_registration.NOTE_ROUTE} for v in rows):
+  return _preserve_publication_registrations_source_original(ledger, previous)
+ from registration_imports import source_session
+ with source_session(Path(ledger['tree_root'])):
+  return _preserve_publication_registrations_source_original(ledger, previous)
 
 if __name__ == '__main__':
     raise SystemExit(main())

@@ -30,7 +30,7 @@ POLICY_MODULE_NAMES = frozenset({
     'probe_observations.py', 'inv9_dependency_scope.py', 'phase7_mutation_baseline.py',
     'methods_digest.py', 'PHASE7_SUPPLEMENTAL_SOURCE_CONTRACTS.json', 'inv9_title_basis.py',
     'methods_digest_registration.py', 'public_metadata_readback.py', 'digest_metadata.py',
-    'phase7_policy_versions.py', 'digest_public_state.py',
+    'phase7_policy_versions.py', 'digest_public_state.py', 'registration_imports.py',
 })
 POLICY_VERSION_NAMES = frozenset({'phase7_audit_policy.py', 'PHASE7_SUPPLEMENTAL_SOURCE_CONTRACTS.json', 'phase7_claim_label_render.py', 'nonvacuity_tier0.py', 'probe_observations.py', 'inv9_dependency_scope.py', 'methods_digest.py', 'publication_gate.py'})
 PROFILES = {'RUN187_SELECTOR': SELECTOR_TARGETS, 'PHASE7_SCOPED_POLICY': POLICY_TARGETS}
@@ -53,6 +53,8 @@ def _bound(root, value):
     return p
 
 def audit_section(raw):
+    from phase7_policy_versions import normalize_authority_plan
+    raw = normalize_authority_plan(raw)
     header = '## Phase 7 — Claude audit of release packet v002 — 2026-10-07'.encode()
     if raw.count(header) != 1:
         raise ValueError('unique approved audit section required')
@@ -127,7 +129,37 @@ def module_preservation(old_raw,new_raw,baseline_sha,renamed,extras):
     return {'status':'ORIGINAL_SELECTOR_AND_LEGACY_BODIES_IDENTICAL','baseline_sha256':baseline_sha,'functions':reports}
 
 def corpus_preservation(old_raw,new_raw):
-    return module_preservation(old_raw,new_raw,CORPUS_SHA256,{'preserve_publication_registrations':'_preserve_publication_registrations_legacy'},{'preserve_publication_registrations'})
+    # The original selector/legacy bodies stay protected by their existing
+    # exact baseline. Only the tested import caller may wrap the old registry
+    # dispatcher; its alias, body and signature are separately byte-pinned.
+    tree = ast.parse(new_raw)
+    functions = {n.name:n for n in tree.body if isinstance(n,ast.FunctionDef)}
+    alias_name = '_preserve_publication_registrations_source_original'
+    extras = {'preserve_publication_registrations'}
+    namespace = alias_name in functions
+    if namespace:
+        extras.add(alias_name)
+    report = module_preservation(old_raw,new_raw,CORPUS_SHA256,{'preserve_publication_registrations':'_preserve_publication_registrations_legacy'},extras)
+    original = next(n for n in ast.parse(old_raw).body if isinstance(n,ast.FunctionDef) and n.name == 'preserve_publication_registrations')
+    expected = {'preserve_publication_registrations':'a1f8d99c93e4d88fede85b47dd241124bc1503ea47916198e1e38139f795d028'}
+    if namespace:
+        expected = {
+            alias_name:'a1f8d99c93e4d88fede85b47dd241124bc1503ea47916198e1e38139f795d028',
+            'preserve_publication_registrations':'25191bd9ad9f9ff7bfb00a9ce92173555e56d1da00a503ee883e15123942d94e',
+        }
+    for name, body_sha in expected.items():
+        node = functions[name]
+        if ast.dump(node.args,include_attributes=False) != ast.dump(original.args,include_attributes=False) or (ast.dump(node.returns,include_attributes=False) if node.returns is not None else None) != (ast.dump(original.returns,include_attributes=False) if original.returns is not None else None) or node.decorator_list:
+            raise ValueError('exact import caller/alias signature required')
+        if hashlib.sha256(_function_body_bytes(new_raw,node)).hexdigest() != body_sha:
+            raise ValueError('exact approved import caller/alias body required')
+    guard_test = ast.dump(ast.parse("__name__ == '__main__'",mode='eval').body,include_attributes=False)
+    guards = [n for n in tree.body if isinstance(n,ast.If) and ast.dump(n.test,include_attributes=False) == guard_test]
+    if len(guards) != 1 or any(functions[name].lineno >= guards[0].lineno for name in expected):
+        raise ValueError('exact import caller must precede the original CLI guard')
+    if namespace:
+        report['registry_import_caller'] = {'status':'EXACT_ORIGINAL_ALIAS_AND_APPROVED_NAMESPACE_WRAPPER','body_sha256':expected}
+    return report
 
 def publication_preservation(original_raw,scoped_raw,new_raw):
     if hashlib.sha256(original_raw).hexdigest()!=PUBLICATION_ORIGINAL_SHA256:raise ValueError('exact original publication baseline required')

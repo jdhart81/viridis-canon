@@ -12,6 +12,7 @@ from typing import Any, Iterable
 from urllib.parse import quote
 
 from .canonical import canonical_digest
+from .coverage_provenance import validate_provenance, equal as provenance_equal
 from .model import ResearchRecord
 from .publications import load_publication_joins
 from .methods_digests import load_methods_digest_joins, validate_methods_digests, require_disjoint_publications
@@ -465,6 +466,10 @@ def build_catalog(
         "publications": publications,
         "methods_digests": methods_digests,
     }
+    # Historical assessment headers require an actual supplied ledger build.
+    # A missing-ledger source-only build remains HOLD and never invents provenance.
+    if "coverage_provenance" in config and ledger is not None:
+        payload["coverage_provenance"] = validate_provenance(payload, config["coverage_provenance"])
     return {**payload, "catalog_digest": canonical_digest(payload)}
 
 
@@ -508,6 +513,13 @@ def validate_catalog(
             ledger, ledger_sha, ledger_error = _load_coverage_ledger(root, config, ledger_path)
         except (OSError, TypeError, ValueError):
             ledger_error = "UNREADABLE_OR_MALFORMED_CATALOG_CONFIG"
+    if "coverage_provenance" in document:
+        try:
+            validate_provenance(document, document["coverage_provenance"])
+            if root is not None and not provenance_equal(document["coverage_provenance"], config.get("coverage_provenance")):
+                raise ValueError("checked coverage provenance differs from closed configuration")
+        except (ValueError, TypeError, KeyError) as exc:
+            errors.append("coverage provenance rejected: " + str(exc))
     for index, record in enumerate(records):
         prefix = f"records[{index}]"
         if not isinstance(record, dict):
@@ -622,6 +634,14 @@ def validate_catalog_sources(
     if set(by_path) != set(current) or len(by_path) != len(actual):
         return ["catalog source inventory differs from current configured sources"]
     errors = []
+    try:
+        config = _load_json(config_path or root / "catalog" / "config.json")
+        if "coverage_provenance" in config or "coverage_provenance" in document:
+            if not provenance_equal(document.get("coverage_provenance"), config.get("coverage_provenance")):
+                raise ValueError("checked coverage provenance differs from closed configuration")
+            validate_provenance(document, document.get("coverage_provenance"))
+    except (OSError, ValueError, TypeError, KeyError) as exc:
+        errors.append("coverage provenance rejected: " + str(exc))
     if document.get("publications", []) != expected["publications"]:
         errors.append("explicit publication pointers differ from current configured source")
     if document.get("methods_digests", []) != expected["methods_digests"]:

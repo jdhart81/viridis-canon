@@ -24,9 +24,14 @@ class DispatchTests(unittest.TestCase):
  def test_doi_audit_every_original_function_exact(self):self.preserve_functions('doi_audit.py',a,{'build_audit':'_build_audit_legacy'})
  def test_public_reader_every_original_function_exact(self):self.preserve_functions('public_metadata_readback.py',r,{'read_record':'_read_record_legacy','readback':'_readback_legacy'})
  def test_every_new_wrapper_is_one_direct_return(self):
-  rows=[(c,'preserve_publication_registrations','preserve'),(p,'evaluate_publication','evaluate_publication'),(a,'build_audit','augment_audit'),(r,'read_record','public_label_read_record'),(r,'readback','public_label_readback')]
+  rows=[(c,'_preserve_publication_registrations_source_original','preserve'),(p,'evaluate_publication','evaluate_publication'),(a,'build_audit','augment_audit'),(r,'read_record','public_label_read_record'),(r,'readback','public_label_readback')]
   for module,name,target in rows:
    n,_=raw_function(Path(module.__file__).read_bytes(),name);self.assertEqual(len(n.body),1);self.assertIsInstance(n.body[0],ast.Return);call=n.body[0].value;self.assertIsInstance(call,ast.Call);self.assertEqual(ast.unparse(call.func),'methods_digest_registration.'+target)
+ def test_current_corpus_namespace_wrapper_and_old_alias_are_exact(self):
+  from phase7_runtime_update import corpus_preservation
+  raw=Path(c.__file__).read_bytes();proof=corpus_preservation((FIXTURES/'corpus_ledger.py').read_bytes(),raw)
+  self.assertEqual(proof['registry_import_caller']['status'],'EXACT_ORIGINAL_ALIAS_AND_APPROVED_NAMESPACE_WRAPPER')
+  self.assertEqual(proof['registry_import_caller']['body_sha256'],{'_preserve_publication_registrations_source_original':'a1f8d99c93e4d88fede85b47dd241124bc1503ea47916198e1e38139f795d028','preserve_publication_registrations':'25191bd9ad9f9ff7bfb00a9ce92173555e56d1da00a503ee883e15123942d94e'})
  def test_corpus_delegates_original_function_and_inputs(self):
   ledger={};previous={'publication_entities':[]}
   with patch.object(g,'preserve',return_value='result')as f:self.assertEqual(c.preserve_publication_registrations(ledger,previous),'result');f.assert_called_once_with(ledger,previous,legacy=c._preserve_publication_registrations_legacy)
@@ -44,4 +49,4 @@ class DispatchTests(unittest.TestCase):
   artifact=Path('/nonexistent/closed-unit-fixture');ledger={'tree_root':'/nonexistent/closed-unit-fixture','file_entities':[],'run_entities':[],'publication_entities':[]}
   self.assertEqual(p.evaluate_publication(artifact,ledger),p._evaluate_publication_original_legacy(artifact,ledger))
  def test_same_body_missing_named_legacy_dispatch_fails_structural_rule(self):
-  raw=Path(c.__file__).read_bytes().replace(b'legacy=_preserve_publication_registrations_legacy',b'legacy=lambda ledger, previous: ledger');n,_=raw_function(raw,'preserve_publication_registrations');call=n.body[0].value;arg=next(k.value for k in call.keywords if k.arg=='legacy');self.assertNotIsInstance(arg,ast.Name)
+  raw=Path(c.__file__).read_bytes().replace(b'legacy=_preserve_publication_registrations_legacy',b'legacy=lambda ledger, previous: ledger');n,_=raw_function(raw,'_preserve_publication_registrations_source_original');call=n.body[0].value;arg=next(k.value for k in call.keywords if k.arg=='legacy');self.assertNotIsInstance(arg,ast.Name)

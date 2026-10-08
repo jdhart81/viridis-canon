@@ -10,6 +10,122 @@
     "concept_doi": {
       "type": "string"
     },
+    "coverage_provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "certifies": {
+          "const": false
+        },
+        "current_entities": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "entity_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "entity_type": {
+                "enum": [
+                  "METHODS_DIGEST_GROUP",
+                  "METHODS_DIGEST_NOTE"
+                ]
+              },
+              "row_sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "snapshot_sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "entity_id",
+              "entity_type",
+              "row_sha256",
+              "snapshot_sha256"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "current_snapshots": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "minLength": 1,
+                "pattern": "^[^/\\\\:]+$",
+                "type": "string"
+              },
+              "sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "sha256"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "historical_publication_entity_ids": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "historical_record_ids": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "historical_snapshot": {
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "minLength": 1,
+              "pattern": "^[^/\\\\:]+$",
+              "type": "string"
+            },
+            "sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "sha256"
+          ],
+          "type": "object"
+        },
+        "source_prefix": {
+          "const": "viridis-canon"
+        },
+        "standard": {
+          "const": "CATALOG_COVERAGE_PROVENANCE_1"
+        }
+      },
+      "required": [
+        "standard",
+        "historical_snapshot",
+        "current_snapshots",
+        "source_prefix",
+        "historical_record_ids",
+        "historical_publication_entity_ids",
+        "current_entities",
+        "certifies"
+      ],
+      "type": "object"
+    },
     "honesty_notice": {
       "minLength": 1,
       "type": "string"
@@ -17,11 +133,221 @@
     "human_publish_gate": {
       "const": true
     },
+    "methods_digests": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "certifies": {
+            "const": false
+          },
+          "disclaimer": {
+            "const": "logical validity given the model, not empirical validation of its assumptions"
+          },
+          "doi": {
+            "pattern": "^10\\.5281/zenodo\\.[1-9][0-9]*$",
+            "type": "string"
+          },
+          "entity_id": {
+            "pattern": "^publication:methods-digest:[0-9]{4}-W(?:0[1-9]|[1-4][0-9]|5[0-3]):[1-9][0-9]*$",
+            "type": "string"
+          },
+          "notes": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "certificate_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "certifies": {
+                  "const": "LISTED_NOTE_SCOPE_ONLY"
+                },
+                "claim_scope": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "disclaimer": {
+                  "const": "logical validity given the model, not empirical validation of its assumptions"
+                },
+                "entity_id": {
+                  "pattern": "^publication:methods-note:[0-9]{4}-W(?:0[1-9]|[1-4][0-9]|5[0-3]):Run-[0-9]{3,}$",
+                  "type": "string"
+                },
+                "foundation_basis": {
+                  "enum": [
+                    "INDEPENDENT",
+                    "THEOREM",
+                    "CONDITIONAL_PL_PD"
+                  ]
+                },
+                "publication_binding_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "run_id": {
+                  "pattern": "^Run-[0-9]{3,}$",
+                  "type": "string"
+                },
+                "semantic_labels": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "headline_eligible": {
+                        "type": "boolean"
+                      },
+                      "lean_theorem": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "nonvacuity_label": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "semantic_tier": {
+                        "enum": [
+                          "DEFINITIONAL",
+                          "ROUTINE",
+                          "SUBSTANTIVE",
+                          "UNCLASSIFIED",
+                          "DEPTH_NOT_ASSESSED"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "lean_theorem",
+                      "semantic_tier",
+                      "nonvacuity_label",
+                      "headline_eligible"
+                    ],
+                    "type": "object"
+                  },
+                  "minItems": 1,
+                  "type": "array"
+                },
+                "title": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "certificate_sha256",
+                "certifies",
+                "claim_scope",
+                "disclaimer",
+                "entity_id",
+                "foundation_basis",
+                "publication_binding_sha256",
+                "run_id",
+                "semantic_labels",
+                "title"
+              ],
+              "type": "object"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "public_readback_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "publication_binding_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "record_id": {
+            "pattern": "^[1-9][0-9]*$",
+            "type": "string"
+          },
+          "registration_receipt_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "release_week": {
+            "pattern": "^[0-9]{4}-W(?:0[1-9]|[1-4][0-9]|5[0-3])$",
+            "type": "string"
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "certifies",
+          "disclaimer",
+          "doi",
+          "entity_id",
+          "notes",
+          "public_readback_sha256",
+          "publication_binding_sha256",
+          "record_id",
+          "registration_receipt_sha256",
+          "release_week",
+          "title"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
     "publication_scope": {
       "enum": [
         "public",
         "workspace"
       ]
+    },
+    "publications": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "certificate_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "claim_scope": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "disclaimer": {
+            "const": "logical validity given the model, not empirical validation of its assumptions"
+          },
+          "doi": {
+            "pattern": "^10\\.5281/zenodo\\.[1-9][0-9]*$",
+            "type": "string"
+          },
+          "entity_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "public_readback_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "publication_binding_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "record_id": {
+            "pattern": "^[1-9][0-9]*$",
+            "type": "string"
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "certificate_sha256",
+          "claim_scope",
+          "disclaimer",
+          "doi",
+          "entity_id",
+          "public_readback_sha256",
+          "publication_binding_sha256",
+          "record_id",
+          "title"
+        ],
+        "type": "object"
+      },
+      "type": "array"
     },
     "records": {
       "items": {
@@ -57,6 +383,10 @@
             "minLength": 1,
             "type": "string"
           },
+          "source_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
           "source_url": {
             "anyOf": [
               {
@@ -67,10 +397,6 @@
                 "const": ""
               }
             ]
-          },
-          "source_sha256": {
-            "pattern": "^[0-9a-f]{64}$",
-            "type": "string"
           },
           "status": {
             "enum": [
@@ -125,216 +451,6 @@
     },
     "stats": {
       "type": "object"
-    },
-    "publications": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "entity_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "title": {
-            "type": "string",
-            "minLength": 1
-          },
-          "claim_scope": {
-            "type": "string",
-            "minLength": 1
-          },
-          "record_id": {
-            "type": "string",
-            "pattern": "^[1-9][0-9]*$"
-          },
-          "doi": {
-            "type": "string",
-            "pattern": "^10\\.5281/zenodo\\.[1-9][0-9]*$"
-          },
-          "disclaimer": {
-            "const": "logical validity given the model, not empirical validation of its assumptions"
-          },
-          "public_readback_sha256": {
-            "type": "string",
-            "pattern": "^[0-9a-f]{64}$"
-          },
-          "publication_binding_sha256": {
-            "type": "string",
-            "pattern": "^[0-9a-f]{64}$"
-          },
-          "certificate_sha256": {
-            "type": "string",
-            "pattern": "^[0-9a-f]{64}$"
-          }
-        },
-        "required": [
-          "certificate_sha256",
-          "claim_scope",
-          "disclaimer",
-          "doi",
-          "entity_id",
-          "public_readback_sha256",
-          "publication_binding_sha256",
-          "record_id",
-          "title"
-        ]
-      }
-    },
-    "methods_digests": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "entity_id": {
-            "type": "string",
-            "pattern": "^publication:methods-digest:[0-9]{4}-W(?:0[1-9]|[1-4][0-9]|5[0-3]):[1-9][0-9]*$"
-          },
-          "record_id": {
-            "type": "string",
-            "pattern": "^[1-9][0-9]*$"
-          },
-          "doi": {
-            "type": "string",
-            "pattern": "^10\\.5281/zenodo\\.[1-9][0-9]*$"
-          },
-          "release_week": {
-            "type": "string",
-            "pattern": "^[0-9]{4}-W(?:0[1-9]|[1-4][0-9]|5[0-3])$"
-          },
-          "title": {
-            "type": "string",
-            "minLength": 1
-          },
-          "certifies": {
-            "const": false
-          },
-          "disclaimer": {
-            "const": "logical validity given the model, not empirical validation of its assumptions"
-          },
-          "registration_receipt_sha256": {
-            "type": "string",
-            "pattern": "^[0-9a-f]{64}$"
-          },
-          "public_readback_sha256": {
-            "type": "string",
-            "pattern": "^[0-9a-f]{64}$"
-          },
-          "publication_binding_sha256": {
-            "type": "string",
-            "pattern": "^[0-9a-f]{64}$"
-          },
-          "notes": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "type": "object",
-              "additionalProperties": false,
-              "properties": {
-                "entity_id": {
-                  "type": "string",
-                  "pattern": "^publication:methods-note:[0-9]{4}-W(?:0[1-9]|[1-4][0-9]|5[0-3]):Run-[0-9]{3,}$"
-                },
-                "run_id": {
-                  "type": "string",
-                  "pattern": "^Run-[0-9]{3,}$"
-                },
-                "title": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "claim_scope": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "foundation_basis": {
-                  "enum": [
-                    "INDEPENDENT",
-                    "THEOREM",
-                    "CONDITIONAL_PL_PD"
-                  ]
-                },
-                "certifies": {
-                  "const": "LISTED_NOTE_SCOPE_ONLY"
-                },
-                "disclaimer": {
-                  "const": "logical validity given the model, not empirical validation of its assumptions"
-                },
-                "certificate_sha256": {
-                  "type": "string",
-                  "pattern": "^[0-9a-f]{64}$"
-                },
-                "publication_binding_sha256": {
-                  "type": "string",
-                  "pattern": "^[0-9a-f]{64}$"
-                },
-                "semantic_labels": {
-                  "type": "array",
-                  "minItems": 1,
-                  "items": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                      "lean_theorem": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "semantic_tier": {
-                        "enum": [
-                          "DEFINITIONAL",
-                          "ROUTINE",
-                          "SUBSTANTIVE",
-                          "UNCLASSIFIED",
-                          "DEPTH_NOT_ASSESSED"
-                        ]
-                      },
-                      "nonvacuity_label": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "headline_eligible": {
-                        "type": "boolean"
-                      }
-                    },
-                    "required": [
-                      "lean_theorem",
-                      "semantic_tier",
-                      "nonvacuity_label",
-                      "headline_eligible"
-                    ]
-                  }
-                }
-              },
-              "required": [
-                "certificate_sha256",
-                "certifies",
-                "claim_scope",
-                "disclaimer",
-                "entity_id",
-                "foundation_basis",
-                "publication_binding_sha256",
-                "run_id",
-                "semantic_labels",
-                "title"
-              ]
-            }
-          }
-        },
-        "required": [
-          "certifies",
-          "disclaimer",
-          "doi",
-          "entity_id",
-          "notes",
-          "public_readback_sha256",
-          "publication_binding_sha256",
-          "record_id",
-          "registration_receipt_sha256",
-          "release_week",
-          "title"
-        ]
-      }
     }
   },
   "required": [

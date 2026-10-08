@@ -1,6 +1,7 @@
 """Closed merged-source policy-version dispatch; fresh validation, never cached PASS."""
 from __future__ import annotations
 import builtins,hashlib,json,re,sys,types
+from contextlib import contextmanager
 from pathlib import Path
 import methods_digest as d
 
@@ -9,6 +10,45 @@ NAMES={'phase7_audit_policy.py','PHASE7_SUPPLEMENTAL_SOURCE_CONTRACTS.json','pha
 CHECKS={'report-only-consumers','verify-catalog','verify-functions','verify','deposit-verify','lean-build-current','lean-build-p0','gitleaks'}
 
 class VersionHold(ValueError):pass
+
+APPENDIX_HEADER='## First Methods Digest audit + catalog provenance decision — 2026-10-08'
+APPENDIX_SHA256='a8732599e0aeadec82f6ab27871158b119bc3d96dc6131606b30df9dcf7ba370'
+SIMPLIFICATION_HEADER='## SIMPLIFICATION — weekly push restored — 2026-10-07 (Justin directive; supersedes conflicting Phase 7 items)'
+SIMPLIFICATION_SHA256='483fddbd90eb1782911db43de477c161d35214fd033061a83a87b9dec503652a'
+DECOUPLING_HEADER='## Phase 7 Gate 3 resolution: decouple probes from witnesses — 2026-10-07 (evening)'
+DECOUPLING_SHA256='ba56d7254744843b9e7512b61f0d80161cf33b366f076d516aa451ba21c8325a'
+SUFFIX=b'\n---\n'
+
+def _authority_section(raw,header):
+ token=header.encode()
+ if raw.count(token)!=1:raise ValueError('HOLD_UNIQUE_APPROVED_AUTHORITY_SECTION')
+ start=raw.index(token);end=raw.find(b'\n## ',start+len(token))
+ return start,len(raw)if end<0 else end
+
+def normalize_authority_plan(raw):
+ """Strip one boundary only after every new and old section byte pin passes."""
+ if not isinstance(raw,bytes):raise ValueError('HOLD_AUTHORITY_PLAN_BYTES')
+ token=APPENDIX_HEADER.encode()
+ if token not in raw:return raw
+ a,b=_authority_section(raw,APPENDIX_HEADER)
+ if b!=len(raw):raise ValueError('HOLD_UNKNOWN_AUTHORITY_APPENDIX')
+ appendix=raw[a:b]
+ if hashlib.sha256(appendix).hexdigest()!=APPENDIX_SHA256:
+  if not(appendix.endswith(SUFFIX)and hashlib.sha256(appendix[:-len(SUFFIX)]).hexdigest()==APPENDIX_SHA256):raise ValueError('HOLD_APPROVED_AUTHORITY_APPENDIX_BYTES')
+ c,e=_authority_section(raw,SIMPLIFICATION_HEADER);d,f=_authority_section(raw,DECOUPLING_HEADER)
+ if not(d<c<a):raise ValueError('HOLD_APPROVED_AUTHORITY_APPENDIX_ORDER')
+ if hashlib.sha256(raw[d:f]).hexdigest()!=DECOUPLING_SHA256:raise ValueError('HOLD_OLD_DECOUPLING_SCIENTIFIC_BYTES')
+ section=raw[c:e]
+ if hashlib.sha256(section).hexdigest()==SIMPLIFICATION_SHA256:return raw
+ if not(section.endswith(SUFFIX)and hashlib.sha256(section[:-len(SUFFIX)]).hexdigest()==SIMPLIFICATION_SHA256):raise ValueError('HOLD_OLD_MINIMAL_SCIENTIFIC_BYTES')
+ return raw[:e-len(SUFFIX)]+raw[e:]
+
+def authority_plan_view(path,reader):
+ return normalize_authority_plan(reader(Path(path)))
+
+def authority_framing_proof(path,reader):
+ path=Path(path);raw=reader(path);view=normalize_authority_plan(raw)
+ return {'standard':'VRS_PHASE7_EXACT_APPROVED_AUTHORITY_FRAMING_1','path':str(path),'actual_sha256':hashlib.sha256(raw).hexdigest(),'view_sha256':hashlib.sha256(view).hexdigest(),'removed_bytes':len(raw)-len(view),'only_exact_terminal_markdown_delimiter':len(raw)-len(view)in(0,len(SUFFIX)),'approved_appendix_sha256':APPENDIX_SHA256,'old_scientific_section_sha256':SIMPLIFICATION_SHA256,'certifies':False,'new_review_fabricated':False,'writes':0}
 
 def _read(root,v,seen):
  if not isinstance(v,dict)or set(v)!={'path','sha256'}:raise VersionHold('closed version source binding required')
@@ -92,14 +132,35 @@ def implementation_for_note(note,root,current_module,*,catalog_consumer=current_
  module._phase7_version_source_inputs=dict(seen)
  return module
 
+@contextmanager
+def _exact_authority_framing(module,root):
+ path=Path(root).resolve(strict=True)/'reports/verification-coverage/GAME_PLAN.md'
+ if module.d is d:raise VersionHold('framing requires isolated exact archival reader')
+ original=module.d.read_regular;actual=original(path);view=normalize_authority_plan(actual)
+ def framed(value):
+  if Path(value)==path:
+   fresh=original(path)
+   if fresh!=actual:raise VersionHold('authority bytes changed during archival framing')
+   return view
+  return original(value)
+ module.d.read_regular=framed
+ try:yield
+ finally:
+  changed=module.d.read_regular is not framed
+  module.d.read_regular=original
+  if changed:raise VersionHold('archival framing reader identity changed')
+  if original(path)!=actual:raise VersionHold('authority bytes changed before archival return')
+
 def require_note_publication_bound(note,root,authority,current_module):
  module=implementation_for_note(note,root,current_module)
  if module is current_module:return None
- result=module.require_note_publication_bound(note,root,authority)
+ with _exact_authority_framing(module,root):
+  result=module.require_note_publication_bound(note,root,authority)
  _finish(module._phase7_version_source_inputs);return result
 
 def prepare_publication_binding(note,root,authority,current_module,at_utc=None):
  module=implementation_for_note(note,root,current_module)
  if module is current_module:return None
- result=module.prepare_publication_binding(note,root,authority,at_utc=at_utc)
+ with _exact_authority_framing(module,root):
+  result=module.prepare_publication_binding(note,root,authority,at_utc=at_utc)
  _finish(module._phase7_version_source_inputs);return result

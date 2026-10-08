@@ -14,7 +14,7 @@ class Fixture:
   for i in range(22):
    name=('corpus_ledger.py','nightly_coverage.py')[i] if i<2 else 'unchanged_%02d.py'%i
    rel=m.GATE_PREFIX+name;old=('old '+name).encode();new=('new '+name).encode() if i<2 else old
-   if i==0:new=b"import json\nSETTING = 'UNCHANGED'\ndef certificate_lookup(ledger):\n    return ledger\ndef preserve_publication_registrations(ledger, previous):\n    return {'ledger': ledger, 'previous': previous}\n"
+   if i==0:new=b"import json\nSETTING = 'UNCHANGED'\ndef certificate_lookup(ledger):\n    return ledger\ndef preserve_publication_registrations(ledger, previous):\n    return {'ledger': ledger, 'previous': previous}\n"+b"if __name__ == '__main__':\n    raise SystemExit(0)\n"
    self.write(rel,new);source='evidence/source/'+name;self.write(source,new);self.live[rel]=new
    self.base.append({'relative_path':rel,'after_sha256':hashlib.sha256(old).hexdigest()})
    self.rows.append({'path':rel,'before_sha256':hashlib.sha256(old).hexdigest(),'after_sha256':m.sha(self.root/rel),'source':self.bound(source)})
@@ -124,7 +124,11 @@ class PolicyFixture(Fixture):
   rel=m.GATE_PREFIX+'premise_declaration.py';name='premise_declaration.py';new=b'new approved premise checker fixture';self.write(rel,new);self.write('evidence/source/'+name,new);self.rows[2]['after_sha256']=m.sha(self.root/rel);self.rows[2]['source']=self.bound('evidence/source/'+name)
   self.pr={'number':58,'state':'MERGED','baseRefName':'main','url':'https://github.com/jdhart81/viridis-canon/pull/58','mergeCommit':{'oid':'b'*40},'statusCheckRollup':[{'name':n,'status':'COMPLETED','conclusion':'SUCCESS'}for n in sorted(m.REQUIRED_CHECKS)],'files':[{'path':'00_lab_infrastructure/gates/premise_declaration.py','sha':gitblob(new)}]}
   old_corpus=(self.root/(m.GATE_PREFIX+'corpus_ledger.py')).read_bytes()
-  new_corpus=old_corpus.replace(b'def preserve_publication_registrations(',b'def _preserve_publication_registrations_legacy(')+b'\ndef preserve_publication_registrations(ledger, previous):\n    from methods_digest_registration import preserve_methods_digest_registrations\n    return preserve_methods_digest_registrations(ledger, previous, legacy=_preserve_publication_registrations_legacy)\n'
+  guard=b"if __name__ == '__main__':\n    raise SystemExit(0)\n"
+  self.asserted_original_corpus_cli=old_corpus.endswith(guard)
+  if not self.asserted_original_corpus_cli:raise ValueError('synthetic original CLI fixture changed')
+  wrapper=b'\ndef preserve_publication_registrations(ledger, previous):\n    return methods_digest_registration.preserve(ledger, previous, legacy=_preserve_publication_registrations_legacy)\n'
+  new_corpus=old_corpus[:-len(guard)].replace(b'def preserve_publication_registrations(',b'def _preserve_publication_registrations_legacy(')+wrapper+guard
   cr=self.rows[0];self.write(cr['path'],new_corpus);self.write('evidence/policy_sources/corpus_ledger.py',new_corpus);cr['after_sha256']=m.sha(self.root/cr['path']);cr['source']=self.bound('evidence/policy_sources/corpus_ledger.py');self.pr['files'].append({'path':'00_lab_infrastructure/gates/corpus_ledger.py','sha':gitblob(new_corpus)})
   original_eval=self.pub_original[self.pub_original.index(b'def evaluate_publication'):]
   self.pub_new=self.pub_scoped.replace(b'def evaluate_publication(',b'def _evaluate_publication_scoped_legacy(')+b'\n'+original_eval.replace(b'def evaluate_publication(',b'def _evaluate_publication_original_legacy(')+b'\ndef evaluate_publication(artifact, ledger):\n    return methods_digest_registration.evaluate_publication(artifact, ledger, legacy=_evaluate_publication_original_legacy, scoped_legacy=_evaluate_publication_scoped_legacy)\n'

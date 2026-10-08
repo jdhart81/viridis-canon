@@ -150,7 +150,8 @@ class RegisteredProjectionTests(unittest.TestCase):
                 'exact_source_signature':'theorem conditional_bound (h_landauer : PhysicalPremise.Landauer P) : bound',
                 'explicit_binders_and_hypotheses':'h_landauer : PhysicalPremise.Landauer P',
                 'ambient_source_context':[{'source_text':'variable P'}],'conclusion':'bound',
-                'model_fidelity':{'defined':['P'],'empirically_identified':[]},'printed_disclaimer':DISCLAIMER}]
+                'model_fidelity':{'defined':['P'],'empirically_identified':[]},'printed_disclaimer':DISCLAIMER,
+                'evidence_class':'FORMALLY_VERIFIED','scope_status':'PROPOSAL_ONLY_NOT_APPROVED'}]
             notes.append({'run_id':n['run_id'],'path':str(folder),'metadata_binding':{'filename':'metadata.json','sha256':hashlib.sha256(metadata.read_bytes()).hexdigest()},
                           'statement_scope':claims,'claim_table':n['semantic_labels'],'foundation_basis':n['foundation_basis']})
             children.append({'id':n['entity_id'],'run_id':n['run_id'],'certificate':{'sha256':n['certificate_sha256']},'publication_binding':{'sha256':n['publication_binding_sha256']}})
@@ -167,13 +168,17 @@ class RegisteredProjectionTests(unittest.TestCase):
             entity_rows=lambda root,binding,ledger,consume: (self.assertEqual(consume(root,binding,ledger),self.current) or deepcopy(self.rows)))
 
     def test_group_and_shared_doi_notes_render_without_claim_gate_or_aggregate_canon(self):
+        before=deepcopy(self.current)
         with patch.object(projection,'_registrar',return_value=self.registrar),patch.object(index,'evaluate_publication',side_effect=AssertionError('no legacy intake for digest rows')):
             rendered=index.render_index(self.ledger)
         self.consume.assert_called_once_with(self.root.resolve(),self.binding,self.ledger)
         canon=json.loads(rendered['CANON_INDEX.json']);self.assertEqual(canon['entries'],[])
         digest=canon['methods_digests'][0];self.assertIs(digest['certifies'],False)
         self.assertEqual(len(digest['notes']),2)
-        self.assertEqual(json.loads(digest['notes'][0]['claim_scope']),self.current['manifest']['notes'][0]['statement_scope'])
+        expected=[{k:v for k,v in claim.items() if k not in {'evidence_class','scope_status'}}
+                  for claim in self.current['manifest']['notes'][0]['statement_scope']]
+        self.assertEqual(json.loads(digest['notes'][0]['claim_scope']),expected)
+        self.assertEqual(self.current,before)
         self.assertEqual(digest['notes'][0]['semantic_labels'],self.current['manifest']['notes'][0]['claim_table'])
         self.assertEqual(digest['title'],'Exact digest title')
         self.assertEqual(json.loads(rendered['METHODS_DIGESTS.json'])['methods_digests'],canon['methods_digests'])
@@ -217,6 +222,25 @@ class RegisteredProjectionTests(unittest.TestCase):
                 self.assertEqual(digest['notes'][0]['certifies'],'LISTED_NOTE_SCOPE_ONLY')
                 self.assertIn(printed,rendered['README.md'])
                 self.assertIs(digest['certifies'],False)
+
+    def test_current_definitional_label_has_no_conflicting_historical_scope_status(self):
+        label=self.current['manifest']['notes'][0]['claim_table'][0]
+        label.update(semantic_tier='DEFINITIONAL',headline_eligible=False)
+        before=deepcopy(self.current)
+        with patch.object(projection,'_registrar',return_value=self.registrar):
+            rendered=index.render_index(self.ledger)
+        digest=json.loads(rendered['METHODS_DIGESTS.json'])['methods_digests'][0]
+        note=digest['notes'][0]
+        self.assertEqual(note['semantic_labels'],[label])
+        self.assertEqual(note['certifies'],'LISTED_NOTE_SCOPE_ONLY')
+        self.assertIs(digest['certifies'],False)
+        claims=json.loads(note['claim_scope'])
+        expected=[{k:v for k,v in claim.items() if k not in {'evidence_class','scope_status'}}
+                  for claim in before['manifest']['notes'][0]['statement_scope']]
+        self.assertEqual(claims,expected)
+        for text in ('FORMALLY_VERIFIED','PROPOSAL_ONLY_NOT_APPROVED'):
+            self.assertNotIn(text,note['claim_scope'])
+        self.assertEqual(self.current,before)
 
     def test_public_scope_projection_redacts_local_roots_without_editing_evidence(self):
         claim=self.current['manifest']['notes'][0]['statement_scope'][0];claim['diagnostic']=str(self.root)+'/note'

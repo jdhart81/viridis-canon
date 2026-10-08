@@ -73,9 +73,13 @@ def registered_digest_pointers(root: Path, ledger: dict) -> tuple[list[dict], di
             children = []
             for child in receipt["children"]:
                 note = notes[child["run_id"]]
-                # Preserve every printed claim field, including exact Lean
-                # binders, ambient premises and model-fidelity tags.
-                scope = json.dumps(note["statement_scope"], indent=2, ensure_ascii=False, sort_keys=True)
+                # Fresh registration and claim_table own current status. Keep
+                # scientific scope fields verbatim, without stale administrative
+                # approval/classification fields from the frozen claim map.
+                public_scope = [{key: deepcopy(value) for key, value in claim.items()
+                    if key not in {"evidence_class", "scope_status"}}
+                    for claim in note["statement_scope"]]
+                scope = json.dumps(public_scope, indent=2, ensure_ascii=False, sort_keys=True)
                 children.append({"entity_id": child["id"], "run_id": child["run_id"],
                     "title": _title(root, note), "claim_scope": scope,
                     "foundation_basis": note["foundation_basis"],

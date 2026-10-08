@@ -1,0 +1,167 @@
+{
+  "certifies": false,
+  "expected_tests": 23,
+  "fixtures": [
+    {
+      "path": "BEFORE_phase7_policy_versions.py",
+      "sha256": "9eb67790edfab0760601133a3994dc1dbb24f7aa60c44661804525abf330859f"
+    },
+    {
+      "path": "CI_ISOLATED_RUNNER.py",
+      "sha256": "ca3da31400f61e5755c2d887bf2222207e90b7ac949fca7eba5e08f776bf2d42"
+    },
+    {
+      "path": "certificate_inspection.py",
+      "sha256": "a7e3d2fcd167865b129529fce7e3599acf045a190cbc2107e87f39b0a3623ec8"
+    },
+    {
+      "path": "claim_binding.py",
+      "sha256": "d0bac6e9739c41c5cc40cc57b932f1d15ac7a86f457a0ee3fecdc0ef7a2b7240"
+    },
+    {
+      "path": "digest_metadata.py",
+      "sha256": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe"
+    },
+    {
+      "path": "file_byte_metadata.py",
+      "sha256": "f12973cddc3109670282291cc97637f80a8172bf4104b77e2a3f5659c002e587"
+    },
+    {
+      "path": "first_digest_state.py",
+      "sha256": "cbd6aa9034e8d2e775c3b2f3226c9c41dbb39ccce1d7a59150ca52414ca8dfb2"
+    },
+    {
+      "path": "inv9_dependency_scope.py",
+      "sha256": "1b47d3ced31f7f18ffd33e69f1e0855c3935e02b1fb29a9ba3a86ac2e098c3b3"
+    },
+    {
+      "path": "inv9_title_basis.py",
+      "sha256": "5c9981fe2536a6cde3c8a1d2e7cdc9684c1369aeb145be4fda635c8af8dfec81"
+    },
+    {
+      "path": "manuscript_structure.py",
+      "sha256": "3177a850997c760ca65e23416116fa4920cf35f238753f63fa63d3a7e4b300a9"
+    },
+    {
+      "path": "methods_digest.py",
+      "sha256": "5fcdc53f68d008357e0aef1dbb93f74695aa91119792f78151a8c61a0a9e05e5"
+    },
+    {
+      "path": "methods_digest_registration.py",
+      "sha256": "0fc7393010cbc96d74b1fb6135cfb78cea88dd8ba692ba44c511242d5a89bdf9"
+    },
+    {
+      "path": "mirror_parity.py",
+      "sha256": "77033a9303519bc47493f4efc2b0872fff805baa9aa35aa61e34467f66336e80"
+    },
+    {
+      "path": "nonvacuity_tier0.py",
+      "sha256": "2c8400e23696d5cf112a0644ff33187de74a82ec5c65eaf4545d5796f439e526"
+    },
+    {
+      "path": "phase7_audit_policy.py",
+      "sha256": "053f9aa1184116ec59f381737649a3b09113f50f7c79fb8d6328a079aa8c19c7"
+    },
+    {
+      "path": "phase7_claim_label_render.py",
+      "sha256": "b80b1c7c32bddbf176f08fd5250a7a4c1e610a4848de075397397d7106786141"
+    },
+    {
+      "path": "phase7_mutation_baseline.py",
+      "sha256": "f48dfff1cbb3ca72ce88766f0d9e56664bb7fea17a0f60d8a5f60e21095f7145"
+    },
+    {
+      "path": "phase7_runtime_update.py",
+      "sha256": "be2cfd111adf99173dfaef4c1c11313e480464af81ebff354aab8bb4b2594889"
+    },
+    {
+      "path": "premise_declaration.py",
+      "sha256": "e00404ad578efa7dcd9299a5d947be594f36c15e53fd44479d22d578caab5137"
+    },
+    {
+      "path": "probe_observations.py",
+      "sha256": "ebbe0ffff1570acec84bcaf18570e69c9a66938cee932999d9a6729208abb4de"
+    },
+    {
+      "path": "publication_binding.py",
+      "sha256": "80e5e44e5f331cc50685cce2a9cedbc4d2a4f8a95928c8d6313dd69300327522"
+    },
+    {
+      "path": "publication_gate.py",
+      "sha256": "4166653c08e8e06e20fe004592df56152c407ab36b8003ecd3380ee8bf94a0f1"
+    },
+    {
+      "path": "publication_preservation.py",
+      "sha256": "4fb48f40fd76cae1f973dca66253813bfd1c8edcdffa07c02945d28ddf170e2b"
+    },
+    {
+      "path": "release_packet.py",
+      "sha256": "972cc9816e3f2d1c3f93120666358421c9163535afd143a6f401725fc3545357"
+    },
+    {
+      "path": "science_release_queue.py",
+      "sha256": "04e50fe03aa7e2e5858fd1c4523632c1fff36a2f2f5c8833f80460c198f42e1d"
+    },
+    {
+      "path": "science_release_stage.py",
+      "sha256": "f531c2c71b6b146fdacf8193877abbad953e6e2900891134d724d80e339000c6"
+    },
+    {
+      "path": "scoped_release.py",
+      "sha256": "a6e5fe9b1213d91987a5cf125d1f591e643e3e68eb5bac05492196b77e7e3ea8"
+    },
+    {
+      "path": "scoped_statement_text.py",
+      "sha256": "8a820419f94f295485a65f00f7ea3c207604a0d159639bce64628aeefbb72a03"
+    },
+    {
+      "path": "server_managed_fields.py",
+      "sha256": "ce8ad2002a11938966201a44d2714ee866bb922649cd572e36f09e8cc0f062a1"
+    },
+    {
+      "path": "static_pregate.py",
+      "sha256": "659e2d66a45af24a846a5fafe26564ccf713492d0d06be0fb8172e961e862153"
+    },
+    {
+      "path": "test_fixtures/digest_public_state_legacy_b5545.py",
+      "sha256": "b5545e923092f281bb865c24c8ff0b311aa9a2d290592da5e3ad3ef0d537cf38"
+    },
+    {
+      "path": "test_fixtures/digest_successor_state.py",
+      "sha256": "11a173b3781301cb6070ebc5d37763f5aca8558972351abfb2cf546c73369567"
+    },
+    {
+      "path": "test_nightly_release_checkpoint.py",
+      "sha256": "9e7253b6e1802b133ff629d72f6dcfc752fe03ca1feb111fd0b4d4f87504728e"
+    },
+    {
+      "path": "theorem_coverage.py",
+      "sha256": "62bb9e87b10b8ef317616e4b906878d03f06752ab4e7d2dff90bdf9dfb27e99d"
+    },
+    {
+      "path": "zenodo_transport.py",
+      "sha256": "69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65"
+    }
+  ],
+  "network_writes": 0,
+  "parent_sources": [
+    {
+      "path": "PINNED_engine3_align_challenge.py",
+      "sha256": "d8d06e582d80bddae73dbb68a23a866ed8cac241f5c9780c3bc779a50fcd4870",
+      "target": "engine3_align_challenge.py"
+    }
+  ],
+  "production": {
+    "digest_public_state.py": "7c9497ed6001cb6aa797fe39ab5198fde72653c6e406a14cccde420094b862bc",
+    "digest_weekly_render.py": "03bb0f605d42fcb46a1ef3be68f6bf7e9f5556af4b7805eeefeced39e63c9443",
+    "digest_weekly_state.py": "91fa6a62913f50082f13e6672fcd5ec4468d8a602e49ce259fa6a4555bb02482",
+    "nightly_minimal_policy.py": "cedfe7250f0013cd65268b8a0eff3ff551b12225c792857e6cd42e553b6e445b",
+    "nightly_release_checkpoint.py": "35c2d8ba078aec91100a3b7cb987cadc7e3d172405eeab48fc08ced232ba2c9f",
+    "phase7_policy_versions.py": "567841ad67a8fe8c8239be3bc5b922eb73975fc2650086e2b0c0cfdd6e4b0576",
+    "prepare_nightly_note.py": "f2421402521d9316d61895b84ab033d8e3cc7f744f4b77c15502a445775cc2a2"
+  },
+  "standard": "VRS-PHASE7-PORTABLE-SOURCE-ONLY-CI-1",
+  "test_modules": [
+    "test_nightly_release_checkpoint"
+  ]
+}

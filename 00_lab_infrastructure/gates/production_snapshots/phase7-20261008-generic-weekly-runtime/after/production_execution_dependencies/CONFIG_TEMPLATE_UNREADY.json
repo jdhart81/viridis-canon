@@ -1,0 +1,58 @@
+{
+  "canonical_root": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0",
+  "expected_head_sha": null,
+  "expected_merge_commit": null,
+  "expected_publication_projection_sha256": "5b8efd2dcddf4598a6df65eb06e8637f5388374dc5ace78598d281f2713bc312",
+  "expected_ssot_sha256": "aa86b0cb2351a23397091e8ba488bdd5aedd25d05a46b604109a18e66ad636f7",
+  "live_protected_before": null,
+  "merged_commit": null,
+  "merged_pr": null,
+  "merged_tree": null,
+  "output": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-08/first-digest-audited-catalog-backlog-v001/generic-weekly-runtime-install-v001",
+  "predecessor_close": {
+    "path": "reports/verification-coverage/2026-10-08/first-digest-audited-catalog-backlog-v001/same-concept-runtime-close-v002/CLOSE_EXECUTION_RECEIPT.json",
+    "sha256": "fb9e32ef0bcd813565d1be9b9f2fa7ea6543d549b0ee2b1a5c044cba49decb58"
+  },
+  "predecessor_closure": {
+    "path": "reports/verification-coverage/2026-10-08/first-digest-audited-catalog-backlog-v001/same-concept-runtime-close-v002/CURRENT_RUNTIME_CLOSURE.json",
+    "sha256": "da2521bf0e568c7631b962b6bb735dc69c9ad1ebbb0ec2c2335a2a891f831ac0"
+  },
+  "predecessor_runtime": {
+    "path": "reports/verification-coverage/2026-10-08/first-digest-audited-catalog-backlog-v001/same-concept-runtime-close-v002/RUNTIME_UPDATE_RECEIPT.json",
+    "sha256": "e9436a04b60db9db8af37eccbe6cbb29055e159540755505f3d0d1df351b2272"
+  },
+  "reviewed_driver_sha256": "db1273bb1b345f80e41bc45f94aefa53e56a3be8d06afc28121e8404876cf0e7",
+  "reviewed_source_proof": null,
+  "source_gates": null,
+  "source_hashes": {
+    "PHASE7_SUPPLEMENTAL_SOURCE_CONTRACTS.json": "11b1cdee4022471d16fd667e9a62ad4960f6b0c3f9f60d9c8ce6017b8c7a880d",
+    "closeout_streak.py": "9663c006df997e368373f64e0f10e324661893d7b9246ea92a6c8dfec0b7ec3b",
+    "corpus_ledger.py": "497aa58f686c48389ef5b4d62e00fa2621cdf45eff45ace4d8e79202076e94cf",
+    "digest_metadata.py": "e5c5cd3b7ca80d9c31c4adcafacc9bd357e440965a25baed291c99f70a4781fe",
+    "digest_public_state.py": "7c9497ed6001cb6aa797fe39ab5198fde72653c6e406a14cccde420094b862bc",
+    "digest_public_state_legacy_b5545.py": "b5545e923092f281bb865c24c8ff0b311aa9a2d290592da5e3ad3ef0d537cf38",
+    "digest_successor_state.py": "11a173b3781301cb6070ebc5d37763f5aca8558972351abfb2cf546c73369567",
+    "digest_weekly_state.py": "91fa6a62913f50082f13e6672fcd5ec4468d8a602e49ce259fa6a4555bb02482",
+    "doi_audit.py": "72a78e3b305fdf78114414e6dce0a13594d09628f5ea06e04b098dbd49f6a743",
+    "first_digest_state.py": "cbd6aa9034e8d2e775c3b2f3226c9c41dbb39ccce1d7a59150ca52414ca8dfb2",
+    "inv9_dependency_scope.py": "1b47d3ced31f7f18ffd33e69f1e0855c3935e02b1fb29a9ba3a86ac2e098c3b3",
+    "inv9_title_basis.py": "5c9981fe2536a6cde3c8a1d2e7cdc9684c1369aeb145be4fda635c8af8dfec81",
+    "methods_digest.py": "5fcdc53f68d008357e0aef1dbb93f74695aa91119792f78151a8c61a0a9e05e5",
+    "methods_digest_registration.py": "0fc7393010cbc96d74b1fb6135cfb78cea88dd8ba692ba44c511242d5a89bdf9",
+    "nightly_coverage.py": "fd9a4fe406445f3181391ca83f462c4889fb3392c4c93d5ac0d54838c223484f",
+    "nightly_minimal_policy.py": "cedfe7250f0013cd65268b8a0eff3ff551b12225c792857e6cd42e553b6e445b",
+    "nonvacuity_tier0.py": "2c8400e23696d5cf112a0644ff33187de74a82ec5c65eaf4545d5796f439e526",
+    "phase7_audit_policy.py": "91910a8ca95f4af920c175bb8f20e368f897f8eca7e5526dfd0a1ab0fde6cd7e",
+    "phase7_claim_label_render.py": "b80b1c7c32bddbf176f08fd5250a7a4c1e610a4848de075397397d7106786141",
+    "phase7_mutation_baseline.py": "f48dfff1cbb3ca72ce88766f0d9e56664bb7fea17a0f60d8a5f60e21095f7145",
+    "phase7_policy_versions.py": "567841ad67a8fe8c8239be3bc5b922eb73975fc2650086e2b0c0cfdd6e4b0576",
+    "phase7_runtime_update.py": "5c1bb16662c194f402ca60ec65b1cabcfa96811df553c4c3024f083177e769b1",
+    "premise_declaration.py": "e00404ad578efa7dcd9299a5d947be594f36c15e53fd44479d22d578caab5137",
+    "probe_observations.py": "ebbe0ffff1570acec84bcaf18570e69c9a66938cee932999d9a6729208abb4de",
+    "public_metadata_readback.py": "8365c8d2474c4b1bb3e7da8c332da61bd6378694ccfba0629084cff9512b3b30",
+    "publication_gate.py": "4166653c08e8e06e20fe004592df56152c407ab36b8003ecd3380ee8bf94a0f1",
+    "registration_imports.py": "37fd17b61a869c8343d5cd035dbbf87f05ed259a9aa3ddb3a5d83da8796fc707",
+    "scoped_release.py": "a6e5fe9b1213d91987a5cf125d1f591e643e3e68eb5bac05492196b77e7e3ea8"
+  },
+  "standard": "VRS-PHASE7-GENERIC-WEEKLY-RUNTIME-SUCCESSOR-CONFIG-1"
+}

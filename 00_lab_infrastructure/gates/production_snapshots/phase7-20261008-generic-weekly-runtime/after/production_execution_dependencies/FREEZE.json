@@ -1,0 +1,92 @@
+{
+  "certifies": false,
+  "files": [
+    {
+      "bytes": 35931,
+      "filename": "BEFORE_phase7_runtime_update.py",
+      "sha256": "e37ed3d0fe05aa4ecd178c9fb0c3bbec0c49eba203c89bdfa4d2e07ee851e121"
+    },
+    {
+      "bytes": 4469,
+      "filename": "CONFIG_TEMPLATE_UNREADY.json",
+      "sha256": "6506c030efc57cb9d66722a9699ac4469621b0fdd63e53dd71f8f9c532fabe0e"
+    },
+    {
+      "bytes": 144991,
+      "filename": "CURRENT_PREDECESSOR_CAPTURE.json",
+      "sha256": "86a34868b4840df4d7028690fbb8f4fb6d80ea8f7a48e20d2444f5f6a764ec06"
+    },
+    {
+      "bytes": 1624,
+      "filename": "MANUAL_SOURCE_DEPENDENCIES.json",
+      "sha256": "5c39daad319478df50ed724e64a723399f26d3b4c4d5a0b26fc7ff24d01a2b2b"
+    },
+    {
+      "bytes": 4203,
+      "filename": "ROOT_HANDOFF.md",
+      "sha256": "37753e16328949491c5435aaa2b288d8355b46fc96aa45af0f65542162f214cc"
+    },
+    {
+      "bytes": 4864,
+      "filename": "SOURCE_PRESERVATION.json",
+      "sha256": "ced31d0da987fbdd7e3a0789ac441fc35824ec0b3fe374e426472d8322b34b45"
+    },
+    {
+      "bytes": 767,
+      "filename": "TEST_RESULT.json",
+      "sha256": "01689e53fc8d7f9097105260e5354e3af8601ff36501d4637b7c31d37d46e151"
+    },
+    {
+      "bytes": 11694,
+      "filename": "generic_prospective_catalog.py",
+      "sha256": "2dca14f6efceb8141aa3e2d92d2e41cf44e4ec5b318a74a02caba047304d5529"
+    },
+    {
+      "bytes": 25794,
+      "filename": "proposed/digest_public_state.py",
+      "sha256": "7c9497ed6001cb6aa797fe39ab5198fde72653c6e406a14cccde420094b862bc"
+    },
+    {
+      "bytes": 58900,
+      "filename": "proposed/digest_weekly_state.py",
+      "sha256": "91fa6a62913f50082f13e6672fcd5ec4468d8a602e49ce259fa6a4555bb02482"
+    },
+    {
+      "bytes": 26004,
+      "filename": "proposed/nightly_minimal_policy.py",
+      "sha256": "cedfe7250f0013cd65268b8a0eff3ff551b12225c792857e6cd42e553b6e445b"
+    },
+    {
+      "bytes": 14377,
+      "filename": "proposed/phase7_policy_versions.py",
+      "sha256": "567841ad67a8fe8c8239be3bc5b922eb73975fc2650086e2b0c0cfdd6e4b0576"
+    },
+    {
+      "bytes": 35955,
+      "filename": "proposed/phase7_runtime_update.py",
+      "sha256": "5c1bb16662c194f402ca60ec65b1cabcfa96811df553c4c3024f083177e769b1"
+    },
+    {
+      "bytes": 34996,
+      "filename": "runtime_successor.py",
+      "sha256": "db1273bb1b345f80e41bc45f94aefa53e56a3be8d06afc28121e8404876cf0e7"
+    },
+    {
+      "bytes": 15746,
+      "filename": "test_generic_prospective_catalog.py",
+      "sha256": "4af9572dbbee9fa49ae563810f9a1c232b8b46bb03a23235cfcdf323276858f3"
+    },
+    {
+      "bytes": 13032,
+      "filename": "test_generic_runtime_successor.py",
+      "sha256": "05dfe2756a1d88ff6fae4a96db68607ba0be0df623f4d4bb8ed8fb257cae5a2e"
+    }
+  ],
+  "runtime_writes_executed": 0,
+  "runtime_writes_prepared": 5,
+  "ssot_writes_executed": 0,
+  "standard": "VRS-PHASE7-GENERIC-WEEKLY-RUNTIME-SUCCESSOR-FREEZE-1",
+  "status": "FROZEN_REVIEWABLE_NOT_EXECUTED",
+  "test_count": 75,
+  "zenodo_writes": 0
+}

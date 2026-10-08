@@ -1,0 +1,22 @@
+{
+  "all16_frozen_source_members_byte_exact": true,
+  "all35_full_publication_rows_preserved": true,
+  "controls_exact": true,
+  "fixture_projection_sha256": "d69703db071e3bc4dab10bb1a74efb630319836b3f24edd8aa9bfb71a643c931",
+  "historical_actual_raw_sha256": "aa86b0cb2351a23397091e8ba488bdd5aedd25d05a46b604109a18e66ad636f7",
+  "no_row_relabeling": true,
+  "omitted": [
+    "file_entities",
+    "file_counts",
+    "unrelated corpus fields"
+  ],
+  "production_ledger_not_changed": true,
+  "publication_entities_sha256": "7cc09968cbf4531f2b1d7040b3b7e97c4b9bb88dcaa33ad49aa56329fb9ff69f",
+  "retained_keys": [
+    "enforcement_activation",
+    "premise_declaration_cutover_run",
+    "publication_entities"
+  ],
+  "source_freeze_sha256": "954ece9f443fcc51769f3b15e8eacf6297f860a2dfc656b30fcfda9d940fe746",
+  "status": "TEST_ONLY_EXACT35_AND_CONTROLS_PROJECTION_NOT_LEDGER_OR_ADMISSION"
+}

@@ -1,0 +1,19 @@
+{
+  "command": "production Python6.10 -B -m unittest discover -s . -p test*.py -q",
+  "covers": [
+    "all75 actual predecessor bytes and exact35 rows",
+    "closed five-source own Git blob proof",
+    "all44 original prospective-reader tests",
+    "all five real generic compiled function profiles",
+    "partial/wrong/foreign/missing material and namespace failures",
+    "relative protected receipt representation",
+    "exact catalog4 and archive/source preservation",
+    "typed counters",
+    "real recomputation required by current closure consumer"
+  ],
+  "log_sha256": "6f3b615cdf3f6133b82431ca9a1c293d1b578732311b2538ab3dcce5c4611aec",
+  "production_writes": 0,
+  "status": "75_FOCUSED_TESTS_PASS_NOT_ACTIVATION",
+  "test_count": 75,
+  "zenodo_writes": 0
+}

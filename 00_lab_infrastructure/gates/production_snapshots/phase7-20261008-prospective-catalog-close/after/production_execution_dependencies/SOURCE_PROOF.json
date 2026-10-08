@@ -1,0 +1,29 @@
+{
+  "actual_saved35_replay": "PENDING_FINAL_FROZEN_SOURCE_READ_ONLY_REPLAY",
+  "all35_full_rows_and_controls_mandatory": true,
+  "allowlist_changed": false,
+  "api_writes": 0,
+  "certifies": false,
+  "default_after_cas_disk_read_mandatory": true,
+  "fixed_compiler_loader_sha256": "99453df4fc6f62cab92e4604765a0ca492a0ad89903a21789a292874c417db5f",
+  "fixed_compiler_profile": "future-annotations; every typed recursive code field and exact defaults/closures compared",
+  "global_archival_framing_changed": false,
+  "global_registry_methods_reader_changed": false,
+  "methods_digest_sha256": "5fcdc53f68d008357e0aef1dbb93f74695aa91119792f78151a8c61a0a9e05e5",
+  "original_driver_sha256": "daeb140dc581104127f2e9eeacf6efb56f016ab381c0202a52ea67a97f183599",
+  "own_source_merge": "PENDING_ACTUAL_OWN_EXACT_HEAD_CHECKS_AND_COMPLETE_MERGED_BLOB_PROOF",
+  "policy_registry_sha256": "9eb67790edfab0760601133a3994dc1dbb24f7aa60c44661804525abf330859f",
+  "portable_tests": 52,
+  "portable_tests_status": "PASS",
+  "protected_verifier_changed": false,
+  "runtime_validator_sha256": "e37ed3d0fe05aa4ecd178c9fb0c3bbec0c49eba203c89bdfa4d2e07ee851e121",
+  "runtime_writes": 0,
+  "scientific_acceptance_changed": false,
+  "source_hashes": {
+    "prospective_catalog_close.py": "c329825ea3e9f498acf639edb29fed91ae7ab4376cce1d3319666648adc2a7e3",
+    "test_prospective_catalog_close.py": "3cdfa79ed2ce2cf8c62e4b9e6869cdb3231cb68f9c5776879243ff13400e34f0"
+  },
+  "ssot_writes": 0,
+  "standard": "VRS-PROSPECTIVE-CATALOG-CLOSE-ORDINARY-SOURCE-PROOF-1",
+  "status": "EXACT_CALLER_COMPOSITION_FROZEN_PENDING_OWN_MERGE_AND_ACTUAL_REPLAY"
+}

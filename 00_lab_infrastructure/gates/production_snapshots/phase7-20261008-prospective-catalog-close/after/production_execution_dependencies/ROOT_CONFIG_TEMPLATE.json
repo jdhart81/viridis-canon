@@ -1,0 +1,24 @@
+{
+  "canonical_root": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0",
+  "expected_before_ssot_sha256": "0bf5ab5595f027c6d569abb5a018d6e9333f99805f739f45ed21ac904db8c43b",
+  "merged_commit": {
+    "path": "PENDING_REAL_OWN_MERGED_COMMIT",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "merged_pr": {
+    "path": "PENDING_REAL_OWN_MERGED_METADATA",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "merged_tree": {
+    "path": "PENDING_REAL_OWN_MERGED_COMPLETE_TREE",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "original_install": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-08/first-digest-audited-catalog-backlog-v001/same-concept-runtime-install-v001",
+  "output": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-08/first-digest-audited-catalog-backlog-v001/same-concept-runtime-close-v002",
+  "protected_after": {
+    "path": "PENDING_CANONICAL_RELATIVE_ACTUAL_FRESH_PROTECTED22_AFTER",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "reviewed_helper_sha256": "c329825ea3e9f498acf639edb29fed91ae7ab4376cce1d3319666648adc2a7e3",
+  "standard": "VRS-SAME-CONCEPT-PROSPECTIVE-CLOSE-CONFIG-1"
+}

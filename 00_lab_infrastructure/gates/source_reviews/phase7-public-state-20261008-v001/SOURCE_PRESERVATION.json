@@ -1,0 +1,60 @@
+{
+  "allowlist_changed": false,
+  "before_registrar_sha256": "66cc830f4814ee943c616d754d61cff9be5a65607e0a26ec4f91acd23ce630d7",
+  "before_runtime_helper_sha256": "ae9af64d0940ce2a764a2dd9be61951211b2bf668b957aedf88563301d704194",
+  "certifies": false,
+  "changed_registration_bodies": [
+    "assemble_evidence",
+    "_check_public"
+  ],
+  "is_independent_approval": false,
+  "production_operations": 0,
+  "protected_verifier_changed": false,
+  "publication_v006_history": "HOLD_AFTER_PUBLISH remains immutable; own genuine HTTP202 is provenance, not clearance",
+  "runtime_helper_delta": "closed POLICY_MODULE_NAMES adds digest_public_state.py only; every function body byte-identical",
+  "runtime_installations": 0,
+  "scientific_and_parity_bodies_changed": false,
+  "source_base_commit": "e149b119f6d6520ee8684a2635aeac03a8ef1764",
+  "source_bindings": {
+    "digest_public_state.py": "ef948b111ce73ac0075bd235602074f36e02fc0ee8eee9f3a842f672737539f5",
+    "methods_digest_registration.py": "0fc7393010cbc96d74b1fb6135cfb78cea88dd8ba692ba44c511242d5a89bdf9",
+    "phase7_runtime_update.py": "be2cfd111adf99173dfaef4c1c11313e480464af81ebff354aab8bb4b2594889",
+    "test_digest_public_state.py": "d7d4fa6d2d185709d93ecbd2abff7e13041808def327fd0053d4d8e18f0c66a9",
+    "test_methods_digest_registration.py": "d21b0f17a5336c5a5906e77712599b3144d1cea8430fe1fe347b46cb50e047cc",
+    "testdata/digest_public_state/methods_digest_registration_v1.txt": "66cc830f4814ee943c616d754d61cff9be5a65607e0a26ec4f91acd23ce630d7",
+    "testdata/digest_public_state/phase7_runtime_update_before.txt": "ae9af64d0940ce2a764a2dd9be61951211b2bf668b957aedf88563301d704194"
+  },
+  "source_hashes": {
+    "digest_public_state.py": "ef948b111ce73ac0075bd235602074f36e02fc0ee8eee9f3a842f672737539f5",
+    "methods_digest_registration.py": "0fc7393010cbc96d74b1fb6135cfb78cea88dd8ba692ba44c511242d5a89bdf9",
+    "phase7_runtime_update.py": "be2cfd111adf99173dfaef4c1c11313e480464af81ebff354aab8bb4b2594889"
+  },
+  "ssot_writes": 0,
+  "standard": "VRS-PHASE7-PUBLIC-STATE-SOURCE-PRESERVATION-1",
+  "status": "SOURCE_PRESERVATION_TESTS_PASS",
+  "unchanged_registration_bodies": [
+    "RegistrationHold",
+    "_time",
+    "_binding",
+    "_read",
+    "_object",
+    "_finish",
+    "_own_receipt",
+    "_record_id",
+    "_package",
+    "current_digest",
+    "_snapshot_digest",
+    "_context",
+    "source_custom_fields",
+    "_children",
+    "prepare_registration",
+    "require_registration",
+    "entity_rows",
+    "preserve",
+    "evaluate_publication",
+    "augment_audit",
+    "_get_record",
+    "public_label_read_record",
+    "public_label_readback"
+  ]
+}

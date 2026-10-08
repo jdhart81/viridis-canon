@@ -1,6 +1,7 @@
 """Exact source-only uploaded continuation and portable protocol closure."""
 import hashlib,json,os,subprocess,sys,unittest
 from pathlib import Path
+from test_digest_historical_adapter import historical_protocol
 FREEZE='934a460b1796495616f4c12cecdaf31d0159b78f5008555e0d784846bd282e0c'
 PREDECESSOR='41d96e8f52a19b77df80e91579620f9abf00127c7b1987d109eaa824635d32ed'
 DRIVER='284a4ed37232cdae6b695e5eaab9a35ddc616511791f10cc45f2aaf8db12eb25'
@@ -20,5 +21,5 @@ class UploadedContinuationSnapshotTests(unittest.TestCase):
   for p in new.glob('*.json'):
    obj=json.loads(p.read_bytes());self.assertFalse(obj.get('environment')=='zenodo.org'and obj.get('method')in{'POST','PUT','DELETE'},p.name)
  def test_portable_complete_accounting_and_five_write_protocol(self):
-  gate,old,new=self.paths();env=os.environ.copy();env['PHASE7_TEST_GATES']=str(gate);env['PYTHONDONTWRITEBYTECODE']='1';v=subprocess.run([sys.executable,'-B','-m','unittest','discover','-s',str(new),'-p','test*.py'],cwd=new,env=env,capture_output=True,text=True,timeout=600);self.assertEqual(v.returncode,0,v.stdout+v.stderr);self.assertIn('Ran 277 tests',v.stderr)
+  gate,old,new=self.paths();env=os.environ.copy();env['PHASE7_TEST_GATES']=str(gate);env['PYTHONDONTWRITEBYTECODE']='1';v=historical_protocol(gate,new);self.assertEqual(v.returncode,0,v.stdout+v.stderr);self.assertIn('Ran 277 tests',v.stderr)
 if __name__=='__main__':unittest.main()

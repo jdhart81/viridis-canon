@@ -1,6 +1,7 @@
 """Immutable API-spelling successor and portable offline execution regressions."""
 import ast,hashlib,json,os,subprocess,sys,unittest
 from pathlib import Path
+from test_digest_historical_adapter import historical_protocol
 OLD_FREEZE='f4468f5380fae88304c31c61494f43f97551fc279484a7756966a7e91c819c4b'
 NEW_FREEZE='c8d5c371830c7ade86363e9274dd1a7b9d07bf4ee387ff4ae3c76117eaa41c4f'
 OLD_DRIVER='6b838bc1ab12c0d66ef99e5e51c53181f1e0ba70ceb92b8f8d0506476005b345'
@@ -44,7 +45,7 @@ class FirstDigestCommunitySuccessorTests(unittest.TestCase):
    if name!='initial_expected':self.assertEqual(after[name],body,name)
  def test_portable_offline_successor_protocol_and_all_must_fail_cases(self):
   gates,old,new=self.paths();env=os.environ.copy();env['PHASE7_TEST_GATES']=str(gates);env['PYTHONDONTWRITEBYTECODE']='1'
-  result=subprocess.run([sys.executable,'-B','-m','unittest','discover','-s',str(new),'-p','test*.py'],cwd=new,env=env,capture_output=True,text=True,timeout=600)
+  result=historical_protocol(gates,new)
   self.assertEqual(result.returncode,0,result.stdout+result.stderr);self.assertIn('Ran 146 tests',result.stderr)
 
 if __name__=='__main__':unittest.main()

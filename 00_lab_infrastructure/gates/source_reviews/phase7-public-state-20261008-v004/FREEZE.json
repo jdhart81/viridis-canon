@@ -1,0 +1,18 @@
+{
+  "certifies": false,
+  "files": [
+    {
+      "bytes": 5304,
+      "filename": "README.md",
+      "sha256": "2d019a1e29cd0235eb8f52b2496b2a34ef2b5aaeae0efb43f78687ef58ede22e"
+    },
+    {
+      "bytes": 6474,
+      "filename": "SOURCE_PRESERVATION.json",
+      "sha256": "8252a22064233a87da66c4a52bd79bcec993ba705c859e5edecd28886d214d00"
+    }
+  ],
+  "is_independent_approval": false,
+  "standard": "VRS-PHASE7-PUBLIC-STATE-SOURCE-REVIEW-FREEZE-4",
+  "status": "SOURCE_ONLY_REVIEWED_OFFLINE_NOT_INSTALLED"
+}

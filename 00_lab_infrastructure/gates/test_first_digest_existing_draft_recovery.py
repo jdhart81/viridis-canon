@@ -1,6 +1,7 @@
 """Exact source-only recovery snapshot and portable offline protocol closure."""
 import hashlib,json,os,subprocess,sys,unittest
 from pathlib import Path
+from test_digest_historical_adapter import historical_protocol
 FREEZE='bea96ef33711568612d1439f2b2be6ae9866e0e73f018b8e516ce0c16168ee69'
 PREDECESSOR='c8d5c371830c7ade86363e9274dd1a7b9d07bf4ee387ff4ae3c76117eaa41c4f'
 DRIVER='eec6af9af33ecc65f782f76bcabd48dd9ed0e97038862414f8ab6b3532916f5a'
@@ -27,7 +28,7 @@ class OwnDraftRecoverySnapshotTests(unittest.TestCase):
    obj=json.loads(p.read_bytes());self.assertFalse(obj.get('environment')=='zenodo.org'and obj.get('method')in{'POST','PUT','DELETE'},p.name)
  def test_portable_real_accounting_and_closed_eight_write_protocol(self):
   gate,old,new=self.paths();env=os.environ.copy();env['PHASE7_TEST_GATES']=str(gate);env['PYTHONDONTWRITEBYTECODE']='1'
-  result=subprocess.run([sys.executable,'-B','-m','unittest','discover','-s',str(new),'-p','test*.py'],cwd=new,env=env,capture_output=True,text=True,timeout=600)
+  result=historical_protocol(gate,new)
   self.assertEqual(result.returncode,0,result.stdout+result.stderr);self.assertIn('Ran 204 tests',result.stderr)
 
 if __name__=='__main__':unittest.main()

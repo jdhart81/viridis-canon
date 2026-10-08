@@ -1,6 +1,7 @@
 """Exact source-only archive-absent successor and portable accounting closure."""
 import hashlib,json,os,subprocess,sys,unittest
 from pathlib import Path
+from test_digest_historical_adapter import historical_protocol
 FREEZE='fb806d9259278a3900284054a6608da9d2f6aab3a966926f42adf5852777729c'
 PREDECESSOR='934a460b1796495616f4c12cecdaf31d0159b78f5008555e0d784846bd282e0c'
 DRIVER='d29358c61c86273e1857965a7c2b1a7ef39ddc53e62d553778b7d8f853dae82c'
@@ -20,5 +21,5 @@ class ThreeFileContinuationSnapshotTests(unittest.TestCase):
   for p in new.glob('*.json'):
    obj=json.loads(p.read_bytes());self.assertFalse(obj.get('environment')=='zenodo.org'and obj.get('method')in{'POST','PUT','DELETE'},p.name)
  def test_portable_complete_accounting_and_four_write_protocol(self):
-  gate,old,new=self.paths();env=os.environ.copy();env['PHASE7_TEST_GATES']=str(gate);env['PYTHONDONTWRITEBYTECODE']='1';v=subprocess.run([sys.executable,'-B','-m','unittest','discover','-s',str(new),'-p','test*.py'],cwd=new,env=env,capture_output=True,text=True,timeout=600);self.assertEqual(v.returncode,0,v.stdout+v.stderr);self.assertIn('Ran 315 tests',v.stderr)
+  gate,old,new=self.paths();env=os.environ.copy();env['PHASE7_TEST_GATES']=str(gate);env['PYTHONDONTWRITEBYTECODE']='1';v=historical_protocol(gate,new);self.assertEqual(v.returncode,0,v.stdout+v.stderr);self.assertIn('Ran 315 tests',v.stderr)
 if __name__=='__main__':unittest.main()

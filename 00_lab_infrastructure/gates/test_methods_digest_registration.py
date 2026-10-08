@@ -29,6 +29,8 @@ class Fixture:
   for name in('paper.tex','paper.pdf','metadata.json','METHODS_NOTES.zip','DIGEST_MANIFEST.json','PUBLICATION_BINDING.json'):
    raw=d.read_regular(self.pkg/name);url='https://zenodo.org/api/records/'+self.rid+'/files/'+name+'/content';p=self.root/'downloads'/name;p.parent.mkdir(exist_ok=True);p.write_bytes(raw);self.downloads.append({'filename':name,'binding':{'path':str(p),'sha256':d.sha(p)},'url':url});self.legacy['files'].append({'key':name,'checksum':'md5:'+hashlib.md5(raw).hexdigest(),'size':len(raw),'links':{'self':url}})
   self.e={'standard':g.EVIDENCE_STANDARD,'status':'SOURCE_BOUND_READBACK_INPUTS','record_id':self.rid,'doi':self.doi,'public_legacy_receipt':receipt(self.root/'public_legacy.json','GET','https://zenodo.org/api/records/'+self.rid,self.legacy),'public_native_receipt':receipt(self.root/'public_native.json','GET','https://zenodo.org/api/records/'+self.rid,self.expected_native,'application/vnd.inveniordm.v1+json'),'own_publish_receipt':receipt(self.root/'publish.json','POST','https://zenodo.org/api/deposit/depositions/'+self.rid+'/actions/publish',self.legacy),'expected_legacy':save(self.root/'expected_legacy.json',self.legacy),'expected_native':save(self.root/'expected_native.json',self.expected_native),'source_legacy_receipt':receipt(self.root/'source_legacy.json','GET','https://zenodo.org/api/records/21971052',old),'source_native_receipt':receipt(self.root/'source_native.json','GET','https://zenodo.org/api/records/21971052',native,'application/vnd.inveniordm.v1+json'),'relation_template':save(self.root/'relation.json',template),'server_context':save(self.root/'context.json',{'operation':'NEW_VERSION','phase':'PUBLISHED'}),'downloads':self.downloads,'strict_readback_result':save(self.root/'strict.json',{'status':'STRICT_OWN_PUBLIC_READBACK_PASS','record_id':self.rid,'doi':self.doi,'files':6,'notes':['Run-125','Run-126'],'binding_sha256':d.sha(self.pkg/'PUBLICATION_BINDING.json'),'certifies':False})}
+  from test_digest_public_state import complete_registration_fixture
+  complete_registration_fixture(self,old,native)
   self.e_binding=save(self.root/'evidence.json',self.e);self.originals={str(p):d.sha(p)for p in self.root.rglob('*')if p.is_file()and p.is_relative_to(self.pkg)or p.is_file()and p.name=='certificate.json'}
   self.ledger={'tree_root':str(self.root),'run_entities':self.runs,'file_entities':[],'publication_entities':[]}
   save(self.root/'RESEARCH_PIPELINE_v2/corpus_ledger.json',self.ledger)
@@ -43,11 +45,20 @@ class Fixture:
   for p,h in self.originals.items():
    if d.sha(p)!=h:raise ValueError('changed bound input')
   return deepcopy(self.manifest),deepcopy(self.pb)
- def audit(self,actual,expected,**kwargs):return {'status':'PASS'if actual==expected else'HOLD','reasons':['synthetic full readback differs']if actual!=expected else[]}
+ def audit(self,actual,expected,**kwargs):
+  # Emulate only the already-approved own latest flag and exact OAI addition;
+  # every other field retains the original complete equality assertion.
+  comparable=deepcopy(actual)
+  if comparable.get('versions',{}).get('is_latest')is True and expected.get('versions',{}).get('is_latest')is False:comparable['versions']['is_latest']=False
+  if 'oai'not in expected.get('pids',{}) and comparable.get('pids',{}).get('oai')=={'identifier':'oai:zenodo.org:'+self.rid,'provider':'oai'}:comparable['pids'].pop('oai')
+  import server_managed_fields as sm
+  extra={'record_identity','own_publish_scope','revision_id','deletion_status','expires_at','swh','ui.is_draft','ui_display_fields','derived_previews','content_metadata','unlisted_fields'}
+  good=comparable==expected
+  return {'status':'SERVER_MANAGED_READBACK_PASS'if good else'HOLD','operation':'NEW_VERSION','phase':'PUBLISHED','record_id':self.rid,'checks':{k:{'status':'PASS'if good else'HOLD'}for k in set(sm.ALLOW_LIST)|extra},'reasons':[]if good else['synthetic full readback differs']}
  def prepare(self):
-  with patch.object(d,'require_publication_bound',side_effect=self.digest):return g.prepare_registration(self.root,self.pkg,self.e_binding,digest_consumer=self.digest,audit_consumer=self.audit,issued_at_utc='2026-10-07T12:00:00Z')
+  with patch.object(d,'require_publication_bound',side_effect=self.digest),patch('server_managed_fields.audit_readback',side_effect=self.audit):return g.prepare_registration(self.root,self.pkg,self.e_binding,digest_consumer=self.digest,audit_consumer=self.audit,issued_at_utc='2026-10-07T12:00:00Z')
  def consume(self,root,binding,ledger=None,**kwargs):
-  with patch.object(d,'require_publication_bound',side_effect=self.digest):return g.require_registration(root,binding,ledger,digest_consumer=self.digest,audit_consumer=self.audit,parity_consumer=self.parity,**kwargs)
+  with patch.object(d,'require_publication_bound',side_effect=self.digest),patch('server_managed_fields.audit_readback',side_effect=self.audit):return g.require_registration(root,binding,ledger,digest_consumer=self.digest,audit_consumer=self.audit,parity_consumer=self.parity,**kwargs)
 
 class RegistrationTests(unittest.TestCase):
  def setUp(self):self.f=Fixture();self.addCleanup(self.f.close);self.receipt=self.f.prepare();self.binding=save(self.f.root/'registration.json',self.receipt)
@@ -63,7 +74,7 @@ class RegistrationTests(unittest.TestCase):
  def test_default_unchanged_parity_consumer_is_called_again_before_return(self):
   from mirror_parity import run_parity
   real_parity=run_parity
-  with patch.object(d,'require_publication_bound',side_effect=self.f.digest),patch('mirror_parity.run_parity',side_effect=lambda root,path:real_parity(root,path,generation_root=self.f.generation))as parity:
+  with patch.object(d,'require_publication_bound',side_effect=self.f.digest),patch('server_managed_fields.audit_readback',side_effect=self.f.audit),patch('mirror_parity.run_parity',side_effect=lambda root,path:real_parity(root,path,generation_root=self.f.generation))as parity:
    result=g.require_registration(self.f.root,self.binding,digest_consumer=self.f.digest,audit_consumer=self.f.audit);self.assertEqual(len(result['receipt']['children']),2);self.assertEqual(parity.call_count,4)
  def test_parity_inventory_race_holds(self):
   count=0
@@ -113,7 +124,7 @@ class PreservationTests(unittest.TestCase):
  def test_ordinary_only_delegates_exact_existing_consumer(self):called=[];old={'publication_entities':[{'id':'ordinary'}]};result=g.preserve(self.f.ledger,old,legacy=lambda l,p:called.append(p)or l);self.assertEqual(called,[old]);self.assertIs(result,self.f.ledger)
  def test_periodic_scan_single_group_has_no_unexplained_label_mismatch(self):
   rows=self.rows();ledger={**self.f.ledger,'publication_entities':rows};out=g.augment_audit(self.f.root,ledger,{'published_records':[],'counts':{}},consume=self.f.consume);self.assertEqual(out['published_records'],[]);self.assertEqual(len(out['methods_digest_groups']),1);row=out['methods_digest_groups'][0]
-  def getter(rid,accept):return (deepcopy(self.f.expected_native)if 'inveniordm'in accept else deepcopy(self.f.legacy),'a'*64)
+  def getter(rid,accept):return (deepcopy(self.f.actual_native)if 'inveniordm'in accept else deepcopy(self.f.legacy),'a'*64)
   result=g.public_label_read_record(row,legacy=lambda x:None,getter=getter,consume=self.f.consume);self.assertEqual(result['status'],'READ');self.assertFalse(result['proposed_label_disagrees']);self.assertEqual(result['public_verification_status'],'SCOPED_DIGEST')
  def test_periodic_scan_native_pid_loss_is_disagreement(self):
   rows=self.rows();out=g.augment_audit(self.f.root,{**self.f.ledger,'publication_entities':rows},{'published_records':[],'counts':{}},consume=self.f.consume);bad=deepcopy(self.f.expected_native);bad['pids'].pop('oai');result=g.public_label_read_record(out['methods_digest_groups'][0],legacy=lambda x:None,getter=lambda rid,accept:(bad if 'inveniordm'in accept else self.f.legacy,'a'*64),consume=self.f.consume);self.assertTrue(result['proposed_label_disagrees']);self.assertEqual(result['status'],'UNAVAILABLE')
@@ -131,7 +142,7 @@ class AdapterAndExistingCommunityTests(unittest.TestCase):
  def test_adapter_extra_binding_field_rejected(self):v=self.args();v['public_native_receipt']['certified']=True;self.assertRaises(ValueError,g.assemble_evidence,**v)
  def test_adapter_unbound_download_rejected(self):v=self.args();v['downloads'][0]['binding']['sha256']='invalid';self.assertRaises(ValueError,g.assemble_evidence,**v)
  def test_adapter_duplicate_download_rejected(self):v=self.args();v['downloads'][1]=deepcopy(v['downloads'][0]);self.assertRaises(ValueError,g.assemble_evidence,**v)
- def test_empty_source_custom_fields_preserved(self):old=json.loads(Path(self.f.e['source_legacy_receipt']['path']).read_bytes())['response'];new=json.loads(Path(self.f.e['source_native_receipt']['path']).read_bytes())['response'];self.assertEqual(g.source_custom_fields(self.f.public,old,new),{})
+ def test_empty_source_custom_fields_preserved(self):old=json.loads(Path(self.f.e['source_legacy_receipt']['path']).read_bytes())['response'];new=json.loads(Path(self.f.e['source_native_receipt']['path']).read_bytes())['response'];new['custom_fields']={};self.assertEqual(g.source_custom_fields(self.f.public,old,new),{})
  def pair(self):
   old=json.loads(Path(self.f.e['source_legacy_receipt']['path']).read_bytes())['response'];new=json.loads(Path(self.f.e['source_native_receipt']['path']).read_bytes())['response'];new['custom_fields']={'legacy:communities':['viridis-canon']};return old,new
  def test_exact_existing_community_mirror_preserved(self):old,new=self.pair();self.assertEqual(g.source_custom_fields(self.f.public,old,new),new['custom_fields'])
@@ -140,6 +151,53 @@ class AdapterAndExistingCommunityTests(unittest.TestCase):
  def test_public_membership_changed_holds(self):old,new=self.pair();public=deepcopy(self.f.public);public['communities']=[{'id':'other'}];self.assertRaises(ValueError,g.source_custom_fields,public,old,new)
  def test_malformed_membership_holds(self):old,new=self.pair();old['metadata']['communities']=[{'id':'viridis-canon','claims':'all certified'}];public=deepcopy(self.f.public);public['communities']=old['metadata']['communities'];self.assertRaises(ValueError,g.source_custom_fields,public,old,new)
  def test_full_registration_existing_mirror_source_passes_strict_readback(self):
-  old,new=self.pair();self.f.e['source_native_receipt']=receipt(self.f.root/'source_native.json','GET','https://zenodo.org/api/records/21971052',new,'application/vnd.inveniordm.v1+json');self.f.expected_native['custom_fields']=deepcopy(new['custom_fields']);self.f.e['expected_native']=save(self.f.root/'expected_native.json',self.f.expected_native);self.f.e['public_native_receipt']=receipt(self.f.root/'public_native.json','GET','https://zenodo.org/api/records/'+self.f.rid,self.f.expected_native,'application/vnd.inveniordm.v1+json');self.f.e_binding=save(self.f.root/'evidence.json',self.f.e);self.assertEqual(self.f.prepare()['status'],'PUBLISHED_GROUP_BOUND')
+  old,new=self.pair();self.assertEqual(g.source_custom_fields(self.f.public,old,new),{'legacy:communities':['viridis-canon']});self.assertEqual(self.f.expected_native['custom_fields'],{});self.assertEqual(self.f.prepare()['status'],'PUBLISHED_GROUP_BOUND')
+  bad=deepcopy(self.f.actual_native);bad['custom_fields']=deepcopy(new['custom_fields']);receipt_value=self.f.prepare();binding=save(self.f.root/'registration.json',receipt_value);self.assertRaises(ValueError,lambda:self.f.consume(self.f.root,binding,views=(self.f.legacy,bad)))
  def test_after_state_cannot_invent_source_custom_field(self):
   self.f.expected_native['custom_fields']={'legacy:communities':['viridis-canon']};self.f.e['expected_native']=save(self.f.root/'expected_native.json',self.f.expected_native);self.f.e['public_native_receipt']=receipt(self.f.root/'public_native.json','GET','https://zenodo.org/api/records/'+self.f.rid,self.f.expected_native,'application/vnd.inveniordm.v1+json');self.f.e_binding=save(self.f.root/'evidence.json',self.f.e);self.assertRaises(ValueError,self.f.prepare)
+
+class PublicPhaseIntegrationTests(unittest.TestCase):
+ setUp=RegistrationTests.setUp
+ call=RegistrationTests.call
+ change=RegistrationTests.change
+ evidence=RegistrationTests.evidence
+ def test_default_draft_adapter_is_exact_original_behavior(self):
+  old=json.loads(Path(self.f.e['source_legacy_receipt']['path']).read_bytes())['response'];new=json.loads(Path(self.f.e['source_native_receipt']['path']).read_bytes())['response']
+  self.assertEqual(g.source_custom_fields_for_phase(self.f.public,old,new),g.source_custom_fields(self.f.public,old,new))
+  self.assertEqual(g.source_custom_fields_for_phase(self.f.public,old,new),{'legacy:communities':['viridis-canon']})
+ def test_public_adapter_requires_explicit_actual_private_context(self):
+  old=json.loads(Path(self.f.e['source_legacy_receipt']['path']).read_bytes())['response'];new=json.loads(Path(self.f.e['source_native_receipt']['path']).read_bytes())['response']
+  self.assertRaises(ValueError,g.source_custom_fields_for_phase,self.f.public,old,new,phase='PUBLISHED')
+ def test_old_evidence_doesnot_automatically_admit_under_newconsumer(self):
+  self.f.e['standard']='VRS-METHODS-DIGEST-READBACK-EVIDENCE-1';self.f.e.pop('public_state_context');self.evidence();self.assertRaises(ValueError,self.call)
+ def test_unknown_or_missing_context_has_no_weaker_fallback(self):self.f.e.pop('public_state_context');self.evidence();self.assertRaises(ValueError,self.call)
+ def test_generic_pass_injected_old_auditor_rejected(self):
+  with patch.object(d,'require_publication_bound',side_effect=self.f.digest):
+   self.assertRaises(ValueError,g.prepare_registration,self.f.root,self.f.pkg,self.f.e_binding,digest_consumer=self.f.digest,audit_consumer=lambda *a,**k:{'status':'PASS'})
+ def test_realterminal_with_missing_row_or_hold_rejected(self):
+  for change in ['missing','hold','reason']:
+   with self.subTest(change=change):
+    def bad(*args,**kw):
+     out=self.f.audit(*args,**kw)
+     if change=='missing':out['checks'].pop('content_metadata')
+     elif change=='hold':out['checks']['content_metadata']['status']='HOLD'
+     else:out['reasons']=['unclassified']
+     return out
+    with patch.object(d,'require_publication_bound',side_effect=self.f.digest):self.assertRaises(ValueError,g.prepare_registration,self.f.root,self.f.pkg,self.f.e_binding,digest_consumer=self.f.digest,audit_consumer=bad)
+ def test_legacy_submitted_bool_as_number_or_revision_number_as_bool_holds(self):
+  for key,value in [('submitted',1),('revision',True)]:
+   with self.subTest(key=key):
+    bad=deepcopy(self.f.legacy);bad[key]=value;self.assertRaises(ValueError,lambda:self.f.consume(self.f.root,self.binding,views=(bad,self.f.actual_native)))
+ def test_exact_source_native_expected_type_change_holds(self):
+  value=deepcopy(self.f.expected_native);value['is_published']=1;self.f.e['expected_native']=save(self.f.root/'expected_native.json',value);self.evidence();self.assertRaises(ValueError,self.call)
+ def test_default_legacy_native_reaudit_runs_and_cannottrust_outer_fake_success(self):
+  def reject(*args,**kw):return {'status':'HOLD','reasons':['must fail']}
+  with patch.object(d,'require_publication_bound',side_effect=self.f.digest),patch('server_managed_fields.audit_readback',side_effect=reject)as audit:
+   self.assertRaises(ValueError,g.prepare_registration,self.f.root,self.f.pkg,self.f.e_binding,digest_consumer=self.f.digest,audit_consumer=self.f.audit);self.assertEqual(audit.call_count,1)
+ def test_source_parent_membership_unchecked_swap_holds(self):
+  value=deepcopy(self.f.expected_native);value['parent']['communities']['entries'][0]['metadata']['description']='changed';self.f.e['expected_native']=save(self.f.root/'expected_native.json',value);self.evidence();self.assertRaises(ValueError,self.call)
+ def test_all27_complete_ordinary_rows_keep_same_controls(self):
+  old=[{'id':'ordinary-'+str(i),'path':'ordinary/'+str(i),'status':'CERTIFIED'if i<2 else'HOLD_NO_CLAIM_MAP','publication_registration_status':'PASS'if i<2 else'HOLD_NO_CLAIM_MAP','review_sha256':'a'*64,'enforcement_acceptable':True}for i in range(27)]
+  rows=g.entity_rows(self.f.root,self.binding,self.f.ledger,consume=self.f.consume)
+  def legacy(ledger,previous):return {**deepcopy(ledger),'publication_entities':deepcopy(previous['publication_entities'])}
+  out=g.preserve(self.f.ledger,{**self.f.ledger,'publication_entities':old+rows},legacy=legacy,consume=self.f.consume);self.assertEqual(out['publication_entities'][:27],old);self.assertFalse(out['publication_entities'][27]['certifies'])

@@ -1,9 +1,623 @@
 {
-  "catalog_digest": "066143ea5d7ab221942654e20b9034424c1f30bf86636c2d266ea8d7a3d48197",
+  "catalog_digest": "ea82c3f74546a48b172944cb69a40774cb61dd5e9c8a51747f3f61530b58cee5",
   "concept_doi": "10.5281/zenodo.19317982",
+  "coverage_provenance": {
+    "certifies": false,
+    "current_entities": [
+      {
+        "entity_id": "publication:methods-digest:2026-W41:23226761",
+        "entity_type": "METHODS_DIGEST_GROUP",
+        "row_sha256": "8947d2cf3b41b7ca73fcc0cd6b6d43ae169880a6ced559f71e4969aae7396bc5",
+        "snapshot_sha256": "0bf5ab5595f027c6d569abb5a018d6e9333f99805f739f45ed21ac904db8c43b"
+      },
+      {
+        "entity_id": "publication:methods-note:2026-W41:Run-125",
+        "entity_type": "METHODS_DIGEST_NOTE",
+        "row_sha256": "5abc45d42002162a01d70ddbe56c2ee3bdfe09f027c81b0fce00af3d2e771009",
+        "snapshot_sha256": "0bf5ab5595f027c6d569abb5a018d6e9333f99805f739f45ed21ac904db8c43b"
+      },
+      {
+        "entity_id": "publication:methods-note:2026-W41:Run-126",
+        "entity_type": "METHODS_DIGEST_NOTE",
+        "row_sha256": "f74d87d8045f3521cfba78eb93e4226842deaedf5612bb150921fab5bcfa51de",
+        "snapshot_sha256": "0bf5ab5595f027c6d569abb5a018d6e9333f99805f739f45ed21ac904db8c43b"
+      },
+      {
+        "entity_id": "publication:methods-note:2026-W41:Run-128",
+        "entity_type": "METHODS_DIGEST_NOTE",
+        "row_sha256": "b6635546838d7b1a0c944d09937a0281f89966d9263c495fa09db167927ad6ba",
+        "snapshot_sha256": "0bf5ab5595f027c6d569abb5a018d6e9333f99805f739f45ed21ac904db8c43b"
+      },
+      {
+        "entity_id": "publication:methods-note:2026-W41:Run-129",
+        "entity_type": "METHODS_DIGEST_NOTE",
+        "row_sha256": "f1e994d36d2947000f25371b646ef54f6066698ffe8ed122bed757e09ed5d91f",
+        "snapshot_sha256": "0bf5ab5595f027c6d569abb5a018d6e9333f99805f739f45ed21ac904db8c43b"
+      },
+      {
+        "entity_id": "publication:methods-note:2026-W41:Run-131",
+        "entity_type": "METHODS_DIGEST_NOTE",
+        "row_sha256": "4153525f5f9cd88fbb80cf97d9449ec6e340bf3f2708e8f3afbc980cf2c9a902",
+        "snapshot_sha256": "0bf5ab5595f027c6d569abb5a018d6e9333f99805f739f45ed21ac904db8c43b"
+      },
+      {
+        "entity_id": "publication:methods-note:2026-W41:Run-134",
+        "entity_type": "METHODS_DIGEST_NOTE",
+        "row_sha256": "59edf048ebc3b653360ce6e4e5903ff9fa4d5cd8d89ffe1e88a40c5f139b0255",
+        "snapshot_sha256": "0bf5ab5595f027c6d569abb5a018d6e9333f99805f739f45ed21ac904db8c43b"
+      },
+      {
+        "entity_id": "publication:methods-note:2026-W41:Run-141",
+        "entity_type": "METHODS_DIGEST_NOTE",
+        "row_sha256": "8d71f46b98fe393080025dd2468e29380e01546a4ccda69e95d36825bb6ed05c",
+        "snapshot_sha256": "0bf5ab5595f027c6d569abb5a018d6e9333f99805f739f45ed21ac904db8c43b"
+      }
+    ],
+    "current_snapshots": [
+      {
+        "name": "corpus-ledger-current-20261008-0bf5ab5595f0",
+        "sha256": "0bf5ab5595f027c6d569abb5a018d6e9333f99805f739f45ed21ac904db8c43b"
+      }
+    ],
+    "historical_publication_entity_ids": [
+      "publication:bcan-scalar-corrected-20261004",
+      "publication:foundation-standalone-20261004"
+    ],
+    "historical_record_ids": [
+      "ai-safety-quarantined",
+      "biosphere-productivity-bridge",
+      "biosphereerasurebound",
+      "book-heatanddisorder",
+      "boundedmemorydissipation",
+      "boundedmemorylearning",
+      "bridge-ecochaininstrument",
+      "bridge-missionfeasibility",
+      "carbon-continuity-after-wildfire",
+      "conservationoperator",
+      "d-score",
+      "d-score-snapshot-alignment",
+      "decoherentselection",
+      "dendritic-corridor",
+      "ecopoietic-hedge",
+      "effortlessequilibrium",
+      "geodesicsaturation",
+      "intelligence-bound",
+      "mission-feasibility",
+      "mrab",
+      "mutualisticattestation",
+      "p2-hdfm-poc",
+      "p5-slspt-intelligencebound",
+      "p5-slspt-inversesquare",
+      "p5-slspt-shadowprice",
+      "p5-slspt-shadowpricelevelcurves",
+      "p5-slspt-slspttowerordering",
+      "p7-plasmanfix-energy",
+      "p7-plasmanfix-foundations",
+      "p7-plasmanfix-integration",
+      "perennialcorridor",
+      "psit-symplectic",
+      "robustness-before-performance",
+      "scheduler-free-energy-certificate",
+      "series-acc-axiomcheck",
+      "series-acc-paperformalization",
+      "series-acc-paperformalization-dominance",
+      "series-acc-paperformalization-mixture",
+      "series-acc-paperformalization-nullmartingale",
+      "series-acc-paperformalization-prior",
+      "series-acc-paperformalization-wald",
+      "series-acc-paperformalization-witnesses",
+      "series-accn-verification-candidate",
+      "series-accn-verification-statement",
+      "series-afforestationstewardship",
+      "series-bcan-corridoralignment",
+      "series-caia-contracts-verification-statement",
+      "series-caia-viridisrun166",
+      "series-capacityharmonization",
+      "series-cast-contracts-verification-statement",
+      "series-cast-viridisrun120",
+      "series-certificationcomplexity",
+      "series-codc-contracts-verification-statement",
+      "series-codc-viridisrun133",
+      "series-corridorstewardship",
+      "series-cshc-axiomcheck",
+      "series-cshc-cognitiveswitchinghysteresis",
+      "series-dcae-verification-candidate",
+      "series-dcae-verification-statement",
+      "series-deadlinecarnot",
+      "series-dissipativegeneralization",
+      "series-dmec-contracts-verification-statement",
+      "series-dmec-viridisrun175",
+      "series-dpac-contracts-verification-statement",
+      "series-dpac-viridisrun150",
+      "series-dreaa-contracts-verification-statement",
+      "series-dreaa-viridisrun158",
+      "series-dsur-contracts-verification-statement",
+      "series-dsur-viridisrun160",
+      "series-dswc-contracts-verification-statement",
+      "series-dswc-viridisrun132",
+      "series-ecopoieticordering",
+      "series-ecopoieticsuccession",
+      "series-foieb-contracts-verification-statement",
+      "series-foieb-viridisrun178",
+      "series-forestnucleation",
+      "series-fragmentationhysteresis",
+      "series-frcs-verification-candidate",
+      "series-frcs-verification-statement",
+      "series-gacc-contracts-verification-statement",
+      "series-gacc-viridisrun138",
+      "series-gaianharmonization",
+      "series-gaianmutualismselection",
+      "series-grokkingnucleation",
+      "series-harmonicearlywarning",
+      "series-harmonicvaluation",
+      "series-hcf-contracts-verification-statement",
+      "series-hcf-viridisrun123",
+      "series-icc-axiomcheck",
+      "series-icc-paperformalization",
+      "series-icc-paperformalization-chainrule",
+      "series-icc-paperformalization-claims",
+      "series-icc-paperformalization-entropy",
+      "series-icc-paperformalization-erasurefamily",
+      "series-icc-paperformalization-zerocovariance",
+      "series-intelligenceexergy",
+      "series-isb-contracts-verification-statement",
+      "series-isb-viridisrun121",
+      "series-jmsf-contracts-verification-statement",
+      "series-jmsf-viridisrun174",
+      "series-kibblezurekspeedlimit",
+      "series-ksct",
+      "series-kzsltreprove",
+      "series-manipulationproofweighting",
+      "series-melt",
+      "series-mist",
+      "series-mrrn-contracts-verification-statement",
+      "series-mrrn-viridisrun156",
+      "series-mutualistcoestablishment",
+      "series-mutualisticinference",
+      "series-pcr-axiomcheck",
+      "series-pcr-paperformalization",
+      "series-pcr-paperformalization-cantelli",
+      "series-pcr-paperformalization-model",
+      "series-pcr-paperformalization-nonvacuity",
+      "series-pcr-paperformalization-targets",
+      "series-pcr-paperformalization-twopoint",
+      "series-pcs-contracts-verification-statement",
+      "series-pcs-viridisrun124",
+      "series-pdc-contracts-verification-statement",
+      "series-pdc-viridisrun165",
+      "series-plasticityvitrification",
+      "series-raac-axiomcheck",
+      "series-raac-recovery-vrs-forge-recovery-2-attempt-1-aristotle-axiomcheck",
+      "series-raac-recovery-vrs-forge-recovery-2-attempt-1-aristotle-responseadjustedalignment",
+      "series-raac-responseadjustedalignment",
+      "series-rasl-contracts-verification-statement",
+      "series-rasl-viridisrun171",
+      "series-rc-axiomcheck",
+      "series-rc-paperformalization",
+      "series-rcbn-checkpointbalance",
+      "series-rcbx-contracts-verification-statement",
+      "series-rcbx-viridisrun161",
+      "series-rda-contracts-verification-statement",
+      "series-rda-viridisrun176",
+      "series-recb-contracts-verification-statement",
+      "series-recb-viridisrun164",
+      "series-rfc-contracts-verification-statement",
+      "series-rfc-viridisrun136",
+      "series-rrfg-contracts-verification-statement",
+      "series-rrfg-viridisrun153",
+      "series-s6-cognitionlearning-cognitivethroughput",
+      "series-s6-cognitionlearning-dissipativegeneralization",
+      "series-s6-cognitionlearning-harmonizeddescent",
+      "series-s6-cognitionlearning-melt",
+      "series-sac-contracts-verification-statement",
+      "series-sac-viridisrun137",
+      "series-sarn-contracts-verification-statement",
+      "series-sarn-viridisrun162",
+      "series-sbb-axiomcheck",
+      "series-sbb-paperformalization",
+      "series-sbb-paperformalization-algebra",
+      "series-sbb-paperformalization-defs",
+      "series-sbb-paperformalization-ensemble",
+      "series-sbb-paperformalization-witnesses",
+      "series-sbcn-contracts-verification-statement",
+      "series-sbcn-viridisrun154",
+      "series-sbrn-stewardshipbottleneckreserve",
+      "series-sdpn-contracts-verification-statement",
+      "series-sdpn-viridisrun159",
+      "series-sesl-axiomcheck",
+      "series-sesl-symbioticequalization",
+      "series-sfb-verification-candidate",
+      "series-sfb-verification-statement",
+      "series-sfmc-contracts-verification-statement",
+      "series-sfmc-viridisrun173",
+      "series-sor-contracts-verification-statement",
+      "series-sor-viridisrun140",
+      "series-splr-contracts-verification-statement",
+      "series-splr-viridisrun169",
+      "series-sra-contracts-verification-statement",
+      "series-sra-viridisrun172",
+      "series-ssbc-axiomcheck",
+      "series-ssbc-paperformalization",
+      "series-ssbc-paperformalization-certificate",
+      "series-ssbc-paperformalization-defs",
+      "series-ssbc-paperformalization-hall",
+      "series-ssbc-paperformalization-witnesses",
+      "series-ssc-contracts-verification-statement",
+      "series-ssc-viridisrun135",
+      "series-stewardshiprevisit",
+      "series-svon-contracts-verification-statement",
+      "series-svon-viridisrun155",
+      "series-symbioticcorridor",
+      "series-symbioticriskpremium",
+      "series-symbioticspeedlimit",
+      "series-tct",
+      "series-tctsi-contracts-verification-statement",
+      "series-tctsi-viridisrun157",
+      "series-tdcil-verification-candidate",
+      "series-tdcil-verification-statement",
+      "series-thermodynamicdiscounting",
+      "series-tlrc-contracts-verification-statement",
+      "series-tlrc-viridisrun151",
+      "series-trse-contracts-verification-statement",
+      "series-trse-viridisrun152",
+      "series-trwfn-contracts-verification-statement",
+      "series-trwfn-viridisrun139",
+      "series-udwl-contracts-verification-statement",
+      "series-udwl-viridisrun163",
+      "series-universalnucleationmetatheorem",
+      "series-verificationphasetransition",
+      "series-wuweicorridor",
+      "series-wuweicrypticity",
+      "series-wuweidominance",
+      "series-wuweiinference",
+      "series-wuweisampling",
+      "series-zab-contracts-verification-statement",
+      "series-zab-viridisrun122",
+      "stewardshipsetpoint",
+      "symbioticintelligencebound",
+      "thermodynamic-economics",
+      "thermodynamicattention",
+      "trees-cannot-cut",
+      "universalwaterfilling"
+    ],
+    "historical_snapshot": {
+      "name": "corpus-ledger-20261005-publication-doi-joins",
+      "sha256": "153503930e19c3971e346f9319bb1eaf109dd8486deda1b9ed5efee7689975db"
+    },
+    "source_prefix": "viridis-canon",
+    "standard": "CATALOG_COVERAGE_PROVENANCE_1"
+  },
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "human_publish_gate": true,
-  "methods_digests": [],
+  "methods_digests": [
+    {
+      "certifies": false,
+      "disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+      "doi": "10.5281/zenodo.23226761",
+      "entity_id": "publication:methods-digest:2026-W41:23226761",
+      "notes": [
+        {
+          "certificate_sha256": "244886ec54c4eba7dff2cdcde987f1d11a722806a10ab0903764c7633f84e6dd",
+          "certifies": "LISTED_NOTE_SCOPE_ONLY",
+          "claim_scope": "[\n  {\n    \"ambient_source_context\": [\n      {\n        \"line\": 526,\n        \"source_text\": \"variable {m : ℕ}\"\n      }\n    ],\n    \"conclusion\": \"(mobility κ P)⁻¹ = 1 - (κ / (1 + κ)) • P\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for shared_channel_inverse, the exact displayed conditional statement shared_channel_inverse holds.\",\n    \"exact_source_signature\": \"theorem shared_channel_inverse {P : Matrix (Fin m) (Fin m) ℝ} (hP : IsOrthProjector P)\\n    {κ : ℝ} (hκ : 0 ≤ κ) :\\n    (mobility κ P)⁻¹ = 1 - (κ / (1 + κ)) • P\",\n    \"explicit_binders_and_hypotheses\": \"{P : Matrix (Fin m) (Fin m) ℝ} (hP : IsOrthProjector P)\\n    {κ : ℝ} (hκ : 0 ≤ κ)\",\n    \"lean_theorem\": \"shared_channel_inverse\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"IsOrthProjector\",\n        \"P\",\n        \"hP\",\n        \"hκ\",\n        \"m\",\n        \"mobility\",\n        \"κ\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"witness_shared_channel_inverse\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [\n      {\n        \"line\": 526,\n        \"source_text\": \"variable {m : ℕ}\"\n      }\n    ],\n    \"conclusion\": \"capturedFraction P u ∈ Set.Icc (0:ℝ) 1 ∧\\n      channelCost κ P u τ\\n        = (1 - (κ / (1 + κ)) * capturedFraction P u) * baselineCost u τ ∧\\n      gain κ P u = (1 + κ) / (1 + κ * (1 - capturedFraction P u)) ∧\\n      1 ≤ gain κ P u ∧\\n      gain κ P u ≤ 1 + κ ∧\\n      (P *ᵥ u = u → gain κ P u = 1 + κ) ∧\\n      (P *ᵥ u = 0 → gain κ P u = 1)\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for directional_gain_bounds, the exact displayed conditional statement directional_gain_bounds holds.\",\n    \"exact_source_signature\": \"theorem directional_gain_bounds {P : Matrix (Fin m) (Fin m) ℝ} (hP : IsOrthProjector P)\\n    {κ : ℝ} (hκ : 0 ≤ κ) {u : Fin m → ℝ} (hu : u ≠ 0) (τ : ℝ) :\\n    capturedFraction P u ∈ Set.Icc (0:ℝ) 1 ∧\\n      channelCost κ P u τ\\n        = (1 - (κ / (1 + κ)) * capturedFraction P u) * baselineCost u τ ∧\\n      gain κ P u = (1 + κ) / (1 + κ * (1 - capturedFraction P u)) ∧\\n      1 ≤ gain κ P u ∧\\n      gain κ P u ≤ 1 + κ ∧\\n      (P *ᵥ u = u → gain κ P u = 1 + κ) ∧\\n      (P *ᵥ u = 0 → gain κ P u = 1)\",\n    \"explicit_binders_and_hypotheses\": \"{P : Matrix (Fin m) (Fin m) ℝ} (hP : IsOrthProjector P)\\n    {κ : ℝ} (hκ : 0 ≤ κ) {u : Fin m → ℝ} (hu : u ≠ 0) (τ : ℝ)\",\n    \"lean_theorem\": \"directional_gain_bounds\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"0\",\n        \"IsOrthProjector\",\n        \"P\",\n        \"Set.Icc\",\n        \"baselineCost\",\n        \"capturedFraction\",\n        \"channelCost\",\n        \"gain\",\n        \"hP\",\n        \"hu\",\n        \"hκ\",\n        \"m\",\n        \"u\",\n        \"κ\",\n        \"τ\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"witness_directional_gain_aligned\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [\n      {\n        \"line\": 526,\n        \"source_text\": \"variable {m : ℕ}\"\n      }\n    ],\n    \"conclusion\": \"∃ v : Fin m → ℝ, v ≠ 0 ∧ sqNorm v = 1 ∧ P *ᵥ v = 0 ∧\\n      capturedFraction P v = 0 ∧ gain κ P v = 1\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for rank_deficient_unit_gain, the exact displayed conditional statement rank_deficient_unit_gain holds.\",\n    \"exact_source_signature\": \"theorem rank_deficient_unit_gain {P : Matrix (Fin m) (Fin m) ℝ} (hP : IsOrthProjector P)\\n    {κ : ℝ} (hκ : 0 ≤ κ) {r : ℕ} (hrank : P.rank = r) (hr : r < m) :\\n    ∃ v : Fin m → ℝ, v ≠ 0 ∧ sqNorm v = 1 ∧ P *ᵥ v = 0 ∧\\n      capturedFraction P v = 0 ∧ gain κ P v = 1\",\n    \"explicit_binders_and_hypotheses\": \"{P : Matrix (Fin m) (Fin m) ℝ} (hP : IsOrthProjector P)\\n    {κ : ℝ} (hκ : 0 ≤ κ) {r : ℕ} (hrank : P.rank = r) (hr : r < m)\",\n    \"lean_theorem\": \"rank_deficient_unit_gain\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"IsOrthProjector\",\n        \"P\",\n        \"P.rank\",\n        \"capturedFraction\",\n        \"gain\",\n        \"hP\",\n        \"hr\",\n        \"hrank\",\n        \"hκ\",\n        \"m\",\n        \"r\",\n        \"sqNorm\",\n        \"κ\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"witness_rank_deficient_unit_gain\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [\n      {\n        \"line\": 526,\n        \"source_text\": \"variable {m : ℕ}\"\n      }\n    ],\n    \"conclusion\": \"(∀ (u : Fin m → ℝ) (τ : ℝ), 0 < τ → channelCost κ P u τ ≤ B →\\n        deadlineBound κ P B u ≤ τ) ∧\\n      IsGreatest {t : ℝ | ∃ u : Fin m → ℝ, sqNorm u = 1 ∧ t = deadlineBound κ P B u}\\n        (1 / B)\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for worstcase_deadline, the exact displayed conditional statement worstcase_deadline holds.\",\n    \"exact_source_signature\": \"theorem worstcase_deadline {P : Matrix (Fin m) (Fin m) ℝ} (hP : IsOrthProjector P)\\n    {κ : ℝ} (hκ : 0 ≤ κ) {r : ℕ} (hrank : P.rank = r) (hr : r < m) {B : ℝ} (hB : 0 < B) :\\n    (∀ (u : Fin m → ℝ) (τ : ℝ), 0 < τ → channelCost κ P u τ ≤ B →\\n        deadlineBound κ P B u ≤ τ) ∧\\n      IsGreatest {t : ℝ | ∃ u : Fin m → ℝ, sqNorm u = 1 ∧ t = deadlineBound κ P B u}\\n        (1 / B)\",\n    \"explicit_binders_and_hypotheses\": \"{P : Matrix (Fin m) (Fin m) ℝ} (hP : IsOrthProjector P)\\n    {κ : ℝ} (hκ : 0 ≤ κ) {r : ℕ} (hrank : P.rank = r) (hr : r < m) {B : ℝ} (hB : 0 < B)\",\n    \"lean_theorem\": \"worstcase_deadline\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"B\",\n        \"IsOrthProjector\",\n        \"P\",\n        \"P.rank\",\n        \"channelCost\",\n        \"deadlineBound\",\n        \"hB\",\n        \"hP\",\n        \"hr\",\n        \"hrank\",\n        \"hκ\",\n        \"m\",\n        \"r\",\n        \"sqNorm\",\n        \"t\",\n        \"u\",\n        \"κ\",\n        \"τ\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"witness_worstcase_deadline\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [\n      {\n        \"line\": 526,\n        \"source_text\": \"variable {m : ℕ}\"\n      }\n    ],\n    \"conclusion\": \"IsOrthProjector (U * topIndicator m r * Uᵀ) ∧\\n      (U * topIndicator m r * Uᵀ).rank = r ∧\\n      (∀ P : Matrix (Fin m) (Fin m) ℝ, IsOrthProjector P →\\n        meanCostTau κ P C = Matrix.trace C - (κ / (1 + κ)) * Matrix.trace (P * C)) ∧\\n      Matrix.trace ((U * topIndicator m r * Uᵀ) * C)\\n        = ∑ i ∈ Finset.univ.filter (fun i : Fin m => (i : ℕ) < r), lam i ∧\\n      (∀ P : Matrix (Fin m) (Fin m) ℝ, IsOrthProjector P → P.rank = r →\\n        Matrix.trace (P * C) ≤ Matrix.trace ((U * topIndicator m r * Uᵀ) * C) ∧\\n        meanCostTau κ (U * topIndicator m r * Uᵀ) C ≤ meanCostTau κ P C)\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for top_subspace_mean_cost, the exact displayed conditional statement top_subspace_mean_cost holds.\",\n    \"exact_source_signature\": \"theorem top_subspace_mean_cost {r : ℕ} (hr : r ≤ m)\\n    {C U : Matrix (Fin m) (Fin m) ℝ} {lam : Fin m → ℝ}\\n    (hU : Uᵀ * U = 1) (hlam : Antitone lam) (hC : C = U * Matrix.diagonal lam * Uᵀ)\\n    {κ : ℝ} (hκ : 0 ≤ κ) :\\n    IsOrthProjector (U * topIndicator m r * Uᵀ) ∧\\n      (U * topIndicator m r * Uᵀ).rank = r ∧\\n      (∀ P : Matrix (Fin m) (Fin m) ℝ, IsOrthProjector P →\\n        meanCostTau κ P C = Matrix.trace C - (κ / (1 + κ)) * Matrix.trace (P * C)) ∧\\n      Matrix.trace ((U * topIndicator m r * Uᵀ) * C)\\n        = ∑ i ∈ Finset.univ.filter (fun i : Fin m => (i : ℕ) < r), lam i ∧\\n      (∀ P : Matrix (Fin m) (Fin m) ℝ, IsOrthProjector P → P.rank = r →\\n        Matrix.trace (P * C) ≤ Matrix.trace ((U * topIndicator m r * Uᵀ) * C) ∧\\n        meanCostTau κ (U * topIndicator m r * Uᵀ) C ≤ meanCostTau κ P C)\",\n    \"explicit_binders_and_hypotheses\": \"{r : ℕ} (hr : r ≤ m)\\n    {C U : Matrix (Fin m) (Fin m) ℝ} {lam : Fin m → ℝ}\\n    (hU : Uᵀ * U = 1) (hlam : Antitone lam) (hC : C = U * Matrix.diagonal lam * Uᵀ)\\n    {κ : ℝ} (hκ : 0 ≤ κ)\",\n    \"lean_theorem\": \"top_subspace_mean_cost\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"C\",\n        \"Finset.univ.filter\",\n        \"IsOrthProjector\",\n        \"Matrix.diagonal\",\n        \"Matrix.trace\",\n        \"P.rank\",\n        \"U\",\n        \"fun\",\n        \"hC\",\n        \"hU\",\n        \"hlam\",\n        \"hr\",\n        \"hκ\",\n        \"i\",\n        \"lam\",\n        \"m\",\n        \"meanCostTau\",\n        \"r\",\n        \"topIndicator\",\n        \"κ\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"witness_top_subspace_mean_cost\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [\n      {\n        \"line\": 526,\n        \"source_text\": \"variable {m : ℕ}\"\n      }\n    ],\n    \"conclusion\": \"Matrix.trace (P * ((m : ℝ)⁻¹ • (1 : Matrix (Fin m) (Fin m) ℝ))) = (r : ℝ) / m ∧\\n      meanCostTau κ P ((m : ℝ)⁻¹ • (1 : Matrix (Fin m) (Fin m) ℝ))\\n        = 1 - (κ / (1 + κ)) * ((r : ℝ) / m)\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for isotropic_rank_fraction, the exact displayed conditional statement isotropic_rank_fraction holds.\",\n    \"exact_source_signature\": \"theorem isotropic_rank_fraction (hm : 0 < m) {r : ℕ} {P : Matrix (Fin m) (Fin m) ℝ}\\n    (hP : IsOrthProjector P) (hPrank : P.rank = r) {κ : ℝ} (hκ : 0 ≤ κ) :\\n    Matrix.trace (P * ((m : ℝ)⁻¹ • (1 : Matrix (Fin m) (Fin m) ℝ))) = (r : ℝ) / m ∧\\n      meanCostTau κ P ((m : ℝ)⁻¹ • (1 : Matrix (Fin m) (Fin m) ℝ))\\n        = 1 - (κ / (1 + κ)) * ((r : ℝ) / m)\",\n    \"explicit_binders_and_hypotheses\": \"(hm : 0 < m) {r : ℕ} {P : Matrix (Fin m) (Fin m) ℝ}\\n    (hP : IsOrthProjector P) (hPrank : P.rank = r) {κ : ℝ} (hκ : 0 ≤ κ)\",\n    \"lean_theorem\": \"isotropic_rank_fraction\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"1\",\n        \"IsOrthProjector\",\n        \"Matrix.trace\",\n        \"P\",\n        \"P.rank\",\n        \"hP\",\n        \"hPrank\",\n        \"hm\",\n        \"hκ\",\n        \"m\",\n        \"meanCostTau\",\n        \"r\",\n        \"κ\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"witness_isotropic_rank_fraction\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  }\n]",
+          "disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+          "entity_id": "publication:methods-note:2026-W41:Run-125",
+          "foundation_basis": "INDEPENDENT",
+          "publication_binding_sha256": "e21276f5985e256f52fb01932ad5067414af1441e9c859958899cdad374f70b4",
+          "run_id": "Run-125",
+          "semantic_labels": [
+            {
+              "headline_eligible": true,
+              "lean_theorem": "shared_channel_inverse",
+              "nonvacuity_label": "CERTIFIED_WITNESS: witness_shared_channel_inverse",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "directional_gain_bounds",
+              "nonvacuity_label": "CERTIFIED_WITNESS: witness_directional_gain_aligned",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "rank_deficient_unit_gain",
+              "nonvacuity_label": "CERTIFIED_WITNESS: witness_rank_deficient_unit_gain",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "worstcase_deadline",
+              "nonvacuity_label": "CERTIFIED_WITNESS: witness_worstcase_deadline",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "top_subspace_mean_cost",
+              "nonvacuity_label": "CERTIFIED_WITNESS: witness_top_subspace_mean_cost",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "isotropic_rank_fraction",
+              "nonvacuity_label": "CERTIFIED_WITNESS: witness_isotropic_rank_fraction",
+              "semantic_tier": "SUBSTANTIVE"
+            }
+          ],
+          "title": "The Symbiotic Bandwidth Bound: Low-Rank Shared Channels Cannot Remove Worst-Case Thermodynamic Speed Limits"
+        },
+        {
+          "certificate_sha256": "ee6317774bf2a021c5de6d5afb5115006579cfbbb2ed98fad1aa6727b701fc62",
+          "certifies": "LISTED_NOTE_SCOPE_ONLY",
+          "claim_scope": "[\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"J.I_RY = J.I_RY_given_S + J.I_RS - J.I_RS_given_Y\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for mutual_information_chain_balance, the exact displayed conditional statement mutual_information_chain_balance holds.\",\n    \"exact_source_signature\": \"theorem mutual_information_chain_balance {ρ η σ : Type*} [Fintype ρ] [Fintype η] [Fintype σ]\\n    (J : JointLaw ρ η σ) :\\n    J.I_RY = J.I_RY_given_S + J.I_RS - J.I_RS_given_Y\",\n    \"explicit_binders_and_hypotheses\": \"{ρ η σ : Type*} [Fintype ρ] [Fintype η] [Fintype σ]\\n    (J : JointLaw ρ η σ)\",\n    \"lean_theorem\": \"mutual_information_chain_balance\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"J\",\n        \"J.I_RS\",\n        \"J.I_RS_given_Y\",\n        \"J.I_RY\",\n        \"J.I_RY_given_S\",\n        \"JointLaw\",\n        \"η\",\n        \"ρ\",\n        \"σ\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"mutual_information_chain_balance_nonvacuity\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"J.I_RY ≤ J.H_Y_given_S + δ\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for forbidden_proxy_capacity_ceiling, the exact displayed conditional statement forbidden_proxy_capacity_ceiling holds.\",\n    \"exact_source_signature\": \"theorem forbidden_proxy_capacity_ceiling {ρ η σ : Type*} [Fintype ρ] [Fintype η] [Fintype σ]\\n    (J : JointLaw ρ η σ) (δ : ℝ) (hδ : J.I_RS ≤ δ) :\\n    J.I_RY ≤ J.H_Y_given_S + δ\",\n    \"explicit_binders_and_hypotheses\": \"{ρ η σ : Type*} [Fintype ρ] [Fintype η] [Fintype σ]\\n    (J : JointLaw ρ η σ) (δ : ℝ) (hδ : J.I_RS ≤ δ)\",\n    \"lean_theorem\": \"forbidden_proxy_capacity_ceiling\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"J\",\n        \"J.H_Y_given_S\",\n        \"J.I_RS\",\n        \"J.I_RY\",\n        \"JointLaw\",\n        \"hδ\",\n        \"δ\",\n        \"η\",\n        \"ρ\",\n        \"σ\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"forbidden_proxy_capacity_ceiling_nonvacuity\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"J.H_Y_given_S + J.I_RS - J.I_RY = J.H_Y_given_RS + J.I_RS_given_Y ∧\\n      0 ≤ J.H_Y_given_RS + J.I_RS_given_Y\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for capacity_ceiling_slack_decomposition, the exact displayed conditional statement capacity_ceiling_slack_decomposition holds.\",\n    \"exact_source_signature\": \"theorem capacity_ceiling_slack_decomposition {ρ η σ : Type*} [Fintype ρ] [Fintype η] [Fintype σ]\\n    (J : JointLaw ρ η σ) :\\n    J.H_Y_given_S + J.I_RS - J.I_RY = J.H_Y_given_RS + J.I_RS_given_Y ∧\\n      0 ≤ J.H_Y_given_RS + J.I_RS_given_Y\",\n    \"explicit_binders_and_hypotheses\": \"{ρ η σ : Type*} [Fintype ρ] [Fintype η] [Fintype σ]\\n    (J : JointLaw ρ η σ)\",\n    \"lean_theorem\": \"capacity_ceiling_slack_decomposition\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"J\",\n        \"J.H_Y_given_RS\",\n        \"J.H_Y_given_S\",\n        \"J.I_RS\",\n        \"J.I_RS_given_Y\",\n        \"J.I_RY\",\n        \"JointLaw\",\n        \"η\",\n        \"ρ\",\n        \"σ\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"capacity_ceiling_slack_decomposition_nonvacuity\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"J.I_RY = 0\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for perfect_invariance_target_proxy_collapse, the exact displayed conditional statement perfect_invariance_target_proxy_collapse holds.\",\n    \"exact_source_signature\": \"theorem perfect_invariance_target_proxy_collapse {ρ η : Type*} [Fintype ρ] [Fintype η]\\n    (J : JointLaw ρ η η) (hdiag : ∀ r y s, y ≠ s → J.p r y s = 0) (hinv : J.I_RS = 0) :\\n    J.I_RY = 0\",\n    \"explicit_binders_and_hypotheses\": \"{ρ η : Type*} [Fintype ρ] [Fintype η]\\n    (J : JointLaw ρ η η) (hdiag : ∀ r y s, y ≠ s → J.p r y s = 0) (hinv : J.I_RS = 0)\",\n    \"lean_theorem\": \"perfect_invariance_target_proxy_collapse\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"J\",\n        \"J.I_RS\",\n        \"J.I_RY\",\n        \"J.p\",\n        \"JointLaw\",\n        \"hdiag\",\n        \"hinv\",\n        \"η\",\n        \"ρ\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"perfect_invariance_target_proxy_collapse_nonvacuity\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [\n      {\n        \"line\": 998,\n        \"source_text\": \"variable {q : ℝ} (hq0 : 0 ≤ q) (hq1 : q ≤ 1)\"\n      }\n    ],\n    \"conclusion\": \"(erasureLaw q hq0 hq1).I_RS = q ∧\\n      (erasureLaw q hq0 hq1).H_Y_given_S = 1 ∧\\n      (erasureLaw q hq0 hq1).I_RY = 1 + q ∧\\n      (erasureLaw q hq0 hq1).I_RY = (erasureLaw q hq0 hq1).H_Y_given_S + q\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for erasure_family_tightness, the exact displayed conditional statement erasure_family_tightness holds.\",\n    \"exact_source_signature\": \"theorem erasure_family_tightness (q : ℝ) (hq0 : 0 ≤ q) (hq1 : q ≤ 1) :\\n    (erasureLaw q hq0 hq1).I_RS = q ∧\\n      (erasureLaw q hq0 hq1).H_Y_given_S = 1 ∧\\n      (erasureLaw q hq0 hq1).I_RY = 1 + q ∧\\n      (erasureLaw q hq0 hq1).I_RY = (erasureLaw q hq0 hq1).H_Y_given_S + q\",\n    \"explicit_binders_and_hypotheses\": \"(q : ℝ) (hq0 : 0 ≤ q) (hq1 : q ≤ 1)\",\n    \"lean_theorem\": \"erasure_family_tightness\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"H_Y_given_S\",\n        \"I_RS\",\n        \"I_RY\",\n        \"erasureLaw\",\n        \"hq0\",\n        \"hq1\",\n        \"q\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"erasure_family_tightness_nonvacuity\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  }\n]",
+          "disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+          "entity_id": "publication:methods-note:2026-W41:Run-126",
+          "foundation_basis": "INDEPENDENT",
+          "publication_binding_sha256": "c1a862e9769e5a536f904bb89c2f99884adb34147738a5c89da3bca0357ac0f9",
+          "run_id": "Run-126",
+          "semantic_labels": [
+            {
+              "headline_eligible": true,
+              "lean_theorem": "mutual_information_chain_balance",
+              "nonvacuity_label": "CERTIFIED_WITNESS: mutual_information_chain_balance_nonvacuity",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "forbidden_proxy_capacity_ceiling",
+              "nonvacuity_label": "CERTIFIED_WITNESS: forbidden_proxy_capacity_ceiling_nonvacuity",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "capacity_ceiling_slack_decomposition",
+              "nonvacuity_label": "CERTIFIED_WITNESS: capacity_ceiling_slack_decomposition_nonvacuity",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "perfect_invariance_target_proxy_collapse",
+              "nonvacuity_label": "CERTIFIED_WITNESS: perfect_invariance_target_proxy_collapse_nonvacuity",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "erasure_family_tightness",
+              "nonvacuity_label": "CERTIFIED_WITNESS: erasure_family_tightness_nonvacuity",
+              "semantic_tier": "SUBSTANTIVE"
+            }
+          ],
+          "title": "The Invariance Capacity Ceiling: Forbidden-Proxy Alignment Caps Predictive Information"
+        },
+        {
+          "certificate_sha256": "0ce6474c22e80fa40a8f718fae6c9cac536cc950c4274b9037c3ade9979b8754",
+          "certifies": "LISTED_NOTE_SCOPE_ONLY",
+          "claim_scope": "[\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"BilateralBenefit vX cX vY cY x y ↔ InCorridor vX cX vY cY x y\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for bilateral_benefit_iff_reciprocity_corridor, the exact displayed conditional statement bilateral_benefit_iff_reciprocity_corridor holds.\",\n    \"exact_source_signature\": \"theorem bilateral_benefit_iff_reciprocity_corridor\\n    {x y vX vY cX cY : ℝ} (hx : 0 < x) (hy : 0 < y)\\n    (hvX : 0 < vX) (hvY : 0 < vY) (hcX : 0 < cX) (hcY : 0 < cY) :\\n    BilateralBenefit vX cX vY cY x y ↔ InCorridor vX cX vY cY x y\",\n    \"explicit_binders_and_hypotheses\": \"{x y vX vY cX cY : ℝ} (hx : 0 < x) (hy : 0 < y)\\n    (hvX : 0 < vX) (hvY : 0 < vY) (hcX : 0 < cX) (hcY : 0 < cY)\",\n    \"lean_theorem\": \"bilateral_benefit_iff_reciprocity_corridor\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"BilateralBenefit\",\n        \"InCorridor\",\n        \"cX\",\n        \"cY\",\n        \"hcX\",\n        \"hcY\",\n        \"hvX\",\n        \"hvY\",\n        \"hx\",\n        \"hy\",\n        \"vX\",\n        \"vY\",\n        \"x\",\n        \"y\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"witness_C1_benefit\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"(∃ x y : ℝ, 0 < x ∧ 0 < y ∧ InCorridor vX cX vY cY x y)\\n      ↔ ProductCondition vX cX vY cY\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for strict_corridor_nonempty_iff_product_condition, the exact displayed conditional statement strict_corridor_nonempty_iff_product_condition holds.\",\n    \"exact_source_signature\": \"theorem strict_corridor_nonempty_iff_product_condition\\n    {vX vY cX cY : ℝ} (hvX : 0 < vX) (hvY : 0 < vY) (hcX : 0 < cX) (hcY : 0 < cY) :\\n    (∃ x y : ℝ, 0 < x ∧ 0 < y ∧ InCorridor vX cX vY cY x y)\\n      ↔ ProductCondition vX cX vY cY\",\n    \"explicit_binders_and_hypotheses\": \"{vX vY cX cY : ℝ} (hvX : 0 < vX) (hvY : 0 < vY) (hcX : 0 < cX) (hcY : 0 < cY)\",\n    \"lean_theorem\": \"strict_corridor_nonempty_iff_product_condition\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"InCorridor\",\n        \"ProductCondition\",\n        \"cX\",\n        \"cY\",\n        \"hcX\",\n        \"hcY\",\n        \"hvX\",\n        \"hvY\",\n        \"vX\",\n        \"vY\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"witness_C2_corridor_nonempty\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"(0 < uXshare vX cX R q ∧ 0 < uYshare vY cY R q ↔ qL vX cX < q ∧ q < qU vY cY) ∧\\n      (qL vX cX < qU vY cY ↔ ProductCondition vX cX vY cY)\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for share_coordinate_corridor_equivalence, the exact displayed conditional statement share_coordinate_corridor_equivalence holds.\",\n    \"exact_source_signature\": \"theorem share_coordinate_corridor_equivalence\\n    {vX vY cX cY R q : ℝ} (hR : 0 < R)\\n    (hvX : 0 < vX) (hvY : 0 < vY) (hcX : 0 < cX) (hcY : 0 < cY) :\\n    (0 < uXshare vX cX R q ∧ 0 < uYshare vY cY R q ↔ qL vX cX < q ∧ q < qU vY cY) ∧\\n      (qL vX cX < qU vY cY ↔ ProductCondition vX cX vY cY)\",\n    \"explicit_binders_and_hypotheses\": \"{vX vY cX cY R q : ℝ} (hR : 0 < R)\\n    (hvX : 0 < vX) (hvY : 0 < vY) (hcX : 0 < cX) (hcY : 0 < cY)\",\n    \"lean_theorem\": \"share_coordinate_corridor_equivalence\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"ProductCondition\",\n        \"R\",\n        \"cX\",\n        \"cY\",\n        \"hR\",\n        \"hcX\",\n        \"hcY\",\n        \"hvX\",\n        \"hvY\",\n        \"q\",\n        \"qL\",\n        \"qU\",\n        \"uXshare\",\n        \"uYshare\",\n        \"vX\",\n        \"vY\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"witness_C3\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"(∀ q : ℝ, q ≠ (qL vX cX + qU vY cY) / 2 →\\n        nashProduct vX cX vY cY R q\\n          < nashProduct vX cX vY cY R ((qL vX cX + qU vY cY) / 2)) ∧\\n      uXshare vX cX R ((qL vX cX + qU vY cY) / 2)\\n          = R * (vX + cX) * (qU vY cY - qL vX cX) / 2 ∧\\n      uYshare vY cY R ((qL vX cX + qU vY cY) / 2)\\n          = R * (vY + cY) * (qU vY cY - qL vX cX) / 2\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for nash_midpoint_unique_maximizer, the exact displayed conditional statement nash_midpoint_unique_maximizer holds.\",\n    \"exact_source_signature\": \"theorem nash_midpoint_unique_maximizer\\n    {vX vY cX cY R : ℝ} (hR : 0 < R)\\n    (hvX : 0 < vX) (hvY : 0 < vY) (hcX : 0 < cX) (hcY : 0 < cY)\\n    (hfeas : ProductCondition vX cX vY cY) :\\n    (∀ q : ℝ, q ≠ (qL vX cX + qU vY cY) / 2 →\\n        nashProduct vX cX vY cY R q\\n          < nashProduct vX cX vY cY R ((qL vX cX + qU vY cY) / 2)) ∧\\n      uXshare vX cX R ((qL vX cX + qU vY cY) / 2)\\n          = R * (vX + cX) * (qU vY cY - qL vX cX) / 2 ∧\\n      uYshare vY cY R ((qL vX cX + qU vY cY) / 2)\\n          = R * (vY + cY) * (qU vY cY - qL vX cX) / 2\",\n    \"explicit_binders_and_hypotheses\": \"{vX vY cX cY R : ℝ} (hR : 0 < R)\\n    (hvX : 0 < vX) (hvY : 0 < vY) (hcX : 0 < cX) (hcY : 0 < cY)\\n    (hfeas : ProductCondition vX cX vY cY)\",\n    \"lean_theorem\": \"nash_midpoint_unique_maximizer\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"ProductCondition\",\n        \"R\",\n        \"cX\",\n        \"cY\",\n        \"hR\",\n        \"hcX\",\n        \"hcY\",\n        \"hfeas\",\n        \"hvX\",\n        \"hvY\",\n        \"nashProduct\",\n        \"qL\",\n        \"qU\",\n        \"uXshare\",\n        \"uYshare\",\n        \"vX\",\n        \"vY\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"witness_C4\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"(∀ R₁ R₂ : ℝ, 0 < R₁ → 0 < R₂ →\\n        {q : ℝ | 0 < uXshare vX cX R₁ q ∧ 0 < uYshare vY cY R₁ q}\\n          = {q : ℝ | 0 < uXshare vX cX R₂ q ∧ 0 < uYshare vY cY R₂ q}) ∧\\n      (∀ R s q : ℝ, uXshare vX cX (s * R) q = s * uXshare vX cX R q ∧\\n        uYshare vY cY (s * R) q = s * uYshare vY cY R q) ∧\\n      (¬ ProductCondition vX cX vY cY →\\n        ∀ x y : ℝ, 0 < x → 0 < y → ¬ BilateralBenefit vX cX vY cY x y)\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for bandwidth_scaling_cannot_restore_feasibility, the exact displayed conditional statement bandwidth_scaling_cannot_restore_feasibility holds.\",\n    \"exact_source_signature\": \"theorem bandwidth_scaling_cannot_restore_feasibility\\n    {vX vY cX cY : ℝ} (hvX : 0 < vX) (hvY : 0 < vY) (hcX : 0 < cX) (hcY : 0 < cY) :\\n    (∀ R₁ R₂ : ℝ, 0 < R₁ → 0 < R₂ →\\n        {q : ℝ | 0 < uXshare vX cX R₁ q ∧ 0 < uYshare vY cY R₁ q}\\n          = {q : ℝ | 0 < uXshare vX cX R₂ q ∧ 0 < uYshare vY cY R₂ q}) ∧\\n      (∀ R s q : ℝ, uXshare vX cX (s * R) q = s * uXshare vX cX R q ∧\\n        uYshare vY cY (s * R) q = s * uYshare vY cY R q) ∧\\n      (¬ ProductCondition vX cX vY cY →\\n        ∀ x y : ℝ, 0 < x → 0 < y → ¬ BilateralBenefit vX cX vY cY x y)\",\n    \"explicit_binders_and_hypotheses\": \"{vX vY cX cY : ℝ} (hvX : 0 < vX) (hvY : 0 < vY) (hcX : 0 < cX) (hcY : 0 < cY)\",\n    \"lean_theorem\": \"bandwidth_scaling_cannot_restore_feasibility\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"BilateralBenefit\",\n        \"ProductCondition\",\n        \"cX\",\n        \"cY\",\n        \"hcX\",\n        \"hcY\",\n        \"hvX\",\n        \"hvY\",\n        \"q\",\n        \"uXshare\",\n        \"uYshare\",\n        \"vX\",\n        \"vY\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"witness_C4\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  }\n]",
+          "disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+          "entity_id": "publication:methods-note:2026-W41:Run-128",
+          "foundation_basis": "INDEPENDENT",
+          "publication_binding_sha256": "2f278fe4850c73d558a2e689e777ab2863e50484640714821a742e5711c2305b",
+          "run_id": "Run-128",
+          "semantic_labels": [
+            {
+              "headline_eligible": true,
+              "lean_theorem": "bilateral_benefit_iff_reciprocity_corridor",
+              "nonvacuity_label": "CERTIFIED_WITNESS: witness_C1_benefit",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "strict_corridor_nonempty_iff_product_condition",
+              "nonvacuity_label": "CERTIFIED_WITNESS: witness_C2_corridor_nonempty",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "share_coordinate_corridor_equivalence",
+              "nonvacuity_label": "CERTIFIED_WITNESS: witness_C3",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "nash_midpoint_unique_maximizer",
+              "nonvacuity_label": "CERTIFIED_WITNESS: witness_C4",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "bandwidth_scaling_cannot_restore_feasibility",
+              "nonvacuity_label": "CERTIFIED_WITNESS: witness_C4",
+              "semantic_tier": "SUBSTANTIVE"
+            }
+          ],
+          "title": "The Reciprocity Corridor: A Bilateral-Benefit Test for Directional Information Exchange"
+        },
+        {
+          "certificate_sha256": "9abbf500f4df1683cb083cceb4092b5d3f0df94b8a1644abbc4afe6754232e6a",
+          "certifies": "LISTED_NOTE_SCOPE_ONLY",
+          "claim_scope": "[\n  {\n    \"ambient_source_context\": [\n      {\n        \"line\": 344,\n        \"source_text\": \"variable {Ω : Type*} {m0 : MeasurableSpace Ω} {μ : Measure Ω} [IsProbabilityMeasure μ]\\n  {ℱ : Filtration ℕ m0} {Λ : ℕ → Ω → ℝ}\"\n      },\n      {\n        \"line\": 349,\n        \"source_text\": \"variable\\n  (hΛmeas : ∀ n, StronglyMeasurable[ℱ n] (Λ n))\\n  (hΛnonneg : ∀ n ω, 0 ≤ Λ n ω)\\n  (hΛint : ∀ n, Integrable (Λ n) μ)\\n  (hAint : ∀ n, Integrable (mixAcc Λ n) μ)\\n  (hcondΛ : ∀ n, μ[Λ (n + 1) | ℱ n] =ᵐ[μ] fun _ => (1 : ℝ))\\n\\ninclude hΛmeas hΛint hAint hcondΛ\"\n      }\n    ],\n    \"conclusion\": \"Martingale (mixture Λ) ℱ μ ∧ (∀ n ω, 0 ≤ mixture Λ n ω) ∧\\n      mixture Λ 0 = (fun _ => (1 : ℝ)) ∧ (∀ n, ∫ ω, mixture Λ n ω ∂μ = 1)\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for anytime_change_mixture_martingale, the exact displayed conditional statement anytime_change_mixture_martingale holds.\",\n    \"exact_source_signature\": \"theorem anytime_change_mixture_martingale :\\n    Martingale (mixture Λ) ℱ μ ∧ (∀ n ω, 0 ≤ mixture Λ n ω) ∧\\n      mixture Λ 0 = (fun _ => (1 : ℝ)) ∧ (∀ n, ∫ ω, mixture Λ n ω ∂μ = 1)\",\n    \"explicit_binders_and_hypotheses\": \"\",\n    \"lean_theorem\": \"anytime_change_mixture_martingale\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"1\",\n        \"hAint\",\n        \"hcondΛ\",\n        \"hΛint\",\n        \"hΛmeas\",\n        \"hΛnonneg\",\n        \"m0\",\n        \"mixAcc\",\n        \"mixture\",\n        \"Λ\",\n        \"Ω\",\n        \"μ\",\n        \"ℱ\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"c12_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [\n      {\n        \"line\": 344,\n        \"source_text\": \"variable {Ω : Type*} {m0 : MeasurableSpace Ω} {μ : Measure Ω} [IsProbabilityMeasure μ]\\n  {ℱ : Filtration ℕ m0} {Λ : ℕ → Ω → ℝ}\"\n      },\n      {\n        \"line\": 546,\n        \"source_text\": \"variable\\n  (hΛmeas : ∀ n, StronglyMeasurable[ℱ n] (Λ n))\\n  (hΛnonneg : ∀ n ω, 0 ≤ Λ n ω)\\n  (hΛint : ∀ n, Integrable (Λ n) μ)\\n  (hAint : ∀ n, Integrable (mixAcc Λ n) μ)\\n  (hcondΛ : ∀ n, μ[Λ (n + 1) | ℱ n] =ᵐ[μ] fun _ => (1 : ℝ))\\n\\ninclude hΛmeas hΛnonneg hΛint hAint hcondΛ\"\n      }\n    ],\n    \"conclusion\": \"μ {ω | ∃ n, 1 / α ≤ mixture Λ n ω} ≤ ENNReal.ofReal α\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for anytime_change_ville_certificate, the exact displayed conditional statement anytime_change_ville_certificate holds.\",\n    \"exact_source_signature\": \"theorem anytime_change_ville_certificate {α : ℝ} (hα : 0 < α) :\\n    μ {ω | ∃ n, 1 / α ≤ mixture Λ n ω} ≤ ENNReal.ofReal α\",\n    \"explicit_binders_and_hypotheses\": \"{α : ℝ} (hα : 0 < α)\",\n    \"lean_theorem\": \"anytime_change_ville_certificate\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"1\",\n        \"ENNReal.ofReal\",\n        \"hAint\",\n        \"hcondΛ\",\n        \"hΛint\",\n        \"hΛmeas\",\n        \"hΛnonneg\",\n        \"hα\",\n        \"m0\",\n        \"mixAcc\",\n        \"mixture\",\n        \"Λ\",\n        \"Ω\",\n        \"α\",\n        \"μ\",\n        \"ℱ\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"c2_sup_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [\n      {\n        \"line\": 603,\n        \"source_text\": \"variable {Ω : Type*}\"\n      }\n    ],\n    \"conclusion\": \"(∀ n ω, component Λ ν n ω ≤ mixture Λ n ω) ∧\\n    (∀ ω, firstAlarm (fun n => mixture Λ n ω) (1 / α)\\n        ≤ firstAlarm (fun n => component Λ ν n ω) (1 / α)) ∧\\n    evidenceBoundary α ν = Real.log (1 / α) + Real.log ((ν : ℝ) * ((ν : ℝ) + 1))\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for change_component_dominance_and_penalty, the exact displayed conditional statement change_component_dominance_and_penalty holds.\",\n    \"exact_source_signature\": \"theorem change_component_dominance_and_penalty (Λ : ℕ → Ω → ℝ) (hΛ : ∀ n ω, 0 ≤ Λ n ω)\\n    {ν : ℕ} (hν : 1 ≤ ν) {α : ℝ} (hα : 0 < α) :\\n    (∀ n ω, component Λ ν n ω ≤ mixture Λ n ω) ∧\\n    (∀ ω, firstAlarm (fun n => mixture Λ n ω) (1 / α)\\n        ≤ firstAlarm (fun n => component Λ ν n ω) (1 / α)) ∧\\n    evidenceBoundary α ν = Real.log (1 / α) + Real.log ((ν : ℝ) * ((ν : ℝ) + 1))\",\n    \"explicit_binders_and_hypotheses\": \"(Λ : ℕ → Ω → ℝ) (hΛ : ∀ n ω, 0 ≤ Λ n ω)\\n    {ν : ℕ} (hν : 1 ≤ ν) {α : ℝ} (hα : 0 < α)\",\n    \"lean_theorem\": \"change_component_dominance_and_penalty\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"Real.log\",\n        \"component\",\n        \"evidenceBoundary\",\n        \"firstAlarm\",\n        \"hΛ\",\n        \"hα\",\n        \"hν\",\n        \"mixture\",\n        \"Λ\",\n        \"Ω\",\n        \"α\",\n        \"ν\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"c3_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [\n      {\n        \"line\": 794,\n        \"source_text\": \"variable {Ω : Type*} {m0 : MeasurableSpace Ω} {μ : Measure Ω} [IsProbabilityMeasure μ]\"\n      }\n    ],\n    \"conclusion\": \"a / D ≤ ∫ ω, (N ω : ℝ) ∂μ ∧ ∫ ω, (N ω : ℝ) ∂μ < (a + zmax) / D\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for bounded_overshoot_expected_delay, the exact displayed conditional statement bounded_overshoot_expected_delay holds.\",\n    \"exact_source_signature\": \"theorem bounded_overshoot_expected_delay {𝒢 : Filtration ℕ m0} {Z : ℕ → Ω → ℝ} {N : Ω → ℕ}\\n    {B D zmax a : ℝ}\\n    (hB : 0 ≤ B)\\n    (hZmeas : ∀ j, Measurable (Z j))\\n    (hZbdd : ∀ j ω, |Z j ω| ≤ B)\\n    (hZmax : ∀ j ω, Z j ω ≤ zmax)\\n    (hZmean : ∀ j, ∫ ω, Z j ω ∂μ = D)\\n    (hD : 0 < D)\\n    (ha : 0 < a)\\n    (hindep : ∀ j, Indep (MeasurableSpace.comap (Z j) inferInstance) (𝒢 j) μ)\\n    (hNstop : ∀ j, MeasurableSet[𝒢 j] {ω | N ω ≤ j})\\n    (hNint : Integrable (fun ω => (N ω : ℝ)) μ)\\n    (hfirst : ∀ᵐ ω ∂μ, IsLeast {m : ℕ | 1 ≤ m ∧ a ≤ evidenceSum Z m ω} (N ω)) :\\n    a / D ≤ ∫ ω, (N ω : ℝ) ∂μ ∧ ∫ ω, (N ω : ℝ) ∂μ < (a + zmax) / D\",\n    \"explicit_binders_and_hypotheses\": \"{𝒢 : Filtration ℕ m0} {Z : ℕ → Ω → ℝ} {N : Ω → ℕ}\\n    {B D zmax a : ℝ}\\n    (hB : 0 ≤ B)\\n    (hZmeas : ∀ j, Measurable (Z j))\\n    (hZbdd : ∀ j ω, |Z j ω| ≤ B)\\n    (hZmax : ∀ j ω, Z j ω ≤ zmax)\\n    (hZmean : ∀ j, ∫ ω, Z j ω ∂μ = D)\\n    (hD : 0 < D)\\n    (ha : 0 < a)\\n    (hindep : ∀ j, Indep (MeasurableSpace.comap (Z j) inferInstance) (𝒢 j) μ)\\n    (hNstop : ∀ j, MeasurableSet[𝒢 j] {ω | N ω ≤ j})\\n    (hNint : Integrable (fun ω => (N ω : ℝ)) μ)\\n    (hfirst : ∀ᵐ ω ∂μ, IsLeast {m : ℕ | 1 ≤ m ∧ a ≤ evidenceSum Z m ω} (N ω))\",\n    \"lean_theorem\": \"bounded_overshoot_expected_delay\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"B\",\n        \"D\",\n        \"MeasurableSpace.comap\",\n        \"N\",\n        \"Z\",\n        \"a\",\n        \"evidenceSum\",\n        \"hB\",\n        \"hD\",\n        \"hNint\",\n        \"hNstop\",\n        \"hZbdd\",\n        \"hZmax\",\n        \"hZmean\",\n        \"hZmeas\",\n        \"ha\",\n        \"hfirst\",\n        \"hindep\",\n        \"m\",\n        \"m0\",\n        \"zmax\",\n        \"Ω\",\n        \"μ\",\n        \"ω\",\n        \"𝒢\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"c4_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  }\n]",
+          "disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+          "entity_id": "publication:methods-note:2026-W41:Run-129",
+          "foundation_basis": "INDEPENDENT",
+          "publication_binding_sha256": "a71ae9a0685224ec5674d328e16bffce02f22435f432bcea0a74fe89fb4621dd",
+          "run_id": "Run-129",
+          "semantic_labels": [
+            {
+              "headline_eligible": true,
+              "lean_theorem": "anytime_change_mixture_martingale",
+              "nonvacuity_label": "CERTIFIED_WITNESS: c12_nonvacuous",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "anytime_change_ville_certificate",
+              "nonvacuity_label": "CERTIFIED_WITNESS: c2_sup_nonvacuous",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "change_component_dominance_and_penalty",
+              "nonvacuity_label": "CERTIFIED_WITNESS: c3_nonvacuous",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "bounded_overshoot_expected_delay",
+              "nonvacuity_label": "CERTIFIED_WITNESS: c4_nonvacuous",
+              "semantic_tier": "SUBSTANTIVE"
+            }
+          ],
+          "title": "The Anytime Change Certificate: False-alarm control, a late-change penalty, and a bounded erasure budget for continuous monitoring"
+        },
+        {
+          "certificate_sha256": "d037306a68e5e623a418d6084c7610b697628d5a147d344aac5e57a1a1580a15",
+          "certifies": "LISTED_NOTE_SCOPE_ONLY",
+          "claim_scope": "[\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"hDown bias cPlusToMinus ≤ hUp bias cMinusToPlus\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for threshold_order, the exact displayed conditional statement threshold_order holds.\",\n    \"exact_source_signature\": \"theorem threshold_order\\n    (bias cPlusToMinus cMinusToPlus : ℝ)\\n    (hpm : 0 ≤ cPlusToMinus) (hmp : 0 ≤ cMinusToPlus) :\\n    hDown bias cPlusToMinus ≤ hUp bias cMinusToPlus\",\n    \"explicit_binders_and_hypotheses\": \"(bias cPlusToMinus cMinusToPlus : ℝ)\\n    (hpm : 0 ≤ cPlusToMinus) (hmp : 0 ≤ cMinusToPlus)\",\n    \"lean_theorem\": \"threshold_order\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"bias\",\n        \"cMinusToPlus\",\n        \"cPlusToMinus\",\n        \"hDown\",\n        \"hUp\",\n        \"hmp\",\n        \"hpm\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"cshc_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"bandWidth bias cPlusToMinus cMinusToPlus =\\n      (cPlusToMinus + cMinusToPlus) / 2\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for band_width_identity, the exact displayed conditional statement band_width_identity holds.\",\n    \"exact_source_signature\": \"theorem band_width_identity\\n    (bias cPlusToMinus cMinusToPlus : ℝ) :\\n    bandWidth bias cPlusToMinus cMinusToPlus =\\n      (cPlusToMinus + cMinusToPlus) / 2\",\n    \"explicit_binders_and_hypotheses\": \"(bias cPlusToMinus cMinusToPlus : ℝ)\",\n    \"lean_theorem\": \"band_width_identity\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"bandWidth\",\n        \"bias\",\n        \"cMinusToPlus\",\n        \"cPlusToMinus\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"cshc_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"|signedLoopIntegral bias cPlusToMinus cMinusToPlus| =\\n      cPlusToMinus + cMinusToPlus\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for closed_loop_area_identity, the exact displayed conditional statement closed_loop_area_identity holds.\",\n    \"exact_source_signature\": \"theorem closed_loop_area_identity\\n    (bias cPlusToMinus cMinusToPlus : ℝ)\\n    (hpm : 0 ≤ cPlusToMinus) (hmp : 0 ≤ cMinusToPlus) :\\n    |signedLoopIntegral bias cPlusToMinus cMinusToPlus| =\\n      cPlusToMinus + cMinusToPlus\",\n    \"explicit_binders_and_hypotheses\": \"(bias cPlusToMinus cMinusToPlus : ℝ)\\n    (hpm : 0 ≤ cPlusToMinus) (hmp : 0 ≤ cMinusToPlus)\",\n    \"lean_theorem\": \"closed_loop_area_identity\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"bias\",\n        \"cMinusToPlus\",\n        \"cPlusToMinus\",\n        \"hmp\",\n        \"hpm\",\n        \"signedLoopIntegral\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"cshc_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"hDown (bias + delta) cPlusToMinus = hDown bias cPlusToMinus - delta ∧\\n    hUp (bias + delta) cMinusToPlus = hUp bias cMinusToPlus - delta\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for bias_translation, the exact displayed conditional statement bias_translation holds.\",\n    \"exact_source_signature\": \"theorem bias_translation\\n    (bias delta cPlusToMinus cMinusToPlus : ℝ) :\\n    hDown (bias + delta) cPlusToMinus = hDown bias cPlusToMinus - delta ∧\\n    hUp (bias + delta) cMinusToPlus = hUp bias cMinusToPlus - delta\",\n    \"explicit_binders_and_hypotheses\": \"(bias delta cPlusToMinus cMinusToPlus : ℝ)\",\n    \"lean_theorem\": \"bias_translation\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"bias\",\n        \"cMinusToPlus\",\n        \"cPlusToMinus\",\n        \"delta\",\n        \"hDown\",\n        \"hUp\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"cshc_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"-2 * (hDown bias cPlusToMinus + bias) = cPlusToMinus ∧\\n    2 * (hUp bias cMinusToPlus + bias) = cMinusToPlus\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for directional_cost_recovery, the exact displayed conditional statement directional_cost_recovery holds.\",\n    \"exact_source_signature\": \"theorem directional_cost_recovery\\n    (bias cPlusToMinus cMinusToPlus : ℝ) :\\n    -2 * (hDown bias cPlusToMinus + bias) = cPlusToMinus ∧\\n    2 * (hUp bias cMinusToPlus + bias) = cMinusToPlus\",\n    \"explicit_binders_and_hypotheses\": \"(bias cPlusToMinus cMinusToPlus : ℝ)\",\n    \"lean_theorem\": \"directional_cost_recovery\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"bias\",\n        \"cMinusToPlus\",\n        \"cPlusToMinus\",\n        \"hDown\",\n        \"hUp\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"cshc_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  }\n]",
+          "disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+          "entity_id": "publication:methods-note:2026-W41:Run-131",
+          "foundation_basis": "INDEPENDENT",
+          "publication_binding_sha256": "96318c20633df9fd83b2b8495bb3bf3379a81974351e4b8f2450a7fcf09b6e6d",
+          "run_id": "Run-131",
+          "semantic_labels": [
+            {
+              "headline_eligible": true,
+              "lean_theorem": "threshold_order",
+              "nonvacuity_label": "CERTIFIED_WITNESS: cshc_nonvacuous",
+              "semantic_tier": "ROUTINE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "band_width_identity",
+              "nonvacuity_label": "CERTIFIED_WITNESS: cshc_nonvacuous",
+              "semantic_tier": "ROUTINE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "closed_loop_area_identity",
+              "nonvacuity_label": "CERTIFIED_WITNESS: cshc_nonvacuous",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "bias_translation",
+              "nonvacuity_label": "CERTIFIED_WITNESS: cshc_nonvacuous",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "directional_cost_recovery",
+              "nonvacuity_label": "CERTIFIED_WITNESS: cshc_nonvacuous",
+              "semantic_tier": "SUBSTANTIVE"
+            }
+          ],
+          "title": "The Cognitive Switching Hysteresis Certificate: Exact loop geometry under directional state-change penalties"
+        },
+        {
+          "certificate_sha256": "c7a4c76769523c2e8239bde7da795bbb971a2e21c98a6d70632834e4897cf19b",
+          "certifies": "LISTED_NOTE_SCOPE_ONLY",
+          "claim_scope": "[\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"w * g * x - c * x^2 / 2 =\\n      (w * g)^2 / (2 * c) - c / 2 * (x - w * g / c)^2\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for response_objective_completion, the exact displayed conditional statement response_objective_completion holds.\",\n    \"exact_source_signature\": \"theorem response_objective_completion\\n    (g c w x : ℝ) (hc : 0 < c) :\\n    w * g * x - c * x^2 / 2 =\\n      (w * g)^2 / (2 * c) - c / 2 * (x - w * g / c)^2\",\n    \"explicit_binders_and_hypotheses\": \"(g c w x : ℝ) (hc : 0 < c)\",\n    \"lean_theorem\": \"response_objective_completion\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"c\",\n        \"g\",\n        \"hc\",\n        \"w\",\n        \"x\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"alignment_certificate_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"(m^2 * a^2 + M^2 * b^2) * (a^2 + b^2) -\\n        (m * a^2 + M * b^2)^2 =\\n      (M - m)^2 * a^2 * b^2\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for alignment_gap_identity, the exact displayed conditional statement alignment_gap_identity holds.\",\n    \"exact_source_signature\": \"theorem alignment_gap_identity (m M a b : ℝ) :\\n    (m^2 * a^2 + M^2 * b^2) * (a^2 + b^2) -\\n        (m * a^2 + M * b^2)^2 =\\n      (M - m)^2 * a^2 * b^2\",\n    \"explicit_binders_and_hypotheses\": \"(m M a b : ℝ)\",\n    \"lean_theorem\": \"alignment_gap_identity\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"M\",\n        \"a\",\n        \"b\",\n        \"m\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"alignment_certificate_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"(m + M)^2 * (m * a^2 + M * b^2)^2 -\\n        4 * m * M * (a^2 + b^2) * (m^2 * a^2 + M^2 * b^2) =\\n      (M - m)^2 * (m * a^2 - M * b^2)^2\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for kantorovich_cross_multiplied_identity, the exact displayed conditional statement kantorovich_cross_multiplied_identity holds.\",\n    \"exact_source_signature\": \"theorem kantorovich_cross_multiplied_identity (m M a b : ℝ) :\\n    (m + M)^2 * (m * a^2 + M * b^2)^2 -\\n        4 * m * M * (a^2 + b^2) * (m^2 * a^2 + M^2 * b^2) =\\n      (M - m)^2 * (m * a^2 - M * b^2)^2\",\n    \"explicit_binders_and_hypotheses\": \"(m M a b : ℝ)\",\n    \"lean_theorem\": \"kantorovich_cross_multiplied_identity\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"M\",\n        \"a\",\n        \"b\",\n        \"m\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"alignment_certificate_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"0 ≤ (M - m)^2 * (m * a^2 - M * b^2)^2\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for alignment_bound_nonnegative, the exact displayed conditional statement alignment_bound_nonnegative holds.\",\n    \"exact_source_signature\": \"theorem alignment_bound_nonnegative (m M a b : ℝ) :\\n    0 ≤ (M - m)^2 * (m * a^2 - M * b^2)^2\",\n    \"explicit_binders_and_hypotheses\": \"(m M a b : ℝ)\",\n    \"lean_theorem\": \"alignment_bound_nonnegative\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"M\",\n        \"a\",\n        \"b\",\n        \"m\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"alignment_certificate_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"(200 : ℝ) / 1010 = 20 / 101 ∧ (20 : ℝ) / 101 < 1\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for alignment_certificate_nonvacuous, the exact displayed conditional statement alignment_certificate_nonvacuous holds.\",\n    \"exact_source_signature\": \"theorem alignment_certificate_nonvacuous :\\n    (200 : ℝ) / 1010 = 20 / 101 ∧ (20 : ℝ) / 101 < 1\",\n    \"explicit_binders_and_hypotheses\": \"\",\n    \"lean_theorem\": \"alignment_certificate_nonvacuous\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"20\",\n        \"200\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"alignment_certificate_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  }\n]",
+          "disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+          "entity_id": "publication:methods-note:2026-W41:Run-134",
+          "foundation_basis": "INDEPENDENT",
+          "publication_binding_sha256": "2ef7f96ffb2a5fa5a71e200242a407e471c5234e05ef6edcedafaab5b63f69ee",
+          "run_id": "Run-134",
+          "semantic_labels": [
+            {
+              "headline_eligible": true,
+              "lean_theorem": "response_objective_completion",
+              "nonvacuity_label": "CERTIFIED_WITNESS: alignment_certificate_nonvacuous",
+              "semantic_tier": "ROUTINE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "alignment_gap_identity",
+              "nonvacuity_label": "CERTIFIED_WITNESS: alignment_certificate_nonvacuous",
+              "semantic_tier": "ROUTINE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "kantorovich_cross_multiplied_identity",
+              "nonvacuity_label": "CERTIFIED_WITNESS: alignment_certificate_nonvacuous",
+              "semantic_tier": "ROUTINE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "alignment_bound_nonnegative",
+              "nonvacuity_label": "CERTIFIED_WITNESS: alignment_certificate_nonvacuous",
+              "semantic_tier": "ROUTINE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "alignment_certificate_nonvacuous",
+              "nonvacuity_label": "CERTIFIED_WITNESS: alignment_certificate_nonvacuous",
+              "semantic_tier": "ROUTINE"
+            }
+          ],
+          "title": "The Response-Adjusted Alignment Certificate: A condition-number bound for ecosystem-service incentive weights"
+        },
+        {
+          "certificate_sha256": "174a2d939dea38385e072bc939e6262618e67b2ca4d6991d9413662ec31dace2",
+          "certifies": "LISTED_NOTE_SCOPE_ONLY",
+          "claim_scope": "[\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"r^2 - (a + b + 2*k) * r + a*b + k*(a+b) = 0\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for slow_rate_characterization, the exact displayed conditional statement slow_rate_characterization holds.\",\n    \"exact_source_signature\": \"theorem slow_rate_characterization\\n    (a b k r : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k)\\n    (hr : r = slowRate a b k) :\\n    r^2 - (a + b + 2*k) * r + a*b + k*(a+b) = 0\",\n    \"explicit_binders_and_hypotheses\": \"(a b k r : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k)\\n    (hr : r = slowRate a b k)\",\n    \"lean_theorem\": \"slow_rate_characterization\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"a\",\n        \"b\",\n        \"ha\",\n        \"hb\",\n        \"hk\",\n        \"hr\",\n        \"k\",\n        \"r\",\n        \"slowRate\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"symbiotic_equalization_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"min a b ≤ slowRate a b k\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for slow_rate_lower_min, the exact displayed conditional statement slow_rate_lower_min holds.\",\n    \"exact_source_signature\": \"theorem slow_rate_lower_min\\n    (a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k) :\\n    min a b ≤ slowRate a b k\",\n    \"explicit_binders_and_hypotheses\": \"(a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k)\",\n    \"lean_theorem\": \"slow_rate_lower_min\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"a\",\n        \"b\",\n        \"ha\",\n        \"hb\",\n        \"hk\",\n        \"k\",\n        \"slowRate\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"symbiotic_equalization_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"slowRate a b k ≤ (a + b) / 2\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for slow_rate_upper_mean, the exact displayed conditional statement slow_rate_upper_mean holds.\",\n    \"exact_source_signature\": \"theorem slow_rate_upper_mean\\n    (a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k) :\\n    slowRate a b k ≤ (a + b) / 2\",\n    \"explicit_binders_and_hypotheses\": \"(a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k)\",\n    \"lean_theorem\": \"slow_rate_upper_mean\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"a\",\n        \"b\",\n        \"ha\",\n        \"hb\",\n        \"hk\",\n        \"k\",\n        \"slowRate\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"symbiotic_equalization_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"slowRate a b k₁ ≤ slowRate a b k₂\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for slow_rate_monotone, the exact displayed conditional statement slow_rate_monotone holds.\",\n    \"exact_source_signature\": \"theorem slow_rate_monotone\\n    (a b k₁ k₂ : ℝ) (ha : 0 < a) (hb : 0 < b)\\n    (hk₁ : 0 ≤ k₁) (hord : k₁ ≤ k₂) :\\n    slowRate a b k₁ ≤ slowRate a b k₂\",\n    \"explicit_binders_and_hypotheses\": \"(a b k₁ k₂ : ℝ) (ha : 0 < a) (hb : 0 < b)\\n    (hk₁ : 0 ≤ k₁) (hord : k₁ ≤ k₂)\",\n    \"lean_theorem\": \"slow_rate_monotone\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"a\",\n        \"b\",\n        \"ha\",\n        \"hb\",\n        \"hk₁\",\n        \"hord\",\n        \"k₁\",\n        \"k₂\",\n        \"slowRate\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"symbiotic_equalization_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"slowRate a a k = a\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for equal_rates_no_gain, the exact displayed conditional statement equal_rates_no_gain holds.\",\n    \"exact_source_signature\": \"theorem equal_rates_no_gain\\n    (a k : ℝ) (ha : 0 < a) (hk : 0 ≤ k) :\\n    slowRate a a k = a\",\n    \"explicit_binders_and_hypotheses\": \"(a k : ℝ) (ha : 0 < a) (hk : 0 ≤ k)\",\n    \"lean_theorem\": \"equal_rates_no_gain\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"a\",\n        \"ha\",\n        \"hk\",\n        \"k\",\n        \"slowRate\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"symbiotic_equalization_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"slowRate a b k < (a + b) / 2\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for finite_asymmetry_strict_mean, the exact displayed conditional statement finite_asymmetry_strict_mean holds.\",\n    \"exact_source_signature\": \"theorem finite_asymmetry_strict_mean\\n    (a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k) (hab : a ≠ b) :\\n    slowRate a b k < (a + b) / 2\",\n    \"explicit_binders_and_hypotheses\": \"(a b k : ℝ) (ha : 0 < a) (hb : 0 < b) (hk : 0 ≤ k) (hab : a ≠ b)\",\n    \"lean_theorem\": \"finite_asymmetry_strict_mean\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"a\",\n        \"b\",\n        \"ha\",\n        \"hab\",\n        \"hb\",\n        \"hk\",\n        \"k\",\n        \"slowRate\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"symbiotic_equalization_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"1 < slowRate 1 4 1 ∧ slowRate 1 4 1 < (1 + 4) / 2\",\n    \"english_claim\": \"Within the frozen defined model and under every explicit and live ambient hypothesis printed for symbiotic_equalization_nonvacuous, the exact displayed conditional statement symbiotic_equalization_nonvacuous holds.\",\n    \"exact_source_signature\": \"theorem symbiotic_equalization_nonvacuous :\\n    1 < slowRate 1 4 1 ∧ slowRate 1 4 1 < (1 + 4) / 2\",\n    \"explicit_binders_and_hypotheses\": \"\",\n    \"lean_theorem\": \"symbiotic_equalization_nonvacuous\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"slowRate\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": \"symbiotic_equalization_nonvacuous\",\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  }\n]",
+          "disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+          "entity_id": "publication:methods-note:2026-W41:Run-141",
+          "foundation_basis": "INDEPENDENT",
+          "publication_binding_sha256": "fa68ae9389925f14715c0e5c1d9dde4ca0630344af1a16affe8fbbbb5366a900",
+          "run_id": "Run-141",
+          "semantic_labels": [
+            {
+              "headline_eligible": true,
+              "lean_theorem": "slow_rate_characterization",
+              "nonvacuity_label": "CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "slow_rate_lower_min",
+              "nonvacuity_label": "CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "slow_rate_upper_mean",
+              "nonvacuity_label": "CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "slow_rate_monotone",
+              "nonvacuity_label": "CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "equal_rates_no_gain",
+              "nonvacuity_label": "CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "finite_asymmetry_strict_mean",
+              "nonvacuity_label": "CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous",
+              "semantic_tier": "SUBSTANTIVE"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "symbiotic_equalization_nonvacuous",
+              "nonvacuity_label": "CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous",
+              "semantic_tier": "SUBSTANTIVE"
+            }
+          ],
+          "title": "A Symbiotic Equalization Speed-Limit Note"
+        }
+      ],
+      "public_readback_sha256": "b784c21b54dff6a2dc44cd57ba12fbb87f3110c911544d5959b1aa2c28a7471e",
+      "publication_binding_sha256": "df530fa743e80f99f0ea9ff8bf1217f59fc600d262a1a275bd6a0132853cf83b",
+      "record_id": "23226761",
+      "registration_receipt_sha256": "d0ece5e1f95536e75952502c6fec15cca5ddcca5e69076b860e5a3c1fb1f496d",
+      "release_week": "2026-W41",
+      "title": "Viridis Methods Digest — 2026-W41"
+    }
+  ],
   "publication_scope": "public",
   "publications": [
     {

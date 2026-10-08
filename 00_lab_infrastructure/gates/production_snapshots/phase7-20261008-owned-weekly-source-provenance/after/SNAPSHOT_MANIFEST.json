@@ -1,0 +1,114 @@
+{
+  "files": [
+    {
+      "bytes": 25271,
+      "git_blob_sha": "5df644e693b3b1765a5e6a7dc3fd9277ed604c0d",
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/autonomous_pipeline_controller.py",
+      "name": "autonomous_pipeline_controller.py",
+      "sha256": "58e9c93920ff27c3d6035038bd77c53a1ff4bb075c991f2e2e02221d36b515f8",
+      "source_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py"
+    },
+    {
+      "bytes": 5840,
+      "git_blob_sha": "36c8b476d3dd45aa7c7fd62dc32ce07efee27af8",
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/comparator_data_egress_authorization.py",
+      "name": "comparator_data_egress_authorization.py",
+      "sha256": "5c799813e8b42b4667a1288ef98a9cccd4bfb00fd266fd16aac7aece6903fcd3",
+      "source_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/comparator_data_egress_authorization.py"
+    },
+    {
+      "bytes": 1777,
+      "git_blob_sha": "2d41b4cd5ec1287975b64106a2ac12e1af780b94",
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/nightly_generation_window.py",
+      "name": "nightly_generation_window.py",
+      "sha256": "fb0f66442bf3eb17547ec5738ea9b62a8212e6a172170cd381fffa460f51881f",
+      "source_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/nightly_generation_window.py"
+    },
+    {
+      "bytes": 14602,
+      "git_blob_sha": "c7df5ad9b26b6e0652ee278b47a94bf7a5fd5243",
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/nightly_science_preflight.py",
+      "name": "nightly_science_preflight.py",
+      "sha256": "a41945368e682012cdc41d8a206d6a8a0c66e12baddb082326bf755d626e2f83",
+      "source_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/nightly_science_preflight.py"
+    },
+    {
+      "bytes": 12129,
+      "git_blob_sha": "ffcad9778ec71722acb23c052b24deecad482fc0",
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/science_foundry_continuity.py",
+      "name": "science_foundry_continuity.py",
+      "sha256": "933d224faf1991e8e609e993feb11ec65bcdc32acf166854d8656f0c623e8fcc",
+      "source_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/science_foundry_continuity.py"
+    },
+    {
+      "bytes": 2725,
+      "git_blob_sha": "c7abef97a8ab10d3d38ac0c920f5a72fbf72e694",
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/scientific_advisories.py",
+      "name": "scientific_advisories.py",
+      "sha256": "86de1c6346e8c185773b039f9977c8dfb61aa2c7f42c58075360f855dc409eb5",
+      "source_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/scientific_advisories.py"
+    },
+    {
+      "bytes": 13548,
+      "git_blob_sha": "adca426ef5cf90d894c9e42ae3cd039aa35855d9",
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/scientific_reconciliation.py",
+      "name": "scientific_reconciliation.py",
+      "sha256": "2910690f865a1bd7ef25cdd967b90c3f50797328cd68bccc7c4ed93048b85142",
+      "source_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/scientific_reconciliation.py"
+    },
+    {
+      "bytes": 21628,
+      "git_blob_sha": "b47ab7af79ca655faeac60f0ed038fc72fdb982f",
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/track_b.py",
+      "name": "track_b.py",
+      "sha256": "faed81a12261607af23ec24e81286a208d11f5b0c8c1fd69b65a518d3a304bca",
+      "source_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_coverage_gates/track_b.py"
+    },
+    {
+      "bytes": 5268,
+      "git_blob_sha": "0f2ba4a493d849d2d30c37017fed167b90ce6870",
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/verification_state_metadata.py",
+      "name": "verification_state_metadata.py",
+      "sha256": "3abd5a597d003f4b7538de14c9b6ea27b4acc506e5ac9876f2bee498f446a2b8",
+      "source_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/verification_state_metadata.py"
+    },
+    {
+      "bytes": 441,
+      "git_blob_sha": "ad8baf9cb6bd39d898aad65ff7f821e583071710",
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/viridis_paths.py",
+      "name": "viridis_paths.py",
+      "sha256": "a15ef655091ebd72910a060cdef1d0f727d18b7a7223dcbbc2192c18e39fe57c",
+      "source_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/viridis_paths.py"
+    },
+    {
+      "bytes": 28372,
+      "git_blob_sha": "37e3ca7450997a6b3450fc6b16c73a73e28223c9",
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/viridisos_kernel_packager.py",
+      "name": "viridisos_kernel_packager.py",
+      "sha256": "6a74449ef46e2b48ad525f44b274cb5385cc1202b50e2ea119192442de21f02c",
+      "source_path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/viridisos_kernel_packager.py"
+    },
+    {
+      "bytes": 23364,
+      "git_blob_sha": "d682ff669e58baace85807320dc9cc71e7b29975",
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/prepare_first_seven_plan.py",
+      "name": "prepare_first_seven_plan.py",
+      "sha256": "da1856adeb85c36677fa5ff7ab91045bf606c1bebc3bc3943586ad6a38b1d740",
+      "source_path": "/private/tmp/phase7-first-seven-plan-builder-20261007-v003/prepare_first_seven_plan.py"
+    },
+    {
+      "bytes": 34491,
+      "git_blob_sha": "7d97b501da70131df056e5e6d827a7e2b52286a8",
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/runtime_successor.py",
+      "name": "runtime_successor.py",
+      "sha256": "daeb140dc581104127f2e9eeacf6efb56f016ab381c0202a52ea67a97f183599",
+      "source_path": "/private/tmp/phase7-same-concept-runtime-successor-20261008-v001/runtime_successor.py"
+    }
+  ],
+  "protected_verifier_changed": false,
+  "runtime_writes": 0,
+  "ssot_writes": 0,
+  "standard": "VRS-ORDINARY-UNCHANGED-PURPOSE-SOURCE-SNAPSHOT-1",
+  "status": "BYTE_IDENTICAL_SNAPSHOT_ONLY_NOT_INSTALLATION",
+  "zenodo_writes": 0
+}

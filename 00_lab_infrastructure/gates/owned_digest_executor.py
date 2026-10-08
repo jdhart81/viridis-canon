@@ -28,6 +28,23 @@ def immutable(path,data):
     p=Path(path);need(not any(q.is_symlink()for q in(p,*p.parents)),'OUTPUT_SYMLINK');p.parent.mkdir(parents=True,exist_ok=True);fd=os.open(p,os.O_EXCL|os.O_CREAT|os.O_WRONLY,0o600)
     with os.fdopen(fd,'wb')as f:f.write(data);f.flush();os.fsync(f.fileno())
 
+def require_prestart_source(root,plan):
+    """Frozen PRECREATE GETs must show the exact latest eligible source.
+
+    This runs inside require_plan before any output, transport or reservation.
+    A owned continuation retains this pre-create evidence; live source-chain
+    transitions are audited separately against that owned draft on every step.
+    """
+    values=[];bodies=[]
+    for key in ('source_native_receipt','source_native_before_create'):
+        _,receipt=bound(root,plan[key])
+        need(receipt.get('method')=='GET'and receipt.get('url')=='https://zenodo.org/api/records/'+plan['predecessor_record_id']and receipt.get('environment')=='zenodo.org'and receipt.get('http_status')==200 and receipt.get('status')=='HTTP_SUCCESS_ONLY_NOT_PUBLICATION_CLEARANCE'and receipt.get('accept')=='application/vnd.inveniordm.v1+json','ACTUAL_NATIVE_PRECREATE_GET')
+        body=receipt.get('response');need(isinstance(body,dict)and body.get('id')==plan['predecessor_record_id']and body.get('parent',{}).get('id')==plan['source_concept_id'],'NATIVE_PRECREATE_SOURCE_IDENTITY')
+        versions=body.get('versions');need(isinstance(versions,dict)and type(versions.get('index'))is int and versions['index']>0 and versions.get('is_latest')is True and versions.get('is_latest_draft')is True,'LATEST_SOURCE_BEFORE_NEWVERSION')
+        values.append(versions['index']);bodies.append(body)
+    need(values[0]==values[1],'SAME_PRECREATE_SOURCE_ORDINAL')
+    need(raw_json(bodies[0])==raw_json(bodies[1]),'EXACT_PRECREATE_NATIVE_SOURCE_BODY')
+
 def require_plan(root,plan):
     fields={'standard','status','canonical_root','package','digest_manifest','publication_binding','current_runtime_closure','registration_recovery','before_ssot_sha256','predecessor_registration','source_legacy_receipt','source_native_receipt','source_native_before_create','source_origin','purpose_source_pins','approved_inventory','release_week','predecessor_record_id','expected_concept_id','source_concept_id','prior_run_ids','new_run_ids','boundary_module','authority','community_mirror_proof','runtime_consumer','recovery_consumer','source_session_consumer','ordinary_cohort_consumer','account_discovery','start_kind','execution_directory'}
     need(isinstance(plan,dict)and set(plan)==fields and plan['standard']=='VRS-METHODS-DIGEST-OWNED-SUCCESSOR-PLAN-1'and plan['status']=='ACTUAL_CURRENT_SOURCE_BOUND_NOT_EXECUTED','EXACT_ACTUAL_PLAN')
@@ -45,11 +62,12 @@ def require_plan(root,plan):
     else:need(plan['expected_concept_id']is None and plan['release_week']!='2026-W41','NO_INVENTED_FIRST_CONCEPT_OR_DUPLICATE_W41')
     need(plan['predecessor_record_id']!=plan['source_concept_id'],'DISTINCT_PUBLIC_PARENT')
     _,manifest=bound(root,plan['digest_manifest']);need(manifest['release_week']==plan['release_week']and [n['run_id']for n in manifest['notes']]==plan['new_run_ids'],'ACTUAL_NEW_COHORT')
-    _,source=bound(root,plan['source_legacy_receipt']);_,native=bound(root,plan['source_native_receipt'])
-    for receipt in(source,native):need(receipt.get('method')=='GET'and receipt.get('url')=='https://zenodo.org/api/records/'+plan['predecessor_record_id']and receipt.get('environment')=='zenodo.org'and receipt.get('http_status')==200 and receipt.get('status')=='HTTP_SUCCESS_ONLY_NOT_PUBLICATION_CLEARANCE','ACTUAL_PUBLIC_SOURCE_RECEIPT')
+    _,legacy_source=bound(root,plan['source_legacy_receipt']);_,native=bound(root,plan['source_native_receipt'])
+    for receipt in(legacy_source,native):need(receipt.get('method')=='GET'and receipt.get('url')=='https://zenodo.org/api/records/'+plan['predecessor_record_id']and receipt.get('environment')=='zenodo.org'and receipt.get('http_status')==200 and receipt.get('status')=='HTTP_SUCCESS_ONLY_NOT_PUBLICATION_CLEARANCE','ACTUAL_PUBLIC_SOURCE_RECEIPT')
     need(native.get('accept')=='application/vnd.inveniordm.v1+json'and native['response'].get('id')==plan['predecessor_record_id']and native['response'].get('parent',{}).get('id')==plan['source_concept_id'],'REAL_PUBLIC_SOURCE_PAIR')
-    need(str(source['response'].get('id'))==plan['predecessor_record_id']and str(source['response'].get('conceptrecid'))==plan['source_concept_id'],'SOURCE_IDENTITY')
-    if plan['start_kind']=='NEW_VERSION':need(source['response'].get('metadata',{}).get('title')==manifest['public_metadata']['title'],'PRESERVED_WEEKLY_TITLE')
+    need(str(legacy_source['response'].get('id'))==plan['predecessor_record_id']and str(legacy_source['response'].get('conceptrecid'))==plan['source_concept_id'],'SOURCE_IDENTITY')
+    require_prestart_source(root,plan)
+    if plan['start_kind']=='NEW_VERSION':need(legacy_source['response'].get('metadata',{}).get('title')==manifest['public_metadata']['title'],'PRESERVED_WEEKLY_TITLE')
     else:need(manifest['public_metadata']['title']=='Viridis Methods Digest — '+plan['release_week'],'EXACT_FIRST_WEEK_TITLE')
     pins=plan['purpose_source_pins'];need(isinstance(pins,list)and pins and len({x.get('name')for x in pins if isinstance(x,dict)})==len(pins),'CLOSED_PURPOSE_SOURCE_TABLE')
     for row in pins:

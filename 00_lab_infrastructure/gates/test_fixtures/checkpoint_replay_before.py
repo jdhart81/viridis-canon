@@ -21,11 +21,7 @@ def obj(root,b):return e.bound(root,b)[1]
 def require_receipt(value,method,url):
     e.need(isinstance(value,dict)and value.get('environment')=='zenodo.org'and value.get('method')==method and value.get('url')==url and value.get('status')=='HTTP_SUCCESS_ONLY_NOT_PUBLICATION_CLEARANCE'and type(value.get('http_status'))is int and 200<=value['http_status']<300 and isinstance(value.get('response'),dict)and re.fullmatch('[0-9a-f]{64}',str(value.get('response_sha256')))is not None,'REAL_SUCCESSFUL_STEP_RECEIPT');return value['response']
 def require_checkpoint(plan,state,*,root):
-    root=Path(root);machine.validate(state,machine.digest(plan))
-    if state['phase']=='NOT_STARTED':
-        e.need(state==machine.initial(machine.digest(plan),plan['approved_inventory'],start_kind=plan['start_kind']),'EXACT_UNUSED_INITIAL_CHECKPOINT_ONLY')
-        return {'status':'EXACT_ZERO_ATTEMPT_INITIAL_CHECKPOINT_REPLAYED_NOT_OWNERSHIP','steps':0,'record_id':None,'certifies':False}
-    e.need(state['phase']=='OWNED_DRAFT'and not state['published'],'OWNED_NONTERMINAL_CHECKPOINT')
+    root=Path(root);machine.validate(state,machine.digest(plan));e.need(state['phase']=='OWNED_DRAFT'and not state['published'],'OWNED_NONTERMINAL_CHECKPOINT')
     prior_l=obj(root,plan['source_legacy_receipt'])['response'];prior_n=obj(root,plan['source_native_before_create'])['response'];rid=state['record_id'];base='https://zenodo.org';created=obj(root,state['creation_receipt']);first_l=obj(root,state['first_owned_legacy_draft']);first_n=obj(root,state['first_owned_draft']);require_receipt(first_l,'GET',base+'/api/deposit/depositions/'+rid);require_receipt(first_n,'GET',base+'/api/records/'+rid+'/draft');e.need(first_n.get('accept')=='application/vnd.inveniordm.v1+json','FIRST_NATIVE_REPRESENTATION')
     manifest=obj(root,plan['digest_manifest'])
     expected,wanted=successor.initial_newversion_projection(prior_l,prior_n,created,first_l['response'],first_n['response'])

@@ -203,7 +203,7 @@ class SourcePreservationTests(unittest.TestCase):
     if isinstance(node,ast.FunctionDef)and node.name in pins:excluded.update(range(node.lineno-1,node.end_lineno))
    return functions,''.join(v for i,v in enumerate(lines)if i not in excluded)
   previous,outside=split_functions(old)
-  expected=outside.replace("'phase7_policy_versions.py',\n})","'phase7_policy_versions.py', 'digest_public_state.py', 'registration_imports.py',\n})",1)
+  expected=outside.replace("'phase7_policy_versions.py',\n})","'phase7_policy_versions.py', 'digest_public_state.py', 'registration_imports.py',\n    'digest_public_state_legacy_b5545.py', 'digest_successor_state.py', 'first_digest_state.py',\n})",1)
   self.assertNotEqual(expected,outside)
   def closed(candidate):
    current,remaining=split_functions(candidate);self.assertEqual(remaining,expected);self.assertEqual(set(current),set(previous))
@@ -211,6 +211,14 @@ class SourcePreservationTests(unittest.TestCase):
     if name not in pins:self.assertEqual(current[name],body)
    for name,pin in pins.items():self.assertEqual(hashlib.sha256(current[name].encode()).hexdigest(),pin)
   closed(new)
+  # The three reviewed additions are closed: removal or replacement of any
+  # one fails without relaxing the original function/global byte checks.
+  additions=('digest_public_state_legacy_b5545.py','digest_successor_state.py','first_digest_state.py')
+  for name in additions:
+   self.assertEqual(new.count("'"+name+"'"),1)
+   for candidate in (new.replace("'"+name+"'", "'foreign_unreviewed.py'",1),new.replace("'"+name+"', ","",1),new.replace("'"+name+"',\n","\n",1)):
+    if candidate!=new:
+     with self.subTest(closed_name=name),self.assertRaises(AssertionError):closed(candidate)
   for before,after in [("'registration_imports.py'","'unknown_imports.py'"),("CORPUS_SHA256 =","CHANGED_CORPUS_SHA256 ="),("raw = normalize_authority_plan(raw)","raw = raw"),("exact approved import caller/alias body required","body bypass")]:
    self.assertIn(before,new)
    with self.subTest(change=before),self.assertRaises(AssertionError):closed(new.replace(before,after,1))

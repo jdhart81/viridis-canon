@@ -7,6 +7,10 @@ from pathlib import Path
 import re
 STANDARD = 'VRS-PHASE7-AUTHORIZED-RUNTIME-UPDATE-1'
 APPROVED_AUDIT_SECTION_SHA256 = '0b90da9172c726cef65de5905fb289b79ec2367d0117b012f8ad74b324441390'
+APPROVED_AUDIT_APPENDICES = (
+    ('## Phase 7 Gate 3 resolution: decouple probes from witnesses — 2026-10-07 (evening)', 'ba56d7254744843b9e7512b61f0d80161cf33b366f076d516aa451ba21c8325a'),
+    ('## SIMPLIFICATION — weekly push restored — 2026-10-07 (Justin directive; supersedes conflicting Phase 7 items)', '483fddbd90eb1782911db43de477c161d35214fd033061a83a87b9dec503652a'),
+)
 SELECTOR_SHA256 = '9f243a1025498ca03e22b0c94a711165d21554037ea434abe6cb9720ff8fbd07'
 CORPUS_SHA256 = 'bfd2ec16c1e9c39ebcd39fdb45ccf9683b6864a95d3496109df49f9a7639a173'
 GATE_PREFIX = 'RESEARCH_PIPELINE_v2/verification_coverage_gates/'
@@ -54,7 +58,27 @@ def audit_section(raw):
         raise ValueError('unique approved audit section required')
     start = raw.index(header)
     end = raw.find(b'\n## ', start + len(header))
-    return raw[start:] if end < 0 else raw[start:end]
+    section = raw[start:] if end < 0 else raw[start:end]
+    suffix = b'\n---\n'
+    if section.endswith(suffix) and hashlib.sha256(section[:-len(suffix)]).hexdigest() == APPROVED_AUDIT_SECTION_SHA256:
+        # The current plan appends this exact separator to the immutable old
+        # approval. Only the two already approved, byte-pinned appendices can
+        # explain it; arbitrary whitespace or a changed approval never can.
+        previous_appendix_start = start
+        for title, expected in APPROVED_AUDIT_APPENDICES:
+            appendix_header = title.encode()
+            if raw.count(appendix_header) != 1:
+                raise ValueError('unique exact approved authority appendix required')
+            appendix_start = raw.index(appendix_header)
+            if appendix_start <= previous_appendix_start:
+                raise ValueError('approved authority appendices must follow the audit in order')
+            previous_appendix_start = appendix_start
+            appendix_end = raw.find(b'\n## ', appendix_start + len(appendix_header))
+            appendix = raw[appendix_start:] if appendix_end < 0 else raw[appendix_start:appendix_end]
+            if hashlib.sha256(appendix).hexdigest() != expected:
+                raise ValueError('approved authority appendix bytes differ')
+        return section[:-len(suffix)]
+    return section
 
 def _function_body_bytes(raw, node):
     lines = raw.splitlines(keepends=True)

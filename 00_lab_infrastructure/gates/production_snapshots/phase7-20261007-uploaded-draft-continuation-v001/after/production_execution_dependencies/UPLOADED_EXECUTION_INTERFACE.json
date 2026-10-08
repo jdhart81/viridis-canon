@@ -1,0 +1,73 @@
+{
+  "alias_helper": "legacy_preview_aliases.py",
+  "budget_standard": "VRS_SOURCE_BOUND_UPLOADED_DRAFT_CONTINUATION_BUDGET_1",
+  "certificate_acceptance_changes": false,
+  "context_precheck_api": "require_continuation_plan(root,package,plan) -> prepared,execution_plan,context; continuation.require_uploaded_context(context.uploaded_context,context.uploaded_values,reserved_native,reserved_legacy,prepared,sm,preservation,approved_inventory_evidence,creation_receipt) -> native,legacy,audits",
+  "driver": "first_digest_uploaded_draft.py",
+  "entrypoint": "execute(root, package, plan_binding, output, token, reviewed_driver_sha256=...)",
+  "envelope_counters": {
+    "continuation_mutations": 5,
+    "daily_date_new_york": "actual immutable daily window",
+    "daily_total_attempts": "actual final used, not historical count",
+    "mutations": 9,
+    "prior_own_creation_mutations": 1,
+    "prior_own_reservation_mutations": 1,
+    "prior_own_upload_mutations": 2
+  },
+  "expected_writes": 5,
+  "final_budget_fields": [
+    "standard",
+    "at_utc",
+    "daily",
+    "event_bindings",
+    "journal_index",
+    "diagnostics_only"
+  ],
+  "game_plan": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/GAME_PLAN.md",
+    "sha256": "4cc439d93585ab8e775f8c484bc3966326262f33c5b883a81996e2e09b3db441"
+  },
+  "helper": "uploaded_draft_continuation.py",
+  "historical_prior_attempts": 5,
+  "immutable_output_plan": "UPLOADED_CONTINUATION_PLAN.json",
+  "initial_budget_fields": [
+    "standard",
+    "at_utc",
+    "budget",
+    "event_bindings",
+    "prior_own_create",
+    "prior_own_reserve",
+    "prior_own_uploads",
+    "historical_prior_attempts",
+    "journal_index",
+    "diagnostics_only"
+  ],
+  "plan_fields": [
+    "standard",
+    "status",
+    "canonical_root",
+    "package_path",
+    "original_plan",
+    "own_context",
+    "reserved_context",
+    "uploaded_context",
+    "runtime_pins",
+    "record_id",
+    "expected_writes",
+    "historical_prior_attempts"
+  ],
+  "plan_standard": "VRS-PHASE7-FIRST-DIGEST-UPLOADED-DRAFT-PLAN-1",
+  "plan_status": "FROZEN_READY_NOT_EXECUTED",
+  "production_writes": 0,
+  "record_id": "23226761",
+  "standard": "VRS_SOURCE_ONLY_UPLOADED_DRAFT_EXECUTION_INTERFACE_1",
+  "uploaded_context_fields": [
+    "tex_upload_receipt",
+    "tex_legacy_receipt",
+    "tex_native_receipt",
+    "pdf_upload_receipt",
+    "pdf_legacy_receipt",
+    "pdf_native_receipt",
+    "terminal_hold"
+  ]
+}

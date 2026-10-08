@@ -1,0 +1,26 @@
+{
+  "original_source": {
+    "path": "/private/tmp/phase7-first-seven-plan-builder-20261007-v001/prepare_first_seven_plan.py",
+    "sha256": "e97a2647ddaf8e39326d7293b5eec0a39d7291976076fe74bf5a928cf82033fd"
+  },
+  "source_part_pins": [
+    "3709945d88d51f779910cb07f3e68982915689ee0479446bf9710f9d29860677",
+    "a9fbaa60a5e01a67eeb77c324f389207661ae5436a57848673b569afa82e47a0",
+    "af29007ffc21016da060d50b17d034269ee25707b3e5571dcc52a4281dfc20eb",
+    "ef9c5bf6f82edf36d51107a98ab1855b9033fbbcb2812023e5977a7c2b94f2b0",
+    "b8cb7804708fa80e4ef64e3a9271e2fde268556a1e5d172eb5c3e896dfd1fdec",
+    "ef8e1f3b6ea1fc48fa4b246d07048a1133deafbba44674b28d3c85a80018af1e",
+    "0b284c3857a9075f62ba14c11372319bff73fa04fffb1cffaa9b7ebaaaa35810",
+    "72bb5bbe0b13bc87bd68b7a93baf1a58ed8bdfbafe70e28811ef04371a8ae7a1"
+  ],
+  "source_parts": [
+    "class PlanHold(ValueError): pass",
+    "def require(v, reason):\n    if not v: raise PlanHold('HOLD_'+reason)",
+    "def sha_bytes(b): return hashlib.sha256(b).hexdigest()",
+    "def read(p):\n    p=Path(p); require(p.is_file()and not any(x.is_symlink()for x in(p,*p.parents)),'REGULAR_UNSYMLINKED_FILE:'+str(p))\n    a=p.stat(); raw=p.read_bytes(); z=p.stat()\n    require((a.st_ino,a.st_size,a.st_mtime_ns)==(z.st_ino,z.st_size,z.st_mtime_ns),'SOURCE_READ_RACE')\n    return raw",
+    "def sha(p): return sha_bytes(read(p))",
+    "def binding(p): return {'path':str(Path(p).resolve(strict=True)),'sha256':sha(p)}",
+    "def own_imports(raw,index):\n    names=set();tree=ast.parse(raw)\n    for node in ast.walk(tree):\n        if isinstance(node,ast.Import):names.update(a.name.split('.')[0]for a in node.names)\n        elif isinstance(node,ast.ImportFrom):\n            require(node.level==0,'RELATIVE_OWN_IMPORT_UNSUPPORTED')\n            if node.module:names.add(node.module.split('.')[0])\n        elif isinstance(node,ast.Call)and isinstance(node.func,ast.Attribute)and node.func.attr=='import_module'and node.args and isinstance(node.args[0],ast.Constant)and isinstance(node.args[0].value,str):names.add(node.args[0].value.split('.')[0])\n    return names&set(index)",
+    "def collect_closure(root,seeds,search_dirs,*,extra_sources=(),required=PIN_REQUIRED):\n    \"\"\"Resolve own flat imports once; conflicting own basenames fail closed.\"\"\"\n    root=Path(root).resolve(strict=True);index={};duplicates={}\n    candidates=[]\n    for folder in search_dirs:\n        folder=Path(folder);require(folder.resolve(strict=True).is_relative_to(root),'OWN_SEARCH_DIRECTORY')\n        candidates.extend(p for p in sorted(folder.glob('*.py'))if not p.name.startswith('test_'))\n    candidates.extend(Path(p)for p in extra_sources)\n    for p in candidates:\n        require(p.resolve(strict=True).is_relative_to(root),'OWN_EXTRA_SOURCE')\n        row={'name':p.name,**binding(p)};old=index.get(p.stem)\n        if old is not None:\n            require(old['sha256']==row['sha256'],'CONFLICTING_OWN_MODULE:'+p.stem)\n            if old['path']!=row['path']:duplicates.setdefault(p.name,[]).append(row)\n        else:index[p.stem]=row\n    pending={Path(p).stem for p in seeds};require(all(n in index for n in pending),'MISSING_OWN_SEED_MODULE')\n    selected={};edges={}\n    while pending:\n        name=sorted(pending)[0];pending.remove(name)\n        if name in selected:continue\n        row=index[name];selected[name]=row\n        imports=own_imports(read(row['path']),index);edges[row['name']]=sorted(n+'.py'for n in imports)\n        pending|=imports-set(selected)\n    pins=[selected[n]for n in sorted(selected)]\n    require(required<={r['name']for r in pins},'ACTUAL_COMPLETE_CONSUMER_CLOSURE_REQUIRED')\n    for row in pins:require(sha(row['path'])==row['sha256'],'CLOSURE_CHANGED_BEFORE_RETURN')\n    return pins,edges,duplicates"
+  ]
+}

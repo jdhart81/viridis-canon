@@ -1,0 +1,30 @@
+{
+  "files": [
+    {
+      "path": "/private/tmp/phase7-generic-runtime-successor-20261008-v001/runtime_successor.py",
+      "sha256": "db1273bb1b345f80e41bc45f94aefa53e56a3be8d06afc28121e8404876cf0e7"
+    },
+    {
+      "path": "/private/tmp/phase7-generic-runtime-successor-20261008-v001/generic_prospective_catalog.py",
+      "sha256": "2dca14f6efceb8141aa3e2d92d2e41cf44e4ec5b318a74a02caba047304d5529"
+    },
+    {
+      "path": "/private/tmp/phase7-same-concept-runtime-successor-20261008-v001/runtime_successor.py",
+      "sha256": "daeb140dc581104127f2e9eeacf6efb56f016ab381c0202a52ea67a97f183599"
+    },
+    {
+      "path": "/private/tmp/phase7-authority-import-runtime-successor-20261008-v001/runtime_successor.py",
+      "sha256": "e0ebe49d167f886f0a159743f177a7963b188a233f03602225979051d3a961d6"
+    },
+    {
+      "path": "/private/tmp/phase7-public-state-runtime-installer-20261008-v003/runtime_successor.py",
+      "sha256": "99453df4fc6f62cab92e4604765a0ca492a0ad89903a21789a292874c417db5f"
+    },
+    {
+      "path": "/private/tmp/phase7-first-seven-plan-builder-20261007-v003/prepare_first_seven_plan.py",
+      "sha256": "da1856adeb85c36677fa5ff7ab91045bf606c1bebc3bc3943586ad6a38b1d740"
+    }
+  ],
+  "restoration": "Each exact original unsymlinked absolute path must be restored from its genuine private snapshot before import; no aliases or source predicate changes. Own actual merged Git blobs are required independently for each purpose/code source; the caller utility guards the four unchanged source dependencies and new pure profile hashes.",
+  "status": "EXACT_CODE_DEPENDENCIES_NOT_ACTIVATION"
+}

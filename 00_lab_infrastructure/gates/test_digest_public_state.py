@@ -205,15 +205,18 @@ class SourcePreservationTests(unittest.TestCase):
   previous,outside=split_functions(old)
   expected=outside.replace("'phase7_policy_versions.py',\n})","'phase7_policy_versions.py', 'digest_public_state.py', 'registration_imports.py',\n    'digest_public_state_legacy_b5545.py', 'digest_successor_state.py', 'first_digest_state.py',\n})",1)
   self.assertNotEqual(expected,outside)
+  def namespace_and_remaining(raw):
+   lines=raw.splitlines(keepends=True);tree=ast.parse(raw);rows=[n for n in tree.body if isinstance(n,ast.Assign)and any(isinstance(t,ast.Name)and t.id=='POLICY_MODULE_NAMES'for t in n.targets)];self.assertEqual(len(rows),1);node=rows[0];self.assertIsInstance(node.value,ast.Call);self.assertIsInstance(node.value.func,ast.Name);self.assertEqual(node.value.func.id,'frozenset');self.assertEqual(len(node.value.args),1);self.assertEqual(node.value.keywords,[]);names=ast.literal_eval(node.value.args[0]);self.assertIsInstance(names,set);self.assertTrue(all(type(v)is str for v in names));return names,''.join(v for i,v in enumerate(lines)if not node.lineno-1<=i<node.end_lineno)
+  oldnames,expectedoutside=namespace_and_remaining(expected);expectednames=oldnames|{'digest_weekly_state.py','nightly_minimal_policy.py'}
   def closed(candidate):
-   current,remaining=split_functions(candidate);self.assertEqual(remaining,expected);self.assertEqual(set(current),set(previous))
+   current,remaining=split_functions(candidate);names,other=namespace_and_remaining(remaining);self.assertEqual(names,expectednames);self.assertEqual(other,expectedoutside);self.assertEqual(set(current),set(previous))
    for name,body in previous.items():
     if name not in pins:self.assertEqual(current[name],body)
    for name,pin in pins.items():self.assertEqual(hashlib.sha256(current[name].encode()).hexdigest(),pin)
   closed(new)
-  # The three reviewed additions are closed: removal or replacement of any
+  # All five reviewed additions are closed: removal or replacement of any
   # one fails without relaxing the original function/global byte checks.
-  additions=('digest_public_state_legacy_b5545.py','digest_successor_state.py','first_digest_state.py')
+  additions=('digest_public_state_legacy_b5545.py','digest_successor_state.py','first_digest_state.py','digest_weekly_state.py','nightly_minimal_policy.py')
   for name in additions:
    self.assertEqual(new.count("'"+name+"'"),1)
    for candidate in (new.replace("'"+name+"'", "'foreign_unreviewed.py'",1),new.replace("'"+name+"', ","",1),new.replace("'"+name+"',\n","\n",1)):

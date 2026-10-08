@@ -3,6 +3,7 @@
 These tests grant no scientific admission or live Zenodo publication evidence.
 """
 from pathlib import Path
+from test_digest_historical_adapter import historical_protocol
 import hashlib,json,os,subprocess,sys,unittest
 
 FREEZE_SHA256 = 'f4468f5380fae88304c31c61494f43f97551fc279484a7756966a7e91c819c4b'
@@ -24,7 +25,7 @@ class FirstMethodsDigestPublisherTests(unittest.TestCase):
     path=source/row['filename'];self.assertFalse(path.is_symlink());data=path.read_bytes()
     self.assertEqual(len(data),row['bytes']);self.assertEqual(hashlib.sha256(data).hexdigest(),row['sha256'])
   env=os.environ.copy();env['PHASE7_TEST_GATES']=str(gates);env['PYTHONDONTWRITEBYTECODE']='1'
-  result=subprocess.run([sys.executable,'-B','-m','unittest','discover','-s',str(source),'-p','test*.py'],cwd=source,env=env,capture_output=True,text=True,timeout=600)
+  result=historical_protocol(gates,source)
   self.assertEqual(result.returncode,0,result.stdout+result.stderr)
   self.assertIn('Ran 94 tests',result.stderr)
 

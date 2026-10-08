@@ -1,0 +1,23 @@
+{
+  "certifies": false,
+  "files": [
+    {
+      "bytes": 5100,
+      "filename": "README.md",
+      "sha256": "760138a49090e33bcfd650ebb7425315a889837eef75ed8a8b5ae29d7e639a67"
+    },
+    {
+      "bytes": 5830,
+      "filename": "SOURCE_PRESERVATION.json",
+      "sha256": "4f914d6310003c9c71495a50c37e36cbc971132fbadfff19e66740eca21f226b"
+    },
+    {
+      "bytes": 951,
+      "filename": "VALIDATION.json",
+      "sha256": "dafcbe6c7e2e9a242cfc759dba86fee3b9905d126b830792abecc12eefe65e10"
+    }
+  ],
+  "is_independent_approval": false,
+  "standard": "VRS-PHASE7-PUBLIC-STATE-SOURCE-REVIEW-FREEZE-3",
+  "status": "SOURCE_ONLY_FOCUSED_TESTED_NOT_INSTALLED"
+}

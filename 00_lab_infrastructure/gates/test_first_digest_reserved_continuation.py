@@ -1,6 +1,7 @@
 """Exact source-only reserved continuation and portable protocol closure."""
 import hashlib,json,os,subprocess,sys,unittest
 from pathlib import Path
+from test_digest_historical_adapter import historical_protocol
 FREEZE='41d96e8f52a19b77df80e91579620f9abf00127c7b1987d109eaa824635d32ed'
 PREDECESSOR='bea96ef33711568612d1439f2b2be6ae9866e0e73f018b8e516ce0c16168ee69'
 DRIVER='da56918eb1a4a21ab912c8c98ca87e98e80e589b4e5d9212ce812db806ddfd79'
@@ -19,5 +20,5 @@ class ReservedContinuationSnapshotTests(unittest.TestCase):
   for p in new.glob('*.json'):
    obj=json.loads(p.read_bytes());self.assertFalse(obj.get('environment')=='zenodo.org'and obj.get('method')in{'POST','PUT','DELETE'},p.name)
  def test_portable_complete_accounting_and_seven_write_protocol(self):
-  gate,old,new=self.paths();env=os.environ.copy();env['PHASE7_TEST_GATES']=str(gate);env['PYTHONDONTWRITEBYTECODE']='1';v=subprocess.run([sys.executable,'-B','-m','unittest','discover','-s',str(new),'-p','test*.py'],cwd=new,env=env,capture_output=True,text=True,timeout=600);self.assertEqual(v.returncode,0,v.stdout+v.stderr);self.assertIn('Ran 248 tests',v.stderr)
+  gate,old,new=self.paths();env=os.environ.copy();env['PHASE7_TEST_GATES']=str(gate);env['PYTHONDONTWRITEBYTECODE']='1';v=historical_protocol(gate,new);self.assertEqual(v.returncode,0,v.stdout+v.stderr);self.assertIn('Ran 248 tests',v.stderr)
 if __name__=='__main__':unittest.main()

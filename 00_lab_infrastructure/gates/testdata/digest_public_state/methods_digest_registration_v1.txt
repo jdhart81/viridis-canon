@@ -10,12 +10,12 @@ from pathlib import Path
 from urllib.parse import urlsplit
 import methods_digest as d
 
-STANDARD='VRS-METHODS-DIGEST-REGISTRATION-2'
-EVIDENCE_STANDARD='VRS-METHODS-DIGEST-READBACK-EVIDENCE-2'
+STANDARD='VRS-METHODS-DIGEST-REGISTRATION-1'
+EVIDENCE_STANDARD='VRS-METHODS-DIGEST-READBACK-EVIDENCE-1'
 GROUP_ROUTE='METHODS_DIGEST_GROUP_V1'
 NOTE_ROUTE='METHODS_DIGEST_NOTE_V1'
 RECEIPT_FIELDS={'standard','status','tree_root','record_id','doi','release_week','package_path','digest_manifest','digest_publication_binding','authority','public_evidence','children','issued_at_utc','consumer_sha256','certifies'}
-EVIDENCE_FIELDS={'standard','status','record_id','doi','public_legacy_receipt','public_native_receipt','own_publish_receipt','expected_legacy','expected_native','source_legacy_receipt','source_native_receipt','relation_template','server_context','downloads','strict_readback_result','public_state_context'}
+EVIDENCE_FIELDS={'standard','status','record_id','doi','public_legacy_receipt','public_native_receipt','own_publish_receipt','expected_legacy','expected_native','source_legacy_receipt','source_native_receipt','relation_template','server_context','downloads','strict_readback_result'}
 CONTEXT_KEYS={'same_operation_response','existing_concept_doi','previous_latest_index','chain_parent_id','temporal_baseline','existing_communities','public_communities','mirror_proof','own_publish_response','same_operation_reservation_id','previous_public_readback','revision_evidence','own_operation_record_id','version_chain_context','derived_preview_context'}
 
 class RegistrationHold(ValueError):pass
@@ -119,7 +119,7 @@ def _context(root,value,snapshots,record_id):
 def assemble_evidence(*, record_id, public_legacy_receipt, public_native_receipt,
                       own_publish_receipt, expected_legacy, expected_native,
                       source_legacy_receipt, source_native_receipt, relation_template,
-                      server_context, downloads, strict_readback_result, public_state_context):
+                      server_context, downloads, strict_readback_result):
  """Closed adapter from original own transport evidence; grants no PASS."""
  rid=_record_id(record_id)
  bindings={k:v for k,v in locals().copy().items() if k in EVIDENCE_FIELDS-{'standard','status','record_id','doi','downloads'}}
@@ -145,14 +145,6 @@ def source_custom_fields(public, source_legacy, source_native):
   if source['legacy:communities']!=[v['id']for v in communities]:raise RegistrationHold('source legacy community mirror differs from existing membership')
  return deepcopy(source)
 
-def source_custom_fields_for_phase(public, source_legacy, source_native, *, phase='DRAFT', before_native=None):
- """Default draft behavior is preserved; public removal needs the exact source graph."""
- if phase=='DRAFT':return source_custom_fields(public,source_legacy,source_native)
- if phase!='PUBLISHED' or not isinstance(before_native,dict):raise RegistrationHold('explicit own publish-boundary context required')
- from digest_public_state import community_fields
- return community_fields(public,source_legacy,source_native,before_native)[0]
-
-
 def _check_public(package,root,m,evidence,snapshots,*,digest_consumer=current_digest,strict_consumer=d.strict_readback,audit_consumer=None,views=None):
  rid=_record_id(evidence.get('record_id'));doi='10.5281/zenodo.'+rid
  if set(evidence)!=EVIDENCE_FIELDS or evidence.get('standard')!=EVIDENCE_STANDARD or evidence.get('status')!='SOURCE_BOUND_READBACK_INPUTS'or evidence.get('doi')!=doi:raise RegistrationHold('closed own published digest evidence required')
@@ -167,13 +159,7 @@ def _check_public(package,root,m,evidence,snapshots,*,digest_consumer=current_di
  _,source_legacy=_object(root,evidence['source_legacy_receipt'],snapshots);_,source_native=_object(root,evidence['source_native_receipt'],snapshots)
  for source in(source_legacy,source_native):
   if source.get('method')!='GET'or source.get('environment')!='zenodo.org'or source.get('http_status')!=200 or source.get('status')!='HTTP_SUCCESS_ONLY_NOT_PUBLICATION_CLEARANCE'or source.get('url')!='https://zenodo.org/api/records/'+str(source.get('response',{}).get('id'))or re.fullmatch('[0-9a-f]{64}',str(source.get('response_sha256')))is None:raise RegistrationHold('fresh saved own source-pair GET required')
- # A source-derived own PUBLIC prediction is mandatory, never the after body.
- from digest_public_state import consume_context, exact
- _,public_context=_object(root,evidence['public_state_context'],snapshots)
- prediction=consume_context(public_context,load=lambda binding:_object(root,binding,snapshots)[1],public=m['public_metadata'],evidence_sources=evidence)
- if prediction['record_id']!=rid or not exact(expected_native,prediction['native']):raise RegistrationHold('expected public native state differs from source-bound prediction')
- if expected_native.get('custom_fields',{})!=source_custom_fields_for_phase(m['public_metadata'],source_legacy['response'],source_native['response'],phase='PUBLISHED',before_native=prediction['before_native']):raise RegistrationHold('expected public custom fields differ from exact existing community source')
- if expected_legacy.get('metadata',{}).get('relations')!=prediction['legacy_relation']:raise RegistrationHold('expected legacy ordinal differs from exact source-bound native offset')
+ if expected_native.get('custom_fields',{})!=source_custom_fields(m['public_metadata'],source_legacy['response'],source_native['response']):raise RegistrationHold('expected custom fields differ from exact existing community source')
  _,relation=_object(root,evidence['relation_template'],snapshots)
  _,source_raw=_read(root,m['source_metadata'],snapshots);approved=json.loads(source_raw);approved=approved.get('metadata',approved)
  import digest_metadata
@@ -185,18 +171,7 @@ def _check_public(package,root,m,evidence,snapshots,*,digest_consumer=current_di
  actual_legacy,actual_native=(legacy_receipt['response'],native_receipt['response'])if views is None else views
  if (str(actual_legacy.get('id'))!=rid or actual_legacy.get('doi')!=doi or actual_native.get('id')!=rid or actual_native.get('is_published')is not True or actual_native.get('pids',{}).get('doi',{}).get('identifier')!=doi):raise RegistrationHold('published own native/legacy identity mismatch')
  checked=audit_consumer(actual_native,expected_native,host='zenodo.org',record_id=rid,**context)
- from digest_public_state import require_native_audit
- import server_managed_fields as sm
- require_native_audit(checked,record_id=rid,sm=sm)
- # Only after that complete native audit may the existing legacy serializer use
- # its native-owned scalar/file-UUID representation. Scientific text stays bound.
- from digest_public_state import predict_legacy, require_legacy
- coupled=predict_legacy(prediction['source_legacy'],actual_native,m['public_metadata'])
- coupled['metadata']['relations']=prediction['legacy_relation']
- if not exact(expected_legacy,coupled):raise RegistrationHold('expected legacy state differs from source-bound checked-native projection')
- import server_managed_fields as sm
- import publication_preservation as preservation
- require_legacy(actual_legacy,expected_legacy,actual_native,source_legacy=prediction['source_legacy'],source_native=prediction['source_native'],sm=sm,preservation=preservation,native_expected=expected_native,server_context=context)
+ if checked.get('status')!='PASS':raise RegistrationHold('strict closed server-managed public readback HOLD: '+str(checked.get('reasons')))
  rows=evidence['downloads']
  if not isinstance(rows,list)or len(rows)!=6:raise RegistrationHold('exact six aggregate public downloads required')
  downloads={}

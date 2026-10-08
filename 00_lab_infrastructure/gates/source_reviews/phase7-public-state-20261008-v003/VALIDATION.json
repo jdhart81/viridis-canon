@@ -1,0 +1,32 @@
+{
+  "certifies": false,
+  "focused": {
+    "count": 107,
+    "stdout_sha256": "4fa302cc9c9eaec814aced3e1edfe8556dc337ab123dac8a5250665e45fe33aa"
+  },
+  "historical_community_wrapper": {
+    "count": 2,
+    "nested_count": 146,
+    "status": "PASS",
+    "stdout_sha256": "3b5876d861060876e924f0436b917b3abcfd72b32b023bf2957166b4f100b62a"
+  },
+  "historical_original_protocol": {
+    "count": 94,
+    "status": "PASS"
+  },
+  "new_complete_run": "RUNNING",
+  "prior_complete_result": {
+    "errors": 1,
+    "only_error_resolved_by_targeted_rerun": true,
+    "stdout_sha256": "cdfa52b2ce0e1e0a5a45e6557afd6456ff927b9844baef4485b96a883c6c9177",
+    "tests": 1556
+  },
+  "production_operations": 0,
+  "secret_scan": {
+    "config_changed": false,
+    "status": "PASS",
+    "stdout_sha256": "a3145c3690f52841bd11430bf2e35eab602de516b48ad27eb6cf646e43e5a2b5"
+  },
+  "ssot_writes": 0,
+  "status": "SOURCE_ONLY_FOCUSED_VALIDATION_PASS_FULL_EXACT_RUN_PENDING"
+}

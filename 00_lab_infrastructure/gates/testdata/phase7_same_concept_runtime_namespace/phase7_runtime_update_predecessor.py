@@ -31,7 +31,6 @@ POLICY_MODULE_NAMES = frozenset({
     'methods_digest.py', 'PHASE7_SUPPLEMENTAL_SOURCE_CONTRACTS.json', 'inv9_title_basis.py',
     'methods_digest_registration.py', 'public_metadata_readback.py', 'digest_metadata.py',
     'phase7_policy_versions.py', 'digest_public_state.py', 'registration_imports.py',
-    'digest_public_state_legacy_b5545.py', 'digest_successor_state.py', 'first_digest_state.py',
 })
 POLICY_VERSION_NAMES = frozenset({'phase7_audit_policy.py', 'PHASE7_SUPPLEMENTAL_SOURCE_CONTRACTS.json', 'phase7_claim_label_render.py', 'nonvacuity_tier0.py', 'probe_observations.py', 'inv9_dependency_scope.py', 'methods_digest.py', 'publication_gate.py'})
 PROFILES = {'RUN187_SELECTOR': SELECTOR_TARGETS, 'PHASE7_SCOPED_POLICY': POLICY_TARGETS}

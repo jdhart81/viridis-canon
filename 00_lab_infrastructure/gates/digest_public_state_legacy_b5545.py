@@ -250,26 +250,3 @@ def require_legacy(actual,expected,checked_native,*,source_legacy,source_native,
  require(exact(left,right),'public legacy unlisted or content field changed')
  sm.require_links_stats({'links':actual.get('links',{}),'stats':actual.get('stats',{}),'pids':checked_native['pids']},{'links':links,'stats':{}},host='zenodo.org',record_id=rid)
  return {'status':'STRICT_COMPLETE_PUBLIC_LEGACY_PASS','record_id':rid,'all_source_and_remaining_fields_exact':True}
-
-
-# Closed ordinary same-concept integration. All original helpers above remain
-# byte-faithful; old producer identities are consumed by exact archived bytes.
-_consume_context_source_original = consume_context
-_community_fields_source_original = community_fields
-_LEGACY_PUBLIC_SOURCE_SHA = 'b5545e923092f281bb865c24c8ff0b311aa9a2d290592da5e3ad3ef0d537cf38'
-
-def consume_context(context, *,load,public,evidence_sources):
- import digest_successor_state as successor
- if isinstance(context,dict)and context.get('standard')==successor.STANDARD:
-  return successor.consume_context(context,load=load,public=public,evidence_sources=evidence_sources)
- if isinstance(context,dict)and context.get('standard')==STANDARD and context.get('producer_sha256')==_LEGACY_PUBLIC_SOURCE_SHA:
-  import digest_public_state_legacy_b5545 as legacy
-  require(legacy.source_sha()==_LEGACY_PUBLIC_SOURCE_SHA,'exact historical public-state producer bytes required')
-  return legacy.consume_context(context,load=load,public=public,evidence_sources=evidence_sources)
- return _consume_context_source_original(context,load=load,public=public,evidence_sources=evidence_sources)
-
-def community_fields(public,source_legacy,source_native,before_native):
- if source_native.get('parent',{}).get('id')==before_native.get('parent',{}).get('id') and source_native.get('id')!=before_native.get('id'):
-  import digest_successor_state as successor
-  return successor.community_fields(public,source_legacy,source_native,before_native)
- return _community_fields_source_original(public,source_legacy,source_native,before_native)

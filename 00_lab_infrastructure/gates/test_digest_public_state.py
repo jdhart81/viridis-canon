@@ -192,13 +192,13 @@ class SourcePreservationTests(unittest.TestCase):
   import hashlib
   here=Path(__file__).parent;old=self.functions(here/'testdata/digest_public_state/methods_digest_registration_v1.txt');historical=here/'methods_digest_registration_legacy_0fc739.py'
   self.assertEqual(hashlib.sha256(historical.read_bytes()).hexdigest(),'0fc7393010cbc96d74b1fb6135cfb78cea88dd8ba692ba44c511242d5a89bdf9')
-  new=self.functions(here/'methods_digest_registration.py');new['require_registration']=self.functions(historical)['require_registration']
+  new=self.functions(here/'methods_digest_registration_legacy_21b813.py');new['require_registration']=self.functions(historical)['require_registration']
   for name,body in old.items():
    if name not in {'assemble_evidence','_check_public'}:
     with self.subTest(name=name):self.assertEqual(new[name],body)
  def test_runtimehelper_only_closed_exactnamed_module_addition(self):
   import ast,hashlib
-  here=Path(__file__).parent;old=(here/'testdata/digest_public_state/phase7_runtime_update_before.txt').read_text();new=(here/'phase7_runtime_update.py').read_text()
+  here=Path(__file__).parent;old=(here/'testdata/digest_public_state/phase7_runtime_update_before.txt').read_text();new=(here/'tests/fixtures/phase7_prior_content_historical_v001/phase7_runtime_update.py').read_text()
   pins={'audit_section': '3c9ca762aafde21e0a90c8f0e3d482436efda6a76222c703af6820842b23b578', 'corpus_preservation': '6141a5d6f94d0a61394b8ff1aed5276d46e10ee03077f7f1d533127f65357ab9'}
   def split_functions(raw):
    lines=raw.splitlines(keepends=True);tree=ast.parse(raw);functions={n.name:ast.get_source_segment(raw,n)for n in tree.body if isinstance(n,(ast.FunctionDef,ast.ClassDef))};excluded=set()

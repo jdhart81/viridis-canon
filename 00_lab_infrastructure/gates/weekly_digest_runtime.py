@@ -22,7 +22,7 @@ from weekly_digest_boundary import WeeklyDigestBoundary
 from runtime_closure_view import require_current
 from weekly_archive_wait import WeeklyArchiveWait
 
-UNCHANGED={'methods_digest.py':'5fcdc53f68d008357e0aef1dbb93f74695aa91119792f78151a8c61a0a9e05e5','methods_digest_registration.py':'21b813c527566c12a06b15426c4a49370fd1e5ccbdcf9ca441bf5d305011d21c','methods_digest_registration_legacy_0fc739.py':'0fc7393010cbc96d74b1fb6135cfb78cea88dd8ba692ba44c511242d5a89bdf9','zenodo_transport.py':'69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65','server_managed_fields.py':'ce8ad2002a11938966201a44d2714ee866bb922649cd572e36f09e8cc0f062a1','publication_preservation.py':'4fb48f40fd76cae1f973dca66253813bfd1c8edcdffa07c02945d28ddf170e2b','file_byte_metadata.py':'4a21de5efd74531b135682f92ce4d49b1d8ad71d044795548ea9877756fa50ef','mutation_journal_writer.py':'a2a72c49b5bc67a5c7535320bab5b6513b8cbfac3cf6c19d39b2e0c3d5d5c4e8'}
+UNCHANGED={'methods_digest.py':'5fcdc53f68d008357e0aef1dbb93f74695aa91119792f78151a8c61a0a9e05e5','methods_digest_registration.py':'e97c6e906b6b2feeb348fc60dc0f4c22eac86cb23eac6f29afbf33dfe9df3cb5','methods_digest_registration_legacy_0fc739.py':'0fc7393010cbc96d74b1fb6135cfb78cea88dd8ba692ba44c511242d5a89bdf9','zenodo_transport.py':'69bcfa0c7008f052a0c30d06d23e94a226c5b40707905550e41c40e16c379b65','server_managed_fields.py':'ce8ad2002a11938966201a44d2714ee866bb922649cd572e36f09e8cc0f062a1','publication_preservation.py':'4fb48f40fd76cae1f973dca66253813bfd1c8edcdffa07c02945d28ddf170e2b','file_byte_metadata.py':'4a21de5efd74531b135682f92ce4d49b1d8ad71d044795548ea9877756fa50ef','mutation_journal_writer.py':'a2a72c49b5bc67a5c7535320bab5b6513b8cbfac3cf6c19d39b2e0c3d5d5c4e8'}
 HISTORICAL_REGISTRAR_SHA256='0fc7393010cbc96d74b1fb6135cfb78cea88dd8ba692ba44c511242d5a89bdf9'
 CHECKS={'gitleaks','report-only-consumers','verify-catalog','verify','verify-functions','lean-build-current','lean-build-p0','deposit-verify'}
 def blob(raw):return hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
@@ -46,6 +46,8 @@ class ActualRuntime:
         self.root=Path(root).resolve(strict=True);self.plan=plan;self.d=d;self.opener=None;self.token=None
     def admission(self,plan,package):
         e.need(plan==self.plan,'ONE_ACTUAL_PLAN');e.require_plan(self.root,plan);require_origin(self.root,plan['source_origin'],plan['purpose_source_pins'])
+        import own_record_comparison as own
+        own.require_bound_authority(self.root,plan['authority'])
         current=load_bound_module(self.root,plan['runtime_consumer'],'owned_current_runtime_consumer');closure=require_current(current,plan['current_runtime_closure'],root=self.root,purpose_pins=plan['purpose_source_pins'],bound=e.bound)
         table={p['name']:p for p in plan['purpose_source_pins']}
         e.need(all(table.get(p['name'])==p for p in closure['source_pins']),'ACTUAL_RUNTIME_SUBSET_OF_PURPOSE')

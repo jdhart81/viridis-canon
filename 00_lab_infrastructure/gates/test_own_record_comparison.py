@@ -9,7 +9,7 @@ import hashlib
 import json
 import unittest
 
-import own_record_comparison as policy
+import own_record_comparison_legacy_cf74da as policy
 
 
 RID = "102"

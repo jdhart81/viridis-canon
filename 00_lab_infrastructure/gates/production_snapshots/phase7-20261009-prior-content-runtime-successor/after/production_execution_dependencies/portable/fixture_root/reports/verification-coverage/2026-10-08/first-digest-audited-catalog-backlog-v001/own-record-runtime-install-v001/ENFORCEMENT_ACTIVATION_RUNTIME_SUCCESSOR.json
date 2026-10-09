@@ -1,0 +1,63 @@
+{
+  "activated_at_utc": "2026-10-06T02:25:51.316493+00:00",
+  "authorized_runtime_update": {
+    "path": "reports/verification-coverage/2026-10-08/first-digest-audited-catalog-backlog-v001/own-record-runtime-install-v001/RUNTIME_UPDATE_RECEIPT.json",
+    "sha256": "ef58b54853ad5c944c624205f9d82a152dbb5afcff1b9b2da2d74ba95904a41f"
+  },
+  "first_eligible_window": "2026-10-06",
+  "generation_root": "/Users/justinhart/Desktop/science ",
+  "premise_declaration_cutover_run": "Run-188",
+  "proofs": {
+    "after_manifest": {
+      "path": "reports/verification-coverage/2026-10-05/game-plan-completion/enforcement-activation-v002/proofs/runtime-snapshot/AFTER_MANIFEST.json",
+      "sha256": "4bbe492c6625839321a88990ae135d2f3d9f763312be56596960ea243b0b1116"
+    },
+    "historical_provenance": {
+      "path": "reports/verification-coverage/2026-10-05/game-plan-completion/enforcement-activation-v002/proofs/HISTORICAL_PROVENANCE.json",
+      "sha256": "4b3846cfb2d56248e41fad521890d844dcab442ef10035e43aa88fade0cd0e55"
+    },
+    "merge_review": {
+      "path": "reports/verification-coverage/2026-10-05/game-plan-completion/enforcement-activation-v002/proofs/merge/MERGE_REVIEW.json",
+      "sha256": "9546776da8d51b08300b5cddf77e2e863d6c3ff5d6c0a0a1a00a9b25a71b4992"
+    },
+    "protected_baseline": {
+      "path": "reports/verification-coverage/2026-10-05/game-plan-completion/enforcement-activation-v002/proofs/PROTECTED_IMPLEMENTATION_BASELINE.json",
+      "sha256": "766e8d88a773baad6b186c8e3557bd126aac4b9818e7b79a6c60998b1607d3ba"
+    },
+    "registration_plan": {
+      "path": "reports/verification-coverage/2026-10-05/game-plan-completion/enforcement-activation-v002/proofs/APPROVED_REREGISTRATION_V002.json",
+      "sha256": "72044a08aba24d2c82d0b9fd68cb2198bc0075f6a456a0662a5e0554bed23b62"
+    },
+    "scheduler_before": {
+      "path": "reports/verification-coverage/2026-10-05/game-plan-completion/enforcement-activation-v002/scheduler-before/SCHEDULER_READBACK.json",
+      "sha256": "5262c19c6b8976273c52d5ea3a8a8e0ac03ced22733d6294ebe36db34e182188"
+    }
+  },
+  "scheduler_id": "viridis-nightly-science-generator",
+  "sources": {
+    "installation": {
+      "path": "reports/verification-coverage/2026-10-05/game-plan-completion/enforcement-activation-v002/installation/FINISH.json",
+      "sha256": "ab6f1abac071de2c613aff14722f929d21e5b09b3327beaa72dd3fe8707b9ef0"
+    },
+    "protected_readback": {
+      "path": "reports/verification-coverage/2026-10-05/game-plan-completion/enforcement-activation-v002/protected/RESULT.json",
+      "sha256": "1078afebeeacef14be814887a31a22e24f2d809baabe2e5ab726d0033bbb557f"
+    },
+    "registration_ledger": {
+      "path": "reports/verification-coverage/2026-10-05/game-plan-completion/enforcement-activation-v002/registration/LEDGER_SNAPSHOT.json",
+      "sha256": "b8b095163bd6e8b1d6cc18a0d84f67e99836543e74a685713022b7ff8e2aae5e"
+    },
+    "scheduler_readback": {
+      "path": "reports/verification-coverage/2026-10-05/game-plan-completion/enforcement-activation-v002/scheduler-after/SCHEDULER_READBACK.json",
+      "sha256": "392f0332d5bf996957730bc55460c8bd7293cd1daf925b74d7aeeff0def91b09"
+    },
+    "source_observation": {
+      "path": "reports/verification-coverage/2026-10-05/game-plan-completion/enforcement-activation-v002/selection/CUTOVER_OBSERVATION.json",
+      "sha256": "e0cf3811679862214e68d037303d7c38f1ab0d82ddfb81e781ef9c1ad5cb6132"
+    }
+  },
+  "standard": "VRS-PHASE5-ENFORCEMENT-ACTIVATION-1",
+  "status": "ENFORCEMENT_ACTIVATED",
+  "timezone": "America/New_York",
+  "tree_root": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0"
+}

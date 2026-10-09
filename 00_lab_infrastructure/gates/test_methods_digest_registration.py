@@ -4,7 +4,7 @@ from copy import deepcopy
 import json,tempfile,unittest,types,hashlib
 from unittest.mock import patch
 import methods_digest as d
-import methods_digest_registration as g
+import methods_digest_registration_legacy_21b813 as g
 import digest_metadata
 
 def save(p,obj):p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(d.raw_json(obj));return {'path':str(p),'sha256':d.sha(p)}

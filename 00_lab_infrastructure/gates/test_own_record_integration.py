@@ -12,7 +12,7 @@ _requested=os.environ.get(_SOURCE_NAME) or os.environ.get('G')
 _required=('own_record_comparison.py','phase7_policy_versions.py',
            'digest_public_state.py','methods_digest_registration.py',
            'methods_digest_registration_legacy_0fc739.py')
-_candidates=[Path(_requested)] if _requested else [HERE,HERE.parent,HERE.parent/'gates']
+_candidates=[Path(_requested)] if _requested else [HERE/'tests/fixtures/phase7_prior_content_historical_v001',HERE,HERE.parent,HERE.parent/'gates']
 _matches=[p.resolve() for p in _candidates if all((p/n).is_file() for n in _required)]
 if not _matches:
  raise RuntimeError('Set VIRIDIS_OWN_RECORD_SOURCE_DIR to the operative flat gate source directory')

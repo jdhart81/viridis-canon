@@ -16,7 +16,7 @@ class CurrentOwnRecordPortableTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='phase7-own-record-ci-')as temp:
             out=Path(temp).resolve(strict=True)
             for name in PRODUCTION:
-                source=G/name;self.assertTrue(source.is_file());self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),manifest['production'][name]);shutil.copyfile(source,out/name)
+                source=G/'tests/fixtures/phase7_prior_content_historical_v001'/name;self.assertTrue(source.is_file());self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),manifest['production'][name]);shutil.copyfile(source,out/name)
             for row in manifest['fixtures']:
                 source=F/row['path'];self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),row['sha256']);target=out/row['path'];target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target)
             result=subprocess.run([sys.executable,'-B','-m','unittest','discover','-s',str(out),'-p','test*.py'],cwd=out,capture_output=True,text=True,timeout=90)

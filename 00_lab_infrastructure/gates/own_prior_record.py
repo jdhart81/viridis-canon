@@ -1,9 +1,7 @@
-"""Prior-record equality, with only approved genuine version-chain flags.
+"""Prior protected content with genuine flags and complete processing logs.
 
-Own housekeeping is irrelevant here.  Existing records remain exact; the
-genuine own creation/publish receipts permit only the established flag state.
-The latest own-record authority requires complete prior equality, including
-ordered file arrays; the earlier own-file reorder rule is not used on priors.
+The approved Oct9 rule logs asynchronous processing on any record. Genuine
+own chain receipts still exclusively authorize version-state flag changes.
 """
 from copy import deepcopy
 import hashlib, json
@@ -32,8 +30,11 @@ def require_pair(legacy,native,saved_legacy,saved_native,*,creation=None,publish
             need(isinstance(rows,list)and len(rows)==1 and rows[0].get('is_last')is True,'INITIAL_LEGACY_LAST_FLAG')
             rows[0]['is_last']=False
     else:need(publish is None,'NO_PUBLISH_WITHOUT_OWN_CREATION')
-    need(exact(native,expected_n),'NATIVE_BYTES_OUTSIDE_APPROVED_FLAGS_CHANGED')
+    import own_record_comparison as own
+    native_audit=own.require_prior_semantics(native,expected_n,representation='NATIVE')
+    legacy_audit=own.require_prior_semantics(legacy,expected_l,representation='LEGACY')
     preservation.require_public_metadata(legacy.get('metadata',{}),expected_l.get('metadata',{}))
-    preservation.require_file_preservation(legacy.get('files'),expected_l.get('files'))
-    need(exact(legacy,expected_l),'LEGACY_BYTES_OUTSIDE_APPROVED_FLAGS_CHANGED')
-    return {'status':'PRIOR_RECORD_EXACT_EXCEPT_APPROVED_VERSION_CHAIN_FLAGS','record_id':src,'chain_state':phase,'certifies':False}
+    # Run the unchanged file guard on protected filename-keyed rows. Full
+    # original bodies and ordering remain logged in the two audits.
+    preservation.require_file_preservation(own.prior_protected_projection(legacy,representation='LEGACY').get('files'),own.prior_protected_projection(expected_l,representation='LEGACY').get('files'))
+    return {'status':'PRIOR_RECORD_PROTECTED_EXCEPT_APPROVED_VERSION_CHAIN_FLAGS','record_id':src,'chain_state':phase,'native_audit':native_audit,'legacy_audit':legacy_audit,'observed_before':{'native':deepcopy(saved_native),'legacy':deepcopy(saved_legacy)},'observed_after':{'native':deepcopy(native),'legacy':deepcopy(legacy)},'certifies':False}

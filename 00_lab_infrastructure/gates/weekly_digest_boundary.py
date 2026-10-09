@@ -94,11 +94,12 @@ class WeeklyDigestBoundary:
         return dict(self.plan,release_week=admitted['receipt']['release_week'])
     def prior(self,state,own=None,expected=None,boundary='CREATE',operation=None,before=None):
         legacy,lb=self.get(self.plan['predecessor_record_id'],True);native,nb=self.get(self.plan['predecessor_record_id'],True,True)
-        # Every prior field is exact; only the existing receipt-bound chain
-        # flags may transition. No own revision/ui/link is a prior baseline.
+        # Prior protected semantics stay exact. Approved processing remains
+        # a complete logged observation; genuine receipts alone permit flags.
         created=engine.bound(self.root,state['creation_receipt'])[1]if state['record_id']is not None and self.plan['start_kind']=='NEW_VERSION'else None
         published=engine.bound(self.root,operation)[1]if boundary=='PUBLISH'and operation is not None else None
-        own_prior_record.require_pair(legacy,native,self.saved_legacy,self.saved_native,creation=created,publish=published,preservation=preservation)
+        audit=own_prior_record.require_pair(legacy,native,self.saved_legacy,self.saved_native,creation=created,publish=published,preservation=preservation)
+        self.last_prior_audit=self.emit('prior_audits/'+Path(nb['path']).stem+'.json',{'standard':'VRS-SOURCE-BOUND-PRIOR-PROCESSING-AUDIT-1','status':'PROTECTED_PRIOR_CONTENT_CHECKED_PROCESSING_LOGGED','source_native':self.plan['source_native_receipt'],'source_legacy':self.plan['source_legacy_receipt'],'actual_native_get':nb,'actual_legacy_get':lb,'comparison':audit,'certifies':False})
         # Download all six immutable predecessor bytes; their independent
         # hash inventory was admitted by the default predecessor registrar.
         prior_files=successor.predecessor_inventory(self.source_inventory_plan(),root=self.root)
@@ -144,7 +145,7 @@ class WeeklyDigestBoundary:
         temp=machine.initial(machine.digest(self.plan),self.plan['approved_inventory'],start_kind='NEW_VERSION')
         temp.update(record_id=rid,concept_id=parent,creation_receipt=original_creation,first_owned_draft=first_native,first_owned_legacy_draft=first_legacy,inherited_inventory=inherited_rows(created['response']))
         self.prior(temp,native,expected);self.full_draft(temp,expected,wanted,legacy,native,chain=None,operation=original_creation)
-        report={'standard':'VRS-OWNED-DIGEST-FULL-READBACK-1','status':'CURRENT_OWN_RECORD_CREATION_READMISSION_NO_WRITE','record_id':rid,'step':'NEW_VERSION','transport':original_creation,'owned_native_get':nb,'owned_legacy_get':lb,'expected_native':deepcopy(native),'expected_legacy':deepcopy(legacy),'server_context':deepcopy(self.last_server_context),'native_audit':deepcopy(self.last_draft_audit),'source_chain_native_gets':deepcopy(self.sources),'explicit_creation_recovery':{'standard':recovery_standard,'status':'CURRENT_OWN_RECORD_RULE_READMISSION_ONLY','old_plan':old_plan_binding,'old_hold':old_hold_binding,'authority':self.plan['authority'],'original_reservation':attempt['reservation'],'original_operation_id':attempt['operation_id'],'no_network_write':True},'scientific_acceptance':'UNCHANGED_EXISTING_GATE_ONLY','certifies':False}
+        report={'standard':'VRS-OWNED-DIGEST-FULL-READBACK-1','status':'CURRENT_OWN_RECORD_CREATION_READMISSION_NO_WRITE','record_id':rid,'step':'NEW_VERSION','transport':original_creation,'owned_native_get':nb,'owned_legacy_get':lb,'expected_native':deepcopy(native),'expected_legacy':deepcopy(legacy),'server_context':deepcopy(self.last_server_context),'native_audit':deepcopy(self.last_draft_audit),'source_chain_native_gets':deepcopy(self.sources),'prior_processing_audit':deepcopy(self.last_prior_audit),'explicit_creation_recovery':{'standard':recovery_standard,'status':'CURRENT_OWN_RECORD_RULE_READMISSION_ONLY','old_plan':old_plan_binding,'old_hold':old_hold_binding,'authority':self.plan['authority'],'original_reservation':attempt['reservation'],'original_operation_id':attempt['operation_id'],'no_network_write':True},'scientific_acceptance':'UNCHANGED_EXISTING_GATE_ONLY','certifies':False}
         return self.emit('validated/EXPLICIT_CREATION_READMISSION.json',report)
     def before(self,state):
         self.current_state=state;self.pending_evidence=None
@@ -225,7 +226,7 @@ class WeeklyDigestBoundary:
             # this is provenance only, not a terminal machine completion.
             temp['completed']=temp['completed']+[step];temp['attempts'][-1]=dict(temp['attempts'][-1],transport=operation,outcome='STRICT_PASS')
             prior_l,prior_n,_,_=self.prior(temp,native,expected);chain=self.chain(temp,prior_n,native,expected);self.full_draft(temp,expected,wanted,legacy,native,chain=chain,operation=operation)
-        report={'standard':'VRS-OWNED-DIGEST-FULL-READBACK-1','status':'STRICT_DRAFT_SOURCE_NATIVE_LEGACY_FILES_PIDS_PASS','record_id':rid if step in{'NEW_VERSION','CREATE_WEEK'}else state['record_id'],'step':step,'transport':operation,'prewrite_pending_account':getattr(self,'pending_evidence',None),'owned_native_get':nb,'owned_legacy_get':lb,'expected_native':deepcopy(native),'expected_legacy':deepcopy(legacy),'server_context':deepcopy(self.last_server_context),'native_audit':deepcopy(self.last_draft_audit),'source_chain_native_gets':deepcopy(self.sources),'scientific_acceptance':'UNCHANGED_EXISTING_GATE_ONLY','certifies':False}
+        report={'standard':'VRS-OWNED-DIGEST-FULL-READBACK-1','status':'STRICT_DRAFT_SOURCE_NATIVE_LEGACY_FILES_PIDS_PASS','record_id':rid if step in{'NEW_VERSION','CREATE_WEEK'}else state['record_id'],'step':step,'transport':operation,'prewrite_pending_account':getattr(self,'pending_evidence',None),'owned_native_get':nb,'owned_legacy_get':lb,'expected_native':deepcopy(native),'expected_legacy':deepcopy(legacy),'server_context':deepcopy(self.last_server_context),'native_audit':deepcopy(self.last_draft_audit),'source_chain_native_gets':deepcopy(self.sources),'prior_processing_audit':deepcopy(self.last_prior_audit),'scientific_acceptance':'UNCHANGED_EXISTING_GATE_ONLY','certifies':False}
         # Audit-admitted complete native server representations become the
         # next temporal baseline. Main data has already matched independent
         # source/payload/upload expectations, never the after body itself.

@@ -3,7 +3,7 @@ from pathlib import Path
 import ast,copy,hashlib,json,os,tempfile,types,unittest
 G=Path(os.environ.get('VIRIDIS_ROOT_ADAPTER_GATES',Path(__file__).resolve().parent)).resolve(strict=True)
 PUBLIC=Path(os.environ.get('VIRIDIS_ROOT_ADAPTER_PUBLIC_GATES',G)).resolve(strict=True)
-PRODUCTION=Path(os.environ.get('VIRIDIS_ROOT_ADAPTER_PRODUCTION',G)).resolve(strict=True)
+PRODUCTION=Path(os.environ.get('VIRIDIS_ROOT_ADAPTER_PRODUCTION',G/'tests/fixtures/phase7_prior_content_historical_v001')).resolve(strict=True)
 OLD=G/'production_snapshots/phase7-20261008-merge-evidence-rebinding/after'
 NEW=PUBLIC/'production_snapshots/phase7-20261008-own-record-root-adapter/after'
 PROFILE=json.loads((PUBLIC/'tests/fixtures/phase7_own_record_root_adapter_v001/EXPECTED_PROFILE.json').read_bytes())

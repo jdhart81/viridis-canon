@@ -1,0 +1,6 @@
+{
+  "authorized_runtime_update": {
+    "path": "fixture-reports/RUNTIME.json",
+    "sha256": "2b6b6f041848b2299a231eb354345415267dc550eb9f1aeb9a55617f4a10d516"
+  }
+}

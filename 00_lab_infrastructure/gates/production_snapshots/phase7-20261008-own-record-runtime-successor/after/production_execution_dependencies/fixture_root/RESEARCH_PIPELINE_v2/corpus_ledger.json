@@ -1,0 +1,2451 @@
+{
+  "enforcement_activation": {
+    "path": "fixture-reports/ACTIVATION.json",
+    "sha256": "daf61d96fa5251581eaa27d85e633964f288d31ef90082e3e7e16d75482ac04f"
+  },
+  "premise_declaration_cutover_run": "Run-188",
+  "publication_entities": [
+    {
+      "approved_publication_binding_reviews": [
+        "7280872b91f7e62fb491ddf858cc4f1352cb898034821795b839f11e29c2e988"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-08-31_DCAE_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "8497be51c5f0629e583e352214e05aff7ee57a83823800ed3d18fbbe48f36745",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "dscore_difference_identity",
+        "aligned_component_envelope",
+        "aligned_margin_preserves_threshold",
+        "common_shift_exact",
+        "zero_weight_component_inert",
+        "envelope_sharp_witness"
+      ],
+      "doi": "10.5281/zenodo.22236409",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22236409-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "envelope_sharp_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236409/paper.pdf",
+          "sha256": "b534b405258422e9cf7ed86b66098adcf3764f735d850605501136cfe47c5c2d"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236409/paper.tex",
+          "sha256": "39716b157787fcaac31259f4bd4830ac42724bca10825ffb5baceb3529f74096"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236409",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22236409-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236409/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236409/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "62efccd3bb6f6a7e378a0a88a63cc1a6fdafc729a3fdd7fb10e4dd930a6a8757",
+        "record_id": "22236409",
+        "response_sha256": "987400b2c9044c3358016cc4287e696e7cb956f1ed572f7d9152b55038541c40",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/035_GET.json",
+        "receipt_sha256": "62efccd3bb6f6a7e378a0a88a63cc1a6fdafc729a3fdd7fb10e4dd930a6a8757",
+        "record_id": "22236409",
+        "response_sha256": "987400b2c9044c3358016cc4287e696e7cb956f1ed572f7d9152b55038541c40"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-146",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "0e2109a335e0709f50bab493aa6ddaf8687c9a665f7f99a0dfe9b6df3f45a3dc"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-08-31_FRCS_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "e71b77ff23b91f84fd3567a9669c6ca6102ce7321f32587eaa06fdb7fda76277",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "freshness_capacity_equiv",
+        "nominal_capacity_exact",
+        "reserve_capacity_sufficient",
+        "reserve_headroom_identity",
+        "capacity_shortfall_positive",
+        "freshness_reserve_sharp_witness"
+      ],
+      "doi": "10.5281/zenodo.22236416",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22236416-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "freshness_reserve_sharp_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236416/paper.pdf",
+          "sha256": "d75cf446b5e76de6f685702d386535e105736fd45e69c8ae49f5e7a552517b61"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236416/paper.tex",
+          "sha256": "733558e6fcadf50b9a5477860e41447492ced00c4bbdc7be9305bdbeb1bea8e8"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236416",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22236416-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236416/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236416/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "c711178ca2e2978492784735611137f4559d03f1c32ada96587d22e5d5c9fc79",
+        "record_id": "22236416",
+        "response_sha256": "f9c3ba0959afdea10950f800aa0bc39fb2bb7fff5b90c91ed07d53b064c448c0",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/076_GET.json",
+        "receipt_sha256": "c711178ca2e2978492784735611137f4559d03f1c32ada96587d22e5d5c9fc79",
+        "record_id": "22236416",
+        "response_sha256": "f9c3ba0959afdea10950f800aa0bc39fb2bb7fff5b90c91ed07d53b064c448c0"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-148",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "837d3ec33427528774247abb6ffb5ab8f5b3f6991f6d2bab735a9202045436e1"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-08-31_RCBN_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "2b2bf3c0827beb465b277e8942d34c3066d6be3f9f07cdf7ecd059ff305e739c",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "normalized_penalty_floor",
+        "normalized_penalty_eq_one_iff",
+        "reciprocal_mistuning_symmetry",
+        "checkpoint_balance_floor",
+        "landauer_checkpoint_component",
+        "worked_nonvacuity"
+      ],
+      "doi": "10.5281/zenodo.22236441",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22236441-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "worked_nonvacuity"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236441/paper.pdf",
+          "sha256": "687907198494bbae6d1d40acbbb0ed1766169c79d8e4b347aa84e821859b7ac9"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236441/paper.tex",
+          "sha256": "e68b373b8066ef6b133973b16a2f50ab32416d43936d8c45c8138ea0fd342b76"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236441",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22236441-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236441/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236441/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "ec8fe22cfc5be74ac67e0c658fc0e7b2cf07b6c74f5ef52814d3076798387beb",
+        "record_id": "22236441",
+        "response_sha256": "5d9bec6a2e385967964132aa5fbc72995dedad57e39be191789cf65dee6e9676",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/117_GET.json",
+        "receipt_sha256": "ec8fe22cfc5be74ac67e0c658fc0e7b2cf07b6c74f5ef52814d3076798387beb",
+        "record_id": "22236441",
+        "response_sha256": "5d9bec6a2e385967964132aa5fbc72995dedad57e39be191789cf65dee6e9676"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-143",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "fb590b892b7964bded08d896fdf4f6e290e63210cc864b3e662cdc747cf43a4e"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-08-31_SBRN_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "30a5c729cd4d027378f6448d6ff5bc79db8c82d9f028c64e501caa3603f01760",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "stewardedCapacity_le_baseBottleneck",
+        "stewardedCapacity_le_averageRemainder",
+        "stewardship_upper_bound",
+        "slack_regime_witness",
+        "equalization_regime_witness",
+        "worked_nonvacuity"
+      ],
+      "doi": "10.5281/zenodo.22236458",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22236458-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "worked_nonvacuity"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236458/paper.pdf",
+          "sha256": "a918fe71e806920f07adf07b25ad5552c9e99a03470d2f86f7a5a765154c3849"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236458/paper.tex",
+          "sha256": "634ab5b838c95ca952d3af5b0f75f65fa80ba8d1ac012f2cdae6bfa0ccc42546"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236458",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22236458-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236458/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236458/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "31dd8a058f6fa63233bef5d53d1c55066e88d7560233d42f7aae785b65c4acfc",
+        "record_id": "22236458",
+        "response_sha256": "653d451d6a2ede0a949f76c1b50a7d3be4087fd0cf6733a74f86f4bdc8fb9c47",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/158_GET.json",
+        "receipt_sha256": "31dd8a058f6fa63233bef5d53d1c55066e88d7560233d42f7aae785b65c4acfc",
+        "record_id": "22236458",
+        "response_sha256": "653d451d6a2ede0a949f76c1b50a7d3be4087fd0cf6733a74f86f4bdc8fb9c47"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-144",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "d9d0114b8a1c972322bab541c8e04d9f33c1c8897e689ad2f8817071078d057a"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-08-31_SFB_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "49f40063ea40ec436e8c4109c5c9dfe22466ef5ecb88c0603494356af94e5453",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "pooled_margin_identity",
+        "pooled_feasible_iff_margin_nonnegative",
+        "isolated_feasible_implies_pooled",
+        "transfer_conserves_pooled_margin",
+        "full_pool_double_count_identity",
+        "shared_facilitation_nonvacuous_witness"
+      ],
+      "doi": "10.5281/zenodo.22236521",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22236521-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "shared_facilitation_nonvacuous_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236521/paper.pdf",
+          "sha256": "6639573851aa35a197281ade98bd5b4e7b68f75381899492f5315909279c85f1"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236521/paper.tex",
+          "sha256": "de929c3c5b42c5dd0f48720317f0eba815765ad3fa11ac7626367e6b1e58e06c"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236521",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22236521-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236521/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236521/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "ff8ab977ad825631b58335ab0be7a5467239c8fe477698bbf701101ceab0a847",
+        "record_id": "22236521",
+        "response_sha256": "d6ba16a013e61901812635455d9754ca5d8e3cf23bcb2d932922d7a09582cc00",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/199_GET.json",
+        "receipt_sha256": "ff8ab977ad825631b58335ab0be7a5467239c8fe477698bbf701101ceab0a847",
+        "record_id": "22236521",
+        "response_sha256": "d6ba16a013e61901812635455d9754ca5d8e3cf23bcb2d932922d7a09582cc00"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-149",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "b7cbe73e0b15c59673b260e4cfd1ea3d956ae07b09a8e696150ab5eee2ee3fdc"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-08-31_TDCIL_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "97dd84ce0271f9095db9a745ccf7951543e641eaf253f35929da341e57ea67d3",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "window_energy_ledger",
+        "aggregate_information_ceiling",
+        "idle_window_forces_zero_information",
+        "redistribution_preserves_aggregate_ceiling",
+        "target_above_budget_impossible",
+        "duty_cycle_sharp_witness"
+      ],
+      "doi": "10.5281/zenodo.22236530",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22236530-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "duty_cycle_sharp_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236530/paper.pdf",
+          "sha256": "680bba689612664cd8ea0c3650d556692ee6fe21d8cdf9a2bbe8e4ed59ee4f9a"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236530/paper.tex",
+          "sha256": "ca6888d2451775931019be79b8faab81a5507face14fd486a2e083b186989c9a"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236530",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22236530-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236530/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236530/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "b2d75c9df6703cfaf54dcb9b778c688f189f3b9f1d0a00709f0c5074937dad15",
+        "record_id": "22236530",
+        "response_sha256": "06c0dd759a07e3affa07ad82a5843aaf80fab516289d11218b3fd2d7784ffd98",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/240_GET.json",
+        "receipt_sha256": "b2d75c9df6703cfaf54dcb9b778c688f189f3b9f1d0a00709f0c5074937dad15",
+        "record_id": "22236530",
+        "response_sha256": "06c0dd759a07e3affa07ad82a5843aaf80fab516289d11218b3fd2d7784ffd98"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-147",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "9dd13ffddbf93f67ab8ecd3e03b544cc67c44efb54bba58eab54a5c5bca7d6a6"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-01_GACC_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "c4e8d72018b5934e9128f2cf9e0677b0c733bf702e7b03260615ab0529c6bec0",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "aggregate_projection_positive",
+        "aggregate_residual_bound",
+        "common_cone_closed_under_weighted_sum",
+        "alignment_floor_of_residual_bound",
+        "uniform_cone_alignment_floor",
+        "cancellation_gives_perfect_alignment",
+        "magnitude_masking_witness",
+        "gaian_alignment_nonvacuous"
+      ],
+      "doi": "10.5281/zenodo.22236748",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22236748-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "gaian_alignment_nonvacuous"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236748/paper.pdf",
+          "sha256": "e3013c587a20e81204ad91f5b5b88f09e2d2a5b1307a77349f88d6fb1562d21d"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236748/paper.tex",
+          "sha256": "d88fa5f9fc99f30ea2e28d4b05c55e2156a636b213ca7fb7ac5d3652995e132a"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236748",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22236748-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236748/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236748/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "07c24aea008b16b95c21c5e6248c76b3c3215a0cb57f9e301a5b17b98f548f95",
+        "record_id": "22236748",
+        "response_sha256": "5f923a6a13f894e577a8e8a8515a8bd3e0f8fb2447e3d04624ebb81382d4f851",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/281_GET.json",
+        "receipt_sha256": "07c24aea008b16b95c21c5e6248c76b3c3215a0cb57f9e301a5b17b98f548f95",
+        "record_id": "22236748",
+        "response_sha256": "5f923a6a13f894e577a8e8a8515a8bd3e0f8fb2447e3d04624ebb81382d4f851"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-138",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "1d87e0f4a113bd3d219c119855879f98e4d5d00399186ff4b3ea0a7f3bb46ac7"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-01_HCF_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "1b78e3fb1686637a0d27b4adf3c125c2a8124997b888e6018924c8dc7718cf05",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "kl_chain_rule_habitable_partition",
+        "kl_ge_binary_habitable_mass",
+        "binary_kl_monotone_above_reference",
+        "habitable_threshold_free_energy_floor",
+        "equality_iff_reference_conditionals",
+        "reference_shaped_conditionals_witness",
+        "within_class_excess_witness"
+      ],
+      "doi": "10.5281/zenodo.22236755",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22236755-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "reference_shaped_conditionals_witness",
+        "within_class_excess_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236755/paper.pdf",
+          "sha256": "f1b9b8c5ba4f85b4d4e2ffda41b8102f48317c7d804838d286bc5cb9e951fec1"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236755/paper.tex",
+          "sha256": "c8c84ddd9b10c84b81869ea1c11d2d9af18d201260e14198c6337f668bcc276f"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236755",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22236755-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236755/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236755/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "987b37fd9712d193005c5c3f3f858000c33c35b1d7f1925f21683e21b89de7ba",
+        "record_id": "22236755",
+        "response_sha256": "013438de20a64feb10fef99ee160fe371db3e76fca75b1c6aae7d6b27386c1d5",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/322_GET.json",
+        "receipt_sha256": "987b37fd9712d193005c5c3f3f858000c33c35b1d7f1925f21683e21b89de7ba",
+        "record_id": "22236755",
+        "response_sha256": "013438de20a64feb10fef99ee160fe371db3e76fca75b1c6aae7d6b27386c1d5"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-123",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "3e4e16621a4a991336a65cb03a9117576c68f09dbed315c92d6cedff6dc5e58f"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-01_SOR_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "0c7fc8941f74ed87acb31b7944b7e74435ab9302578cccd2642a918ef34d3e90",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "option_value_identity",
+        "staging_preferred_iff",
+        "reserve_bound_iff",
+        "option_value_antitone_stage",
+        "option_value_antitone_cost",
+        "stewardship_option_nonvacuous"
+      ],
+      "doi": "10.5281/zenodo.22236770",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22236770-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "stewardship_option_nonvacuous"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236770/paper.pdf",
+          "sha256": "9ecbcd89e4d56b589bee82bcddd12c9aa7c7de848f4579464e7f027c5963a4d3"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236770/paper.tex",
+          "sha256": "082e53be6d8678d3237dce0c7e5011a3181bda1c848d1e0588ff09cb5f42381f"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236770",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22236770-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236770/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236770/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "0264957f3e678e79fac40434d13268d15272f96d715e9cd67621f17c06381246",
+        "record_id": "22236770",
+        "response_sha256": "4de24a2e9befd5b7353cee01a24c8645b699f93f27be03ccdf50f244a8d8a346",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/363_GET.json",
+        "receipt_sha256": "0264957f3e678e79fac40434d13268d15272f96d715e9cd67621f17c06381246",
+        "record_id": "22236770",
+        "response_sha256": "4de24a2e9befd5b7353cee01a24c8645b699f93f27be03ccdf50f244a8d8a346"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-140",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "902a2e00561addb3c75a00a0943a4773bc90c7a6a70e421f8087663a1b15947b"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-01_SSC_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "ea2f42c2d4022b7ad78b7778e41141375955020953ce467d1c98a30c3255553b",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "relevance_chain_identity",
+        "entropy_decomposition_deterministic",
+        "exact_sufficiency_preserves_relevance",
+        "approximate_sufficiency_loss_bound",
+        "sufficient_sanitization_nonvacuous"
+      ],
+      "doi": "10.5281/zenodo.22236775",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22236775-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "sufficient_sanitization_nonvacuous"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236775/paper.pdf",
+          "sha256": "84441bb0d3d2b5ab6cbb3e14c249f4eae5981784d3e3e306c84ed1eaaa031d44"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236775/paper.tex",
+          "sha256": "bec553845bc328f38d455b7e6ddda953d2030d1d6541264c7e6faaf15bda8a31"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236775",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22236775-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236775/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236775/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "8fcb9a761e6f2fddd1cbf8ea749fd9022b64eb5c184246dffa086f52ee186aab",
+        "record_id": "22236775",
+        "response_sha256": "042a6d0949ba19998a2dc4971e80e7aad09571dfabd18f9af16b38de6411ed09",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/404_GET.json",
+        "receipt_sha256": "8fcb9a761e6f2fddd1cbf8ea749fd9022b64eb5c184246dffa086f52ee186aab",
+        "record_id": "22236775",
+        "response_sha256": "042a6d0949ba19998a2dc4971e80e7aad09571dfabd18f9af16b38de6411ed09"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-135",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "2cee8bc5b4d10b60566498a89330eb3dfc8b3645ecf7d4d25230c7a0ebe085a1"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-01_ZAB_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "e11ea2635c1943e804f4452dabb8134244cc3f67316d585db41ccd56783fa907",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "uniform_zeno_schedule_maximizes_success",
+        "zeno_schedule_log_gap_ge_variance",
+        "ideal_zeno_uniform_success_tendsto_one",
+        "noisy_zeno_log_objective_strictConcave",
+        "noisy_zeno_integer_optimum_floor_or_ceil",
+        "noisy_zeno_high_quality_asymptotic"
+      ],
+      "doi": "10.5281/zenodo.22236789",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22236789-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "witness_C1",
+        "witness_C2",
+        "idealSuccess_uniform_eq",
+        "witness_C3_strictConcave",
+        "witness_C4",
+        "witness_C5"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236789/paper.pdf",
+          "sha256": "bcf58d84eeff8fa8db35b29003455f66757d5b00badd0993363f5e4c8b641700"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236789/paper.tex",
+          "sha256": "0777a3d512f8852fdc385fc57448fee564f0a8b15b0288beb69d8cdc35495c8a"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236789",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22236789-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236789/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22236789/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "3beeda3b9b5deb7679ac5ab29208e37a98502e3ea07edc1f8c973c09569fb2f3",
+        "record_id": "22236789",
+        "response_sha256": "b3c8e6db960676daad0dad64864100c80bf323f5c19d7790a3f62944cad8a942",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/445_GET.json",
+        "receipt_sha256": "3beeda3b9b5deb7679ac5ab29208e37a98502e3ea07edc1f8c973c09569fb2f3",
+        "record_id": "22236789",
+        "response_sha256": "b3c8e6db960676daad0dad64864100c80bf323f5c19d7790a3f62944cad8a942"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-122",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "f35ed100b1a038cc5139789396169caf10e1c0a956218cef7f70e8a54ec94d31"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-08_DPAC_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "6e6d0485c12cdf62afcacdd94d2839c71a1299e8da7ec4ce88291ecf0f0a47a0",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "valuation_gap_identity",
+        "valuation_gap_abs",
+        "dual_acceptance_iff_corridor",
+        "two_project_gap_identity",
+        "dual_price_positive_witness",
+        "dual_price_mismatch_witness"
+      ],
+      "doi": "10.5281/zenodo.22665538",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22665538-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "dual_price_positive_witness",
+        "dual_price_mismatch_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22665538/paper.pdf",
+          "sha256": "817d9f1ad8450ac2b4514cc18d98546b696963fb4dcd2a6851c2e926601d158c"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22665538/paper.tex",
+          "sha256": "f737689587ac2bad85ae6f3bf063fe8be9c78c7ca835a95b9ea1666baf282def"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22665538",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22665538-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22665538/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22665538/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "1b92783c05e014c2195e23f3b401d842efb7172a1fd0a53539147ab7f9719c3c",
+        "record_id": "22665538",
+        "response_sha256": "a658e6701fdc4f3ba0b8c005454b9e612ba9b973df91e018d22ea12c458d71ea",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/486_GET.json",
+        "receipt_sha256": "1b92783c05e014c2195e23f3b401d842efb7172a1fd0a53539147ab7f9719c3c",
+        "record_id": "22665538",
+        "response_sha256": "a658e6701fdc4f3ba0b8c005454b9e612ba9b973df91e018d22ea12c458d71ea"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-150",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "ce91de9d134eef4f3c16fca64f1e17c47133ecf134f48d8046830bef86f8d745"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-13_RECB_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "1c88ba92027aba2e075d0a4df5d1cbe9d702aafb7551510c89a08361a6b79218",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "load_nonnegative",
+        "modeled_slack_nonnegative",
+        "change_partition",
+        "load_le_total",
+        "slack_le_total",
+        "uniform_weight_bound",
+        "budgeted_load_bound",
+        "balanced_change_witness",
+        "budget_witness"
+      ],
+      "doi": "10.5281/zenodo.22736660",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22736660-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "balanced_change_witness",
+        "budget_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736660/paper.pdf",
+          "sha256": "a801eadcae1831f9fc35519c29a9b4a93e31b06d128f4b1a463b1f945fff08a7"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736660/paper.tex",
+          "sha256": "ae5aa73520d08e35d0918e9e2edc84e383e9a994ec8ef68f1a9b21a0f1ccc51b"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736660",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22736660-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736660/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736660/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "60e6623e6f6118605e68a790d942b0930c17b552ab5db358aa5f71985b519689",
+        "record_id": "22736660",
+        "response_sha256": "daf964f85a4b1eb4b73408a0b673d31d3fdb5a0836ab0e2e8422593221a24d55",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/527_GET.json",
+        "receipt_sha256": "60e6623e6f6118605e68a790d942b0930c17b552ab5db358aa5f71985b519689",
+        "record_id": "22736660",
+        "response_sha256": "daf964f85a4b1eb4b73408a0b673d31d3fdb5a0836ab0e2e8422593221a24d55"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-164",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "e71e40d25251c3fa8dfc70e4ab3019de722a7430eb71dc840b77c138dd12a1c7"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-13_SDPN_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "955812d237c285caf61dffa30a519ae4160c8b1fb20f23d6b82e875cbf8a063c",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "switching_gain_identity",
+        "break_even_iff",
+        "transition_charge_reduces_gain",
+        "longer_horizon_not_worse",
+        "payback_boundary_zero_gain",
+        "no_churn_band",
+        "forward_switch_profitable_outside_band",
+        "backward_switch_profitable_outside_band",
+        "round_trip_net_loss",
+        "switching_payback_positive_witness",
+        "omitting_transition_overstates_gain"
+      ],
+      "doi": "10.5281/zenodo.22736684",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22736684-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "switching_payback_positive_witness",
+        "omitting_transition_overstates_gain"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736684/paper.pdf",
+          "sha256": "807933d6f59820484dc71db3233fe211ecb820c4f6f99c1cc3015d9ff9ce1425"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736684/paper.tex",
+          "sha256": "5e1a5ba6b422b39975d2a695cba12973cec58f33e7dfb277475e903ba1d67b95"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736684",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22736684-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736684/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736684/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "66ff288a93d657a90e4e97aa1a10a23acc1d3685eaea14c81cee17dbeb989ba6",
+        "record_id": "22736684",
+        "response_sha256": "790c017a6d5372872a8ede7139863bbd64a7cce0b0f9be23973fc3bee424fcd8",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/568_GET.json",
+        "receipt_sha256": "66ff288a93d657a90e4e97aa1a10a23acc1d3685eaea14c81cee17dbeb989ba6",
+        "record_id": "22736684",
+        "response_sha256": "790c017a6d5372872a8ede7139863bbd64a7cce0b0f9be23973fc3bee424fcd8"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-159",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "67104c31b2e3f846866369347ad19e19c59d3a991ebef06beaff37d0e0cca5c5"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-13_TCTSI_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "25e7030d78d15f0bc21002af83d73b3bca59fa275431dfec27b14c4048b75037",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "effective_gap_identity",
+        "ordered_effective_rates",
+        "bottleneck_reduction",
+        "bottleneck_formula",
+        "cooperation_gain_identity",
+        "positive_gain_iff",
+        "nonnegative_bottleneck_iff",
+        "transfer_efficiency_monotone",
+        "symbiotic_transfer_witness",
+        "coordination_cost_negative_control"
+      ],
+      "doi": "10.5281/zenodo.22736699",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22736699-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "symbiotic_transfer_witness",
+        "coordination_cost_negative_control"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736699/paper.pdf",
+          "sha256": "6259fee3e856e3798345ac5ef32c75ab438c68c63cb339d7283f8b23fed8c158"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736699/paper.tex",
+          "sha256": "b12b12b974a9c3b0a91f4322fda59d924c6582a456efe0ce674d40655222e80e"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736699",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22736699-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736699/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736699/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "bfbcecba2d5b42457e3b44f314f6de19990c10032a7e894cde8abe659b09f374",
+        "record_id": "22736699",
+        "response_sha256": "5e02334d8ba60d8f4c330e0f48f8634fcc371bcd68f14977061e153e20ca1225",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/609_GET.json",
+        "receipt_sha256": "bfbcecba2d5b42457e3b44f314f6de19990c10032a7e894cde8abe659b09f374",
+        "record_id": "22736699",
+        "response_sha256": "5e02334d8ba60d8f4c330e0f48f8634fcc371bcd68f14977061e153e20ca1225"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-157",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "bc354bd52c63061e63b9c4f67b31476138bdd5e7b8c95002f217e37982a185db"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-13_TRSE_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "02232d708aa9d69ca99cef0a3c5eb10aeeae27c1983c2164430a3d9e067572e4",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "balance_identity",
+        "allocation_gap_identity",
+        "left_bottleneck",
+        "right_bottleneck",
+        "balanced_bottleneck_maximal",
+        "bottleneck_deficit_left",
+        "bottleneck_deficit_right",
+        "nonmidpoint_balance_witness"
+      ],
+      "doi": "10.5281/zenodo.22736710",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22736710-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "nonmidpoint_balance_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736710/paper.pdf",
+          "sha256": "811d399aee47b9737fb695fe29d723c3e65d7d7c9bcbcc72b1431377d56981b9"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736710/paper.tex",
+          "sha256": "ae3b74a4b7b9df56cc8c6e2052757f104598b4bd52f017b9e8657b3eaa1daed8"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736710",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22736710-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736710/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22736710/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "a75efe33a9c52f785ccfff58d0d5d1576f56e697edfa61b327895f7eb3073acf",
+        "record_id": "22736710",
+        "response_sha256": "64d6cdddc24a2d3c8693580e2b242bc81df0894e0cfd3a0c4be086c10fe9b6fb",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/650_GET.json",
+        "receipt_sha256": "a75efe33a9c52f785ccfff58d0d5d1576f56e697edfa61b327895f7eb3073acf",
+        "record_id": "22736710",
+        "response_sha256": "64d6cdddc24a2d3c8693580e2b242bc81df0894e0cfd3a0c4be086c10fe9b6fb"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-152",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "37bcb572ea9d36a7a9b2b730315b9f6fe5ea2b5323d452ba6aa35dcb98a9fda1"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-19_CAIA_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "c3c8b90395ff3d7ce010023887f3330a6847de61245b1521eb3fee1d6466f732",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "disagreement_exposes_error",
+        "agreement_with_left_soundness",
+        "agreement_with_right_soundness",
+        "shared_wrong_agreement_witness"
+      ],
+      "doi": "10.5281/zenodo.22848678",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22848678-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "shared_wrong_agreement_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848678/paper.pdf",
+          "sha256": "1b05d466743bc13b8a5248d6c6ec621f51905d5df54a0ddfc4bc0323bb481bf4"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848678/paper.tex",
+          "sha256": "40ae26793b9543a0cebeddbdc28c450604133448bbbc620b82add3bc87f692ec"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848678",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22848678-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848678/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848678/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "e8f72d8346178d19d8af840c105e6e162708027f216e6512605d8bb773557537",
+        "record_id": "22848678",
+        "response_sha256": "c388ef35092fc2cbda05291061bdd1a7570cc1e05ba34e0845e67d29b479e9aa",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/691_GET.json",
+        "receipt_sha256": "e8f72d8346178d19d8af840c105e6e162708027f216e6512605d8bb773557537",
+        "record_id": "22848678",
+        "response_sha256": "c388ef35092fc2cbda05291061bdd1a7570cc1e05ba34e0845e67d29b479e9aa"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-166",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "2d3f61f34ab7ad69d55f508a81e7b8546a8836448764e19df8cf64693df62f05"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-19_PDC_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "5683c21b36db8aa439b010fa859bf3b73f9a342ce3915f0b7adaef97d9625026",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "coverage_definition",
+        "gain_over_first",
+        "gain_over_second",
+        "coverage_ge_first",
+        "coverage_ge_second",
+        "coverage_antitone_in_overlap",
+        "paired_detector_witness"
+      ],
+      "doi": "10.5281/zenodo.22848682",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22848682-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "paired_detector_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848682/paper.pdf",
+          "sha256": "71474c73fe7d094014b5e1cd868699d3ef6c73f7f1a95e6a8badfb9d67e75696"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848682/paper.tex",
+          "sha256": "4fc8e01daddb9281f0dc1118a9c6b1c0833b395a9b1a850a913858d6c7861081"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848682",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22848682-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848682/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848682/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "671098e981118cbdca1cff1214f66fc4f9a65380e675bc6f62b10f5569339eb0",
+        "record_id": "22848682",
+        "response_sha256": "20e00f437c2884c7b39c4f5a43768484fb9857f6135e0318375521834a2ad80a",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/732_GET.json",
+        "receipt_sha256": "671098e981118cbdca1cff1214f66fc4f9a65380e675bc6f62b10f5569339eb0",
+        "record_id": "22848682",
+        "response_sha256": "20e00f437c2884c7b39c4f5a43768484fb9857f6135e0318375521834a2ad80a"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-165",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "049b456457ece46bda2875dff4b8a4f5074a8e4c25c52d1fcf9d195798071ca5"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-19_RASL_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "5867124cb777b8cf8558de2172ae22418d5a853bfb98d9244acdd511bd8dd80d",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "reserved_activity_bound",
+        "zero_usable_forces_zero",
+        "reserve_monotone",
+        "reserved_activity_witness"
+      ],
+      "doi": "10.5281/zenodo.22848685",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22848685-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "reserved_activity_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848685/paper.pdf",
+          "sha256": "51afaa534687a8c5047fbf4e8b9f79f0f6f486b1e9822149e171603fb153e231"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848685/paper.tex",
+          "sha256": "f445e56f1432ecf2ba9811bc0c63890b328de6d195e5775357a2d9975eeff900"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848685",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22848685-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848685/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848685/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "9123484f88855285d5fad1389a93a82893712cc0356a7a9605746d984ad2a94a",
+        "record_id": "22848685",
+        "response_sha256": "4ce8d89a7146c2ddfac215cda7494c29ae1113ecc903aac711e8397473a64ea5",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/773_GET.json",
+        "receipt_sha256": "9123484f88855285d5fad1389a93a82893712cc0356a7a9605746d984ad2a94a",
+        "record_id": "22848685",
+        "response_sha256": "4ce8d89a7146c2ddfac215cda7494c29ae1113ecc903aac711e8397473a64ea5"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-171",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "97aef80d093d69bd2cd4ff674813a7974fa07312614e11df9306cb134bb4fa02"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-19_SPLR_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "c3dc67f673e89435be10bff35e07e5a5c92d0199ca9428f57a8f8134310cde94",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "loss_budget_guarantee",
+        "loss_of_a",
+        "loss_of_b",
+        "loss_of_c",
+        "three_partner_single_loss_guarantee",
+        "reserve_monotone_new_partner",
+        "single_partner_loss_witness",
+        "concentrated_total_counterexample"
+      ],
+      "doi": "10.5281/zenodo.22848693",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-22848693-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "single_partner_loss_witness",
+        "concentrated_total_counterexample"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848693/paper.pdf",
+          "sha256": "22441e8ceb9111a04a629b32bec75dbb74d6786d02c551b3303a185a56655341"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848693/paper.tex",
+          "sha256": "b82f912839e9cfd6a6f6d26d59df5a098d955f2f95dd20728ec358c2ed8f654e"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848693",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-22848693-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848693/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/22848693/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "1925d1d43ca122f1f86d5660a1bcf84ae1deb1f394c1bc127987206b9067b4a9",
+        "record_id": "22848693",
+        "response_sha256": "c5f6eeb4ae6dd2231789f95505d0eacfd1891e021798f1277d6f4dc5997788ba",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/814_GET.json",
+        "receipt_sha256": "1925d1d43ca122f1f86d5660a1bcf84ae1deb1f394c1bc127987206b9067b4a9",
+        "record_id": "22848693",
+        "response_sha256": "c5f6eeb4ae6dd2231789f95505d0eacfd1891e021798f1277d6f4dc5997788ba"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-169",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "5cba0976d3eacbe72e5aa7237a1962eb1878983b52147c15e48f927b9f936971"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-27_DMEC_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "242ec6552f4f194b2be6f698581aaed2f0248ff63928e8770fcb7cd64c735829",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "energy_envelope_nonnegative",
+        "componentwise_energy_ceiling",
+        "energy_envelope_monotone",
+        "zero_energy_envelope",
+        "energy_ceiling_positive_witness"
+      ],
+      "doi": "10.5281/zenodo.23004852",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-23004852-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "energy_ceiling_positive_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004852/paper.pdf",
+          "sha256": "bb2bf82e7f3bbd7a25e441e21f3000a6a492475a002ba169b0223f1ec520fafa"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004852/paper.tex",
+          "sha256": "baffc76c919a3680fde613fe57d29ed237048bcaf50b93821ae32813816fe9d4"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004852",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-23004852-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004852/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004852/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "6d0ee0bcbbea6c8631f2400e684679e0ea093d114230afd674494ad6f4391568",
+        "record_id": "23004852",
+        "response_sha256": "affac4c85bed9d5f85c920e2cb4c955e443e3447e54c6643b66b082e8714bea9",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/855_GET.json",
+        "receipt_sha256": "6d0ee0bcbbea6c8631f2400e684679e0ea093d114230afd674494ad6f4391568",
+        "record_id": "23004852",
+        "response_sha256": "affac4c85bed9d5f85c920e2cb4c955e443e3447e54c6643b66b082e8714bea9"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-175",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "680f27258f2aae4abd5f7773f41fea8b19a4933cc69fea028b2666a8983686b8"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-27_FOIEB_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "20d7f527e400a7bba5c3a09f149e974c76094598262a1edd03c4bbb260f2079d",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "process_cost_decomposition",
+        "payload_energy_bound",
+        "capacity_quotient_bound",
+        "residual_energy_nonnegative",
+        "residual_budget_monotone",
+        "overhead_composition",
+        "fixed_overhead_positive_witness"
+      ],
+      "doi": "10.5281/zenodo.23004858",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-23004858-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "fixed_overhead_positive_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004858/paper.pdf",
+          "sha256": "8bb85cf8a8448d024d46121681e7da2184a19b5105abf11ac9332f5b42eee223"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004858/paper.tex",
+          "sha256": "ca4bc8b56fc5ec7e4a8cef0621e40db9051dcb0a195af1c799417367af0fa869"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004858",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-23004858-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004858/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004858/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "7a99c2a6f4e60af9a90266a71e89428049540a1368110489ce7487aeb177cbe4",
+        "record_id": "23004858",
+        "response_sha256": "affdc5355115d7344b1b99831b39aa93d1ce54821ca38cfa4270965fa3ad59c7",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/896_GET.json",
+        "receipt_sha256": "7a99c2a6f4e60af9a90266a71e89428049540a1368110489ce7487aeb177cbe4",
+        "record_id": "23004858",
+        "response_sha256": "affdc5355115d7344b1b99831b39aa93d1ce54821ca38cfa4270965fa3ad59c7"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-178",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "2ed48aeb00cdc2ec7a75e444de7972a89aca305d0cff3f47403a1283453b0750"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-27_JMSF_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "c150c8a25baaefd890e542bafa284417f1bc1d4c65cab338519bd8f2f2c78f25",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "joint_floor_iff",
+        "joint_floor_dominates_left",
+        "joint_floor_dominates_right",
+        "agreed_floor_sufficient",
+        "joint_floor_witness"
+      ],
+      "doi": "10.5281/zenodo.23004862",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-23004862-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "joint_floor_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004862/paper.pdf",
+          "sha256": "45db81054714f1ba32eaa436ec11cf57318142a8a9f3674fc00f65d83fce2f56"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004862/paper.tex",
+          "sha256": "bfb200b288d3c5716073482029b15409b115c95799b658c315333e235bab46c9"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004862",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-23004862-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004862/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004862/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "e559c6df2b713d630baee91b1b6a0925b13cbeb7193a6dee8ad3eba18d8b7168",
+        "record_id": "23004862",
+        "response_sha256": "440a072f6b85390b24b71cbd34fdcc9e8a0515b4ab576e00111929c0ebc2c714",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/937_GET.json",
+        "receipt_sha256": "e559c6df2b713d630baee91b1b6a0925b13cbeb7193a6dee8ad3eba18d8b7168",
+        "record_id": "23004862",
+        "response_sha256": "440a072f6b85390b24b71cbd34fdcc9e8a0515b4ab576e00111929c0ebc2c714"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-174",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "78400dd02521a30b9ab8077afa3dcaee9e6230a43fb82be02aab0fee6ead6c48"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-27_RDA_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "083865d9c7c6f7a67fc4d96664590f82fe6d1f1652469e4ed8fcfea15dab6a0f",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "reciprocity_penalty_nonnegative",
+        "mutual_objective_ge_baseline",
+        "mutual_objective_zero_weight",
+        "mutual_objective_monotone_weight",
+        "mutual_objective_eq_baseline_iff",
+        "reciprocal_objective_positive_witness"
+      ],
+      "doi": "10.5281/zenodo.23004866",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-23004866-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "reciprocal_objective_positive_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004866/paper.pdf",
+          "sha256": "73719f29a722d24b97f239a46641abc333b02a777f35ee5327d70eb3d2abadb4"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004866/paper.tex",
+          "sha256": "cc958edb9647f3010a8b2a85b6042cc9ad24a98b0d5d731ae2d593c829e503ac"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004866",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-23004866-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004866/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004866/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "d353fa374e773416241e60449b843d809e93fcaba2bf92df6af17fddc18e260f",
+        "record_id": "23004866",
+        "response_sha256": "47799cccfd8fa32613e9060745133f764f8103276545f02261ef1641f42a6645",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/978_GET.json",
+        "receipt_sha256": "d353fa374e773416241e60449b843d809e93fcaba2bf92df6af17fddc18e260f",
+        "record_id": "23004866",
+        "response_sha256": "47799cccfd8fa32613e9060745133f764f8103276545f02261ef1641f42a6645"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-176",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "03c8b3a9816da64bcb09f1d001f41ee74f8765f88c9bda001b741969374a79a5"
+      ],
+      "certificate": "_ZENODO_DEPOSITS/2026-09-27_SFMC_standalone/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "c72d07d61db8723d1d9357a678e80d16806975ca5ec333e9ede314894bd0b126",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "shared_saving",
+        "combined_le_gross",
+        "combined_covers_left",
+        "combined_covers_right",
+        "left_footprint_contained",
+        "shared_corridor_witness"
+      ],
+      "doi": "10.5281/zenodo.23004870",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:doi-23004870-status-binding",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "shared_corridor_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004870/paper.pdf",
+          "sha256": "26e6dc83b887e73f9cc4a94edfd69ee00850a87b9c21decc57c240ac8cbfb211"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004870/paper.tex",
+          "sha256": "ecbc0d58268c8acad354c3edd446d37c825a5fe53c88c8e7ea84d3d6c54f2f4b"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004870",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:doi-23004870-status-binding",
+          "label": "CONJECTURE — not machine-verified",
+          "local_lean_execution": false,
+          "reasons": [
+            "FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004870/claim_binding.json'"
+          ],
+          "status": "HOLD",
+          "verification_status": "CONJECTURE"
+        },
+        "exact_publication_binding": true,
+        "reasons": [
+          "ValueError: claim-binding gate held: FileNotFoundError: [Errno 2] No such file or directory: '/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/deterministic-binding-releases-v001/23004870/claim_binding.json'"
+        ],
+        "status": "HOLD"
+      },
+      "public_uncertified_banner": {
+        "receipt_sha256": "c18a80d37f777e1334a7db42b71b691d643df7cd6b8279a4377744f90194606d",
+        "record_id": "23004870",
+        "response_sha256": "29997b37e8137079ac26285287662d3a10f3ec339d7bb71e98f2b3e71b386996",
+        "status": "PUBLIC_UNCERTIFIED_BANNER_READBACK_PASS"
+      },
+      "public_uncertified_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-05/game-plan-completion/ssot-banner-execution-v002/transport/1019_GET.json",
+        "receipt_sha256": "c18a80d37f777e1334a7db42b71b691d643df7cd6b8279a4377744f90194606d",
+        "record_id": "23004870",
+        "response_sha256": "29997b37e8137079ac26285287662d3a10f3ec339d7bb71e98f2b3e71b386996"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [
+        "claim_binding.json is absent; manuscript binding is not claim approval"
+      ],
+      "publication_registration_status": "HOLD_NO_CLAIM_MAP",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-173",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "8e69438a602b1f90ba90b3bb9b335c34fbe15759005298928cc3e7c9d60492ae"
+      ],
+      "certificate": "RESEARCH_PIPELINE_v2/foundational_ports/Run-902/GamePlan-20261003-v003/envelope/Run-902/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "f8eae567b536fac4dba32456f448de99e7e59b1d2e14ecae2b7234ba92f1e130",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "intelligence_bound",
+        "data_wall",
+        "Run901_positive_rate",
+        "erasure_dominates_learning_transfers_power_bound",
+        "Run902_product_form_conditional",
+        "intelligence_bound_joint_witness",
+        "Run901_positive_learning_joint_witness",
+        "Run902_product_form_joint_witness"
+      ],
+      "doi": "10.5281/zenodo.23141592",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:foundation-standalone-20261004",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "intelligence_bound_joint_witness",
+        "Run901_positive_learning_joint_witness",
+        "Run902_product_form_joint_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/foundation-standalone-release-v001/intelligence_bound.pdf",
+          "sha256": "f4e84c8406cdcf8958ad721ffcfc85b21025d045a7e95de9862d3f80674f7723"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/foundation-standalone-release-v001/intelligence_bound.tex",
+          "sha256": "951c22b9daff1d6eb0fcce8a7e169ed185e91320fc486d7db21468d90af58fe6"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/foundation-standalone-release-v001",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [
+            {
+              "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+              "english_claim": "Explicit Landauer and richness premises imply the minimum rate bound",
+              "index": 0,
+              "lean_theorem": "intelligence_bound",
+              "model_fidelity": {
+                "defined": [
+                  "klDiv-based information",
+                  "limsup rates",
+                  "utility functions"
+                ],
+                "empirically_identified": [
+                  "P",
+                  "T",
+                  "kB",
+                  "X",
+                  "O",
+                  "erasureRate"
+                ]
+              },
+              "nonvacuity_obligation": "intelligence_bound_joint_witness",
+              "reasons": [],
+              "status": "PASS"
+            },
+            {
+              "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+              "english_claim": "Supplied richness and Landauer premises imply the data-wall ceiling",
+              "index": 1,
+              "lean_theorem": "data_wall",
+              "model_fidelity": {
+                "defined": [
+                  "klDiv-based information",
+                  "limsup rates",
+                  "utility functions"
+                ],
+                "empirically_identified": [
+                  "P",
+                  "T",
+                  "kB",
+                  "X",
+                  "O",
+                  "erasureRate"
+                ]
+              },
+              "nonvacuity_obligation": "intelligence_bound_joint_witness",
+              "reasons": [],
+              "status": "PASS"
+            },
+            {
+              "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+              "english_claim": "The explicit fair-bit KL process has intelligence creation rate log two.",
+              "index": 2,
+              "lean_theorem": "Run901_positive_rate",
+              "model_fidelity": {
+                "defined": [
+                  "fair bits",
+                  "KL rates",
+                  "erasureRate",
+                  "P",
+                  "T",
+                  "kB"
+                ],
+                "empirically_identified": []
+              },
+              "nonvacuity_obligation": "Run901_positive_learning_joint_witness",
+              "reasons": [],
+              "status": "PASS"
+            },
+            {
+              "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+              "english_claim": "Supplied erasure dominance transfers the supplied Landauer power inequality, without a memory inference.",
+              "index": 3,
+              "lean_theorem": "erasure_dominates_learning_transfers_power_bound",
+              "model_fidelity": {
+                "defined": [
+                  "fair bits",
+                  "KL rates",
+                  "erasureRate",
+                  "P",
+                  "T",
+                  "kB"
+                ],
+                "empirically_identified": []
+              },
+              "nonvacuity_obligation": "Run901_positive_learning_joint_witness",
+              "reasons": [],
+              "status": "PASS"
+            },
+            {
+              "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+              "english_claim": "Given positive K and named supplied physical premises PL (R_obs*K <= P) and PD (rate <= R_obs*D), the product-form inequality rate <= P*D/K holds. The physical premises are not derived.",
+              "index": 4,
+              "lean_theorem": "Run902_product_form_conditional",
+              "model_fidelity": {
+                "defined": [
+                  "non-negative finite R_obs, rate, P, D, K",
+                  "PL",
+                  "PD"
+                ],
+                "empirically_identified": []
+              },
+              "nonvacuity_obligation": "Run902_product_form_joint_witness",
+              "reasons": [],
+              "status": "PASS"
+            }
+          ],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:foundation-standalone-20261004",
+          "label": "CERTIFIED",
+          "local_lean_execution": false,
+          "reasons": [],
+          "status": "PASS",
+          "unverified_claims": [],
+          "verification_status": "CERTIFIED"
+        },
+        "exact_publication_binding": true,
+        "reasons": [],
+        "status": "PASS"
+      },
+      "public_publication_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-04/game-plan-completion/foundation-publication-execution-v001/resume-001/transport/006_GET.json",
+        "receipt_sha256": "39cda257486570d9d16abac089d1f9be560f0a35e29198490843234876e293c3",
+        "record_id": "23141592",
+        "response_sha256": "cf142752692d0315c79f39d22bf27f8fe8ea6977d3716f6e1f18d81973e47f04"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [],
+      "publication_registration_status": "PASS",
+      "published_main_inventory_manifest": {
+        "path": "reports/verification-coverage/2026-10-04/game-plan-completion/foundation-publication-execution-v001/MANIFEST.json",
+        "sha256": "25ebdf1cb3785f5c3e216e34795c9a7afa0d73dd7ab30721942af8c67585127d"
+      },
+      "published_title": "The Intelligence Bound: Thermodynamic Limits on Learning Rate and Implications for Biosphere Information",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-902",
+      "status": "CERTIFIED"
+    },
+    {
+      "approved_publication_binding_reviews": [
+        "2591872583e486b5da28107c7332aa26587e1b08d392ec960a008c5c0e309e17"
+      ],
+      "certificate": "RESEARCH_PIPELINE_v2/foundational_ports/Run-903/GamePlan-20261004-v001/envelope/Run-903/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "3242b7a1642392e039c386d3db1d693d9f59227aefba73ea580478924eb77073",
+      "certificate_valid": true,
+      "certified_theorems": [
+        "two_direction_alignment_ceiling",
+        "two_segment_alignment_persists",
+        "bcan_joint_scalar_witness"
+      ],
+      "doi": "10.5281/zenodo.23141980",
+      "enforcement_acceptable": true,
+      "entity_type": "PUBLICATION",
+      "id": "publication:bcan-scalar-corrected-20261004",
+      "kind": "PUBLICATION",
+      "nonvacuity": [
+        "bcan_joint_scalar_witness"
+      ],
+      "paper_bindings": [
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/bcan-scalar-certified-release-v002/paper.pdf",
+          "sha256": "cb189af5f4e60baefef037f8fccd92bc400e45a8fabe41228b79e18804f48e62"
+        },
+        {
+          "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/bcan-scalar-certified-release-v002/paper.tex",
+          "sha256": "031591e66fe02120837cff1b7459adcf26b804dd0c7adf0745f9d989368fa661"
+        }
+      ],
+      "path": "reports/verification-coverage/2026-10-04/game-plan-completion/bcan-scalar-certified-release-v002",
+      "proposal_publication_gate": {
+        "claim_gate": {
+          "claims": [
+            {
+              "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+              "english_claim": "Given real a,b,c with -1<=c and ((a+b)/2)^2<=(1+c)/2, the scalar minimum min(a,b) is at most sqrt((1+c)/2). No vector-to-scalar premise is proved.",
+              "index": 0,
+              "lean_theorem": "two_direction_alignment_ceiling",
+              "model_fidelity": {
+                "defined": [
+                  "real a,b,c,l1,l2,m,a1,a2",
+                  "alignmentCeiling",
+                  "HC",
+                  "HQuad"
+                ],
+                "empirically_identified": []
+              },
+              "nonvacuity_obligation": "bcan_joint_scalar_witness",
+              "reasons": [],
+              "status": "PASS"
+            },
+            {
+              "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+              "english_claim": "Given nonnegative l1,l2 and m<=a1,m<=a2, m*(l1+l2)<=l1*a1+l2*a2. This is a two-segment scalar inequality, not arbitrary aggregation.",
+              "index": 1,
+              "lean_theorem": "two_segment_alignment_persists",
+              "model_fidelity": {
+                "defined": [
+                  "real a,b,c,l1,l2,m,a1,a2",
+                  "alignmentCeiling",
+                  "HC",
+                  "HQuad"
+                ],
+                "empirically_identified": []
+              },
+              "nonvacuity_obligation": "bcan_joint_scalar_witness",
+              "reasons": [],
+              "status": "PASS"
+            }
+          ],
+          "disclaimer": "Machine-checked: logical validity given the stated model. NOT an empirical validation of the model's assumptions.",
+          "entity_id": "publication:bcan-scalar-corrected-20261004",
+          "label": "CERTIFIED",
+          "local_lean_execution": false,
+          "reasons": [],
+          "status": "PASS",
+          "unverified_claims": [],
+          "verification_status": "CERTIFIED"
+        },
+        "exact_publication_binding": true,
+        "reasons": [],
+        "status": "PASS"
+      },
+      "public_publication_readback": {
+        "authenticated": true,
+        "receipt_path": "reports/verification-coverage/2026-10-04/game-plan-completion/bcan-publication-resume-v005/transport/052_GET.json",
+        "receipt_sha256": "9ae43228c63d6fc747b3b67b0a58fbb38ef7054fa349026672dbbc3aae1090d7",
+        "record_id": "23141980",
+        "response_sha256": "a00f0d86ee43913755b344289b1b6fac5f4710046658e5cf50754f8d725907e6"
+      },
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [],
+      "publication_registration_status": "PASS",
+      "published_main_inventory_manifest": {
+        "path": "reports/verification-coverage/2026-10-04/game-plan-completion/bcan-publication-execution-v001/MANIFEST.json",
+        "sha256": "0295e830db4a9a0ec5e78d2e61acdd7d72a526f77ee1257cc72bca77718c0303"
+      },
+      "published_title": "A Bisector Corridor Alignment Note",
+      "reasons": [],
+      "registration_revalidated": true,
+      "run_id": "Run-903",
+      "status": "CERTIFIED"
+    },
+    {
+      "certificate_valid": false,
+      "certifies": false,
+      "doi": "10.5281/zenodo.23226761",
+      "enforcement_acceptable": true,
+      "entity_type": "METHODS_DIGEST_GROUP",
+      "id": "publication:methods-digest:2026-W41:23226761",
+      "kind": "PUBLICATION",
+      "note_ids": [
+        "publication:methods-note:2026-W41:Run-125",
+        "publication:methods-note:2026-W41:Run-126",
+        "publication:methods-note:2026-W41:Run-128",
+        "publication:methods-note:2026-W41:Run-129",
+        "publication:methods-note:2026-W41:Run-131",
+        "publication:methods-note:2026-W41:Run-134",
+        "publication:methods-note:2026-W41:Run-141"
+      ],
+      "path": "RESEARCH_PIPELINE_v2/science_release_queue/digests/2026-W41-first-v002",
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [],
+      "publication_registration_status": "PASS",
+      "reasons": [],
+      "registration_receipt": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-postpublish-closeout-v002/METHODS_DIGEST_REGISTRATION_RECEIPT.json",
+        "sha256": "d0ece5e1f95536e75952502c6fec15cca5ddcca5e69076b860e5a3c1fb1f496d"
+      },
+      "registration_revalidated": true,
+      "registration_route": "METHODS_DIGEST_GROUP_V1",
+      "status": "SCOPED_DIGEST"
+    },
+    {
+      "certificate": "RESEARCH_PIPELINE_v2/lean_certificates/Run-125/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "244886ec54c4eba7dff2cdcde987f1d11a722806a10ab0903764c7633f84e6dd",
+      "certificate_valid": true,
+      "certifies": "LISTED_NOTE_SCOPE_ONLY",
+      "doi": "10.5281/zenodo.23226761",
+      "enforcement_acceptable": true,
+      "entity_type": "METHODS_DIGEST_NOTE",
+      "group_id": "publication:methods-digest:2026-W41:23226761",
+      "id": "publication:methods-note:2026-W41:Run-125",
+      "kind": "PUBLICATION",
+      "note_publication_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/science_release_queue/approved-phase7-20261007-v001/notes/Run-125-v001/PUBLICATION_BINDING.json",
+        "sha256": "e21276f5985e256f52fb01932ad5067414af1441e9c859958899cdad374f70b4"
+      },
+      "path": "RESEARCH_PIPELINE_v2/science_release_queue/approved-phase7-20261007-v001/notes/Run-125-v001",
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [],
+      "publication_registration_status": "PASS",
+      "reasons": [],
+      "registration_receipt": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-postpublish-closeout-v002/METHODS_DIGEST_REGISTRATION_RECEIPT.json",
+        "sha256": "d0ece5e1f95536e75952502c6fec15cca5ddcca5e69076b860e5a3c1fb1f496d"
+      },
+      "registration_revalidated": true,
+      "registration_route": "METHODS_DIGEST_NOTE_V1",
+      "run_id": "Run-125",
+      "status": "CERTIFIED"
+    },
+    {
+      "certificate": "RESEARCH_PIPELINE_v2/lean_certificates/Run-126/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "ee6317774bf2a021c5de6d5afb5115006579cfbbb2ed98fad1aa6727b701fc62",
+      "certificate_valid": true,
+      "certifies": "LISTED_NOTE_SCOPE_ONLY",
+      "doi": "10.5281/zenodo.23226761",
+      "enforcement_acceptable": true,
+      "entity_type": "METHODS_DIGEST_NOTE",
+      "group_id": "publication:methods-digest:2026-W41:23226761",
+      "id": "publication:methods-note:2026-W41:Run-126",
+      "kind": "PUBLICATION",
+      "note_publication_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/science_release_queue/approved-phase7-20261007-v001/notes/Run-126-v001/PUBLICATION_BINDING.json",
+        "sha256": "c1a862e9769e5a536f904bb89c2f99884adb34147738a5c89da3bca0357ac0f9"
+      },
+      "path": "RESEARCH_PIPELINE_v2/science_release_queue/approved-phase7-20261007-v001/notes/Run-126-v001",
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [],
+      "publication_registration_status": "PASS",
+      "reasons": [],
+      "registration_receipt": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-postpublish-closeout-v002/METHODS_DIGEST_REGISTRATION_RECEIPT.json",
+        "sha256": "d0ece5e1f95536e75952502c6fec15cca5ddcca5e69076b860e5a3c1fb1f496d"
+      },
+      "registration_revalidated": true,
+      "registration_route": "METHODS_DIGEST_NOTE_V1",
+      "run_id": "Run-126",
+      "status": "CERTIFIED"
+    },
+    {
+      "certificate": "RESEARCH_PIPELINE_v2/lean_certificates/Run-128/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "0ce6474c22e80fa40a8f718fae6c9cac536cc950c4274b9037c3ade9979b8754",
+      "certificate_valid": true,
+      "certifies": "LISTED_NOTE_SCOPE_ONLY",
+      "doi": "10.5281/zenodo.23226761",
+      "enforcement_acceptable": true,
+      "entity_type": "METHODS_DIGEST_NOTE",
+      "group_id": "publication:methods-digest:2026-W41:23226761",
+      "id": "publication:methods-note:2026-W41:Run-128",
+      "kind": "PUBLICATION",
+      "note_publication_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/science_release_queue/approved-phase7-20261007-v001/notes/Run-128-v001/PUBLICATION_BINDING.json",
+        "sha256": "2f278fe4850c73d558a2e689e777ab2863e50484640714821a742e5711c2305b"
+      },
+      "path": "RESEARCH_PIPELINE_v2/science_release_queue/approved-phase7-20261007-v001/notes/Run-128-v001",
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [],
+      "publication_registration_status": "PASS",
+      "reasons": [],
+      "registration_receipt": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-postpublish-closeout-v002/METHODS_DIGEST_REGISTRATION_RECEIPT.json",
+        "sha256": "d0ece5e1f95536e75952502c6fec15cca5ddcca5e69076b860e5a3c1fb1f496d"
+      },
+      "registration_revalidated": true,
+      "registration_route": "METHODS_DIGEST_NOTE_V1",
+      "run_id": "Run-128",
+      "status": "CERTIFIED"
+    },
+    {
+      "certificate": "RESEARCH_PIPELINE_v2/lean_certificates/Run-129/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "9abbf500f4df1683cb083cceb4092b5d3f0df94b8a1644abbc4afe6754232e6a",
+      "certificate_valid": true,
+      "certifies": "LISTED_NOTE_SCOPE_ONLY",
+      "doi": "10.5281/zenodo.23226761",
+      "enforcement_acceptable": true,
+      "entity_type": "METHODS_DIGEST_NOTE",
+      "group_id": "publication:methods-digest:2026-W41:23226761",
+      "id": "publication:methods-note:2026-W41:Run-129",
+      "kind": "PUBLICATION",
+      "note_publication_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/science_release_queue/approved-phase7-20261007-v001/notes/Run-129-v001/PUBLICATION_BINDING.json",
+        "sha256": "a71ae9a0685224ec5674d328e16bffce02f22435f432bcea0a74fe89fb4621dd"
+      },
+      "path": "RESEARCH_PIPELINE_v2/science_release_queue/approved-phase7-20261007-v001/notes/Run-129-v001",
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [],
+      "publication_registration_status": "PASS",
+      "reasons": [],
+      "registration_receipt": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-postpublish-closeout-v002/METHODS_DIGEST_REGISTRATION_RECEIPT.json",
+        "sha256": "d0ece5e1f95536e75952502c6fec15cca5ddcca5e69076b860e5a3c1fb1f496d"
+      },
+      "registration_revalidated": true,
+      "registration_route": "METHODS_DIGEST_NOTE_V1",
+      "run_id": "Run-129",
+      "status": "CERTIFIED"
+    },
+    {
+      "certificate": "RESEARCH_PIPELINE_v2/lean_certificates/Run-131/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "d037306a68e5e623a418d6084c7610b697628d5a147d344aac5e57a1a1580a15",
+      "certificate_valid": true,
+      "certifies": "LISTED_NOTE_SCOPE_ONLY",
+      "doi": "10.5281/zenodo.23226761",
+      "enforcement_acceptable": true,
+      "entity_type": "METHODS_DIGEST_NOTE",
+      "group_id": "publication:methods-digest:2026-W41:23226761",
+      "id": "publication:methods-note:2026-W41:Run-131",
+      "kind": "PUBLICATION",
+      "note_publication_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/science_release_queue/approved-phase7-20261007-v001/notes/Run-131-v001/PUBLICATION_BINDING.json",
+        "sha256": "96318c20633df9fd83b2b8495bb3bf3379a81974351e4b8f2450a7fcf09b6e6d"
+      },
+      "path": "RESEARCH_PIPELINE_v2/science_release_queue/approved-phase7-20261007-v001/notes/Run-131-v001",
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [],
+      "publication_registration_status": "PASS",
+      "reasons": [],
+      "registration_receipt": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-postpublish-closeout-v002/METHODS_DIGEST_REGISTRATION_RECEIPT.json",
+        "sha256": "d0ece5e1f95536e75952502c6fec15cca5ddcca5e69076b860e5a3c1fb1f496d"
+      },
+      "registration_revalidated": true,
+      "registration_route": "METHODS_DIGEST_NOTE_V1",
+      "run_id": "Run-131",
+      "status": "CERTIFIED"
+    },
+    {
+      "certificate": "RESEARCH_PIPELINE_v2/lean_certificates/Run-134/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "c7a4c76769523c2e8239bde7da795bbb971a2e21c98a6d70632834e4897cf19b",
+      "certificate_valid": true,
+      "certifies": "LISTED_NOTE_SCOPE_ONLY",
+      "doi": "10.5281/zenodo.23226761",
+      "enforcement_acceptable": true,
+      "entity_type": "METHODS_DIGEST_NOTE",
+      "group_id": "publication:methods-digest:2026-W41:23226761",
+      "id": "publication:methods-note:2026-W41:Run-134",
+      "kind": "PUBLICATION",
+      "note_publication_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/science_release_queue/approved-phase7-20261007-v001/notes/Run-134-v001/PUBLICATION_BINDING.json",
+        "sha256": "2ef7f96ffb2a5fa5a71e200242a407e471c5234e05ef6edcedafaab5b63f69ee"
+      },
+      "path": "RESEARCH_PIPELINE_v2/science_release_queue/approved-phase7-20261007-v001/notes/Run-134-v001",
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [],
+      "publication_registration_status": "PASS",
+      "reasons": [],
+      "registration_receipt": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-postpublish-closeout-v002/METHODS_DIGEST_REGISTRATION_RECEIPT.json",
+        "sha256": "d0ece5e1f95536e75952502c6fec15cca5ddcca5e69076b860e5a3c1fb1f496d"
+      },
+      "registration_revalidated": true,
+      "registration_route": "METHODS_DIGEST_NOTE_V1",
+      "run_id": "Run-134",
+      "status": "CERTIFIED"
+    },
+    {
+      "certificate": "RESEARCH_PIPELINE_v2/lean_certificates/Run-141/LEAN_ZERO_SORRY_CERTIFICATE.json",
+      "certificate_sha256": "174a2d939dea38385e072bc939e6262618e67b2ca4d6991d9413662ec31dace2",
+      "certificate_valid": true,
+      "certifies": "LISTED_NOTE_SCOPE_ONLY",
+      "doi": "10.5281/zenodo.23226761",
+      "enforcement_acceptable": true,
+      "entity_type": "METHODS_DIGEST_NOTE",
+      "group_id": "publication:methods-digest:2026-W41:23226761",
+      "id": "publication:methods-note:2026-W41:Run-141",
+      "kind": "PUBLICATION",
+      "note_publication_binding": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/science_release_queue/approved-phase7-20261007-v001/notes/Run-141-v001/PUBLICATION_BINDING.json",
+        "sha256": "fa68ae9389925f14715c0e5c1d9dde4ca0630344af1a16affe8fbbbb5366a900"
+      },
+      "path": "RESEARCH_PIPELINE_v2/science_release_queue/approved-phase7-20261007-v001/notes/Run-141-v001",
+      "publication_binding_status": "PUBLICATION_BOUND",
+      "publication_registration_reasons": [],
+      "publication_registration_status": "PASS",
+      "reasons": [],
+      "registration_receipt": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-07/phase7-decoupled-execution-v001/first-methods-digest-postpublish-closeout-v002/METHODS_DIGEST_REGISTRATION_RECEIPT.json",
+        "sha256": "d0ece5e1f95536e75952502c6fec15cca5ddcca5e69076b860e5a3c1fb1f496d"
+      },
+      "registration_revalidated": true,
+      "registration_route": "METHODS_DIGEST_NOTE_V1",
+      "run_id": "Run-141",
+      "status": "CERTIFIED"
+    }
+  ]
+}

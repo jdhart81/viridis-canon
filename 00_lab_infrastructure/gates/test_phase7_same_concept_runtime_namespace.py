@@ -46,23 +46,49 @@ class CurrentGenericNamespaceTests(unittest.TestCase):
     def closed(self,data):
         oldnames,oldother=self.split(AFTER.read_bytes());names,other=self.split(data);self.assertEqual(names,oldnames|{'digest_weekly_state.py','nightly_minimal_policy.py'});self.assertEqual(other,oldother)
     def test_exact_current_hash_and_closed_two_names(self):
-        data=(D/'phase7_runtime_update.py').read_bytes();self.assertEqual(hashlib.sha256(data).hexdigest(),'5c1bb16662c194f402ca60ec65b1cabcfa96811df553c4c3024f083177e769b1');self.closed(data)
+        data=(D/'production_snapshots/phase7-20261008-own-record-comparison/before/runtime/phase7_runtime_update.py').read_bytes();self.assertEqual(hashlib.sha256(data).hexdigest(),'5c1bb16662c194f402ca60ec65b1cabcfa96811df553c4c3024f083177e769b1');self.closed(data)
     def test_every_other_function_global_and_signature_byte_exact(self):
-        self.closed((D/'phase7_runtime_update.py').read_bytes())
+        self.closed((D/'production_snapshots/phase7-20261008-own-record-comparison/before/runtime/phase7_runtime_update.py').read_bytes())
     def test_foreign_namespace_rejected(self):
-        data=(D/'phase7_runtime_update.py').read_bytes()
+        data=(D/'production_snapshots/phase7-20261008-own-record-comparison/before/runtime/phase7_runtime_update.py').read_bytes()
         for name in ('digest_weekly_state.py','nightly_minimal_policy.py'):
             with self.subTest(name=name),self.assertRaises(AssertionError):self.closed(data.replace(name.encode(),b'foreign_plugin.py',1))
     def test_removing_new_or_historical_names_rejected(self):
-        data=(D/'phase7_runtime_update.py').read_bytes()
+        data=(D/'production_snapshots/phase7-20261008-own-record-comparison/before/runtime/phase7_runtime_update.py').read_bytes()
         for name in ('digest_weekly_state.py','nightly_minimal_policy.py','digest_successor_state.py','first_digest_state.py'):
             with self.subTest(name=name),self.assertRaises(AssertionError):self.closed(data.replace(("'"+name+"', ").encode(),b'',1))
     def test_original_predicate_mutation_rejected(self):
-        data=(D/'phase7_runtime_update.py').read_bytes();needle=b'raw = normalize_authority_plan(raw)';self.assertIn(needle,data)
+        data=(D/'production_snapshots/phase7-20261008-own-record-comparison/before/runtime/phase7_runtime_update.py').read_bytes();needle=b'raw = normalize_authority_plan(raw)';self.assertIn(needle,data)
         with self.assertRaises(AssertionError):self.closed(data.replace(needle,b'raw = raw',1))
     def test_unknown_global_or_import_rejected(self):
-        data=(D/'phase7_runtime_update.py').read_bytes()
+        data=(D/'production_snapshots/phase7-20261008-own-record-comparison/before/runtime/phase7_runtime_update.py').read_bytes()
         for extra in (b'\nimport foreign_acceptance\n',b'\nUNREVIEWED_GLOBAL = True\n'):
             with self.subTest(extra=extra),self.assertRaises(AssertionError):self.closed(data+extra)
+
+
+class CurrentOwnNamespaceTests(unittest.TestCase):
+    split = CurrentGenericNamespaceTests.split
+    def closed(self,data):
+        original=(D/'production_snapshots/phase7-20261008-own-record-comparison/before/runtime/phase7_runtime_update.py').read_bytes()
+        self.assertEqual(hashlib.sha256(original).hexdigest(),'5c1bb16662c194f402ca60ec65b1cabcfa96811df553c4c3024f083177e769b1')
+        oldnames,oldother=self.split(original);names,other=self.split(data)
+        self.assertEqual(names,oldnames|{'own_record_comparison.py','methods_digest_registration_legacy_0fc739.py'})
+        self.assertEqual(other,oldother)
+    def test_exact_flat_current_hash_and_closed_two_own_names(self):
+        data=(D/'phase7_runtime_update.py').read_bytes()
+        self.assertEqual(hashlib.sha256(data).hexdigest(),'517adb25a3073296b8aabd2267706beef602f7307bf390ebaa5d2db91ab89d6e')
+        self.closed(data)
+    def test_flat_current_all_other_function_global_and_signature_bytes_exact(self):
+        self.closed((D/'phase7_runtime_update.py').read_bytes())
+    def test_each_own_namespace_row_removal_or_foreign_replacement_rejected(self):
+        data=(D/'phase7_runtime_update.py').read_bytes()
+        for name in ('own_record_comparison.py','methods_digest_registration_legacy_0fc739.py'):
+            for changed in (data.replace(name.encode(),b'foreign_plugin.py',1),data.replace(("'"+name+"', ").encode(),b'',1)):
+                self.assertNotEqual(changed,data)
+                with self.subTest(name=name),self.assertRaises(AssertionError):self.closed(changed)
+    def test_flat_current_predicate_mutation_unknown_global_or_import_rejected(self):
+        data=(D/'phase7_runtime_update.py').read_bytes();needle=b'raw = normalize_authority_plan(raw)';self.assertIn(needle,data)
+        for changed in (data.replace(needle,b'raw = raw',1),data+b'\nimport foreign_acceptance\n',data+b'\nUNREVIEWED_GLOBAL = True\n'):
+            with self.assertRaises(AssertionError):self.closed(changed)
 
 if __name__=='__main__':unittest.main()

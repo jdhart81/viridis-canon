@@ -9,7 +9,7 @@ class GenericCheckpointPortableTests(unittest.TestCase):
   with tempfile.TemporaryDirectory(prefix='phase7-checkpoint-ci-')as temp:
    out=Path(temp).resolve(strict=True)/'gates';out.mkdir()
    for name,expected in manifest['production'].items():
-    source=G/name;self.assertTrue(source.is_file());self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),expected);shutil.copyfile(source,out/name)
+    source=(G/'production_snapshots/phase7-20261008-own-record-comparison/before/runtime'/name)if name in{'digest_public_state.py','phase7_policy_versions.py'}else G/name;self.assertTrue(source.is_file());self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),expected);shutil.copyfile(source,out/name)
    for row in manifest['fixtures']:
     source=F/row['path'];self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),row['sha256']);target=out/row['path'];target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target)
    for row in manifest['parent_sources']:

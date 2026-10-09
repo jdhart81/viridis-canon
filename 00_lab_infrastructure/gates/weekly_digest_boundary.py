@@ -1,7 +1,7 @@
-"""Complete source/draft/public readback boundary; no weaker pass path.
+"""Source/draft/public readback under the approved own-record control policy.
 
-The successor state adapter proposes source-derived expectations; only the
-unchanged complete server/file/metadata/PID consumers admit them. This module
+Own server housekeeping is logged; controlled payloads, file bytes, DOI/concept
+identity and every prior record are independently checked. This module
 is ordinary integration code, never a Lean verifier or issuer.
 """
 from __future__ import annotations
@@ -19,11 +19,29 @@ import server_managed_fields as sm
 import publication_preservation as preservation
 import methods_digest as digest
 import owned_legacy_preview_aliases as legacy_aliases
+import own_record_comparison as own_rule
+import own_prior_record
 from owned_prior_legacy import require_prior_legacy
 from first_digest_publisher import Downloads, PacedOpener
 
 NATIVE='application/vnd.inveniordm.v1+json'
 BASE='https://zenodo.org'
+def inherited_rows(created):
+    fields={'id','filename','filesize','checksum','links'}
+    rows=created.get('files');engine.need(isinstance(rows,list),'OWN_INHERITED_ROWS')
+    return [{k:deepcopy(row[k])for k in fields}for row in rows]
+
+def initial_owned_projection(source_legacy,source_native,creation_receipt,first_legacy_receipt,first_native_receipt):
+    projection=own_rule.initial_projection(source_legacy,source_native,creation_receipt,first_legacy_receipt,first_native_receipt)
+    controlled=projection['controlled'];expected=deepcopy(projection['native'])
+    created={r['filename']:r for r in inherited_rows(creation_receipt['response'])}
+    engine.need(set(created)=={r['name']for r in controlled['files']},'OWN_CREATION_INHERITED_MAIN_SET')
+    for row in controlled['files']:
+        ack=created[row['name']];engine.need(type(ack['filesize'])is int and ack['filesize']==row['bytes']and ack['checksum']==row['md5'],'OWN_CREATION_INHERITED_MAIN_BYTES')
+        expected['files']['entries'][row['name']].update(key=row['name'],size=row['bytes'],checksum='md5:'+row['md5'])
+    original.refresh_totals(expected)
+    return expected,deepcopy(projection['legacy'])
+
 class WeeklyDigestBoundary:
     def __init__(self,plan,package,transport,out,opener,token):
         self.plan=plan;self.package=Path(package);self.root=Path(plan['canonical_root']);self.t=transport;self.out=Path(out);self.sequence=0;self.sources=[];self.current_state=None;self.opener=opener;self.token=token;self.discovery_count=0;self.pending_evidence=None
@@ -76,13 +94,11 @@ class WeeklyDigestBoundary:
         return dict(self.plan,release_week=admitted['receipt']['release_week'])
     def prior(self,state,own=None,expected=None,boundary='CREATE',operation=None,before=None):
         legacy,lb=self.get(self.plan['predecessor_record_id'],True);native,nb=self.get(self.plan['predecessor_record_id'],True,True)
-        # All scientific metadata/files/PIDs are exact. Only the already
-        # approved versions state machine sees the genuine own newversion.
-        if state['record_id']is None or self.plan['start_kind']=='CREATE_WEEK':require_prior_legacy(legacy,self.saved_legacy,native,self.saved_native,sm=sm,preservation=preservation)
-        else:
-            context=self.chain(state,native,own,expected,boundary=boundary,operation=operation,before=before)
-            sm.require_version_chain_state(host='zenodo.org',**context)
-            require_prior_legacy(legacy,self.saved_legacy,native,self.saved_native,sm=sm,preservation=preservation,chain=context)
+        # Every prior field is exact; only the existing receipt-bound chain
+        # flags may transition. No own revision/ui/link is a prior baseline.
+        created=engine.bound(self.root,state['creation_receipt'])[1]if state['record_id']is not None and self.plan['start_kind']=='NEW_VERSION'else None
+        published=engine.bound(self.root,operation)[1]if boundary=='PUBLISH'and operation is not None else None
+        own_prior_record.require_pair(legacy,native,self.saved_legacy,self.saved_native,creation=created,publish=published,preservation=preservation)
         # Download all six immutable predecessor bytes; their independent
         # hash inventory was admitted by the default predecessor registrar.
         prior_files=successor.predecessor_inventory(self.source_inventory_plan(),root=self.root)
@@ -91,17 +107,45 @@ class WeeklyDigestBoundary:
         return legacy,native,lb,nb
     def baseline(self,state):
         _,report=engine.bound(self.root,state['last_validation']);engine.need(report.get('standard')=='VRS-OWNED-DIGEST-FULL-READBACK-1'and report.get('record_id')==state['record_id'],'OWN_VERIFIED_BASELINE');return report['expected_native'],report['expected_legacy']
+    def ownership(self,state):
+        _,created=engine.bound(self.root,state['creation_receipt']);_,first_n=engine.bound(self.root,state['first_owned_draft']);_,first_l=engine.bound(self.root,state['first_owned_legacy_draft'])
+        ownership={'creation_receipt':created,'first_native_receipt':first_n,'first_legacy_receipt':first_l,'prior_ids':[self.plan['predecessor_record_id'],self.plan['source_concept_id']]}
+        own_rule.require_ownership(created,first_n,first_l,prior_ids=ownership['prior_ids'])
+        return ownership
+    def controlled(self,state,expected,wanted,*,phase='DRAFT'):
+        sent=self.plan['start_kind']=='CREATE_WEEK'or'METADATA'in state['completed']
+        if sent:
+            native_md=own_rule.native_sent_metadata(self.native_metadata)
+            legacy_md=own_rule.legacy_sent_metadata(self.manifest['public_metadata'])if phase=='PUBLISHED'else deepcopy(self.payload['metadata'])
+        else:
+            owned=self.ownership(state)
+            initial=own_rule.initial_projection(self.saved_legacy,self.saved_native,owned['creation_receipt'],owned['first_legacy_receipt'],owned['first_native_receipt'])
+            native_md=initial['controlled']['native_metadata'];legacy_md=initial['controlled']['legacy_metadata']
+        return {'record_id':state['record_id'],'concept_id':state['concept_id'],'phase':phase,'native_metadata':native_md,'legacy_metadata':legacy_md,'files':[{'name':name,'bytes':entry['size'],'md5':entry['checksum'][4:]}for name,entry in sorted(expected['files']['entries'].items())],'communities':deepcopy(self.payload['metadata'].get('communities',[])),'native_community_ids':deepcopy(self.saved_native.get('parent',{}).get('communities',{}).get('ids',[])),'doi_required':'RESERVE_DOI'in state['completed']or phase=='PUBLISHED'}
+    def initial_projection(self,created,first_legacy_receipt,first_native_receipt):
+        return initial_owned_projection(self.saved_legacy,self.saved_native,created,first_legacy_receipt,first_native_receipt)
     def full_draft(self,state,expected,wanted,legacy,native,*,chain,operation=None):
         self.staged_expected=expected
-        context={'phase':'DRAFT','temporal_baseline':expected,'own_operation_record_id':state['record_id'],'version_chain_context':chain,'derived_preview_context':self.preview(state),'same_operation_response':json.loads(engine.raw(operation['path']))['response']if operation else None,'existing_communities':self.manifest['public_metadata'].get('communities'),'public_communities':self.manifest['public_metadata'].get('communities'),'mirror_proof':self.mirror}
-        self.last_draft_audit=sm.validate_new_version(native,expected,host='zenodo.org',record_id=state['record_id'],**context);self.last_server_context=deepcopy(context)
-        projected=legacy_aliases.project(native,wanted,self.last_draft_audit,sm,record_id=state['record_id']);original.require_private_source(legacy,projected,native,sm,preservation)
+        controlled=self.controlled(state,expected,wanted)
+        checked=own_rule.require_own_readback(native,legacy,controlled=controlled,ownership=self.ownership(state))
+        self.last_draft_audit=checked;self.last_server_context={'operation':'NEW_VERSION','phase':'DRAFT','own_record_controlled':deepcopy(controlled)}
         entries=native.get('files',{}).get('entries');engine.need(isinstance(entries,dict)and set(entries)=={f['filename']for f in wanted['files']},'DRAFT_EXACT_FILE_SET')
         created={f['filename']:f for f in state['inherited_inventory']}
         for name,entry in entries.items():
             uploaded='UPLOAD:'+name in state['completed'];spec=self.inventory[name]if uploaded else successor.inherited_download_spec(name,created[name],self.plan,root=self.root)
             self.downloads.get(name,state['record_id'],dict(spec,size=spec.get('bytes',spec.get('size'))),published=False)
         return {'native':native,'legacy':legacy}
+    def readmit_creation(self,*,old_plan_binding,old_hold_binding,original_creation,first_legacy,first_native):
+        # GET/download-only explicit recovery. Old HOLD remains immutable.
+        from owned_creation_recovery import STANDARD as recovery_standard
+        _,old_hold=engine.bound(self.root,old_hold_binding);attempt=old_hold['attempts'][0];_,created=engine.bound(self.root,original_creation);rid=str(created['response']['id']);parent=str(created['response']['conceptrecid'])
+        legacy,lb=self.get(rid,False);native,nb=self.get(rid,False,True);expected,wanted=self.initial_projection(created,engine.bound(self.root,first_legacy)[1],engine.bound(self.root,first_native)[1])
+        import owned_digest_machine as machine
+        temp=machine.initial(machine.digest(self.plan),self.plan['approved_inventory'],start_kind='NEW_VERSION')
+        temp.update(record_id=rid,concept_id=parent,creation_receipt=original_creation,first_owned_draft=first_native,first_owned_legacy_draft=first_legacy,inherited_inventory=inherited_rows(created['response']))
+        self.prior(temp,native,expected);self.full_draft(temp,expected,wanted,legacy,native,chain=None,operation=original_creation)
+        report={'standard':'VRS-OWNED-DIGEST-FULL-READBACK-1','status':'CURRENT_OWN_RECORD_CREATION_READMISSION_NO_WRITE','record_id':rid,'step':'NEW_VERSION','transport':original_creation,'owned_native_get':nb,'owned_legacy_get':lb,'expected_native':deepcopy(native),'expected_legacy':deepcopy(legacy),'server_context':deepcopy(self.last_server_context),'native_audit':deepcopy(self.last_draft_audit),'source_chain_native_gets':deepcopy(self.sources),'explicit_creation_recovery':{'standard':recovery_standard,'status':'CURRENT_OWN_RECORD_RULE_READMISSION_ONLY','old_plan':old_plan_binding,'old_hold':old_hold_binding,'authority':self.plan['authority'],'original_reservation':attempt['reservation'],'original_operation_id':attempt['operation_id'],'no_network_write':True},'scientific_acceptance':'UNCHANGED_EXISTING_GATE_ONLY','certifies':False}
+        return self.emit('validated/EXPLICIT_CREATION_READMISSION.json',report)
     def before(self,state):
         self.current_state=state;self.pending_evidence=None
         if state['record_id']is not None and self.plan['start_kind']=='CREATE_WEEK':
@@ -156,26 +200,26 @@ class WeeklyDigestBoundary:
             if step=='NEW_VERSION':engine.need(parent==self.plan['expected_concept_id'],'OWN_EXISTING_CONCEPT')
             else:engine.need(parent!=self.plan['source_concept_id']and rid not in{parent,self.plan['predecessor_record_id']},'GENUINE_NEW_WEEK_CONCEPT_ONLY')
             legacy,lb=self.get(rid,False);native,nb=self.get(rid,False,True)
-            if step=='NEW_VERSION':expected,wanted=successor.initial_newversion_projection(self.saved_legacy,self.saved_native,own,legacy,native)
-            else:expected,wanted=successor.first_week_projection(self.saved_legacy,self.saved_native,own,legacy,native,self.manifest['public_metadata'],relation_template=self.relation)
-            temp=deepcopy(state);temp.update(record_id=rid,concept_id=parent,creation_receipt=operation,first_owned_draft=nb,first_owned_legacy_draft=lb,inherited_inventory=deepcopy(response['files']))
+            if step=='NEW_VERSION':expected,wanted=self.initial_projection(own,engine.bound(self.root,lb)[1],engine.bound(self.root,nb)[1])
+            else:expected,wanted=deepcopy(native),deepcopy(legacy);expected['files']['entries']={};wanted['files']=[];original.refresh_totals(expected)
+            temp=deepcopy(state);temp.update(record_id=rid,concept_id=parent,creation_receipt=operation,first_owned_draft=nb,first_owned_legacy_draft=lb,inherited_inventory=inherited_rows(response))
             prior_l,prior_n,_,_=self.prior(temp,native,expected);chain=self.chain(temp,prior_n,native,expected)
-            if chain is not None:sm.require_version_chain_state(host='zenodo.org',**chain)
+            # Own versions are logged by the own-record policy; prior() guards the source.
             self.full_draft(temp,expected,wanted,legacy,native,chain=chain,operation=operation)
-            ownership={'record_id':rid,'concept_id':parent,'first_owned_draft':nb,'first_owned_legacy_draft':lb,'inherited_inventory':deepcopy(response['files'])}
+            ownership={'record_id':rid,'concept_id':parent,'first_owned_draft':nb,'first_owned_legacy_draft':lb,'inherited_inventory':inherited_rows(response)}
         elif step=='PUBLISH':return self.published(state,response,operation)
         else:
             ownership=None;expected=deepcopy(self.before_expected);wanted=deepcopy(self.before_legacy)
             if step.startswith('DROP:'):
                 name=step[5:];engine.need(response=={'empty_204':True,'draft_file_removed':True},'EMPTY_204_DROP_ACK');expected['files']['entries'].pop(name);wanted['files']=[x for x in wanted['files']if x['filename']!=name];original.refresh_totals(expected)
-            elif step=='METADATA':expected['metadata']=deepcopy(self.native_metadata);wanted['metadata']=successor.private_metadata_projection(self.payload,response,self.native_metadata)
+            elif step=='METADATA':expected['metadata']=deepcopy(self.native_metadata);wanted['metadata']=deepcopy(self.payload['metadata'])
             elif step=='RESERVE_DOI':
-                engine.need(response.get('id')==state['record_id']and response.get('parent',{}).get('id')==state['concept_id']and response.get('pids',{}).get('doi')=={'identifier':'10.5281/zenodo.'+state['record_id'],'provider':'datacite','client':'datacite'},'OWN_DOI_RESERVATION')
-                expected['pids']=successor.reserved_native_pid(own,record_id=state['record_id'],concept_id=state['concept_id'])
-                wanted=successor.reserved_private_legacy_projection(wanted,own,record_id=state['record_id'],concept_id=state['concept_id'])
+                engine.need(response.get('id')==state['record_id']and response.get('parent',{}).get('id')==state['concept_id']and response.get('pids',{}).get('doi',{}).get('identifier')=='10.5281/zenodo.'+state['record_id'],'OWN_DOI_RESERVATION')
+                expected['pids']=deepcopy(response['pids'])
+                wanted['doi']='10.5281/zenodo.'+state['record_id']
             legacy,lb=self.get(state['record_id'],False);native,nb=self.get(state['record_id'],False,True)
             if step.startswith('UPLOAD:'):
-                name=step[7:];row=next(x for x in legacy['files']if x['filename']==name);entry=original.file_from_upload(row,response,dict(self.inventory[name],size=self.inventory[name]['bytes']),state['record_id']);expected['files']['entries'][name]=entry;wanted['files'].append(row);original.refresh_totals(expected)
+                name=step[7:];row=next(x for x in legacy['files']if x['filename']==name);engine.need(response.get('key')==name and response.get('checksum')=='md5:'+self.inventory[name]['md5']and type(response.get('size'))is int and response.get('size')==self.inventory[name]['bytes'],'OWN_UPLOAD_ACK_BYTES');entry=deepcopy(native['files']['entries'][name]);entry.update(key=name,checksum='md5:'+self.inventory[name]['md5'],size=self.inventory[name]['bytes']);expected['files']['entries'][name]=entry;wanted['files'].append(row);original.refresh_totals(expected)
             temp=deepcopy(state)
             # Include the actual in-flight upload/drop in byte/preview checks;
             # this is provenance only, not a terminal machine completion.
@@ -187,44 +231,40 @@ class WeeklyDigestBoundary:
         # source/payload/upload expectations, never the after body itself.
         self.sequence+=1;return self.emit('validated/'+f'{self.sequence:03d}.json',report),ownership
     def published(self,state,response,operation):
-        rid=state['record_id'];engine.need(str(response.get('id'))==rid and response.get('submitted')is True and response.get('state')=='done'and response.get('doi')=='10.5281/zenodo.'+rid and str(response.get('conceptrecid'))==state['concept_id'],'OWN_TERMINAL_PUBLISH')
-        # A final own GET must be the immediately preceding receipt in this
-        # same transport directory, never an invented/stale before body.
+        rid=state['record_id'];doi='10.5281/zenodo.'+rid
+        engine.need(str(response.get('id'))==rid and response.get('doi')==doi and str(response.get('conceptrecid'))==state['concept_id'],'OWN_PUBLISH_PID_IDENTITIES')
         post=Path(operation['path']);before_path=post.parent/f'{int(post.name[:3])-1:03d}_GET.json'
         before_obj=json.loads(engine.raw(before_path));engine.need(before_obj.get('url')==BASE+'/api/records/'+rid+'/draft'and before_obj.get('accept')==NATIVE and before_obj.get('status')=='HTTP_SUCCESS_ONLY_NOT_PUBLICATION_CLEARANCE','FINAL_REAL_PREPUBLISH_GET')
         before_binding=engine.binding(before_path)
-        first_native=state['first_owned_draft']
-        first_legacy=state['first_owned_legacy_draft']
         reserve=next(a['transport']for a in state['attempts']if a['step']=='RESERVE_DOI'and a['outcome']=='STRICT_PASS')
-        context=successor.assemble_context(record_id=rid,source_legacy_receipt=self.plan['source_legacy_receipt'],source_native_receipt=self.plan['source_native_receipt'],source_native_before_create=self.plan['source_native_before_create'],first_own_native_draft=first_native,first_own_legacy_draft=first_legacy,predecessor_registration=self.plan['predecessor_registration']if self.plan['start_kind']=='NEW_VERSION'else None,account_discovery=self.plan['account_discovery']if self.plan['start_kind']=='CREATE_WEEK'else None,metadata_source_registration=self.plan['predecessor_registration']if self.plan['start_kind']=='CREATE_WEEK'else None,start_kind=self.plan['start_kind'],successor_digest_manifest=self.plan['digest_manifest'],before_publish_native_receipt=before_binding,creation_receipt=state['creation_receipt'],reservation_receipt=reserve,publish_receipt=operation,mirror_proof=self.plan['community_mirror_proof'])
-        context_binding=self.emit('PUBLIC_STATE_CONTEXT.json',context)
-        load=lambda b:engine.bound(self.root,b)[1]
-        prediction=successor.consume_context(context,load=load,public=self.manifest['public_metadata'],evidence_sources={'source_legacy_receipt':self.plan['source_legacy_receipt'],'source_native_receipt':self.plan['source_native_receipt'],'own_publish_receipt':operation},root=self.root)
-        expected=prediction['native'];self.staged_expected=expected
-        native,nb=self.get(rid,True,True);first_public_native=nb;legacy,lb=self.get(rid,True)
-        prior_l,prior_n,_,_=self.prior(state,native,expected,'PUBLISH',operation,before_obj['response']);chain=self.chain(state,prior_n,native,expected,boundary='PUBLISH',operation=operation,before=before_obj['response'])
-        own=json.loads(engine.raw(Path(operation['path'])))
-        server={'operation':'NEW_VERSION','phase':'PUBLISHED','same_operation_response':response,'existing_concept_doi':'10.5281/zenodo.'+state['concept_id'],'previous_latest_index':self.saved_native['versions']['index']if self.plan['start_kind']=='NEW_VERSION'else 0,'chain_parent_id':state['concept_id'],'temporal_baseline':before_obj['response'],'own_publish_response':own,'same_operation_reservation_id':rid,'revision_evidence':{'receipt_directory':str(post.parent),'publish_receipt_name':post.name,'first_native_get_receipt_name':Path(first_public_native['path']).name,'transport_contract_sha256':sm.transport_contract_sha256()},'own_operation_record_id':rid,'existing_communities':self.manifest['public_metadata'].get('communities'),'public_communities':legacy['metadata'].get('communities'),'mirror_proof':self.mirror,'version_chain_context':chain,'derived_preview_context':self.preview(state,operation)}
-        deadline=time.monotonic()+600;polls=[];self.opener.deadline=deadline
-        try:
-            while True:
-                try:
-                    audit=sm.audit_readback(native,expected,host='zenodo.org',record_id=rid,**server);public_state.require_native_audit(audit,record_id=rid,sm=sm);break
-                except Exception as exc:
-                    if not publisher_previews.preview_pending_only(sm,native,expected,server,exc):raise
-                    remaining=deadline-time.monotonic();engine.need(remaining>0,'PREVIEW_TEN_MINUTE_DEADLINE');polls.append(nb);time.sleep(min(5,remaining));engine.need(time.monotonic()<deadline,'PREVIEW_TEN_MINUTE_DEADLINE');native,nb=self.get(rid,True,True);legacy,lb=self.get(rid,True);server['public_communities']=legacy['metadata'].get('communities');server['derived_preview_context']=self.preview(state,operation)
-        finally:self.opener.deadline=None
-        legacy_expected=public_state.predict_legacy(self.saved_legacy,native,self.manifest['public_metadata']);legacy_expected['metadata']['relations']=prediction['legacy_relation']
-        public_state.require_legacy(legacy,legacy_expected,native,source_legacy=self.saved_legacy,source_native=self.saved_native,sm=sm,preservation=preservation,native_expected=expected,server_context=server)
-        own=dict(own,record_id=rid,doi='10.5281/zenodo.'+rid)
-        def download(entry,record_id):return self.downloads.get(entry['key'],record_id,self.inventory[entry['key']],published=True,published_url=entry['links']['self'])
-        strict=digest.strict_readback(self.package,self.root,legacy,own,download,expected_record=legacy_expected,metadata_consumer=lambda a,e,o:preservation.require_public_metadata(a['metadata'],e['metadata']))
-        nbinding=self.emit('EXPECTED_PUBLIC_NATIVE.json',expected);lbinding=self.emit('EXPECTED_PUBLIC_LEGACY.json',legacy_expected);sbinding=self.emit('SERVER_CONTEXT.json',server);strictbinding=self.emit('STRICT_DIGEST_READBACK.json',strict);relation=self.emit('RELATION_TEMPLATE.json',self.relation)
+        metadata_sent=next((a['transport']for a in state['attempts']if a['step']=='METADATA'and a['outcome']=='STRICT_PASS'),state['creation_receipt']if self.plan['start_kind']=='CREATE_WEEK'else None)
+        engine.need(metadata_sent is not None,'REAL_EXPLICIT_METADATA_PAYLOAD_OPERATION')
+        native,nb=self.get(rid,True,True);legacy,lb=self.get(rid,True)
+        # Final main controls are all six approved package bytes, not a server
+        # projection. Previews/media/revisions/flags are logged without polling.
+        controlled=self.controlled(state,self.before_expected,self.before_legacy,phase='PUBLISHED')
+        controlled['files']=[{'name':name,'bytes':row['bytes'],'md5':row['md5']}for name,row in sorted(self.inventory.items())]
+        ownership=self.ownership(state);audit=own_rule.require_own_readback(native,legacy,controlled=controlled,ownership=ownership)
+        expected,legacy_expected=own_rule.public_projection(controlled)
+        legacy_expected['metadata']=deepcopy(self.manifest['public_metadata'])
+        prior_l,prior_n,prior_lb,prior_nb=self.prior(state,native,expected,'PUBLISH',operation,before_obj['response'])
+        relation=self.emit('RELATION_TEMPLATE.json',self.relation);payload=self.emit('CONTROLLED_METADATA_PAYLOAD.json',self.payload)
+        roles={'authority':self.plan['authority'],'digest_manifest':self.plan['digest_manifest'],'source_legacy_receipt':self.plan['source_legacy_receipt'],'source_native_receipt':self.plan['source_native_receipt'],'creation_receipt':state['creation_receipt'],'first_own_native_draft':state['first_owned_draft'],'first_own_legacy_draft':state['first_owned_legacy_draft'],'metadata_payload':payload,'metadata_put_receipt':metadata_sent,'relation_template':relation,'reservation_receipt':reserve,'before_publish_native_receipt':before_binding,'publish_receipt':operation,'prior_after_native_receipt':prior_nb,'prior_after_legacy_receipt':prior_lb}
+        context=own_rule.assemble_context(record_id=rid,source_bindings=roles);context_binding=self.emit('PUBLIC_STATE_CONTEXT.json',context)
+        prediction=own_rule.consume_context(context,load=lambda b:engine.bound(self.root,b)[1],public=self.manifest['public_metadata'],evidence_sources={'source_legacy_receipt':self.plan['source_legacy_receipt'],'source_native_receipt':self.plan['source_native_receipt'],'own_publish_receipt':operation})
+        engine.need(metadata.exact(expected,prediction['native'])and metadata.exact(legacy_expected,prediction['legacy']),'CONTROLLED_PUBLIC_EXPECTATIONS_MATCH_CURRENT_CONTEXT')
+        own=json.loads(engine.raw(Path(operation['path'])));own=dict(own,record_id=rid,doi=doi)
+        def download(entry,record_id):
+            return self.downloads.get(entry['key'],record_id,self.inventory[entry['key']],published=True,published_url=BASE+'/api/records/'+rid+'/files/'+entry['key']+'/content')
+        def check_metadata(actual,expected_record,own_receipt):
+            own_rule.require_own_readback(native,actual,controlled=controlled,ownership=ownership)
+        strict=digest.strict_readback(self.package,self.root,legacy,own,download,expected_record=legacy_expected,metadata_consumer=check_metadata)
+        nbinding=self.emit('EXPECTED_PUBLIC_NATIVE.json',expected);lbinding=self.emit('EXPECTED_PUBLIC_LEGACY.json',legacy_expected)
+        server={'operation':'NEW_VERSION','phase':'PUBLISHED'};sbinding=self.emit('SERVER_CONTEXT.json',server);strictbinding=self.emit('STRICT_DIGEST_READBACK.json',strict)
         import methods_digest_registration as registrar
         downloads=[{'filename':x['filename'],'binding':{'path':x['path'],'sha256':x['sha256']},'url':x['url']}for x in self.downloads.public if x['url'].startswith(BASE+'/api/records/'+rid+'/')]
         evidence=registrar.assemble_evidence(record_id=rid,public_legacy_receipt=lb,public_native_receipt=nb,own_publish_receipt=operation,expected_legacy=lbinding,expected_native=nbinding,source_legacy_receipt=self.plan['source_legacy_receipt'],source_native_receipt=self.plan['source_native_receipt'],relation_template=relation,server_context=sbinding,downloads=downloads,strict_readback_result=strictbinding,public_state_context=context_binding)
         ebinding=self.emit('METHODS_DIGEST_PUBLIC_EVIDENCE.json',evidence)
-        registration=registrar.prepare_registration(self.root,self.package,ebinding) # unchanged default consumers
-        rbinding=self.emit('METHODS_DIGEST_REGISTRATION_RECEIPT.json',registration);registrar.require_registration(self.root,rbinding)
-        report={'standard':'VRS-OWNED-DIGEST-FULL-READBACK-1','status':'PUBLISHED_NATIVE_LEGACY_SIX_FILES_PID_DEFAULT_REGISTRAR_PASS','record_id':rid,'step':'PUBLISH','transport':operation,'owned_native_get':nb,'owned_legacy_get':lb,'expected_native':expected,'expected_legacy':legacy_expected,'native_audit':audit,'strict_digest_readback':strictbinding,'registration_receipt':rbinding,'public_evidence':ebinding,'preview_polls':polls,'certifies':False}
+        registration=registrar.prepare_registration(self.root,self.package,ebinding);rbinding=self.emit('METHODS_DIGEST_REGISTRATION_RECEIPT.json',registration);registrar.require_registration(self.root,rbinding)
+        report={'standard':'VRS-OWNED-DIGEST-FULL-READBACK-1','status':'PUBLISHED_OWN_CONTROLLED_NATIVE_LEGACY_SIX_FILES_PID_DEFAULT_REGISTRAR_PASS','record_id':rid,'step':'PUBLISH','transport':operation,'owned_native_get':nb,'owned_legacy_get':lb,'expected_native':expected,'expected_legacy':legacy_expected,'native_audit':audit,'strict_digest_readback':strictbinding,'registration_receipt':rbinding,'public_evidence':ebinding,'preview_polls':[],'certifies':False}
         return self.emit('validated/PUBLISHED.json',report),None

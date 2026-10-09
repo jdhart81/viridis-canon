@@ -228,12 +228,7 @@ def normalize_authority_plan(raw):
  token=PRIOR_CONTENT_HEADER.encode()
  if token not in raw:return _normalize_authority_pre_prior_processing(raw)
  a,b=_authority_section(raw,PRIOR_CONTENT_HEADER)
- section=raw[a:b]
- if b!=len(raw)and not section.endswith(SUFFIX):raise ValueError('HOLD_EXACT_OPERATIONAL_APPENDIX_BOUNDARY')
- if hashlib.sha256(section).hexdigest()!=PRIOR_CONTENT_SECTION_SHA256:
-  if not(section.endswith(SUFFIX)and hashlib.sha256(section[:-len(SUFFIX)]).hexdigest()==PRIOR_CONTENT_SECTION_SHA256):raise ValueError('HOLD_EXACT_APPROVED_PRIOR_CONTENT_AUTHORITY')
- # Operational appendices do not change the historical scientific view.
- for header in (APPENDIX_HEADER,SIMPLIFICATION_HEADER,DECOUPLING_HEADER):_authority_section(raw,header)
+ if b!=len(raw)or hashlib.sha256(raw[a:b]).hexdigest()!=PRIOR_CONTENT_SECTION_SHA256:raise ValueError('HOLD_EXACT_APPROVED_PRIOR_CONTENT_AUTHORITY')
  c,e=_authority_section(raw,OWN_RECORD_HEADER)
  if not(c<a)or e!=a-1 or raw[a-6:a]!=b'\n---\n\n':raise ValueError('HOLD_PRIOR_CONTENT_AUTHORITY_ORDER')
  return _normalize_authority_pre_prior_processing(raw[:a-6])

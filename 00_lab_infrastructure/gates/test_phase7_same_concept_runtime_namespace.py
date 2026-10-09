@@ -75,19 +75,19 @@ class CurrentOwnNamespaceTests(unittest.TestCase):
         self.assertEqual(names,oldnames|{'own_record_comparison.py','methods_digest_registration_legacy_0fc739.py'})
         self.assertEqual(other,oldother)
     def test_exact_flat_current_hash_and_closed_two_own_names(self):
-        data=(D/'phase7_runtime_update.py').read_bytes()
+        data=(D/'tests/fixtures/phase7_prior_content_historical_v001/phase7_runtime_update.py').read_bytes()
         self.assertEqual(hashlib.sha256(data).hexdigest(),'517adb25a3073296b8aabd2267706beef602f7307bf390ebaa5d2db91ab89d6e')
         self.closed(data)
     def test_flat_current_all_other_function_global_and_signature_bytes_exact(self):
-        self.closed((D/'phase7_runtime_update.py').read_bytes())
+        self.closed((D/'tests/fixtures/phase7_prior_content_historical_v001/phase7_runtime_update.py').read_bytes())
     def test_each_own_namespace_row_removal_or_foreign_replacement_rejected(self):
-        data=(D/'phase7_runtime_update.py').read_bytes()
+        data=(D/'tests/fixtures/phase7_prior_content_historical_v001/phase7_runtime_update.py').read_bytes()
         for name in ('own_record_comparison.py','methods_digest_registration_legacy_0fc739.py'):
             for changed in (data.replace(name.encode(),b'foreign_plugin.py',1),data.replace(("'"+name+"', ").encode(),b'',1)):
                 self.assertNotEqual(changed,data)
                 with self.subTest(name=name),self.assertRaises(AssertionError):self.closed(changed)
     def test_flat_current_predicate_mutation_unknown_global_or_import_rejected(self):
-        data=(D/'phase7_runtime_update.py').read_bytes();needle=b'raw = normalize_authority_plan(raw)';self.assertIn(needle,data)
+        data=(D/'tests/fixtures/phase7_prior_content_historical_v001/phase7_runtime_update.py').read_bytes();needle=b'raw = normalize_authority_plan(raw)';self.assertIn(needle,data)
         for changed in (data.replace(needle,b'raw = raw',1),data+b'\nimport foreign_acceptance\n',data+b'\nUNREVIEWED_GLOBAL = True\n'):
             with self.assertRaises(AssertionError):self.closed(changed)
 

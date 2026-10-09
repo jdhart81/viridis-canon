@@ -1,0 +1,42 @@
+{
+  "digest_weekly_state.py": {
+    "path": "/private/tmp/phase7-prior-controlled-comparison-proposal-20261009-v001/digest_weekly_state.py",
+    "sha256": "96b3aa1eca1e2f6fa42563ea912338ae839d5d9786ee7eb777f81a12c988387c"
+  },
+  "methods_digest_registration.py": {
+    "path": "/private/tmp/phase7-prior-controlled-comparison-proposal-20261009-v001/methods_digest_registration.py",
+    "sha256": "e97c6e906b6b2feeb348fc60dc0f4c22eac86cb23eac6f29afbf33dfe9df3cb5"
+  },
+  "methods_digest_registration_legacy_21b813.py": {
+    "path": "/private/tmp/phase7-prior-controlled-comparison-proposal-20261009-v001/methods_digest_registration_legacy_21b813.py",
+    "sha256": "21b813c527566c12a06b15426c4a49370fd1e5ccbdcf9ca441bf5d305011d21c"
+  },
+  "own_prior_record.py": {
+    "path": "/private/tmp/phase7-prior-controlled-comparison-proposal-20261009-v001/own_prior_record.py",
+    "sha256": "ff7d1b18bfad1a66662cc519415301a841b7ec05b9bc613dd8279d3644f8974f"
+  },
+  "own_record_comparison.py": {
+    "path": "/private/tmp/phase7-prior-controlled-comparison-proposal-20261009-v001/own_record_comparison.py",
+    "sha256": "f89456323a79fa3e25d7d3c5b8bda580ad89f5ea79e335a3f736e4da5833417c"
+  },
+  "own_record_comparison_legacy_cf74da.py": {
+    "path": "/private/tmp/phase7-prior-controlled-comparison-proposal-20261009-v001/own_record_comparison_legacy_cf74da.py",
+    "sha256": "cf74da23ea7208260cee70f74f282b2b57a209d1347f14d4c47b465f2b50ebd8"
+  },
+  "phase7_policy_versions.py": {
+    "path": "/private/tmp/phase7-prior-controlled-comparison-proposal-20261009-v001/phase7_policy_versions.py",
+    "sha256": "c18b2088d5b2d573e2c2acd1027fd0a0d91d30effc3933ac0ea75854f56f7b3f"
+  },
+  "phase7_runtime_update.py": {
+    "path": "/private/tmp/phase7-prior-controlled-comparison-proposal-20261009-v001/phase7_runtime_update.py",
+    "sha256": "2aee60d610f8ec4ab42621d30309e1db49b8732af2a34b9fe7f496a56bf95a10"
+  },
+  "weekly_digest_boundary.py": {
+    "path": "/private/tmp/phase7-prior-controlled-comparison-proposal-20261009-v001/weekly_digest_boundary.py",
+    "sha256": "1fb76d5a1389b89df6cd6d9f1b210def8697ecfdec5fd60a79d2a8d74bd3137b"
+  },
+  "weekly_digest_runtime.py": {
+    "path": "/private/tmp/phase7-prior-controlled-comparison-proposal-20261009-v001/weekly_digest_runtime.py",
+    "sha256": "8f24addd4ddd4e783dee2ba81736a4915163134dd1edcea3475677016bdc78a8"
+  }
+}

@@ -7,6 +7,7 @@ every post-mutation checkpoint binds its real transport and strict evidence.
 from __future__ import annotations
 import datetime as dt, hashlib, json, os, re
 from pathlib import Path
+from zoneinfo import ZoneInfo
 import owned_digest_machine as machine
 from owned_journal_writer import OwnedJournalWriter
 
@@ -75,9 +76,18 @@ def require_plan(root,plan):
         p=Path(row['path']);archive=re.fullmatch('archive_([0-9a-f]{64})_(.+[.]py)',row['name'])
         named=(p.name==row['name'])if archive is None else(p.name==archive[2]and p.parent.name==archive[1]and p.parent.parent.name=='policy_versions')
         need(named and p.resolve(strict=True).is_relative_to(root)and sha(p)==row['sha256'],'ACTUAL_PURPOSE_SOURCE')
-    need({'weekly_digest_executor.py','weekly_digest_boundary.py','weekly_digest_runtime.py','weekly_checkpoint_replay.py','prepare_weekly_digest_plan.py','invoke_weekly_digest.py','weekly_archive_wait.py','weekly_digest_queue.py','weekly_pending_discovery.py','owned_digest_machine.py','owned_journal_writer.py','digest_weekly_state.py','methods_digest.py','methods_digest_registration.py','server_managed_fields.py','zenodo_transport.py','phase7_mutation_baseline.py','mutation_journal_writer.py'}<={r['name']for r in pins},'FULL_PURPOSE_CLOSURE')
+    need({'methods_digest_registration_legacy_0fc739.py','owned_creation_recovery.py','own_prior_record.py','own_record_comparison.py','weekly_digest_executor.py','weekly_digest_boundary.py','weekly_digest_runtime.py','weekly_checkpoint_replay.py','prepare_weekly_digest_plan.py','invoke_weekly_digest.py','weekly_archive_wait.py','weekly_digest_queue.py','weekly_pending_discovery.py','owned_digest_machine.py','owned_journal_writer.py','digest_weekly_state.py','methods_digest.py','methods_digest_registration.py','server_managed_fields.py','zenodo_transport.py','phase7_mutation_baseline.py','mutation_journal_writer.py'}<={r['name']for r in pins},'FULL_PURPOSE_CLOSURE')
     need(plan['boundary_module']=='weekly_digest_boundary.py','ONE_CLOSED_BOUNDARY')
     return package
+
+def publication_day(root,plan,now):
+    _,manifest=bound(root,plan['digest_manifest']);value=manifest['public_metadata'].get('publication_date')
+    need(isinstance(value,str)and re.fullmatch('[0-9]{4}-[0-9]{2}-[0-9]{2}',value)is not None,'EXPLICIT_BOUND_PUBLICATION_DATE')
+    intended=dt.date.fromisoformat(value)
+    instant=dt.datetime.fromisoformat(now.replace('Z','+00:00'))
+    need(instant.tzinfo is not None,'AWARE_PUBLICATION_CLOCK')
+    actual=instant.astimezone(ZoneInfo('America/New_York')).date()
+    return {'intended':intended.isoformat(),'actual':actual.isoformat(),'ready':intended==actual,'wait_status':'WAIT_PLANNED_NEW_YORK_PUBLISH_DAY'if actual<intended else'WAIT_IMMUTABLE_PUBLICATION_DATE_REBINDING'}
 
 def require_command(root,plan,state,step,command):
     need(isinstance(command,dict)and set(command)=={'method','url','body','content_type','delete_file'}and isinstance(command['body'],bytes),'CLOSED_SOURCE_BOUND_COMMAND')
@@ -141,10 +151,19 @@ def execute(root,plan_binding,output,token,runtime,*,checkpoint=None,reviewed_dr
         while attempted<MAX_ATTEMPTS:
             step=machine.next_step(current)
             if step is None:stop='PUBLISHED_STRICT_READBACK_PASS';break
+            if step=='PUBLISH':
+                day=publication_day(root,plan,clock())
+                if not day['ready']:stop=day['wait_status'];break
             runtime.admission(plan,package);boundary.before(current) # fresh GET/readback, no write
             command=boundary.command(current,step)
             require_command(root,plan,current,step,command)
             at=clock()
+            if step=='PUBLISH':
+                # This second check runs after complete admission and fresh
+                # GET/downloads, with the exact immutable attempt timestamp.
+                # A midnight crossing consumes neither reservation nor write.
+                day=publication_day(root,plan,at)
+                if not day['ready']:stop=day['wait_status'];break
             try:
                 events,budget=writer.events_and_budget(command['method'],at,runtime.d.require_write_budget)
             except runtime.d.DigestHold as exc:
@@ -152,6 +171,12 @@ def execute(root,plan_binding,output,token,runtime,*,checkpoint=None,reviewed_dr
                 stop='WAIT_NEXT_NEW_YORK_DAY';break
             need(budget['used']<10 and budget['remaining_including_next']>0,'ACTUAL_DAILY_SLOT')
             runtime.d.prewrite(package,root,command['method'],at,events,complete_journal=True,budget_consumer=runtime.require_budget)
+            if step=='PUBLISH':
+                # Publication-bound package checks may cross midnight. Refresh
+                # the actual reservation timestamp after all fallible prewrite
+                # work; an expired day consumes no charge and sends no request.
+                at=clock();day=publication_day(root,plan,at)
+                if not day['ready']:stop=day['wait_status'];break
             op='phase7-owned:'+ph[:16]+':'+hashlib.sha256(step.encode()).hexdigest()[:16]
             need(not any(event.get('operation_id')==op for event in events),'RESERVED_OPERATION_ALREADY_CONSUMED_NO_RETRY')
             if command['method']=='DELETE':
@@ -163,7 +188,16 @@ def execute(root,plan_binding,output,token,runtime,*,checkpoint=None,reviewed_dr
                 need(command['delete_file']is None,'NO_GENERIC_DELETE');predicted=transport.out/f'{transport.sequence+1:03d}_{command["method"]}.json'
                 reserved=writer.reserve(command['method'],command['url'],command['body'],predicted,at,op,runtime.d.require_write_budget)
             current=machine.reserve(current,step,reserved['reservation'],op);attempted+=1;save('RESERVED_BEFORE_NETWORK')
+            publish_day_blocked_before_network=False
             try:
+                if step=='PUBLISH':
+                    # A reservation itself may cross midnight. Preserve the
+                    # charged attempt as known-unsent HOLD; never send a stale
+                    # publication-date request or silently refund its slot.
+                    day=publication_day(root,plan,clock())
+                    if not day['ready']:
+                        publish_day_blocked_before_network=True
+                        raise ExecutionHold('HOLD_PUBLISH_DAY_CHANGED_AFTER_RESERVATION:'+day['intended']+':'+day['actual'])
                 if command['method']=='DELETE':response=transport.remove_inherited_draft_file(current['record_id'],plan['predecessor_record_id'],command['delete_file'],expected_sha256=hashlib.sha256(b'').hexdigest(),authorized=True)
                 else:response=transport.request(command['method'],command['url'],command['body'],hashlib.sha256(command['body']).hexdigest(),command['content_type'],authorized=True,accept='application/vnd.inveniordm.v1+json'if step=='RESERVE_DOI'else'application/json')
                 need(predicted.exists(),'OWN_EXPECTED_TRANSPORT_RECEIPT');own=binding(predicted)
@@ -173,7 +207,7 @@ def execute(root,plan_binding,output,token,runtime,*,checkpoint=None,reviewed_dr
                 bound(root,checked);current=machine.finish(current,own,checked,ownership=ownership);save('STRICT_READBACK_COMPLETE')
             except Exception as exc:
                 own=binding(predicted)if predicted.exists()else None
-                uncertain=own is None or json.loads(raw(predicted)).get('status')!='HTTP_SUCCESS_ONLY_NOT_PUBLICATION_CLEARANCE'
+                uncertain=not publish_day_blocked_before_network and(own is None or json.loads(raw(predicted)).get('status')!='HTTP_SUCCESS_ONLY_NOT_PUBLICATION_CLEARANCE')
                 current=machine.fail(current,own,str(exc),uncertain=uncertain);save('HARD_HOLD_NO_RETRY');stop=current['phase'];break
             runtime.admission(plan,package)
             if current['published']:stop='PUBLISHED_STRICT_READBACK_PASS';break

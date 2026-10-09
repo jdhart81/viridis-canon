@@ -1,0 +1,104 @@
+{
+  "api_writes": 0,
+  "no_raw_provider_evidence": true,
+  "protected_changes": 0,
+  "rows": [
+    {
+      "bytes": 26326,
+      "git_path": "00_lab_infrastructure/gates/digest_public_state.py",
+      "sha256": "b746fbbd4acc393799c75eb49bcc432e6c130e2b0858d8ed16082c8724127fe0"
+    },
+    {
+      "bytes": 5494,
+      "git_path": "00_lab_infrastructure/gates/invoke_weekly_digest.py",
+      "sha256": "47c1591f102f323c7cb3092540c1e8355ea2474e340235795823a1b642d0a8f2"
+    },
+    {
+      "bytes": 39237,
+      "git_path": "00_lab_infrastructure/gates/methods_digest_registration.py",
+      "sha256": "21b813c527566c12a06b15426c4a49370fd1e5ccbdcf9ca441bf5d305011d21c"
+    },
+    {
+      "bytes": 33804,
+      "git_path": "00_lab_infrastructure/gates/methods_digest_registration_legacy_0fc739.py",
+      "sha256": "0fc7393010cbc96d74b1fb6135cfb78cea88dd8ba692ba44c511242d5a89bdf9"
+    },
+    {
+      "bytes": 3372,
+      "git_path": "00_lab_infrastructure/gates/own_prior_record.py",
+      "sha256": "eb9e12e9d5364776e33ae909eb28404e0f52a6b2b7664a7df4521d7966b55825"
+    },
+    {
+      "bytes": 33402,
+      "git_path": "00_lab_infrastructure/gates/own_record_comparison.py",
+      "sha256": "cf74da23ea7208260cee70f74f282b2b57a209d1347f14d4c47b465f2b50ebd8"
+    },
+    {
+      "bytes": 9761,
+      "git_path": "00_lab_infrastructure/gates/owned_creation_recovery.py",
+      "sha256": "71ebb57b814d748fe6c17d8b11aa6f4ed497234ebbc606440ce4c971342f0714"
+    },
+    {
+      "bytes": 15537,
+      "git_path": "00_lab_infrastructure/gates/phase7_policy_versions.py",
+      "sha256": "964878bfa230615108c620b0b6b5eab863b0879d343c151db0ffa06a117ad882"
+    },
+    {
+      "bytes": 36031,
+      "git_path": "00_lab_infrastructure/gates/phase7_runtime_update.py",
+      "sha256": "517adb25a3073296b8aabd2267706beef602f7307bf390ebaa5d2db91ab89d6e"
+    },
+    {
+      "bytes": 11562,
+      "git_path": "00_lab_infrastructure/gates/prepare_weekly_configuration.py",
+      "sha256": "94701b4df11af82042a60640b126afd7f62c735a2fde373ed9cca34614ee1cb2"
+    },
+    {
+      "bytes": 11694,
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-own-record-comparison/after-v005/own_prospective_catalog.py",
+      "sha256": "b9dd8954b2d6a51115a96e1ed6561401de3120fa56dbbff14ce8e37e2a2bffa9"
+    },
+    {
+      "bytes": 9130,
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-own-record-comparison/after-v005/root_orchestration.py",
+      "sha256": "c97f2dc52be6589ef486c6d2ba4b8384e6099648c74b8c1d90350e4c33bdd45c"
+    },
+    {
+      "bytes": 36444,
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-own-record-comparison/after-v005/runtime_successor.py",
+      "sha256": "e9ad9d196fb6e384b96151226733ea5db42f490adb489bc265b02f58e135f498"
+    },
+    {
+      "bytes": 19341,
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-own-record-root-adapter/after/root_weekly_configuration.py",
+      "sha256": "cec387e1d993ec93f001e8eb33b2c8c89ad53104db93a0ab4da12554cb462129"
+    },
+    {
+      "bytes": 1372,
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-own-record-root-adapter/after/root_weekly_purpose_specs.py",
+      "sha256": "fe41f08b5b3b91fe3c740fef3c3b70d0c08e088c9f2edfcf8a1b79494f180e37"
+    },
+    {
+      "bytes": 9112,
+      "git_path": "00_lab_infrastructure/gates/weekly_checkpoint_replay.py",
+      "sha256": "271c88251df80148d4e9cb15b273076f3da38ff6aab4711b40c8d18b944b00f9"
+    },
+    {
+      "bytes": 30566,
+      "git_path": "00_lab_infrastructure/gates/weekly_digest_boundary.py",
+      "sha256": "f822c457d7bbb49a3671417e851b34fa3fcc2dc3fdc63e05ad10f1898249062e"
+    },
+    {
+      "bytes": 21456,
+      "git_path": "00_lab_infrastructure/gates/weekly_digest_executor.py",
+      "sha256": "8ae34d06d2b1926970f17b6e7faad013ed20f086fa1d3f07b5d6d055dc236f91"
+    },
+    {
+      "bytes": 10334,
+      "git_path": "00_lab_infrastructure/gates/weekly_digest_runtime.py",
+      "sha256": "ee68a5c9b49c01d7aa2f86e516bdc9a0ec29b5856116b6c408201c5ac111a298"
+    }
+  ],
+  "standard": "VRS-PHASE7-OWN-RECORD-FINAL-SOURCE-PROFILE-1",
+  "status": "SOURCE_ONLY_NOT_INSTALLED"
+}

@@ -1,0 +1,33 @@
+{
+  "actual_admission": false,
+  "adapter_sha256": "cec387e1d993ec93f001e8eb33b2c8c89ad53104db93a0ab4da12554cb462129",
+  "certifies": false,
+  "config_sha256": "94701b4df11af82042a60640b126afd7f62c735a2fde373ed9cca34614ee1cb2",
+  "predecessor_adapter_sha256": "29b3e0ee65c1f47084c6035b2151c8dc2be4178182d17c33c557783c7a2c0e99",
+  "predecessor_extension_sha256": "f10b8b7eb4e8127ea6c79c1a6ce24a73887e7de633b04be24edf732c39a26bbc",
+  "production": {
+    "capture_weekly_inputs.py": "987aec5ccb80db8222dc526ee9c361d510b4c8229f68f5bb7f525efed045e415",
+    "invoke_weekly_digest.py": "47c1591f102f323c7cb3092540c1e8355ea2474e340235795823a1b642d0a8f2",
+    "own_prior_record.py": "eb9e12e9d5364776e33ae909eb28404e0f52a6b2b7664a7df4521d7966b55825",
+    "owned_creation_recovery.py": "71ebb57b814d748fe6c17d8b11aa6f4ed497234ebbc606440ce4c971342f0714",
+    "owned_digest_machine.py": "0ed1b5aae979b5db69d001783f77900bf3a9e9c7d9591c27ea08f8aae0396b2b",
+    "owned_journal_writer.py": "711cef68f1b67aed468d5f975535cb218f7bf7cc69fe2cc8bc069e6a526d83a5",
+    "owned_legacy_preview_aliases.py": "0739cf7351501062f8342e376d6e6e0db21096d35170a2a998858e6846cec775",
+    "owned_prior_legacy.py": "260ade5bcbb55bd2abe278d25df698cb0de7156ebe68b0ca939045600f3e50ca",
+    "owned_weekly_discovery.py": "18bb000d76258a3a5a04bbdd85a4274bbc3128bdee370c906515c5aa86653213",
+    "prepare_weekly_configuration.py": "94701b4df11af82042a60640b126afd7f62c735a2fde373ed9cca34614ee1cb2",
+    "prepare_weekly_digest_plan.py": "8bee9b1123e7cf9fcc860d6a02780c251d548c83bd429574d67e8bdfb49e758f",
+    "runtime_closure_view.py": "1bc540543f0058eeff6e3d5e80bdee20858be387b0a9e36bc11019407747d771",
+    "weekly_archive_wait.py": "179cd1f897c8f4f68eb3dc2c7473c2fd28e6defef154d88541d9fa27540ed055",
+    "weekly_checkpoint_replay.py": "271c88251df80148d4e9cb15b273076f3da38ff6aab4711b40c8d18b944b00f9",
+    "weekly_digest_boundary.py": "f822c457d7bbb49a3671417e851b34fa3fcc2dc3fdc63e05ad10f1898249062e",
+    "weekly_digest_executor.py": "8ae34d06d2b1926970f17b6e7faad013ed20f086fa1d3f07b5d6d055dc236f91",
+    "weekly_digest_queue.py": "24ef923a0dbd0da460d1e322d57c0fa2a706be2ba5964461d24277362889ec59",
+    "weekly_digest_runtime.py": "ee68a5c9b49c01d7aa2f86e516bdc9a0ec29b5856116b6c408201c5ac111a298",
+    "weekly_pending_discovery.py": "f016dfbfbc875b4effa39862006895d195a4d4cc7f0b360b353914d68f75cfd6"
+  },
+  "purpose_extension_sha256": "fe41f08b5b3b91fe3c740fef3c3b70d0c08e088c9f2edfcf8a1b79494f180e37",
+  "recovery_executor_sha256": "8ae34d06d2b1926970f17b6e7faad013ed20f086fa1d3f07b5d6d055dc236f91",
+  "recovery_freeze_sha256": "ce7818e501ebfa56b53ad2b1a0a4b8ca3b2d1fdb0ab6f6b3265078e7bee05c70",
+  "standard": "SOURCE_ONLY_OWN_RECORD_ROOT_ADAPTER_LITERAL_PROFILE_1"
+}

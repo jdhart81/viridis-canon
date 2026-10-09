@@ -1,0 +1,11 @@
+Portable source-only runtime review:88 tests (44 runtime/preservation cases +44 prospective/catalog/code-identity cases). No actual API/credential/protected readback or production-root read is permitted. The runner projects the production ROOT only inside unit fixtures and routes only exact individually SHA-pinned immutable manual code leaves to existing merged public sources. Original source bytes, source hashes, function bodies and acceptance predicates are untouched. Full35 is the already-public exact test projection; fixture activation/runtime/catalog files are test-only inputs, never operational receipts. Actual independent predecessor22+55/95pins/35rows evidence stays in the private review packet. Actual candidate/pre-CAS/post-CAS scans, install, nomination and publication remain unperformed by this packet.
+
+Root alone adopts this snapshot under00_lab_infrastructure/gates/production_snapshots/phase7-20261008-own-record-runtime-successor/after/production_execution_dependencies and the wrapper directly under00_lab_infrastructure/gates, where discovery includes it. Manual daeb/e0/994/da185/c329 code uses its existing public source snapshots. The two older db127/2dca leaves are preserved exact in this snapshot. No raw API response, keys, token, account transport, actual publication record body or private evidence is included.
+
+Immutable v002 succeeds the reviewed v001 runtime only by the final approved own-comparison module pin and the v002 prospective-source path. Runtime function ASTs and prospective helper bytes remain exact. Earlier v001 remains historical.
+
+Immutable v003 succeeds v002 solely through final approved own-comparison module9cb531 and the byte-identical reader’s v003 path. Earlier sources/reviews remain historical; no candidate scan or installation is inferred.
+
+Immutable v004 adds final approved own-OAI identity source cf74da23 through its pin and byte-identical v004 reader path. No other runtime function body or helper changes; all prior packets remain historical.
+
+Immutable v005 binds the approved diagnostic typed-HOLD registrar21b813 and byte-identical v005 reader path. Owncf74 and every runtime function body remain exact v004; no installation or acceptance is inferred.

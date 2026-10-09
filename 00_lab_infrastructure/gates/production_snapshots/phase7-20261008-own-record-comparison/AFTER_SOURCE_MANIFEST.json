@@ -1,0 +1,105 @@
+{
+  "api_writes": 0,
+  "protected_changes": 0,
+  "raw_provider_evidence_included": false,
+  "source_rows": [
+    {
+      "bytes": 33095,
+      "git_path": "00_lab_infrastructure/gates/own_record_comparison.py",
+      "name": "own_record_comparison.py",
+      "sha256": "9cb531a6d2644bb64c87a08c66a938fd643608dc9a2be91414330d70dcd0ee18"
+    },
+    {
+      "bytes": 33804,
+      "git_path": "00_lab_infrastructure/gates/methods_digest_registration_legacy_0fc739.py",
+      "name": "methods_digest_registration_legacy_0fc739.py",
+      "sha256": "0fc7393010cbc96d74b1fb6135cfb78cea88dd8ba692ba44c511242d5a89bdf9"
+    },
+    {
+      "bytes": 38823,
+      "git_path": "00_lab_infrastructure/gates/methods_digest_registration.py",
+      "name": "methods_digest_registration.py",
+      "sha256": "64ab79aa1883415bdb85893d7db9a4a3d7c594305a638cfcb120f2c8136c5e68"
+    },
+    {
+      "bytes": 26326,
+      "git_path": "00_lab_infrastructure/gates/digest_public_state.py",
+      "name": "digest_public_state.py",
+      "sha256": "b746fbbd4acc393799c75eb49bcc432e6c130e2b0858d8ed16082c8724127fe0"
+    },
+    {
+      "bytes": 15537,
+      "git_path": "00_lab_infrastructure/gates/phase7_policy_versions.py",
+      "name": "phase7_policy_versions.py",
+      "sha256": "964878bfa230615108c620b0b6b5eab863b0879d343c151db0ffa06a117ad882"
+    },
+    {
+      "bytes": 36031,
+      "git_path": "00_lab_infrastructure/gates/phase7_runtime_update.py",
+      "name": "phase7_runtime_update.py",
+      "sha256": "517adb25a3073296b8aabd2267706beef602f7307bf390ebaa5d2db91ab89d6e"
+    },
+    {
+      "bytes": 21456,
+      "git_path": "00_lab_infrastructure/gates/weekly_digest_executor.py",
+      "name": "weekly_digest_executor.py",
+      "sha256": "8ae34d06d2b1926970f17b6e7faad013ed20f086fa1d3f07b5d6d055dc236f91"
+    },
+    {
+      "bytes": 30566,
+      "git_path": "00_lab_infrastructure/gates/weekly_digest_boundary.py",
+      "name": "weekly_digest_boundary.py",
+      "sha256": "f822c457d7bbb49a3671417e851b34fa3fcc2dc3fdc63e05ad10f1898249062e"
+    },
+    {
+      "bytes": 10334,
+      "git_path": "00_lab_infrastructure/gates/weekly_digest_runtime.py",
+      "name": "weekly_digest_runtime.py",
+      "sha256": "6c582e1101bc38d8127cabcd0fe51f0e7394d3926214cdf5a51676c6e6595557"
+    },
+    {
+      "bytes": 9112,
+      "git_path": "00_lab_infrastructure/gates/weekly_checkpoint_replay.py",
+      "name": "weekly_checkpoint_replay.py",
+      "sha256": "271c88251df80148d4e9cb15b273076f3da38ff6aab4711b40c8d18b944b00f9"
+    },
+    {
+      "bytes": 5494,
+      "git_path": "00_lab_infrastructure/gates/invoke_weekly_digest.py",
+      "name": "invoke_weekly_digest.py",
+      "sha256": "47c1591f102f323c7cb3092540c1e8355ea2474e340235795823a1b642d0a8f2"
+    },
+    {
+      "bytes": 11562,
+      "git_path": "00_lab_infrastructure/gates/prepare_weekly_configuration.py",
+      "name": "prepare_weekly_configuration.py",
+      "sha256": "94701b4df11af82042a60640b126afd7f62c735a2fde373ed9cca34614ee1cb2"
+    },
+    {
+      "bytes": 9761,
+      "git_path": "00_lab_infrastructure/gates/owned_creation_recovery.py",
+      "name": "owned_creation_recovery.py",
+      "sha256": "71ebb57b814d748fe6c17d8b11aa6f4ed497234ebbc606440ce4c971342f0714"
+    },
+    {
+      "bytes": 3311,
+      "git_path": "00_lab_infrastructure/gates/own_prior_record.py",
+      "name": "own_prior_record.py",
+      "sha256": "6c9470155320032e51603536f4de3f10fb9b0c7bf5faf5a040c2f01e4c473bd7"
+    },
+    {
+      "bytes": 36444,
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-own-record-comparison/after/runtime_successor.py",
+      "name": "runtime_successor.py",
+      "sha256": "b86c9c1969a31e0d778dcfa11d3fb3eb1d8e8b4abdf2b73f8f87887a475a3aa9"
+    },
+    {
+      "bytes": 11694,
+      "git_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-own-record-comparison/after/own_prospective_catalog.py",
+      "name": "own_prospective_catalog.py",
+      "sha256": "b9dd8954b2d6a51115a96e1ed6561401de3120fa56dbbff14ce8e37e2a2bffa9"
+    }
+  ],
+  "standard": "VRS-PHASE7-OWN-RECORD-SOURCE-SNAPSHOT-1",
+  "status": "SOURCE_ONLY_NOT_INSTALLED"
+}

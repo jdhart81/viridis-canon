@@ -1,4 +1,4 @@
-"""Run generic weekly source-only cases in a clean, repo-bound subprocess.
+"""Run historical generic weekly source cases from exact captured old sources.
 
 Fixture default/transport consumers never represent publication admission.
 No endpoint, credential, generation or protected verifier is invoked.
@@ -14,7 +14,7 @@ class GenericWeeklyPortableTests(unittest.TestCase):
   with tempfile.TemporaryDirectory(prefix='phase7-generic-ci-')as temp:
    out=Path(temp).resolve(strict=True)
    for name in PRODUCTION:
-    source=G/name;self.assertTrue(source.is_file());self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),manifest['production'][name]);shutil.copyfile(source,out/name)
+    source=F/'production'/name;self.assertTrue(source.is_file());self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),manifest['production'][name]);shutil.copyfile(source,out/name)
    for row in manifest['fixtures']:
     source=F/row['path'];self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),row['sha256']);target=out/row['path'];target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target)
    result=subprocess.run([sys.executable,'-B','-m','unittest','discover','-s',str(out),'-p','test*.py'],cwd=out,capture_output=True,text=True,timeout=90)

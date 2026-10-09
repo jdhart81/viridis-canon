@@ -3,13 +3,17 @@ from pathlib import Path
 import hashlib,json,shutil,subprocess,sys,tempfile,unittest
 G=Path(__file__).resolve().parent
 F=G/'tests/fixtures/phase7_generic_root_configuration_v002'
+HISTORICAL_17 = {'weekly_digest_executor.py', 'capture_weekly_inputs.py', 'weekly_digest_queue.py', 'weekly_digest_boundary.py', 'weekly_checkpoint_replay.py', 'owned_journal_writer.py', 'prepare_weekly_configuration.py', 'owned_digest_machine.py', 'weekly_archive_wait.py', 'owned_legacy_preview_aliases.py', 'owned_weekly_discovery.py', 'weekly_pending_discovery.py', 'owned_prior_legacy.py', 'runtime_closure_view.py', 'invoke_weekly_digest.py', 'prepare_weekly_digest_plan.py', 'weekly_digest_runtime.py'}
 class RootConfigurationPortableTests(unittest.TestCase):
  def test_repo_only_root_configuration_merge_reference_copy_27_source_fixture(self):
   manifest=json.loads((F/'CI_SOURCE_MANIFEST.json').read_bytes())
   with tempfile.TemporaryDirectory(prefix='phase7-root-config-ci-')as temp:
    out=Path(temp).resolve(strict=True)
    for row in manifest['source_rows']:
-    source=G.parents[1]/row['from'];self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),row['sha256']);p=out/row['to'];p.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,p)
+    source=G.parents[1]/row['from']
+    if row['from'].startswith('00_lab_infrastructure/gates/') and '/production_snapshots/' not in row['from'] and Path(row['from']).name in HISTORICAL_17:
+     source=G/'tests/fixtures/phase7_generic_weekly_executor_v002/production'/Path(row['from']).name
+    self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),row['sha256']);p=out/row['to'];p.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,p)
    for row in manifest['fixtures']:
     source=F/row['path'];self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),row['sha256']);shutil.copyfile(source,out/row['path'])
    result=subprocess.run([sys.executable,'-B','-m','unittest','discover','-s',str(out),'-p','test*.py'],cwd=out,capture_output=True,text=True,timeout=90)

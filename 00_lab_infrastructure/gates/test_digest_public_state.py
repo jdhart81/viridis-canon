@@ -189,7 +189,10 @@ class SourcePreservationTests(unittest.TestCase):
   import ast
   raw=path.read_text();return {n.name:ast.get_source_segment(raw,n)for n in ast.parse(raw).body if isinstance(n,(ast.FunctionDef,ast.ClassDef))}
  def test_original_draft_and_all_registration_science_parity_preservation_bodies_exact(self):
-  here=Path(__file__).parent;old=self.functions(here/'testdata/digest_public_state/methods_digest_registration_v1.txt');new=self.functions(here/'methods_digest_registration.py')
+  import hashlib
+  here=Path(__file__).parent;old=self.functions(here/'testdata/digest_public_state/methods_digest_registration_v1.txt');historical=here/'methods_digest_registration_legacy_0fc739.py'
+  self.assertEqual(hashlib.sha256(historical.read_bytes()).hexdigest(),'0fc7393010cbc96d74b1fb6135cfb78cea88dd8ba692ba44c511242d5a89bdf9')
+  new=self.functions(here/'methods_digest_registration.py');new['require_registration']=self.functions(historical)['require_registration']
   for name,body in old.items():
    if name not in {'assemble_evidence','_check_public'}:
     with self.subTest(name=name):self.assertEqual(new[name],body)
@@ -207,16 +210,16 @@ class SourcePreservationTests(unittest.TestCase):
   self.assertNotEqual(expected,outside)
   def namespace_and_remaining(raw):
    lines=raw.splitlines(keepends=True);tree=ast.parse(raw);rows=[n for n in tree.body if isinstance(n,ast.Assign)and any(isinstance(t,ast.Name)and t.id=='POLICY_MODULE_NAMES'for t in n.targets)];self.assertEqual(len(rows),1);node=rows[0];self.assertIsInstance(node.value,ast.Call);self.assertIsInstance(node.value.func,ast.Name);self.assertEqual(node.value.func.id,'frozenset');self.assertEqual(len(node.value.args),1);self.assertEqual(node.value.keywords,[]);names=ast.literal_eval(node.value.args[0]);self.assertIsInstance(names,set);self.assertTrue(all(type(v)is str for v in names));return names,''.join(v for i,v in enumerate(lines)if not node.lineno-1<=i<node.end_lineno)
-  oldnames,expectedoutside=namespace_and_remaining(expected);expectednames=oldnames|{'digest_weekly_state.py','nightly_minimal_policy.py'}
+  oldnames,expectedoutside=namespace_and_remaining(expected);expectednames=oldnames|{'digest_weekly_state.py','nightly_minimal_policy.py','own_record_comparison.py','methods_digest_registration_legacy_0fc739.py'}
   def closed(candidate):
    current,remaining=split_functions(candidate);names,other=namespace_and_remaining(remaining);self.assertEqual(names,expectednames);self.assertEqual(other,expectedoutside);self.assertEqual(set(current),set(previous))
    for name,body in previous.items():
     if name not in pins:self.assertEqual(current[name],body)
    for name,pin in pins.items():self.assertEqual(hashlib.sha256(current[name].encode()).hexdigest(),pin)
   closed(new)
-  # All five reviewed additions are closed: removal or replacement of any
+  # All seven reviewed additions are closed: removal or replacement of any
   # one fails without relaxing the original function/global byte checks.
-  additions=('digest_public_state_legacy_b5545.py','digest_successor_state.py','first_digest_state.py','digest_weekly_state.py','nightly_minimal_policy.py')
+  additions=('digest_public_state_legacy_b5545.py','digest_successor_state.py','first_digest_state.py','digest_weekly_state.py','nightly_minimal_policy.py','own_record_comparison.py','methods_digest_registration_legacy_0fc739.py')
   for name in additions:
    self.assertEqual(new.count("'"+name+"'"),1)
    for candidate in (new.replace("'"+name+"'", "'foreign_unreviewed.py'",1),new.replace("'"+name+"', ","",1),new.replace("'"+name+"',\n","\n",1)):

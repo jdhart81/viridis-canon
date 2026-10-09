@@ -25,6 +25,8 @@ class OperatingAuthorityParserTests(unittest.TestCase):
  def test_later_operational_text_is_not_scientific_evidence(self):
   changed=current.replace(b'up to 24 h',b'up to 12 h')
   self.assertEqual(new.normalize_authority_plan(changed),expected)
+ def test_undelimited_operational_appendix_rejected(self):
+  self.reject(prior+b'\n## Undelimited operation\ntext\n')
  def test_no_new_exact_operating_mode_pin(self):
   source=(RUNTIME/'phase7_policy_versions.py').read_text()
   self.assertNotIn('OPERATING_MODE_SECTION_SHA256',source)

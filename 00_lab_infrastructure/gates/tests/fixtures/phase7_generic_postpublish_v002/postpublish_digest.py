@@ -91,6 +91,14 @@ def verify_config(root,config):
     data=raw(__file__);blob=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
     need(node.get('sha')==blob and node.get('type')=='blob' and node.get('mode') in {'100644','100755'},'OWN_MERGED_COMPOSITION_SOURCE')
 
+def require_current_in_source_session(root,plan,current,invoke):
+    """Use the existing exact runtime view inside the measured purpose session."""
+    pins=[r for r in plan['purpose_source_pins'] if r['name']=='runtime_closure_view.py']
+    need(len(pins)==1,'UNIQUE_RUNTIME_VIEW_SOURCE')
+    with invoke.session(root,plan):
+        view=load(root,{k:pins[0][k] for k in ('path','sha256')},'_exact_postpublish_runtime_view')
+        return view.require_current(current,plan['current_runtime_closure'],root=root,purpose_pins=plan['purpose_source_pins'])
+
 def register_once(config,output):
     """Explicit preserving CAS. Never calls a Zenodo write or a verifier."""
     root=ROOT.resolve(strict=True);verify_config(root,config);out=Path(output)
@@ -98,7 +106,7 @@ def register_once(config,output):
     _,plan=object_value(root,config['plan']);_,result=object_value(root,config['publication_result'])
     need(result.get('status')=='PUBLISHED_STRICT_READBACK_PASS' and result.get('published') is True and result.get('ssot_writes')==0 and result.get('plan')==config['plan'],'ACTUAL_POSTPUBLISH_RESULT')
     invoke_pin=next(v for v in plan['purpose_source_pins'] if v['name']=='invoke_weekly_digest.py');invoke=load(root,{k:invoke_pin[k] for k in ('path','sha256')},'_exact_postpublish_source_session')
-    current=load(root,plan['runtime_consumer'],'_exact_postpublish_current_runtime');current.require_current_closure(plan['current_runtime_closure'])
+    current=load(root,plan['runtime_consumer'],'_exact_postpublish_current_runtime');require_current_in_source_session(root,plan,current,invoke)
     ssot=root/'RESEARCH_PIPELINE_v2/corpus_ledger.json';before_raw=raw(ssot);need(digest(before_raw)==config['expected_ssot_sha256'],'FRESH_SSOT_CAS');before=json.loads(before_raw)
     input_bytes={str(bound(root,config[k])[0]):bound(root,config[k])[1] for k in ('plan','publication_result','merged_pr','merged_commit','merged_tree')}
     out.mkdir(parents=True,exist_ok=False);immutable(out/'BEFORE_LEDGER.json',before_raw)
@@ -129,7 +137,7 @@ def register_once(config,output):
         newsha=corpus.write_guarded_ledger(ssot,fresh,config['expected_ssot_sha256']);after_raw=raw(ssot);need(digest(after_raw)==newsha,'CAS_READBACK');immutable(out/'AFTER_LEDGER.json',after_raw)
         after=json.loads(after_raw);rescanned=corpus.build(root,root/'RESEARCH_PIPELINE_v2/lean_certificates',previous_ledger=after);projection=check_scan(before,rows,rescanned);registrar.require_registration(root,receipt,after);registrar._finish(materials);live.require_origin(root,plan['source_origin'],plan['purpose_source_pins'])
     # Full default re-read and clean source-session exit precede terminal seal.
-    current.require_current_closure(plan['current_runtime_closure']);verify_config(root,config)
+    require_current_in_source_session(root,plan,current,invoke);verify_config(root,config)
     for p,data in input_bytes.items():need(raw(p)==data,'FINAL_INPUT_RACE')
     registrar._finish(materials)
     need(raw(ssot)==after_raw,'FINAL_SSOT_RACE')
@@ -199,13 +207,14 @@ def prepare_catalog(config,checkout,output):
     """Fresh real default pointer projection, TMP candidates only; no deploy."""
     root=ROOT.resolve(strict=True);verify_config(root,config);checkout=Path(checkout).resolve(strict=True);out=Path(output)
     need(out.is_absolute() and out.resolve().is_relative_to(Path('/private/tmp')) and not out.exists(),'NEW_TMP_CATALOG_OUTPUT')
-    _,plan=object_value(root,config['plan']);current=load(root,plan['runtime_consumer'],'_exact_current_catalog_runtime');current.require_current_closure(plan['current_runtime_closure'])
+    _,plan=object_value(root,config['plan'])
+    invoke_pin=next(r for r in plan['purpose_source_pins'] if r['name']=='invoke_weekly_digest.py');invoke=load(root,{k:invoke_pin[k] for k in ('path','sha256')},'_exact_catalog_source_session')
+    current=load(root,plan['runtime_consumer'],'_exact_current_catalog_runtime');require_current_in_source_session(root,plan,current,invoke)
     ssot=root/'RESEARCH_PIPELINE_v2/corpus_ledger.json';ledger_raw=raw(ssot);need(digest(ledger_raw)==config['expected_ssot_sha256'],'CURRENT_CATALOG_SSOT_HASH');ledger=json.loads(ledger_raw)
     before_path=checkout/'docs/data/catalog.json';config_path=checkout/'catalog/config.json';before_raw=raw(before_path);config_raw=raw(config_path);before=json.loads(before_raw);original_config=json.loads(config_raw)
     materials=checkout_materials(root,checkout,config['merged_tree'])
     baselines=checkout_baselines(root,checkout,config['merged_tree'])
     need(digest(before_raw)==baselines['docs/data/catalog.json']['sha256'] and digest(config_raw)==baselines['catalog/config.json']['sha256'],'EXACT_PRIOR_DATA_CONFIG_READS')
-    invoke_pin=next(r for r in plan['purpose_source_pins'] if r['name']=='invoke_weekly_digest.py');invoke=load(root,{k:invoke_pin[k] for k in ('path','sha256')},'_exact_catalog_source_session')
     old_path=sys.path[:]
     try:
         sys.path.insert(0,str(checkout))
@@ -220,7 +229,7 @@ def prepare_catalog(config,checkout,output):
             second,second_failures=pointers.registered_digest_pointers(root,ledger);need(not second_failures and exact(groups,second),'CURRENT_CATALOG_COHORT_CHANGED')
             verify_checkout_loaded(checkout,materials)
     finally:sys.path[:]=old_path
-    current.require_current_closure(plan['current_runtime_closure']);verify_config(root,config)
+    require_current_in_source_session(root,plan,current,invoke);verify_config(root,config)
     need(raw(ssot)==ledger_raw and raw(before_path)==before_raw and raw(config_path)==config_raw,'CATALOG_INPUT_RACE')
     need(checkout_materials(root,checkout,config['merged_tree'])==materials,'CATALOG_SOURCE_RACE')
     need(checkout_baselines(root,checkout,config['merged_tree'])==baselines,'PRIOR_CATALOG_DATA_CONFIG_RACE')

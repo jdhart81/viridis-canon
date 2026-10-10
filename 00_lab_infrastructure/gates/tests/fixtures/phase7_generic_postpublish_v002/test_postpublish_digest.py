@@ -176,7 +176,7 @@ class CatalogEarlyAdmission(unittest.TestCase):
             # a real population nor a PASS receipt is constructed by this test.
             baselines={'docs/data/catalog.json':{'sha256':p.digest(b'{}')},'catalog/config.json':{'sha256':p.digest(b'{}')}}
             path_route=lambda value:root if value=='/private/tmp' else Path(value)
-            with patch.object(p,'ROOT',root),patch.object(p,'Path',side_effect=path_route),patch.object(p,'verify_config'),patch.object(p,'object_value',return_value=(root/'plan.json',plan)),patch.object(p,'load',side_effect=[current,invoke]),patch.object(p,'checkout_materials',return_value={}),patch.object(p,'checkout_baselines',return_value=baselines),patch.dict('sys.modules',{'weekly_digest_runtime':live,'weekly_digest_executor':engine}),patch.object(p.importlib,'import_module',side_effect=AssertionError('renderer reached before rejection')):
+            with patch.object(p,'ROOT',root),patch.object(p,'Path',side_effect=path_route),patch.object(p,'verify_config'),patch.object(p,'object_value',return_value=(root/'plan.json',plan)),patch.object(p,'load',side_effect=[invoke,current]),patch.object(p,'require_current_in_source_session'),patch.object(p,'checkout_materials',return_value={}),patch.object(p,'checkout_baselines',return_value=baselines),patch.dict('sys.modules',{'weekly_digest_runtime':live,'weekly_digest_executor':engine}),patch.object(p.importlib,'import_module',side_effect=AssertionError('renderer reached before rejection')):
                 with self.assertRaisesRegex(ValueError,'HOLD_FORGED_ORIGIN' if forged_origin else 'HOLD_MALFORMED_PLAN'):
                     p.prepare_catalog(config,checkout,output)
             self.assertFalse(output.exists())
@@ -207,12 +207,12 @@ class CatalogBoundBaselines(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'OWN_PRIOR_CATALOG_DATA_BLOB'):
                 p.checkout_baselines(root,checkout,tb)
             ledger=root/'RESEARCH_PIPELINE_v2/corpus_ledger.json';ledger.parent.mkdir();ledger.write_bytes(b'{}')
-            plan_binding={'path':'plan.json','sha256':'1'*64};plan={'runtime_consumer':{'path':'runtime.py','sha256':'2'*64},'current_runtime_closure':{'path':'closure.json','sha256':'3'*64}}
+            plan_binding={'path':'plan.json','sha256':'1'*64};plan={'purpose_source_pins':[{'name':'invoke_weekly_digest.py','path':str(root/'invoke.py'),'sha256':'4'*64}], 'runtime_consumer':{'path':'runtime.py','sha256':'2'*64},'current_runtime_closure':{'path':'closure.json','sha256':'3'*64}}
             cfg={'plan':plan_binding,'merged_tree':tb,'expected_ssot_sha256':p.digest(b'{}')};real_object=p.object_value
             route_object=lambda actual_root,value:(root/'plan.json',plan) if value==plan_binding else real_object(actual_root,value)
             route_path=lambda value:root if value=='/private/tmp' else Path(value)
             current=types.SimpleNamespace(require_current_closure=lambda *_:None)
-            with patch.object(p,'ROOT',root),patch.object(p,'Path',side_effect=route_path),patch.object(p,'verify_config'),patch.object(p,'object_value',side_effect=route_object),patch.object(p,'load',return_value=current),patch.object(p,'checkout_materials',return_value={}):
+            with patch.object(p,'ROOT',root),patch.object(p,'Path',side_effect=route_path),patch.object(p,'verify_config'),patch.object(p,'object_value',side_effect=route_object),patch.object(p,'load',side_effect=[types.SimpleNamespace(),current]),patch.object(p,'require_current_in_source_session'),patch.object(p,'checkout_materials',return_value={}):
                 with self.assertRaisesRegex(ValueError,'OWN_PRIOR_CATALOG_DATA_BLOB'):
                     p.prepare_catalog(cfg,checkout,root/'output')
             self.assertFalse((root/'output').exists())

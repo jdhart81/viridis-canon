@@ -103,6 +103,9 @@ def prior_protected_projection(value,*,representation):
     raw_json(value)
     result={k:deepcopy(v)for k,v in value.items()if k not in _PROCESSING_ROOTS}
     if 'links'in result:result['links']=_prior_links(result['links'])
+    if isinstance(result.get('links'),dict)and 'archive'in result['links']:
+        need(result['links']['archive']==BASE+'/api/records/'+record_identifier(value.get('id'))+'/files-archive','PRIOR_ARCHIVE_LINK_IDENTITY')
+        result['links'].pop('archive')
     if isinstance(result.get('parent'),dict):
         result['parent']={k:deepcopy(v)for k,v in result['parent'].items()if k not in _PROCESSING_ROOTS}
         if 'links'in result['parent']:result['parent']['links']=_prior_links(result['parent']['links'])

@@ -1,0 +1,57 @@
+{
+  "access_right": "open",
+  "communities": [
+    {
+      "id": "viridis-canon"
+    }
+  ],
+  "creators": [
+    {
+      "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+      "name": "Hart, Justin D.",
+      "orcid": "0009-0008-3082-2482"
+    }
+  ],
+  "description": "Proof-reconciled generated exploration of a finite representation-capacity ceiling under forbidden-proxy mutual-information leakage; not peer reviewed, empirically validated, significant, novel, legally dispositive, canon-admitted, or published.",
+  "doi": "10.5281/zenodo.21968337",
+  "keywords": [
+    "predictive information",
+    "invariant representation",
+    "privacy funnel",
+    "forbidden proxy",
+    "alignment",
+    "capacity tradeoff"
+  ],
+  "language": "eng",
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "notes": "The paired Lean proof is audited verified. Significance remains uncleared; no empirical, legal, causal, adoption, revenue, rights, ledger, canon, or publication evidence is inferred.",
+  "publication_date": "2026-08-16",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.19317982",
+      "relation": "isDerivedFrom",
+      "scheme": "doi"
+    }
+  ],
+  "relations": {
+    "version": [
+      {
+        "index": 0,
+        "is_last": false,
+        "parent": {
+          "pid_type": "recid",
+          "pid_value": "21968336"
+        }
+      }
+    ]
+  },
+  "resource_type": {
+    "subtype": "preprint",
+    "title": "Preprint",
+    "type": "publication"
+  },
+  "title": "The Invariance Capacity Ceiling: Forbidden-Proxy Alignment Caps Predictive Information",
+  "version": "0.2.0-proof-reconciled"
+}

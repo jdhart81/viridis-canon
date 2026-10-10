@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "identifier": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p>Companion manuscript submitted to <em>Physical Review E</em> (Regular Article, interdisciplinary physics section). The paper applies stochastic thermodynamics and information theory to a question usually treated outside physics: the structure of goal-directed human-AI dialogue.</p>\n\n<p>Building on the Intelligence Bound master inequality (Hart 2025) — which establishes that learning systems are data-limited, sitting 10^11 to 10^16 below the Landauer ceiling — the manuscript models dialogue as <em>adaptive co-measurement</em> and derives three results:</p>\n\n<ol>\n<li><strong>Adaptive questioning is a richness pump.</strong> By holding per-sample mutual information near its maximum, an inquiring agent raises the binding \"rho dot B\" term of the Intelligence Bound, pulling effective dI/dt closer to the thermodynamic ceiling than passive observation can.</li>\n<li><strong>Goal-directedness composes additively.</strong> The information-yield of a dialogue decomposes into geometric, computational, measurement, decoherence, and mutualistic terms — the same five-component slack accounting derived for the underlying Intelligence Bound (Hart 2026, Zenodo 20320324).</li>\n<li><strong>The Wavefunction analogy is mathematical, not metaphysical.</strong> The paper uses Hilbert-space formalism strictly as a tool for tracking superposed hypotheses under adaptive measurement; no claim depends on quantum mechanics or on a quantum description of cognition.</li>\n</ol>\n\n<p><strong>Files.</strong> <code>co-measurement.pdf</code> (manuscript), <code>co-measurement.tex</code> (LaTeX source, standard article class — APS RevTeX 4.2 port planned for final submission), <code>co-measurement-algorithms.pdf</code> + <code>.tex</code> (algorithmic supplement), <code>cover-letter.pdf</code> + <code>.md</code> (editorial cover letter).</p>\n\n<p><strong>Formal verification.</strong> Two layers of machine-checked formalization accompany this submission. (1) The Intelligence Bound itself is formalized in Lean 4 as the <code>P0_IntelligenceBound_COMPILED</code> module of the Viridis Compiled Theorem Stack (concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>). (2) The seven non-physical theorems supporting this paper's adaptive-measurement model are released as the <em>Co-Measurement Formal Verification Companion</em> (Zenodo 20399474), with every proof returning only the three standard Lean kernel axioms.</p>\n\n<p><strong>Citation.</strong> Hart, J. D. (2026). <em>Co-Measurement: Human-AI Dialogue as an Adaptive Measurement Instrument in the Data-Limited Regime of the Intelligence Bound.</em> Zenodo. <a href=\"https://doi.org/10.5281/zenodo.20399676\">https://doi.org/10.5281/zenodo.20399676</a></p>\n\n<p>Part of the Viridis canon. Affiliation: Viridis LLC, Columbia Falls, Montana, USA. Contact: viridisnorthllc@gmail.com.</p>",
+    "doi": "10.5281/zenodo.20399676",
+    "keywords": [
+      "co-measurement",
+      "Intelligence Bound",
+      "information thermodynamics",
+      "Landauer principle",
+      "optimal experimental design",
+      "measurement",
+      "human-AI interaction",
+      "AI alignment",
+      "data richness",
+      "richness pump",
+      "active inference",
+      "thermodynamics of prediction",
+      "quantum cognition",
+      "stochastic thermodynamics"
+    ],
+    "license": "cc-by-4.0",
+    "publication_date": "2026-05-26",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.20399474",
+        "relation": "isSupplementedBy",
+        "resource_type": "software",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.19317983",
+        "relation": "isSupplementTo",
+        "resource_type": "publication-other",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isPartOf",
+        "resource_type": "publication-other",
+        "scheme": "doi"
+      }
+    ],
+    "title": "Co-Measurement: Human–AI Dialogue as an Adaptive Measurement Instrument in the Data-Limited Regime of the Intelligence Bound",
+    "upload_type": "publication"
+  }
+}

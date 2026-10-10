@@ -1,0 +1,227 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Series S3 (Gaian) of the Viridis Canon — standalone record; the core IB canon spine is unchanged.</strong> Proves the Ecopoietic Threshold Theorem (ETT): terraforming/ecopoiesis is a driven nonequilibrium phase transition. There is a dissipation floor below which ignition is impossible regardless of time or intelligence; drive and control-information are Landauer-priced substitutes on a convex frontier; permanence is a barrier height (Kramers), not a biomass stock; and ignition time diverges with an exact -1/2 critical exponent near threshold. Names the <em>Gardener</em> (13th Intelligence-Bound self-application).</p><p><strong>Scope.</strong> Lean 4 (Aristotle-verified, zero <code>sorry</code>) certifies the analytic results, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "doi": "10.5281/zenodo.20735557",
+    "keywords": [
+      "ecopoiesis",
+      "terraforming",
+      "nonequilibrium phase transition",
+      "cusp catastrophe",
+      "dissipation floor",
+      "Kramers permanence",
+      "critical slowing down",
+      "Intelligence Bound",
+      "astrobiology",
+      "Lean 4",
+      "uncertified"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Viridis Canon, Series S3 (Gaian). Lean 4 proofs (Aristotle project 4ea92a60-6c51-48a7-b208-d0d7452c201b, zero sorry, axioms within {propext, Classical.choice, Quot.sound}) certify five results: ignition requires drive above a dissipation floor (iff, Phi_crit=Trad*(sigma_int-sigma_exp)); the drive&lt;-&gt;information substitution frontier k/(Phi-Phi_maint) is strictly convex; Kramers permanence biconditional dV&gt;=kT*ln(t_m/tau0); ignition time diverges as (Phi-Phi_c)^(-1/2) (critical slowing down); and the exact -1/2 critical exponent. They do not certify empirical magnitudes. Working paper, not peer-reviewed. Does NOT modify the core canon spine (frozen at v9).",
+    "publication_date": "2026-06-17",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20735556"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Ecopoietic Threshold Theorem: Terraforming as a Driven Nonequilibrium Phase Transition",
+    "version": "S3-ETT-v1"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "Read actual authenticated deposition base and validate exact record identity; not executed",
+      "url": "https://zenodo.org/api/deposit/depositions/20735557"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20735557/actions/edit"
+    },
+    {
+      "execution": "UNAUTHORIZED_PLAN_ONLY; revalidate against authenticated deposition base and approve resolved exact hash",
+      "method": "PUT",
+      "payload_file": "deposition_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/20735557"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20735557/actions/publish"
+    },
+    {
+      "method": "GET",
+      "required_assertions": [
+        "title == before.title",
+        "doi == before.doi",
+        "relations == before.relations",
+        "all other fields except description/keywords semantically exact, including original license/resource_type/custom/alternate_identifiers"
+      ],
+      "url": "https://zenodo.org/api/records/20735557"
+    }
+  ],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Series S3 (Gaian) of the Viridis Canon — standalone record; the core IB canon spine is unchanged.</strong> Proves the Ecopoietic Threshold Theorem (ETT): terraforming/ecopoiesis is a driven nonequilibrium phase transition. There is a dissipation floor below which ignition is impossible regardless of time or intelligence; drive and control-information are Landauer-priced substitutes on a convex frontier; permanence is a barrier height (Kramers), not a biomass stock; and ignition time diverges with an exact -1/2 critical exponent near threshold. Names the <em>Gardener</em> (13th Intelligence-Bound self-application).</p><p><strong>Scope.</strong> Lean 4 (Aristotle-verified, zero <code>sorry</code>) certifies the analytic results, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "doi": "10.5281/zenodo.20735557",
+    "keywords": [
+      "ecopoiesis",
+      "terraforming",
+      "nonequilibrium phase transition",
+      "cusp catastrophe",
+      "dissipation floor",
+      "Kramers permanence",
+      "critical slowing down",
+      "Intelligence Bound",
+      "astrobiology",
+      "Lean 4"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Viridis Canon, Series S3 (Gaian). Lean 4 proofs (Aristotle project 4ea92a60-6c51-48a7-b208-d0d7452c201b, zero sorry, axioms within {propext, Classical.choice, Quot.sound}) certify five results: ignition requires drive above a dissipation floor (iff, Phi_crit=Trad*(sigma_int-sigma_exp)); the drive&lt;-&gt;information substitution frontier k/(Phi-Phi_maint) is strictly convex; Kramers permanence biconditional dV&gt;=kT*ln(t_m/tau0); ignition time diverges as (Phi-Phi_c)^(-1/2) (critical slowing down); and the exact -1/2 critical exponent. They do not certify empirical magnitudes. Working paper, not peer-reviewed. Does NOT modify the core canon spine (frozen at v9).",
+    "publication_date": "2026-06-17",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20735556"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Ecopoietic Threshold Theorem: Terraforming as a Driven Nonequilibrium Phase Transition",
+    "version": "S3-ETT-v1"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:31.262861+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "concept_id": "20735556",
+  "doi": "10.5281/zenodo.20735557",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "latest_observed_record_id": "20735557",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "e59c629f698aa63bbd98c2db4c2b1ddfc3349f330048152c15b81d87389ad729",
+    "after_payload.json": "e477b2311b353438cbeef5c0910cfaa22555c6c4c6dfce3f766fb8571718d858",
+    "before_metadata.json": "0d27d4981e40ad57020693dc7aa00e033b6f11e37dd8dabec616e22197e175b4",
+    "deposition_payload.json": "d208b01a25453521731eac97ea35be4761cf87ec5df97269b77db3b5b42e4acb",
+    "rollback_expected_public.json": "d703e6176c07dafd1d0e3464866d16aeb88932a98765fb4d313ac4d5c3ec12aa",
+    "rollback_payload.json": "054bd3c4d485b95d9cb121f28cc7129c570dbb4bd43a89b6192bd6c6b2776eaf"
+  },
+  "preconditions": [
+    "Justin approves these exact immutable titles and exact payload SHA256 values",
+    "Complete sandbox edit -> PUT -> publish and one newversion readback",
+    "Authenticated production GET must map this exact DOI and provide the actual deposition metadata base",
+    "Merge only description/keywords into the authenticated base; server version graph, DOI, license and all other public fields must survive readback",
+    "Reject any unjustified field conversion, error, timeout, conflict or unknown outcome; do not publish or retry blindly",
+    "Server version graph preservation requires sandbox and authenticated deposition readback"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "20735557",
+  "rollback": "Before republish: separately approved POST https://zenodo.org/api/deposit/depositions/20735557/actions/discard. After republish: separately approved edit -> PUT the rollback deposition projection based on authenticated metadata -> publish; verify original public metadata and unchanged files. Exact prior metadata and rollback hashes remain in this row. No production rollback was executed.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

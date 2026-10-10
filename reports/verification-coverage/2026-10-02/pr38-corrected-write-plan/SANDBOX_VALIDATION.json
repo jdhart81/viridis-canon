@@ -1,0 +1,16 @@
+{
+  "expected_checks": [
+    "Exact Canon v5 title survives metadata amendment and newversion",
+    "Sandbox-assigned DOI survives metadata amendment",
+    "All server relations and bibliographic identifiers survive metadata amendment",
+    "New version gets distinct sandbox DOI with same concept lineage and preserved related_identifiers"
+  ],
+  "guarded_attempt_receipt": "sandbox-attempt-1/RECEIPT.json",
+  "guarded_attempt_receipt_sha256": "48ffc72624cfc883bd386c564a9e5462613072b0e90ff5edb529f82f1d7bcb5c",
+  "production_writes": 0,
+  "readback": null,
+  "reason": "Sandbox session is signed out; GitHub OAuth requests new repository-webhook administrator access and was not authorized. No existing sandbox-specific token is configured. Justin has been asked to sign in directly.",
+  "sandbox_writes": 0,
+  "status": "HOLD_AUTHENTICATION_REQUIRED",
+  "tests_executed": false
+}

@@ -1,0 +1,681 @@
+{
+  "access": {
+    "embargo": {
+      "active": false,
+      "reason": null
+    },
+    "files": "public",
+    "record": "public",
+    "status": "open"
+  },
+  "created": "2026-10-08T05:40:54.924793+00:00",
+  "custom_fields": {},
+  "deletion_status": {
+    "is_deleted": false,
+    "status": "P"
+  },
+  "files": {
+    "count": 6,
+    "enabled": true,
+    "entries": {
+      "DIGEST_MANIFEST.json": {
+        "access": {
+          "hidden": false
+        },
+        "checksum": "md5:d8696c3486908b6f6987d9fd3afdb046",
+        "ext": "json",
+        "id": "d9ddf01e-c783-44c6-bb81-e1fdcb6f2423",
+        "key": "DIGEST_MANIFEST.json",
+        "links": {
+          "content": "https://zenodo.org/api/records/23226761/files/DIGEST_MANIFEST.json/content",
+          "self": "https://zenodo.org/api/records/23226761/files/DIGEST_MANIFEST.json"
+        },
+        "metadata": {},
+        "mimetype": "application/json",
+        "size": 183087,
+        "storage_class": "L"
+      },
+      "METHODS_NOTES.zip": {
+        "access": {
+          "hidden": false
+        },
+        "checksum": "md5:5e3957ef6f8ab304f03c29a5884d3b66",
+        "ext": "zip",
+        "id": "8e55b878-c3d3-491a-a66d-20792be8a21e",
+        "key": "METHODS_NOTES.zip",
+        "links": {
+          "container": "https://zenodo.org/api/records/23226761/files/METHODS_NOTES.zip/container",
+          "content": "https://zenodo.org/api/records/23226761/files/METHODS_NOTES.zip/content",
+          "self": "https://zenodo.org/api/records/23226761/files/METHODS_NOTES.zip"
+        },
+        "metadata": {},
+        "mimetype": "application/zip",
+        "size": 30500744,
+        "storage_class": "L"
+      },
+      "PUBLICATION_BINDING.json": {
+        "access": {
+          "hidden": false
+        },
+        "checksum": "md5:fcc193a365934f26b6034ee5b48f194a",
+        "ext": "json",
+        "id": "1eb3595e-a8fb-49ce-885e-7f3f62a0b026",
+        "key": "PUBLICATION_BINDING.json",
+        "links": {
+          "content": "https://zenodo.org/api/records/23226761/files/PUBLICATION_BINDING.json/content",
+          "self": "https://zenodo.org/api/records/23226761/files/PUBLICATION_BINDING.json"
+        },
+        "metadata": {},
+        "mimetype": "application/json",
+        "size": 3939,
+        "storage_class": "L"
+      },
+      "metadata.json": {
+        "access": {
+          "hidden": false
+        },
+        "checksum": "md5:dd79f0e2fb84d7f969d449e62f5d0961",
+        "ext": "json",
+        "id": "c971f53c-0a8c-4298-aee2-cf97b97db7a3",
+        "key": "metadata.json",
+        "links": {
+          "content": "https://zenodo.org/api/records/23226761/files/metadata.json/content",
+          "self": "https://zenodo.org/api/records/23226761/files/metadata.json"
+        },
+        "metadata": {},
+        "mimetype": "application/json",
+        "size": 6211,
+        "storage_class": "L"
+      },
+      "paper.pdf": {
+        "access": {
+          "hidden": false
+        },
+        "checksum": "md5:e2dad7632e6df916762840b665d9c1d7",
+        "ext": "pdf",
+        "id": "bc97d010-205b-4c80-95aa-bc11ea3205fb",
+        "key": "paper.pdf",
+        "links": {
+          "content": "https://zenodo.org/api/records/23226761/files/paper.pdf/content",
+          "iiif_api": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/full/0/default.png",
+          "iiif_base": "https://zenodo.org/api/iiif/record:23226761:paper.pdf",
+          "iiif_canvas": "https://zenodo.org/api/iiif/record:23226761/canvas/paper.pdf",
+          "iiif_info": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/info.json",
+          "self": "https://zenodo.org/api/records/23226761/files/paper.pdf"
+        },
+        "metadata": {
+          "height": 792,
+          "width": 612
+        },
+        "mimetype": "application/pdf",
+        "size": 15484,
+        "storage_class": "L"
+      },
+      "paper.tex": {
+        "access": {
+          "hidden": false
+        },
+        "checksum": "md5:1149c039be534d6776ebc0a432e2f69b",
+        "ext": "tex",
+        "id": "91954306-dd49-4d4b-bb65-b45568005387",
+        "key": "paper.tex",
+        "links": {
+          "content": "https://zenodo.org/api/records/23226761/files/paper.tex/content",
+          "self": "https://zenodo.org/api/records/23226761/files/paper.tex"
+        },
+        "metadata": {},
+        "mimetype": "application/x-tex",
+        "size": 5906,
+        "storage_class": "L"
+      }
+    },
+    "order": [],
+    "total_bytes": 30715371
+  },
+  "id": "23226761",
+  "is_draft": false,
+  "is_published": true,
+  "links": {
+    "access": "https://zenodo.org/api/records/23226761/access",
+    "access_grants": "https://zenodo.org/api/records/23226761/access/grants",
+    "access_links": "https://zenodo.org/api/records/23226761/access/links",
+    "access_request": "https://zenodo.org/api/records/23226761/access/request",
+    "access_users": "https://zenodo.org/api/records/23226761/access/users",
+    "archive": "https://zenodo.org/api/records/23226761/files-archive",
+    "archive_media": "https://zenodo.org/api/records/23226761/media-files-archive",
+    "communities": "https://zenodo.org/api/records/23226761/communities",
+    "communities-suggestions": "https://zenodo.org/api/records/23226761/communities-suggestions",
+    "doi": "https://doi.org/10.5281/zenodo.23226761",
+    "draft": "https://zenodo.org/api/records/23226761/draft",
+    "file_modification": "https://zenodo.org/api/records/23226761/file-modification",
+    "files": "https://zenodo.org/api/records/23226761/files",
+    "latest": "https://zenodo.org/api/records/23226761/versions/latest",
+    "latest_html": "https://zenodo.org/records/23226761/latest",
+    "media_files": "https://zenodo.org/api/records/23226761/media-files",
+    "parent": "https://zenodo.org/api/records/23226760",
+    "parent_doi": "https://doi.org/10.5281/zenodo.23226760",
+    "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.23226760",
+    "parent_html": "https://zenodo.org/records/23226760",
+    "preview_html": "https://zenodo.org/records/23226761?preview=1",
+    "quota_increase": "https://zenodo.org/api/records/23226761/quota-increase",
+    "request_deletion": "https://zenodo.org/api/records/23226761/request-deletion",
+    "requests": "https://zenodo.org/api/records/23226761/requests",
+    "reserve_doi": "https://zenodo.org/api/records/23226761/draft/pids/doi",
+    "self": "https://zenodo.org/api/records/23226761",
+    "self_doi": "https://doi.org/10.5281/zenodo.23226761",
+    "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.23226761",
+    "self_html": "https://zenodo.org/records/23226761",
+    "self_iiif_manifest": "https://zenodo.org/api/iiif/record:23226761/manifest",
+    "self_iiif_sequence": "https://zenodo.org/api/iiif/record:23226761/sequence/default",
+    "thumbnails": {
+      "10": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E10,/0/default.jpg",
+      "100": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E100,/0/default.jpg",
+      "1200": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E1200,/0/default.jpg",
+      "250": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E250,/0/default.jpg",
+      "50": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E50,/0/default.jpg",
+      "750": "https://zenodo.org/api/iiif/record:23226761:paper.pdf/full/%5E750,/0/default.jpg"
+    },
+    "versions": "https://zenodo.org/api/records/23226761/versions"
+  },
+  "media_files": {
+    "count": 1,
+    "enabled": true,
+    "entries": {
+      "paper.pdf.ptif": {
+        "access": {
+          "hidden": true
+        },
+        "ext": "ptif",
+        "id": "83ae9f2c-dd5f-46e8-9d37-5a2b8563c0aa",
+        "key": "paper.pdf.ptif",
+        "links": {
+          "content": "https://zenodo.org/api/records/23226761/files/paper.pdf.ptif/content",
+          "self": "https://zenodo.org/api/records/23226761/files/paper.pdf.ptif"
+        },
+        "metadata": null,
+        "mimetype": "application/octet-stream",
+        "processor": {
+          "source_file_id": "bc97d010-205b-4c80-95aa-bc11ea3205fb",
+          "status": "init",
+          "type": "image-tiles"
+        },
+        "size": 0,
+        "storage_class": "L"
+      }
+    },
+    "order": [],
+    "total_bytes": 0
+  },
+  "metadata": {
+    "creators": [
+      {
+        "affiliations": [
+          {
+            "name": "Viridis LLC, Columbia Falls, Montana, USA"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Hart",
+          "given_name": "Justin D.",
+          "identifiers": [
+            {
+              "identifier": "0009-0008-3082-2482",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Hart, Justin D.",
+          "type": "personal"
+        }
+      }
+    ],
+    "description": "<p><strong>Viridis Methods Digest — 2026-W41</strong></p><p>logical validity given the model, not empirical validation of its assumptions</p><h2>Reviewed scoped notes</h2><ul><li>Run-125 — foundation basis INDEPENDENT: shared_channel_inverse [SUBSTANTIVE; CERTIFIED_WITNESS: witness_shared_channel_inverse]; directional_gain_bounds [SUBSTANTIVE; CERTIFIED_WITNESS: witness_directional_gain_aligned]; rank_deficient_unit_gain [SUBSTANTIVE; CERTIFIED_WITNESS: witness_rank_deficient_unit_gain]; worstcase_deadline [SUBSTANTIVE; CERTIFIED_WITNESS: witness_worstcase_deadline]; top_subspace_mean_cost [SUBSTANTIVE; CERTIFIED_WITNESS: witness_top_subspace_mean_cost]; isotropic_rank_fraction [SUBSTANTIVE; CERTIFIED_WITNESS: witness_isotropic_rank_fraction]</li><li>Run-126 — foundation basis INDEPENDENT: mutual_information_chain_balance [SUBSTANTIVE; CERTIFIED_WITNESS: mutual_information_chain_balance_nonvacuity]; forbidden_proxy_capacity_ceiling [SUBSTANTIVE; CERTIFIED_WITNESS: forbidden_proxy_capacity_ceiling_nonvacuity]; capacity_ceiling_slack_decomposition [SUBSTANTIVE; CERTIFIED_WITNESS: capacity_ceiling_slack_decomposition_nonvacuity]; perfect_invariance_target_proxy_collapse [SUBSTANTIVE; CERTIFIED_WITNESS: perfect_invariance_target_proxy_collapse_nonvacuity]; erasure_family_tightness [SUBSTANTIVE; CERTIFIED_WITNESS: erasure_family_tightness_nonvacuity]</li><li>Run-128 — foundation basis INDEPENDENT: bilateral_benefit_iff_reciprocity_corridor [SUBSTANTIVE; CERTIFIED_WITNESS: witness_C1_benefit]; strict_corridor_nonempty_iff_product_condition [SUBSTANTIVE; CERTIFIED_WITNESS: witness_C2_corridor_nonempty]; share_coordinate_corridor_equivalence [SUBSTANTIVE; CERTIFIED_WITNESS: witness_C3]; nash_midpoint_unique_maximizer [SUBSTANTIVE; CERTIFIED_WITNESS: witness_C4]; bandwidth_scaling_cannot_restore_feasibility [SUBSTANTIVE; CERTIFIED_WITNESS: witness_C4]</li><li>Run-129 — foundation basis INDEPENDENT: anytime_change_mixture_martingale [SUBSTANTIVE; CERTIFIED_WITNESS: c12_nonvacuous]; anytime_change_ville_certificate [SUBSTANTIVE; CERTIFIED_WITNESS: c2_sup_nonvacuous]; change_component_dominance_and_penalty [SUBSTANTIVE; CERTIFIED_WITNESS: c3_nonvacuous]; bounded_overshoot_expected_delay [SUBSTANTIVE; CERTIFIED_WITNESS: c4_nonvacuous]</li><li>Run-131 — foundation basis INDEPENDENT: threshold_order [ROUTINE; CERTIFIED_WITNESS: cshc_nonvacuous]; band_width_identity [ROUTINE; CERTIFIED_WITNESS: cshc_nonvacuous]; closed_loop_area_identity [SUBSTANTIVE; CERTIFIED_WITNESS: cshc_nonvacuous]; bias_translation [SUBSTANTIVE; CERTIFIED_WITNESS: cshc_nonvacuous]; directional_cost_recovery [SUBSTANTIVE; CERTIFIED_WITNESS: cshc_nonvacuous]</li><li>Run-134 — foundation basis INDEPENDENT: response_objective_completion [ROUTINE; CERTIFIED_WITNESS: alignment_certificate_nonvacuous]; alignment_gap_identity [ROUTINE; CERTIFIED_WITNESS: alignment_certificate_nonvacuous]; kantorovich_cross_multiplied_identity [ROUTINE; CERTIFIED_WITNESS: alignment_certificate_nonvacuous]; alignment_bound_nonnegative [ROUTINE; CERTIFIED_WITNESS: alignment_certificate_nonvacuous]; alignment_certificate_nonvacuous [ROUTINE; CERTIFIED_WITNESS: alignment_certificate_nonvacuous]</li><li>Run-141 — foundation basis INDEPENDENT: slow_rate_characterization [SUBSTANTIVE; CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous]; slow_rate_lower_min [SUBSTANTIVE; CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous]; slow_rate_upper_mean [SUBSTANTIVE; CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous]; slow_rate_monotone [SUBSTANTIVE; CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous]; equal_rates_no_gain [SUBSTANTIVE; CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous]; finite_asymmetry_strict_mean [SUBSTANTIVE; CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous]; symbiotic_equalization_nonvacuous [SUBSTANTIVE; CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous]</li></ul><p>Every archived historical claim outside the listed exact note scopes is UNCERTIFIED. This digest creates no aggregate theorem or empirical validation. Appendix results do not count toward certified-result headlines.</p>",
+    "languages": [
+      {
+        "id": "eng",
+        "title": {
+          "en": "English"
+        }
+      }
+    ],
+    "publication_date": "2026-10-07",
+    "publisher": "Zenodo",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.21968301",
+        "relation_type": {
+          "id": "issupplementto",
+          "title": {
+            "de": "Ergänzt",
+            "en": "Is supplement to"
+          }
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21968331",
+        "relation_type": {
+          "id": "issupplementto",
+          "title": {
+            "de": "Ergänzt",
+            "en": "Is supplement to"
+          }
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21968337",
+        "relation_type": {
+          "id": "issupplementto",
+          "title": {
+            "de": "Ergänzt",
+            "en": "Is supplement to"
+          }
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21968361",
+        "relation_type": {
+          "id": "issupplementto",
+          "title": {
+            "de": "Ergänzt",
+            "en": "Is supplement to"
+          }
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21968383",
+        "relation_type": {
+          "id": "issupplementto",
+          "title": {
+            "de": "Ergänzt",
+            "en": "Is supplement to"
+          }
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21971041",
+        "relation_type": {
+          "id": "issupplementto",
+          "title": {
+            "de": "Ergänzt",
+            "en": "Is supplement to"
+          }
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21971042",
+        "relation_type": {
+          "id": "issupplementto",
+          "title": {
+            "de": "Ergänzt",
+            "en": "Is supplement to"
+          }
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21971043",
+        "relation_type": {
+          "id": "issupplementto",
+          "title": {
+            "de": "Ergänzt",
+            "en": "Is supplement to"
+          }
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21971047",
+        "relation_type": {
+          "id": "issupplementto",
+          "title": {
+            "de": "Ergänzt",
+            "en": "Is supplement to"
+          }
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21971052",
+        "relation_type": {
+          "id": "issupplementto",
+          "title": {
+            "de": "Ergänzt",
+            "en": "Is supplement to"
+          }
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.22236427",
+        "relation_type": {
+          "id": "issupplementto",
+          "title": {
+            "de": "Ergänzt",
+            "en": "Is supplement to"
+          }
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.22236496",
+        "relation_type": {
+          "id": "issupplementto",
+          "title": {
+            "de": "Ergänzt",
+            "en": "Is supplement to"
+          }
+        },
+        "scheme": "doi"
+      }
+    ],
+    "resource_type": {
+      "id": "publication-preprint",
+      "title": {
+        "de": "Preprint",
+        "en": "Preprint"
+      }
+    },
+    "rights": [
+      {
+        "description": {
+          "en": "The Creative Commons Attribution license allows re-distribution and re-use of a licensed work on the condition that the creator is appropriately credited."
+        },
+        "icon": "cc-by-icon",
+        "id": "cc-by-4.0",
+        "props": {
+          "scheme": "spdx",
+          "url": "https://creativecommons.org/licenses/by/4.0/legalcode"
+        },
+        "title": {
+          "en": "Creative Commons Attribution 4.0 International"
+        }
+      }
+    ],
+    "subjects": [
+      {
+        "subject": "Viridis Methods Digest"
+      },
+      {
+        "subject": "2026-W41"
+      },
+      {
+        "subject": "scoped mathematical results"
+      }
+    ],
+    "title": "Viridis Methods Digest — 2026-W41"
+  },
+  "parent": {
+    "access": {
+      "grants": [],
+      "links": [],
+      "owned_by": {
+        "user": "1591505"
+      },
+      "settings": {
+        "accept_conditions_text": null,
+        "allow_guest_requests": false,
+        "allow_user_requests": false,
+        "secret_link_expiration": 0
+      }
+    },
+    "communities": {
+      "default": "f8748a51-f9c6-49ed-b6e9-9dc488f84419",
+      "entries": [
+        {
+          "access": {
+            "member_policy": "closed",
+            "members_visibility": "public",
+            "record_submission_policy": "open",
+            "review_policy": "open",
+            "visibility": "public"
+          },
+          "children": {
+            "allow": false
+          },
+          "created": "2026-05-27T13:53:58.928937+00:00",
+          "custom_fields": {},
+          "deletion_status": {
+            "is_deleted": false,
+            "status": "P"
+          },
+          "id": "f8748a51-f9c6-49ed-b6e9-9dc488f84419",
+          "links": {},
+          "metadata": {
+            "curation_policy": "<p><strong>Admission is by machine verification, not by editorial judgement.</strong></p>\n<p>A result enters the Viridis Canon only when all of the following hold:</p>\n<ol>\n<li><strong>Zero <code>sorry</code>.</strong> The Lean 4 development compiles with no unproved placeholders.</li>\n<li><strong>Clean axiom audit.</strong> <code>#print axioms</code> on every named theorem returns exactly <code>{propext, Classical.choice, Quot.sound}</code>. A dependency on <code>sorryAx</code> is disqualifying, even where the file compiles &mdash; compiling and being proved are not the same thing, and we check the difference on every submission.</li>\n<li><strong>Non-vacuity.</strong> Conditional results must come with an exhibited instance of their hypotheses. A theorem that is true only because its premises are unsatisfiable is quarantined, not published.</li>\n<li><strong>Significance.</strong> Zero-<code>sorry</code> is necessary, not sufficient. Results that are formally correct but say nothing new are held.</li>\n</ol>\n<p><strong>Fresh verification.</strong> Every record is re-verified before deposit. Provenance &mdash; the prover run, the toolchain, the Mathlib pin &mdash; travels with the artifact.</p>\n<p><strong>Scope honesty.</strong> Where a formalisation rests on a hypothesis that is not itself proved (for example, a topological step Mathlib does not yet support), that hypothesis is stated explicitly in the artifact and in the paper. Readers should never have to reverse-engineer what was actually established.</p>\n<p><strong>Quarantine over retraction.</strong> A result later found vacuous, mis-stated, or resting on a refuted premise is flagged and quarantined in place rather than quietly removed. The record of what we believed and when is part of the corpus.</p>\n<p><strong>Versioning.</strong> The spine is cut as a release, not per proof &mdash; when enough verified modules accumulate or at a milestone. The concept DOI always resolves to the latest version.</p>\n<p><strong>Corrections welcome.</strong> A counterexample to anything here is more valuable to us than another proof. Send it to Justin@viridisconservation.com</p>",
+            "description": "Formally verified Lean 4 theorem stack and applied research of Viridis LLC, grounded in the Intelligence Bound master inequality dI/dt ≤ P·D/(kB·T·ln 2). Every claim compiles. Curated by Justin D. Hart, Viridis LLC.",
+            "page": "<p><strong>The Viridis Canon is a machine-checked corpus, not a paper collection.</strong></p>\n<p>Every result here compiles in Lean 4 against Mathlib with zero <code>sorry</code> and a clean axiom audit (<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code> only). Nothing enters on the strength of a plausible argument. If a claim is not machine-checked, it is not in the canon &mdash; and where a paper&rsquo;s scope exceeds what has been verified, the paper says so explicitly.</p>\n<h3>Start here</h3>\n<p><strong><a href=\"https://doi.org/10.5281/zenodo.19317982\">Viridis Compiled Theorem Stack &mdash; Canon v10.2.0</a></strong><br>The spine. One growing, versioned corpus under a single concept DOI that always resolves to the latest release. If you read one record, read this one.</p>\n<p>Everything else in this community is either a <em>series</em> module that folds into the spine, or a <em>standalone</em> branch deposit &mdash; a companion proof artifact for a paper headed to a specific journal.</p>\n<h3>The root</h3>\n<p>The whole corpus descends from one formally verified inequality &mdash; the <strong>Intelligence Bound</strong>:</p>\n<blockquote>\n<p>İ(&tau;) &le; min( &rho;B , P / k<sub>B</sub>T ln 2 )</p>\n</blockquote>\n<p>The rate at which any physical system can create mutual information with its environment is capped by two ceilings at once: a data-processing limit and a thermodynamic one. Destroying biosphere complexity destroys information that took real energy and time to create, and that no system can recreate faster than this bound allows. Every downstream result inherits its authority from that proof.</p>\n<h3>How to read the corpus</h3>\n<ul>\n<li><strong>Spine</strong> &mdash; the versioned canon release. Cite the concept DOI; it always resolves to the newest version.</li>\n<li><strong>Series</strong> &mdash; thematic modules (S1&ndash;S6: thermodynamics, monitoring, ecology, agency, alignment, cognition) that fold into the next spine cut.</li>\n<li><strong>Standalone</strong> &mdash; a verified result that is also a journal-bound paper. Gets its own DOI, cross-linked to the spine.</li>\n</ul>\n<h3>Selected results</h3>\n<ul>\n<li><a href=\"https://doi.org/10.5281/zenodo.20422179\">Verdigraph NeuroGenesis</a> &mdash; self-evolving AI-agent cognitive substrates</li>\n<li><a href=\"https://doi.org/10.5281/zenodo.20399676\">Co-Measurement</a> &mdash; human&ndash;AI dialogue as an adaptive measurement instrument, with a <a href=\"https://doi.org/10.5281/zenodo.20412507\">seven-theorem verification companion</a></li>\n<li><a href=\"https://doi.org/10.5281/zenodo.20838923\">Wu Wei Dominance</a> &mdash; why rate-matched intervention strictly out-diversifies aggression in ecosystem management</li>\n<li><a href=\"https://doi.org/10.5281/zenodo.20982967\">The Thermodynamic Corridor Theorem</a> &mdash; Onsager variational flux and the Lambert-W optimum</li>\n<li><a href=\"https://doi.org/10.5281/zenodo.20636044\">The Stewardship Allocation Theorem</a> &mdash; conservation budgeting as projected dual mirror descent</li>\n<li><a href=\"https://doi.org/10.5281/zenodo.20008839\">Plasma-Mediated N₂ Fixation</a> &mdash; applied proofs series</li>\n</ul>\n<p><em>Sort this community by <strong>Most downloaded</strong> or <strong>Most viewed</strong> to see what readers actually reach for.</em></p>\n<p><strong>Curated by Justin D. Hart, Viridis LLC</strong> &mdash; Columbia Falls, Montana. Theorems co-authored with <strong>Aristotle (Harmonic)</strong>.<br>Correspondence: Justin@viridisconservation.com &middot; <a href=\"https://viridisconservation.com\">viridisconservation.com</a></p>",
+            "title": "Viridis Canon — Compiled Theorem Stack",
+            "type": {
+              "id": "topic"
+            },
+            "website": "https://doi.org/10.5281/zenodo.19317982"
+          },
+          "revision_id": 5,
+          "slug": "viridis-canon",
+          "updated": "2026-07-29T04:17:35.589274+00:00"
+        }
+      ],
+      "ids": [
+        "f8748a51-f9c6-49ed-b6e9-9dc488f84419"
+      ]
+    },
+    "id": "23226760",
+    "pids": {
+      "doi": {
+        "client": "datacite",
+        "identifier": "10.5281/zenodo.23226760",
+        "provider": "datacite"
+      }
+    }
+  },
+  "pids": {
+    "doi": {
+      "client": "datacite",
+      "identifier": "10.5281/zenodo.23226761",
+      "provider": "datacite"
+    },
+    "oai": {
+      "identifier": "oai:zenodo.org:23226761",
+      "provider": "oai"
+    }
+  },
+  "revision_id": 4,
+  "stats": {
+    "all_versions": {
+      "data_volume": 0.0,
+      "downloads": 0,
+      "unique_downloads": 0,
+      "unique_views": 0,
+      "views": 0
+    },
+    "this_version": {
+      "data_volume": 0.0,
+      "downloads": 0,
+      "unique_downloads": 0,
+      "unique_views": 0,
+      "views": 0
+    }
+  },
+  "status": "published",
+  "swh": {},
+  "ui": {
+    "access_status": {
+      "description_l10n": "The record and files are publicly accessible.",
+      "embargo_date_l10n": null,
+      "icon": "unlock",
+      "id": "open",
+      "message_class": "",
+      "title_l10n": "Open"
+    },
+    "created_date_l10n_long": "October 8, 2026",
+    "creators": {
+      "affiliations": [
+        [
+          1,
+          "Viridis LLC, Columbia Falls, Montana, USA",
+          null
+        ]
+      ],
+      "creators": [
+        {
+          "affiliations": [
+            [
+              1,
+              "Viridis LLC, Columbia Falls, Montana, USA"
+            ]
+          ],
+          "person_or_org": {
+            "family_name": "Hart",
+            "given_name": "Justin D.",
+            "identifiers": [
+              {
+                "identifier": "0009-0008-3082-2482",
+                "scheme": "orcid"
+              }
+            ],
+            "name": "Hart, Justin D.",
+            "type": "personal"
+          }
+        }
+      ]
+    },
+    "custom_fields": {},
+    "description_stripped": "Viridis Methods Digest — 2026-W41\nlogical validity given the model, not empirical validation of its assumptions\nReviewed scoped notes\n\nRun-125 — foundation basis INDEPENDENT: shared_channel_inverse [SUBSTANTIVE; CERTIFIED_WITNESS: witness_shared_channel_inverse]; directional_gain_bounds [SUBSTANTIVE; CERTIFIED_WITNESS: witness_directional_gain_aligned]; rank_deficient_unit_gain [SUBSTANTIVE; CERTIFIED_WITNESS: witness_rank_deficient_unit_gain]; worstcase_deadline [SUBSTANTIVE; CERTIFIED_WITNESS: witness_worstcase_deadline]; top_subspace_mean_cost [SUBSTANTIVE; CERTIFIED_WITNESS: witness_top_subspace_mean_cost]; isotropic_rank_fraction [SUBSTANTIVE; CERTIFIED_WITNESS: witness_isotropic_rank_fraction]\nRun-126 — foundation basis INDEPENDENT: mutual_information_chain_balance [SUBSTANTIVE; CERTIFIED_WITNESS: mutual_information_chain_balance_nonvacuity]; forbidden_proxy_capacity_ceiling [SUBSTANTIVE; CERTIFIED_WITNESS: forbidden_proxy_capacity_ceiling_nonvacuity]; capacity_ceiling_slack_decomposition [SUBSTANTIVE; CERTIFIED_WITNESS: capacity_ceiling_slack_decomposition_nonvacuity]; perfect_invariance_target_proxy_collapse [SUBSTANTIVE; CERTIFIED_WITNESS: perfect_invariance_target_proxy_collapse_nonvacuity]; erasure_family_tightness [SUBSTANTIVE; CERTIFIED_WITNESS: erasure_family_tightness_nonvacuity]\nRun-128 — foundation basis INDEPENDENT: bilateral_benefit_iff_reciprocity_corridor [SUBSTANTIVE; CERTIFIED_WITNESS: witness_C1_benefit]; strict_corridor_nonempty_iff_product_condition [SUBSTANTIVE; CERTIFIED_WITNESS: witness_C2_corridor_nonempty]; share_coordinate_corridor_equivalence [SUBSTANTIVE; CERTIFIED_WITNESS: witness_C3]; nash_midpoint_unique_maximizer [SUBSTANTIVE; CERTIFIED_WITNESS: witness_C4]; bandwidth_scaling_cannot_restore_feasibility [SUBSTANTIVE; CERTIFIED_WITNESS: witness_C4]\nRun-129 — foundation basis INDEPENDENT: anytime_change_mixture_martingale [SUBSTANTIVE; CERTIFIED_WITNESS: c12_nonvacuous]; anytime_change_ville_certificate [SUBSTANTIVE; CERTIFIED_WITNESS: c2_sup_nonvacuous]; change_component_dominance_and_penalty [SUBSTANTIVE; CERTIFIED_WITNESS: c3_nonvacuous]; bounded_overshoot_expected_delay [SUBSTANTIVE; CERTIFIED_WITNESS: c4_nonvacuous]\nRun-131 — foundation basis INDEPENDENT: threshold_order [ROUTINE; CERTIFIED_WITNESS: cshc_nonvacuous]; band_width_identity [ROUTINE; CERTIFIED_WITNESS: cshc_nonvacuous]; closed_loop_area_identity [SUBSTANTIVE; CERTIFIED_WITNESS: cshc_nonvacuous]; bias_translation [SUBSTANTIVE; CERTIFIED_WITNESS: cshc_nonvacuous]; directional_cost_recovery [SUBSTANTIVE; CERTIFIED_WITNESS: cshc_nonvacuous]\nRun-134 — foundation basis INDEPENDENT: response_objective_completion [ROUTINE; CERTIFIED_WITNESS: alignment_certificate_nonvacuous]; alignment_gap_identity [ROUTINE; CERTIFIED_WITNESS: alignment_certificate_nonvacuous]; kantorovich_cross_multiplied_identity [ROUTINE; CERTIFIED_WITNESS: alignment_certificate_nonvacuous]; alignment_bound_nonnegative [ROUTINE; CERTIFIED_WITNESS: alignment_certificate_nonvacuous]; alignment_certificate_nonvacuous [ROUTINE; CERTIFIED_WITNESS: alignment_certificate_nonvacuous]\nRun-141 — foundation basis INDEPENDENT: slow_rate_characterization [SUBSTANTIVE; CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous]; slow_rate_lower_min [SUBSTANTIVE; CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous]; slow_rate_upper_mean [SUBSTANTIVE; CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous]; slow_rate_monotone [SUBSTANTIVE; CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous]; equal_rates_no_gain [SUBSTANTIVE; CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous]; finite_asymmetry_strict_mean [SUBSTANTIVE; CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous]; symbiotic_equalization_nonvacuous [SUBSTANTIVE; CERTIFIED_WITNESS: symbiotic_equalization_nonvacuous]\nEvery archived historical claim outside the listed exact note scopes is UNCERTIFIED. This digest creates no aggregate theorem or empirical validation. Appendix results do not count toward certified-result headlines.",
+    "is_draft": false,
+    "languages": [
+      {
+        "id": "eng",
+        "title_l10n": "English"
+      }
+    ],
+    "publication_date_l10n_long": "October 7, 2026",
+    "publication_date_l10n_medium": "Oct 7, 2026",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.21968301",
+        "relation_type": {
+          "id": "issupplementto",
+          "title_l10n": "Is supplement to"
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21968331",
+        "relation_type": {
+          "id": "issupplementto",
+          "title_l10n": "Is supplement to"
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21968337",
+        "relation_type": {
+          "id": "issupplementto",
+          "title_l10n": "Is supplement to"
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21968361",
+        "relation_type": {
+          "id": "issupplementto",
+          "title_l10n": "Is supplement to"
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21968383",
+        "relation_type": {
+          "id": "issupplementto",
+          "title_l10n": "Is supplement to"
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21971041",
+        "relation_type": {
+          "id": "issupplementto",
+          "title_l10n": "Is supplement to"
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21971042",
+        "relation_type": {
+          "id": "issupplementto",
+          "title_l10n": "Is supplement to"
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21971043",
+        "relation_type": {
+          "id": "issupplementto",
+          "title_l10n": "Is supplement to"
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21971047",
+        "relation_type": {
+          "id": "issupplementto",
+          "title_l10n": "Is supplement to"
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21971052",
+        "relation_type": {
+          "id": "issupplementto",
+          "title_l10n": "Is supplement to"
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.22236427",
+        "relation_type": {
+          "id": "issupplementto",
+          "title_l10n": "Is supplement to"
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.22236496",
+        "relation_type": {
+          "id": "issupplementto",
+          "title_l10n": "Is supplement to"
+        },
+        "scheme": "doi"
+      }
+    ],
+    "resource_type": {
+      "id": "publication-preprint",
+      "title_l10n": "Preprint"
+    },
+    "rights": [
+      {
+        "description_l10n": "The Creative Commons Attribution license allows re-distribution and re-use of a licensed work on the condition that the creator is appropriately credited.",
+        "icon": "cc-by-icon",
+        "id": "cc-by-4.0",
+        "props": {
+          "scheme": "spdx",
+          "url": "https://creativecommons.org/licenses/by/4.0/legalcode"
+        },
+        "title_l10n": "Creative Commons Attribution 4.0 International"
+      }
+    ],
+    "updated_date_l10n_long": "October 8, 2026",
+    "version": "v1"
+  },
+  "updated": "2026-10-08T05:40:55.743455+00:00",
+  "versions": {
+    "index": 1,
+    "is_latest": true,
+    "is_latest_draft": true
+  }
+}

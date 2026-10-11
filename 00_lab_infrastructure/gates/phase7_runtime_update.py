@@ -16,7 +16,8 @@ CORPUS_SHA256 = 'bfd2ec16c1e9c39ebcd39fdb45ccf9683b6864a95d3496109df49f9a7639a17
 GATE_PREFIX = 'RESEARCH_PIPELINE_v2/verification_coverage_gates/'
 SELECTOR_TARGETS = {GATE_PREFIX + 'corpus_ledger.py', GATE_PREFIX + 'nightly_coverage.py'}
 GUARD_SHA256 = 'fd9a4fe406445f3181391ca83f462c4889fb3392c4c93d5ac0d54838c223484f'
-CLOSEOUT_SHA256 = '9663c006df997e368373f64e0f10e324661893d7b9246ea92a6c8dfec0b7ec3b'
+HISTORICAL_CLOSEOUT_SHA256 = '9663c006df997e368373f64e0f10e324661893d7b9246ea92a6c8dfec0b7ec3b'
+CLOSEOUT_SHA256 = 'd447b86beb36841930f6472366be8dc69db8c4e85cc8cd21664ac32b2e2c22b2'
 PREVIOUS_SELECTOR_RECEIPT_SHA256 = '02957fbd6ea67e02e7e6979a06f0d07d4e3d46be6dbe8b783b847fb9ba9192b9'
 PREVIOUS_SELECTOR_MERGE_COMMIT = 'cb76d964121878031f2693f56cd21908d291b1d5'
 POLICY_TARGETS = SELECTOR_TARGETS | {GATE_PREFIX + 'premise_declaration.py', GATE_PREFIX + 'publication_gate.py', GATE_PREFIX + 'doi_audit.py'}
@@ -364,13 +365,14 @@ def validate(root, ledger, original_receipt, *, now=None):
         source = _bound(root, v['source'])
         blob = hashlib.sha1(b'blob ' + str(source.stat().st_size).encode() + b'\x00' + source.read_bytes()).hexdigest()
         archived = policy and v['path'] in version_closure['pinned']
-        source_files = version_closure['origins'][v['path']] if archived else (previous_files if policy and p.name == 'closeout_streak.py' else pr_files)
+        historical_closeout = policy and p.name == 'closeout_streak.py' and v['sha256'] == HISTORICAL_CLOSEOUT_SHA256
+        source_files = version_closure['origins'][v['path']] if archived else (previous_files if historical_closeout else pr_files)
         git_path = '00_lab_infrastructure/gates/' + (v['path'][len(GATE_PREFIX):] if archived else p.name)
         if archived and v['sha256'] != version_closure['pinned'][v['path']]:
             raise ValueError('archive additional module differs from catalog binding')
         if p.read_bytes() != source.read_bytes() or source_files.get(git_path, {}).get('sha') != blob:
             raise ValueError('additional module differs from own merged Git blob')
-        if policy and p.name == 'closeout_streak.py' and v['sha256'] != CLOSEOUT_SHA256:
+        if policy and p.name == 'closeout_streak.py' and v['sha256'] not in {HISTORICAL_CLOSEOUT_SHA256, CLOSEOUT_SHA256}:
             raise ValueError('policy update changes approved closeout consumer')
         if policy and not archived and p.name=='public_metadata_readback.py':
             prior_reader=_bound(root,r['public_metadata_readback_baseline']).read_bytes()

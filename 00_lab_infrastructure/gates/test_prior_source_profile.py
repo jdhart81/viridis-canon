@@ -17,15 +17,64 @@ class SourceTests(unittest.TestCase):
   for n,v in a.items():
    if n!='registered_relation_template':self.assertEqual(v,b[n],n)
  def test_entire_old_authority_prefix_exact(self):self.assertTrue((HERE/'phase7_policy_versions.py').read_bytes().startswith((OLD/'phase7_policy_versions.py').read_bytes()))
- def test_two_names_all_other_runtime_statements_exact(self):
-  def split(p):
-   tree=ast.parse(p.read_bytes());out=[];names=None
-   for n in tree.body:
-    if isinstance(n,ast.Assign)and any(isinstance(t,ast.Name)and t.id=='POLICY_MODULE_NAMES'for t in n.targets):names=ast.literal_eval(n.value.args[0])
-    else:out.append(ast.dump(n))
+ def runtime_source_profile(self,raw):
+  # Normalize only the exact approved reporting nomination, then retain the
+  # historical whole-module AST equality (including every validate statement).
+  old_hash='9663c006df997e368373f64e0f10e324661893d7b9246ea92a6c8dfec0b7ec3b'
+  new_hash='d447b86beb36841930f6472366be8dc69db8c4e85cc8cd21664ac32b2e2c22b2'
+  def statement(text):return ast.parse(text).body[0]
+  def key(node):return ast.dump(node)
+  approved=[
+   ("historical_closeout = policy and p.name == 'closeout_streak.py' and v['sha256'] == HISTORICAL_CLOSEOUT_SHA256",None),
+   ("source_files = version_closure['origins'][v['path']] if archived else (previous_files if historical_closeout else pr_files)",
+    "source_files = version_closure['origins'][v['path']] if archived else (previous_files if policy and p.name == 'closeout_streak.py' else pr_files)"),
+   ("if policy and p.name == 'closeout_streak.py' and v['sha256'] not in {HISTORICAL_CLOSEOUT_SHA256, CLOSEOUT_SHA256}:\n raise ValueError('policy update changes approved closeout consumer')",
+    "if policy and p.name == 'closeout_streak.py' and v['sha256'] != CLOSEOUT_SHA256:\n raise ValueError('policy update changes approved closeout consumer')"),
+  ]
+  replacements={key(statement(a)):(None if b is None else statement(b))for a,b in approved}
+  class Nomination(ast.NodeTransformer):
+   def __init__(self):self.seen={k:0 for k in replacements}
+   def visit(self,node):
+    k=key(node)
+    if k in replacements:
+     self.seen[k]+=1;return deepcopy(replacements[k])
+    return super().visit(node)
+  def split(source,reporting):
+   out=[];names=None;history=closeout=validate=0
+   for n in ast.parse(source).body:
+    if isinstance(n,ast.Assign)and any(isinstance(t,ast.Name)and t.id=='POLICY_MODULE_NAMES'for t in n.targets):
+     self.assertIsNone(names);names=ast.literal_eval(n.value.args[0]);continue
+    if reporting and isinstance(n,ast.Assign)and any(isinstance(t,ast.Name)and t.id=='HISTORICAL_CLOSEOUT_SHA256'for t in n.targets):
+     self.assertEqual(key(n),key(statement('HISTORICAL_CLOSEOUT_SHA256 = '+repr(old_hash))));history+=1;continue
+    if reporting and isinstance(n,ast.Assign)and any(isinstance(t,ast.Name)and t.id=='CLOSEOUT_SHA256'for t in n.targets):
+     self.assertEqual(key(n),key(statement('CLOSEOUT_SHA256 = '+repr(new_hash))));closeout+=1;n=statement('CLOSEOUT_SHA256 = '+repr(old_hash))
+    if reporting and isinstance(n,ast.FunctionDef)and n.name=='validate':
+     validate+=1;normalizer=Nomination();n=normalizer.visit(n);self.assertEqual(set(normalizer.seen.values()),{1})
+    out.append(key(n))
+   if reporting:self.assertEqual((history,closeout,validate),(1,1,1))
    return names,out
-  a,x=split(OLD/'phase7_runtime_update.py');b,y=split(HERE/'phase7_runtime_update.py');self.assertEqual(x,y);self.assertEqual(b,a|{'methods_digest_registration_legacy_21b813.py','own_record_comparison_legacy_cf74da.py'})
+  a,x=split((OLD/'phase7_runtime_update.py').read_bytes(),False);b,y=split(raw,True)
+  self.assertEqual(x,y);self.assertEqual(b,a|{'methods_digest_registration_legacy_21b813.py','own_record_comparison_legacy_cf74da.py'})
+  return b
+ def test_two_names_all_other_runtime_statements_exact(self):
+  b=self.runtime_source_profile((HERE/'phase7_runtime_update.py').read_bytes())
   for bad in (b|{'foreign.py'},b-{'own_record_comparison_legacy_cf74da.py'}):self.assertNotEqual(b,bad)
+ def test_reporting_nomination_changed_hashes_fail(self):
+  raw=(HERE/'phase7_runtime_update.py').read_bytes()
+  for value in (b'9663c006df997e368373f64e0f10e324661893d7b9246ea92a6c8dfec0b7ec3b',b'd447b86beb36841930f6472366be8dc69db8c4e85cc8cd21664ac32b2e2c22b2'):
+   with self.subTest(value=value):self.assertRaises(AssertionError,self.runtime_source_profile,raw.replace(value,b'a'*64))
+ def test_reporting_nomination_wrong_origin_or_extra_hash_fails(self):
+  raw=(HERE/'phase7_runtime_update.py').read_bytes()
+  for before,after in ((b'previous_files if historical_closeout else pr_files',b'pr_files if historical_closeout else previous_files'),(b'{HISTORICAL_CLOSEOUT_SHA256, CLOSEOUT_SHA256}',b'{HISTORICAL_CLOSEOUT_SHA256, CLOSEOUT_SHA256, GUARD_SHA256}')):
+   with self.subTest(after=after):self.assertRaises(AssertionError,self.runtime_source_profile,raw.replace(before,after))
+ def test_reporting_nomination_other_acceptance_statement_fails(self):
+  raw=(HERE/'phase7_runtime_update.py').read_bytes()
+  self.assertRaises(AssertionError,self.runtime_source_profile,raw.replace(b"raise ValueError('additional module differs from own merged Git blob')",b"pass"))
+  self.assertRaises(AssertionError,self.runtime_source_profile,raw.replace(b"source = _bound(root, v['source'])",b"source = _bound(root, v['source'])\n        source = p"))
+ def test_reporting_nomination_missing_duplicate_or_outside_validate_fails(self):
+  raw=(HERE/'phase7_runtime_update.py').read_bytes();line=b"        historical_closeout = policy and p.name == 'closeout_streak.py' and v['sha256'] == HISTORICAL_CLOSEOUT_SHA256\n"
+  for candidate in (raw.replace(line,b''),raw.replace(line,line+line),raw.replace(line,b'')+b'\n'+line.strip()+b'\n'):
+   with self.subTest(sha=hashlib.sha256(candidate).hexdigest()):self.assertRaises(AssertionError,self.runtime_source_profile,candidate)
  def test_runtime_new_pin_exact(self):
   table=next(n for n in ast.parse((HERE/'weekly_digest_runtime.py').read_bytes()).body if isinstance(n,ast.Assign)and n.targets[0].id=='UNCHANGED');self.assertEqual(ast.literal_eval(table.value)['methods_digest_registration.py'],hashlib.sha256((HERE/'methods_digest_registration.py').read_bytes()).hexdigest())
  def test_runtime_admission_only_adds_two_prewrite_authority_statements(self):

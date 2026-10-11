@@ -1,7 +1,9 @@
 """Offline fixtures only: recovery changes bookkeeping, never theorem acceptance."""
 import ast
+import contextlib
 import datetime as dt
 import hashlib
+import io
 import json
 from pathlib import Path
 import tempfile
@@ -179,5 +181,180 @@ class ReportingConsumerBoundaries(unittest.TestCase):
             if isinstance(node,ast.Import):
                 self.assertFalse(any(x.name.split('.')[0] in {'subprocess','requests','urllib','socket'} for x in node.names))
         self.assertNotIn('issue_lean_zero_sorry_certificate',Path(cc.__file__).read_text())
+
+
+class FutureReportingCutover(unittest.TestCase):
+    """Offline deployment fixtures; original positive science gate is unchanged."""
+    gate=DatedFailureRecovery.gate
+    change=DatedFailureRecovery.change
+    add=DatedFailureRecovery.add
+    collect=DatedFailureRecovery.collect
+    def setUp(self):
+        DatedFailureRecovery.setUp(self)
+        self.root=self.root.resolve()
+        self.now=dt.datetime(2026,10,19,12,tzinfo=dt.timezone.utc)
+        activation=nc.load_enforcement_activation(self.root,now=self.now)
+        self.old_activation=write(self.root/'reports/verification-coverage/old-activation.json',self.f.receipt)
+        self.old=[]
+        for i in range(10):
+            rp,fp,sp=self.add(f'2026-10-{6+i//2:02}',failed=True,suffix='historical-'+str(i))
+            self.change(rp,lambda d:d.update(enforcement_activation=relative_binding(self.root,self.old_activation)))
+            if i==9:self.change(rp,lambda d:d.pop('enforcement_activation'))
+            self.old.append((rp,fp,sp))
+        baseline={'standard':'VRS-SEVEN-NIGHTLY-CLOSEOUT-1','observed_at_utc':'2026-10-10T23:00:00+00:00',
+                  'consecutive_clean_closed_windows':0,
+                  'authority':{'installed_guard':{'sha256':cc.INSTALLED_GUARD_SHA256},
+                               'closeout_consumer':{'sha256':cc.HISTORICAL_CONSUMER_SHA256}},
+                  'input_reports':[nc.binding(p) for p,_,_ in self.old],
+                  'rejected':[{'path':str(p),'cause':'TEST_ONLY old activation mismatch'} for p,_,_ in self.old]}
+        self.history=write(self.root/'reports/verification-coverage/TEST_ONLY_HISTORY.json',baseline)
+        hpatch=patch.object(cc,'HISTORICAL_CLOSEOUT',relative_binding(self.root,self.history));hpatch.start();self.addCleanup(hpatch.stop)
+        self.protected=write(self.root/'reports/verification-coverage/TEST_ONLY_DEPLOY/protected.json',{'at_utc':'2026-10-11T05:10:00+00:00'})
+        self.update={'installed_at_utc':'2026-10-11T05:05:00+00:00',
+                     'protected_readback':relative_binding(self.root,self.protected),
+                     'additional_modules':[{'path':'RESEARCH_PIPELINE_v2/verification_coverage_gates/closeout_streak.py','sha256':nc.binding(Path(cc.__file__))['sha256']}],
+                     'runtime_targets':[{'path':'RESEARCH_PIPELINE_v2/verification_coverage_gates/nightly_coverage.py','after_sha256':cc.INSTALLED_GUARD_SHA256}]}
+        self.update_path=write(self.root/'reports/verification-coverage/TEST_ONLY_DEPLOY/update.json',self.update)
+        self.wrapper_path=self.f.paths['activation']
+        self.activation=activation
+        self.deploy()
+        # The deployment loader assumes the existing activation validator has
+        # admitted the exact source update. Runtime validator fixtures below
+        # test that admission; these fixtures exercise the real positive gates.
+        apatch=patch.object(nc,'load_enforcement_activation',side_effect=lambda *a,**k:dict(self.activation));apatch.start();self.addCleanup(apatch.stop)
+    def deploy(self):
+        write(self.update_path,self.update)
+        wrapper={**self.f.receipt,'authorized_runtime_update':relative_binding(self.root,self.update_path)}
+        write(self.wrapper_path,wrapper)
+        self.activation['binding']=relative_binding(self.root,self.wrapper_path)
+        self.f.ledger['enforcement_activation']=self.activation['binding'];write(self.f.canonical,self.f.ledger)
+    def future_seven(self):
+        for day in range(12,19):self.add(f'2026-10-{day:02}')
+    def blocked(self):
+        r=self.collect();self.assertEqual(r['consecutive_clean_closed_windows'],0);return r
+    def test_F01_seven_future_windows_with_ten_retained_rejections(self):
+        self.future_seven();before={p:p.read_bytes() for p,_,_ in self.old};r=self.collect()
+        self.assertEqual(r['consecutive_clean_closed_windows'],7);self.assertEqual(len(r['rejected']),10)
+        self.assertEqual(r['blocking_rejected'],[]);self.assertEqual(len(r['historical_rejections']),10)
+        self.assertTrue(all(p.read_bytes()==v for p,v in before.items()))
+    def test_F02_old_consumer_nomination_keeps_global_zero(self):
+        self.future_seven();self.update['additional_modules'][0]['sha256']=cc.HISTORICAL_CONSUMER_SHA256;self.deploy()
+        r=self.blocked();self.assertIsNone(r['reporting_cutover']);self.assertGreaterEqual(len(r['blocking_rejected']),10)
+    def test_F03_no_runtime_nomination_keeps_global_zero(self):
+        self.future_seven();write(self.wrapper_path,self.f.receipt);self.activation['binding']=relative_binding(self.root,self.wrapper_path)
+        self.blocked()
+    def test_F04_old_report_tamper_blocks(self):
+        self.future_seven();self.old[0][0].write_bytes(self.old[0][0].read_bytes()+b' ')
+        self.assertEqual(self.blocked()['status'],'HOLD_REPORTING_CUTOVER')
+    def test_F05_missing_old_report_blocks(self):
+        self.future_seven();self.old[0][0].unlink();self.blocked()
+    def test_F06_deleting_all_old_reports_cannot_hide_failures(self):
+        self.future_seven()
+        for p,_,_ in self.old:p.unlink()
+        self.blocked()
+    def test_F07_old_finish_tamper_blocks(self):
+        self.future_seven();self.old[0][1].write_bytes(self.old[0][1].read_bytes()+b' ');self.blocked()
+    def test_F08_old_start_tamper_blocks(self):
+        self.future_seven();self.old[0][2].write_bytes(self.old[0][2].read_bytes()+b' ');self.blocked()
+    def test_F09_old_ledger_tamper_blocks(self):
+        self.future_seven();d=json.loads(self.old[0][0].read_bytes());p=self.root/d['coverage_ledger']['path'];p.write_bytes(p.read_bytes()+b' ');self.blocked()
+    def test_F10_old_activation_tamper_blocks(self):
+        self.future_seven();self.old_activation.write_bytes(self.old_activation.read_bytes()+b' ');self.blocked()
+    def test_F11_old_report_symlink_blocks(self):
+        self.future_seven();p=self.old[0][0];other=p.with_name('copy.json');other.write_bytes(p.read_bytes());p.unlink();p.symlink_to(other);self.blocked()
+    def test_F12_historical_inventory_hash_tamper_blocks(self):
+        self.future_seven();self.history.write_bytes(self.history.read_bytes()+b' ');self.blocked()
+    def test_F13_unlisted_old_malformed_report_still_blocks(self):
+        self.future_seven();p=self.root/'reports/verification-coverage/2020-01-01/NIGHTLY_CYCLE_REPORT.json';p.parent.mkdir();p.write_text('{')
+        r=self.blocked();self.assertEqual(len(r['blocking_rejected']),1)
+    def test_F14_new_malformed_report_still_blocks(self):
+        self.future_seven();p=self.root/'reports/verification-coverage/new/NIGHTLY_CYCLE_REPORT.json';write(p,[]);self.blocked()
+    def test_F15_caller_subset_cannot_hide_a_new_rejection(self):
+        self.future_seven();p=write(self.root/'reports/verification-coverage/unknown/NIGHTLY_CYCLE_REPORT.json',{})
+        r=cc.collect_closeout_streak(self.root,[self.reports[-1]],now=self.now)
+        self.assertEqual(r['consecutive_clean_closed_windows'],0);self.assertEqual(r['blocking_rejected'][0]['path'],str(p))
+    def test_F16_reportless_closed_window_breaks_streak(self):
+        for day in range(12,18):self.add(f'2026-10-{day:02}')
+        rp,_,_=self.f.checkpoint('2026-10-18',clean=False)
+        # The real failed journal remains, while its report has not been emitted.
+        rp.unlink()
+        self.blocked()
+    def test_F17_current_hold_resets_with_history_retained(self):
+        self.future_seven();self.add('2026-10-18',failed=True,suffix='second')
+        r=self.blocked();self.assertEqual(r['anchored_failures'][-1]['window'],'2026-10-18')
+    def test_F18_duplicate_window_counts_once(self):
+        self.future_seven();self.add('2026-10-18',suffix='duplicate');self.assertEqual(self.collect()['consecutive_clean_closed_windows'],7)
+    def test_F19_replay_cannot_increase_count(self):
+        self.future_seven();a=self.collect();self.reports*=3;b=self.collect();self.assertEqual(a,b)
+    def test_F20_old_clean_windows_never_receive_retroactive_credit(self):
+        self.failed.clear()
+        for day in range(5,12):self.add(f'2026-10-{day:02}',suffix='old-clean')
+        r=self.blocked();self.assertEqual(len([x for x in r['ineligible'] if x['status']=='PRE_REPORTING_CUTOVER_INELIGIBLE']),7)
+    def test_F21_strict_exact_boundary_starts_next_window(self):
+        self.update['installed_at_utc']='2026-10-11T04:59:00+00:00';write(self.protected,{'at_utc':'2026-10-11T05:00:00+00:00'});self.update['protected_readback']=relative_binding(self.root,self.protected);self.deploy()
+        self.assertEqual(cc.reporting_cutover(self.root,self.activation,self.now)['first_eligible_window'],'2026-10-12')
+    def test_F22_protected_readback_straddle_uses_later_boundary(self):
+        self.update['installed_at_utc']='2026-10-11T04:59:00+00:00';write(self.protected,{'at_utc':'2026-10-11T05:01:00+00:00'});self.update['protected_readback']=relative_binding(self.root,self.protected);self.deploy()
+        self.assertEqual(cc.reporting_cutover(self.root,self.activation,self.now)['first_eligible_window'],'2026-10-12')
+    def test_F23_future_completed_closure_blocks(self):
+        self.future_seven();write(self.protected,{'at_utc':'2026-10-20T05:00:00+00:00'});self.update['protected_readback']=relative_binding(self.root,self.protected);self.deploy();self.blocked()
+    def test_F24_reversed_completed_closure_blocks(self):
+        self.future_seven();write(self.protected,{'at_utc':'2026-10-11T05:00:00+00:00'});self.update['protected_readback']=relative_binding(self.root,self.protected);self.deploy();self.blocked()
+    def test_F25_changed_guard_hash_blocks(self):
+        self.future_seven();self.update['runtime_targets'][0]['after_sha256']='0'*64;self.deploy();self.blocked()
+    def test_F26_duplicate_collector_nomination_cannot_enable_epoch(self):
+        self.future_seven();self.update['additional_modules']*=2;self.deploy();self.blocked()
+    def test_F27_start_before_cutover_is_not_clean(self):
+        self.future_seven();rp,fp,sp=self.add('2026-10-18',suffix='old-start')
+        at='2026-10-10T12:00:00+00:00';self.change(sp,lambda d:d.update(started_at_utc=at))
+        self.change(fp,lambda d:d.update(started_at_utc=at,start_receipt_sha256=nc.binding(sp)['sha256']))
+        self.change(rp,lambda d:d.update(checkpoint=nc.binding(fp)));self.blocked()
+    def test_F28_positive_predicate_is_still_the_original_guard(self):
+        self.future_seven()
+        with patch.object(nc,'checkpoint_window',wraps=nc.checkpoint_window) as window,patch.object(nc,'_clean',wraps=nc._clean) as clean:
+            r=self.collect()
+        self.assertEqual(r['consecutive_clean_closed_windows'],7);self.assertEqual(window.call_count,17);self.assertEqual(clean.call_count,7)
+    def test_F29_historic_cutover_cannot_be_backdated(self):
+        self.future_seven();self.update['installed_at_utc']='2026-10-09T05:00:00+00:00';write(self.protected,{'at_utc':'2026-10-09T05:10:00+00:00'});self.update['protected_readback']=relative_binding(self.root,self.protected);self.deploy();self.blocked()
+    def test_F30_anchored_failures_are_not_deleted(self):
+        self.future_seven();self.add('2026-10-10',failed=True,suffix='authentic-old-hold')
+        r=self.collect();self.assertEqual(r['consecutive_clean_closed_windows'],7);self.assertEqual(r['anchored_failures'][0]['window'],'2026-10-10');self.assertFalse(r['windows']['2026-10-10'][0]['clean'])
+    def test_F31_new_symlink_report_is_blocking(self):
+        self.future_seven();p=self.root/'reports/verification-coverage/alias/NIGHTLY_CYCLE_REPORT.json';p.parent.mkdir();p.symlink_to(self.reports[-1])
+        self.assertEqual(self.blocked()['status'],'HOLD_REPORTING_CUTOVER')
+    def test_F32_old_report_copy_at_new_path_is_not_retired(self):
+        self.future_seven();p=self.root/'reports/verification-coverage/unlisted/NIGHTLY_CYCLE_REPORT.json';p.parent.mkdir();p.write_bytes(self.old[0][0].read_bytes());self.blocked()
+    def cli(self,after_collect=None):
+        source=self.root/'RESEARCH_PIPELINE_v2/verification_coverage_gates/closeout_streak.py';source.write_bytes(Path(cc.__file__).read_bytes())
+        output=self.root/'reports/verification-coverage/closeout-streak/TEST_ONLY_OUTPUT'
+        original=cc.collect_closeout_streak
+        def collect(*a,**k):
+            result=original(*a,**k)
+            if after_collect:after_collect(source)
+            return result
+        now=self.now
+        class FixedDateTime(dt.datetime):
+            @classmethod
+            def now(cls,tz=None):return now
+        with patch.object(cc,'__file__',str(source)),patch.object(cc,'require_actual_installed_guard',return_value={'sha256':cc.INSTALLED_GUARD_SHA256}),patch.object(cc.dt,'datetime',FixedDateTime),patch.object(cc,'collect_closeout_streak',side_effect=collect),contextlib.redirect_stdout(io.StringIO()):
+            result=cc.main(['--root',str(self.root),'--output',str(output)])
+        return result,output
+    def test_F33_cli_success_preserves_history_and_bound_actual_inputs(self):
+        self.future_seven();code,output=self.cli();r=json.loads((output/'CLOSEOUT_STREAK_REPORT.json').read_bytes())
+        self.assertEqual(code,0);self.assertEqual(len(r['rejected']),10);self.assertEqual(len(r['input_reports']),17)
+        self.assertTrue(all(not Path(x['path']).is_absolute() for x in r['input_reports']))
+    def test_F34_between_globs_addition_has_no_success_receipt(self):
+        self.future_seven()
+        with self.assertRaisesRegex(ValueError,'inventory changed'):
+            self.cli(lambda _:write(self.root/'reports/verification-coverage/late/NIGHTLY_CYCLE_REPORT.json',{}))
+        self.assertFalse((self.root/'reports/verification-coverage/closeout-streak/TEST_ONLY_OUTPUT').exists())
+    def test_F35_between_globs_loss_has_no_success_receipt(self):
+        self.future_seven()
+        with self.assertRaisesRegex(ValueError,'inventory changed'):self.cli(lambda _:self.reports[-1].unlink())
+        self.assertFalse((self.root/'reports/verification-coverage/closeout-streak/TEST_ONLY_OUTPUT').exists())
+    def test_F36_collector_source_drift_has_no_success_receipt(self):
+        self.future_seven()
+        with self.assertRaisesRegex(ValueError,'collector changed'):self.cli(lambda p:p.write_bytes(p.read_bytes()+b'\n'))
+        self.assertFalse((self.root/'reports/verification-coverage/closeout-streak/TEST_ONLY_OUTPUT').exists())
 
 if __name__=='__main__':unittest.main()

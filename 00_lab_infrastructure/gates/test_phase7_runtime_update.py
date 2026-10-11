@@ -117,8 +117,8 @@ class PolicyFixture(Fixture):
   self.write('evidence/pr57.json',encoded(self.pr));previous['pull_request_readback']=self.bound('evidence/pr57.json')
   self.write('evidence/prior/protected_readback.json',(self.root/previous['protected_readback']['path']).read_bytes());previous['protected_readback']=self.bound('evidence/prior/protected_readback.json')
   self.write('evidence/prior_update.json',encoded(previous));self.previous=previous
-  self.patches.extend([patch.object(m,'PREVIOUS_SELECTOR_RECEIPT_SHA256',m.sha(self.root/'evidence/prior_update.json')),patch.object(m,'GUARD_SHA256',m.sha(self.root/(m.GATE_PREFIX+'nightly_coverage.py'))),patch.object(m,'CLOSEOUT_SHA256',m.sha(self.root/(m.GATE_PREFIX+'closeout_streak.py')))])
-  for p in self.patches[-3:]:p.start()
+  self.patches.extend([patch.object(m,'PREVIOUS_SELECTOR_RECEIPT_SHA256',m.sha(self.root/'evidence/prior_update.json')),patch.object(m,'GUARD_SHA256',m.sha(self.root/(m.GATE_PREFIX+'nightly_coverage.py'))),patch.object(m,'CLOSEOUT_SHA256',m.sha(self.root/(m.GATE_PREFIX+'closeout_streak.py'))),patch.object(m,'HISTORICAL_CLOSEOUT_SHA256',m.sha(self.root/(m.GATE_PREFIX+'closeout_streak.py')))])
+  for p in self.patches[-4:]:p.start()
   self.r['profile']='PHASE7_SCOPED_POLICY';self.r['previous_runtime_update']=self.bound('evidence/prior_update.json');self.r['installed_at_utc']='2026-10-07T13:45:00Z'
   self.r['publication_gate_scoped_baseline']=self.bound('evidence/publication_scoped_baseline.py');self.r['public_metadata_readback_baseline']=self.bound('evidence/public_reader_baseline.py')
   rel=m.GATE_PREFIX+'premise_declaration.py';name='premise_declaration.py';new=b'new approved premise checker fixture';self.write(rel,new);self.write('evidence/source/'+name,new);self.rows[2]['after_sha256']=m.sha(self.root/rel);self.rows[2]['source']=self.bound('evidence/source/'+name)
@@ -166,6 +166,21 @@ class PolicyUpdateTests(unittest.TestCase):
  def test_prior_receipt_source_mutation_holds(self):self.f.write(self.f.previous['additional_modules'][0]['source']['path'],b'mutated old source');self.hold()
  def test_prior_guard_origin_not_own_new_pr_pass(self):self.assertNotIn('00_lab_infrastructure/gates/nightly_coverage.py',{v['path'] for v in self.f.pr['files']});self.f.validate()
  def test_prior_closeout_origin_not_own_new_pr_pass(self):self.assertNotIn('00_lab_infrastructure/gates/closeout_streak.py',{v['path'] for v in self.f.pr['files']});self.f.validate()
+ def repaired_closeout(self):
+  raw=self.f.ccraw+b'REPORTING_ONLY_FUTURE_WINDOWS = True\n';v=self.module('closeout_streak.py');self.f.write(v['path'],raw);self.f.write(v['source']['path'],raw);v['sha256']=m.sha(self.f.root/v['path']);v['source']=self.f.bound(v['source']['path']);self.f.pr['files'].append({'path':'00_lab_infrastructure/gates/closeout_streak.py','sha':gitblob(raw)});p=patch.object(m,'CLOSEOUT_SHA256',v['sha256']);p.start();self.addCleanup(p.stop);self.f.commit();return v,raw
+ def test_repaired_closeout_exact_current_pr_pass(self):
+  old=(self.f.root/'evidence/prior_update.json').read_bytes();self.repaired_closeout();v=self.f.validate();self.assertEqual(v['profile'],'PHASE7_SCOPED_POLICY');self.assertEqual((self.f.root/'evidence/prior_update.json').read_bytes(),old)
+ def test_repaired_closeout_without_current_pr_blob_holds(self):
+  self.repaired_closeout();self.f.pr['files']=[x for x in self.f.pr['files'] if not x['path'].endswith('/closeout_streak.py')];self.f.commit();self.hold()
+ def test_repaired_closeout_wrong_current_pr_blob_holds(self):
+  self.repaired_closeout();next(x for x in self.f.pr['files'] if x['path'].endswith('/closeout_streak.py'))['sha']='0'*40;self.f.commit();self.hold()
+ def test_repaired_closeout_cannot_use_prior_pr_blob(self):
+  v,raw=self.repaired_closeout();self.f.pr['files']=[x for x in self.f.pr['files'] if not x['path'].endswith('/closeout_streak.py')];self.f.commit();self.hold()
+ def test_unpinned_closeout_even_exact_current_pr_holds(self):
+  v,raw=self.repaired_closeout();p=patch.object(m,'CLOSEOUT_SHA256','0'*64);p.start();self.addCleanup(p.stop);self.hold()
+ def test_legacy_closeout_cannot_fall_back_to_current_pr_origin(self):
+  self.f.pr['files'].append({'path':'00_lab_infrastructure/gates/closeout_streak.py','sha':gitblob(self.f.ccraw)});self.f.commit()
+  previous_files=json.loads((self.f.root/'evidence/pr57.json').read_bytes());next(x for x in previous_files['files'] if x['path'].endswith('/closeout_streak.py'))['sha']='0'*40;self.f.write('evidence/pr57.json',encoded(previous_files));self.hold()
  def test_unchanged18_targets_preserved(self):v=self.f.validate();self.assertEqual(sum(x['before_sha256']==x['after_sha256'] for x in self.f.rows),17);self.assertEqual(set(v['targets']),{x['relative_path'] for x in self.f.base})
  def test_foreign_new_module_holds(self):self.module('methods_digest.py')['path']=m.GATE_PREFIX+'unapproved.py';self.f.commit();self.hold()
  def test_missing_policy_module_holds(self):self.f.r['additional_modules'].pop();self.f.commit();self.hold()

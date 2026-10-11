@@ -1,0 +1,986 @@
+{
+  "schema_version": "VRS-PHASE8-TARGET-PORTFOLIO-1",
+  "created_date": "2026-10-11",
+  "advisory_only": true,
+  "novelty_not_established": true,
+  "selection_policy": {
+    "portfolio_fraction_target": 0.6,
+    "quota_rule": "ceil(0.6 * prospective_attempts_in_week), including partial weeks",
+    "minimum_portfolio_runs_when_week_attempts_are_7": 5,
+    "known": "SKIP_TARGET",
+    "known_variant": "DEPRIORITIZE_UNLESS_EXPLICIT_EXTENSION",
+    "likely_new": "PREFER",
+    "unassessed": "PERMITTED_WITH_REASON; NEVER_BLOCK_RUN",
+    "outside_portfolio": "REQUIRE_ONE_LINE_VALUE_RATIONALE",
+    "prior_art_failure": "UNASSESSED; continue existing certification/publication path"
+  },
+  "source_inputs": [
+    {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-04/game-plan-completion/PREREGISTRATION.md",
+      "sha256": "bb1edecdb9f3bbca626e78aff5f37342a8e38d83d8c3d344dd65fdafe298b05f"
+    },
+    {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-06/phase-7-science-catchup-v001/release-packet-v002/RELEASE_PACKET.md",
+      "sha256": "e3853d805d5f92d7352224924e7da1dea07aa15bc388f93f971be12f50dd7ab5"
+    },
+    {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/MISSION_RESEARCH_CHARTER.md",
+      "sha256": "ce3dda90aa66095bb85ca071bc71cc0f2ffa40921fca8aa56192fa8f019e8282"
+    },
+    {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/GAME_PLAN.md",
+      "sha256": "9c4a08df5fe9c3ab7471cbfa7e8eb87c74dd55341eafd0e001a04e2d405e2522"
+    }
+  ],
+  "items": [
+    {
+      "id": "P8-01",
+      "rank": 1,
+      "title": "Closed-cycle raw-observation cost",
+      "exact_statement": "For an explicitly frozen finite-state isothermal acquisition/uncompute/reset model, determine whether a positive-information stationary cyclic protocol can satisfy E[W_in] < k_B T ln(2) H(Y_acquired) after all device states, controllers, reservoirs and correlations are accounted for.",
+      "hypotheses": [
+        "Local detailed balance and specified bath temperature",
+        "Full stationary cycle and bounded restored memory",
+        "Explicit source preparation, gross positive work and correlation-flow accounting; do not assume PL"
+      ],
+      "synonyms": [
+        "raw observation Landauer cost measurement erasure cyclic learning useful information",
+        "thermodynamics computational copying uncompute measurement correlations"
+      ],
+      "value_rationale": "Tests the empirical bridge on which the stronger product ceiling rests; a counterexample or non-identifiability result is more useful than another ceiling identity.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "PL_TEST",
+      "foundation_basis": "INDEPENDENT",
+      "success_criteria": [
+        "Frozen full-cycle MODEL_SPEC and independently reproduced exact-distribution accounting",
+        "A robust within-model counterexample or a boundary-specific obstruction with all costs named",
+        "Simulation is labeled within-model; no claim of universal physical validation"
+      ],
+      "queries": [
+        "raw observation Landauer cost measurement erasure cyclic learning useful information",
+        "thermodynamics computational copying uncompute measurement correlations"
+      ],
+      "related_runs": [
+        "Run-900",
+        "Run-901",
+        "Run-902"
+      ],
+      "subject_area": "01",
+      "programs": [
+        "P1",
+        "P3",
+        "P6"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "01",
+        "05",
+        "06",
+        "09"
+      ],
+      "extension_statement": "Add a complete acquired-input/uncompute/restoration physical-cycle accounting or a scoped obstruction; do not repeat a one-bit erasure theorem.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-02",
+      "rank": 2,
+      "title": "Selection-aware useful fraction",
+      "exact_statement": "For a finite joint source law and an adaptive acquisition policy, identify sufficient conditions and a sharp correction term under which retained predictive information r is bounded by acquired entropy rate R_obs times an independently specified D_eff; exhibit a policy where the available-source fraction D_src is invalid.",
+      "hypotheses": [
+        "Explicit finite joint law of target, source, acquisition flags and memory",
+        "D_eff defined independently of output rate",
+        "Named Markov/sufficiency or selection assumptions rather than a hidden DPI predicate"
+      ],
+      "synonyms": [
+        "adaptive sensing selection bias mutual information data processing useful information fraction",
+        "conditional mutual information acquisition policy predictive information"
+      ],
+      "value_rationale": "Prevents a biased sensor policy from making the product bound appear validated or refuted by changing its denominator.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "PD_BRIDGE",
+      "foundation_basis": "INDEPENDENT",
+      "success_criteria": [
+        "An exported theorem for a nontrivial adaptive policy and a finite counterexample to the invalid D_src substitution",
+        "Exact witness and a measured-law identification contract",
+        "Compare against standard data processing; do not relabel DPI itself as novel"
+      ],
+      "queries": [
+        "adaptive sensing selection bias mutual information data processing useful information fraction",
+        "conditional mutual information acquisition policy predictive information"
+      ],
+      "related_runs": [
+        "Run-902",
+        "Run-126"
+      ],
+      "subject_area": "01",
+      "programs": [
+        "P1",
+        "P3"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "01",
+        "06",
+        "09",
+        "13",
+        "14"
+      ],
+      "extension_statement": "Add a sharp adaptive-acquisition/selection correction and a finite counterexample to using the available-source useful fraction; standard DPI alone is insufficient.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-03",
+      "rank": 3,
+      "title": "Identifiable min/product capacity experiment",
+      "exact_statement": "Under separately operationalized PL, PD, independent input bandwidth and full-cycle work accounting, characterize a parameter region in which attainable-throughput observations can distinguish raw-cost-limited from useful-cost-limited device architectures despite uncertainty; show when nested ceiling inequalities are not identifiable.",
+      "hypotheses": [
+        "Preregistered source law and clock",
+        "Independent power accounting and D identification",
+        "Explicit saturation/attainability model; no inference from slack upper bounds"
+      ],
+      "synonyms": [
+        "thermodynamic learning useful information raw information capacity experimental identifiability",
+        "nested upper bounds attainability hypothesis thermodynamics prediction"
+      ],
+      "value_rationale": "Directs the Phase 6 experiment toward an informative result instead of treating two nested inequalities as competing physical laws.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "EXPERIMENT_DESIGN",
+      "foundation_basis": "CONDITIONAL_PL_PD",
+      "success_criteria": [
+        "A robust separation region or a quantified non-identifiability theorem",
+        "An explicit test design whose uncertainty intervals cannot be explained by the rival architecture",
+        "Retain preregistered negative and inconclusive outcomes"
+      ],
+      "queries": [
+        "thermodynamic learning useful information raw information capacity experimental identifiability",
+        "nested upper bounds attainability hypothesis thermodynamics prediction"
+      ],
+      "related_runs": [
+        "Run-900",
+        "Run-902"
+      ],
+      "subject_area": "01",
+      "programs": [
+        "P1",
+        "P3",
+        "P6"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "01",
+        "05",
+        "06",
+        "09"
+      ],
+      "extension_statement": "Add uncertainty-robust attainable-envelope separation or non-identifiability for the frozen device family; nested-ceiling algebra is insufficient.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-04",
+      "rank": 4,
+      "title": "Finite-sample product ceiling with an honest observation contract",
+      "exact_statement": "Under named PL and PD and a finite-source estimation contract, derive a simultaneous finite-horizon confidence envelope for rate <= P D_eff/K that accounts for uncertainty and dependence in P, D_eff and acquisition entropy without using r/R_obs to estimate D.",
+      "hypotheses": [
+        "PL: R_obs K <= P with K>0",
+        "PD: rate <= R_obs D_eff",
+        "Specified dependence/mixing or iid conditions and calibrated observation errors"
+      ],
+      "synonyms": [
+        "finite sample confidence mutual information product uncertainty thermodynamic rate",
+        "time uniform bounds dependent estimators energy information"
+      ],
+      "value_rationale": "Makes the conditional result usable with finite monitoring data while exposing the physical premises and statistical error.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "CONDITIONAL_EXTENSION",
+      "foundation_basis": "CONDITIONAL_PL_PD",
+      "success_criteria": [
+        "Nontrivial joint confidence theorem and positive witness",
+        "Strict improvement over naively plugging independent point estimates demonstrated on a frozen example",
+        "The PL/PD assumptions remain printed"
+      ],
+      "queries": [
+        "finite sample confidence mutual information product uncertainty thermodynamic rate",
+        "time uniform bounds dependent estimators energy information"
+      ],
+      "related_runs": [
+        "Run-902"
+      ],
+      "subject_area": "01",
+      "programs": [
+        "P1",
+        "P3"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "01",
+        "02",
+        "05",
+        "06",
+        "09"
+      ],
+      "extension_statement": "Add a simultaneous finite-horizon bound for jointly dependent power, entropy and useful-fraction estimators with an operational observation contract.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-05",
+      "rank": 5,
+      "title": "HDFM corridor optimization under uncertain resistance",
+      "exact_statement": "For a finite habitat graph with interval-calibrated resistance, restoration budget and species-specific connectivity constraints, certify a computable robust corridor bound or approximation gap and identify when its recommendation changes under the uncertainty set.",
+      "hypotheses": [
+        "Explicit graph, costs and uncertainty set",
+        "Measured resistance-to-movement identification kept separate",
+        "Feasible nonempty restoration budget and species constraints"
+      ],
+      "synonyms": [
+        "robust ecological corridor optimization interval resistance restoration budget connectivity",
+        "landscape connectivity robust shortest path approximation certificate"
+      ],
+      "value_rationale": "Could make corridor recommendations auditable and reveal where field data are needed before choosing an intervention.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "APPLIED_HDFM",
+      "foundation_basis": "INDEPENDENT",
+      "success_criteria": [
+        "An exported optimizer/certificate theorem beyond shortest-path restatement",
+        "A feasible instance and a uncertainty-sensitive counterexample",
+        "Synthetic optimization performance is separated from ecological effectiveness"
+      ],
+      "queries": [
+        "robust ecological corridor optimization interval resistance restoration budget connectivity",
+        "landscape connectivity robust shortest path approximation certificate"
+      ],
+      "related_runs": [],
+      "subject_area": "03",
+      "programs": [
+        "P2",
+        "P4"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "03",
+        "11",
+        "15"
+      ],
+      "extension_statement": "Add a certified robust corridor approximation/optimality gap or recommendation-sensitivity bound for the specified ecological uncertainty set.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-06",
+      "rank": 6,
+      "title": "EcoChain/D-Score provenance and rank stability",
+      "exact_statement": "For a declared D-Score aggregation and provenance graph with bounded sensor error and explicitly weighted ecological services, characterize when score rankings survive missing data and correlated uncertainty, and compute a sharp rank-reversal certificate.",
+      "hypotheses": [
+        "Published score definition and explicit normative weights",
+        "Bounded identifiable observation errors and missingness assumptions",
+        "No equation identifying a score with real ecological benefit without evidence"
+      ],
+      "synonyms": [
+        "ecological composite indicator rank robustness correlated uncertainty missing data",
+        "D Score ecosystem services score sensitivity provenance verification"
+      ],
+      "value_rationale": "Supports honest EcoChain evidence reporting and prevents unstable score rankings from masquerading as verified ecological performance.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "APPLIED_DSCORE",
+      "foundation_basis": "INDEPENDENT",
+      "success_criteria": [
+        "A sensitivity or rank-stability theorem plus a sharp adversarial witness",
+        "A provenance-bound worked example with uncertainty intervals",
+        "Separate mathematical score validity from empirical ecosystem validity"
+      ],
+      "queries": [
+        "ecological composite indicator rank robustness correlated uncertainty missing data",
+        "D Score ecosystem services score sensitivity provenance verification"
+      ],
+      "related_runs": [],
+      "subject_area": "04",
+      "programs": [
+        "P2",
+        "P4",
+        "P5"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "04",
+        "08",
+        "16"
+      ],
+      "extension_statement": "Add a sharp D-Score rank-reversal certificate under correlated error and missingness, with provenance-bound inputs.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-07",
+      "rank": 7,
+      "title": "AI-safety alarm under adaptive deployment",
+      "exact_statement": "Given an explicit adapted monitor filtration and a conditional null expectation contract, derive a nontrivial time-uniform false-alarm and detection-delay bound under policy adaptation or monitoring budget limits, with a measurable contract for deploying the monitor.",
+      "hypotheses": [
+        "Adapted measurable monitor and integrability",
+        "Named conditional-mean null contract",
+        "Bounded or otherwise explicitly controlled feedback and sampling policy"
+      ],
+      "synonyms": [
+        "adaptive deployment e process anytime false alarm detection delay resource budget",
+        "time uniform supermartingale conditional likelihood ratio adaptedness"
+      ],
+      "value_rationale": "Could give Viridis continuous AI monitoring a falsifiable alarm guarantee rather than an ungrounded safety claim.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "APPLIED_AI_SAFETY",
+      "foundation_basis": "INDEPENDENT",
+      "success_criteria": [
+        "An exported bridge from the deployment model to the martingale contract",
+        "A strict new delay/resource/feedback tradeoff beyond Ville or a standard Chernoff theorem",
+        "No claim that false-alarm control establishes general AI safety"
+      ],
+      "queries": [
+        "adaptive deployment e process anytime false alarm detection delay resource budget",
+        "time uniform supermartingale conditional likelihood ratio adaptedness"
+      ],
+      "related_runs": [
+        "Run-129"
+      ],
+      "subject_area": "10",
+      "programs": [
+        "P3",
+        "P4"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "10",
+        "13",
+        "14",
+        "16"
+      ],
+      "extension_statement": "Add a strict adaptive-feedback, delay or monitoring-resource tradeoff and a deployable null-contract bridge; Ville/Chernoff restatement is insufficient.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-08",
+      "rank": 8,
+      "title": "Conditional product allocation across changing useful fractions",
+      "exact_statement": "Under pointwise named PL(t) and PD(t), solve a finite-horizon resource-allocation problem with time-varying useful fractions, acquisition costs and bounded memory, and prove a sharp policy gap against a static useful-fraction budget.",
+      "hypotheses": [
+        "PL(t): R_obs(t) K(t) <= P(t)",
+        "PD(t): rate(t) <= R_obs(t) D(t)",
+        "Specified total work, switching, memory and causality constraints"
+      ],
+      "synonyms": [
+        "time varying information fraction energy allocation sensing memory constraint",
+        "conditional thermodynamic information bound resource optimization"
+      ],
+      "value_rationale": "Could turn the product ceiling into a decision rule when sensing quality and energy availability vary.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "CONDITIONAL_EXTENSION",
+      "foundation_basis": "CONDITIONAL_PL_PD",
+      "success_criteria": [
+        "An optimizer or regret/gap result beyond integrating a pointwise inequality",
+        "A positive witness and a case where static allocation is strictly worse",
+        "No hidden attainment assumption or conversion to unconditional physics"
+      ],
+      "queries": [
+        "time varying information fraction energy allocation sensing memory constraint",
+        "conditional thermodynamic information bound resource optimization"
+      ],
+      "related_runs": [
+        "Run-902"
+      ],
+      "subject_area": "01",
+      "programs": [
+        "P1",
+        "P3",
+        "P4"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "01",
+        "02",
+        "05",
+        "06",
+        "09"
+      ],
+      "extension_statement": "Add a causal optimizer or policy-gap theorem under changing useful fractions and memory/switching constraints; integrating scalar PL/PD is insufficient.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-09",
+      "rank": 9,
+      "title": "When bounded memory actually forces erasure dominance",
+      "exact_statement": "For an explicit cyclic finite-memory learner with controlled exported information and reversible side information, identify sufficient and necessary conditions for long-run erasure rate e >= retained predictive-information rate r, or exhibit a finite counterexample to the implication from bounded memory alone.",
+      "hypotheses": [
+        "Finite state space and stationary/cyclic restoration",
+        "Explicit output export, reusable side information and environmental correlations",
+        "Do not assume erasure dominance as the conclusion"
+      ],
+      "synonyms": [
+        "finite memory learning erasure entropy rate reversible side information",
+        "bounded memory information thermodynamics erasure dominance"
+      ],
+      "value_rationale": "Closes the missing physical/mathematical bridge highlighted by Run-901 without renaming an unused memory premise as a proof.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "FOUNDATION_BRIDGE",
+      "foundation_basis": "INDEPENDENT",
+      "success_criteria": [
+        "A substantive theorem or precise counterexample with the original transfer lemmas preserved",
+        "All extra premises named and a positive-learning witness",
+        "Comparison with reversible computation and conditional erasure costs"
+      ],
+      "queries": [
+        "finite memory learning erasure entropy rate reversible side information",
+        "bounded memory information thermodynamics erasure dominance"
+      ],
+      "related_runs": [
+        "Run-900",
+        "Run-901"
+      ],
+      "subject_area": "01",
+      "programs": [
+        "P1",
+        "P3"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "01",
+        "06",
+        "13",
+        "14"
+      ],
+      "extension_statement": "Prove the missing cyclic-memory-to-erasure-dominance bridge, or give a fully accounted counterexample, without assuming the conclusion.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-10",
+      "rank": 10,
+      "title": "Shared sensing bottlenecks in a multi-agent product model",
+      "exact_statement": "Under separately named per-agent PL and PD and an explicit shared-channel joint law, determine a sharp collective useful-information ceiling that corrects double counting of redundant observations and distinguishes shared from independent sensing.",
+      "hypotheses": [
+        "PL_i and PD_i for each agent",
+        "Joint law and communication/synchronization costs specified",
+        "Finite nonnegative budgets and positive K_i; redundancy not identified from marginal rates alone"
+      ],
+      "synonyms": [
+        "distributed sensing redundant information joint mutual information energy budget",
+        "multi agent conditional Landauer product information bound shared channel"
+      ],
+      "value_rationale": "Could support efficient cooperative sensing and HDFM monitoring without adding mutually redundant agent rates.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "CONDITIONAL_EXTENSION",
+      "foundation_basis": "CONDITIONAL_PL_PD",
+      "success_criteria": [
+        "A strict collective improvement over summing marginal scalar ceilings",
+        "Independent and fully redundant positive witnesses",
+        "Empirical joint-law and energy identification remains explicit"
+      ],
+      "queries": [
+        "distributed sensing redundant information joint mutual information energy budget",
+        "multi agent conditional Landauer product information bound shared channel"
+      ],
+      "related_runs": [
+        "Run-902",
+        "Run-125",
+        "Run-141"
+      ],
+      "subject_area": "01",
+      "programs": [
+        "P1",
+        "P3",
+        "P4"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "01",
+        "03",
+        "05",
+        "07",
+        "09"
+      ],
+      "extension_statement": "Add a strict shared-joint-law collective bound correcting redundant information; summing existing per-agent inequalities is insufficient.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-11",
+      "rank": 11,
+      "title": "A dimensionally honest measured-to-formal trajectory bridge",
+      "exact_statement": "Construct an explicit map from block bit entropy rates and full-cycle work measurements to the formal natural-log trajectory quantities, with a convergence/error statement that preserves units and identifies exactly which Landauer and channel premises must be supplied.",
+      "hypotheses": [
+        "Documented bit/nat conversion and time convention",
+        "Specified stationary trajectory and probability law",
+        "Physical coefficients and model identification named, not hidden definitions"
+      ],
+      "synonyms": [
+        "trajectory relative entropy rate bits nats Landauer dimensional bridge",
+        "information rate convergence finite block thermodynamic observation measurement"
+      ],
+      "value_rationale": "Prevents comparing measured bit rates to a formal nat-rate theorem with an incompatible literal coefficient.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "UNIT_AND_MODEL_BRIDGE",
+      "foundation_basis": "INDEPENDENT",
+      "success_criteria": [
+        "A trajectory-rate convergence/error theorem beyond log-base algebra",
+        "An exact finite-block example with all units and physical premises explicit",
+        "No claim that a unit map proves PL or PD"
+      ],
+      "queries": [
+        "trajectory relative entropy rate bits nats Landauer dimensional bridge",
+        "information rate convergence finite block thermodynamic observation measurement"
+      ],
+      "related_runs": [
+        "Run-900",
+        "Run-901",
+        "Run-902"
+      ],
+      "subject_area": "01",
+      "programs": [
+        "P1",
+        "P3"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "01",
+        "05",
+        "06",
+        "09"
+      ],
+      "extension_statement": "Add a measured block-to-trajectory convergence/error bridge preserving units and physical premises; base-change algebra is insufficient.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-12",
+      "rank": 12,
+      "title": "Run-129: likelihood-ratio implementation bridge",
+      "exact_statement": "For an explicit IID likelihood-ratio detector, export the construction-to-adaptedness, conditional-mean and integrability bridge used by the certified anytime theorem, then quantify the deployed detector stopping guarantee under its stated null.",
+      "hypotheses": [
+        "IID or an explicitly replaced conditional null law",
+        "Measurable likelihood ratios and denominator support conditions",
+        "Finite/integrable products and an adapted filtration"
+      ],
+      "synonyms": [
+        "likelihood ratio martingale adaptedness integrability anytime detector implementation",
+        "IID likelihood ratio conditional mean one supermartingale"
+      ],
+      "value_rationale": "Wave C priority 1: makes the continuous-monitoring false-alarm guarantee usable in an actual detector implementation.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "WAVE_C_REPROOF",
+      "foundation_basis": "INDEPENDENT",
+      "success_criteria": [
+        "New exported bridge theorem and finite positive detector witness",
+        "Standard martingale/Ville facts reused rather than presented as new",
+        "A concrete implementation contract and exact stronger scope diff"
+      ],
+      "queries": [
+        "likelihood ratio martingale adaptedness integrability anytime detector implementation",
+        "IID likelihood ratio conditional mean one supermartingale"
+      ],
+      "related_runs": [
+        "Run-129"
+      ],
+      "subject_area": "10",
+      "programs": [
+        "P3",
+        "P4"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "10",
+        "13",
+        "16"
+      ],
+      "extension_statement": "Export the implementation-to-adaptedness/conditional-mean/integrability bridge omitted from Run-129's scalar contract.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-13",
+      "rank": 13,
+      "title": "Run-134: genuine matrix incentive response",
+      "exact_statement": "Under explicit norm, invertibility, positivity and perturbation hypotheses, export a matrix response/condition-number bound for ecosystem-service incentive weights with a finite example demonstrating the claimed perturbation effect.",
+      "hypotheses": [
+        "Specified matrix norm and compatible vector norms",
+        "Invertible response matrix and bounded perturbation",
+        "Explicit positivity and ecological-weight interpretation contracts"
+      ],
+      "synonyms": [
+        "matrix response condition number incentive weights perturbation ecosystem services",
+        "condition number positive matrix sensitivity incentive alignment"
+      ],
+      "value_rationale": "Wave C priority 2: strengthens scalar polynomial identities into a transparent incentive-weight audit.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "WAVE_C_REPROOF",
+      "foundation_basis": "INDEPENDENT",
+      "success_criteria": [
+        "Matrix-level exported theorem with sharp or demonstrably useful constants",
+        "Nondegenerate matrix witness and failure example without a missing hypothesis",
+        "No ecosystem causality inferred from the matrix definition"
+      ],
+      "queries": [
+        "matrix response condition number incentive weights perturbation ecosystem services",
+        "condition number positive matrix sensitivity incentive alignment"
+      ],
+      "related_runs": [
+        "Run-134"
+      ],
+      "subject_area": "08",
+      "programs": [
+        "P2",
+        "P5"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "02",
+        "04",
+        "08"
+      ],
+      "extension_statement": "Replace Run-134's scalar polynomial scope with a genuine matrix norm/condition-number perturbation theorem.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-14",
+      "rank": 14,
+      "title": "Run-141: matrix dynamics to equalization rate",
+      "exact_statement": "For an explicit coupling matrix and linear dynamics, export eigenpair/eigenvalue ordering and solution-decay results that identify slowRate with a genuine modeled equalization rate, including positivity and norm assumptions.",
+      "hypotheses": [
+        "Specified symmetric or otherwise diagonalisable stable coupling operator",
+        "Eigenpair/eigenvalue-ordering assumptions explicitly proved or stated",
+        "Dynamics and observable norm identified separately from ecology"
+      ],
+      "synonyms": [
+        "coupled linear dynamics spectral gap equalization speed norm bound",
+        "symbiotic equalization matrix eigenvalue ordering decay rate"
+      ],
+      "value_rationale": "Wave C priority 3: replaces a defined scalar rate with an auditable linear-dynamics interpretation.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "WAVE_C_REPROOF",
+      "foundation_basis": "INDEPENDENT",
+      "success_criteria": [
+        "Matrix/dynamical bridge theorem and nontrivial coupled witness",
+        "Sharpness or counterexample for the ordering/positivity requirements",
+        "Measured coupling identification stays conditional"
+      ],
+      "queries": [
+        "coupled linear dynamics spectral gap equalization speed norm bound",
+        "symbiotic equalization matrix eigenvalue ordering decay rate"
+      ],
+      "related_runs": [
+        "Run-141"
+      ],
+      "subject_area": "05",
+      "programs": [
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "05",
+        "07",
+        "09"
+      ],
+      "extension_statement": "Export matrix eigenpair ordering and linear-dynamics decay identification, beyond Run-141's defined scalar slowRate.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-15",
+      "rank": 15,
+      "title": "Run-131: relay trajectory and optimizer bridge",
+      "exact_statement": "Define a stateful directional relay trajectory and export a theorem identifying its switching path integral and optimizer with the certified scalar hysteresis geometry under explicit regularity and cost assumptions.",
+      "hypotheses": [
+        "Specified relay state-transition law and initial state",
+        "Regularity/variation assumptions for path integrals",
+        "Directional switching costs and feasible optimizer set"
+      ],
+      "synonyms": [
+        "relay hysteresis directional switching path integral optimization",
+        "stateful control hysteresis loop energy cost optimal relay"
+      ],
+      "value_rationale": "Turns scalar switching formulas into a state-change model usable for agent control.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "WAVE_C_REPROOF",
+      "foundation_basis": "INDEPENDENT",
+      "success_criteria": [
+        "Trajectory-level exported theorem with a nonconstant witness",
+        "An optimum/feasibility result beyond scalar substitution",
+        "Behavioral or physical interpretation is separately identified"
+      ],
+      "queries": [
+        "relay hysteresis directional switching path integral optimization",
+        "stateful control hysteresis loop energy cost optimal relay"
+      ],
+      "related_runs": [
+        "Run-131"
+      ],
+      "subject_area": "14",
+      "programs": [
+        "P3",
+        "P5"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "13",
+        "14",
+        "16"
+      ],
+      "extension_statement": "Export a stateful relay trajectory, path-integral and optimizer identification, beyond Run-131's scalar switching geometry.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-16",
+      "rank": 16,
+      "title": "Run-125: projector cost to an operational resource",
+      "exact_statement": "Under an explicit finite-channel model, identify a projector cost with a specified physical-energy or control-time observable and prove a bound or counterexample showing the conditions under which the low-rank shared-channel result constrains that observable.",
+      "hypotheses": [
+        "Frozen channel/operator model and norm",
+        "Named observable-identification premise",
+        "Explicit energy/control-time protocol and no silently supplied universal Landauer bridge"
+      ],
+      "synonyms": [
+        "low rank shared channel projector cost thermodynamic speed energy identification",
+        "finite channel norm bound control time symbiotic bandwidth"
+      ],
+      "value_rationale": "Tests whether the mathematical projector bound can support a real efficiency claim.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "WAVE_C_REPROOF",
+      "foundation_basis": "INDEPENDENT",
+      "success_criteria": [
+        "A substantive operational-identification theorem or falsifying model",
+        "A finite low-rank positive witness and scope change tied to the original theorem",
+        "No physical efficiency headline without empirical identification"
+      ],
+      "queries": [
+        "low rank shared channel projector cost thermodynamic speed energy identification",
+        "finite channel norm bound control time symbiotic bandwidth"
+      ],
+      "related_runs": [
+        "Run-125"
+      ],
+      "subject_area": "05",
+      "programs": [
+        "P1",
+        "P3",
+        "P4"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "05",
+        "09",
+        "13"
+      ],
+      "extension_statement": "Add a named operational resource identification or its obstruction, beyond Run-125's mathematical projector-cost definition.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-17",
+      "rank": 17,
+      "title": "Run-126: measured law and learned representation contract",
+      "exact_statement": "Export a measured-distribution-to-JointLaw identification and finite learned-representation contract that makes the forbidden-proxy information ceiling applicable, including estimation error or a counterexample when the contract fails.",
+      "hypotheses": [
+        "Finite observed joint law with provenance and uncertainty",
+        "Explicit representation Markov/sufficiency and forbidden-proxy constraints",
+        "Target/representation entropy and model-identification premises"
+      ],
+      "synonyms": [
+        "forbidden proxy information invariance representation finite joint law estimation",
+        "mutual information proxy fairness representation contract"
+      ],
+      "value_rationale": "Clarifies exactly what a proxy-information audit must measure before using its ceiling.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "WAVE_C_REPROOF",
+      "foundation_basis": "INDEPENDENT",
+      "success_criteria": [
+        "Exported measured/model bridge plus nontrivial representation witness",
+        "A quantified estimation or approximation term beyond a pure data-processing restatement",
+        "Prediction quality and fairness claims kept separate"
+      ],
+      "queries": [
+        "forbidden proxy information invariance representation finite joint law estimation",
+        "mutual information proxy fairness representation contract"
+      ],
+      "related_runs": [
+        "Run-126"
+      ],
+      "subject_area": "09",
+      "programs": [
+        "P1",
+        "P3"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "09",
+        "10",
+        "13",
+        "16"
+      ],
+      "extension_statement": "Add a measured-distribution/learned-representation contract and estimation correction, beyond Run-126's abstract JointLaw scope.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-18",
+      "rank": 18,
+      "title": "Run-127: conditional stewardship rate with uncertainty",
+      "exact_statement": "Preserve the certified Cantelli result and formulate a separate physical-rate stewardship statement under explicit PL and PD, then justify a nontrivial uncertainty-to-reserve bridge using independently modeled physical variables.",
+      "hypotheses": [
+        "PL and PD named in every physical-rate theorem",
+        "Moment hypotheses and positivity/nondegeneracy required by Cantelli",
+        "Independent stochastic identification of reserve variables; no product form hidden in definitions"
+      ],
+      "synonyms": [
+        "Cantelli moment robust stewardship reserve physical information rate PL PD",
+        "conditional product Intelligence Bound precautionary capacity reserve"
+      ],
+      "value_rationale": "Exposes the assumptions in the claimed stewardship rate while preserving the useful probability theorem.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "WAVE_C_REPROOF",
+      "foundation_basis": "CONDITIONAL_PL_PD",
+      "success_criteria": [
+        "New immutable conditional envelope with a positive joint witness",
+        "A reserve-uncertainty consequence beyond rewriting P D/K",
+        "The narrowed historical claims and certificate remain unchanged"
+      ],
+      "queries": [
+        "Cantelli moment robust stewardship reserve physical information rate PL PD",
+        "conditional product Intelligence Bound precautionary capacity reserve"
+      ],
+      "related_runs": [
+        "Run-127",
+        "Run-902"
+      ],
+      "subject_area": "02",
+      "programs": [
+        "P1",
+        "P5"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "01",
+        "02",
+        "09"
+      ],
+      "extension_statement": "Add a separately declared PL/PD-conditioned rate/reserve bridge with independently identified stochastic variables; preserve Cantelli and the narrowed historical scope.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-19",
+      "rank": 19,
+      "title": "Run-128: transfer measurements to reciprocity utilities",
+      "exact_statement": "For a declared finite transfer experiment, export a map from measured directional transfer values and costs to the certified scalar utilities, with uncertainty conditions under which bilateral-benefit classification is robust.",
+      "hypotheses": [
+        "Explicit utility/transfer/cost definitions",
+        "Independently observed transfer estimates and calibration uncertainty",
+        "No assumed biological-performance equivalence"
+      ],
+      "synonyms": [
+        "directional information transfer reciprocity utility cost measurement uncertainty",
+        "bilateral benefit information exchange robustness corridor"
+      ],
+      "value_rationale": "Makes the reciprocity corridor an accountable model check rather than a biological-performance claim.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "WAVE_C_REPROOF",
+      "foundation_basis": "INDEPENDENT",
+      "success_criteria": [
+        "Exported measurement/utility bridge and strict robustness bound",
+        "A bilateral positive witness and a rank/sign-reversal example",
+        "No conversion of scalar utilities into actual ecological benefit without evidence"
+      ],
+      "queries": [
+        "directional information transfer reciprocity utility cost measurement uncertainty",
+        "bilateral benefit information exchange robustness corridor"
+      ],
+      "related_runs": [
+        "Run-128"
+      ],
+      "subject_area": "07",
+      "programs": [
+        "P2",
+        "P5"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "02",
+        "07",
+        "08"
+      ],
+      "extension_statement": "Add a measured transfer/cost-to-utility identification and robustness bound, beyond Run-128's scalar reciprocity utilities.",
+      "extension_review_required": true
+    },
+    {
+      "id": "P8-20",
+      "rank": 20,
+      "title": "Run-130: scenario-to-cut supply-network contract",
+      "exact_statement": "For a provenance-bound afforestation supply scenario, export the interpretation of compatibility, demand and supply as a finite network and characterize how uncertain empirical inputs alter the certified cut-feasibility test.",
+      "hypotheses": [
+        "Finite scenario/network incidence and compatibility definitions",
+        "Measured or bounded demand, supply and uncertainty inputs",
+        "Resource feasibility kept separate from tree survival and ecosystem outcomes"
+      ],
+      "synonyms": [
+        "afforestation supply network climate seed source compatibility cut condition uncertainty",
+        "robust bipartite supply feasibility demand compatibility network certificate"
+      ],
+      "value_rationale": "Makes the certified cut test useful as a supply-network audit without claiming survival outcomes.",
+      "extends_known": true,
+      "status": "OPEN",
+      "novelty_status": "UNASSESSED",
+      "category": "WAVE_C_REPROOF",
+      "foundation_basis": "INDEPENDENT",
+      "success_criteria": [
+        "Exported scenario-to-network bridge and a robust cut witness/counterexample",
+        "An informative uncertainty bottleneck beyond restating max-flow/min-cut",
+        "No claim of afforestation success inferred from supply feasibility"
+      ],
+      "queries": [
+        "afforestation supply network climate seed source compatibility cut condition uncertainty",
+        "robust bipartite supply feasibility demand compatibility network certificate"
+      ],
+      "related_runs": [
+        "Run-130"
+      ],
+      "subject_area": "11",
+      "programs": [
+        "P2",
+        "P4",
+        "P6"
+      ],
+      "proposed_statement_only": true,
+      "area_ids": [
+        "03",
+        "11",
+        "15",
+        "16"
+      ],
+      "extension_statement": "Add a scenario-to-network interpretation and uncertain-input cut sensitivity, beyond Run-130's finite cut feasibility theorem.",
+      "extension_review_required": true
+    }
+  ]
+}

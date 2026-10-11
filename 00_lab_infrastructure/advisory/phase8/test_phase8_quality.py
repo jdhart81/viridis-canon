@@ -216,6 +216,22 @@ class MetricsTests(unittest.TestCase):
                              "--week", "2026-W42", "--output-dir", str(root / "output")])
             self.assertEqual(result, 0)
 
+    def test_documented_weekly_subcommand_writes_real_report(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            pipe = root / "RESEARCH_PIPELINE_v2"
+            pipe.mkdir()
+            (pipe / "corpus_ledger.json").write_text(json.dumps({"run_entities": []}))
+            result = q.main(["weekly", "--tree-root", str(root), "--phase8-root", str(root / "phase8"),
+                             "--week", "2026-W42", "--output-dir", str(root / "output")])
+            self.assertEqual(result, 0)
+            report = json.loads((root / "output/WEEKLY_QUALITY_METRICS.json").read_text())
+            self.assertEqual(report["runs_attempted"], 0)
+            self.assertTrue((root / "output/WEEKLY_QUALITY_LEDGER.md").is_file())
+
+    def test_invalid_advisory_arguments_never_block_pipeline(self):
+        self.assertEqual(q.main(["weekly", "--unrecognized-argument"]), 0)
+
     def test_malformed_json_reporting_does_not_touch_protected_files(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

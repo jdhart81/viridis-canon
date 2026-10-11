@@ -451,7 +451,18 @@ def _main(argv=None) -> int:
 def main(argv=None) -> int:
     """Advisory failures never become verification/publication failures."""
     try:
+        if argv is None:
+            import sys
+            argv = sys.argv[1:]
+        if argv and argv[0] == "weekly":
+            argv = argv[1:]
         return _main(argv)
+    except SystemExit as exc:
+        if exc.code:
+            print(json.dumps({"advisory_only": True, "certifies": False,
+                              "status": "ADVISORY_UNAVAILABLE", "error": "Invalid advisory arguments",
+                              "action": "Continue the unchanged pipeline with UNASSESSED labels."}))
+        return 0
     except Exception as exc:
         print(json.dumps({"advisory_only": True, "certifies": False,
                           "status": "ADVISORY_UNAVAILABLE", "error": f"{type(exc).__name__}: {exc}",

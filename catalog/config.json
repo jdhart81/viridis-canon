@@ -374,6 +374,24 @@
         "entity_type": "METHODS_DIGEST_NOTE",
         "row_sha256": "0350513410758e4339f25981f8ad1784a63a1ff8f00b13bdc775ac8003a4b515",
         "snapshot_sha256": "1f4fa2c9f75a8b975bbabc73f7ed728219aa14471398a308b0cdc0ebbfaffa27"
+      },
+      {
+        "entity_id": "publication:methods-digest:2026-W41:23308138",
+        "entity_type": "METHODS_DIGEST_GROUP",
+        "row_sha256": "1cdfb3913487adc4434c71937427790ef24afcb0945c796a82b6bfdd210a56b5",
+        "snapshot_sha256": "99f1253dd847e24065bbb2f8b9d2e0732adda4c0a389c826ac37b4f20a449dea"
+      },
+      {
+        "entity_id": "publication:methods-note:2026-W41:Run-189",
+        "entity_type": "METHODS_DIGEST_NOTE",
+        "row_sha256": "9cbc1bf0c289d14a3e98844af5548e46770c8d649b7e4d5b96c1883a48097489",
+        "snapshot_sha256": "99f1253dd847e24065bbb2f8b9d2e0732adda4c0a389c826ac37b4f20a449dea"
+      },
+      {
+        "entity_id": "publication:methods-note:2026-W41:Run-190",
+        "entity_type": "METHODS_DIGEST_NOTE",
+        "row_sha256": "e97aebee824a216475782c44af2c961f9fe27ae3bc52f683f40fcfc6b49413fe",
+        "snapshot_sha256": "99f1253dd847e24065bbb2f8b9d2e0732adda4c0a389c826ac37b4f20a449dea"
       }
     ],
     "current_snapshots": [
@@ -384,6 +402,10 @@
       {
         "name": "corpus-ledger-current-1f4fa2c9f75a8b975bbabc73f7ed728219aa14471398a308b0cdc0ebbfaffa27",
         "sha256": "1f4fa2c9f75a8b975bbabc73f7ed728219aa14471398a308b0cdc0ebbfaffa27"
+      },
+      {
+        "name": "corpus-ledger-current-99f1253dd847e24065bbb2f8b9d2e0732adda4c0a389c826ac37b4f20a449dea",
+        "sha256": "99f1253dd847e24065bbb2f8b9d2e0732adda4c0a389c826ac37b4f20a449dea"
       }
     ],
     "historical_publication_entity_ids": [
@@ -995,8 +1017,8 @@
   ],
   "manifest": "SPINE_MANIFEST.txt",
   "methods_digest_joins": {
-    "path": "catalog/METHODS_DIGESTS_2026-W41_SPLIT.json",
-    "sha256": "31e210f2fef88f78f829f5c34182c3c4f25e282bbfc451d8f9613832f46fc2c7"
+    "path": "catalog/METHODS_DIGESTS_2026-W41_CURRENT.json",
+    "sha256": "2c3496a9371bdc8e410a3885b73aaf4e455b520f56b25ca9d1c924053bc41342"
   },
   "publication_joins": {
     "path": "catalog/PUBLICATION_JOINS.json",

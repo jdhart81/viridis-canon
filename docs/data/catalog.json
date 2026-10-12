@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "6b9d58dcc464f6474e8e8183ce0d9160140636758c521f2b441c2bd92153d2f1",
+  "catalog_digest": "a15987f3533ee9c243412d4c80ea6d21a3ff696800f4252a10f2246cb7db6cf7",
   "concept_doi": "10.5281/zenodo.19317982",
   "coverage_provenance": {
     "certifies": false,
@@ -375,6 +375,24 @@
         "entity_type": "METHODS_DIGEST_NOTE",
         "row_sha256": "0350513410758e4339f25981f8ad1784a63a1ff8f00b13bdc775ac8003a4b515",
         "snapshot_sha256": "1f4fa2c9f75a8b975bbabc73f7ed728219aa14471398a308b0cdc0ebbfaffa27"
+      },
+      {
+        "entity_id": "publication:methods-digest:2026-W41:23308138",
+        "entity_type": "METHODS_DIGEST_GROUP",
+        "row_sha256": "1cdfb3913487adc4434c71937427790ef24afcb0945c796a82b6bfdd210a56b5",
+        "snapshot_sha256": "99f1253dd847e24065bbb2f8b9d2e0732adda4c0a389c826ac37b4f20a449dea"
+      },
+      {
+        "entity_id": "publication:methods-note:2026-W41:Run-189",
+        "entity_type": "METHODS_DIGEST_NOTE",
+        "row_sha256": "9cbc1bf0c289d14a3e98844af5548e46770c8d649b7e4d5b96c1883a48097489",
+        "snapshot_sha256": "99f1253dd847e24065bbb2f8b9d2e0732adda4c0a389c826ac37b4f20a449dea"
+      },
+      {
+        "entity_id": "publication:methods-note:2026-W41:Run-190",
+        "entity_type": "METHODS_DIGEST_NOTE",
+        "row_sha256": "e97aebee824a216475782c44af2c961f9fe27ae3bc52f683f40fcfc6b49413fe",
+        "snapshot_sha256": "99f1253dd847e24065bbb2f8b9d2e0732adda4c0a389c826ac37b4f20a449dea"
       }
     ],
     "current_snapshots": [
@@ -385,6 +403,10 @@
       {
         "name": "corpus-ledger-current-1f4fa2c9f75a8b975bbabc73f7ed728219aa14471398a308b0cdc0ebbfaffa27",
         "sha256": "1f4fa2c9f75a8b975bbabc73f7ed728219aa14471398a308b0cdc0ebbfaffa27"
+      },
+      {
+        "name": "corpus-ledger-current-99f1253dd847e24065bbb2f8b9d2e0732adda4c0a389c826ac37b4f20a449dea",
+        "sha256": "99f1253dd847e24065bbb2f8b9d2e0732adda4c0a389c826ac37b4f20a449dea"
       }
     ],
     "historical_publication_entity_ids": [
@@ -3461,6 +3483,94 @@
       "publication_binding_sha256": "4161f4b5f7fbc6dbd0df98235c8083a6ca27623c6bc11992c083253d07ac8360",
       "record_id": "23292552",
       "registration_receipt_sha256": "522ff1ca6a43e569c8890d4b75ef54985d3316e40d171fb088487bbff6b37db2",
+      "release_week": "2026-W41",
+      "title": "Viridis Methods Digest — 2026-W41"
+    },
+    {
+      "certifies": false,
+      "disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+      "doi": "10.5281/zenodo.23308138",
+      "entity_id": "publication:methods-digest:2026-W41:23308138",
+      "notes": [
+        {
+          "certificate_sha256": "9c7dd31ac956c7e985906ed6f16de749e7952df6f87078d5ff472b6cc451a806",
+          "certifies": "LISTED_NOTE_SCOPE_ONLY",
+          "claim_scope": "[\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"q ^ (n + 1) ≤ q ^ n\",\n    \"context_display_file\": {\n      \"relative_path\": \"rendered/FROZEN_CONTEXT.txt\",\n      \"sha256\": \"29aa9f163cf685458edd40b85aba743ae4b38ad603baca42e6ba5a62529df66c\"\n    },\n    \"display_file\": {\n      \"relative_path\": \"rendered/statement-001.txt\",\n      \"sha256\": \"de6e2d527e93122935bf9e6bd7a9d5e0434d3c9284facc45473a71d392c96ad1\"\n    },\n    \"english_claim\": \"Under every hypothesis in the frozen statement, Viridis.Computation.ReplicatedChecker.adding_checker_weakly_reduces_independent_miss establishes exactly its quoted conclusion. No empirical identification or additional physical law is asserted.\",\n    \"exact_source_signature\": \"theorem adding_checker_weakly_reduces_independent_miss\\n    (q : ℝ) (n : ℕ) (hq0 : 0 ≤ q) (hq1 : q ≤ 1) :\\n    q ^ (n + 1) ≤ q ^ n\",\n    \"explicit_binders_and_hypotheses\": \"(q : ℝ) (n : ℕ) (hq0 : 0 ≤ q) (hq1 : q ≤ 1)\",\n    \"lean_theorem\": \"adding_checker_weakly_reduces_independent_miss\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"q\",\n        \"n\",\n        \"hq0\",\n        \"hq1\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": null,\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"(0 : ℝ) ^ (n + 1) = 0\",\n    \"context_display_file\": {\n      \"relative_path\": \"rendered/FROZEN_CONTEXT.txt\",\n      \"sha256\": \"29aa9f163cf685458edd40b85aba743ae4b38ad603baca42e6ba5a62529df66c\"\n    },\n    \"display_file\": {\n      \"relative_path\": \"rendered/statement-002.txt\",\n      \"sha256\": \"6e1e07d57b4e31cc80adb80ae4b12c325a63543f1848638a4ff0172f6212e5f5\"\n    },\n    \"english_claim\": \"Under every hypothesis in the frozen statement, Viridis.Computation.ReplicatedChecker.zero_miss_stays_zero establishes exactly its quoted conclusion. No empirical identification or additional physical law is asserted.\",\n    \"exact_source_signature\": \"theorem zero_miss_stays_zero\\n    (n : ℕ) : (0 : ℝ) ^ (n + 1) = 0\",\n    \"explicit_binders_and_hypotheses\": \"(n : ℕ)\",\n    \"lean_theorem\": \"zero_miss_stays_zero\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"n\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": null,\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"(1 : ℝ) ^ n = 1\",\n    \"context_display_file\": {\n      \"relative_path\": \"rendered/FROZEN_CONTEXT.txt\",\n      \"sha256\": \"29aa9f163cf685458edd40b85aba743ae4b38ad603baca42e6ba5a62529df66c\"\n    },\n    \"display_file\": {\n      \"relative_path\": \"rendered/statement-003.txt\",\n      \"sha256\": \"36bd6dbabcbd1a9ff63f7743b478ac7fb61c97fe41d6f8256ea0be0baf228ec2\"\n    },\n    \"english_claim\": \"Under every hypothesis in the frozen statement, Viridis.Computation.ReplicatedChecker.certain_miss_stays_certain establishes exactly its quoted conclusion. No empirical identification or additional physical law is asserted.\",\n    \"exact_source_signature\": \"theorem certain_miss_stays_certain\\n    (n : ℕ) : (1 : ℝ) ^ n = 1\",\n    \"explicit_binders_and_hypotheses\": \"(n : ℕ)\",\n    \"lean_theorem\": \"certain_miss_stays_certain\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"n\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": null,\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"((1 / 2 : ℝ) ^ 2 = 1 / 4) ∧ ((1 / 2 : ℝ) ^ 3 = 1 / 8)\",\n    \"context_display_file\": {\n      \"relative_path\": \"rendered/FROZEN_CONTEXT.txt\",\n      \"sha256\": \"29aa9f163cf685458edd40b85aba743ae4b38ad603baca42e6ba5a62529df66c\"\n    },\n    \"display_file\": {\n      \"relative_path\": \"rendered/statement-004.txt\",\n      \"sha256\": \"ebc5083782689fbccb5f61a26c2e999f3f4dd2c393830dc248fee828870a1d32\"\n    },\n    \"english_claim\": \"Under every hypothesis in the frozen statement, Viridis.Computation.ReplicatedChecker.two_checker_witness establishes exactly its quoted conclusion. No empirical identification or additional physical law is asserted.\",\n    \"exact_source_signature\": \"theorem two_checker_witness :\\n    ((1 / 2 : ℝ) ^ 2 = 1 / 4) ∧ ((1 / 2 : ℝ) ^ 3 = 1 / 8)\",\n    \"explicit_binders_and_hypotheses\": \"\",\n    \"lean_theorem\": \"two_checker_witness\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"Mathlib mathematical values in the frozen statement\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": null,\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  }\n]",
+          "disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+          "entity_id": "publication:methods-note:2026-W41:Run-189",
+          "foundation_basis": "INDEPENDENT",
+          "publication_binding_sha256": "d8d15ffe8448af7fd382495d471076f5eeb5d7d160013fc53019e1f52ae75f87",
+          "run_id": "Run-189",
+          "semantic_labels": [
+            {
+              "headline_eligible": false,
+              "lean_theorem": "adding_checker_weakly_reduces_independent_miss",
+              "nonvacuity_label": "certified; nonvacuity not demonstrated",
+              "semantic_tier": "DEPTH_NOT_ASSESSED"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "zero_miss_stays_zero",
+              "nonvacuity_label": "NO_HYPOTHESES (domain nonempty: ℕ)",
+              "semantic_tier": "DEPTH_NOT_ASSESSED"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "certain_miss_stays_certain",
+              "nonvacuity_label": "NO_HYPOTHESES (domain nonempty: ℕ)",
+              "semantic_tier": "DEPTH_NOT_ASSESSED"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "two_checker_witness",
+              "nonvacuity_label": "NO_HYPOTHESES (domain nonempty: Unit (closed proposition; no quantified parameters))",
+              "semantic_tier": "DEPTH_NOT_ASSESSED"
+            }
+          ],
+          "title": "A Replicated-Checker Miss-Rate Note for Alignment Verification"
+        },
+        {
+          "certificate_sha256": "a15e272a3fac89916e5642e1fbbbe5fc47255f64bce8a0c4a016942e63d85130",
+          "certifies": "LISTED_NOTE_SCOPE_ONLY",
+          "claim_scope": "[\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"(n : ℝ) ≤ E / epsilon\",\n    \"context_display_file\": {\n      \"relative_path\": \"rendered/FROZEN_CONTEXT.txt\",\n      \"sha256\": \"66716f3d60eff5e6286e8f06c7f979c137ce6af1a4a2f4892fe9a3d775b62350\"\n    },\n    \"display_file\": {\n      \"relative_path\": \"rendered/statement-001.txt\",\n      \"sha256\": \"cec711e2d9ccf5a77a0fe225a66f38a1e6de1a60eb6fd617b4ddeb798be7f6ae\"\n    },\n    \"english_claim\": \"Under every hypothesis in the frozen statement, Viridis.IntelligenceBound.PositiveCostCapacity.capacity_from_positive_cost_floor establishes exactly its quoted conclusion. No empirical identification or additional physical law is asserted.\",\n    \"exact_source_signature\": \"theorem capacity_from_positive_cost_floor\\n    (n : ℕ) (epsilon E : ℝ) (hpos : 0 < epsilon)\\n    (hbudget : (n : ℝ) * epsilon ≤ E) :\\n    (n : ℝ) ≤ E / epsilon\",\n    \"explicit_binders_and_hypotheses\": \"(n : ℕ) (epsilon E : ℝ) (hpos : 0 < epsilon)\\n    (hbudget : (n : ℝ) * epsilon ≤ E)\",\n    \"lean_theorem\": \"capacity_from_positive_cost_floor\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"n\",\n        \"epsilon\",\n        \"E\",\n        \"hpos\",\n        \"hbudget\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": null,\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"(n : ℝ) * epsilon ≤ E\",\n    \"context_display_file\": {\n      \"relative_path\": \"rendered/FROZEN_CONTEXT.txt\",\n      \"sha256\": \"66716f3d60eff5e6286e8f06c7f979c137ce6af1a4a2f4892fe9a3d775b62350\"\n    },\n    \"display_file\": {\n      \"relative_path\": \"rendered/statement-002.txt\",\n      \"sha256\": \"ab44e98927dd7c26d1b633bc470f295db0d1a550cc934c1e3fd7cab500b98fc6\"\n    },\n    \"english_claim\": \"Under every hypothesis in the frozen statement, Viridis.IntelligenceBound.PositiveCostCapacity.cost_floor_from_capacity establishes exactly its quoted conclusion. No empirical identification or additional physical law is asserted.\",\n    \"exact_source_signature\": \"theorem cost_floor_from_capacity\\n    (n : ℕ) (epsilon E : ℝ) (hpos : 0 < epsilon)\\n    (hcapacity : (n : ℝ) ≤ E / epsilon) :\\n    (n : ℝ) * epsilon ≤ E\",\n    \"explicit_binders_and_hypotheses\": \"(n : ℕ) (epsilon E : ℝ) (hpos : 0 < epsilon)\\n    (hcapacity : (n : ℝ) ≤ E / epsilon)\",\n    \"lean_theorem\": \"cost_floor_from_capacity\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"n\",\n        \"epsilon\",\n        \"E\",\n        \"hpos\",\n        \"hcapacity\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": null,\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"((4 : ℝ) * 3 ≤ 12) ∧ ((4 : ℝ) ≤ 12 / 3)\",\n    \"context_display_file\": {\n      \"relative_path\": \"rendered/FROZEN_CONTEXT.txt\",\n      \"sha256\": \"66716f3d60eff5e6286e8f06c7f979c137ce6af1a4a2f4892fe9a3d775b62350\"\n    },\n    \"display_file\": {\n      \"relative_path\": \"rendered/statement-003.txt\",\n      \"sha256\": \"e771aa07a0318b507c815c17cfa330b0067586d5fde4af0c08aa9d865a364a40\"\n    },\n    \"english_claim\": \"Under every hypothesis in the frozen statement, Viridis.IntelligenceBound.PositiveCostCapacity.four_step_exact_budget establishes exactly its quoted conclusion. No empirical identification or additional physical law is asserted.\",\n    \"exact_source_signature\": \"theorem four_step_exact_budget :\\n    ((4 : ℝ) * 3 ≤ 12) ∧ ((4 : ℝ) ≤ 12 / 3)\",\n    \"explicit_binders_and_hypotheses\": \"\",\n    \"lean_theorem\": \"four_step_exact_budget\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"Mathlib mathematical values in the frozen statement\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": null,\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  },\n  {\n    \"ambient_source_context\": [],\n    \"conclusion\": \"¬ ((4 : ℝ) * 3 ≤ 11)\",\n    \"context_display_file\": {\n      \"relative_path\": \"rendered/FROZEN_CONTEXT.txt\",\n      \"sha256\": \"66716f3d60eff5e6286e8f06c7f979c137ce6af1a4a2f4892fe9a3d775b62350\"\n    },\n    \"display_file\": {\n      \"relative_path\": \"rendered/statement-004.txt\",\n      \"sha256\": \"a4b61df61b1a84d719be500bd7b5fae3964fd45ff047a520504195a3ed2c9eb3\"\n    },\n    \"english_claim\": \"Under every hypothesis in the frozen statement, Viridis.IntelligenceBound.PositiveCostCapacity.four_step_undersized_budget establishes exactly its quoted conclusion. No empirical identification or additional physical law is asserted.\",\n    \"exact_source_signature\": \"theorem four_step_undersized_budget :\\n    ¬ ((4 : ℝ) * 3 ≤ 11)\",\n    \"explicit_binders_and_hypotheses\": \"\",\n    \"lean_theorem\": \"four_step_undersized_budget\",\n    \"model_fidelity\": {\n      \"defined\": [\n        \"Mathlib mathematical values in the frozen statement\"\n      ],\n      \"empirically_identified\": []\n    },\n    \"nonvacuity_obligation\": null,\n    \"printed_disclaimer\": \"logical validity given the model, not empirical validation of its assumptions\"\n  }\n]",
+          "disclaimer": "logical validity given the model, not empirical validation of its assumptions",
+          "entity_id": "publication:methods-note:2026-W41:Run-190",
+          "foundation_basis": "INDEPENDENT",
+          "publication_binding_sha256": "1ec0d297b1114a88f3b87648ad21e7da7dc3edb9d97608f9df597ad2e832de20",
+          "run_id": "Run-190",
+          "semantic_labels": [
+            {
+              "headline_eligible": false,
+              "lean_theorem": "capacity_from_positive_cost_floor",
+              "nonvacuity_label": "certified; nonvacuity not demonstrated",
+              "semantic_tier": "DEPTH_NOT_ASSESSED"
+            },
+            {
+              "headline_eligible": false,
+              "lean_theorem": "cost_floor_from_capacity",
+              "nonvacuity_label": "certified; nonvacuity not demonstrated",
+              "semantic_tier": "DEPTH_NOT_ASSESSED"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "four_step_exact_budget",
+              "nonvacuity_label": "NO_HYPOTHESES (domain nonempty: Unit (closed proposition; no quantified parameters))",
+              "semantic_tier": "DEPTH_NOT_ASSESSED"
+            },
+            {
+              "headline_eligible": true,
+              "lean_theorem": "four_step_undersized_budget",
+              "nonvacuity_label": "NO_HYPOTHESES (domain nonempty: Unit (closed proposition; no quantified parameters))",
+              "semantic_tier": "DEPTH_NOT_ASSESSED"
+            }
+          ],
+          "title": "A Positive-Cost Capacity Note for Thermodynamic Intelligence Accounting"
+        }
+      ],
+      "public_readback_sha256": "01debaa13ad9241cec1d4e4bf2ac7eafa353aefaf648e2539137eb75df74b13f",
+      "publication_binding_sha256": "505483b06fbebffc9707d51b531b3443f6c2465452c8302e4b1a9688a80f44d3",
+      "record_id": "23308138",
+      "registration_receipt_sha256": "a43490d1193f6838b567b7ad4f265fd9240fa9010f82196f07b429e3ba599a45",
       "release_week": "2026-W41",
       "title": "Viridis Methods Digest — 2026-W41"
     }

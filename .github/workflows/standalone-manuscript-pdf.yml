@@ -24,3 +24,6 @@ jobs:
           python-version: '3.12'
       - name: Verify separate manuscripts and exact access-copy exceptions
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/tests -p 'test_*.py' -v
+
+      - name: Verify additive runtime trust, complete defaults and exact registry chains
+        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/tests -p 'test_*.py' -v

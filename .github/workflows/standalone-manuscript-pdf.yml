@@ -33,3 +33,6 @@ jobs:
 
       - name: Verify v003 exact historical DATA alias and immutable predecessors
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/tests -p 'test_*.py' -v
+
+      - name: Verify v004 exact native New York timezone DATA and immutable predecessors
+        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/tests -p 'test_*.py' -v

@@ -78,6 +78,13 @@ def _archived_manuscript(name: str) -> bool:
 
 def _manuscript_source(name: str) -> bool:
     path = PurePosixPath(name.lower())
+    # A descriptive Word-document name does not establish a non-paper role.
+    # Its corresponding PDF is mandatory until separate reviewed routing
+    # declares and admits a genuinely non-manuscript document exception.
+    if path.suffix in {".docx", ".doc", ".odt"}:
+        return True
+    if path.suffix == ".tex":
+        return _archived_manuscript(str(path.with_suffix(".pdf")))
     return (path.suffix in {".tex", ".md", ".docx", ".doc", ".odt"}
             and (_manuscript_name(str(path.with_suffix(".pdf")))
                  or any(p in {"papers", "manuscripts"} for p in path.parts[:-1])))

@@ -31,7 +31,12 @@ actual paper must expose it as well. For newly assembled archives containing
 `paper`/`manuscript` MD, DOCX or TEX sources, the corresponding rendered PDF
 with the same stem must be present in the approved archive and separately
 accessible. Top-level manuscript sources likewise require their corresponding
-same-stem PDF in the actual upload set; an unrelated `paper.pdf` does not suffice. This convention is a packaging gate; existing scientific PDF
+same-stem PDF in the actual upload set; an unrelated `paper.pdf` does not suffice.
+Descriptive DOC/DOCX/ODT sources also require that PDF, and unknown TEX source
+roles are held unless their corresponding PDF is available. Only explicit
+figure paths/names exclude a TEX source. A document is not exempt because its
+filename omits the word paper; separate reviewed routing must admit any truly
+non-manuscript document exception. This convention is a packaging gate; existing scientific PDF
 correspondence review remains authoritative. Historical access repairs may
 add a reviewed faithful rendering without altering the published archive.
 A truly manuscript-free dataset, code archive or index needs a truthful scoped

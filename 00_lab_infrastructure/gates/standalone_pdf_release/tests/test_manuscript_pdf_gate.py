@@ -173,6 +173,18 @@ class ManuscriptPDFGateTests(unittest.TestCase):
             with self.assertRaisesRegex(gate.ManuscriptPDFHold, "top-level manuscript source requires"):
                 gate.require_local(root, [source, root / "paper.pdf"])
 
+    def test_descriptive_word_manuscript_name_cannot_bypass_source_gate(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); word = root / "HDFM_FINAL_With_Figures.docx"
+            word.write_bytes(b"actual article source, descriptive filename")
+            (root / "paper.pdf").write_bytes(b"%PDF-unrelated software summary")
+            with self.assertRaisesRegex(gate.ManuscriptPDFHold, "top-level manuscript source requires"):
+                gate.require_local(root)
+            with zipfile.ZipFile(root / "HDFM.zip", "w") as archive:
+                archive.writestr(word.name, word.read_bytes())
+            with self.assertRaisesRegex(gate.ManuscriptPDFHold, "source requires its corresponding rendered PDF"):
+                gate.require_local(root, [root / "paper.pdf", root / "HDFM.zip"])
+
     def test_public_metadata_is_not_enough_without_exact_pdf_download(self):
         with tempfile.TemporaryDirectory() as tmp:
             root, _ = self.bundle(tmp); plan = gate.require_local(root)

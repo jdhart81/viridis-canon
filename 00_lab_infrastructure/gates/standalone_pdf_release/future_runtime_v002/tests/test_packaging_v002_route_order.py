@@ -1,7 +1,7 @@
 """Actual activation27/current92 ordering with synthetic science/time only."""
 from pathlib import Path
 from copy import deepcopy
-import json,sys,tempfile,unittest,contextlib
+import json,sys,tempfile,unittest,contextlib,ast
 from unittest.mock import patch
 HERE=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(HERE))
@@ -83,6 +83,39 @@ class ActualRegistrationOrderWithSlowSyntheticScan(unittest.TestCase):
         self.assertLess(scan_end, first_read)
         self.assertEqual(events[scan_end][1], 1001)
         self.assertEqual(len(requests), 1)
+
+    def test_activation_uses_fresh_debt_or_mirror_rows_instead_of_old_certified_ledger(self):
+        for status in ('DEBT','MIRROR_DRIFT'):
+            with self.subTest(status=status),tempfile.TemporaryDirectory()as temporary:
+                root=Path(temporary).resolve();integration=fixtures.DefaultRouteIntegration()
+                previous,original,ctx,calls,labels,old,imports=integration.fixture(root)
+                previous['run_entities']=[{'id':'Run-191','status':'CERTIFIED','certificate_valid':True,'path':'note'}]
+                # Execute the genuine registrar's current-Run qualification
+                # predicate, with synthetic source/ledger inputs only.
+                source=Path(fixtures.reg.__file__).read_bytes();tree=ast.parse(source)
+                consumer=next(n for n in tree.body if isinstance(n,ast.FunctionDef)and n.name=='_require_registration_pre_prior_processing')
+                predicate=next(n for n in ast.walk(consumer)if isinstance(n,ast.If)
+                               and "matches[0].get('status')"in ast.unparse(n.test)
+                               and "'CERTIFIED'"in ast.unparse(n.test))
+                code=compile(ast.Module(body=[predicate],type_ignores=[]),str(fixtures.reg.__file__),'exec')
+                original_consume=ctx.require_registration
+                def strict_consume(root_,binding,ledger,*args,**kwargs):
+                    matches=[row for row in ledger['run_entities']if row['id']=='Run-191']
+                    exec(code,{'matches':matches,'child':{'run_id':'Run-191'},'RegistrationHold':fixtures.reg.RegistrationHold})
+                    return original_consume(root_,binding,ledger,*args,**kwargs)
+                ctx.require_registration=strict_consume
+                original_build=imports('corpus_ledger').build
+                def changed_science(*args,**kwargs):
+                    value=original_build(*args,**kwargs)
+                    for row in value['run_entities']:
+                        row['status']=status;row['certificate_valid']=False
+                    return value
+                imports('corpus_ledger').build=changed_science
+                self.assertTrue(all(row['status']=='CERTIFIED'for row in previous['run_entities']))
+                with integration.scope(root,ctx,old,imports):
+                    with self.assertRaisesRegex(ValueError,'fresh parity-qualified'):
+                        coverage._registrations(root,previous,{'publication_entities':original[:27]})
+                    self.assertTrue(all(row['status']==status for row in catalog.scientific_data(root).scan_data['run_entities']))
 
 
 class PreparedIntakeGateOrder(unittest.TestCase):

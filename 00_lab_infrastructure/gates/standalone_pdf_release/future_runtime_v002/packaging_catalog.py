@@ -431,7 +431,10 @@ def preserve_registered(root, ledger, previous, profile_binding, *, registry_con
         corpus = importlib.import_module('corpus_ledger')
         registrar = importlib.import_module('methods_digest_registration_v3')
         ordinary, selected = split_registered(root, previous, registrar)
-        base_ordinary, _ = split_registered(root, ledger, registrar)
+        # The caller contributes authoritative registration metadata only.
+        # Current scientific file/Run/certificate/parity tables must come from
+        # the complete freshly observed scan, never its old persisted ledger.
+        base_ordinary, _ = split_registered(root, deepcopy(scientific_data(root).scan_data), registrar)
         base = corpus.preserve_publication_registrations(base_ordinary, ordinary)
         original_rows = deepcopy(base.get('publication_entities', []))
         result = registrar.preserve(base, {**previous, 'publication_entities': selected},

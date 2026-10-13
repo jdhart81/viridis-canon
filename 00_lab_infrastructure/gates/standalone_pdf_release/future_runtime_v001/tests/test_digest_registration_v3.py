@@ -62,8 +62,8 @@ class RegistrationV3Tests(unittest.TestCase):
             reg.assemble_evidence(**args)
 
     def test_historical_receipt_uses_original_scientific_defaults(self):
-        with tempfile.TemporaryDirectory(dir='/private/tmp') as tmp:
-            root = Path(tmp)
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp).resolve()
             receipt = root / 'original.json'
             receipt.write_text(json.dumps({'standard': 'VRS-METHODS-DIGEST-REGISTRATION-2'}))
             binding = {'path': str(receipt), 'sha256': hashlib.sha256(receipt.read_bytes()).hexdigest()}
@@ -79,7 +79,7 @@ class RegistrationV3Tests(unittest.TestCase):
             self.assertNotIn('strict_consumer', calls[0][1])
 
     def test_original_source_hash_is_required_before_delegation(self):
-        with tempfile.TemporaryDirectory(dir='/private/tmp') as tmp:
+        with tempfile.TemporaryDirectory() as tmp:
             source = Path(tmp) / 'wrong_original.py'
             source.write_text('not the admitted source')
             with patch('importlib.import_module', return_value=SimpleNamespace(__file__=str(source))):
@@ -109,8 +109,8 @@ class RegistrationV3Tests(unittest.TestCase):
         return ledger, rows, consume
 
     def test_preserve_replays_only_v3_on_explicit_consumer(self):
-        with tempfile.TemporaryDirectory(dir='/private/tmp') as tmp:
-            root = Path(tmp)
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp).resolve()
             ledger, rows, consume = self.scoped_rows(root)
             oldfile = root / 'v1.json'
             oldfile.write_text(json.dumps({'standard': 'VRS-METHODS-DIGEST-REGISTRATION-2'}))
@@ -129,8 +129,8 @@ class RegistrationV3Tests(unittest.TestCase):
             self.assertEqual(rows[1]['certifies'], 'LISTED_NOTE_SCOPE_ONLY')
 
     def test_failed_v3_replay_holds_group_and_children(self):
-        with tempfile.TemporaryDirectory(dir='/private/tmp') as tmp:
-            root = Path(tmp)
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp).resolve()
             ledger, rows, _ = self.scoped_rows(root)
             def fail(*args, **kwargs):
                 raise reg.RegistrationHold('exact paper omitted')
@@ -139,8 +139,8 @@ class RegistrationV3Tests(unittest.TestCase):
             self.assertEqual(len(result['publication_holds']), 2)
 
     def test_augment_cannot_duplicate_an_existing_digest_doi(self):
-        with tempfile.TemporaryDirectory(dir='/private/tmp') as tmp:
-            root = Path(tmp)
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp).resolve()
             ledger, rows, consume = self.scoped_rows(root)
             ledger['publication_entities'] = rows
             original = {'published_records': [], 'methods_digest_groups': [{'doi': rows[0]['doi'], 'certifies': False}], 'counts': {}}
@@ -150,8 +150,8 @@ class RegistrationV3Tests(unittest.TestCase):
 
     def test_evaluate_v3_uses_explicit_consumer_and_preserves_scope(self):
         import claim_binding
-        with tempfile.TemporaryDirectory(dir='/private/tmp') as tmp:
-            root = Path(tmp)
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp).resolve()
             ledger, rows, consume = self.scoped_rows(root)
             ledger['publication_entities'] = rows
             def forbidden(*args, **kwargs):

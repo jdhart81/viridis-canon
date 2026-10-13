@@ -30,9 +30,9 @@ import manuscript_access_correction as access
 
 class AccessRegistryTests(unittest.TestCase):
     def setUp(self):
-        self.tmp = tempfile.TemporaryDirectory(dir='/private/tmp')
+        self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
-        self.root = Path(self.tmp.name)
+        self.root = Path(self.tmp.name).resolve()
         self.paper = b'%PDF-1.4\nexact old note paper\n%%EOF'
         stream = BytesIO()
         with zipfile.ZipFile(stream, 'w') as z:

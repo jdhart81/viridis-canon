@@ -1,0 +1,8 @@
+{
+  "status": "ACTUAL_LEGACY_ARCHIVE_ONLY_CONFIG_BLOCKED_BEFORE_DISPATCH",
+  "config_sha256": "2cc5a667f87062121b10f30f50fca68a4d0bb441cd84630d67bcbfa9a0b7daab",
+  "exit_code": 1,
+  "stderr": "HOLD_STANDALONE_MANUSCRIPT_PDF: archived manuscript lacks a byte-identical separate PDF: METHODS_NOTES.zip:notes/Run-189/paper.pdf",
+  "dispatch_authorized": false,
+  "external_mutation": false
+}

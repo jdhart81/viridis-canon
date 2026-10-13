@@ -111,3 +111,26 @@ rule downloads and rehashes every original file too. Both full actual views
 remain in the returned audit. Only the added PDF entries and exactly derived
 native `count`/`total_bytes` are allowed; rights, metadata, unknown fields and
 version identities remain protected. The return value certifies no new claim.
+
+## Actual observation-context review
+
+A read-only check of repaired record 23308138 compared the genuine saved
+legacy/native bodies with fresh complete public observations. The legacy view
+matches after removing only the two declared PDF entries for comparison. The
+fresh anonymous native view correctly holds because it omits three protected
+fields present in the saved body: `parent.access.grants`, `parent.access.links`
+and `versions.is_latest_draft`. They are not PDF-access exceptions.
+
+A separately authorized fresh owner-native GET retains those fields unchanged.
+Its complete protected comparison matches after only the declared PDF entries
+and exactly derived `count`/`total_bytes` changes. Both owner and anonymous
+observations are retained. The saved transport receipt lacks an explicit
+authentication label, so the owner context is inferred from the saved
+owner-only fields; do not relabel or rewrite that historical receipt.
+
+The compatible source review must bind matching request/observation contexts,
+preserve the independent anonymous observation and direct PDF-byte readback,
+and reject unknown-field drift. This result permits no field normalization,
+scientific upgrade or installed-registrar claim. The registrar/runtime adapter
+remains staged until the genuine source closure and installation work above
+are completed.

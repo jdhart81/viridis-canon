@@ -1,0 +1,26 @@
+name: Standalone manuscript PDFs
+
+on:
+  pull_request:
+    paths:
+      - '00_lab_infrastructure/gates/standalone_pdf_release/**'
+      - '.github/workflows/standalone-manuscript-pdf.yml'
+  push:
+    branches: [main]
+    paths:
+      - '00_lab_infrastructure/gates/standalone_pdf_release/**'
+      - '.github/workflows/standalone-manuscript-pdf.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  standalone-manuscript-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify separate manuscripts and exact access-copy exceptions
+        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/tests -p 'test_*.py' -v

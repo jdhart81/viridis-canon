@@ -1,0 +1,53 @@
+{
+  "standard": "VRS-STANDALONE-MANUSCRIPT-PDF-SOURCE-REVIEW-1",
+  "status": "PREPARED_NOT_INSTALLED_IN_PINNED_DIGEST_RUNTIME",
+  "old_source": "00_lab_infrastructure/gates/methods_digest.py",
+  "old_sha256": "5fcdc53f68d008357e0aef1dbb93f74695aa91119792f78151a8c61a0a9e05e5",
+  "proposed_source": "00_lab_infrastructure/gates/standalone_pdf_release/digest_pdf_v2_review/methods_digest.py",
+  "proposed_sha256": "e3e8b5be4b99a9991066f49a60630c2a8d63eafd3c09b9b0ed85b50748706f39",
+  "changes": [
+    "new aggregate standard v2 and publication-binding v2",
+    "exact admitted Run-N-Paper.pdf top-level copies declared in immutable uploads",
+    "current and prewrite gates demand every separate PDF equal admitted archived manuscript",
+    "existing strict readback downloads all declared new PDFs unchanged"
+  ],
+  "preserved": [
+    "note scientific admission",
+    "certificate bytes and exact scope",
+    "archive contents",
+    "rights metadata",
+    "historical v1 helpers and sealed bundles"
+  ],
+  "activation_dependencies": [
+    "new reviewed methods_digest source closure in genuine merged source PR",
+    "reviewed compatible digest controller with dynamic upload set from manifest plus DIGEST_MANIFEST.json and PUBLICATION_BINDING.json",
+    "reviewed registration/source consumers dispatch new v2 manifests without altering archived v1",
+    "new config/controller/source bindings and exact authorization for each new release",
+    "all old source pins retained for historical registration readback",
+    "source-bound authority snapshot and nominated exact access correction receipts for historical digest additions",
+    "registrar adapter must run saved exact historical admission before new full-view access-copy comparison",
+    "new predecessor checks and cleanup must explicitly account for inherited exact access PDFs; unknown inherited files remain holds"
+  ],
+  "root_writer_state_changed": false,
+  "external_mutation": false,
+  "proposed_files": [
+    {
+      "filename": "methods_digest.py",
+      "sha256": "e3e8b5be4b99a9991066f49a60630c2a8d63eafd3c09b9b0ed85b50748706f39"
+    },
+    {
+      "filename": "manuscript_access_correction.py",
+      "sha256": "c56b402f663a390ee442115cd7a3262ec513521d6191a117061436994657b563"
+    },
+    {
+      "filename": "registered_manuscript_access.py",
+      "sha256": "8fda908d674a6d6641ecad9b7377a663cae7a047af4d59457dd6ad74a72acb1e"
+    }
+  ],
+  "runtime_audit": {
+    "saved_admission": "existing local corpus/doi consumers default to views=None and saved original evidence; public additions do not alter those immutable inputs",
+    "fresh_public_label": "fresh views compare complete protected file sets and will hold until exact new access rule activates",
+    "future_predecessor": "existing prior pair/file preservation also rejects new PDFs without compatible reviewed access rule",
+    "historical_flags": "new access rule grants no version-flag exception; genuine original chain receipts remain required"
+  }
+}

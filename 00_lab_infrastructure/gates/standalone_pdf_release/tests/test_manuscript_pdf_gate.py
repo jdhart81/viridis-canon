@@ -160,6 +160,19 @@ class ManuscriptPDFGateTests(unittest.TestCase):
             (root / "Unifying-Paper.pdf").write_bytes(paper)
             self.assertEqual(len(gate.require_local(root)["manuscripts"]), 1)
 
+    def test_top_level_source_paper_requires_corresponding_uploaded_pdf(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); source = root / "UNIFYING_PAPER_DRAFT.md"
+            source.write_text("# Actual unifying paper\n")
+            (root / "paper.pdf").write_bytes(b"%PDF-unrelated summary")
+            with self.assertRaisesRegex(gate.ManuscriptPDFHold, "top-level manuscript source requires"):
+                gate.require_local(root)
+            rendered = root / "UNIFYING_PAPER_DRAFT.pdf"
+            rendered.write_bytes(b"%PDF-faithful rendered manuscript")
+            self.assertEqual(len(gate.require_local(root)["top_level_pdfs"]), 2)
+            with self.assertRaisesRegex(gate.ManuscriptPDFHold, "top-level manuscript source requires"):
+                gate.require_local(root, [source, root / "paper.pdf"])
+
     def test_public_metadata_is_not_enough_without_exact_pdf_download(self):
         with tempfile.TemporaryDirectory() as tmp:
             root, _ = self.bundle(tmp); plan = gate.require_local(root)

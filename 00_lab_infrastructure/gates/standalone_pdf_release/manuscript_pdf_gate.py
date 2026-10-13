@@ -145,6 +145,11 @@ def require_local(bundle: Path, upload_paths=None, *, require_digest_inventory=T
             data = _read(path); _pdf(data); top[path.name] = _hashes(data)
     if not top:
         raise ManuscriptPDFHold("deposit requires at least one separate manuscript PDF")
+    uploaded_pdf_names = {name.lower() for name in top}
+    for path in paths:
+        if (_manuscript_source(path.name)
+                and str(PurePosixPath(path.name.lower()).with_suffix(".pdf")) not in uploaded_pdf_names):
+            raise ManuscriptPDFHold("top-level manuscript source requires its corresponding same-stem PDF in actual uploads: " + path.name)
     declared_names = set()
     roles_path = bundle / "MANUSCRIPT_PDFS.json"
     if roles_path.is_file():

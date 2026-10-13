@@ -30,7 +30,8 @@ Resource type does not exempt a manuscript: software deposits containing an
 actual paper must expose it as well. For newly assembled archives containing
 `paper`/`manuscript` MD, DOCX or TEX sources, the corresponding rendered PDF
 with the same stem must be present in the approved archive and separately
-accessible. This convention is a packaging gate; existing scientific PDF
+accessible. Top-level manuscript sources likewise require their corresponding
+same-stem PDF in the actual upload set; an unrelated `paper.pdf` does not suffice. This convention is a packaging gate; existing scientific PDF
 correspondence review remains authoritative. Historical access repairs may
 add a reviewed faithful rendering without altering the published archive.
 A truly manuscript-free dataset, code archive or index needs a truthful scoped

@@ -97,7 +97,7 @@ class ScientificInputData(_ProtectedAliasData):
             current=(runtime.immutable_json_object(runtime.require_data_alias_observation(self.root,self.alias_binding))if complete
                      else runtime.immutable_object_at(self.root,self.alias_binding)[2])
             runtime.need(current==self._alias_material
-                         and runtime.data_alias_identity(Path(current['alias_path']))==current['identity']
+                         and runtime.same_observed_identity(runtime.data_alias_identity(Path(current['alias_path'])),current['identity'])
                          and runtime.strict_historical_alias_target(Path(current['alias_path']),self.root,
                               current['identity']['readlink'])==self.root,
                          'SCIENTIFIC_HISTORICAL_ALIAS_OBSERVATION_CHANGED')
@@ -224,14 +224,20 @@ class ScientificInputData(_ProtectedAliasData):
             if not physical.exists():row={'path':str(path),'physical_path':str(physical),'exists':False}
             else:
                 if not physical.is_file():
-                    kind=physical.stat();directory_identity=lambda s:(s.st_dev,s.st_ino,s.st_mode,s.st_size,s.st_mtime_ns,s.st_ctime_ns)
+                    kind=physical.stat();directory_identity=lambda s:(s.st_dev,s.st_ino,s.st_mode,s.st_size,s.st_mtime_ns)
                     runtime.need(self.data_path(path)==(physical,alias)
                                  and physical.exists()and not physical.is_file()
                                  and directory_identity(physical.stat())==directory_identity(kind),
                                  'SCIENTIFIC_INPUT_PATH_READ_RACE');return
                 first=physical.stat();raw=physical.read_bytes();last=physical.stat()
-                identity=lambda s:(s.st_dev,s.st_ino,s.st_mode,s.st_size,s.st_mtime_ns,s.st_ctime_ns)
+                identity=runtime.file_identity
                 if identity(first)!=identity(last):
+                    self._raise_input_read_race(path,physical,first,last,None,raw,'BODY_FIRST_LAST')
+                try:
+                    snapshot=runtime.read_stable_input(physical)
+                    runtime.need(snapshot.data==raw and snapshot.identity==runtime.stable_input_identity(raw,last),
+                                 'SCIENTIFIC_INPUT_READ_RACE')
+                except runtime.PackagingHold:
                     self._raise_input_read_race(path,physical,first,last,None,raw,'BODY_FIRST_LAST')
                 row={'path':str(path),'physical_path':str(physical),'exists':True,'sha256':runtime.sha(raw),
                      'device':last.st_dev,'inode':last.st_ino,'mode':last.st_mode,'bytes':last.st_size,
@@ -243,6 +249,10 @@ class ScientificInputData(_ProtectedAliasData):
                 final=physical.stat()
                 if identity(final)!=identity(last):
                     self._raise_input_read_race(path,physical,first,last,final,raw,'FINAL_LEAF_AFTER_PATH')
+                try:
+                    runtime.read_stable_input(physical,expected=snapshot.identity)
+                except runtime.PackagingHold:
+                    self._raise_input_read_race(path,physical,first,last,final,raw,'FINAL_LEAF_AFTER_PATH')
             if alias is not None:row['historical_alias_identity']=dict(alias)
             if self.platform_observation is not None and path==Path(self.platform_observation['logical_selected_path']):
                 row['platform_timezone_observation']=self.platform_binding
@@ -252,7 +262,7 @@ class ScientificInputData(_ProtectedAliasData):
         finally:_HASHING.reset(token)
     def _commit_checked_row(self, row):
         old = self.inputs.get(row['path'])
-        if old is not None and old != row:
+        if old is not None and not runtime.same_observed_identity(old, row):
             allowed = self.pending_cas
             runtime.need(allowed is not None and row['path'] == allowed['path']
                          and old.get('sha256') == allowed['before'] and row.get('sha256') == allowed['after'],
@@ -281,11 +291,14 @@ class ScientificInputData(_ProtectedAliasData):
             physical, alias = self.data_path(path)
             runtime.need(physical == path and alias is None and physical.is_file(), 'OWNED_OWNER_REGULAR_LEAF')
             first = physical.stat(); raw = physical.read_bytes(); last = physical.stat(); digest = runtime.sha(raw)
+            snapshot = runtime.read_stable_input(physical)
             runtime.need(runtime.file_identity(first) == runtime.file_identity(last)
                          and self.data_path(path) == (physical, alias) and physical.is_file()
                          and runtime.file_identity(physical.stat()) == runtime.file_identity(last)
+                         and snapshot.data == raw and snapshot.identity == runtime.stable_input_identity(raw,last)
                          and (expected_sha256 is None or digest == expected_sha256),
                          'OWNED_OWNER_INPUT_HASH_OR_RACE')
+            runtime.read_stable_input(physical, expected=snapshot.identity)
             if deadline is not None: deadline()
             row = {'path': str(path), 'physical_path': str(physical), 'exists': True, 'sha256': digest,
                    'device': last.st_dev, 'inode': last.st_ino, 'mode': last.st_mode, 'bytes': last.st_size,
@@ -406,6 +419,10 @@ def _observe_original_read(event,args):
     capture=_READ_CAPTURE.get()
     if event!='open'or capture is None or _HASHING.get():return
     path,mode,flags=args
+    shared=runtime._SHARED_SOURCE_READ.get()
+    if (shared is not None and not isinstance(path,int)
+            and shared==(os.fsdecode(path),runtime.SHARED_INPUT_SHA256)):
+        return  # Only the separately hash-bound helper's own source read.
     read=(isinstance(mode,str)and('r'in mode or '+'in mode))or(mode is None and flags&os.O_ACCMODE!=os.O_WRONLY)
     if read:
         try:capture.record(path)

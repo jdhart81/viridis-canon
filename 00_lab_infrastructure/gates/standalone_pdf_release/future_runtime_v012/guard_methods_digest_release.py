@@ -22,7 +22,10 @@ INSTALLED = ROOT / '_ZENODO_DEPOSITS/standalone_pdf_runtime_v012'
 PROFILE = INSTALLED / 'CURRENT_PACKAGING_PROFILE.json'
 NOMINATION = INSTALLED / 'INSTALLATION_NOMINATION.json'
 # Exact 19-module successor source set, fixed before source freeze and review.
-SOURCE_HASHES = {'digest_controller_v2.py': 'faeba58a' '0a080e4b' '838536b0' 'ac4f32fc' '9399497c' '4cc84d15' 'ab9eaca0' 'f83d9413', 'install_packaging_runtime.py': 'e8d52416' 'e798b7df' '73e82206' '1c27673c' '631f1125' '0bf95b52' '70b33934' '5898d90a', 'invoke_digest_v2.py': '96480eca' '8c439be8' 'd0578022' '13fbc042' '81fc48d7' '1b0d1b01' '3c4b6234' '3f932f87', 'manuscript_access_correction.py': 'c56b402f' '663a390e' 'e442115c' 'd7a3262e' 'c513521d' '6191a117' '06143699' '4657b563', 'manuscript_access_registry.py': '167d82b8' '49a750ed' 'f2b0cfa9' '2188931c' '9170db1a' '59c50eff' '4ba88ba4' '8a5af2b8', 'manuscript_pdf_gate.py': '95cd1bd6' '9e90bdae' '92e17707' '3ed419fe' '28dc7dda' 'b905cca4' 'ac379c00' '27c0cd39', 'methods_digest_registration_v3.py': '1542b85f' 'ab50b686' '35407591' '4ea46153' '6db5da7b' '7bd3fee3' 'b290eb78' '15d7e200', 'methods_digest_v2.py': 'e3e8b5be' '4b99a999' '1066f49a' '60630c2a' '8d63eafd' '3c09b9b0' 'ed85b507' '48706f39', 'nightly_checkpoint_guarded.py': '298d2498' '901e437a' 'c6a1ccc4' 'e4a0841f' 'b3d50244' 'abd36309' 'e0f9f533' 'f179738e', 'owner_content_worker.py': '3ced71f0' 'd37a47de' 'e2db9934' 'a042626d' 'cf7068c5' 'c2ab8576' '4bc9bbb1' 'e517f71b', 'packaging_catalog.py': '70844231' '3d8ae717' 'fc1b6152' 'bfdfceaa' 'c46ff772' '6a1d1742' '701b7f5c' '67db0803', 'packaging_nightly.py': '844472e6' '2b2bf9d5' 'a86a8076' 'cdb52b72' '17d492ca' '7be621dd' 'a8aaea9c' 'db4ce663', 'packaging_nightly_coverage.py': 'f1df587d' '5966ae71' 'd98d6282' '375f1d5f' 'b4cb99e1' '4ec0f77c' 'e6d704b4' 'c00fbdf6', 'packaging_nightly_intake.py': '2739cf07' '1710f83a' '867176e5' 'fa317109' '6fe0ac2f' '26a3805f' 'f4bc3ad6' '622e7cd8', 'packaging_run_flow.py': 'cd4169d3' 'cc2c3af0' '2829d20c' 'e363908a' '9edb9145' '01f134dc' '341dd8d0' '85567014', 'packaging_runtime.py': '300ee214' '808153e2' 'b95f6853' '87a138ff' '7907a947' 'c83c7974' '75dfe0e4' 'eca211a8', 'publish_dated_bundles_guarded.py': '6208c2d6' 'f9bc711f' 'c98a5b97' '9201cdaf' '89226419' 'c7ab5b59' '98052d6b' 'dd0f9158', 'publish_successor_wave_guarded.py': '8b33088f' 'c0249f0f' '66a9f2f0' 'ce335946' 'b540fbac' 'e49a5c73' '4362d58b' 'e8056293', 'scientific_registration_worker.py': 'e82aaafe' 'c786817e' '5bc399de' 'bc9675d0' '53bbecd7' 'bbc981ab' '67f1d4c6' 'd3ff22c1'}
+SOURCE_HASHES = {'digest_controller_v2.py': 'faeba58a0a080e4b838536b0ac4f32fc9399497c4cc84d15ab9eaca0f83d9413', 'install_packaging_runtime.py': '319542b4f467d8c90f6dbfd9c664d4a3e723737aed6222a324b9c2622f94d753', 'invoke_digest_v2.py': '96480eca8c439be8d057802213fbc04281fc48d71b0d1b013c4b62343f932f87', 'manuscript_access_correction.py': 'c56b402f663a390ee442115cd7a3262ec513521d6191a117061436994657b563', 'manuscript_access_registry.py': '167d82b849a750edf2b0cfa92188931c9170db1a59c50eff4ba88ba48a5af2b8', 'manuscript_pdf_gate.py': '95cd1bd69e90bdae92e177073ed419fe28dc7ddab905cca4ac379c0027c0cd39', 'methods_digest_registration_v3.py': '1542b85fab50b686354075914ea461536db5da7b7bd3fee3b290eb7815d7e200', 'methods_digest_v2.py': 'e3e8b5be4b99a9991066f49a60630c2a8d63eafd3c09b9b0ed85b50748706f39', 'nightly_checkpoint_guarded.py': '298d2498901e437ac6a1ccc4e4a0841fb3d50244abd36309e0f9f533f179738e', 'owner_content_worker.py': '4368e184eda9e00acc19dab6b6df7a31525a73cfbb251683338da7d40899a140', 'packaging_catalog.py': '30a3e49d919fbf97b100a07f45222d86f8565443f019916758dde3748f43bc1b', 'packaging_nightly.py': '844472e62b2bf9d5a86a8076cdb52b7217d492ca7be621dda8aaea9cdb4ce663', 'packaging_nightly_coverage.py': 'f1df587d5966ae71d98d6282375f1d5fb4cb99e14ec0f77ce6d704b4c00fbdf6', 'packaging_nightly_intake.py': '2739cf071710f83a867176e5fa3171096fe0ac2f26a3805ff4bc3ad6622e7cd8', 'packaging_run_flow.py': 'cd4169d3cc2c3af02829d20ce363908a9edb914501f134dc341dd8d085567014', 'packaging_runtime.py': '896670146f852bdbacb579fcbf2c46d7603492faa579d9b51bbb17da00d5e381', 'publish_dated_bundles_guarded.py': '6208c2d6f9bc711fc98a5b979201cdaf89226419c7ab5b5998052d6bdd0f9158', 'publish_successor_wave_guarded.py': '8b33088fc0249f0f66a9f2f0ce335946b540fbace49a5c734362d58be8056293', 'scientific_registration_worker.py': '5fe58e9213923d3d80317578b35f4da893a972c7e0fd616336c74b11d81beea2'}
+SHARED_INPUT_NAME = 'stable_input_identity.py'
+SHARED_INPUT_SHA256 = '7e6c204993f0ba65650c58ad50a71073d803522d31fa08b93b7ce35054fa5eda'
+SHARED_INPUT_GIT_PATH = '00_lab_infrastructure/gates/standalone_pdf_release/common/stable_input_identity.py'
 
 
 class GuardHold(ValueError):
@@ -35,8 +38,10 @@ def need(value, reason):
 
 
 def identity(value):
+    # Content identity excludes status-change time; mode is a separate
+    # security observation and is still required to remain unchanged.
     return (value.st_dev, value.st_ino, value.st_mode, value.st_size,
-            value.st_mtime_ns, value.st_ctime_ns)
+            value.st_mtime_ns)
 
 
 def read(path, expected=None):
@@ -48,14 +53,16 @@ def read(path, expected=None):
     before = path.stat()
     need(stat.S_ISREG(before.st_mode), 'regular input file required')
     raw = path.read_bytes()
+    readback = path.read_bytes()
     after = path.stat()
     digest = hashlib.sha256(raw).hexdigest()
-    need(identity(before) == identity(after)
+    need(identity(before) == identity(after) and raw == readback
          and not any(p.is_symlink() for p in (path, *path.parents))
          and path.resolve(strict=True).is_relative_to(ROOT)
          and identity(path.stat()) == identity(after)
          and (expected is None or digest == expected), 'input hash or identity changed')
-    return raw, digest, identity(after)
+    content_identity = (digest, after.st_size, after.st_mtime_ns, after.st_ino, after.st_dev)
+    return raw, digest, (content_identity, after.st_mode)
 
 
 def context(config_path, config_sha):
@@ -105,6 +112,12 @@ def context(config_path, config_sha):
         need(row.get('path') == str(target) and row.get('sha256') == SOURCE_HASHES[name],
              'installed source differs from reviewed successor: ' + name)
         sources[name] = read(target, SOURCE_HASHES[name])
+    shared_path = INSTALLED / 'common' / SHARED_INPUT_NAME
+    expected_shared = [{'name': SHARED_INPUT_NAME, 'path': str(shared_path),
+                        'sha256': SHARED_INPUT_SHA256, 'git_path': SHARED_INPUT_GIT_PATH}]
+    need(profile.get('shared_dependencies') == expected_shared,
+         'exact reviewed shared source dependency required')
+    sources[SHARED_INPUT_NAME] = read(shared_path, SHARED_INPUT_SHA256)
     return {'config_path': str(config_path), 'config_raw': raw, 'config_frame': frame,
             'nomination_raw': nomination_raw, 'nomination_frame': nomination_frame,
             'profile_raw': profile_raw, 'profile_frame': profile_frame,

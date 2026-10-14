@@ -118,8 +118,12 @@ class WorkerSourceTests(unittest.TestCase):
             file=installed/name;file.write_bytes(('# synthetic '+name+'\n').encode())
             modules.append({'name':name,'path':str(file),'sha256':runtime.sha(file.read_bytes()),
                             'git_path':runtime.GIT_PREFIX+name})
+        shared=installed/'common'/runtime.SHARED_INPUT_NAME;shared.parent.mkdir()
+        shared.write_bytes((Path(runtime.__file__).resolve().parent.parent/'common'/runtime.SHARED_INPUT_NAME).read_bytes())
+        dependencies=[{'name':runtime.SHARED_INPUT_NAME,'path':str(shared),'sha256':runtime.SHARED_INPUT_SHA256,
+                       'git_path':runtime.SHARED_INPUT_GIT_PATH}]
         profile=put(root/runtime.PROFILE_PATH,{'modules':modules,'source_origin':{'synthetic_only':True},
-                  'legacy_closure':runtime.LEGACY_CLOSURE})
+                  'legacy_closure':runtime.LEGACY_CLOSURE,'shared_dependencies':dependencies})
         installer=next(row for row in modules if row['name']=='install_packaging_runtime.py')
         put(root/runtime.NOMINATION_PATH,{'standard':'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-12',
             'status':'EXACT_SOURCE_AND_DEFAULT_BINDINGS_INSTALLED_RUNTIME_READBACK_PENDING',

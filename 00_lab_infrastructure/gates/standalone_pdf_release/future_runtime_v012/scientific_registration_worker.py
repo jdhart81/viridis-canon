@@ -20,6 +20,7 @@ from pathlib import Path
 import re
 import selectors
 import signal
+import stat
 import struct
 import subprocess
 import sys
@@ -45,10 +46,13 @@ def _bootstrap_read(path, expected=None, identity=None):
         if any(p.is_symlink() for p in (path, *path.parents)) or not path.is_file():
             raise ValueError('WORKER_BOOTSTRAP_REGULAR_SOURCE')
         s = path.stat()
+        if not stat.S_ISREG(s.st_mode):
+            raise ValueError('WORKER_BOOTSTRAP_REGULAR_SOURCE')
         return {'device':s.st_dev,'inode':s.st_ino,'mode':s.st_mode,'bytes':s.st_size,
-                'mtime_ns':s.st_mtime_ns,'ctime_ns':s.st_ctime_ns}
-    before = sample(); value = path.read_bytes(); after = sample()
-    if before != after or (identity is not None and before != identity):
+                'mtime_ns':s.st_mtime_ns}
+    before = sample(); value = path.read_bytes(); readback = path.read_bytes(); after = sample()
+    bound_identity = {**before, 'sha256':hashlib.sha256(value).hexdigest()}
+    if before != after or value != readback or (identity is not None and bound_identity != identity):
         raise ValueError('WORKER_BOOTSTRAP_SOURCE_IDENTITY_RACE')
     if expected is not None and hashlib.sha256(value).hexdigest() != expected:
         raise ValueError('WORKER_BOOTSTRAP_SOURCE_HASH')
@@ -57,6 +61,9 @@ def _bootstrap_read(path, expected=None, identity=None):
 
 BOOTSTRAP_ROOT=Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0')
 BOOTSTRAP_GIT_PREFIX='00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/'
+BOOTSTRAP_SHARED_NAME='stable_input_identity.py'
+BOOTSTRAP_SHARED_SHA256='7e6c204993f0ba65650c58ad50a71073d803522d31fa08b93b7ce35054fa5eda'
+BOOTSTRAP_SHARED_GIT_PATH='00_lab_infrastructure/gates/standalone_pdf_release/common/stable_input_identity.py'
 BOOTSTRAP_MODULE_NAMES=frozenset({'packaging_runtime.py','invoke_digest_v2.py','digest_controller_v2.py',
     'methods_digest_v2.py','methods_digest_registration_v3.py','manuscript_access_registry.py',
     'manuscript_access_correction.py','manuscript_pdf_gate.py','publish_dated_bundles_guarded.py',
@@ -90,7 +97,7 @@ def _bootstrap():
     manifest = json.loads(_bootstrap_read(bound['path'],bound['sha256']))
     root = BOOTSTRAP_ROOT
     fields = {'standard','canonical_root','profile_binding','modules','metadata','source_origin',
-              'legacy_closure','source_review_change_flags'}
+              'legacy_closure','source_review_change_flags','shared_dependencies'}
     if set(manifest) != fields or manifest['standard'] != 'VRS-CURRENT-V012-WORKER-SOURCE-MANIFEST-1' or manifest['canonical_root'] != str(root):
         raise ValueError('WORKER_BOOTSTRAP_CLOSED_FIXED_ROOT_MANIFEST')
     directory = root/'_ZENODO_DEPOSITS/standalone_pdf_runtime_v012'
@@ -106,6 +113,15 @@ def _bootstrap():
     profile_bound = {'path':profile_row['path'],'sha256':profile_row['sha256']}
     if manifest['profile_binding'] != profile_bound or metadata['nomination']['profile'] != profile_bound:
         raise ValueError('WORKER_BOOTSTRAP_NOMINATION_PROFILE')
+    shared = manifest['shared_dependencies']
+    if (not isinstance(shared,list) or len(shared)!=1 or not isinstance(shared[0],dict) or set(shared[0])!={'name','path','sha256','identity'}
+            or shared[0]['name']!=BOOTSTRAP_SHARED_NAME or shared[0]['sha256']!=BOOTSTRAP_SHARED_SHA256
+            or Path(shared[0]['path'])!=directory/'common'/BOOTSTRAP_SHARED_NAME):
+        raise ValueError('WORKER_BOOTSTRAP_EXACT_SHARED_DEPENDENCY')
+    _bootstrap_read(shared[0]['path'],shared[0]['sha256'],shared[0]['identity'])
+    expected_shared=[{k:shared[0][k] for k in ('name','path','sha256')} | {'git_path':BOOTSTRAP_SHARED_GIT_PATH}]
+    if metadata['profile'].get('shared_dependencies')!=expected_shared:
+        raise ValueError('WORKER_BOOTSTRAP_SHARED_PROFILE_BINDING')
     module_rows = []
     for row in manifest['modules']:
         if set(row) != {'name','path','sha256','identity'} or Path(row['path']) != directory/row['name'] or '/' in row['name']:
@@ -1088,7 +1104,7 @@ class ScienceBatch:
         runtime.need(derived == self.union, 'NO_CALLER_WORKER_UNION_SUBSTITUTION')
         for path, expected in derived.items():
             data.record(path)
-            runtime.need(data.inputs[path] == expected, 'FULL_WORKER_UNION_CURRENT_BYTES_IDENTITY:'+path)
+            runtime.need(runtime.same_observed_identity(data.inputs[path],expected), 'FULL_WORKER_UNION_CURRENT_BYTES_IDENTITY:'+path)
         # Each worker retained all8 actual inventories; rederive with the exact
         # original inventory reader, without invoking another scientific scan.
         current_inventory = data.inventory_reader()

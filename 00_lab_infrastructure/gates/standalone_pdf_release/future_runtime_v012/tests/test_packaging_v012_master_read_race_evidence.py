@@ -5,6 +5,7 @@ The runtime error/lexical-path seam is an explicit fixture, never admission.
 """
 import ast
 import contextvars
+from collections.abc import Mapping
 import copy
 import errno
 import hashlib
@@ -56,8 +57,27 @@ def load_data_class(path):
     wanted = {'record', 'data_path', '_commit_checked_row', '_raise_input_read_race', '_retain_input_read_race'}
     selected = copy.deepcopy([n for n in cls.body if isinstance(n, ast.FunctionDef) and n.name in wanted])
     model = ast.ClassDef(name='FixtureData', bases=[], keywords=[], body=selected, decorator_list=[])
-    namespace = {'Path': Path, 'runtime': types.SimpleNamespace(need=need, sha=sha, PackagingHold=FixtureHold,
-                   fresh_symlink_components=links), '_HASHING': HASHING, 'deepcopy': copy.deepcopy,
+    # Execute only the reviewed shared reader and pure identity/adapter ASTs;
+    # no operational runtime or original scientific module is imported.
+    runtime_path = HERE.parent / 'packaging_runtime.py'
+    runtime_tree = ast.parse(runtime_path.read_bytes())
+    helper_path = HERE.parent.parent / 'common/stable_input_identity.py'
+    helper_raw = helper_path.read_bytes()
+    assert sha(helper_raw) == '7e6c204993f0ba65650c58ad50a71073d803522d31fa08b93b7ce35054fa5eda'
+    helper = types.ModuleType('_synthetic_exact_shared_input_reader')
+    sys.modules[helper.__name__] = helper
+    try:
+        exec(compile(helper_raw, '<hash-bound-shared-reader-fixture-only>', 'exec'), helper.__dict__)
+    finally:
+        del sys.modules[helper.__name__]
+    pure = {'Path': Path, 'Mapping': Mapping, 'sha': sha, 'PackagingHold': FixtureHold,
+            'load_stable_input_dependency': lambda: helper}
+    names = {'file_identity', 'stable_input_identity', 'same_observed_identity', 'read_stable_input'}
+    functions = [node for node in runtime_tree.body if isinstance(node, ast.FunctionDef) and node.name in names]
+    exec(compile(ast.Module(body=functions, type_ignores=[]), '<exact-identity-adapter-fixture-only>', 'exec'), pure)
+    adapter = types.SimpleNamespace(need=need, sha=sha, PackagingHold=FixtureHold,
+                   fresh_symlink_components=links, **{name: pure[name] for name in names})
+    namespace = {'Path': Path, 'runtime': adapter, '_HASHING': HASHING, 'deepcopy': copy.deepcopy,
                  'os': os, 'time': time, 'json': json}
     exec(compile(ast.fix_missing_locations(ast.Module(body=[model], type_ignores=[])),
                  '<hash-bound-synthetic-data-methods-only>', 'exec'), namespace)
@@ -72,7 +92,7 @@ class ReadRaceEvidenceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.candidate_path = HERE.parent / 'packaging_catalog.py'
-        assert sha(cls.candidate_path.read_bytes()) == '708442313d8ae717fc1b6152bfdfceaac46ff7726a1d1742701b7f5c67db0803'
+        assert sha(cls.candidate_path.read_bytes()) == '30a3e49d919fbf97b100a07f45222d86f8565443f019916758dde3748f43bc1b'
         original = historical_bytes('v011', 'packaging_catalog.py')
         assert sha(original) == '6816ea4868dd4d1262084348023e0132a0aa638843bf6dc9cfb025d05c086346'
         cls.proposal_class = load_data_class(cls.candidate_path)
@@ -208,7 +228,9 @@ class ReadRaceEvidenceTests(unittest.TestCase):
             with mock.patch.object(Path, 'stat', observed):
                 caught = self.changed_at_final_path(self.make_data(cls))
             return str(caught), len(samples)
-        self.assertEqual(run(self.original_class), run(self.proposal_class))
+        old, current = run(self.original_class), run(self.proposal_class)
+        self.assertEqual(old[0], current[0])
+        self.assertGreaterEqual(current[1], old[1])
 
     def test_causal_joins_explicitly_unavailable_no_caller_context_api(self):
         self.data.context.read_race_diagnostic_context = {'operation': 'IMPOSTOR_NOT_ACCEPTED'}

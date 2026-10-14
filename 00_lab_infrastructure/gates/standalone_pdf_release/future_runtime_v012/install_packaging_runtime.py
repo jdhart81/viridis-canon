@@ -16,7 +16,7 @@ import packaging_runtime as runtime
 ROOT=Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0')
 ORIGINAL_PUBLISHER_SHA='4f099eaffb9a35fbd24e5c57ef34801391fabcd5c3272b58a379d7ac52b35e94'
 PLAN_FIELDS={'standard','status','canonical_root','source_modules','source_origin','source_review',
-             'user_authority','access_registry','historical_publisher','installed_at_utc','root_review','predecessor_installation','transient_rehydration','data_alias_observation','platform_timezone_observation'}
+             'user_authority','access_registry','historical_publisher','installed_at_utc','root_review','predecessor_installation','transient_rehydration','data_alias_observation','platform_timezone_observation','shared_dependencies'}
 REVIEW_FIELDS=runtime.ROOT_REVIEW_FIELDS
 
 
@@ -29,12 +29,13 @@ def preflight(root,plan_binding):
     runtime.need(set(plan)==PLAN_FIELDS and plan['standard']=='VRS-EXACT-ADDITIVE-PDF-RUNTIME-INSTALL-PLAN-12'
                  and plan['status']=='ROOT_REVIEWED_READY_NOT_INSTALLED'and plan['canonical_root']==str(root), 'CLOSED_INSTALL_PLAN')
     pins=runtime.module_table(root,plan['source_modules'])
+    runtime.shared_dependency_table(root,plan['shared_dependencies'])
     installers=[r for r in pins if r['name']=='install_packaging_runtime.py']
     runtime.need(len(installers)==1 and Path(installers[0]['path']).resolve(strict=True)==Path(__file__).resolve(strict=True)
                  and installers[0]['sha256']==runtime.sha(Path(__file__).read_bytes()),'EXACT_EXECUTED_INSTALLER_SOURCE')
-    proof=runtime.source_proof(root,plan['source_origin'],plan['source_modules'])
+    proof=runtime.source_proof(root,plan['source_origin'],[*plan['source_modules'],*plan['shared_dependencies']])
     source_review=runtime.object_at(root,plan['source_review'])[2]
-    hashes={r['name']:r['sha256']for r in plan['source_modules']}
+    hashes={r['name']:r['sha256']for r in [*plan['source_modules'],*plan['shared_dependencies']]}
     runtime.require_source_review(source_review, hashes, runtime.LEGACY_CLOSURE)
     review=runtime.object_at(root,plan['root_review'])[2]
     runtime.need(set(review)==REVIEW_FIELDS and review['standard']=='VRS-ROOT-EXACT-PDF-RUNTIME-INSTALL-REVIEW-12'
@@ -90,7 +91,7 @@ def exclusive(path,raw):
 
 def install(root,plan_binding,*,go=False):
     plan,proof,pins,before,predecessor,transients=preflight(root,plan_binding)
-    if not go:return {'status':'ACTUAL_MERGED_SOURCE_INSTALL_PREFLIGHT_PASS_NOT_INSTALLED','source_hashes':{r['name']:r['sha256']for r in pins},'certifies':False,'writes':0}
+    if not go:return {'status':'ACTUAL_MERGED_SOURCE_INSTALL_PREFLIGHT_PASS_NOT_INSTALLED','source_hashes':{r['name']:r['sha256']for r in [*pins,*plan['shared_dependencies']]},'certifies':False,'writes':0}
     root=Path(root).resolve(strict=True);target=root/runtime.PROFILE_PATH;target.parent.mkdir(exist_ok=False)
     exclusive(target.parent/'INSTALL_PLAN.json',runtime.read(root,plan_binding)[1])
     installed=[]
@@ -99,6 +100,12 @@ def install(root,plan_binding,*,go=False):
             data=runtime.read(root,{'path':row['path'],'sha256':row['sha256']})[1]
             dest=target.parent/row['name'];exclusive(dest,data)
             installed.append({**row,'path':str(dest)})
+        shared_installed=[]
+        (target.parent/'common').mkdir(exist_ok=False)
+        for row in plan['shared_dependencies']:
+            data=runtime.read(root,{k:row[k]for k in ('path','sha256')})[1]
+            dest=target.parent/'common'/row['name'];exclusive(dest,data)
+            shared_installed.append({**row,'path':str(dest)})
         publisher=root/'_ZENODO_DEPOSITS/publish_dated_bundles.py'
         runtime.need(publisher.read_bytes()==before,'HISTORICAL_PUBLISHER_FINAL_PRESERVATION')
         exclusive(target.parent/'PUBLISHER_UNCHANGED_BEFORE_INSTALL.py',before)
@@ -110,7 +117,7 @@ def install(root,plan_binding,*,go=False):
                  'installed_at_utc':plan['installed_at_utc'],'user_authority':plan['user_authority'],
                  'legacy_closure':runtime.LEGACY_CLOSURE,'legacy_consumer':runtime.LEGACY_CONSUMER,
                  'legacy_scope':runtime.LEGACY_SCOPE,'source_session_consumer':runtime.SESSION_CONSUMER,
-                 'modules':installed,'source_origin':plan['source_origin'],'source_review':plan['source_review'],
+                 'modules':installed,'shared_dependencies':shared_installed,'source_origin':plan['source_origin'],'source_review':plan['source_review'],
                  'access_registry':plan['access_registry'],'default_routes':runtime.DEFAULT_ROUTES,
                  'predecessor_installation':plan['predecessor_installation'],
                  'transient_rehydration':plan['transient_rehydration'],
@@ -126,7 +133,7 @@ def install(root,plan_binding,*,go=False):
         # scientific/registry/default dispatch readbacks. Installation alone is
         # not a scientific or production-readback verdict.
         result={'status':'EXACT_SOURCE_COPIED_AND_DEFAULT_NOMINATED_AWAITING_FRESH_RUNTIME_READBACK',
-                'profile':profile_binding,'modules':installed,'historical_publisher_preserved_sha256':ORIGINAL_PUBLISHER_SHA,
+                'profile':profile_binding,'modules':installed,'shared_dependencies':shared_installed,'historical_publisher_preserved_sha256':ORIGINAL_PUBLISHER_SHA,
                 'predecessor_installation':predecessor,'transient_source_readback':recovered,
                 'default_routes':runtime.DEFAULT_ROUTES,'merged_source_commit':proof['merge_commit'],
                 'ssot_writes':0,'zenodo_writes':0,'certifies':False}

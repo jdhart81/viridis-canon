@@ -32,10 +32,15 @@ class OuterDigestGuardTests(unittest.TestCase):
             path = installed / name; path.write_bytes(raw)
             digest = hashlib.sha256(raw).hexdigest(); hashes[name] = digest
             modules.append({'name': name, 'path': str(path), 'sha256': digest})
+        shared_path = installed / 'common' / guard.SHARED_INPUT_NAME
+        shared_path.parent.mkdir()
+        shared_path.write_bytes((Path(__file__).resolve().parents[2] / 'common' / guard.SHARED_INPUT_NAME).read_bytes())
+        shared = [{'name':guard.SHARED_INPUT_NAME,'path':str(shared_path),
+                   'sha256':guard.SHARED_INPUT_SHA256,'git_path':guard.SHARED_INPUT_GIT_PATH}]
         profile = installed / 'CURRENT_PACKAGING_PROFILE.json'
         profile.write_text(json.dumps({'standard': 'VRS-STANDALONE-PDF-PACKAGING-PROFILE-12',
                          'status': 'INSTALLED_EXACT_ADDITIVE_SOURCE_READBACK_PASS',
-                         'canonical_root': str(root), 'modules': modules}))
+                         'canonical_root': str(root), 'modules': modules, 'shared_dependencies':shared}))
         binding = {'path': str(profile), 'sha256': hashlib.sha256(profile.read_bytes()).hexdigest()}
         nomination = installed / 'INSTALLATION_NOMINATION.json'
         nomination.write_text(json.dumps({'standard': 'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-12',
@@ -104,6 +109,30 @@ class OuterDigestGuardTests(unittest.TestCase):
                         value = json.loads(config.read_bytes()); value['packaging_profile']['path'] = str(root / 'legacy.json')
                         config.write_text(json.dumps(value)); args[3] = hashlib.sha256(config.read_bytes()).hexdigest()
                     self.assertEqual(guard.main(args), 1)
+                self.assertFalse(log.exists())
+
+    def test_context_ignores_ctime_only_and_rejects_restored_mtime_content_change(self):
+        import os
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp).resolve(); stack,config,sha,_=self.fixture(root)
+            with stack:
+                before=guard.context(config,sha)
+                target=guard.INSTALLED/'source_00.py'; old=target.stat()
+                target.chmod(old.st_mode)
+                self.assertEqual(guard.context(config,sha),before)
+                target.write_bytes(b'# changed reviewed source\n')
+                os.utime(target,ns=(old.st_atime_ns,old.st_mtime_ns))
+                with self.assertRaises(guard.GuardHold):guard.context(config,sha)
+
+    def test_shared_dependency_tamper_or_missing_binding_never_starts_child(self):
+        for change in ('bytes','missing'):
+            with self.subTest(change=change),tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp).resolve(); stack,config,sha,log=self.fixture(root)
+                with stack:
+                    target=guard.INSTALLED/'common'/guard.SHARED_INPUT_NAME
+                    if change=='bytes':target.write_bytes(b'# changed shared source')
+                    else:target.unlink()
+                    self.assertEqual(guard.main(self.args(config,sha,root,go=True)),1)
                 self.assertFalse(log.exists())
 
     def test_child_is_fixed_ordinary_cli_and_never_caller_controller_source(self):

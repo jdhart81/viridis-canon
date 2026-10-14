@@ -736,19 +736,26 @@ class ScienceTransportTests(unittest.TestCase):
         rows=[];modules=[]
         for name in sorted(science.BOOTSTRAP_MODULE_NAMES):
             p=directory/name;p.write_bytes(b'# synthetic source only\n');s=p.stat()
-            identity={'device':s.st_dev,'inode':s.st_ino,'mode':s.st_mode,'bytes':s.st_size,'mtime_ns':s.st_mtime_ns,'ctime_ns':s.st_ctime_ns}
+            identity={'device':s.st_dev,'inode':s.st_ino,'mode':s.st_mode,'bytes':s.st_size,'mtime_ns':s.st_mtime_ns,'sha256':science.binding(p)['sha256']}
             bound=science.binding(p);rows.append({'name':name,**bound,'identity':identity})
             modules.append({'name':name,**bound,'git_path':science.BOOTSTRAP_GIT_PREFIX+name})
         if changed_git:modules[0]['git_path']='unreviewed/other-source.py'
-        profile=directory/'CURRENT_PACKAGING_PROFILE.json';profile.write_bytes(science.raw({'modules':modules}))
+        shared=directory/'common'/science.BOOTSTRAP_SHARED_NAME;shared.parent.mkdir()
+        shared.write_bytes((Path(science.__file__).resolve().parent.parent/'common'/science.BOOTSTRAP_SHARED_NAME).read_bytes())
+        shared_row={'name':science.BOOTSTRAP_SHARED_NAME,**science.binding(shared)}
+        observed=shared.stat();shared_identity={'device':observed.st_dev,'inode':observed.st_ino,'mode':observed.st_mode,
+            'bytes':observed.st_size,'mtime_ns':observed.st_mtime_ns,'sha256':shared_row['sha256']}
+        profile=directory/'CURRENT_PACKAGING_PROFILE.json';profile.write_bytes(science.raw({'modules':modules,
+            'shared_dependencies':[{**shared_row,'git_path':science.BOOTSTRAP_SHARED_GIT_PATH}]}))
         nomination=directory/'INSTALLATION_NOMINATION.json';nomination.write_bytes(science.raw({'profile':science.binding(profile)}))
         plan=directory/'INSTALL_PLAN.json';plan.write_bytes(science.raw({'synthetic_only':True}))
         metadata=[]
         for role,p in (('profile',profile),('nomination',nomination),('plan',plan)):
-            s=p.stat();metadata.append({'role':role,**science.binding(p),'identity':{'device':s.st_dev,'inode':s.st_ino,'mode':s.st_mode,'bytes':s.st_size,'mtime_ns':s.st_mtime_ns,'ctime_ns':s.st_ctime_ns}})
+            s=p.stat();metadata.append({'role':role,**science.binding(p),'identity':{'device':s.st_dev,'inode':s.st_ino,'mode':s.st_mode,'bytes':s.st_size,'mtime_ns':s.st_mtime_ns,'sha256':science.binding(p)['sha256']}})
         manifest=root/'manifest.json';manifest.write_bytes(science.raw({'standard':'VRS-CURRENT-V012-WORKER-SOURCE-MANIFEST-1','canonical_root':str(root),
             'profile_binding':science.binding(profile),'modules':rows,'metadata':metadata,'source_origin':{'synthetic':True},
-            'legacy_closure':{'synthetic':True},'source_review_change_flags':{'synthetic':True}}))
+            'legacy_closure':{'synthetic':True},'source_review_change_flags':{'synthetic':True},
+            'shared_dependencies':[{**shared_row,'identity':shared_identity}]}))
         config=root/'config.json';config.write_bytes(science.raw({'source_manifest':science.binding(manifest)}))
         return directory,config
 

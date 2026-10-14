@@ -21,7 +21,9 @@ from unittest.mock import patch
 import zlib
 
 HERE=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(HERE.parent))
 sys.path.insert(0,str(HERE))
+from common.runtime_history import historical_bytes
 import packaging_runtime as runtime
 import packaging_catalog as catalog
 import manuscript_access_registry as registry
@@ -263,8 +265,7 @@ class ActualRegistryTopology(unittest.TestCase):
             self.assertEqual(calls,[])
 
     def test_master_consumer_and_chain_body_remain_literal_frozen_v7(self):
-        old_path=HERE.parent/'future_runtime_v007/manuscript_access_registry.py'
-        old=old_path.read_bytes();self.assertEqual(hashlib.sha256(old).hexdigest(),
+        old=historical_bytes('v007', 'manuscript_access_registry.py');self.assertEqual(hashlib.sha256(old).hexdigest(),
             '167d82b849a750edf2b0cfa92188931c9170db1a59c50eff4ba88ba48a5af2b8')
         new=(HERE/'manuscript_access_registry.py').read_bytes()
         def methods(raw):

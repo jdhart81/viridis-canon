@@ -20,6 +20,8 @@ import unittest
 from unittest import mock
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parent.parent))
+from common.runtime_history import historical_bytes
 HASHING = contextvars.ContextVar('synthetic_internal_hash_read', default=False)
 READ_CAPTURE = contextvars.ContextVar('synthetic_capture_marker', default=None)
 
@@ -48,7 +50,7 @@ def links(path):
     return result
 
 def load_data_class(path):
-    source = path.read_text()
+    source = path.decode('utf-8') if isinstance(path, bytes) else path.read_text()
     tree = ast.parse(source)
     cls = next(n for n in tree.body if isinstance(n, ast.ClassDef) and n.name == 'ScientificInputData')
     wanted = {'record', 'data_path', '_commit_checked_row', '_raise_input_read_race', '_retain_input_read_race'}
@@ -71,8 +73,8 @@ class ReadRaceEvidenceTests(unittest.TestCase):
     def setUpClass(cls):
         cls.candidate_path = HERE.parent / 'packaging_catalog.py'
         assert sha(cls.candidate_path.read_bytes()) == '708442313d8ae717fc1b6152bfdfceaac46ff7726a1d1742701b7f5c67db0803'
-        original = HERE.parent.parent / 'future_runtime_v011/packaging_catalog.py'
-        assert sha(original.read_bytes()) == '6816ea4868dd4d1262084348023e0132a0aa638843bf6dc9cfb025d05c086346'
+        original = historical_bytes('v011', 'packaging_catalog.py')
+        assert sha(original) == '6816ea4868dd4d1262084348023e0132a0aa638843bf6dc9cfb025d05c086346'
         cls.proposal_class = load_data_class(cls.candidate_path)
         cls.original_class = load_data_class(original)
 

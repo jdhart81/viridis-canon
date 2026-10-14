@@ -30,6 +30,8 @@ jobs:
         python: ['3.12', '3.14']
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
           python-version: ${{ matrix.python }}
@@ -43,37 +45,7 @@ jobs:
       - name: Kill the real manuscript gate mutants
         run: python3 tools/mutate_manuscript_gate.py --source 00_lab_infrastructure/gates/standalone_pdf_release --output "$RUNNER_TEMP/manuscript-gate-mutations.json"
 
-      - name: Verify additive runtime trust, complete defaults and exact registry chains
-        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/tests -p 'test_*.py' -v
-
-      - name: Verify v002 cold scope, exact recovery and bounded scientific input data
-        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/tests -p 'test_*.py' -v
-
-      - name: Verify v003 exact historical DATA alias and immutable predecessors
-        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/tests -p 'test_*.py' -v
-
-      - name: Verify v004 exact native New York timezone DATA and immutable predecessors
-        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/tests -p 'test_*.py' -v
-
-      - name: Verify v005 pure DATA material, exact OWNER buffers and genuine HOLD evidence
-        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests -p 'test_*.py' -v
-
-      - name: Verify v006 immutable descriptors and fresh source path guards
-        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests -p 'test_*.py' -v
-
-      - name: Verify v007 distinct readonly evaluations and bounded owner transport
-        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests -p 'test_*.py' -v
-
-      - name: Verify v008 historical access topology and immutable seven predecessors
-        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests -p 'test_*.py' -v
-
-      - name: Verify v009 exact Python sentinel state and immutable eight predecessors
-        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests -p 'test_*.py' -v
-      - name: Verify v010 exact JSON class state, retained diagnostics and immutable nine predecessors
-        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests -p 'test_*.py' -v
-      - name: Verify v011 stable complete code fingerprints and immutable ten predecessors
-        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests -p 'test_*.py' -v
-      - name: Verify v012 master failure evidence and immutable eleven predecessors
+      - name: Verify immutable historical source without full runtime copies
+        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/common/tests -p 'test_*.py' -v
+      - name: Verify selected V012 functional coverage and retained provenance gates
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests -p 'test_*.py' -v
-      - name: Verify v013 size-aware bounded transfers and immutable twelve predecessors
-        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests -p 'test_*.py' -v

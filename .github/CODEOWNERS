@@ -2,3 +2,9 @@
 /os/admissions.json @jdhart81
 /os/core.json @jdhart81
 /os/families.json @jdhart81
+
+# Release-path changes require review by Justin; agents do not self-merge.
+/00_lab_infrastructure/gates/** @jdhart81
+/_ZENODO_DEPOSITS/** @jdhart81
+/**/_ZENODO_DEPOSITS/** @jdhart81
+/.github/workflows/** @jdhart81

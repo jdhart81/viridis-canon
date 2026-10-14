@@ -21,14 +21,16 @@ import unittest
 from unittest.mock import patch
 
 HERE = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(HERE.parent))
 sys.path.insert(0, str(HERE))
+from common.runtime_history import historical_bytes
 import packaging_runtime as runtime
 import packaging_catalog as catalog
 import test_packaging_v003_data_alias as aliases
 
 
 def fixed_v005_function(file, name, namespace, *, method=False):
-    raw = (HERE.parent / 'future_runtime_v005' / file).read_bytes()
+    raw = historical_bytes('v005', file)
     expected = {'packaging_runtime.py': '409cd52b97474d28d2dbcf70a9005ea73ab6d9228e30aca757931d9c2fea6910',
                 'packaging_catalog.py': 'f4c292657703180eb1b34d80fd6080216744db96a872e76e83b4761479410ff7'}
     if runtime.sha(raw) != expected[file]: raise AssertionError('Frozen V005 fixture AST source changed')
@@ -94,7 +96,7 @@ def synthetic_complete_input_benchmark(files=160, trials=3):
         fixed_v005_function('packaging_runtime.py', name, namespace)
     class OldRuntime:
         def __getattr__(self, name): return namespace[name] if name in namespace else getattr(runtime, name)
-    raw = (HERE.parent / 'future_runtime_v005/packaging_catalog.py').read_bytes()
+    raw = historical_bytes('v005', 'packaging_catalog.py')
     if runtime.sha(raw) != 'f4c292657703180eb1b34d80fd6080216744db96a872e76e83b4761479410ff7':
         raise AssertionError('Frozen V005 DATA source changed')
     node = next(n for n in ast.parse(raw).body if isinstance(n, ast.ClassDef) and n.name == 'ScientificInputData')
@@ -218,7 +220,7 @@ def synthetic_repeated_observed_cohort_benchmark(files=112, notes=6):
         fixed_v005_function('packaging_runtime.py', name, namespace)
     class OldRuntime:
         def __getattr__(self, name): return namespace[name] if name in namespace else getattr(runtime, name)
-    raw = (HERE.parent / 'future_runtime_v005/packaging_catalog.py').read_bytes()
+    raw = historical_bytes('v005', 'packaging_catalog.py')
     if runtime.sha(raw) != 'f4c292657703180eb1b34d80fd6080216744db96a872e76e83b4761479410ff7':
         raise AssertionError('Frozen V005 DATA source changed')
     node = next(n for n in ast.parse(raw).body if isinstance(n, ast.ClassDef) and n.name == 'ScientificInputData')

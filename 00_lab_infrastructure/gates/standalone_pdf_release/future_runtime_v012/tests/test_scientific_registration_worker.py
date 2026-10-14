@@ -22,7 +22,9 @@ import warnings
 from unittest.mock import patch
 
 HERE = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(HERE.parent))
 sys.path.insert(0, str(HERE))
+from common.runtime_history import historical_bytes
 import packaging_runtime as runtime
 import packaging_catalog as catalog
 import scientific_registration_worker as science
@@ -226,7 +228,7 @@ class ScienceTransportTests(unittest.TestCase):
             return
         # Execute only these serializer definitions, never original science.
         old_path=HERE.parent/'future_runtime_v008/scientific_registration_worker.py'
-        old_raw=old_path.read_bytes()
+        old_raw=historical_bytes('v008', 'scientific_registration_worker.py')
         self.assertEqual(runtime.sha(old_raw),'622846b2b6f5f371e9aed3a0c24479bf52af48b60374ad474ea0c01d44b71c4f')
         tree=ast.parse(old_raw);definitions=[n for n in tree.body
             if isinstance(n,ast.FunctionDef)and n.name in('_definition','_dependency')]

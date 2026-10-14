@@ -8,7 +8,9 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from common.runtime_history import historical_bytes
 import packaging_runtime as runtime
 
 
@@ -219,8 +221,8 @@ class FrozenV009PredecessorTests(unittest.TestCase):
     def test_eight_older_predecessor_body_is_literal_preserved_v9_namespace_body(self):
         import ast
         here=Path(__file__).resolve().parents[1]
-        before_path=here.parent/'future_runtime_v009/packaging_runtime.py'
-        before=before_path.read_text();after=(here/'packaging_runtime.py').read_text()
+        before_raw=historical_bytes('v009', 'packaging_runtime.py')
+        before=before_raw.decode('utf-8');after=(here/'packaging_runtime.py').read_text()
         original=next(n for n in ast.parse(before).body if isinstance(n,ast.FunctionDef)and n.name=='predecessor_installation')
         copied=next(n for n in ast.parse(after).body if isinstance(n,ast.FunctionDef)and n.name=='v008_predecessor_installation')
         self.assertEqual(ast.get_source_segment(before,original),

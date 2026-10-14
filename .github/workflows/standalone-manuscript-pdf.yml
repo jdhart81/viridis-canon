@@ -39,3 +39,6 @@ jobs:
 
       - name: Verify v005 pure DATA material, exact OWNER buffers and genuine HOLD evidence
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests -p 'test_*.py' -v
+
+      - name: Verify v006 immutable descriptors and fresh source path guards
+        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests -p 'test_*.py' -v

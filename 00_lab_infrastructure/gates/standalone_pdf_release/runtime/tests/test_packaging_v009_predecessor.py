@@ -94,7 +94,7 @@ class FrozenV008PredecessorTests(unittest.TestCase):
              'sha256': '3b9827cd900738ce7635ca14376d2576975e83ebc9173e33c6f68c42cb968934'})
         self.assertEqual(set(runtime.PREDECESSOR_INSTALLATION), {'v001', 'v002', 'v003', 'v004', 'v005', 'v006', 'v007', 'v008', 'v009', 'v010', 'v011'})
         self.assertTrue(runtime.PROFILE_PATH.startswith('_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/'))
-        self.assertTrue(runtime.GIT_PREFIX.endswith('/future_runtime_v012/'))
+        self.assertTrue(runtime.GIT_PREFIX.endswith('/runtime/'))
 
     def test_complete19_source_proofs_preserve_failed_receipt_and_claim_no_runtime_pass(self):
         with tempfile.TemporaryDirectory() as tmp:

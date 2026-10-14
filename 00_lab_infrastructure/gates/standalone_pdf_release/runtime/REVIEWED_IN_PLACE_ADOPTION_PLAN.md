@@ -5,7 +5,11 @@ scientific predicate, FIFO order or scheduler. The ordinary installer still
 refuses an existing destination; no executable replacement mode is supplied.
 
 The planning inventory is `adoption/EXPECTED_INSTALLED_V012_20261014.json`
-(SHA-256 `5a84030f03d279896753568d85c2ad8e470b2bd389be9a4c43f48c5e3c1031d6`).
+(portable projection SHA-256 `35354b6cb0a5877410e943e41c4278a77906146e361d0f6f605316da8f38e9ba`).
+All file and target paths are relative to the configured Core root
+(`VIRIDIS_CORE_ROOT`). The exact original root-bound planning bytes remain
+private under SHA-256 `5a84030f03d279896753568d85c2ad8e470b2bd389be9a4c43f48c5e3c1031d6`;
+projection changes no original file hash, size or mode and grants no authority.
 It binds the old 19 modules and three metadata files individually. Two additional
 regular files (`INSTALL_RESULT_PENDING_READBACK.json` and
 `PUBLISHER_UNCHANGED_BEFORE_INSTALL.py`) must also be archived. The shared helper

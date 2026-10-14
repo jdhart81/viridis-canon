@@ -1,7 +1,7 @@
 """Read exact historical test source from local Git; never import a runtime.
 
-The selected V012 source keeps its canonical Git namespace and semantic labels.
-This module changes only how predecessor test fixtures obtain immutable bytes.
+Historical version paths and semantic labels remain exact Git bindings.
+The current source lives in runtime/; this reader supplies historical test bytes.
 No filesystem extraction, source rehydration, network or admission is performed.
 """
 from __future__ import annotations

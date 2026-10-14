@@ -4,14 +4,14 @@
       "bytes": 142739,
       "mode": 33152,
       "name": "INSTALL_RESULT_PENDING_READBACK.json",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/INSTALL_RESULT_PENDING_READBACK.json",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/INSTALL_RESULT_PENDING_READBACK.json",
       "sha256": "baeaa134d86e15c52713e05918f3510ac918ccd10f090dfd1862df2b92e0d51f"
     },
     {
       "bytes": 12571,
       "mode": 33152,
       "name": "PUBLISHER_UNCHANGED_BEFORE_INSTALL.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/PUBLISHER_UNCHANGED_BEFORE_INSTALL.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/PUBLISHER_UNCHANGED_BEFORE_INSTALL.py",
       "sha256": "4f099eaffb9a35fbd24e5c57ef34801391fabcd5c3272b58a379d7ac52b35e94"
     }
   ],
@@ -21,170 +21,174 @@
       "bytes": 56186,
       "mode": 33152,
       "name": "digest_controller_v2.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/digest_controller_v2.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/digest_controller_v2.py",
       "sha256": "faeba58a0a080e4b838536b0ac4f32fc9399497c4cc84d15ab9eaca0f83d9413"
     },
     {
       "bytes": 11061,
       "mode": 33152,
       "name": "install_packaging_runtime.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/install_packaging_runtime.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/install_packaging_runtime.py",
       "sha256": "e8d52416e798b7df73e822061c27673c631f11250bf95b5270b339345898d90a"
     },
     {
       "bytes": 4641,
       "mode": 33152,
       "name": "invoke_digest_v2.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/invoke_digest_v2.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/invoke_digest_v2.py",
       "sha256": "96480eca8c439be8d057802213fbc04281fc48d71b0d1b013c4b62343f932f87"
     },
     {
       "bytes": 9078,
       "mode": 33152,
       "name": "manuscript_access_correction.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/manuscript_access_correction.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/manuscript_access_correction.py",
       "sha256": "c56b402f663a390ee442115cd7a3262ec513521d6191a117061436994657b563"
     },
     {
       "bytes": 30346,
       "mode": 33152,
       "name": "manuscript_access_registry.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/manuscript_access_registry.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/manuscript_access_registry.py",
       "sha256": "167d82b849a750edf2b0cfa92188931c9170db1a59c50eff4ba88ba48a5af2b8"
     },
     {
       "bytes": 15245,
       "mode": 33152,
       "name": "manuscript_pdf_gate.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/manuscript_pdf_gate.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/manuscript_pdf_gate.py",
       "sha256": "95cd1bd69e90bdae92e177073ed419fe28dc7ddab905cca4ac379c0027c0cd39"
     },
     {
       "bytes": 46565,
       "mode": 33152,
       "name": "methods_digest_registration_v3.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/methods_digest_registration_v3.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/methods_digest_registration_v3.py",
       "sha256": "1542b85fab50b686354075914ea461536db5da7b7bd3fee3b290eb7815d7e200"
     },
     {
       "bytes": 32706,
       "mode": 33152,
       "name": "methods_digest_v2.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/methods_digest_v2.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/methods_digest_v2.py",
       "sha256": "e3e8b5be4b99a9991066f49a60630c2a8d63eafd3c09b9b0ed85b50748706f39"
     },
     {
       "bytes": 11119,
       "mode": 33152,
       "name": "nightly_checkpoint_guarded.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/nightly_checkpoint_guarded.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/nightly_checkpoint_guarded.py",
       "sha256": "298d2498901e437ac6a1ccc4e4a0841fb3d50244abd36309e0f9f533f179738e"
     },
     {
       "bytes": 57348,
       "mode": 33152,
       "name": "owner_content_worker.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/owner_content_worker.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/owner_content_worker.py",
       "sha256": "3ced71f0d37a47dee2db9934a042626dcf7068c5c2ab85764bc9bbb1e517f71b"
     },
     {
       "bytes": 66869,
       "mode": 33152,
       "name": "packaging_catalog.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/packaging_catalog.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/packaging_catalog.py",
       "sha256": "708442313d8ae717fc1b6152bfdfceaac46ff7726a1d1742701b7f5c67db0803"
     },
     {
       "bytes": 8491,
       "mode": 33152,
       "name": "packaging_nightly.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/packaging_nightly.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/packaging_nightly.py",
       "sha256": "844472e62b2bf9d5a86a8076cdb52b7217d492ca7be621dda8aaea9cdb4ce663"
     },
     {
       "bytes": 66554,
       "mode": 33152,
       "name": "packaging_nightly_coverage.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/packaging_nightly_coverage.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/packaging_nightly_coverage.py",
       "sha256": "f1df587d5966ae71d98d6282375f1d5fb4cb99e14ec0f77ce6d704b4c00fbdf6"
     },
     {
       "bytes": 14938,
       "mode": 33152,
       "name": "packaging_nightly_intake.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/packaging_nightly_intake.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/packaging_nightly_intake.py",
       "sha256": "2739cf071710f83a867176e5fa3171096fe0ac2f26a3805ff4bc3ad6622e7cd8"
     },
     {
       "bytes": 22558,
       "mode": 33152,
       "name": "packaging_run_flow.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/packaging_run_flow.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/packaging_run_flow.py",
       "sha256": "cd4169d3cc2c3af02829d20ce363908a9edb914501f134dc341dd8d085567014"
     },
     {
       "bytes": 114259,
       "mode": 33152,
       "name": "packaging_runtime.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/packaging_runtime.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/packaging_runtime.py",
       "sha256": "300ee214808153e2b95f685387a138ff7907a947c83c797475dfe0e4eca211a8"
     },
     {
       "bytes": 14863,
       "mode": 33152,
       "name": "publish_dated_bundles_guarded.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/publish_dated_bundles_guarded.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/publish_dated_bundles_guarded.py",
       "sha256": "6208c2d6f9bc711fc98a5b979201cdaf89226419c7ab5b5998052d6bdd0f9158"
     },
     {
       "bytes": 20814,
       "mode": 33152,
       "name": "publish_successor_wave_guarded.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/publish_successor_wave_guarded.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/publish_successor_wave_guarded.py",
       "sha256": "8b33088fc0249f0f66a9f2f0ce335946b540fbace49a5c734362d58be8056293"
     },
     {
       "bytes": 73539,
       "mode": 33152,
       "name": "scientific_registration_worker.py",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/scientific_registration_worker.py",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/scientific_registration_worker.py",
       "sha256": "e82aaafec786817e5bc399debc9675d053bbecd7bbc981ab67f1d4c6d3ff22c1"
     },
     {
       "bytes": 19715,
       "mode": 33152,
       "name": "CURRENT_PACKAGING_PROFILE.json",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/CURRENT_PACKAGING_PROFILE.json",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/CURRENT_PACKAGING_PROFILE.json",
       "sha256": "347315622f2f6c9c64e92eebeb7a9f275b467f936ed52a4a40a3c56408a65b9f"
     },
     {
       "bytes": 1057,
       "mode": 33152,
       "name": "INSTALLATION_NOMINATION.json",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/INSTALLATION_NOMINATION.json",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/INSTALLATION_NOMINATION.json",
       "sha256": "d492d0f1e82377cb41a34bdf1d76c2dfb5948f3258045cef3915d78308684273"
     },
     {
       "bytes": 18978,
       "mode": 33152,
       "name": "INSTALL_PLAN.json",
-      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/INSTALL_PLAN.json",
+      "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/INSTALL_PLAN.json",
       "sha256": "ccef6dad32a760dd6147b6ccd121277301c655f2189748d044dd6338840e1e6b"
     }
   ],
   "expected_old_shared_dependency": {
     "exists": false,
-    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/common/stable_input_identity.py",
+    "path": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/common/stable_input_identity.py",
     "symlink": false
   },
   "installation_executed": false,
   "outer_guard": {
     "bytes": 5500,
-    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/guard_methods_digest_release.py",
+    "path": "_ZENODO_DEPOSITS/guard_methods_digest_release.py",
     "sha256": "b22905f6d26c7f0fb0b40d7175028e1a84ef518e6df38caa258d976c7588d4d7"
   },
-  "standard": "VRS-RETAINED-V012-IN-PLACE-ADOPTION-PLANNING-INVENTORY-1",
+  "path_representation": "POSIX paths relative to the configured Core root; resolve only during a reviewed adoption",
+  "path_root_environment_variable": "VIRIDIS_CORE_ROOT",
+  "private_root_bound_inventory_sha256": "5a84030f03d279896753568d85c2ad8e470b2bd389be9a4c43f48c5e3c1031d6",
+  "source_standard": "VRS-RETAINED-V012-IN-PLACE-ADOPTION-PLANNING-INVENTORY-1",
+  "standard": "VRS-RETAINED-V012-IN-PLACE-ADOPTION-PORTABLE-INVENTORY-1",
   "status": "READ_ONLY_PLANNING_SNAPSHOT_NOT_INSTALL_AUTHORITY",
-  "target": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/_ZENODO_DEPOSITS/standalone_pdf_runtime_v012",
+  "target": "_ZENODO_DEPOSITS/standalone_pdf_runtime_v012",
   "writer_exclusion": "NOT_ASSERTED_REQUIRES_FRESH_EXISTING_SCHEDULER_SOURCE_HANDOFF"
 }

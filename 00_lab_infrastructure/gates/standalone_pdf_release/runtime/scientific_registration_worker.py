@@ -60,7 +60,7 @@ def _bootstrap_read(path, expected=None, identity=None):
 
 
 BOOTSTRAP_ROOT=Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0')
-BOOTSTRAP_GIT_PREFIX='00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/'
+BOOTSTRAP_GIT_PREFIX='00_lab_infrastructure/gates/standalone_pdf_release/runtime/'
 BOOTSTRAP_SHARED_NAME='stable_input_identity.py'
 BOOTSTRAP_SHARED_SHA256='7e6c204993f0ba65650c58ad50a71073d803522d31fa08b93b7ce35054fa5eda'
 BOOTSTRAP_SHARED_GIT_PATH='00_lab_infrastructure/gates/standalone_pdf_release/common/stable_input_identity.py'

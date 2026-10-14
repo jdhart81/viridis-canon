@@ -141,7 +141,7 @@ PREDECESSOR_GIT_PREFIX = '00_lab_infrastructure/gates/standalone_pdf_release/fut
 LEGACY_TRANSIENT_ROOT = Path('/private/tmp')
 HISTORICAL_PUBLISHER = {'path': '_ZENODO_DEPOSITS/publish_dated_bundles.py', 'sha256': '4f099eaffb9a35fbd24e5c57ef34801391fabcd5c3272b58a379d7ac52b35e94'}
 
-GIT_PREFIX = '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/'
+GIT_PREFIX = '00_lab_infrastructure/gates/standalone_pdf_release/runtime/'
 FROZEN_MODULE_NAMES = frozenset({
     'packaging_runtime.py', 'invoke_digest_v2.py', 'digest_controller_v2.py',
     'methods_digest_v2.py', 'methods_digest_registration_v3.py',

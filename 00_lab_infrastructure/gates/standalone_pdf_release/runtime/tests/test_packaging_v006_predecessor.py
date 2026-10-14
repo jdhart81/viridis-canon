@@ -1,4 +1,4 @@
-"""V011 source-only predecessor fixtures for V012; synthetic resolved paths only, no operational imports or admission."""
+"""V005 source-only predecessor fixtures; no operational imports or admission."""
 import contextlib
 import hashlib
 import json
@@ -8,9 +8,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from common.runtime_history import historical_bytes
 import packaging_runtime as runtime
 
 
@@ -21,17 +19,17 @@ def put(root, name, value):
     return {'path': str(path), 'sha256': runtime.sha(path.read_bytes())}
 
 
-class FrozenV011PredecessorTests(unittest.TestCase):
+class FrozenV005PredecessorTests(unittest.TestCase):
     def fixture(self, root):
         candidate, installed = root / 'candidate', root / 'installed'
         candidate.mkdir(); installed.mkdir()
         sources, modules, git = [], [], []
-        for name in sorted(runtime.MODULE_NAMES):
+        for name in sorted(runtime.FROZEN_MODULE_NAMES):
             raw = ('# synthetic exact prior source ' + name + '\n').encode()
             for directory in (candidate, installed):
                 (directory / name).write_bytes(raw)
             row = {'name': name, 'path': str(candidate / name), 'sha256': runtime.sha(raw),
-                   'git_path': '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/' + name}
+                   'git_path': '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/' + name}
             sources.append(row); modules.append({**row, 'path': str(installed / name)})
             git.append({'path': row['git_path'], 'type': 'blob', 'mode': '100644',
                         'sha': hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()})
@@ -43,27 +41,24 @@ class FrozenV011PredecessorTests(unittest.TestCase):
         tree = put(root, 'tree.json', {'sha': 'b' * 40, 'truncated': False, 'tree': git})
         anchor = put(root, 'anchor.json', {'synthetic_only': True})
         descriptor = put(root, 'descriptor.json', {'synthetic_only': True, 'writes': 0})
-        review = put(root, 'review.json', {'standard': 'VRS-INDEPENDENT-PDF-RUNTIME-SOURCE-REVIEW-11',
-             'status':'EXACT_COMPLETE_CANDIDATE_REVIEW_PASS', 'reviewer':'explicit synthetic prior11 fixture',
-             'legacy_closure':runtime.LEGACY_CLOSURE, **runtime.SOURCE_REVIEW_CHANGE_FLAGS,
+        review = put(root, 'review.json', {'standard': 'VRS-INDEPENDENT-PDF-RUNTIME-SOURCE-REVIEW-5',
              'review_scope': 'SOURCE_ONLY', 'actual_live_runtime_admission': False,
              'actual_seven_record_admission': 'PENDING_POST_INSTALL_FRESH_READBACK',
              'source_hashes': {r['name']: r['sha256'] for r in sources}})
         shared = {'source_origin': {'pull_request': pr, 'merge_commit': commit, 'tree': tree},
                   'source_review': review, 'user_authority': anchor, 'access_registry': anchor,
-                  'installed_at_utc': '2020-01-01T00:00:00Z', 'legacy_closure':runtime.LEGACY_CLOSURE,
+                  'installed_at_utc': '2020-01-01T00:00:00Z',
                   'transient_rehydration': runtime.TRANSIENT_REHYDRATION_POLICY,
                   'predecessor_installation': {'v001': runtime.V001_INSTALLATION,
                       'v002': runtime.V002_INSTALLATION, 'v003': runtime.V003_INSTALLATION,
-                      'v004': runtime.V004_INSTALLATION, 'v005':runtime.V005_INSTALLATION,
-                      'v006': runtime.V006_INSTALLATION, 'v007': runtime.V007_INSTALLATION, 'v008': runtime.V008_INSTALLATION, 'v009': runtime.V009_INSTALLATION, 'v010': runtime.V010_INSTALLATION},
+                      'v004': runtime.V004_INSTALLATION},
                   'data_alias_observation': descriptor, 'platform_timezone_observation': descriptor}
-        profile = put(root, 'profile.json', {'standard': 'VRS-STANDALONE-PDF-PACKAGING-PROFILE-11',
+        profile = put(root, 'profile.json', {'standard': 'VRS-STANDALONE-PDF-PACKAGING-PROFILE-5',
                       'canonical_root': str(root), 'modules': modules, **shared})
-        plan = put(root, 'plan.json', {'standard': 'VRS-EXACT-ADDITIVE-PDF-RUNTIME-INSTALL-PLAN-11',
+        plan = put(root, 'plan.json', {'standard': 'VRS-EXACT-ADDITIVE-PDF-RUNTIME-INSTALL-PLAN-5',
                    'source_modules': sources, 'root_review': anchor, **shared})
         nomination = put(root, 'nomination.json', {
-             'standard': 'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-11',
+             'standard': 'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-5',
              'status': 'EXACT_SOURCE_AND_DEFAULT_BINDINGS_INSTALLED_RUNTIME_READBACK_PENDING',
              'profile': profile, 'merged_source_commit': 'a' * 40, 'root_review_receipt': anchor,
              'installer_source': {k: next(r for r in sources if r['name'] == 'install_packaging_runtime.py')[k]
@@ -71,7 +66,7 @@ class FrozenV011PredecessorTests(unittest.TestCase):
         publisher = root / 'publisher.py'; publisher.write_bytes(b'# unchanged synthetic publisher\n')
         failed = put(root, 'failed-health.json', {'synthetic_only': True, 'actual_child_exit_code': 1,
                      'status': 'HOLD', 'runtime_admission': False, 'clock_reset': False})
-        bindings = {'V011_PROFILE': profile, 'V011_PLAN': plan, 'V011_NOMINATION': nomination,
+        bindings = {'V005_PROFILE': profile, 'V005_PLAN': plan, 'V005_NOMINATION': nomination,
                     'DATA_ALIAS_OBSERVATION': descriptor, 'PLATFORM_TIMEZONE_OBSERVATION': descriptor,
                     'HISTORICAL_PUBLISHER': {'path': str(publisher), 'sha256': runtime.sha(publisher.read_bytes())}}
         return bindings, sources, modules, failed
@@ -80,29 +75,29 @@ class FrozenV011PredecessorTests(unittest.TestCase):
         with contextlib.ExitStack() as stack:
             for key, value in bindings.items():
                 stack.enter_context(patch.object(runtime, key, value))
-            stack.enter_context(patch.object(runtime, 'v010_predecessor_installation',
-                 return_value={'prior_ten': 'covered independently; source-only, no live verdict'}))
+            stack.enter_context(patch.object(runtime, 'v004_predecessor_installation',
+                 return_value={'prior_four': 'covered independently; source-only, no live verdict'}))
             stack.enter_context(patch.object(runtime, 'load', side_effect=AssertionError('no executable prior load')))
-            return runtime.predecessor_installation(root)
+            return runtime.v005_predecessor_installation(root)
 
-    def test_actual_v011_metadata_pins_and_all_eleven_predecessors_are_explicit(self):
-        self.assertEqual(runtime.V011_PROFILE, {'path': '_ZENODO_DEPOSITS/standalone_pdf_runtime_v011/CURRENT_PACKAGING_PROFILE.json',
-             'sha256': '1d2e6aec' 'dde95ebb' 'a79cb413' '1ec9e345' '3de84d6d' 'a23ab557' '69740688' 'd38c76c5'})
-        self.assertEqual(runtime.V011_NOMINATION, {'path': '_ZENODO_DEPOSITS/standalone_pdf_runtime_v011/INSTALLATION_NOMINATION.json',
-             'sha256': 'b607c724' 'b7901f74' 'a4fbf4f5' '4162d16c' '266bb915' '51fffc85' 'dd2df057' 'd2affd3c'})
-        self.assertEqual(runtime.V011_PLAN, {'path': '_ZENODO_DEPOSITS/standalone_pdf_runtime_v011/INSTALL_PLAN.json',
-             'sha256': '0558d2f2' 'cfc5b4b7' '2d598894' 'fd80e974' '58f3a5bf' '16664eed' 'c71d46aa' '3df86932'})
+    def test_actual_v005_metadata_pins_and_all_five_predecessors_are_explicit(self):
+        self.assertEqual(runtime.V005_PROFILE, {'path': '_ZENODO_DEPOSITS/standalone_pdf_runtime_v005/CURRENT_PACKAGING_PROFILE.json',
+             'sha256': '0ff28cc686390b8d1fa1c23a6b6280e3fd6dec8c126508b92982f0506ba06482'})
+        self.assertEqual(runtime.V005_NOMINATION, {'path': '_ZENODO_DEPOSITS/standalone_pdf_runtime_v005/INSTALLATION_NOMINATION.json',
+             'sha256': '3fcc84b318b2d9dbeb83b771d1798532c8435322043179efa19b6007400effa8'})
+        self.assertEqual(runtime.V005_PLAN, {'path': '_ZENODO_DEPOSITS/standalone_pdf_runtime_v005/INSTALL_PLAN.json',
+             'sha256': '205de67b0668e736f12d2d869da59edb93411377e5976fa4f7623caf44c118c1'})
         self.assertEqual(set(runtime.PREDECESSOR_INSTALLATION), {'v001', 'v002', 'v003', 'v004', 'v005', 'v006', 'v007', 'v008', 'v009', 'v010', 'v011'})
         self.assertTrue(runtime.PROFILE_PATH.startswith('_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/'))
-        self.assertTrue(runtime.GIT_PREFIX.endswith('/future_runtime_v012/'))
+        self.assertTrue(runtime.GIT_PREFIX.endswith('/runtime/'))
 
-    def test_complete19_source_proofs_preserve_failed_receipt_and_claim_no_runtime_pass(self):
+    def test_complete17_source_proofs_preserve_failed_receipt_and_claim_no_runtime_pass(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp).resolve(); bindings, sources, modules, failed = self.fixture(root)
             before = {str(p): p.read_bytes() for p in root.rglob('*') if p.is_file()}
             value = self.consume(root, bindings)
             self.assertFalse(value['actual_runtime_admission']); self.assertFalse(value['certifies'])
-            self.assertEqual(len(value['v011']['merged_source']['proofs']), 19)
+            self.assertEqual(len(value['v005']['merged_source']['proofs']), 17)
             self.assertIn('SOURCE_READBACK_ONLY', value['status'])
             self.assertEqual(before, {str(p): p.read_bytes() for p in root.rglob('*') if p.is_file()})
             self.assertFalse(json.loads(Path(failed['path']).read_bytes())['runtime_admission'])
@@ -112,7 +107,7 @@ class FrozenV011PredecessorTests(unittest.TestCase):
             with self.subTest(field=field), tempfile.TemporaryDirectory() as tmp:
                 root = Path(tmp).resolve(); bindings, sources, modules, _ = self.fixture(root)
                 path = Path(sources[0]['path'] if field == 'source' else modules[0]['path'] if field == 'installed'
-                            else bindings['V011_' + field.upper()]['path'])
+                            else bindings['V005_' + field.upper()]['path'])
                 changed = path.read_bytes() + b'changed'; path.write_bytes(changed)
                 with self.assertRaises(runtime.PackagingHold): self.consume(root, bindings)
                 self.assertEqual(path.read_bytes(), changed)
@@ -122,7 +117,7 @@ class FrozenV011PredecessorTests(unittest.TestCase):
             with self.subTest(field=field), tempfile.TemporaryDirectory() as tmp:
                 root = Path(tmp).resolve(); bindings, sources, modules, _ = self.fixture(root)
                 path = Path(sources[0]['path'] if field == 'source' else modules[0]['path'] if field == 'installed'
-                            else bindings['V011_' + field.upper()]['path'])
+                            else bindings['V005_' + field.upper()]['path'])
                 path.unlink()
                 with self.assertRaises(runtime.PackagingHold): self.consume(root, bindings)
                 self.assertFalse(path.exists())
@@ -131,17 +126,17 @@ class FrozenV011PredecessorTests(unittest.TestCase):
         for field in ('status', 'root_review_receipt'):
             with self.subTest(field=field), tempfile.TemporaryDirectory() as tmp:
                 root = Path(tmp).resolve(); bindings, _, _, _ = self.fixture(root)
-                value = json.loads(Path(bindings['V011_NOMINATION']['path']).read_bytes())
+                value = json.loads(Path(bindings['V005_NOMINATION']['path']).read_bytes())
                 value[field] = ('FRESH_DEFAULT_FULL_POPULATION_READBACK_PASS' if field == 'status'
                                 else put(root, 'unrelated-review.json', {'synthetic_only': True}))
-                bindings['V011_NOMINATION'] = put(root, 'nomination.json', value)
+                bindings['V005_NOMINATION'] = put(root, 'nomination.json', value)
                 with self.assertRaises(runtime.PackagingHold): self.consume(root, bindings)
 
     def test_missing_or_escaped_source_origin_cannot_supply_genuine_provenance(self):
         for kind in ('missing', 'escape'):
             with self.subTest(kind=kind), tempfile.TemporaryDirectory() as tmp:
                 root = Path(tmp).resolve(); bindings, _, _, _ = self.fixture(root)
-                profile = json.loads(Path(bindings['V011_PROFILE']['path']).read_bytes())
+                profile = json.loads(Path(bindings['V005_PROFILE']['path']).read_bytes())
                 origin = profile['source_origin']['tree']
                 if kind == 'missing': Path(origin['path']).unlink()
                 else:
@@ -149,10 +144,10 @@ class FrozenV011PredecessorTests(unittest.TestCase):
                         target = Path(outside).resolve() / 'tree.json'
                         target.write_bytes(Path(origin['path']).read_bytes())
                         profile['source_origin']['tree'] = {'path': str(target), 'sha256': origin['sha256']}
-                        bindings['V011_PROFILE'] = put(root, 'profile.json', profile)
-                        nomination = json.loads(Path(bindings['V011_NOMINATION']['path']).read_bytes())
-                        nomination['profile'] = bindings['V011_PROFILE']
-                        bindings['V011_NOMINATION'] = put(root, 'nomination.json', nomination)
+                        bindings['V005_PROFILE'] = put(root, 'profile.json', profile)
+                        nomination = json.loads(Path(bindings['V005_NOMINATION']['path']).read_bytes())
+                        nomination['profile'] = bindings['V005_PROFILE']
+                        bindings['V005_NOMINATION'] = put(root, 'nomination.json', nomination)
                         with self.assertRaisesRegex(runtime.PackagingHold, 'REGULAR_CONTAINED_SOURCE'):
                             self.consume(root, bindings)
                     continue
@@ -172,62 +167,6 @@ class FrozenV011PredecessorTests(unittest.TestCase):
                 with self.assertRaisesRegex(runtime.PackagingHold, 'SOURCE_HASH_OR_RACE'):
                     self.consume(root, bindings)
             self.assertTrue(fired)
-
-    def test_namespace_cardinality_is19_for_v7_v8_v9_v10_and_current_but17_for_six_older(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp).resolve(); bindings, sources, modules, _ = self.fixture(root)
-            for prefix in ('00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/', runtime.GIT_PREFIX):
-                rows = [{**r, 'git_path': prefix+r['name']} for r in sources]
-                self.assertEqual(len(runtime.module_table(root, rows, git_prefix=prefix)), 19)
-                with self.assertRaisesRegex(runtime.PackagingHold, 'CLOSED_ADDITIVE_MODULES'):
-                    runtime.module_table(root, [r for r in rows if r['name'] in runtime.FROZEN_MODULE_NAMES], git_prefix=prefix)
-            for version in range(1,7):
-                prefix = '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v'+str(version).zfill(3)+'/'
-                rows = [{**r, 'git_path': prefix+r['name']} for r in sources]
-                old = [r for r in rows if r['name'] in runtime.FROZEN_MODULE_NAMES]
-                self.assertEqual(len(runtime.module_table(root, old, git_prefix=prefix)),17)
-                with self.assertRaisesRegex(runtime.PackagingHold, 'CLOSED_ADDITIVE_MODULES'):
-                    runtime.module_table(root, rows, git_prefix=prefix)
-            with self.assertRaisesRegex(runtime.PackagingHold, 'FIXED_MODULE_TABLE_NAMESPACE'):
-                runtime.module_table(root, sources, git_prefix='unreviewed/namespace/')
-
-    def test_each_v11_worker_source_is_required_and_cannot_be_dropped(self):
-        for name in ('scientific_registration_worker.py','owner_content_worker.py'):
-            for location in ('source','installed'):
-                with self.subTest(name=name,location=location), tempfile.TemporaryDirectory() as tmp:
-                    root=Path(tmp).resolve();bindings,sources,modules,_=self.fixture(root)
-                    rows=sources if location=='source' else modules
-                    path=Path(next(r['path']for r in rows if r['name']==name))
-                    original=path.read_bytes();path.write_bytes(original+b'changed')
-                    with self.assertRaises(runtime.PackagingHold):self.consume(root,bindings)
-                    self.assertEqual(path.read_bytes(),original+b'changed')
-
-    def test_v11_source_only_review_must_retain_exact_nine_flags(self):
-        for field in (*runtime.SOURCE_REVIEW_CHANGE_FLAGS, 'actual_live_runtime_admission'):
-            with self.subTest(field=field),tempfile.TemporaryDirectory() as tmp:
-                root=Path(tmp).resolve();bindings,_,_,_=self.fixture(root)
-                profile=json.loads(Path(bindings['V011_PROFILE']['path']).read_bytes())
-                review=json.loads(Path(profile['source_review']['path']).read_bytes())
-                review[field]=not review[field]
-                profile['source_review']=put(root,'review.json',review)
-                bindings['V011_PROFILE']=put(root,'profile.json',profile)
-                plan=json.loads(Path(bindings['V011_PLAN']['path']).read_bytes())
-                plan['source_review']=profile['source_review'];bindings['V011_PLAN']=put(root,'plan.json',plan)
-                nomination=json.loads(Path(bindings['V011_NOMINATION']['path']).read_bytes())
-                nomination['profile']=bindings['V011_PROFILE'];bindings['V011_NOMINATION']=put(root,'nomination.json',nomination)
-                with self.assertRaisesRegex(runtime.PackagingHold,'FROZEN_V011_SOURCE_REVIEW_SCOPE'):
-                    self.consume(root,bindings)
-
-    def test_ten_older_predecessor_body_is_literal_preserved_v11_namespace_body(self):
-        import ast
-        here=Path(__file__).resolve().parents[1]
-        before_raw=historical_bytes('v011', 'packaging_runtime.py')
-        self.assertEqual(hashlib.sha256(before_raw).hexdigest(),'34a4e95cc07ef0138a87e1b0e3cd3b56d187ee96eb8b9aca8fbbaf41d56a55ae')
-        before=before_raw.decode('utf-8');after=(here/'packaging_runtime.py').read_text()
-        original=next(n for n in ast.parse(before).body if isinstance(n,ast.FunctionDef)and n.name=='predecessor_installation')
-        copied=next(n for n in ast.parse(after).body if isinstance(n,ast.FunctionDef)and n.name=='v010_predecessor_installation')
-        self.assertEqual(ast.get_source_segment(before,original),
-            ast.get_source_segment(after,copied).replace('def v010_predecessor_installation(', 'def predecessor_installation(',1))
 
 
 if __name__ == '__main__': unittest.main()

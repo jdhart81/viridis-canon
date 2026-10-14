@@ -178,8 +178,42 @@ class CredentialTests(unittest.TestCase):
             with self.subTest(url=url.replace(TOKEN, "***")):
                 with self.assertRaises(PUBLISHER.SuccessorPublisherError):
                     PUBLISHER.api_call(TOKEN, "GET", url)
-        self.assertEqual(PUBLISHER.validated_zenodo_url("https://sandbox.zenodo.org/api/a"),
-                         "https://sandbox.zenodo.org/api/a")
+        with patch.object(PUBLISHER, "BASE", "https://sandbox.zenodo.org/api"):
+            self.assertEqual(PUBLISHER.validated_zenodo_url("https://sandbox.zenodo.org/api/a"),
+                             "https://sandbox.zenodo.org/api/a")
+
+    def test_direct_bucket_requests_stay_on_configured_credential_origin(self):
+        for base, foreign in (("https://zenodo.org/api", "sandbox.zenodo.org"),
+                              ("https://sandbox.zenodo.org/api", "zenodo.org")):
+            with self.subTest(base=base), patch.object(PUBLISHER, "BASE", base), \
+                 patch.object(PUBLISHER.urllib.request, "build_opener") as factory:
+                with self.assertRaises(PUBLISHER.SuccessorPublisherError):
+                    PUBLISHER.api_call(TOKEN, "PUT", f"https://{foreign}/api/files/bucket/paper.pdf", b"x")
+                factory.assert_not_called()
+
+    def test_configured_sandbox_requests_use_only_sandbox_and_header_credentials(self):
+        captured=[]
+        def opened(request, **kwargs):
+            captured.append(request)
+            return Response({})
+        opener=types.SimpleNamespace(open=opened)
+        with patch.object(PUBLISHER, "BASE", "https://sandbox.zenodo.org/api"), \
+             patch.object(PUBLISHER.urllib.request, "build_opener", return_value=opener):
+            PUBLISHER.api_call(TOKEN, "GET", "https://sandbox.zenodo.org/api/records/100")
+        self.assertEqual(len(captured),1)
+        self.assertEqual(captured[0].full_url,"https://sandbox.zenodo.org/api/records/100")
+        self.assertEqual(captured[0].get_header("Authorization"),"Bearer "+TOKEN)
+        self.assertNotIn(TOKEN,captured[0].full_url)
+
+    def test_invalid_configured_base_cannot_authorize_any_request(self):
+        for base in ("http://zenodo.org/api","https://evil.invalid/api", "https://zenodo.org:444/api",
+                     "https://user@zenodo.org/api", "https://zenodo.org/not-api", "https://zenodo.org/api?x=1",
+                     "https://zenodo.org/api#fragment", " https://zenodo.org/api"):
+            with self.subTest(base=base), patch.object(PUBLISHER,"BASE",base), \
+                 patch.object(PUBLISHER.urllib.request,"build_opener") as factory:
+                with self.assertRaises(PUBLISHER.SuccessorPublisherError):
+                    PUBLISHER.api_call(TOKEN,"GET","https://zenodo.org/api/records/100")
+                factory.assert_not_called()
 
     def test_redirects_cannot_forward_header_to_another_origin(self):
         request = urllib.request.Request("https://zenodo.org/api/a", headers={"Authorization": "Bearer " + TOKEN})

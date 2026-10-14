@@ -1,13 +1,77 @@
 {
-  "active_runtime_path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012",
+  "active_runtime_path": "00_lab_infrastructure/gates/standalone_pdf_release/runtime",
   "active_runtime_selected": "v012",
   "active_semantic_label": "V012 source selected; existing failed health and no runtime admission retained",
   "consolidation_base": "d32efdfe265471af814dd440c5ccecb3dd187e82",
   "current_main_at_start": "de75ab450b3b527c8392032e02ab3436ba78dfc2",
   "historical_source_manifest_sha256": "e6cf66122384c16089b9fdf66c813837b5ced2ebf84360fb3267e8f34c9b3219",
+  "historical_tag_objects": [
+    {
+      "name": "pdf-runtime-v001",
+      "object_sha": "606e97376cf93584d3e68ce263728c853968acb8",
+      "target_commit": "6fd1655229f0c181b434f22de68d2bebc52c704c"
+    },
+    {
+      "name": "pdf-runtime-v002",
+      "object_sha": "ea02f0affc2e9f2e848324a203ddbd911bf82ea7",
+      "target_commit": "fdea010c4356db2b9c40ffdb388fd8f1485fcd13"
+    },
+    {
+      "name": "pdf-runtime-v003",
+      "object_sha": "c02008db3dacd86dc8ce22087d788d9fb74285c5",
+      "target_commit": "80c7fa7fae9641b4278014003b32b2737489d089"
+    },
+    {
+      "name": "pdf-runtime-v004",
+      "object_sha": "3f378b820f1a7b20c339991b8896c5bfa30cb720",
+      "target_commit": "8bf7c50b7022d5cf2c270cb88f162b67faf5729e"
+    },
+    {
+      "name": "pdf-runtime-v005",
+      "object_sha": "74ea1067ca81b88129e0cb614a9924ee082ac237",
+      "target_commit": "44245edcbba9094221a6bde73c007098ab293cb2"
+    },
+    {
+      "name": "pdf-runtime-v006",
+      "object_sha": "60e0a0f41a8c65a34bdce8db775519347315a30d",
+      "target_commit": "934ac5e8cb0844cbd7d7a6531318cb3ebef07e95"
+    },
+    {
+      "name": "pdf-runtime-v007",
+      "object_sha": "5d48ca530fbe1b2631ea540a09972ae610766fb7",
+      "target_commit": "3fe4aacb31047c7dde2f9eaef0cc7389d1bc6d82"
+    },
+    {
+      "name": "pdf-runtime-v008",
+      "object_sha": "99152aa9ac025c44e89b39b348335dc9c85f8a6c",
+      "target_commit": "2f7853ecd89901f4481215e7d32d09757aadc07a"
+    },
+    {
+      "name": "pdf-runtime-v009",
+      "object_sha": "9ca71a35c0a9ac7bad8a0347677197af26230423",
+      "target_commit": "4bc65900b69768f81914a0a8ddd0f004a1313775"
+    },
+    {
+      "name": "pdf-runtime-v010",
+      "object_sha": "be62d50f0b8074c8a8253d14af8bd43f574da6f5",
+      "target_commit": "43f0d8cef04bef3dcd0b697980ca41c2eed4e395"
+    },
+    {
+      "name": "pdf-runtime-v011",
+      "object_sha": "b3e0f23aebe0443a1608ba37c96fd133a237dc63",
+      "target_commit": "faa27aa98e641616e665715ddf25a947739334f4"
+    },
+    {
+      "name": "pdf-runtime-v012",
+      "object_sha": "e34f70bf5257c84c514037be56294f147aefe75f",
+      "target_commit": "17c5878c871093c09878296926b962b4fbb4e2d4"
+    }
+  ],
+  "historical_tag_remote": "https://github.com/jdhart81/viridis-canon",
+  "historical_tag_verified_at_utc": "2026-10-14T23:36:43.526425+00:00",
   "schema": "VRS-RUNTIME-HISTORY-1",
   "status": "SOURCE_CONSOLIDATED_RUNTIME_NOT_ADMITTED",
-  "tags_created": false,
+  "tags_created": true,
   "unexpected_successor": {
     "action": "preserved exact merge/tree/blob history; unselected source removed from HEAD without repair",
     "merge_commit": "de75ab450b3b527c8392032e02ab3436ba78dfc2",

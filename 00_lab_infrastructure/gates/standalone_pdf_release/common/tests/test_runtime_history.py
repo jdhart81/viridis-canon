@@ -26,6 +26,10 @@ class RuntimeHistoryTests(unittest.TestCase):
         self.assertEqual(len(prior), 12)
         self.assertEqual(sum(len(row["files"]) for row in prior), 505)
         self.assertEqual(manifest["active_runtime_selected"], "v012")
+        self.assertEqual(manifest["active_runtime_path"],
+                         "00_lab_infrastructure/gates/standalone_pdf_release/runtime")
+        self.assertIs(manifest["tags_created"], True)
+        self.assertEqual(len(manifest["historical_tag_objects"]), 12)
         self.assertIn("no runtime admission", manifest["active_semantic_label"])
         self.assertEqual(sum(row["version"] == "v013" for row in manifest["versions"]), 1)
 
@@ -45,8 +49,8 @@ class RuntimeHistoryTests(unittest.TestCase):
                 self.assertEqual(hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest(), row["blob_sha"])
 
     def test_no_historical_runtime_directories_are_required_on_disk(self):
-        self.assertTrue((history.RELEASE / "future_runtime_v012").is_dir())
-        for number in (*range(1, 12), 13):
+        self.assertTrue((history.RELEASE / "runtime").is_dir())
+        for number in range(1, 14):
             self.assertFalse((history.RELEASE / ("future_runtime_v" + str(number).zfill(3))).exists())
         self.assertIn(b"def predecessor_installation", history.historical_bytes("v011", "packaging_runtime.py"))
 

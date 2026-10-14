@@ -50,4 +50,4 @@ jobs:
       - name: Verify immutable historical source without full runtime copies
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/common/tests -p 'test_*.py' -v
       - name: Verify selected V012 functional coverage and retained provenance gates
-        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests -p 'test_*.py' -v
+        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/runtime/tests -p 'test_*.py' -v

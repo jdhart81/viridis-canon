@@ -126,12 +126,18 @@ def api_call(
     content_type: str | None = "application/json",
     *,
     allow_not_found: bool = False,
+    rdm: bool = False,
 ) -> dict[str, Any] | None:
     validated_zenodo_url(url)
     if token and token in urllib.parse.unquote(url):
         raise SuccessorPublisherError("Zenodo credential is forbidden in request URLs")
     headers = {"Content-Type": content_type} if content_type else {}
     headers["Authorization"] = "Bearer " + token
+    headers["Accept"] = (
+        "application/vnd.inveniordm.v1+json"
+        if rdm
+        else "application/json"
+    )
     opener = urllib.request.build_opener(ZenodoRedirectHandler())
     raw = ""
     for attempt in range(4):
@@ -300,7 +306,7 @@ def inherit_predecessor_copyright(candidate: dict[str, Any], token: str) -> str 
     predecessor = DOI_RE.fullmatch(candidate["predecessor_doi"])
     if predecessor is None:
         raise SuccessorPublisherError("invalid predecessor DOI")
-    record = api_call(token, "GET", f"{BASE}/records/{predecessor.group(1)}")
+    record = api_call(token, "GET", f"{BASE}/records/{predecessor.group(1)}", rdm=True)
     metadata = record.get("metadata") if isinstance(record, dict) else None
     if not isinstance(metadata, dict):
         raise SuccessorPublisherError("predecessor metadata unavailable for copyright inheritance")
@@ -317,7 +323,7 @@ def preserve_draft_copyright(candidate: dict[str, Any], token: str, draft: str) 
     if expected is None:
         return
     url = f"{BASE}/records/{draft}/draft"
-    current = api_call(token, "GET", url)
+    current = api_call(token, "GET", url, rdm=True)
     metadata = current.get("metadata") if isinstance(current, dict) else None
     if not isinstance(metadata, dict):
         raise SuccessorPublisherError("RDM draft metadata missing for copyright preservation")
@@ -330,8 +336,8 @@ def preserve_draft_copyright(candidate: dict[str, Any], token: str, draft: str) 
                "predecessor_doi": candidate["predecessor_doi"],
                "before": current, "planned_copyright": expected}
     json_write_atomic(receipt_path, receipt, token=token)
-    api_call(token, "PUT", url, json.dumps({"metadata": corrected}).encode("utf-8"))
-    readback = api_call(token, "GET", url)
+    api_call(token, "PUT", url, json.dumps({"metadata": corrected}).encode("utf-8"), rdm=True)
+    readback = api_call(token, "GET", url, rdm=True)
     actual = readback.get("metadata") if isinstance(readback, dict) else None
     expected_record = {**current, "metadata": corrected}
     # The complete RDM response may change only the planned field plus these
@@ -378,8 +384,10 @@ def verify_manuscript_readback(candidate: dict[str, Any], token: str, doi: str) 
     record = api_call(token, "GET", f"{BASE}/records/{record_id}")
     if not isinstance(record, dict) or str(record.get("id")) != record_id or extract_doi(record) != doi:
         raise SuccessorPublisherError("standalone manuscript readback record identity differs")
-    if "expected_copyright" in candidate and record.get("metadata", {}).get("copyright") != candidate["expected_copyright"]:
-        raise SuccessorPublisherError("published DOI retained; predecessor copyright readback differs")
+    if candidate["expected_copyright"] is not None:
+        rdm_record = api_call(token, "GET", f"{BASE}/records/{record_id}", rdm=True)
+        if not isinstance(rdm_record, dict) or rdm_record.get("metadata", {}).get("copyright") != candidate["expected_copyright"]:
+            raise SuccessorPublisherError("published DOI retained; predecessor copyright readback differs")
     try:
         receipt = manuscript_pdf_gate.require_public(record, preflight)
     except manuscript_pdf_gate.ManuscriptPDFHold as exc:

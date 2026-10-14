@@ -19,10 +19,19 @@ import urllib.request
 
 TOKEN = "DUMMY_CREDENTIAL_" + "x" * 40
 COPYRIGHT = "Copyright © 2026 Example Research"
+
+
+def legacy_public_gate(record, preflight):
+    # The production gate consumes legacy files:list. Native RDM rights reads
+    # must not accidentally replace the separately checked public inventory.
+    assert isinstance(record.get("files"), list)
+    return {"state": "MOCK_READBACK", "server_value": TOKEN}
+
+
 GATE = types.SimpleNamespace(
     ManuscriptPDFHold=type("ManuscriptPDFHold", (RuntimeError,), {}),
     require_local=lambda *args: {"state": "MOCK_PREFLIGHT"},
-    require_public=lambda *args: {"state": "MOCK_READBACK", "server_value": TOKEN},
+    require_public=legacy_public_gate,
 )
 SPEC = importlib.util.spec_from_file_location(
     "successor_credentials_under_test", Path(__file__).resolve().parents[1] / "publish_successor_wave.py"
@@ -62,6 +71,7 @@ class SuccessorHTTP:
         path = urllib.parse.urlsplit(request.full_url).path
         method = request.get_method()
         if path == "/api/records/100" and method == "GET":
+            assert request.get_header("Accept") == "application/vnd.inveniordm.v1+json"
             return Response({"id": 100, "metadata": {"copyright": COPYRIGHT}})
         if path == "/api/records/100/draft" and method == "GET":
             raise urllib.error.HTTPError(request.full_url, 404, "missing", {}, io.BytesIO())
@@ -70,7 +80,8 @@ class SuccessorHTTP:
         if path == "/api/records/200" and method == "GET":
             if not self.published:
                 raise urllib.error.HTTPError(request.full_url, 404, "missing", {}, io.BytesIO())
-            return Response({"id": 200, "metadata": {"doi": "10.5281/zenodo.200", **self.metadata}})
+            files = {"entries": {}} if request.get_header("Accept") == "application/vnd.inveniordm.v1+json" else []
+            return Response({"id": 200, "metadata": {"doi": "10.5281/zenodo.200", **self.metadata}, "files": files})
         if path == "/api/deposit/depositions/200":
             if method == "PUT":
                 metadata = json.loads(request.data)["metadata"]
@@ -85,6 +96,7 @@ class SuccessorHTTP:
             self.files.append({"filename": name})
             return Response({"filename": name})
         if path == "/api/records/200/draft":
+            assert request.get_header("Accept") == "application/vnd.inveniordm.v1+json"
             if method == "PUT":
                 metadata = json.loads(request.data)["metadata"]
                 before = copy.deepcopy(self.metadata)
@@ -216,6 +228,19 @@ class CredentialTests(unittest.TestCase):
             with self.assertRaises(PUBLISHER.SuccessorPublisherError):
                 PUBLISHER.preserve_draft_copyright({"expected_copyright": COPYRIGHT, "bundle": Path("."),
                                                   "predecessor_doi": "10.5281/zenodo.100"}, TOKEN, "200")
+
+    def test_public_gate_inventory_stays_legacy_while_copyright_readback_is_native(self):
+        http = SuccessorHTTP()
+        http.published = True
+        http.metadata["copyright"] = COPYRIGHT
+        with tempfile.TemporaryDirectory() as temporary, \
+             patch.object(PUBLISHER, "ROOT", Path(temporary)), \
+             patch.object(PUBLISHER.urllib.request, "build_opener", return_value=http):
+            PUBLISHER.verify_manuscript_readback(
+                {"bundle": Path(temporary), "upload_names": (), "expected_copyright": COPYRIGHT},
+                TOKEN, "10.5281/zenodo.200")
+        accepts = [request.get_header("Accept") for request in http.requests]
+        self.assertEqual(accepts, ["application/json", "application/vnd.inveniordm.v1+json"])
 
 
 if __name__ == "__main__":

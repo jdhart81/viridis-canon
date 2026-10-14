@@ -108,6 +108,10 @@ def _archive_kind(raw: bytes) -> str | None:
                         (b"\x28\xb5\x2f\xfd", "zstd")):
         if raw.startswith(magic):
             return kind
+    # Valid ZIPs may carry an executable or other preamble. Their central
+    # directory remains authoritative even when no ZIP signature is at byte 0.
+    if zipfile.is_zipfile(BytesIO(raw)):
+        return "zip"
     if len(raw) >= 512 and raw[257:262] == b"ustar":
         return "tar"
     if len(raw) >= 4 and 0x184D2A50 <= int.from_bytes(raw[:4], "little") <= 0x184D2A5F:

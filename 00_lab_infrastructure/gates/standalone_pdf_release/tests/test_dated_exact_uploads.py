@@ -6,6 +6,7 @@ import io
 import json
 from pathlib import Path
 import tempfile
+import traceback
 import unittest
 from unittest import mock
 import urllib.error
@@ -179,6 +180,36 @@ class DatedExactUploadsTests(unittest.TestCase):
         with mock.patch.object(publisher, "BASE", "https://sandbox.zenodo.org/api"):
             self.assertEqual(publisher.validated_zenodo_url("https://sandbox.zenodo.org/api/files/bucket/paper.pdf"), "https://sandbox.zenodo.org/api/files/bucket/paper.pdf")
             with self.assertRaises(publisher.PublisherError): publisher.validated_zenodo_url("https://zenodo.org/api/files/bucket/paper.pdf")
+
+    def test_credential_value_in_any_url_field_is_refused_before_http(self):
+        with mock.patch.object(publisher.urllib.request.OpenerDirector, "open") as opened:
+            for url in ("https://zenodo.org/api/records/1?diagnostic=" + TOKEN,
+                        "https://zenodo.org/api/records/" + TOKEN,
+                        "https://zenodo.org/api/records/1?diagnostic=" + urllib.parse.quote(TOKEN, safe="")):
+                with self.subTest(url=url), self.assertRaises(publisher.PublisherError) as caught:
+                    publisher.api_call(TOKEN, "GET", url)
+                self.assertNotIn(TOKEN, str(caught.exception))
+            opened.assert_not_called()
+
+    def test_redirect_cannot_put_credential_in_url(self):
+        request = publisher.urllib.request.Request("https://zenodo.org/api/records/1",
+                    headers={"Authorization": "Bearer " + TOKEN})
+        with self.assertRaises(publisher.PublisherError):
+            publisher.ZenodoRedirectHandler().redirect_request(request, None, 302, "move", {},
+                    "https://zenodo.org/api/records/2?diagnostic=" + TOKEN)
+
+    def test_api_boundary_drops_credential_bearing_exception_causes(self):
+        for error in (urllib.error.URLError(TOKEN), http.client.InvalidURL(TOKEN),
+                      urllib.error.HTTPError("https://zenodo.org/api/" + TOKEN, 400, TOKEN, {}, io.BytesIO(TOKEN.encode()))):
+            with self.subTest(error=type(error).__name__), mock.patch.object(publisher.time, "sleep"), \
+                 mock.patch.object(publisher.urllib.request.OpenerDirector, "open", side_effect=error):
+                try:
+                    publisher.api_call(TOKEN, "GET", "https://zenodo.org/api/records/1")
+                except publisher.PublisherError:
+                    diagnostic = traceback.format_exc()
+                else:
+                    self.fail("unsafe transport exception was not held")
+                self.assertNotIn(TOKEN, diagnostic)
 
 
 if __name__ == "__main__":

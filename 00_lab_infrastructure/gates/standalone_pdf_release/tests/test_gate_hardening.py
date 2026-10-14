@@ -57,6 +57,16 @@ class HardeningTests(unittest.TestCase):
     def paper(self):
         self.put("paper.pdf", SUMMARY)
 
+    def test_prefixed_zip_with_disguised_filename_cannot_hide_manuscript(self):
+        self.paper()
+        prefixed = b"MZ self-extracting preamble\n" + zipped([("papers/Hidden-Paper.pdf", PAPER)])
+        self.assertTrue(zipfile.is_zipfile(BytesIO(prefixed)))
+        self.put("opaque.bin", prefixed)
+        with self.assertRaisesRegex(gate.ManuscriptPDFHold, "byte-identical separate PDF"):
+            gate.require_local(self.root)
+        self.put("Hidden-Paper.pdf", PAPER)
+        self.assertEqual(len(gate.require_local(self.root)["manuscripts"]), 1)
+
     def digest(self, run="Run-167", *, filename=None, archive_hash=None):
         filename = filename or run + "-Paper.pdf"
         self.put("paper.pdf", SUMMARY)

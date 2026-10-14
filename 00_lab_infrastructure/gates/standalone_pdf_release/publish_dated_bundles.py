@@ -135,7 +135,8 @@ def validated_zenodo_url(url: str) -> str:
         or parsed.scheme != "https" or parsed.hostname != configured.hostname
         or parsed.port not in (None, 443) or parsed.username or parsed.password
         or not parsed.path.startswith("/api/") or parsed.fragment
-        or any(key.lower() == "access_token" for key, _ in urllib.parse.parse_qsl(parsed.query))):
+        or any(character.isspace() or ord(character) < 32 for character in url)
+        or any(urllib.parse.unquote(key).lower() == "access_token" for key, _ in urllib.parse.parse_qsl(parsed.query))):
         raise PublisherError("Zenodo request destination must be the configured HTTPS API without URL credentials")
     return url
 
@@ -143,6 +144,9 @@ def validated_zenodo_url(url: str) -> str:
 class ZenodoRedirectHandler(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         validated_zenodo_url(newurl)
+        credential = req.get_header("Authorization", "").removeprefix("Bearer ")
+        if credential and credential in urllib.parse.unquote(newurl):
+            raise PublisherError("Zenodo credential is forbidden in redirect URLs") from None
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
@@ -156,39 +160,45 @@ def api_call(
     allow_array: bool = False,
 ) -> Any:
     validated_zenodo_url(url)
+    if credential and credential in urllib.parse.unquote(url):
+        raise PublisherError("Zenodo credential is forbidden in request URLs") from None
     headers = {"Content-Type": content_type} if content_type else {}
     headers["Authorization"] = "Bearer " + credential
     opener = urllib.request.build_opener(ZenodoRedirectHandler())
     raw = ""
     for attempt in range(4):
-        request = urllib.request.Request(
-            url,
-            method=method,
-            data=data,
-            headers=headers,
-        )
         try:
+            request = urllib.request.Request(url, method=method, data=data, headers=headers)
             with opener.open(request, timeout=90) as response:
                 raw = response.read().decode("utf-8")
             break
         except urllib.error.HTTPError as exc:
+            # Closing also prevents deferred HTTPError resource diagnostics
+            # from reproducing a credential-bearing response URL/message.
+            try:
+                exc.close()
+            except Exception:
+                pass
             if method in {"GET", "PUT"} and exc.code in {429, 502, 503, 504} and attempt < 3:
                 time.sleep(2 ** (attempt + 1))
                 continue
             raise PublisherError(
                 f"Zenodo {method} failed with HTTP {exc.code}"
-            ) from exc
+            ) from None
         except urllib.error.URLError as exc:
             if method in {"GET", "PUT"} and attempt < 3:
                 time.sleep(2 ** (attempt + 1))
                 continue
-            raise PublisherError(f"Zenodo {method} connection failed ({type(exc.reason).__name__})") from exc
+            raise PublisherError(f"Zenodo {method} connection failed ({type(exc.reason).__name__})") from None
+        except Exception as exc:
+            detail = str(exc).replace(credential, "***") if credential else str(exc)
+            raise PublisherError(f"Zenodo {method} failed ({type(exc).__name__}): {detail}") from None
     if not raw.strip():
         return {}
     try:
         value = json.loads(raw)
-    except json.JSONDecodeError as exc:
-        raise PublisherError("Zenodo response was not valid JSON") from exc
+    except json.JSONDecodeError:
+        raise PublisherError("Zenodo response was not valid JSON") from None
     if not isinstance(value, dict) and not (allow_array and isinstance(value, list)):
         raise PublisherError("Zenodo response root has an unexpected type")
     return value

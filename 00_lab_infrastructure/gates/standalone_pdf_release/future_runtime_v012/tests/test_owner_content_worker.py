@@ -51,18 +51,22 @@ def fixture():
             target = installed / name
             target.write_bytes(b'# synthetic inert source\n')
             modules.append({'name': name, 'path': str(target), 'sha256': hashlib.sha256(target.read_bytes()).hexdigest(),
-                'identity': worker._identity(target.stat())})
+                'identity': worker._identity(target.stat(),target.read_bytes())})
+        shared=installed/'common'/worker.SHARED_INPUT_NAME;shared.parent.mkdir()
+        shared.write_bytes((HERE.parent/'common'/worker.SHARED_INPUT_NAME).read_bytes())
+        shared_bound={'name':worker.SHARED_INPUT_NAME,'path':str(shared),'sha256':worker.SHARED_INPUT_SHA256}
+        shared_manifest={**shared_bound,'identity':worker._identity(shared.stat(),shared.read_bytes())}
         metadata = []
         for role, name in [('profile', 'CURRENT_PACKAGING_PROFILE.json'), ('nomination', 'INSTALLATION_NOMINATION.json'),
                            ('plan', 'INSTALL_PLAN.json')]:
             target = installed / name
-            target.write_bytes(b'{}')
+            target.write_bytes(worker.encode_json({'shared_dependencies':[{**shared_bound,'git_path':worker.SHARED_INPUT_GIT_PATH}]})if role=='profile'else b'{}')
             metadata.append({'role': role, 'path': str(target), 'sha256': hashlib.sha256(target.read_bytes()).hexdigest(),
-                'identity': worker._identity(target.stat())})
+                'identity': worker._identity(target.stat(),target.read_bytes())})
         manifest = {'standard': 'VRS-CURRENT-V012-WORKER-SOURCE-MANIFEST-1', 'canonical_root': str(root),
             'profile_binding': {'path': metadata[0]['path'], 'sha256': metadata[0]['sha256']},
             'modules': modules, 'metadata': metadata, 'source_origin': {}, 'legacy_closure': {},
-            'source_review_change_flags': {}}
+            'source_review_change_flags': {},'shared_dependencies':[shared_manifest]}
         descriptors, pairs = [], {}
         for index, count in enumerate([7, 10, 10, 10, 10, 9, 2]):
             rid = str(900000 + index)
@@ -285,7 +289,7 @@ class FramingAndDescriptorTests(unittest.TestCase):
                     value = deepcopy(f.manifest)
                     if change == 'module_missing': value['modules'].pop()
                     if change == 'metadata_missing': value['metadata'].pop()
-                    if change == 'identity': value['modules'][0]['identity']['ctime_ns'] += 1
+                    if change == 'identity': value['modules'][0]['identity']['mtime_ns'] += 1
                     if change == 'bytes': value['modules'][0]['sha256'] = '0' * 64
                     if change == 'module_extra': value['modules'][0]['name'] = 'foreign.py'
                     with self.subTest(change=change), self.assertRaises(worker.TransportHold): worker.bootstrap_sources(value)

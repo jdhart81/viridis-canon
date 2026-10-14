@@ -50,8 +50,11 @@ FIXED_CANONICAL_ROOT = Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs
 NATIVE_ACCEPT = 'application/vnd.inveniordm.v1+json'
 ACCEPTS = frozenset({'application/json', NATIVE_ACCEPT})
 MANIFEST_FIELDS = frozenset({'standard', 'canonical_root', 'profile_binding',
-    'modules', 'metadata', 'source_origin', 'legacy_closure', 'source_review_change_flags'})
-IDENTITY_FIELDS = frozenset({'device', 'inode', 'mode', 'bytes', 'mtime_ns', 'ctime_ns'})
+    'modules', 'metadata', 'source_origin', 'legacy_closure', 'source_review_change_flags','shared_dependencies'})
+IDENTITY_FIELDS = frozenset({'device', 'inode', 'mode', 'bytes', 'mtime_ns', 'sha256'})
+SHARED_INPUT_NAME='stable_input_identity.py'
+SHARED_INPUT_SHA256='7e6c204993f0ba65650c58ad50a71073d803522d31fa08b93b7ce35054fa5eda'
+SHARED_INPUT_GIT_PATH='00_lab_infrastructure/gates/standalone_pdf_release/common/stable_input_identity.py'
 SOURCE_FIELDS = frozenset({'status', 'source_manifest_sha256', 'source_modules',
     'metadata_files', 'transient_restore_allowed', 'scientific_population_admitted', 'certifies'})
 KINDS = {'HELLO': 1, 'SOURCE_READY': 2, 'TOKEN': 3, 'READY': 4, 'GRANT': 5,
@@ -323,10 +326,13 @@ def terminate_and_reap(children, grace_seconds=0.2):
     return records
 
 
-def _identity(observed):
-    return dict(zip(('device', 'inode', 'mode', 'bytes', 'mtime_ns', 'ctime_ns'),
+def _identity(observed, raw=None):
+    result = dict(zip(('device', 'inode', 'mode', 'bytes', 'mtime_ns'),
         (observed.st_dev, observed.st_ino, observed.st_mode, observed.st_size,
-            observed.st_mtime_ns, observed.st_ctime_ns)))
+            observed.st_mtime_ns)))
+    if raw is not None:
+        result['sha256']=hashlib.sha256(raw).hexdigest()
+    return result
 
 
 def _strict_source_read(path, expected, identity):
@@ -337,11 +343,14 @@ def _strict_source_read(path, expected, identity):
         need(not any(p.is_symlink() for p in (path, *path.parents)), 'STRICT_BOOTSTRAP_SOURCE_PATH')
     no_links()
     first = path.stat()
-    need(stat.S_ISREG(first.st_mode) and _identity(first) == identity, 'BOOTSTRAP_SOURCE_IDENTITY')
+    metadata={k:v for k,v in identity.items()if k!='sha256'}
+    need(stat.S_ISREG(first.st_mode) and _identity(first) == metadata, 'BOOTSTRAP_SOURCE_IDENTITY')
     raw = path.read_bytes()
+    readback=path.read_bytes()
     last = path.stat()
     no_links()
-    need(_identity(first) == _identity(last) == identity
+    need(_identity(first) == _identity(last) == metadata and raw==readback
+        and _identity(last,raw)==identity
         and hashlib.sha256(raw).hexdigest() == expected, 'BOOTSTRAP_SOURCE_BYTES_OR_RACE')
     return raw
 
@@ -372,6 +381,13 @@ def bootstrap_sources(manifest):
     installed = root / '_ZENODO_DEPOSITS/standalone_pdf_runtime_v012'
     reject_import_artifacts(installed)
     modules, metadata = manifest['modules'], manifest['metadata']
+    shared=manifest['shared_dependencies']
+    need(type(shared)is list and len(shared)==1 and type(shared[0])is dict
+         and set(shared[0])=={'name','path','sha256','identity'}
+         and shared[0]['name']==SHARED_INPUT_NAME and shared[0]['sha256']==SHARED_INPUT_SHA256
+         and Path(shared[0]['path'])==installed/'common'/SHARED_INPUT_NAME,
+         'EXACT_SHARED_SOURCE_BOOTSTRAP')
+    _strict_source_read(shared[0]['path'],shared[0]['sha256'],shared[0]['identity'])
     need(type(modules) is list and len(modules) == 19 and type(metadata) is list and len(metadata) == 3,
         'EXACT19_AND3_SOURCE_BOOTSTRAP')
     names = set()
@@ -385,15 +401,20 @@ def bootstrap_sources(manifest):
     expected = {'profile': 'CURRENT_PACKAGING_PROFILE.json', 'nomination': 'INSTALLATION_NOMINATION.json',
         'plan': 'INSTALL_PLAN.json'}
     roles = set()
+    profile_value=None
     for row in metadata:
         need(type(row) is dict and set(row) == {'role', 'path', 'sha256', 'identity'}
             and row['role'] in expected and row['role'] not in roles
             and Path(row['path']) == installed / expected[row['role']], 'FIXED_CURRENT_METADATA')
         roles.add(row['role'])
-        _strict_source_read(row['path'], row['sha256'], row['identity'])
+        raw=_strict_source_read(row['path'], row['sha256'], row['identity'])
+        if row['role']=='profile':profile_value=decode_json(raw)
     need(roles == set(expected), 'COMPLETE_CURRENT_METADATA')
     profile = next(row for row in metadata if row['role'] == 'profile')
     need(manifest['profile_binding'] == {'path': profile['path'], 'sha256': profile['sha256']}, 'NOMINATED_BOOTSTRAP_PROFILE')
+    expected_shared=[{k:shared[0][k]for k in('name','path','sha256')}|{'git_path':SHARED_INPUT_GIT_PATH}]
+    need(type(profile_value)is dict and profile_value.get('shared_dependencies')==expected_shared,
+         'NOMINATED_BOOTSTRAP_SHARED_DEPENDENCY')
     reject_import_artifacts(installed)
     return root
 

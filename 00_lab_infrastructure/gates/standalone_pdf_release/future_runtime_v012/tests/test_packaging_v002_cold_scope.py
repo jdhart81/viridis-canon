@@ -142,7 +142,10 @@ def synthetic_validation_case(mode='ok'):
             raw = b"ORIGIN = 'SYNTHETIC_CANDIDATE'\n" if name == 'packaging_catalog.py' else b'# synthetic additive pin\n'
             value = put(root, 'candidate-gates/' + name, raw)
             modules.append({'name': name, **value, 'git_path': runtime.GIT_PREFIX + name})
-        new_origin = origin(root, 'additive-proof', modules, runtime)
+        shared_source=put(root,str(Path(runtime.PROFILE_PATH).parent/'common'/runtime.SHARED_INPUT_NAME),
+                          (HERE.parent/'common'/runtime.SHARED_INPUT_NAME).read_bytes())
+        shared=[{'name':runtime.SHARED_INPUT_NAME,**shared_source,'git_path':runtime.SHARED_INPUT_GIT_PATH}]
+        new_origin = origin(root, 'additive-proof', [*modules,*shared], runtime)
         provider = put(root, 'provider.json', {'standard': 'VRS-PROVIDER-ATTRIBUTED-USER-INSTRUCTION-EXCERPT-1',
             'provider_tool': 'mcp__codex_app__read_thread', 'thread_id': '01a12d47-02a3-78f3-beb4-6b8e1a079dd2',
             'user_messages': [{'type': 'userMessage', 'id': '01a132f6-4708-7440-a9ba-ebf03deeb906',
@@ -152,7 +155,7 @@ def synthetic_validation_case(mode='ok'):
             'captured_at_utc': '2020-01-01T00:00:00Z', 'scientific_scope_changes': False, 'provider_instruction': provider})
         review = put(root, 'review.json', {'standard': 'VRS-INDEPENDENT-PDF-RUNTIME-SOURCE-REVIEW-12',
             'status': 'EXACT_COMPLETE_CANDIDATE_REVIEW_PASS', 'reviewer': 'Synthetic fixture only; no production authority',
-            'source_hashes': {r['name']: r['sha256'] for r in modules}, 'legacy_closure': closure,
+            'source_hashes': {r['name']: r['sha256'] for r in [*modules,*shared]}, 'legacy_closure': closure,
             **runtime.SOURCE_REVIEW_CHANGE_FLAGS, 'review_scope': 'SOURCE_ONLY',
             'actual_live_runtime_admission': False, 'actual_seven_record_admission': 'PENDING_POST_INSTALL_FRESH_READBACK'})
         registry = put(root, 'registry.json', {'fixture': 'no live reads'})
@@ -160,7 +163,7 @@ def synthetic_validation_case(mode='ok'):
         profile = put(root, runtime.PROFILE_PATH, {'standard': runtime.STANDARD, 'status': runtime.STATUS,
             'canonical_root': str(root), 'installed_at_utc': '2020-01-02T00:00:00Z', 'user_authority': authority,
             'legacy_closure': closure, 'legacy_consumer': by_name['runtime_successor.py'], 'legacy_scope': scope,
-            'source_session_consumer': by_name['prepare_first_seven_plan.py'], 'modules': modules,
+            'source_session_consumer': by_name['prepare_first_seven_plan.py'], 'modules': modules, 'shared_dependencies':shared,
             'source_origin': new_origin, 'source_review': review, 'access_registry': registry,
             'default_routes': runtime.DEFAULT_ROUTES, 'predecessor_installation': runtime.PREDECESSOR_INSTALLATION,
             'transient_rehydration': runtime.TRANSIENT_REHYDRATION_POLICY,'data_alias_observation':registry,'platform_timezone_observation':registry})
@@ -237,7 +240,7 @@ class ColdValidateEntryTests(unittest.TestCase):
         self.assertIs(report['result']['certifies'], False)
         self.assertEqual(report['result']['ssot_writes'], 0)
         self.assertTrue(report['finder_and_spec_restored'])
-        self.assertEqual(len(report['result']['source_pins']), 149)
+        self.assertEqual(len(report['result']['source_pins']), 150)
 
     def test_cold_child_failure_returns_nonzero_and_restores_genuine_scope(self):
         completed = self.child('helper-failure')

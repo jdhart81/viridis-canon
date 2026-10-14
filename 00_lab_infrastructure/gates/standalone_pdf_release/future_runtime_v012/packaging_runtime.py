@@ -24,6 +24,7 @@ import sys
 import signal
 import time
 import importlib.machinery
+import dataclasses
 
 STANDARD = 'VRS-STANDALONE-PDF-PACKAGING-PROFILE-12'
 STATUS = 'INSTALLED_EXACT_ADDITIVE_SOURCE_READBACK_PASS'
@@ -153,6 +154,51 @@ FROZEN_MODULE_NAMES = frozenset({
     'packaging_nightly_intake.py',
 })
 MODULE_NAMES = FROZEN_MODULE_NAMES | frozenset({'scientific_registration_worker.py','owner_content_worker.py'})
+SHARED_INPUT_NAME = 'stable_input_identity.py'
+SHARED_INPUT_SHA256 = '7e6c204993f0ba65650c58ad50a71073d803522d31fa08b93b7ce35054fa5eda'
+SHARED_INPUT_GIT_PATH = '00_lab_infrastructure/gates/standalone_pdf_release/common/stable_input_identity.py'
+_SHARED_SOURCE_READ = contextvars.ContextVar('exact_stable_input_helper_source_read', default=None)
+
+
+def _stable_dependency_path():
+    directory = Path(__file__).absolute().parent
+    # These are the two explicit source layouts: reviewed checkout and exact
+    # prospective installed runtime. No ambient import path is consulted.
+    suffix = tuple(Path(GIT_PREFIX).parts)
+    if directory.parts[-len(suffix):] == suffix:
+        return directory.parent / 'common' / SHARED_INPUT_NAME
+    need(directory.name == Path(PROFILE_PATH).parent.name, 'FIXED_SHARED_INPUT_SOURCE_LAYOUT')
+    return directory / 'common' / SHARED_INPUT_NAME
+
+
+def load_stable_input_dependency():
+    """Fresh pinned source bytes, private module context, no ambient import."""
+    path = _stable_dependency_path()
+    token = _SHARED_SOURCE_READ.set((str(path), SHARED_INPUT_SHA256))
+    try:
+        need(path.is_file() and not any(p.is_symlink() for p in (path, *path.parents)),
+             'REGULAR_SHARED_INPUT_DEPENDENCY')
+        first = path.stat(); raw = path.read_bytes(); readback = path.read_bytes(); last = path.stat()
+        frame = lambda s: (s.st_dev, s.st_ino, s.st_mode, s.st_size, s.st_mtime_ns)
+        need(frame(first) == frame(last) and stat.S_ISREG(last.st_mode)
+             and raw == readback and sha(raw) == SHARED_INPUT_SHA256
+             and not any(p.is_symlink() for p in (path,*path.parents)),
+             'EXACT_SHARED_INPUT_DEPENDENCY_BYTES')
+        name = '_viridis_exact_stable_input_' + uuid.uuid4().hex
+        module = types.ModuleType(name); module.__file__ = str(path)
+        # dataclass resolves annotations through its defining module. This
+        # private registration lasts only for compilation and never selects
+        # an existing ambient common/stable_input_identity module.
+        sys.modules[name] = module
+        try:
+            exec(compile(raw, str(path), 'exec'), module.__dict__)
+        finally:
+            del sys.modules[name]
+        need(path.read_bytes() == raw and frame(path.stat()) == frame(last)
+             and not any(p.is_symlink() for p in (path,*path.parents)), 'SHARED_INPUT_DEPENDENCY_LOAD_RACE')
+        return module
+    finally:
+        _SHARED_SOURCE_READ.reset(token)
 FROZEN_GIT_PREFIXES = frozenset('00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v'+str(v).zfill(3)+'/' for v in range(1,12))
 SOURCE_REVIEW_CHANGE_FLAGS = {
     'admission_implementation_changed': True,
@@ -179,6 +225,7 @@ PROFILE_FIELDS = {
     'legacy_closure', 'legacy_consumer', 'legacy_scope', 'source_session_consumer', 'modules',
     'source_origin', 'source_review', 'access_registry', 'default_routes',
     'predecessor_installation', 'transient_rehydration', 'data_alias_observation', 'platform_timezone_observation',
+    'shared_dependencies',
 }
 DEFAULT_ROUTES = {
     'digest': 'invoke_digest_v2.py',
@@ -271,8 +318,48 @@ def require_source_review(review, hashes, legacy_closure):
 
 
 def file_identity(stat):
+    """Fresh security metadata; content identity is stable_input_identity.
+
+    Mode remains a separate security predicate. Status-change time describes
+    metadata updates and is never evidence that read-only bytes changed.
+    """
     return (stat.st_dev, stat.st_ino, stat.st_mode, stat.st_size,
-            stat.st_mtime_ns, stat.st_ctime_ns)
+            stat.st_mtime_ns)
+
+
+def stable_input_identity(raw, observed):
+    return (sha(raw), observed.st_size, observed.st_mtime_ns,
+            observed.st_ino, observed.st_dev)
+
+
+def input_row_identity(row):
+    return (row['sha256'], row['bytes'], row['mtime_ns'], row['inode'], row['device'])
+
+
+def same_observed_identity(left, right):
+    """Compare full retained evidence with ctime restricted to diagnostics.
+
+    All other fields, including content hashes, security modes, source binds,
+    link targets and inventories, retain their existing equality predicates.
+    """
+    def relevant(value):
+        if isinstance(value, Mapping):
+            return {key: relevant(item) for key, item in value.items() if key != 'ctime_ns'}
+        if isinstance(value, list):
+            return [relevant(item) for item in value]
+        if isinstance(value, tuple):
+            return tuple(relevant(item) for item in value)
+        return value
+    return relevant(left) == relevant(right)
+
+
+def read_stable_input(path, *, expected=None, max_bytes=200 * 1024 * 1024):
+    """Use only the separately attested shared dependency, never ambient code."""
+    dependency = load_stable_input_dependency()
+    try:
+        return dependency.read_stable(Path(path), expected=expected, max_bytes=max_bytes)
+    except dependency.StableInputHold as exc:
+        raise PackagingHold('HOLD_PACKAGING_SOURCE_HASH_OR_RACE') from exc
 
 
 def _freeze_json(value):
@@ -512,21 +599,24 @@ def read_data_file(root, path, *, expected_sha256=None):
     before = strict_regular_source_frame(root, p, 'REGULAR_CONTAINED_SOURCE')
     need(pre_links == before, 'SOURCE_HASH_OR_RACE')
     first = p.stat(); raw = p.read_bytes(); last = p.stat()
+    snapshot = read_stable_input(p)
     post_links = strict_regular_source_frame(root, p, 'SOURCE_HASH_OR_RACE')
     after = strict_regular_source_frame(root, p, 'SOURCE_HASH_OR_RACE')
     need(file_identity(first) == file_identity(last)
          and before == post_links == after and before[0] == file_identity(first)
          and after[0] == file_identity(last)
          and file_identity(p.stat()) == file_identity(last)
-         and (expected_sha256 is None or sha(raw) == expected_sha256), 'SOURCE_HASH_OR_RACE')
+         and snapshot.data == raw and snapshot.identity == stable_input_identity(raw, last)
+         and (expected_sha256 is None or snapshot.identity[0] == expected_sha256), 'SOURCE_HASH_OR_RACE')
     final = strict_regular_source_frame(root, p, 'SOURCE_HASH_OR_RACE')
     root_position = len(p.parts) - len(root.parts)
     need(final == after and final[root_position:] == root_frame, 'SOURCE_HASH_OR_RACE')
+    need(read_stable_input(p, expected=snapshot.identity).data == raw, 'SOURCE_HASH_OR_RACE')
     path = p
     scope = _JSON_DATA.get()
     if scope is not None:
         need(scope.root == root, 'JSON_DATA_OPERATION_ROOT')
-        scope._fresh(path, raw, file_identity(last))
+        scope._fresh(path, raw, snapshot.identity)
     return path, raw
 
 
@@ -622,6 +712,22 @@ def module_table(root, rows, *, git_prefix=GIT_PREFIX):
         need(path.name == row['name'] and row['git_path'] == git_prefix + row['name'], 'CANONICAL_SOURCE_NAME')
         pins.append({k: row[k] for k in ('name', 'path', 'sha256')})
     return pins
+
+
+def shared_dependency_table(root, rows, *, installed=False):
+    """Exactly one reviewed common source; it never changes the fixed19 set."""
+    need(isinstance(rows, list) and len(rows) == 1 and isinstance(rows[0], dict)
+         and set(rows[0]) == {'name','path','sha256','git_path'}, 'CLOSED_SHARED_INPUT_DEPENDENCY')
+    row = rows[0]
+    need(row['name'] == SHARED_INPUT_NAME and row['sha256'] == SHARED_INPUT_SHA256
+         and row['git_path'] == SHARED_INPUT_GIT_PATH, 'EXACT_SHARED_INPUT_DEPENDENCY_BINDING')
+    path, raw = read(root, {k: row[k] for k in ('path','sha256')})
+    need(path.name == SHARED_INPUT_NAME and sha(raw) == SHARED_INPUT_SHA256,
+         'REGULAR_SHARED_INPUT_DEPENDENCY')
+    if installed:
+        need(path == Path(root) / Path(PROFILE_PATH).parent / 'common' / SHARED_INPUT_NAME,
+             'CANONICAL_INSTALLED_SHARED_INPUT_DEPENDENCY')
+    return [{k: row[k] for k in ('name','path','sha256')}]
 
 
 def v001_predecessor_installation(root):
@@ -1084,7 +1190,8 @@ def data_alias_identity(path):
     target=os.readlink(path);after=path.lstat()
     fields=lambda s:{'device':s.st_dev,'inode':s.st_ino,'mode':s.st_mode,'bytes':s.st_size,
                      'mtime_ns':s.st_mtime_ns,'ctime_ns':s.st_ctime_ns,'readlink':target}
-    need(fields(before)==fields(after),'HISTORICAL_DATA_ALIAS_IDENTITY_RACE')
+    need(same_observed_identity(fields(before),fields(after)) and os.readlink(path)==target,
+         'HISTORICAL_DATA_ALIAS_IDENTITY_RACE')
     return fields(after)
 
 
@@ -1110,7 +1217,8 @@ def require_data_alias_observation(root,binding):
          and SCIENTIFIC_ALIAS_PATH.parent/SCIENTIFIC_ALIAS_READLINK==root
          and not any(p.is_symlink()for p in SCIENTIFIC_ALIAS_PATH.parents)
          and SCIENTIFIC_ALIAS_PATH.resolve(strict=True)==root
-         and data_alias_identity(SCIENTIFIC_ALIAS_PATH)==expected,'EXACT_HISTORICAL_DATA_ALIAS_IDENTITY')
+         and same_observed_identity(data_alias_identity(SCIENTIFIC_ALIAS_PATH),expected),
+         'EXACT_HISTORICAL_DATA_ALIAS_IDENTITY')
     observed=dt.datetime.fromisoformat(observation['observed_at_utc'].replace('Z','+00:00'))
     need(observed.tzinfo is not None and observed<=dt.datetime.now(dt.timezone.utc),'DATA_ALIAS_OBSERVATION_TIME')
     rows=observation['original_binding_readbacks']
@@ -1129,7 +1237,8 @@ def require_data_alias_observation(root,binding):
         need(len(read(root,{'path':row['physical_path'],'sha256':row['sha256']})[1])==row['bytes'],
              'HISTORICAL_ALIAS_ORIGINAL_BYTE_READBACK')
     read(root,observation['representative_original_certificate'])
-    need(data_alias_identity(SCIENTIFIC_ALIAS_PATH)==expected,'HISTORICAL_DATA_ALIAS_FINAL_IDENTITY')
+    need(same_observed_identity(data_alias_identity(SCIENTIFIC_ALIAS_PATH),expected),
+         'HISTORICAL_DATA_ALIAS_FINAL_IDENTITY')
     return observation
 
 
@@ -1174,7 +1283,7 @@ def platform_timezone_frame(observation):
     for row in links:
         need(set(row)=={'path','identity','resolved_target'},'CLOSED_NATIVE_TIMEZONE_LINK')
         path=Path(row['path']);identity=data_alias_identity(path)
-        need(identity==row['identity']and str(path.resolve(strict=True))==row['resolved_target'],
+        need(same_observed_identity(identity,row['identity'])and str(path.resolve(strict=True))==row['resolved_target'],
              'EXACT_NATIVE_TIMEZONE_LINK_IDENTITY:'+str(path))
         current_links.append({'path':str(path),'identity':identity,'resolved_target':row['resolved_target']})
     need(logical.resolve(strict=True)==physical and physical.is_file()
@@ -1192,11 +1301,15 @@ def platform_timezone_frame(observation):
              'NATIVE_TIMEZONE_PARENT_STRUCTURE:'+str(path))
         observed_parents.append({'path':str(path),'identity':identity})
     before=platform_file_identity(physical)
-    need(before==expected['physical_file_identity'],'EXACT_NATIVE_TIMEZONE_LEAF_IDENTITY')
+    need(same_observed_identity(before,expected['physical_file_identity']),'EXACT_NATIVE_TIMEZONE_LEAF_IDENTITY')
     raw=physical.read_bytes()
-    need(platform_file_identity(physical)==before,'NATIVE_TIMEZONE_READ_RACE')
+    snapshot=read_stable_input(physical)
+    wanted=expected['physical_file_identity']
+    need(snapshot.data==raw and snapshot.identity==(expected['sha256'],expected['bytes'],
+             wanted['mtime_ns'],wanted['inode'],wanted['device']), 'EXACT_NATIVE_TIMEZONE_CONTENT_IDENTITY')
+    need(same_observed_identity(platform_file_identity(physical),before),'NATIVE_TIMEZONE_READ_RACE')
     for row in links:
-        need(data_alias_identity(Path(row['path']))==row['identity']
+        need(same_observed_identity(data_alias_identity(Path(row['path'])),row['identity'])
              and str(Path(row['path']).resolve(strict=True))==row['resolved_target'],
              'NATIVE_TIMEZONE_POST_READ_LINK_RACE')
     need(not any(p.is_symlink()for p in(physical,*physical.parents))
@@ -1206,7 +1319,8 @@ def platform_timezone_frame(observation):
         current=platform_file_identity(Path(row['path']))
         need({k:current[k]for k in ('device','inode','mode')}=={k:row['identity'][k]for k in ('device','inode','mode')},
              'NATIVE_TIMEZONE_POST_READ_PARENT_RACE')
-    need(platform_file_identity(physical)==before,'NATIVE_TIMEZONE_FINAL_LEAF_RACE')
+    need(same_observed_identity(platform_file_identity(physical),before),'NATIVE_TIMEZONE_FINAL_LEAF_RACE')
+    read_stable_input(physical,expected=snapshot.identity)
     need(sha(raw)==expected['sha256']and len(raw)==expected['bytes']
          and raw[:5].hex()==expected['TZif_header_hex'],'EXACT_NATIVE_TIMEZONE_BYTES')
     return {'physical_file_identity':before,'resolution_symlink_chain':current_links,
@@ -1226,7 +1340,8 @@ def require_platform_timezone_observation(root,binding):
          and observation['zone_key']=='America/New_York'and observation['certifies']is False
          and observation['root_executable']==sys.executable
          and observation['heavy_scientific_executions']==observation['network_requests']==observation['source_certificate_alias_ledger_timezone_writes']==0
-         and observation['before']==observation['after'],'CLOSED_NATIVE_PLATFORM_TIMEZONE_OBSERVATION')
+         and same_observed_identity(observation['before'],observation['after']),
+         'CLOSED_NATIVE_PLATFORM_TIMEZONE_OBSERVATION')
     frame=observation['after']
     need(set(frame)=={'TZif_header_hex','bytes','physical_file_identity','physical_regular_parent_chain','resolution_symlink_chain','sha256'},
          'CLOSED_NATIVE_PLATFORM_TIMEZONE_FRAME')
@@ -1363,7 +1478,8 @@ def require_installed_plan(root, profile, nomination, proof):
     _,raw,plan=json_file(root,plan_path)
     fields={'standard','status','canonical_root','source_modules','source_origin','source_review',
             'user_authority','access_registry','historical_publisher','installed_at_utc','root_review',
-            'predecessor_installation','transient_rehydration','data_alias_observation','platform_timezone_observation'}
+            'predecessor_installation','transient_rehydration','data_alias_observation','platform_timezone_observation',
+            'shared_dependencies'}
     need(set(plan)==fields and plan['standard']=='VRS-EXACT-ADDITIVE-PDF-RUNTIME-INSTALL-PLAN-12'
          and plan['status']=='ROOT_REVIEWED_READY_NOT_INSTALLED'and plan['canonical_root']==str(root), 'CLOSED_INSTALLED_PLAN')
     for field in ('source_origin','source_review','user_authority','access_registry','installed_at_utc',
@@ -1371,9 +1487,14 @@ def require_installed_plan(root, profile, nomination, proof):
         need(plan[field]==profile[field],'INSTALLED_PLAN_PROFILE_BINDING:'+field)
     need(plan['root_review']==nomination['root_review_receipt'], 'NOMINATED_ACTUAL_ROOT_REVIEW')
     rows=plan['source_modules'];module_table(root,rows)
+    shared_dependency_table(root,plan['shared_dependencies'])
+    shared_dependency_table(root,profile['shared_dependencies'],installed=True)
     expected={r['name']:{k:r[k]for k in('name','sha256','git_path')}for r in rows}
     actual={r['name']:{k:r[k]for k in('name','sha256','git_path')}for r in profile['modules']}
     need(expected==actual,'INSTALLED_AND_REVIEWED_MODULE_ROWS')
+    need([{k:r[k] for k in ('name','sha256','git_path')} for r in plan['shared_dependencies']]
+         == [{k:r[k] for k in ('name','sha256','git_path')} for r in profile['shared_dependencies']],
+         'INSTALLED_AND_REVIEWED_SHARED_DEPENDENCY_ROWS')
     for row in profile['modules']:
         need(Path(row['path']).resolve(strict=True)==(Path(root)/Path(PROFILE_PATH).parent/row['name']).resolve(strict=True),
              'CANONICAL_INSTALLED_MODULE_PATH')
@@ -1387,7 +1508,7 @@ def require_installed_plan(root, profile, nomination, proof):
          and isinstance(review['reviewer'],str)and review['reviewer']
          and review['plan_projection_sha256']==sha((json.dumps({k:v for k,v in plan.items()if k!='root_review'},sort_keys=True,indent=2,ensure_ascii=False,allow_nan=False)+'\n').encode())
          and review['merged_source_commit']==proof['merge_commit']==nomination['merged_source_commit']
-         and review['source_hashes']=={r['name']:r['sha256']for r in rows}
+         and review['source_hashes']=={r['name']:r['sha256']for r in [*rows,*plan['shared_dependencies']]}
          and review['historical_publisher_sha256']=='4f099eaffb9a35fbd24e5c57ef34801391fabcd5c3272b58a379d7ac52b35e94'
          and all(review.get(k) is v for k,v in SOURCE_REVIEW_CHANGE_FLAGS.items()), 'ROOT_REVIEW_EXACT_INSTALLED_PLAN_AND_SOURCE')
     need(same_binding(root,plan['historical_publisher'],HISTORICAL_PUBLISHER),'PRESERVED_HISTORICAL_PUBLISHER_BINDING')
@@ -1483,18 +1604,19 @@ def validate(root, profile_binding, *, purpose_pins=None):
     platform_observation=require_platform_timezone_observation(root,profile['platform_timezone_observation'])
     legacy_paths = {r['path']: r['sha256'] for r in base_pins}
     additional = module_table(root, profile['modules'])
-    need(not ({r['name'] for r in base_pins} & MODULE_NAMES)
-         and not (set(legacy_paths) & {r['path'] for r in additional}), 'ADDITIVE_ONLY_NAMESPACE')
-    combined = sorted([*base_pins, *additional], key=lambda r: r['name'])
+    shared = shared_dependency_table(root, profile['shared_dependencies'], installed=True)
+    need(not ({r['name'] for r in base_pins} & (MODULE_NAMES | {SHARED_INPUT_NAME}))
+         and not (set(legacy_paths) & {r['path'] for r in [*additional,*shared]}), 'ADDITIVE_ONLY_NAMESPACE')
+    combined = sorted([*base_pins, *additional, *shared], key=lambda r: r['name'])
     if purpose_pins is not None:
         need(isinstance(purpose_pins, list) and sorted(purpose_pins,key=lambda r:r['name']) == combined,
              'EXACT_PURPOSE_ORIGINAL_AND_ADDITIVE')
     view_rows = [r for r in base_pins if r['name'] == 'runtime_closure_view.py']
     need(len(view_rows) == 1, 'ORIGINAL_MEASURED_VIEW_CONSUMER')
     # Prove the additive source before importing any new executable module.
-    proof = source_proof(root, profile['source_origin'], profile['modules'])
+    proof = source_proof(root, profile['source_origin'], [*profile['modules'],*profile['shared_dependencies']])
     _, review_raw, review = object_at(root, profile['source_review'])
-    hashes = {r['name']: r['sha256'] for r in profile['modules']}
+    hashes = {r['name']: r['sha256'] for r in [*profile['modules'],*profile['shared_dependencies']]}
     require_source_review(review, hashes, profile['legacy_closure'])
     require_installed_plan(root,profile,nomination,proof)
     ledger_path=root/'RESEARCH_PIPELINE_v2/corpus_ledger.json';_,ledger_raw=read_data_file(root,ledger_path)
@@ -1554,7 +1676,7 @@ def session(root, profile_binding):
 
 
 WORKER_SOURCE_MANIFEST_FIELDS = frozenset({'standard','canonical_root','profile_binding','modules',
-    'metadata','source_origin','legacy_closure','source_review_change_flags'})
+    'metadata','source_origin','legacy_closure','source_review_change_flags','shared_dependencies'})
 
 
 def _worker_source_row(root, binding, *, name=None, role=None):
@@ -1566,7 +1688,8 @@ def _worker_source_row(root, binding, *, name=None, role=None):
     need(path_again == path and raw_again == raw and file_identity(first) == file_identity(last),
          'WORKER_SOURCE_DESCRIPTOR_RACE')
     row = {'path':str(path),'sha256':sha(raw),
-           'identity':dict(zip(('device','inode','mode','bytes','mtime_ns','ctime_ns'), file_identity(last)))}
+           'identity':{'sha256':sha(raw),'device':last.st_dev,'inode':last.st_ino,
+                       'mode':last.st_mode,'bytes':last.st_size,'mtime_ns':last.st_mtime_ns}}
     if name is not None: row['name'] = name
     if role is not None: row['role'] = role
     return row
@@ -1585,6 +1708,7 @@ def build_worker_source_manifest(root, profile_binding):
     profile = object_at(root, profile_binding)[2]
     nomination = require_nomination(root, profile_binding)
     module_table(root, profile['modules'])
+    shared_dependency_table(root, profile['shared_dependencies'], installed=True)
     installed = root / Path(PROFILE_PATH).parent
     current_import_artifact_guard(installed)
     for row in profile['modules']:
@@ -1597,13 +1721,15 @@ def build_worker_source_manifest(root, profile_binding):
         metadata.append(_worker_source_row(root, {'path':str(path),'sha256':sha(raw)}, role=role))
     modules = [_worker_source_row(root, {k:row[k] for k in ('path','sha256')}, name=row['name'])
                for row in sorted(profile['modules'],key=lambda row:row['name'])]
+    shared = [_worker_source_row(root, {k:row[k] for k in ('path','sha256')}, name=row['name'])
+              for row in profile['shared_dependencies']]
     normalized_profile = {'path':str(root / PROFILE_PATH),'sha256':metadata[0]['sha256']}
     need(same_binding(root,normalized_profile,profile_binding)
          and same_binding(root,nomination['profile'],normalized_profile), 'WORKER_NOMINATED_CURRENT_PROFILE')
     result = {'standard':'VRS-CURRENT-V012-WORKER-SOURCE-MANIFEST-1','canonical_root':str(root),
               'profile_binding':normalized_profile,'modules':modules,'metadata':metadata,
               'source_origin':profile['source_origin'],'legacy_closure':profile['legacy_closure'],
-              'source_review_change_flags':dict(SOURCE_REVIEW_CHANGE_FLAGS)}
+              'source_review_change_flags':dict(SOURCE_REVIEW_CHANGE_FLAGS),'shared_dependencies':shared}
     need(set(result)==WORKER_SOURCE_MANIFEST_FIELDS,'CLOSED_WORKER_SOURCE_MANIFEST')
     return result
 
@@ -1638,12 +1764,18 @@ def refresh_worker_source_manifest_data(root, expected_manifest):
          'CLOSED_CURRENT_WORKER_SOURCE_DATA')
     installed = root / Path(PROFILE_PATH).parent
     modules = expected_manifest['modules']; metadata = expected_manifest['metadata']
+    shared = expected_manifest['shared_dependencies']
     current_import_artifact_guard(installed)
     need(isinstance(modules,list) and len(modules)==19
          and {row.get('name') for row in modules}==MODULE_NAMES
          and len({row.get('path') for row in modules})==19
          and isinstance(metadata,list) and len(metadata)==3,
          'COMPLETE_CURRENT_WORKER_SOURCE_DATA')
+    need(isinstance(shared,list) and len(shared)==1 and isinstance(shared[0],dict)
+         and set(shared[0])=={'name','path','sha256','identity'} and shared[0].get('name')==SHARED_INPUT_NAME
+         and shared[0].get('sha256')==SHARED_INPUT_SHA256
+         and shared[0].get('path')==str(installed/'common'/SHARED_INPUT_NAME),
+         'EXACT_CURRENT_WORKER_SHARED_DEPENDENCY')
     actual_modules=[]
     for row in modules:
         need(set(row)=={'name','path','sha256','identity'}
@@ -1655,7 +1787,8 @@ def refresh_worker_source_manifest_data(root, expected_manifest):
         need(set(row)=={'role','path','sha256','identity'} and row['role']==role
              and row['path']==str(installed/name),'FIXED_CURRENT_WORKER_METADATA_DATA_PATH')
         actual_metadata.append(_worker_source_row(root,{k:row[k] for k in ('path','sha256')},role=role))
-    need(actual_modules==modules and actual_metadata==metadata,'WORKER_CURRENT_SOURCE_DATA_IDENTITY_CHANGED')
+    actual_shared=[_worker_source_row(root,{k:row[k] for k in ('path','sha256')},name=row['name']) for row in shared]
+    need(actual_modules==modules and actual_metadata==metadata and actual_shared==shared,'WORKER_CURRENT_SOURCE_DATA_IDENTITY_CHANGED')
     # Freshly parse the complete current profile, preserving every field.
     _,_,profile=json_file(root,installed/'CURRENT_PACKAGING_PROFILE.json')
     need(expected_manifest['profile_binding']=={'path':str(root/PROFILE_PATH),'sha256':metadata[0]['sha256']}
@@ -1663,6 +1796,10 @@ def refresh_worker_source_manifest_data(root, expected_manifest):
          and expected_manifest['legacy_closure']==profile['legacy_closure']
          and expected_manifest['source_review_change_flags']==SOURCE_REVIEW_CHANGE_FLAGS,
          'CURRENT_WORKER_MANIFEST_DATA_PROFILE_RELATION')
+    shared_dependency_table(root,profile['shared_dependencies'],installed=True)
+    need([{k:r[k] for k in ('name','path','sha256')} for r in shared]
+         == [{k:r[k] for k in ('name','path','sha256')} for r in profile['shared_dependencies']],
+         'CURRENT_WORKER_MANIFEST_SHARED_PROFILE_RELATION')
     return json.loads(json.dumps(expected_manifest,allow_nan=False))
 
 

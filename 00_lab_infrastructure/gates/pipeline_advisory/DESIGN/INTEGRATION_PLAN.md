@@ -20,10 +20,27 @@ zero-hit token scan from unscanned files. New evidence is measured from a bounde
 explicit file list; it performs no tree scan. The optional ten-line summary is
 ready for a later reviewed hook in the existing Monday adoption snapshot.
 
-No checkpoint or Monday hook is installed in this preparation. A later PR must
-identify the existing checkpoint call site, preserve its ownership and failure
-semantics, consume completed receipts, and test that an advisory error cannot
-delay due generation, FIFO certification or authorized publication. The linter's
+No checkpoint or Monday hook is installed in this preparation.
+`CHECKPOINT_SLO_HOOK.patch` binds the exact existing nightly source with before,
+after and patch hashes. It observes freshly written START and FINISH receipts,
+including FINISH replay, without changing the existing return codes. Its child
+has a 15-second timeout; failure is advisory and controller output is discarded.
+The hook reads at most five fixed source/data inputs plus 195 explicit footprint paths,
+uses ctime-free stable reads, and writes only the derived
+`RESEARCH_PIPELINE_v2/PIPELINE_SLO_STATUS.json` (at most 1 MiB). It does not edit
+checkpoint receipts or scientific state. Missing supplied coverage, weekly or
+leak results remain UNAVAILABLE. Production installation requires independent
+merge, green CI, and refreshed source closure for the checkpoint and both hook
+modules. Its isolated child hashes both exact source files before compiling
+either; local module replacement prevents execution. Directory descriptors and
+fresh ancestry checks prevent parent-link races from redirecting report writes.
+The exact-source fixture test exercises BEGIN, FINISH and replay with
+an advisory timeout and preserves both successful and held return codes.
+
+`monday_summary` appends exactly ten science lines to an existing adoption
+snapshot without changing its contents. The actual Monday owner/call site has
+not been identified, so that integration remains HOLD; no automation is changed.
+The linter's
 weekly first-attempt rate uses America/New_York ISO weeks and exposes incomplete
 attempt records separately from its known terminal-attempt denominator.
 

@@ -1,0 +1,18 @@
+{
+  "advisory_timeout_seconds": 15,
+  "after_sha256": "c030548ef2eddd4ef66c033e45a1ad894fa9891fe9defd3c1edd97ac551c63f3",
+  "before_sha256": "f550c0f808bb15e603b875aed55962b0297731e5a2e4edf4aac99f33eab959df",
+  "child_exact_hash_loader_before_execution": true,
+  "child_isolated": true,
+  "collector_source_sha256": "4f8fd3b627e365baca5186fcc074d75b85227aeec88e8594e922a9ff2caea254",
+  "existing_checkpoint_only": true,
+  "hook_source_sha256": "d337a83712ecda5a1645ffc63786d56b850d75dc1832430e774058cb87285cc6",
+  "independent_merge_green_ci_and_source_closure_required": true,
+  "monday_adapter": "checkpoint_slo_hook.monday_summary(report, existing_adoption_snapshot); actual Monday owner not located, no scheduling change",
+  "patch_sha256": "a1e86623c2ad6f4afa1b10b797f0bd6a259cf776f1fd8e6f285aa0f9781a6105",
+  "scheduler_mutations": 0,
+  "schema": "VRS-CHECKPOINT-SLO-HOOK-PREPARATION-1",
+  "source_fixture": "00_lab_infrastructure/gates/production_snapshots/phase5-20261004/after/RESEARCH_PIPELINE_v2/nightly_checkpoint.py",
+  "status": "REVIEW_REQUIRED_NOT_INSTALLED",
+  "target_relative": "RESEARCH_PIPELINE_v2/nightly_checkpoint.py"
+}

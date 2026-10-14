@@ -12,6 +12,7 @@ import json
 import os
 from pathlib import Path
 import stat
+import sys
 import tempfile
 import time
 import types
@@ -166,10 +167,15 @@ class ReadRaceEvidenceTests(unittest.TestCase):
         first = self.input.stat()
         stat_call = Path.stat
         samples = []
+        direct_samples = []
         def observed(path, *args, **kwargs):
             result = stat_call(path, *args, **kwargs)
             if path == self.input:
                 samples.append(identity(result))
+                caller = sys._getframe(1).f_code
+                if (caller.co_name == 'record'
+                        and caller.co_filename == '<hash-bound-synthetic-data-methods-only>'):
+                    direct_samples.append(identity(result))
             return result
         with mock.patch.object(Path, 'stat', observed):
             caught = self.changed_at_final_path()
@@ -180,10 +186,11 @@ class ReadRaceEvidenceTests(unittest.TestCase):
         self.assertEqual(value['first'], value['last'])
         self.assertNotEqual(value['final'], value['last'])
         self.assertEqual(value['final'], samples[-1])
-        # This hook counts the three explicit Path.stat calls. On Python3.14
-        # exists/is_file use separate native probes; the unchanged old/new
-        # count equivalence is also checked below, with no target resampling.
-        self.assertEqual(len(samples), 3)
+        # Count the source method's three explicit samples independently of
+        # pathlib's version-dependent exists/is_file probes. The next test
+        # separately requires equal total target observations in old and new.
+        self.assertEqual(len(direct_samples), 3)
+        self.assertEqual(value['final'], direct_samples[-1])
         self.assertEqual(self.data.inputs, {})
 
     def test_old_and_new_real_failures_have_same_hold_and_target_sample_count(self):

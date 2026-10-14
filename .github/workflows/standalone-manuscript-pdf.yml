@@ -57,3 +57,5 @@ jobs:
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests -p 'test_*.py' -v
       - name: Verify v012 master failure evidence and immutable eleven predecessors
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests -p 'test_*.py' -v
+      - name: Verify v013 size-aware bounded transfers and immutable twelve predecessors
+        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests -p 'test_*.py' -v

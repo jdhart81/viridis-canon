@@ -33,8 +33,10 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
           python-version: ${{ matrix.python }}
-      - name: Verify credential scanner
-        run: python3 -m unittest discover -s tools/tests -p 'test_token_leak_scan.py' -v
+      - name: Verify advisory repair, SLO and Canon lockstep tools
+        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/pipeline_advisory/tests -p 'test_*.py' -v
+      - name: Verify credential scanner and exact metadata repair tools
+        run: python3 -m unittest discover -s tools/tests -p 'test_*.py' -v
       - name: Verify separate manuscripts and exact access-copy exceptions
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/tests -p 'test_*.py' -v
 

@@ -16,6 +16,7 @@ from .coverage_provenance import validate_provenance, equal as provenance_equal
 from .model import ResearchRecord
 from .publications import load_publication_joins
 from .methods_digests import load_methods_digest_joins, validate_methods_digests, require_disjoint_publications
+from .manuscript_access import load_mapping, project_access, validate_access_fields
 
 
 SCHEMA = "https://jdhart81.github.io/viridis-canon/schemas/research-catalog-v1.json"
@@ -453,6 +454,10 @@ def build_catalog(
     publications = load_publication_joins(root, config)
     methods_digests = load_methods_digest_joins(root, config)
     require_disjoint_publications(publications, methods_digests)
+    access_mapping, access_sha256 = load_mapping(root, config)
+    if access_mapping is not None:
+        publications, methods_digests, access_report = project_access(
+            publications, methods_digests, access_mapping, access_sha256)
     payload = {
         "schema": SCHEMA,
         "publication_scope": "workspace" if include_private else "public",
@@ -466,6 +471,8 @@ def build_catalog(
         "publications": publications,
         "methods_digests": methods_digests,
     }
+    if access_mapping is not None:
+        payload["manuscript_access"] = access_report
     # Historical assessment headers require an actual supplied ledger build.
     # A missing-ledger source-only build remains HOLD and never invents provenance.
     if "coverage_provenance" in config and ledger is not None:
@@ -491,7 +498,9 @@ def validate_catalog(
     if digest != canonical_digest(payload):
         errors.append("catalog_digest does not match the canonical payload")
     try:
-        validate_methods_digests(document.get("methods_digests", []))
+        validate_methods_digests(document.get("methods_digests", []), allow_pdf_access=True)
+        for publication in document.get("publications", []):
+            validate_access_fields(publication, publication["record_id"])
         require_disjoint_publications(document.get("publications", []), document.get("methods_digests", []))
     except (ValueError, TypeError, KeyError) as exc:
         errors.append("Methods Digest pointer projection rejected: " + str(exc))
@@ -646,6 +655,8 @@ def validate_catalog_sources(
         errors.append("explicit publication pointers differ from current configured source")
     if document.get("methods_digests", []) != expected["methods_digests"]:
         errors.append("Methods Digest pointers differ from current configured source")
+    if document.get("manuscript_access") != expected.get("manuscript_access"):
+        errors.append("manuscript access projection differs from current hash-bound mapping")
     for key in ("schema", "release", "concept_doi", "repository", "honesty_notice", "human_publish_gate", "publications", "methods_digests"):
         if key in document and document[key] != expected[key]:
             errors.append(f"current catalog configuration field differs: {key}")

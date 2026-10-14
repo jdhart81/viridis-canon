@@ -10,6 +10,7 @@ import hashlib
 import json
 import re
 from pathlib import Path
+from .manuscript_access import ACCESS_FIELDS, validate_access_fields
 
 DISCLAIMER = "logical validity given the model, not empirical validation of its assumptions"
 STANDARD = "PUBLIC_METHODS_DIGEST_POINTERS_1"
@@ -27,7 +28,7 @@ def _text(value):
     return isinstance(value, str) and bool(value.strip())
 
 
-def validate_methods_digests(rows: list[dict]) -> list[dict]:
+def validate_methods_digests(rows: list[dict], *, allow_pdf_access=False) -> list[dict]:
     """Reject admission labels, ambiguous identities and expanded note scope."""
     if not isinstance(rows, list):
         raise ValueError("Methods Digest pointer list required")
@@ -53,7 +54,10 @@ def validate_methods_digests(rows: list[dict]) -> list[dict]:
         if not isinstance(notes, list) or not notes:
             raise ValueError("Methods Digest must list its individually scoped notes")
         for note in notes:
-            if (not isinstance(note, dict) or set(note) != NOTE_FIELDS
+            fields = set(note) if isinstance(note, dict) else set()
+            if allow_pdf_access:
+                fields -= ACCESS_FIELDS
+            if (not isinstance(note, dict) or fields != NOTE_FIELDS
                     or note["certifies"] != "LISTED_NOTE_SCOPE_ONLY"):
                 raise ValueError("Methods Note cannot carry aggregate/source admission labels")
             run = note["run_id"]
@@ -62,6 +66,8 @@ def validate_methods_digests(rows: list[dict]) -> list[dict]:
                     or run in runs or note["entity_id"] in seen_notes):
                 raise ValueError("duplicate or foreign Methods Note identity")
             runs.add(run); seen_notes.add(note["entity_id"])
+            if allow_pdf_access:
+                validate_access_fields(note, rid, run)
             if (not all(_text(note[key]) for key in ("title", "claim_scope"))
                     or note["disclaimer"] != DISCLAIMER
                     or note["foundation_basis"] not in {"INDEPENDENT", "THEOREM", "CONDITIONAL_PL_PD"}):

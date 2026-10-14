@@ -61,7 +61,7 @@ class PublicationCatalogSchemaTests(unittest.TestCase):
     def test_pointer_object_is_closed(self):
         self.assertEqual(self.items["type"], "object")
         self.assertIs(self.items["additionalProperties"], False)
-        self.assertEqual(set(self.items["properties"]), POINTER_FIELDS)
+        self.assertEqual(set(self.items["properties"]), POINTER_FIELDS | {"pdf_url", "pdf_access"})
         self.assertEqual(set(self.items["required"]), POINTER_FIELDS)
 
     def test_schema_cannot_advertise_source_admission_fields(self):

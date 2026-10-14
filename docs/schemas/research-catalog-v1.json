@@ -133,6 +133,56 @@
     "human_publish_gate": {
       "const": true
     },
+    "manuscript_access": {
+      "additionalProperties": false,
+      "properties": {
+        "certifies": {
+          "const": false
+        },
+        "correction_overlay_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "linked_paper_entries": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "mapping_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "scope": {
+          "const": "explicit_publications_and_individual_methods_notes_only"
+        },
+        "source_index_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "HOLD_UNRESOLVED_MANUSCRIPTS",
+            "MAPPED_PUBLIC_PAPER_ENTRIES"
+          ]
+        },
+        "unresolved": {
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "status",
+        "certifies",
+        "mapping_sha256",
+        "source_index_sha256",
+        "correction_overlay_sha256",
+        "linked_paper_entries",
+        "unresolved",
+        "scope"
+      ],
+      "type": "object"
+    },
     "methods_digests": {
       "items": {
         "additionalProperties": false,
@@ -178,6 +228,87 @@
                     "INDEPENDENT",
                     "THEOREM",
                     "CONDITIONAL_PL_PD"
+                  ]
+                },
+                "pdf_access": {
+                  "oneOf": [
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "certifies": {
+                          "const": false
+                        },
+                        "reason": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "status": {
+                          "const": "HOLD_UNRESOLVED_MAPPING"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "certifies",
+                        "reason"
+                      ]
+                    },
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "bytes": {
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "certifies": {
+                          "const": false
+                        },
+                        "filename": {
+                          "pattern": "^[^/\\\\]+\\.[pP][dD][fF]$",
+                          "type": "string"
+                        },
+                        "index_row_sha256": {
+                          "pattern": "^[a-f0-9]{64}$",
+                          "type": "string"
+                        },
+                        "md5": {
+                          "pattern": "^[a-f0-9]{32}$",
+                          "type": "string"
+                        },
+                        "sha256": {
+                          "pattern": "^[a-f0-9]{64}$",
+                          "type": "string"
+                        },
+                        "status": {
+                          "const": "LINKED_FROM_HASH_BOUND_PUBLIC_READBACK"
+                        },
+                        "verification_receipt_sha256": {
+                          "items": {
+                            "pattern": "^[a-f0-9]{64}$",
+                            "type": "string"
+                          },
+                          "minItems": 1,
+                          "type": "array"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "certifies",
+                        "filename",
+                        "sha256",
+                        "md5",
+                        "bytes",
+                        "index_row_sha256",
+                        "verification_receipt_sha256"
+                      ]
+                    }
+                  ],
+                  "type": "object"
+                },
+                "pdf_url": {
+                  "pattern": "^https://zenodo\\.org/records/[1-9][0-9]*/files/[^?#]+\\.[pP][dD][fF]$",
+                  "type": [
+                    "string",
+                    "null"
                   ]
                 },
                 "publication_binding_sha256": {
@@ -316,6 +447,87 @@
           "entity_id": {
             "minLength": 1,
             "type": "string"
+          },
+          "pdf_access": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "certifies": {
+                    "const": false
+                  },
+                  "reason": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "status": {
+                    "const": "HOLD_UNRESOLVED_MAPPING"
+                  }
+                },
+                "required": [
+                  "status",
+                  "certifies",
+                  "reason"
+                ]
+              },
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "bytes": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "certifies": {
+                    "const": false
+                  },
+                  "filename": {
+                    "pattern": "^[^/\\\\]+\\.[pP][dD][fF]$",
+                    "type": "string"
+                  },
+                  "index_row_sha256": {
+                    "pattern": "^[a-f0-9]{64}$",
+                    "type": "string"
+                  },
+                  "md5": {
+                    "pattern": "^[a-f0-9]{32}$",
+                    "type": "string"
+                  },
+                  "sha256": {
+                    "pattern": "^[a-f0-9]{64}$",
+                    "type": "string"
+                  },
+                  "status": {
+                    "const": "LINKED_FROM_HASH_BOUND_PUBLIC_READBACK"
+                  },
+                  "verification_receipt_sha256": {
+                    "items": {
+                      "pattern": "^[a-f0-9]{64}$",
+                      "type": "string"
+                    },
+                    "minItems": 1,
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "status",
+                  "certifies",
+                  "filename",
+                  "sha256",
+                  "md5",
+                  "bytes",
+                  "index_row_sha256",
+                  "verification_receipt_sha256"
+                ]
+              }
+            ],
+            "type": "object"
+          },
+          "pdf_url": {
+            "pattern": "^https://zenodo\\.org/records/[1-9][0-9]*/files/[^?#]+\\.[pP][dD][fF]$",
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "public_readback_sha256": {
             "pattern": "^[0-9a-f]{64}$",

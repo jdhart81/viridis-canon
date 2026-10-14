@@ -6,7 +6,8 @@ on:
       - '00_lab_infrastructure/gates/**'
       - 'tools/token_leak_scan.py'
       - 'tools/mutate_manuscript_gate.py'
-      - 'tools/tests/test_token_leak_scan.py'
+      - 'tools/tests/**'
+      - 'tools/zenodo_metadata_repair.py'
       - '.github/workflows/standalone-manuscript-pdf.yml'
   push:
     branches: [main]
@@ -14,7 +15,8 @@ on:
       - '00_lab_infrastructure/gates/**'
       - 'tools/token_leak_scan.py'
       - 'tools/mutate_manuscript_gate.py'
-      - 'tools/tests/test_token_leak_scan.py'
+      - 'tools/tests/**'
+      - 'tools/zenodo_metadata_repair.py'
       - '.github/workflows/standalone-manuscript-pdf.yml'
 
 permissions:

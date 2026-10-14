@@ -551,11 +551,12 @@ class ActualPipeProcessTests(unittest.TestCase):
 
     def test_first_clock_precedes_ready_and_observation_cutoff_not_reset(self):
         with fixture() as f:
-            broker, clock, journal, stack = broker_fixture(f, mode='dns_stall', observation_seconds=0.08)
+            broker, clock, journal, stack = broker_fixture(f, mode='dns_stall', observation_seconds=1)
             with stack:
                 with self.assertRaises(worker.TransportHold): broker.metadata('900000', 'application/json')
             self.assertIsNotNone(clock['deadline'])
             self.assertEqual(clock['starts'], 1)
+            self.assertTrue(journal)
             self.assertEqual(journal[0]['absolute_deadline'], clock['deadline'])
             self.assertFalse(broker.active_children)
 

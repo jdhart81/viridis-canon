@@ -22,7 +22,65 @@ INSTALLED = ROOT / '_ZENODO_DEPOSITS/standalone_pdf_runtime_v012'
 PROFILE = INSTALLED / 'CURRENT_PACKAGING_PROFILE.json'
 NOMINATION = INSTALLED / 'INSTALLATION_NOMINATION.json'
 # Exact 19-module successor source set, fixed before source freeze and review.
-SOURCE_HASHES = {'digest_controller_v2.py': 'faeba58a0a080e4b838536b0ac4f32fc9399497c4cc84d15ab9eaca0f83d9413', 'install_packaging_runtime.py': '319542b4f467d8c90f6dbfd9c664d4a3e723737aed6222a324b9c2622f94d753', 'invoke_digest_v2.py': '96480eca8c439be8d057802213fbc04281fc48d71b0d1b013c4b62343f932f87', 'manuscript_access_correction.py': 'c56b402f663a390ee442115cd7a3262ec513521d6191a117061436994657b563', 'manuscript_access_registry.py': '167d82b849a750edf2b0cfa92188931c9170db1a59c50eff4ba88ba48a5af2b8', 'manuscript_pdf_gate.py': '710478f0b7483928a82edd893338575bdf35c4772ce74727a866a5b784e37274', 'methods_digest_registration_v3.py': '1542b85fab50b686354075914ea461536db5da7b7bd3fee3b290eb7815d7e200', 'methods_digest_v2.py': 'e3e8b5be4b99a9991066f49a60630c2a8d63eafd3c09b9b0ed85b50748706f39', 'nightly_checkpoint_guarded.py': '298d2498901e437ac6a1ccc4e4a0841fb3d50244abd36309e0f9f533f179738e', 'owner_content_worker.py': '4368e184eda9e00acc19dab6b6df7a31525a73cfbb251683338da7d40899a140', 'packaging_catalog.py': '30a3e49d919fbf97b100a07f45222d86f8565443f019916758dde3748f43bc1b', 'packaging_nightly.py': '844472e62b2bf9d5a86a8076cdb52b7217d492ca7be621dda8aaea9cdb4ce663', 'packaging_nightly_coverage.py': 'f1df587d5966ae71d98d6282375f1d5fb4cb99e14ec0f77ce6d704b4c00fbdf6', 'packaging_nightly_intake.py': '2739cf071710f83a867176e5fa3171096fe0ac2f26a3805ff4bc3ad6622e7cd8', 'packaging_run_flow.py': 'cd4169d3cc2c3af02829d20ce363908a9edb914501f134dc341dd8d085567014', 'packaging_runtime.py': '4a4f49191996d21e97a1672428c81796f2c47a6d878246ec58ae8bf24b90e1cd', 'publish_dated_bundles_guarded.py': '85eb057f5eac7fd4d2218091cdda077030be67d35ea930a34b0fc3a3cfc0f4e3', 'publish_successor_wave_guarded.py': 'f9541bb40b91c479ddcb19c2dcd31104042a70305751100084581f9309e5b618', 'scientific_registration_worker.py': 'a6fe4f076470e2ae2e97c59a10b2c19c650aeb4059fb42570371aa3b3fba717b'}
+SOURCE_HASHES = {
+    'digest_controller_v2.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        'faeba58a0a080e4b838536b0ac4f32fc9399497c4cc84d15ab9eaca0f83d9413',
+    'install_packaging_runtime.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        '319542b4f467d8c90f6dbfd9c664d4a3e723737aed6222a324b9c2622f94d753',
+    'invoke_digest_v2.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        '96480eca8c439be8d057802213fbc04281fc48d71b0d1b013c4b62343f932f87',
+    'manuscript_access_correction.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        'c56b402f663a390ee442115cd7a3262ec513521d6191a117061436994657b563',
+    'manuscript_access_registry.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        '167d82b849a750edf2b0cfa92188931c9170db1a59c50eff4ba88ba48a5af2b8',
+    'manuscript_pdf_gate.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        '710478f0b7483928a82edd893338575bdf35c4772ce74727a866a5b784e37274',
+    'methods_digest_registration_v3.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        '1542b85fab50b686354075914ea461536db5da7b7bd3fee3b290eb7815d7e200',
+    'methods_digest_v2.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        'e3e8b5be4b99a9991066f49a60630c2a8d63eafd3c09b9b0ed85b50748706f39',
+    'nightly_checkpoint_guarded.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        '298d2498901e437ac6a1ccc4e4a0841fb3d50244abd36309e0f9f533f179738e',
+    'owner_content_worker.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        '4368e184eda9e00acc19dab6b6df7a31525a73cfbb251683338da7d40899a140',
+    'packaging_catalog.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        '30a3e49d919fbf97b100a07f45222d86f8565443f019916758dde3748f43bc1b',
+    'packaging_nightly.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        '844472e62b2bf9d5a86a8076cdb52b7217d492ca7be621dda8aaea9cdb4ce663',
+    'packaging_nightly_coverage.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        'f1df587d5966ae71d98d6282375f1d5fb4cb99e14ec0f77ce6d704b4c00fbdf6',
+    'packaging_nightly_intake.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        '2739cf071710f83a867176e5fa3171096fe0ac2f26a3805ff4bc3ad6622e7cd8',
+    'packaging_run_flow.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        'cd4169d3cc2c3af02829d20ce363908a9edb914501f134dc341dd8d085567014',
+    'packaging_runtime.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        '4a4f49191996d21e97a1672428c81796f2c47a6d878246ec58ae8bf24b90e1cd',
+    'publish_dated_bundles_guarded.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        '85eb057f5eac7fd4d2218091cdda077030be67d35ea930a34b0fc3a3cfc0f4e3',
+    'publish_successor_wave_guarded.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        'f9541bb40b91c479ddcb19c2dcd31104042a70305751100084581f9309e5b618',
+    'scientific_registration_worker.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        'a6fe4f076470e2ae2e97c59a10b2c19c650aeb4059fb42570371aa3b3fba717b',
+}
 SHARED_INPUT_NAME = 'stable_input_identity.py'
 SHARED_INPUT_SHA256 = '7e6c204993f0ba65650c58ad50a71073d803522d31fa08b93b7ce35054fa5eda'
 SHARED_INPUT_GIT_PATH = '00_lab_infrastructure/gates/standalone_pdf_release/common/stable_input_identity.py'

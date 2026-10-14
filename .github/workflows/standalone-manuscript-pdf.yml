@@ -45,3 +45,6 @@ jobs:
 
       - name: Verify v007 distinct readonly evaluations and bounded owner transport
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests -p 'test_*.py' -v
+
+      - name: Verify v008 historical access topology and immutable seven predecessors
+        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests -p 'test_*.py' -v

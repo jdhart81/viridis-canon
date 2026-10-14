@@ -53,3 +53,5 @@ jobs:
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests -p 'test_*.py' -v
       - name: Verify v010 exact JSON class state, retained diagnostics and immutable nine predecessors
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests -p 'test_*.py' -v
+      - name: Verify v011 stable complete code fingerprints and immutable ten predecessors
+        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests -p 'test_*.py' -v

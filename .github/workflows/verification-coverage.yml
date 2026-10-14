@@ -9,13 +9,16 @@ permissions:
 jobs:
   report-only-consumers:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
           python-version: '3.11'
       - name: Install the pinned independent file metadata parser
         run: python3 -m pip install --disable-pip-version-check -r 00_lab_infrastructure/gates/byte_metadata_requirements.txt
       - name: Coverage, labeling and immutable preparation regressions
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates -p 'test*.py' -v
+
+      - name: Collect standalone manuscript and publication gate regressions
+        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/tests -p 'test_*.py' -v

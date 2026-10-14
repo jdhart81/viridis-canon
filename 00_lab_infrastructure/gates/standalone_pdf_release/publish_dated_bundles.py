@@ -10,6 +10,7 @@ that exact dry-run surface.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -23,13 +24,13 @@ import urllib.parse
 
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent
+ROOT = Path(os.environ.get("VIRIDIS_CORE_ROOT", str(HERE.parent)))
 if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
 import release_coherence
 import manuscript_pdf_gate
 
-BASE = "https://zenodo.org/api"
+BASE = os.environ.get("VIRIDIS_ZENODO_API_BASE", "https://zenodo.org/api").rstrip("/")
 TOKEN_PATH = ROOT / "secrets/Zenodo_API/Zenodo_token.md"
 DOI_RE = re.compile(r"10\.\d{4,9}/zenodo\.\d+")
 
@@ -101,7 +102,7 @@ def verification_coverage_report(artifact, context, *, enforce_new_artifacts=Fal
             raise PublisherError("new-artifact publication gate HOLD: " + str(exc)) from exc
         print(json.dumps({"verification_coverage": {"mode": "REPORT_ONLY", "status": "HOLD",
             "label": "UNCERTIFIED", "enforcement": False,
-            "reasons": [type(exc).__name__ + ": " + str(exc)]}}), file=sys.stderr)
+            "reasons": [type(exc).__name__]}}), file=sys.stderr)
 
 
 def metadata_payload(bundle: Path, *, enforce_new_artifacts=False) -> dict[str, Any]:
@@ -127,7 +128,11 @@ def metadata_payload(bundle: Path, *, enforce_new_artifacts=False) -> dict[str, 
 
 def validated_zenodo_url(url: str) -> str:
     parsed = urllib.parse.urlsplit(url)
-    if (parsed.scheme != "https" or parsed.hostname != "zenodo.org"
+    configured = urllib.parse.urlsplit(BASE)
+    if (configured.scheme != "https" or configured.hostname not in {"zenodo.org", "sandbox.zenodo.org"}
+        or configured.path != "/api" or configured.query or configured.fragment
+        or configured.username or configured.password or configured.port not in (None, 443)
+        or parsed.scheme != "https" or parsed.hostname != configured.hostname
         or parsed.port not in (None, 443) or parsed.username or parsed.password
         or not parsed.path.startswith("/api/") or parsed.fragment
         or any(key.lower() == "access_token" for key, _ in urllib.parse.parse_qsl(parsed.query))):
@@ -167,14 +172,14 @@ def api_call(
                 raw = response.read().decode("utf-8")
             break
         except urllib.error.HTTPError as exc:
-            if exc.code in {429, 502, 503, 504} and attempt < 3:
+            if method in {"GET", "PUT"} and exc.code in {429, 502, 503, 504} and attempt < 3:
                 time.sleep(2 ** (attempt + 1))
                 continue
             raise PublisherError(
                 f"Zenodo {method} failed with HTTP {exc.code}"
             ) from exc
         except urllib.error.URLError as exc:
-            if attempt < 3:
+            if method in {"GET", "PUT"} and attempt < 3:
                 time.sleep(2 ** (attempt + 1))
                 continue
             raise PublisherError(f"Zenodo {method} connection failed ({type(exc.reason).__name__})") from exc
@@ -221,8 +226,9 @@ def ensure_draft(bundle: Path, credential: str) -> dict[str, Any]:
     return created
 
 
-def verify_manuscript_readback(bundle: Path, credential: str, doi: str) -> None:
-    preflight = manuscript_pdf_gate.require_local(bundle, upload_files(bundle))
+def verify_manuscript_readback(bundle: Path, credential: str, doi: str, preflight=None) -> None:
+    if preflight is None:
+        preflight = manuscript_pdf_gate.require_local(bundle, upload_files(bundle))
     record_id = doi.rsplit(".", 1)[1]
     record = api_call(credential, "GET", f"{BASE}/records/{record_id}")
     if str(record.get("id")) != record_id or record.get("doi") != doi:
@@ -236,6 +242,49 @@ def verify_manuscript_readback(bundle: Path, credential: str, doi: str) -> None:
     write_once(receipt_path, json.dumps(receipt, sort_keys=True, indent=2))
 
 
+def snapshot_uploads(bundle: Path, preflight: dict) -> dict[str, bytes]:
+    """Hash stable bytes and retain those exact in-memory bytes for upload."""
+    approved = preflight.get("upload_files")
+    if not isinstance(approved, list) or not approved:
+        raise PublisherError("complete approved upload byte inventory required")
+    payloads = {}
+    for row in approved:
+        name = row.get("filename")
+        if not isinstance(name, str) or Path(name).name != name or name in {"", ".", ".."} or name in payloads:
+            raise PublisherError("unique approved top-level upload name required")
+        raw = manuscript_pdf_gate._read(bundle / name)
+        actual = {"sha256": hashlib.sha256(raw).hexdigest(), "md5": hashlib.md5(raw).hexdigest(), "bytes": len(raw)}
+        if any(row.get(key) != value for key, value in actual.items()):
+            raise PublisherError("approved upload changed before snapshot: " + name)
+        payloads[name] = raw
+    return payloads
+
+
+def check_draft_files(credential: str, identifier: int, approved: dict, *, complete: bool) -> None:
+    remote = api_call(credential, "GET", f"{BASE}/deposit/depositions/{identifier}/files", allow_array=True)
+    if not isinstance(remote, list) or any(not isinstance(row, dict) for row in remote):
+        raise PublisherError("draft upload inventory required")
+    names = [row.get("filename") for row in remote]
+    expected = {row["filename"]: row for row in approved["upload_files"]}
+    if any(not isinstance(name, str) for name in names) or len(names) != len(set(names)):
+        raise PublisherError("draft upload names are invalid or duplicated")
+    if set(names) - set(expected):
+        raise PublisherError("draft contains files outside the approved upload inventory")
+    if complete:
+        if set(names) != set(expected):
+            raise PublisherError("draft file set differs from exact approved uploads")
+        for row in remote:
+            wanted = expected[row["filename"]]
+            checksum = str(row.get("checksum", "")).removeprefix("md5:")
+            if checksum != wanted["md5"] or row.get("filesize", row.get("size")) != wanted["bytes"]:
+                raise PublisherError("draft upload checksum or size differs: " + row["filename"])
+
+
+def is_published(deposition: dict) -> bool:
+    # A draft may already carry its reserved DOI; that alone is not publication.
+    return deposition.get("submitted") is True or deposition.get("state") == "done"
+
+
 def publish_bundle(bundle: Path, credential: str, *, enforce_new_artifacts=False) -> str:
     prior = read_doi(bundle / "PUBLISHED_DOI.txt")
     if prior:
@@ -245,33 +294,38 @@ def publish_bundle(bundle: Path, credential: str, *, enforce_new_artifacts=False
     if not enforce_new_artifacts:
         raise PublisherError("new-artifact publication requires --enforce-new-artifacts")
     release_metadata = metadata_payload(bundle, enforce_new_artifacts=True)
+    approved = manuscript_pdf_gate.require_local(bundle, upload_files(bundle))
+    payloads = snapshot_uploads(bundle, approved)
     deposition = ensure_draft(bundle, credential)
     identifier = deposition.get("id")
     if not isinstance(identifier, int):
         raise PublisherError(f"{bundle}: draft response lacks id")
     metadata = deposition.get("metadata")
-    if isinstance(metadata, dict):
+    if is_published(deposition) and isinstance(metadata, dict):
         existing_doi = metadata.get("doi")
         if isinstance(existing_doi, str) and DOI_RE.fullmatch(existing_doi):
             write_once(bundle / "PUBLISHED_DOI.txt", existing_doi)
-            verify_manuscript_readback(bundle, credential, existing_doi)
+            verify_manuscript_readback(bundle, credential, existing_doi, approved)
             return existing_doi
     links = deposition.get("links")
     bucket = links.get("bucket") if isinstance(links, dict) else None
     if not isinstance(bucket, str) or not bucket:
         raise PublisherError(f"{bundle}: draft response lacks bucket")
-    for path in upload_files(bundle):
+    check_draft_files(credential, identifier, approved, complete=False)
+    for name, raw in payloads.items():
         try:
-            api_call(
+            uploaded = api_call(
                 credential,
                 "PUT",
-                f"{bucket}/{path.name}",
-                path.read_bytes(),
+                f"{bucket.rstrip('/')}/{urllib.parse.quote(name, safe='')}",
+                raw,
                 "application/octet-stream",
             )
+            if str(uploaded.get("checksum", "")).removeprefix("md5:") != hashlib.md5(raw).hexdigest():
+                raise PublisherError("PUT response checksum differs from uploaded bytes")
         except PublisherError as exc:
             raise PublisherError(
-                f"{bundle.name}: upload {path.name} failed: {exc}"
+                f"{bundle.name}: upload {name} failed: {exc}"
             ) from exc
     try:
         api_call(
@@ -284,9 +338,12 @@ def publish_bundle(bundle: Path, credential: str, *, enforce_new_artifacts=False
         raise PublisherError(f"{bundle.name}: metadata update failed: {exc}") from exc
     verification_coverage_report(bundle, "publisher_before_publish", enforce_new_artifacts=True)
     try:
-        manuscript_pdf_gate.require_local(bundle, upload_files(bundle))
+        current = manuscript_pdf_gate.require_local(bundle, upload_files(bundle))
+        if current != approved:
+            raise PublisherError("approved manuscript/upload inventory changed before publication")
     except manuscript_pdf_gate.ManuscriptPDFHold as exc:
         raise PublisherError("standalone manuscript PDF gate HOLD: " + str(exc)) from exc
+    check_draft_files(credential, identifier, approved, complete=True)
     published = api_call(
         credential,
         "POST",
@@ -297,7 +354,7 @@ def publish_bundle(bundle: Path, credential: str, *, enforce_new_artifacts=False
     if not isinstance(doi, str) or DOI_RE.fullmatch(doi) is None:
         raise PublisherError(f"{bundle}: publish response lacks valid DOI")
     write_once(bundle / "PUBLISHED_DOI.txt", doi)
-    verify_manuscript_readback(bundle, credential, doi)
+    verify_manuscript_readback(bundle, credential, doi, approved)
     return doi
 
 
@@ -325,6 +382,7 @@ def main() -> int:
     parser.add_argument("--go", action="store_true")
     parser.add_argument("--enforce-new-artifacts", action="store_true", help="deny new publication without a current certificate, approved manuscript binding and claim coverage")
     args = parser.parse_args()
+    credential = ""
     try:
         if not args.publish and not args.go:
             print(json.dumps(plan(args.date), indent=2, sort_keys=True))
@@ -340,8 +398,9 @@ def main() -> int:
             results.append({"bundle": str(bundle), "doi": publish_bundle(bundle, credential, enforce_new_artifacts=True)})
         print(json.dumps({"date": args.date, "status": "PUBLISHED", "results": results}, indent=2, sort_keys=True))
         return 0
-    except (PublisherError, OSError, KeyError, TypeError, json.JSONDecodeError) as exc:
-        print(json.dumps({"status": "HOLD", "error": str(exc)}, indent=2), file=sys.stderr)
+    except Exception as exc:
+        message = str(exc).replace(credential, "***") if credential else str(exc)
+        print(json.dumps({"status": "HOLD", "error": type(exc).__name__ + ": " + message}, indent=2), file=sys.stderr)
         return 2
 
 

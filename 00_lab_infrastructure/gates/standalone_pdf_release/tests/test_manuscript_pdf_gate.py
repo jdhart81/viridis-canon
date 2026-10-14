@@ -188,8 +188,8 @@ class ManuscriptPDFGateTests(unittest.TestCase):
     def test_public_metadata_is_not_enough_without_exact_pdf_download(self):
         with tempfile.TemporaryDirectory() as tmp:
             root, _ = self.bundle(tmp); plan = gate.require_local(root)
-            record = {"id": 23290748, "files": [{"key": f["filename"], "size": f["bytes"], "checksum": "md5:" + f["md5"]} for f in plan["top_level_pdfs"]]}
-            with self.assertRaisesRegex(gate.ManuscriptPDFHold, "downloaded manuscript differs"):
+            record = {"id": 23290748, "files": [{"key": f["filename"], "size": f["bytes"], "checksum": "md5:" + f["md5"]} for f in plan["upload_files"]]}
+            with self.assertRaisesRegex(gate.ManuscriptPDFHold, "downloaded upload differs"):
                 gate.require_public(record, plan, download=lambda rid, name: b"%PDF-changed")
             receipt = gate.require_public(record, plan, download=lambda rid, name: (root / name).read_bytes())
             self.assertEqual(len(receipt["pdfs"]), 2)
@@ -197,7 +197,7 @@ class ManuscriptPDFGateTests(unittest.TestCase):
     def test_public_missing_separate_pdf_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             root, _ = self.bundle(tmp); plan = gate.require_local(root)
-            with self.assertRaisesRegex(gate.ManuscriptPDFHold, "missing or changed"):
+            with self.assertRaisesRegex(gate.ManuscriptPDFHold, "exact approved uploads"):
                 gate.require_public({"id": 23290748, "files": []}, plan)
 
     def test_outer_guard_blocks_legacy_config_before_dispatch(self):

@@ -3,12 +3,18 @@ name: Standalone manuscript PDFs
 on:
   pull_request:
     paths:
-      - '00_lab_infrastructure/gates/standalone_pdf_release/**'
+      - '00_lab_infrastructure/gates/**'
+      - 'tools/token_leak_scan.py'
+      - 'tools/mutate_manuscript_gate.py'
+      - 'tools/tests/test_token_leak_scan.py'
       - '.github/workflows/standalone-manuscript-pdf.yml'
   push:
     branches: [main]
     paths:
-      - '00_lab_infrastructure/gates/standalone_pdf_release/**'
+      - '00_lab_infrastructure/gates/**'
+      - 'tools/token_leak_scan.py'
+      - 'tools/mutate_manuscript_gate.py'
+      - 'tools/tests/test_token_leak_scan.py'
       - '.github/workflows/standalone-manuscript-pdf.yml'
 
 permissions:
@@ -17,13 +23,23 @@ permissions:
 jobs:
   standalone-manuscript-pdf:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.12', '3.14']
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
-          python-version: '3.12'
+          python-version: ${{ matrix.python }}
+      - name: Verify credential scanner
+        run: python3 -m unittest discover -s tools/tests -p 'test_token_leak_scan.py' -v
       - name: Verify separate manuscripts and exact access-copy exceptions
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/tests -p 'test_*.py' -v
+
+      - name: Kill the real manuscript gate mutants
+        run: python3 tools/mutate_manuscript_gate.py --source 00_lab_infrastructure/gates/standalone_pdf_release --output "$RUNNER_TEMP/manuscript-gate-mutations.json"
 
       - name: Verify additive runtime trust, complete defaults and exact registry chains
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/tests -p 'test_*.py' -v

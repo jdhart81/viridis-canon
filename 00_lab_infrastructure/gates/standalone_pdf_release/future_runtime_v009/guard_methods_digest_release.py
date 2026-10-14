@@ -41,7 +41,7 @@ SOURCE_HASHES = {
     'packaging_runtime.py': ('776fd758' '3a49a057' '6c93e638' '7fb99822' '1bbc6b5c' '1d152e50' '87771b98' '0073c934'),
     'publish_dated_bundles_guarded.py': ('6208c2d6' 'f9bc711f' 'c98a5b97' '9201cdaf' '89226419' 'c7ab5b59' '98052d6b' 'dd0f9158'),
     'publish_successor_wave_guarded.py': ('8b33088f' 'c0249f0f' '66a9f2f0' 'ce335946' 'b540fbac' 'e49a5c73' '4362d58b' 'e8056293'),
-    'scientific_registration_worker.py': ('b0d425f9' 'e1987143' 'c22fcc87' '30c31abf' '58245e6c' '97551b26' 'c57f1ad4' 'a74ed5dd'),
+    'scientific_registration_worker.py': ('f85ce81d' '0b82072d' 'aeecd3f6' 'cbf79f89' '38abe244' '9f2f0e1b' '19f6191d' 'f31f07cf'),
 }
 
 

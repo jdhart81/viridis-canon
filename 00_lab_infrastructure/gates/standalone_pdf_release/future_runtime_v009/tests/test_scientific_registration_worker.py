@@ -87,6 +87,12 @@ class ScienceTransportTests(unittest.TestCase):
         for name,value in(('__doc__','changed'),('synthetic_added_field',True)):
             with patch.object(type(sentinel),name,value,create=True),self.assertRaisesRegex(runtime.PackagingHold,'CLASS_VALUE_AND_STATE'):
                 science._dependency(sentinel)
+        original_name=type(sentinel).__name__
+        try:
+            type(sentinel).__name__='impostor'
+            with self.assertRaisesRegex(runtime.PackagingHold,'CLASS_VALUE_AND_STATE'):
+                science._dependency(sentinel)
+        finally:type(sentinel).__name__=original_name
         self.assertEqual(science._dependency(sentinel)['instance_state'],{})
 
     def test_re_sentinel_absence_does_not_normalize_unknown_int_subclasses(self):

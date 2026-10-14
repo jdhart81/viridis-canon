@@ -318,6 +318,7 @@ def _re_zero_sentinel_dependency(value, *, sentinel=_RE_ZERO_SENTINEL,
                      (current[k]==v if type(v) in(str,int,bool,type(None),tuple)
                       else current[k] is v) for k,v in class_items) and
                  sentinel_type.__module__=='re' and
+                 sentinel_type.__name__=='_ZeroSentinel' and
                  sentinel_type.__qualname__=='_ZeroSentinel' and
                  sentinel_type.__bases__==(int,) and
                  int.__int__(value)==0 and vars(value)=={},

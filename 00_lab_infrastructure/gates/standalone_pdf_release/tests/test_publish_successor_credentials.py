@@ -2,6 +2,7 @@
 
 import contextlib
 import copy
+import hashlib
 import http.client
 import importlib.util
 import io
@@ -28,9 +29,19 @@ def legacy_public_gate(record, preflight):
     return {"state": "MOCK_READBACK", "server_value": TOKEN}
 
 
+def local_preflight(bundle, paths):
+    rows = []
+    for path in paths:
+        raw = path.read_bytes()
+        rows.append({"filename": path.name, "sha256": hashlib.sha256(raw).hexdigest(),
+                     "md5": hashlib.md5(raw).hexdigest(), "bytes": len(raw)})
+    return {"state": "MOCK_PREFLIGHT", "upload_files": sorted(rows, key=lambda row: row["filename"])}
+
+
 GATE = types.SimpleNamespace(
     ManuscriptPDFHold=type("ManuscriptPDFHold", (RuntimeError,), {}),
-    require_local=lambda *args: {"state": "MOCK_PREFLIGHT"},
+    require_local=local_preflight,
+    _read=lambda path: path.read_bytes(),
     require_public=legacy_public_gate,
 )
 SPEC = importlib.util.spec_from_file_location(
@@ -93,8 +104,9 @@ class SuccessorHTTP:
                              "links": {"bucket": "https://zenodo.org/api/files/bucket-id"}})
         if path.startswith("/api/files/bucket-id/") and method == "PUT":
             name = urllib.parse.unquote(path.rsplit("/", 1)[1])
-            self.files.append({"filename": name})
-            return Response({"filename": name})
+            checksum = "md5:" + hashlib.md5(request.data).hexdigest()
+            self.files.append({"filename": name, "checksum": checksum, "filesize": len(request.data)})
+            return Response({"filename": name, "checksum": checksum})
         if path == "/api/records/200/draft":
             assert request.get_header("Accept") == "application/vnd.inveniordm.v1+json"
             if method == "PUT":
@@ -198,6 +210,7 @@ class CredentialTests(unittest.TestCase):
             (bundle / name).write_bytes(b"%PDF-1.4 dummy mocked content")
             candidate = {"abbreviation": "XX", "predecessor_doi": "10.5281/zenodo.100", "new_version": "v2",
                          "bundle": bundle, "upload_names": (name,), "metadata": {"metadata": {"title": "Retained scientific title", "creators": [{"name": "Example"}]}}}
+            candidate["approved_preflight_json"] = json.dumps(local_preflight(bundle, [bundle / name]))
             http = SuccessorHTTP()
             out, err = io.StringIO(), io.StringIO()
             with patch.object(PUBLISHER, "ROOT", root), \
@@ -236,8 +249,12 @@ class CredentialTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary, \
              patch.object(PUBLISHER, "ROOT", Path(temporary)), \
              patch.object(PUBLISHER.urllib.request, "build_opener", return_value=http):
+            name = "paper.pdf"
+            bundle = Path(temporary)
+            (bundle / name).write_bytes(b"%PDF-dummy")
             PUBLISHER.verify_manuscript_readback(
-                {"bundle": Path(temporary), "upload_names": (), "expected_copyright": COPYRIGHT},
+                {"bundle": bundle, "upload_names": (name,), "expected_copyright": COPYRIGHT,
+                 "approved_preflight_json": json.dumps(local_preflight(bundle, [bundle / name]))},
                 TOKEN, "10.5281/zenodo.200")
         accepts = [request.get_header("Accept") for request in http.requests]
         self.assertEqual(accepts, ["application/json", "application/vnd.inveniordm.v1+json"])

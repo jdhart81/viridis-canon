@@ -286,9 +286,13 @@ def load_and_validate_wave(wave_root: Path, expected_sha256: str) -> list[dict[s
             name for name in candidate_hashes if name != "zenodo_metadata.json"
         ) + ["CORRECTION_MANIFEST.json"]
         try:
-            manuscript_pdf_gate.require_local(bundle, [bundle / name for name in upload_names])
+            preflight = manuscript_pdf_gate.require_local(bundle, [bundle / name for name in upload_names])
         except manuscript_pdf_gate.ManuscriptPDFHold as exc:
             raise SuccessorPublisherError("standalone manuscript PDF gate HOLD: " + str(exc)) from exc
+        expected_upload_hashes = {name: candidate_hashes[name] for name in upload_names if name != "CORRECTION_MANIFEST.json"}
+        expected_upload_hashes["CORRECTION_MANIFEST.json"] = row["manifest_sha256"]
+        if {item["filename"]: item["sha256"] for item in preflight["upload_files"]} != expected_upload_hashes:
+            raise SuccessorPublisherError("approved upload bytes differ from the sealed successor-wave manifest")
         validated.append(
             {
                 "abbreviation": abbreviation,
@@ -297,6 +301,7 @@ def load_and_validate_wave(wave_root: Path, expected_sha256: str) -> list[dict[s
                 "new_version": row["new_version"],
                 "metadata": release_metadata,
                 "upload_names": tuple(sorted(upload_names)),
+                "approved_preflight_json": json.dumps(preflight, sort_keys=True, separators=(",", ":")),
             }
         )
     return validated
@@ -375,9 +380,56 @@ def ensure_draft(candidate: dict[str, Any], token: str) -> str:
     return identifier
 
 
-def verify_manuscript_readback(candidate: dict[str, Any], token: str, doi: str) -> None:
+def approved_preflight(candidate: dict[str, Any]) -> dict:
+    """Decode the frozen planning result; never approve replacement local bytes."""
+    serialized = candidate.get("approved_preflight_json")
+    if not isinstance(serialized, str):
+        raise SuccessorPublisherError("immutable planning preflight required")
+    approved = json.loads(serialized)
+    rows = approved.get("upload_files") if isinstance(approved, dict) else None
+    if not isinstance(rows, list) or not rows or any(not isinstance(row, dict) for row in rows):
+        raise SuccessorPublisherError("complete approved upload byte inventory required")
+    names = [row.get("filename") for row in rows]
+    if (any(not isinstance(name, str) or Path(name).name != name or name in {"", ".", ".."} for name in names)
+            or len(names) != len(set(names)) or set(names) != set(candidate["upload_names"])):
+        raise SuccessorPublisherError("unique exact approved top-level upload inventory required")
+    return approved
+
+
+def snapshot_uploads(bundle: Path, approved: dict) -> dict[str, bytes]:
+    """Retain exactly the bytes approved in the wave's planning preflight."""
+    payloads = {}
+    for row in approved["upload_files"]:
+        name = row["filename"]
+        raw = manuscript_pdf_gate._read(bundle / name)
+        actual = {"sha256": hashlib.sha256(raw).hexdigest(), "md5": hashlib.md5(raw).hexdigest(), "bytes": len(raw)}
+        if any(row.get(key) != value for key, value in actual.items()):
+            raise SuccessorPublisherError("approved upload changed before snapshot: " + name)
+        payloads[name] = raw
+    return payloads
+
+
+def check_draft_files(deposition: dict, approved: dict) -> None:
+    files = deposition.get("files")
+    if not isinstance(files, list) or any(not isinstance(row, dict) for row in files):
+        raise SuccessorPublisherError("draft upload inventory required")
+    names = [row.get("filename") for row in files]
+    expected = {row["filename"]: row for row in approved["upload_files"]}
+    if any(not isinstance(name, str) for name in names) or len(names) != len(set(names)):
+        raise SuccessorPublisherError("draft upload names are invalid or duplicated")
+    if set(names) != set(expected):
+        raise SuccessorPublisherError("draft file set differs from exact approved uploads")
+    for row in files:
+        wanted = expected[row["filename"]]
+        checksum = str(row.get("checksum", "")).removeprefix("md5:")
+        if checksum != wanted["md5"] or row.get("filesize", row.get("size")) != wanted["bytes"]:
+            raise SuccessorPublisherError("draft upload checksum or size differs: " + row["filename"])
+
+
+def verify_manuscript_readback(candidate: dict[str, Any], token: str, doi: str, preflight=None) -> None:
     bundle = candidate["bundle"]
-    preflight = manuscript_pdf_gate.require_local(bundle, [bundle / name for name in candidate["upload_names"]])
+    if preflight is None:
+        preflight = approved_preflight(candidate)
     if "expected_copyright" not in candidate:
         inherit_predecessor_copyright(candidate, token)
     record_id = DOI_RE.fullmatch(doi).group(1)
@@ -399,16 +451,23 @@ def verify_manuscript_readback(candidate: dict[str, Any], token: str, doi: str) 
 
 def publish_candidate(candidate: dict[str, Any], token: str) -> dict[str, Any]:
     bundle: Path = candidate["bundle"]
+    approved = approved_preflight(candidate)
+    # This receipt fixes the original approval across retries and partial DOI
+    # outcomes. A later invocation cannot silently approve replacement bytes.
+    write_once(bundle / "APPROVED_UPLOAD_PREFLIGHT.json", json.dumps(approved, sort_keys=True, indent=2), token=token)
     doi_receipt = bundle / "PUBLISHED_DOI.txt"
     existing_doi = read_receipt(doi_receipt, DOI_RE, "DOI")
     if existing_doi:
-        verify_manuscript_readback(candidate, token, existing_doi)
+        verify_manuscript_readback(candidate, token, existing_doi, approved)
         return {"abbreviation": candidate["abbreviation"], "doi": existing_doi, "reused": True}
 
     try:
-        manuscript_pdf_gate.require_local(bundle, [bundle / name for name in candidate["upload_names"]])
+        current = manuscript_pdf_gate.require_local(bundle, [bundle / name for name in candidate["upload_names"]])
+        if current != approved:
+            raise SuccessorPublisherError("approved manuscript/upload inventory changed before network activity")
     except manuscript_pdf_gate.ManuscriptPDFHold as exc:
         raise SuccessorPublisherError("standalone manuscript PDF gate HOLD: " + str(exc)) from exc
+    payloads = snapshot_uploads(bundle, approved)
     inherit_predecessor_copyright(candidate, token)
     draft = ensure_draft(candidate, token)
     public_record = api_call(
@@ -421,7 +480,7 @@ def publish_candidate(candidate: dict[str, Any], token: str) -> dict[str, Any]:
         published_doi = extract_doi(public_record)
         if published_doi:
             write_once(doi_receipt, published_doi, token=token)
-            verify_manuscript_readback(candidate, token, published_doi)
+            verify_manuscript_readback(candidate, token, published_doi, approved)
             return {
                 "abbreviation": candidate["abbreviation"],
                 "doi": published_doi,
@@ -433,7 +492,7 @@ def publish_candidate(candidate: dict[str, Any], token: str) -> dict[str, Any]:
     already_published = extract_doi(deposition)
     if already_published and deposition.get("submitted") is True:
         write_once(doi_receipt, already_published, token=token)
-        verify_manuscript_readback(candidate, token, already_published)
+        verify_manuscript_readback(candidate, token, already_published, approved)
         return {
             "abbreviation": candidate["abbreviation"],
             "doi": already_published,
@@ -454,15 +513,16 @@ def publish_candidate(candidate: dict[str, Any], token: str) -> dict[str, Any]:
     bucket = links.get("bucket") if isinstance(links, dict) else None
     if not isinstance(bucket, str) or not bucket:
         raise SuccessorPublisherError(f"{candidate['abbreviation']}: draft bucket missing")
-    for name in candidate["upload_names"]:
-        path = bundle / name
-        api_call(
+    for name, raw in payloads.items():
+        uploaded = api_call(
             token,
             "PUT",
             f"{bucket}/{urllib.parse.quote(name, safe='')}",
-            path.read_bytes(),
+            raw,
             "application/octet-stream",
         )
+        if not isinstance(uploaded, dict) or str(uploaded.get("checksum", "")).removeprefix("md5:") != hashlib.md5(raw).hexdigest():
+            raise SuccessorPublisherError("PUT response checksum differs from uploaded bytes")
 
     metadata_payload = copy.deepcopy(candidate["metadata"])
     if candidate["expected_copyright"] is not None:
@@ -476,16 +536,11 @@ def publish_candidate(candidate: dict[str, Any], token: str) -> dict[str, Any]:
     preserve_draft_copyright(candidate, token, draft)
     verified = api_call(token, "GET", f"{BASE}/deposit/depositions/{draft}")
     assert verified is not None
-    remote_files = verified.get("files")
-    if not isinstance(remote_files, list):
-        raise SuccessorPublisherError(f"{candidate['abbreviation']}: cannot verify draft files")
-    remote_names = sorted(
-        item.get("filename") for item in remote_files if isinstance(item, dict)
-    )
-    if remote_names != list(candidate["upload_names"]):
-        raise SuccessorPublisherError(f"{candidate['abbreviation']}: remote draft file set mismatch")
+    check_draft_files(verified, approved)
     try:
-        manuscript_pdf_gate.require_local(bundle, [bundle / name for name in candidate["upload_names"]])
+        current = manuscript_pdf_gate.require_local(bundle, [bundle / name for name in candidate["upload_names"]])
+        if current != approved:
+            raise SuccessorPublisherError("approved manuscript/upload inventory changed before publication")
     except manuscript_pdf_gate.ManuscriptPDFHold as exc:
         raise SuccessorPublisherError("standalone manuscript PDF gate HOLD: " + str(exc)) from exc
     published = api_call(
@@ -498,7 +553,7 @@ def publish_candidate(candidate: dict[str, Any], token: str) -> dict[str, Any]:
     if doi is None:
         raise SuccessorPublisherError(f"{candidate['abbreviation']}: publish response lacks DOI")
     write_once(doi_receipt, doi, token=token)
-    verify_manuscript_readback(candidate, token, doi)
+    verify_manuscript_readback(candidate, token, doi, approved)
     return {"abbreviation": candidate["abbreviation"], "doi": doi, "record_id": draft}
 
 

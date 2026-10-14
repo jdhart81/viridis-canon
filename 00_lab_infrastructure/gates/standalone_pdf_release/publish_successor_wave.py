@@ -83,13 +83,19 @@ def json_write_atomic(path: Path, value: object, *, token: str = "") -> None:
 
 
 def validated_zenodo_url(url: str) -> str:
-    """Allow only HTTPS Zenodo API destinations, never query credentials."""
+    """Keep credentials on the configured approved HTTPS Zenodo origin."""
     try:
         parsed = urllib.parse.urlsplit(url)
+        configured = urllib.parse.urlsplit(BASE)
         query_keys = [key for key, _ in urllib.parse.parse_qsl(parsed.query)]
         if (
-            parsed.scheme != "https"
-            or parsed.hostname not in {"zenodo.org", "sandbox.zenodo.org"}
+            configured.scheme != "https"
+            or configured.hostname not in {"zenodo.org", "sandbox.zenodo.org"}
+            or configured.port not in (None, 443)
+            or configured.username or configured.password
+            or configured.path != "/api" or configured.query or configured.fragment
+            or any(character.isspace() or ord(character) < 32 for character in BASE)
+            or parsed.scheme != "https" or parsed.hostname != configured.hostname
             or parsed.port not in (None, 443)
             or parsed.username or parsed.password
             or not parsed.path.startswith("/api/") or parsed.fragment
@@ -99,7 +105,7 @@ def validated_zenodo_url(url: str) -> str:
             raise ValueError
     except (TypeError, ValueError):
         raise SuccessorPublisherError(
-            "Zenodo request destination must be an approved HTTPS API without URL credentials"
+            "Zenodo request destination must be the configured HTTPS API without URL credentials"
         ) from None
     return url
 

@@ -74,6 +74,11 @@ def run():
         if adapter.count(anchor) != 1:
             raise RuntimeError("adapter drift-mutation anchor must be unique")
         wiring_mutants.append(("accepted_result_artifact_drift_ignored", "checkpoint_certification_lane.py", adapter.replace(anchor, "if False:")))
+        advisory = (HERE / "checkpoint_advisory.py").read_text()
+        anchor = 'fifo["held_hours"] >= 24'
+        if advisory.count(anchor) != 1:
+            raise RuntimeError("advisory threshold-mutation anchor must be unique")
+        wiring_mutants.append(("24_hour_fifo_alert_delayed", "checkpoint_advisory.py", advisory.replace(anchor, 'fifo["held_hours"] > 24')))
         for name, target, changed in wiring_mutants:
             path = root / target
             original = path.read_bytes()

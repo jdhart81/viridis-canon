@@ -56,6 +56,19 @@ class AdvisoryCheckpointTests(unittest.TestCase):
         self.assertEqual(advisory.observe(self.root, self.checkpoint)["lint"], "ADVISORY_UNAVAILABLE")
         self.assertEqual(json.loads((self.pipeline / "PIPELINE_SLO_STATUS.json").read_text())["status"], "ADVISORY_UNAVAILABLE")
 
+    def test_fifo_alert_at_exactly_24_hours_preserves_failing_goal(self):
+        def emit(root, checkpoint):
+            (self.pipeline / "PIPELINE_SLO_STATUS.json").write_text(json.dumps({
+                "fifo_liveness": {"status": "BELOW_ALERT_THRESHOLD", "held_hours": 24,
+                                  "failing_goal": "the exact held goal"}}))
+            return {"status": "REPORTED"}
+        modules = {"checkpoint_slo_hook": SimpleNamespace(observe=emit)}
+        with patch.object(advisory, "load", return_value=modules):
+            advisory.observe(self.root, self.checkpoint)
+        fifo = json.loads((self.pipeline / "PIPELINE_SLO_STATUS.json").read_text())["fifo_liveness"]
+        self.assertEqual(fifo["status"], "ALERT")
+        self.assertEqual(fifo["failing_goal"], "the exact held goal")
+
     def patched_namespace(self):
         target = self.pipeline / "nightly_checkpoint.py"
         target.write_bytes((HERE / "tests/fixtures/nightly_checkpoint.py.txt").read_bytes())

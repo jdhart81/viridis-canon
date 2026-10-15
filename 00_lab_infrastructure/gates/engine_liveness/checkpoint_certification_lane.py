@@ -186,11 +186,13 @@ def drain_checkpoint(start_path: Path, queue_path: Path, *, pipeline: Path | Non
                     # Do not leak provider, SSH, exception or credential prose.
                     pass
         # Resume reads original immutable reservations/results. Never redispatch.
-        accepted_keys = {RequestIdentity(**row["identity"]).key for row in lane._rows("results")}
+        accepted_rows = {RequestIdentity(**row["identity"]).key: row for row in lane._rows("results")}
         for identity, entry, paths, held in prepared:
-            if identity.key in accepted_keys:
+            if identity.key in accepted_rows:
                 # Revalidate the real output bindings before exposing current credit.
-                _certificate_result(identity, entry, json.loads(Path(entry["certificate_output"]).read_text()))
+                current_result = _certificate_result(identity, entry, json.loads(Path(entry["certificate_output"]).read_text()))
+                if {**current_result, "standard": "VRS-IMMUTABLE-VERIFIED-RESULT-1"} != accepted_rows[identity.key]:
+                    raise LivenessHold("HOLD_RESULT_ARTIFACT_DRIFT")
                 result["accepted"].append(identity.run_id)
             elif held or any(row["identity"] == identity.__dict__ for row in lane._rows("requests")):
                 result["holds"].append({"run_id": identity.run_id,

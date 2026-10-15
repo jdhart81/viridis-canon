@@ -88,6 +88,24 @@ class CheckpointAdapterTests(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertEqual(len(second["holds"]), 2)
 
+    def test_resume_rejects_certificate_byte_drift_from_holding_area(self):
+        self.drain()
+        path = Path(self.entries[0]["certificate_output"])
+        certificate = json.loads(path.read_text()); certificate["scope"] = "edited after acceptance"
+        path.write_text(json.dumps(certificate))
+        with self.assertRaisesRegex(LivenessHold, "RESULT_ARTIFACT_DRIFT"):
+            self.drain(lambda *args: self.fail("accepted request resent"))
+
+    def test_resume_rejects_cloud_and_certificate_rebinding(self):
+        self.drain()
+        cloud = Path(self.entries[0]["receipt_output"]); cloud.write_text("different receipt bytes")
+        path = Path(self.entries[0]["certificate_output"])
+        certificate = json.loads(path.read_text())
+        certificate["bindings"]["independent_cloud_receipt"]["sha256"] = file_digest(cloud)
+        path.write_text(json.dumps(certificate))
+        with self.assertRaisesRegex(LivenessHold, "RESULT_ARTIFACT_DRIFT"):
+            self.drain(lambda *args: self.fail("accepted request resent"))
+
     def test_manifest_cannot_omit_named_oldest_start_debt(self):
         self.entries.pop(0); self.write_queue()
         with self.assertRaisesRegex(LivenessHold, "QUEUE_BASELINE"):

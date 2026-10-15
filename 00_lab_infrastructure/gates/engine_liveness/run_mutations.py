@@ -69,6 +69,11 @@ def run():
         binding = json.loads((HERE / "INTEGRATION_BINDING.json").read_text())
         binding["files"][0]["after_sha256"] = "0" * 64
         wiring_mutants.append(("corrupt_expected_after_hash", "INTEGRATION_BINDING.json", json.dumps(binding)))
+        adapter = (HERE / "checkpoint_certification_lane.py").read_text()
+        anchor = 'if {**current_result, "standard": "VRS-IMMUTABLE-VERIFIED-RESULT-1"} != accepted_rows[identity.key]:'
+        if adapter.count(anchor) != 1:
+            raise RuntimeError("adapter drift-mutation anchor must be unique")
+        wiring_mutants.append(("accepted_result_artifact_drift_ignored", "checkpoint_certification_lane.py", adapter.replace(anchor, "if False:")))
         for name, target, changed in wiring_mutants:
             path = root / target
             original = path.read_bytes()

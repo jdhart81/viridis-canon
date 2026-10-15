@@ -3,7 +3,7 @@
   "activation": "INACTIVE_UNMERGED",
   "advisory_modules_installed_under": "RESEARCH_PIPELINE_v2/pipeline_advisory",
   "advisory_playbook_sha256": "87ded0138f522738aeb4dbe68be3861f4c46e11bc61ae65c2be0e0557de2c8eb",
-  "base_commit": "de75ab450b3b527c8392032e02ab3436ba78dfc2",
+  "base_commit": "b144f2fab6c206ba32a7b650b7c8a03af6f10b40",
   "files": [
     {
       "after_sha256": "7ce0fa64d8875f76e192888b9a2673f47cb5405b00e3658845a2161c8034e4d7",
@@ -22,6 +22,8 @@
     }
   ],
   "installed": false,
+  "original_first_precheck_head": "9f4778c36af3f1004589a88191b7d02b97d836d8",
+  "parent_pr": 106,
   "scheduler_id": "viridis-nightly-science-generator",
   "scheduler_nonprompt_fields_sha256": "fe6cfdd313e201a644f72370d0cc31d34d2fcd3ccdef5fad57bd1d2635bbe802",
   "scheduler_prompt_before_sha256": "5b46a83d8d27bb70f8241da01b5351e7f21a8057b78903dc23f8366e54a3ea18",

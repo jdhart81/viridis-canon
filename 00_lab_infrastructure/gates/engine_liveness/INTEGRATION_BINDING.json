@@ -3,7 +3,7 @@
   "activation": "INACTIVE_UNMERGED",
   "advisory_modules_installed_under": "RESEARCH_PIPELINE_v2/pipeline_advisory",
   "advisory_playbook_sha256": "87ded0138f522738aeb4dbe68be3861f4c46e11bc61ae65c2be0e0557de2c8eb",
-  "base_commit": "b144f2fab6c206ba32a7b650b7c8a03af6f10b40",
+  "base_commit": "fca29fbd73339347250fa6e8d50a2b315824ad83",
   "files": [
     {
       "after_sha256": "7ce0fa64d8875f76e192888b9a2673f47cb5405b00e3658845a2161c8034e4d7",

@@ -23,6 +23,15 @@ TOKEN='DUMMY_REHEARSAL_' + 'x' * 40
 
 
 class RehearsalBoundaryTests(unittest.TestCase):
+ def test_active_runtime_has_no_private_user_path_and_missing_root_holds(self):
+  import subprocess
+  for path in HERE.rglob('*'):
+   if path.is_file() and path.suffix in {'.py', '.json', '.md'}:
+    self.assertNotIn(b'/Users/' + b'justinhart',path.read_bytes(),str(path))
+  environment={k:v for k,v in os.environ.items()if k!='VIRIDIS_CORE_ROOT'}
+  result=subprocess.run([sys.executable,'-c','import packaging_runtime'],cwd=HERE,env=environment,capture_output=True,text=True)
+  self.assertNotEqual(result.returncode,0);self.assertIn('HOLD_CORE_ROOT_REQUIRED',result.stderr)
+
  def test_publish_builder_raises_and_canonical_source_scope_stays_closed(self):
   with tempfile.TemporaryDirectory()as folder:
    root=Path(folder).resolve();core=root/'core';core.mkdir();engine=root/'engine';engine.mkdir()

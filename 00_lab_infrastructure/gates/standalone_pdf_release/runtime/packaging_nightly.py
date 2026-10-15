@@ -6,6 +6,7 @@ No generation, proof execution, certificate issuance or Zenodo write occurs.
 Exact missing legacy transient source recovery is separately receipted.
 """
 from __future__ import annotations
+import os
 import argparse
 import datetime as dt
 import importlib
@@ -36,7 +37,9 @@ if __name__=='__main__':
 
 import packaging_runtime as runtime
 
-ROOT = Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0')
+if not os.environ.get("VIRIDIS_CORE_ROOT"):
+    raise RuntimeError("HOLD_CORE_ROOT_REQUIRED: set VIRIDIS_CORE_ROOT explicitly")
+ROOT = Path(os.environ["VIRIDIS_CORE_ROOT"])
 
 
 def _main(argv=None):

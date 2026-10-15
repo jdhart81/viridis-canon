@@ -25,10 +25,10 @@ NOMINATION = INSTALLED / 'INSTALLATION_NOMINATION.json'
 SOURCE_HASHES = {
     'digest_controller_v2.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '16c2664f7efdd60493ae5408c063fe1d15ff3f3015c80a2c711cf9944190f7eb',
+        '331105b8f557cecd50b4824da5ba07b77ae6aec62efcbebdef712334c1a72282',
     'install_packaging_runtime.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '319542b4f467d8c90f6dbfd9c664d4a3e723737aed6222a324b9c2622f94d753',
+        '96088caa1f784d86f3768f71a519d926eb2be2a0f2ccd56467ee5a5d30469e68',
     'invoke_digest_v2.py':
         # SHA-256 of reviewed source bytes; not a credential
         '932afcb894fb8581ee9718ec1894d3ca38520efa3fbcbe34e34e706226befaa3',
@@ -49,16 +49,16 @@ SOURCE_HASHES = {
         'e3e8b5be4b99a9991066f49a60630c2a8d63eafd3c09b9b0ed85b50748706f39',
     'nightly_checkpoint_guarded.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '298d2498901e437ac6a1ccc4e4a0841fb3d50244abd36309e0f9f533f179738e',
+        'b01598e2223b7fe2ee77c3f7f89086fed899925621c9862dc4c504b5c16aad95',
     'owner_content_worker.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '4368e184eda9e00acc19dab6b6df7a31525a73cfbb251683338da7d40899a140',
+        'e0af909495fe4ef14309b62b3037cec4a1cde3b9bfa1b124484719f180fa0080',
     'packaging_catalog.py':
         # SHA-256 of reviewed source bytes; not a credential
         '30a3e49d919fbf97b100a07f45222d86f8565443f019916758dde3748f43bc1b',
     'packaging_nightly.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '844472e62b2bf9d5a86a8076cdb52b7217d492ca7be621dda8aaea9cdb4ce663',
+        '98aad9c41d0f70442bab7299cc5b3a39b171d418c9c942e3c2d2a9508e2bd2f7',
     'packaging_nightly_coverage.py':
         # SHA-256 of reviewed source bytes; not a credential
         'f1df587d5966ae71d98d6282375f1d5fb4cb99e14ec0f77ce6d704b4c00fbdf6',
@@ -70,16 +70,16 @@ SOURCE_HASHES = {
         'cd4169d3cc2c3af02829d20ce363908a9edb914501f134dc341dd8d085567014',
     'packaging_runtime.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '9101b72eb1f94160ed301604886096dc53dd12c69a17214fef1f70451ab2693c',
+        '5499b8572df26ecfba3fec728136708fc74a213d3233550617d319b10b0e02b2',
     'publish_dated_bundles_guarded.py':
         # SHA-256 of reviewed source bytes; not a credential
-        'c2baa6e057bd8ef2f4d6a57156266bb4d986a9c65f76d5dce713e3d6697142c5',
+        '38a9752d9c686312acab087955cc9ccecd2e18fdabc13d54275ace2994486698',
     'publish_successor_wave_guarded.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '51711f1d107fda516bd75612b570431b17f33fe55cfd40a8454c567fadc886a4',
+        'b754a9c09d4a98dcfb9add0fab2c714ab52d80b56a35d85d2c5572916b1527d3',
     'scientific_registration_worker.py':
         # SHA-256 of reviewed source bytes; not a credential
-        'a6fe4f076470e2ae2e97c59a10b2c19c650aeb4059fb42570371aa3b3fba717b',
+        'b995b5e99de7a4d270bb23ea5e9f453b4243c0af394a6411b961eaa7d02ef97d',
 }
 SHARED_INPUT_NAME = 'stable_input_identity.py'
 SHARED_INPUT_SHA256 = '7e6c204993f0ba65650c58ad50a71073d803522d31fa08b93b7ce35054fa5eda'
@@ -219,6 +219,7 @@ def main(argv=None):
     parser.add_argument('--rehearse', action='store_true')
     args = parser.parse_args(argv)
     try:
+        need(bool(os.environ.get('VIRIDIS_CORE_ROOT')), 'HOLD_CORE_ROOT_REQUIRED: set VIRIDIS_CORE_ROOT explicitly')
         need('VIRIDIS_ZENODO_API_BASE' not in os.environ, 'API base override is forbidden')
         need(not args.rehearse or args.go, 'rehearsal requires --go')
         options = {'rehearse': True} if args.rehearse else {}

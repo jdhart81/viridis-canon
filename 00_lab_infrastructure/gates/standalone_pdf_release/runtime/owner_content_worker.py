@@ -46,7 +46,9 @@ REQUEST_SECONDS = 120.0
 OBSERVATION_SECONDS = 900.0
 START_SPACING = 2.05
 OWNER_ID = '1591505'
-FIXED_CANONICAL_ROOT = Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0')
+if not os.environ.get("VIRIDIS_CORE_ROOT"):
+    raise RuntimeError("HOLD_CORE_ROOT_REQUIRED: set VIRIDIS_CORE_ROOT explicitly")
+FIXED_CANONICAL_ROOT = Path(os.environ["VIRIDIS_CORE_ROOT"])
 NATIVE_ACCEPT = 'application/vnd.inveniordm.v1+json'
 ACCEPTS = frozenset({'application/json', NATIVE_ACCEPT})
 MANIFEST_FIELDS = frozenset({'standard', 'canonical_root', 'profile_binding',

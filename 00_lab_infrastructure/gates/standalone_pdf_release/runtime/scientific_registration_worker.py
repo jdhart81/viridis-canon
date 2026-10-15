@@ -59,7 +59,9 @@ def _bootstrap_read(path, expected=None, identity=None):
     return value
 
 
-BOOTSTRAP_ROOT=Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0')
+if not os.environ.get("VIRIDIS_CORE_ROOT"):
+    raise RuntimeError("HOLD_CORE_ROOT_REQUIRED: set VIRIDIS_CORE_ROOT explicitly")
+BOOTSTRAP_ROOT=Path(os.environ["VIRIDIS_CORE_ROOT"])
 BOOTSTRAP_GIT_PREFIX='00_lab_infrastructure/gates/standalone_pdf_release/runtime/'
 BOOTSTRAP_SHARED_NAME='stable_input_identity.py'
 BOOTSTRAP_SHARED_SHA256='7e6c204993f0ba65650c58ad50a71073d803522d31fa08b93b7ce35054fa5eda'
@@ -145,7 +147,7 @@ if __name__ == '__main__':
 
 import packaging_runtime as runtime
 
-ROOT = Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0')
+ROOT = Path(os.environ["VIRIDIS_CORE_ROOT"])
 STAGES = ('build', 'activation_current_preserve', 'doi',
           'labels_initial_saved', 'labels_actual_views_saved')
 PUB_FIELDS = frozenset({'publication_entities', 'publication_holds',

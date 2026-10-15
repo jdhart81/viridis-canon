@@ -23,7 +23,9 @@ import urllib.request
 import urllib.parse
 
 
-ROOT = Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0')
+if not os.environ.get("VIRIDIS_CORE_ROOT"):
+    raise RuntimeError("HOLD_CORE_ROOT_REQUIRED: set VIRIDIS_CORE_ROOT explicitly")
+ROOT = Path(os.environ["VIRIDIS_CORE_ROOT"])
 HERE = ROOT / '_ZENODO_DEPOSITS'
 if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))

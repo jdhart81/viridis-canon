@@ -26,7 +26,9 @@ def evaluate():
     return original()
 
 
-HERE = Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2')
+if not os.environ.get("VIRIDIS_CORE_ROOT"):
+    raise RuntimeError("HOLD_CORE_ROOT_REQUIRED: set VIRIDIS_CORE_ROOT explicitly")
+HERE = Path(os.environ["VIRIDIS_CORE_ROOT"]) / "RESEARCH_PIPELINE_v2"
 CHECKPOINTS = HERE / "nightly_checkpoints"
 # Additive cold full-population GET/replay budget; historical300s stays exact.
 COVERAGE_CHILD_TIMEOUT_SECONDS = 3000

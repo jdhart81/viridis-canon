@@ -13,7 +13,9 @@ import os
 from pathlib import Path
 import packaging_runtime as runtime
 
-ROOT=Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0')
+if not os.environ.get("VIRIDIS_CORE_ROOT"):
+    raise RuntimeError("HOLD_CORE_ROOT_REQUIRED: set VIRIDIS_CORE_ROOT explicitly")
+ROOT=Path(os.environ["VIRIDIS_CORE_ROOT"])
 ORIGINAL_PUBLISHER_SHA='4f099eaffb9a35fbd24e5c57ef34801391fabcd5c3272b58a379d7ac52b35e94'
 PLAN_FIELDS={'standard','status','canonical_root','source_modules','source_origin','source_review',
              'user_authority','access_registry','historical_publisher','installed_at_utc','root_review','predecessor_installation','transient_rehydration','data_alias_observation','platform_timezone_observation','shared_dependencies'}

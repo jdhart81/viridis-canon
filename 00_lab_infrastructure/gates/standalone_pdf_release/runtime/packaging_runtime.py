@@ -133,7 +133,9 @@ PLATFORM_TZ_LOGICAL = Path('/usr/share/zoneinfo/America/New_York')
 PLATFORM_TZ_PHYSICAL = Path('/private/var/db/timezone/tz/2026d.1.0/zoneinfo/America/New_York')
 PLATFORM_TZ_LINK_PATHS = (Path('/usr/share/zoneinfo'),Path('/var'),Path('/private/var/db/timezone/zoneinfo'))
 DATA_ALIAS_OBSERVATION = {'path':'reports/verification-coverage/2026-10-13/standalone-pdf-path-alias-v001/HISTORICAL_CONTROLPLANE_ALIAS_READBACK.json','sha256':'e65f0cf031a64103fad9d059972394d7a99832fba7863a8c375434d51a1f6ca9'}
-SCIENTIFIC_ALIAS_PATH = Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0')
+if not os.environ.get("VIRIDIS_CORE_ROOT"):
+    raise RuntimeError("HOLD_CORE_ROOT_REQUIRED: set VIRIDIS_CORE_ROOT explicitly")
+SCIENTIFIC_ALIAS_PATH = Path(os.environ["VIRIDIS_CORE_ROOT"]).with_name("Viridis Core docs  2.0")
 SCIENTIFIC_ALIAS_READLINK = 'Viridis Core docs 2.0'
 
 

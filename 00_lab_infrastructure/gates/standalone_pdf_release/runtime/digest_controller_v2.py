@@ -380,6 +380,7 @@ def run(config,output,token,*,opener=None,clock=now,rehearse=False):
  No old executor budget/machine admission is claimed. A failed mutation keeps
  its authentic reservation and receipt; no failed publication is auto-replayed.
  """
+ need(bool(os.environ.get('VIRIDIS_CORE_ROOT')),'CORE_ROOT_REQUIRED')
  need('VIRIDIS_ZENODO_API_BASE'not in os.environ,'API_BASE_OVERRIDE_FORBIDDEN')
  root=ROOT.resolve(strict=True);import packaging_runtime;packaging_runtime.validate(root,config['packaging_profile'],purpose_pins=config['source_pins']);package=config_value(root,config);mods=loaded_sources(root,config['source_pins']);d=mods['methods_digest_v2'];reg_module=mods['methods_digest_registration_v3'];own=mods['own_record_comparison'];prior=mods['own_prior_record'];metadata=mods['digest_metadata'];codec=mods['first_digest_state'];successor=mods['digest_weekly_state'];transport=mods['zenodo_transport']
  need(isinstance(token,str)and len(token)>=24,'MEMORY_CREDENTIAL');out=Path(output);need(out.is_absolute()and (out.resolve().is_relative_to(_REHEARSAL_OUTPUT.get())if rehearse and _REHEARSAL_OUTPUT.get()is not None else out.resolve().is_relative_to(root/'reports/verification-coverage'))and not any(p.is_symlink()for p in(out,*out.parents)),'OWN_OUTPUT')
@@ -607,6 +608,7 @@ def publish_action_url(rid):
 
 def rehearse(config_binding,output,token,*,opener=None,clock=now):
  """Use the real controller through its draft boundary, with engine-only receipts."""
+ need(bool(os.environ.get('VIRIDIS_CORE_ROOT')),'CORE_ROOT_REQUIRED')
  need('VIRIDIS_ZENODO_API_BASE'not in os.environ,'API_BASE_OVERRIDE_FORBIDDEN')
  engine=os.environ.get('VIRIDIS_ENGINE_ROOT');need(bool(engine),'ENGINE_ROOT_REQUIRED')
  out=Path(output).resolve();base=Path(engine).resolve(strict=True)/'rehearsals'

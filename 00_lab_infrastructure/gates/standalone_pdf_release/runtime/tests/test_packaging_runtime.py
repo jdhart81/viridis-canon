@@ -114,6 +114,35 @@ class RuntimeTrustTests(unittest.TestCase):
             pr=json.loads(Path(origin['pull_request']['path']).read_bytes());pr['statusCheckRollup'][0]['conclusion']='SKIPPED';origin['pull_request']=put(root,'pr.json',pr)
             with self.assertRaisesRegex(runtime.PackagingHold,'REQUIRED_SOURCE_CI'):runtime.source_proof(root,origin,[row])
 
+    def test_matrix_results_require_a_successful_stable_aggregate(self):
+        # Real Actions matrix names differ from the historical source-proof
+        # contract. Only the workflow's successful aggregate closes that gap.
+        for conclusion in (None, 'SUCCESS', 'FAILURE', 'SKIPPED', 'CANCELLED'):
+            with self.subTest(aggregate=conclusion), tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp).resolve();origin,row=self.source_origin(root)
+                pr=json.loads(Path(origin['pull_request']['path']).read_bytes())
+                checks=[c for c in pr['statusCheckRollup'] if c['name']!='standalone-manuscript-pdf']
+                checks.extend({'name':'standalone-manuscript-pdf ('+version+')',
+                               'status':'COMPLETED','conclusion':'SUCCESS'} for version in ('3.12','3.14'))
+                if conclusion is not None:
+                    checks.append({'name':'standalone-manuscript-pdf','status':'COMPLETED','conclusion':conclusion})
+                pr['statusCheckRollup']=checks;origin['pull_request']=put(root,'pr.json',pr)
+                if conclusion=='SUCCESS':
+                    self.assertEqual(runtime.source_proof(root,origin,[row])['proofs'][0]['sha256'],row['sha256'])
+                else:
+                    with self.assertRaisesRegex(runtime.PackagingHold,'REQUIRED_SOURCE_CI'):
+                        runtime.source_proof(root,origin,[row])
+
+    def test_failed_matrix_child_cannot_be_hidden_by_successful_aggregate(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp).resolve();origin,row=self.source_origin(root)
+            pr=json.loads(Path(origin['pull_request']['path']).read_bytes())
+            pr['statusCheckRollup'].append({'name':'standalone-manuscript-pdf (3.14)',
+                                          'status':'COMPLETED','conclusion':'FAILURE'})
+            origin['pull_request']=put(root,'pr.json',pr)
+            with self.assertRaisesRegex(runtime.PackagingHold,'REQUIRED_SOURCE_CI'):
+                runtime.source_proof(root,origin,[row])
+
     def test_closed_module_inventory_rejects_omissions_duplicates_and_extras(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp).resolve();rows=[]

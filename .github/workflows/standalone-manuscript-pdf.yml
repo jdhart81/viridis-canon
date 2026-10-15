@@ -23,7 +23,8 @@ permissions:
   contents: read
 
 jobs:
-  standalone-manuscript-pdf:
+  manuscript_pdf_matrix:
+    name: standalone-manuscript-pdf (${{ matrix.python }})
     runs-on: ubuntu-latest
     timeout-minutes: 20
     strategy:
@@ -51,3 +52,17 @@ jobs:
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/common/tests -p 'test_*.py' -v
       - name: Verify selected V012 functional coverage and retained provenance gates
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/runtime/tests -p 'test_*.py' -v
+
+  standalone-manuscript-pdf:
+    # Preserve the exact check name consumed by current and historical source
+    # proofs. Neither a failed nor a skipped matrix establishes source CI.
+    name: standalone-manuscript-pdf
+    needs: manuscript_pdf_matrix
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Require both Python matrix jobs to pass
+        env:
+          MATRIX_RESULT: ${{ needs.manuscript_pdf_matrix.result }}
+        run: test "$MATRIX_RESULT" = success

@@ -32,6 +32,80 @@ def digest_json(value: dict) -> str:
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
 
+def file_digest(path: Path) -> str:
+    if path.is_symlink() or not path.is_file():
+        raise LivenessHold("HOLD_EVIDENCE_FILE")
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def fsync_directory(path: Path) -> None:
+    descriptor = os.open(path, os.O_RDONLY | getattr(os, "O_DIRECTORY", 0))
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
+
+
+def durable_mkdir(path: Path) -> None:
+    missing = []
+    current = path
+    while not current.exists():
+        missing.append(current)
+        current = current.parent
+    for directory in reversed(missing):
+        directory.mkdir()
+        fsync_directory(directory.parent)
+
+
+def validate_terminal_rejection(identity: RequestIdentity, path: Path, expected: str) -> dict:
+    """Recompute the normal source-observation validator; never trust caller flags."""
+    from job_observation_policy import assess_job_observation
+    if file_digest(path) != expected:
+        raise LivenessHold("HOLD_REJECTION_RECEIPT_HASH")
+    cloud = json.loads(path.read_text())
+    if any(cloud.get(key) != value for key, value in {
+        "standard": "VRS-COMPARATOR-DUAL-KERNEL-1", "status": "HOLD",
+        "provider": "VIRIDIS_COMPARATOR_CLOUD", "project": "viridis-lean-4.28",
+        "local_lean_execution": False, "credentials_recorded": False}.items()):
+        raise LivenessHold("HOLD_REJECTION_PROVIDER")
+    for field, expected_hash in (("request", identity.request_sha256),
+                                 ("formal_statement", identity.statement_sha256),
+                                 ("candidate", identity.candidate_sha256)):
+        binding = cloud.get(field, {})
+        if not isinstance(binding, dict) or binding.get("sha256") != expected_hash:
+            raise LivenessHold("HOLD_REJECTION_BINDING")
+        bound_path = Path(binding.get("path", ""))
+        if not bound_path.is_absolute() or file_digest(bound_path) != expected_hash:
+            raise LivenessHold("HOLD_REJECTION_BINDING")
+    request = json.loads(Path(cloud["request"]["path"]).read_text())
+    if (request.get("source_run") != identity.run_id
+            or hashlib.sha256(str(request.get("toolchain", "")).encode()).hexdigest() != identity.toolchain_sha256
+            or hashlib.sha256(str(request.get("mathlib_rev", "")).encode()).hexdigest() != identity.mathlib_sha256):
+        raise LivenessHold("HOLD_REJECTION_REQUEST_IDENTITY")
+    response = cloud.get("provider_response")
+    if not isinstance(response, dict) or response.get("type") != "verification-failed" or response.get("project") != cloud["project"]:
+        raise LivenessHold("HOLD_REJECTION_NOT_TERMINAL")
+    canonical = (json.dumps(response, sort_keys=True, separators=(",", ":")) + "\n").encode()
+    if hashlib.sha256(canonical).hexdigest() != cloud.get("provider_response_sha256"):
+        raise LivenessHold("HOLD_REJECTION_RESPONSE_HASH")
+    observation = assess_job_observation(response, request, identity.statement_sha256, identity.candidate_sha256)
+    if observation.get("status") != "OBSERVATION_MATCH_PARTIAL" or observation.get("source_binding_status") != "MATCH":
+        raise LivenessHold("HOLD_REJECTION_OBSERVATION")
+    terminal = response.get("terminationDiagnostics", {})
+    records = terminal.get("records", []) if isinstance(terminal, dict) else []
+    if (terminal.get("standard") != "VRS-COMPARATOR-TERMINATION-1"
+            or terminal.get("capture_status") != "RECORDED"
+            or terminal.get("requestId") != response.get("requestId")
+            or not any(isinstance(row, dict) and row.get("requestId") == response.get("requestId")
+                and row.get("phase") in {"compile-Challenge", "compile-Solution", "collect-theorems", "compare-kernels"}
+                and type(row.get("exitCode")) is int and row["exitCode"] != 0
+                and row.get("reason") == "exited" and row.get("signal") is None
+                and row.get("guard_fired") is False and isinstance(row.get("end"), str) and row["end"]
+                for row in records)):
+        raise LivenessHold("HOLD_REJECTION_TERMINAL_EVIDENCE")
+    return cloud
+
+
 def writer_hold_code(stdout: str) -> str:
     """Surface only an authenticated writer's bounded HOLD identifier.
 
@@ -97,7 +171,7 @@ def immutable_json(path: Path, value: dict) -> dict:
     encoded = (json.dumps(value, sort_keys=True, indent=2) + "\n").encode()
     if path.is_symlink() or path.parent.is_symlink():
         raise LivenessHold("HOLD_RECEIPT_SYMLINK")
-    path.parent.mkdir(parents=True, exist_ok=True)
+    durable_mkdir(path.parent)
     temporary = None
     try:
         with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as stream:
@@ -110,6 +184,9 @@ def immutable_json(path: Path, value: dict) -> dict:
         except FileExistsError:
             if path.read_bytes() != encoded:
                 raise LivenessHold("HOLD_IMMUTABLE_RECEIPT_COLLISION")
+        # A successful file fsync does not make the new directory entry durable.
+        # Dispatch authority must never escape before this link is persisted.
+        fsync_directory(path.parent)
     finally:
         if temporary:
             temporary.unlink(missing_ok=True)
@@ -121,7 +198,7 @@ class SchedulerLane:
     def __init__(self, root: Path, scheduler_id: str = SCHEDULER_ID):
         if scheduler_id != SCHEDULER_ID:
             raise LivenessHold("HOLD_SCHEDULER_OWNER")
-        self.root = Path(root)
+        self.root = Path(root).resolve()
         self.scheduler_id = scheduler_id
         self._owned = False
 
@@ -129,7 +206,7 @@ class SchedulerLane:
     def checkpoint(self):
         if self._owned:
             raise LivenessHold("HOLD_NESTED_CHECKPOINT")
-        self.root.mkdir(parents=True, exist_ok=True)
+        durable_mkdir(self.root)
         if self.root.is_symlink() or (self.root / "OWNER.lock").is_symlink():
             raise LivenessHold("HOLD_OWNER_SYMLINK")
         with (self.root / "OWNER.lock").open("a+") as lock:
@@ -211,8 +288,8 @@ class SchedulerLane:
         value = {**result, "standard": "VRS-IMMUTABLE-VERIFIED-RESULT-1"}
         return immutable_json(self.root / "results" / (identity.key + ".json"), value)
 
-    def record_rejection(self, identity: RequestIdentity, provider_receipt_sha256: str,
-                         failing_goal: str) -> dict:
+    def record_rejection(self, identity: RequestIdentity, provider_receipt: Path,
+                         provider_receipt_sha256: str, failing_goal: str) -> dict:
         """Free only an authenticated terminal slot; the request may never retry."""
         self._require_owner()
         reservations = self._rows("requests")
@@ -220,8 +297,12 @@ class SchedulerLane:
             raise LivenessHold("HOLD_RESERVATION_MISSING")
         if any(row["identity"] == asdict(identity) for row in self._rows("results")):
             raise LivenessHold("HOLD_ACCEPTED_REQUEST_IMMUTABLE")
-        if not DIGEST.fullmatch(provider_receipt_sha256) or not failing_goal.strip():
+        if (not isinstance(provider_receipt_sha256, str) or not DIGEST.fullmatch(provider_receipt_sha256)
+                or not isinstance(failing_goal, str) or not failing_goal.strip()):
             raise LivenessHold("HOLD_REJECTION_EVIDENCE_REQUIRED")
+        cloud = validate_terminal_rejection(identity, provider_receipt, provider_receipt_sha256)
+        if failing_goal not in str(cloud["provider_response"].get("output", "")):
+            raise LivenessHold("HOLD_REJECTION_GOAL_BINDING")
         value = {"standard": "VRS-IMMUTABLE-REJECTED-REQUEST-1", "identity": asdict(identity),
                  "provider_receipt_sha256": provider_receipt_sha256, "failing_goal": failing_goal}
         return immutable_json(self.root / "terminal" / (identity.key + ".json"), value)

@@ -1,14 +1,19 @@
 from dataclasses import asdict, replace
+import hashlib
 import json
+import os
 from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
+import stat
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scheduler_liveness import (LivenessHold, RequestIdentity, SchedulerLane,
                                oldest_target_credit, paper_review_pending, writer_hold_code,
                                scheduler_checkpoint)
+from job_observation_policy import STANDARD, PHASES, COMMON_FILES, KERNEL_FILES
 
 
 def identity(number):
@@ -34,6 +39,47 @@ class LivenessTests(unittest.TestCase):
 
     def accept(self, request):
         return self.lane.accept(request, accepted(request), lambda identity, result: True)
+
+    def rejection(self):
+        root = Path(self.temporary.name) / "provider"
+        root.mkdir(exist_ok=True)
+        paths = {name: root / name for name in ("request", "formal_statement", "candidate")}
+        paths["candidate"].write_text("frozen candidate")
+        paths["formal_statement"].write_text("frozen statement")
+        request = {"source_run": "Run-194", "toolchain": "leanprover/lean4:v4.28.0", "mathlib_rev": "b" * 40}
+        paths["request"].write_text(json.dumps(request))
+        digests = {key: hashlib.sha256(path.read_bytes()).hexdigest() for key, path in paths.items()}
+        identity = RequestIdentity("Run-194", digests["request"], digests["candidate"], digests["formal_statement"],
+            hashlib.sha256(request["toolchain"].encode()).hexdigest(), hashlib.sha256(request["mathlib_rev"].encode()).hexdigest())
+        def observed(digest="3" * 64):
+            return {"status": "OBSERVED", "sha256": digest, "actualPath": "/fixture/file"}
+        phases = []
+        for name in PHASES:
+            sources = {"Solution": observed(identity.candidate_sha256)} if name == "compile-Solution" else {"Challenge": observed(identity.statement_sha256)}
+            if name == "compare-kernels": sources["Solution"] = observed(identity.candidate_sha256)
+            phases.append({"standard": STANDARD, "phase": name, "executionId": "request-a",
+                "toolchainDeclaration": request["toolchain"], "sources": sources,
+                "files": {key: observed() for key in COMMON_FILES + (KERNEL_FILES if name == "compare-kernels" else ())},
+                "packages": [{"name": "mathlib", "manifestRevision": request["mathlib_rev"], "checkoutHead": request["mathlib_rev"]}]})
+        response = {"requestId": "request-a", "type": "verification-failed", "project": "viridis-lean-4.28", "output": "exact failing goal",
+            "executionEvidence": {"standard": STANDARD, "status": "OBSERVED_PARTIAL", "failures": [], "cacheEligible": False,
+                "compiledDependencyClosureSha256": None, "inputSha256": {"Challenge": identity.statement_sha256, "Solution": identity.candidate_sha256},
+                "executionId": "request-a", "delivery": {"mode": "FRESH_EXECUTION", "servedForRequestId": "request-a"},
+                "worker": {"nodeExecutable": observed(), "sourceAtLoad": observed()}, "phases": phases},
+            "terminationDiagnostics": {"standard": "VRS-COMPARATOR-TERMINATION-1", "capture_status": "RECORDED", "requestId": "request-a",
+                "records": [{"requestId": "request-a", "phase": "compile-Solution", "exitCode": 1, "reason": "exited", "signal": None,
+                             "guard_fired": False, "end": "2026-10-15T23:00:00Z"}]}}
+        cloud = {"standard": "VRS-COMPARATOR-DUAL-KERNEL-1", "status": "HOLD", "provider": "VIRIDIS_COMPARATOR_CLOUD",
+            "project": "viridis-lean-4.28", "local_lean_execution": False, "credentials_recorded": False,
+            **{name: {"path": str(path), "sha256": digests[name]} for name, path in paths.items()}, "provider_response": response}
+        path = root / "receipt.json"
+        self.write_rejection(path, cloud)
+        return identity, path, cloud
+
+    def write_rejection(self, path, cloud):
+        cloud["provider_response_sha256"] = hashlib.sha256((json.dumps(cloud["provider_response"], sort_keys=True, separators=(",", ":")) + "\n").encode()).hexdigest()
+        path.write_text(json.dumps(cloud))
+        return hashlib.sha256(path.read_bytes()).hexdigest()
 
     def test_A1_delayed_oldest_younger_accepted_never_publishes_or_earns_oldest_credit(self):
         with self.lane.checkpoint():
@@ -134,14 +180,83 @@ class LivenessTests(unittest.TestCase):
                 self.lane.accept(self.old, accepted(self.old), lambda *_: False)
 
     def test_rejection_frees_capacity_without_authorizing_retry(self):
+        rejected, receipt, cloud = self.rejection()
         with self.lane.checkpoint():
-            self.lane.reserve(self.old)
+            self.lane.reserve(rejected)
             self.lane.reserve(self.young)
-            self.lane.record_rejection(self.old, "b" * 64, "exact failing goal")
+            self.lane.record_rejection(rejected, receipt, hashlib.sha256(receipt.read_bytes()).hexdigest(), "exact failing goal")
             self.assertTrue(self.lane.reserve(self.third)["dispatch"])
-            self.assertFalse(self.lane.reserve(self.old)["dispatch"])
+            self.assertFalse(self.lane.reserve(rejected)["dispatch"])
             with self.assertRaisesRegex(LivenessHold, "REJECTED_REQUEST"):
-                self.accept(self.old)
+                self.accept(rejected)
+
+    def test_forged_or_ambiguous_rejection_never_frees_request_capacity(self):
+        rejected, receipt, cloud = self.rejection()
+        original = json.loads(json.dumps(cloud))
+        with self.lane.checkpoint():
+            self.lane.reserve(rejected)
+            self.lane.reserve(self.young)
+            mutations = [
+                lambda d: d.update(status="VERIFIED"),
+                lambda d: d["request"].update(sha256="a" * 64),
+                lambda d: d["candidate"].update(sha256="a" * 64),
+                lambda d: d["provider_response"].update(type="transport-timeout"),
+                lambda d: d["provider_response"]["terminationDiagnostics"]["records"][0].update(reason="timed-out"),
+                lambda d: d["provider_response"]["terminationDiagnostics"]["records"][0].update(guard_fired=True),
+                lambda d: d["provider_response"]["executionEvidence"].update(status="OBSERVATION_MATCH_PARTIAL"),
+            ]
+            for mutation in mutations:
+                cloud = json.loads(json.dumps(original)); mutation(cloud)
+                expected = self.write_rejection(receipt, cloud)
+                with self.subTest(mutation=mutation), self.assertRaises(LivenessHold):
+                    self.lane.record_rejection(rejected, receipt, expected, "exact failing goal")
+                with self.assertRaisesRegex(LivenessHold, "TWO_REQUEST_LIMIT"):
+                    self.lane.reserve(self.third)
+            with self.assertRaisesRegex(LivenessHold, "RECEIPT_HASH"):
+                self.lane.record_rejection(rejected, receipt, "b" * 64, "exact failing goal")
+
+    def test_directory_fsync_failure_never_returns_dispatch_authority(self):
+        original = os.fsync
+        written = False
+        def fault(fd):
+            nonlocal written
+            if not stat.S_ISDIR(os.fstat(fd).st_mode): written = True
+            if stat.S_ISDIR(os.fstat(fd).st_mode) and written:
+                raise OSError("injected directory durability failure")
+            return original(fd)
+        with self.lane.checkpoint(), patch("scheduler_liveness.os.fsync", side_effect=fault):
+            with self.assertRaisesRegex(OSError, "durability"):
+                self.lane.reserve(self.old)
+        with self.lane.checkpoint():
+            self.assertFalse(self.lane.reserve(self.old)["dispatch"])
+
+    def test_directory_entry_is_durable_before_dispatch_true(self):
+        original = os.fsync
+        directories = []
+        order = []
+        def observe(fd):
+            if stat.S_ISDIR(os.fstat(fd).st_mode): directories.append(fd)
+            order.append("directory" if stat.S_ISDIR(os.fstat(fd).st_mode) else "file")
+            return original(fd)
+        with self.lane.checkpoint(), patch("scheduler_liveness.os.fsync", side_effect=observe):
+            self.assertTrue(self.lane.reserve(self.old)["dispatch"])
+            self.assertGreaterEqual(len(directories), 1)
+            self.assertEqual(order[-2:], ["file", "directory"])
+
+    def test_new_lane_and_request_directory_ancestry_is_flushed(self):
+        import scheduler_liveness as source
+        original = source.fsync_directory
+        flushed = []
+        lane = SchedulerLane(Path(self.temporary.name) / "new-parent/new-lane")
+        def observe(path):
+            flushed.append(path)
+            return original(path)
+        with patch("scheduler_liveness.fsync_directory", side_effect=observe):
+            with lane.checkpoint():
+                self.assertTrue(lane.reserve(self.old)["dispatch"])
+        self.assertIn(lane.root.parent, flushed)
+        self.assertIn(lane.root, flushed)
+        self.assertIn(lane.root / "requests", flushed)
 
     def test_request_identity_cannot_be_reused_for_another_run(self):
         with self.lane.checkpoint():

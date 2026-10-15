@@ -1,4 +1,6 @@
 {
+  "G2_active": false,
+  "activation": "INACTIVE_UNMERGED",
   "base_commit": "de75ab450b3b527c8392032e02ab3436ba78dfc2",
   "files": [
     {
@@ -10,8 +12,17 @@
       "after_sha256": "2b98bdef1f132b36431b01c0df3e16629ab04cf6f86ca5a2545ebf9fa2fe0a1c",
       "before_sha256": "58e9c93920ff27c3d6035038bd77c53a1ff4bb075c991f2e2e02221d36b515f8",
       "path": "RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py"
+    },
+    {
+      "after_sha256": "f8677b4d509806b8a7b7d25a5a45556142add93b249944a363162e8495d14d3d",
+      "before_sha256": "f550c0f808bb15e603b875aed55962b0297731e5a2e4edf4aac99f33eab959df",
+      "path": "RESEARCH_PIPELINE_v2/nightly_checkpoint.py"
     }
   ],
   "installed": false,
-  "standard": "VRS-ENGINE-LIVENESS-INTEGRATION-1"
+  "scheduler_id": "viridis-nightly-science-generator",
+  "scheduler_nonprompt_fields_sha256": "fe6cfdd313e201a644f72370d0cc31d34d2fcd3ccdef5fad57bd1d2635bbe802",
+  "scheduler_prompt_before_sha256": "5b46a83d8d27bb70f8241da01b5351e7f21a8057b78903dc23f8366e54a3ea18",
+  "standard": "VRS-ENGINE-LIVENESS-INTEGRATION-1",
+  "unchanged_job_observation_sha256": "63aa5ad5ccd0b3c299b1a262d0a7ebd2ff96ff46294a73c86600ea8db47e73c8"
 }

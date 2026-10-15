@@ -29,8 +29,10 @@ proof checks, named checkpoint targets and publication gates.
    with `dispatch: false` never permits another send.
 2. On transport uncertainty, retain the reservation. Reconcile the exact
    original provider request; never retry or free the slot on a timeout alone.
-   `record_rejection` requires the terminal provider receipt hash and exact
-   failing goal, preserves the request and never authorizes a new attempt.
+   `record_rejection` reads the actual terminal provider receipt, verifies its
+   hash and every exact identity, recomputes the unchanged source-observation
+   validator and requires terminal process evidence plus the real failing goal.
+   It preserves the request and never authorizes a new attempt.
 3. On acceptance, use the existing issuer and its complete certificate
    validator, then call `accept` with the exact identity, artifact hashes and
    genuine kernel/premise/non-vacuity results. The supplied validator must
@@ -46,10 +48,11 @@ proof checks, named checkpoint targets and publication gates.
    runs once when `generation.due` is true before certification HOLD handling.
    It adds no generation cadence, model, budget or additional checkpoint.
 
-Activation remains incomplete until the merged helper is integrated into the
-existing generator's proof-lane instructions and source closure, all seven
-acceptance tests pass there, and a production checkpoint confirms ownership,
-request reconciliation and ordered admission. Tests of this library alone do
+The concrete inactive checkpoint adapter, exact source patch, queue/policy
+schema, supported prompt amendment and rollback are in
+`EXISTING_SCHEDULER_INTEGRATION.md`. Activation requires their reviewed merged
+installation and a production checkpoint confirming ownership, request
+reconciliation and ordered admission. Tests of this library alone do
 not establish DoD-9/DoD-10. Rollback disables new reservations, reconciles every
 in-flight request through its original identity, and retains all results and
 scientific/publication history.

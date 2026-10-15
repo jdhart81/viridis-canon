@@ -1,0 +1,13 @@
+--- a/RESEARCH_PIPELINE_v2/nightly_checkpoint.py
++++ b/RESEARCH_PIPELINE_v2/nightly_checkpoint.py
+@@ -160,0 +161,2 @@
++    group.add_argument("--drain-certification", type=Path, metavar="START_RECEIPT")
++    parser.add_argument("--certification-queue", type=Path)
+@@ -164,0 +167,7 @@
++        if args.drain_certification:
++            if args.certification_queue is None:
++                raise ValueError("hash-bound certification queue required")
++            from checkpoint_certification_lane import drain_checkpoint
++            result = drain_checkpoint(args.drain_certification, args.certification_queue)
++            print(json.dumps(result, indent=2, sort_keys=True))
++            return 2 if result["status"] == "HOLD" else 0

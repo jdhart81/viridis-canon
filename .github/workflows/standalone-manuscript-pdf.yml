@@ -31,7 +31,7 @@ jobs:
     name: standalone-manuscript-pdf (${{ matrix.python }})
     runs-on: ubuntu-latest
     env:
-      VIRIDIS_CORE_ROOT: ${{ runner.temp }}/viridis-core-fixture
+      VIRIDIS_CORE_ROOT: /tmp/viridis-core-fixture
     timeout-minutes: 20
     strategy:
       fail-fast: false

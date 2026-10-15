@@ -108,7 +108,7 @@ class MethodsDigestPointerTests(unittest.TestCase):
         schema=json.loads((ROOT/'docs/schemas/research-catalog-v1.json').read_text())
         group=schema['properties']['methods_digests']['items'];note=group['properties']['notes']['items'];label=note['properties']['semantic_labels']['items']
         for obj,fields in [(group,GROUP_FIELDS),(note,NOTE_FIELDS),(label,LABEL_FIELDS)]:
-            self.assertFalse(obj['additionalProperties']);self.assertEqual(set(obj['properties']),fields)
+            self.assertFalse(obj['additionalProperties']);self.assertEqual(set(obj['properties']),fields | ({'pdf_url','pdf_access'} if obj is note else set()))
             self.assertEqual(set(obj['required']),fields)
         self.assertIs(group['properties']['certifies']['const'],False)
         self.assertEqual(note['properties']['certifies']['const'],'LISTED_NOTE_SCOPE_ONLY')

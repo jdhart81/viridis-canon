@@ -1,0 +1,7 @@
+{
+  "status": "PREPARED_ONLY_NOT_APPLIED",
+  "codeowners_before_sha256": "bf4e1bb9743a45d290194d1f25a5a200cd6dabe7ad6ddcb443aeadcd933d5685",
+  "codeowners_after_sha256": "27924415c81a5ae6eeff2bc8bba1fb5363413d200c8d4837cab71ae470ba5916",
+  "ai_use_before_sha256": "202ad0cb2d993a023538aa442d9cc6c9c80360f38f513c365eb47bfa12bdb9b7",
+  "ai_use_after_sha256": "88159d041f2220e797a08c1a8755e9bf428ea5be2f98626cc46dd46f89e6e8bc"
+}

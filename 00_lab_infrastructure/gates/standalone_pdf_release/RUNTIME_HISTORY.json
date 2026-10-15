@@ -1,0 +1,3570 @@
+{
+  "active_runtime_path": "00_lab_infrastructure/gates/standalone_pdf_release/runtime",
+  "active_runtime_selected": "v012",
+  "active_semantic_label": "V012 source selected; existing failed health and no runtime admission retained",
+  "consolidation_base": "d32efdfe265471af814dd440c5ccecb3dd187e82",
+  "current_main_at_start": "de75ab450b3b527c8392032e02ab3436ba78dfc2",
+  "historical_source_manifest_sha256": "e6cf66122384c16089b9fdf66c813837b5ced2ebf84360fb3267e8f34c9b3219",
+  "historical_tag_objects": [
+    {
+      "name": "pdf-runtime-v001",
+      "object_sha": "606e97376cf93584d3e68ce263728c853968acb8",
+      "target_commit": "6fd1655229f0c181b434f22de68d2bebc52c704c"
+    },
+    {
+      "name": "pdf-runtime-v002",
+      "object_sha": "ea02f0affc2e9f2e848324a203ddbd911bf82ea7",
+      "target_commit": "fdea010c4356db2b9c40ffdb388fd8f1485fcd13"
+    },
+    {
+      "name": "pdf-runtime-v003",
+      "object_sha": "c02008db3dacd86dc8ce22087d788d9fb74285c5",
+      "target_commit": "80c7fa7fae9641b4278014003b32b2737489d089"
+    },
+    {
+      "name": "pdf-runtime-v004",
+      "object_sha": "3f378b820f1a7b20c339991b8896c5bfa30cb720",
+      "target_commit": "8bf7c50b7022d5cf2c270cb88f162b67faf5729e"
+    },
+    {
+      "name": "pdf-runtime-v005",
+      "object_sha": "74ea1067ca81b88129e0cb614a9924ee082ac237",
+      "target_commit": "44245edcbba9094221a6bde73c007098ab293cb2"
+    },
+    {
+      "name": "pdf-runtime-v006",
+      "object_sha": "60e0a0f41a8c65a34bdce8db775519347315a30d",
+      "target_commit": "934ac5e8cb0844cbd7d7a6531318cb3ebef07e95"
+    },
+    {
+      "name": "pdf-runtime-v007",
+      "object_sha": "5d48ca530fbe1b2631ea540a09972ae610766fb7",
+      "target_commit": "3fe4aacb31047c7dde2f9eaef0cc7389d1bc6d82"
+    },
+    {
+      "name": "pdf-runtime-v008",
+      "object_sha": "99152aa9ac025c44e89b39b348335dc9c85f8a6c",
+      "target_commit": "2f7853ecd89901f4481215e7d32d09757aadc07a"
+    },
+    {
+      "name": "pdf-runtime-v009",
+      "object_sha": "9ca71a35c0a9ac7bad8a0347677197af26230423",
+      "target_commit": "4bc65900b69768f81914a0a8ddd0f004a1313775"
+    },
+    {
+      "name": "pdf-runtime-v010",
+      "object_sha": "be62d50f0b8074c8a8253d14af8bd43f574da6f5",
+      "target_commit": "43f0d8cef04bef3dcd0b697980ca41c2eed4e395"
+    },
+    {
+      "name": "pdf-runtime-v011",
+      "object_sha": "b3e0f23aebe0443a1608ba37c96fd133a237dc63",
+      "target_commit": "faa27aa98e641616e665715ddf25a947739334f4"
+    },
+    {
+      "name": "pdf-runtime-v012",
+      "object_sha": "e34f70bf5257c84c514037be56294f147aefe75f",
+      "target_commit": "17c5878c871093c09878296926b962b4fbb4e2d4"
+    }
+  ],
+  "historical_tag_remote": "https://github.com/jdhart81/viridis-canon",
+  "historical_tag_verified_at_utc": "2026-10-14T23:36:43.526425+00:00",
+  "schema": "VRS-RUNTIME-HISTORY-1",
+  "status": "SOURCE_CONSOLIDATED_RUNTIME_NOT_ADMITTED",
+  "tags_created": true,
+  "unexpected_successor": {
+    "action": "preserved exact merge/tree/blob history; unselected source removed from HEAD without repair",
+    "merge_commit": "de75ab450b3b527c8392032e02ab3436ba78dfc2",
+    "version": "v013"
+  },
+  "versions": [
+    {
+      "files": [
+        {
+          "blob_sha": "01251e7da118d02f60f8ed33aa04565753b80540",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/ACTIVATION.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "bf39315c35e329dd02b279945459c482c8abfb4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/REGISTRY_INTERFACE.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d15f1fc5e959d357ca5a5f5d1477414f5145f8fd",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/digest_controller_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "cf7fddd00d8268dfef778f0774545105a92b8cf9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/install_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d8c73143d25ffbdd370053667d34b94663a506c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/invoke_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "cf9cfa28aa6c207b7823652dbd82d7f41ef6a064",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/manuscript_access_correction.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "332a7731d3b3673946c8641483bdbb836ed70d64",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "de2e5f72f007f21ef003beaab41b8af759b3064d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/manuscript_pdf_gate.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d612184f2d6a7f4cdfdf265057734b5adc2b0cd1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/methods_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b9d401c9611d13b5e90d750027122d29a75e98f9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/methods_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a60a94bf576532d72a7ef144d412e7268d103767",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/nightly_checkpoint_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5bfe06cfd4d5ab9365b6c19ac90f66e08bbfae71",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/packaging_catalog.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "42831ec7126bfc3bde9d84ad4263de01028a8eba",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/packaging_nightly.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d90d7d9f5c6c880a39e2520190343efe93e30a7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/packaging_nightly_coverage.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "de2620f13229db43b939c223ef712eda10fae88e",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/packaging_nightly_intake.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "9517d11f40ce4f20dce512185837359072294e73",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/packaging_run_flow.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "e315186cff6f0f68ee76efd3d9badc34964f899a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4d6b60eea4a1316054a62e5bc72cbb4f2e381db6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/publish_dated_bundles_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa8b8497fab244449ac9b24743378c4cb49e49cb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/publish_successor_wave_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7d0044f52f1d89df758b552e3418198e4e1c2668",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/tests/test_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b4edfe23c2be53b5574a3bcdbe8a56c6a573b298",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/tests/test_manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0f60645a2578861537ddab0db1e9f88746a87710",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/tests/test_packaging_controller.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "805f02be4931a2819fea67b87589e5fd3476c1ed",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/tests/test_packaging_default_routes.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa087507ac685f1984fbcf4b86c13969f2319ba1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v001/tests/test_packaging_runtime.py",
+          "type": "blob"
+        }
+      ],
+      "merge_commit": "6fd1655229f0c181b434f22de68d2bebc52c704c",
+      "planned_annotated_tag": "pdf-runtime-v001",
+      "tree_sha": "d01c788d4f38f0493dfd09cb6b0a46f3a84d06e4",
+      "version": "v001"
+    },
+    {
+      "files": [
+        {
+          "blob_sha": "ac71cfb255010aca364628d6e57c325f7a864b0c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/ACTIVATION.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "bf39315c35e329dd02b279945459c482c8abfb4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/REGISTRY_INTERFACE.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d15f1fc5e959d357ca5a5f5d1477414f5145f8fd",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/digest_controller_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7c3d7be37e3ca082f6e111f40746015b4ca66c5d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/install_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d8c73143d25ffbdd370053667d34b94663a506c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/invoke_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "cf9cfa28aa6c207b7823652dbd82d7f41ef6a064",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/manuscript_access_correction.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "332a7731d3b3673946c8641483bdbb836ed70d64",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "de2e5f72f007f21ef003beaab41b8af759b3064d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/manuscript_pdf_gate.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d612184f2d6a7f4cdfdf265057734b5adc2b0cd1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/methods_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b9d401c9611d13b5e90d750027122d29a75e98f9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/methods_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4131cb4aa502507ddbf53ff74dca18db0de84d27",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/nightly_checkpoint_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "52b23c6bcb39d8333293a5e1073524a20f946cec",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/packaging_catalog.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c855b3c850f18ef052f03a01384cdb3c023730cc",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/packaging_nightly.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d90d7d9f5c6c880a39e2520190343efe93e30a7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/packaging_nightly_coverage.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "360e9457319cc6a59b384bfe4ef6abb56321c529",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/packaging_nightly_intake.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "efcb8371b5843ff928c9c2ce3f4e97bc32d82a4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/packaging_run_flow.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c9143f41091435f90f3a909bd6d9a3ea0ffc1af9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4d6b60eea4a1316054a62e5bc72cbb4f2e381db6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/publish_dated_bundles_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa8b8497fab244449ac9b24743378c4cb49e49cb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/publish_successor_wave_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7d0044f52f1d89df758b552e3418198e4e1c2668",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/tests/test_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b4edfe23c2be53b5574a3bcdbe8a56c6a573b298",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/tests/test_manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0f60645a2578861537ddab0db1e9f88746a87710",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/tests/test_packaging_controller.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d6ddb95f5de335f9aa804063c2c0c5d4ce555ce5",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/tests/test_packaging_default_routes.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a8ef120cebe5b58fecc74c73b0a37d292c229c7b",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/tests/test_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "95006cc3836a2e5be1c52bcfafb1a60263abd23e",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/tests/test_packaging_v002_cold_scope.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5c26407558804815eff072fcb55cc7627fb588a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/tests/test_packaging_v002_data_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "22840f9783dae4370ba19dfbe8d0c2f2b78637ff",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/tests/test_packaging_v002_recovery.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9b319cb110eedab74df2fedbf0887b890b39af7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v002/tests/test_packaging_v002_route_order.py",
+          "type": "blob"
+        }
+      ],
+      "merge_commit": "fdea010c4356db2b9c40ffdb388fd8f1485fcd13",
+      "planned_annotated_tag": "pdf-runtime-v002",
+      "tree_sha": "fb25127c04e7550758ff01b8953b7d75c620fc7c",
+      "version": "v002"
+    },
+    {
+      "files": [
+        {
+          "blob_sha": "c1577c39e44d8240c7fce28f3e2458ef4d08c03d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/ACTIVATION.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "bf39315c35e329dd02b279945459c482c8abfb4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/REGISTRY_INTERFACE.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d15f1fc5e959d357ca5a5f5d1477414f5145f8fd",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/digest_controller_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa407ce44136a67c020fc7f8e5e21bb86f32d553",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/install_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d8c73143d25ffbdd370053667d34b94663a506c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/invoke_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "cf9cfa28aa6c207b7823652dbd82d7f41ef6a064",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/manuscript_access_correction.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "332a7731d3b3673946c8641483bdbb836ed70d64",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "de2e5f72f007f21ef003beaab41b8af759b3064d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/manuscript_pdf_gate.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d612184f2d6a7f4cdfdf265057734b5adc2b0cd1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/methods_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b9d401c9611d13b5e90d750027122d29a75e98f9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/methods_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4131cb4aa502507ddbf53ff74dca18db0de84d27",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/nightly_checkpoint_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c05fee0b1fd99b436fcefb0b07e5624d9f7d5c0e",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/packaging_catalog.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c855b3c850f18ef052f03a01384cdb3c023730cc",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/packaging_nightly.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d90d7d9f5c6c880a39e2520190343efe93e30a7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/packaging_nightly_coverage.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "360e9457319cc6a59b384bfe4ef6abb56321c529",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/packaging_nightly_intake.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "efcb8371b5843ff928c9c2ce3f4e97bc32d82a4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/packaging_run_flow.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "830bca08e6653fd4d324f8083e816432a90c1f51",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4d6b60eea4a1316054a62e5bc72cbb4f2e381db6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/publish_dated_bundles_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa8b8497fab244449ac9b24743378c4cb49e49cb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/publish_successor_wave_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7d0044f52f1d89df758b552e3418198e4e1c2668",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/tests/test_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b4edfe23c2be53b5574a3bcdbe8a56c6a573b298",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/tests/test_manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0f60645a2578861537ddab0db1e9f88746a87710",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/tests/test_packaging_controller.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d6ddb95f5de335f9aa804063c2c0c5d4ce555ce5",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/tests/test_packaging_default_routes.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "dc09925691be90be64c92d4bb05377214287fd6a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/tests/test_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "2160fa7726a3fded67e406e523980f4f9af2b2e9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/tests/test_packaging_v002_cold_scope.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5c26407558804815eff072fcb55cc7627fb588a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/tests/test_packaging_v002_data_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "9ecba2d7277524eb11a8fd5547f4cbfb02928208",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/tests/test_packaging_v002_recovery.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9b319cb110eedab74df2fedbf0887b890b39af7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/tests/test_packaging_v002_route_order.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5b6e200ca0a243504ac247c9137f480d8b8bde87",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/tests/test_packaging_v003_data_alias.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "46fff54c623d6835bd0a90d8b16566fdd99d4cf1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v003/tests/test_packaging_v003_predecessor.py",
+          "type": "blob"
+        }
+      ],
+      "merge_commit": "80c7fa7fae9641b4278014003b32b2737489d089",
+      "planned_annotated_tag": "pdf-runtime-v003",
+      "tree_sha": "0a022611a0ee123358a4ff62d112500de43bef30",
+      "version": "v003"
+    },
+    {
+      "files": [
+        {
+          "blob_sha": "742496de08295a721a70324388cc43aa6bc7128c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/ACTIVATION.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "bf39315c35e329dd02b279945459c482c8abfb4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/REGISTRY_INTERFACE.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d15f1fc5e959d357ca5a5f5d1477414f5145f8fd",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/digest_controller_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "718c54a8be6fc642d688cd047396d442c9eca5cf",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/install_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d8c73143d25ffbdd370053667d34b94663a506c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/invoke_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "cf9cfa28aa6c207b7823652dbd82d7f41ef6a064",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/manuscript_access_correction.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "332a7731d3b3673946c8641483bdbb836ed70d64",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "de2e5f72f007f21ef003beaab41b8af759b3064d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/manuscript_pdf_gate.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d612184f2d6a7f4cdfdf265057734b5adc2b0cd1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/methods_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b9d401c9611d13b5e90d750027122d29a75e98f9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/methods_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4131cb4aa502507ddbf53ff74dca18db0de84d27",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/nightly_checkpoint_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d8febe2a416cf772ff2edc17411f912d976bf5c5",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/packaging_catalog.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c855b3c850f18ef052f03a01384cdb3c023730cc",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/packaging_nightly.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d90d7d9f5c6c880a39e2520190343efe93e30a7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/packaging_nightly_coverage.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "360e9457319cc6a59b384bfe4ef6abb56321c529",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/packaging_nightly_intake.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "efcb8371b5843ff928c9c2ce3f4e97bc32d82a4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/packaging_run_flow.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "2a7e844cf972ed811fd7196e3f71e12729d96662",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4d6b60eea4a1316054a62e5bc72cbb4f2e381db6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/publish_dated_bundles_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa8b8497fab244449ac9b24743378c4cb49e49cb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/publish_successor_wave_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7d0044f52f1d89df758b552e3418198e4e1c2668",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/tests/test_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b4edfe23c2be53b5574a3bcdbe8a56c6a573b298",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/tests/test_manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0f60645a2578861537ddab0db1e9f88746a87710",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/tests/test_packaging_controller.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d6ddb95f5de335f9aa804063c2c0c5d4ce555ce5",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/tests/test_packaging_default_routes.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "1b752b89d296f3013c3f357b5773485c376624a5",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/tests/test_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f339829f979835db3f49a219f5113323bdd9ffb9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/tests/test_packaging_v002_cold_scope.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5c26407558804815eff072fcb55cc7627fb588a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/tests/test_packaging_v002_data_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "9ecba2d7277524eb11a8fd5547f4cbfb02928208",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/tests/test_packaging_v002_recovery.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9b319cb110eedab74df2fedbf0887b890b39af7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/tests/test_packaging_v002_route_order.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5b6e200ca0a243504ac247c9137f480d8b8bde87",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/tests/test_packaging_v003_data_alias.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "1c81fb360a18021bfbaf704c1068642e30698994",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/tests/test_packaging_v003_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5243e00693ca8f7e77f163bdfdca02c5dd46176",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/tests/test_packaging_v004_platform_timezone.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0b64a3fec30c9e338244bf821a3177f2490adde5",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v004/tests/test_packaging_v004_predecessor.py",
+          "type": "blob"
+        }
+      ],
+      "merge_commit": "8bf7c50b7022d5cf2c270cb88f162b67faf5729e",
+      "planned_annotated_tag": "pdf-runtime-v004",
+      "tree_sha": "d374bf95b4d5c47797778dc8f8b30b78b0f8df8b",
+      "version": "v004"
+    },
+    {
+      "files": [
+        {
+          "blob_sha": "49fd9f91f5a71be2dbac7c07b84a632363e7d209",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/ACTIVATION.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "e8f7e8daed7949fe655deb913d3fa33584f83741",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/REGISTRY_INTERFACE.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d15f1fc5e959d357ca5a5f5d1477414f5145f8fd",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/digest_controller_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b85397116b46060008c8b6d3b44081e96c1c6dd0",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/install_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d8c73143d25ffbdd370053667d34b94663a506c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/invoke_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "cf9cfa28aa6c207b7823652dbd82d7f41ef6a064",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/manuscript_access_correction.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "206bcfae4d91ae6573d2014d719c19950d323de4",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "de2e5f72f007f21ef003beaab41b8af759b3064d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/manuscript_pdf_gate.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d612184f2d6a7f4cdfdf265057734b5adc2b0cd1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/methods_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b9d401c9611d13b5e90d750027122d29a75e98f9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/methods_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4131cb4aa502507ddbf53ff74dca18db0de84d27",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/nightly_checkpoint_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "655b08c0724e7e78e22ab8ed23125e392abd126c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/packaging_catalog.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c855b3c850f18ef052f03a01384cdb3c023730cc",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/packaging_nightly.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d90d7d9f5c6c880a39e2520190343efe93e30a7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/packaging_nightly_coverage.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "360e9457319cc6a59b384bfe4ef6abb56321c529",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/packaging_nightly_intake.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "efcb8371b5843ff928c9c2ce3f4e97bc32d82a4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/packaging_run_flow.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "eca8f6c64603e842192502b4789f1f647d48168d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4d6b60eea4a1316054a62e5bc72cbb4f2e381db6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/publish_dated_bundles_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa8b8497fab244449ac9b24743378c4cb49e49cb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/publish_successor_wave_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7d0044f52f1d89df758b552e3418198e4e1c2668",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b4edfe23c2be53b5574a3bcdbe8a56c6a573b298",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0f60645a2578861537ddab0db1e9f88746a87710",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_packaging_controller.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d6ddb95f5de335f9aa804063c2c0c5d4ce555ce5",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_packaging_default_routes.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "795ae6caed0b5e39f2572961f169503b1f31dddf",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "17bd0bc54f00eacb1ca2fa25cc8192cec6a6a404",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_packaging_v002_cold_scope.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5c26407558804815eff072fcb55cc7627fb588a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_packaging_v002_data_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "9ecba2d7277524eb11a8fd5547f4cbfb02928208",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_packaging_v002_recovery.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9b319cb110eedab74df2fedbf0887b890b39af7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_packaging_v002_route_order.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5b6e200ca0a243504ac247c9137f480d8b8bde87",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_packaging_v003_data_alias.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "1c81fb360a18021bfbaf704c1068642e30698994",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_packaging_v003_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5243e00693ca8f7e77f163bdfdca02c5dd46176",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_packaging_v004_platform_timezone.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "920adb902581a1dff3d1d986c72c98712a7d1f02",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_packaging_v004_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "bf4002687f9f1cddc2630f9dafb68dd19bd258b1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_packaging_v005_data_material_reuse.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "07f4e947eeae6fba0007ec5544aee3d57e10aff7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_packaging_v005_hold_diagnostic.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "09e41ca81669b85c1cc21c571d3e9bfa59010fed",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_packaging_v005_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9fbafa66696576b32e39efb84c28c004bed979e",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v005/tests/test_packaging_v005_registry_deadline.py",
+          "type": "blob"
+        }
+      ],
+      "merge_commit": "44245edcbba9094221a6bde73c007098ab293cb2",
+      "planned_annotated_tag": "pdf-runtime-v005",
+      "tree_sha": "26887ddf6e1228fe6f901769cab224bfa5a28127",
+      "version": "v005"
+    },
+    {
+      "files": [
+        {
+          "blob_sha": "0e7ca946370e2c3ed8806a44ce43c1b64218c70a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/ACTIVATION.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "3cdb4c75fb78d8cddcacd881e39252bdef69b587",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/REGISTRY_INTERFACE.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d15f1fc5e959d357ca5a5f5d1477414f5145f8fd",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/digest_controller_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4ec1e1a7bc18f2e768c2c4e06e714090537996f8",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/guard_methods_digest_release.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "42b5f04e68328b7c266e2fb53bbdae582d056550",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/install_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d8c73143d25ffbdd370053667d34b94663a506c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/invoke_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "cf9cfa28aa6c207b7823652dbd82d7f41ef6a064",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/manuscript_access_correction.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "206bcfae4d91ae6573d2014d719c19950d323de4",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "de2e5f72f007f21ef003beaab41b8af759b3064d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/manuscript_pdf_gate.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d612184f2d6a7f4cdfdf265057734b5adc2b0cd1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/methods_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b9d401c9611d13b5e90d750027122d29a75e98f9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/methods_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4131cb4aa502507ddbf53ff74dca18db0de84d27",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/nightly_checkpoint_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6faccd285261aa8c21b5de268697e3b7618fadc5",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/packaging_catalog.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c855b3c850f18ef052f03a01384cdb3c023730cc",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/packaging_nightly.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d90d7d9f5c6c880a39e2520190343efe93e30a7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/packaging_nightly_coverage.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "360e9457319cc6a59b384bfe4ef6abb56321c529",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/packaging_nightly_intake.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "efcb8371b5843ff928c9c2ce3f4e97bc32d82a4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/packaging_run_flow.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "eaee1eab66710b77e472066bfe9e0f91f791f276",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4d6b60eea4a1316054a62e5bc72cbb4f2e381db6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/publish_dated_bundles_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa8b8497fab244449ac9b24743378c4cb49e49cb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/publish_successor_wave_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7d0044f52f1d89df758b552e3418198e4e1c2668",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b4edfe23c2be53b5574a3bcdbe8a56c6a573b298",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "64df3d1d48415a7f72bcae1315a9b2c079440937",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_outer_digest_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0f60645a2578861537ddab0db1e9f88746a87710",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_controller.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d6ddb95f5de335f9aa804063c2c0c5d4ce555ce5",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_default_routes.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "df57e000827a13099a1949e4073526a58d21eab8",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "62392153de94e49967556edc1ecae36618c95fdf",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_v002_cold_scope.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5c26407558804815eff072fcb55cc7627fb588a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_v002_data_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "9ecba2d7277524eb11a8fd5547f4cbfb02928208",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_v002_recovery.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9b319cb110eedab74df2fedbf0887b890b39af7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_v002_route_order.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b1c9a123aead016750443fa5fc372225a8935bac",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_v003_data_alias.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "1c81fb360a18021bfbaf704c1068642e30698994",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_v003_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5243e00693ca8f7e77f163bdfdca02c5dd46176",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_v004_platform_timezone.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "920adb902581a1dff3d1d986c72c98712a7d1f02",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_v004_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "bf4002687f9f1cddc2630f9dafb68dd19bd258b1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_v005_data_material_reuse.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "07f4e947eeae6fba0007ec5544aee3d57e10aff7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_v005_hold_diagnostic.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a091841ed6be62a824273d79d6788984ae53bc85",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_v005_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9fbafa66696576b32e39efb84c28c004bed979e",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_v005_registry_deadline.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0482a27ed328e85d31aca998639dc2b143c3a50c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_v006_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "ca975dcdb4f95b87503009a67762372c2fd2bbba",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v006/tests/test_packaging_v006_pure_data_paths.py",
+          "type": "blob"
+        }
+      ],
+      "merge_commit": "934ac5e8cb0844cbd7d7a6531318cb3ebef07e95",
+      "planned_annotated_tag": "pdf-runtime-v006",
+      "tree_sha": "b7f8fb2ee53786db66f4ad2cbce405a1edfab205",
+      "version": "v006"
+    },
+    {
+      "files": [
+        {
+          "blob_sha": "34ef15c089abeb936f8f11c36e141c00ac6646db",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/ACTIVATION.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "9d48aa1c678f2b8b135182b8e4b1e84e42c8fd55",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/REGISTRY_INTERFACE.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d15f1fc5e959d357ca5a5f5d1477414f5145f8fd",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/digest_controller_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "89b61ea767c9fb026897b0242b0ed10181062ff0",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/guard_methods_digest_release.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "33f62bc67fdd909168a3ad1203feef8911ad1556",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/install_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d8c73143d25ffbdd370053667d34b94663a506c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/invoke_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "cf9cfa28aa6c207b7823652dbd82d7f41ef6a064",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/manuscript_access_correction.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "130dd970a551f2d13ac8df172b7ad75905f94952",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "de2e5f72f007f21ef003beaab41b8af759b3064d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/manuscript_pdf_gate.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d612184f2d6a7f4cdfdf265057734b5adc2b0cd1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/methods_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b9d401c9611d13b5e90d750027122d29a75e98f9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/methods_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4131cb4aa502507ddbf53ff74dca18db0de84d27",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/nightly_checkpoint_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "025d2c63705e59f4f72219f120fb19b4032443c2",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/owner_content_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa81af588b9450ddc0920b90356f39ef4065aee9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/packaging_catalog.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c262c3315795b41ba80d600c0e0046cdf23b1ea6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/packaging_nightly.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d90d7d9f5c6c880a39e2520190343efe93e30a7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/packaging_nightly_coverage.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "360e9457319cc6a59b384bfe4ef6abb56321c529",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/packaging_nightly_intake.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "efcb8371b5843ff928c9c2ce3f4e97bc32d82a4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/packaging_run_flow.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6d96c9ea1cd688bf21c496239ad17c995bb39cc6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4d6b60eea4a1316054a62e5bc72cbb4f2e381db6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/publish_dated_bundles_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa8b8497fab244449ac9b24743378c4cb49e49cb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/publish_successor_wave_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d0d8a1399edf471c271eeb371300948af1076fc6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/scientific_registration_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7d0044f52f1d89df758b552e3418198e4e1c2668",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b4edfe23c2be53b5574a3bcdbe8a56c6a573b298",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b356fbd24ba421d44f3a3dfade1c357ccb0da33a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_outer_digest_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "53dcdbd9980a14da88d183a9a55e127b38d03aa4",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_owner_content_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0f60645a2578861537ddab0db1e9f88746a87710",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_controller.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "68742d7f487ea19176f97bc9176a465dc3fa0c91",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_default_routes.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "2b2075bd3ec330567a0b701436949c618d990257",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "12379288f8c7124677c35c6ba300c33be2ffb328",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v002_cold_scope.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5c26407558804815eff072fcb55cc7627fb588a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v002_data_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "3486bc724a4662fe3f3a1bed05818c97cf05f575",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v002_recovery.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9b319cb110eedab74df2fedbf0887b890b39af7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v002_route_order.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b1c9a123aead016750443fa5fc372225a8935bac",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v003_data_alias.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6cd5c777db9dbd1dde198656f006a04969b3172c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v003_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5243e00693ca8f7e77f163bdfdca02c5dd46176",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v004_platform_timezone.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "be1e2ff6b053a8b84d9d8f440ea2de9f5af3b492",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v004_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "bf4002687f9f1cddc2630f9dafb68dd19bd258b1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v005_data_material_reuse.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "07f4e947eeae6fba0007ec5544aee3d57e10aff7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v005_hold_diagnostic.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5e2b3dfd7867d9bf20f538a4c81f7f2cae55a9d6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v005_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9fbafa66696576b32e39efb84c28c004bed979e",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v005_registry_deadline.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d59d0bc9f4e6195148e201181ff2196f297bf979",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v006_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "ca975dcdb4f95b87503009a67762372c2fd2bbba",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v006_pure_data_paths.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "ab845e4808d440b9bd130960b54488fa62fc9f9d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v007_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d0526e3b9830ba8be253ff25c19a88ddcaf187a7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_packaging_v007_worker_sources.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "8f08c138ec09aa19165ee2f2f9a38a1722ee7aa9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_scientific_registration_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "677ab7f5ac8b96c46e852ac09822f3ef3bdd82eb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_v007_health_supervision.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c93db298d46625c1547e8458290298ca7603f700",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_v007_owner_context_integration.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5e0d2279cfcad31fc25936dbb584315f38f82539",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/tests/test_v007_scientific_schedule_integration.py",
+          "type": "blob"
+        }
+      ],
+      "merge_commit": "3fe4aacb31047c7dde2f9eaef0cc7389d1bc6d82",
+      "planned_annotated_tag": "pdf-runtime-v007",
+      "tree_sha": "910a50b8e2d67d8210a306b9e34903ba719dfeec",
+      "version": "v007"
+    },
+    {
+      "files": [
+        {
+          "blob_sha": "7405299ce85a18814e068fd129c525bbf38d4062",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/ACTIVATION.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "764ebf75ab3e113e4d2c9dd1fa4405ab7f89ef5f",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/REGISTRY_INTERFACE.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d15f1fc5e959d357ca5a5f5d1477414f5145f8fd",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/digest_controller_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6074aeb10bfc8fd2a36aef793d170207be4ee55a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/guard_methods_digest_release.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a7e3a06dfcc446128149b85ceec1d2b14042c362",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/install_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d8c73143d25ffbdd370053667d34b94663a506c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/invoke_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "cf9cfa28aa6c207b7823652dbd82d7f41ef6a064",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/manuscript_access_correction.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "130dd970a551f2d13ac8df172b7ad75905f94952",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "de2e5f72f007f21ef003beaab41b8af759b3064d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/manuscript_pdf_gate.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d612184f2d6a7f4cdfdf265057734b5adc2b0cd1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/methods_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b9d401c9611d13b5e90d750027122d29a75e98f9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/methods_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4131cb4aa502507ddbf53ff74dca18db0de84d27",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/nightly_checkpoint_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "8a287bd4d0516519a41c2bbd43a1844ab6db4c6d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/owner_content_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa81af588b9450ddc0920b90356f39ef4065aee9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/packaging_catalog.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c262c3315795b41ba80d600c0e0046cdf23b1ea6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/packaging_nightly.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d90d7d9f5c6c880a39e2520190343efe93e30a7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/packaging_nightly_coverage.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "360e9457319cc6a59b384bfe4ef6abb56321c529",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/packaging_nightly_intake.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "efcb8371b5843ff928c9c2ce3f4e97bc32d82a4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/packaging_run_flow.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "99ec3b661ec7e9e2da5df966fe5cc93aad1d79f8",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4d6b60eea4a1316054a62e5bc72cbb4f2e381db6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/publish_dated_bundles_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa8b8497fab244449ac9b24743378c4cb49e49cb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/publish_successor_wave_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5aafdd44b480fd12f4d8009b0c8054391acb79c0",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/scientific_registration_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7d0044f52f1d89df758b552e3418198e4e1c2668",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b4edfe23c2be53b5574a3bcdbe8a56c6a573b298",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "38f8c8dfa95ea4a8847dee4b305017a5c025e9c9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_outer_digest_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5583ea23e5366f6f7a6259c9dc1a0c41e5da342e",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_owner_content_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0f60645a2578861537ddab0db1e9f88746a87710",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_controller.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "68742d7f487ea19176f97bc9176a465dc3fa0c91",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_default_routes.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "57e9aac7f7f3ef69c71ecd7e6f8b428e45999606",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "65a4df919e0f48a21be647558c218eb7ff2636d4",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v002_cold_scope.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5c26407558804815eff072fcb55cc7627fb588a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v002_data_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "3486bc724a4662fe3f3a1bed05818c97cf05f575",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v002_recovery.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9b319cb110eedab74df2fedbf0887b890b39af7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v002_route_order.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b1c9a123aead016750443fa5fc372225a8935bac",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v003_data_alias.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6cd5c777db9dbd1dde198656f006a04969b3172c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v003_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5243e00693ca8f7e77f163bdfdca02c5dd46176",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v004_platform_timezone.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "be1e2ff6b053a8b84d9d8f440ea2de9f5af3b492",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v004_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "bf4002687f9f1cddc2630f9dafb68dd19bd258b1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v005_data_material_reuse.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "07f4e947eeae6fba0007ec5544aee3d57e10aff7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v005_hold_diagnostic.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5e2b3dfd7867d9bf20f538a4c81f7f2cae55a9d6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v005_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9fbafa66696576b32e39efb84c28c004bed979e",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v005_registry_deadline.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "64feb4843d6c28b91b43756a3adf6b8463774165",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v006_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "ca975dcdb4f95b87503009a67762372c2fd2bbba",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v006_pure_data_paths.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "9fdf086e6458cd65d676adac62c984bf7833ab4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v007_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "752e1b454427e21361045d52d85d290d94fe5adc",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v007_worker_sources.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "3d40bfe687f3e796fb31de172e2156e154ad3a48",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_packaging_v008_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "e05d37b71ca84771c725ba3977210ff0d0c54c30",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_scientific_registration_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "677ab7f5ac8b96c46e852ac09822f3ef3bdd82eb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_v007_health_supervision.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c93db298d46625c1547e8458290298ca7603f700",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_v007_owner_context_integration.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5e0d2279cfcad31fc25936dbb584315f38f82539",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_v007_scientific_schedule_integration.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0be2fdb2d1d77fd4500a74f6241da059432fb59a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/tests/test_v008_actual_registry_topology.py",
+          "type": "blob"
+        }
+      ],
+      "merge_commit": "2f7853ecd89901f4481215e7d32d09757aadc07a",
+      "planned_annotated_tag": "pdf-runtime-v008",
+      "tree_sha": "f6f6a3b0dd8075d05c2deaa6b463e5536274d114",
+      "version": "v008"
+    },
+    {
+      "files": [
+        {
+          "blob_sha": "f459650e18062efd4194adb265d090ddb84df4a8",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/ACTIVATION.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "8e45cd7a1a52d1647542a5e1b3d8920a5a3b1a3d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/REGISTRY_INTERFACE.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d15f1fc5e959d357ca5a5f5d1477414f5145f8fd",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/digest_controller_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "1ee35bbbf0d93aff28ced0cfe31d4687d0b1f349",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/guard_methods_digest_release.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d84bcbd558e6ba6bd67511293e0edd6de36d4b92",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/install_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d8c73143d25ffbdd370053667d34b94663a506c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/invoke_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "cf9cfa28aa6c207b7823652dbd82d7f41ef6a064",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/manuscript_access_correction.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "130dd970a551f2d13ac8df172b7ad75905f94952",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "de2e5f72f007f21ef003beaab41b8af759b3064d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/manuscript_pdf_gate.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d612184f2d6a7f4cdfdf265057734b5adc2b0cd1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/methods_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b9d401c9611d13b5e90d750027122d29a75e98f9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/methods_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4131cb4aa502507ddbf53ff74dca18db0de84d27",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/nightly_checkpoint_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6cb9b22d72c2c121d14c08aa8abfe4c6a3ccf8ba",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/owner_content_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa81af588b9450ddc0920b90356f39ef4065aee9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/packaging_catalog.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c262c3315795b41ba80d600c0e0046cdf23b1ea6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/packaging_nightly.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d90d7d9f5c6c880a39e2520190343efe93e30a7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/packaging_nightly_coverage.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "360e9457319cc6a59b384bfe4ef6abb56321c529",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/packaging_nightly_intake.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "efcb8371b5843ff928c9c2ce3f4e97bc32d82a4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/packaging_run_flow.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "12e48642c6b326fe10830f186b4dff026efef27f",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4d6b60eea4a1316054a62e5bc72cbb4f2e381db6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/publish_dated_bundles_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa8b8497fab244449ac9b24743378c4cb49e49cb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/publish_successor_wave_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5eebe36f96a3ffdf44f0b4de43e3432c3a81b297",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/scientific_registration_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7d0044f52f1d89df758b552e3418198e4e1c2668",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b4edfe23c2be53b5574a3bcdbe8a56c6a573b298",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "90f5107c95e04439b4862f7e0d5d84e4ee5002bd",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_outer_digest_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "06de3af03253f6bb3f326b2ddb3fee730e027eff",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_owner_content_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0f60645a2578861537ddab0db1e9f88746a87710",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_controller.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "68742d7f487ea19176f97bc9176a465dc3fa0c91",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_default_routes.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "44b1c9ca720e81b85b41b96742710f74d7cc13ec",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c01fe42663846d91d1fe597042fc95bf3ee3df0c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v002_cold_scope.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5c26407558804815eff072fcb55cc7627fb588a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v002_data_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "3486bc724a4662fe3f3a1bed05818c97cf05f575",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v002_recovery.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9b319cb110eedab74df2fedbf0887b890b39af7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v002_route_order.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b1c9a123aead016750443fa5fc372225a8935bac",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v003_data_alias.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6cd5c777db9dbd1dde198656f006a04969b3172c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v003_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5243e00693ca8f7e77f163bdfdca02c5dd46176",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v004_platform_timezone.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "be1e2ff6b053a8b84d9d8f440ea2de9f5af3b492",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v004_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "bf4002687f9f1cddc2630f9dafb68dd19bd258b1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v005_data_material_reuse.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "07f4e947eeae6fba0007ec5544aee3d57e10aff7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v005_hold_diagnostic.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5e2b3dfd7867d9bf20f538a4c81f7f2cae55a9d6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v005_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9fbafa66696576b32e39efb84c28c004bed979e",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v005_registry_deadline.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "e0bf3ada332137b3eac9402557519dd1172c02f1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v006_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "ca975dcdb4f95b87503009a67762372c2fd2bbba",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v006_pure_data_paths.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7f290ae919d457f5257fee7fd25d1a63927bdbad",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v007_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "ea05f00d6ef94bc0cf2d5fb4cf5aafafd70c3732",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v007_worker_sources.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d9a5b3515dc553abc80a8f71258c770b0a22286c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v008_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f79895658e2557eaede1f12dc47c131af713e2a4",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_packaging_v009_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "029320d5a14e5a3ea14be85e6b4efafe0ee14ee0",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_scientific_registration_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "677ab7f5ac8b96c46e852ac09822f3ef3bdd82eb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_v007_health_supervision.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c93db298d46625c1547e8458290298ca7603f700",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_v007_owner_context_integration.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5e0d2279cfcad31fc25936dbb584315f38f82539",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_v007_scientific_schedule_integration.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0be2fdb2d1d77fd4500a74f6241da059432fb59a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/tests/test_v008_actual_registry_topology.py",
+          "type": "blob"
+        }
+      ],
+      "merge_commit": "4bc65900b69768f81914a0a8ddd0f004a1313775",
+      "planned_annotated_tag": "pdf-runtime-v009",
+      "tree_sha": "daefeda9b7e3dcc55854cc5bf0c29d16c10001ea",
+      "version": "v009"
+    },
+    {
+      "files": [
+        {
+          "blob_sha": "947cb21fe62a5f8d36e00aaedc2284d1b53e5f25",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/ACTIVATION.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5f67f2c118785b7dd0e928e2335f92faf8af07d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/REGISTRY_INTERFACE.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d15f1fc5e959d357ca5a5f5d1477414f5145f8fd",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/digest_controller_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7149917e34d08b80869b35cfefc0fbe722132760",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/guard_methods_digest_release.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "fe16a2ef78e66f3678693ffc1fa3b45feb601c2a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/install_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d8c73143d25ffbdd370053667d34b94663a506c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/invoke_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "cf9cfa28aa6c207b7823652dbd82d7f41ef6a064",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/manuscript_access_correction.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "130dd970a551f2d13ac8df172b7ad75905f94952",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "de2e5f72f007f21ef003beaab41b8af759b3064d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/manuscript_pdf_gate.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d612184f2d6a7f4cdfdf265057734b5adc2b0cd1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/methods_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b9d401c9611d13b5e90d750027122d29a75e98f9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/methods_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4131cb4aa502507ddbf53ff74dca18db0de84d27",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/nightly_checkpoint_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f1f4438204f04c2c3d70a54bfb89c11a579d863d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/owner_content_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa81af588b9450ddc0920b90356f39ef4065aee9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/packaging_catalog.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c262c3315795b41ba80d600c0e0046cdf23b1ea6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/packaging_nightly.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d90d7d9f5c6c880a39e2520190343efe93e30a7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/packaging_nightly_coverage.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "360e9457319cc6a59b384bfe4ef6abb56321c529",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/packaging_nightly_intake.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "efcb8371b5843ff928c9c2ce3f4e97bc32d82a4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/packaging_run_flow.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4b428af8b79f21040cb3be657bbc1743a5e60567",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4d6b60eea4a1316054a62e5bc72cbb4f2e381db6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/publish_dated_bundles_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa8b8497fab244449ac9b24743378c4cb49e49cb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/publish_successor_wave_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "cd31dcafcee763bf067572e64964c96674067942",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/scientific_registration_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7d0044f52f1d89df758b552e3418198e4e1c2668",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b4edfe23c2be53b5574a3bcdbe8a56c6a573b298",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d5685601ec523aea8dcf84b51352f1b769e4ba13",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_outer_digest_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0005933b6ccee1b33f642d611e90ac91f354cd07",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_owner_content_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0f60645a2578861537ddab0db1e9f88746a87710",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_controller.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "68742d7f487ea19176f97bc9176a465dc3fa0c91",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_default_routes.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4f79adb3628ee472ecf0527121d1ef6cf180f9a1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "72d90f5b7c7b5b5b0a154735c4a5efd168b86c2f",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v002_cold_scope.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5c26407558804815eff072fcb55cc7627fb588a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v002_data_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "3486bc724a4662fe3f3a1bed05818c97cf05f575",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v002_recovery.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9b319cb110eedab74df2fedbf0887b890b39af7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v002_route_order.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b1c9a123aead016750443fa5fc372225a8935bac",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v003_data_alias.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6cd5c777db9dbd1dde198656f006a04969b3172c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v003_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5243e00693ca8f7e77f163bdfdca02c5dd46176",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v004_platform_timezone.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "be1e2ff6b053a8b84d9d8f440ea2de9f5af3b492",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v004_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "bf4002687f9f1cddc2630f9dafb68dd19bd258b1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v005_data_material_reuse.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "07f4e947eeae6fba0007ec5544aee3d57e10aff7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v005_hold_diagnostic.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5e2b3dfd7867d9bf20f538a4c81f7f2cae55a9d6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v005_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9fbafa66696576b32e39efb84c28c004bed979e",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v005_registry_deadline.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "2455a7e5eb9134e293073af7b79e283162d72229",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v006_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "ca975dcdb4f95b87503009a67762372c2fd2bbba",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v006_pure_data_paths.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "719316105ee1165567d4d5f24629639633a64f03",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v007_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "80ca0df5c8598012f7474e9409cf17370182e664",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v007_worker_sources.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "68ff0f7c33a4c280e1f0138f3bdc06d9ca898beb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v008_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "06da101fe15399fc1617b16af036c0d00caf2bae",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v009_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "969226f69d643b3c441df77a5646dfffe35624f7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_packaging_v010_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f462d807c1c5906b8816afc0ab91f27bce177191",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_scientific_registration_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "677ab7f5ac8b96c46e852ac09822f3ef3bdd82eb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_v007_health_supervision.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c93db298d46625c1547e8458290298ca7603f700",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_v007_owner_context_integration.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5e0d2279cfcad31fc25936dbb584315f38f82539",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_v007_scientific_schedule_integration.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0be2fdb2d1d77fd4500a74f6241da059432fb59a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/tests/test_v008_actual_registry_topology.py",
+          "type": "blob"
+        }
+      ],
+      "merge_commit": "43f0d8cef04bef3dcd0b697980ca41c2eed4e395",
+      "planned_annotated_tag": "pdf-runtime-v010",
+      "tree_sha": "de35c4f154d1604703af6cdd56cce26a77d2d5c8",
+      "version": "v010"
+    },
+    {
+      "files": [
+        {
+          "blob_sha": "7427977dca60ae1ab8bef2f369a6323eac30c6c2",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/ACTIVATION.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a797470e27bf8a221620c56582e93fcb643e56d3",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/REGISTRY_INTERFACE.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d15f1fc5e959d357ca5a5f5d1477414f5145f8fd",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/digest_controller_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "846636bf333b35534bd4db5dea7f368998dc9a61",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/guard_methods_digest_release.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "e2c98b56049a426eed08400aed17839def2c421e",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/install_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d8c73143d25ffbdd370053667d34b94663a506c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/invoke_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "cf9cfa28aa6c207b7823652dbd82d7f41ef6a064",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/manuscript_access_correction.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "130dd970a551f2d13ac8df172b7ad75905f94952",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "de2e5f72f007f21ef003beaab41b8af759b3064d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/manuscript_pdf_gate.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d612184f2d6a7f4cdfdf265057734b5adc2b0cd1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/methods_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b9d401c9611d13b5e90d750027122d29a75e98f9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/methods_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4131cb4aa502507ddbf53ff74dca18db0de84d27",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/nightly_checkpoint_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6763ab6ddb7daaebd7309d02cbd199045100cc7f",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/owner_content_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa81af588b9450ddc0920b90356f39ef4065aee9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/packaging_catalog.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c262c3315795b41ba80d600c0e0046cdf23b1ea6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/packaging_nightly.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d90d7d9f5c6c880a39e2520190343efe93e30a7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/packaging_nightly_coverage.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "360e9457319cc6a59b384bfe4ef6abb56321c529",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/packaging_nightly_intake.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "efcb8371b5843ff928c9c2ce3f4e97bc32d82a4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/packaging_run_flow.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4f8b3eb67c05505e30ef8c8dd6831d9357354cf8",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4d6b60eea4a1316054a62e5bc72cbb4f2e381db6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/publish_dated_bundles_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa8b8497fab244449ac9b24743378c4cb49e49cb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/publish_successor_wave_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f8fbe5717caec07a3fb6e8122480ef698cafc88c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/scientific_registration_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7d0044f52f1d89df758b552e3418198e4e1c2668",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b4edfe23c2be53b5574a3bcdbe8a56c6a573b298",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "9869b0c200ab2d8d11d23aff9e2e5853a16bcf05",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_outer_digest_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "8f113c9344f6337034090aa7c93823d17e3e855c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_owner_content_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0f60645a2578861537ddab0db1e9f88746a87710",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_controller.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "68742d7f487ea19176f97bc9176a465dc3fa0c91",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_default_routes.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "580d68bd2e8c4d2b0b814c21a0a4ae2e3f252c19",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "e54c08c66173968f1c7b6cca55b378ae83d56b77",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v002_cold_scope.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5c26407558804815eff072fcb55cc7627fb588a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v002_data_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "3486bc724a4662fe3f3a1bed05818c97cf05f575",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v002_recovery.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9b319cb110eedab74df2fedbf0887b890b39af7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v002_route_order.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b1c9a123aead016750443fa5fc372225a8935bac",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v003_data_alias.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6cd5c777db9dbd1dde198656f006a04969b3172c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v003_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5243e00693ca8f7e77f163bdfdca02c5dd46176",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v004_platform_timezone.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "be1e2ff6b053a8b84d9d8f440ea2de9f5af3b492",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v004_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "bf4002687f9f1cddc2630f9dafb68dd19bd258b1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v005_data_material_reuse.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "07f4e947eeae6fba0007ec5544aee3d57e10aff7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v005_hold_diagnostic.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5e2b3dfd7867d9bf20f538a4c81f7f2cae55a9d6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v005_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9fbafa66696576b32e39efb84c28c004bed979e",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v005_registry_deadline.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "28aa40150104205af78e64350a1bab046f00df11",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v006_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "ca975dcdb4f95b87503009a67762372c2fd2bbba",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v006_pure_data_paths.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "89c9741f71338031944984300e271b3c01aa0c69",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v007_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "76ff9b32ff6567916761efa85464bcda7513ec1f",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v007_worker_sources.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "2abe02a0a7484e91ef9ce1221c890ee77fcf445a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v008_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "73baa4eab3a9c34a74d8c5555e7a8cc5a3572eea",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v009_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "963192a41f7dcf31b9b13aee5eab99ce2befa15c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v010_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "3210b7c3918e0af7299ac7565463f2197d7c5d8a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_packaging_v011_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "395eda73fec7068369b9857aa195b10daade165d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_scientific_registration_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "677ab7f5ac8b96c46e852ac09822f3ef3bdd82eb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_v007_health_supervision.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c93db298d46625c1547e8458290298ca7603f700",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_v007_owner_context_integration.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5e0d2279cfcad31fc25936dbb584315f38f82539",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_v007_scientific_schedule_integration.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0be2fdb2d1d77fd4500a74f6241da059432fb59a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/tests/test_v008_actual_registry_topology.py",
+          "type": "blob"
+        }
+      ],
+      "merge_commit": "faa27aa98e641616e665715ddf25a947739334f4",
+      "planned_annotated_tag": "pdf-runtime-v011",
+      "tree_sha": "d5ebb6c45cf639f396e73b8f76f985a3c659f7f2",
+      "version": "v011"
+    },
+    {
+      "files": [
+        {
+          "blob_sha": "06192c4738542ce07f61552ba7eb737c3b989adc",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/ACTIVATION.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "8932b5ddd714f898dec31a5614d5b0ee4e9970f9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/REGISTRY_INTERFACE.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d15f1fc5e959d357ca5a5f5d1477414f5145f8fd",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/digest_controller_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5a89a6275a0b39d38cbd80414900181b93b0793d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/guard_methods_digest_release.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0773277015063af68147536240984c7e8af7aadc",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/install_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d8c73143d25ffbdd370053667d34b94663a506c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/invoke_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "cf9cfa28aa6c207b7823652dbd82d7f41ef6a064",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/manuscript_access_correction.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "130dd970a551f2d13ac8df172b7ad75905f94952",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "de2e5f72f007f21ef003beaab41b8af759b3064d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/manuscript_pdf_gate.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d612184f2d6a7f4cdfdf265057734b5adc2b0cd1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/methods_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b9d401c9611d13b5e90d750027122d29a75e98f9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/methods_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4131cb4aa502507ddbf53ff74dca18db0de84d27",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/nightly_checkpoint_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f3521a282bbea4e0ad5962abb71196a71dff19ba",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/owner_content_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "de6dd5f44cea80eba7373d23b46b2f36efce756b",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/packaging_catalog.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c262c3315795b41ba80d600c0e0046cdf23b1ea6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/packaging_nightly.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d90d7d9f5c6c880a39e2520190343efe93e30a7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/packaging_nightly_coverage.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "360e9457319cc6a59b384bfe4ef6abb56321c529",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/packaging_nightly_intake.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "efcb8371b5843ff928c9c2ce3f4e97bc32d82a4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/packaging_run_flow.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "65e93862680bda8831f0c04b506116d810ab2401",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4d6b60eea4a1316054a62e5bc72cbb4f2e381db6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/publish_dated_bundles_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa8b8497fab244449ac9b24743378c4cb49e49cb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/publish_successor_wave_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "3bd5944f320e7a43d7024aa32f92fbcf02a3a7a1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/scientific_registration_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7d0044f52f1d89df758b552e3418198e4e1c2668",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b4edfe23c2be53b5574a3bcdbe8a56c6a573b298",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "ab1eb32e23981e52d94fdd7f138cc4fd58d29344",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_outer_digest_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6ef4fba23a461fd5adbffa64c677b724a906eb9b",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_owner_content_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0f60645a2578861537ddab0db1e9f88746a87710",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_controller.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "68742d7f487ea19176f97bc9176a465dc3fa0c91",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_default_routes.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "9ef67e4716fe221e61fd26c3f898eaa592571f2b",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4403a8c69922eeea3c6b3524688bb0f5c5a759b3",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v002_cold_scope.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5c26407558804815eff072fcb55cc7627fb588a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v002_data_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "3486bc724a4662fe3f3a1bed05818c97cf05f575",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v002_recovery.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9b319cb110eedab74df2fedbf0887b890b39af7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v002_route_order.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b1c9a123aead016750443fa5fc372225a8935bac",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v003_data_alias.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6cd5c777db9dbd1dde198656f006a04969b3172c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v003_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5243e00693ca8f7e77f163bdfdca02c5dd46176",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v004_platform_timezone.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "be1e2ff6b053a8b84d9d8f440ea2de9f5af3b492",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v004_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "bf4002687f9f1cddc2630f9dafb68dd19bd258b1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v005_data_material_reuse.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "07f4e947eeae6fba0007ec5544aee3d57e10aff7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v005_hold_diagnostic.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5e2b3dfd7867d9bf20f538a4c81f7f2cae55a9d6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v005_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9fbafa66696576b32e39efb84c28c004bed979e",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v005_registry_deadline.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5233a40746975d431835689deb19c49f4e941b3",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v006_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "ca975dcdb4f95b87503009a67762372c2fd2bbba",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v006_pure_data_paths.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "e855409fd40cb554f32abdb5d382396edd917e7f",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v007_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c5e4b600b5d191a0b5a1d0ce5538f7989960d027",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v007_worker_sources.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "1f7b2fef8161a19d5bfa0a4c92abc7d0263a4a11",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v008_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "625fa9132940ddaea803a1b2973d60569ffd17de",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v009_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "3a3aaa55ff23d5140b23992bdb577d0a2cac070a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v010_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6526ddc24e4559d3ce4edb1f8cc8c5cd8abffac1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v011_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4162d6d444e99b79f29bf1e3920c7a4e98318f09",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v012_master_read_race_evidence.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "51ea2c937aaa7a7ce42d8a8974882686b47704f8",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_packaging_v012_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "92c65ce78fe8c7acf03b80ec2783dfea002a0435",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_scientific_registration_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "677ab7f5ac8b96c46e852ac09822f3ef3bdd82eb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_v007_health_supervision.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c93db298d46625c1547e8458290298ca7603f700",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_v007_owner_context_integration.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5e0d2279cfcad31fc25936dbb584315f38f82539",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_v007_scientific_schedule_integration.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0be2fdb2d1d77fd4500a74f6241da059432fb59a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/tests/test_v008_actual_registry_topology.py",
+          "type": "blob"
+        }
+      ],
+      "merge_commit": "17c5878c871093c09878296926b962b4fbb4e2d4",
+      "planned_annotated_tag": "pdf-runtime-v012",
+      "tree_sha": "9d2c51144f07fdca8f8527029c6d237d08bbfdf9",
+      "version": "v012"
+    },
+    {
+      "files": [
+        {
+          "blob_sha": "91a32d57a37534560ac69212c0218b19cf987632",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/ACTIVATION.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6c33eceb1cd666eef5a4a3c7fa59eb77a25476d9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/OWNER_REQUEST_DEADLINE_POLICY.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "656f6e538ae4063724b6e531863bc1c0fc743bb3",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/REGISTRY_INTERFACE.md",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d15f1fc5e959d357ca5a5f5d1477414f5145f8fd",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/digest_controller_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d8273d05befcfe28b35a3270f1d1cd15864d7445",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/guard_methods_digest_release.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "34bb5f83ec22a6d8f072d07776047aa4737d81f6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/install_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d8c73143d25ffbdd370053667d34b94663a506c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/invoke_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "cf9cfa28aa6c207b7823652dbd82d7f41ef6a064",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/manuscript_access_correction.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "130dd970a551f2d13ac8df172b7ad75905f94952",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "de2e5f72f007f21ef003beaab41b8af759b3064d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/manuscript_pdf_gate.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "d612184f2d6a7f4cdfdf265057734b5adc2b0cd1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/methods_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b9d401c9611d13b5e90d750027122d29a75e98f9",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/methods_digest_v2.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4131cb4aa502507ddbf53ff74dca18db0de84d27",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/nightly_checkpoint_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "fbe0feb90a7e189cbacd9126e03ca8104d32d332",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/owner_content_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "12ff6597b47273824742ac91467ffda047df1135",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/packaging_catalog.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c262c3315795b41ba80d600c0e0046cdf23b1ea6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/packaging_nightly.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0d90d7d9f5c6c880a39e2520190343efe93e30a7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/packaging_nightly_coverage.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "360e9457319cc6a59b384bfe4ef6abb56321c529",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/packaging_nightly_intake.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "efcb8371b5843ff928c9c2ce3f4e97bc32d82a4a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/packaging_run_flow.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "87bca45e034f38b97dff6d3f9886a64fa780f4ad",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "4d6b60eea4a1316054a62e5bc72cbb4f2e381db6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/publish_dated_bundles_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "aa8b8497fab244449ac9b24743378c4cb49e49cb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/publish_successor_wave_guarded.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6d0cb70d7f4806fcded9e8ce3de1d56621922c70",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/scientific_registration_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "7d0044f52f1d89df758b552e3418198e4e1c2668",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_digest_registration_v3.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b4edfe23c2be53b5574a3bcdbe8a56c6a573b298",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_manuscript_access_registry.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c1578bf2ef456274d5592ebc2d81ec6cb1db08ca",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_outer_digest_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "8e90e3b17c31caa6dd404fbc949fb14de3ff43d1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_owner_content_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0f60645a2578861537ddab0db1e9f88746a87710",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_controller.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "68742d7f487ea19176f97bc9176a465dc3fa0c91",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_default_routes.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5eb73b37ac755f4f96457793606808975c00909c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_runtime.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "43ad86eb6768b1cf041c271c0149eabeaa039aed",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v002_cold_scope.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5c26407558804815eff072fcb55cc7627fb588a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v002_data_guard.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "3486bc724a4662fe3f3a1bed05818c97cf05f575",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v002_recovery.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9b319cb110eedab74df2fedbf0887b890b39af7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v002_route_order.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "b1c9a123aead016750443fa5fc372225a8935bac",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v003_data_alias.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6cd5c777db9dbd1dde198656f006a04969b3172c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v003_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f5243e00693ca8f7e77f163bdfdca02c5dd46176",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v004_platform_timezone.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "be1e2ff6b053a8b84d9d8f440ea2de9f5af3b492",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v004_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "bf4002687f9f1cddc2630f9dafb68dd19bd258b1",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v005_data_material_reuse.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "07f4e947eeae6fba0007ec5544aee3d57e10aff7",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v005_hold_diagnostic.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5e2b3dfd7867d9bf20f538a4c81f7f2cae55a9d6",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v005_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a9fbafa66696576b32e39efb84c28c004bed979e",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v005_registry_deadline.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "90b3acb7c38dde1754e055c27381464bcecd103c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v006_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "ca975dcdb4f95b87503009a67762372c2fd2bbba",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v006_pure_data_paths.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "166d2f184ac93e597edd43a016f689493469e90a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v007_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f4ffa3af08c242142af4172076d3ad8cbcdb15ee",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v007_worker_sources.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "342ddcfdad34965a6169c53c8e55811f784b448d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v008_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c5adb90b81b646811438e2a3ae16eb66ade6ad2c",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v009_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a2c48f36188e7e1e119bd4355fac93c99973b9dd",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v010_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "a1583cfafc8b235067188d5891b4242c2f14c997",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v011_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "6ed68f35ecd238f35c3b4282c4110d7acd3d8074",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v012_master_read_race_evidence.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "f8ea0e1ea1ee1e0df15db4da66ae8062bc9ffc6d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v012_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "ea6bdba3c0000371b1e6763e9f2f9b03ea14834d",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_packaging_v013_predecessor.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c89904e3e8fbdb63364a752440e2148f906e45a8",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_scientific_registration_worker.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "677ab7f5ac8b96c46e852ac09822f3ef3bdd82eb",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_v007_health_supervision.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "c93db298d46625c1547e8458290298ca7603f700",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_v007_owner_context_integration.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "5e0d2279cfcad31fc25936dbb584315f38f82539",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_v007_scientific_schedule_integration.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0be2fdb2d1d77fd4500a74f6241da059432fb59a",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_v008_actual_registry_topology.py",
+          "type": "blob"
+        },
+        {
+          "blob_sha": "0bf6a97b67adfd14cc74e9803ab08b16020d7561",
+          "mode": "100644",
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v013/tests/test_v013_size_deadline_policy.py",
+          "type": "blob"
+        }
+      ],
+      "merge_commit": "de75ab450b3b527c8392032e02ab3436ba78dfc2",
+      "source_disposition": "historical unselected successor; retained in Git only; no repair, runtime admission or health claim",
+      "tree_sha": "4d17fe0900b394edb208b873dcfcee6d24a3b941",
+      "version": "v013"
+    }
+  ]
+}

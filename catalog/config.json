@@ -647,7 +647,7 @@
         "thermodynamics"
       ],
       "tier": "flagship",
-      "title": "Intelligence Bound ↔ Biosphere Productivity"
+      "title": "Intelligence Bound \u2194 Biosphere Productivity"
     },
     "EcoChain_DendriticCorridor.lean": {
       "doi": "10.5281/zenodo.20467431",
@@ -726,7 +726,7 @@
         "honesty-ledger"
       ],
       "tier": "working-corpus",
-      "title": "AI Safety — Quarantined"
+      "title": "AI Safety \u2014 Quarantined"
     },
     "releases/2026-08-08/Carbon_Continuity_After_Wildfire/lean/CarbonContinuity.lean": {
       "aristotle_id": "40c58299-efeb-4cad-b332-2525b7c8d6d1",
@@ -810,7 +810,7 @@
         "landscape-ecology",
         "s5"
       ],
-      "title": "Trees Cannot Cut — Circuit Rank as the Design Variable Reconciling Habitat Connectivity and Fuel Discontinuity"
+      "title": "Trees Cannot Cut \u2014 Circuit Rank as the Design Variable Reconciling Habitat Connectivity and Fuel Discontinuity"
     }
   },
   "doi_by_path": {
@@ -1016,6 +1016,10 @@
     "releases/2026-08-08/The_Scheduler_Free-Energy_Certificate/lean/SchedulerFreeEnergy.lean"
   ],
   "manifest": "SPINE_MANIFEST.txt",
+  "manuscript_access": {
+    "path": "catalog/MANUSCRIPT_ACCESS_MAPPING.json",
+    "sha256": "c72eee54df53dc7066c3f49584ba74d7e3a6d08059fe7eeeb406edb5359e3e93"
+  },
   "methods_digest_joins": {
     "path": "catalog/METHODS_DIGESTS_2026-W41_CURRENT.json",
     "sha256": "2c3496a9371bdc8e410a3885b73aaf4e455b520f56b25ca9d1c924053bc41342"

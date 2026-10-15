@@ -1,0 +1,46 @@
+--- a/RESEARCH_PIPELINE_v2/nightly_checkpoint.py
++++ b/RESEARCH_PIPELINE_v2/nightly_checkpoint.py
+@@ -116,6 +116,19 @@
+ 
+ 
+ 
++def pipeline_slo_after_checkpoint(output):
++    # Source-bound advisory only; all existing checkpoint return codes survive.
++    try:
++        import subprocess
++        bootstrap = "import hashlib,os,stat,sys,types\nfrom pathlib import Path\nroot=Path(sys.argv[1]).resolve(strict=True)\nexpected={'checkpoint_slo_hook.py': 'd337a83712ecda5a1645ffc63786d56b850d75dc1832430e774058cb87285cc6', 'pipeline_slo.py': '4f8fd3b627e365baca5186fcc074d75b85227aeec88e8594e922a9ff2caea254'}\nbase=root/'RESEARCH_PIPELINE_v2/pipeline_advisory'\ndef source(name):\n    path=base/name\n    parents=(root,*reversed(path.parents[:len(path.parents)-len(root.parents)-1]))\n    def frames():\n        rows=[]\n        for parent in parents:\n            s=parent.lstat()\n            if not stat.S_ISDIR(s.st_mode):raise ValueError('source parent')\n            rows.append((s.st_dev,s.st_ino,s.st_mode))\n        return rows\n    before=frames()\n    fd=os.open(path,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)\n    try:\n        first=os.fstat(fd)\n        if not stat.S_ISREG(first.st_mode) or first.st_size>1048576:raise ValueError('source size')\n        raw=b''\n        while len(raw)<=1048576:\n            block=os.read(fd,1048577-len(raw))\n            if not block:break\n            raw+=block\n        last=os.fstat(fd);final=path.lstat()\n        fields=lambda s:(s.st_dev,s.st_ino,s.st_mode,s.st_size,s.st_mtime_ns)\n        if fields(first)!=fields(last) or fields(last)!=fields(final) or frames()!=before or len(raw)!=first.st_size or hashlib.sha256(raw).hexdigest()!=expected[name]:raise ValueError('source binding')\n        return raw\n    finally:os.close(fd)\nraws={name:source(name) for name in expected}\nfor name in ('pipeline_slo.py','checkpoint_slo_hook.py'):\n    module=types.ModuleType(name[:-3]);module.__file__=str(base/name)\n    sys.modules[name[:-3]]=module\n    exec(compile(raws[name],str(base/name),'exec'),module.__dict__)\nmodule.observe(root,Path(sys.argv[2]))\n"
++        subprocess.run([sys.executable, "-I", "-c", bootstrap,
++                        str(HERE.parent), str(output)],
++                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
++                       timeout=15, check=False)
++    except Exception:
++        pass
++
++
+ def verification_coverage_after_checkpoint(output, *, enforce_new_artifacts=False):
+     # Observe after the immutable checkpoint has been written, including replay.
+     try:
+@@ -149,6 +162,7 @@
+             or result.get('start_receipt_sha256') != digest(path)):
+         raise ValueError('finished checkpoint does not bind original start')
+     hook_status = verification_coverage_after_checkpoint(output, enforce_new_artifacts=enforce_new_artifacts)
++    pipeline_slo_after_checkpoint(output)
+     print(json.dumps({**result, 'finish_receipt': str(output), 'replayed': True}, indent=2, sort_keys=True))
+     return 2 if result['incidents'] or (enforce_new_artifacts and hook_status != 0) else 0
+ 
+@@ -185,6 +199,7 @@
+                 "external_mutation": False,
+             }
+             write_new(path, start)
++            pipeline_slo_after_checkpoint(path)
+             print(json.dumps({"status": "CHECKPOINT_STARTED", "start_receipt": str(path),
+                               "generation_due": current["generation"]["due"],
+                               "generation_window": current["generation"]["window"],
+@@ -206,6 +221,7 @@
+         output = path.parent / "FINISH.json"
+         write_new(output, result)
+         hook_status = verification_coverage_after_checkpoint(output, enforce_new_artifacts=args.enforce_new_artifacts)
++        pipeline_slo_after_checkpoint(output)
+         print(json.dumps({**result, "finish_receipt": str(output)}, indent=2, sort_keys=True))
+         return 2 if result["incidents"] or (args.enforce_new_artifacts and hook_status != 0) else 0
+     except (OSError, KeyError, ValueError, RuntimeError, json.JSONDecodeError) as exc:

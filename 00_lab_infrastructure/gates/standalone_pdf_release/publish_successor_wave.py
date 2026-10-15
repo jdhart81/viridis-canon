@@ -10,6 +10,7 @@ written immediately, and completed candidates are skipped on a retry.
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
 import os
@@ -19,17 +20,19 @@ import sys
 import time
 from typing import Any
 import urllib.error
+import urllib.parse
 import urllib.request
 
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent
+ROOT = Path(os.environ.get("VIRIDIS_CORE_ROOT", str(HERE.parent)))
 if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
 import manuscript_pdf_gate
+import rehearsal
 BASE = "https://zenodo.org/api"
 TOKEN_PATH = ROOT / "secrets/Zenodo_API/Zenodo_token.md"
-DOI_RE = re.compile(r"10\.\d{4,9}/zenodo\.(\d+)")
+DOI_RE = re.compile(r"^10\.5281/zenodo\.([0-9]+)$")
 
 
 class SuccessorPublisherError(RuntimeError):
@@ -55,8 +58,13 @@ def credential() -> str:
     return max(candidates, key=len)
 
 
-def write_once(path: Path, value: str) -> None:
-    normalized = value.strip()
+def redact(value: str, token: str) -> str:
+    """Sanitize credentials before exception output or receipt serialization."""
+    return value.replace(token, "***") if token else value
+
+
+def write_once(path: Path, value: str, *, token: str = "") -> None:
+    normalized = redact(value, token).strip()
     if path.exists():
         if path.read_text(encoding="utf-8").strip() != normalized:
             raise SuccessorPublisherError(f"refusing conflicting receipt: {path}")
@@ -66,13 +74,56 @@ def write_once(path: Path, value: str) -> None:
     os.replace(temporary, path)
 
 
-def json_write_atomic(path: Path, value: object) -> None:
+def json_write_atomic(path: Path, value: object, *, token: str = "") -> None:
     temporary = path.with_suffix(path.suffix + ".tmp")
     temporary.write_text(
-        json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
+        redact(json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False), token) + "\n",
         encoding="utf-8",
     )
     os.replace(temporary, path)
+
+
+def validated_zenodo_url(url: str) -> str:
+    """Keep credentials on the configured approved HTTPS Zenodo origin."""
+    try:
+        rehearsal.require_production()
+        parsed = urllib.parse.urlsplit(url)
+        configured = urllib.parse.urlsplit(BASE)
+        query_keys = [key for key, _ in urllib.parse.parse_qsl(parsed.query)]
+        if (
+            configured.scheme != "https"
+            or configured.hostname not in {"zenodo.org", "sandbox.zenodo.org"}
+            or configured.port not in (None, 443)
+            or configured.username or configured.password
+            or configured.path != "/api" or configured.query or configured.fragment
+            or any(character.isspace() or ord(character) < 32 for character in BASE)
+            or parsed.scheme != "https" or parsed.hostname != configured.hostname
+            or parsed.port not in (None, 443)
+            or parsed.username or parsed.password
+            or not parsed.path.startswith("/api/") or parsed.fragment
+            or any(character.isspace() or ord(character) < 32 for character in url)
+            or any(urllib.parse.unquote(key).lower() == "access_token" for key in query_keys)
+        ):
+            raise ValueError
+    except (TypeError, ValueError):
+        raise SuccessorPublisherError(
+            "Zenodo request destination must be the configured HTTPS API without URL credentials"
+        ) from None
+    return url
+
+
+class ZenodoRedirectHandler(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        validated_zenodo_url(newurl)
+        authorization = req.get_header("Authorization", "")
+        token = authorization.removeprefix("Bearer ")
+        if token and token in urllib.parse.unquote(newurl):
+            raise SuccessorPublisherError("Zenodo credential is forbidden in redirect URLs")
+        source = urllib.parse.urlsplit(req.full_url)
+        target = urllib.parse.urlsplit(newurl)
+        if source.hostname != target.hostname:
+            raise SuccessorPublisherError("Zenodo redirect crosses the credential origin")
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
 def api_call(
@@ -83,43 +134,57 @@ def api_call(
     content_type: str | None = "application/json",
     *,
     allow_not_found: bool = False,
+    rdm: bool = False,
 ) -> dict[str, Any] | None:
-    separator = "&" if "?" in url else "?"
+    validated_zenodo_url(url)
+    if token and token in urllib.parse.unquote(url):
+        raise SuccessorPublisherError("Zenodo credential is forbidden in request URLs")
     headers = {"Content-Type": content_type} if content_type else {}
+    headers["Authorization"] = "Bearer " + token
+    headers["Accept"] = (
+        "application/vnd.inveniordm.v1+json"
+        if rdm
+        else "application/json"
+    )
+    opener = urllib.request.build_opener(ZenodoRedirectHandler())
     raw = ""
     for attempt in range(4):
-        request = urllib.request.Request(
-            url + separator + "access_token=" + token,
-            method=method,
-            data=data,
-            headers=headers,
-        )
         try:
-            with urllib.request.urlopen(request, timeout=120) as response:
+            request = urllib.request.Request(url, method=method, data=data, headers=headers)
+            with opener.open(request, timeout=120) as response:
                 raw = response.read().decode("utf-8")
             break
         except urllib.error.HTTPError as exc:
-            body = exc.read().decode("utf-8", errors="replace").replace(token, "***")[:500]
+            try:
+                body = redact(exc.read().decode("utf-8", errors="replace"), token)[:500]
+            finally:
+                exc.close()
             if allow_not_found and exc.code == 404:
                 return None
-            if exc.code in {429, 502, 503, 504} and attempt < 3:
+            if method != "POST" and exc.code in {429, 502, 503, 504} and attempt < 3:
                 time.sleep(2 ** (attempt + 1))
                 continue
             detail = f": {body}" if body.strip() else ""
             raise SuccessorPublisherError(
                 f"Zenodo {method} failed with HTTP {exc.code}{detail}"
-            ) from exc
+            ) from None
         except urllib.error.URLError as exc:
-            if attempt < 3:
+            if method != "POST" and attempt < 3:
                 time.sleep(2 ** (attempt + 1))
                 continue
-            raise SuccessorPublisherError(f"Zenodo {method} failed: {exc.reason}") from exc
+            raise SuccessorPublisherError(
+                f"Zenodo {method} connection failed ({type(exc.reason).__name__})"
+            ) from None
+        except Exception as exc:
+            raise SuccessorPublisherError(
+                f"Zenodo {method} failed ({type(exc).__name__}): " + redact(str(exc), token)
+            ) from None
     if not raw.strip():
         return {}
     try:
         value = json.loads(raw)
-    except json.JSONDecodeError as exc:
-        raise SuccessorPublisherError("Zenodo response was not valid JSON") from exc
+    except json.JSONDecodeError:
+        raise SuccessorPublisherError("Zenodo response was not valid JSON") from None
     if not isinstance(value, dict):
         raise SuccessorPublisherError("Zenodo response root was not an object")
     return value
@@ -229,9 +294,13 @@ def load_and_validate_wave(wave_root: Path, expected_sha256: str) -> list[dict[s
             name for name in candidate_hashes if name != "zenodo_metadata.json"
         ) + ["CORRECTION_MANIFEST.json"]
         try:
-            manuscript_pdf_gate.require_local(bundle, [bundle / name for name in upload_names])
+            preflight = manuscript_pdf_gate.require_local(bundle, [bundle / name for name in upload_names])
         except manuscript_pdf_gate.ManuscriptPDFHold as exc:
             raise SuccessorPublisherError("standalone manuscript PDF gate HOLD: " + str(exc)) from exc
+        expected_upload_hashes = {name: candidate_hashes[name] for name in upload_names if name != "CORRECTION_MANIFEST.json"}
+        expected_upload_hashes["CORRECTION_MANIFEST.json"] = row["manifest_sha256"]
+        if {item["filename"]: item["sha256"] for item in preflight["upload_files"]} != expected_upload_hashes:
+            raise SuccessorPublisherError("approved upload bytes differ from the sealed successor-wave manifest")
         validated.append(
             {
                 "abbreviation": abbreviation,
@@ -240,9 +309,66 @@ def load_and_validate_wave(wave_root: Path, expected_sha256: str) -> list[dict[s
                 "new_version": row["new_version"],
                 "metadata": release_metadata,
                 "upload_names": tuple(sorted(upload_names)),
+                "approved_preflight_json": json.dumps(preflight, sort_keys=True, separators=(",", ":")),
             }
         )
     return validated
+
+
+def inherit_predecessor_copyright(candidate: dict[str, Any], token: str) -> str | None:
+    predecessor = DOI_RE.fullmatch(candidate["predecessor_doi"])
+    if predecessor is None:
+        raise SuccessorPublisherError("invalid predecessor DOI")
+    record = api_call(token, "GET", f"{BASE}/records/{predecessor.group(1)}", rdm=True)
+    metadata = record.get("metadata") if isinstance(record, dict) else None
+    if not isinstance(metadata, dict):
+        raise SuccessorPublisherError("predecessor metadata unavailable for copyright inheritance")
+    copyright_value = metadata.get("copyright")
+    if copyright_value is not None and not isinstance(copyright_value, str):
+        raise SuccessorPublisherError("predecessor copyright has an invalid type")
+    candidate["expected_copyright"] = copyright_value
+    return copyright_value
+
+
+def preserve_draft_copyright(candidate: dict[str, Any], token: str, draft: str) -> None:
+    """Use RDM when the legacy metadata round trip drops predecessor rights."""
+    expected = candidate["expected_copyright"]
+    if expected is None:
+        return
+    url = f"{BASE}/records/{draft}/draft"
+    current = api_call(token, "GET", url, rdm=True)
+    metadata = current.get("metadata") if isinstance(current, dict) else None
+    if not isinstance(metadata, dict):
+        raise SuccessorPublisherError("RDM draft metadata missing for copyright preservation")
+    if metadata.get("copyright") == expected:
+        return
+    corrected = copy.deepcopy(current)
+    corrected["metadata"]["copyright"] = expected
+    receipt_path = candidate.get("receipt_root", candidate["bundle"]) / "COPYRIGHT_INHERITANCE_RECEIPT.json"
+    receipt = {"state": "BEFORE_COPYRIGHT_ONLY_RDM_UPDATE", "draft_id": draft,
+               "predecessor_doi": candidate["predecessor_doi"],
+               "before": current, "planned_copyright": expected}
+    json_write_atomic(receipt_path, receipt, token=token)
+    try:
+        api_call(token, "PUT", url, json.dumps(corrected).encode("utf-8"), rdm=True)
+        readback = api_call(token, "GET", url, rdm=True)
+        # Reuse the native protected projection, retaining raw JSON as evidence.
+        from pathlib import Path as _Path
+        gates = (ROOT / "RESEARCH_PIPELINE_v2/verification_coverage_gates" if (ROOT / "RESEARCH_PIPELINE_v2/verification_coverage_gates/own_record_comparison.py").is_file() else _Path(__file__).resolve().parents[1])
+        if str(gates) not in sys.path:
+            sys.path.insert(0, str(gates))
+        from own_record_comparison import prior_protected_projection
+        matched = prior_protected_projection(corrected, representation="NATIVE") == prior_protected_projection(readback, representation="NATIVE")
+        receipt.update(state="COPYRIGHT_INHERITED" if matched else "HOLD_UNPLANNED_RDM_DIFF", after=readback)
+        json_write_atomic(receipt_path, receipt, token=token)
+        if not matched:
+            raise SuccessorPublisherError("copyright-only RDM draft readback differs; publication held")
+    except Exception:
+        try:
+            api_call(token, "DELETE", url, rdm=True)
+        except Exception:
+            raise SuccessorPublisherError("copyright repair held and draft cleanup requires readback") from None
+        raise
 
 
 def ensure_draft(candidate: dict[str, Any], token: str) -> str:
@@ -264,124 +390,255 @@ def ensure_draft(candidate: dict[str, Any], token: str) -> str:
         adopted = api_call(token, "POST", f"{BASE}/records/{parent_id}/versions", b"{}")
     assert adopted is not None
     identifier = record_id(adopted, candidate["abbreviation"])
-    write_once(draft_receipt, identifier)
+    write_once(draft_receipt, identifier, token=token)
     return identifier
 
 
-def verify_manuscript_readback(candidate: dict[str, Any], token: str, doi: str) -> None:
+def approved_preflight(candidate: dict[str, Any]) -> dict:
+    """Decode the frozen planning result; never approve replacement local bytes."""
+    serialized = candidate.get("approved_preflight_json")
+    if not isinstance(serialized, str):
+        raise SuccessorPublisherError("immutable planning preflight required")
+    approved = json.loads(serialized)
+    rows = approved.get("upload_files") if isinstance(approved, dict) else None
+    if not isinstance(rows, list) or not rows or any(not isinstance(row, dict) for row in rows):
+        raise SuccessorPublisherError("complete approved upload byte inventory required")
+    names = [row.get("filename") for row in rows]
+    if (any(not isinstance(name, str) or Path(name).name != name or name in {"", ".", ".."} for name in names)
+            or len(names) != len(set(names)) or set(names) != set(candidate["upload_names"])):
+        raise SuccessorPublisherError("unique exact approved top-level upload inventory required")
+    return approved
+
+
+def snapshot_uploads(bundle: Path, approved: dict) -> dict[str, bytes]:
+    """Retain exactly the bytes approved in the wave's planning preflight."""
+    payloads = {}
+    for row in approved["upload_files"]:
+        name = row["filename"]
+        raw = manuscript_pdf_gate._read(bundle / name)
+        actual = {"sha256": hashlib.sha256(raw).hexdigest(), "md5": hashlib.md5(raw).hexdigest(), "bytes": len(raw)}
+        if any(row.get(key) != value for key, value in actual.items()):
+            raise SuccessorPublisherError("approved upload changed before snapshot: " + name)
+        payloads[name] = raw
+    return payloads
+
+
+def check_draft_files(deposition: dict, approved: dict) -> None:
+    files = deposition.get("files")
+    if not isinstance(files, list) or any(not isinstance(row, dict) for row in files):
+        raise SuccessorPublisherError("draft upload inventory required")
+    names = [row.get("filename") for row in files]
+    expected = {row["filename"]: row for row in approved["upload_files"]}
+    if any(not isinstance(name, str) for name in names) or len(names) != len(set(names)):
+        raise SuccessorPublisherError("draft upload names are invalid or duplicated")
+    if set(names) != set(expected):
+        raise SuccessorPublisherError("draft file set differs from exact approved uploads")
+    for row in files:
+        wanted = expected[row["filename"]]
+        checksum = str(row.get("checksum", "")).removeprefix("md5:")
+        if checksum != wanted["md5"] or row.get("filesize", row.get("size")) != wanted["bytes"]:
+            raise SuccessorPublisherError("draft upload checksum or size differs: " + row["filename"])
+
+
+def verify_manuscript_readback(candidate: dict[str, Any], token: str, doi: str, preflight=None) -> None:
     bundle = candidate["bundle"]
-    preflight = manuscript_pdf_gate.require_local(bundle, [bundle / name for name in candidate["upload_names"]])
+    if preflight is None:
+        preflight = approved_preflight(candidate)
+    if "expected_copyright" not in candidate:
+        inherit_predecessor_copyright(candidate, token)
     record_id = DOI_RE.fullmatch(doi).group(1)
     record = api_call(token, "GET", f"{BASE}/records/{record_id}")
     if not isinstance(record, dict) or str(record.get("id")) != record_id or extract_doi(record) != doi:
         raise SuccessorPublisherError("standalone manuscript readback record identity differs")
+    if candidate["expected_copyright"] is not None:
+        rdm_record = api_call(token, "GET", f"{BASE}/records/{record_id}", rdm=True)
+        if not isinstance(rdm_record, dict) or rdm_record.get("metadata", {}).get("copyright") != candidate["expected_copyright"]:
+            raise SuccessorPublisherError("published DOI retained; predecessor copyright readback differs")
     try:
         receipt = manuscript_pdf_gate.require_public(record, preflight)
     except manuscript_pdf_gate.ManuscriptPDFHold as exc:
         raise SuccessorPublisherError("published DOI retained; standalone manuscript PDF readback HOLD: " + str(exc)) from exc
     receipt_path = ROOT / "reports/publication-manuscript-pdf-readback" / record_id / "MANUSCRIPT_PDF_READBACK.json"
     receipt_path.parent.mkdir(parents=True, exist_ok=True)
-    write_once(receipt_path, json.dumps(receipt, sort_keys=True, indent=2))
+    write_once(receipt_path, json.dumps(receipt, sort_keys=True, indent=2), token=token)
 
 
 def publish_candidate(candidate: dict[str, Any], token: str) -> dict[str, Any]:
+    rehearsal.require_production()
     bundle: Path = candidate["bundle"]
+    read_receipt(bundle / "PUBLISHED_DOI.txt", DOI_RE, "DOI")
+    approved = approved_preflight(candidate)
+    # This receipt fixes the original approval across retries and partial DOI
+    # outcomes. A later invocation cannot silently approve replacement bytes.
+    write_once(bundle / "APPROVED_UPLOAD_PREFLIGHT.json", json.dumps(approved, sort_keys=True, indent=2), token=token)
     doi_receipt = bundle / "PUBLISHED_DOI.txt"
     existing_doi = read_receipt(doi_receipt, DOI_RE, "DOI")
     if existing_doi:
-        verify_manuscript_readback(candidate, token, existing_doi)
+        verify_manuscript_readback(candidate, token, existing_doi, approved)
         return {"abbreviation": candidate["abbreviation"], "doi": existing_doi, "reused": True}
 
     try:
-        manuscript_pdf_gate.require_local(bundle, [bundle / name for name in candidate["upload_names"]])
+        current = manuscript_pdf_gate.require_local(bundle, [bundle / name for name in candidate["upload_names"]])
+        if current != approved:
+            raise SuccessorPublisherError("approved manuscript/upload inventory changed before network activity")
     except manuscript_pdf_gate.ManuscriptPDFHold as exc:
         raise SuccessorPublisherError("standalone manuscript PDF gate HOLD: " + str(exc)) from exc
+    payloads = snapshot_uploads(bundle, approved)
+    inherit_predecessor_copyright(candidate, token)
     draft = ensure_draft(candidate, token)
-    public_record = api_call(
-        token,
-        "GET",
-        f"{BASE}/records/{draft}",
-        allow_not_found=True,
-    )
-    if public_record is not None:
-        published_doi = extract_doi(public_record)
-        if published_doi:
-            write_once(doi_receipt, published_doi)
-            verify_manuscript_readback(candidate, token, published_doi)
+    publish_requested = False
+    try:
+        public_record = api_call(
+            token,
+            "GET",
+            f"{BASE}/records/{draft}",
+            allow_not_found=True,
+        )
+        if public_record is not None:
+            published_doi = extract_doi(public_record)
+            if published_doi:
+                write_once(doi_receipt, published_doi, token=token)
+                verify_manuscript_readback(candidate, token, published_doi, approved)
+                return {
+                    "abbreviation": candidate["abbreviation"],
+                    "doi": published_doi,
+                    "recovered": True,
+                }
+
+        deposition = api_call(token, "GET", f"{BASE}/deposit/depositions/{draft}")
+        assert deposition is not None
+        already_published = extract_doi(deposition)
+        if already_published and deposition.get("submitted") is True:
+            write_once(doi_receipt, already_published, token=token)
+            verify_manuscript_readback(candidate, token, already_published, approved)
             return {
                 "abbreviation": candidate["abbreviation"],
-                "doi": published_doi,
+                "doi": already_published,
                 "recovered": True,
             }
+        files = deposition.get("files")
+        if not isinstance(files, list):
+            raise SuccessorPublisherError(f"{candidate['abbreviation']}: draft file list missing")
+        for item in files:
+            if not isinstance(item, dict):
+                raise SuccessorPublisherError(f"{candidate['abbreviation']}: invalid draft file entry")
+            file_id = item.get("id")
+            if not isinstance(file_id, str) or not file_id:
+                raise SuccessorPublisherError(f"{candidate['abbreviation']}: inherited file lacks id")
+            api_call(token, "DELETE", f"{BASE}/deposit/depositions/{draft}/files/{file_id}")
 
-    deposition = api_call(token, "GET", f"{BASE}/deposit/depositions/{draft}")
-    assert deposition is not None
-    already_published = extract_doi(deposition)
-    if already_published and deposition.get("submitted") is True:
-        write_once(doi_receipt, already_published)
-        verify_manuscript_readback(candidate, token, already_published)
-        return {
-            "abbreviation": candidate["abbreviation"],
-            "doi": already_published,
-            "recovered": True,
-        }
-    files = deposition.get("files")
-    if not isinstance(files, list):
-        raise SuccessorPublisherError(f"{candidate['abbreviation']}: draft file list missing")
-    for item in files:
-        if not isinstance(item, dict):
-            raise SuccessorPublisherError(f"{candidate['abbreviation']}: invalid draft file entry")
-        file_id = item.get("id")
-        if not isinstance(file_id, str) or not file_id:
-            raise SuccessorPublisherError(f"{candidate['abbreviation']}: inherited file lacks id")
-        api_call(token, "DELETE", f"{BASE}/deposit/depositions/{draft}/files/{file_id}")
+        links = deposition.get("links")
+        bucket = links.get("bucket") if isinstance(links, dict) else None
+        if not isinstance(bucket, str) or not bucket:
+            raise SuccessorPublisherError(f"{candidate['abbreviation']}: draft bucket missing")
+        for name, raw in payloads.items():
+            uploaded = api_call(
+                token,
+                "PUT",
+                f"{bucket}/{urllib.parse.quote(name, safe='')}",
+                raw,
+                "application/octet-stream",
+            )
+            if not isinstance(uploaded, dict) or str(uploaded.get("checksum", "")).removeprefix("md5:") != hashlib.md5(raw).hexdigest():
+                raise SuccessorPublisherError("PUT response checksum differs from uploaded bytes")
 
-    links = deposition.get("links")
-    bucket = links.get("bucket") if isinstance(links, dict) else None
-    if not isinstance(bucket, str) or not bucket:
-        raise SuccessorPublisherError(f"{candidate['abbreviation']}: draft bucket missing")
-    for name in candidate["upload_names"]:
-        path = bundle / name
+        metadata_payload = copy.deepcopy(candidate["metadata"])
+        if candidate["expected_copyright"] is not None:
+            metadata_payload["metadata"]["copyright"] = candidate["expected_copyright"]
         api_call(
             token,
             "PUT",
-            f"{bucket}/{name}",
-            path.read_bytes(),
-            "application/octet-stream",
+            f"{BASE}/deposit/depositions/{draft}",
+            json.dumps(metadata_payload).encode("utf-8"),
         )
+        preserve_draft_copyright(candidate, token, draft)
+        verified = api_call(token, "GET", f"{BASE}/deposit/depositions/{draft}")
+        assert verified is not None
+        check_draft_files(verified, approved)
+        try:
+            current = manuscript_pdf_gate.require_local(bundle, [bundle / name for name in candidate["upload_names"]])
+            if current != approved:
+                raise SuccessorPublisherError("approved manuscript/upload inventory changed before publication")
+        except manuscript_pdf_gate.ManuscriptPDFHold as exc:
+            raise SuccessorPublisherError("standalone manuscript PDF gate HOLD: " + str(exc)) from exc
+        publish_requested = True
+        published = api_call(
+            token,
+            "POST",
+            rehearsal.publish_action_url(draft),
+        )
+        assert published is not None
+        doi = extract_doi(published)
+        if doi is None:
+            raise SuccessorPublisherError(f"{candidate['abbreviation']}: publish response lacks DOI")
+        write_once(doi_receipt, doi, token=token)
+        verify_manuscript_readback(candidate, token, doi, approved)
+        return {"abbreviation": candidate["abbreviation"], "doi": doi, "record_id": draft}
+    except Exception:
+        if not publish_requested:
+            try:
+                api_call(token, "DELETE", f"{BASE}/records/{draft}/draft", rdm=True)
+            except Exception:
+                raise SuccessorPublisherError("prepublication HOLD; draft cleanup requires exact readback") from None
+        raise
 
-    api_call(
-        token,
-        "PUT",
-        f"{BASE}/deposit/depositions/{draft}",
-        json.dumps(candidate["metadata"]).encode("utf-8"),
-    )
-    verified = api_call(token, "GET", f"{BASE}/deposit/depositions/{draft}")
-    assert verified is not None
-    remote_files = verified.get("files")
-    if not isinstance(remote_files, list):
-        raise SuccessorPublisherError(f"{candidate['abbreviation']}: cannot verify draft files")
-    remote_names = sorted(
-        item.get("filename") for item in remote_files if isinstance(item, dict)
-    )
-    if remote_names != list(candidate["upload_names"]):
-        raise SuccessorPublisherError(f"{candidate['abbreviation']}: remote draft file set mismatch")
+
+@rehearsal.time_bounded
+def rehearse_candidate(candidate, token, *, output=None):
+    rehearsal.require_production()
+    bundle = candidate["bundle"]
+    read_receipt(bundle / "PUBLISHED_DOI.txt", DOI_RE, "DOI")
+    approved = approved_preflight(candidate)
+    before = rehearsal.tree_hashes(bundle)
+    payloads = snapshot_uploads(bundle, approved)
+    inherit_predecessor_copyright(candidate, token)
+    predecessor = DOI_RE.fullmatch(candidate["predecessor_doi"])
+    if predecessor is None:
+        raise SuccessorPublisherError("production predecessor DOI required")
+    # Never adopt or delete a draft belonging to an earlier real operation.
+    existing = api_call(token, "GET", f"{BASE}/records/{predecessor.group(1)}/draft", allow_not_found=True)
+    if existing is not None:
+        raise SuccessorPublisherError("existing predecessor draft prevents isolated rehearsal")
+    out = rehearsal.output_directory(output)
+    receipt = {"state": "REHEARSAL_STARTED", "published": False, "bundle_before": before}
+    draft = None
     try:
-        manuscript_pdf_gate.require_local(bundle, [bundle / name for name in candidate["upload_names"]])
-    except manuscript_pdf_gate.ManuscriptPDFHold as exc:
-        raise SuccessorPublisherError("standalone manuscript PDF gate HOLD: " + str(exc)) from exc
-    published = api_call(
-        token,
-        "POST",
-        f"{BASE}/deposit/depositions/{draft}/actions/publish",
-    )
-    assert published is not None
-    doi = extract_doi(published)
-    if doi is None:
-        raise SuccessorPublisherError(f"{candidate['abbreviation']}: publish response lacks DOI")
-    write_once(doi_receipt, doi)
-    verify_manuscript_readback(candidate, token, doi)
-    return {"abbreviation": candidate["abbreviation"], "doi": doi, "record_id": draft}
+        created = api_call(token, "POST", f"{BASE}/records/{predecessor.group(1)}/versions", b"{}")
+        draft = record_id(created, candidate["abbreviation"])
+        receipt["draft_id"] = draft
+        deposition = api_call(token, "GET", f"{BASE}/deposit/depositions/{draft}")
+        for item in deposition["files"]:
+            api_call(token, "DELETE", f"{BASE}/deposit/depositions/{draft}/files/{item['id']}")
+        for name, raw in payloads.items():
+            uploaded = api_call(token, "PUT", deposition["links"]["bucket"] + "/" + urllib.parse.quote(name, safe=""), raw, "application/octet-stream")
+            if str(uploaded.get("checksum", "")).removeprefix("md5:") != hashlib.md5(raw).hexdigest():
+                raise SuccessorPublisherError("rehearsal upload checksum differs")
+        payload = copy.deepcopy(candidate["metadata"])
+        if candidate["expected_copyright"] is not None:
+            payload["metadata"]["copyright"] = candidate["expected_copyright"]
+        api_call(token, "PUT", f"{BASE}/deposit/depositions/{draft}", json.dumps(payload).encode("utf-8"))
+        preserve_draft_copyright({**candidate, "receipt_root": out}, token, draft)
+        checked = api_call(token, "GET", f"{BASE}/deposit/depositions/{draft}")
+        native = api_call(token, "GET", f"{BASE}/records/{draft}/draft", rdm=True)
+        check_draft_files(checked, approved)
+        if any(checked.get("metadata", {}).get(k) != v for k, v in payload["metadata"].items() if k != "copyright") or native.get("metadata", {}).get("copyright") != candidate["expected_copyright"]:
+            raise SuccessorPublisherError("rehearsal metadata or copyright readback differs")
+        if manuscript_pdf_gate.require_local(bundle, [bundle / name for name in candidate["upload_names"]]) != approved:
+            raise SuccessorPublisherError("rehearsal package changed")
+        receipt.update(state="DRAFT_READBACK_VERIFIED", draft_readback=checked, native_readback=native, approved=approved)
+    finally:
+        rehearsal.cleanup_window()
+        if draft is not None:
+            api_call(token, "DELETE", f"{BASE}/deposit/depositions/{draft}")
+            if api_call(token, "GET", f"{BASE}/deposit/depositions/{draft}", allow_not_found=True) is not None:
+                raise SuccessorPublisherError("rehearsal draft still exists after deletion")
+            receipt["deletion"] = {"deleted": True, "status": "HTTP_404_OR_410"}
+        receipt["bundle_after"] = rehearsal.tree_hashes(bundle)
+        if before != receipt["bundle_after"]:
+            raise SuccessorPublisherError("rehearsal changed bundle bytes")
+        receipt["state"] = "REHEARSED_DRAFT_DELETED" if receipt["state"] == "DRAFT_READBACK_VERIFIED" else "HOLD_REHEARSAL_DRAFT_DELETED"
+        rehearsal.save(out, receipt, token=token)
+    return receipt
 
 
 def main() -> int:
@@ -389,9 +646,12 @@ def main() -> int:
     parser.add_argument("--wave-root", type=Path, required=True)
     parser.add_argument("--expected-manifest-sha256", required=True)
     parser.add_argument("--publish", action="store_true")
+    parser.add_argument("--rehearse", action="store_true")
     parser.add_argument("--go", action="store_true")
     args = parser.parse_args()
+    token = ""
     try:
+        rehearsal.require_production()
         wave_root = args.wave_root.resolve()
         candidates = load_and_validate_wave(wave_root, args.expected_manifest_sha256)
         plan = {
@@ -417,6 +677,13 @@ def main() -> int:
             ],
             "external_mutation": False,
         }
+        if args.rehearse:
+            if args.publish or not args.go:
+                raise SuccessorPublisherError("rehearsal requires --go without --publish")
+            token = credential()
+            results = [rehearse_candidate(row, token) for row in candidates]
+            print(redact(json.dumps({"state": "REHEARSED", "results": results}), token))
+            return 0
         if not args.publish and not args.go:
             print(json.dumps(plan, indent=2, sort_keys=True))
             return 0
@@ -439,6 +706,7 @@ def main() -> int:
                     "results": results,
                     "external_mutation": True,
                 },
+                token=token,
             )
         receipt = {
             "schema_version": 1,
@@ -448,11 +716,12 @@ def main() -> int:
             "results": results,
             "external_mutation": True,
         }
-        json_write_atomic(wave_root / "SUCCESSOR_PUBLICATION_RECEIPT.json", receipt)
-        print(json.dumps(receipt, indent=2, sort_keys=True))
+        json_write_atomic(wave_root / "SUCCESSOR_PUBLICATION_RECEIPT.json", receipt, token=token)
+        print(redact(json.dumps(receipt, indent=2, sort_keys=True), token))
         return 0
-    except (SuccessorPublisherError, OSError, KeyError, TypeError, json.JSONDecodeError) as exc:
-        print(json.dumps({"state": "HOLD", "error": str(exc)}, indent=2), file=sys.stderr)
+    except Exception as exc:
+        print(json.dumps({"state": "HOLD", "error_type": type(exc).__name__,
+                          "error": redact(str(exc), token)}, indent=2), file=sys.stderr)
         return 2
 
 

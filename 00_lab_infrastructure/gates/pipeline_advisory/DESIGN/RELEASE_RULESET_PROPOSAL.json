@@ -1,0 +1,27 @@
+{
+  "schema": "VRS-RELEASE-RULESET-PROPOSAL-1",
+  "status": "PREPARED_ONLY_A8_NOT_AUTHORIZED",
+  "apply": false,
+  "source_ruleset_id": null,
+  "repository": "jdhart81/viridis-canon",
+  "preserve_all_existing_rules_and_bypass_actors": true,
+  "proposed_pull_request_parameter_changes": {
+    "required_approving_review_count": 1,
+    "require_code_owner_review": true
+  },
+  "protected_reference": "refs/heads/main",
+  "reviewed_paths": [
+    "00_lab_infrastructure/gates/**",
+    "_ZENODO_DEPOSITS/**",
+    "**/_ZENODO_DEPOSITS/**",
+    ".github/workflows/**"
+  ],
+  "review_identity_note": "CODEOWNER is existing maintainer jdhart81. Changes authored through that same GitHub identity need an independently eligible approver or a separately authenticated maintainer review; agent self-approval is not independent review.",
+  "activation_prerequisites": [
+    "Explicit A8 authorization",
+    "Fresh GET of existing ruleset, preserving every unrelated rule",
+    "Confirm eligible reviewer identity and CODEOWNERS parsing",
+    "Concrete before/after ruleset diff for Justin"
+  ],
+  "documentation": "https://docs.github.com/en/rest/repos/rules"
+}

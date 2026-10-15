@@ -315,8 +315,9 @@ assert any('coverage provenance'in e for e in validate_catalog(actual,root=root,
 assert any('coverage provenance'in e for e in validate_catalog_sources(actual,root,c))
 ''')
 
-    def test_header_schema_is_closed_without_changing_group_or_note_contracts(self):
+    def test_header_schema_is_closed_with_only_optional_note_access_fields(self):
         from canon_core.methods_digests import GROUP_FIELDS, NOTE_FIELDS
+        from canon_core.manuscript_access import ACCESS_FIELDS
         schema=json.loads((ROOT/'docs/schemas/research-catalog-v1.json').read_bytes())
         header=schema['properties']['coverage_provenance']
         self.assertIs(schema['additionalProperties'],False)
@@ -326,6 +327,8 @@ assert any('coverage provenance'in e for e in validate_catalog_sources(actual,ro
         group=schema['properties']['methods_digests']['items']
         note=group['properties']['notes']['items']
         self.assertEqual(set(group['properties']),GROUP_FIELDS)
-        self.assertEqual(set(note['properties']),NOTE_FIELDS)
+        self.assertEqual(set(note['properties']),NOTE_FIELDS | ACCESS_FIELDS)
+        self.assertEqual(set(note['required']),NOTE_FIELDS)
+        self.assertIs(note['additionalProperties'],False)
 
 if __name__ == '__main__': unittest.main()

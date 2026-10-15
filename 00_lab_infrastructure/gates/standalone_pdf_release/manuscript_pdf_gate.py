@@ -10,15 +10,25 @@ from __future__ import annotations
 
 import hashlib
 from io import BytesIO
+import bz2
+import gzip
 import json
+import lzma
 from pathlib import Path, PurePosixPath
 import re
+import stat
 import tarfile
 import urllib.parse
 import urllib.request
 import zipfile
 
 STANDARD = "VRS-STANDALONE-MANUSCRIPT-PDF-1"
+MAX_ARCHIVE_DEPTH = 3
+MAX_MEMBER_BYTES = 200 * 1024 * 1024
+MAX_ARCHIVE_BYTES = 2 * 1024 * 1024 * 1024
+ARCHIVE_SUFFIXES = (".zip", ".tar", ".gz", ".tgz", ".bz2", ".tbz2", ".tbz",
+                    ".xz", ".txz", ".zst", ".zstd", ".tzst", ".7z", ".rar",
+                    ".lz", ".lzma", ".cab", ".iso", ".ar")
 
 
 class ManuscriptPDFHold(ValueError):
@@ -32,7 +42,7 @@ def _read(path: Path) -> bytes:
     before = path.stat()
     data = path.read_bytes()
     after = path.stat()
-    if (before.st_ino, before.st_size, before.st_mtime_ns) != (after.st_ino, after.st_size, after.st_mtime_ns):
+    if (before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns) != (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns):
         raise ManuscriptPDFHold("manuscript/reproduction file changed during read")
     return data
 
@@ -90,66 +100,183 @@ def _manuscript_source(name: str) -> bool:
                  or any(p in {"papers", "manuscripts"} for p in path.parts[:-1])))
 
 
-def _archive_pdfs(path: Path):
-    """Inspect supported archive members without filesystem extraction."""
-    raw = _read(path); seen = set(); sources = []; pdfs = []
-    def member(name):
-        _safe_member(name)
-        if name in seen:
-            raise ManuscriptPDFHold("duplicate reproduction archive member")
-        seen.add(name)
-    if path.name.lower().endswith(".zip"):
+def _archive_kind(raw: bytes) -> str | None:
+    """Recognize containers by bytes, including archives with disguised names."""
+    for magic, kind in ((b"PK\x03\x04", "zip"), (b"PK\x05\x06", "zip"),
+                        (b"PK\x07\x08", "zip"), (b"\x1f\x8b", "gzip"),
+                        (b"BZh", "bz2"), (b"\xfd7zXZ\x00", "xz"),
+                        (b"\x28\xb5\x2f\xfd", "zstd")):
+        if raw.startswith(magic):
+            return kind
+    # Valid ZIPs may carry an executable or other preamble. Their central
+    # directory remains authoritative even when no ZIP signature is at byte 0.
+    if zipfile.is_zipfile(BytesIO(raw)):
+        return "zip"
+    if len(raw) >= 512 and raw[257:262] == b"ustar":
+        return "tar"
+    if len(raw) >= 4 and 0x184D2A50 <= int.from_bytes(raw[:4], "little") <= 0x184D2A5F:
+        return "zstd"
+    # Old V7 TAR has a checksum field rather than a ustar marker.
+    if len(raw) >= 512 and re.fullmatch(rb"[0-7\x00 ]{8}", raw[148:156]):
         try:
-            with zipfile.ZipFile(BytesIO(raw)) as archive:
-                for item in archive.infolist():
-                    member(item.filename.rstrip("/") if item.is_dir() else item.filename)
-                    if not item.is_dir() and _manuscript_source(item.filename):
-                        sources.append(item.filename)
-                    if not item.is_dir() and _archived_manuscript(item.filename):
-                        pdfs.append((item.filename, archive.read(item)))
-        except (zipfile.BadZipFile, RuntimeError) as exc:
-            raise ManuscriptPDFHold("invalid reproduction archive") from exc
+            with tarfile.open(fileobj=BytesIO(raw), mode="r:"):
+                return "tar"
+        except tarfile.TarError:
+            pass
+    if raw.startswith((b"7z\xbc\xaf\x27\x1c", b"Rar!\x1a\x07", b"!<arch>\n", b"MSCF")):
+        return "unsupported"
+    return None
+
+
+class _ArchiveBudget:
+    def __init__(self):
+        self.expanded_bytes = 0
+
+    def member(self, size: int) -> None:
+        if not 0 <= size <= MAX_MEMBER_BYTES:
+            raise ManuscriptPDFHold("reproduction archive member exceeds size limit")
+        self.expanded_bytes += size
+        if self.expanded_bytes > MAX_ARCHIVE_BYTES:
+            raise ManuscriptPDFHold("reproduction archive exceeds total expanded size limit")
+
+
+def _bounded_stream(stream, limit: int) -> bytes:
+    data = stream.read(limit + 1)
+    if len(data) > limit:
+        raise ManuscriptPDFHold("reproduction archive expansion exceeds size limit")
+    return data
+
+
+def _decompress(raw: bytes, kind: str) -> bytes:
+    """Bound codec expansion before allocating or inspecting its members."""
+    if kind == "gzip":
+        stream = gzip.GzipFile(fileobj=BytesIO(raw))
+    elif kind == "bz2":
+        stream = bz2.BZ2File(BytesIO(raw))
+    elif kind == "xz":
+        stream = lzma.LZMAFile(BytesIO(raw))
     else:
         try:
-            with tarfile.open(fileobj=BytesIO(raw), mode="r:*") as archive:
+            from compression import zstd
+            stream = zstd.ZstdFile(BytesIO(raw))
+        except ImportError as exc:
+            raise ManuscriptPDFHold("zstd reproduction archive inspection is unavailable") from exc
+    with stream:
+        return _bounded_stream(stream, min(MAX_MEMBER_BYTES, MAX_ARCHIVE_BYTES))
+
+
+def _archive_pdfs(path: Path, *, raw: bytes | None = None, budget=None):
+    """Inspect bounded nested containers without extracting to the filesystem."""
+    raw = _read(path) if raw is None else raw
+    budget = budget or _ArchiveBudget()
+
+    def scan(data, container, depth, prefix=""):
+        if depth > MAX_ARCHIVE_DEPTH:
+            raise ManuscriptPDFHold("reproduction archive exceeds nesting depth limit")
+        kind = _archive_kind(data)
+        if kind is None or kind == "unsupported":
+            raise ManuscriptPDFHold("uninspectable reproduction archive: " + container)
+        if kind in {"gzip", "bz2", "xz", "zstd"}:
+            decoded = _decompress(data, kind)
+            budget.member(len(decoded))
+            inner_kind = _archive_kind(decoded)
+            if inner_kind is not None:
+                # A compressed TAR/ZIP is one archive level; repeated codec
+                # wrappers consume levels to prevent an unbounded codec stack.
+                next_depth = depth + (inner_kind in {"gzip", "bz2", "xz", "zstd"})
+                return scan(decoded, container, next_depth, prefix)
+            name = re.sub(r"[.](?:gz|bz2|xz|zst|zstd)$", "", container, flags=re.I)
+            if not name.lower().endswith(".pdf") and decoded.startswith(b"%PDF-"):
+                name += ".pdf"
+            if name == container or name.lower().endswith(ARCHIVE_SUFFIXES):
+                raise ManuscriptPDFHold("uninspectable compressed reproduction member")
+            budget.member(len(decoded))
+            if _manuscript_source(name):
+                raise ManuscriptPDFHold("compressed manuscript source requires a rendered PDF")
+            return [(prefix + name, decoded)] if _archived_manuscript(name) else []
+
+        seen = set(); sources = []; pdfs = []; nested = []
+
+        def member(name):
+            _safe_member(name)
+            if name in seen:
+                raise ManuscriptPDFHold("duplicate reproduction archive member")
+            seen.add(name)
+
+        def inspect(name, content):
+            if _manuscript_source(name):
+                sources.append(name)
+            if _archived_manuscript(name):
+                pdfs.append((name, content))
+            nested_kind = _archive_kind(content)
+            if nested_kind is not None or name.lower().endswith(ARCHIVE_SUFFIXES):
+                nested.extend(scan(content, name, depth + 1, prefix + name + "!"))
+
+        if kind == "zip":
+            with zipfile.ZipFile(BytesIO(data)) as archive:
+                for item in archive.infolist():
+                    name = item.filename.rstrip("/") if item.is_dir() else item.filename
+                    member(name)
+                    if item.is_dir():
+                        continue
+                    mode = item.external_attr >> 16
+                    if stat.S_IFMT(mode) not in {0, stat.S_IFREG}:
+                        raise ManuscriptPDFHold("archived file must be a regular file")
+                    budget.member(item.file_size)
+                    with archive.open(item) as stream:
+                        inspect(name, _bounded_stream(stream, min(item.file_size, MAX_MEMBER_BYTES)))
+        else:
+            with tarfile.open(fileobj=BytesIO(data), mode="r|") as archive:
                 for item in archive:
-                    name = item.name
-                    # TAR writers commonly prefix own relative names with ./.
-                    name = name[2:] if name.startswith("./") else name
+                    name = item.name[2:] if item.name.startswith("./") else item.name
                     if name in {"", "."} and item.isdir():
                         continue
-                    member(name.rstrip("/") if item.isdir() else name)
-                    if _manuscript_source(name):
-                        if not item.isfile():
-                            raise ManuscriptPDFHold("archived manuscript source must be a regular file")
-                        sources.append(name)
-                    if _archived_manuscript(name):
-                        if not item.isfile():
-                            raise ManuscriptPDFHold("archived manuscript must be a regular file")
-                        stream = archive.extractfile(item)
-                        if stream is None:
-                            raise ManuscriptPDFHold("archived manuscript bytes missing")
-                        pdfs.append((name, stream.read()))
-        except tarfile.TarError as exc:
-            raise ManuscriptPDFHold("invalid reproduction archive") from exc
-    pdf_names = {name.lower() for name, _ in pdfs}
-    for name in sources:
-        if str(PurePosixPath(name.lower()).with_suffix(".pdf")) not in pdf_names:
-            raise ManuscriptPDFHold("archived manuscript source requires its corresponding rendered PDF in the approved release archive: " + path.name + ":" + name)
-    yield from pdfs
+                    name = name.rstrip("/") if item.isdir() else name
+                    member(name)
+                    if item.isdir():
+                        continue
+                    if _manuscript_source(name) and not item.isfile():
+                        raise ManuscriptPDFHold("archived manuscript source must be a regular file")
+                    if _archived_manuscript(name) and not item.isfile():
+                        raise ManuscriptPDFHold("archived manuscript must be a regular file")
+                    if not item.isfile():
+                        if name.lower().endswith(ARCHIVE_SUFFIXES):
+                            raise ManuscriptPDFHold("nested archive must be a regular file")
+                        continue
+                    budget.member(item.size)
+                    stream = archive.extractfile(item)
+                    if stream is None:
+                        raise ManuscriptPDFHold("archived file bytes missing")
+                    with stream:
+                        inspect(name, _bounded_stream(stream, min(item.size, MAX_MEMBER_BYTES)))
+        pdf_names = {name.lower() for name, _ in pdfs}
+        for name in sources:
+            if str(PurePosixPath(name.lower()).with_suffix(".pdf")) not in pdf_names:
+                raise ManuscriptPDFHold("archived manuscript source requires its corresponding rendered PDF in the approved release archive: " + container + ":" + name)
+        return [(prefix + name, content) for name, content in pdfs] + nested
+
+    try:
+        yield from scan(raw, path.name, 1)
+    except Exception as exc:
+        if isinstance(exc, ManuscriptPDFHold):
+            raise
+        raise ManuscriptPDFHold("invalid or uninspectable reproduction archive") from exc
 
 
 def require_local(bundle: Path, upload_paths=None, *, require_digest_inventory=True) -> dict:
     """Validate the actual future upload set, not merely files on disk."""
     bundle = Path(bundle)
-    paths = list(upload_paths) if upload_paths is not None else [p for p in bundle.iterdir() if p.is_file() and not p.name.startswith(".")]
+    paths = [Path(p) for p in upload_paths] if upload_paths is not None else [p for p in bundle.iterdir() if p.is_file() and not p.name.startswith(".")]
     names = [p.name for p in paths]
     if len(set(names)) != len(names) or any(p.parent.resolve() != bundle.resolve() for p in paths):
         raise ManuscriptPDFHold("unique top-level upload files required")
-    top = {}
+    top = {}; upload_files = {}; upload_bytes = {}
     for path in paths:
+        data = _read(path)
+        upload_bytes[path.name] = data
+        upload_files[path.name] = _hashes(data)
         if path.suffix.lower() == ".pdf":
-            data = _read(path); _pdf(data); top[path.name] = _hashes(data)
+            _pdf(data); top[path.name] = _hashes(data)
     if not top:
         raise ManuscriptPDFHold("deposit requires at least one separate manuscript PDF")
     uploaded_pdf_names = {name.lower() for name in top}
@@ -161,24 +288,26 @@ def require_local(bundle: Path, upload_paths=None, *, require_digest_inventory=T
     roles_path = bundle / "MANUSCRIPT_PDFS.json"
     if roles_path.is_file():
         try:
-            roles = json.loads(_read(roles_path))
-        except json.JSONDecodeError as exc:
+            roles = json.loads(upload_bytes[roles_path.name] if roles_path.name in upload_bytes else _read(roles_path))
+        except (json.JSONDecodeError, UnicodeDecodeError) as exc:
             raise ManuscriptPDFHold("valid manuscript role declaration required") from exc
-        if roles.get("standard") != STANDARD or not isinstance(roles.get("manuscripts"), list):
+        if not isinstance(roles, dict) or roles.get("standard") != STANDARD or not isinstance(roles.get("manuscripts"), list):
             raise ManuscriptPDFHold("exact manuscript role declaration required")
         for row in roles["manuscripts"]:
             if not isinstance(row, dict) or set(row) != {"filename", "sha256", "md5", "bytes"}:
                 raise ManuscriptPDFHold("closed manuscript role binding required")
+            if not isinstance(row["filename"], str) or row["filename"] in declared_names:
+                raise ManuscriptPDFHold("unique manuscript role filename required")
             if row["filename"] not in top or top[row["filename"]] != {k: row[k] for k in ("sha256", "md5", "bytes")}:
                 raise ManuscriptPDFHold("declared manuscript is not in actual uploads or its bytes differ")
             declared_names.add(row["filename"])
     if not declared_names and not any(_manuscript_name(name) for name in top):
         raise ManuscriptPDFHold("a figure PDF does not establish an actual manuscript; declare its exact manuscript role")
-    members = {}
+    members = {}; budget = _ArchiveBudget()
     for path in paths:
-        if not path.name.lower().endswith((".zip", ".tar", ".tar.gz", ".tgz", ".tar.bz2", ".tar.xz")):
+        if _archive_kind(upload_bytes[path.name]) is None and not path.name.lower().endswith(ARCHIVE_SUFFIXES):
             continue
-        for name, data in _archive_pdfs(path):
+        for name, data in _archive_pdfs(path, raw=upload_bytes[path.name], budget=budget):
             _pdf(data)
             matches = sorted(name for name, hashes in top.items() if hashes == _hashes(data))
             if not matches:
@@ -189,17 +318,24 @@ def require_local(bundle: Path, upload_paths=None, *, require_digest_inventory=T
     manuscripts = list(members.values())
     if digest_path.is_file():
         try:
-            manifest = json.loads(_read(digest_path))
-        except json.JSONDecodeError as exc:
+            manifest = json.loads(upload_bytes[digest_path.name] if digest_path.name in upload_bytes else _read(digest_path))
+        except (json.JSONDecodeError, UnicodeDecodeError) as exc:
             raise ManuscriptPDFHold("valid digest manifest required") from exc
+        if not isinstance(manifest, dict):
+            raise ManuscriptPDFHold("valid digest manifest object required")
         notes = manifest.get("notes")
         if not isinstance(notes, list) or not notes:
             raise ManuscriptPDFHold("digest requires an exact note inventory")
         rows = []; seen = set(); used_filenames = set()
-        uploaded = {v.get("filename"): v for v in manifest.get("uploads", []) if isinstance(v, dict)}
+        uploads = manifest.get("uploads", [])
+        if not isinstance(uploads, list) or any(not isinstance(v, dict) or not isinstance(v.get("filename"), str) for v in uploads):
+            raise ManuscriptPDFHold("valid digest upload inventory required")
+        uploaded = {v["filename"]: v for v in uploads}
+        if len(uploaded) != len(uploads):
+            raise ManuscriptPDFHold("unique digest upload filenames required")
         for note in notes:
             run = note.get("run_id") if isinstance(note, dict) else None
-            if not isinstance(run, str) or not re.fullmatch(r"Run-[0-9]{3}", run) or run in seen:
+            if not isinstance(run, str) or not re.fullmatch(r"Run-[0-9]{3,}", run) or run in seen:
                 raise ManuscriptPDFHold("digest requires unique Run identities")
             seen.add(run)
             member = members.get(("METHODS_NOTES.zip", "notes/" + run + "/paper.pdf"))
@@ -211,7 +347,10 @@ def require_local(bundle: Path, upload_paths=None, *, require_digest_inventory=T
             if not choices or choices[0] in used_filenames:
                 raise ManuscriptPDFHold("each listed note requires its own Run-named standalone PDF: " + run)
             member = {**member, "filename": choices[0]}; used_filenames.add(choices[0])
-            papers = [v for v in note.get("uploads", []) if isinstance(v, dict) and v.get("filename") == "paper.pdf"]
+            note_uploads = note.get("uploads", [])
+            if not isinstance(note_uploads, list):
+                raise ManuscriptPDFHold("valid note upload inventory required")
+            papers = [v for v in note_uploads if isinstance(v, dict) and v.get("filename") == "paper.pdf"]
             if len(papers) != 1 or papers[0].get("sha256") != member["sha256"]:
                 raise ManuscriptPDFHold("listed note manuscript hash differs from archive: " + run)
             if require_digest_inventory:
@@ -223,6 +362,7 @@ def require_local(bundle: Path, upload_paths=None, *, require_digest_inventory=T
     return {"standard": STANDARD, "status": "SEPARATE_MANUSCRIPT_PDF_PREFLIGHT_PASS",
             "manuscripts": sorted(manuscripts, key=lambda v: (v.get("run_id", ""), v["member"])),
             "top_level_pdfs": [{"filename": n, **v} for n, v in sorted(top.items())],
+            "upload_files": [{"filename": n, **v} for n, v in sorted(upload_files.items())],
             "external_mutation": False, "certifies": False}
 
 
@@ -255,9 +395,11 @@ def public_pdf_bytes(record_id: str, filename: str) -> bytes:
 
 
 def require_public(record: dict, preflight: dict, *, download=public_pdf_bytes) -> dict:
-    """Download every standalone PDF anonymously and compare exact bytes."""
-    if preflight.get("standard") != STANDARD or preflight.get("status") != "SEPARATE_MANUSCRIPT_PDF_PREFLIGHT_PASS":
+    """Require the approved public set and anonymously hash every uploaded file."""
+    if not isinstance(preflight, dict) or preflight.get("standard") != STANDARD or preflight.get("status") != "SEPARATE_MANUSCRIPT_PDF_PREFLIGHT_PASS":
         raise ManuscriptPDFHold("actual standalone manuscript preflight required")
+    if not isinstance(record, dict):
+        raise ManuscriptPDFHold("public record object required")
     record_id = str(record.get("id", ""))
     if not re.fullmatch(r"[1-9][0-9]*", record_id):
         raise ManuscriptPDFHold("public record identity required")
@@ -265,18 +407,43 @@ def require_public(record: dict, preflight: dict, *, download=public_pdf_bytes) 
     if not isinstance(files, list) or any(not isinstance(f, dict) for f in files):
         raise ManuscriptPDFHold("public manuscript inventory required")
     names = [f.get("key") for f in files]
-    if len(set(names)) != len(names):
+    if any(not isinstance(name, str) or Path(name).name != name or name in {"", ".", ".."} for name in names) or len(set(names)) != len(names):
         raise ManuscriptPDFHold("public manuscript names are duplicated")
     inventory = {f["key"]: f for f in files}
-    verified = []
-    for expected in preflight["top_level_pdfs"]:
+    approved = preflight.get("upload_files")
+    if not isinstance(approved, list) or not approved:
+        raise ManuscriptPDFHold("complete approved upload inventory required")
+    for expected in approved:
+        if (not isinstance(expected, dict) or set(expected) != {"filename", "sha256", "md5", "bytes"}
+                or not isinstance(expected.get("filename"), str)
+                or Path(expected["filename"]).name != expected["filename"]
+                or not re.fullmatch(r"[a-f0-9]{64}", str(expected.get("sha256")))
+                or not re.fullmatch(r"[a-f0-9]{32}", str(expected.get("md5")))
+                or type(expected.get("bytes")) is not int or expected["bytes"] < 0):
+            raise ManuscriptPDFHold("complete approved upload byte binding required")
+    approved_names = [row["filename"] for row in approved]
+    if len(set(approved_names)) != len(approved_names) or set(names) != set(approved_names):
+        raise ManuscriptPDFHold("public file set differs from exact approved uploads")
+    pdf_rows = preflight.get("top_level_pdfs")
+    if (not isinstance(pdf_rows, list) or not pdf_rows
+            or pdf_rows != [row for row in approved if Path(row["filename"]).suffix.lower() == ".pdf"]):
+        raise ManuscriptPDFHold("standalone PDF bindings differ from approved uploads")
+    verified = []; verified_pdfs = []
+    for expected in approved:
         name = expected["filename"]; actual = inventory.get(name)
         if (actual is None or actual.get("size") != expected["bytes"]
                 or actual.get("checksum") != "md5:" + expected["md5"]):
-            raise ManuscriptPDFHold("separate public manuscript missing or changed: " + name)
-        data = download(record_id, name); _pdf(data)
+            raise ManuscriptPDFHold("public upload missing or changed: " + name)
+        data = download(record_id, name)
+        if not isinstance(data, bytes):
+            raise ManuscriptPDFHold("public download did not return file bytes: " + name)
+        if Path(name).suffix.lower() == ".pdf":
+            _pdf(data)
         if _hashes(data) != {k: expected[k] for k in ("sha256", "md5", "bytes")}:
-            raise ManuscriptPDFHold("downloaded manuscript differs from approved PDF: " + name)
-        verified.append({**expected, "url": "https://zenodo.org/records/" + record_id + "/files/" + urllib.parse.quote(name, safe="")})
+            raise ManuscriptPDFHold("downloaded upload differs from approved bytes: " + name)
+        row = {**expected, "url": "https://zenodo.org/records/" + record_id + "/files/" + urllib.parse.quote(name, safe="")}
+        verified.append(row)
+        if Path(name).suffix.lower() == ".pdf":
+            verified_pdfs.append(row)
     return {"standard": STANDARD, "status": "SEPARATE_MANUSCRIPT_PDF_PUBLIC_READBACK_PASS",
-            "record_id": record_id, "pdfs": verified, "certifies": False}
+            "record_id": record_id, "pdfs": verified_pdfs, "upload_files": verified, "certifies": False}

@@ -1,0 +1,195 @@
+{
+  "instruction_locations": [
+    {
+      "path": "AGENTS.md",
+      "root": "science"
+    },
+    {
+      "path": "AGENTS.md",
+      "root": "core"
+    },
+    {
+      "path": "RESEARCH_PIPELINE_v2/STANDALONE_MANUSCRIPT_PDF_STANDARD.md",
+      "root": "core"
+    },
+    {
+      "path": "RESEARCH_PIPELINE_v2/WEEKLY_RESEARCH_RELEASE_STANDARD.md",
+      "root": "core"
+    },
+    {
+      "id": "viridis-nightly-science-generator",
+      "root": "automation",
+      "scope": "final PDF paragraph only; supported automation update"
+    }
+  ],
+  "repo_observed_commit": "de75ab450b3b527c8392032e02ab3436ba78dfc2",
+  "routes": {
+    "dated": {
+      "enforced": false,
+      "sources": [
+        {
+          "gate_calls_present": true,
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/publish_dated_bundles.py",
+          "required_calls": [
+            {
+              "call": "manuscript_pdf_gate.require_local",
+              "function": "metadata_payload",
+              "minimum": 1
+            },
+            {
+              "call": "manuscript_pdf_gate.require_local",
+              "function": "publish_bundle",
+              "minimum": 2
+            },
+            {
+              "call": "manuscript_pdf_gate.require_public",
+              "function": "verify_manuscript_readback",
+              "minimum": 1
+            }
+          ],
+          "root": "repo",
+          "sha256": "1d86c8bc134ecfcbe0af962dd591556727d098609f50ab6a2d35256cb058ec3a"
+        },
+        {
+          "gate_calls_present": false,
+          "path": "_ZENODO_DEPOSITS/publish_dated_bundles.py",
+          "required_calls": [],
+          "root": "core",
+          "sha256": "4f099eaffb9a35fbd24e5c57ef34801391fabcd5c3272b58a379d7ac52b35e94"
+        },
+        {
+          "delegates_to": "publish_dated_bundles.py",
+          "enforcement_source": false,
+          "gate_calls_present": false,
+          "path": "00_lab_infrastructure/gates/production_snapshots/phase5-20261004/after/_ZENODO_DEPOSITS/weekend_canon_lockstep.py",
+          "required_calls": [],
+          "root": "repo",
+          "sha256": "36b23f17c4ef4a9758f587caeb52f16c72d149fb49776e4e2fc920f5d2e32bec"
+        },
+        {
+          "delegates_to": "publish_dated_bundles.py",
+          "enforcement_source": false,
+          "gate_calls_present": false,
+          "path": "_ZENODO_DEPOSITS/weekend_canon_lockstep.py",
+          "required_calls": [],
+          "root": "core",
+          "sha256": "36b23f17c4ef4a9758f587caeb52f16c72d149fb49776e4e2fc920f5d2e32bec"
+        }
+      ]
+    },
+    "digest_guard": {
+      "enforced": true,
+      "sources": [
+        {
+          "gate_calls_present": true,
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/guard_methods_digest_release.py",
+          "required_calls": [
+            {
+              "call": "manuscript_pdf_gate.require_local",
+              "function": "preflight",
+              "minimum": 1
+            },
+            {
+              "call": "preflight",
+              "function": "dispatch",
+              "minimum": 2
+            },
+            {
+              "call": "manuscript_pdf_gate.require_public",
+              "function": "dispatch",
+              "minimum": 1
+            },
+            {
+              "call": "preflight",
+              "function": "main",
+              "minimum": 2
+            }
+          ],
+          "root": "repo",
+          "sha256": "04223713b777e220a255081bb0eeb93fb4c67f0018c5404f033a3abf73dd13cc"
+        },
+        {
+          "gate_calls_present": true,
+          "path": "_ZENODO_DEPOSITS/guard_methods_digest_release.py",
+          "required_calls": [
+            {
+              "call": "manuscript_pdf_gate.require_local",
+              "function": "preflight",
+              "minimum": 1
+            },
+            {
+              "call": "preflight",
+              "function": "dispatch",
+              "minimum": 1
+            },
+            {
+              "call": "manuscript_pdf_gate.require_public",
+              "function": "dispatch",
+              "minimum": 1
+            },
+            {
+              "call": "preflight",
+              "function": "main",
+              "minimum": 2
+            }
+          ],
+          "root": "core",
+          "sha256": "b22905f6d26c7f0fb0b40d7175028e1a84ef518e6df38caa258d976c7588d4d7"
+        }
+      ]
+    },
+    "successor": {
+      "enforced": true,
+      "sources": [
+        {
+          "gate_calls_present": true,
+          "path": "00_lab_infrastructure/gates/standalone_pdf_release/publish_successor_wave.py",
+          "required_calls": [
+            {
+              "call": "manuscript_pdf_gate.require_local",
+              "function": "load_and_validate_wave",
+              "minimum": 1
+            },
+            {
+              "call": "manuscript_pdf_gate.require_local",
+              "function": "publish_candidate",
+              "minimum": 2
+            },
+            {
+              "call": "manuscript_pdf_gate.require_public",
+              "function": "verify_manuscript_readback",
+              "minimum": 1
+            }
+          ],
+          "root": "repo",
+          "sha256": "b083119a7a3b119d127486b7a862a296cfe8283b2781b1d2385606cab09a53c7"
+        },
+        {
+          "gate_calls_present": true,
+          "path": "_ZENODO_DEPOSITS/publish_successor_wave.py",
+          "required_calls": [
+            {
+              "call": "manuscript_pdf_gate.require_local",
+              "function": "load_and_validate_wave",
+              "minimum": 1
+            },
+            {
+              "call": "manuscript_pdf_gate.require_local",
+              "function": "publish_candidate",
+              "minimum": 2
+            },
+            {
+              "call": "manuscript_pdf_gate.require_public",
+              "function": "verify_manuscript_readback",
+              "minimum": 1
+            }
+          ],
+          "root": "core",
+          "sha256": "6969f4b2b071535e1fe68bf30843c5791fd70955832c745bbdfcab032c7b2ecf"
+        }
+      ]
+    }
+  },
+  "schema": "VRS-ENFORCEMENT-CLAIMS-1",
+  "verified_on": "2026-10-14"
+}

@@ -548,6 +548,20 @@ function bindControls() {
   byId("reset-map").addEventListener("click", resetResearchGraph);
 }
 
+function manuscriptPdfLink(entry) {
+  const paragraph = document.createElement("p");
+  if (entry.pdf_url && entry.pdf_access?.status === "LINKED_FROM_HASH_BOUND_PUBLIC_READBACK") {
+    const link = document.createElement("a");
+    link.href = entry.pdf_url;
+    link.textContent = "Read the manuscript PDF";
+    link.rel = "noreferrer";
+    paragraph.append(link);
+  } else {
+    paragraph.textContent = "Direct manuscript PDF: access mapping pending review.";
+  }
+  return paragraph;
+}
+
 function renderPublicationPointers(publications) {
   const target = byId("publication-links");
   const cards = publications.map((publication) => {
@@ -563,7 +577,7 @@ function renderPublicationPointers(publications) {
     scope.textContent = publication.claim_scope;
     const caveat = document.createElement("p");
     caveat.textContent = publication.disclaimer;
-    card.append(title, scope, caveat);
+    card.append(title, manuscriptPdfLink(publication), scope, caveat);
     return card;
   });
   target.replaceChildren(...cards);
@@ -596,7 +610,7 @@ function renderMethodsDigestPointers(digests) {
       ).join("\n");
       const scope = document.createElement("pre");
       scope.textContent = note.claim_scope;
-      section.append(heading, basis, labels, scope);
+      section.append(heading, manuscriptPdfLink(note), basis, labels, scope);
       card.append(section);
     }
     return card;

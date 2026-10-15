@@ -1,0 +1,1038 @@
+{
+  "bindings": [
+    {
+      "archive_member": "",
+      "bytes": 37046,
+      "doi": "10.5281/zenodo.23141980",
+      "entity_id": "publication:bcan-scalar-corrected-20261004",
+      "filename": "paper.pdf",
+      "index_row_sha256": "f9d09cd4160bfa7d6f531d44a13426258a67fb7944026bc3e0f1e1cf397ea220",
+      "md5": "1a2d6e4e1fcf26fbb4a27957048d8c7e",
+      "pdf_url": "https://zenodo.org/records/23141980/files/paper.pdf",
+      "record_id": "23141980",
+      "run_id": "",
+      "selection_basis": "EXPLICIT_STANDALONE_PUBLICATION_RECORD",
+      "sha256": "cb189af5f4e60baefef037f8fccd92bc400e45a8fabe41228b79e18804f48e62",
+      "verification_receipt_sha256": [
+        "79fa1d1957d66603d5e71c3681e60d198ea7ecd19119501cc6d3462098a86270"
+      ]
+    },
+    {
+      "archive_member": "",
+      "bytes": 60208,
+      "doi": "10.5281/zenodo.23141592",
+      "entity_id": "publication:foundation-standalone-20261004",
+      "filename": "intelligence_bound.pdf",
+      "index_row_sha256": "feadc26884a75b3a361a49ddb9e88a51c6840ee50f430539eb5150e6d958eef7",
+      "md5": "9b9577841d0df3c3c5c4a3bc3ee8538c",
+      "pdf_url": "https://zenodo.org/records/23141592/files/intelligence_bound.pdf",
+      "record_id": "23141592",
+      "run_id": "",
+      "selection_basis": "EXPLICIT_STANDALONE_PUBLICATION_RECORD",
+      "sha256": "f4e84c8406cdcf8958ad721ffcfc85b21025d045a7e95de9862d3f80674f7723",
+      "verification_receipt_sha256": [
+        "79fa1d1957d66603d5e71c3681e60d198ea7ecd19119501cc6d3462098a86270"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-125/paper.pdf",
+      "bytes": 52437,
+      "doi": "10.5281/zenodo.23226761",
+      "entity_id": "publication:methods-note:2026-W41:Run-125",
+      "filename": "Run-125-Paper.pdf",
+      "index_row_sha256": "862ec6762b28e23f2932663130f36dafc3a0960b4c8679bd78712467534f7876",
+      "md5": "1cc0f47157b8c727f6f8c89ad8577671",
+      "pdf_url": "https://zenodo.org/records/23226761/files/Run-125-Paper.pdf",
+      "record_id": "23226761",
+      "run_id": "Run-125",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "09f052eb7d38649ceec683a113bde21e76e052817ae92627b78bb696a49adc39",
+      "verification_receipt_sha256": [
+        "50796f1f66d4440942a9946d267feeed7cc8dbd8e464b99c0f04c4be97aa0f06"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-126/paper.pdf",
+      "bytes": 49605,
+      "doi": "10.5281/zenodo.23226761",
+      "entity_id": "publication:methods-note:2026-W41:Run-126",
+      "filename": "Run-126-Paper.pdf",
+      "index_row_sha256": "fa979d2eafe6abd77ef4d9f0c771db3888649078b38364fb076a055d06a7e2ff",
+      "md5": "b2fc9f74783ffec2d525a131fd0ec4e6",
+      "pdf_url": "https://zenodo.org/records/23226761/files/Run-126-Paper.pdf",
+      "record_id": "23226761",
+      "run_id": "Run-126",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "f7e0888568040886cd6d655544d744e63aa6f36ae7f336469f507a908fba7dfe",
+      "verification_receipt_sha256": [
+        "50796f1f66d4440942a9946d267feeed7cc8dbd8e464b99c0f04c4be97aa0f06"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-127/paper.pdf",
+      "bytes": 54874,
+      "doi": "10.5281/zenodo.23246368",
+      "entity_id": "publication:methods-note:2026-W41:Run-127",
+      "filename": "Run-127-Paper.pdf",
+      "index_row_sha256": "2152dcc66fd3780cb687491c34ff136419639dd607b5c2a74c50eac991bd86be",
+      "md5": "6922ab4eeb062f70d4107184da9e925a",
+      "pdf_url": "https://zenodo.org/records/23246368/files/Run-127-Paper.pdf",
+      "record_id": "23246368",
+      "run_id": "Run-127",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "035f33df8f4b13cf3b628ed24d3d33e559712dd067e6a53f1ea067cc9d4bc402",
+      "verification_receipt_sha256": [
+        "e1bea6c580e08cdf2ad940a1d1aea731985a61cac2b529c718058ac6a9410b2c"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-128/paper.pdf",
+      "bytes": 50169,
+      "doi": "10.5281/zenodo.23226761",
+      "entity_id": "publication:methods-note:2026-W41:Run-128",
+      "filename": "Run-128-Paper.pdf",
+      "index_row_sha256": "199c36995edefecc65058215cbf6f147913e48223c35b0d65819943b7ee6ae67",
+      "md5": "4959d34fef903003334d389f31331bb9",
+      "pdf_url": "https://zenodo.org/records/23226761/files/Run-128-Paper.pdf",
+      "record_id": "23226761",
+      "run_id": "Run-128",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "f81e666636e743e1f046b5723d37572896f7fc8f811d127a878496550b11d918",
+      "verification_receipt_sha256": [
+        "50796f1f66d4440942a9946d267feeed7cc8dbd8e464b99c0f04c4be97aa0f06"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-129/paper.pdf",
+      "bytes": 49129,
+      "doi": "10.5281/zenodo.23226761",
+      "entity_id": "publication:methods-note:2026-W41:Run-129",
+      "filename": "Run-129-Paper.pdf",
+      "index_row_sha256": "6486b4146e946dd853fb77e68fb30c7dcf1a740778c96ac339984da1551b2704",
+      "md5": "7346afc9558fb8fb82796ed4c5b7c714",
+      "pdf_url": "https://zenodo.org/records/23226761/files/Run-129-Paper.pdf",
+      "record_id": "23226761",
+      "run_id": "Run-129",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "5585e4a72380fe99b1e990e9751ac23d477a7a8661d2463d6af11f6dc9ff7225",
+      "verification_receipt_sha256": [
+        "50796f1f66d4440942a9946d267feeed7cc8dbd8e464b99c0f04c4be97aa0f06"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-130/paper.pdf",
+      "bytes": 48799,
+      "doi": "10.5281/zenodo.23246368",
+      "entity_id": "publication:methods-note:2026-W41:Run-130",
+      "filename": "Run-130-Paper.pdf",
+      "index_row_sha256": "965e4f36982530de7583a98c29396b7b592b60f1383d84fc002b80ad8fa2afd3",
+      "md5": "32473733a03f107dcd03e85ba268f08f",
+      "pdf_url": "https://zenodo.org/records/23246368/files/Run-130-Paper.pdf",
+      "record_id": "23246368",
+      "run_id": "Run-130",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "dd61b465c23bbff5c53369bd9a12f35ea4725d582c693a89862b157b02437e53",
+      "verification_receipt_sha256": [
+        "e1bea6c580e08cdf2ad940a1d1aea731985a61cac2b529c718058ac6a9410b2c"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-131/paper.pdf",
+      "bytes": 46226,
+      "doi": "10.5281/zenodo.23226761",
+      "entity_id": "publication:methods-note:2026-W41:Run-131",
+      "filename": "Run-131-Paper.pdf",
+      "index_row_sha256": "46a8222034906c591046440d26d5a9d783ed409cff2035117158295d2951e94c",
+      "md5": "232129dd64d63340601778175d0bab5d",
+      "pdf_url": "https://zenodo.org/records/23226761/files/Run-131-Paper.pdf",
+      "record_id": "23226761",
+      "run_id": "Run-131",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "748c33b7ebe078139f6bdcdf1eb7303561c9e34f968c17242490497f0d269936",
+      "verification_receipt_sha256": [
+        "50796f1f66d4440942a9946d267feeed7cc8dbd8e464b99c0f04c4be97aa0f06"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-134/paper.pdf",
+      "bytes": 47871,
+      "doi": "10.5281/zenodo.23226761",
+      "entity_id": "publication:methods-note:2026-W41:Run-134",
+      "filename": "Run-134-Paper.pdf",
+      "index_row_sha256": "f31290d831edd553bab2148cf267be2b9fe43b6aed7aa0d284e9bb2bfc3e1125",
+      "md5": "c953e0442d4ebff7b61b2c4fd8d5b2e4",
+      "pdf_url": "https://zenodo.org/records/23226761/files/Run-134-Paper.pdf",
+      "record_id": "23226761",
+      "run_id": "Run-134",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "ca78d0c10482c5e0bcf20fe9843ec3d5aee9542e221b4d591118a8d53eb62e14",
+      "verification_receipt_sha256": [
+        "50796f1f66d4440942a9946d267feeed7cc8dbd8e464b99c0f04c4be97aa0f06"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-140/paper.pdf",
+      "bytes": 73120,
+      "doi": "10.5281/zenodo.23246368",
+      "entity_id": "publication:methods-note:2026-W41:Run-140",
+      "filename": "Run-140-Paper.pdf",
+      "index_row_sha256": "366f9b953c6c576d10d529fa842dca926364d0997ed0f3b43950133049ad779e",
+      "md5": "c85f797f49af19b5ffd8dfa8aa943b78",
+      "pdf_url": "https://zenodo.org/records/23246368/files/Run-140-Paper.pdf",
+      "record_id": "23246368",
+      "run_id": "Run-140",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "4135e88ddd28b3bb7a8ba2b0553b729acac1cf95afff2dfdc8fd0dc5773035e3",
+      "verification_receipt_sha256": [
+        "e1bea6c580e08cdf2ad940a1d1aea731985a61cac2b529c718058ac6a9410b2c"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-141/paper.pdf",
+      "bytes": 47691,
+      "doi": "10.5281/zenodo.23226761",
+      "entity_id": "publication:methods-note:2026-W41:Run-141",
+      "filename": "Run-141-Paper.pdf",
+      "index_row_sha256": "22d0ab3ef4eabf184d2100b608b8db68f485c16fa24f6edb8819cfc24d44c9e6",
+      "md5": "c8a2e16083d8418258c8fc947e5e5c30",
+      "pdf_url": "https://zenodo.org/records/23226761/files/Run-141-Paper.pdf",
+      "record_id": "23226761",
+      "run_id": "Run-141",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "5e739f1deb95e100860c510b15ab314f8138f06bfd695f0f7bb61cbd6f1599d8",
+      "verification_receipt_sha256": [
+        "50796f1f66d4440942a9946d267feeed7cc8dbd8e464b99c0f04c4be97aa0f06"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-143/paper.pdf",
+      "bytes": 94927,
+      "doi": "10.5281/zenodo.23246368",
+      "entity_id": "publication:methods-note:2026-W41:Run-143",
+      "filename": "Run-143-Paper.pdf",
+      "index_row_sha256": "11551504e953c597d8759229cd1a28e6b5fa861cdaac7712d423b6c8a31c1f3f",
+      "md5": "8567e12b31814143ddc4742a35d6bc03",
+      "pdf_url": "https://zenodo.org/records/23246368/files/Run-143-Paper.pdf",
+      "record_id": "23246368",
+      "run_id": "Run-143",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "08bc7e761a925610204055fc0d9629b40b48bce34c6bb77c68b4359ef6143626",
+      "verification_receipt_sha256": [
+        "e1bea6c580e08cdf2ad940a1d1aea731985a61cac2b529c718058ac6a9410b2c"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-144/paper.pdf",
+      "bytes": 87890,
+      "doi": "10.5281/zenodo.23246368",
+      "entity_id": "publication:methods-note:2026-W41:Run-144",
+      "filename": "Run-144-Paper.pdf",
+      "index_row_sha256": "9b7bdeb18f84d528b0a3df5c9e4803bb5a263725091657cb7ba68eae14d319be",
+      "md5": "0601978b7e95c48db212183a4d52fd8e",
+      "pdf_url": "https://zenodo.org/records/23246368/files/Run-144-Paper.pdf",
+      "record_id": "23246368",
+      "run_id": "Run-144",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "4de08b27e92b4ba32e766cab7b48da22dde455ea46fe0cb33db2fa2cabc5b35d",
+      "verification_receipt_sha256": [
+        "e1bea6c580e08cdf2ad940a1d1aea731985a61cac2b529c718058ac6a9410b2c"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-145/paper.pdf",
+      "bytes": 89419,
+      "doi": "10.5281/zenodo.23246368",
+      "entity_id": "publication:methods-note:2026-W41:Run-145",
+      "filename": "Run-145-Paper.pdf",
+      "index_row_sha256": "3076e86fa4473babc3e6d65acf142fff36cdc552587d5cdb76c99a1e69b5d4f3",
+      "md5": "7703a445a5d2f732a99a285c1f218c82",
+      "pdf_url": "https://zenodo.org/records/23246368/files/Run-145-Paper.pdf",
+      "record_id": "23246368",
+      "run_id": "Run-145",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "f0f2dbf68742771f55c7831a65df511a9017beb51edafce1572dc8c82c8d4e3a",
+      "verification_receipt_sha256": [
+        "e1bea6c580e08cdf2ad940a1d1aea731985a61cac2b529c718058ac6a9410b2c"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-146/paper.pdf",
+      "bytes": 73105,
+      "doi": "10.5281/zenodo.23246368",
+      "entity_id": "publication:methods-note:2026-W41:Run-146",
+      "filename": "Run-146-Paper.pdf",
+      "index_row_sha256": "dabfd3314e9bacb94d3f01998dcd934ea67b5824a2dfc4a6c2453ddfc31702cd",
+      "md5": "3061a7e82f0a7ba9926d1d789b76f177",
+      "pdf_url": "https://zenodo.org/records/23246368/files/Run-146-Paper.pdf",
+      "record_id": "23246368",
+      "run_id": "Run-146",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "041dca7a7b59942e765698a48858746985d3e48845dda1dcc2dc043954dab530",
+      "verification_receipt_sha256": [
+        "e1bea6c580e08cdf2ad940a1d1aea731985a61cac2b529c718058ac6a9410b2c"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-147/paper.pdf",
+      "bytes": 80097,
+      "doi": "10.5281/zenodo.23246368",
+      "entity_id": "publication:methods-note:2026-W41:Run-147",
+      "filename": "Run-147-Paper.pdf",
+      "index_row_sha256": "03177d8f8b04639ff4aadcc24cb755541dac982d4f2e397023658cfa6af1c747",
+      "md5": "42a043772d124023fdba61340a1adc20",
+      "pdf_url": "https://zenodo.org/records/23246368/files/Run-147-Paper.pdf",
+      "record_id": "23246368",
+      "run_id": "Run-147",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "3d791bd64e7f726e59311572c8bf764b1555ac2436e2019a67cb7687f8826802",
+      "verification_receipt_sha256": [
+        "e1bea6c580e08cdf2ad940a1d1aea731985a61cac2b529c718058ac6a9410b2c"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-148/paper.pdf",
+      "bytes": 75773,
+      "doi": "10.5281/zenodo.23246368",
+      "entity_id": "publication:methods-note:2026-W41:Run-148",
+      "filename": "Run-148-Paper.pdf",
+      "index_row_sha256": "365828e71d179cda080e271294a992c2e016b110e7dfc9cce0569ead771436d2",
+      "md5": "c339a074ba2f0e50013fd047f43ab8f3",
+      "pdf_url": "https://zenodo.org/records/23246368/files/Run-148-Paper.pdf",
+      "record_id": "23246368",
+      "run_id": "Run-148",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "5e85c431e0e2be20da3e4b266731084b87937a4307891025ddf51a8625b038ea",
+      "verification_receipt_sha256": [
+        "e1bea6c580e08cdf2ad940a1d1aea731985a61cac2b529c718058ac6a9410b2c"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-149/paper.pdf",
+      "bytes": 76833,
+      "doi": "10.5281/zenodo.23246368",
+      "entity_id": "publication:methods-note:2026-W41:Run-149",
+      "filename": "Run-149-Paper.pdf",
+      "index_row_sha256": "fff222da7200985bee23e90e91cd213b7985ffa63b65172655d78a95442f74fa",
+      "md5": "2e643156e8bb9fac5f152994f826632b",
+      "pdf_url": "https://zenodo.org/records/23246368/files/Run-149-Paper.pdf",
+      "record_id": "23246368",
+      "run_id": "Run-149",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "2adeb3e6145a4e553ac5a34b57e8804dd56cd263ea3cf41afd5c85837af08e33",
+      "verification_receipt_sha256": [
+        "e1bea6c580e08cdf2ad940a1d1aea731985a61cac2b529c718058ac6a9410b2c"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-150/paper.pdf",
+      "bytes": 81708,
+      "doi": "10.5281/zenodo.23290448",
+      "entity_id": "publication:methods-note:2026-W41:Run-150",
+      "filename": "Run-150-Paper.pdf",
+      "index_row_sha256": "8a39a8ce05609eda73f1b3d44cbefe687a0fc8046a3da2860f1cfa726de062ab",
+      "md5": "547d895b4a5638b806fa57ddafe11e5f",
+      "pdf_url": "https://zenodo.org/records/23290448/files/Run-150-Paper.pdf",
+      "record_id": "23290448",
+      "run_id": "Run-150",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "131faeb6f6542386a98625152123e8504e9954c40f923f66ec8f93d3667a0222",
+      "verification_receipt_sha256": [
+        "eab2b8f097a99d981e960ca27f9e6ea144256cfef6dcbe4ce99eed873c5403bd"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-151/paper.pdf",
+      "bytes": 83192,
+      "doi": "10.5281/zenodo.23290448",
+      "entity_id": "publication:methods-note:2026-W41:Run-151",
+      "filename": "Run-151-Paper.pdf",
+      "index_row_sha256": "907c70a6349a318fbe415f7b12cc6b895f0ed198130184cfe66faec7580b8e08",
+      "md5": "b9b0fb57a50b149b10136862e1ad0f47",
+      "pdf_url": "https://zenodo.org/records/23290448/files/Run-151-Paper.pdf",
+      "record_id": "23290448",
+      "run_id": "Run-151",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "190a30cf0fcce3c827dc954f3bc67999e9b8c5cbae17b23ceb5bc7e49eefe8e0",
+      "verification_receipt_sha256": [
+        "eab2b8f097a99d981e960ca27f9e6ea144256cfef6dcbe4ce99eed873c5403bd"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-152/paper.pdf",
+      "bytes": 88808,
+      "doi": "10.5281/zenodo.23290448",
+      "entity_id": "publication:methods-note:2026-W41:Run-152",
+      "filename": "Run-152-Paper.pdf",
+      "index_row_sha256": "46a5be5b8a19b0b8c5d52f0e01f5ccc19d720f163499cc2679e9cd675cb77b45",
+      "md5": "d795226fb4b19d70e4492a0e89be9894",
+      "pdf_url": "https://zenodo.org/records/23290448/files/Run-152-Paper.pdf",
+      "record_id": "23290448",
+      "run_id": "Run-152",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "38c52ab0b452c437e0c6adde91edca676df771e8c1dcfff54ad97f4b811754ee",
+      "verification_receipt_sha256": [
+        "eab2b8f097a99d981e960ca27f9e6ea144256cfef6dcbe4ce99eed873c5403bd"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-153/paper.pdf",
+      "bytes": 79781,
+      "doi": "10.5281/zenodo.23290448",
+      "entity_id": "publication:methods-note:2026-W41:Run-153",
+      "filename": "Run-153-Paper.pdf",
+      "index_row_sha256": "948655b46c28e2b75b9e045cfbee8824503a6e9e55910d2d599176792a19e512",
+      "md5": "53e3a581fa836741e6bcbf1009d2e570",
+      "pdf_url": "https://zenodo.org/records/23290448/files/Run-153-Paper.pdf",
+      "record_id": "23290448",
+      "run_id": "Run-153",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "a5b31d4c58c3f23d680730acb4538a9ad0243a905f9962396cf689216e759041",
+      "verification_receipt_sha256": [
+        "eab2b8f097a99d981e960ca27f9e6ea144256cfef6dcbe4ce99eed873c5403bd"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-154/paper.pdf",
+      "bytes": 84049,
+      "doi": "10.5281/zenodo.23290448",
+      "entity_id": "publication:methods-note:2026-W41:Run-154",
+      "filename": "Run-154-Paper.pdf",
+      "index_row_sha256": "11e5d386f37ab35b36b7c757a9b1fa0cb96ee19ed3b8c121a4320b049b8e0b90",
+      "md5": "34733590a9854b579b2067b0f00abb6e",
+      "pdf_url": "https://zenodo.org/records/23290448/files/Run-154-Paper.pdf",
+      "record_id": "23290448",
+      "run_id": "Run-154",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "f1da390e0b49ef082b21772c633a5600d40293ceac0c8954a4cd83f12ed2408e",
+      "verification_receipt_sha256": [
+        "eab2b8f097a99d981e960ca27f9e6ea144256cfef6dcbe4ce99eed873c5403bd"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-155/paper.pdf",
+      "bytes": 87849,
+      "doi": "10.5281/zenodo.23290448",
+      "entity_id": "publication:methods-note:2026-W41:Run-155",
+      "filename": "Run-155-Paper.pdf",
+      "index_row_sha256": "c3745134a8aace312709545de764ae973712274a1e405408461cc1b42bb3951d",
+      "md5": "be3b8d98510f93b0d936502e46a2764e",
+      "pdf_url": "https://zenodo.org/records/23290448/files/Run-155-Paper.pdf",
+      "record_id": "23290448",
+      "run_id": "Run-155",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "d3d90ff6cd574204c6e652712ed9770bd74b4a35140ba2558f614cac4e95fad4",
+      "verification_receipt_sha256": [
+        "eab2b8f097a99d981e960ca27f9e6ea144256cfef6dcbe4ce99eed873c5403bd"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-156/paper.pdf",
+      "bytes": 85222,
+      "doi": "10.5281/zenodo.23290448",
+      "entity_id": "publication:methods-note:2026-W41:Run-156",
+      "filename": "Run-156-Paper.pdf",
+      "index_row_sha256": "678ab9b25676c11d17414291d8fe7c33a7dc3db9bc8d54a9b43113dfd4daa4e0",
+      "md5": "7460ff3b7afb61895ce264beb720bb25",
+      "pdf_url": "https://zenodo.org/records/23290448/files/Run-156-Paper.pdf",
+      "record_id": "23290448",
+      "run_id": "Run-156",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "b5e68e0465df742ad4d8ea59165177c88ccd002eef7a1b8215c025a1f5dbe407",
+      "verification_receipt_sha256": [
+        "eab2b8f097a99d981e960ca27f9e6ea144256cfef6dcbe4ce99eed873c5403bd"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-157/paper.pdf",
+      "bytes": 81049,
+      "doi": "10.5281/zenodo.23290448",
+      "entity_id": "publication:methods-note:2026-W41:Run-157",
+      "filename": "Run-157-Paper.pdf",
+      "index_row_sha256": "7176dbf29690bf113114ee49f1d4ba2c57ffcf2d151ab1e508015e75dbf3d582",
+      "md5": "87f99f3e20d7b6594b145b96d2ad04d1",
+      "pdf_url": "https://zenodo.org/records/23290448/files/Run-157-Paper.pdf",
+      "record_id": "23290448",
+      "run_id": "Run-157",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "c3f52f1a8edb0f097907283032b0973ce4886e249286a40d11fc1bc5f0378b71",
+      "verification_receipt_sha256": [
+        "eab2b8f097a99d981e960ca27f9e6ea144256cfef6dcbe4ce99eed873c5403bd"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-158/paper.pdf",
+      "bytes": 81592,
+      "doi": "10.5281/zenodo.23290448",
+      "entity_id": "publication:methods-note:2026-W41:Run-158",
+      "filename": "Run-158-Paper.pdf",
+      "index_row_sha256": "c7ddc0f4f951a0ccc69c1d6db9f891ad8549b883d563adba69e5800cf0e8aa95",
+      "md5": "e065ceefeb6c27fbff3533c8e73be504",
+      "pdf_url": "https://zenodo.org/records/23290448/files/Run-158-Paper.pdf",
+      "record_id": "23290448",
+      "run_id": "Run-158",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "5419d7e3285b9e8f2b3fb5763f89f75a5cfd6cc98c682b764519d5c436f5244f",
+      "verification_receipt_sha256": [
+        "eab2b8f097a99d981e960ca27f9e6ea144256cfef6dcbe4ce99eed873c5403bd"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-159/paper.pdf",
+      "bytes": 91108,
+      "doi": "10.5281/zenodo.23290448",
+      "entity_id": "publication:methods-note:2026-W41:Run-159",
+      "filename": "Run-159-Paper.pdf",
+      "index_row_sha256": "28411bbddce1fac831a50032582c5578a5e530130944b505e6709fe2ed51c8e2",
+      "md5": "63dd1e60abe755ca3c3b8302fbcb7e66",
+      "pdf_url": "https://zenodo.org/records/23290448/files/Run-159-Paper.pdf",
+      "record_id": "23290448",
+      "run_id": "Run-159",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "4cca68585839d09fd41be9199d666e592c82f78afb596038879ae0813f04a9d9",
+      "verification_receipt_sha256": [
+        "eab2b8f097a99d981e960ca27f9e6ea144256cfef6dcbe4ce99eed873c5403bd"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-160/paper.pdf",
+      "bytes": 85115,
+      "doi": "10.5281/zenodo.23290748",
+      "entity_id": "publication:methods-note:2026-W41:Run-160",
+      "filename": "Run-160-Paper.pdf",
+      "index_row_sha256": "d253e659e272663384254633e5d060cdf1350cb73a84dcec3f172535337ae901",
+      "md5": "ae0f4dd2225e899c16b2856d92f93eba",
+      "pdf_url": "https://zenodo.org/records/23290748/files/Run-160-Paper.pdf",
+      "record_id": "23290748",
+      "run_id": "Run-160",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "d328a101433c5c523b92d812d7619f71e780859e5fec9898885425637fca07ec",
+      "verification_receipt_sha256": [
+        "9a10d2c58e8a8884e0d3d030eba69763fadd37b19e8c087a028f2e55ac8fc0f1"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-161/paper.pdf",
+      "bytes": 78772,
+      "doi": "10.5281/zenodo.23290748",
+      "entity_id": "publication:methods-note:2026-W41:Run-161",
+      "filename": "Run-161-Paper.pdf",
+      "index_row_sha256": "6c534f1f296021193504f6bb5c8e5a339343b116e2c5119b0a7ded52f07300a9",
+      "md5": "58637d6473a617785f8afc1821d2b377",
+      "pdf_url": "https://zenodo.org/records/23290748/files/Run-161-Paper.pdf",
+      "record_id": "23290748",
+      "run_id": "Run-161",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "335ca69b9e7f5e7ae9ef496499be7b3ea04ca943b3ea3ccf8623edd20829e422",
+      "verification_receipt_sha256": [
+        "9a10d2c58e8a8884e0d3d030eba69763fadd37b19e8c087a028f2e55ac8fc0f1"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-162/paper.pdf",
+      "bytes": 83334,
+      "doi": "10.5281/zenodo.23290748",
+      "entity_id": "publication:methods-note:2026-W41:Run-162",
+      "filename": "Run-162-Paper.pdf",
+      "index_row_sha256": "ecddeacf81ea03c8d8f97bf30d651980b429a3a935d2662d715c017b26c00e31",
+      "md5": "8fb5142e46f9a0d44761d511309314ac",
+      "pdf_url": "https://zenodo.org/records/23290748/files/Run-162-Paper.pdf",
+      "record_id": "23290748",
+      "run_id": "Run-162",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "56da38e7829b8ac3583cd7fa3c18e719f90dfe9a040bb130c6e9f2f29d173614",
+      "verification_receipt_sha256": [
+        "9a10d2c58e8a8884e0d3d030eba69763fadd37b19e8c087a028f2e55ac8fc0f1"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-163/paper.pdf",
+      "bytes": 89747,
+      "doi": "10.5281/zenodo.23290748",
+      "entity_id": "publication:methods-note:2026-W41:Run-163",
+      "filename": "Run-163-Paper.pdf",
+      "index_row_sha256": "ad9858215eceb6651b30322df13bfaf462e86136788e57fde91d73ec4ae2c3bd",
+      "md5": "4593ef53be599467fe41cf1beb890c34",
+      "pdf_url": "https://zenodo.org/records/23290748/files/Run-163-Paper.pdf",
+      "record_id": "23290748",
+      "run_id": "Run-163",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "4f48dd24fc3022de1dec4f149ac8cb078f9656fa7dce2f90a54109954a0f5f11",
+      "verification_receipt_sha256": [
+        "9a10d2c58e8a8884e0d3d030eba69763fadd37b19e8c087a028f2e55ac8fc0f1"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-164/paper.pdf",
+      "bytes": 89364,
+      "doi": "10.5281/zenodo.23290748",
+      "entity_id": "publication:methods-note:2026-W41:Run-164",
+      "filename": "Run-164-Paper.pdf",
+      "index_row_sha256": "7c3c2ca73abab71f681db3e4224bb81bc6e8229a3dee71e7e098f2159fbcc407",
+      "md5": "ac68ddb8a7ece59475b761e0dc681fc5",
+      "pdf_url": "https://zenodo.org/records/23290748/files/Run-164-Paper.pdf",
+      "record_id": "23290748",
+      "run_id": "Run-164",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "c0ae43337e7ccb289bc30336599e5550084750a637836fd397acb9983771de7c",
+      "verification_receipt_sha256": [
+        "9a10d2c58e8a8884e0d3d030eba69763fadd37b19e8c087a028f2e55ac8fc0f1"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-165/paper.pdf",
+      "bytes": 75549,
+      "doi": "10.5281/zenodo.23290748",
+      "entity_id": "publication:methods-note:2026-W41:Run-165",
+      "filename": "Run-165-Paper.pdf",
+      "index_row_sha256": "ee60cf0b3f53e93a5c1dd25cc4005add96ce1e1ee83ebdaaef7e66721a6366db",
+      "md5": "a5a17a406fea569f1b4dd9417b258a41",
+      "pdf_url": "https://zenodo.org/records/23290748/files/Run-165-Paper.pdf",
+      "record_id": "23290748",
+      "run_id": "Run-165",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "ac0e938351eac0a694effdb2976fac5b68a7c90910a2619a65b7f57793a0e6d4",
+      "verification_receipt_sha256": [
+        "9a10d2c58e8a8884e0d3d030eba69763fadd37b19e8c087a028f2e55ac8fc0f1"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-166/paper.pdf",
+      "bytes": 72495,
+      "doi": "10.5281/zenodo.23290748",
+      "entity_id": "publication:methods-note:2026-W41:Run-166",
+      "filename": "Run-166-Paper.pdf",
+      "index_row_sha256": "35987caa915f91a77c62f5fefa6666be536a8412d327003b65174658e61df42e",
+      "md5": "7414d4cf1294928e1445aa0e9e4e952c",
+      "pdf_url": "https://zenodo.org/records/23290748/files/Run-166-Paper.pdf",
+      "record_id": "23290748",
+      "run_id": "Run-166",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "806e3e256a928cdf4454141f3dfafc6a92edcac1e87666721523e0c8ae30cf88",
+      "verification_receipt_sha256": [
+        "9a10d2c58e8a8884e0d3d030eba69763fadd37b19e8c087a028f2e55ac8fc0f1"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-167/paper.pdf",
+      "bytes": 79834,
+      "doi": "10.5281/zenodo.23290748",
+      "entity_id": "publication:methods-note:2026-W41:Run-167",
+      "filename": "Run-167-Carbon-Albedo-Paper.pdf",
+      "index_row_sha256": "ed2e707181e4797e0270b0c81cb5702336b9bbefeb27b605c00bac681d04de86",
+      "md5": "bbd715d14940af1604156121d40e65dc",
+      "pdf_url": "https://zenodo.org/records/23290748/files/Run-167-Carbon-Albedo-Paper.pdf",
+      "record_id": "23290748",
+      "run_id": "Run-167",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "14abf52d27e86bdfe7194214c0bd697f9e62fc4fdff014cf4bfc0a98e53dc297",
+      "verification_receipt_sha256": [
+        "79fa1d1957d66603d5e71c3681e60d198ea7ecd19119501cc6d3462098a86270",
+        "9a10d2c58e8a8884e0d3d030eba69763fadd37b19e8c087a028f2e55ac8fc0f1"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-168/paper.pdf",
+      "bytes": 85958,
+      "doi": "10.5281/zenodo.23290748",
+      "entity_id": "publication:methods-note:2026-W41:Run-168",
+      "filename": "Run-168-Paper.pdf",
+      "index_row_sha256": "5453ef61e83c4750347d01d081b715a715d54b699ba3a543c9e06b9e8e6d97f7",
+      "md5": "5ed19bfccbab5bdc178a0bd64dd6356e",
+      "pdf_url": "https://zenodo.org/records/23290748/files/Run-168-Paper.pdf",
+      "record_id": "23290748",
+      "run_id": "Run-168",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "120523dfb7f2311e689d3107f71ceeb4fea417362443b5e1d332f63b08680a03",
+      "verification_receipt_sha256": [
+        "9a10d2c58e8a8884e0d3d030eba69763fadd37b19e8c087a028f2e55ac8fc0f1"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-169/paper.pdf",
+      "bytes": 84810,
+      "doi": "10.5281/zenodo.23290748",
+      "entity_id": "publication:methods-note:2026-W41:Run-169",
+      "filename": "Run-169-Paper.pdf",
+      "index_row_sha256": "e56785ac58b183de3be4b7e59fedbf5ea18c4b9dcb0881b2190b1566b2103cad",
+      "md5": "c7af7320d10ffff4fe9612139e39ccd9",
+      "pdf_url": "https://zenodo.org/records/23290748/files/Run-169-Paper.pdf",
+      "record_id": "23290748",
+      "run_id": "Run-169",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "53a2c9f5064e047f509cd52674f895723a667c506635c7899de78d4e51939773",
+      "verification_receipt_sha256": [
+        "9a10d2c58e8a8884e0d3d030eba69763fadd37b19e8c087a028f2e55ac8fc0f1"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-170/paper.pdf",
+      "bytes": 68004,
+      "doi": "10.5281/zenodo.23291581",
+      "entity_id": "publication:methods-note:2026-W41:Run-170",
+      "filename": "Run-170-Paper.pdf",
+      "index_row_sha256": "aa17e5ffd059ece38a181c9e29df9de80cfe9bf31680d38785960dd297084c91",
+      "md5": "c5c7090f627652f10dfd082604c34790",
+      "pdf_url": "https://zenodo.org/records/23291581/files/Run-170-Paper.pdf",
+      "record_id": "23291581",
+      "run_id": "Run-170",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "b0ab520360bfe431a6203563235c761528c6106b15149af4121503228d4f4fce",
+      "verification_receipt_sha256": [
+        "ad39b2605bbaae9357173aac47bd0d474095c611d4da0dc5b54a94a9b6c09cea"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-171/paper.pdf",
+      "bytes": 77021,
+      "doi": "10.5281/zenodo.23291581",
+      "entity_id": "publication:methods-note:2026-W41:Run-171",
+      "filename": "Run-171-Paper.pdf",
+      "index_row_sha256": "a756f8c8f8c2a2880f994d06185562c9df0e1221b7e15021ce4acc3a336cb51e",
+      "md5": "9455e4158fb3eb4fefe9ed66b367ca5b",
+      "pdf_url": "https://zenodo.org/records/23291581/files/Run-171-Paper.pdf",
+      "record_id": "23291581",
+      "run_id": "Run-171",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "acd5875197b0001bffb970d21b139997a9d6f9769de2b99687d3fba05292e653",
+      "verification_receipt_sha256": [
+        "ad39b2605bbaae9357173aac47bd0d474095c611d4da0dc5b54a94a9b6c09cea"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-172/paper.pdf",
+      "bytes": 73974,
+      "doi": "10.5281/zenodo.23291581",
+      "entity_id": "publication:methods-note:2026-W41:Run-172",
+      "filename": "Run-172-Paper.pdf",
+      "index_row_sha256": "997a9cc2a7937a4a0c8657ea81fb53a4ed2fe20235fa8d4e57a6ffa72bb335f7",
+      "md5": "ec671a6bfb44f829ca701ed44babcb99",
+      "pdf_url": "https://zenodo.org/records/23291581/files/Run-172-Paper.pdf",
+      "record_id": "23291581",
+      "run_id": "Run-172",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "eaf03d24220bd7897ea64396b33761c2d63e52350030e425a4a4e1cd3894bbe5",
+      "verification_receipt_sha256": [
+        "ad39b2605bbaae9357173aac47bd0d474095c611d4da0dc5b54a94a9b6c09cea"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-173/paper.pdf",
+      "bytes": 74551,
+      "doi": "10.5281/zenodo.23291581",
+      "entity_id": "publication:methods-note:2026-W41:Run-173",
+      "filename": "Run-173-Paper.pdf",
+      "index_row_sha256": "be975921ce6fa9264ce480e6994236613593bc73079b41a6e1158848c2d8734e",
+      "md5": "cc49ea76c530c230548226c268cf144e",
+      "pdf_url": "https://zenodo.org/records/23291581/files/Run-173-Paper.pdf",
+      "record_id": "23291581",
+      "run_id": "Run-173",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "a0a043798030fdadd0e806f7b00a2795f19f2e6a4a3c52150377f21334ee03c6",
+      "verification_receipt_sha256": [
+        "ad39b2605bbaae9357173aac47bd0d474095c611d4da0dc5b54a94a9b6c09cea"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-174/paper.pdf",
+      "bytes": 74770,
+      "doi": "10.5281/zenodo.23291581",
+      "entity_id": "publication:methods-note:2026-W41:Run-174",
+      "filename": "Run-174-Paper.pdf",
+      "index_row_sha256": "fcf74b91a3efbd28b0ba3e3854008091f6da4fab837b9a3d4ae52e2289f78514",
+      "md5": "b85e945990d3881809a9d1cb625fbdd4",
+      "pdf_url": "https://zenodo.org/records/23291581/files/Run-174-Paper.pdf",
+      "record_id": "23291581",
+      "run_id": "Run-174",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "f9f9b71318dad09c3663c3221e3a8fbc0e8d887ac831f55acf4bf21051b0d4dd",
+      "verification_receipt_sha256": [
+        "ad39b2605bbaae9357173aac47bd0d474095c611d4da0dc5b54a94a9b6c09cea"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-175/paper.pdf",
+      "bytes": 85764,
+      "doi": "10.5281/zenodo.23291581",
+      "entity_id": "publication:methods-note:2026-W41:Run-175",
+      "filename": "Run-175-Paper.pdf",
+      "index_row_sha256": "ed013af24db8b6520851300b8fbdc04c77aeeb389d76690797fb92df9ee2f054",
+      "md5": "8072e38022ae6ca46c66181c5bb8c5af",
+      "pdf_url": "https://zenodo.org/records/23291581/files/Run-175-Paper.pdf",
+      "record_id": "23291581",
+      "run_id": "Run-175",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "9982a8f378e2c2b022067f396cf6ff32f1e0117bc5f1d890b35b338409531fcc",
+      "verification_receipt_sha256": [
+        "ad39b2605bbaae9357173aac47bd0d474095c611d4da0dc5b54a94a9b6c09cea"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-176/paper.pdf",
+      "bytes": 91576,
+      "doi": "10.5281/zenodo.23291581",
+      "entity_id": "publication:methods-note:2026-W41:Run-176",
+      "filename": "Run-176-Paper.pdf",
+      "index_row_sha256": "2876c865e7bf1ba755544d76f716131de2ed25a6040f0b75079127b3040b06b2",
+      "md5": "f3a04e83c39e041f9fe2db2d3f959816",
+      "pdf_url": "https://zenodo.org/records/23291581/files/Run-176-Paper.pdf",
+      "record_id": "23291581",
+      "run_id": "Run-176",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "e60369ec98f5ed97ac5ccf3a05984915f67a76b96a42ce5b332d73ddbc503a1e",
+      "verification_receipt_sha256": [
+        "ad39b2605bbaae9357173aac47bd0d474095c611d4da0dc5b54a94a9b6c09cea"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-177/paper.pdf",
+      "bytes": 85040,
+      "doi": "10.5281/zenodo.23291581",
+      "entity_id": "publication:methods-note:2026-W41:Run-177",
+      "filename": "Run-177-Paper.pdf",
+      "index_row_sha256": "6592097ca557a7e1634f4b8d4e8b792d9dc613e129089c1ff84dd06beed2dfde",
+      "md5": "9149beb1963e99bcb48db7d79fbeade9",
+      "pdf_url": "https://zenodo.org/records/23291581/files/Run-177-Paper.pdf",
+      "record_id": "23291581",
+      "run_id": "Run-177",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "e48c7713f5ba541bbfc3c317f9c2a9a9a1f5edbcf389b66cbcd2c170c91c8975",
+      "verification_receipt_sha256": [
+        "ad39b2605bbaae9357173aac47bd0d474095c611d4da0dc5b54a94a9b6c09cea"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-178/paper.pdf",
+      "bytes": 82186,
+      "doi": "10.5281/zenodo.23291581",
+      "entity_id": "publication:methods-note:2026-W41:Run-178",
+      "filename": "Run-178-Paper.pdf",
+      "index_row_sha256": "987fd4a26051444d096bdc6f4f995e9f2ec2bd6dc05dc2458abda1efaf75ebaa",
+      "md5": "389205faae1c5876a8da1e2b5024a1d5",
+      "pdf_url": "https://zenodo.org/records/23291581/files/Run-178-Paper.pdf",
+      "record_id": "23291581",
+      "run_id": "Run-178",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "9a01f9cb2ed464ddce45b9159b22ed3f0b9a1c95d5ace7b6e2d0b6671b4e3801",
+      "verification_receipt_sha256": [
+        "ad39b2605bbaae9357173aac47bd0d474095c611d4da0dc5b54a94a9b6c09cea"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-179/paper.pdf",
+      "bytes": 80725,
+      "doi": "10.5281/zenodo.23291581",
+      "entity_id": "publication:methods-note:2026-W41:Run-179",
+      "filename": "Run-179-Paper.pdf",
+      "index_row_sha256": "981828e6d28948af5dbb4c4b0615f4c41978da33fdc7efbaf9fb7ca39858d207",
+      "md5": "542e5fa7cf2abceaa8346193b2f2a770",
+      "pdf_url": "https://zenodo.org/records/23291581/files/Run-179-Paper.pdf",
+      "record_id": "23291581",
+      "run_id": "Run-179",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "26ee30a8ec71fa8187adcdb3259f5558c072e869baf99f5a746b69a121d47497",
+      "verification_receipt_sha256": [
+        "ad39b2605bbaae9357173aac47bd0d474095c611d4da0dc5b54a94a9b6c09cea"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-180/paper.pdf",
+      "bytes": 75572,
+      "doi": "10.5281/zenodo.23292552",
+      "entity_id": "publication:methods-note:2026-W41:Run-180",
+      "filename": "Run-180-Paper.pdf",
+      "index_row_sha256": "9db28117d3358930fa1d83a5e4aff562e8136e383c15c4d1df92872b9365d7b7",
+      "md5": "290bca5dbad546cb845d707d230b3004",
+      "pdf_url": "https://zenodo.org/records/23292552/files/Run-180-Paper.pdf",
+      "record_id": "23292552",
+      "run_id": "Run-180",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "c824f7f8a9ec6fbc00873b4c30f28d80e98466a7207906b3dff88445d0a53796",
+      "verification_receipt_sha256": [
+        "caf4aeac9168491f499b8198415d08f922db3e278cf28a4e8aa328c90edacb6d"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-181/paper.pdf",
+      "bytes": 78812,
+      "doi": "10.5281/zenodo.23292552",
+      "entity_id": "publication:methods-note:2026-W41:Run-181",
+      "filename": "Run-181-Paper.pdf",
+      "index_row_sha256": "05700964eae2e347d8462ac2d35fd47278abc2938731e6e8396ede4cce97c52f",
+      "md5": "9889527d7b0713923df55138fa7c66c6",
+      "pdf_url": "https://zenodo.org/records/23292552/files/Run-181-Paper.pdf",
+      "record_id": "23292552",
+      "run_id": "Run-181",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "12a32884d655f8f6024622a48f429912cea371f79077833a3a2ab7b210c70c53",
+      "verification_receipt_sha256": [
+        "caf4aeac9168491f499b8198415d08f922db3e278cf28a4e8aa328c90edacb6d"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-182/paper.pdf",
+      "bytes": 82358,
+      "doi": "10.5281/zenodo.23292552",
+      "entity_id": "publication:methods-note:2026-W41:Run-182",
+      "filename": "Run-182-Paper.pdf",
+      "index_row_sha256": "6b58b474cb4aa5f638e88a63c578472b95554db5c083e4d662ebd50b6036f54f",
+      "md5": "bd0369c933e04b63106a2e4724f6d961",
+      "pdf_url": "https://zenodo.org/records/23292552/files/Run-182-Paper.pdf",
+      "record_id": "23292552",
+      "run_id": "Run-182",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "453a9f65e75a39a71a36039f5c8ebe26f30672e97a8e81cfe6cc246bca7870de",
+      "verification_receipt_sha256": [
+        "caf4aeac9168491f499b8198415d08f922db3e278cf28a4e8aa328c90edacb6d"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-183/paper.pdf",
+      "bytes": 83881,
+      "doi": "10.5281/zenodo.23292552",
+      "entity_id": "publication:methods-note:2026-W41:Run-183",
+      "filename": "Run-183-Paper.pdf",
+      "index_row_sha256": "f6bee67a4a9ff2951f41427c907c09abdee09a9ae6d0f9ba31269f4531301436",
+      "md5": "ee4483904ae9ebfb8973c9ca5ce8a9a9",
+      "pdf_url": "https://zenodo.org/records/23292552/files/Run-183-Paper.pdf",
+      "record_id": "23292552",
+      "run_id": "Run-183",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "698338e5fe958aeb52046adf428916b974ffaf08ef47382ef33372c44372d268",
+      "verification_receipt_sha256": [
+        "caf4aeac9168491f499b8198415d08f922db3e278cf28a4e8aa328c90edacb6d"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-184/paper.pdf",
+      "bytes": 77829,
+      "doi": "10.5281/zenodo.23292552",
+      "entity_id": "publication:methods-note:2026-W41:Run-184",
+      "filename": "Run-184-Paper.pdf",
+      "index_row_sha256": "9f8ee39f1cb79219dc145724569640072728ad7a469a685b915f24cc75fbf847",
+      "md5": "48f366e50e0602f38ff3f91bf7689899",
+      "pdf_url": "https://zenodo.org/records/23292552/files/Run-184-Paper.pdf",
+      "record_id": "23292552",
+      "run_id": "Run-184",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "03c0312c3056eb86f85b53461ad3b218ef43f4b4a43b60d35528ee843b6d6c12",
+      "verification_receipt_sha256": [
+        "caf4aeac9168491f499b8198415d08f922db3e278cf28a4e8aa328c90edacb6d"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-185/paper.pdf",
+      "bytes": 75199,
+      "doi": "10.5281/zenodo.23292552",
+      "entity_id": "publication:methods-note:2026-W41:Run-185",
+      "filename": "Run-185-Paper.pdf",
+      "index_row_sha256": "1c88dbcfc911c84bc787aad94fe2c045cd04420892ad48696312037026abc64e",
+      "md5": "e0fbec75c334c82073916196774e1327",
+      "pdf_url": "https://zenodo.org/records/23292552/files/Run-185-Paper.pdf",
+      "record_id": "23292552",
+      "run_id": "Run-185",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "43e0e52a3828d3d1f5cbf3389f65111f8c13bda3425ce312e3dd1f00927d556b",
+      "verification_receipt_sha256": [
+        "caf4aeac9168491f499b8198415d08f922db3e278cf28a4e8aa328c90edacb6d"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-186/paper.pdf",
+      "bytes": 82975,
+      "doi": "10.5281/zenodo.23292552",
+      "entity_id": "publication:methods-note:2026-W41:Run-186",
+      "filename": "Run-186-Paper.pdf",
+      "index_row_sha256": "72a9d5239a08caa05728b6d1e89016358f5167bedd868118d9802358782bc44a",
+      "md5": "445e7d2b68771eefd44b1565934d9882",
+      "pdf_url": "https://zenodo.org/records/23292552/files/Run-186-Paper.pdf",
+      "record_id": "23292552",
+      "run_id": "Run-186",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "5106e3b0a92d65fad69dc5a8340f14606b0cf7a01974d80dca3bb120f2497f09",
+      "verification_receipt_sha256": [
+        "caf4aeac9168491f499b8198415d08f922db3e278cf28a4e8aa328c90edacb6d"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-187/paper.pdf",
+      "bytes": 81888,
+      "doi": "10.5281/zenodo.23292552",
+      "entity_id": "publication:methods-note:2026-W41:Run-187",
+      "filename": "Run-187-Paper.pdf",
+      "index_row_sha256": "44a73bdb1e4599f9c8e6e84775889e8077c60d74b39ba0a2651ad9ef8ba15aab",
+      "md5": "e567ac321cbdf6adc5fc26bf5841f3c8",
+      "pdf_url": "https://zenodo.org/records/23292552/files/Run-187-Paper.pdf",
+      "record_id": "23292552",
+      "run_id": "Run-187",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "0af4742495819ccc29021166f681d04a6df00b78e441cad05a1c7cdb44d68f61",
+      "verification_receipt_sha256": [
+        "caf4aeac9168491f499b8198415d08f922db3e278cf28a4e8aa328c90edacb6d"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-188/paper.pdf",
+      "bytes": 84899,
+      "doi": "10.5281/zenodo.23292552",
+      "entity_id": "publication:methods-note:2026-W41:Run-188",
+      "filename": "Run-188-Paper.pdf",
+      "index_row_sha256": "163ee359c75bba31da1d6b84d4a9a2a637004608989fcfc2b7cbbf5cada41d62",
+      "md5": "7bfa1830d289fc23d204ef604e358f3b",
+      "pdf_url": "https://zenodo.org/records/23292552/files/Run-188-Paper.pdf",
+      "record_id": "23292552",
+      "run_id": "Run-188",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "cf3df94bfbc8fe9ae2420eb7b0da82155b17a7a4c5f8ed56fb1293a665057df2",
+      "verification_receipt_sha256": [
+        "caf4aeac9168491f499b8198415d08f922db3e278cf28a4e8aa328c90edacb6d"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-189/paper.pdf",
+      "bytes": 45654,
+      "doi": "10.5281/zenodo.23308138",
+      "entity_id": "publication:methods-note:2026-W41:Run-189",
+      "filename": "Run-189-Paper.pdf",
+      "index_row_sha256": "73eeac638160355f7a7128a42215f2e050ab06daf56692d211f133a80d69b621",
+      "md5": "c772625d07467862684e9efe2b3b89f2",
+      "pdf_url": "https://zenodo.org/records/23308138/files/Run-189-Paper.pdf",
+      "record_id": "23308138",
+      "run_id": "Run-189",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "179b2db3536c5d4b8994c819ae0ae1a285404259f2342526306d4936a7f99d33",
+      "verification_receipt_sha256": [
+        "03f1e4c5839e1ccd24b26ede94ef10d423732e0db4a226f17447fcb501a6a6b7"
+      ]
+    },
+    {
+      "archive_member": "notes/Run-190/paper.pdf",
+      "bytes": 46406,
+      "doi": "10.5281/zenodo.23308138",
+      "entity_id": "publication:methods-note:2026-W41:Run-190",
+      "filename": "Run-190-Paper.pdf",
+      "index_row_sha256": "7403d3bcff5e5ec24db7a2fd1e401a2024c29746987fbbfd831a01956949a025",
+      "md5": "585608c1e7c445ae9160ca1272548db6",
+      "pdf_url": "https://zenodo.org/records/23308138/files/Run-190-Paper.pdf",
+      "record_id": "23308138",
+      "run_id": "Run-190",
+      "selection_basis": "EXACT_DIGEST_RUN_ARCHIVE_MEMBER",
+      "sha256": "c8b738c004eaecb788392808edd01c066136ae9e05d29391776c7030801f7b8a",
+      "verification_receipt_sha256": [
+        "03f1e4c5839e1ccd24b26ede94ef10d423732e0db4a226f17447fcb501a6a6b7"
+      ]
+    }
+  ],
+  "certifies": false,
+  "correction_overlay_sha256": "0adc1a84ac548e57c81b544282cc4daaab46c15e97bdc2d2006ef0d42d911c34",
+  "policy": "Exact entity/record/Run/access-byte binding only; no source admission or arbitrary PDF selection.",
+  "schema": "VRS-MANUSCRIPT-ACCESS-MAPPING-1",
+  "source_index_sha256": "031d89e284d939102aa2fe1d281a1e1f0d92e4795bf82f2c5f49cb09bd25931f",
+  "unresolved": [
+    {
+      "filename": "EcoChain_DendriticCorridor_MEE.md",
+      "reason": "The verified coverage correction identifies this manuscript as uncovered; no direct PDF URL is invented.",
+      "record_id": "20467431",
+      "status": "UNCOVERED_PENDING_FAITHFUL_PDF_AND_PUBLIC_READBACK"
+    }
+  ]
+}

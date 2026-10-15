@@ -181,6 +181,32 @@ class StagedBoundaryTests(unittest.TestCase):
         with self.assertRaises(OSError): self.commit()
         self.assertFalse((self.stage / "RUN_MANIFEST.json").exists())
 
+    def test_invalid_draft_encoding_and_json_raise_labeled_hold_without_writes(self):
+        names = ("CLAIM_INVENTORY.json", "formalization/STATEMENT_CONTRACT.json", "paper.tex",
+                 "formalization/VERIFICATION_STATEMENT.lean", "formalization/VERIFICATION_CANDIDATE.lean")
+        before_state = self.state.read_bytes()
+        for name in names:
+            path = self.stage / name; before = path.read_bytes()
+            for invalid in ((b"\xff", b"[", b"[]") if name.endswith(".json") else (b"\xff",)):
+                with self.subTest(name=name, invalid=invalid):
+                    path.write_bytes(invalid)
+                    with self.assertRaises(guard.GenerationPremiseHold):
+                        guard.require_staged_premise(self.stage, self.manifest)
+                    self.assertEqual(path.read_bytes(), invalid)
+                    self.assertEqual(self.state.read_bytes(), before_state)
+                    self.assertFalse((self.stage / "RUN_MANIFEST.json").exists())
+                path.write_bytes(before)
+
+    def test_invalid_manifest_encoding_json_and_root_shape_are_labeled_holds(self):
+        path = self.stage / "DRAFT_MANIFEST.json"
+        for invalid in (b"\xff", b"[", b"[]"):
+            with self.subTest(invalid=invalid):
+                path.write_bytes(invalid)
+                with self.assertRaises(guard.GenerationPremiseHold):
+                    guard.require_staged_manifest(self.stage, path)
+                self.assertEqual(path.read_bytes(), invalid)
+                self.assertFalse(self.live.exists())
+
     def test_actual_draft_manifest_is_rechecked_after_unchanged_inv9_evaluation(self):
         path = self.stage / "DRAFT_MANIFEST.json"; path.write_text(json.dumps(self.manifest))
         self.assertEqual(guard.require_staged_manifest(self.stage, path)["status"], "PASS")

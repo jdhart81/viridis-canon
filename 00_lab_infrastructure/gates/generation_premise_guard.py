@@ -175,8 +175,16 @@ def require_staged_premise(stage: Path, manifest: dict):
     names = ("CLAIM_INVENTORY.json", "paper.tex", "formalization/STATEMENT_CONTRACT.json",
              "formalization/VERIFICATION_STATEMENT.lean", "formalization/VERIFICATION_CANDIDATE.lean")
     raw = {name: _bytes(stage / name) for name in names}
-    inventory = json.loads(raw["CLAIM_INVENTORY.json"])
-    contract = json.loads(raw["formalization/STATEMENT_CONTRACT.json"])
+    try:
+        inventory = json.loads(raw["CLAIM_INVENTORY.json"])
+        contract = json.loads(raw["formalization/STATEMENT_CONTRACT.json"])
+        statement = raw["formalization/VERIFICATION_STATEMENT.lean"].decode("utf-8")
+        candidate = raw["formalization/VERIFICATION_CANDIDATE.lean"].decode("utf-8")
+        paper = raw["paper.tex"].decode("utf-8")
+    except (UnicodeError, json.JSONDecodeError):
+        raise GenerationPremiseHold("PREMISE_DRAFT_ENCODING_OR_JSON_INVALID") from None
+    if not isinstance(inventory, dict) or not isinstance(contract, dict):
+        raise GenerationPremiseHold("PREMISE_DRAFT_JSON_OBJECT_REQUIRED")
     if not isinstance(contract, dict) or contract.get("foundation_basis") != manifest.get("foundation_basis"):
         raise GenerationPremiseHold("FROZEN_CONTRACT_BASIS_MISMATCH")
     targets = contract.get("expected_theorem_names")
@@ -186,9 +194,9 @@ def require_staged_premise(stage: Path, manifest: dict):
             or len(set(targets)) != len(targets) or not set(witnesses) <= set(targets)):
         raise GenerationPremiseHold("EXACT_FROZEN_TARGET_CONTRACT_REQUIRED")
     result = require_premise(manifest, inventory,
-        formal_statement=raw["formalization/VERIFICATION_STATEMENT.lean"].decode(),
-        candidate=raw["formalization/VERIFICATION_CANDIDATE.lean"].decode(),
-        paper_text=raw["paper.tex"].decode(), theorem_names=[n for n in targets if n not in witnesses])
+        formal_statement=statement,
+        candidate=candidate,
+        paper_text=paper, theorem_names=[n for n in targets if n not in witnesses])
     if any(_bytes(stage / name) != data for name, data in raw.items()):
         raise GenerationPremiseHold("PREMISE_DRAFT_INPUT_CHANGED")
     return {**result, "input_sha256": {name: hashlib.sha256(data).hexdigest() for name, data in raw.items()}}
@@ -198,7 +206,13 @@ def require_staged_manifest(stage: Path, manifest_path: Path):
     """Bind an existing draft manifest as well as the five premise inputs."""
     manifest_path = Path(manifest_path)
     raw = _bytes(manifest_path)
-    result = require_staged_premise(stage, json.loads(raw))
+    try:
+        manifest = json.loads(raw)
+    except (UnicodeError, json.JSONDecodeError):
+        raise GenerationPremiseHold("PREMISE_MANIFEST_ENCODING_OR_JSON_INVALID") from None
+    if not isinstance(manifest, dict):
+        raise GenerationPremiseHold("PREMISE_MANIFEST_OBJECT_REQUIRED")
+    result = require_staged_premise(stage, manifest)
     if _bytes(manifest_path) != raw:
         raise GenerationPremiseHold("PREMISE_MANIFEST_CHANGED")
     return {**result, "manifest_sha256": hashlib.sha256(raw).hexdigest()}

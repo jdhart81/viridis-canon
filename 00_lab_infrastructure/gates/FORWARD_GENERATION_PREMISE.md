@@ -40,3 +40,8 @@ applies both patches to disposable single-file copies, then executes the patched
 write, seal, finalize, commit and opt-in preseal functions against synthetic
 stages. It demonstrates that a premise HOLD precedes any boundary mutation; it
 does not generate a paper, advance state or install Core code.
+
+Staging paths must have no symlinked ancestor. On macOS, use the physical
+`/private/tmp` or `/private/var` form; the `/tmp` and `/var` aliases are refused.
+Malformed UTF-8, JSON, or object shapes produce labeled premise HOLDs before
+any sealing, request, rename, or state write.

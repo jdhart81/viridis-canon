@@ -28,7 +28,9 @@ After independent exact-head review, Justin's merge and green CI:
    `nightly_checkpoint.py`, `checkpoint_certification_lane.py`,
    `scheduler_liveness.py`, `job_observation_policy.py`,
    `comparator_cloud_lean_verifier.py`, `issue_lean_zero_sorry_certificate.py`,
-   and `verification_coverage_gates/premise_declaration.py`.
+   `verification_coverage_gates/premise_declaration.py`, `checkpoint_advisory.py`,
+   `pipeline_advisory/checkpoint_slo_hook.py`, `pipeline_advisory/pipeline_slo.py`
+   and `pipeline_advisory/lean_repair_lint.py`.
 4. Using the supported automation-update tool, insert the following operating
    paragraph into the existing generator prompt. Preserve every other field
    and all existing source-exit, ownership, generation and publication gates.
@@ -73,6 +75,21 @@ Acceptance enters the immutable holding area with the exact certificate,
 proof and cloud-receipt digests. Resume never sends a reservation again.
 Publication is never performed by the adapter. The original finish computes
 its original target credit from actual current certificates.
+
+The same source-bound checkpoint patch invokes `checkpoint_advisory.py` after
+START/FINISH writes and their legitimate resumes, and before lane intake. This
+isolated child has a 15-second maximum; stdout/stderr and exceptions never alter
+the checkpoint's generation, certification, coverage or authorization result.
+Install the three already reviewed PR106 advisory modules under the existing
+pipeline's `pipeline_advisory/` directory and preserve the exact existing
+`LEAN_REPAIR_PLAYBOOK.json` bytes pinned by the helper. It runs the advisory
+Lean text linter on at most two explicitly named START/FINISH proof debts,
+writes a derived per-checkpoint lint report, and invokes the bounded SLO
+collector. Missing inputs or advisory errors produce explicit unavailable
+status in `PIPELINE_SLO_STATUS.json`; unavailable values never become zero.
+The FIFO report alerts at 24 held hours and retains the exact failing goal or
+an explicit unavailable value. No Lean process, proof dispatch, publication,
+schedule, model or budget is controlled by the advisory hook.
 
 Rollback disables new policy dispatch first, then reconciles every reserved
 provider request through its original identity. Keep all requests, accepted

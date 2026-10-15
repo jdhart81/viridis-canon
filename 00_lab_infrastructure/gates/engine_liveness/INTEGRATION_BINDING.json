@@ -1,6 +1,8 @@
 {
   "G2_active": false,
   "activation": "INACTIVE_UNMERGED",
+  "advisory_modules_installed_under": "RESEARCH_PIPELINE_v2/pipeline_advisory",
+  "advisory_playbook_sha256": "87ded0138f522738aeb4dbe68be3861f4c46e11bc61ae65c2be0e0557de2c8eb",
   "base_commit": "de75ab450b3b527c8392032e02ab3436ba78dfc2",
   "files": [
     {
@@ -14,7 +16,7 @@
       "path": "RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py"
     },
     {
-      "after_sha256": "f8677b4d509806b8a7b7d25a5a45556142add93b249944a363162e8495d14d3d",
+      "after_sha256": "9c5fe69dc093db4720cbf98a2602bc44e9c64c041643688285e95b6daa7f52f4",
       "before_sha256": "f550c0f808bb15e603b875aed55962b0297731e5a2e4edf4aac99f33eab959df",
       "path": "RESEARCH_PIPELINE_v2/nightly_checkpoint.py"
     }

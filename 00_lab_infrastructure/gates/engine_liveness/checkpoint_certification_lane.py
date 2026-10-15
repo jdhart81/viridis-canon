@@ -71,7 +71,9 @@ def validate_policy(pipeline: Path) -> dict:
         raise LivenessHold("HOLD_PARALLEL_POLICY_NOT_INSTALLED")
     required = {"nightly_checkpoint.py", "checkpoint_certification_lane.py", "scheduler_liveness.py",
                 "job_observation_policy.py", "comparator_cloud_lean_verifier.py", "issue_lean_zero_sorry_certificate.py",
-                "verification_coverage_gates/premise_declaration.py"}
+                "verification_coverage_gates/premise_declaration.py", "checkpoint_advisory.py",
+                "pipeline_advisory/checkpoint_slo_hook.py", "pipeline_advisory/pipeline_slo.py",
+                "pipeline_advisory/lean_repair_lint.py"}
     bindings = policy.get("installed_source_sha256", {})
     if set(bindings) != required or any(file_digest(pipeline / name) != bindings[name] for name in required):
         raise LivenessHold("HOLD_PARALLEL_SOURCE_CLOSURE")

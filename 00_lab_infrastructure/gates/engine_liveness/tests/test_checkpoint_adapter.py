@@ -139,7 +139,8 @@ class CheckpointAdapterTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0)
         self.assertEqual(file_digest(target), binding["after_sha256"])
         tree = ast.parse(target.read_text()); main = next(node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == "main")
-        namespace = {"argparse": argparse, "Path": Path, "json": json}
+        namespace = {"argparse": argparse, "Path": Path, "json": json,
+                     "checkpoint_advisory_after_checkpoint": lambda path: None}
         exec(compile(ast.Module(body=[main], type_ignores=[]), "nightly_checkpoint.py", "exec"), namespace)
         calls = []
         modules = {"checkpoint_certification_lane": SimpleNamespace(drain_checkpoint=lambda *args: calls.append(args) or {"status": "COMPLETED"})}

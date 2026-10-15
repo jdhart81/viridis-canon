@@ -1,0 +1,17 @@
+{
+  "base_commit": "de75ab450b3b527c8392032e02ab3436ba78dfc2",
+  "files": [
+    {
+      "after_sha256": "7ce0fa64d8875f76e192888b9a2673f47cb5405b00e3658845a2161c8034e4d7",
+      "before_sha256": "749ecb7a95e22f9ac0251986012cbb664e8709948c2b7e13b8454d2111e6b865",
+      "path": "RESEARCH_PIPELINE_v2/autonomous_transition_executor.py"
+    },
+    {
+      "after_sha256": "2b98bdef1f132b36431b01c0df3e16629ab04cf6f86ca5a2545ebf9fa2fe0a1c",
+      "before_sha256": "58e9c93920ff27c3d6035038bd77c53a1ff4bb075c991f2e2e02221d36b515f8",
+      "path": "RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py"
+    }
+  ],
+  "installed": false,
+  "standard": "VRS-ENGINE-LIVENESS-INTEGRATION-1"
+}

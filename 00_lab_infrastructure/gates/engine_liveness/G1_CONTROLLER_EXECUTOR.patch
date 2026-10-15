@@ -1,0 +1,19 @@
+--- a/RESEARCH_PIPELINE_v2/autonomous_transition_executor.py
++++ b/RESEARCH_PIPELINE_v2/autonomous_transition_executor.py
+@@ -28,0 +29 @@
++from scheduler_liveness import writer_hold_code
+@@ -53,0 +55 @@
++    "REVIEW_FINALIZED_PACKAGE_BINDINGS",
+@@ -172 +174,2 @@
+-            f"stderr={result.stderr_tail!r}"
++            f"writer_hold={writer_hold_code(completed.stdout)!r}; "
++            f"stdout_sha256={result.stdout_sha256}; stderr_sha256={result.stderr_sha256}"
+--- a/RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py
++++ b/RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py
+@@ -24,0 +25 @@
++from scheduler_liveness import paper_review_pending
+@@ -343,0 +345,4 @@
++    if paper_review_pending(path):
++        return WorkItem(run_id, "FINALIZED_PACKAGE_RECONCILIATION_REQUIRED",
++                        "REVIEW_FINALIZED_PACKAGE_BINDINGS", False,
++                        "Finalized manuscript contradicts its passing review; preserve sealed bytes and prepare a versioned successor with later independent review.")

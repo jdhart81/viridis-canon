@@ -1,0 +1,26 @@
+name: Engine liveness
+on:
+  pull_request:
+    paths:
+      - '00_lab_infrastructure/gates/engine_liveness/**'
+      - '.github/workflows/engine-liveness.yml'
+  push:
+    branches: [main]
+    paths:
+      - '00_lab_infrastructure/gates/engine_liveness/**'
+      - '.github/workflows/engine-liveness.yml'
+permissions:
+  contents: read
+jobs:
+  liveness:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.12', '3.14']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m unittest discover -s 00_lab_infrastructure/gates/engine_liveness/tests -v
+      - run: python 00_lab_infrastructure/gates/engine_liveness/run_mutations.py

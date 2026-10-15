@@ -71,6 +71,10 @@ def lint(source: bytes, playbook: dict) -> dict:
         body = text[declaration.start():end]
         match = re.match(r"\s*(?:(?:private|protected)\s+)*(?:theorem|lemma)\s+(" + IDENTIFIER + r")(.*?)\s*:=\s*by\b(.*)", body, re.S)
         if not match:
+            term = re.match(r"\s*(?:(?:private|protected|noncomputable)\s+)*(?:theorem|lemma)\s+(" + IDENTIFIER + r")\b", body)
+            if term:
+                results.append({"theorem": term.group(1), "referenced_local_definitions": [],
+                                "status": "ADVISORY_UNASSESSED", "flags": [], "certifies": False})
             continue
         name, goal, proof = match.groups()
         referenced = sorted(definitions.intersection(re.findall(IDENTIFIER, goal)))

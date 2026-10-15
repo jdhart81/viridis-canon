@@ -8,3 +8,6 @@
 /_ZENODO_DEPOSITS/** @jdhart81
 /**/_ZENODO_DEPOSITS/** @jdhart81
 /.github/workflows/** @jdhart81
+
+/tools/zenodo_metadata_repair.py @jdhart81
+/tools/token_leak_scan.py @jdhart81

@@ -162,7 +162,7 @@ def _decompress(raw: bytes, kind: str) -> bytes:
         except ImportError as exc:
             raise ManuscriptPDFHold("zstd reproduction archive inspection is unavailable") from exc
     with stream:
-        return _bounded_stream(stream, MAX_ARCHIVE_BYTES)
+        return _bounded_stream(stream, min(MAX_MEMBER_BYTES, MAX_ARCHIVE_BYTES))
 
 
 def _archive_pdfs(path: Path, *, raw: bytes | None = None, budget=None):
@@ -178,6 +178,7 @@ def _archive_pdfs(path: Path, *, raw: bytes | None = None, budget=None):
             raise ManuscriptPDFHold("uninspectable reproduction archive: " + container)
         if kind in {"gzip", "bz2", "xz", "zstd"}:
             decoded = _decompress(data, kind)
+            budget.member(len(decoded))
             inner_kind = _archive_kind(decoded)
             if inner_kind is not None:
                 # A compressed TAR/ZIP is one archive level; repeated codec
@@ -225,7 +226,7 @@ def _archive_pdfs(path: Path, *, raw: bytes | None = None, budget=None):
                     with archive.open(item) as stream:
                         inspect(name, _bounded_stream(stream, min(item.file_size, MAX_MEMBER_BYTES)))
         else:
-            with tarfile.open(fileobj=BytesIO(data), mode="r:") as archive:
+            with tarfile.open(fileobj=BytesIO(data), mode="r|") as archive:
                 for item in archive:
                     name = item.name[2:] if item.name.startswith("./") else item.name
                     if name in {"", "."} and item.isdir():

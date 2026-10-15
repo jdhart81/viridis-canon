@@ -17,6 +17,10 @@ class EnforcementClaimsTests(unittest.TestCase):
     def setUp(self):
         self.claims = json.loads((DIRECTORY / "ENFORCEMENT_CLAIMS.json").read_text())
 
+    def test_repository_readme_status_is_current(self):
+        readme = (DIRECTORY / "README.md").read_text(encoding="utf-8")
+        self.assertEqual(claims_module.replace_status(readme, self.claims), readme)
+
     def test_truthful_interim_status(self):
         claims_module.validate_model(self.claims)
         self.assertEqual([r["enforced"] for r in self.claims["routes"].values()], [False, True, True])

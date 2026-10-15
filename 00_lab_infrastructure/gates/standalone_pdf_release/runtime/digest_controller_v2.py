@@ -10,11 +10,14 @@ from __future__ import annotations
 from copy import deepcopy
 import datetime as dt
 import fcntl, hashlib, importlib, json, os, re, types
+from contextvars import ContextVar
+import time
 from pathlib import Path
 from urllib.parse import urlsplit
 from zoneinfo import ZoneInfo
 
-ROOT=Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0')
+ROOT=Path(os.environ.get('VIRIDIS_CORE_ROOT', str(Path(__file__).resolve().parent.parent.parent)))
+_REHEARSAL_OUTPUT=ContextVar('digest_rehearsal_output', default=None)
 BASE='https://zenodo.org'
 NATIVE='application/vnd.inveniordm.v1+json'
 STANDARD='VRS-STANDALONE-PDF-DIGEST-EXECUTION-2'
@@ -42,6 +45,18 @@ def bound(root,value):
  need('..'not in p.parts and p.resolve(strict=True).is_relative_to(root),'OWN_INPUT')
  b=raw(p);need(sha(b)==value['sha256'],'BOUND_HASH');return p,b
 def obj(root,value):return json.loads(bound(root,value)[1])
+def receipt_obj(root,value):
+ # Rehearsal broadens only operational receipt reads. Source/config/authority
+ # bindings continue through bound(), which still requires canonical Core.
+ scope=_REHEARSAL_OUTPUT.get()
+ if scope is None:return obj(root,value)
+ need(isinstance(value,dict)and set(value)=={'path','sha256'},'CLOSED_REHEARSAL_RECEIPT')
+ p=Path(value['path']);p=p if p.is_absolute()else root/p
+ if p.resolve(strict=True).is_relative_to(root):return obj(root,value)
+ need(p.resolve(strict=True).is_relative_to(scope),'OWN_REHEARSAL_RECEIPT')
+ data=raw(p);need(sha(data)==value['sha256'],'REHEARSAL_RECEIPT_HASH');return json.loads(data)
+
+
 def immutable(path,data):
  p=Path(path);need(not p.exists()and not any(q.is_symlink()for q in(p,*p.parents)),'EXCLUSIVE_OUTPUT');p.parent.mkdir(parents=True,exist_ok=True)
  fd=os.open(p,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
@@ -312,15 +327,62 @@ class OperationJournal:
   finally:os.close(fd)
   need(raw(index_path)==after,'JOURNAL_READBACK');return binding(folder/'RESERVATION.json')
 
-def run(config,output,token,*,opener=None,clock=now):
+class RehearsalJournal(OperationJournal):
+ """Hold the actual writer lock and budget observation; write engine receipts only.
+
+ Draft intentions never enter the live publication index. The real index and
+ publication budget are freshly read before every draft mutation. No publish
+ URL can be reserved and the output cannot be reused as a production journal.
+ """
+ def __enter__(self):
+  original=self.modules['mutation_journal_writer'];self.index=self.root/original.JOURNAL
+  need(self.index.is_file(),'ACTUAL_JOURNAL_MISSING')
+  lock=self.index.parent/'MUTATION_JOURNAL_INDEX.lock';need(not lock.is_symlink(),'JOURNAL_LOCK_SYMLINK')
+  self.lock_fd=os.open(lock,os.O_CREAT|os.O_RDWR|os.O_NOFOLLOW,0o600)
+  try:fcntl.flock(self.lock_fd,fcntl.LOCK_EX|fcntl.LOCK_NB)
+  except BlockingIOError:
+   os.close(self.lock_fd);self.lock_fd=None;raise Hold('HOLD_SPLIT_CONCURRENT_EXECUTION')from None
+  self.index_before=raw(self.index);self.serial=0;return self
+ def __exit__(self,*args):
+  try:need(raw(self.index)==self.index_before,'REHEARSAL_CHANGED_LIVE_JOURNAL')
+  finally:
+   if self.lock_fd is not None:fcntl.flock(self.lock_fd,fcntl.LOCK_UN);os.close(self.lock_fd);self.lock_fd=None
+ def reserve(self,method,url,body,transport_path,at,operation_id):
+  need(self.lock_fd is not None,'JOURNAL_LOCK');own_url(url)
+  need(not url.endswith('/actions/publish'),'NO_REHEARSAL_PUBLICATION')
+  need(method in{'POST','PUT','DELETE'}and isinstance(body,bytes)and not transport_path.exists(),'EXACT_REHEARSAL_OPERATION')
+  need(_REHEARSAL_OUTPUT.get()is not None and self.out.resolve().is_relative_to(_REHEARSAL_OUTPUT.get()),'REHEARSAL_RECEIPTS_ONLY')
+  observed=self.budget(at);need(raw(self.index)==self.index_before,'LIVE_JOURNAL_RACE')
+  self.serial+=1;folder=self.out/f'{self.serial:04d}_{operation_id}'
+  intent={'operation_id':operation_id,'method':method,'url':url,'request_body_sha256':sha(body),'transport_receipt_path':str(transport_path),'rehearsal_only':True,'live_journal_modified':False,'original_budget':observed}
+  immutable(folder/'INTENDED_REQUEST.json',encoded(intent));return binding(folder/'INTENDED_REQUEST.json')
+
+
+def discard_rehearsal(t,rid,*,save_receipt):
+ """Delete exactly the freshly owned unpublished draft, then prove it is absent."""
+ url=BASE+'/api/deposit/depositions/'+record_id(rid)
+ draft=t.request('GET',url)
+ need(str(draft.get('id'))==rid and draft.get('submitted')is False and draft.get('state')in{'unsubmitted','inprogress'},'OWN_UNPUBLISHED_REHEARSAL_DRAFT')
+ t._send('DELETE',url,b'',sha(b''),'application/json',True,'application/json',empty_response=True)
+ deletion=binding(t.out/f'{t.sequence:03d}_DELETE.json')
+ try:t.request('GET',url)
+ except Exception:
+  absence=binding(t.out/f'{t.sequence:03d}_GET.json');observed=json.loads(raw(absence['path']))
+  need(observed.get('http_status')in(404,410),'REHEARSAL_DELETE_READBACK')
+  return save_receipt({'draft_id':rid,'delete_receipt':deletion,'absence_receipt':absence,'http_status':observed['http_status']})
+ raise Hold('HOLD_SPLIT_REHEARSAL_DRAFT_STILL_EXISTS')
+
+
+def run(config,output,token,*,opener=None,clock=now,rehearse=False):
  """One packet, resumable only from its own immutable operational checkpoint.
 
  Original registered-ancestor and scientific guards are called directly.
  No old executor budget/machine admission is claimed. A failed mutation keeps
  its authentic reservation and receipt; no failed publication is auto-replayed.
  """
+ need('VIRIDIS_ZENODO_API_BASE'not in os.environ,'API_BASE_OVERRIDE_FORBIDDEN')
  root=ROOT.resolve(strict=True);import packaging_runtime;packaging_runtime.validate(root,config['packaging_profile'],purpose_pins=config['source_pins']);package=config_value(root,config);mods=loaded_sources(root,config['source_pins']);d=mods['methods_digest_v2'];reg_module=mods['methods_digest_registration_v3'];own=mods['own_record_comparison'];prior=mods['own_prior_record'];metadata=mods['digest_metadata'];codec=mods['first_digest_state'];successor=mods['digest_weekly_state'];transport=mods['zenodo_transport']
- need(isinstance(token,str)and len(token)>=24,'MEMORY_CREDENTIAL');out=Path(output);need(out.is_absolute()and out.resolve().is_relative_to(root/'reports/verification-coverage')and not any(p.is_symlink()for p in(out,*out.parents)),'OWN_OUTPUT')
+ need(isinstance(token,str)and len(token)>=24,'MEMORY_CREDENTIAL');out=Path(output);need(out.is_absolute()and (out.resolve().is_relative_to(_REHEARSAL_OUTPUT.get())if rehearse and _REHEARSAL_OUTPUT.get()is not None else out.resolve().is_relative_to(root/'reports/verification-coverage'))and not any(p.is_symlink()for p in(out,*out.parents)),'OWN_OUTPUT')
  out.mkdir(parents=True,exist_ok=True)
  if not(out/'CONFIG.json').exists():immutable(out/'CONFIG.json',encoded(config))
  need(raw(out/'CONFIG.json')==encoded(config),'RESUME_CONFIG_CHANGED')
@@ -331,6 +393,8 @@ def run(config,output,token,*,opener=None,clock=now):
  if opener is None:
   import urllib.request
   opener=mods['weekly_archive_wait'].WeeklyArchiveWait(mods['first_digest_publisher'].PacedOpener(urllib.request.build_opener(transport.NoRedirect())))
+ if rehearse:
+  need(hasattr(opener,'deadline'),'REHEARSAL_DEADLINE_OPENER');opener.deadline=time.monotonic()+540
  t=transport.ZenodoTransport('zenodo.org',token,attempt_out/'transport',opener=opener);serial=len(checkpoints)
  def emit(name,value):
   data=encoded(value);need(token.encode()not in data,'NO_CREDENTIAL_IN_EVIDENCE');p=attempt_out/name;immutable(p,data);return binding(p)
@@ -342,8 +406,8 @@ def run(config,output,token,*,opener=None,clock=now):
   value=t.request('GET',url,accept=NATIVE if native else'application/json');return value,binding(t.out/f'{t.sequence:03d}_GET.json')
  def prior_pair(publish=None):
   sl=obj(root,config['source_legacy_receipt'])['response'];sn=obj(root,config['source_native_before_create'])['response'];rid=str(sl['id']);l,lb=get(rid,True);n,nb=get(rid,True,True)
-  created=obj(root,state['ownership']['creation_receipt'])if state['ownership']and start_kind=='NEW_VERSION'else None
-  audit=prior.require_pair(l,n,sl,sn,creation=created,publish=obj(root,publish)if publish and start_kind=='NEW_VERSION'else None,preservation=mods['publication_preservation']);emit('prior/'+f'{t.sequence:03d}.json',audit);return l,n,lb,nb
+  created=receipt_obj(root,state['ownership']['creation_receipt'])if state['ownership']and start_kind=='NEW_VERSION'else None
+  audit=prior.require_pair(l,n,sl,sn,creation=created,publish=receipt_obj(root,publish)if publish and start_kind=='NEW_VERSION'else None,preservation=mods['publication_preservation']);emit('prior/'+f'{t.sequence:03d}.json',audit);return l,n,lb,nb
  manifest,pub=d.require_publication_bound(package,root);scope=obj(root,config['release_scope']);start_kind=scope['start_kind'];need(manifest['release_week']==scope['release_week'],'CANONICAL_WEEK')
  access_sequence=0
  def access_download(rid,name):
@@ -371,12 +435,14 @@ def run(config,output,token,*,opener=None,clock=now):
  require_predecessor(scope,discovered,admitted['receipt'],sl,sn)
  admitted=reg.require_registration(root,config['predecessor_registration'],views=(sl,sn));inherited=inherited_inventory(admitted)
  relation=reg.registered_relation_template(config['predecessor_registration'],root=root,source_native=sn,source_legacy=sl);payload=codec.encode_api_communities(metadata.closed_payload(manifest['public_metadata'],sl['metadata']));native_md=metadata.native_metadata(manifest['public_metadata'],sl['metadata'],sl,sn,relation)
+ if sn.get('metadata',{}).get('copyright')is not None:
+  payload['metadata']['copyright']=sn['metadata']['copyright'];native_md['copyright']=sn['metadata']['copyright']
  inventory=approved_inventory(package,manifest);names=set(inventory)
  mods['manuscript_pdf_gate'].require_local(package,[Path(v['path'])for v in inventory.values()])
  def ownership_values():
-  return {'creation_receipt':obj(root,state['ownership']['creation_receipt']),'first_native_receipt':obj(root,state['ownership']['first_own_native_draft']),'first_legacy_receipt':obj(root,state['ownership']['first_own_legacy_draft']),'prior_ids':[source_id]}
+  return {'creation_receipt':receipt_obj(root,state['ownership']['creation_receipt']),'first_native_receipt':receipt_obj(root,state['ownership']['first_own_native_draft']),'first_legacy_receipt':receipt_obj(root,state['ownership']['first_own_legacy_draft']),'prior_ids':[source_id]}
  def check_pair(l,n):return own.require_own_readback(n,l,controlled=state['controlled'],ownership=ownership_values())
- with OperationJournal(root,attempt_out/'reservations',mods)as journal:
+ with (RehearsalJournal if rehearse else OperationJournal)(root,attempt_out/'reservations',mods)as journal:
   def operation(step,method,url,body,*,empty=False):
    need(state['pending']is None,'UNRESOLVED_OPERATION');mods['packaging_runtime'].validate(root,config['packaging_profile'],purpose_pins=config['source_pins']);d.require_publication_bound(package,root);mods['manuscript_pdf_gate'].require_local(package,[Path(v['path'])for v in inventory.values()]);at=clock();require_mutation_day(manifest,at);before=deepcopy(state['controlled']);intended=deepcopy(before)
    if step=='METADATA':intended.update(native_metadata=own.native_sent_metadata(native_md),legacy_metadata=deepcopy(payload['metadata']))
@@ -402,7 +468,7 @@ def run(config,output,token,*,opener=None,clock=now):
     record['transport']=binding(t.out/f'{t.sequence:03d}_{method}.json');record['outcome']='UNCERTAIN';save();raise
    record['transport']=binding(t.out/f'{t.sequence:03d}_{method}.json');record['outcome']='ACKNOWLEDGED_NOT_ADMITTED';save();return value,record['transport']
   def checked_ack(record):
-   receipt=obj(root,record['transport']);need(receipt.get('status')=='HTTP_SUCCESS_ONLY_NOT_PUBLICATION_CLEARANCE'and receipt.get('method')==record['method']and receipt.get('url')==record['url']and receipt.get('request_body_sha256')==record['body_sha256'],'OWN_EXACT_ACK')
+   receipt=receipt_obj(root,record['transport']);need(receipt.get('status')=='HTTP_SUCCESS_ONLY_NOT_PUBLICATION_CLEARANCE'and receipt.get('method')==record['method']and receipt.get('url')==record['url']and receipt.get('request_body_sha256')==record['body_sha256'],'OWN_EXACT_ACK')
    value=receipt.get('response');step=record['step']
    if step.startswith('UPLOAD:'):
     name=step[7:];need(value.get('key')==name and value.get('checksum')=='md5:'+inventory[name]['md5']and value.get('size')==inventory[name]['bytes'],'EXACT_UPLOAD_ACK')
@@ -428,7 +494,7 @@ def run(config,output,token,*,opener=None,clock=now):
     request=__import__('urllib.request',fromlist=['Request']).Request(url,headers={'Authorization':'Bearer '+token,'Accept':'*/*'})
     with t.opener.open(request,timeout=120)as response:need(response.status==200,'PUBLIC_DOWNLOAD_HTTP');data=response.read()
     p=attempt_out/'downloads'/file['key'];immutable(p,data);downloads.append({'filename':file['key'],'binding':binding(p),'url':url});return data
-   own_receipt={'record_id':state['record_id'],'doi':'10.5281/zenodo.'+state['record_id'],'method':'POST','url':obj(root,published)['url'],'status':obj(root,published)['status']}
+   own_receipt={'record_id':state['record_id'],'doi':'10.5281/zenodo.'+state['record_id'],'method':'POST','url':receipt_obj(root,published)['url'],'status':receipt_obj(root,published)['status']}
    strict=d.strict_readback(package,root,public_l,own_receipt,download,expected_record=expected_l,metadata_consumer=lambda actual,expected,receipt:own.require_own_readback(public_n,actual,controlled=controlled,ownership=ownership_values()));strict_binding=emit('STRICT_DIGEST_READBACK.json',strict)
    evidence=reg_module.assemble_evidence(manifest=manifest,record_id=state['record_id'],public_legacy_receipt=plb,public_native_receipt=pnb,own_publish_receipt=published,expected_legacy=emit('EXPECTED_PUBLIC_LEGACY.json',expected_l),expected_native=emit('EXPECTED_PUBLIC_NATIVE.json',expected_n),source_legacy_receipt=config['source_legacy_receipt'],source_native_receipt=config['source_native_receipt'],relation_template=roles['relation_template'],server_context=emit('SERVER_CONTEXT.json',{'operation':start_kind,'phase':'PUBLISHED'}),downloads=downloads,strict_readback_result=strict_binding,public_state_context=context_binding);evidence_binding=emit('METHODS_DIGEST_PUBLIC_EVIDENCE.json',evidence)
    registration=reg_module.prepare_registration(root,package,evidence_binding);registration_binding=emit('METHODS_DIGEST_REGISTRATION_RECEIPT.json',registration);reg.require_registration(root,registration_binding)
@@ -458,16 +524,16 @@ def run(config,output,token,*,opener=None,clock=now):
      else:
       # Re-enumerate both complete owner pages immediately before starting;
       # saved account discovery alone never creates another weekly concept.
-      fresh=mods['owned_weekly_discovery'].capture(root,scope['release_week'],token,attempt_out/'fresh-start-account',t.opener)
-      require_predecessor(scope,mods['owned_weekly_discovery'].require_discovery(obj(root,fresh),root=root),admitted['receipt'],sl,sn)
+      fresh=mods['owned_weekly_discovery'].capture(out.resolve()if rehearse else root,scope['release_week'],token,attempt_out/'fresh-start-account',t.opener)
+      require_predecessor(scope,mods['owned_weekly_discovery'].require_discovery(receipt_obj(root,fresh),root=out.resolve()if rehearse else root),admitted['receipt'],sl,sn)
       url=BASE+'/api/deposit/depositions/'+source_id+'/actions/newversion'if start_kind=='NEW_VERSION'else BASE+'/api/deposit/depositions'
       value,created=operation(start_kind,'POST',url,b'{}'if start_kind=='NEW_VERSION'else encoded(payload))
      rid=str(value.get('id'));record_id(rid);l,lb=get(rid);n,nb=get(rid,native=True)
-     roles={'creation_receipt':created,'first_own_native_draft':nb,'first_own_legacy_draft':lb};proof=own.require_ownership(obj(root,created),obj(root,nb),obj(root,lb),prior_ids=[source_id]);state.update(record_id=proof['record_id'],concept_id=proof['concept_id'],ownership=roles)
+     roles={'creation_receipt':created,'first_own_native_draft':nb,'first_own_legacy_draft':lb};proof=own.require_ownership(receipt_obj(root,created),receipt_obj(root,nb),receipt_obj(root,lb),prior_ids=[source_id]);state.update(record_id=proof['record_id'],concept_id=proof['concept_id'],ownership=roles)
      if start_kind=='NEW_VERSION':
-      initial=own.initial_projection(sl,sn,obj(root,created),obj(root,lb),obj(root,nb));state['controlled']=initial['controlled']
+      initial=own.initial_projection(sl,sn,receipt_obj(root,created),receipt_obj(root,lb),receipt_obj(root,nb));state['controlled']=initial['controlled']
      else:
-      state['controlled']=initial_week_controls(own,sn,payload,native_md,obj(root,created),obj(root,lb),obj(root,nb),source_id)
+      state['controlled']=initial_week_controls(own,sn,payload,native_md,receipt_obj(root,created),receipt_obj(root,lb),receipt_obj(root,nb),source_id)
       state['metadata_put']=created
      finish(check_pair(l,n))
    # A mutation uncertainty is never converted to acceptance. GET-only proof
@@ -507,17 +573,63 @@ def run(config,output,token,*,opener=None,clock=now):
      need(files[name]['checksum']==inventory[name]['md5']and files[name]['filesize']==inventory[name]['bytes'],'EXACT_PRESENT_FILE')
      if name not in state['needs_upload_ack']:continue
     d.require_publication_bound(package,root);data=raw(package/name);need(sha(data)==inventory[name]['sha256'],'CURRENT_APPROVED_UPLOAD')
-    if name=='METHODS_NOTES.zip'and start_kind=='NEW_VERSION':need(callable(getattr(t.opener,'arm',None)),'ORIGINAL_ARCHIVE_WAIT');t.opener.arm(state['record_id'],source_id,obj(root,state['ownership']['creation_receipt']),obj(root,state['ownership']['first_own_legacy_draft']),inventory[name])
+    if name=='METHODS_NOTES.zip'and start_kind=='NEW_VERSION':need(callable(getattr(t.opener,'arm',None)),'ORIGINAL_ARCHIVE_WAIT');t.opener.arm(state['record_id'],source_id,receipt_obj(root,state['ownership']['creation_receipt']),receipt_obj(root,state['ownership']['first_own_legacy_draft']),inventory[name])
     value,upload=operation('UPLOAD:'+name,'PUT',a['links']['bucket']+'/'+name,data);checked_ack(state['operations'][state['pending']]);state['controlled']=deepcopy(state['operations'][state['pending']]['intended_controlled']);state['needs_upload_ack']=[x for x in state['needs_upload_ack']if x!=name]
     a,ab=get(state['record_id']);b,bb=get(state['record_id'],native=True);finish({'audit':check_pair(a,b),'legacy_get':ab,'native_get':bb,'transport':upload})
    if state['reservation_receipt']is None:
     a,ab=get(state['record_id']);b,bb=get(state['record_id'],native=True);check_pair(a,b);prior_pair();value,reserved=operation('RESERVE_DOI','POST',BASE+'/api/records/'+state['record_id']+'/draft/pids/doi',b'{}');need(value.get('id')==state['record_id']and value.get('parent',{}).get('id')==state['concept_id']and value.get('pids',{}).get('doi',{}).get('identifier')=='10.5281/zenodo.'+state['record_id'],'DOI_RESERVATION');state['reservation_receipt']=reserved;state['controlled']['doi_required']=True;a,ab=get(state['record_id']);b,bb=get(state['record_id'],native=True);finish({'audit':check_pair(a,b),'legacy_get':ab,'native_get':bb,'transport':reserved})
    d.require_publication_bound(package,root);require_publish_day(manifest['public_metadata'],clock());a,ab=get(state['record_id']);b,bb=get(state['record_id'],native=True);check_pair(a,b);prior_pair();exact_main_inventory(a,inventory);need(not state['needs_upload_ack'],'NO_MISSING_UPLOAD_ACK')
+   if rehearse:
+    # All original package/science/source/ownership/file/metadata gates above
+    # have run. Preserve native copyright explicitly in the draft readback.
+    expected_copyright=sn.get('metadata',{}).get('copyright')
+    native_before,native_binding=get(state['record_id'],native=True)
+    need(native_before.get('metadata',{}).get('copyright')==expected_copyright,'REHEARSAL_COPYRIGHT_READBACK')
+    deletion=discard_rehearsal(t,state['record_id'],save_receipt=lambda value:emit('DRAFT_DELETION.json',value))
+    after_l,after_lb=get(source_id,True);after_n,after_nb=get(source_id,True,True)
+    prior.require_pair(after_l,after_n,sl,sn,preservation=mods['publication_preservation'])
+    result={'standard':STANDARD,'status':'REHEARSED_DRAFT_DELETED','published':False,'record_id':state['record_id'],'draft_deleted_http_status':receipt_obj(root,deletion)['http_status'],'deletion':deletion,'draft_legacy_readback':ab,'draft_native_readback':native_binding,'source_after_legacy':after_lb,'source_after_native':after_nb,'live_journal_modified':False,'ssot_writes':0,'certifies':False}
+    emit('REHEARSAL_RESULT.json',result);return result
    # Causal own native GET is immediately followed by the publish POST.
-   before,before_binding=get(state['record_id'],native=True);check_pair(a,before);value,published=operation('PUBLISH','POST',BASE+'/api/deposit/depositions/'+state['record_id']+'/actions/publish',b'{}');checked_ack(state['operations'][state['pending']]);save()
+   before,before_binding=get(state['record_id'],native=True);check_pair(a,before);value,published=operation('PUBLISH','POST',publish_action_url(state['record_id']),b'{}');checked_ack(state['operations'][state['pending']]);save()
    return finalize(published,before_binding)
   except Exception as exc:
+   if rehearse and state['record_id']is not None:
+    t.opener.deadline=time.monotonic()+20
+    try:discard_rehearsal(t,state['record_id'],save_receipt=lambda value:emit('HOLD_DRAFT_DELETION.json',value))
+    except Exception:emit('HOLD_DRAFT_CLEANUP_REQUIRED.json',{'record_id':state['record_id'],'published':False,'error_type':'DraftCleanupReadbackRequired'})
    checkpoint=save();ack=state.get('physical_publication_acknowledged')is True;uncertain_publish=state['pending']is not None and state['operations'][state['pending']]['step']=='PUBLISH'and state['operations'][state['pending']]['outcome']=='UNCERTAIN';result={'standard':STANDARD,'status':'PUBLISHED_READBACK_PENDING'if ack else'HOLD','error_type':type(exc).__name__,'error':str(exc),'published':True if ack else(None if uncertain_publish else False),'strict_readback_pass':False,'physical_publication_acknowledged':ack,'record_id':state['record_id'],'checkpoint':checkpoint,'config':binding(out/'CONFIG.json'),'ssot_writes':0,'certifies':False};emit('RESULT.json',result);raise
+
+def publish_action_url(rid):
+ need(_REHEARSAL_OUTPUT.get()is None,'NO_REHEARSAL_PUBLICATION')
+ return BASE+'/api/deposit/depositions/'+record_id(rid)+'/actions/publish'
+
+
+def rehearse(config_binding,output,token,*,opener=None,clock=now):
+ """Use the real controller through its draft boundary, with engine-only receipts."""
+ need('VIRIDIS_ZENODO_API_BASE'not in os.environ,'API_BASE_OVERRIDE_FORBIDDEN')
+ engine=os.environ.get('VIRIDIS_ENGINE_ROOT');need(bool(engine),'ENGINE_ROOT_REQUIRED')
+ out=Path(output).resolve();base=Path(engine).resolve(strict=True)/'rehearsals'
+ need(out.is_relative_to(base)and out!=base and not out.exists(),'EXCLUSIVE_ENGINE_REHEARSAL_OUTPUT')
+ root=ROOT.resolve(strict=True);config=obj(root,config_binding)
+ import packaging_runtime
+ package=Path(config['package']);before={str(p.relative_to(package)):sha(raw(p))for p in sorted(package.rglob('*'))if p.is_file()}
+ scope=_REHEARSAL_OUTPUT.set(out)
+ try:
+  with packaging_runtime.session(root,config['packaging_profile']):
+   packaging_runtime.validate(root,config['packaging_profile'],purpose_pins=config['source_pins'])
+   result=run(config,output,token,opener=opener,clock=clock,rehearse=True)
+   packaging_runtime.validate(root,config['packaging_profile'],purpose_pins=config['source_pins'])
+  after={str(p.relative_to(package)):sha(raw(p))for p in sorted(package.rglob('*'))if p.is_file()}
+  need(before==after,'REHEARSAL_PACKAGE_CHANGED')
+  need(config==obj(root,config_binding)and config['controller']==binding(__file__),'FINAL_CONFIG_SOURCE_RACE')
+  result.update(source_session_exit_succeeded=True,package_before_sha256=sha(encoded(before)),package_after_sha256=sha(encoded(after)))
+  p=out/'TERMINAL_REHEARSAL_RESULT.json';immutable(p,encoded(result));return result,binding(p)
+ finally:
+  _REHEARSAL_OUTPUT.reset(scope)
+  after={str(p.relative_to(package)):sha(raw(p))for p in sorted(package.rglob('*'))if p.is_file()}
+  need(before==after,'REHEARSAL_PACKAGE_CHANGED')
+
 
 def execute(config_binding,output,token,*,opener=None,clock=now):
  """Expose terminal success only after the original measured session exits."""

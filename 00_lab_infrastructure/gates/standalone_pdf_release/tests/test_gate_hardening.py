@@ -81,6 +81,28 @@ class HardeningTests(unittest.TestCase):
         return {"id": 123, "files": [{"key": row["filename"], "size": row["bytes"], "checksum": "md5:" + row["md5"]}
                                       for row in plan["upload_files"]]}
 
+    def test_archived_manuscript_source_requires_rendered_counterpart(self):
+        self.paper(); path = self.put("source.zip", zipped([("papers/Hidden-Paper.tex", b"source manuscript")]))
+        with self.assertRaisesRegex(gate.ManuscriptPDFHold, "corresponding rendered PDF"):
+            gate.require_local(self.root, [self.root / "paper.pdf", path])
+
+    def test_v7_tar_magic_without_ustar_or_extension_is_inspected(self):
+        self.paper(); raw = bytearray(tarred([("paper.pdf", PAPER)]))
+        raw[257:265] = b"\0" * 8
+        raw[148:156] = b"        "
+        raw[148:156] = (f"{sum(raw[:512]):06o}\0 ").encode("ascii")
+        path = self.put("v7-container.bin", bytes(raw))
+        with self.assertRaisesRegex(gate.ManuscriptPDFHold, "separate PDF"):
+            gate.require_local(self.root, [self.root / "paper.pdf", path])
+
+    def test_decoded_codec_layers_are_charged_to_shared_budget(self):
+        self.put("paper.pdf", PAPER)
+        raw = gzip.compress(tarred([("paper.pdf", PAPER)]))
+        one = self.put("one.tar.gz", raw); two = self.put("two.tar.gz", raw)
+        with mock.patch.object(gate, "MAX_ARCHIVE_BYTES", 15000):
+            with self.assertRaisesRegex(gate.ManuscriptPDFHold, "total expanded"):
+                gate.require_local(self.root, [self.root / "paper.pdf", one, two])
+
     def test_pdf_magic_is_required(self):
         self.put("paper.pdf", b"this is not PDF")
         with self.assertRaisesRegex(gate.ManuscriptPDFHold, "actual PDF"):

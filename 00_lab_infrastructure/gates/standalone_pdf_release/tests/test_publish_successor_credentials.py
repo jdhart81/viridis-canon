@@ -265,10 +265,25 @@ class CredentialTests(unittest.TestCase):
             for path in receipts:
                 self.assertNotIn(TOKEN.encode(), path.read_bytes(), str(path))
 
+    def test_copyright_fallback_puts_full_draft_and_preserves_custom_fields(self):
+        import copy
+        current = {"id": "200", "revision_id": 1, "custom_fields": {"journal:journal": {"title": "Protected"}},
+                   "metadata": {"title": "Approved"}, "files": {"entries": {}}}
+        calls = []; expected = copy.deepcopy(current); expected["metadata"]["copyright"] = COPYRIGHT
+        def api(token, method, url, data=None, **kwargs):
+            calls.append((method, data))
+            if method == "PUT":
+                self.assertEqual(json.loads(data), expected)
+                return expected
+            return current if len(calls) == 1 else {**expected, "ui": {"updated_date_l10n_long": "changed"}}
+        with tempfile.TemporaryDirectory() as temp, patch.object(PUBLISHER, "api_call", side_effect=api):
+            PUBLISHER.preserve_draft_copyright({"expected_copyright": COPYRIGHT, "bundle": Path(temp), "predecessor_doi": "10.5281/zenodo.100"}, TOKEN, "200")
+        self.assertEqual([method for method, data in calls], ["GET", "PUT", "GET"])
+
     def test_copyright_fallback_holds_on_unplanned_metadata_diff(self):
         responses = iter([
             {"metadata": {"title": "Approved", "creators": [{"name": "Example"}]}}, {},
-            {"metadata": {"title": "Changed unexpectedly", "creators": [{"name": "Example"}], "copyright": COPYRIGHT}},
+            {"metadata": {"title": "Changed unexpectedly", "creators": [{"name": "Example"}], "copyright": COPYRIGHT}}, {},
         ])
         with patch.object(PUBLISHER, "api_call", side_effect=lambda *a, **k: next(responses)), \
              patch.object(PUBLISHER, "json_write_atomic"):

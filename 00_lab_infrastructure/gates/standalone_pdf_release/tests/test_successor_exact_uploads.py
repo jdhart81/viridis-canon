@@ -73,6 +73,8 @@ class SuccessorExactUploadsTests(unittest.TestCase):
             nonlocal published
             self.assertEqual(token, TOKEN)
             calls.append((method, url, data))
+            if method == "DELETE" and url.endswith("/records/200/draft"):
+                return {}
             if method == "GET" and url.endswith("/records/100"):
                 if mutate_during_http:
                     (bundle / "paper.pdf").write_bytes(b"%PDF-1.4 replaced during network activity")

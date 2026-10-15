@@ -8,6 +8,7 @@ import argparse
 import hashlib
 import importlib
 import json
+import os
 from pathlib import Path
 import sys
 
@@ -40,15 +41,17 @@ def preflight(root, profile_binding, config_binding):
                 'certifies': False, 'ssot_writes': 0, 'zenodo_writes': 0}
 
 
-def execute(root, profile_binding, config_binding, output, memory_token, **kwargs):
+def execute(root, profile_binding, config_binding, output, memory_token, *, rehearse=False, **kwargs):
     preflight(root, profile_binding, config_binding)
     with runtime.session(root, profile_binding):
         controller = importlib.import_module('digest_controller_v2')
         # The controller retains genuine own creation, causal native GET/PUBLISH,
         # complete journal accounting and exact note authority at every boundary.
-        result, terminal_binding = controller.execute(config_binding, output, memory_token, **kwargs)
+        operation = controller.rehearse if rehearse else controller.execute
+        result, terminal_binding = operation(config_binding, output, memory_token, **kwargs)
         runtime.need(result.get('source_session_exit_succeeded') is True
-                     and result.get('status') == 'PUBLISHED_STRICT_READBACK_PASS', 'CONTROLLER_TERMINAL_READBACK')
+                     and result.get('status') == ('REHEARSED_DRAFT_DELETED' if rehearse else 'PUBLISHED_STRICT_READBACK_PASS')
+                     and (not rehearse or result.get('published') is False), 'CONTROLLER_TERMINAL_READBACK')
     return result, terminal_binding
 
 
@@ -61,10 +64,14 @@ def main():
     p.add_argument('--expected-config-sha256', required=True)
     p.add_argument('--go', action='store_true')
     p.add_argument('--output', type=Path)
+    p.add_argument('--rehearse', action='store_true')
     args = p.parse_args()
     profile = {'path': str(args.profile.resolve(strict=True)), 'sha256': args.expected_profile_sha256}
     config = {'path': str(args.config.resolve(strict=True)), 'sha256': args.expected_config_sha256}
+    token = ''
     try:
+        runtime.need('VIRIDIS_ZENODO_API_BASE' not in os.environ, 'API_BASE_OVERRIDE_FORBIDDEN')
+        runtime.need(not args.rehearse or args.go, 'REHEARSAL_REQUIRES_GO')
         checked = preflight(args.root, profile, config)
         if args.go:
             runtime.need(args.output is not None, 'CANONICAL_OUTPUT_REQUIRED')
@@ -73,13 +80,14 @@ def main():
                 # The token is never accepted via command-line or serialized.
                 publisher = importlib.import_module('publish_dated_bundles_guarded')
                 token = publisher.token()
-            result, terminal = execute(args.root, profile, config, args.output, token)
+            result, terminal = execute(args.root, profile, config, args.output, token, rehearse=args.rehearse)
             print(json.dumps({'controller_result': result, 'terminal': terminal}, sort_keys=True, indent=2))
         else:
             print(json.dumps(checked, sort_keys=True, indent=2))
         return 0
-    except (runtime.PackagingHold, ValueError) as exc:
-        print('HOLD_STANDALONE_PDF_RUNTIME: ' + str(exc), file=sys.stderr)
+    except Exception as exc:
+        detail = str(exc).replace(token, '***') if token else str(exc)
+        print('HOLD_STANDALONE_PDF_RUNTIME: ' + detail, file=sys.stderr)
         return 1
 
 

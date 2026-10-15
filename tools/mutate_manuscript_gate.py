@@ -105,7 +105,7 @@ def main():
         "excluded_original_mutants": {"M12": "equivalent: no-PDF rejection is also enforced by manuscript-role rule", "M19": "equivalent: unique Run-specific prefixes prevent sharing one filename between Runs"},
         "elapsed_seconds": round(time.monotonic() - started, 3),
         "full_runtime_copies": 0, "external_requests": 0}
-    receipt["status"] = "PASS" if receipt["baseline"]["result"] == "PASS" and len(real) == 18 and receipt["invalid"] == 0 and receipt["killed"] >= 17 else "HOLD"
+    receipt["status"] = "PASS" if receipt["baseline"]["result"] == "PASS" and len(real) == 18 and receipt["invalid"] == 0 and receipt["killed"] == 18 else "HOLD"
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("x") as output:
         output.write(json.dumps(receipt, indent=2, sort_keys=True) + "\n")

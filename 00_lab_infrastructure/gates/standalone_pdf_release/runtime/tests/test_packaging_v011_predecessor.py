@@ -93,7 +93,7 @@ class FrozenV010PredecessorTests(unittest.TestCase):
         self.assertEqual(runtime.V010_PLAN, {'path': '_ZENODO_DEPOSITS/standalone_pdf_runtime_v010/INSTALL_PLAN.json',
              'sha256': 'd9b9a326' '931a2a5a' '49382f22' '0caeb774' '33259fb5' 'e63290da' '87d3f256' 'd4f2f670'})
         self.assertEqual(set(runtime.PREDECESSOR_INSTALLATION), {'v001', 'v002', 'v003', 'v004', 'v005', 'v006', 'v007', 'v008', 'v009', 'v010', 'v011'})
-        self.assertTrue(runtime.PROFILE_PATH.startswith('_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/'))
+        self.assertTrue(runtime.PROFILE_PATH.startswith('_ZENODO_DEPOSITS/standalone_pdf_runtime/'))
         self.assertTrue(runtime.GIT_PREFIX.endswith('/runtime/'))
 
     def test_complete19_source_proofs_preserve_failed_receipt_and_claim_no_runtime_pass(self):

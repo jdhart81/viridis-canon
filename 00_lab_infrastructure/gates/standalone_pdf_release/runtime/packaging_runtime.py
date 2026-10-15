@@ -37,8 +37,8 @@ LEGACY_CONSUMER = {'path': 'reports/verification-coverage/2026-10-09/prior-conte
 LEGACY_SCOPE = {'path': 'reports/verification-coverage/2026-10-11/recent-science-push-v001/publication-preparation-v003/CURRENT_SOURCE_SCOPE.json', 'sha256': '84eaef87c142ae3b588c8c534836311b3c051b35b94f1b8b91690bbda22a0a15'}
 SESSION_CONSUMER = {'path': 'reports/verification-coverage/2026-10-09/prior-content-digest-execution-v001/weekly-source-adoption-v001/prepare_first_seven_plan.py', 'sha256': 'da1856adeb85c36677fa5ff7ab91045bf606c1bebc3bc3943586ad6a38b1d740'}
 PROVIDER_SHA = 'fb57aeaf4a43f0183043d12c28ed02a2ce326f452b8a596f1231a29d98123f0b'
-PROFILE_PATH = '_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/CURRENT_PACKAGING_PROFILE.json'
-NOMINATION_PATH = '_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/INSTALLATION_NOMINATION.json'
+PROFILE_PATH = '_ZENODO_DEPOSITS/standalone_pdf_runtime/CURRENT_PACKAGING_PROFILE.json'
+NOMINATION_PATH = '_ZENODO_DEPOSITS/standalone_pdf_runtime/INSTALLATION_NOMINATION.json'
 
 # The prior additive install is a source-only predecessor, not a cached runtime
 # admission. Its original files and failed readback receipts stay immutable.

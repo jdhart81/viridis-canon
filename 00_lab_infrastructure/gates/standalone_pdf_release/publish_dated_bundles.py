@@ -29,10 +29,11 @@ if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
 import release_coherence
 import manuscript_pdf_gate
+import rehearsal
 
-BASE = os.environ.get("VIRIDIS_ZENODO_API_BASE", "https://zenodo.org/api").rstrip("/")
+BASE = "https://zenodo.org/api"
 TOKEN_PATH = ROOT / "secrets/Zenodo_API/Zenodo_token.md"
-DOI_RE = re.compile(r"10\.\d{4,9}/zenodo\.\d+")
+DOI_RE = re.compile(r"^10\.5281/zenodo\.[0-9]+$")
 
 
 class PublisherError(RuntimeError):
@@ -158,18 +159,23 @@ def api_call(
     content_type: str | None = "application/json",
     *,
     allow_array: bool = False,
+    allow_not_found: bool = False,
+    accept_native: bool = False,
 ) -> Any:
+    rehearsal.require_production()
     validated_zenodo_url(url)
     if credential and credential in urllib.parse.unquote(url):
         raise PublisherError("Zenodo credential is forbidden in request URLs") from None
     headers = {"Content-Type": content_type} if content_type else {}
     headers["Authorization"] = "Bearer " + credential
+    if accept_native:
+        headers["Accept"] = "application/vnd.inveniordm.v1+json"
     opener = urllib.request.build_opener(ZenodoRedirectHandler())
     raw = ""
     for attempt in range(4):
         try:
             request = urllib.request.Request(url, method=method, data=data, headers=headers)
-            with opener.open(request, timeout=90) as response:
+            with opener.open(request, timeout=rehearsal.timeout(90)) as response:
                 raw = response.read().decode("utf-8")
             break
         except urllib.error.HTTPError as exc:
@@ -179,6 +185,8 @@ def api_call(
                 exc.close()
             except Exception:
                 pass
+            if allow_not_found and method == "GET" and exc.code in (404, 410):
+                return None
             if method in {"GET", "PUT"} and exc.code in {429, 502, 503, 504} and attempt < 3:
                 time.sleep(2 ** (attempt + 1))
                 continue
@@ -296,6 +304,7 @@ def is_published(deposition: dict) -> bool:
 
 
 def publish_bundle(bundle: Path, credential: str, *, enforce_new_artifacts=False) -> str:
+    rehearsal.require_production()
     prior = read_doi(bundle / "PUBLISHED_DOI.txt")
     if prior:
         if enforce_new_artifacts:
@@ -357,7 +366,7 @@ def publish_bundle(bundle: Path, credential: str, *, enforce_new_artifacts=False
     published = api_call(
         credential,
         "POST",
-        f"{BASE}/deposit/depositions/{identifier}/actions/publish",
+        rehearsal.publish_action_url(identifier),
     )
     published_metadata = published.get("metadata")
     doi = published_metadata.get("doi") if isinstance(published_metadata, dict) else None
@@ -366,6 +375,62 @@ def publish_bundle(bundle: Path, credential: str, *, enforce_new_artifacts=False
     write_once(bundle / "PUBLISHED_DOI.txt", doi)
     verify_manuscript_readback(bundle, credential, doi, approved)
     return doi
+
+
+@rehearsal.time_bounded
+def rehearse_bundle(bundle: Path, credential: str, *, output=None):
+    """Run the approved upload/metadata path on a fresh draft, then discard it."""
+    rehearsal.require_production()
+    # Reject a foreign DOI before even creating an evidence directory.
+    read_doi(bundle / "PUBLISHED_DOI.txt")
+    before = rehearsal.tree_hashes(bundle)
+    release_metadata = metadata_payload(bundle, enforce_new_artifacts=True)
+    approved = manuscript_pdf_gate.require_local(bundle, upload_files(bundle))
+    payloads = snapshot_uploads(bundle, approved)
+    out = rehearsal.output_directory(output)
+    draft = None
+    receipt = {"state": "REHEARSAL_STARTED", "published": False, "bundle_before": before}
+    try:
+        draft = api_call(credential, "POST", f"{BASE}/deposit/depositions", b"{}")
+        identifier = draft.get("id")
+        if type(identifier) is not int:
+            raise PublisherError("rehearsal draft lacks integer id")
+        receipt["draft_id"] = identifier
+        check_draft_files(credential, identifier, approved, complete=False)
+        for name, raw in payloads.items():
+            uploaded = api_call(credential, "PUT", draft["links"]["bucket"] + "/" + urllib.parse.quote(name, safe=""), raw, "application/octet-stream")
+            if str(uploaded.get("checksum", "")).removeprefix("md5:") != hashlib.md5(raw).hexdigest():
+                raise PublisherError("rehearsal upload checksum differs")
+        api_call(credential, "PUT", f"{BASE}/deposit/depositions/{identifier}", json.dumps(release_metadata).encode("utf-8"))
+        check_draft_files(credential, identifier, approved, complete=True)
+        checked = api_call(credential, "GET", f"{BASE}/deposit/depositions/{identifier}")
+        native = api_call(credential, "GET", f"{BASE}/records/{identifier}/draft", accept_native=True)
+        expected = release_metadata["metadata"]
+        if any(checked.get("metadata", {}).get(k) != v for k, v in expected.items() if k != "copyright") or native.get("metadata", {}).get("copyright") != expected.get("copyright"):
+            raise PublisherError("rehearsal metadata or copyright differs")
+        if manuscript_pdf_gate.require_local(bundle, upload_files(bundle)) != approved:
+            raise PublisherError("rehearsal package changed before publish boundary")
+        receipt.update(state="DRAFT_READBACK_VERIFIED", draft_readback=checked, native_readback=native, approved=approved)
+    finally:
+        rehearsal.cleanup_window()
+        if isinstance(draft, dict) and type(draft.get("id")) is int:
+            # Keep the 404/410 code available while sanitizing all other failures.
+            receipt["deletion"] = delete_rehearsal_draft(credential, draft["id"])
+        receipt["bundle_after"] = rehearsal.tree_hashes(bundle)
+        if receipt["bundle_after"] != before:
+            raise PublisherError("rehearsal changed bundle bytes")
+        receipt["state"] = "REHEARSED_DRAFT_DELETED" if receipt["state"] == "DRAFT_READBACK_VERIFIED" else "HOLD_REHEARSAL_DRAFT_DELETED"
+        rehearsal.save(out, receipt, token=credential)
+    return receipt
+
+
+def delete_rehearsal_draft(credential, identifier):
+    url = f"{BASE}/deposit/depositions/{identifier}"
+    api_call(credential, "DELETE", url)
+    result = api_call(credential, "GET", url, allow_not_found=True)
+    if result is not None:
+        raise PublisherError("rehearsal draft still exists after deletion")
+    return {"draft_id": identifier, "deleted": True, "status": "HTTP_404_OR_410"}
 
 
 def plan(date: str, base: Path = HERE) -> dict[str, Any]:
@@ -389,11 +454,20 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--date", required=True)
     parser.add_argument("--publish", action="store_true")
+    parser.add_argument("--rehearse", action="store_true")
     parser.add_argument("--go", action="store_true")
     parser.add_argument("--enforce-new-artifacts", action="store_true", help="deny new publication without a current certificate, approved manuscript binding and claim coverage")
     args = parser.parse_args()
     credential = ""
     try:
+        rehearsal.require_production()
+        if args.rehearse:
+            if args.publish or not args.go or not args.enforce_new_artifacts:
+                raise PublisherError("rehearsal requires --go --enforce-new-artifacts without --publish")
+            credential = token()
+            results = [rehearse_bundle(bundle, credential) for bundle in bundles(args.date)]
+            print(json.dumps({"status": "REHEARSED", "results": results}, indent=2))
+            return 0
         if not args.publish and not args.go:
             print(json.dumps(plan(args.date), indent=2, sort_keys=True))
             return 0

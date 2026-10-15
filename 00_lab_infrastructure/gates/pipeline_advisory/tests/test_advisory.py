@@ -26,6 +26,12 @@ def candidate(proof):
 
 
 class LeanAdvisoryTests(unittest.TestCase):
+    def test_term_mode_rfl_is_reported_unassessed(self):
+        source = (PREFIX + "theorem term : purityLoss 0 = 0 := rfl\n").encode()
+        result = lean.lint(source, PLAYBOOK)
+        self.assertEqual(len(result["theorems"]), 1)
+        self.assertEqual(result["theorems"][0]["status"], "ADVISORY_UNASSESSED")
+
     def test_run191_four_attempt_regressions(self):
         for proof, flag in [("rfl", "FLAG_RFL_ALGEBRA_REASSOCIATION"),
                             ("ring", "FLAG_UNFOLD_LOCAL_ALGEBRA_DEFINITIONS"),

@@ -39,7 +39,7 @@
             {
               "call": "manuscript_pdf_gate.require_local",
               "function": "publish_bundle",
-              "minimum": 1
+              "minimum": 2
             },
             {
               "call": "manuscript_pdf_gate.require_public",
@@ -48,7 +48,7 @@
             }
           ],
           "root": "repo",
-          "sha256": "a7233062203260539b0e91cf463b0e321c752fb8b51d54672903084d161a6aaa"
+          "sha256": "1d86c8bc134ecfcbe0af962dd591556727d098609f50ab6a2d35256cb058ec3a"
         },
         {
           "gate_calls_present": false,
@@ -92,7 +92,7 @@
             {
               "call": "preflight",
               "function": "dispatch",
-              "minimum": 1
+              "minimum": 2
             },
             {
               "call": "manuscript_pdf_gate.require_public",
@@ -106,7 +106,7 @@
             }
           ],
           "root": "repo",
-          "sha256": "26351ec6438df939fb2aeb85c32e5745874e8797dc7afdb5ea2c688ee3f2dc1c"
+          "sha256": "04223713b777e220a255081bb0eeb93fb4c67f0018c5404f033a3abf73dd13cc"
         },
         {
           "gate_calls_present": true,
@@ -162,7 +162,7 @@
             }
           ],
           "root": "repo",
-          "sha256": "ad3c9ae7167842529facc5a9d4f75d94a6db60e85a542b6da7296fcd44897df5"
+          "sha256": "b083119a7a3b119d127486b7a862a296cfe8283b2781b1d2385606cab09a53c7"
         },
         {
           "gate_calls_present": true,

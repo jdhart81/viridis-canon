@@ -45,7 +45,7 @@ def guarded(function):
 
 BASE = "https://zenodo.org/api"
 TOKEN_PATH = ROOT / "secrets/Zenodo_API/Zenodo_token.md"
-DOI_RE = re.compile(r"10\.\d{4,9}/zenodo\.\d+")
+DOI_RE = re.compile(r"^10\.5281/zenodo\.[0-9]+$")
 
 
 class PublisherError(RuntimeError):
@@ -179,6 +179,8 @@ def api_call(
     *,
     allow_array: bool = False,
 ) -> Any:
+    if "VIRIDIS_ZENODO_API_BASE" in os.environ:
+        raise PublisherError("VIRIDIS_ZENODO_API_BASE is forbidden")
     validated_zenodo_url(url)
     if credential and credential in urllib.parse.unquote(url):
         raise PublisherError("Zenodo credential is forbidden in request URLs") from None

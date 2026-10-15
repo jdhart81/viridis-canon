@@ -45,7 +45,7 @@ def guarded(function):
 
 BASE = "https://zenodo.org/api"
 TOKEN_PATH = ROOT / "secrets/Zenodo_API/Zenodo_token.md"
-DOI_RE = re.compile(r"10\.\d{4,9}/zenodo\.(\d+)")
+DOI_RE = re.compile(r"^10\.5281/zenodo\.([0-9]+)$")
 
 
 class SuccessorPublisherError(RuntimeError):
@@ -103,6 +103,8 @@ def api_call(
     allow_not_found: bool = False,
     rdm: bool = False,
 ) -> dict[str, Any] | None:
+    if "VIRIDIS_ZENODO_API_BASE" in os.environ:
+        raise SuccessorPublisherError("VIRIDIS_ZENODO_API_BASE is forbidden")
     validated_zenodo_url(url)
     if token and token in urllib.parse.unquote(url):
         raise SuccessorPublisherError("Zenodo credential is forbidden in request URLs")
@@ -651,27 +653,33 @@ def preserve_draft_copyright(candidate: dict[str, Any], token: str, draft: str) 
         raise SuccessorPublisherError("RDM draft metadata missing for copyright preservation")
     if metadata.get("copyright") == expected:
         return
-    corrected = copy.deepcopy(metadata)
-    corrected["copyright"] = expected
-    receipt_path = candidate["bundle"] / "COPYRIGHT_INHERITANCE_RECEIPT.json"
+    corrected = copy.deepcopy(current)
+    corrected["metadata"]["copyright"] = expected
+    receipt_path = candidate.get("receipt_root", candidate["bundle"]) / "COPYRIGHT_INHERITANCE_RECEIPT.json"
     receipt = {"state": "BEFORE_COPYRIGHT_ONLY_RDM_UPDATE", "draft_id": draft,
                "predecessor_doi": candidate["predecessor_doi"],
                "before": current, "planned_copyright": expected}
     json_write_atomic(receipt_path, receipt, token=token)
-    api_call(token, "PUT", url, json.dumps({"metadata": corrected}).encode("utf-8"), rdm=True)
-    readback = api_call(token, "GET", url, rdm=True)
-    actual = readback.get("metadata") if isinstance(readback, dict) else None
-    expected_record = {**current, "metadata": corrected}
-    # The complete RDM response may change only the planned field plus these
-    # server-managed fields; any other change is retained as a HOLD receipt.
-    comparable_before = {key: value for key, value in expected_record.items() if key not in {"revision_id", "updated"}}
-    comparable_after = {key: value for key, value in readback.items() if key not in {"revision_id", "updated"}} if isinstance(readback, dict) else None
-    matched = actual == corrected and comparable_before == comparable_after
-    receipt.update({"state": "COPYRIGHT_INHERITED" if matched else "HOLD_UNPLANNED_RDM_DIFF",
-                    "after": readback})
-    json_write_atomic(receipt_path, receipt, token=token)
-    if not matched:
-        raise SuccessorPublisherError("copyright-only RDM draft readback differs; publication held")
+    try:
+        api_call(token, "PUT", url, json.dumps(corrected).encode("utf-8"), rdm=True)
+        readback = api_call(token, "GET", url, rdm=True)
+        # Reuse the native protected projection, retaining raw JSON as evidence.
+        from pathlib import Path as _Path
+        gates = (ROOT / "RESEARCH_PIPELINE_v2/verification_coverage_gates" if (ROOT / "RESEARCH_PIPELINE_v2/verification_coverage_gates/own_record_comparison.py").is_file() else _Path(__file__).resolve().parents[1])
+        if str(gates) not in sys.path:
+            sys.path.insert(0, str(gates))
+        from own_record_comparison import prior_protected_projection
+        matched = prior_protected_projection(corrected, representation="NATIVE") == prior_protected_projection(readback, representation="NATIVE")
+        receipt.update(state="COPYRIGHT_INHERITED" if matched else "HOLD_UNPLANNED_RDM_DIFF", after=readback)
+        json_write_atomic(receipt_path, receipt, token=token)
+        if not matched:
+            raise SuccessorPublisherError("copyright-only RDM draft readback differs; publication held")
+    except Exception:
+        try:
+            api_call(token, "DELETE", url, rdm=True)
+        except Exception:
+            raise SuccessorPublisherError("copyright repair held and draft cleanup requires readback") from None
+        raise
 
 
 

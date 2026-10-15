@@ -17,21 +17,21 @@ import subprocess
 import sys
 import importlib.machinery
 
-ROOT = Path('/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0')
-INSTALLED = ROOT / '_ZENODO_DEPOSITS/standalone_pdf_runtime_v012'
+ROOT = Path(os.environ.get('VIRIDIS_CORE_ROOT', str(Path(__file__).resolve().parent.parent.parent)))
+INSTALLED = ROOT / '_ZENODO_DEPOSITS/standalone_pdf_runtime'
 PROFILE = INSTALLED / 'CURRENT_PACKAGING_PROFILE.json'
 NOMINATION = INSTALLED / 'INSTALLATION_NOMINATION.json'
 # Exact 19-module successor source set, fixed before source freeze and review.
 SOURCE_HASHES = {
     'digest_controller_v2.py':
         # SHA-256 of reviewed source bytes; not a credential
-        'faeba58a0a080e4b838536b0ac4f32fc9399497c4cc84d15ab9eaca0f83d9413',
+        '16c2664f7efdd60493ae5408c063fe1d15ff3f3015c80a2c711cf9944190f7eb',
     'install_packaging_runtime.py':
         # SHA-256 of reviewed source bytes; not a credential
         '319542b4f467d8c90f6dbfd9c664d4a3e723737aed6222a324b9c2622f94d753',
     'invoke_digest_v2.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '96480eca8c439be8d057802213fbc04281fc48d71b0d1b013c4b62343f932f87',
+        '932afcb894fb8581ee9718ec1894d3ca38520efa3fbcbe34e34e706226befaa3',
     'manuscript_access_correction.py':
         # SHA-256 of reviewed source bytes; not a credential
         'c56b402f663a390ee442115cd7a3262ec513521d6191a117061436994657b563',
@@ -40,7 +40,7 @@ SOURCE_HASHES = {
         '167d82b849a750edf2b0cfa92188931c9170db1a59c50eff4ba88ba48a5af2b8',
     'manuscript_pdf_gate.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '710478f0b7483928a82edd893338575bdf35c4772ce74727a866a5b784e37274',
+        '3ca55bf1e3e25e920ce9b79a5363e8d17138183ad592675d6fc058996fa41d0d',
     'methods_digest_registration_v3.py':
         # SHA-256 of reviewed source bytes; not a credential
         '1542b85fab50b686354075914ea461536db5da7b7bd3fee3b290eb7815d7e200',
@@ -70,13 +70,13 @@ SOURCE_HASHES = {
         'cd4169d3cc2c3af02829d20ce363908a9edb914501f134dc341dd8d085567014',
     'packaging_runtime.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '4a4f49191996d21e97a1672428c81796f2c47a6d878246ec58ae8bf24b90e1cd',
+        '9101b72eb1f94160ed301604886096dc53dd12c69a17214fef1f70451ab2693c',
     'publish_dated_bundles_guarded.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '85eb057f5eac7fd4d2218091cdda077030be67d35ea930a34b0fc3a3cfc0f4e3',
+        'c2baa6e057bd8ef2f4d6a57156266bb4d986a9c65f76d5dce713e3d6697142c5',
     'publish_successor_wave_guarded.py':
         # SHA-256 of reviewed source bytes; not a credential
-        'f9541bb40b91c479ddcb19c2dcd31104042a70305751100084581f9309e5b618',
+        '51711f1d107fda516bd75612b570431b17f33fe55cfd40a8454c567fadc886a4',
     'scientific_registration_worker.py':
         # SHA-256 of reviewed source bytes; not a credential
         'a6fe4f076470e2ae2e97c59a10b2c19c650aeb4059fb42570371aa3b3fba717b',
@@ -182,7 +182,7 @@ def context(config_path, config_sha):
             'profile_binding': profile_binding, 'sources': sources}
 
 
-def child_command(checked, config_sha, *, go=False, output=None):
+def child_command(checked, config_sha, *, go=False, output=None, rehearse=False):
     command = [sys.executable, '-B', str(INSTALLED / 'invoke_digest_v2.py'),
                '--root', str(ROOT), '--profile', str(PROFILE),
                '--expected-profile-sha256', checked['profile_binding']['sha256'],
@@ -190,15 +190,20 @@ def child_command(checked, config_sha, *, go=False, output=None):
     if go:
         need(output is not None, 'private controller output required for --go')
         path = Path(output).absolute()
-        need('..' not in path.parts and path.is_relative_to(ROOT / 'reports')
+        engine = os.environ.get('VIRIDIS_ENGINE_ROOT')
+        scope = Path(engine).resolve(strict=True) / 'rehearsals' if rehearse and engine else ROOT / 'reports'
+        need(not rehearse or bool(engine), 'rehearsal engine root required')
+        need('..' not in path.parts and path.is_relative_to(scope)
              and not any(p.is_symlink() for p in (path, *path.parents)),
              'private controller output must remain in canonical reports')
         command.extend(['--go', '--output', str(path)])
+        if rehearse:
+            command.append('--rehearse')
     return command
 
 
-def run_child(checked, config_sha, *, go=False, output=None):
-    command = child_command(checked, config_sha, go=go, output=output)
+def run_child(checked, config_sha, *, go=False, output=None, rehearse=False):
+    command = child_command(checked, config_sha, go=go, output=output, rehearse=rehearse)
     completed = subprocess.run(command, cwd=ROOT, stdin=subprocess.DEVNULL)
     need(context(checked['config_path'], config_sha) == checked,
          'source, profile or configuration changed during child execution')
@@ -211,20 +216,24 @@ def main(argv=None):
     parser.add_argument('--expected-config-sha256', required=True)
     parser.add_argument('--go', action='store_true')
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--rehearse', action='store_true')
     args = parser.parse_args(argv)
     try:
+        need('VIRIDIS_ZENODO_API_BASE' not in os.environ, 'API base override is forbidden')
+        need(not args.rehearse or args.go, 'rehearsal requires --go')
+        options = {'rehearse': True} if args.rehearse else {}
         # Validate output before the first child. This guard never chooses a
         # controller or executes caller-provided source from a configuration.
         checked = context(args.config, args.expected_config_sha256)
         if args.go:
-            child_command(checked, args.expected_config_sha256, go=True, output=args.output)
+            child_command(checked, args.expected_config_sha256, go=True, output=args.output, **options)
         result = run_child(checked, args.expected_config_sha256)
         if result or not args.go:
             return result
         # A new ordinary child freshly repeats every downstream gate. A
         # successful preflight cannot supply a cached scientific admission.
         checked = context(args.config, args.expected_config_sha256)
-        return run_child(checked, args.expected_config_sha256, go=True, output=args.output)
+        return run_child(checked, args.expected_config_sha256, go=True, output=args.output, **options)
     except (GuardHold, OSError, KeyError, TypeError, json.JSONDecodeError) as exc:
         print(str(exc), file=sys.stderr)
         return 1

@@ -113,8 +113,8 @@ class GuardedBoundaryTests(unittest.TestCase):
             FIXTURE.GATE if name == "manuscript_pdf_gate" else REAL_COHERENCE if name == "release_coherence" else REAL_IMPORT(name))
         DATED.manuscript_pdf_gate = FIXTURE.GATE
 
-    def test_selected_gate_bytes_equal_the_audited_phase3_blob(self):
-        expected = "710478f0b7483928a82edd893338575bdf35c4772ce74727a866a5b784e37274"
+    def test_selected_gate_bytes_equal_the_runbook_codec_successor_blob(self):
+        expected = "3ca55bf1e3e25e920ce9b79a5363e8d17138183ad592675d6fc058996fa41d0d"
         self.assertEqual(hashlib.sha256((HERE / "manuscript_pdf_gate.py").read_bytes()).hexdigest(), expected)
 
     def test_selected_gate_inspects_prefixed_zip_bytes_with_an_unrelated_name(self):

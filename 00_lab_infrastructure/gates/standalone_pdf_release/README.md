@@ -42,11 +42,9 @@ add a reviewed faithful rendering without altering the published archive.
 A truly manuscript-free dataset, code archive or index needs a truthful scoped
 exception through separate reviewed routing; this publisher has no automatic
 resource-type or figure-only exemption.
-The current dated and successor publishers enforce this gate during planning
-and immediately before publication. After preserving the minted DOI they
-download standalone PDFs from the public record and require exact checksums
-and bytes. A readback failure retains the DOI and blocks completion; recovery
-checks that same DOI and does not republish it.
+<!-- ENFORCEMENT-STATUS:BEGIN -->
+Enforcement status (verified 2026-10-14): the Methods Digest guard (`guard_methods_digest_release.py`) and the successor publisher (`publish_successor_wave.py`) enforce this gate. The installed dated publisher (`publish_dated_bundles.py`, reached through `weekend_canon_lockstep.py`) does not yet enforce it. Until the reviewed gated version is installed, a Saturday wave must not publish any bundle whose actual manuscript lacks a separate top-level PDF, and every published PDF must be downloaded anonymously and hash-checked after publication.
+<!-- END -->
 
 Future Methods Digest releases use this mandatory default entry point:
 

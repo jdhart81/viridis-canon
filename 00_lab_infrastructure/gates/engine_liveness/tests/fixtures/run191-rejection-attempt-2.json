@@ -1,0 +1,111 @@
+{
+  "description": "Compilation of olean for Solution failed or terminated",
+  "executionEvidence": {
+    "delivery": {
+      "mode": "FRESH_EXECUTION",
+      "servedForRequestId": "c333c2ea-ccc8-4877-b76d-17eb52e4b0c0"
+    }
+  },
+  "output": "\u2716 [8026/8027] Building Solution (14s)\ntrace: .> LEAN_PATH=SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH SANITIZED_PATH SANITIZED_PATH -o SANITIZED_PATH -i SANITIZED_PATH -c SANITIZED_PATH --setup SANITIZED_PATH --json\ninfo: Solution.lean:13:2: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nerror: Solution.lean:12:42: unsolved goals\np : \u211d\n\u22a2 purityLoss p = disturbanceSq p * 2\nerror: Lean exited with code 1\nSome required targets logged failures:\n- Solution\nerror: build failed\n",
+  "processDiagnostics": {
+    "capture_status": "RECORDED",
+    "profile": "nightly-default",
+    "records": [
+      {
+        "accounting": {
+          "available": false,
+          "max_rss_bytes": null,
+          "reason": "Node ChildProcess does not expose per-child wait4/rusage; no accounting probe enabled",
+          "scope": "spawned phase process; no parent/service aggregates substituted",
+          "system_cpu_seconds": null,
+          "user_cpu_seconds": null
+        },
+        "elapsed_ms": 39465.27601099014,
+        "end": "2026-10-11T11:16:30.647Z",
+        "exitCode": 1,
+        "guard_fired": false,
+        "guard_reason": null,
+        "kernel_process_accounting": [],
+        "limits": {
+          "comparator_cpu_seconds": 600,
+          "configured_phase_wall_ms": 285000,
+          "guard_reason": "phase_wall_limit",
+          "memory_max_bytes": 7864320000,
+          "operation_reserve_ms": null,
+          "operation_wrapper_seconds": 1200,
+          "policy_client_wait_seconds": 300,
+          "source": "server-allowlist",
+          "toolchain": "leanprover/lean4:v4.28.0",
+          "wall_ms": 285000
+        },
+        "phase": "compile-Solution",
+        "process_group_target": "not_sent",
+        "profile": "nightly-default",
+        "reason": "exited",
+        "requestId": "c333c2ea-ccc8-4877-b76d-17eb52e4b0c0",
+        "signal": null,
+        "start": "2026-10-11T11:15:51.182Z"
+      }
+    ],
+    "requestId": "c333c2ea-ccc8-4877-b76d-17eb52e4b0c0",
+    "standard": "VRS-COMPARATOR-TERMINATION-1"
+  },
+  "project": "viridis-lean-4.28",
+  "recoveredFromTerminalJournal": true,
+  "requestId": "c333c2ea-ccc8-4877-b76d-17eb52e4b0c0",
+  "resourceProfile": {
+    "client_wait_seconds": 300,
+    "collection_wall_ms": 285000,
+    "comparator_cpu_seconds": 600,
+    "comparator_wall_ms": 285000,
+    "compile_wall_ms": 285000,
+    "memory_max_bytes": 7864320000,
+    "name": "nightly-default",
+    "toolchain": "leanprover/lean4:v4.28.0",
+    "wrapper_seconds": 1200
+  },
+  "terminationDiagnostics": {
+    "capture_status": "RECORDED",
+    "profile": "nightly-default",
+    "records": [
+      {
+        "accounting": {
+          "available": false,
+          "max_rss_bytes": null,
+          "reason": "Node ChildProcess does not expose per-child wait4/rusage; no accounting probe enabled",
+          "scope": "spawned phase process; no parent/service aggregates substituted",
+          "system_cpu_seconds": null,
+          "user_cpu_seconds": null
+        },
+        "elapsed_ms": 39465.27601099014,
+        "end": "2026-10-11T11:16:30.647Z",
+        "exitCode": 1,
+        "guard_fired": false,
+        "guard_reason": null,
+        "kernel_process_accounting": [],
+        "limits": {
+          "comparator_cpu_seconds": 600,
+          "configured_phase_wall_ms": 285000,
+          "guard_reason": "phase_wall_limit",
+          "memory_max_bytes": 7864320000,
+          "operation_reserve_ms": null,
+          "operation_wrapper_seconds": 1200,
+          "policy_client_wait_seconds": 300,
+          "source": "server-allowlist",
+          "toolchain": "leanprover/lean4:v4.28.0",
+          "wall_ms": 285000
+        },
+        "phase": "compile-Solution",
+        "process_group_target": "not_sent",
+        "profile": "nightly-default",
+        "reason": "exited",
+        "requestId": "c333c2ea-ccc8-4877-b76d-17eb52e4b0c0",
+        "signal": null,
+        "start": "2026-10-11T11:15:51.182Z"
+      }
+    ],
+    "requestId": "c333c2ea-ccc8-4877-b76d-17eb52e4b0c0",
+    "standard": "VRS-COMPARATOR-TERMINATION-1"
+  },
+  "type": "verification-failed"
+}

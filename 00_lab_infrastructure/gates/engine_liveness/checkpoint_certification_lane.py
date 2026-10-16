@@ -48,23 +48,22 @@ def terminal_hold(entry: dict, identity: RequestIdentity, pipeline: Path) -> boo
     if value is None:
         return False
     path = bound(value, inside=pipeline)
+    # The reviewed PR109 helper is the sole terminal-object classifier.
+    # A queue flag cannot establish a different exclusion policy.
+    try:
+        from verification_coverage_gates.terminal_certification.terminal_hold import terminal_hold as classify
+    except ImportError as exc:
+        raise LivenessHold("HOLD_QUEUE_TERMINAL_HOLD_BINDING") from exc
+    finalized = pipeline / "finalized_runs" / identity.run_id
+    package = finalized if finalized.is_dir() else pipeline / "nightly_packages" / identity.run_id
+    evidence = classify(package, pipeline / "lean_certificates")
     hold = json.loads(path.read_text())
     bindings = hold.get("bindings", {})
-    if (hold.get("schema_version") != "VRS-CERTIFICATION-PREMISE-HOLD-1"
-            or hold.get("run_id") != identity.run_id or hold.get("status") != "HOLD_PREMISE_DECLARATION"
-            or hold.get("terminal_for_sealed_object") is not True
-            or hold.get("certificate_issued") is not False
-            or bindings.get("request_sha256") != identity.request_sha256
+    if (evidence is None or evidence.get("request_sha256") != identity.request_sha256
+            or evidence.get("receipt_sha256") != file_digest(path)
             or bindings.get("formal_statement_sha256") != identity.statement_sha256
-            or bindings.get("candidate_sha256") != identity.candidate_sha256
-            or hold.get("checker_result", {}).get("status") != "HOLD"
-            or hold.get("checker_result", {}).get("local_lean_execution") is not False
-            or hold.get("checker_result", {}).get("certifies") is not False
-            or bindings.get("premise_checker_sha256") != file_digest(pipeline / "verification_coverage_gates/premise_declaration.py")):
+            or bindings.get("candidate_sha256") != identity.candidate_sha256):
         raise LivenessHold("HOLD_QUEUE_TERMINAL_HOLD_BINDING")
-    paths = {name: bound(entry.get(name), inside=pipeline) for name in ("request", "formal_statement", "candidate")}
-    if _premise_check(pipeline, paths).get("status") != "HOLD":
-        raise LivenessHold("HOLD_QUEUE_TERMINAL_HOLD_RECHECK")
     return True
 
 
@@ -87,7 +86,8 @@ def validate_policy(pipeline: Path, *, reconcile_only: bool = False) -> dict:
                 and policy.get("scheduler_id") == "viridis-nightly-science-generator"):
             raise LivenessHold("HOLD_PARALLEL_POLICY_NOT_INSTALLED")
     required = {"nightly_checkpoint.py", "checkpoint_certification_lane.py", "scheduler_liveness.py",
-                "job_observation_policy.py", "comparator_cloud_lean_verifier.py", "issue_lean_zero_sorry_certificate.py",
+                "job_observation_policy.py", "comparator_cloud_lean_verifier.py",
+                "verification_coverage_gates/terminal_certification/terminal_hold.py", "issue_lean_zero_sorry_certificate.py",
                 "verification_coverage_gates/premise_declaration.py", "checkpoint_advisory.py",
                 "pipeline_advisory/checkpoint_slo_hook.py", "pipeline_advisory/pipeline_slo.py",
                 "pipeline_advisory/lean_repair_lint.py"}
@@ -197,9 +197,9 @@ def _reconcile(lane: SchedulerLane, pipeline: Path) -> dict[str, str]:
                 _accept(lane, identity, entry)
             else:
                 goal = cloud.get("provider_response", {}).get("output")
-                if not isinstance(goal, str) or not goal.strip() or len(goal) > 32768:
+                if not isinstance(goal, str) or not goal.strip():
                     raise LivenessHold("HOLD_REJECTION_EVIDENCE_REQUIRED")
-                lane.record_rejection(identity, receipt, file_digest(receipt), goal)
+                lane.record_rejection(identity, receipt, file_digest(receipt), goal[:32768])
         except (OSError, ValueError, TypeError, AttributeError, KeyError, LivenessHold):
             errors[identity.key] = "HOLD_PROVIDER_RESULT_RECONCILIATION_REQUIRED"
     return errors
@@ -243,7 +243,8 @@ def drain_checkpoint(start_path: Path, queue_path: Path, *, pipeline: Path | Non
             raise LivenessHold("HOLD_COMPARATOR_AUTHORIZATION")
     start_path = start_path.resolve()
     if (not start_path.is_relative_to((pipeline / "nightly_checkpoints").resolve())
-            or start_path.name != "START.json" or (start_path.parent / "FINISH.json").exists()):
+            or start_path.name != "START.json"
+            or (not reconcile_only and (start_path.parent / "FINISH.json").exists())):
         raise LivenessHold("HOLD_CHECKPOINT_IDENTITY")
     start = read_start(start_path)
     queue = json.loads(queue_path.read_text())
@@ -253,7 +254,7 @@ def drain_checkpoint(start_path: Path, queue_path: Path, *, pipeline: Path | Non
             or not isinstance(entries, list)
             or [row.get("run_id") for row in entries] != start["science"]["certification"]["backlog_runs"]):
         raise LivenessHold("HOLD_QUEUE_BASELINE")
-    prepared, outputs = [], set()
+    prepared, outputs, preflight_holds = [], set(), {}
     for entry in entries:
         identity, paths = identity_for(entry, pipeline)
         for key in ("receipt_output", "certificate_output"):
@@ -266,7 +267,7 @@ def drain_checkpoint(start_path: Path, queue_path: Path, *, pipeline: Path | Non
         if not held:
             premise = _premise_check(pipeline, paths)
             if premise.get("status") != "PASS" or premise.get("historical_exemption") is not False:
-                raise LivenessHold("HOLD_QUEUE_PREMISE_PREFLIGHT")
+                preflight_holds[identity.key] = "HOLD_QUEUE_PREMISE_PREFLIGHT"
         # Persist canonical absolute paths so macOS /var aliases do not make
         # hash-bound restart/advisory evidence appear outside the same root.
         entry = {**entry, **{name: {**entry[name], "path": str(path.resolve())} for name, path in paths.items()},
@@ -279,9 +280,15 @@ def drain_checkpoint(start_path: Path, queue_path: Path, *, pipeline: Path | Non
     with lane.checkpoint():
         # Validate all prior accepted bytes before granting any new transport.
         errors = _reconcile(lane, pipeline)
+        errors.update(preflight_holds)
         reserved_keys = {RequestIdentity(**row["identity"]).key for row in lane._rows("requests")}
         reservations = []
-        for identity, entry, _, held in prepared:
+        for index, (identity, entry, paths, held) in enumerate(prepared):
+            if identity.key in preflight_holds:
+                timed_record(lane.root / "preflight-holds" / (identity.key + ".json"), {
+                    "standard": "VRS-QUEUE-PREMISE-PREFLIGHT-HOLD-1", "identity": identity.__dict__,
+                    "code": preflight_holds[identity.key], "certifies": False})
+                continue
             if held:
                 hold_path = bound(entry["terminal_hold"], inside=pipeline)
                 timed_record(lane.root / "holds" / (identity.key + ".json"), {
@@ -290,11 +297,21 @@ def drain_checkpoint(start_path: Path, queue_path: Path, *, pipeline: Path | Non
                 continue
             if not held and identity.key not in reserved_keys and any(Path(entry[key]).exists() for key in ("receipt_output", "certificate_output")):
                 raise LivenessHold("HOLD_FRESH_OUTPUT_ALREADY_EXISTS")
-            context = {"identity": identity.__dict__, "entry": {key: entry[key] for key in
-                ("run_id", "request", "formal_statement", "candidate", "receipt_output", "certificate_output")}}
-            immutable_json(lane.root / "contexts" / (identity.key + ".json"), context)
             if reconcile_only:
                 continue
+            context_path = lane.root / "contexts" / (identity.key + ".json")
+            if identity.key in reserved_keys:
+                # Original outputs remain authoritative after a later queue names
+                # fresh paths for an already reserved immutable request.
+                context = json.loads(context_path.read_text())
+                if context.get("identity") != identity.__dict__:
+                    raise LivenessHold("HOLD_REQUEST_CONTEXT_BINDING")
+                entry = context["entry"]
+                prepared[index] = (identity, entry, paths, held)
+            else:
+                context = {"identity": identity.__dict__, "entry": {key: entry[key] for key in
+                    ("run_id", "request", "formal_statement", "candidate", "receipt_output", "certificate_output")}}
+                immutable_json(context_path, context)
             try:
                 reservation = lane.reserve(identity)
                 if reservation["dispatch"]:

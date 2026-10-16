@@ -4,6 +4,9 @@ on:
     paths:
       - '00_lab_infrastructure/gates/engine_liveness/**'
       - '00_lab_infrastructure/gates/pipeline_advisory/**'
+      - '00_lab_infrastructure/gates/nightly_release_checkpoint.py'
+      - '00_lab_infrastructure/gates/terminal_certification/**'
+      - 'comparator-deploy/comparator_cloud_lean_verifier.py'
       - '00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/**'
       - '.github/workflows/engine-liveness.yml'
   push:
@@ -11,6 +14,9 @@ on:
     paths:
       - '00_lab_infrastructure/gates/engine_liveness/**'
       - '00_lab_infrastructure/gates/pipeline_advisory/**'
+      - '00_lab_infrastructure/gates/nightly_release_checkpoint.py'
+      - '00_lab_infrastructure/gates/terminal_certification/**'
+      - 'comparator-deploy/comparator_cloud_lean_verifier.py'
       - '00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/**'
       - '.github/workflows/engine-liveness.yml'
 permissions:

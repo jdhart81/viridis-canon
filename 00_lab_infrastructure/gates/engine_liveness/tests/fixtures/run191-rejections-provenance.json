@@ -1,0 +1,33 @@
+{
+  "certifies": false,
+  "rows": [
+    {
+      "attempt": 1,
+      "fixture_filename": "run191-rejection-attempt-1.json",
+      "fixture_sha256": "b923b890ada5bdbabcbbbb6be45bcd7adae8ed51c6786eb8941a5d977433c5c0",
+      "sanitization": "Provider response only; absolute paths and URLs replaced recursively; no credentials/request/manuscript copied.",
+      "source_filename": "COMPARATOR_CLOUD_RECEIPT_ATTEMPT_1.json",
+      "source_provider_response_sha256": "5342074b01432d4572e6511cc16a9937bab94bf8dd0eddb37f85af720e73838f",
+      "source_receipt_sha256": "3590f5893cd77c7d442ac8e871be967fe6fe7b278e9bec0d3b4eb0362a097b00"
+    },
+    {
+      "attempt": 2,
+      "fixture_filename": "run191-rejection-attempt-2.json",
+      "fixture_sha256": "30499e94c944742846b090216799287f06b53f5bf495a025acf4b70914b717db",
+      "sanitization": "Provider response only; absolute paths and URLs replaced recursively; no credentials/request/manuscript copied.",
+      "source_filename": "COMPARATOR_CLOUD_RECEIPT_ATTEMPT_2.json",
+      "source_provider_response_sha256": "2a845bed63f474b2194b7c8035173bdb12e71889dae5c4a63e50d5df0e6086c3",
+      "source_receipt_sha256": "51c5ca0225d8afc3cd11a0abb099624b3a64a31c68aba5c7cc9f8f8771dc66d4"
+    },
+    {
+      "attempt": 3,
+      "fixture_filename": "run191-rejection-attempt-3.json",
+      "fixture_sha256": "c0067156764b013c90ec63dbcf7e22808b8c3a20d9c69366bd77cc75f167ff92",
+      "sanitization": "Provider response only; absolute paths and URLs replaced recursively; no credentials/request/manuscript copied.",
+      "source_filename": "COMPARATOR_CLOUD_RECEIPT_ATTEMPT_3.json",
+      "source_provider_response_sha256": "00280635b9dd3d9fe186606581ffba5deaba3d04ac4845f42b50bae0b2b7b2de",
+      "source_receipt_sha256": "16f4bbf56ea8a041af618cf5326c91acf84e7387cc52f3f7c31dbd62d902cb08"
+    }
+  ],
+  "standard": "VRS-SANITIZED-COMPARATOR-REJECTION-FIXTURES-1"
+}

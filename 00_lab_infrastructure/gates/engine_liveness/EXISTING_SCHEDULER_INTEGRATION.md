@@ -12,9 +12,14 @@ retain their original checkpoint target obligations.
 
 After independent exact-head review, Justin's merge and green CI:
 
-1. Apply both zero-context patches to the exact before hashes in
-   `INTEGRATION_BINDING.json`; install the helper and adapter alongside the
-   existing checkpoint. The bundled `job_observation_policy.py` is an exact,
+1. Install exact reviewed #109 first, including its terminal helper, and verify
+   the controller after hash `86f1691f...`. Use this PR's context-bearing G1
+   patch and source-bound G2 patch only against `INTEGRATION_BINDING.json`.
+   `install_integration.py --pipeline PATH` checks the entire source set and
+   stages both patches without writes. Its explicit apply requires the exact
+   merged-review evidence hash and fresh receipt directory, installs helpers
+   before call sites, and retains rollback/readback evidence. It holds before
+   writes on any before/source/helper mismatch. The bundled `job_observation_policy.py` is an exact,
    hash-bound copy of the unchanged installed pure validator, included for
    reproducible tests. Keep the already installed validator bytes unchanged.
 2. Create a reviewed installation receipt inside the existing pipeline root.
@@ -31,7 +36,8 @@ After independent exact-head review, Justin's merge and green CI:
    `comparator_cloud_lean_verifier.py`, `issue_lean_zero_sorry_certificate.py`,
    `verification_coverage_gates/premise_declaration.py`, `checkpoint_advisory.py`,
    `pipeline_advisory/checkpoint_slo_hook.py`, `pipeline_advisory/pipeline_slo.py`
-   and `pipeline_advisory/lean_repair_lint.py`.
+   and `pipeline_advisory/lean_repair_lint.py`, plus the exact #109 helper
+   `verification_coverage_gates/terminal_certification/terminal_hold.py`.
 4. Using the supported automation-update tool, insert the following operating
    paragraph into the existing generator prompt. Preserve every other field
    and all existing source-exit, ownership, generation and publication gates.
@@ -43,16 +49,19 @@ After independent exact-head review, Justin's merge and green CI:
 > prepare QUEUE.json inside this invocation's canonical checkpoint directory.
 > Bind its exact original START SHA-256 and list every original START debt in
 > its original order. For each debt, use the current reviewed immutable request,
-> formal statement and candidate bindings and unused canonical receipt and
-> certificate output paths. Bind any terminal premise HOLD by exact path/hash;
+> formal statement and candidate bindings and fresh canonical receipt and
+> certificate output paths for a new identity. For a reserved identity, retain
+> its original persisted outputs; later queue paths cannot redirect them. Bind any terminal premise HOLD by exact path/hash;
 > it skips certification dispatch only, never original target credit or release
 > admission. Run the same existing checkpoint entry point with
 > `--drain-certification <original START.json> --certification-queue <QUEUE.json>`.
 > Use no additional scheduler or transport. On an ambiguous reservation, reconcile
 > its exact original request and never send again. A terminal rejection releases
-> capacity only through `record_rejection`'s real receipt hash, unchanged source
-> observation validator, exact identity, terminal process evidence and bound
-> failing goal. Preserve rejected objects; no automatic repair attempt follows.
+> capacity only through `record_rejection`'s real receipt hash and exact
+> request/statement/candidate identity, provider-response digest, matching
+> response/delivery/termination request IDs, RECORDED nonzero exited phase
+> evidence and bound failing-goal excerpt/full-output digest. Delivery-only
+> failure evidence is valid; success-phase observations remain certificate gates. Preserve rejected objects; no automatic repair attempt follows.
 > Existing publication admission remains oldest-first and drains only the
 > contiguous eligible prefix after every science, review, packaging and authority
 > gate. Never count a younger acceptance toward either original named oldest
@@ -63,12 +72,13 @@ After independent exact-head review, Justin's merge and green CI:
 `start_sha256`, and `entries`. Each entry has `run_id`, the three exact
 `{path, sha256}` objects `request`, `formal_statement`, `candidate`, absolute
 `receipt_output` and `certificate_output` paths in that request's directory,
-and optional `terminal_hold: {path, sha256}`. A terminal HOLD uses the existing
-`VRS-CERTIFICATION-PREMISE-HOLD-1` form and binds that same request, statement
-and candidate, the exact pure premise-checker source digest, and a fresh
-non-certifying, no-local-Lean HOLD from that same pure checker. Manifest omission, reordering, path escape, existing fresh
-outputs, identity drift, authority drift, source drift and premise failure
-all HOLD before transport.
+and optional `terminal_hold: {path, sha256}`. A terminal HOLD uses the exact reviewed #109 classifier and its pinned receipt,
+request, scientific documents, package manifest and pure checker closure.
+The queue cannot assert a different terminal rule or inherit an original HOLD
+for a successor request. Manifest omission, reordering, path escape, existing fresh
+outputs, identity drift, authority drift and source drift HOLD before transport.
+A nonterminal premise preflight failure records a per-run HOLD before transport
+and continues the drain for other eligible runs.
 
 The adapter revalidates the unchanged egress authority and INV-9 preflight,
 durably reserves at most two unresolved identities before calls to the unchanged
@@ -92,7 +102,9 @@ its original target credit from actual current certificates.
 
 The same source-bound checkpoint patch invokes `checkpoint_advisory.py` after
 START/FINISH writes and their legitimate resumes, and after lane reconciliation/drain. This
-isolated child has a 15-second maximum; stdout/stderr and exceptions never alter
+isolated child has a 15-second maximum; history beyond 200 reservations or
+20 premise-HOLD files is bounded and reported explicitly, while status still
+refreshes; stdout/stderr and exceptions never alter
 the checkpoint's generation, certification, coverage or authorization result.
 Install the three already reviewed PR106 advisory modules under the existing
 pipeline's `pipeline_advisory/` directory and preserve the exact existing
@@ -112,7 +124,9 @@ Rollback sets the policy active field to false first, then invokes the same
 checkpoint entry point with `--reconcile-certification <original START.json>
 --certification-queue <QUEUE.json>`. This validates the reviewed installed closure
 and reconciles every reserved provider request through its original identity,
-without transport, new reservation or canonical promotion. Preserve that closure
+without transport, new reservation or canonical promotion. The original START
+remains valid for reconcile-only after its FINISH.json exists; dispatch still
+refuses a finished START. Preserve that closure
 until reconciliation is complete; only then restore the before-source bytes. Keep all requests, accepted
 results, rejection receipts and certificates. Restore checkpoint/controller/
 executor before bytes from the installation snapshot and restore only the

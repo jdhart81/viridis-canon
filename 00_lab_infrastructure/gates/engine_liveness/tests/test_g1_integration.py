@@ -28,7 +28,17 @@ class ActualWiringTests(unittest.TestCase):
         self.root = Path(self.temporary.name)
         pipeline = self.root / "RESEARCH_PIPELINE_v2"
         pipeline.mkdir()
-        controller = REPO / "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/autonomous_pipeline_controller.py"
+        predecessor = REPO / "00_lab_infrastructure/gates/terminal_certification"
+        predecessor_binding = json.loads((predecessor / "INTEGRATION_BINDING.json").read_text())
+        # Derive exact #109 bytes from existing tracked snapshots; do not copy
+        # historical private default paths into a new fixture file.
+        for row in predecessor_binding["files"]:
+            target = self.root / row["path"]
+            target.write_bytes((REPO / row["snapshot"]).read_bytes())
+        applied = subprocess.run(["git", "apply", "--unidiff-zero", str(predecessor / "EXISTING_SELECTION.patch")],
+                                 cwd=self.root, capture_output=True, text=True)
+        self.assertEqual(applied.returncode, 0, applied.stderr)
+        controller = pipeline / "autonomous_pipeline_controller.py"
         executor = HERE / "tests/fixtures/autonomous_transition_executor.py.txt"
         self.binding = json.loads((HERE / "INTEGRATION_BINDING.json").read_text())
         sources = {"autonomous_pipeline_controller.py": controller, "autonomous_transition_executor.py": executor}

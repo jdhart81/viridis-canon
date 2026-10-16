@@ -204,6 +204,57 @@ MUTANTS.extend([
 ])
 
 
+# Round-2 semantic regressions: genuine deployed failures, rollback and stack ownership.
+MUTANTS.extend([
+    ("B2 success-path phases incorrectly required for rejection", "scheduler_liveness.py",
+     '    request_id = response.get("requestId")',
+     '    from job_observation_policy import assess_job_observation\n    if assess_job_observation(response, request, identity.statement_sha256, identity.candidate_sha256).get("status") != "OBSERVATION_MATCH_PARTIAL":\n        raise LivenessHold("HOLD_REJECTION_OBSERVATION")\n    request_id = response.get("requestId")'),
+    ("B2 served request ID ignored", "scheduler_liveness.py",
+     'or delivery.get("servedForRequestId") != request_id', 'or False'),
+    ("B2 fresh delivery ignored", "scheduler_liveness.py",
+     'or delivery.get("mode") != "FRESH_EXECUTION"', 'or False'),
+    ("B2 termination standard ignored", "scheduler_liveness.py",
+     'terminal.get("standard") != "VRS-COMPARATOR-TERMINATION-1"', 'False'),
+    ("B2 recorded capture ignored", "scheduler_liveness.py",
+     'or terminal.get("capture_status") != "RECORDED"', 'or False'),
+    ("B2 terminal request ID ignored", "scheduler_liveness.py",
+     'or terminal.get("requestId") != response.get("requestId")', 'or False'),
+    ("B2 phase record request ID ignored", "scheduler_liveness.py",
+     'and row.get("requestId") == response.get("requestId")', 'and True'),
+    ("B2 zero exit code accepted", "scheduler_liveness.py",
+     'and row["exitCode"] != 0', 'and True'),
+    ("B2 boolean exit code accepted", "scheduler_liveness.py",
+     'type(row.get("exitCode")) is int', 'isinstance(row.get("exitCode"), int)'),
+    ("B2 non-exited termination accepted", "scheduler_liveness.py",
+     'and row.get("reason") == "exited"', 'and True'),
+    ("B2 signal termination accepted", "scheduler_liveness.py",
+     'and row.get("signal") is None', 'and True'),
+    ("B2 guard termination accepted", "scheduler_liveness.py",
+     'and row.get("guard_fired") is False', 'and True'),
+    ("B2 output hash ignored on terminal read", "scheduler_liveness.py",
+     'if value.get("provider_output_sha256") != hashlib.sha256(output.encode()).hexdigest():', 'if False:'),
+    ("B2 rollback refuses FINISH", "checkpoint_certification_lane.py",
+     '(not reconcile_only and (start_path.parent / "FINISH.json").exists())',
+     '(start_path.parent / "FINISH.json").exists()'),
+    ("B2 per-run premise hold aborts drain", "checkpoint_certification_lane.py",
+     'preflight_holds[identity.key] = "HOLD_QUEUE_PREMISE_PREFLIGHT"',
+     'raise LivenessHold("HOLD_QUEUE_PREMISE_PREFLIGHT")'),
+    ("B1 advisory freezes after 200 reservations", "checkpoint_advisory.py",
+     'fields["reservation_evidence_budget"] = "LIMITED_TO_200"',
+     'raise ValueError("FIFO reservation evidence budget")'),
+    ("B1 advisory freezes after 20 premise holds", "checkpoint_advisory.py",
+     'fields["hold_evidence_budget"] = "LIMITED_TO_20"',
+     'raise ValueError("FIFO HOLD evidence budget")'),
+    ("S8 second controller dispatch route retained", "scheduler_liveness.py",
+     '    return "DRAIN_SCHEDULER_CERTIFICATION_LANE"',
+     '    return "CERTIFY_COMPARATOR_FIFO"'),
+    ("G1 finalized conflict guard ignored in composed controller", "G1_CONTROLLER_EXECUTOR.patch",
+     '+    if pending_finalized_review:', '+    if pending_finalized_review and False:'),
+    ("installer before-hash mismatch ignored", "install_integration.py",
+     'if file_digest(target) != row["before_sha256"]:', 'if False:'),
+])
+
+
 def refresh_checkpoint_binding(root):
     with tempfile.TemporaryDirectory() as directory:
         target=Path(directory)/"RESEARCH_PIPELINE_v2/nightly_checkpoint.py"
@@ -237,7 +288,32 @@ def run():
             if path.suffix==".py": compile(changed,name,"exec")
             binding=(root/"INTEGRATION_BINDING.json").read_bytes()
             path.write_text(changed)
-            if path.suffix==".patch":refresh_checkpoint_binding(root)
+            if path.suffix==".patch":
+                if path.name == "G2_EXISTING_CHECKPOINT.patch":
+                    refresh_checkpoint_binding(root)
+                else:
+                    with tempfile.TemporaryDirectory() as staging:
+                        pipe = Path(staging) / "RESEARCH_PIPELINE_v2"; pipe.mkdir()
+                        predecessor = HERE.parent / "terminal_certification"
+                        parent_binding = json.loads((predecessor / "INTEGRATION_BINDING.json").read_text())
+                        for row in parent_binding["files"]:
+                            shutil.copyfile(HERE.parents[2] / row["snapshot"], Path(staging) / row["path"])
+                        parent_applied = subprocess.run(["git", "apply", "--unidiff-zero", str(predecessor / "EXISTING_SELECTION.patch")],
+                                                        cwd=staging, capture_output=True)
+                        if parent_applied.returncode: raise RuntimeError("exact predecessor patch does not apply")
+                        shutil.copyfile(root / "tests/fixtures/autonomous_transition_executor.py.txt", pipe / "autonomous_transition_executor.py")
+                        applied = subprocess.run(["git", "apply", "--unidiff-zero", str(path)], cwd=staging, capture_output=True)
+                        if applied.returncode: raise RuntimeError("mutated composed patch does not apply")
+                        value = json.loads((root / "INTEGRATION_BINDING.json").read_text())
+                        for row in value["files"]:
+                            output = pipe / Path(row["path"]).name
+                            if output.exists(): row["after_sha256"] = hashlib.sha256(output.read_bytes()).hexdigest()
+                        (root / "INTEGRATION_BINDING.json").write_text(json.dumps(value))
+            # Refresh integrity envelopes so only semantic assertions can score.
+            value = json.loads((root / "INTEGRATION_BINDING.json").read_text())
+            for source_name in value["source_files"]:
+                value["source_files"][source_name] = hashlib.sha256((root / source_name).read_bytes()).hexdigest()
+            (root / "INTEGRATION_BINDING.json").write_text(json.dumps(value))
             process=subprocess.run(command,capture_output=True,text=True,timeout=60,env=environment)
             failures=sorted(set(re.findall(r"^FAIL: (\w+)",process.stderr,re.M)))
             # ERRORs alone, source-hash guards alone and infrastructure failures

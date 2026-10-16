@@ -203,7 +203,7 @@ class LivenessTests(unittest.TestCase):
                 lambda d: d["provider_response"].update(type="transport-timeout"),
                 lambda d: d["provider_response"]["terminationDiagnostics"]["records"][0].update(reason="timed-out"),
                 lambda d: d["provider_response"]["terminationDiagnostics"]["records"][0].update(guard_fired=True),
-                lambda d: d["provider_response"]["executionEvidence"].update(status="OBSERVATION_MATCH_PARTIAL"),
+                lambda d: d["provider_response"]["executionEvidence"]["delivery"].update(servedForRequestId="other-request"),
             ]
             for mutation in mutations:
                 cloud = json.loads(json.dumps(original)); mutation(cloud)

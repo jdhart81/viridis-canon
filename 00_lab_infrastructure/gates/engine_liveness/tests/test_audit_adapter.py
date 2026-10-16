@@ -213,12 +213,10 @@ class AuditAdapterTests(unittest.TestCase):
                 'candidate_sha256':identity.candidate_sha256,'premise_checker_sha256':file_digest(checker)}}))
         entry['terminal_hold']={'path':str(hold),'sha256':file_digest(hold)};self.write_queue();calls=[]
         def send(identity,entry,paths):calls.append(identity.run_id);return self.verifier(identity,entry,paths)
-        result=self.drain(send)
-        self.assertEqual(calls,['Run-195']);self.assertEqual(result['canonical_certificates'],[])
-        self.assertEqual(result['holds'][0]['code'],'HOLD_TERMINAL_SEALED_OBJECT')
-        checker.write_text('def validate_envelope(*args,**kwargs):\n return {"status":"PASS"}\n')
-        with self.assertRaisesRegex(LivenessHold,'TERMINAL_HOLD_BINDING'):
-            adapter.terminal_hold(entry,identity,self.pipeline)
+        # A self-asserted HOLD cannot create a different terminal policy from #109.
+        with self.assertRaisesRegex(LivenessHold, 'TERMINAL_HOLD_BINDING'):
+            self.drain(send)
+        self.assertEqual(calls, [])
 
     def test_R9_reconciliation_issuer_requires_premise_without_resending(self):
         from types import SimpleNamespace
@@ -290,7 +288,8 @@ class PolicyGuardTests(unittest.TestCase):
 
     def policy(self, **changes):
         required = {"nightly_checkpoint.py", "checkpoint_certification_lane.py", "scheduler_liveness.py",
-            "job_observation_policy.py", "comparator_cloud_lean_verifier.py", "issue_lean_zero_sorry_certificate.py",
+            "job_observation_policy.py", "comparator_cloud_lean_verifier.py",
+            "verification_coverage_gates/terminal_certification/terminal_hold.py", "issue_lean_zero_sorry_certificate.py",
             "verification_coverage_gates/premise_declaration.py", "checkpoint_advisory.py",
             "pipeline_advisory/checkpoint_slo_hook.py", "pipeline_advisory/pipeline_slo.py", "pipeline_advisory/lean_repair_lint.py"}
         for name in required:

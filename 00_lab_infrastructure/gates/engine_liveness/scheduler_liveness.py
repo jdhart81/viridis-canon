@@ -72,8 +72,7 @@ def durable_mkdir(path: Path) -> None:
 
 
 def validate_terminal_rejection(identity: RequestIdentity, path: Path, expected: str) -> dict:
-    """Recompute the normal source-observation validator; never trust caller flags."""
-    from job_observation_policy import assess_job_observation
+    """Authenticate a failed request from the deployed failure evidence envelope."""
     if file_digest(path) != expected:
         raise LivenessHold("HOLD_REJECTION_RECEIPT_HASH")
     cloud = json.loads(path.read_text())
@@ -102,11 +101,17 @@ def validate_terminal_rejection(identity: RequestIdentity, path: Path, expected:
     canonical = (json.dumps(response, sort_keys=True, separators=(",", ":")) + "\n").encode()
     if hashlib.sha256(canonical).hexdigest() != cloud.get("provider_response_sha256"):
         raise LivenessHold("HOLD_REJECTION_RESPONSE_HASH")
-    observation = assess_job_observation(response, request, identity.statement_sha256, identity.candidate_sha256)
-    if observation.get("status") != "OBSERVATION_MATCH_PARTIAL" or observation.get("source_binding_status") != "MATCH":
-        raise LivenessHold("HOLD_REJECTION_OBSERVATION")
+    request_id = response.get("requestId")
+    execution = response.get("executionEvidence", {})
+    delivery = execution.get("delivery", {}) if isinstance(execution, dict) else {}
+    if (not isinstance(request_id, str) or not request_id.strip() or len(request_id) > 200
+            or not isinstance(delivery, dict) or delivery.get("mode") != "FRESH_EXECUTION"
+            or delivery.get("servedForRequestId") != request_id):
+        raise LivenessHold("HOLD_REJECTION_SERVED_REQUEST_ID")
     terminal = response.get("terminationDiagnostics", {})
-    records = terminal.get("records", []) if isinstance(terminal, dict) else []
+    if not isinstance(terminal, dict) or not isinstance(terminal.get("records"), list):
+        raise LivenessHold("HOLD_REJECTION_TERMINAL_EVIDENCE")
+    records = terminal["records"]
     if (terminal.get("standard") != "VRS-COMPARATOR-TERMINATION-1"
             or terminal.get("capture_status") != "RECORDED"
             or terminal.get("requestId") != response.get("requestId")
@@ -118,6 +123,21 @@ def validate_terminal_rejection(identity: RequestIdentity, path: Path, expected:
                 for row in records)):
         raise LivenessHold("HOLD_REJECTION_TERMINAL_EVIDENCE")
     return cloud
+
+
+
+def certification_action(certificate_root: Path) -> str:
+    """An active S8 lane owns dispatch; malformed present policy also fails closed."""
+    policy = certificate_root.parent / "PARALLEL_CERTIFICATION_POLICY.json"
+    if not policy.exists():
+        return "CERTIFY_COMPARATOR_FIFO"
+    try:
+        value = json.loads(policy.read_text())
+        if isinstance(value, dict) and value.get("active") is False:
+            return "CERTIFY_COMPARATOR_FIFO"
+    except (OSError, ValueError, TypeError):
+        pass
+    return "DRAIN_SCHEDULER_CERTIFICATION_LANE"
 
 
 def writer_hold_code(stdout: str) -> str:
@@ -282,7 +302,10 @@ class SchedulerLane:
                     raise LivenessHold("HOLD_TERMINAL_RECEIPT_BINDING")
                 cloud = validate_terminal_rejection(identity, Path(receipt), value.get("provider_receipt_sha256"))
                 goal = value.get("failing_goal")
-                if not isinstance(goal, str) or not goal.strip() or goal not in str(cloud["provider_response"].get("output", "")):
+                output = str(cloud["provider_response"].get("output", ""))
+                if value.get("provider_output_sha256") != hashlib.sha256(output.encode()).hexdigest():
+                    raise LivenessHold("HOLD_REJECTION_OUTPUT_BINDING")
+                if not isinstance(goal, str) or not goal.strip() or len(goal) > 32768 or goal not in output:
                     raise LivenessHold("HOLD_REJECTION_GOAL_BINDING")
             result.append(value)
         return result
@@ -353,7 +376,8 @@ class SchedulerLane:
             raise LivenessHold("HOLD_REJECTION_GOAL_BINDING")
         value = {"standard": "VRS-IMMUTABLE-REJECTED-REQUEST-1", "identity": asdict(identity),
                  "provider_receipt_sha256": provider_receipt_sha256,
-                 "provider_receipt": str(provider_receipt.resolve()), "failing_goal": failing_goal}
+                 "provider_receipt": str(provider_receipt.resolve()), "failing_goal": failing_goal[:32768],
+                 "provider_output_sha256": hashlib.sha256(str(cloud["provider_response"].get("output", "")).encode()).hexdigest()}
         return timed_record(self.root / "terminal" / (identity.key + ".json"), value)
 
     def eligible_dispatches(self, ordered: list[tuple[RequestIdentity, bool]]) -> list[dict]:

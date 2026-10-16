@@ -125,8 +125,8 @@ class CheckpointAdapterTests(unittest.TestCase):
         checker = self.pipeline / "verification_coverage_gates/premise_declaration.py"
         checker.write_text('def validate_envelope(*args, **kwargs):\n return {"status":"HOLD"}\n')
         sent = []
-        with self.assertRaisesRegex(LivenessHold, "PREMISE_PREFLIGHT"):
-            self.drain(lambda *args: sent.append(args))
+        result = self.drain(lambda *args: sent.append(args))
+        self.assertEqual([h["code"] for h in result["holds"]], ["HOLD_QUEUE_PREMISE_PREFLIGHT"] * 2)
         self.assertEqual(sent, [])
         self.assertFalse((self.pipeline / "parallel_certification/requests").exists())
 

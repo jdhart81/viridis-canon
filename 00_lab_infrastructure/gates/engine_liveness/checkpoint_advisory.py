@@ -163,7 +163,8 @@ def fifo_head(root: Path, current: dict, *, as_of: datetime | None = None) -> di
         folder = pipeline / "lean_certificates" / run
         candidates = sorted(folder.glob("PREMISE_DECLARATION_HOLD*.json"))
         if len(candidates) > 20:
-            raise ValueError("FIFO HOLD evidence budget")
+            fields["hold_evidence_budget"] = "LIMITED_TO_20"
+            candidates = candidates[:20]
         for path in candidates:
             try:
                 fields.update(_premise_head(path, root, run))
@@ -173,7 +174,8 @@ def fifo_head(root: Path, current: dict, *, as_of: datetime | None = None) -> di
         lane = pipeline / "parallel_certification"
         requests = sorted((lane / "requests").glob("*.json"))
         if len(requests) > 200:
-            raise ValueError("FIFO reservation evidence budget")
+            fields["reservation_evidence_budget"] = "LIMITED_TO_200"
+            requests = requests[:200]
         for path in requests:
             try:
                 reservation = _json(path, root)
@@ -201,6 +203,8 @@ def fifo_head(root: Path, current: dict, *, as_of: datetime | None = None) -> di
                     cloud = validate_terminal_rejection(RequestIdentity(**identity), receipt, terminal["provider_receipt_sha256"])
                     if terminal.get("identity") != identity or cloud.get("request", {}).get("sha256") != identity["request_sha256"]:
                         raise ValueError("FIFO terminal identity")
+                    if terminal.get("provider_output_sha256") != hashlib.sha256(str(cloud["provider_response"].get("output", "")).encode()).hexdigest():
+                        raise ValueError("FIFO terminal output hash")
                     goal = terminal.get("failing_goal")
                     if not isinstance(goal, str) or goal not in str(cloud.get("provider_response", {}).get("output", "")):
                         raise ValueError("FIFO terminal goal")

@@ -1,0 +1,24 @@
+{
+  "active": false,
+  "base_commit": "a6d6b3d7fd53acedf1c476c425776e26ee83ccab",
+  "files": [
+    {
+      "after_sha256": "86f1691fec4195fe3f0c499df47a934373d6fb55d616cfc7841479511d97fd22",
+      "before_sha256": "58e9c93920ff27c3d6035038bd77c53a1ff4bb075c991f2e2e02221d36b515f8",
+      "path": "RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py",
+      "snapshot": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/autonomous_pipeline_controller.py"
+    },
+    {
+      "after_sha256": "5f42e5907247a08f350bcf9291e0513ba66a8cb99a7ff9d0624a548fdf8d9ad9",
+      "before_sha256": "933d224faf1991e8e609e993feb11ec65bcdc32acf166854d8656f0c623e8fcc",
+      "path": "RESEARCH_PIPELINE_v2/science_foundry_continuity.py",
+      "snapshot": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/science_foundry_continuity.py"
+    }
+  ],
+  "installed": false,
+  "patch_sha256": "6f100d618cd80093235625dd7de26d286bb42db46cc178f22a24faa07354f475",
+  "scheduler_id": "viridis-nightly-science-generator",
+  "standard": "VRS-TERMINAL-CERTIFICATION-SELECTION-1",
+  "terminal_helper_sha256": "c131bc30020abea90b646023e6c9c1b8974ee15e1c9024b11fd6a1a48379a5f3",
+  "unchanged_checkpoint_sha256": "f550c0f808bb15e603b875aed55962b0297731e5a2e4edf4aac99f33eab959df"
+}

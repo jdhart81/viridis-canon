@@ -7,42 +7,113 @@ from __future__ import annotations
 
 import argparse
 import hashlib
-import importlib.util
+import fcntl
 import json
 import os
 from pathlib import Path
 import subprocess
+import stat
+import sys
 import tempfile
+import types
 
-from scheduler_liveness import LivenessHold, file_digest, immutable_json
+class LivenessHold(RuntimeError):
+    pass
+
+
+def file_digest(path: Path) -> str:
+    return hashlib.sha256(captured(path)).hexdigest()
+
+
+def immutable_json(path: Path, value: dict) -> dict:
+    raw = (json.dumps(value, indent=2, sort_keys=True) + "\n").encode()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as stream:
+            temporary = Path(stream.name)
+            stream.write(raw); stream.flush(); os.fsync(stream.fileno())
+            if sys.platform == "darwin" and hasattr(fcntl, "F_FULLFSYNC"):
+                fcntl.fcntl(stream.fileno(), fcntl.F_FULLFSYNC)
+        try:
+            os.link(temporary, path)
+        except FileExistsError:
+            if captured(path) != raw:
+                raise LivenessHold("HOLD_INSTALL_RECEIPT_COLLISION")
+        descriptor = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+        try:
+            os.fsync(descriptor)
+        finally:
+            os.close(descriptor)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+    return value
 
 HERE = Path(__file__).resolve().parent
 HELPERS = ("scheduler_liveness.py", "checkpoint_certification_lane.py", "checkpoint_advisory.py")
 
 
+
+def captured(path: Path) -> bytes:
+    """Read one stable regular source object without following a leaf symlink."""
+    descriptor = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+    try:
+        before = os.fstat(descriptor)
+        if not stat.S_ISREG(before.st_mode) or before.st_size > 16_000_000:
+            raise LivenessHold("HOLD_INSTALL_REGULAR_BOUNDED_SOURCE")
+        with os.fdopen(os.dup(descriptor), "rb") as stream:
+            raw = stream.read()
+        after = os.fstat(descriptor)
+        final = path.lstat()
+        fields = lambda row: (row.st_dev, row.st_ino, row.st_size, row.st_mtime_ns)
+        if fields(before) != fields(after) or fields(after) != fields(final):
+            raise LivenessHold("HOLD_INSTALL_INPUT_CHANGED")
+        return raw
+    finally:
+        os.close(descriptor)
+
+
+def verify_current_inputs(pipeline: Path, value: dict) -> None:
+    """Compare the checked closure again immediately before installation writes."""
+    if (file_digest(HERE / "INTEGRATION_BINDING.json") != value["binding_sha256"]
+            or any(file_digest(HERE / name) != digest for name, digest in value["source_sha256"].items())):
+        raise LivenessHold("HOLD_INSTALL_SOURCE_CAS")
+    if any(file_digest(pipeline / name) != digest for name, digest in value["before_sha256"].items()):
+        raise LivenessHold("HOLD_INSTALL_BEFORE_CAS")
+    if (file_digest(pipeline / "verification_coverage_gates/terminal_certification/terminal_hold.py") != value["terminal_helper_sha256"]
+            or file_digest(pipeline / "job_observation_policy.py") != value["unchanged_job_observation_sha256"]):
+        raise LivenessHold("HOLD_INSTALL_DEPENDENCY_CAS")
+
+
 def plan(pipeline: Path) -> tuple[dict, dict[str, bytes]]:
     pipeline = pipeline.resolve(strict=True)
-    binding = json.loads((HERE / "INTEGRATION_BINDING.json").read_text())
+    binding_raw = captured(HERE / "INTEGRATION_BINDING.json")
+    binding = json.loads(binding_raw)
+    sources = {name: captured(HERE / name) for name in binding["source_files"]}
     for name, expected in binding["source_files"].items():
-        if file_digest(HERE / name) != expected:
+        if hashlib.sha256(sources[name]).hexdigest() != expected:
             raise LivenessHold("HOLD_INSTALL_SOURCE_HASH")
     before = {}
     # Validate every before-file before patch staging, helper writes or receipts.
     for row in binding["files"]:
         name = Path(row["path"]).name
         target = pipeline / name
-        if file_digest(target) != row["before_sha256"]:
+        raw = captured(target)
+        if hashlib.sha256(raw).hexdigest() != row["before_sha256"]:
             raise LivenessHold("HOLD_INSTALL_BEFORE_HASH")
-        before[name] = target.read_bytes()
+        before[name] = raw
     terminal = pipeline / "verification_coverage_gates/terminal_certification/terminal_hold.py"
-    if file_digest(terminal) != binding["terminal_helper_sha256"]:
+    terminal_raw = captured(terminal)
+    if hashlib.sha256(terminal_raw).hexdigest() != binding["terminal_helper_sha256"]:
         raise LivenessHold("HOLD_INSTALL_TERMINAL_HELPER_HASH")
-    spec = importlib.util.spec_from_file_location("_checked_terminal_helper", terminal)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    module = types.ModuleType("_checked_terminal_helper")
+    module.__file__ = str(terminal)
+    exec(compile(terminal_raw, str(terminal), "exec"), module.__dict__)
     if not callable(module.terminal_hold):
         raise LivenessHold("HOLD_INSTALL_TERMINAL_HELPER_IMPORT")
-    if file_digest(pipeline / "job_observation_policy.py") != binding["unchanged_job_observation_sha256"]:
+    observation_raw = captured(pipeline / "job_observation_policy.py")
+    if hashlib.sha256(observation_raw).hexdigest() != binding["unchanged_job_observation_sha256"]:
         raise LivenessHold("HOLD_INSTALL_UNCHANGED_VALIDATOR_HASH")
     staged = {}
     with tempfile.TemporaryDirectory() as temporary:
@@ -52,7 +123,9 @@ def plan(pipeline: Path) -> tuple[dict, dict[str, bytes]]:
         for name, raw in before.items():
             (target / name).write_bytes(raw)
         for patch in ("G1_CONTROLLER_EXECUTOR.patch", "G2_EXISTING_CHECKPOINT.patch"):
-            result = subprocess.run(["git", "apply", "--unidiff-zero", str(HERE / patch)],
+            patch_path = root / patch
+            patch_path.write_bytes(sources[patch])
+            result = subprocess.run(["git", "apply", "--unidiff-zero", str(patch_path)],
                                     cwd=root, capture_output=True, timeout=30)
             if result.returncode:
                 raise LivenessHold("HOLD_INSTALL_PATCH_APPLY")
@@ -64,31 +137,41 @@ def plan(pipeline: Path) -> tuple[dict, dict[str, bytes]]:
             compile(raw, name, "exec")
             staged[name] = raw
     for name in HELPERS:
-        staged[name] = (HERE / name).read_bytes()
-    return {"standard": "VRS-ENGINE-LIVENESS-INSTALL-1", "status": "PLANNED_INACTIVE",
-            "binding_sha256": file_digest(HERE / "INTEGRATION_BINDING.json"),
+        staged[name] = sources[name]
+    value = {"standard": "VRS-ENGINE-LIVENESS-INSTALL-1", "status": "PLANNED_INACTIVE",
+            "binding_sha256": hashlib.sha256(binding_raw).hexdigest(),
             "source_sha256": binding["source_files"],
             "before_sha256": {name: hashlib.sha256(raw).hexdigest() for name, raw in before.items()},
             "after_sha256": {name: hashlib.sha256(raw).hexdigest() for name, raw in staged.items()},
-            "terminal_helper_sha256": file_digest(terminal), "policy_activation": False}, staged
+            "terminal_helper_sha256": hashlib.sha256(terminal_raw).hexdigest(),
+            "unchanged_job_observation_sha256": hashlib.sha256(observation_raw).hexdigest(), "policy_activation": False}
+    verify_current_inputs(pipeline, value)
+    return value, staged
 
 
 def install(pipeline: Path, receipt: Path, evidence: Path, expected: str) -> dict:
     value, staged = plan(pipeline)
-    if file_digest(evidence) != expected:
+    evidence_raw = captured(evidence)
+    if hashlib.sha256(evidence_raw).hexdigest() != expected:
         raise LivenessHold("HOLD_INSTALL_REVIEW_EVIDENCE_HASH")
-    review = json.loads(evidence.read_text())
+    review = json.loads(evidence_raw)
     if (review.get("merged_by") != "Justin" or review.get("ci") != "PASS"
             or review.get("independent_review") != "PASS"
-            or review.get("source_sha256") != value["source_sha256"]):
+            or review.get("source_sha256") != value["source_sha256"]
+            or review.get("binding_sha256") != value["binding_sha256"]):
         raise LivenessHold("HOLD_INSTALL_REVIEW_EVIDENCE")
     if receipt.exists() or receipt.parent.exists():
         raise LivenessHold("HOLD_INSTALL_FRESH_RECEIPT_DIRECTORY")
     pipeline = pipeline.resolve(strict=True)
-    original = {name: (pipeline / name).read_bytes() if (pipeline / name).exists() else None
+    original = {name: captured(pipeline / name) if (pipeline / name).exists() else None
                 for name in staged}
+    if any(hashlib.sha256(original[name]).hexdigest() != expected for name, expected in value["before_sha256"].items()):
+        raise LivenessHold("HOLD_INSTALL_BEFORE_CAS")
     if any((pipeline / name).is_symlink() for name in staged):
         raise LivenessHold("HOLD_INSTALL_SOURCE_SYMLINK")
+    verify_current_inputs(pipeline, value)
+    if file_digest(evidence) != expected:
+        raise LivenessHold("HOLD_INSTALL_REVIEW_EVIDENCE_HASH")
     receipt.parent.mkdir(parents=True)
     rollback = receipt.parent / "rollback"
     rollback.mkdir()

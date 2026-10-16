@@ -251,7 +251,21 @@ MUTANTS.extend([
     ("G1 finalized conflict guard ignored in composed controller", "G1_CONTROLLER_EXECUTOR.patch",
      '+    if pending_finalized_review:', '+    if pending_finalized_review and False:'),
     ("installer before-hash mismatch ignored", "install_integration.py",
-     'if file_digest(target) != row["before_sha256"]:', 'if False:'),
+     'if hashlib.sha256(raw).hexdigest() != row["before_sha256"]:', 'if False:'),
+])
+
+
+MUTANTS.extend([
+    ("N1 installer executes unchecked cached helper", "install_integration.py",
+     '    exec(compile(terminal_raw, str(terminal), "exec"), module.__dict__)',
+     '    import importlib.util\n    spec = importlib.util.spec_from_file_location("_unchecked_cache", terminal)\n    spec.loader.exec_module(module)'),
+    ("N1 installer imports unchecked local dependency cache", "install_integration.py",
+     'HELPERS = (', 'import scheduler_liveness\n\nHELPERS = ('),
+    ("N2 terminal original blocks younger certificate visibility", "checkpoint_certification_lane.py",
+     'prefix = lane.publication_prefix(certification_order, accepted)',
+     'prefix = lane.publication_prefix([identity for identity, _, _, _ in prepared], accepted)'),
+    ("N2 terminal exclusion not reauthenticated before visibility", "checkpoint_certification_lane.py",
+     'if not terminal_hold(entry, identity, lane.root.parent):', 'if False:'),
 ])
 
 

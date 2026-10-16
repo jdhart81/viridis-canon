@@ -53,7 +53,7 @@ proof checks, named checkpoint targets and publication gates.
    by the caller is insufficient production evidence. Results are exclusive,
    immutable holding-area records and do not grant checkpoint target credit.
 4. Real issuer certificates stay under `parallel_certification/verified-results/`
-   until the original debt order has a contiguous verified prefix. The adapter
+   until the nonterminal certification order has a contiguous verified prefix. The adapter
    promotes only exact bytes of that prefix to canonical paths; an out-of-order
    accepted certificate cannot become a current certified ledger row. This
    visibility step grants no publication authority. Pass only release objects that cleared **every** existing science, review,
@@ -97,6 +97,7 @@ Round-2 reproduction (no network or Lean):
 ```
 python3 -B -m unittest discover -s 00_lab_infrastructure/gates/engine_liveness/tests -v
 python3 -B 00_lab_infrastructure/gates/engine_liveness/run_mutations.py
+python3 -B 00_lab_infrastructure/gates/engine_liveness/run_precheck_mutations.py
 python3 -B -m unittest discover -s 00_lab_infrastructure/gates/terminal_certification/tests -v
 ```
 
@@ -111,3 +112,16 @@ apply/readback/rollback paths. The historical source receipts are only read;
 fixture provenance lists their original hashes and the sanitization rule.
 The advisory refreshes even when history exceeds its 200-reservation or
 20-HOLD input budget, reporting the explicit bounded-history limitation.
+
+The fresh source precheck found two issues on retained head `35d6c5a`:
+unchecked Python bytecode could execute after a helper source hash check, and
+authenticated terminal originals still blocked younger certificate visibility.
+The installer now uses only standard-library utilities and executes captured,
+checked terminal-helper source bytes in a fresh module and rechecks its complete input closure before writes. Review evidence
+also binds `INTEGRATION_BINDING.json`. Canonical certificate visibility omits
+only freshly reauthenticated #109 terminal-original entries; pending and rejected
+requests still block it. Original checkpoint targets/debt and the general
+publication-prefix API remain unchanged. Named cache substitution, source-CAS,
+real-drain visibility and terminal-recheck tests accompany these fixes.
+
+`run_precheck_mutations.py` isolates six cause-specific named tests. Each baseline passes and its semantic mutant must fail by assertion with zero errors; broad-suite errors are retained separately and never constitute a kill.

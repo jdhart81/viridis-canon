@@ -200,6 +200,21 @@ class DeployedRejectionTests(unittest.TestCase):
         self.assertEqual(result["holds"][0]["code"], "HOLD_QUEUE_PREMISE_PREFLIGHT")
         self.assertEqual(len(list((self.pipeline / "parallel_certification/preflight-holds").glob("*.json"))), 1)
 
+    def test_authenticated_provider_rejection_remains_a_certificate_visibility_gap(self):
+        from liveness_fixtures import write_rejection
+        sent=[]
+        def verify(identity,entry,paths):
+            sent.append(identity.run_id)
+            if identity.run_id=='Run-194':
+                return write_rejection(identity,entry),{}
+            return self.verifier(identity,entry,paths)
+        result=self.drain(verify)
+        self.assertEqual(sent,['Run-194','Run-195'])
+        self.assertEqual(result['accepted'],['Run-195'])
+        self.assertEqual(result['canonical_certificates'],[])
+        self.assertFalse(Path(self.entries[1]['certificate_output']).exists())
+        self.assertEqual(result['holds'][0]['code'],'HOLD_TERMINAL_REJECTED_REQUEST')
+
     def test_B2_reserved_request_keeps_original_outputs_on_later_queue_path_drift(self):
         self.drain(lambda *args: (_ for _ in ()).throw(TimeoutError()))
         changed = deepcopy(self.entries)

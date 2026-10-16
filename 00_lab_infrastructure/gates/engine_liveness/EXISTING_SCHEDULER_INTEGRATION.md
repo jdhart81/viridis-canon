@@ -90,7 +90,12 @@ Acceptance writes the real issuer certificate only under
 immutable result binds the certificate, proof and cloud-receipt digests. Before
 new transport, every accepted artifact is revalidated and compared with that
 record. The adapter calls the ordered-prefix policy and exclusively links
-only its contiguous verified prefix to canonical certificate paths. A younger
+only the contiguous verified certification prefix to canonical paths. That
+prefix excludes only exact #109 terminal-original entries reauthenticated
+immediately before promotion; ordinary pending or provider-rejected objects
+still block it. The original START/backlog and target-credit obligations remain
+unchanged. The general publication-prefix API and every publication gate
+remain unchanged. A younger
 certificate remains invisible to the existing current-certificate ledger and
 `nightly_release_checkpoint.source_for_cycle` until the oldest gap closes.
 All later publication admission gates remain required. Resume reconciles the
@@ -132,3 +137,11 @@ results, rejection receipts and certificates. Restore checkpoint/controller/
 executor before bytes from the installation snapshot and restore only the
 generator prompt field through its supported update tool. No schedule, model,
 budget, source seal, existing DOI or scientific bytes change.
+
+Installer review evidence includes `binding_sha256` for the exact integration
+manifest as well as the merged source map. Checked helper source is captured
+once and executed directly with compile/exec in a fresh module; Python import
+loaders and bytecode caches are not part of that check. Source, predecessor,
+terminal-helper, observation-validator and review-evidence hashes are compared
+again before the first installation write. A stale plan or changed dependency
+holds without creating installation receipts or writing helpers.

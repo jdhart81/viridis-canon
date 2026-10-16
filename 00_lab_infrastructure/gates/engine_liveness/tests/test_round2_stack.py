@@ -1,6 +1,8 @@
 """Compose exact PR109 first, then exercise PR108's controller and installer."""
 from copy import deepcopy
 import importlib.util
+import ast
+import py_compile
 import json
 import os
 from pathlib import Path
@@ -11,9 +13,12 @@ import types
 import unittest
 from unittest.mock import patch
 
+HERE = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(HERE))
+
 import checkpoint_certification_lane as adapter
 import install_integration as installer
-from scheduler_liveness import LivenessHold, file_digest, certification_action
+from scheduler_liveness import LivenessHold, file_digest, certification_action, SchedulerLane
 import test_audit_adapter as audit
 
 HERE = Path(__file__).resolve().parents[1]
@@ -150,7 +155,7 @@ class ComposedControllerTests(predecessor.TerminalFixture):
         review=self.root/'REVIEW_FIXTURE.json'
         binding=json.loads((HERE/'INTEGRATION_BINDING.json').read_text())
         review.write_text(json.dumps({'merged_by':'Justin','ci':'PASS','independent_review':'PASS',
-                                    'source_sha256':binding['source_files'],'fixture_only':True}))
+                                    'source_sha256':binding['source_files'],'binding_sha256':file_digest(HERE/'INTEGRATION_BINDING.json'),'fixture_only':True}))
         receipt=self.root/'installation-evidence'/'INSTALL.json'
         originals={p.name:p.read_bytes() for p in self.pipeline.glob('*.py')}
         result=subprocess.run([sys.executable,'-B',str(HERE/'install_integration.py'),'--pipeline',str(self.pipeline),
@@ -166,6 +171,138 @@ class ComposedControllerTests(predecessor.TerminalFixture):
             if name in value['after_sha256']:
                 self.assertEqual((receipt.parent/'rollback'/name).read_bytes(),raw)
         self.assertFalse((self.pipeline/'PARALLEL_CERTIFICATION_POLICY.json').exists())
+
+    def test_installer_real_CLI_ignores_timestamp_valid_substituted_bytecode_under_B(self):
+        self.installer_fixture()
+        terminal=self.pipeline/'verification_coverage_gates/terminal_certification/terminal_hold.py'
+        original=terminal.read_bytes(); stamp=terminal.stat()
+        marker=self.root/'unchecked-cache-executed.txt'
+        alternate=('from pathlib import Path\nPath('+repr(str(marker))+').write_text("unchecked cache")\n'
+                   'def terminal_hold(*args): return None\n').encode()
+        alternate += b'#'*(len(original)-len(alternate))
+        self.assertEqual(len(alternate),len(original))
+        terminal.write_bytes(alternate)
+        os.utime(terminal,ns=(stamp.st_atime_ns,stamp.st_mtime_ns))
+        py_compile.compile(str(terminal),doraise=True)
+        terminal.write_bytes(original)
+        os.utime(terminal,ns=(stamp.st_atime_ns,stamp.st_mtime_ns))
+        result=subprocess.run([sys.executable,'-B',str(HERE/'install_integration.py'),'--pipeline',str(self.pipeline)],
+                              capture_output=True,text=True,timeout=10)
+        self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+        self.assertEqual(json.loads(result.stdout)['status'],'PLANNED_INACTIVE')
+        self.assertEqual(terminal.read_bytes(),original)
+        self.assertFalse(marker.exists(),'Hash-checked source must be the only code executed; unchecked pycache ran')
+
+    def test_installer_real_CLI_ignores_cached_local_dependency(self):
+        self.installer_fixture()
+        source=self.root/'installer-source';source.mkdir()
+        binding=json.loads((HERE/'INTEGRATION_BINDING.json').read_text())
+        for name in (*binding['source_files'],'INTEGRATION_BINDING.json'):
+            shutil.copyfile(HERE/name,source/name)
+        local=source/'scheduler_liveness.py';original=local.read_bytes();stamp=local.stat()
+        marker=self.root/'local-import-cache-executed.txt'
+        alternate=('from pathlib import Path\nPath('+repr(str(marker))+').write_text("unchecked local cache")\n').encode()
+        alternate += b'#'*(len(original)-len(alternate))
+        local.write_bytes(alternate);os.utime(local,ns=(stamp.st_atime_ns,stamp.st_mtime_ns))
+        py_compile.compile(str(local),doraise=True)
+        local.write_bytes(original);os.utime(local,ns=(stamp.st_atime_ns,stamp.st_mtime_ns))
+        result=subprocess.run([sys.executable,'-B',str(source/'install_integration.py'),'--pipeline',str(self.pipeline)],
+                              capture_output=True,text=True,timeout=10)
+        self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+        self.assertEqual(json.loads(result.stdout)['status'],'PLANNED_INACTIVE')
+        self.assertFalse(marker.exists(),'Installer executed unchecked local dependency cache')
+
+    def test_installer_rechecks_predecessor_CAS_after_plan_before_any_write(self):
+        self.installer_fixture()
+        binding=json.loads((HERE/'INTEGRATION_BINDING.json').read_text())
+        review=self.root/'CAS_REVIEW_FIXTURE.json'
+        review.write_text(json.dumps({'merged_by':'Justin','ci':'PASS','independent_review':'PASS',
+            'source_sha256':binding['source_files'],'binding_sha256':file_digest(HERE/'INTEGRATION_BINDING.json')}))
+        receipt=self.root/'must-not-exist'/'INSTALL.json'
+        original_plan=installer.plan
+        def drift(pipeline):
+            value,staged=original_plan(pipeline)
+            (pipeline/'autonomous_pipeline_controller.py').write_text('changed after plan\n')
+            return value,staged
+        with patch.object(installer,'plan',side_effect=drift):
+            with self.assertRaisesRegex(installer.LivenessHold,'INSTALL_BEFORE_CAS'):
+                installer.install(self.pipeline,receipt,review,file_digest(review))
+        self.assertFalse(receipt.parent.exists())
+        self.assertFalse((self.pipeline/'scheduler_liveness.py').exists())
+        self.assertEqual((self.pipeline/'autonomous_pipeline_controller.py').read_text(),'changed after plan\n')
+
+    def terminal_drain_fixture(self):
+        self.request.update(toolchain='leanprover/lean4:v4.28.0',mathlib_rev='b'*40)
+        self.rebind_document('ENGINE3_VERIFICATION_REQUEST.json',predecessor.encoded(self.request))
+        entry={'run_id':'Run-194',**{name:{'path':str(self.folder/filename),'sha256':file_digest(self.folder/filename)}
+            for name,filename in (('request','ENGINE3_VERIFICATION_REQUEST.json'),
+                                 ('formal_statement','VERIFICATION_STATEMENT.lean'),
+                                 ('candidate','VERIFICATION_CANDIDATE.lean'))},
+            'receipt_output':str(self.folder/'fresh-receipt.json'),'certificate_output':str(self.folder/'fresh-certificate.json'),
+            'terminal_hold':{'path':str(self.receipt_path),'sha256':file_digest(self.receipt_path)}}
+        self.entries=[entry,audit.AuditAdapterTests.entry(self,195)]
+        checker=self.pipeline/'verification_coverage_gates/premise_declaration.py'
+        checker.parent.mkdir(parents=True,exist_ok=True)
+        checker.write_text('def validate_envelope(*args,**kwargs):\n return {"status":"PASS","historical_exemption":False}\n')
+        self.start=self.pipeline/'nightly_checkpoints/terminal-fixture/START.json'
+        self.start.parent.mkdir(parents=True)
+        self.start.write_text(json.dumps({'science':{'certification':{'backlog_runs':['Run-194','Run-195']}}}))
+        self.queue=self.start.parent/'QUEUE.json';audit.AuditAdapterTests.write_queue(self)
+        namespace=types.ModuleType('verification_coverage_gates');namespace.__path__=[]
+        child=types.ModuleType('verification_coverage_gates.terminal_certification');child.__path__=[]
+        self.mods={'verification_coverage_gates':namespace,'verification_coverage_gates.terminal_certification':child,
+            'verification_coverage_gates.terminal_certification.terminal_hold':shared,
+            'nightly_checkpoint':types.SimpleNamespace(read_start=lambda path:json.loads(path.read_text())),
+            'comparator_data_egress_authorization':types.SimpleNamespace(validate_authorization=lambda *a:{'status':'AUTHORIZED'})}
+        return entry
+
+    def terminal_drain(self,sent):
+        def verify(identity,entry,paths):
+            sent.append(identity.run_id)
+            return audit.AuditAdapterTests.verifier(self,identity,entry,paths)
+        with patch.dict(sys.modules,self.mods),patch.object(adapter,'validate_policy',return_value={}),\
+             patch.object(adapter,'_verify_one',side_effect=verify):
+            return adapter.drain_checkpoint(self.start,self.queue,pipeline=self.pipeline)
+
+    def test_shared_authenticated_terminal_allows_only_younger_certificate_visibility_not_credit_or_publication(self):
+        self.terminal_drain_fixture();sent=[]
+        result=self.terminal_drain(sent)
+        self.assertEqual(sent,['Run-195'])
+        self.assertEqual(result['accepted'],['Run-195'])
+        self.assertEqual(result['canonical_certificates'],['Run-195'])
+        self.assertFalse(Path(self.entries[0]['certificate_output']).exists())
+        self.assertTrue(Path(self.entries[1]['certificate_output']).exists())
+        self.assertEqual(result['holds'][0]['code'],'HOLD_TERMINAL_SEALED_OBJECT')
+        self.assertFalse(result['publication_performed'])
+        # The actual original checkpoint still holds194's target/debt.
+        tree=ast.parse((HERE/'tests/fixtures/nightly_checkpoint.py.txt').read_text())
+        assess=next(node for node in tree.body if isinstance(node,ast.FunctionDef) and node.name=='assess')
+        namespace={};exec(compile(ast.Module(body=[assess],type_ignores=[]),'checkpoint.py','exec'),namespace)
+        certification={'backlog_runs':['Run-194','Run-195'],'certified_runs':[],'ready':True,'recent':True,'backlog_critical':7}
+        start={'science':{'certification':certification},'invocation_id':'fixture','started_at_utc':'2026-10-16T12:00:00Z'}
+        current={'certification':{**certification,'backlog_runs':['Run-194'],'certified_runs':['Run-195']},
+                 'generation':{'ready':True,'due':False,'fresh':True},'evaluated_at_utc':'2026-10-16T12:01:00Z'}
+        finished=namespace['assess'](start,current,{'items':[],'counts':{'submission_ready_packages':0}})
+        self.assertEqual(finished['certification']['target_runs'],['Run-194','Run-195'])
+        self.assertEqual(finished['certification']['cleared_prior_debt'],['Run-195'])
+        self.assertIn('HOLD_FIFO_CERTIFICATION_TARGET_NOT_MET',finished['incidents'])
+        identities=[adapter.identity_for(entry,self.pipeline)[0] for entry in self.entries]
+        lane=SchedulerLane(self.pipeline/'parallel_certification')
+        with lane.checkpoint():
+            self.assertEqual(lane.publication_prefix(identities,{identities[1].key}),[])
+
+    def test_terminal_exclusion_is_freshly_reauthenticated_before_certificate_visibility(self):
+        self.terminal_drain_fixture();sent=[]
+        classify=shared.terminal_hold;calls=[]
+        def withdrawn(*args):
+            calls.append(args)
+            return classify(*args) if len(calls)==1 else None
+        with patch.object(shared,'terminal_hold',side_effect=withdrawn):
+            with self.assertRaisesRegex(LivenessHold,'TERMINAL_HOLD_BINDING'):
+                self.terminal_drain(sent)
+        self.assertEqual(sent,['Run-195'])
+        self.assertEqual(len(calls),2)
+        self.assertFalse(Path(self.entries[1]['certificate_output']).exists())
 
     def test_malformed_active_policy_retains_single_S8_route_and_false_restores_original(self):
         policy=self.pipeline/'PARALLEL_CERTIFICATION_POLICY.json'

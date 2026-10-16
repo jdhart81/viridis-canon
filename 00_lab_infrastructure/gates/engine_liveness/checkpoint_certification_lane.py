@@ -212,7 +212,16 @@ def _promote_prefix(lane: SchedulerLane, prepared: list, result: dict) -> None:
     paper, review, package and publication-authority guard still runs later.
     """
     accepted = {RequestIdentity(**row["identity"]).key for row in lane._rows("results")}
-    prefix = lane.publication_prefix([identity for identity, _, _, _ in prepared], accepted)
+    # Certificate visibility may pass only an exact reviewed terminal original.
+    # Actual publication admission still uses the unchanged general API/order.
+    certification_order = []
+    for identity, entry, _, held in prepared:
+        if held:
+            if not terminal_hold(entry, identity, lane.root.parent):
+                raise LivenessHold("HOLD_TERMINAL_PROMOTION_RECHECK")
+            continue
+        certification_order.append(identity)
+    prefix = lane.publication_prefix(certification_order, accepted)
     result["canonical_certificates"] = []
     for identity, entry, _, _ in prepared:
         if identity.run_id not in prefix:

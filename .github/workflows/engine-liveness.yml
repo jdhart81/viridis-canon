@@ -35,3 +35,4 @@ jobs:
           python-version: ${{ matrix.python }}
       - run: python -m unittest discover -s 00_lab_infrastructure/gates/engine_liveness/tests -v
       - run: python 00_lab_infrastructure/gates/engine_liveness/run_mutations.py
+      - run: python 00_lab_infrastructure/gates/engine_liveness/run_precheck_mutations.py

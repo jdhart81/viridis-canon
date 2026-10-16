@@ -10,6 +10,9 @@ on:
       - 'tools/mutate_runbook_fixes.py'
       - 'tools/tests/**'
       - 'tools/zenodo_metadata_repair.py'
+      - 'tools/effective_allocation.py'
+      - 'tools/mutate_effective_allocation.py'
+      - 'tools/allocation_correction/**'
       - '.github/workflows/standalone-manuscript-pdf.yml'
   push:
     branches: [main]
@@ -21,6 +24,9 @@ on:
       - 'tools/mutate_runbook_fixes.py'
       - 'tools/tests/**'
       - 'tools/zenodo_metadata_repair.py'
+      - 'tools/effective_allocation.py'
+      - 'tools/mutate_effective_allocation.py'
+      - 'tools/allocation_correction/**'
       - '.github/workflows/standalone-manuscript-pdf.yml'
 
 permissions:

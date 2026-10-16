@@ -1,0 +1,149 @@
+--- a/RESEARCH_PIPELINE_v2/canon_product_router.py
++++ b/RESEARCH_PIPELINE_v2/canon_product_router.py
+@@ -20,6 +20,46 @@
+ 
+ class RouteError(RuntimeError):
+     pass
++
++
++EFFECTIVE_ALLOCATION_SOURCE_SHA256 = "96767f3129d21ccbab57795df779f12a4197e758fd35138c6f18773c1aaa06e5"
++
++
++def load_effective_allocation():
++    path = HERE / "effective_allocation.py"
++    if any(p.is_symlink() for p in (path, *path.parents)) or not path.is_file():
++        raise RouteError("HOLD_EFFECTIVE_ALLOCATION_MODULE_PATH")
++    raw = path.read_bytes()
++    if hashlib.sha256(raw).hexdigest() != EFFECTIVE_ALLOCATION_SOURCE_SHA256:
++        raise RouteError("HOLD_EFFECTIVE_ALLOCATION_MODULE_PIN")
++    namespace = {"__file__": str(path), "__name__": "_bound_effective_allocation"}
++    exec(compile(raw, str(path), "exec"), namespace)
++    if path.read_bytes() != raw or any(p.is_symlink() for p in (path, *path.parents)):
++        raise RouteError("HOLD_EFFECTIVE_ALLOCATION_MODULE_RACE")
++    return namespace
++
++
++def effective_allocation_view(finalized_root, reconciliation_surface, *, allocation_correction=None,
++                              ledger_path=None, expected_ledger_sha256=None):
++    module = load_effective_allocation()
++    try:
++        view = module["resolve"](finalized_root, reconciliation_surface,
++            correction=allocation_correction, ledger_path=ledger_path,
++            expected_ledger_sha256=expected_ledger_sha256)
++        view.read(HERE / "effective_allocation.py", EFFECTIVE_ALLOCATION_SOURCE_SHA256)
++        view.revalidate()
++        return view
++    except module["AllocationHold"] as exc:
++        raise RouteError(str(exc)) from None
++
++
++def explicit_allocation_options(path, digest, ledger_digest):
++    if path is None and digest is None and ledger_digest is None:
++        return {"allocation_correction": None, "expected_ledger_sha256": None}
++    if path is None or digest is None or ledger_digest is None:
++        raise RouteError("HOLD_EFFECTIVE_ALLOCATION_EXPLICIT_PIN_AND_LEDGER_CAS_REQUIRED")
++    return {"allocation_correction": {"path": path, "sha256": digest},
++            "expected_ledger_sha256": ledger_digest}
+ 
+ 
+ def read_json(path: Path) -> dict[str, Any]:
+@@ -98,28 +138,17 @@
+     return candidate
+ 
+ 
+-def reserved_ledger_state(
+-    finalized_root: Path,
+-    reconciliation_surface: Path,
+-) -> tuple[int, list[int], list[int], list[str]]:
+-    surface = read_json(reconciliation_surface)
+-    authoritative_max = int(surface.get("authoritative_ledger_max_row_observed", 0))
+-    public_rows = sorted(
+-        int(row["proposed_ledger_row"])
+-        for row in surface.get("records", [])
+-        if isinstance(row, dict) and isinstance(row.get("proposed_ledger_row"), int)
+-    )
+-    proposal_rows: list[int] = []
+-    surfaces = [display_path(reconciliation_surface)]
+-    for proposal_path in sorted(finalized_root.glob("Run-*/RELEASE_BINDING_PROPOSAL.json")):
+-        proposal = read_json(proposal_path)
+-        row = proposal.get("proposed_ledger_row")
+-        if proposal.get("status") == "READY_FOR_EXACT_AUTHORIZATION" and isinstance(row, int):
+-            proposal_rows.append(row)
+-            surfaces.append(display_path(proposal_path))
+-    if len(set([*public_rows, *proposal_rows])) != len([*public_rows, *proposal_rows]):
+-        raise RouteError("ledger reservation collision detected")
+-    return authoritative_max, public_rows, sorted(proposal_rows), surfaces
++def reservation_state(view):
++    return (view.authoritative_max, list(view.public_rows), list(view.proposal_rows),
++            [display_path(Path(path)) for path in view.input_bindings])
++
++
++def reserved_ledger_state(finalized_root, reconciliation_surface, *, allocation_correction=None,
++                          ledger_path=None, expected_ledger_sha256=None):
++    view = effective_allocation_view(finalized_root, reconciliation_surface,
++        allocation_correction=allocation_correction, ledger_path=ledger_path,
++        expected_ledger_sha256=expected_ledger_sha256)
++    return reservation_state(view)
+ 
+ 
+ def seal_route_and_proposal(
+@@ -128,6 +157,9 @@
+     finalized_root: Path = FINALIZED_ROOT,
+     reconciliation_surface: Path = RECONCILIATION_SURFACE,
+     proposed_license: str = "cc-by-4.0",
++    allocation_correction=None,
++    ledger_path: Path | None = None,
++    expected_ledger_sha256=None,
+ ) -> dict[str, Any]:
+     run_id = canonical_run_id(run_value)
+     root = finalized_root / run_id
+@@ -206,9 +238,12 @@
+         "evidence": evidence,
+         "external_mutation": False,
+     }
+-    authoritative_max, public_rows, proposal_rows, surfaces = reserved_ledger_state(
+-        finalized_root, reconciliation_surface
+-    )
++    if ledger_path is None:
++        ledger_path = finalized_root.parent.parent / "ZENODO_SUBMISSION_LEDGER.md"
++    allocation = effective_allocation_view(finalized_root, reconciliation_surface,
++        allocation_correction=allocation_correction, ledger_path=ledger_path,
++        expected_ledger_sha256=expected_ledger_sha256)
++    authoritative_max, public_rows, proposal_rows, surfaces = reservation_state(allocation)
+     proposed_row = max([authoritative_max, *public_rows, *proposal_rows], default=0) + 1
+     proposal = {
+         "schema_version": 1,
+@@ -225,6 +260,7 @@
+             "reserved_existing_public_identity_rows": public_rows,
+             "reserved_unpublished_rows": proposal_rows,
+             "reservation_surfaces": surfaces,
++            "effective_allocation_projection": allocation.receipt(),
+         },
+         "route": route_name,
+         "spine_admitted": False,
+@@ -238,7 +274,9 @@
+         "evidence": {**evidence, "canon_product_route_sha256": json_sha256(route)},
+         "external_mutation": False,
+     }
++    allocation.revalidate()
+     write_json_atomic(route_path, route)
++    allocation.revalidate()
+     write_json_atomic(proposal_path, proposal)
+     return {
+         "status": "READY_FOR_EXACT_AUTHORIZATION",
+@@ -255,9 +293,14 @@
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument("--run", required=True)
+     parser.add_argument("--proposed-license", default="cc-by-4.0")
++    parser.add_argument("--allocation-correction", type=Path)
++    parser.add_argument("--allocation-correction-sha256")
++    parser.add_argument("--expected-ledger-sha256")
+     args = parser.parse_args()
+     try:
+-        result = seal_route_and_proposal(args.run, proposed_license=args.proposed_license)
++        options = explicit_allocation_options(args.allocation_correction,
++            args.allocation_correction_sha256, args.expected_ledger_sha256)
++        result = seal_route_and_proposal(args.run, proposed_license=args.proposed_license, **options)
+         print(json.dumps(result, indent=2, sort_keys=True))
+         return 0
+     except (RouteError, OSError, KeyError, TypeError, ValueError) as exc:

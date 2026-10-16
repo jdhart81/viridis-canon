@@ -1,0 +1,42 @@
+name: Closed approved allocation projection
+
+on:
+  pull_request:
+    paths:
+      - 'tools/effective_allocation.py'
+      - 'tools/mutate_effective_allocation.py'
+      - 'tools/allocation_correction/**'
+      - 'tools/tests/test_effective_allocation.py'
+      - '.github/workflows/effective-allocation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/effective_allocation.py'
+      - 'tools/mutate_effective_allocation.py'
+      - 'tools/allocation_correction/**'
+      - 'tools/tests/test_effective_allocation.py'
+      - '.github/workflows/effective-allocation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  allocation-correction:
+    name: allocation-correction (${{ matrix.python }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.12', '3.14']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Verify exact inactive patch reproduction
+        run: python3 -B tools/allocation_correction/build_patches.py --check
+      - name: Exercise shared allocation and all patched call sites offline
+        run: python3 -B -m unittest discover -s tools/tests -p 'test_effective_allocation.py' -v
+      - name: Kill every declared allocation mutant with assertion evidence
+        run: python3 -B tools/mutate_effective_allocation.py --repo . --output "$RUNNER_TEMP/allocation-mutations.json"

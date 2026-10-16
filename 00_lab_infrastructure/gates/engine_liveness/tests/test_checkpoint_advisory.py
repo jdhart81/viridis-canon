@@ -1,5 +1,6 @@
 import argparse
 import ast
+from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
@@ -48,7 +49,7 @@ class AdvisoryCheckpointTests(unittest.TestCase):
             hashlib.sha256((self.pipeline / "lean_certificates/Run-194/VERIFICATION_CANDIDATE.lean").read_bytes()).hexdigest())
         slo = json.loads((self.pipeline / "PIPELINE_SLO_STATUS.json").read_text())
         self.assertEqual(slo["status"], "ADVISORY_UNAVAILABLE")
-        self.assertIsNone(slo["fifo_liveness"]["failing_goal"])
+        self.assertEqual(slo["fifo_liveness"]["failing_goal"], "UNAVAILABLE")
         self.assertEqual(self.checkpoint.read_bytes(), before)
 
     def test_advisory_source_drift_never_becomes_a_science_gate(self):
@@ -57,17 +58,15 @@ class AdvisoryCheckpointTests(unittest.TestCase):
         self.assertEqual(json.loads((self.pipeline / "PIPELINE_SLO_STATUS.json").read_text())["status"], "ADVISORY_UNAVAILABLE")
 
     def test_fifo_alert_at_exactly_24_hours_preserves_failing_goal(self):
-        def emit(root, checkpoint):
-            (self.pipeline / "PIPELINE_SLO_STATUS.json").write_text(json.dumps({
-                "fifo_liveness": {"status": "BELOW_ALERT_THRESHOLD", "held_hours": 24,
-                                  "failing_goal": "the exact held goal"}}))
-            return {"status": "REPORTED"}
-        modules = {"checkpoint_slo_hook": SimpleNamespace(observe=emit)}
-        with patch.object(advisory, "load", return_value=modules):
-            advisory.observe(self.root, self.checkpoint)
-        fifo = json.loads((self.pipeline / "PIPELINE_SLO_STATUS.json").read_text())["fifo_liveness"]
+        (self.pipeline / "PIPELINE_SLO_INPUTS.json").write_text(json.dumps({"fifo_head": {
+            "run_id": "Run-194", "held_since_utc": "2026-10-15T00:00:00Z",
+            "failing_goal": "the exact held goal", "candidate_sha256": "a" * 64,
+            "provider_receipt": {"path": "/bounded/receipt.json", "sha256": "b" * 64}}}))
+        current = json.loads(self.checkpoint.read_text())
+        fifo = advisory.fifo_head(self.root, current, as_of=datetime(2026, 10, 16, tzinfo=timezone.utc))
         self.assertEqual(fifo["status"], "ALERT")
         self.assertEqual(fifo["failing_goal"], "the exact held goal")
+        self.assertEqual(fifo["held_seconds"], 86400)
 
     def patched_namespace(self):
         target = self.pipeline / "nightly_checkpoint.py"

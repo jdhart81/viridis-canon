@@ -4,7 +4,7 @@ Run-170's writer exits 2 because its sealed manuscript says independent review
 is pending while its package has a passing review. The writer correctly holds.
 The executor previously discarded the writer's stdout JSON and showed empty
 stderr. `G1_CONTROLLER_EXECUTOR.patch` makes that HOLD identifier visible
-without copying untrusted diagnostic prose, and sends the sealed-paper conflict
+with a bounded, credential-redacted stderr tail, and sends the sealed-paper conflict
 to agent judgment for a versioned successor and later review. It never changes
 the sealed paper, certificate or existing kernel package.
 
@@ -33,20 +33,31 @@ proof checks, named checkpoint targets and publication gates.
    hash and every exact identity, recomputes the unchanged source-observation
    validator and requires terminal process evidence plus the real failing goal.
    It preserves the request and never authorizes a new attempt.
-3. On acceptance, use the existing issuer and its complete certificate
+3. The adapter reconciles every original reservation before dispatch: authenticated
+   terminal rejection frees capacity; ambiguity retains it. A reviewed new request
+   for the same Run has a new identity and never retries the rejected identity.
+   Inactive rollback uses `--reconcile-certification`, with no transport or canonical
+   promotion. On acceptance, use the existing issuer and its complete certificate
    validator, then call `accept` with the exact identity, artifact hashes and
    genuine kernel/premise/non-vacuity results. The supplied validator must
    validate the real certificate, proof and provider receipt; a boolean claimed
    by the caller is insufficient production evidence. Results are exclusive,
    immutable holding-area records and do not grant checkpoint target credit.
-4. Pass only release objects that cleared **every** existing science, review,
+4. Real issuer certificates stay under `parallel_certification/verified-results/`
+   until the original debt order has a contiguous verified prefix. The adapter
+   promotes only exact bytes of that prefix to canonical paths; an out-of-order
+   accepted certificate cannot become a current certified ledger row. This
+   visibility step grants no publication authority. Pass only release objects that cleared **every** existing science, review,
    packaging and authority gate to `publication_prefix`. It returns the
    contiguous admitted prefix of the caller's authoritative release order.
    A terminal original can be omitted from release membership only by the
    existing reviewed successor or held-Run policy, never by this library.
-5. Use `scheduler_checkpoint` at the existing scheduler call site so generation
-   runs once when `generation.due` is true before certification HOLD handling.
-   It adds no generation cadence, model, budget or additional checkpoint.
+5. The actual checkpoint patch adds explicit drain and rollback-reconcile actions.
+   The scheduler performs its existing due-generation action before drain, and
+   always reaches its existing finish path after a certification HOLD.
+   `scheduler_checkpoint` is a library model used by A6; the production call
+   site is the source-bound `nightly_checkpoint.py` patch. No cadence, model,
+   budget or extra checkpoint changes.
 
 The concrete inactive checkpoint adapter, exact source patch, queue/policy
 schema, supported prompt amendment and rollback are in

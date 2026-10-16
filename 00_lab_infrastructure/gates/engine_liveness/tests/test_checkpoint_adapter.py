@@ -76,7 +76,9 @@ class CheckpointAdapterTests(unittest.TestCase):
             sent.append(args[0].run_id)
             return self.verifier(*args)
         first = self.drain(verifier)
-        second = self.drain(lambda *args: self.fail("duplicate provider send"))
+        resent = []
+        second = self.drain(lambda *args: resent.append(args))
+        self.assertEqual(resent, [])
         self.assertEqual(sorted(sent), ["Run-194", "Run-195"])
         self.assertEqual(first, second)
         self.assertEqual(first["accepted"], ["Run-194", "Run-195"])
@@ -84,7 +86,9 @@ class CheckpointAdapterTests(unittest.TestCase):
     def test_transport_ambiguity_remains_reserved_on_resume(self):
         def ambiguous(*args): raise TimeoutError("provider state unknown")
         first = self.drain(ambiguous)
-        second = self.drain(lambda *args: self.fail("ambiguous request resent"))
+        resent = []
+        second = self.drain(lambda *args: resent.append(args))
+        self.assertEqual(resent, [])
         self.assertEqual(first, second)
         self.assertEqual(len(second["holds"]), 2)
 
@@ -93,8 +97,10 @@ class CheckpointAdapterTests(unittest.TestCase):
         path = Path(self.entries[0]["certificate_output"])
         certificate = json.loads(path.read_text()); certificate["scope"] = "edited after acceptance"
         path.write_text(json.dumps(certificate))
+        resent = []
         with self.assertRaisesRegex(LivenessHold, "RESULT_ARTIFACT_DRIFT"):
-            self.drain(lambda *args: self.fail("accepted request resent"))
+            self.drain(lambda *args: resent.append(args))
+        self.assertEqual(resent, [])
 
     def test_resume_rejects_cloud_and_certificate_rebinding(self):
         self.drain()
@@ -103,19 +109,25 @@ class CheckpointAdapterTests(unittest.TestCase):
         certificate = json.loads(path.read_text())
         certificate["bindings"]["independent_cloud_receipt"]["sha256"] = file_digest(cloud)
         path.write_text(json.dumps(certificate))
+        resent = []
         with self.assertRaisesRegex(LivenessHold, "RESULT_ARTIFACT_DRIFT"):
-            self.drain(lambda *args: self.fail("accepted request resent"))
+            self.drain(lambda *args: resent.append(args))
+        self.assertEqual(resent, [])
 
     def test_manifest_cannot_omit_named_oldest_start_debt(self):
         self.entries.pop(0); self.write_queue()
+        sent = []
         with self.assertRaisesRegex(LivenessHold, "QUEUE_BASELINE"):
-            self.drain(lambda *args: self.fail("invalid baseline reached transport"))
+            self.drain(lambda *args: sent.append(args))
+        self.assertEqual(sent, [])
 
     def test_premise_preflight_fails_before_reservation_or_transport(self):
         checker = self.pipeline / "verification_coverage_gates/premise_declaration.py"
         checker.write_text('def validate_envelope(*args, **kwargs):\n return {"status":"HOLD"}\n')
+        sent = []
         with self.assertRaisesRegex(LivenessHold, "PREMISE_PREFLIGHT"):
-            self.drain(lambda *args: self.fail("premise hold reached transport"))
+            self.drain(lambda *args: sent.append(args))
+        self.assertEqual(sent, [])
         self.assertFalse((self.pipeline / "parallel_certification/requests").exists())
 
     def test_protected_verifier_and_issuer_are_the_only_execution_route(self):

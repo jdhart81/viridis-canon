@@ -14,7 +14,7 @@ import unittest
 HERE = Path(__file__).resolve().parents[1]
 REPO = Path(os.environ.get("VIRIDIS_LIVENESS_REPO_ROOT", str(HERE.parents[2])))
 sys.path.insert(0, str(HERE))
-from scheduler_liveness import paper_review_pending, writer_hold_code
+from scheduler_liveness import LivenessHold, paper_review_pending, writer_hold_code, redacted_stderr_tail
 
 
 def sha(path):
@@ -56,7 +56,7 @@ class ActualWiringTests(unittest.TestCase):
         namespace = {"CommandResult": namedtuple("CommandResult", fields), "hashlib": hashlib,
             "validate_command": lambda argv: None, "CONTROL_ROOT": self.root,
             "output_tail": lambda value: value[-2000:], "writer_hold_code": writer_hold_code,
-            "ExecutorError": RuntimeError,
+            "ExecutorError": RuntimeError, "redacted_stderr_tail": redacted_stderr_tail,
             "subprocess": SimpleNamespace(run=lambda *args, **kwargs: SimpleNamespace(returncode=2,
                 stdout=json.dumps({"status": "HOLD", "error": "HOLD_REVIEW_STATUS_CONTRADICTION: excluded prose"}), stderr=""))}
         run = self.function("autonomous_transition_executor.py", "run_command", namespace)
@@ -80,7 +80,7 @@ class ActualWiringTests(unittest.TestCase):
             "finalized_lean_hashes": lambda path: set(), "review_passes": lambda path: True,
             "certificate_clean": lambda *args: True, "read_json": lambda path: json.loads(path.read_text()),
             "certified_metadata_contradictions": lambda value: [], "review_hold": lambda path: None,
-            "paper_review_pending": paper_review_pending, "complete_kernel_package": lambda *args: False}
+            "LivenessHold": LivenessHold, "paper_review_pending": paper_review_pending, "complete_kernel_package": lambda *args: False}
         inspect = self.function("autonomous_pipeline_controller.py", "inspect_run", namespace)
         result = inspect(root, self.root, set(), set(), self.root, True, self.root)
         self.assertEqual(result.next_action, "REVIEW_FINALIZED_PACKAGE_BINDINGS")

@@ -1,19 +1,26 @@
 --- a/RESEARCH_PIPELINE_v2/autonomous_transition_executor.py
 +++ b/RESEARCH_PIPELINE_v2/autonomous_transition_executor.py
-@@ -28,0 +29 @@
-+from scheduler_liveness import writer_hold_code
-@@ -53,0 +55 @@
+@@ -14,0 +15,2 @@
++
++from scheduler_liveness import writer_hold_code, redacted_stderr_tail
+@@ -53,0 +56 @@
 +    "REVIEW_FINALIZED_PACKAGE_BINDINGS",
-@@ -172 +174,2 @@
+@@ -172 +175,3 @@
 -            f"stderr={result.stderr_tail!r}"
 +            f"writer_hold={writer_hold_code(completed.stdout)!r}; "
-+            f"stdout_sha256={result.stdout_sha256}; stderr_sha256={result.stderr_sha256}"
++            f"stdout_sha256={result.stdout_sha256}; stderr_sha256={result.stderr_sha256}; "
++            f"stderr_tail={redacted_stderr_tail(result.stderr_tail)!r}"
 --- a/RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py
 +++ b/RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py
-@@ -24,0 +25 @@
-+from scheduler_liveness import paper_review_pending
-@@ -343,0 +345,4 @@
-+    if paper_review_pending(path):
+@@ -11,0 +12,2 @@
++
++from scheduler_liveness import LivenessHold, paper_review_pending
+@@ -343,0 +346,8 @@
++    try:
++        pending_finalized_review = paper_review_pending(path)
++    except (OSError, ValueError, TypeError, AttributeError, UnicodeError, LivenessHold):
++        pending_finalized_review = True
++    if pending_finalized_review:
 +        return WorkItem(run_id, "FINALIZED_PACKAGE_RECONCILIATION_REQUIRED",
 +                        "REVIEW_FINALIZED_PACKAGE_BINDINGS", False,
-+                        "Finalized manuscript contradicts its passing review; preserve sealed bytes and prepare a versioned successor with later independent review.")
++                        "Finalized package review binding is absent, malformed or contradictory; preserve sealed bytes and prepare a versioned successor with later independent review.")

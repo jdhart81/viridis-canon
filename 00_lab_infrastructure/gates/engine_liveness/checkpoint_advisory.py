@@ -8,7 +8,8 @@ from pathlib import Path
 import re
 import stat
 import sys
-import tempfile
+import uuid
+from datetime import datetime, timezone
 import types
 
 PINS = {
@@ -45,20 +46,35 @@ def read_regular(path: Path, root: Path) -> bytes:
 
 def report(path: Path, value: dict, root: Path) -> None:
     path.relative_to(root)
-    if path.is_symlink() or path.parent.is_symlink():
-        raise ValueError("advisory output symlink refused")
     raw = (json.dumps(value, indent=2, sort_keys=True) + "\n").encode()
     if len(raw) > LIMIT:
         raise ValueError("advisory output budget")
-    temporary = None
+    descriptors = [os.open(root, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)]
+    temporary = ".checkpoint-advisory-" + uuid.uuid4().hex
     try:
-        with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as stream:
-            temporary = Path(stream.name)
+        for part in path.parent.relative_to(root).parts:
+            descriptors.append(os.open(part, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW,
+                                       dir_fd=descriptors[-1]))
+        parent = descriptors[-1]
+        try:
+            existing = os.stat(path.name, dir_fd=parent, follow_symlinks=False)
+        except FileNotFoundError:
+            existing = None
+        if existing is not None and not stat.S_ISREG(existing.st_mode):
+            raise ValueError("regular advisory output required")
+        descriptor = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW,
+                             0o600, dir_fd=parent)
+        with os.fdopen(descriptor, "wb") as stream:
             stream.write(raw); stream.flush(); os.fsync(stream.fileno())
-        os.replace(temporary, path)
+        os.replace(temporary, path.name, src_dir_fd=parent, dst_dir_fd=parent)
+        os.fsync(parent)
     finally:
-        if temporary is not None:
-            temporary.unlink(missing_ok=True)
+        try:
+            os.unlink(temporary, dir_fd=descriptors[-1])
+        except FileNotFoundError:
+            pass
+        for descriptor in reversed(descriptors):
+            os.close(descriptor)
 
 
 def load(root: Path) -> dict:
@@ -73,6 +89,142 @@ def load(root: Path) -> dict:
         exec(compile(raw, str(base / name), "exec"), module.__dict__)
         modules[name[:-3]] = module
     return modules
+
+
+def _json(path: Path, root: Path, expected: str | None = None) -> dict:
+    raw = read_regular(path, root)
+    if expected is not None and hashlib.sha256(raw).hexdigest() != expected:
+        raise ValueError("FIFO evidence binding")
+    value = json.loads(raw)
+    if not isinstance(value, dict):
+        raise ValueError("FIFO evidence object required")
+    return value
+
+
+def _time(value: str) -> datetime:
+    parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    if parsed.tzinfo is None:
+        raise ValueError("FIFO timestamp timezone required")
+    return parsed.astimezone(timezone.utc)
+
+
+def _premise_head(path: Path, root: Path, run: str) -> dict:
+    hold = _json(path, root)
+    if (hold.get("schema_version") != "VRS-CERTIFICATION-PREMISE-HOLD-1"
+            or hold.get("run_id") != run or hold.get("status") != "HOLD_PREMISE_DECLARATION"
+            or hold.get("terminal_for_sealed_object") is not True
+            or hold.get("certificate_issued") is not False
+            or hold.get("checker_result", {}).get("status") != "HOLD"):
+        raise ValueError("FIFO premise HOLD identity")
+    folder = root / "RESEARCH_PIPELINE_v2/lean_certificates" / run
+    bindings = hold.get("bindings", {})
+    for key, name in (("request_sha256", "ENGINE3_VERIFICATION_REQUEST.json"),
+                      ("formal_statement_sha256", "VERIFICATION_STATEMENT.lean"),
+                      ("candidate_sha256", "VERIFICATION_CANDIDATE.lean")):
+        if hashlib.sha256(read_regular(folder / name, root)).hexdigest() != bindings.get(key):
+            raise ValueError("FIFO premise source drift")
+    checker = root / "RESEARCH_PIPELINE_v2/verification_coverage_gates/premise_declaration.py"
+    if hashlib.sha256(read_regular(checker, root)).hexdigest() != bindings.get("premise_checker_sha256"):
+        raise ValueError("FIFO premise checker drift")
+    return {"run_id": run, "held_since_utc": hold["recorded_at_utc"],
+            "candidate_sha256": bindings["candidate_sha256"],
+            "failing_goal": "UNAVAILABLE", "provider_receipt": "UNAVAILABLE",
+            "terminal_hold": {"path": str(path), "sha256": hashlib.sha256(read_regular(path, root)).hexdigest()},
+            "terminal_hold_detail": hold.get("detail", hold.get("reason", "UNAVAILABLE")),
+            "evidence_basis": "HASH_BOUND_PREMISE_HOLD"}
+
+
+def fifo_head(root: Path, current: dict, *, as_of: datetime | None = None) -> dict:
+    """Derive the named head from immutable evidence; missing fields stay explicit."""
+    now = as_of or datetime.now(timezone.utc)
+    debt = current.get("science", {}).get("certification", {}).get("backlog_runs",
+           current.get("certification", {}).get("remaining_debt", []))
+    run = debt[0] if debt else "UNAVAILABLE"
+    fields = {key: "UNAVAILABLE" for key in
+              ("run_id", "held_since_utc", "failing_goal", "candidate_sha256", "provider_receipt")}
+    fields.update(status="UNAVAILABLE", held_hours=None, held_seconds=None,
+                  alert_threshold_hours=24, activation="REPORT_ONLY_NO_TRANSPORT_OR_FIFO_CHANGE")
+    if isinstance(run, str) and re.fullmatch(r"Run-[0-9]{3,}", run):
+        fields["run_id"] = run
+    pipeline = root / "RESEARCH_PIPELINE_v2"
+    supplied = pipeline / "PIPELINE_SLO_INPUTS.json"
+    if supplied.exists():
+        try:
+            head = _json(supplied, root).get("fifo_head", {})
+            if isinstance(head, dict) and head.get("run_id", run) == run:
+                for key in fields.keys() & head.keys():
+                    if head[key] is not None:
+                        fields[key] = head[key]
+                fields["evidence_basis"] = "SUPPLIED_SNAPSHOT"
+        except Exception:
+            pass
+    if fields["run_id"] != "UNAVAILABLE":
+        # A bounded, exact per-run folder is inspected; never a whole-tree scan.
+        folder = pipeline / "lean_certificates" / run
+        candidates = sorted(folder.glob("PREMISE_DECLARATION_HOLD*.json"))
+        if len(candidates) > 20:
+            raise ValueError("FIFO HOLD evidence budget")
+        for path in candidates:
+            try:
+                fields.update(_premise_head(path, root, run))
+                break
+            except Exception:
+                pass
+        lane = pipeline / "parallel_certification"
+        requests = sorted((lane / "requests").glob("*.json"))
+        if len(requests) > 200:
+            raise ValueError("FIFO reservation evidence budget")
+        for path in requests:
+            try:
+                reservation = _json(path, root)
+                identity = reservation["identity"]
+                key = hashlib.sha256(json.dumps(identity, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+                if identity.get("run_id") != run or key != path.stem:
+                    continue
+                context = _json(lane / "contexts" / (key + ".json"), root)
+                if context.get("identity") != identity:
+                    continue
+                entry = context["entry"]
+                for name, field in (("request", "request_sha256"), ("formal_statement", "statement_sha256"), ("candidate", "candidate_sha256")):
+                    binding = entry[name]
+                    raw = read_regular(Path(binding["path"]), root)
+                    if hashlib.sha256(raw).hexdigest() != identity[field] or binding["sha256"] != identity[field]:
+                        raise ValueError("FIFO request source drift")
+                fields.update(held_since_utc=reservation["recorded_at_utc"],
+                              candidate_sha256=identity["candidate_sha256"], evidence_basis="HASH_BOUND_LANE_RESERVATION")
+                terminal_path = lane / "terminal" / (key + ".json")
+                if terminal_path.exists():
+                    terminal = _json(terminal_path, root)
+                    receipt = Path(terminal["provider_receipt"])
+                    _json(receipt, root, terminal["provider_receipt_sha256"])
+                    from scheduler_liveness import RequestIdentity, validate_terminal_rejection
+                    cloud = validate_terminal_rejection(RequestIdentity(**identity), receipt, terminal["provider_receipt_sha256"])
+                    if terminal.get("identity") != identity or cloud.get("request", {}).get("sha256") != identity["request_sha256"]:
+                        raise ValueError("FIFO terminal identity")
+                    goal = terminal.get("failing_goal")
+                    if not isinstance(goal, str) or goal not in str(cloud.get("provider_response", {}).get("output", "")):
+                        raise ValueError("FIFO terminal goal")
+                    fields.update(failing_goal=goal, provider_receipt={"path": str(receipt), "sha256": terminal["provider_receipt_sha256"]})
+                break
+            except Exception:
+                continue
+    # Every required field exists even when no production input producer exists.
+    for key in ("run_id", "held_since_utc", "failing_goal", "candidate_sha256", "provider_receipt"):
+        if fields.get(key) is None:
+            fields[key] = "UNAVAILABLE"
+    try:
+        seconds = (now - _time(fields["held_since_utc"])).total_seconds()
+        if seconds < 0:
+            raise ValueError("FIFO timestamp is in the future")
+        fields.update(held_seconds=seconds, held_hours=round(seconds / 3600, 3))
+        if seconds >= 24 * 3600:
+            fields["status"] = "ALERT"
+        else:
+            fields["status"] = "BELOW_ALERT_THRESHOLD"
+    except (ValueError, TypeError, AttributeError):
+        fields.update(status="UNAVAILABLE", held_seconds=None, held_hours=None)
+    fields["failing_goal_status"] = "UNAVAILABLE" if fields["failing_goal"] == "UNAVAILABLE" else "KNOWN"
+    return fields
 
 
 def observe(root: Path, checkpoint: Path) -> dict:
@@ -118,18 +270,14 @@ def observe(root: Path, checkpoint: Path) -> dict:
     if modules is not None:
         slo = modules["checkpoint_slo_hook"].observe(root, checkpoint)
     if slo.get("status") != "REPORTED":
-        report(pipeline / "PIPELINE_SLO_STATUS.json", {
-            "standard": "VRS-PIPELINE-SLO-STATUS-1", "status": "ADVISORY_UNAVAILABLE",
-            "certifies": False, "checkpoint_sha256": hashlib.sha256(raw).hexdigest(),
-            "fifo_liveness": {"status": "UNAVAILABLE", "failing_goal": None},
-            "reason": "Bound advisory inputs or source unavailable; science state unchanged."}, root)
+        value = {"standard": "VRS-PIPELINE-SLO-STATUS-1", "status": "ADVISORY_UNAVAILABLE",
+                 "certifies": False, "checkpoint_sha256": hashlib.sha256(raw).hexdigest(),
+                 "fifo_liveness": {"status": "UNAVAILABLE", "failing_goal": None},
+                 "reason": "Bound advisory inputs or source unavailable; science state unchanged."}
     else:
-        path = pipeline / "PIPELINE_SLO_STATUS.json"
-        value = json.loads(read_regular(path, root))
-        fifo = value.get("fifo_liveness", {})
-        if isinstance(fifo.get("held_hours"), (float, int)) and fifo["held_hours"] >= 24:
-            fifo["status"] = "ALERT"
-            report(path, value, root)
+        value = json.loads(read_regular(pipeline / "PIPELINE_SLO_STATUS.json", root))
+    value["fifo_liveness"] = fifo_head(root, current)
+    report(pipeline / "PIPELINE_SLO_STATUS.json", value, root)
     return {"status": "ADVISORY_ONLY", "lint": lint_status, "slo": slo.get("status"), "certifies": False}
 
 

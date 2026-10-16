@@ -1,8 +1,9 @@
 # Existing scheduler integration, inactive candidate
 
-This integration changes one action on the existing `nightly_checkpoint.py`
+This integration adds two explicit actions on the existing `nightly_checkpoint.py`
 entry point. `G2_EXISTING_CHECKPOINT.patch` adds
-`--drain-certification START.json --certification-queue QUEUE.json`. It neither
+`--drain-certification START.json --certification-queue QUEUE.json` and
+`--reconcile-certification START.json --certification-queue QUEUE.json`. It neither
 creates a checkpoint nor runs generation. Existing `--begin`, `--finish`,
 original START debt, enforcing coverage and source-exit semantics remain intact.
 The scheduler performs the due-generation step first and always reaches its
@@ -64,20 +65,33 @@ After independent exact-head review, Justin's merge and green CI:
 `receipt_output` and `certificate_output` paths in that request's directory,
 and optional `terminal_hold: {path, sha256}`. A terminal HOLD uses the existing
 `VRS-CERTIFICATION-PREMISE-HOLD-1` form and binds that same request, statement
-and candidate. Manifest omission, reordering, path escape, existing fresh
+and candidate, the exact pure premise-checker source digest, and a fresh
+non-certifying, no-local-Lean HOLD from that same pure checker. Manifest omission, reordering, path escape, existing fresh
 outputs, identity drift, authority drift, source drift and premise failure
 all HOLD before transport.
 
 The adapter revalidates the unchanged egress authority and INV-9 preflight,
-durably reserves before up to two calls to the unchanged verifier, and issues
+durably reserves at most two unresolved identities before calls to the unchanged
+verifier. The private verifier/issuer calls run serially because those APIs do
+not promise thread safety. It issues
 only through the unchanged issuer with `require_premise_declaration=True`.
-Acceptance enters the immutable holding area with the exact certificate,
-proof and cloud-receipt digests. Resume never sends a reservation again.
+Acceptance writes the real issuer certificate only under
+`parallel_certification/verified-results/<identity-key>/certificate.json`; its
+immutable result binds the certificate, proof and cloud-receipt digests. Before
+new transport, every accepted artifact is revalidated and compared with that
+record. The adapter calls the ordered-prefix policy and exclusively links
+only its contiguous verified prefix to canonical certificate paths. A younger
+certificate remains invisible to the existing current-certificate ledger and
+`nightly_release_checkpoint.source_for_cycle` until the oldest gap closes.
+All later publication admission gates remain required. Resume reconciles the
+original context and receipt without sending a reservation again; authenticated
+terminal rejection releases a slot, ambiguity retains it, and a reviewed successor
+request for the same Run has a distinct key. Every blocked queue entry has a HOLD.
 Publication is never performed by the adapter. The original finish computes
 its original target credit from actual current certificates.
 
 The same source-bound checkpoint patch invokes `checkpoint_advisory.py` after
-START/FINISH writes and their legitimate resumes, and before lane intake. This
+START/FINISH writes and their legitimate resumes, and after lane reconciliation/drain. This
 isolated child has a 15-second maximum; stdout/stderr and exceptions never alter
 the checkpoint's generation, certification, coverage or authorization result.
 Install the three already reviewed PR106 advisory modules under the existing
@@ -87,12 +101,19 @@ Lean text linter on at most two explicitly named START/FINISH proof debts,
 writes a derived per-checkpoint lint report, and invokes the bounded SLO
 collector. Missing inputs or advisory errors produce explicit unavailable
 status in `PIPELINE_SLO_STATUS.json`; unavailable values never become zero.
-The FIFO report alerts at 24 held hours and retains the exact failing goal or
-an explicit unavailable value. No Lean process, proof dispatch, publication,
+The FIFO report derives the named oldest debt from its hash-bound reservation
+or recorded premise HOLD when no SLO input producer exists. It always includes
+run_id, held_since_utc, failing_goal, candidate_sha256 and provider_receipt, with
+explicit UNAVAILABLE values. It alerts at exactly 86,400 elapsed seconds; rounded
+display hours cannot trigger an early alert. No Lean process, proof dispatch, publication,
 schedule, model or budget is controlled by the advisory hook.
 
-Rollback disables new policy dispatch first, then reconciles every reserved
-provider request through its original identity. Keep all requests, accepted
+Rollback sets the policy active field to false first, then invokes the same
+checkpoint entry point with `--reconcile-certification <original START.json>
+--certification-queue <QUEUE.json>`. This validates the reviewed installed closure
+and reconciles every reserved provider request through its original identity,
+without transport, new reservation or canonical promotion. Preserve that closure
+until reconciliation is complete; only then restore the before-source bytes. Keep all requests, accepted
 results, rejection receipts and certificates. Restore checkpoint/controller/
 executor before bytes from the installation snapshot and restore only the
 generator prompt field through its supported update tool. No schedule, model,

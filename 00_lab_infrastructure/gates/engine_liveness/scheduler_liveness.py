@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from contextlib import contextmanager
 from dataclasses import asdict, dataclass
+from datetime import datetime, timezone
 import fcntl
 import hashlib
 import json
@@ -16,6 +17,7 @@ import os
 from pathlib import Path
 import re
 import tempfile
+import sys
 from typing import Callable
 
 
@@ -36,6 +38,18 @@ def file_digest(path: Path) -> str:
     if path.is_symlink() or not path.is_file():
         raise LivenessHold("HOLD_EVIDENCE_FILE")
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def recorded_time() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def durable_file_sync(descriptor: int) -> None:
+    os.fsync(descriptor)
+    # macOS fsync may leave data in the drive cache. Dispatch waits for the
+    # stronger flush where the platform exposes it; errors fail closed.
+    if sys.platform == "darwin" and hasattr(fcntl, "F_FULLFSYNC"):
+        fcntl.fcntl(descriptor, fcntl.F_FULLFSYNC)
 
 
 def fsync_directory(path: Path) -> None:
@@ -123,6 +137,14 @@ def writer_hold_code(stdout: str) -> str:
     return match.group(1) if match else "UNAVAILABLE"
 
 
+def redacted_stderr_tail(stderr: str) -> str:
+    """Retain bounded diagnostics while removing URLs and credential-shaped text."""
+    text = str(stderr)[-2000:]
+    text = re.sub(r"(?i)bearer\s+[^\s]+|https?://[^\s]+", "[REDACTED]", text)
+    text = re.sub(r"[A-Za-z0-9_+/=.\-]{24,}", "[REDACTED]", text)
+    return text[-1000:]
+
+
 def paper_review_pending(root: Path) -> bool:
     """Inspect final paper wording; never rewrite a reviewed or sealed package."""
     manifest = json.loads((root / "PAPER_PACKAGE_MANIFEST.json").read_text())
@@ -140,6 +162,12 @@ def paper_review_pending(root: Path) -> bool:
                                 for index in range(1, len(Path(source_name).parts) + 1)):
         raise LivenessHold("HOLD_PAPER_SOURCE_SYMLINK")
     text = source.read_text()
+    try:
+        from verification_state_metadata import reviewed_text_contradictions
+    except ImportError:
+        reviewed_text_contradictions = None
+    if reviewed_text_contradictions is not None:
+        return bool(reviewed_text_contradictions(text))
     return bool(re.search(
         r"\bindependent\s+(?:paper|manuscript)\s+review\s+remains?\s+pending\b"
         r"|\bmanuscript\s+remains?\s+subject\s+to\s+later\s+independent\s+review\b", text, re.I))
@@ -178,7 +206,7 @@ def immutable_json(path: Path, value: dict) -> dict:
             temporary = Path(stream.name)
             stream.write(encoded)
             stream.flush()
-            os.fsync(stream.fileno())
+            durable_file_sync(stream.fileno())
         try:
             os.link(temporary, path)
         except FileExistsError:
@@ -191,6 +219,16 @@ def immutable_json(path: Path, value: dict) -> dict:
         if temporary:
             temporary.unlink(missing_ok=True)
     return value
+
+
+def timed_record(path: Path, value: dict) -> dict:
+    if path.is_symlink():
+        raise LivenessHold("HOLD_RECEIPT_SYMLINK")
+    existing = json.loads(path.read_text()) if path.exists() else None
+    stamp = existing.get("recorded_at_utc") if existing else recorded_time()
+    if not isinstance(stamp, str):
+        raise LivenessHold("HOLD_RECORD_TIMESTAMP")
+    return immutable_json(path, {**value, "recorded_at_utc": stamp})
 
 
 class SchedulerLane:
@@ -237,6 +275,15 @@ class SchedulerLane:
             identity = RequestIdentity(**value["identity"])
             if path.stem != identity.key:
                 raise LivenessHold("HOLD_RECEIPT_IDENTITY")
+            if directory == "terminal":
+                receipt = value.get("provider_receipt")
+                if (value.get("standard") != "VRS-IMMUTABLE-REJECTED-REQUEST-1"
+                        or not isinstance(receipt, str) or not Path(receipt).is_absolute()):
+                    raise LivenessHold("HOLD_TERMINAL_RECEIPT_BINDING")
+                cloud = validate_terminal_rejection(identity, Path(receipt), value.get("provider_receipt_sha256"))
+                goal = value.get("failing_goal")
+                if not isinstance(goal, str) or not goal.strip() or goal not in str(cloud["provider_response"].get("output", "")):
+                    raise LivenessHold("HOLD_REJECTION_GOAL_BINDING")
             result.append(value)
         return result
 
@@ -245,21 +292,22 @@ class SchedulerLane:
         if terminal_hold:
             raise LivenessHold("HOLD_TERMINAL_OBJECT_NO_DISPATCH")
         requests = self._rows("requests")
-        for row in requests:
-            if row["identity"]["run_id"] == identity.run_id:
-                if row["identity"] != asdict(identity):
-                    raise LivenessHold("HOLD_RUN_BINDING_DRIFT")
-                # Never return dispatch=True after a crash or transport ambiguity.
-                return {"dispatch": False, "request": row}
-            if row["identity"]["request_sha256"] == identity.request_sha256:
-                raise LivenessHold("HOLD_REQUEST_DIGEST_REUSED")
         completed = {RequestIdentity(**row["identity"]).key
                      for folder in ("results", "terminal") for row in self._rows(folder)}
+        for row in requests:
+            previous = RequestIdentity(**row["identity"])
+            if previous == identity:
+                # Never return dispatch=True after a crash or transport ambiguity.
+                return {"dispatch": False, "request": row}
+            if previous.request_sha256 == identity.request_sha256:
+                raise LivenessHold("HOLD_RUN_BINDING_DRIFT" if previous.run_id == identity.run_id else "HOLD_REQUEST_DIGEST_REUSED")
+            if previous.run_id == identity.run_id and previous.key not in completed:
+                raise LivenessHold("HOLD_PREDECESSOR_RECONCILIATION_REQUIRED")
         active = [row for row in requests if RequestIdentity(**row["identity"]).key not in completed]
         if len(active) >= 2:
             raise LivenessHold("HOLD_TWO_REQUEST_LIMIT")
         row = {"standard": "VRS-HASH-BOUND-RESERVATION-1", "scheduler_id": self.scheduler_id,
-               "identity": asdict(identity)}
+               "identity": asdict(identity), "recorded_at_utc": recorded_time()}
         immutable_json(self.root / "requests" / (identity.key + ".json"), row)
         return {"dispatch": True, "request": row}
 
@@ -286,7 +334,7 @@ class SchedulerLane:
         if validate_certificate(identity, result) is not True:
             raise LivenessHold("HOLD_ISSUER_CERTIFICATE_VALIDATION")
         value = {**result, "standard": "VRS-IMMUTABLE-VERIFIED-RESULT-1"}
-        return immutable_json(self.root / "results" / (identity.key + ".json"), value)
+        return timed_record(self.root / "results" / (identity.key + ".json"), value)
 
     def record_rejection(self, identity: RequestIdentity, provider_receipt: Path,
                          provider_receipt_sha256: str, failing_goal: str) -> dict:
@@ -304,8 +352,9 @@ class SchedulerLane:
         if failing_goal not in str(cloud["provider_response"].get("output", "")):
             raise LivenessHold("HOLD_REJECTION_GOAL_BINDING")
         value = {"standard": "VRS-IMMUTABLE-REJECTED-REQUEST-1", "identity": asdict(identity),
-                 "provider_receipt_sha256": provider_receipt_sha256, "failing_goal": failing_goal}
-        return immutable_json(self.root / "terminal" / (identity.key + ".json"), value)
+                 "provider_receipt_sha256": provider_receipt_sha256,
+                 "provider_receipt": str(provider_receipt.resolve()), "failing_goal": failing_goal}
+        return timed_record(self.root / "terminal" / (identity.key + ".json"), value)
 
     def eligible_dispatches(self, ordered: list[tuple[RequestIdentity, bool]]) -> list[dict]:
         """Caller supplies reviewed terminal holds; ambiguous reservations stay active."""
@@ -319,6 +368,8 @@ class SchedulerLane:
             except LivenessHold as exc:
                 if str(exc) == "HOLD_TWO_REQUEST_LIMIT":
                     break
+                if str(exc) == "HOLD_PREDECESSOR_RECONCILIATION_REQUIRED":
+                    continue
                 raise
             if reservation["dispatch"]:
                 dispatched.append(reservation)

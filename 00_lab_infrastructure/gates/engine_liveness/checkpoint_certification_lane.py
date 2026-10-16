@@ -7,13 +7,12 @@ Lean locally or publishes. No standalone timer or scheduler is provided.
 """
 from __future__ import annotations
 
-from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import json
 from pathlib import Path
 
 from scheduler_liveness import (LivenessHold, RequestIdentity, SchedulerLane,
-                               file_digest, immutable_json, digest_json)
+                               file_digest, immutable_json, digest_json, timed_record, durable_mkdir, fsync_directory)
 
 
 def bound(value: dict, *, inside: Path | None = None) -> Path:
@@ -58,17 +57,35 @@ def terminal_hold(entry: dict, identity: RequestIdentity, pipeline: Path) -> boo
             or bindings.get("request_sha256") != identity.request_sha256
             or bindings.get("formal_statement_sha256") != identity.statement_sha256
             or bindings.get("candidate_sha256") != identity.candidate_sha256
-            or hold.get("checker_result", {}).get("status") != "HOLD"):
+            or hold.get("checker_result", {}).get("status") != "HOLD"
+            or hold.get("checker_result", {}).get("local_lean_execution") is not False
+            or hold.get("checker_result", {}).get("certifies") is not False
+            or bindings.get("premise_checker_sha256") != file_digest(pipeline / "verification_coverage_gates/premise_declaration.py")):
         raise LivenessHold("HOLD_QUEUE_TERMINAL_HOLD_BINDING")
+    paths = {name: bound(entry.get(name), inside=pipeline) for name in ("request", "formal_statement", "candidate")}
+    if _premise_check(pipeline, paths).get("status") != "HOLD":
+        raise LivenessHold("HOLD_QUEUE_TERMINAL_HOLD_RECHECK")
     return True
 
 
-def validate_policy(pipeline: Path) -> dict:
+def _premise_check(pipeline: Path, paths: dict) -> dict:
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("_lane_premise_preflight", pipeline / "verification_coverage_gates/premise_declaration.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.validate_envelope(paths["request"], paths["formal_statement"], paths["candidate"], required=True)
+
+
+def validate_policy(pipeline: Path, *, reconcile_only: bool = False) -> dict:
     policy = json.loads((pipeline / "PARALLEL_CERTIFICATION_POLICY.json").read_text())
     if (policy.get("standard") != "VRS-PARALLEL-CERTIFY-ORDERED-PUBLISH-1"
             or policy.get("active") is not True or policy.get("max_in_flight") != 2
             or policy.get("scheduler_id") != "viridis-nightly-science-generator"):
-        raise LivenessHold("HOLD_PARALLEL_POLICY_NOT_INSTALLED")
+        if not (reconcile_only and policy.get("active") is False
+                and policy.get("standard") == "VRS-PARALLEL-CERTIFY-ORDERED-PUBLISH-1"
+                and policy.get("max_in_flight") == 2
+                and policy.get("scheduler_id") == "viridis-nightly-science-generator"):
+            raise LivenessHold("HOLD_PARALLEL_POLICY_NOT_INSTALLED")
     required = {"nightly_checkpoint.py", "checkpoint_certification_lane.py", "scheduler_liveness.py",
                 "job_observation_policy.py", "comparator_cloud_lean_verifier.py", "issue_lean_zero_sorry_certificate.py",
                 "verification_coverage_gates/premise_declaration.py", "checkpoint_advisory.py",
@@ -104,7 +121,8 @@ def _certificate_result(identity: RequestIdentity, entry: dict, certificate: dic
     return {"identity": identity.__dict__, "nanoda_accepted": True, "default_kernel_accepted": True,
             "zero_holes": True, "premise_gate": True, "nonvacuity_gate": True,
             "certificate_sha256": file_digest(Path(entry["certificate_output"])),
-            "proof_sha256": identity.candidate_sha256, "provider_receipt_sha256": file_digest(cloud_path)}
+            "proof_sha256": identity.candidate_sha256, "provider_receipt_sha256": file_digest(cloud_path),
+            "certificate_path": str(Path(entry["certificate_output"])), "provider_receipt": str(cloud_path)}
 
 
 def _verify_one(identity: RequestIdentity, entry: dict, paths: dict) -> tuple[dict, dict]:
@@ -120,14 +138,109 @@ def _verify_one(identity: RequestIdentity, entry: dict, paths: dict) -> tuple[di
     return cloud, certificate
 
 
-def drain_checkpoint(start_path: Path, queue_path: Path, *, pipeline: Path | None = None) -> dict:
+def _held_entry(lane: SchedulerLane, identity: RequestIdentity, entry: dict) -> dict:
+    return {**entry, "certificate_output": str(lane.root / "verified-results" / identity.key / "certificate.json")}
+
+
+def _result_payload(row: dict) -> dict:
+    return {key: value for key, value in row.items() if key not in {"standard", "recorded_at_utc"}}
+
+
+def _accept(lane: SchedulerLane, identity: RequestIdentity, entry: dict) -> dict:
+    certificate = json.loads(Path(entry["certificate_output"]).read_text())
+    value = _certificate_result(identity, entry, certificate)
+    # Re-read issuer bytes inside the lane callback, rather than approving the
+    # same caller-created dictionary by equality with itself.
+    return lane.accept(identity, value, lambda exact, observed:
+        exact == identity and _certificate_result(exact, entry,
+            json.loads(Path(entry["certificate_output"]).read_text())) == observed)
+
+
+def _reconcile(lane: SchedulerLane, pipeline: Path) -> dict[str, str]:
+    """Reconcile original request outputs; this function never sends a request."""
+    errors = {}
+    terminal = {RequestIdentity(**row["identity"]).key for row in lane._rows("terminal")}
+    accepted = {RequestIdentity(**row["identity"]).key: row for row in lane._rows("results")}
+    for reservation in lane._rows("requests"):
+        identity = RequestIdentity(**reservation["identity"])
+        context_path = lane.root / "contexts" / (identity.key + ".json")
+        if context_path.is_symlink() or not context_path.is_file():
+            errors[identity.key] = "HOLD_REQUEST_CONTEXT_UNAVAILABLE"
+            continue
+        context = json.loads(context_path.read_text())
+        if context.get("identity") != identity.__dict__:
+            raise LivenessHold("HOLD_REQUEST_CONTEXT_BINDING")
+        canonical = context["entry"]
+        observed_identity, paths = identity_for(canonical, pipeline)
+        if observed_identity != identity:
+            raise LivenessHold("HOLD_REQUEST_CONTEXT_BINDING")
+        entry = _held_entry(lane, identity, canonical)
+        if identity.key in accepted:
+            current = _certificate_result(identity, entry,
+                json.loads(Path(entry["certificate_output"]).read_text()))
+            if current != _result_payload(accepted[identity.key]):
+                raise LivenessHold("HOLD_RESULT_ARTIFACT_DRIFT")
+            continue
+        if identity.key in terminal:
+            continue
+        receipt = Path(entry["receipt_output"])
+        if not receipt.exists():
+            errors[identity.key] = "HOLD_REQUEST_RECONCILIATION_REQUIRED"
+            continue
+        try:
+            cloud = json.loads(receipt.read_text())
+            if cloud.get("status") == "VERIFIED":
+                if not Path(entry["certificate_output"]).exists():
+                    from issue_lean_zero_sorry_certificate import issue
+                    issue(request_path=paths["request"], cloud_receipt_path=receipt,
+                          output_path=Path(entry["certificate_output"]), require_premise_declaration=True)
+                _accept(lane, identity, entry)
+            else:
+                goal = cloud.get("provider_response", {}).get("output")
+                if not isinstance(goal, str) or not goal.strip() or len(goal) > 32768:
+                    raise LivenessHold("HOLD_REJECTION_EVIDENCE_REQUIRED")
+                lane.record_rejection(identity, receipt, file_digest(receipt), goal)
+        except (OSError, ValueError, TypeError, AttributeError, KeyError, LivenessHold):
+            errors[identity.key] = "HOLD_PROVIDER_RESULT_RECONCILIATION_REQUIRED"
+    return errors
+
+
+def _promote_prefix(lane: SchedulerLane, prepared: list, result: dict) -> None:
+    """Canonical certificates become visible only in the actual ordered prefix.
+
+    This is certificate visibility, not publication admission: every existing
+    paper, review, package and publication-authority guard still runs later.
+    """
+    accepted = {RequestIdentity(**row["identity"]).key for row in lane._rows("results")}
+    prefix = lane.publication_prefix([identity for identity, _, _, _ in prepared], accepted)
+    result["canonical_certificates"] = []
+    for identity, entry, _, _ in prepared:
+        if identity.run_id not in prefix:
+            continue
+        source = Path(_held_entry(lane, identity, entry)["certificate_output"])
+        target = Path(entry["certificate_output"])
+        if target.exists():
+            if file_digest(target) != file_digest(source):
+                raise LivenessHold("HOLD_CANONICAL_CERTIFICATE_COLLISION")
+        else:
+            import os
+            durable_mkdir(target.parent)
+            # Same-filesystem exclusive link preserves the exact issuer bytes.
+            os.link(source, target)
+            fsync_directory(target.parent)
+        result["canonical_certificates"].append(identity.run_id)
+
+
+def drain_checkpoint(start_path: Path, queue_path: Path, *, pipeline: Path | None = None,
+                     reconcile_only: bool = False) -> dict:
     pipeline = pipeline or Path(__file__).resolve().parent
-    from comparator_data_egress_authorization import validate_authorization
     from nightly_checkpoint import read_start
-    validate_policy(pipeline)
-    if validate_authorization(pipeline / "COMPARATOR_DATA_EGRESS_AUTHORIZATION.json",
-                              pipeline / "LEAN_VERIFIER_BACKENDS.json").get("status") != "AUTHORIZED":
-        raise LivenessHold("HOLD_COMPARATOR_AUTHORIZATION")
+    policy = validate_policy(pipeline, reconcile_only=reconcile_only)
+    if not reconcile_only:
+        from comparator_data_egress_authorization import validate_authorization
+        if validate_authorization(pipeline / "COMPARATOR_DATA_EGRESS_AUTHORIZATION.json",
+                                  pipeline / "LEAN_VERIFIER_BACKENDS.json").get("status") != "AUTHORIZED":
+            raise LivenessHold("HOLD_COMPARATOR_AUTHORIZATION")
     start_path = start_path.resolve()
     if (not start_path.is_relative_to((pipeline / "nightly_checkpoints").resolve())
             or start_path.name != "START.json" or (start_path.parent / "FINISH.json").exists()):
@@ -140,8 +253,7 @@ def drain_checkpoint(start_path: Path, queue_path: Path, *, pipeline: Path | Non
             or not isinstance(entries, list)
             or [row.get("run_id") for row in entries] != start["science"]["certification"]["backlog_runs"]):
         raise LivenessHold("HOLD_QUEUE_BASELINE")
-    prepared = []
-    outputs = set()
+    prepared, outputs = [], set()
     for entry in entries:
         identity, paths = identity_for(entry, pipeline)
         for key in ("receipt_output", "certificate_output"):
@@ -152,54 +264,81 @@ def drain_checkpoint(start_path: Path, queue_path: Path, *, pipeline: Path | Non
             outputs.add(str(path))
         held = terminal_hold(entry, identity, pipeline)
         if not held:
-            import importlib.util
-            spec = importlib.util.spec_from_file_location("_lane_premise_preflight", pipeline / "verification_coverage_gates/premise_declaration.py")
-            module = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(module)
-            premise = module.validate_envelope(paths["request"], paths["formal_statement"], paths["candidate"], required=True)
+            premise = _premise_check(pipeline, paths)
             if premise.get("status") != "PASS" or premise.get("historical_exemption") is not False:
                 raise LivenessHold("HOLD_QUEUE_PREMISE_PREFLIGHT")
+        # Persist canonical absolute paths so macOS /var aliases do not make
+        # hash-bound restart/advisory evidence appear outside the same root.
+        entry = {**entry, **{name: {**entry[name], "path": str(path.resolve())} for name, path in paths.items()},
+                 **{name: str(Path(entry[name]).resolve()) for name in ("receipt_output", "certificate_output")}}
         prepared.append((identity, entry, paths, held))
     result = {"standard": "VRS-SCHEDULER-CERTIFICATION-CHECKPOINT-1", "start_sha256": file_digest(start_path),
-              "queue_sha256": file_digest(queue_path), "accepted": [], "holds": [], "publication_performed": False}
+              "queue_sha256": file_digest(queue_path), "accepted": [], "holds": [],
+              "reconcile_only": reconcile_only, "publication_performed": False}
     lane = SchedulerLane(pipeline / "parallel_certification")
     with lane.checkpoint():
+        # Validate all prior accepted bytes before granting any new transport.
+        errors = _reconcile(lane, pipeline)
         reserved_keys = {RequestIdentity(**row["identity"]).key for row in lane._rows("requests")}
+        reservations = []
         for identity, entry, _, held in prepared:
+            if held:
+                hold_path = bound(entry["terminal_hold"], inside=pipeline)
+                timed_record(lane.root / "holds" / (identity.key + ".json"), {
+                    "standard": "VRS-VALIDATED-TERMINAL-SEALED-HOLD-1", "identity": identity.__dict__,
+                    "source_hold": {"path": str(hold_path), "sha256": file_digest(hold_path)}})
+                continue
             if not held and identity.key not in reserved_keys and any(Path(entry[key]).exists() for key in ("receipt_output", "certificate_output")):
                 raise LivenessHold("HOLD_FRESH_OUTPUT_ALREADY_EXISTS")
-        reservations = lane.eligible_dispatches([(identity, held) for identity, _, _, held in prepared])
+            context = {"identity": identity.__dict__, "entry": {key: entry[key] for key in
+                ("run_id", "request", "formal_statement", "candidate", "receipt_output", "certificate_output")}}
+            immutable_json(lane.root / "contexts" / (identity.key + ".json"), context)
+            if reconcile_only:
+                continue
+            try:
+                reservation = lane.reserve(identity)
+                if reservation["dispatch"]:
+                    reservations.append(reservation)
+            except LivenessHold as exc:
+                errors[identity.key] = str(exc)
         selected = {row["request"]["identity"]["request_sha256"] for row in reservations}
         work = [(identity, entry, paths) for identity, entry, paths, _ in prepared if identity.request_sha256 in selected]
-        # Reservation exists before either thread can enter the protected transport.
-        with ThreadPoolExecutor(max_workers=2) as executor:
-            futures = [(identity, entry, executor.submit(_verify_one, identity, entry, paths)) for identity, entry, paths in work]
-            for identity, entry, future in futures:
-                try:
-                    cloud, certificate = future.result()
-                    if cloud.get("status") != "VERIFIED":
-                        # Failed or ambiguous transport never releases capacity here.
-                        # Authenticated terminal rejection requires explicit reconciliation
-                        # through lane.record_rejection with the genuine failing goal.
-                        raise LivenessHold("HOLD_COMPARATOR_REJECTED_OR_AMBIGUOUS")
-                    value = _certificate_result(identity, entry, certificate)
-                    lane.accept(identity, value, lambda exact, observed: exact == identity and observed == value)
-                except Exception:
-                    # Do not leak provider, SSH, exception or credential prose.
-                    pass
-        # Resume reads original immutable reservations/results. Never redispatch.
+        # The private verifier/issuer API does not promise thread safety. Calls
+        # are serialized; the lane still bounds unresolved provider requests at2.
+        for identity, entry, paths in work:
+            held_entry = _held_entry(lane, identity, entry)
+            durable_mkdir(Path(held_entry["certificate_output"]).parent)
+            try:
+                cloud, certificate = _verify_one(identity, held_entry, paths)
+                if cloud.get("status") == "VERIFIED":
+                    _accept(lane, identity, held_entry)
+                else:
+                    errors[identity.key] = "HOLD_PROVIDER_RESULT_RECONCILIATION_REQUIRED"
+            except Exception:
+                # Never include provider/SSH/exception/credential prose. Counter
+                # assertions in tests live outside this intentionally broad seam.
+                errors[identity.key] = "HOLD_PROVIDER_RESULT_RECONCILIATION_REQUIRED"
+        errors.update(_reconcile(lane, pipeline))
         accepted_rows = {RequestIdentity(**row["identity"]).key: row for row in lane._rows("results")}
-        for identity, entry, paths, held in prepared:
+        rejected = {RequestIdentity(**row["identity"]).key for row in lane._rows("terminal")}
+        for identity, entry, _, held in prepared:
             if identity.key in accepted_rows:
-                # Revalidate the real output bindings before exposing current credit.
-                current_result = _certificate_result(identity, entry, json.loads(Path(entry["certificate_output"]).read_text()))
-                if {**current_result, "standard": "VRS-IMMUTABLE-VERIFIED-RESULT-1"} != accepted_rows[identity.key]:
-                    raise LivenessHold("HOLD_RESULT_ARTIFACT_DRIFT")
                 result["accepted"].append(identity.run_id)
-            elif held or any(row["identity"] == identity.__dict__ for row in lane._rows("requests")):
-                result["holds"].append({"run_id": identity.run_id,
-                    "code": "HOLD_TERMINAL_SEALED_OBJECT" if held else "HOLD_REQUEST_RECONCILIATION_REQUIRED"})
-    # The existing FINISH still computes credit from START's original named debt.
+            else:
+                result["holds"].append({"run_id": identity.run_id, "request_key": identity.key,
+                    "code": "HOLD_TERMINAL_SEALED_OBJECT" if held else
+                            "HOLD_TERMINAL_REJECTED_REQUEST" if identity.key in rejected else
+                            errors.get(identity.key, "HOLD_POLICY_INACTIVE_NO_DISPATCH" if reconcile_only else
+                                       "HOLD_REQUEST_RECONCILIATION_REQUIRED")})
+        if not reconcile_only:
+            _promote_prefix(lane, prepared, result)
+        else:
+            result["canonical_certificates"] = []
     result["status"] = "HOLD" if result["holds"] else "COMPLETED"
     immutable_json(start_path.parent / ("PARALLEL_CERTIFICATION_" + digest_json(result) + ".json"), result)
     return result
+
+
+def reconcile_checkpoint(start_path: Path, queue_path: Path, *, pipeline: Path | None = None) -> dict:
+    """Rollback reconciliation works with active:false and never sends/publishes."""
+    return drain_checkpoint(start_path, queue_path, pipeline=pipeline, reconcile_only=True)

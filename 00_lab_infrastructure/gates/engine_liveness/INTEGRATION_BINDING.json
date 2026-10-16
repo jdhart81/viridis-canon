@@ -3,30 +3,40 @@
   "activation": "INACTIVE_UNMERGED",
   "advisory_modules_installed_under": "RESEARCH_PIPELINE_v2/pipeline_advisory",
   "advisory_playbook_sha256": "87ded0138f522738aeb4dbe68be3861f4c46e11bc61ae65c2be0e0557de2c8eb",
-  "base_commit": "fca29fbd73339347250fa6e8d50a2b315824ad83",
+  "audit_remediation_of": "68eb562b2036964bba6c39bb32e729419eefb769",
+  "base_commit": "a6d6b3d7fd53acedf1c476c425776e26ee83ccab",
+  "current_main_commit": "a6d6b3d7fd53acedf1c476c425776e26ee83ccab",
   "files": [
     {
-      "after_sha256": "7ce0fa64d8875f76e192888b9a2673f47cb5405b00e3658845a2161c8034e4d7",
+      "after_sha256": "7aece616d7c53523d640d8886240d4aef32233d0ad9b7f5c8ff595d47353c5dc",
       "before_sha256": "749ecb7a95e22f9ac0251986012cbb664e8709948c2b7e13b8454d2111e6b865",
       "path": "RESEARCH_PIPELINE_v2/autonomous_transition_executor.py"
     },
     {
-      "after_sha256": "2b98bdef1f132b36431b01c0df3e16629ab04cf6f86ca5a2545ebf9fa2fe0a1c",
+      "after_sha256": "d9ddcd5e6f2bda33af5f5fd9693127fa89adf72cd6a8d27219dbb30d9d9dc690",
       "before_sha256": "58e9c93920ff27c3d6035038bd77c53a1ff4bb075c991f2e2e02221d36b515f8",
       "path": "RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py"
     },
     {
-      "after_sha256": "9c5fe69dc093db4720cbf98a2602bc44e9c64c041643688285e95b6daa7f52f4",
+      "after_sha256": "061ad7e5bedd09e62cd0ed11c0f50e9141e94f26592cc4cc8ef4151b4ffe4f41",
       "before_sha256": "f550c0f808bb15e603b875aed55962b0297731e5a2e4edf4aac99f33eab959df",
       "path": "RESEARCH_PIPELINE_v2/nightly_checkpoint.py"
     }
   ],
+  "formerly_stacked_parent_pr": 106,
   "installed": false,
   "original_first_precheck_head": "9f4778c36af3f1004589a88191b7d02b97d836d8",
-  "parent_pr": 106,
+  "parent_pr": null,
   "scheduler_id": "viridis-nightly-science-generator",
   "scheduler_nonprompt_fields_sha256": "fe6cfdd313e201a644f72370d0cc31d34d2fcd3ccdef5fad57bd1d2635bbe802",
   "scheduler_prompt_before_sha256": "5b46a83d8d27bb70f8241da01b5351e7f21a8057b78903dc23f8366e54a3ea18",
+  "source_files": {
+    "G1_CONTROLLER_EXECUTOR.patch": "322fe5efd0eb05aa5706ca1aefc7979c68cb877b49118fc63b8ede69f8b3a2e4",
+    "G2_EXISTING_CHECKPOINT.patch": "f61993a23227f113ef9da52fdefb903fd0b47a9dc842b340540e20418a8e2648",
+    "checkpoint_advisory.py": "cec46527fb7583ea84c8c76340938cc862a4f39782b4c71e5c4bac5747df689d",
+    "checkpoint_certification_lane.py": "e5db429b48419711c11ab6f59d918dda880dbf93979b727fbf19a5544d1e86cb",
+    "scheduler_liveness.py": "8b4900d0e95bcb7cdb3305d01604d6c5807e704e858f460b9cc14f0f1fc88156"
+  },
   "standard": "VRS-ENGINE-LIVENESS-INTEGRATION-1",
   "unchanged_job_observation_sha256": "63aa5ad5ccd0b3c299b1a262d0a7ebd2ff96ff46294a73c86600ea8db47e73c8"
 }

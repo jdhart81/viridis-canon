@@ -3,23 +3,28 @@ on:
   pull_request:
     paths:
       - '00_lab_infrastructure/gates/engine_liveness/**'
+      - '00_lab_infrastructure/gates/pipeline_advisory/**'
+      - '00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/**'
       - '.github/workflows/engine-liveness.yml'
   push:
     branches: [main]
     paths:
       - '00_lab_infrastructure/gates/engine_liveness/**'
+      - '00_lab_infrastructure/gates/pipeline_advisory/**'
+      - '00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/**'
       - '.github/workflows/engine-liveness.yml'
 permissions:
   contents: read
 jobs:
   liveness:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     strategy:
       matrix:
         python: ['3.12', '3.14']
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
           python-version: ${{ matrix.python }}
       - run: python -m unittest discover -s 00_lab_infrastructure/gates/engine_liveness/tests -v

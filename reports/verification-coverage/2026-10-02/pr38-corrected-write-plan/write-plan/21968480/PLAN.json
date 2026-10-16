@@ -1,0 +1,180 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled generated exploration applying an established capacitated Hall/min-cut construction to declared seed-routing inputs; not peer reviewed, empirically validated, significant, novel, rights-cleared, ledger-approved, or published.",
+    "doi": "10.5281/zenodo.21968480",
+    "keywords": [
+      "afforestation",
+      "seed sourcing",
+      "provenance",
+      "assisted migration",
+      "max flow min cut",
+      "capacitated matching"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "The paired Lean proof is audited verified. Significance remains uncleared; no empirical, procurement, commercial, rights, ledger, canon, or publication evidence is inferred.",
+    "publication_date": "2026-08-16",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21968479"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Seed-Source Bottleneck Certificate: A cut condition for climate-aligned afforestation supply networks",
+    "version": "0.2.0-proof-reconciled"
+  },
+  "api_calls": [],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled generated exploration applying an established capacitated Hall/min-cut construction to declared seed-routing inputs; not peer reviewed, empirically validated, significant, novel, rights-cleared, ledger-approved, or published.",
+    "doi": "10.5281/zenodo.21968480",
+    "keywords": [
+      "afforestation",
+      "seed sourcing",
+      "provenance",
+      "assisted migration",
+      "max flow min cut",
+      "capacitated matching"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "The paired Lean proof is audited verified. Significance remains uncleared; no empirical, procurement, commercial, rights, ledger, canon, or publication evidence is inferred.",
+    "publication_date": "2026-08-16",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21968479"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Seed-Source Bottleneck Certificate: A cut condition for climate-aligned afforestation supply networks",
+    "version": "0.2.0-proof-reconciled"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:35.055765+00:00",
+  "bucket": "CURABLE_BY_NEW_VERSION",
+  "concept_id": "21968479",
+  "deposition_payload_execution": "FORBIDDEN_PENDING_PUBLICATION_BINDING",
+  "doi": "10.5281/zenodo.21968480",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "future_bundle": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968480",
+  "future_latest_parent": "21971057",
+  "latest_observed_record_id": "21971057",
+  "mode": "DRY_RUN_ONLY",
+  "note": "after_payload is an unchanged identity snapshot, not an interim unverified reissue. A VERIFIED payload is intentionally not prepared before valid publication binding.",
+  "old_prepared_bundle_sha256": "7cd0c5c21416d8c69f203fdb99982ee11df192c19c70455a677f4dc2c2c6627b",
+  "operation": "NEW_VERSION",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "f26b4fa3b1188b41db8e85f2266a908fc5a69a1b66a33f78ddfb90e9ee570cab",
+    "after_payload.json": "b47ba18f827e72d0f5074079d869bff85f6feb9d025efe1af6aa891d3f7c5faf",
+    "before_metadata.json": "b9d9e526f2c053acb1567e0e722d31d215f85415de7f2c26426f2d81e4de7064",
+    "deposition_payload.json": "3f0380d4aee867b5ea626ef2473c24adcc3e1e9e539d4f523a6a7c1f54598add",
+    "rollback_expected_public.json": "b47ba18f827e72d0f5074079d869bff85f6feb9d025efe1af6aa891d3f7c5faf",
+    "rollback_payload.json": "3f0380d4aee867b5ea626ef2473c24adcc3e1e9e539d4f523a6a7c1f54598add"
+  },
+  "preconditions": [
+    "One reviewed PUBLICATION_BINDING receipt for the final manuscript per chain",
+    "Current valid exact proof/statement certificate, nontrivial one-claim/one-theorem map and model fidelity",
+    "No interim uncertified new version",
+    "One new version per concept chain, labeled verified only after all evidence passes",
+    "Titles remain exact original; final payload must receive a new exact hash approval"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "21968480",
+  "rollback": "No transaction is proposed now. Before a future approved publish, discard only the identified unpublished draft. After publication, preserve the version and prepare an independently approved correction; no deletion rollback.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_PUBLICATION_BINDING_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

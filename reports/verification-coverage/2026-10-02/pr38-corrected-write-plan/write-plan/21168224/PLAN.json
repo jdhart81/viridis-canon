@@ -1,0 +1,251 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Standalone thematic-series record of the Viridis Canon (Afforestation). The core Intelligence-Bound canon spine is unchanged (frozen at v10.0.0, record 20801185); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>.</strong></p><p>We formalize the analytic core of the Afforestation Stewardship Theorem (AST), &ldquo;the Sower&rdquo;: a model of reforestation in which establishment is limited by <em>nucleation</em>, not seed count. A candidate site is a nucleation gamble &mdash; an ecological drive &Delta;&mu; (suitability) works against an edge hostility or surface tension &sigma; (competition, exposure, herbivory), with a shape constant a. Classical nucleation theory then gives the critical nucleus <code>nStar = (2 a &sigma; / 3 &Delta;&mu;)&sup3;</code>, the barrier <code>4(a&sigma;)&sup3; / 27&Delta;&mu;&sup2;</code>, and the seeding efficiency <code>eff = C(3&Delta;&mu; / 2a&sigma;)&sup3; = C / nStar</code> (established canopy per seed). The stewardship problem &mdash; where a finite seed budget goes and what site preparation pays off &mdash; is a <strong>non-convex</strong> allocation over a field of such sites, plus a cubic optimal-seeding law. AST is the first non-convex member of the shadow-price water-filling family, of which the prior convex results are the homogeneous limit.</p><p>Five results are machine-checked in Lean 4 (Aristotle, zero <code>sorry</code>, axioms &sube; {<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>}), namespace <code>Viridis.Afforestation.AfforestationStewardship</code>: (i) <code>establishment_efficiency_cubic_in_drive_over_tension</code> &mdash; efficiency scales as the <em>cube</em> of the drive; (ii) <code>site_prep_halving_sigma_eightfolds_efficiency</code> &mdash; halving the site-preparation tension &sigma; multiplies efficiency by exactly <code>8 = 2&sup3;</code>, the headline stewardship lever; (iii) <code>homogeneous_limit_recovers_fnt</code> &mdash; the barrier equals <code>&frac12; &Delta;&mu; nStar</code>, recovering the Forest Nucleation Theorem in the homogeneous limit; (iv) <code>sower_IB_ceiling</code> &mdash; the Sower&rsquo;s seeding-information rate obeys the Intelligence-Bound ceiling <code>rate &le; P D / (k_B T ln 2)</code>, finite and binding because the denominator is strictly positive (the twenty-fifth Intelligence-Bound self-application); and (v) <code>seeding_efficiency_eq_cos2_theta</code> &mdash; the seed&ndash;site alignment efficiency <code>&lang;n,m&rang;&sup2; / (&#8741;n&#8741;&sup2; &#8741;m&#8741;&sup2;) = cos&sup2;&Theta;</code> lies in [0,1] by Cauchy&ndash;Schwarz, with forcing debt <code>1 &minus; cos&sup2;&Theta; = sin&sup2;&Theta;</code>. All conclusions are non-vacuous (t&sup3;, factor-8, the &frac12;-identity, a finite ceiling, and a cos&sup2; bound strictly inside [0,1] in general).</p><p>This record pairs with the Forest Nucleation Theorem (record 20982979), its convex sibling &mdash; the two afforestation records that would seed a dedicated Afforestation series at the three-record trigger. The combinatorial-optimization layer (bang-bang knapsack, greedy &frac12;-approximation) and the (&beta;, T_eco) phase diagram are deferred and are not part of this record.</p><p><strong>Scope.</strong> The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "doi": "10.5281/zenodo.21168224",
+    "keywords": [
+      "afforestation",
+      "reforestation",
+      "forest nucleation",
+      "optimal seeding",
+      "site preparation",
+      "water-filling",
+      "shadow price",
+      "Intelligence Bound",
+      "restoration ecology",
+      "thermodynamic ceiling",
+      "Lean 4",
+      "formal verification",
+      "uncertified"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Viridis Canon, standalone thematic-series record (NEW category: Afforestation; \"the Sower\", 25th Intelligence-Bound self-application). Routed standalone from Nightly Run-083 (2026-06-28); ledger row 38. CONVERGENCE EVENT: the Forest Nucleation Theorem thread (FNT, Run-061) merged with the shadow-price water-filling family (Runs 064/065/068/069/074/079) into one variational object, AST being the first NON-CONVEX member; the prior convex family is its homogeneous limit. Pairs with the Forest Nucleation Theorem (record 20982979) as the 2 afforestation siblings seeding a future Afforestation series at the &gt;=3 trigger. Spine unchanged (frozen at v10.0.0, record 20801185); this record links to the spine only via isDerivedFrom the concept DOI 10.5281/zenodo.19317982. Lean 4 proofs (Aristotle project 1d33f3d3-a852-4f1b-9b9c-01b2340cd32b, task 4b8a03d4-203d-4490-9e5e-2d71de39883c, COMPLETE @100%, completed 2026-06-28T12:21:46Z; zero sorry; #print axioms within {propext, Classical.choice, Quot.sound} for every named theorem; toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff) certify the analytic, finite-dimensional core of AST on the classical-nucleation site model (critical nucleus nStar = (2 a sigma / 3 dMu)^3, barrier = 4 (a sigma)^3 / 27 dMu^2, seeding efficiency eff = C (3 dMu / 2 a sigma)^3 = C / nStar), namespace Viridis.Afforestation.AfforestationStewardship. The five verified theorems, statements verbatim: (1) establishment_efficiency_cubic_in_drive_over_tension -- eff(a, sigma, t*dMu, C) = t^3 * eff(a, sigma, dMu, C): establishment efficiency scales as the CUBE of the ecological drive; (2) site_prep_halving_sigma_eightfolds_efficiency -- eff(a, sigma/2, dMu, C) = 8 * eff(a, sigma, dMu, C): halving the site-preparation edge tension sigma yields exactly a factor-8 efficiency gain (the headline stewardship lever); (3) homogeneous_limit_recovers_fnt -- barrier(a, sigma, dMu) = (1/2) * dMu * nStar(a, sigma, dMu): the nucleation barrier is half the drive times the critical mass, recovering the Forest Nucleation Theorem in the homogeneous limit; (4) sower_IB_ceiling -- for kB, T &gt; 0, if rate*(kB*T*ln 2) &lt;= P*D then rate &lt;= P*D / (kB*T*ln 2): the Sower's seeding-information rate obeys the Intelligence-Bound thermodynamic ceiling, finite and binding because the denominator kB*T*ln 2 &gt; 0 (25th IB self-application); (5) seeding_efficiency_eq_cos2_theta -- for nonzero n, m in a real inner-product space, 0 &lt;= ^2 / (||n||^2 ||m||^2) &lt;= 1: the cos^2(Theta) seed-site alignment efficiency lies in [0,1] via Cauchy-Schwarz, with forcing debt 1 - cos^2(Theta) = sin^2(Theta). All conclusions non-vacuous (t^3, factor-8, the 1/2-identity, a finite ceiling, and a cos^2 bound strictly inside [0,1] in general). One benign API adaptation during proving: in seeding_efficiency_eq_cos2_theta the term inner n m did not elaborate under the pinned Mathlib (where inner takes the scalar field as an explicit first argument), so it was written inner R n m -- the same real inner-product object, conclusion unchanged. AST is the Intelligence Bound applied to a single finite seed budget across a field of nucleation-gamble sites, plus a cubic optimal-seeding law; it is the first non-convex member of the water-filling family. Deferred (out of clean core, NOT in this record): the combinatorial-optimization layer (bang-bang knapsack reduction, greedy 1/2-approximation) and the (beta, T_eco) phase diagram. The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.",
+    "publication_date": "2026-07-03",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20801185",
+        "relation": "references",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20982979",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21168223"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Afforestation Stewardship Theorem: Cubic Optimal Seeding and an Intelligence-Bound Ceiling for Nucleation-Limited Reforestation",
+    "version": "AfforestationStewardship-v1"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "Read actual authenticated deposition base and validate exact record identity; not executed",
+      "url": "https://zenodo.org/api/deposit/depositions/21168224"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21168224/actions/edit"
+    },
+    {
+      "execution": "UNAUTHORIZED_PLAN_ONLY; revalidate against authenticated deposition base and approve resolved exact hash",
+      "method": "PUT",
+      "payload_file": "deposition_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/21168224"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21168224/actions/publish"
+    },
+    {
+      "method": "GET",
+      "required_assertions": [
+        "title == before.title",
+        "doi == before.doi",
+        "relations == before.relations",
+        "all other fields except description/keywords semantically exact, including original license/resource_type/custom/alternate_identifiers"
+      ],
+      "url": "https://zenodo.org/api/records/21168224"
+    }
+  ],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Standalone thematic-series record of the Viridis Canon (Afforestation). The core Intelligence-Bound canon spine is unchanged (frozen at v10.0.0, record 20801185); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>.</strong></p><p>We formalize the analytic core of the Afforestation Stewardship Theorem (AST), &ldquo;the Sower&rdquo;: a model of reforestation in which establishment is limited by <em>nucleation</em>, not seed count. A candidate site is a nucleation gamble &mdash; an ecological drive &Delta;&mu; (suitability) works against an edge hostility or surface tension &sigma; (competition, exposure, herbivory), with a shape constant a. Classical nucleation theory then gives the critical nucleus <code>nStar = (2 a &sigma; / 3 &Delta;&mu;)&sup3;</code>, the barrier <code>4(a&sigma;)&sup3; / 27&Delta;&mu;&sup2;</code>, and the seeding efficiency <code>eff = C(3&Delta;&mu; / 2a&sigma;)&sup3; = C / nStar</code> (established canopy per seed). The stewardship problem &mdash; where a finite seed budget goes and what site preparation pays off &mdash; is a <strong>non-convex</strong> allocation over a field of such sites, plus a cubic optimal-seeding law. AST is the first non-convex member of the shadow-price water-filling family, of which the prior convex results are the homogeneous limit.</p><p>Five results are machine-checked in Lean 4 (Aristotle, zero <code>sorry</code>, axioms &sube; {<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>}), namespace <code>Viridis.Afforestation.AfforestationStewardship</code>: (i) <code>establishment_efficiency_cubic_in_drive_over_tension</code> &mdash; efficiency scales as the <em>cube</em> of the drive; (ii) <code>site_prep_halving_sigma_eightfolds_efficiency</code> &mdash; halving the site-preparation tension &sigma; multiplies efficiency by exactly <code>8 = 2&sup3;</code>, the headline stewardship lever; (iii) <code>homogeneous_limit_recovers_fnt</code> &mdash; the barrier equals <code>&frac12; &Delta;&mu; nStar</code>, recovering the Forest Nucleation Theorem in the homogeneous limit; (iv) <code>sower_IB_ceiling</code> &mdash; the Sower&rsquo;s seeding-information rate obeys the Intelligence-Bound ceiling <code>rate &le; P D / (k_B T ln 2)</code>, finite and binding because the denominator is strictly positive (the twenty-fifth Intelligence-Bound self-application); and (v) <code>seeding_efficiency_eq_cos2_theta</code> &mdash; the seed&ndash;site alignment efficiency <code>&lang;n,m&rang;&sup2; / (&#8741;n&#8741;&sup2; &#8741;m&#8741;&sup2;) = cos&sup2;&Theta;</code> lies in [0,1] by Cauchy&ndash;Schwarz, with forcing debt <code>1 &minus; cos&sup2;&Theta; = sin&sup2;&Theta;</code>. All conclusions are non-vacuous (t&sup3;, factor-8, the &frac12;-identity, a finite ceiling, and a cos&sup2; bound strictly inside [0,1] in general).</p><p>This record pairs with the Forest Nucleation Theorem (record 20982979), its convex sibling &mdash; the two afforestation records that would seed a dedicated Afforestation series at the three-record trigger. The combinatorial-optimization layer (bang-bang knapsack, greedy &frac12;-approximation) and the (&beta;, T_eco) phase diagram are deferred and are not part of this record.</p><p><strong>Scope.</strong> The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "doi": "10.5281/zenodo.21168224",
+    "keywords": [
+      "afforestation",
+      "reforestation",
+      "forest nucleation",
+      "optimal seeding",
+      "site preparation",
+      "water-filling",
+      "shadow price",
+      "Intelligence Bound",
+      "restoration ecology",
+      "thermodynamic ceiling",
+      "Lean 4",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Viridis Canon, standalone thematic-series record (NEW category: Afforestation; \"the Sower\", 25th Intelligence-Bound self-application). Routed standalone from Nightly Run-083 (2026-06-28); ledger row 38. CONVERGENCE EVENT: the Forest Nucleation Theorem thread (FNT, Run-061) merged with the shadow-price water-filling family (Runs 064/065/068/069/074/079) into one variational object, AST being the first NON-CONVEX member; the prior convex family is its homogeneous limit. Pairs with the Forest Nucleation Theorem (record 20982979) as the 2 afforestation siblings seeding a future Afforestation series at the &gt;=3 trigger. Spine unchanged (frozen at v10.0.0, record 20801185); this record links to the spine only via isDerivedFrom the concept DOI 10.5281/zenodo.19317982. Lean 4 proofs (Aristotle project 1d33f3d3-a852-4f1b-9b9c-01b2340cd32b, task 4b8a03d4-203d-4490-9e5e-2d71de39883c, COMPLETE @100%, completed 2026-06-28T12:21:46Z; zero sorry; #print axioms within {propext, Classical.choice, Quot.sound} for every named theorem; toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff) certify the analytic, finite-dimensional core of AST on the classical-nucleation site model (critical nucleus nStar = (2 a sigma / 3 dMu)^3, barrier = 4 (a sigma)^3 / 27 dMu^2, seeding efficiency eff = C (3 dMu / 2 a sigma)^3 = C / nStar), namespace Viridis.Afforestation.AfforestationStewardship. The five verified theorems, statements verbatim: (1) establishment_efficiency_cubic_in_drive_over_tension -- eff(a, sigma, t*dMu, C) = t^3 * eff(a, sigma, dMu, C): establishment efficiency scales as the CUBE of the ecological drive; (2) site_prep_halving_sigma_eightfolds_efficiency -- eff(a, sigma/2, dMu, C) = 8 * eff(a, sigma, dMu, C): halving the site-preparation edge tension sigma yields exactly a factor-8 efficiency gain (the headline stewardship lever); (3) homogeneous_limit_recovers_fnt -- barrier(a, sigma, dMu) = (1/2) * dMu * nStar(a, sigma, dMu): the nucleation barrier is half the drive times the critical mass, recovering the Forest Nucleation Theorem in the homogeneous limit; (4) sower_IB_ceiling -- for kB, T &gt; 0, if rate*(kB*T*ln 2) &lt;= P*D then rate &lt;= P*D / (kB*T*ln 2): the Sower's seeding-information rate obeys the Intelligence-Bound thermodynamic ceiling, finite and binding because the denominator kB*T*ln 2 &gt; 0 (25th IB self-application); (5) seeding_efficiency_eq_cos2_theta -- for nonzero n, m in a real inner-product space, 0 &lt;= ^2 / (||n||^2 ||m||^2) &lt;= 1: the cos^2(Theta) seed-site alignment efficiency lies in [0,1] via Cauchy-Schwarz, with forcing debt 1 - cos^2(Theta) = sin^2(Theta). All conclusions non-vacuous (t^3, factor-8, the 1/2-identity, a finite ceiling, and a cos^2 bound strictly inside [0,1] in general). One benign API adaptation during proving: in seeding_efficiency_eq_cos2_theta the term inner n m did not elaborate under the pinned Mathlib (where inner takes the scalar field as an explicit first argument), so it was written inner R n m -- the same real inner-product object, conclusion unchanged. AST is the Intelligence Bound applied to a single finite seed budget across a field of nucleation-gamble sites, plus a cubic optimal-seeding law; it is the first non-convex member of the water-filling family. Deferred (out of clean core, NOT in this record): the combinatorial-optimization layer (bang-bang knapsack reduction, greedy 1/2-approximation) and the (beta, T_eco) phase diagram. The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.",
+    "publication_date": "2026-07-03",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20801185",
+        "relation": "references",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20982979",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21168223"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Afforestation Stewardship Theorem: Cubic Optimal Seeding and an Intelligence-Bound Ceiling for Nucleation-Limited Reforestation",
+    "version": "AfforestationStewardship-v1"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:32.206113+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "concept_id": "21168223",
+  "doi": "10.5281/zenodo.21168224",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "latest_observed_record_id": "21168224",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "cfad9e0cee4dcd44d72386451213a77a2513ed45c9736bd73857c811d7f4ab00",
+    "after_payload.json": "98ca1b546bc66f6950061db902e09a9acd7490ef0d40d323c5a4775080ae0b1b",
+    "before_metadata.json": "321391505426b9a827c9489c5c73a7c4a6fba76d69f97b1cd09d3fbbd338a9dc",
+    "deposition_payload.json": "739bf718b7782c746794f31267e75c4a6cd3ce6c4673d124d5b322554215e94e",
+    "rollback_expected_public.json": "7a99aa0d10bb3874096b2c9258eebfb9a6e55bdc8328f21c6e47a6f046314a31",
+    "rollback_payload.json": "0a31276f3bb2827abf77d82957b337e281009c83e5dd59398695026619dd0cd7"
+  },
+  "preconditions": [
+    "Justin approves these exact immutable titles and exact payload SHA256 values",
+    "Complete sandbox edit -> PUT -> publish and one newversion readback",
+    "Authenticated production GET must map this exact DOI and provide the actual deposition metadata base",
+    "Merge only description/keywords into the authenticated base; server version graph, DOI, license and all other public fields must survive readback",
+    "Reject any unjustified field conversion, error, timeout, conflict or unknown outcome; do not publish or retry blindly",
+    "Server version graph preservation requires sandbox and authenticated deposition readback"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "21168224",
+  "rollback": "Before republish: separately approved POST https://zenodo.org/api/deposit/depositions/21168224/actions/discard. After republish: separately approved edit -> PUT the rollback deposition projection based on authenticated metadata -> publish; verify original public metadata and unchanged files. Exact prior metadata and rollback hashes remain in this row. No production rollback was executed.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

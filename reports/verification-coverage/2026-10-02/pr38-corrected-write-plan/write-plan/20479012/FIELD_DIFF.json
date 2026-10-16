@@ -1,0 +1,259 @@
+[
+  {
+    "after_expected_public": "open",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "open",
+    "deposition_wire": "open",
+    "field": "access_right",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "field": "creators",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p>Popular and policy reasoning about climate rests on a chain of thermodynamic inferences - entropy increases, feedbacks amplify, thresholds tip, balance sets temperature - that are stated qualitatively and asked to be trusted. This paper isolates the deductive skeleton of that chain and verifies it mechanically. Twelve theorems, condensed from the trade book \"Heat and Disorder: How Thermodynamics Shapes Our Climate's Future\", are formalized in Lean 4 against Mathlib and discharged by the Aristotle (Harmonic) automated proving system with zero unproved steps and an axiom audit limited to {propext, Classical.choice, Quot.sound}.</p>\n<p>&nbsp;</p>\n<p>Seven theorems establish the qualitative spine: entropy monotonicity (the second law), the positive/negative feedback dichotomy, a saddle-node tipping threshold, and uniqueness of the radiative-equilibrium temperature. Five constitute a first-principles layer: a strict Clausius production inequality with monotonicity in the temperature gap, the Planck climate sensitivity derived from Stefan-Boltzmann, and the central result - a thermodynamic speed limit on ecological restoration. Treating biospheric recovery as the controlled production of order at rate dI/dt, the Landauer-form Intelligence Bound dI/dt &lt;= P<em>D/(k_B T ln 2) implies that any target gain Delta-I requires at least time Delta-I </em>&nbsp;k_B T ln 2 / (P*D): restoring a degraded biosphere has a finite maximum speed set by available free power, system temperature, and Landauer's constant.</p>\n<p>&nbsp;</p>\n<p>The paper is explicit about scope: the theorems certify the validity of the reasoning, not the empirical magnitudes, which remain measured rather than derived. Verification: Lean v4.28.0; Mathlib pin 8f9d9cff. Aristotle projects b18b368f (foundation, 7 theorems) and a9312b60 (first-principles layer, 5 theorems); zero sorry. The Lean source (Book_HeatAndDisorder.lean) and Aristotle run summaries are included. Builds on the Viridis Intelligence Bound; concept DOI 10.5281/zenodo.19317982. Co-verification: Aristotle (Harmonic).</p>",
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": "<p>Popular and policy reasoning about climate rests on a chain of thermodynamic inferences - entropy increases, feedbacks amplify, thresholds tip, balance sets temperature - that are stated qualitatively and asked to be trusted. This paper isolates the deductive skeleton of that chain and verifies it mechanically. Twelve theorems, condensed from the trade book \"Heat and Disorder: How Thermodynamics Shapes Our Climate's Future\", are formalized in Lean 4 against Mathlib and discharged by the Aristotle (Harmonic) automated proving system with zero unproved steps and an axiom audit limited to {propext, Classical.choice, Quot.sound}.</p>\n<p>&nbsp;</p>\n<p>Seven theorems establish the qualitative spine: entropy monotonicity (the second law), the positive/negative feedback dichotomy, a saddle-node tipping threshold, and uniqueness of the radiative-equilibrium temperature. Five constitute a first-principles layer: a strict Clausius production inequality with monotonicity in the temperature gap, the Planck climate sensitivity derived from Stefan-Boltzmann, and the central result - a thermodynamic speed limit on ecological restoration. Treating biospheric recovery as the controlled production of order at rate dI/dt, the Landauer-form Intelligence Bound dI/dt &lt;= P<em>D/(k_B T ln 2) implies that any target gain Delta-I requires at least time Delta-I </em>&nbsp;k_B T ln 2 / (P*D): restoring a degraded biosphere has a finite maximum speed set by available free power, system temperature, and Landauer's constant.</p>\n<p>&nbsp;</p>\n<p>The paper is explicit about scope: the theorems certify the validity of the reasoning, not the empirical magnitudes, which remain measured rather than derived. Verification: Lean v4.28.0; Mathlib pin 8f9d9cff. Aristotle projects b18b368f (foundation, 7 theorems) and a9312b60 (first-principles layer, 5 theorems); zero sorry. The Lean source (Book_HeatAndDisorder.lean) and Aristotle run summaries are included. Builds on the Viridis Intelligence Bound; concept DOI 10.5281/zenodo.19317982. Co-verification: Aristotle (Harmonic).</p>",
+    "deposition_wire": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p>Popular and policy reasoning about climate rests on a chain of thermodynamic inferences - entropy increases, feedbacks amplify, thresholds tip, balance sets temperature - that are stated qualitatively and asked to be trusted. This paper isolates the deductive skeleton of that chain and verifies it mechanically. Twelve theorems, condensed from the trade book \"Heat and Disorder: How Thermodynamics Shapes Our Climate's Future\", are formalized in Lean 4 against Mathlib and discharged by the Aristotle (Harmonic) automated proving system with zero unproved steps and an axiom audit limited to {propext, Classical.choice, Quot.sound}.</p>\n<p>&nbsp;</p>\n<p>Seven theorems establish the qualitative spine: entropy monotonicity (the second law), the positive/negative feedback dichotomy, a saddle-node tipping threshold, and uniqueness of the radiative-equilibrium temperature. Five constitute a first-principles layer: a strict Clausius production inequality with monotonicity in the temperature gap, the Planck climate sensitivity derived from Stefan-Boltzmann, and the central result - a thermodynamic speed limit on ecological restoration. Treating biospheric recovery as the controlled production of order at rate dI/dt, the Landauer-form Intelligence Bound dI/dt &lt;= P<em>D/(k_B T ln 2) implies that any target gain Delta-I requires at least time Delta-I </em>&nbsp;k_B T ln 2 / (P*D): restoring a degraded biosphere has a finite maximum speed set by available free power, system temperature, and Landauer's constant.</p>\n<p>&nbsp;</p>\n<p>The paper is explicit about scope: the theorems certify the validity of the reasoning, not the empirical magnitudes, which remain measured rather than derived. Verification: Lean v4.28.0; Mathlib pin 8f9d9cff. Aristotle projects b18b368f (foundation, 7 theorems) and a9312b60 (first-principles layer, 5 theorems); zero sorry. The Lean source (Book_HeatAndDisorder.lean) and Aristotle run summaries are included. Builds on the Viridis Intelligence Bound; concept DOI 10.5281/zenodo.19317982. Co-verification: Aristotle (Harmonic).</p>",
+    "field": "description",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "10.5281/zenodo.20479012",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "10.5281/zenodo.20479012",
+    "deposition_wire": "10.5281/zenodo.20479012",
+    "field": "doi",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      "thermodynamics",
+      "intelligence bound",
+      "ecological restoration",
+      "restoration speed limit",
+      "Landauer principle",
+      "formal verification",
+      "Lean 4",
+      "climate sensitivity",
+      "Aristotle Harmonic",
+      "uncertified"
+    ],
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": [
+      "thermodynamics",
+      "intelligence bound",
+      "ecological restoration",
+      "restoration speed limit",
+      "Landauer principle",
+      "formal verification",
+      "Lean 4",
+      "climate sensitivity",
+      "Aristotle Harmonic"
+    ],
+    "deposition_wire": [
+      "thermodynamics",
+      "intelligence bound",
+      "ecological restoration",
+      "restoration speed limit",
+      "Landauer principle",
+      "formal verification",
+      "Lean 4",
+      "climate sensitivity",
+      "Aristotle Harmonic",
+      "uncertified"
+    ],
+    "field": "keywords",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "id": "apache2.0"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    "before": {
+      "id": "apache2.0"
+    },
+    "deposition_wire": "apache2.0",
+    "field": "license",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "2026-05-31",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "2026-05-31",
+    "deposition_wire": "2026-05-31",
+    "field": "publication_date",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": null,
+    "assessment": {
+      "classification": "DOCUMENTED_RESOURCE_TYPE_TRANSPORT_FIELD"
+    },
+    "before": null,
+    "deposition_wire": "article",
+    "field": "publication_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isSupplementTo",
+        "resource_type": "software",
+        "scheme": "doi"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isSupplementTo",
+        "resource_type": "software",
+        "scheme": "doi"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isSupplementTo",
+        "resource_type": "software",
+        "scheme": "doi"
+      }
+    ],
+    "field": "related_identifiers",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20479011"
+          }
+        }
+      ]
+    },
+    "assessment": {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    },
+    "before": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20479011"
+          }
+        }
+      ]
+    },
+    "deposition_wire": null,
+    "field": "relations",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": {
+      "subtype": "article",
+      "title": "Journal article",
+      "type": "publication"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    "before": {
+      "subtype": "article",
+      "title": "Journal article",
+      "type": "publication"
+    },
+    "deposition_wire": null,
+    "field": "resource_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "A Thermodynamic Speed Limit on Planetary Restoration: Machine-Checked Foundations from the Second Law to the Intelligence Bound",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "A Thermodynamic Speed Limit on Planetary Restoration: Machine-Checked Foundations from the Second Law to the Intelligence Bound",
+    "deposition_wire": "A Thermodynamic Speed Limit on Planetary Restoration: Machine-Checked Foundations from the Second Law to the Intelligence Bound",
+    "field": "title",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": null,
+    "assessment": {
+      "classification": "DOCUMENTED_RESOURCE_TYPE_TRANSPORT_FIELD"
+    },
+    "before": null,
+    "deposition_wire": "publication",
+    "field": "upload_type",
+    "logical_change": false,
+    "transport_change": true
+  }
+]

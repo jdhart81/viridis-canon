@@ -1,0 +1,64 @@
+{
+  "access_right": "open",
+  "communities": [
+    {
+      "id": "viridis-canon"
+    }
+  ],
+  "creators": [
+    {
+      "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+      "name": "Hart, Justin D.",
+      "orcid": "0009-0008-3082-2482"
+    },
+    {
+      "affiliation": "Automated theorem prover (Lean 4 verification)",
+      "name": "Aristotle (Harmonic)"
+    }
+  ],
+  "description": "<p><strong>Paper supported by machine-verified Lean 4.</strong> Composite biodiversity indices that combine species, phylogenetic, and genetic diversity into a single score are increasingly used to price conservation payments and biodiversity credits. Existing design practice sets the combination weights from scientific judgments about each component's <em>informativeness</em> alone, holding the weights fixed once a monitoring protocol is chosen. We show this is incomplete whenever the index is used to pay a self-interested steward: components differ sharply in how cheaply their observed value can be inflated without genuine ecological improvement, and a rational steward reallocates effort toward whichever weighted channel offers the highest apparent return per dollar of gaming. We formalize this with a <em>gaming elasticity</em> <em>gamma_i</em> per channel and derive the steward's optimal injected bias in closed form. Minimizing a scale-invariant Goodhart ratio—injected bias per unit of squared informativeness—is a Rayleigh-quotient problem whose unique interior solution is the <em>Manipulation-Proof Weighting Theorem</em>: <em>w_i^ast propto I_i/gamma_i</em>, importance divided by gaming elasticity, rather than importance alone. Applied to Viridis's own D-Score defaults (<em>w=0.5,0.3,0.2</em> for species, phylogenetic, and genetic diversity), and to illustrative but literature-grounded gaming-elasticity ratios, the manipulation-proof reweighting fully <em>inverts</em> the current ranking, cutting modeled gaming leakage by roughly three-quarters and cutting the resulting overstatement of the Intelligence Bound's deployable-capacity ceiling <em>dI/dtle PD/(k_BTln2)</em> by a comparable margin. All results are numerically verified (14/14); the verification gate itself caught and corrected a genuine scale-invariance error in an early draft of the governing ratio. We close with four testable predictions spanning archival registry data, a field trial design, a historical natural experiment, and a formal comparative-statics claim, and cast the result as an Intelligence-Bound self-application, the Warden.</p>",
+  "doi": "10.5281/zenodo.21609945",
+  "keywords": [
+    "composite index",
+    "biodiversity metric",
+    "gaming elasticity",
+    "Goodhart",
+    "manipulation-proof",
+    "index design",
+    "Intelligence Bound",
+    "Lean 4",
+    "formal verification"
+  ],
+  "language": "eng",
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "notes": "Machine-verified: module ManipulationProofWeighting (7 named theorems), landed new leans/2026-07-21_aristotle_MPWT_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 14/14 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+  "publication_date": "2026-07-26",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.19317982",
+      "relation": "isDerivedFrom",
+      "scheme": "doi"
+    }
+  ],
+  "relations": {
+    "version": [
+      {
+        "index": 0,
+        "is_last": true,
+        "parent": {
+          "pid_type": "recid",
+          "pid_value": "21609944"
+        }
+      }
+    ]
+  },
+  "resource_type": {
+    "subtype": "preprint",
+    "title": "Preprint",
+    "type": "publication"
+  },
+  "title": "The Manipulation-Proof Weighting Theorem: Gaming-Elasticity-Adjusted Design of Composite Biodiversity Indices",
+  "version": "1.0.0"
+}

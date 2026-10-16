@@ -1,0 +1,178 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled working-corpus treatment of a response-adjusted incentive alignment certificate. This public working-corpus release includes the reviewed manuscript and paired Lean evidence. It is not peer reviewed or empirically validated; significance and novelty have not been independently established.",
+    "doi": "10.5281/zenodo.22236427",
+    "keywords": [
+      "ecosystem services",
+      "incentive alignment",
+      "response operator",
+      "condition number",
+      "audit certificate"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "The paired Lean proof is audited verified and checks the stated mathematics under declared assumptions. This standalone working-corpus record is licensed CC BY 4.0. It is not an Intelligence Bound Canon spine admission, and no empirical, ecological, causal, adoption, commercial, procurement, or legal outcome is inferred.",
+    "publication_date": "2026-09-01",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "22236426"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Response-Adjusted Alignment Certificate: A condition-number bound for ecosystem-service incentive weights",
+    "version": "0.2.0-proof-reconciled"
+  },
+  "api_calls": [],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled working-corpus treatment of a response-adjusted incentive alignment certificate. This public working-corpus release includes the reviewed manuscript and paired Lean evidence. It is not peer reviewed or empirically validated; significance and novelty have not been independently established.",
+    "doi": "10.5281/zenodo.22236427",
+    "keywords": [
+      "ecosystem services",
+      "incentive alignment",
+      "response operator",
+      "condition number",
+      "audit certificate"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "The paired Lean proof is audited verified and checks the stated mathematics under declared assumptions. This standalone working-corpus record is licensed CC BY 4.0. It is not an Intelligence Bound Canon spine admission, and no empirical, ecological, causal, adoption, commercial, procurement, or legal outcome is inferred.",
+    "publication_date": "2026-09-01",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "22236426"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Response-Adjusted Alignment Certificate: A condition-number bound for ecosystem-service incentive weights",
+    "version": "0.2.0-proof-reconciled"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:36.113964+00:00",
+  "bucket": "CURABLE_BY_NEW_VERSION",
+  "concept_id": "22236426",
+  "deposition_payload_execution": "FORBIDDEN_PENDING_PUBLICATION_BINDING",
+  "doi": "10.5281/zenodo.22236427",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "future_bundle": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/22236427",
+  "future_latest_parent": "22236427",
+  "latest_observed_record_id": "22236427",
+  "mode": "DRY_RUN_ONLY",
+  "note": "after_payload is an unchanged identity snapshot, not an interim unverified reissue. A VERIFIED payload is intentionally not prepared before valid publication binding.",
+  "old_prepared_bundle_sha256": "f505723b201be81c1e873efb6e372700207b1579c4ed0025ac794a2eb7a0ef57",
+  "operation": "NEW_VERSION",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "9b100675832dc757b0bba7c80983efc8e9e1eeac3a03fcc172ba5875121729b2",
+    "after_payload.json": "b7417e95d306285a5fc7d525d7579c0bd93fd9647c17d6bc57c5e29f073ea559",
+    "before_metadata.json": "41b255391e6566e7467c9489f36e8c30b63fee4915f4d6f000ba3135710a555d",
+    "deposition_payload.json": "18dfd211598b08a535d5facebf9a2ce458fefb767d40a7f701c42f2d231521e3",
+    "rollback_expected_public.json": "b7417e95d306285a5fc7d525d7579c0bd93fd9647c17d6bc57c5e29f073ea559",
+    "rollback_payload.json": "18dfd211598b08a535d5facebf9a2ce458fefb767d40a7f701c42f2d231521e3"
+  },
+  "preconditions": [
+    "One reviewed PUBLICATION_BINDING receipt for the final manuscript per chain",
+    "Current valid exact proof/statement certificate, nontrivial one-claim/one-theorem map and model fidelity",
+    "No interim uncertified new version",
+    "One new version per concept chain, labeled verified only after all evidence passes",
+    "Titles remain exact original; final payload must receive a new exact hash approval"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "22236427",
+  "rollback": "No transaction is proposed now. Before a future approved publish, discard only the identified unpublished draft. After publication, preserve the version and prepare an independently approved correction; no deletion rollback.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_PUBLICATION_BINDING_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

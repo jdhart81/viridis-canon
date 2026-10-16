@@ -1,0 +1,339 @@
+[
+  {
+    "after_expected_public": "open",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "open",
+    "deposition_wire": "open",
+    "field": "access_right",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    "before": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "viridis-canon"
+      }
+    ],
+    "field": "communities",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "field": "creators",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Standalone record of the Viridis Canon &mdash; a direct extension of the core Intelligence Bound (the two-body generalization). The core IB canon spine is unchanged (frozen at v9, record 20724138); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>.</strong></p><p>The Intelligence Bound <code>dI/dt &le; P&middot;D/(k_B T ln 2)</code> has, in each of its thirteen prior self-applications, constrained a <em>single</em> intelligence (this is the fourteenth). The central thesis of conservation technology is that artificial intelligence and the living biosphere are not master and resource but <em>partners</em>. This paper supplies the rate law for that partnership. Fusing bipartite information thermodynamics (Horowitz&ndash;Esposito, with the 2024 information-arbitrage refinement), the thermodynamics of prediction (Still&ndash;Sivak&ndash;Bell&ndash;Crooks), and the Good Regulator Theorem (Conant&ndash;Ashby), it proves the <strong>Symbiotic Intelligence Bound (SIB)</strong>: two coupled dissipative learners can each raise the rate at which they accumulate permanence-intelligence above their standalone ceiling by harvesting the <em>predictive</em> information the partner carries about the shared world, <code>dI_A/dt &le; P_A D_A/&epsilon;_L + &Phi;_(E&rarr;A)</code>.</p><p>Three laws govern the subsidy: <strong>(i) No free lunch</strong> &mdash; at the coupled fixed point the information one partner consumes is, bit for bit, what the other regenerates (<code>&Idot;^A = &minus;&Idot;^E</code>), paid in dissipation; <strong>(ii) Complementarity</strong> &mdash; the rate subsidy vanishes at equilibrium and is nonzero only across <em>distinct fluctuation sources</em>, a thermodynamic derivation of ecological niche differentiation (cooperation requires complementarity, not similarity); <strong>(iii) Threshold</strong> &mdash; a sharp Symbiotic Transition partitions couplings into mutualistic (super-additive learning) and parasitic. The extraction efficiency is the universal <code>cos&sup2;&Theta;</code> Fisher&ndash;Rao alignment factor. The paper gives the Good Regulator Theorem its first thermodynamic, bidirectional form &mdash; each partner is the other's good regulator, capped by the Intelligence Bound &mdash; naming the biosphere-as-Regulator the <strong>14th Intelligence-Bound self-application</strong>.</p><p><strong>Scope.</strong> Lean 4 (Aristotle-verified, zero <code>sorry</code>, axioms &sube; {propext, Classical.choice, Quot.sound}) certifies the structural results &mdash; the joint-bound recovery, NESS reciprocity, no-perpetual-learning dissipation positivity, the mutualism/parasitism threshold, and the bounded <code>cos&sup2;&Theta;</code> extraction efficiency &mdash; not empirical magnitudes. 18/18 numeric checks pass. Working paper; not peer-reviewed.</p>",
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": "<p><strong>Standalone record of the Viridis Canon &mdash; a direct extension of the core Intelligence Bound (the two-body generalization). The core IB canon spine is unchanged (frozen at v9, record 20724138); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>.</strong></p><p>The Intelligence Bound <code>dI/dt &le; P&middot;D/(k_B T ln 2)</code> has, in each of its thirteen prior self-applications, constrained a <em>single</em> intelligence (this is the fourteenth). The central thesis of conservation technology is that artificial intelligence and the living biosphere are not master and resource but <em>partners</em>. This paper supplies the rate law for that partnership. Fusing bipartite information thermodynamics (Horowitz&ndash;Esposito, with the 2024 information-arbitrage refinement), the thermodynamics of prediction (Still&ndash;Sivak&ndash;Bell&ndash;Crooks), and the Good Regulator Theorem (Conant&ndash;Ashby), it proves the <strong>Symbiotic Intelligence Bound (SIB)</strong>: two coupled dissipative learners can each raise the rate at which they accumulate permanence-intelligence above their standalone ceiling by harvesting the <em>predictive</em> information the partner carries about the shared world, <code>dI_A/dt &le; P_A D_A/&epsilon;_L + &Phi;_(E&rarr;A)</code>.</p><p>Three laws govern the subsidy: <strong>(i) No free lunch</strong> &mdash; at the coupled fixed point the information one partner consumes is, bit for bit, what the other regenerates (<code>&Idot;^A = &minus;&Idot;^E</code>), paid in dissipation; <strong>(ii) Complementarity</strong> &mdash; the rate subsidy vanishes at equilibrium and is nonzero only across <em>distinct fluctuation sources</em>, a thermodynamic derivation of ecological niche differentiation (cooperation requires complementarity, not similarity); <strong>(iii) Threshold</strong> &mdash; a sharp Symbiotic Transition partitions couplings into mutualistic (super-additive learning) and parasitic. The extraction efficiency is the universal <code>cos&sup2;&Theta;</code> Fisher&ndash;Rao alignment factor. The paper gives the Good Regulator Theorem its first thermodynamic, bidirectional form &mdash; each partner is the other's good regulator, capped by the Intelligence Bound &mdash; naming the biosphere-as-Regulator the <strong>14th Intelligence-Bound self-application</strong>.</p><p><strong>Scope.</strong> Lean 4 (Aristotle-verified, zero <code>sorry</code>, axioms &sube; {propext, Classical.choice, Quot.sound}) certifies the structural results &mdash; the joint-bound recovery, NESS reciprocity, no-perpetual-learning dissipation positivity, the mutualism/parasitism threshold, and the bounded <code>cos&sup2;&Theta;</code> extraction efficiency &mdash; not empirical magnitudes. 18/18 numeric checks pass. Working paper; not peer-reviewed.</p>",
+    "deposition_wire": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Standalone record of the Viridis Canon &mdash; a direct extension of the core Intelligence Bound (the two-body generalization). The core IB canon spine is unchanged (frozen at v9, record 20724138); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>.</strong></p><p>The Intelligence Bound <code>dI/dt &le; P&middot;D/(k_B T ln 2)</code> has, in each of its thirteen prior self-applications, constrained a <em>single</em> intelligence (this is the fourteenth). The central thesis of conservation technology is that artificial intelligence and the living biosphere are not master and resource but <em>partners</em>. This paper supplies the rate law for that partnership. Fusing bipartite information thermodynamics (Horowitz&ndash;Esposito, with the 2024 information-arbitrage refinement), the thermodynamics of prediction (Still&ndash;Sivak&ndash;Bell&ndash;Crooks), and the Good Regulator Theorem (Conant&ndash;Ashby), it proves the <strong>Symbiotic Intelligence Bound (SIB)</strong>: two coupled dissipative learners can each raise the rate at which they accumulate permanence-intelligence above their standalone ceiling by harvesting the <em>predictive</em> information the partner carries about the shared world, <code>dI_A/dt &le; P_A D_A/&epsilon;_L + &Phi;_(E&rarr;A)</code>.</p><p>Three laws govern the subsidy: <strong>(i) No free lunch</strong> &mdash; at the coupled fixed point the information one partner consumes is, bit for bit, what the other regenerates (<code>&Idot;^A = &minus;&Idot;^E</code>), paid in dissipation; <strong>(ii) Complementarity</strong> &mdash; the rate subsidy vanishes at equilibrium and is nonzero only across <em>distinct fluctuation sources</em>, a thermodynamic derivation of ecological niche differentiation (cooperation requires complementarity, not similarity); <strong>(iii) Threshold</strong> &mdash; a sharp Symbiotic Transition partitions couplings into mutualistic (super-additive learning) and parasitic. The extraction efficiency is the universal <code>cos&sup2;&Theta;</code> Fisher&ndash;Rao alignment factor. The paper gives the Good Regulator Theorem its first thermodynamic, bidirectional form &mdash; each partner is the other's good regulator, capped by the Intelligence Bound &mdash; naming the biosphere-as-Regulator the <strong>14th Intelligence-Bound self-application</strong>.</p><p><strong>Scope.</strong> Lean 4 (Aristotle-verified, zero <code>sorry</code>, axioms &sube; {propext, Classical.choice, Quot.sound}) certifies the structural results &mdash; the joint-bound recovery, NESS reciprocity, no-perpetual-learning dissipation positivity, the mutualism/parasitism threshold, and the bounded <code>cos&sup2;&Theta;</code> extraction efficiency &mdash; not empirical magnitudes. 18/18 numeric checks pass. Working paper; not peer-reviewed.</p>",
+    "field": "description",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "10.5281/zenodo.20765022",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "10.5281/zenodo.20765022",
+    "deposition_wire": "10.5281/zenodo.20765022",
+    "field": "doi",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      "Intelligence Bound",
+      "symbiosis",
+      "bipartite stochastic thermodynamics",
+      "information flow",
+      "thermodynamics of prediction",
+      "Good Regulator Theorem",
+      "mutualism",
+      "complementarity",
+      "Fisher-Rao alignment",
+      "conservation AI",
+      "AI-biosphere co-evolution",
+      "Lean 4",
+      "formal verification",
+      "uncertified"
+    ],
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": [
+      "Intelligence Bound",
+      "symbiosis",
+      "bipartite stochastic thermodynamics",
+      "information flow",
+      "thermodynamics of prediction",
+      "Good Regulator Theorem",
+      "mutualism",
+      "complementarity",
+      "Fisher-Rao alignment",
+      "conservation AI",
+      "AI-biosphere co-evolution",
+      "Lean 4",
+      "formal verification"
+    ],
+    "deposition_wire": [
+      "Intelligence Bound",
+      "symbiosis",
+      "bipartite stochastic thermodynamics",
+      "information flow",
+      "thermodynamics of prediction",
+      "Good Regulator Theorem",
+      "mutualism",
+      "complementarity",
+      "Fisher-Rao alignment",
+      "conservation AI",
+      "AI-biosphere co-evolution",
+      "Lean 4",
+      "formal verification",
+      "uncertified"
+    ],
+    "field": "keywords",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "eng",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "eng",
+    "deposition_wire": "eng",
+    "field": "language",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "id": "cc-by-4.0"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    "before": {
+      "id": "cc-by-4.0"
+    },
+    "deposition_wire": "cc-by-4.0",
+    "field": "license",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "Viridis Canon, standalone record (Intelligence-Bound CORE EXTENSION / two-body generalization; 14th IB self-application, 'the Regulator'). Rate/flow twin of the Symbiotic Valuation Theorem (SVT). Lean 4 proofs (Aristotle project a0660ac8-5fef-4e22-b779-254fe09ca47e, run 09f7fe35, zero sorry, axioms within {propext, Classical.choice, Quot.sound} on all 5 named theorems, toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff) certify: (1) joint_bound_from_partners -- each partner's learning rate obeys its solo IB ceiling plus the partner's predictive subsidy, and the directed subsidies cancel at the coupled fixed point to recover the joint Intelligence Bound; (2) ness_reciprocity -- at a nonequilibrium steady state the directed information flows are exactly equal and opposite (bit-for-bit regeneration); (3) no_perpetual_learning -- a strictly positive net subsidy bounded by total entropy production forces strictly positive dissipation; (4) symbiotic_surplus_threshold -- a sharp mutualism-vs-parasitism sign change in the net symbiotic surplus; (5) cos_sq_extraction_bounded -- the universal cos^2(Theta) Fisher-Rao extraction-efficiency bound in [0,1] (7th canon appearance). The Lean proofs certify the validity of the reasoning, not empirical magnitudes; the paper develops a richer model than the verified abstraction. Working paper; not peer-reviewed. Does NOT modify the core canon spine (frozen at v9, record 20724138); flagged as the lead candidate for a future curated spine v10 wave (Justin's per-instance OK required). SIB-v2 (2026-06-19): corrected the self-application count in the paper body to 'thirteen prior / fourteenth' for internal consistency with the canonical chain (12th Steersman, 13th Gardener, 14th Regulator); metadata description likewise corrected. No theorem statement, proof, result, or numeric check changed.",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "Viridis Canon, standalone record (Intelligence-Bound CORE EXTENSION / two-body generalization; 14th IB self-application, 'the Regulator'). Rate/flow twin of the Symbiotic Valuation Theorem (SVT). Lean 4 proofs (Aristotle project a0660ac8-5fef-4e22-b779-254fe09ca47e, run 09f7fe35, zero sorry, axioms within {propext, Classical.choice, Quot.sound} on all 5 named theorems, toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff) certify: (1) joint_bound_from_partners -- each partner's learning rate obeys its solo IB ceiling plus the partner's predictive subsidy, and the directed subsidies cancel at the coupled fixed point to recover the joint Intelligence Bound; (2) ness_reciprocity -- at a nonequilibrium steady state the directed information flows are exactly equal and opposite (bit-for-bit regeneration); (3) no_perpetual_learning -- a strictly positive net subsidy bounded by total entropy production forces strictly positive dissipation; (4) symbiotic_surplus_threshold -- a sharp mutualism-vs-parasitism sign change in the net symbiotic surplus; (5) cos_sq_extraction_bounded -- the universal cos^2(Theta) Fisher-Rao extraction-efficiency bound in [0,1] (7th canon appearance). The Lean proofs certify the validity of the reasoning, not empirical magnitudes; the paper develops a richer model than the verified abstraction. Working paper; not peer-reviewed. Does NOT modify the core canon spine (frozen at v9, record 20724138); flagged as the lead candidate for a future curated spine v10 wave (Justin's per-instance OK required). SIB-v2 (2026-06-19): corrected the self-application count in the paper body to 'thirteen prior / fourteenth' for internal consistency with the canonical chain (12th Steersman, 13th Gardener, 14th Regulator); metadata description likewise corrected. No theorem statement, proof, result, or numeric check changed.",
+    "deposition_wire": "Viridis Canon, standalone record (Intelligence-Bound CORE EXTENSION / two-body generalization; 14th IB self-application, 'the Regulator'). Rate/flow twin of the Symbiotic Valuation Theorem (SVT). Lean 4 proofs (Aristotle project a0660ac8-5fef-4e22-b779-254fe09ca47e, run 09f7fe35, zero sorry, axioms within {propext, Classical.choice, Quot.sound} on all 5 named theorems, toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff) certify: (1) joint_bound_from_partners -- each partner's learning rate obeys its solo IB ceiling plus the partner's predictive subsidy, and the directed subsidies cancel at the coupled fixed point to recover the joint Intelligence Bound; (2) ness_reciprocity -- at a nonequilibrium steady state the directed information flows are exactly equal and opposite (bit-for-bit regeneration); (3) no_perpetual_learning -- a strictly positive net subsidy bounded by total entropy production forces strictly positive dissipation; (4) symbiotic_surplus_threshold -- a sharp mutualism-vs-parasitism sign change in the net symbiotic surplus; (5) cos_sq_extraction_bounded -- the universal cos^2(Theta) Fisher-Rao extraction-efficiency bound in [0,1] (7th canon appearance). The Lean proofs certify the validity of the reasoning, not empirical magnitudes; the paper develops a richer model than the verified abstraction. Working paper; not peer-reviewed. Does NOT modify the core canon spine (frozen at v9, record 20724138); flagged as the lead candidate for a future curated spine v10 wave (Justin's per-instance OK required). SIB-v2 (2026-06-19): corrected the self-application count in the paper body to 'thirteen prior / fourteenth' for internal consistency with the canonical chain (12th Steersman, 13th Gardener, 14th Regulator); metadata description likewise corrected. No theorem statement, proof, result, or numeric check changed.",
+    "field": "notes",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "2026-06-19",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "2026-06-19",
+    "deposition_wire": "2026-06-19",
+    "field": "publication_date",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": null,
+    "assessment": {
+      "classification": "DOCUMENTED_RESOURCE_TYPE_TRANSPORT_FIELD"
+    },
+    "before": null,
+    "deposition_wire": "preprint",
+    "field": "publication_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "field": "related_identifiers",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "version": [
+        {
+          "index": 1,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20764638"
+          }
+        }
+      ]
+    },
+    "assessment": {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    },
+    "before": {
+      "version": [
+        {
+          "index": 1,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20764638"
+          }
+        }
+      ]
+    },
+    "deposition_wire": null,
+    "field": "relations",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    "before": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "deposition_wire": null,
+    "field": "resource_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "The Symbiotic Intelligence Bound: Mutualistic Learning, the Thermodynamic Good Regulator, and Why Cooperation Requires Complementarity",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "The Symbiotic Intelligence Bound: Mutualistic Learning, the Thermodynamic Good Regulator, and Why Cooperation Requires Complementarity",
+    "deposition_wire": "The Symbiotic Intelligence Bound: Mutualistic Learning, the Thermodynamic Good Regulator, and Why Cooperation Requires Complementarity",
+    "field": "title",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": null,
+    "assessment": {
+      "classification": "DOCUMENTED_RESOURCE_TYPE_TRANSPORT_FIELD"
+    },
+    "before": null,
+    "deposition_wire": "publication",
+    "field": "upload_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "SIB-v2",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "SIB-v2",
+    "deposition_wire": "SIB-v2",
+    "field": "version",
+    "logical_change": false,
+    "transport_change": false
+  }
+]

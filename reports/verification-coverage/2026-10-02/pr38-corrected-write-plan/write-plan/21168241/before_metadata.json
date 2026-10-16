@@ -1,0 +1,77 @@
+{
+  "access_right": "open",
+  "communities": [
+    {
+      "id": "viridis-canon"
+    }
+  ],
+  "creators": [
+    {
+      "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+      "name": "Hart, Justin D.",
+      "orcid": "0009-0008-3082-2482"
+    },
+    {
+      "affiliation": "Automated theorem prover (Lean 4 verification)",
+      "name": "Aristotle (Harmonic)"
+    }
+  ],
+  "description": "<p><strong>Standalone thematic-series record of the Viridis Canon (S4 Stewardship/Governance). The core Intelligence-Bound canon spine is unchanged (frozen at v10.0.0, record 20801185); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>.</strong></p><p>We prove that allocating a conserved budget <em>R</em> across two capacity-writing subsystems as <code>(x, R &minus; x)</code>, each with a strictly concave quadratic yield <code>g_i(r) = c_i&middot;r &minus; (k_i/2)&middot;r&sup2;</code>, exhibits a sharp <strong>forcing/harmonizing duality</strong> governed by the Intelligence Bound. The emergent equimarginal (shadow-price, &ldquo;wu wei&rdquo;) allocation is <code>x* = (c&#8321; &minus; c&#8322; + k&#8322;R)/(k&#8321; + k&#8322;)</code>. <strong>Below</strong> the Landauer ceiling (concave yields, <code>k_i &gt; 0</code>) the harmonized split <code>x*</code> is the unique global maximizer of aggregate capacity, and the loss of any other allocation is an <em>exact</em> positive-definite Bregman curvature form <code>ICB(x*) &minus; ICB(x) = ((k&#8321;+k&#8322;)/2)&middot;(x &minus; x*)&sup2;</code>, vanishing iff the marginal profile is flat.</p><p><strong>The paradox.</strong> <em>At</em> the ceiling the yield becomes exactly linear (<code>k&#8321;=k&#8322;=0</code>), its marginal is constant, and the optimum flips to bang-bang <strong>forcing</strong> (<code>cht_forcing_optimal_at_ceiling</code>): with a strictly richer subsystem (<code>c&#8322; &lt; c&#8321;</code>), <code>x = R</code> &mdash; all budget to the richer subsystem &mdash; strictly dominates every interior split. Harmonizing dominates everywhere the Intelligence Bound is slack (<code>cht_equimarginal_is_strict_global_max</code>); forcing dominates only at the unreachable saturation limit. Real hardware runs 10<sup>19</sup>&ndash;10<sup>20</sup>&times; below the ceiling, so harmonizing is the physically operative regime. The symmetric case recovers exact equipartition, <code>xStar c c k k R = R/2</code> (<code>cht_equipartition_symmetric</code>), and the capacity-writing rate itself obeys the Intelligence Bound, <code>rate &le; P&middot;D/(k_B T ln 2)</code> (<code>cht_capacity_IB_ceiling</code>).</p><p>All six results are machine-checked in Lean 4 (Aristotle, zero <code>sorry</code>, axioms &sube; {<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>}), with an explicit interior non-vacuity witness (<code>cht_nonvacuous</code>: instance <code>(c&#8321;,c&#8322;,k&#8321;,k&#8322;,R)=(2,1,2,2,1)</code> gives <code>x* = 3/4 &isin; (0,1)</code> with strict gap <code>ICB(0) &lt; ICB(x*)</code>). The distinctive content relative to the rest of the shadow-price water-filling family is the Intelligence-Bound forcing/harmonizing duality and the exact curvature/Bregman gap.</p><p><strong>Scope.</strong> The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+  "doi": "10.5281/zenodo.21168241",
+  "keywords": [
+    "capacity allocation",
+    "integrated conservation finance",
+    "shadow price",
+    "equimarginal principle",
+    "Bregman divergence",
+    "water-filling",
+    "bang-bang control",
+    "Intelligence Bound",
+    "Landauer limit",
+    "equipartition",
+    "Lean 4",
+    "formal verification"
+  ],
+  "language": "eng",
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "notes": "Viridis Canon, standalone thematic-series record (S4 Stewardship/Governance; ViridisOS allocation line). Route: S4 Stewardship / ViridisOS allocation; ledger row 39. Capacity/ICF-framed member of the shadow-price water-filling family (Runs 064/065/068/069/074/079/082/083); pairs with Run-057 Equipartition as its symmetric special case. Spine unchanged (frozen at v10.0.0, record 20801185); this record links to the spine only via isDerivedFrom the concept DOI 10.5281/zenodo.19317982, and via isPartOf the S4 series concept 10.5281/zenodo.20705182. Lean 4 proofs (Aristotle project cc86266b-19f2-401a-af48-2094ae89262a, COMPLETE @100%, completed 2026-06-29; toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff6bd728b17a24e163c9402775d9e6a365; zero sorry; #print axioms within {propext, Classical.choice, Quot.sound} on all six named results; all six statements preserved verbatim, no definition strengthened or weakened; source nightly Run 064) certify a two-subsystem concave-quadratic integrated-capacity allocation model. Verbatim theorem list: (1) cht_harmonization_gap_eq_curvature -- for 0 &lt; k1+k2, ICB(x*) - ICB(x) = ((k1+k2)/2)*(x - x*)^2: the integrated-capacity loss relative to the equimarginal optimum x* is the EXACT positive-definite Bregman curvature form, vanishing iff the marginal profile is flat (x = x*). (2) cht_equimarginal_is_strict_global_max -- for k1,k2 &gt; 0 and x != x*, ICB(x) &lt; ICB(x*): below the IB ceiling (strict concavity) the emergent shadow-price split x* is the UNIQUE global maximizer; the wu-wei equimarginal equilibrium strictly dominates every other allocation. (3) cht_forcing_optimal_at_ceiling -- for c2 &lt; c1 and x &lt; R, ICB c1 c2 0 0 R x &lt; ICB c1 c2 0 0 R R: THE IB PARADOX. At the Landauer/saturated ceiling (linear yield k1=k2=0) with a strictly richer subsystem, bang-bang FORCING x=R strictly dominates every interior split -- the opposite pole to harmonizing. (4) cht_equipartition_symmetric -- for k &gt; 0, xStar c c k k R = R/2: identical subsystems harmonize to exact equipartition, recovering Run-057 Equipartition as the symmetric special case. (5) cht_capacity_IB_ceiling -- for kB,T &gt; 0 and rate*(kB*T*ln2) &lt;= P*D, rate &lt;= P*D/(kB*T*ln2): capacity-writing obeys the Intelligence Bound; the denominator kB*T*ln2 &gt; 0, so the bound is finite and binding. (6) cht_nonvacuous -- the interior witness (c1,c2,k1,k2,R)=(2,1,2,2,1) gives x* = 3/4 in (0,1) with strict gap ICB(0) &lt; ICB(x*), ruling out any trivial/corner reading. Distinctive content vs. the rest of the water-filling family (GHT-082, MWT-069, AST-083, which proved the convex equimarginal core): (a) the IB forcing/harmonizing duality (Thm 2 harmonizing optimal below the ceiling vs. Thm 3 forcing optimal at the linear ceiling), and (b) the exact curvature/Bregman gap identity (Thm 1). Deferred (not formalized): general-N KKT allocation via (g_i')^-1; the general-concave Bregman expansion; the continuous-time equimarginal/IFD costate dynamics. The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.",
+  "publication_date": "2026-07-03",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.19317982",
+      "relation": "isDerivedFrom",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.20705182",
+      "relation": "isPartOf",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.20801185",
+      "relation": "references",
+      "scheme": "doi"
+    }
+  ],
+  "relations": {
+    "version": [
+      {
+        "index": 0,
+        "is_last": true,
+        "parent": {
+          "pid_type": "recid",
+          "pid_value": "21168240"
+        }
+      }
+    ]
+  },
+  "resource_type": {
+    "subtype": "preprint",
+    "title": "Preprint",
+    "type": "publication"
+  },
+  "title": "The Capacity Harmonization Theorem: A Forcing-Harmonizing Duality and Exact Curvature Gap in Intelligence-Bounded Capacity Allocation",
+  "version": "CapacityHarmonization-v1"
+}

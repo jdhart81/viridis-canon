@@ -1,0 +1,180 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled generated exploration of a heavy-tailed anytime-valid change-time mixture with explicit iid/model-mismatch controls and model-limited erasure accounting; not peer reviewed, empirically validated, significant, novel, rights-cleared, ledger-approved, or published.",
+    "doi": "10.5281/zenodo.21968301",
+    "keywords": [
+      "continuous monitoring",
+      "quickest change detection",
+      "test martingale",
+      "anytime validity",
+      "likelihood ratio",
+      "Landauer principle"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "The paired Lean proof is audited verified. Significance remains uncleared; no empirical, adoption, commercial, rights, ledger, canon, or publication evidence is inferred.",
+    "publication_date": "2026-08-16",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21968300"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Anytime Change Certificate: False-alarm control, a late-change penalty, and a bounded erasure budget for continuous monitoring",
+    "version": "0.2.0-proof-reconciled"
+  },
+  "api_calls": [],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled generated exploration of a heavy-tailed anytime-valid change-time mixture with explicit iid/model-mismatch controls and model-limited erasure accounting; not peer reviewed, empirically validated, significant, novel, rights-cleared, ledger-approved, or published.",
+    "doi": "10.5281/zenodo.21968301",
+    "keywords": [
+      "continuous monitoring",
+      "quickest change detection",
+      "test martingale",
+      "anytime validity",
+      "likelihood ratio",
+      "Landauer principle"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "The paired Lean proof is audited verified. Significance remains uncleared; no empirical, adoption, commercial, rights, ledger, canon, or publication evidence is inferred.",
+    "publication_date": "2026-08-16",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21968300"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Anytime Change Certificate: False-alarm control, a late-change penalty, and a bounded erasure budget for continuous monitoring",
+    "version": "0.2.0-proof-reconciled"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:34.437037+00:00",
+  "bucket": "CURABLE_BY_NEW_VERSION",
+  "concept_id": "21968300",
+  "deposition_payload_execution": "FORBIDDEN_PENDING_PUBLICATION_BINDING",
+  "doi": "10.5281/zenodo.21968301",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "future_bundle": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21968301",
+  "future_latest_parent": "21971041",
+  "latest_observed_record_id": "21971041",
+  "mode": "DRY_RUN_ONLY",
+  "note": "after_payload is an unchanged identity snapshot, not an interim unverified reissue. A VERIFIED payload is intentionally not prepared before valid publication binding.",
+  "old_prepared_bundle_sha256": "e76204bee63a69ac4e9ff860d6077818afe9305ccba026effa202c4e0073ba08",
+  "operation": "NEW_VERSION",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "6bbc1bd53ede7539b2d71037246eaa492893027ada1b423744c6a8424a9e898c",
+    "after_payload.json": "b4b770d76062398decd8182f21ad415a475ec31bab39385607b04b755949ef36",
+    "before_metadata.json": "5539e853bb648e5ee55990d9ddb7247c2605a2f43716434554795f843d051942",
+    "deposition_payload.json": "a9814179a5a9f9c2837b51214fb6f981b6594e78ae1b0fd898f4bbc2076e3142",
+    "rollback_expected_public.json": "b4b770d76062398decd8182f21ad415a475ec31bab39385607b04b755949ef36",
+    "rollback_payload.json": "a9814179a5a9f9c2837b51214fb6f981b6594e78ae1b0fd898f4bbc2076e3142"
+  },
+  "preconditions": [
+    "One reviewed PUBLICATION_BINDING receipt for the final manuscript per chain",
+    "Current valid exact proof/statement certificate, nontrivial one-claim/one-theorem map and model fidelity",
+    "No interim uncertified new version",
+    "One new version per concept chain, labeled verified only after all evidence passes",
+    "Titles remain exact original; final payload must receive a new exact hash approval"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "21968301",
+  "rollback": "No transaction is proposed now. Before a future approved publish, discard only the identified unpublished draft. After publication, preserve the version and prepare an independently approved correction; no deletion rollback.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_PUBLICATION_BINDING_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

@@ -1,0 +1,64 @@
+{
+  "access_right": "open",
+  "communities": [
+    {
+      "id": "viridis-canon"
+    }
+  ],
+  "creators": [
+    {
+      "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+      "name": "Hart, Justin D.",
+      "orcid": "0009-0008-3082-2482"
+    },
+    {
+      "affiliation": "Automated theorem prover (Lean 4 verification)",
+      "name": "Aristotle (Harmonic)"
+    }
+  ],
+  "description": "<p><strong>Paper supported by machine-verified Lean 4.</strong> The Gaia hypothesis has long been challenged by a levels-of-selection objection: natural selection acts on reproducing individuals, not on planets, so environment-regulating biospheres seem to demand an implausible planetary-level selection. The modern reply invokes non-Darwinian mechanisms—<em>selection by survival</em> and <em>sequential selection</em>—in which destabilising configurations are simply short-lived. We show that this systemic, survivorship mechanism and the individual-level <em>partner-fidelity feedback</em> (PFF) of mutualism theory are not rivals but the two limits of a single control parameter: the <em>fidelity coefficient</em> <em>rho_fin[0,1]</em>, the fraction of the environmental benefit a lineage generates that returns privately to that same lineage. We prove a transcritical <em>Fidelity–Survival Bifurcation</em> at <em>rho_f^ast=c/b</em> separating a fast, deterministic <em>Darwinian Gaia</em> (<em>rho_f&gt;rho_f^ast</em>) from a slow, stochastic <em>dice-playing Gaia</em> (<em>rho_f). We derive a <em>Landauer Fidelity Ceiling</em> <em>rho_fle 1-e^-I_mathrmsus</em>, set by the thermodynamic cost of the environmental memory that carries fidelity against a mixing rate <em>kappa_mathrmmix</em>, which forbids Darwinian Gaia in fast-mixing reservoirs while permitting it on slow, structured substrates. A <em>Gaian externality</em> <em>Delta_G=r_mathrmsoc-r_mathrmpriv&gt;0</em> quantifies the regulation individual selection under-provides. A reciprocity reading of the Watson–Lovelock Daisyworld, driven by individual selection alone, reproduces temperature regulation <em>iff</em> fidelity is positive, with regulation bandwidth monotone in fidelity. All results are numerically verified (<em>35/35</em>) and cast as an Intelligence-Bound self-application, the Symbiont. The framework partitions Earth's regulatory feedbacks by mechanism and grounds conservation-finance instruments in the physics of what a biosphere cannot regulate on its own.</em></p>",
+  "doi": "10.5281/zenodo.21609942",
+  "keywords": [
+    "mutualism",
+    "partner fidelity",
+    "Gaia",
+    "survivorship selection",
+    "Price equation",
+    "planetary self-regulation",
+    "Intelligence Bound",
+    "Lean 4",
+    "formal verification"
+  ],
+  "language": "eng",
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "notes": "Machine-verified: module GaianMutualismSelection (15 named theorems), landed new leans/2026-07-20_aristotle_GMST_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 35/35 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+  "publication_date": "2026-07-26",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.19317982",
+      "relation": "isDerivedFrom",
+      "scheme": "doi"
+    }
+  ],
+  "relations": {
+    "version": [
+      {
+        "index": 0,
+        "is_last": true,
+        "parent": {
+          "pid_type": "recid",
+          "pid_value": "21609941"
+        }
+      }
+    ]
+  },
+  "resource_type": {
+    "subtype": "preprint",
+    "title": "Preprint",
+    "type": "publication"
+  },
+  "title": "The Gaian Mutualism Selection Theorem: Partner Fidelity as the Continuum Between Darwinian and Survivorship Selection for Planetary Self-Regulation",
+  "version": "1.0.0"
+}

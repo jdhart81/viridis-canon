@@ -1,0 +1,383 @@
+[
+  {
+    "after_expected_public": "open",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "open",
+    "deposition_wire": "open",
+    "field": "access_right",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      {
+        "identifier": "10.5281/zenodo.20400274"
+      }
+    ],
+    "assessment": {
+      "classification": "HOLD_UNDOCUMENTED_FIELD_RESTORED",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "alternate_identifiers",
+      "reason": "No documented deposition-input mapping. Value retained unchanged; do not execute until authenticated deposition schema/readback confirms preservation."
+    },
+    "before": [
+      {
+        "identifier": "10.5281/zenodo.20400274"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "10.5281/zenodo.20400274"
+      }
+    ],
+    "field": "alternate_identifiers",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    "before": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "viridis-canon"
+      }
+    ],
+    "field": "communities",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "field": "creators",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Verdigraph NeuroGenesis v0.2.0</strong> &mdash; software framework for self-evolving AI-agent cognitive substrates with mechanically verified operational invariants.</p>\n\n<p>Verdigraph is built on a simple observation: <em>AI agents waste energy at industrial scale, and energy is carbon.</em> Most agent frameworks treat the agent as a static assembly of prompts and tools &mdash; the same task runs through the same path every time, failed reasoning loops repeat, frontier models are called for trivial work, caches go unused. Every redundant token is a joule of electricity that produced no useful result.</p>\n\n<p>Verdigraph treats the agent instead as a <em>developing cognitive system</em>: pathways that work are strengthened, pathways that fail are weakened, specialized modules grow for recurring tasks, and structure that no longer earns its compute cost is pruned. The architecture is inspectable; the development is auditable through a per-agent developmental ledger; the optimization target is explicit: maximize information yield per joule, against the upper bound set by the Intelligence Bound (Hart 2025).</p>\n\n<p><strong>What is new in v0.2.0 (vs v0.1.0):</strong> companion to the <em>Verdigraph Operational Formalization</em> manuscript. Operational invariants of the runtime are now mechanically verified &mdash; the safety, audit, and growth/prune rules that govern agent self-modification are stated as Lean 4 theorems and discharged in the Viridis Aristotle pipeline. The framework can no longer silently violate the invariants it claims to enforce; any violation is a type error before it is a runtime bug.</p>\n\n<p><strong>Archive.</strong> <code>verdigraph-neurogenesis-v0.2.0.zip</code> &mdash; framework source, formalized operational invariants, MCP server stub, developmental-ledger schema, and test suite. MIT-licensed.</p>\n\n<p><strong>Lineage.</strong> Part of the Viridis Compiled Theorem Stack (canon concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>); operational bridge to the Conservation Operator architecture introduced in canon v4 (Zenodo <a href=\"https://doi.org/10.5281/zenodo.20100595\">20100595</a>). This release consolidates v0.2.0 into the v0.1.0 concept-DOI chain (concept DOI <a href=\"https://doi.org/10.5281/zenodo.20261686\">10.5281/zenodo.20261686</a>). The earlier standalone v0.2.0 record (Zenodo <a href=\"https://doi.org/10.5281/zenodo.20400274\">20400274</a>, separate concept) is superseded by this canonical version and remains in place as an alternate identifier for the same archive.</p>\n\n<p><strong>Citation.</strong> Hart, J. (2026). <em>Verdigraph NeuroGenesis: A Software Framework for Self-Evolving AI-Agent Cognitive Substrates</em> (v0.2.0). Zenodo. Concept DOI: <a href=\"https://doi.org/10.5281/zenodo.20261686\">https://doi.org/10.5281/zenodo.20261686</a></p>\n\n<p>Viridis LLC, Columbia Falls, Montana, USA. Contact: viridisnorthllc@gmail.com.</p>",
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": "<p><strong>Verdigraph NeuroGenesis v0.2.0</strong> &mdash; software framework for self-evolving AI-agent cognitive substrates with mechanically verified operational invariants.</p>\n\n<p>Verdigraph is built on a simple observation: <em>AI agents waste energy at industrial scale, and energy is carbon.</em> Most agent frameworks treat the agent as a static assembly of prompts and tools &mdash; the same task runs through the same path every time, failed reasoning loops repeat, frontier models are called for trivial work, caches go unused. Every redundant token is a joule of electricity that produced no useful result.</p>\n\n<p>Verdigraph treats the agent instead as a <em>developing cognitive system</em>: pathways that work are strengthened, pathways that fail are weakened, specialized modules grow for recurring tasks, and structure that no longer earns its compute cost is pruned. The architecture is inspectable; the development is auditable through a per-agent developmental ledger; the optimization target is explicit: maximize information yield per joule, against the upper bound set by the Intelligence Bound (Hart 2025).</p>\n\n<p><strong>What is new in v0.2.0 (vs v0.1.0):</strong> companion to the <em>Verdigraph Operational Formalization</em> manuscript. Operational invariants of the runtime are now mechanically verified &mdash; the safety, audit, and growth/prune rules that govern agent self-modification are stated as Lean 4 theorems and discharged in the Viridis Aristotle pipeline. The framework can no longer silently violate the invariants it claims to enforce; any violation is a type error before it is a runtime bug.</p>\n\n<p><strong>Archive.</strong> <code>verdigraph-neurogenesis-v0.2.0.zip</code> &mdash; framework source, formalized operational invariants, MCP server stub, developmental-ledger schema, and test suite. MIT-licensed.</p>\n\n<p><strong>Lineage.</strong> Part of the Viridis Compiled Theorem Stack (canon concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>); operational bridge to the Conservation Operator architecture introduced in canon v4 (Zenodo <a href=\"https://doi.org/10.5281/zenodo.20100595\">20100595</a>). This release consolidates v0.2.0 into the v0.1.0 concept-DOI chain (concept DOI <a href=\"https://doi.org/10.5281/zenodo.20261686\">10.5281/zenodo.20261686</a>). The earlier standalone v0.2.0 record (Zenodo <a href=\"https://doi.org/10.5281/zenodo.20400274\">20400274</a>, separate concept) is superseded by this canonical version and remains in place as an alternate identifier for the same archive.</p>\n\n<p><strong>Citation.</strong> Hart, J. (2026). <em>Verdigraph NeuroGenesis: A Software Framework for Self-Evolving AI-Agent Cognitive Substrates</em> (v0.2.0). Zenodo. Concept DOI: <a href=\"https://doi.org/10.5281/zenodo.20261686\">https://doi.org/10.5281/zenodo.20261686</a></p>\n\n<p>Viridis LLC, Columbia Falls, Montana, USA. Contact: viridisnorthllc@gmail.com.</p>",
+    "deposition_wire": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Verdigraph NeuroGenesis v0.2.0</strong> &mdash; software framework for self-evolving AI-agent cognitive substrates with mechanically verified operational invariants.</p>\n\n<p>Verdigraph is built on a simple observation: <em>AI agents waste energy at industrial scale, and energy is carbon.</em> Most agent frameworks treat the agent as a static assembly of prompts and tools &mdash; the same task runs through the same path every time, failed reasoning loops repeat, frontier models are called for trivial work, caches go unused. Every redundant token is a joule of electricity that produced no useful result.</p>\n\n<p>Verdigraph treats the agent instead as a <em>developing cognitive system</em>: pathways that work are strengthened, pathways that fail are weakened, specialized modules grow for recurring tasks, and structure that no longer earns its compute cost is pruned. The architecture is inspectable; the development is auditable through a per-agent developmental ledger; the optimization target is explicit: maximize information yield per joule, against the upper bound set by the Intelligence Bound (Hart 2025).</p>\n\n<p><strong>What is new in v0.2.0 (vs v0.1.0):</strong> companion to the <em>Verdigraph Operational Formalization</em> manuscript. Operational invariants of the runtime are now mechanically verified &mdash; the safety, audit, and growth/prune rules that govern agent self-modification are stated as Lean 4 theorems and discharged in the Viridis Aristotle pipeline. The framework can no longer silently violate the invariants it claims to enforce; any violation is a type error before it is a runtime bug.</p>\n\n<p><strong>Archive.</strong> <code>verdigraph-neurogenesis-v0.2.0.zip</code> &mdash; framework source, formalized operational invariants, MCP server stub, developmental-ledger schema, and test suite. MIT-licensed.</p>\n\n<p><strong>Lineage.</strong> Part of the Viridis Compiled Theorem Stack (canon concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>); operational bridge to the Conservation Operator architecture introduced in canon v4 (Zenodo <a href=\"https://doi.org/10.5281/zenodo.20100595\">20100595</a>). This release consolidates v0.2.0 into the v0.1.0 concept-DOI chain (concept DOI <a href=\"https://doi.org/10.5281/zenodo.20261686\">10.5281/zenodo.20261686</a>). The earlier standalone v0.2.0 record (Zenodo <a href=\"https://doi.org/10.5281/zenodo.20400274\">20400274</a>, separate concept) is superseded by this canonical version and remains in place as an alternate identifier for the same archive.</p>\n\n<p><strong>Citation.</strong> Hart, J. (2026). <em>Verdigraph NeuroGenesis: A Software Framework for Self-Evolving AI-Agent Cognitive Substrates</em> (v0.2.0). Zenodo. Concept DOI: <a href=\"https://doi.org/10.5281/zenodo.20261686\">https://doi.org/10.5281/zenodo.20261686</a></p>\n\n<p>Viridis LLC, Columbia Falls, Montana, USA. Contact: viridisnorthllc@gmail.com.</p>",
+    "field": "description",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "10.5281/zenodo.20422179",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "10.5281/zenodo.20422179",
+    "deposition_wire": "10.5281/zenodo.20422179",
+    "field": "doi",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      "artificial intelligence",
+      "AI agents",
+      "agent frameworks",
+      "Model Context Protocol",
+      "MCP",
+      "cognitive architecture",
+      "neuromorphic computing",
+      "compute efficiency",
+      "thermodynamic computing",
+      "carbon accounting",
+      "sustainable AI",
+      "conservation technology",
+      "developmental systems",
+      "self-modifying systems",
+      "auditable AI",
+      "formal verification",
+      "Lean theorem prover",
+      "Lean 4",
+      "mathlib",
+      "Aristotle theorem prover",
+      "Harmonic AI",
+      "Intelligence Bound",
+      "Landauer bound",
+      "verified AI",
+      "uncertified"
+    ],
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": [
+      "artificial intelligence",
+      "AI agents",
+      "agent frameworks",
+      "Model Context Protocol",
+      "MCP",
+      "cognitive architecture",
+      "neuromorphic computing",
+      "compute efficiency",
+      "thermodynamic computing",
+      "carbon accounting",
+      "sustainable AI",
+      "conservation technology",
+      "developmental systems",
+      "self-modifying systems",
+      "auditable AI",
+      "formal verification",
+      "Lean theorem prover",
+      "Lean 4",
+      "mathlib",
+      "Aristotle theorem prover",
+      "Harmonic AI",
+      "Intelligence Bound",
+      "Landauer bound",
+      "verified AI"
+    ],
+    "deposition_wire": [
+      "artificial intelligence",
+      "AI agents",
+      "agent frameworks",
+      "Model Context Protocol",
+      "MCP",
+      "cognitive architecture",
+      "neuromorphic computing",
+      "compute efficiency",
+      "thermodynamic computing",
+      "carbon accounting",
+      "sustainable AI",
+      "conservation technology",
+      "developmental systems",
+      "self-modifying systems",
+      "auditable AI",
+      "formal verification",
+      "Lean theorem prover",
+      "Lean 4",
+      "mathlib",
+      "Aristotle theorem prover",
+      "Harmonic AI",
+      "Intelligence Bound",
+      "Landauer bound",
+      "verified AI",
+      "uncertified"
+    ],
+    "field": "keywords",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "eng",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "eng",
+    "deposition_wire": "eng",
+    "field": "language",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "id": "mit-license"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    "before": {
+      "id": "mit-license"
+    },
+    "deposition_wire": "mit-license",
+    "field": "license",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "2026-05-27",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "2026-05-27",
+    "deposition_wire": "2026-05-27",
+    "field": "publication_date",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      {
+        "identifier": "https://verdigraph.com",
+        "relation": "isDescribedBy",
+        "resource_type": "other",
+        "scheme": "url"
+      },
+      {
+        "identifier": "https://github.com/viridis-security/verdigraph-neurogenesis",
+        "relation": "isSupplementTo",
+        "resource_type": "software",
+        "scheme": "url"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "identifier": "https://verdigraph.com",
+        "relation": "isDescribedBy",
+        "resource_type": "other",
+        "scheme": "url"
+      },
+      {
+        "identifier": "https://github.com/viridis-security/verdigraph-neurogenesis",
+        "relation": "isSupplementTo",
+        "resource_type": "software",
+        "scheme": "url"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "https://verdigraph.com",
+        "relation": "isDescribedBy",
+        "resource_type": "other",
+        "scheme": "url"
+      },
+      {
+        "identifier": "https://github.com/viridis-security/verdigraph-neurogenesis",
+        "relation": "isSupplementTo",
+        "resource_type": "software",
+        "scheme": "url"
+      }
+    ],
+    "field": "related_identifiers",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "version": [
+        {
+          "index": 1,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20261686"
+          }
+        }
+      ]
+    },
+    "assessment": {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    },
+    "before": {
+      "version": [
+        {
+          "index": 1,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20261686"
+          }
+        }
+      ]
+    },
+    "deposition_wire": null,
+    "field": "relations",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": {
+      "title": "Software",
+      "type": "software"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    "before": {
+      "title": "Software",
+      "type": "software"
+    },
+    "deposition_wire": null,
+    "field": "resource_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "Verdigraph NeuroGenesis: A Software Framework for Self-Evolving AI-Agent Cognitive Substrates",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "Verdigraph NeuroGenesis: A Software Framework for Self-Evolving AI-Agent Cognitive Substrates",
+    "deposition_wire": "Verdigraph NeuroGenesis: A Software Framework for Self-Evolving AI-Agent Cognitive Substrates",
+    "field": "title",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": null,
+    "assessment": {
+      "classification": "DOCUMENTED_RESOURCE_TYPE_TRANSPORT_FIELD"
+    },
+    "before": null,
+    "deposition_wire": "software",
+    "field": "upload_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "0.2.0",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "0.2.0",
+    "deposition_wire": "0.2.0",
+    "field": "version",
+    "logical_change": false,
+    "transport_change": false
+  }
+]

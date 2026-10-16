@@ -1,0 +1,255 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p>Formal verification companion to <em>Co-Measurement: Human-AI Dialogue as an Adaptive Measurement Instrument in the Data-Limited Regime of the Intelligence Bound</em> (Hart 2026, Zenodo <a href=\"https://doi.org/10.5281/zenodo.20399676\">20399676</a>, submitted to <em>Physical Review E</em>).</p>\n\n<p><strong>Seven of seven theorems formally proven and kernel-clean.</strong> Five landed COMPLETE on the first Aristotle run (2026-05-24); FV-5 and FV-6 landed COMPLETE on a tightened resubmission (2026-05-27). Every accepted proof returns only the three standard Lean 4 kernel axioms (<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>); zero <code>sorry</code>, zero <code>admit</code>, no new <code>axiom</code> declarations.</p>\n\n<ul>\n<li><strong>FV-1</strong> Optimal observation cadence (<code>optimal_observation_cadence</code>) &mdash; <strong>COMPLETE / Proven</strong>.</li>\n<li><strong>FV-2</strong> Entropy reduction = mutual information (<code>mutual_info_eq_entropy_sub_condEntropy</code>, <code>maximizer_iff</code>) &mdash; <strong>COMPLETE / Proven</strong>.</li>\n<li><strong>FV-3</strong> Entropy bounds on a finite alphabet (<code>entropy_nonneg</code>, <code>entropy_le_log</code>, <code>entropy_eq_zero_iff</code>, <code>entropy_eq_log_iff</code>) &mdash; <strong>COMPLETE / Proven</strong>.</li>\n<li><strong>FV-4</strong> Conditioning reduces entropy (<code>mutualInfo_nonneg</code>, <code>condEntropy_le_entropy</code>, <code>mutualInfo_eq_zero_iff</code>, <code>condEntropy_eq_entropy_iff</code>) &mdash; <strong>COMPLETE / Proven</strong>.</li>\n<li><strong>FV-5</strong> Decay of per-step information gain (<code>chain_rule</code>, <code>jointMI_le_entropy</code>, <code>summable_perStepGain</code>, <code>perStepGain_tendsto_zero</code>, <code>perStepGain_nonneg</code>) &mdash; <strong>COMPLETE / Proven</strong> on resubmission. The resubmission formalizes the discrete random-variable setup from scratch and <em>derives</em> entropy non-negativity, conditional-entropy non-negativity, strong subadditivity, and monotonicity from first principles, rather than taking them as hypotheses.</li>\n<li><strong>FV-6</strong> Ordinary least-squares estimator (<code>ols_unique_minimizer</code>) &mdash; <strong>COMPLETE / Proven</strong> on resubmission. The principal theorem states both halves of the result (global minimality and uniqueness) under <code>2 &le; n</code> and the not-all-equal hypothesis on the x-values.</li>\n<li><strong>FV-7</strong> Geometric convergence of a contraction (<code>contraction_unique_fixedPoint</code>, <code>contraction_geometric_convergence</code>) &mdash; <strong>COMPLETE / Proven</strong>.</li>\n</ul>\n\n<p><strong>Files.</strong> Seven Lean source files (<code>fv1-optimal-cadence.lean</code> through <code>fv7-contraction-convergence.lean</code>); a typeset verification report (<code>co-measurement-verification.pdf</code>) with its LaTeX source; the formal-verification targets specification (<code>formal-verification-targets.md</code>); the full results review (<code>REVIEW.md</code>) including resubmission notes; and a one-command verification harness (<code>verify-fv6.sh</code>). Toolchain: <code>leanprover/lean4:v4.28.0</code>, Mathlib pinned to the <code>v4.28.0</code> tag.</p>\n\n<p><strong>Part of.</strong> The Viridis Compiled Theorem Stack &mdash; concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>. Latest canon snapshot: Zenodo <a href=\"https://doi.org/10.5281/zenodo.20100595\">20100595</a> (Day 34, 17 modules, zero <code>sorry</code>).</p>\n\n<p><strong>Citation.</strong> Hart, J. D. (2026). <em>Co-Measurement Formal Verification Companion: Seven Lean 4 Theorems Supporting the Co-Measurement Framework</em> (v1.1.0). Zenodo. Concept DOI: <a href=\"https://doi.org/10.5281/zenodo.20399473\">10.5281/zenodo.20399473</a>.</p>\n\n<p>Viridis LLC, Columbia Falls, Montana, USA. Contact: viridisnorthllc@gmail.com.</p>",
+    "doi": "10.5281/zenodo.20412507",
+    "keywords": [
+      "formal verification",
+      "Lean 4",
+      "Mathlib",
+      "Aristotle Harmonic",
+      "co-measurement",
+      "information theory",
+      "Shannon entropy",
+      "mutual information",
+      "ordinary least squares",
+      "contraction mapping",
+      "Banach fixed point",
+      "reproducibility",
+      "uncertified"
+    ],
+    "license": {
+      "id": "apache2.0"
+    },
+    "publication_date": "2026-05-27",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317983",
+        "relation": "isSupplementTo",
+        "resource_type": "publication-other",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isPartOf",
+        "resource_type": "publication-other",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20100595",
+        "relation": "isDerivedFrom",
+        "resource_type": "software",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20399676",
+        "relation": "isSupplementTo",
+        "resource_type": "publication-preprint",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 1,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20399473"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "title": "Software",
+      "type": "software"
+    },
+    "title": "Co-Measurement Formal Verification Companion: Seven Lean 4 Theorems Supporting the Co-Measurement Framework",
+    "version": "1.1.0"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "Read actual authenticated deposition base and validate exact record identity; not executed",
+      "url": "https://zenodo.org/api/deposit/depositions/20412507"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20412507/actions/edit"
+    },
+    {
+      "execution": "UNAUTHORIZED_PLAN_ONLY; revalidate against authenticated deposition base and approve resolved exact hash",
+      "method": "PUT",
+      "payload_file": "deposition_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/20412507"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20412507/actions/publish"
+    },
+    {
+      "method": "GET",
+      "required_assertions": [
+        "title == before.title",
+        "doi == before.doi",
+        "relations == before.relations",
+        "all other fields except description/keywords semantically exact, including original license/resource_type/custom/alternate_identifiers"
+      ],
+      "url": "https://zenodo.org/api/records/20412507"
+    }
+  ],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p>Formal verification companion to <em>Co-Measurement: Human-AI Dialogue as an Adaptive Measurement Instrument in the Data-Limited Regime of the Intelligence Bound</em> (Hart 2026, Zenodo <a href=\"https://doi.org/10.5281/zenodo.20399676\">20399676</a>, submitted to <em>Physical Review E</em>).</p>\n\n<p><strong>Seven of seven theorems formally proven and kernel-clean.</strong> Five landed COMPLETE on the first Aristotle run (2026-05-24); FV-5 and FV-6 landed COMPLETE on a tightened resubmission (2026-05-27). Every accepted proof returns only the three standard Lean 4 kernel axioms (<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>); zero <code>sorry</code>, zero <code>admit</code>, no new <code>axiom</code> declarations.</p>\n\n<ul>\n<li><strong>FV-1</strong> Optimal observation cadence (<code>optimal_observation_cadence</code>) &mdash; <strong>COMPLETE / Proven</strong>.</li>\n<li><strong>FV-2</strong> Entropy reduction = mutual information (<code>mutual_info_eq_entropy_sub_condEntropy</code>, <code>maximizer_iff</code>) &mdash; <strong>COMPLETE / Proven</strong>.</li>\n<li><strong>FV-3</strong> Entropy bounds on a finite alphabet (<code>entropy_nonneg</code>, <code>entropy_le_log</code>, <code>entropy_eq_zero_iff</code>, <code>entropy_eq_log_iff</code>) &mdash; <strong>COMPLETE / Proven</strong>.</li>\n<li><strong>FV-4</strong> Conditioning reduces entropy (<code>mutualInfo_nonneg</code>, <code>condEntropy_le_entropy</code>, <code>mutualInfo_eq_zero_iff</code>, <code>condEntropy_eq_entropy_iff</code>) &mdash; <strong>COMPLETE / Proven</strong>.</li>\n<li><strong>FV-5</strong> Decay of per-step information gain (<code>chain_rule</code>, <code>jointMI_le_entropy</code>, <code>summable_perStepGain</code>, <code>perStepGain_tendsto_zero</code>, <code>perStepGain_nonneg</code>) &mdash; <strong>COMPLETE / Proven</strong> on resubmission. The resubmission formalizes the discrete random-variable setup from scratch and <em>derives</em> entropy non-negativity, conditional-entropy non-negativity, strong subadditivity, and monotonicity from first principles, rather than taking them as hypotheses.</li>\n<li><strong>FV-6</strong> Ordinary least-squares estimator (<code>ols_unique_minimizer</code>) &mdash; <strong>COMPLETE / Proven</strong> on resubmission. The principal theorem states both halves of the result (global minimality and uniqueness) under <code>2 &le; n</code> and the not-all-equal hypothesis on the x-values.</li>\n<li><strong>FV-7</strong> Geometric convergence of a contraction (<code>contraction_unique_fixedPoint</code>, <code>contraction_geometric_convergence</code>) &mdash; <strong>COMPLETE / Proven</strong>.</li>\n</ul>\n\n<p><strong>Files.</strong> Seven Lean source files (<code>fv1-optimal-cadence.lean</code> through <code>fv7-contraction-convergence.lean</code>); a typeset verification report (<code>co-measurement-verification.pdf</code>) with its LaTeX source; the formal-verification targets specification (<code>formal-verification-targets.md</code>); the full results review (<code>REVIEW.md</code>) including resubmission notes; and a one-command verification harness (<code>verify-fv6.sh</code>). Toolchain: <code>leanprover/lean4:v4.28.0</code>, Mathlib pinned to the <code>v4.28.0</code> tag.</p>\n\n<p><strong>Part of.</strong> The Viridis Compiled Theorem Stack &mdash; concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>. Latest canon snapshot: Zenodo <a href=\"https://doi.org/10.5281/zenodo.20100595\">20100595</a> (Day 34, 17 modules, zero <code>sorry</code>).</p>\n\n<p><strong>Citation.</strong> Hart, J. D. (2026). <em>Co-Measurement Formal Verification Companion: Seven Lean 4 Theorems Supporting the Co-Measurement Framework</em> (v1.1.0). Zenodo. Concept DOI: <a href=\"https://doi.org/10.5281/zenodo.20399473\">10.5281/zenodo.20399473</a>.</p>\n\n<p>Viridis LLC, Columbia Falls, Montana, USA. Contact: viridisnorthllc@gmail.com.</p>",
+    "doi": "10.5281/zenodo.20412507",
+    "keywords": [
+      "formal verification",
+      "Lean 4",
+      "Mathlib",
+      "Aristotle Harmonic",
+      "co-measurement",
+      "information theory",
+      "Shannon entropy",
+      "mutual information",
+      "ordinary least squares",
+      "contraction mapping",
+      "Banach fixed point",
+      "reproducibility"
+    ],
+    "license": {
+      "id": "apache2.0"
+    },
+    "publication_date": "2026-05-27",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317983",
+        "relation": "isSupplementTo",
+        "resource_type": "publication-other",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isPartOf",
+        "resource_type": "publication-other",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20100595",
+        "relation": "isDerivedFrom",
+        "resource_type": "software",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20399676",
+        "relation": "isSupplementTo",
+        "resource_type": "publication-preprint",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 1,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20399473"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "title": "Software",
+      "type": "software"
+    },
+    "title": "Co-Measurement Formal Verification Companion: Seven Lean 4 Theorems Supporting the Co-Measurement Framework",
+    "version": "1.1.0"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:30.288231+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "concept_id": "20399473",
+  "doi": "10.5281/zenodo.20412507",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "latest_observed_record_id": "20412507",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "dbdb3bba570ea3fa65873ec9d6a8aabe2f28e5b00d06bde85bd5db4df518ca32",
+    "after_payload.json": "fe142fd5bdc90c69410cb749909685d22903572c3241fa8394f3a53dfd6688b7",
+    "before_metadata.json": "31b8137577778aeaacc9bcf5e134d0487486c8eedf9b721d19004316bfc7e53f",
+    "deposition_payload.json": "ad4435e174bf389b83341417f101d4899206e458abb4b68c616a8725153b5fcf",
+    "rollback_expected_public.json": "97268b4d70dd3ee87ec3df8e14a787224797decf777db74d8185339fdd1d5f4e",
+    "rollback_payload.json": "2893e6e9b93161972f6017df58a784712d205812dc085988d8e221e0f9f03045"
+  },
+  "preconditions": [
+    "Justin approves these exact immutable titles and exact payload SHA256 values",
+    "Complete sandbox edit -> PUT -> publish and one newversion readback",
+    "Authenticated production GET must map this exact DOI and provide the actual deposition metadata base",
+    "Merge only description/keywords into the authenticated base; server version graph, DOI, license and all other public fields must survive readback",
+    "Reject any unjustified field conversion, error, timeout, conflict or unknown outcome; do not publish or retry blindly",
+    "Server version graph preservation requires sandbox and authenticated deposition readback"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "20412507",
+  "rollback": "Before republish: separately approved POST https://zenodo.org/api/deposit/depositions/20412507/actions/discard. After republish: separately approved edit -> PUT the rollback deposition projection based on authenticated metadata -> publish; verify original public metadata and unchanged files. Exact prior metadata and rollback hashes remain in this row. No production rollback was executed.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

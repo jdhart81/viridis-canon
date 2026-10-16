@@ -1,0 +1,366 @@
+[
+  {
+    "after_expected_public": "open",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "open",
+    "deposition_wire": "open",
+    "field": "access_right",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    "before": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "viridis-canon"
+      }
+    ],
+    "field": "communities",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "field": "creators",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Series S2 (Monitoring &amp; Certification) of the Viridis Canon. The core Intelligence-Bound canon spine is unchanged (frozen at v10.1.0 &ldquo;The Keystone Wave&rdquo;, record 21223021); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>, and references the S2 series anchor, the Monitoring Water-Filling Theorem (record 20704853).</strong></p><p>A re-verification certificate is a decaying asset: a site last observed at time zero drifts under Ornstein&ndash;Uhlenbeck dynamics, and the steward's confidence in its current state decays accordingly. The <strong>Stewardship Revisit Theorem (SRT)</strong>, &ldquo;the Tender,&rdquo; asks: at what cadence should a site be re-observed? We prove the answer is a square-root law &mdash; the classic economic-order-quantity form &tau;* = &radic;(2c/(&kappa;s&sup2;)) &mdash; that tightens where drift is fast and relaxes where it is slow, replacing fiat re-verification intervals with an auditable thermodynamic law, and that this cadence is Whittle-indexable, so a portfolio of drifting sites can be prioritized by a single broadcast clock price.</p><p>Eight results are machine-checked in Lean 4 (Aristotle, zero <code>sorry</code>, axioms &sube; {<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>}), namespace <code>Viridis.Monitoring.StewardshipRevisit</code>, covering: the OU half-life identity; strict monotone variance growth; the square-root optimal cadence and its minimized cost; the Whittle-index form of the re-observation problem; existence and uniqueness of a single broadcast clock price equalizing marginal penalty across a portfolio; and a concrete non-vacuous witness.</p><p>SRT completes a space-time monitoring trilogy under the Intelligence Bound: the D-Score Measurement Closure Theorem (how much to monitor one site), the Monitoring Water-Filling Theorem (where to spend a fixed budget across sites), and SRT itself (when to re-observe a drifting site). The single-site Wu-Wei Sampling Theorem is recovered as SRT's threshold limit. This is the 29th Intelligence-Bound self-application.</p><p><strong>Scope.</strong> The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": "<p><strong>Series S2 (Monitoring &amp; Certification) of the Viridis Canon. The core Intelligence-Bound canon spine is unchanged (frozen at v10.1.0 &ldquo;The Keystone Wave&rdquo;, record 21223021); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>, and references the S2 series anchor, the Monitoring Water-Filling Theorem (record 20704853).</strong></p><p>A re-verification certificate is a decaying asset: a site last observed at time zero drifts under Ornstein&ndash;Uhlenbeck dynamics, and the steward's confidence in its current state decays accordingly. The <strong>Stewardship Revisit Theorem (SRT)</strong>, &ldquo;the Tender,&rdquo; asks: at what cadence should a site be re-observed? We prove the answer is a square-root law &mdash; the classic economic-order-quantity form &tau;* = &radic;(2c/(&kappa;s&sup2;)) &mdash; that tightens where drift is fast and relaxes where it is slow, replacing fiat re-verification intervals with an auditable thermodynamic law, and that this cadence is Whittle-indexable, so a portfolio of drifting sites can be prioritized by a single broadcast clock price.</p><p>Eight results are machine-checked in Lean 4 (Aristotle, zero <code>sorry</code>, axioms &sube; {<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>}), namespace <code>Viridis.Monitoring.StewardshipRevisit</code>, covering: the OU half-life identity; strict monotone variance growth; the square-root optimal cadence and its minimized cost; the Whittle-index form of the re-observation problem; existence and uniqueness of a single broadcast clock price equalizing marginal penalty across a portfolio; and a concrete non-vacuous witness.</p><p>SRT completes a space-time monitoring trilogy under the Intelligence Bound: the D-Score Measurement Closure Theorem (how much to monitor one site), the Monitoring Water-Filling Theorem (where to spend a fixed budget across sites), and SRT itself (when to re-observe a drifting site). The single-site Wu-Wei Sampling Theorem is recovered as SRT's threshold limit. This is the 29th Intelligence-Bound self-application.</p><p><strong>Scope.</strong> The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "deposition_wire": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Series S2 (Monitoring &amp; Certification) of the Viridis Canon. The core Intelligence-Bound canon spine is unchanged (frozen at v10.1.0 &ldquo;The Keystone Wave&rdquo;, record 21223021); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>, and references the S2 series anchor, the Monitoring Water-Filling Theorem (record 20704853).</strong></p><p>A re-verification certificate is a decaying asset: a site last observed at time zero drifts under Ornstein&ndash;Uhlenbeck dynamics, and the steward's confidence in its current state decays accordingly. The <strong>Stewardship Revisit Theorem (SRT)</strong>, &ldquo;the Tender,&rdquo; asks: at what cadence should a site be re-observed? We prove the answer is a square-root law &mdash; the classic economic-order-quantity form &tau;* = &radic;(2c/(&kappa;s&sup2;)) &mdash; that tightens where drift is fast and relaxes where it is slow, replacing fiat re-verification intervals with an auditable thermodynamic law, and that this cadence is Whittle-indexable, so a portfolio of drifting sites can be prioritized by a single broadcast clock price.</p><p>Eight results are machine-checked in Lean 4 (Aristotle, zero <code>sorry</code>, axioms &sube; {<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>}), namespace <code>Viridis.Monitoring.StewardshipRevisit</code>, covering: the OU half-life identity; strict monotone variance growth; the square-root optimal cadence and its minimized cost; the Whittle-index form of the re-observation problem; existence and uniqueness of a single broadcast clock price equalizing marginal penalty across a portfolio; and a concrete non-vacuous witness.</p><p>SRT completes a space-time monitoring trilogy under the Intelligence Bound: the D-Score Measurement Closure Theorem (how much to monitor one site), the Monitoring Water-Filling Theorem (where to spend a fixed budget across sites), and SRT itself (when to re-observe a drifting site). The single-site Wu-Wei Sampling Theorem is recovered as SRT's threshold limit. This is the 29th Intelligence-Bound self-application.</p><p><strong>Scope.</strong> The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "field": "description",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "10.5281/zenodo.21223204",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "10.5281/zenodo.21223204",
+    "deposition_wire": "10.5281/zenodo.21223204",
+    "field": "doi",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      "monitoring cadence",
+      "re-verification",
+      "Ornstein-Uhlenbeck drift",
+      "Whittle index",
+      "EOQ",
+      "square-root law",
+      "shadow price",
+      "Intelligence Bound",
+      "D-Score",
+      "MRV",
+      "Lean 4",
+      "formal verification",
+      "uncertified"
+    ],
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": [
+      "monitoring cadence",
+      "re-verification",
+      "Ornstein-Uhlenbeck drift",
+      "Whittle index",
+      "EOQ",
+      "square-root law",
+      "shadow price",
+      "Intelligence Bound",
+      "D-Score",
+      "MRV",
+      "Lean 4",
+      "formal verification"
+    ],
+    "deposition_wire": [
+      "monitoring cadence",
+      "re-verification",
+      "Ornstein-Uhlenbeck drift",
+      "Whittle index",
+      "EOQ",
+      "square-root law",
+      "shadow price",
+      "Intelligence Bound",
+      "D-Score",
+      "MRV",
+      "Lean 4",
+      "formal verification",
+      "uncertified"
+    ],
+    "field": "keywords",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "eng",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "eng",
+    "deposition_wire": "eng",
+    "field": "language",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "id": "cc-by-4.0"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    "before": {
+      "id": "cc-by-4.0"
+    },
+    "deposition_wire": "cc-by-4.0",
+    "field": "license",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "Viridis Canon, Series S2 (Monitoring &amp; Certification) member. Routed from Nightly Run-087 (2026-07-02); ledger row 43. 29th Intelligence-Bound self-application. Completes the space-time monitoring trilogy: DMCT (how much to monitor one site, in spine v6) x MWT (where to spend a fixed budget, S2-v1 20704853) x SRT (when to re-observe drifting sites). Spine unchanged (frozen at v10.1.0, record 21223021); this record links to the spine via isDerivedFrom the concept DOI 10.5281/zenodo.19317982 and references both the S2 series anchor (MWT, 20704853) and the current spine head. Lean 4 proofs (Aristotle project cabf29e2-0bcb-4dd2-92ef-50512ef3606f, task 1a0209de-b9dd-4266-9642-3e35f50b3f59, COMPLETE @100%, ~22 min, toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff) certify the analytic core of SRT, namespace Viridis.Monitoring.StewardshipRevisit. The eight verified theorems, statements verbatim: (1) certificate_halflife_eq_ln2_over_2theta -- at t_half = ln2/2theta the Ornstein-Uhlenbeck conditional variance equals half its asymptotic value; (2) ou_conditional_variance_growth_monotone -- the conditional variance V(t) is strictly increasing in the age of the last observation; (3) ou_variance_pos_of_pos_age -- V(t) is strictly positive for positive age (auxiliary); (4) sqrt_cadence_minimizes_amortized_cost -- the cadence tau* = sqrt(2c/(kappa s^2)) globally minimizes the amortized cost C(tau) = c/tau + (1/2) kappa s^2 tau, an EOQ / AM-GM square-root law; (5) sqrt_cadence_optimal_value -- the minimized cost equals sqrt(2 c kappa s^2); (6) whittle_index_form_eq_stakes_times_variance_rate -- the Whittle index W(t) = kappa * V(t) is strictly increasing in age, hence indexable, under the corrected-index convention (rate = kappa*V, not kappa*dV/dt); (7) broadcast_clock_price_equalizes_marginal_penalty -- existence and uniqueness of the positive service time (the temporal water level) that equalizes marginal re-verification penalty across sites; (8) srt_nonvacuous -- an explicit concrete binding witness (theta=s=kappa=1, c=1, nu=1/4). All conclusions non-vacuous. The single-site Wu-Wei Sampling Theorem (Run-078) is recovered as SRT's threshold limit. The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "Viridis Canon, Series S2 (Monitoring &amp; Certification) member. Routed from Nightly Run-087 (2026-07-02); ledger row 43. 29th Intelligence-Bound self-application. Completes the space-time monitoring trilogy: DMCT (how much to monitor one site, in spine v6) x MWT (where to spend a fixed budget, S2-v1 20704853) x SRT (when to re-observe drifting sites). Spine unchanged (frozen at v10.1.0, record 21223021); this record links to the spine via isDerivedFrom the concept DOI 10.5281/zenodo.19317982 and references both the S2 series anchor (MWT, 20704853) and the current spine head. Lean 4 proofs (Aristotle project cabf29e2-0bcb-4dd2-92ef-50512ef3606f, task 1a0209de-b9dd-4266-9642-3e35f50b3f59, COMPLETE @100%, ~22 min, toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff) certify the analytic core of SRT, namespace Viridis.Monitoring.StewardshipRevisit. The eight verified theorems, statements verbatim: (1) certificate_halflife_eq_ln2_over_2theta -- at t_half = ln2/2theta the Ornstein-Uhlenbeck conditional variance equals half its asymptotic value; (2) ou_conditional_variance_growth_monotone -- the conditional variance V(t) is strictly increasing in the age of the last observation; (3) ou_variance_pos_of_pos_age -- V(t) is strictly positive for positive age (auxiliary); (4) sqrt_cadence_minimizes_amortized_cost -- the cadence tau* = sqrt(2c/(kappa s^2)) globally minimizes the amortized cost C(tau) = c/tau + (1/2) kappa s^2 tau, an EOQ / AM-GM square-root law; (5) sqrt_cadence_optimal_value -- the minimized cost equals sqrt(2 c kappa s^2); (6) whittle_index_form_eq_stakes_times_variance_rate -- the Whittle index W(t) = kappa * V(t) is strictly increasing in age, hence indexable, under the corrected-index convention (rate = kappa*V, not kappa*dV/dt); (7) broadcast_clock_price_equalizes_marginal_penalty -- existence and uniqueness of the positive service time (the temporal water level) that equalizes marginal re-verification penalty across sites; (8) srt_nonvacuous -- an explicit concrete binding witness (theta=s=kappa=1, c=1, nu=1/4). All conclusions non-vacuous. The single-site Wu-Wei Sampling Theorem (Run-078) is recovered as SRT's threshold limit. The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.",
+    "deposition_wire": "Viridis Canon, Series S2 (Monitoring &amp; Certification) member. Routed from Nightly Run-087 (2026-07-02); ledger row 43. 29th Intelligence-Bound self-application. Completes the space-time monitoring trilogy: DMCT (how much to monitor one site, in spine v6) x MWT (where to spend a fixed budget, S2-v1 20704853) x SRT (when to re-observe drifting sites). Spine unchanged (frozen at v10.1.0, record 21223021); this record links to the spine via isDerivedFrom the concept DOI 10.5281/zenodo.19317982 and references both the S2 series anchor (MWT, 20704853) and the current spine head. Lean 4 proofs (Aristotle project cabf29e2-0bcb-4dd2-92ef-50512ef3606f, task 1a0209de-b9dd-4266-9642-3e35f50b3f59, COMPLETE @100%, ~22 min, toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff) certify the analytic core of SRT, namespace Viridis.Monitoring.StewardshipRevisit. The eight verified theorems, statements verbatim: (1) certificate_halflife_eq_ln2_over_2theta -- at t_half = ln2/2theta the Ornstein-Uhlenbeck conditional variance equals half its asymptotic value; (2) ou_conditional_variance_growth_monotone -- the conditional variance V(t) is strictly increasing in the age of the last observation; (3) ou_variance_pos_of_pos_age -- V(t) is strictly positive for positive age (auxiliary); (4) sqrt_cadence_minimizes_amortized_cost -- the cadence tau* = sqrt(2c/(kappa s^2)) globally minimizes the amortized cost C(tau) = c/tau + (1/2) kappa s^2 tau, an EOQ / AM-GM square-root law; (5) sqrt_cadence_optimal_value -- the minimized cost equals sqrt(2 c kappa s^2); (6) whittle_index_form_eq_stakes_times_variance_rate -- the Whittle index W(t) = kappa * V(t) is strictly increasing in age, hence indexable, under the corrected-index convention (rate = kappa*V, not kappa*dV/dt); (7) broadcast_clock_price_equalizes_marginal_penalty -- existence and uniqueness of the positive service time (the temporal water level) that equalizes marginal re-verification penalty across sites; (8) srt_nonvacuous -- an explicit concrete binding witness (theta=s=kappa=1, c=1, nu=1/4). All conclusions non-vacuous. The single-site Wu-Wei Sampling Theorem (Run-078) is recovered as SRT's threshold limit. The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.",
+    "field": "notes",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "2026-07-06",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "2026-07-06",
+    "deposition_wire": "2026-07-06",
+    "field": "publication_date",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": null,
+    "assessment": {
+      "classification": "DOCUMENTED_RESOURCE_TYPE_TRANSPORT_FIELD"
+    },
+    "before": null,
+    "deposition_wire": "preprint",
+    "field": "publication_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20704853",
+        "relation": "references",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21223021",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20704853",
+        "relation": "references",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21223021",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20704853",
+        "relation": "references",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21223021",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "field": "related_identifiers",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21223203"
+          }
+        }
+      ]
+    },
+    "assessment": {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    },
+    "before": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21223203"
+          }
+        }
+      ]
+    },
+    "deposition_wire": null,
+    "field": "relations",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    "before": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "deposition_wire": null,
+    "field": "resource_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "The Stewardship Revisit Theorem: An Optimal Re-Observation Cadence for Drifting Monitoring Certificates",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "The Stewardship Revisit Theorem: An Optimal Re-Observation Cadence for Drifting Monitoring Certificates",
+    "deposition_wire": "The Stewardship Revisit Theorem: An Optimal Re-Observation Cadence for Drifting Monitoring Certificates",
+    "field": "title",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": null,
+    "assessment": {
+      "classification": "DOCUMENTED_RESOURCE_TYPE_TRANSPORT_FIELD"
+    },
+    "before": null,
+    "deposition_wire": "publication",
+    "field": "upload_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "S2-SRT-v1",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "S2-SRT-v1",
+    "deposition_wire": "S2-SRT-v1",
+    "field": "version",
+    "logical_change": false,
+    "transport_change": false
+  }
+]

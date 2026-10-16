@@ -1,0 +1,265 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Standalone thematic-series record of the Viridis Canon (S4 Stewardship/Governance &times; S5 Corridors bridge). The core Intelligence-Bound canon spine is unchanged (frozen at v10.0.0, record 20801185); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>.</strong></p><p>We prove that, in a community evolving under multiplicative (replicator / Bayesian) drift with an extinction threshold, a <em>sub-critical</em> (slow, &ldquo;wu wei&rdquo;) intervention policy attains strictly greater long-run species richness than a <em>super-critical</em> (aggressive) policy. The mechanism is geometric: the extinction face of the abundance simplex is an <strong>absorbing</strong> boundary &mdash; a type driven to zero abundance stays at zero, exactly as Bayesian conditioning cannot resurrect a probability-zero hypothesis (Cromwell&rsquo;s rule). A single super-critical event drops the support permanently; a trajectory that stays above threshold preserves it intact. Because species richness (the Hill number of order 0) is the diversity ceiling, strict support collapse is strict diversity loss.</p><p>The discrete dominance result is machine-checked in Lean 4 (Aristotle, zero <code>sorry</code>, axioms &sube; {<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>}): the absorbing boundary (<code>Drift.support_subset</code>), permanence of collapse (<code>support_antitone</code>, <code>richness_antitone</code>), super-critical collapse (<code>fast_collapse</code>), sub-critical safety (<code>support_evolve_eq_of_safe</code>), and the capstone <code>wu_wei_dominance_of_rates</code>: <code>richness(evolve Dfast thr T c0) &lt; richness(evolve Dslow thr T c0)</code>. The conclusion is a strict inequality between concrete naturals and the hypotheses are satisfiable, so the theorem is non-vacuous.</p><p><strong>The honest boundary.</strong> Which rate regime a policy occupies (the <code>hsub</code>/<code>hsuper</code> hypotheses) is governed by a Kramers / Freidlin&ndash;Wentzell escape law, <code>MFPT &asymp; exp(&Delta;U(r_eco &minus; r_int)/&sigma;&sup2;)</code>, with a critical rate <code>r* = &Theta;(r_eco)</code> (empirically &asymp; 0.85&middot;r_eco &mdash; collapse begins <em>below</em> the ecosystem&rsquo;s own rate). Mathlib lacks Freidlin&ndash;Wentzell, so that law is supplied as the hypotheses and deliberately not formalized; everything downstream of it is proven. The management corollary is <em>margin, not matching</em>: because the cliff is exponential, matching the rate is already unsafe; operate with margin below <code>r_eco</code>.</p><p><strong>Transfer.</strong> Under the relabeling extinction &rarr; value lock-in, the same theorem says an AI optimizer updating faster than <code>r* &asymp; &Theta;(r_eco)</code> undergoes irreversible lock-in, so corrigibility contains sub-critical updating with a margin &mdash; a power-meterable, proxy-independent constraint.</p><p><strong>Scope.</strong> The Lean proofs certify the validity of the discrete reasoning, not empirical magnitudes; the paper develops the physical and AI-safety interpretation. Working paper; not peer-reviewed.</p>",
+    "doi": "10.5281/zenodo.20838923",
+    "keywords": [
+      "wu wei",
+      "ecosystem restoration",
+      "replicator dynamics",
+      "absorbing boundary",
+      "species richness",
+      "Hill number",
+      "Kramers escape",
+      "Freidlin-Wentzell",
+      "Intelligence Bound",
+      "AI alignment",
+      "value lock-in",
+      "corrigibility",
+      "Lean 4",
+      "formal verification",
+      "uncertified"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Viridis Canon, standalone thematic-series record (S4 Stewardship/Governance x S5 Corridors bridge; Gaian thermodynamics line). JUSTIN-DIRECTED 2026-06-23 session; CANON_BACKLOG top-of-queue; ledger row 30. Spine unchanged (frozen at v10.0.0, record 20801185); this record links to the spine only via isDerivedFrom the concept DOI 10.5281/zenodo.19317982. Lean 4 proofs (Aristotle project 53861622-f85c-4cc7-926f-eaf610cb5a53, task 0f12a777-9346-4e02-814d-718c854232fc, COMPLETE @100%, completed 2026-06-24T12:09:31Z; zero sorry; #print axioms within {propext, Classical.choice, Quot.sound} on wu_wei_dominance, wu_wei_dominance_of_rates, fast_collapse, support_evolve_eq_of_safe; toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff; the single adaptation was a renamed Mathlib lemma le_or_lt -&gt; le_or_gt inside Drift.support_subset, no statement weakened) certify the discrete dominance result on a multiplicative-drift + extinction-cull model: (1) Drift.support_subset / cull_support_subset -- the extinction face is an ABSORBING boundary (a type at zero abundance stays at zero); (2) support_antitone / richness_antitone -- support and Hill-0 richness are antitone along any trajectory (collapse is permanent); (3) fast_collapse -- a single super-critical event (one extant type pushed below threshold) yields a STRICTLY smaller support at the horizon, permanently; (4) support_evolve_eq_of_safe -- a sub-critical trajectory (every extant type stays at/above threshold) preserves the support exactly; (5) wu_wei_dominance / wu_wei_dominance_of_rates -- a sub-critical (slow / wu wei) policy attains strictly greater long-run species richness than a super-critical (aggressive) policy: richness(evolve Dfast thr T c0) &lt; richness(evolve Dslow thr T c0). The conclusion is a strict inequality between concrete naturals and the sub-/super-critical hypotheses are satisfiable, so the theorem is NON-VACUOUS. THE HONEST BOUNDARY: which rate regime a policy occupies (the hsub / hsuper hypotheses) is governed by a Kramers / Freidlin-Wentzell escape law MFPT ~ exp(dU(r_eco - r_int)/sigma^2), sigma^2 ~ 1/N, with critical rate r* = Theta(r_eco) (empirically ~ 0.85*r_eco -- collapse begins BELOW the ecosystem's own rate). Mathlib lacks Freidlin-Wentzell, so that law is supplied as the hypotheses hsub/hsuper and is deliberately NOT formalized; everything downstream of it is proven. Next forge target on this thread: Lemma C, the Freidlin-Wentzell barrier. The Lean proofs certify the validity of the discrete reasoning, not empirical magnitudes; the paper develops the physical and AI-safety interpretation. Working paper; not peer-reviewed.",
+    "publication_date": "2026-06-25",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20801185",
+        "relation": "references",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20777067",
+        "relation": "references",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20467431",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20838922"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "Wu Wei Dominance: Why Rate-Matched Intervention Strictly Out-Diversifies Aggression in Ecosystem Restoration and Value Formation",
+    "version": "WuWeiDominance-v1"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "Read actual authenticated deposition base and validate exact record identity; not executed",
+      "url": "https://zenodo.org/api/deposit/depositions/20838923"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20838923/actions/edit"
+    },
+    {
+      "execution": "UNAUTHORIZED_PLAN_ONLY; revalidate against authenticated deposition base and approve resolved exact hash",
+      "method": "PUT",
+      "payload_file": "deposition_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/20838923"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20838923/actions/publish"
+    },
+    {
+      "method": "GET",
+      "required_assertions": [
+        "title == before.title",
+        "doi == before.doi",
+        "relations == before.relations",
+        "all other fields except description/keywords semantically exact, including original license/resource_type/custom/alternate_identifiers"
+      ],
+      "url": "https://zenodo.org/api/records/20838923"
+    }
+  ],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Standalone thematic-series record of the Viridis Canon (S4 Stewardship/Governance &times; S5 Corridors bridge). The core Intelligence-Bound canon spine is unchanged (frozen at v10.0.0, record 20801185); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>.</strong></p><p>We prove that, in a community evolving under multiplicative (replicator / Bayesian) drift with an extinction threshold, a <em>sub-critical</em> (slow, &ldquo;wu wei&rdquo;) intervention policy attains strictly greater long-run species richness than a <em>super-critical</em> (aggressive) policy. The mechanism is geometric: the extinction face of the abundance simplex is an <strong>absorbing</strong> boundary &mdash; a type driven to zero abundance stays at zero, exactly as Bayesian conditioning cannot resurrect a probability-zero hypothesis (Cromwell&rsquo;s rule). A single super-critical event drops the support permanently; a trajectory that stays above threshold preserves it intact. Because species richness (the Hill number of order 0) is the diversity ceiling, strict support collapse is strict diversity loss.</p><p>The discrete dominance result is machine-checked in Lean 4 (Aristotle, zero <code>sorry</code>, axioms &sube; {<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>}): the absorbing boundary (<code>Drift.support_subset</code>), permanence of collapse (<code>support_antitone</code>, <code>richness_antitone</code>), super-critical collapse (<code>fast_collapse</code>), sub-critical safety (<code>support_evolve_eq_of_safe</code>), and the capstone <code>wu_wei_dominance_of_rates</code>: <code>richness(evolve Dfast thr T c0) &lt; richness(evolve Dslow thr T c0)</code>. The conclusion is a strict inequality between concrete naturals and the hypotheses are satisfiable, so the theorem is non-vacuous.</p><p><strong>The honest boundary.</strong> Which rate regime a policy occupies (the <code>hsub</code>/<code>hsuper</code> hypotheses) is governed by a Kramers / Freidlin&ndash;Wentzell escape law, <code>MFPT &asymp; exp(&Delta;U(r_eco &minus; r_int)/&sigma;&sup2;)</code>, with a critical rate <code>r* = &Theta;(r_eco)</code> (empirically &asymp; 0.85&middot;r_eco &mdash; collapse begins <em>below</em> the ecosystem&rsquo;s own rate). Mathlib lacks Freidlin&ndash;Wentzell, so that law is supplied as the hypotheses and deliberately not formalized; everything downstream of it is proven. The management corollary is <em>margin, not matching</em>: because the cliff is exponential, matching the rate is already unsafe; operate with margin below <code>r_eco</code>.</p><p><strong>Transfer.</strong> Under the relabeling extinction &rarr; value lock-in, the same theorem says an AI optimizer updating faster than <code>r* &asymp; &Theta;(r_eco)</code> undergoes irreversible lock-in, so corrigibility contains sub-critical updating with a margin &mdash; a power-meterable, proxy-independent constraint.</p><p><strong>Scope.</strong> The Lean proofs certify the validity of the discrete reasoning, not empirical magnitudes; the paper develops the physical and AI-safety interpretation. Working paper; not peer-reviewed.</p>",
+    "doi": "10.5281/zenodo.20838923",
+    "keywords": [
+      "wu wei",
+      "ecosystem restoration",
+      "replicator dynamics",
+      "absorbing boundary",
+      "species richness",
+      "Hill number",
+      "Kramers escape",
+      "Freidlin-Wentzell",
+      "Intelligence Bound",
+      "AI alignment",
+      "value lock-in",
+      "corrigibility",
+      "Lean 4",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Viridis Canon, standalone thematic-series record (S4 Stewardship/Governance x S5 Corridors bridge; Gaian thermodynamics line). JUSTIN-DIRECTED 2026-06-23 session; CANON_BACKLOG top-of-queue; ledger row 30. Spine unchanged (frozen at v10.0.0, record 20801185); this record links to the spine only via isDerivedFrom the concept DOI 10.5281/zenodo.19317982. Lean 4 proofs (Aristotle project 53861622-f85c-4cc7-926f-eaf610cb5a53, task 0f12a777-9346-4e02-814d-718c854232fc, COMPLETE @100%, completed 2026-06-24T12:09:31Z; zero sorry; #print axioms within {propext, Classical.choice, Quot.sound} on wu_wei_dominance, wu_wei_dominance_of_rates, fast_collapse, support_evolve_eq_of_safe; toolchain leanprover/lean4:v4.28.0, Mathlib pin 8f9d9cff; the single adaptation was a renamed Mathlib lemma le_or_lt -&gt; le_or_gt inside Drift.support_subset, no statement weakened) certify the discrete dominance result on a multiplicative-drift + extinction-cull model: (1) Drift.support_subset / cull_support_subset -- the extinction face is an ABSORBING boundary (a type at zero abundance stays at zero); (2) support_antitone / richness_antitone -- support and Hill-0 richness are antitone along any trajectory (collapse is permanent); (3) fast_collapse -- a single super-critical event (one extant type pushed below threshold) yields a STRICTLY smaller support at the horizon, permanently; (4) support_evolve_eq_of_safe -- a sub-critical trajectory (every extant type stays at/above threshold) preserves the support exactly; (5) wu_wei_dominance / wu_wei_dominance_of_rates -- a sub-critical (slow / wu wei) policy attains strictly greater long-run species richness than a super-critical (aggressive) policy: richness(evolve Dfast thr T c0) &lt; richness(evolve Dslow thr T c0). The conclusion is a strict inequality between concrete naturals and the sub-/super-critical hypotheses are satisfiable, so the theorem is NON-VACUOUS. THE HONEST BOUNDARY: which rate regime a policy occupies (the hsub / hsuper hypotheses) is governed by a Kramers / Freidlin-Wentzell escape law MFPT ~ exp(dU(r_eco - r_int)/sigma^2), sigma^2 ~ 1/N, with critical rate r* = Theta(r_eco) (empirically ~ 0.85*r_eco -- collapse begins BELOW the ecosystem's own rate). Mathlib lacks Freidlin-Wentzell, so that law is supplied as the hypotheses hsub/hsuper and is deliberately NOT formalized; everything downstream of it is proven. Next forge target on this thread: Lemma C, the Freidlin-Wentzell barrier. The Lean proofs certify the validity of the discrete reasoning, not empirical magnitudes; the paper develops the physical and AI-safety interpretation. Working paper; not peer-reviewed.",
+    "publication_date": "2026-06-25",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20801185",
+        "relation": "references",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20777067",
+        "relation": "references",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20467431",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20838922"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "Wu Wei Dominance: Why Rate-Matched Intervention Strictly Out-Diversifies Aggression in Ecosystem Restoration and Value Formation",
+    "version": "WuWeiDominance-v1"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:31.818398+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "concept_id": "20838922",
+  "doi": "10.5281/zenodo.20838923",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "latest_observed_record_id": "20838923",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "44ea4b18bbf85bfcf39da1de96a5ffde41b042c12f6c564f52c584970d57dc32",
+    "after_payload.json": "971d6d84706e377fb67807dc2ac594fcb04dc6b78c7dff47d346342167e1eee0",
+    "before_metadata.json": "bd1274dc9767b11d458269d2e08e967eda4ead3f21f156425248f9822b4ea69e",
+    "deposition_payload.json": "e3ecbf08bc70fedb4dfe0c370210ef4d7ae7b3c6f2eb74717d8771933dcd5694",
+    "rollback_expected_public.json": "2eed8c5cd250a18cdab714ec97381a5b7eb6df790b0eaf646495d77347982226",
+    "rollback_payload.json": "207ebeae0aabd3f2b4f9be1b434098bbd68c3486f985d0c24cd82fdff14a9d75"
+  },
+  "preconditions": [
+    "Justin approves these exact immutable titles and exact payload SHA256 values",
+    "Complete sandbox edit -> PUT -> publish and one newversion readback",
+    "Authenticated production GET must map this exact DOI and provide the actual deposition metadata base",
+    "Merge only description/keywords into the authenticated base; server version graph, DOI, license and all other public fields must survive readback",
+    "Reject any unjustified field conversion, error, timeout, conflict or unknown outcome; do not publish or retry blindly",
+    "Server version graph preservation requires sandbox and authenticated deposition readback"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "20838923",
+  "rollback": "Before republish: separately approved POST https://zenodo.org/api/deposit/depositions/20838923/actions/discard. After republish: separately approved edit -> PUT the rollback deposition projection based on authenticated metadata -> publish; verify original public metadata and unchanged files. Exact prior metadata and rollback hashes remain in this row. No production rollback was executed.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

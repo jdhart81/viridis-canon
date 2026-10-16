@@ -1,0 +1,378 @@
+[
+  {
+    "after_expected_public": "open",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "open",
+    "deposition_wire": "open",
+    "field": "access_right",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    "before": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "viridis-canon"
+      }
+    ],
+    "field": "communities",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "field": "creators",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>The Viridis Canon — Lean-Checked Conditional Mathematics for the Intelligence Bound.</strong> A machine-checked formal corpus underpinning the Viridis research program on the thermodynamics of intelligence and its application to planetary conservation. Its spine is the <em>Intelligence Bound</em> — a Landauer/erasure-grounded limit on the rate of intelligence creation — formalized in Lean 4 and extended through a stack of modules spanning information theory (the D-Score biodiversity metric), graph-theoretic landscape optimality (HDFM / dendritic corridors), thermodynamic economics, alignment-as-feasibility (Goodhart impossibility), the speed-limit shadow-price tower, and the recovered post-Wolpert erasure-side footing.</p>\n<p>Every theorem's <em>type</em> is machine-verified in Lean 4 (pinned toolchain; axioms audited to {propext, Classical.choice, Quot.sound}). The canon deliberately distinguishes proof validity from physical and empirical validity: it is <strong>conditional mathematics with explicit assumptions</strong>, not a claim that those assumptions describe nature. Headline results are graded by formal strength in <code>CLAIMS_MATRIX.md</code> via the labels in <code>THEOREM_STATUS_TAXONOMY.md</code> (Derived / Conditional / Definition-expansion / Bridge-assumption / Empirical-hypothesis / Conjecture / Exploratory), with separate formal and interpretive status. Empirical validation is reserved for the companion papers and field studies.</p>\n<p>Concept DOI <strong>10.5281/zenodo.19317982</strong> always resolves to the latest version. Source mirror: <a href=\"https://github.com/jdhart81/viridis-canon\">github.com/jdhart81/viridis-canon</a>. Co-authored with Aristotle (Harmonic).</p>\n\n\n<p><strong>This version (v10.1.0).</strong> \"The Keystone Wave\" — folds two Intelligence-Bound core-extensions into the verified spine: the <strong>Universal Water-Filling Meta-Theorem</strong> (UWMT, \"the Keystone\"; unifies the nine-member shadow-price/water-filling family into one variational object with two control knobs — curvature and temperature — where the multiplier &lambda; is simultaneously the water level, the economic shadow price, and the thermodynamic free energy; 8 named results) and the <strong>Geodesic Saturation Theorem</strong> (GST, \"the Sage\"; characterizes the Intelligence Bound's own equality/saturation condition dI/dt=(P&minus;F)&middot;c, saturating iff the forcing F=0 — a constant-speed Fisher&ndash;Rao geodesic, \"wu wei\" made literal; 6 named results). GST names UWMT as its multichannel shadow, forming a coherent milestone wave. Both modules are 0 <code>sorry</code> with axioms &sube; {propext, Classical.choice, Quot.sound}, added to SPINE_MANIFEST.txt, lakefile defaultTargets, and AxiomAudit.lean. Spine freeze-break authorized by J. D. Hart (pre-authorized 2026-06-29 for UWMT specifically; confirmed and extended 2026-07-06 after applying the five-gate Spine Admission Test to the full nightly-forge backlog). Five sibling backlog results (MINT, SRT, IET, SCT, GNT) were evaluated against the same test, did not clear the domain-defining gate, and are published the same day as their own series/standalone records rather than merged into the spine. See CHANGELOG_v10.1.0.md.</p>",
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": "<p><strong>The Viridis Canon — Lean-Checked Conditional Mathematics for the Intelligence Bound.</strong> A machine-checked formal corpus underpinning the Viridis research program on the thermodynamics of intelligence and its application to planetary conservation. Its spine is the <em>Intelligence Bound</em> — a Landauer/erasure-grounded limit on the rate of intelligence creation — formalized in Lean 4 and extended through a stack of modules spanning information theory (the D-Score biodiversity metric), graph-theoretic landscape optimality (HDFM / dendritic corridors), thermodynamic economics, alignment-as-feasibility (Goodhart impossibility), the speed-limit shadow-price tower, and the recovered post-Wolpert erasure-side footing.</p>\n<p>Every theorem's <em>type</em> is machine-verified in Lean 4 (pinned toolchain; axioms audited to {propext, Classical.choice, Quot.sound}). The canon deliberately distinguishes proof validity from physical and empirical validity: it is <strong>conditional mathematics with explicit assumptions</strong>, not a claim that those assumptions describe nature. Headline results are graded by formal strength in <code>CLAIMS_MATRIX.md</code> via the labels in <code>THEOREM_STATUS_TAXONOMY.md</code> (Derived / Conditional / Definition-expansion / Bridge-assumption / Empirical-hypothesis / Conjecture / Exploratory), with separate formal and interpretive status. Empirical validation is reserved for the companion papers and field studies.</p>\n<p>Concept DOI <strong>10.5281/zenodo.19317982</strong> always resolves to the latest version. Source mirror: <a href=\"https://github.com/jdhart81/viridis-canon\">github.com/jdhart81/viridis-canon</a>. Co-authored with Aristotle (Harmonic).</p>\n\n\n<p><strong>This version (v10.1.0).</strong> \"The Keystone Wave\" — folds two Intelligence-Bound core-extensions into the verified spine: the <strong>Universal Water-Filling Meta-Theorem</strong> (UWMT, \"the Keystone\"; unifies the nine-member shadow-price/water-filling family into one variational object with two control knobs — curvature and temperature — where the multiplier &lambda; is simultaneously the water level, the economic shadow price, and the thermodynamic free energy; 8 named results) and the <strong>Geodesic Saturation Theorem</strong> (GST, \"the Sage\"; characterizes the Intelligence Bound's own equality/saturation condition dI/dt=(P&minus;F)&middot;c, saturating iff the forcing F=0 — a constant-speed Fisher&ndash;Rao geodesic, \"wu wei\" made literal; 6 named results). GST names UWMT as its multichannel shadow, forming a coherent milestone wave. Both modules are 0 <code>sorry</code> with axioms &sube; {propext, Classical.choice, Quot.sound}, added to SPINE_MANIFEST.txt, lakefile defaultTargets, and AxiomAudit.lean. Spine freeze-break authorized by J. D. Hart (pre-authorized 2026-06-29 for UWMT specifically; confirmed and extended 2026-07-06 after applying the five-gate Spine Admission Test to the full nightly-forge backlog). Five sibling backlog results (MINT, SRT, IET, SCT, GNT) were evaluated against the same test, did not clear the domain-defining gate, and are published the same day as their own series/standalone records rather than merged into the spine. See CHANGELOG_v10.1.0.md.</p>",
+    "deposition_wire": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>The Viridis Canon — Lean-Checked Conditional Mathematics for the Intelligence Bound.</strong> A machine-checked formal corpus underpinning the Viridis research program on the thermodynamics of intelligence and its application to planetary conservation. Its spine is the <em>Intelligence Bound</em> — a Landauer/erasure-grounded limit on the rate of intelligence creation — formalized in Lean 4 and extended through a stack of modules spanning information theory (the D-Score biodiversity metric), graph-theoretic landscape optimality (HDFM / dendritic corridors), thermodynamic economics, alignment-as-feasibility (Goodhart impossibility), the speed-limit shadow-price tower, and the recovered post-Wolpert erasure-side footing.</p>\n<p>Every theorem's <em>type</em> is machine-verified in Lean 4 (pinned toolchain; axioms audited to {propext, Classical.choice, Quot.sound}). The canon deliberately distinguishes proof validity from physical and empirical validity: it is <strong>conditional mathematics with explicit assumptions</strong>, not a claim that those assumptions describe nature. Headline results are graded by formal strength in <code>CLAIMS_MATRIX.md</code> via the labels in <code>THEOREM_STATUS_TAXONOMY.md</code> (Derived / Conditional / Definition-expansion / Bridge-assumption / Empirical-hypothesis / Conjecture / Exploratory), with separate formal and interpretive status. Empirical validation is reserved for the companion papers and field studies.</p>\n<p>Concept DOI <strong>10.5281/zenodo.19317982</strong> always resolves to the latest version. Source mirror: <a href=\"https://github.com/jdhart81/viridis-canon\">github.com/jdhart81/viridis-canon</a>. Co-authored with Aristotle (Harmonic).</p>\n\n\n<p><strong>This version (v10.1.0).</strong> \"The Keystone Wave\" — folds two Intelligence-Bound core-extensions into the verified spine: the <strong>Universal Water-Filling Meta-Theorem</strong> (UWMT, \"the Keystone\"; unifies the nine-member shadow-price/water-filling family into one variational object with two control knobs — curvature and temperature — where the multiplier &lambda; is simultaneously the water level, the economic shadow price, and the thermodynamic free energy; 8 named results) and the <strong>Geodesic Saturation Theorem</strong> (GST, \"the Sage\"; characterizes the Intelligence Bound's own equality/saturation condition dI/dt=(P&minus;F)&middot;c, saturating iff the forcing F=0 — a constant-speed Fisher&ndash;Rao geodesic, \"wu wei\" made literal; 6 named results). GST names UWMT as its multichannel shadow, forming a coherent milestone wave. Both modules are 0 <code>sorry</code> with axioms &sube; {propext, Classical.choice, Quot.sound}, added to SPINE_MANIFEST.txt, lakefile defaultTargets, and AxiomAudit.lean. Spine freeze-break authorized by J. D. Hart (pre-authorized 2026-06-29 for UWMT specifically; confirmed and extended 2026-07-06 after applying the five-gate Spine Admission Test to the full nightly-forge backlog). Five sibling backlog results (MINT, SRT, IET, SCT, GNT) were evaluated against the same test, did not clear the domain-defining gate, and are published the same day as their own series/standalone records rather than merged into the spine. See CHANGELOG_v10.1.0.md.</p>",
+    "field": "description",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "10.5281/zenodo.21223021",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "10.5281/zenodo.21223021",
+    "deposition_wire": "10.5281/zenodo.21223021",
+    "field": "doi",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification",
+      "thermodynamics",
+      "Landauer",
+      "water-filling",
+      "shadow price",
+      "geodesic",
+      "saturation",
+      "convex optimization",
+      "core-extension",
+      "conservation",
+      "AI alignment",
+      "canon",
+      "axiom audit",
+      "reproducibility",
+      "uncertified"
+    ],
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": [
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification",
+      "thermodynamics",
+      "Landauer",
+      "water-filling",
+      "shadow price",
+      "geodesic",
+      "saturation",
+      "convex optimization",
+      "core-extension",
+      "conservation",
+      "AI alignment",
+      "canon",
+      "axiom audit",
+      "reproducibility"
+    ],
+    "deposition_wire": [
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification",
+      "thermodynamics",
+      "Landauer",
+      "water-filling",
+      "shadow price",
+      "geodesic",
+      "saturation",
+      "convex optimization",
+      "core-extension",
+      "conservation",
+      "AI alignment",
+      "canon",
+      "axiom audit",
+      "reproducibility",
+      "uncertified"
+    ],
+    "field": "keywords",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "eng",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "eng",
+    "deposition_wire": "eng",
+    "field": "language",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "id": "cc-by-4.0"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    "before": {
+      "id": "cc-by-4.0"
+    },
+    "deposition_wire": "cc-by-4.0",
+    "field": "license",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "Canon v10.1.0 is a milestone spine merge (second version since the v9 freeze), authorized by J. D. Hart: pre-authorized 2026-06-29 for UWMT specifically (\"ok update to 10.1\"), confirmed and extended 2026-07-06 after applying the five-gate Spine Admission Test (CANON_SPINE_DOCTRINE.md) to the full seven-item Aristotle-forge backlog. Folds two Intelligence-Bound core-extensions into the verified spine: UniversalWaterfilling (Run-084, Aristotle da92404c, 8 named results) and GeodesicSaturation (Run-086, Aristotle f864600a, 6 named results). Both 0 sorry with axioms within {propext, Classical.choice, Quot.sound}; toolchain leanprover/lean4:v4.28.0, Mathlib 8f9d9cff. Five sibling backlog results (MINT, SRT, IET, SCT, GNT) failed the domain-defining gate and are published the same day as series/standalone records, not merged into the spine. Lean certifies the reasoning, not empirical magnitudes; working corpus, not peer-reviewed.",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "Canon v10.1.0 is a milestone spine merge (second version since the v9 freeze), authorized by J. D. Hart: pre-authorized 2026-06-29 for UWMT specifically (\"ok update to 10.1\"), confirmed and extended 2026-07-06 after applying the five-gate Spine Admission Test (CANON_SPINE_DOCTRINE.md) to the full seven-item Aristotle-forge backlog. Folds two Intelligence-Bound core-extensions into the verified spine: UniversalWaterfilling (Run-084, Aristotle da92404c, 8 named results) and GeodesicSaturation (Run-086, Aristotle f864600a, 6 named results). Both 0 sorry with axioms within {propext, Classical.choice, Quot.sound}; toolchain leanprover/lean4:v4.28.0, Mathlib 8f9d9cff. Five sibling backlog results (MINT, SRT, IET, SCT, GNT) failed the domain-defining gate and are published the same day as series/standalone records, not merged into the spine. Lean certifies the reasoning, not empirical magnitudes; working corpus, not peer-reviewed.",
+    "deposition_wire": "Canon v10.1.0 is a milestone spine merge (second version since the v9 freeze), authorized by J. D. Hart: pre-authorized 2026-06-29 for UWMT specifically (\"ok update to 10.1\"), confirmed and extended 2026-07-06 after applying the five-gate Spine Admission Test (CANON_SPINE_DOCTRINE.md) to the full seven-item Aristotle-forge backlog. Folds two Intelligence-Bound core-extensions into the verified spine: UniversalWaterfilling (Run-084, Aristotle da92404c, 8 named results) and GeodesicSaturation (Run-086, Aristotle f864600a, 6 named results). Both 0 sorry with axioms within {propext, Classical.choice, Quot.sound}; toolchain leanprover/lean4:v4.28.0, Mathlib 8f9d9cff. Five sibling backlog results (MINT, SRT, IET, SCT, GNT) failed the domain-defining gate and are published the same day as series/standalone records, not merged into the spine. Lean certifies the reasoning, not empirical magnitudes; working corpus, not peer-reviewed.",
+    "field": "notes",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "2026-07-06",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "2026-07-06",
+    "deposition_wire": "2026-07-06",
+    "field": "publication_date",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": null,
+    "assessment": {
+      "classification": "DOCUMENTED_RESOURCE_TYPE_TRANSPORT_FIELD"
+    },
+    "before": null,
+    "deposition_wire": "preprint",
+    "field": "publication_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isVersionOf",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "https://github.com/jdhart81/viridis-canon",
+        "relation": "isSupplementedBy",
+        "scheme": "url"
+      },
+      {
+        "identifier": "10.5281/zenodo.20801185",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isVersionOf",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "https://github.com/jdhart81/viridis-canon",
+        "relation": "isSupplementedBy",
+        "scheme": "url"
+      },
+      {
+        "identifier": "10.5281/zenodo.20801185",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isVersionOf",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "https://github.com/jdhart81/viridis-canon",
+        "relation": "isSupplementedBy",
+        "scheme": "url"
+      },
+      {
+        "identifier": "10.5281/zenodo.20801185",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "field": "related_identifiers",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "version": [
+        {
+          "index": 13,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "19317982"
+          }
+        }
+      ]
+    },
+    "assessment": {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    },
+    "before": {
+      "version": [
+        {
+          "index": 13,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "19317982"
+          }
+        }
+      ]
+    },
+    "deposition_wire": null,
+    "field": "relations",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    "before": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "deposition_wire": null,
+    "field": "resource_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "Viridis Compiled Theorem Stack — Canon v10.1.0 (The Keystone Wave: Universal Water-Filling Meta-Theorem + Geodesic Saturation Theorem folded into the spine)",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "Viridis Compiled Theorem Stack — Canon v10.1.0 (The Keystone Wave: Universal Water-Filling Meta-Theorem + Geodesic Saturation Theorem folded into the spine)",
+    "deposition_wire": "Viridis Compiled Theorem Stack — Canon v10.1.0 (The Keystone Wave: Universal Water-Filling Meta-Theorem + Geodesic Saturation Theorem folded into the spine)",
+    "field": "title",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": null,
+    "assessment": {
+      "classification": "DOCUMENTED_RESOURCE_TYPE_TRANSPORT_FIELD"
+    },
+    "before": null,
+    "deposition_wire": "publication",
+    "field": "upload_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "10.1.0",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "10.1.0",
+    "deposition_wire": "10.1.0",
+    "field": "version",
+    "logical_change": false,
+    "transport_change": false
+  }
+]

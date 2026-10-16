@@ -1,0 +1,117 @@
+[
+  {
+    "audit_dois": [
+      "10.5281/zenodo.21968301",
+      "10.5281/zenodo.21971041"
+    ],
+    "concept_id": "21968300",
+    "intended_final_label": "VERIFIED_ONLY_AFTER_VALID_PUBLICATION_BINDING_AND_CLAIM_GATE",
+    "intended_versions": 1,
+    "latest_observed_record_id": "21971041",
+    "production_api_calls": [],
+    "receipt": null,
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "audit_dois": [
+      "10.5281/zenodo.21968331",
+      "10.5281/zenodo.21971042"
+    ],
+    "concept_id": "21968330",
+    "intended_final_label": "VERIFIED_ONLY_AFTER_VALID_PUBLICATION_BINDING_AND_CLAIM_GATE",
+    "intended_versions": 1,
+    "latest_observed_record_id": "21971042",
+    "production_api_calls": [],
+    "receipt": null,
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "audit_dois": [
+      "10.5281/zenodo.21968337",
+      "10.5281/zenodo.21971043"
+    ],
+    "concept_id": "21968336",
+    "intended_final_label": "VERIFIED_ONLY_AFTER_VALID_PUBLICATION_BINDING_AND_CLAIM_GATE",
+    "intended_versions": 1,
+    "latest_observed_record_id": "21971043",
+    "production_api_calls": [],
+    "receipt": null,
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "audit_dois": [
+      "10.5281/zenodo.21968347",
+      "10.5281/zenodo.21971046"
+    ],
+    "concept_id": "21968346",
+    "intended_final_label": "VERIFIED_ONLY_AFTER_VALID_PUBLICATION_BINDING_AND_CLAIM_GATE",
+    "intended_versions": 1,
+    "latest_observed_record_id": "21971046",
+    "production_api_calls": [],
+    "receipt": null,
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "audit_dois": [
+      "10.5281/zenodo.21968361",
+      "10.5281/zenodo.21971047"
+    ],
+    "concept_id": "21968360",
+    "intended_final_label": "VERIFIED_ONLY_AFTER_VALID_PUBLICATION_BINDING_AND_CLAIM_GATE",
+    "intended_versions": 1,
+    "latest_observed_record_id": "21971047",
+    "production_api_calls": [],
+    "receipt": null,
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "audit_dois": [
+      "10.5281/zenodo.21968383",
+      "10.5281/zenodo.21971052"
+    ],
+    "concept_id": "21968382",
+    "intended_final_label": "VERIFIED_ONLY_AFTER_VALID_PUBLICATION_BINDING_AND_CLAIM_GATE",
+    "intended_versions": 1,
+    "latest_observed_record_id": "21971052",
+    "production_api_calls": [],
+    "receipt": null,
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "audit_dois": [
+      "10.5281/zenodo.21968480",
+      "10.5281/zenodo.21971057"
+    ],
+    "concept_id": "21968479",
+    "intended_final_label": "VERIFIED_ONLY_AFTER_VALID_PUBLICATION_BINDING_AND_CLAIM_GATE",
+    "intended_versions": 1,
+    "latest_observed_record_id": "21971057",
+    "production_api_calls": [],
+    "receipt": null,
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "audit_dois": [
+      "10.5281/zenodo.22236427"
+    ],
+    "concept_id": "22236426",
+    "intended_final_label": "VERIFIED_ONLY_AFTER_VALID_PUBLICATION_BINDING_AND_CLAIM_GATE",
+    "intended_versions": 1,
+    "latest_observed_record_id": "22236427",
+    "production_api_calls": [],
+    "receipt": null,
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "audit_dois": [
+      "10.5281/zenodo.22236496"
+    ],
+    "concept_id": "22236495",
+    "intended_final_label": "VERIFIED_ONLY_AFTER_VALID_PUBLICATION_BINDING_AND_CLAIM_GATE",
+    "intended_versions": 1,
+    "latest_observed_record_id": "22236496",
+    "production_api_calls": [],
+    "receipt": null,
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  }
+]

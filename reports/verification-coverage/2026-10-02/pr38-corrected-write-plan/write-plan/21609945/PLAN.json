@@ -1,0 +1,225 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Paper supported by machine-verified Lean 4.</strong> Composite biodiversity indices that combine species, phylogenetic, and genetic diversity into a single score are increasingly used to price conservation payments and biodiversity credits. Existing design practice sets the combination weights from scientific judgments about each component's <em>informativeness</em> alone, holding the weights fixed once a monitoring protocol is chosen. We show this is incomplete whenever the index is used to pay a self-interested steward: components differ sharply in how cheaply their observed value can be inflated without genuine ecological improvement, and a rational steward reallocates effort toward whichever weighted channel offers the highest apparent return per dollar of gaming. We formalize this with a <em>gaming elasticity</em> <em>gamma_i</em> per channel and derive the steward's optimal injected bias in closed form. Minimizing a scale-invariant Goodhart ratio—injected bias per unit of squared informativeness—is a Rayleigh-quotient problem whose unique interior solution is the <em>Manipulation-Proof Weighting Theorem</em>: <em>w_i^ast propto I_i/gamma_i</em>, importance divided by gaming elasticity, rather than importance alone. Applied to Viridis's own D-Score defaults (<em>w=0.5,0.3,0.2</em> for species, phylogenetic, and genetic diversity), and to illustrative but literature-grounded gaming-elasticity ratios, the manipulation-proof reweighting fully <em>inverts</em> the current ranking, cutting modeled gaming leakage by roughly three-quarters and cutting the resulting overstatement of the Intelligence Bound's deployable-capacity ceiling <em>dI/dtle PD/(k_BTln2)</em> by a comparable margin. All results are numerically verified (14/14); the verification gate itself caught and corrected a genuine scale-invariance error in an early draft of the governing ratio. We close with four testable predictions spanning archival registry data, a field trial design, a historical natural experiment, and a formal comparative-statics claim, and cast the result as an Intelligence-Bound self-application, the Warden.</p>",
+    "doi": "10.5281/zenodo.21609945",
+    "keywords": [
+      "composite index",
+      "biodiversity metric",
+      "gaming elasticity",
+      "Goodhart",
+      "manipulation-proof",
+      "index design",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification",
+      "uncertified"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Machine-verified: module ManipulationProofWeighting (7 named theorems), landed new leans/2026-07-21_aristotle_MPWT_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 14/14 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21609944"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Manipulation-Proof Weighting Theorem: Gaming-Elasticity-Adjusted Design of Composite Biodiversity Indices",
+    "version": "1.0.0"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "Read actual authenticated deposition base and validate exact record identity; not executed",
+      "url": "https://zenodo.org/api/deposit/depositions/21609945"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21609945/actions/edit"
+    },
+    {
+      "execution": "UNAUTHORIZED_PLAN_ONLY; revalidate against authenticated deposition base and approve resolved exact hash",
+      "method": "PUT",
+      "payload_file": "deposition_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/21609945"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21609945/actions/publish"
+    },
+    {
+      "method": "GET",
+      "required_assertions": [
+        "title == before.title",
+        "doi == before.doi",
+        "relations == before.relations",
+        "all other fields except description/keywords semantically exact, including original license/resource_type/custom/alternate_identifiers"
+      ],
+      "url": "https://zenodo.org/api/records/21609945"
+    }
+  ],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Paper supported by machine-verified Lean 4.</strong> Composite biodiversity indices that combine species, phylogenetic, and genetic diversity into a single score are increasingly used to price conservation payments and biodiversity credits. Existing design practice sets the combination weights from scientific judgments about each component's <em>informativeness</em> alone, holding the weights fixed once a monitoring protocol is chosen. We show this is incomplete whenever the index is used to pay a self-interested steward: components differ sharply in how cheaply their observed value can be inflated without genuine ecological improvement, and a rational steward reallocates effort toward whichever weighted channel offers the highest apparent return per dollar of gaming. We formalize this with a <em>gaming elasticity</em> <em>gamma_i</em> per channel and derive the steward's optimal injected bias in closed form. Minimizing a scale-invariant Goodhart ratio—injected bias per unit of squared informativeness—is a Rayleigh-quotient problem whose unique interior solution is the <em>Manipulation-Proof Weighting Theorem</em>: <em>w_i^ast propto I_i/gamma_i</em>, importance divided by gaming elasticity, rather than importance alone. Applied to Viridis's own D-Score defaults (<em>w=0.5,0.3,0.2</em> for species, phylogenetic, and genetic diversity), and to illustrative but literature-grounded gaming-elasticity ratios, the manipulation-proof reweighting fully <em>inverts</em> the current ranking, cutting modeled gaming leakage by roughly three-quarters and cutting the resulting overstatement of the Intelligence Bound's deployable-capacity ceiling <em>dI/dtle PD/(k_BTln2)</em> by a comparable margin. All results are numerically verified (14/14); the verification gate itself caught and corrected a genuine scale-invariance error in an early draft of the governing ratio. We close with four testable predictions spanning archival registry data, a field trial design, a historical natural experiment, and a formal comparative-statics claim, and cast the result as an Intelligence-Bound self-application, the Warden.</p>",
+    "doi": "10.5281/zenodo.21609945",
+    "keywords": [
+      "composite index",
+      "biodiversity metric",
+      "gaming elasticity",
+      "Goodhart",
+      "manipulation-proof",
+      "index design",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Machine-verified: module ManipulationProofWeighting (7 named theorems), landed new leans/2026-07-21_aristotle_MPWT_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 14/14 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21609944"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Manipulation-Proof Weighting Theorem: Gaming-Elasticity-Adjusted Design of Composite Biodiversity Indices",
+    "version": "1.0.0"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:33.679402+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "concept_id": "21609944",
+  "doi": "10.5281/zenodo.21609945",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "latest_observed_record_id": "21609945",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "649fd9913ab9a34b0abaab27c76b37853f1d437d2000c8269afdc5526f53095f",
+    "after_payload.json": "dae56632ea7ce2ace83a48c32a4e961922c9db3e9f7c4adf135dbbb58d99229d",
+    "before_metadata.json": "1257c350547a51f08c728de4ea42f2a4e470eaa06006cabad66223b96b0c2792",
+    "deposition_payload.json": "80eb3cc22afa690e3a9e7cfc1f89ec353d13bb3931718a4460779327628252f1",
+    "rollback_expected_public.json": "b79a90cc678432da59b6fa9ea0eabb43c584f3fb7d56747da514fdc6073cda5d",
+    "rollback_payload.json": "89dd9b015854d7fd6d7a364768bc4459823da2c580ecb8d2e63f6549cda8d537"
+  },
+  "preconditions": [
+    "Justin approves these exact immutable titles and exact payload SHA256 values",
+    "Complete sandbox edit -> PUT -> publish and one newversion readback",
+    "Authenticated production GET must map this exact DOI and provide the actual deposition metadata base",
+    "Merge only description/keywords into the authenticated base; server version graph, DOI, license and all other public fields must survive readback",
+    "Reject any unjustified field conversion, error, timeout, conflict or unknown outcome; do not publish or retry blindly",
+    "Server version graph preservation requires sandbox and authenticated deposition readback"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "21609945",
+  "rollback": "Before republish: separately approved POST https://zenodo.org/api/deposit/depositions/21609945/actions/discard. After republish: separately approved edit -> PUT the rollback deposition projection based on authenticated metadata -> publish; verify original public metadata and unchanged files. Exact prior metadata and rollback hashes remain in this row. No production rollback was executed.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

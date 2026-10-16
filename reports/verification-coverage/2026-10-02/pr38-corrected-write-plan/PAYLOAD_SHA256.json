@@ -1,0 +1,730 @@
+[
+  {
+    "directory": "write-plan/20008839",
+    "doi": "10.5281/zenodo.20008839",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "ef8002f15fbb72d3ab03dd6aef45242bfb9f7ee54ca23f0fd8cfe7f67e44ae66",
+      "after_payload.json": "fe0d7bb86e37e225244ab90150639d737b82cb1aba1f8b4ce2e9009856359531",
+      "before_metadata.json": "071b965a6ace55d25389e83d8716ee1aab3b5acef8698a2ddadef277adc00bfb",
+      "deposition_payload.json": "4f5ed3a4a01a8ffcd0dd388fad47cd5addb4584ba8e332c504dc91f18504c5a6",
+      "rollback_expected_public.json": "39b7b0975b1c4b56e7fd0570b8c6d6862415dd7c8bdf3b550635517f531d2a39",
+      "rollback_payload.json": "599194d495fde8bab91835a934228a7c7abd803ed62052905e9825bea476e3d7"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20010754",
+    "doi": "10.5281/zenodo.20010754",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "2ff22b2907bc08e53e42705d211784a5c5b82785eb62363a9113616adbb83864",
+      "after_payload.json": "12e7a65f56c43d76c202565a74dfd0b95f51be3a57f55ca47fd5cc24cdced75c",
+      "before_metadata.json": "56b11a56a46e70d918e5061c0181a9f15b3a46d391ccf37a6f743718d3f9e0b0",
+      "deposition_payload.json": "f95107a3a0c3b6201da84b6a77f22e93043536c368bf47a2d6bbbbef6d21c689",
+      "rollback_expected_public.json": "9eec2c9b05fd2e9d41a904055c2d216735ac72cb5244718fad06efaca652d344",
+      "rollback_payload.json": "f1ad09070e955b625a115b3e2b793a0105696e7df02cc37b89f597f0c8308408"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20320324",
+    "doi": "10.5281/zenodo.20320324",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "06732b8b22e648de1c5c8a9ae5e31d04c650608ff4639072423f635687b3f3d7",
+      "after_payload.json": "25b08f4a74180e5d4623e35fd6fc51d97866304d87464cd801affb9e1f1faa66",
+      "before_metadata.json": "8fc1efe5ec0a1ac3582e83ebe219ae48f9abbe726882bc1a427fbd5eb14f8806",
+      "deposition_payload.json": "f899b9b7f12ce4608b3b5ffd6beddd5910f105f62201a005752c9acb8d3d4126",
+      "rollback_expected_public.json": "55e027d32b50b1faaac44033695e00f848fa8932c2fa9865a0f539f8990e261f",
+      "rollback_payload.json": "1b38ccf96c0168eec12d82d729476529b1eeb5c9ce10cdc11db25a4014c332f7"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20399676",
+    "doi": "10.5281/zenodo.20399676",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "d117f27d7a4f2eb0dc44bef1c7c3b5c1c2725bf4fd4337132fd493c32f2fc360",
+      "after_payload.json": "b73795ff2a484fb1bd34bbd96114919ecd2ddc3aa09b05f166cd495df5f9c589",
+      "before_metadata.json": "094352cabac44bc30d29ef049f213e5eb3caf07a6f4f26304ac41b7093b4bf2a",
+      "deposition_payload.json": "5390acf5c49aa38b4c94dff0409abea0b0c0386495bb426f93c0c76f342baff1",
+      "rollback_expected_public.json": "2b1f531cda7d8ee73a79683bfadc4fce5217dbaac35e243b192c86bb6cdcb25d",
+      "rollback_payload.json": "a056a34164203b8864c501968fc46b16c541e6ef2c55e32444cbae5f7e5edc88"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20400274",
+    "doi": "10.5281/zenodo.20400274",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "8404e5c4def078e15bf9e44bd01b0ffa5a6ddbee458c38025d1e736a8ae07958",
+      "after_payload.json": "0fbb8b499a5bf67334a5ba6eef22cee8e16b8c98202772a88f3db2aead6ad872",
+      "before_metadata.json": "0780faeedb322d2a4efffd37c62685d064e80cdb2f2f0c11ac9bb3d7d4f83645",
+      "deposition_payload.json": "07ec97a749273da332489246d4482721afd354488ffd22e2057685f52fe9e7f1",
+      "rollback_expected_public.json": "97ef1210a60a9967f640141b7bea530353b269d19c4f8606141efe86e4772d04",
+      "rollback_payload.json": "cc5c8ad5b8e70e3d6b2522f54658594fb110511a64c0838ddbaab9412445d8e9"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20412507",
+    "doi": "10.5281/zenodo.20412507",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "dbdb3bba570ea3fa65873ec9d6a8aabe2f28e5b00d06bde85bd5db4df518ca32",
+      "after_payload.json": "fe142fd5bdc90c69410cb749909685d22903572c3241fa8394f3a53dfd6688b7",
+      "before_metadata.json": "31b8137577778aeaacc9bcf5e134d0487486c8eedf9b721d19004316bfc7e53f",
+      "deposition_payload.json": "ad4435e174bf389b83341417f101d4899206e458abb4b68c616a8725153b5fcf",
+      "rollback_expected_public.json": "97268b4d70dd3ee87ec3df8e14a787224797decf777db74d8185339fdd1d5f4e",
+      "rollback_payload.json": "2893e6e9b93161972f6017df58a784712d205812dc085988d8e221e0f9f03045"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20422179",
+    "doi": "10.5281/zenodo.20422179",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "69dbcc7a97bc1f8524385507bc0c651630bf704d76422de93653a393d1d936ae",
+      "after_payload.json": "dc6ea2755356dbf9e2289de0c86c6118701cc082f0313d0ce9ba5a14c809a0b8",
+      "before_metadata.json": "a7803dbf3dfa816658ad34131c4c26bedb65cfdb61cbe3f2fd9de8bd86f070bd",
+      "deposition_payload.json": "c7fab600382f61f4251b339124f06094b01211f17762a238f29ce570489b812d",
+      "rollback_expected_public.json": "9b19ac7ead99710e3278be58b40401e1d8d6d5cafcbf7fc8cf5e3f7dec94aeda",
+      "rollback_payload.json": "9e38c8d54388e77820cbbdbfe37ff060384f1ddd7e7b07475e6dd990bc438c97"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20467431",
+    "doi": "10.5281/zenodo.20467431",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "d86014f41172eab11ade6c1248c77f60315a5d3c8b5817684599f847b966b060",
+      "after_payload.json": "f46afd2cd7c26c1fe0ae1babfdfa414b3d074f42de344860ec6d8f8799cfb5a3",
+      "before_metadata.json": "1892c75feaa7b1a6574e025e2af59da29b26f99d421a0347f0930ffe4d387068",
+      "deposition_payload.json": "18b86206a2e040464d9b68e8d640d035fa627aa6f854fd1e7b2087be5a7a580b",
+      "rollback_expected_public.json": "23d2cae67fa2d31c4051fbd9710919e2df97a0ed5f0172a6bafe9d3b13caabe5",
+      "rollback_payload.json": "c23b92986874ffad7d22a3ea4518fb0464bfe28673b1d9003a2caa7490bd7381"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20479012",
+    "doi": "10.5281/zenodo.20479012",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "c61177e1f31df3fe6fd36c4f84d77439b6b7571817c009648850f3d616b63085",
+      "after_payload.json": "3b9433c7eab4d4e0928c1a921a5ae6d51868a6b41b58419bd8a281a418a8c1d0",
+      "before_metadata.json": "7c3603fd7fb9b97695f56f90d54b1bdc0bcaa9b07335436f27cb5b595b8d152b",
+      "deposition_payload.json": "8f46d4379d9186885c2161584d4638a063c9fd43d08c00d8f5c3dbea94e93054",
+      "rollback_expected_public.json": "7e3dd82248186d932b48695ed1146c54732cbd6f6c4fe449221bcf063a988d3a",
+      "rollback_payload.json": "5f3058fb5c4e066774a9224c63766aa19214c2d2ac86d2b8ccef702e0e93a17e"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20632180",
+    "doi": "10.5281/zenodo.20632180",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "6fba34b5a3c6026783d3983c6e77c72b653ff0a1e1e87699ee3f0288307f5642",
+      "after_payload.json": "3058ce519fa67e60574b581fc66472072708f6d1e49cc2e12a9d2d5dd64b3578",
+      "before_metadata.json": "5b6ec77ada48b84f4e7229c2c830555426b719fb0cbb020ccc8ca318d0a2182c",
+      "deposition_payload.json": "6e58aafcdd223a05f8cbd7c9c6b5f40c7d360fed3dd02c8855dc1867eafd6ce5",
+      "rollback_expected_public.json": "ad717f9359b872bd378a699786b3f537c7ae25f57f1a741084066e688bdfd426",
+      "rollback_payload.json": "2935c5fd778779a342097ad070c7b37d89c4874cfcaf9653db3dac40d65454c8"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20704853",
+    "doi": "10.5281/zenodo.20704853",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "7320f822206fc148167213dd39657b45e8a42268179b11c5c5941df2a161bfea",
+      "after_payload.json": "03245c4e03c169effdc27dd3f31a68c64a9d5ddbae6445dd81aeaa1e83233fcf",
+      "before_metadata.json": "e38de11fb0d166e27e2e1dee770c051b4dadb46928d5dcf219a9a9a609bd1cdc",
+      "deposition_payload.json": "77ca1ffde3c47627adb88cee99d8a06b07a9aef01d2d38134a742fa2c9f3c67b",
+      "rollback_expected_public.json": "a4df8fc22d85d3b8e67ae5ca34e424a54eba5877f89f3a3be4d1fd297f133809",
+      "rollback_payload.json": "be883c347d8d1f22cdb9d9950caead3cfad163334b268531a9ad0b0a308bdf2f"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20735555",
+    "doi": "10.5281/zenodo.20735555",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "ad82a2fede43d2a43350efc937afceefa86229247574ab3566a00cb722403377",
+      "after_payload.json": "82c5c163ccf7885cd91dfd4831084da2ddc3acbc7808e5caef571724fcbb26c3",
+      "before_metadata.json": "bde921661d8e91baec73bc1d07258c64af8b53298040f146e070cd764f1e7acf",
+      "deposition_payload.json": "abe5decfdf981de58e0a9c21f5d9a346d510eefdcc65a9a4a9d1de8bddf03231",
+      "rollback_expected_public.json": "128582f370d9f1e4495aa8d7d80d8d6c9fa39411a91d38740734d7a38a6ea9f5",
+      "rollback_payload.json": "559b87662b8e11ad75ce3209c53f1c24c2ec12de4eba46150e4c31db8c7d7410"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20735557",
+    "doi": "10.5281/zenodo.20735557",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "e59c629f698aa63bbd98c2db4c2b1ddfc3349f330048152c15b81d87389ad729",
+      "after_payload.json": "e477b2311b353438cbeef5c0910cfaa22555c6c4c6dfce3f766fb8571718d858",
+      "before_metadata.json": "0d27d4981e40ad57020693dc7aa00e033b6f11e37dd8dabec616e22197e175b4",
+      "deposition_payload.json": "d208b01a25453521731eac97ea35be4761cf87ec5df97269b77db3b5b42e4acb",
+      "rollback_expected_public.json": "d703e6176c07dafd1d0e3464866d16aeb88932a98765fb4d313ac4d5c3ec12aa",
+      "rollback_payload.json": "054bd3c4d485b95d9cb121f28cc7129c570dbb4bd43a89b6192bd6c6b2776eaf"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20763323",
+    "doi": "10.5281/zenodo.20763323",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "02a52ddf7cc548e980ab70c01710816937a89d40a1673a39df84976cd868d64c",
+      "after_payload.json": "c7058670191e3ef3899ba51bf17fd37977cd6f6d458da3ad48d86a03beadba83",
+      "before_metadata.json": "4c16d14f510e7c9c3a6888d22e525501c36af9fdfa41c8a163ccd4833cc69e16",
+      "deposition_payload.json": "7a03ab3ee39ab141eddee773fff2706fcbbd8c292aebadc16ffee28640ba4c06",
+      "rollback_expected_public.json": "3d0e6d98187fc9d99c86ef8966353d3b74b209641ae46e0b20214e3c726ebdfa",
+      "rollback_payload.json": "e758f9a4da74d2bf82f05c90f4d61935ac5e16cdc2472370112013d572c30664"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20764639",
+    "doi": "10.5281/zenodo.20764639",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "62085df43d36c5d2459f5714be68735b67faad1c4b12f2e1ef6c875cd286c5ab",
+      "after_payload.json": "ba746909f3ac94c27814a349ec18c6ba1d1687ee00eebbcfc0ed297e7bd8d40a",
+      "before_metadata.json": "c418474031420f62e819edf6bf5378bcd210372c23326e803dd01755f49b0a16",
+      "deposition_payload.json": "e4c78f583e598e63810f561ba9cdd5c381a5d533890f48ab882097c8ff34cd85",
+      "rollback_expected_public.json": "bed30817017ec3be78ae64b148f0714f8cb3e7f5ece57257cd701e21ffdd43bc",
+      "rollback_payload.json": "0e02e5ccd81419cfa54c8980bb13aa4bfb0db7451b194ca93baa292aff90b27b"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20765022",
+    "doi": "10.5281/zenodo.20765022",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "9ce2e5b45ddb1a5d3238ffe1167fe168016d718868d5cbe8c839295f9deae114",
+      "after_payload.json": "2ab9718a00700998b49683602e4546f8bafc0698f85703830356e463f7698ba6",
+      "before_metadata.json": "df78f59385b7de1393b47b8c95fb297d5892deff83c273cfe143e0114b30ab65",
+      "deposition_payload.json": "09673661cd043e1294b0b16d346dc1eb584d00d083339ed8db0ec813431a8062",
+      "rollback_expected_public.json": "2a9bf5ddd22eb4bf10f159484c5bea115a93c656d4f41f95850b32bf5783aa3e",
+      "rollback_payload.json": "2c80eeab57481dc1e0ea663063397e5f8c0a2a8c23077aaf1f6d06327db72c92"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20800757",
+    "doi": "10.5281/zenodo.20800757",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "b4bfab9a6566533051f486a48b60dc930f556eb3346e3609dbf370c422d71914",
+      "after_payload.json": "7d6eb8799b7ae3b05ed99c28a38932cd680b7aa88f97815d116977b92e375a45",
+      "before_metadata.json": "051ce3232d5cd8d76795f7bbf4796a16c556ed1d8e617d356e78f719a5ae9903",
+      "deposition_payload.json": "6ca2d3299f2298448d17f721383de8eaae7928360ab26bd74bbb9658f31a1ae6",
+      "rollback_expected_public.json": "a3f061424ec6299e1f5b03413a388564ee202a028acb551dab377c57894d3b61",
+      "rollback_payload.json": "b4dad75c13c66be89cb035288b9a5fcae9f0d927196c333c81e826b261610948"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/20838923",
+    "doi": "10.5281/zenodo.20838923",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "44ea4b18bbf85bfcf39da1de96a5ffde41b042c12f6c564f52c584970d57dc32",
+      "after_payload.json": "971d6d84706e377fb67807dc2ac594fcb04dc6b78c7dff47d346342167e1eee0",
+      "before_metadata.json": "bd1274dc9767b11d458269d2e08e967eda4ead3f21f156425248f9822b4ea69e",
+      "deposition_payload.json": "e3ecbf08bc70fedb4dfe0c370210ef4d7ae7b3c6f2eb74717d8771933dcd5694",
+      "rollback_expected_public.json": "2eed8c5cd250a18cdab714ec97381a5b7eb6df790b0eaf646495d77347982226",
+      "rollback_payload.json": "207ebeae0aabd3f2b4f9be1b434098bbd68c3486f985d0c24cd82fdff14a9d75"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21168212",
+    "doi": "10.5281/zenodo.21168212",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "5fee4c3f3f1ea2812f6a3351a272dfcceb8941ac7ecda0de2b59c0bd60ca5203",
+      "after_payload.json": "d9fe25be06f4afaee569969f632d7ccfcf633a25b8dd3e47f23f6b4f82f6d90d",
+      "before_metadata.json": "d535205ac04e2d0f27df8da50f2aa35afef88cbc2f43b5b31a6342a79d9aa0bf",
+      "deposition_payload.json": "8b861afdc26b682f795f855db390f4c379f79525198582164393b35eb8e7b0fc",
+      "rollback_expected_public.json": "f4c6ade964a22198c0d36fe74de94888506ff5bd660075e4ce5cea686d963aa5",
+      "rollback_payload.json": "cc9ca9bc3f9d289662be5fa3d979891193b7e9addbbf39a557f5820c13a2653f"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21168224",
+    "doi": "10.5281/zenodo.21168224",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "cfad9e0cee4dcd44d72386451213a77a2513ed45c9736bd73857c811d7f4ab00",
+      "after_payload.json": "98ca1b546bc66f6950061db902e09a9acd7490ef0d40d323c5a4775080ae0b1b",
+      "before_metadata.json": "321391505426b9a827c9489c5c73a7c4a6fba76d69f97b1cd09d3fbbd338a9dc",
+      "deposition_payload.json": "739bf718b7782c746794f31267e75c4a6cd3ce6c4673d124d5b322554215e94e",
+      "rollback_expected_public.json": "7a99aa0d10bb3874096b2c9258eebfb9a6e55bdc8328f21c6e47a6f046314a31",
+      "rollback_payload.json": "0a31276f3bb2827abf77d82957b337e281009c83e5dd59398695026619dd0cd7"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21168241",
+    "doi": "10.5281/zenodo.21168241",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "edc134d2f8b54bab06f98499551370476d1751a893d273da8d4d2fbc2df671ff",
+      "after_payload.json": "82a13cc31480e167e82f3335256900c47475399e68ccd26e427ea716dcf0b038",
+      "before_metadata.json": "dcea9e5dffcf497530f84c93dd6d55c0dd2cb7bdad45f22c2fa809c8fab5f2a1",
+      "deposition_payload.json": "5c7128a00ffb449d59fd87bde27f67e679ffb3119f2ba01771e7d6d454439c95",
+      "rollback_expected_public.json": "0301bd0dc6c3cf8653158999a8aef1773bbd617dc687c7e065ec2d38aa04aa9f",
+      "rollback_payload.json": "35e9ffcdab840db90c97e012d84842d64b6707f1a2c6955ecca434b87a9db459"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21223021",
+    "doi": "10.5281/zenodo.21223021",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "be36f844578f0761a6fa12429d1a4add1a3ad9e491efa098ec74da8891c23bee",
+      "after_payload.json": "5508da2605bb1ea11526f9d83d3a0905e58cd85431880d99f7a4ee8e19f243aa",
+      "before_metadata.json": "0661e979c71add23cd6e1c3f3cfe18e0827b8e667e768123528dfc9df0286fd8",
+      "deposition_payload.json": "8661f6f522d5a2c6acdfca107d2a476df926f6fff97ffbb013d8cc34d4264d7d",
+      "rollback_expected_public.json": "64605d67ab453e7d75e0ce6fffaec7151afbe36ced2e8f81dfc8eecbc1c1ba38",
+      "rollback_payload.json": "403931f24ddefc377e4e250d6dac535a5b1bc65cab5e9e7c283c1a376c870ddd"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21223160",
+    "doi": "10.5281/zenodo.21223160",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "57af825aabe04b8784a09d30075aac145bb3f2d3dc6e57f614645bd667335aef",
+      "after_payload.json": "718f748f34b1f709099ee2a43b8d81e05de419f14b7b13db6c44695b7e3e1074",
+      "before_metadata.json": "9d6890efaee3e85c33cc01100ba809f513c0350cd23bf0489a460b1071b8ab4b",
+      "deposition_payload.json": "406de1d80522cb2164c1aa4d77a249014c4bd2072f05be965a35b5e5a5124218",
+      "rollback_expected_public.json": "a2b8e0daae3dab6b04b10ce3f3c7d901f52db9175e35bcd58eb48796a36c9955",
+      "rollback_payload.json": "0b2c5025a860bbdeb28d7fabe2fbbe3104c41d11c319145491db22fc30159193"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21223204",
+    "doi": "10.5281/zenodo.21223204",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "2a65e95e92816102931983c1f2c13d56a9150ae50d8e82eb77c2decc7d7f293e",
+      "after_payload.json": "41ee06709b62a921c4c223608751c12941e4ca20ab0a9df626287f45036920b7",
+      "before_metadata.json": "7bc79f7b173e207a7ef1f72805bcd3773a504fea1577e92f46843fadab5a4d57",
+      "deposition_payload.json": "4a515be01963617700c4f63ae1119916fe69f60583b741de20eb57795ac5d905",
+      "rollback_expected_public.json": "e4c9c0b056320da5c52d3740bf220720cd798292eb22132a8852a703914b1c64",
+      "rollback_payload.json": "b5948cb81f28d792aae3a6301e31333a9052ca3b2723dc82a8fac103d565698c"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21223218",
+    "doi": "10.5281/zenodo.21223218",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "f752b67256aa1e6a47d0ddda87716864ac7ffb9751914d873bd08b7ddde7797c",
+      "after_payload.json": "288b084d5765235432067fa7b47b5f8947f95cd0a0de6e0aca8cf81f83f44085",
+      "before_metadata.json": "fddc809d118d7d5ba7aade8f5ef535f40c2998f76d5984403c2672068a678be9",
+      "deposition_payload.json": "2d90708fd6d57f59cd6b8f71312fcbc878df6b5a43324d48d762162348e17379",
+      "rollback_expected_public.json": "ad098eca8f922e9e850a75b78a29ea01b6d8f7a0ac99410bbd32e7802cefb7ca",
+      "rollback_payload.json": "eea034de52152d8b066b76bce0637be9b51ef865b1d0f24cde0e57b2c4e4faa6"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21223226",
+    "doi": "10.5281/zenodo.21223226",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "f721ed876243b79983694d8afa839efca040ef07afe40c9c8c3a2991bd4daa0f",
+      "after_payload.json": "15cac871aa03d34be8eb6925037a0de5c630d5e314d95a17573923def481a2cf",
+      "before_metadata.json": "183c19d5cecad12c5dbd5c2fef209b9e5b1f749eb6f0217406f20fed83865d11",
+      "deposition_payload.json": "8ff81ebfea800b1d4b196303167c7e3f98bcafa329cf6d07bddcd2524f7c289e",
+      "rollback_expected_public.json": "89fb2591e010d68d20c9d4b0aeff61450ebc5979a9d4722e95d8ab78df0b4083",
+      "rollback_payload.json": "0386594f6ee99ce80248834edc1b5812c174cb1ce0aab1de95f13d66f12bd4cc"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21223240",
+    "doi": "10.5281/zenodo.21223240",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "1f6609b72b3dad9a0d51e90ce556072288c96e450339581073ae21fa5489e1f9",
+      "after_payload.json": "57ea5a1df0f966bcc61eefaf4b6e7ffb2e2b6ccba3fee4bbce294b1e2be04105",
+      "before_metadata.json": "47599163cf06cdb50a70b3d3e8b77950493131928ece4c012412a4fc4e344c90",
+      "deposition_payload.json": "c69c8b1cb3693ca8442bbaaed624abd54212d94b29579b1c69519b4f09423f31",
+      "rollback_expected_public.json": "3defbb5bc79a0d6ad0eab782a90c582557ec07fbc6505b113ac2e76269b919d0",
+      "rollback_payload.json": "642af22a85defded7d1ed6e9c5aa9fd816db15cc7b7cf0ab0fa074ea7f1459a9"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21444226",
+    "doi": "10.5281/zenodo.21444226",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "3054a027aded7f72410f4df59dcbf281fab0a38ad4696753c236105d6c338568",
+      "after_payload.json": "49440b0aa7a4ee7bbb07345c936024539179f8dcf6e852ff44fed2e8a63bd29a",
+      "before_metadata.json": "d2edab11810de7ea6ceae23ffead05becf341b00ee2285f08aa439c46c159ec7",
+      "deposition_payload.json": "1740441be812ce891adae003979183f0a81fb9eb9cc56b252adf669adf89990f",
+      "rollback_expected_public.json": "012454c1e34bd46a6c995c45e183c617a0ce1423cc1174883cb7902f85b3a3a7",
+      "rollback_payload.json": "9c5c628b4d8aa1b1851afdf2dbaca666596bc5e03a48f3445f487e9444d7f525"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21609934",
+    "doi": "10.5281/zenodo.21609934",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "19d22ca0ffc1bf0d7c8f101f443747923b89a40856b02f1749290a4f312b0dcf",
+      "after_payload.json": "60fc8b8fa6ad63d4d3aa0d167b7ef18d81569721c471e7cbb340a3c5569d43b2",
+      "before_metadata.json": "a5b435b66a31af8b5a4b4eb557ce4d0dc329667e9dcb8c465ddde38662a2c959",
+      "deposition_payload.json": "69d45db23ce7424a84d031d40fefb7789029cdd449176df394e22e1b5481a404",
+      "rollback_expected_public.json": "96d8298bcb4386755f51004312615993ce38cfe1bc76a95e5ab2234d6dbdd706",
+      "rollback_payload.json": "4fc9c6786aed25cec0abd5c7ead67e78cdf6688ccc098654bf420cdbd6b87a02"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21609938",
+    "doi": "10.5281/zenodo.21609938",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "6868eed484a063f188437249355747de9de7a1d2819eba1dd31bfa0069f228d4",
+      "after_payload.json": "f1fa71ef61e41e0aaa4f73108f60550a7cd42da31dee3dfa27bcf38018d10340",
+      "before_metadata.json": "a583b143801789dd6f8c166e59c6b03296c3ca47b2254ed22f4361018d7c14fb",
+      "deposition_payload.json": "0157bf03d2782cded78610709d627b01e2839a95d41fdb4d0ac371b4c51d7352",
+      "rollback_expected_public.json": "20ae19126baa569f3887041bdf4bcd74980c3d5eeb2a1d61bd7bbbaa79115762",
+      "rollback_payload.json": "07546ec007cb3cc1030c1cd61ddd06d8e63e167e8263ce5d0037bc390266bf51"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21609942",
+    "doi": "10.5281/zenodo.21609942",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "ef1401da2959fd9aa4755d9344f4e4ce3a7d8c37d0527772180992a06fcafa20",
+      "after_payload.json": "e569df7ca92fadc1ab9ebd2d2c7d15e3ed4e33d486933b39d0ce053aaeaaddb2",
+      "before_metadata.json": "d6b552fdc8b741d5be7c0c4858ba3905221f56be962d5af78c1c8dffffca6db5",
+      "deposition_payload.json": "96320d1c3bb16c33a61b164763d2a0393eb108bddc8c6109c1070315f3dd0981",
+      "rollback_expected_public.json": "cba12aab2523723137a74370998340bc492573a258e34e21eba6d13b6be68bad",
+      "rollback_payload.json": "509595ec723ff1e6c659b811f75a772723f1bbd3e5ccc5384ea4283642aa112a"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21609945",
+    "doi": "10.5281/zenodo.21609945",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "649fd9913ab9a34b0abaab27c76b37853f1d437d2000c8269afdc5526f53095f",
+      "after_payload.json": "dae56632ea7ce2ace83a48c32a4e961922c9db3e9f7c4adf135dbbb58d99229d",
+      "before_metadata.json": "1257c350547a51f08c728de4ea42f2a4e470eaa06006cabad66223b96b0c2792",
+      "deposition_payload.json": "80eb3cc22afa690e3a9e7cfc1f89ec353d13bb3931718a4460779327628252f1",
+      "rollback_expected_public.json": "b79a90cc678432da59b6fa9ea0eabb43c584f3fb7d56747da514fdc6073cda5d",
+      "rollback_payload.json": "89dd9b015854d7fd6d7a364768bc4459823da2c580ecb8d2e63f6549cda8d537"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21609947",
+    "doi": "10.5281/zenodo.21609947",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "1fd2df0fd10ee8986be9ec9358d05f9f290b9cee6b21fd9ac3fb63d5f6d0e9b1",
+      "after_payload.json": "3d3b6d16f0932b5c7dc4238c6d60ed9242dd380c14f0a0991bcbb86f0907a4f0",
+      "before_metadata.json": "0cbc6bdc08e1f3fb8ba747c461453103e4d7484a3ac7d60e83cf3761dd8d35c2",
+      "deposition_payload.json": "39d14726a93ec0cd2e40aa9931037c660d963fe8547ca6ff8a359f7e4e64886e",
+      "rollback_expected_public.json": "247a04b3908876077cc8d98c91b2d5ad75737d6984c1ef1cc02c0819dd1435e3",
+      "rollback_payload.json": "67e0fbc67edd4de14fceff32ed8cd3e22c64e8b4ae8e5a6ac5b8714534ef36f4"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21609949",
+    "doi": "10.5281/zenodo.21609949",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "189a1f2a10f3b0a678c970ba3ce3aa55eae291a5ca368ac59b9721bf3051c521",
+      "after_payload.json": "eaea499479c7130e3f139c676566aca7e4d17a23c4419e228aae220f1625a66b",
+      "before_metadata.json": "c03b19895fe25ff214f0cbf19d6d23ce17923b2a0e5ccb378bcff90aaad6ea5f",
+      "deposition_payload.json": "fd4c9b8bff69bcf1a195bf71c28ff7a82a2027c638341ebb1bba7d3b94eaa736",
+      "rollback_expected_public.json": "e946f2d4b766d71b8731e6725d3ef2ad89fa4621d092c5711c4769f82e2c29a4",
+      "rollback_payload.json": "3a533a36595388908948e87301b6c27bc5d3ab2d4572d9f725e66093e1fa92d4"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21609952",
+    "doi": "10.5281/zenodo.21609952",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "882b23bd6716819d078317c29b06c6a05bf2e9ec846f4567fc64094f971855c6",
+      "after_payload.json": "bcb2de0ba261b08632e36d220823c3e536601a08817573d3806e460e7fd884d8",
+      "before_metadata.json": "b7e8e5c389baa1213eabf15552845d72d8af5a688fa6b846d502d658fa9b7b6c",
+      "deposition_payload.json": "ff9c2a4c8cd99e1b3d02e761b3fc6f5934aae09987c0b94f7f3c59b6287df8c4",
+      "rollback_expected_public.json": "28d8464e30fdd09b577cee34f7585c8f296563bdb57dad2f690b7c5739a9e226",
+      "rollback_payload.json": "8e5370cd758cc6d6f4bc23e022b50459df687cb64e6364104c94a9d59fa2c823"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21686447",
+    "doi": "10.5281/zenodo.21686447",
+    "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+    "sha256": {
+      "FIELD_DIFF.json": "316410d5a944367087750b9207f96d5dc802959d29c5e0b93c305083632e7641",
+      "after_payload.json": "b271c4524e0f1e4e56d1eaf29f42c622b529eaa9e3afdde60c3e9f917d13fbc0",
+      "before_metadata.json": "3d807f67a7fb91fdb32e8536b77ee44d7ba1f4696a8fcb30a096b350cfb48500",
+      "deposition_payload.json": "0138f82df94c784d7ef67c9204c63b6d947c42c895d80f9b8855ff792d7ecdf1",
+      "rollback_expected_public.json": "7819df97f08e563f899a4354989622a4c074e7f7c9957b780ffeae1558bf75ca",
+      "rollback_payload.json": "919c163701fa44225133d4f42194b7f7db86b3834f0a5bbe27032ace461d67e0"
+    },
+    "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21968301",
+    "doi": "10.5281/zenodo.21968301",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "6bbc1bd53ede7539b2d71037246eaa492893027ada1b423744c6a8424a9e898c",
+      "after_payload.json": "b4b770d76062398decd8182f21ad415a475ec31bab39385607b04b755949ef36",
+      "before_metadata.json": "5539e853bb648e5ee55990d9ddb7247c2605a2f43716434554795f843d051942",
+      "deposition_payload.json": "a9814179a5a9f9c2837b51214fb6f981b6594e78ae1b0fd898f4bbc2076e3142",
+      "rollback_expected_public.json": "b4b770d76062398decd8182f21ad415a475ec31bab39385607b04b755949ef36",
+      "rollback_payload.json": "a9814179a5a9f9c2837b51214fb6f981b6594e78ae1b0fd898f4bbc2076e3142"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21968331",
+    "doi": "10.5281/zenodo.21968331",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "ba148f3fdbc9316e8f925cc8e4e917e63079271c27fc83e1345f30b3becb5270",
+      "after_payload.json": "72253aa7b09128ea696c6211443ef9dd16aa7726827d2e74ed6262e4b9890990",
+      "before_metadata.json": "31abf5da2d3d074affe6437b129102655a908292b9ac8eb9ac01b8ca8eda60ff",
+      "deposition_payload.json": "2be3813ecec9bb0d5552da90368cf967148b65ffb611755ed44a40f7f08b3a59",
+      "rollback_expected_public.json": "72253aa7b09128ea696c6211443ef9dd16aa7726827d2e74ed6262e4b9890990",
+      "rollback_payload.json": "2be3813ecec9bb0d5552da90368cf967148b65ffb611755ed44a40f7f08b3a59"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21968337",
+    "doi": "10.5281/zenodo.21968337",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "73064abe465141909074db18af3b47d0cc6c33062adc00a42d38f40f8ad2ffc4",
+      "after_payload.json": "83451dbc96ddeabb34a09a526d510c9c12e3fc0b56c63c8a4f95e918a5516ffb",
+      "before_metadata.json": "fc9fbd10d087da4429a1c5b7f42f6ab1bafa14c83258103a1b8cff1b960692e6",
+      "deposition_payload.json": "7c142c7b276fe0adbbcbcf3b3bef68adf3bbb31e6cc39a92d940d461d6eefb16",
+      "rollback_expected_public.json": "83451dbc96ddeabb34a09a526d510c9c12e3fc0b56c63c8a4f95e918a5516ffb",
+      "rollback_payload.json": "7c142c7b276fe0adbbcbcf3b3bef68adf3bbb31e6cc39a92d940d461d6eefb16"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21968347",
+    "doi": "10.5281/zenodo.21968347",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "bc65817a4ff2b73213bb6ff716c961dbd45b7ed35811b395b6fa2f3796da5372",
+      "after_payload.json": "9570524486ffd15c6ce946578460d35d1507a0e8071565a7ca951f95a5d6eba2",
+      "before_metadata.json": "5fc2261c7c5e5761a70bd4cbb4944910693b95f427f73b7f62e9256b3ffb48d1",
+      "deposition_payload.json": "4fee76e10fecfa4ceb7cac5bb5f1b3ce947f1a0615e3f93217576b59d4e4ec24",
+      "rollback_expected_public.json": "9570524486ffd15c6ce946578460d35d1507a0e8071565a7ca951f95a5d6eba2",
+      "rollback_payload.json": "4fee76e10fecfa4ceb7cac5bb5f1b3ce947f1a0615e3f93217576b59d4e4ec24"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21968361",
+    "doi": "10.5281/zenodo.21968361",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "68eaca9d54c95a0892862d9c12a94385c0aa2a68eaed98ae584c36053acdbc1c",
+      "after_payload.json": "1d3336e32c3bb28310b94a02204494315d44272cbc6eaafe9ae6a85c9f2b0fdb",
+      "before_metadata.json": "af3bafde46de3488ec6789f98f91173362e11bc02b0ce21004e1d04cc02a7b2a",
+      "deposition_payload.json": "96e366f1c1c25c8a0e6e261beaf7c43465a2fe2df6bdbd304646f42b860c3eaf",
+      "rollback_expected_public.json": "1d3336e32c3bb28310b94a02204494315d44272cbc6eaafe9ae6a85c9f2b0fdb",
+      "rollback_payload.json": "96e366f1c1c25c8a0e6e261beaf7c43465a2fe2df6bdbd304646f42b860c3eaf"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21968383",
+    "doi": "10.5281/zenodo.21968383",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "9f2325b1d835f4705c4571047f8a8b48bb3122be15e16a1033e0c828d962cc7d",
+      "after_payload.json": "036072ee708c15c304c83f56382f481a669659ec53dac1708fc6b6b168a63efd",
+      "before_metadata.json": "24b10b454e4275da4667b34127f33fca611a34fe7ce6e49217a14d709f06e2c9",
+      "deposition_payload.json": "d92d8d3607c822537a8880b77657e82b1775c3d25007dc74c58db3f84749657e",
+      "rollback_expected_public.json": "036072ee708c15c304c83f56382f481a669659ec53dac1708fc6b6b168a63efd",
+      "rollback_payload.json": "d92d8d3607c822537a8880b77657e82b1775c3d25007dc74c58db3f84749657e"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21968480",
+    "doi": "10.5281/zenodo.21968480",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "f26b4fa3b1188b41db8e85f2266a908fc5a69a1b66a33f78ddfb90e9ee570cab",
+      "after_payload.json": "b47ba18f827e72d0f5074079d869bff85f6feb9d025efe1af6aa891d3f7c5faf",
+      "before_metadata.json": "b9d9e526f2c053acb1567e0e722d31d215f85415de7f2c26426f2d81e4de7064",
+      "deposition_payload.json": "3f0380d4aee867b5ea626ef2473c24adcc3e1e9e539d4f523a6a7c1f54598add",
+      "rollback_expected_public.json": "b47ba18f827e72d0f5074079d869bff85f6feb9d025efe1af6aa891d3f7c5faf",
+      "rollback_payload.json": "3f0380d4aee867b5ea626ef2473c24adcc3e1e9e539d4f523a6a7c1f54598add"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21971041",
+    "doi": "10.5281/zenodo.21971041",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "3f14c054a39f3322fa555281c73d6be5e4f630e832bec819c75104a3293e9550",
+      "after_payload.json": "fea0cb80675cd88c4c84a49e3e27051a5d0f18dc1abce2ed48d1663da4dce652",
+      "before_metadata.json": "3f8683b196c9a793d6f46d5d39e94a9612a0f542e4ac6d9e07abf34640860bb0",
+      "deposition_payload.json": "e6aad5f78e0c2d242ee827073b79b563063d6e58595dde7325b304aadfc09407",
+      "rollback_expected_public.json": "fea0cb80675cd88c4c84a49e3e27051a5d0f18dc1abce2ed48d1663da4dce652",
+      "rollback_payload.json": "e6aad5f78e0c2d242ee827073b79b563063d6e58595dde7325b304aadfc09407"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21971042",
+    "doi": "10.5281/zenodo.21971042",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "ee6b78fc1fd78f0fd50ea7744b51504c4583573058a7acd2f24866eaa8d30963",
+      "after_payload.json": "45658478fbc7a27047a8f2e75421219d1bc0aa2814a292f66e55ea6f2319d769",
+      "before_metadata.json": "80175fcff28d6f313f2bf95d800943d5ed379fa870fe97b9eab04fcc5d40ce9f",
+      "deposition_payload.json": "3e886e8c5325e8390d7b211c2787819c30bdcbbd848010f6bc8cd67b9e4e0067",
+      "rollback_expected_public.json": "45658478fbc7a27047a8f2e75421219d1bc0aa2814a292f66e55ea6f2319d769",
+      "rollback_payload.json": "3e886e8c5325e8390d7b211c2787819c30bdcbbd848010f6bc8cd67b9e4e0067"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21971043",
+    "doi": "10.5281/zenodo.21971043",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "95eb7a3992f13e27d422711e996fcfc9cc08324ea4a3a83119b247d42d863028",
+      "after_payload.json": "485a655cec4c5d83334b36a183fc640f5cfb2cc48ba27027bd9d81361b60010d",
+      "before_metadata.json": "0e1f1cf95d479ebc10b52676a7eaf188a50287342fb4cc24229a72285ff318fa",
+      "deposition_payload.json": "4a05fcdeee3040b85e80ed316208753674d64d0d4e7850157f8503079b40af31",
+      "rollback_expected_public.json": "485a655cec4c5d83334b36a183fc640f5cfb2cc48ba27027bd9d81361b60010d",
+      "rollback_payload.json": "4a05fcdeee3040b85e80ed316208753674d64d0d4e7850157f8503079b40af31"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21971046",
+    "doi": "10.5281/zenodo.21971046",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "31c423ebff7bc27393860151913577affb874df0514ce61f0808a3b128a65c8b",
+      "after_payload.json": "1c56b2d270eeb439904dab3b3c68130af87ef8ca15c335b7b0b29e4be405d09a",
+      "before_metadata.json": "1e5a37ef2bc63ff581d9e290375d32f60818136a6718c58a3dea52647052736c",
+      "deposition_payload.json": "7da88acdefe72be4e42bfdd0793876567c12620226732546ad1b254dd132ceb8",
+      "rollback_expected_public.json": "1c56b2d270eeb439904dab3b3c68130af87ef8ca15c335b7b0b29e4be405d09a",
+      "rollback_payload.json": "7da88acdefe72be4e42bfdd0793876567c12620226732546ad1b254dd132ceb8"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21971047",
+    "doi": "10.5281/zenodo.21971047",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "b7d12b5acb7e57ba369a69efb511ff1786fe5cd2f7afb4bc45cded0e39c21a6c",
+      "after_payload.json": "c54acfc7d2dbbd191a94e68538ad8d56e63b39f08c8f0b88a992225f68fabcca",
+      "before_metadata.json": "8fefc35a4aa0c13ac27a7da003162bee9485d7fc40b368cb111ff729a4dcedb9",
+      "deposition_payload.json": "18f62f1840cb135259c02d361837d5ec37f9ce68c225db264ec4350ed0320aea",
+      "rollback_expected_public.json": "c54acfc7d2dbbd191a94e68538ad8d56e63b39f08c8f0b88a992225f68fabcca",
+      "rollback_payload.json": "18f62f1840cb135259c02d361837d5ec37f9ce68c225db264ec4350ed0320aea"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21971052",
+    "doi": "10.5281/zenodo.21971052",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "6888b6868943474645b846451e3bf89b75f8878fac2f466144e1a0e87e9115d8",
+      "after_payload.json": "10dccf2c23a0a3e0ca57f79b04bfb9241819b71a94ab9a3247a9fa08d72927ab",
+      "before_metadata.json": "09698ba0a5e4d59b2e9ac034ccd3a8bec665f6461c6b13128b2521373f61fb02",
+      "deposition_payload.json": "9985fbf7f16b5bf0adf1fbb9e96edcd66199bddc76fca531c1df849d54e98df3",
+      "rollback_expected_public.json": "10dccf2c23a0a3e0ca57f79b04bfb9241819b71a94ab9a3247a9fa08d72927ab",
+      "rollback_payload.json": "9985fbf7f16b5bf0adf1fbb9e96edcd66199bddc76fca531c1df849d54e98df3"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "directory": "write-plan/21971057",
+    "doi": "10.5281/zenodo.21971057",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "5b4bd61c6bb1fad5e990b12992f1e7f34a8d2881d5b5b64ed03f713e67ebd086",
+      "after_payload.json": "6fcc65d559b89b6bb363c2290ae75dd72db7ffcd9a2a9de3f13927ddae6bb8d9",
+      "before_metadata.json": "f0885bc56e6cc2abab8ec7c628b0d22aecfc49691b22b365a1faedb0f18e301f",
+      "deposition_payload.json": "0f4b6eac04676a5bcc7f59941dd565890dbdb5d4e0037766ef05ae70db576d09",
+      "rollback_expected_public.json": "6fcc65d559b89b6bb363c2290ae75dd72db7ffcd9a2a9de3f13927ddae6bb8d9",
+      "rollback_payload.json": "0f4b6eac04676a5bcc7f59941dd565890dbdb5d4e0037766ef05ae70db576d09"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "directory": "write-plan/22236427",
+    "doi": "10.5281/zenodo.22236427",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "9b100675832dc757b0bba7c80983efc8e9e1eeac3a03fcc172ba5875121729b2",
+      "after_payload.json": "b7417e95d306285a5fc7d525d7579c0bd93fd9647c17d6bc57c5e29f073ea559",
+      "before_metadata.json": "41b255391e6566e7467c9489f36e8c30b63fee4915f4d6f000ba3135710a555d",
+      "deposition_payload.json": "18dfd211598b08a535d5facebf9a2ce458fefb767d40a7f701c42f2d231521e3",
+      "rollback_expected_public.json": "b7417e95d306285a5fc7d525d7579c0bd93fd9647c17d6bc57c5e29f073ea559",
+      "rollback_payload.json": "18dfd211598b08a535d5facebf9a2ce458fefb767d40a7f701c42f2d231521e3"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  },
+  {
+    "directory": "write-plan/22236496",
+    "doi": "10.5281/zenodo.22236496",
+    "operation": "NEW_VERSION",
+    "sha256": {
+      "FIELD_DIFF.json": "7f819473171f5c95029272ce4978bf1ddb0d3cfdadbdc5b8b89073fae446e8f2",
+      "after_payload.json": "0e491ba6f36a69b4592122233802d57f911bc20779033d467295f5d9b5932609",
+      "before_metadata.json": "73b2d6ec905c7753a1f3cd8e37f594de4446f3c5e0eed1022ff356a12f97d496",
+      "deposition_payload.json": "494726d5cfc6ca23a898007c0ffca103ffdccc567be46afce67f7de02946031d",
+      "rollback_expected_public.json": "0e491ba6f36a69b4592122233802d57f911bc20779033d467295f5d9b5932609",
+      "rollback_payload.json": "494726d5cfc6ca23a898007c0ffca103ffdccc567be46afce67f7de02946031d"
+    },
+    "status": "HOLD_PUBLICATION_BINDING_REQUIRED"
+  }
+]

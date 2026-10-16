@@ -1,0 +1,330 @@
+[
+  {
+    "after_expected_public": "open",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "open",
+    "deposition_wire": "open",
+    "field": "access_right",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    "before": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "viridis-canon"
+      }
+    ],
+    "field": "communities",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "field": "creators",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p>The Intelligence Bound (IB) master inequality dI/dt &lt;= P*D/(kB T ln 2) governs the rate at which any open thermodynamic system can accumulate Shannon information. Prior Viridis canon established five disjoint IB-saturation conditions, each pinned to a separate physical mechanism: Fisher-extremal observation channels (GIB), rank-1 Lindbladian dynamics (SSCT), Heisenberg-saturating measurement (SMT), maximal Gaian purity (KSCT), and the full mutualistic learner-environment cross-term (MELT). Whether these conditions are independent has been an open question. This paper proves the Thermodynamic Slack Decomposition Theorem (TSDT): the IB slack epsilon := P*D/(kB T ln 2) - dI/dt decomposes uniquely and additively into five non-negative, pairwise Fisher-Rao-orthogonal components -- epsilon = epsilon_geom + epsilon_rank + epsilon_meas + epsilon_decoh + epsilon_mut -- each a thermodynamic functional in closed form. The Five-Saturation Corollary characterises IB-saturating stewardship systems by the simultaneous vanishing of all five components. The paper presents three corollaries (independence, pricing, D-Score normalisation), four testable predictions, and a regulatory and financial productisation stack. TSDT is the foundational decomposition on which the symplectic-conjugation theorem of the companion paper PSIT (Planetary Symbiotic Intelligence, Run 035) is built. Part of the Viridis research canon (concept DOI 10.5281/zenodo.19317982).</p>",
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": "<p>The Intelligence Bound (IB) master inequality dI/dt &lt;= P*D/(kB T ln 2) governs the rate at which any open thermodynamic system can accumulate Shannon information. Prior Viridis canon established five disjoint IB-saturation conditions, each pinned to a separate physical mechanism: Fisher-extremal observation channels (GIB), rank-1 Lindbladian dynamics (SSCT), Heisenberg-saturating measurement (SMT), maximal Gaian purity (KSCT), and the full mutualistic learner-environment cross-term (MELT). Whether these conditions are independent has been an open question. This paper proves the Thermodynamic Slack Decomposition Theorem (TSDT): the IB slack epsilon := P*D/(kB T ln 2) - dI/dt decomposes uniquely and additively into five non-negative, pairwise Fisher-Rao-orthogonal components -- epsilon = epsilon_geom + epsilon_rank + epsilon_meas + epsilon_decoh + epsilon_mut -- each a thermodynamic functional in closed form. The Five-Saturation Corollary characterises IB-saturating stewardship systems by the simultaneous vanishing of all five components. The paper presents three corollaries (independence, pricing, D-Score normalisation), four testable predictions, and a regulatory and financial productisation stack. TSDT is the foundational decomposition on which the symplectic-conjugation theorem of the companion paper PSIT (Planetary Symbiotic Intelligence, Run 035) is built. Part of the Viridis research canon (concept DOI 10.5281/zenodo.19317982).</p>",
+    "deposition_wire": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p>The Intelligence Bound (IB) master inequality dI/dt &lt;= P*D/(kB T ln 2) governs the rate at which any open thermodynamic system can accumulate Shannon information. Prior Viridis canon established five disjoint IB-saturation conditions, each pinned to a separate physical mechanism: Fisher-extremal observation channels (GIB), rank-1 Lindbladian dynamics (SSCT), Heisenberg-saturating measurement (SMT), maximal Gaian purity (KSCT), and the full mutualistic learner-environment cross-term (MELT). Whether these conditions are independent has been an open question. This paper proves the Thermodynamic Slack Decomposition Theorem (TSDT): the IB slack epsilon := P*D/(kB T ln 2) - dI/dt decomposes uniquely and additively into five non-negative, pairwise Fisher-Rao-orthogonal components -- epsilon = epsilon_geom + epsilon_rank + epsilon_meas + epsilon_decoh + epsilon_mut -- each a thermodynamic functional in closed form. The Five-Saturation Corollary characterises IB-saturating stewardship systems by the simultaneous vanishing of all five components. The paper presents three corollaries (independence, pricing, D-Score normalisation), four testable predictions, and a regulatory and financial productisation stack. TSDT is the foundational decomposition on which the symplectic-conjugation theorem of the companion paper PSIT (Planetary Symbiotic Intelligence, Run 035) is built. Part of the Viridis research canon (concept DOI 10.5281/zenodo.19317982).</p>",
+    "field": "description",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": "10.5281/zenodo.20320324",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "10.5281/zenodo.20320324",
+    "deposition_wire": "10.5281/zenodo.20320324",
+    "field": "doi",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": [
+      "Intelligence Bound",
+      "thermodynamic slack decomposition",
+      "entropy production",
+      "Fisher information",
+      "Landauer bound",
+      "planetary stewardship",
+      "uncertified"
+    ],
+    "assessment": {
+      "classification": "AUTHORIZED_DESCRIPTION_KEYWORDS_ONLY"
+    },
+    "before": [
+      "Intelligence Bound",
+      "thermodynamic slack decomposition",
+      "entropy production",
+      "Fisher information",
+      "Landauer bound",
+      "planetary stewardship"
+    ],
+    "deposition_wire": [
+      "Intelligence Bound",
+      "thermodynamic slack decomposition",
+      "entropy production",
+      "Fisher information",
+      "Landauer bound",
+      "planetary stewardship",
+      "uncertified"
+    ],
+    "field": "keywords",
+    "logical_change": true,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "id": "cc-by-4.0"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    "before": {
+      "id": "cc-by-4.0"
+    },
+    "deposition_wire": "cc-by-4.0",
+    "field": "license",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "2026-05-21",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "2026-05-21",
+    "deposition_wire": "2026-05-21",
+    "field": "publication_date",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": null,
+    "assessment": {
+      "classification": "DOCUMENTED_RESOURCE_TYPE_TRANSPORT_FIELD"
+    },
+    "before": null,
+    "deposition_wire": "preprint",
+    "field": "publication_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isPartOf",
+        "resource_type": "publication",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20100595",
+        "relation": "isDerivedFrom",
+        "resource_type": "publication",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20399676",
+        "relation": "cites",
+        "resource_type": "publication",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20412507",
+        "relation": "isCitedBy",
+        "resource_type": "software",
+        "scheme": "doi"
+      }
+    ],
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isPartOf",
+        "resource_type": "publication",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20100595",
+        "relation": "isDerivedFrom",
+        "resource_type": "publication",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20399676",
+        "relation": "cites",
+        "resource_type": "publication",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20412507",
+        "relation": "isCitedBy",
+        "resource_type": "software",
+        "scheme": "doi"
+      }
+    ],
+    "deposition_wire": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isPartOf",
+        "resource_type": "publication",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20100595",
+        "relation": "isDerivedFrom",
+        "resource_type": "publication",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20399676",
+        "relation": "cites",
+        "resource_type": "publication",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20412507",
+        "relation": "isCitedBy",
+        "resource_type": "software",
+        "scheme": "doi"
+      }
+    ],
+    "field": "related_identifiers",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20320323"
+          }
+        }
+      ]
+    },
+    "assessment": {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    },
+    "before": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20320323"
+          }
+        }
+      ]
+    },
+    "deposition_wire": null,
+    "field": "relations",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "assessment": {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    "before": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "deposition_wire": null,
+    "field": "resource_type",
+    "logical_change": false,
+    "transport_change": true
+  },
+  {
+    "after_expected_public": "Thermodynamic Slack Decomposition of the Intelligence Bound: A Five-Component Additive Accounting of Geometric, Computational, Measurement, Decoherence, and Mutualistic Inefficiency",
+    "assessment": {
+      "classification": "EXACT_PRESERVATION"
+    },
+    "before": "Thermodynamic Slack Decomposition of the Intelligence Bound: A Five-Component Additive Accounting of Geometric, Computational, Measurement, Decoherence, and Mutualistic Inefficiency",
+    "deposition_wire": "Thermodynamic Slack Decomposition of the Intelligence Bound: A Five-Component Additive Accounting of Geometric, Computational, Measurement, Decoherence, and Mutualistic Inefficiency",
+    "field": "title",
+    "logical_change": false,
+    "transport_change": false
+  },
+  {
+    "after_expected_public": null,
+    "assessment": {
+      "classification": "DOCUMENTED_RESOURCE_TYPE_TRANSPORT_FIELD"
+    },
+    "before": null,
+    "deposition_wire": "publication",
+    "field": "upload_type",
+    "logical_change": false,
+    "transport_change": true
+  }
+]

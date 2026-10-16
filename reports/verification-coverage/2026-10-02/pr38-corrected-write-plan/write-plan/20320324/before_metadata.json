@@ -1,0 +1,73 @@
+{
+  "access_right": "open",
+  "communities": [
+    {
+      "id": "viridis-canon"
+    }
+  ],
+  "creators": [
+    {
+      "affiliation": "Viridis LLC",
+      "name": "Hart, Justin D.",
+      "orcid": "0009-0008-3082-2482"
+    }
+  ],
+  "description": "<p>The Intelligence Bound (IB) master inequality dI/dt &lt;= P*D/(kB T ln 2) governs the rate at which any open thermodynamic system can accumulate Shannon information. Prior Viridis canon established five disjoint IB-saturation conditions, each pinned to a separate physical mechanism: Fisher-extremal observation channels (GIB), rank-1 Lindbladian dynamics (SSCT), Heisenberg-saturating measurement (SMT), maximal Gaian purity (KSCT), and the full mutualistic learner-environment cross-term (MELT). Whether these conditions are independent has been an open question. This paper proves the Thermodynamic Slack Decomposition Theorem (TSDT): the IB slack epsilon := P*D/(kB T ln 2) - dI/dt decomposes uniquely and additively into five non-negative, pairwise Fisher-Rao-orthogonal components -- epsilon = epsilon_geom + epsilon_rank + epsilon_meas + epsilon_decoh + epsilon_mut -- each a thermodynamic functional in closed form. The Five-Saturation Corollary characterises IB-saturating stewardship systems by the simultaneous vanishing of all five components. The paper presents three corollaries (independence, pricing, D-Score normalisation), four testable predictions, and a regulatory and financial productisation stack. TSDT is the foundational decomposition on which the symplectic-conjugation theorem of the companion paper PSIT (Planetary Symbiotic Intelligence, Run 035) is built. Part of the Viridis research canon (concept DOI 10.5281/zenodo.19317982).</p>",
+  "doi": "10.5281/zenodo.20320324",
+  "keywords": [
+    "Intelligence Bound",
+    "thermodynamic slack decomposition",
+    "entropy production",
+    "Fisher information",
+    "Landauer bound",
+    "planetary stewardship"
+  ],
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "publication_date": "2026-05-21",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.19317982",
+      "relation": "isPartOf",
+      "resource_type": "publication",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.20100595",
+      "relation": "isDerivedFrom",
+      "resource_type": "publication",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.20399676",
+      "relation": "cites",
+      "resource_type": "publication",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.20412507",
+      "relation": "isCitedBy",
+      "resource_type": "software",
+      "scheme": "doi"
+    }
+  ],
+  "relations": {
+    "version": [
+      {
+        "index": 0,
+        "is_last": true,
+        "parent": {
+          "pid_type": "recid",
+          "pid_value": "20320323"
+        }
+      }
+    ]
+  },
+  "resource_type": {
+    "subtype": "preprint",
+    "title": "Preprint",
+    "type": "publication"
+  },
+  "title": "Thermodynamic Slack Decomposition of the Intelligence Bound: A Five-Component Additive Accounting of Geometric, Computational, Measurement, Decoherence, and Mutualistic Inefficiency"
+}

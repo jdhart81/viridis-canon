@@ -1,0 +1,225 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "contributors": [
+      {
+        "affiliation": null,
+        "name": "Aristotle (Harmonic)",
+        "type": "Other"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p>Three machine-checked Lean 4 theorems on connectivity-weighted conservation budgeting, derived as an application of the Viridis Intelligence Bound (dI/dt &le; P&middot;D/(k_B T ln 2)). <strong>equimarginal_of_optimal</strong> (KKT/equimarginal first-order optimality), <strong>strictConcave_unique_max</strong> (uniqueness of the maximizer under strict concavity), and <strong>linear_regime_corner</strong> (linear-yield regime forces a full-enrollment corner optimum). Verified by the Aristotle (Harmonic) automated proving system: zero <code>sorry</code>; axiom audit limited to {propext, Classical.choice, Quot.sound}; Lean toolchain v4.28.0; Mathlib pin 8f9d9cff. Aristotle project 452756cd-9b51-4bb7-9c43-e6b7365d2457. The proofs certify the validity of the reasoning, not empirical magnitudes. Part of the Viridis canon; concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>.</p>",
+    "doi": "10.5281/zenodo.20632180",
+    "keywords": [
+      "Lean 4",
+      "formal verification",
+      "intelligence bound",
+      "conservation finance",
+      "equimarginal allocation",
+      "KKT",
+      "Aristotle Harmonic",
+      "Mathlib",
+      "Viridis",
+      "uncertified"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "apache2.0"
+    },
+    "publication_date": "2026-06-10",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20632179"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "title": "Software",
+      "type": "software"
+    },
+    "title": "The Stewardship Allocation Theorem (SAT): An Aristotle-Verified Lean 4 Module"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "Read actual authenticated deposition base and validate exact record identity; not executed",
+      "url": "https://zenodo.org/api/deposit/depositions/20632180"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20632180/actions/edit"
+    },
+    {
+      "execution": "UNAUTHORIZED_PLAN_ONLY; revalidate against authenticated deposition base and approve resolved exact hash",
+      "method": "PUT",
+      "payload_file": "deposition_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/20632180"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20632180/actions/publish"
+    },
+    {
+      "method": "GET",
+      "required_assertions": [
+        "title == before.title",
+        "doi == before.doi",
+        "relations == before.relations",
+        "all other fields except description/keywords semantically exact, including original license/resource_type/custom/alternate_identifiers"
+      ],
+      "url": "https://zenodo.org/api/records/20632180"
+    }
+  ],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "contributors": [
+      {
+        "affiliation": null,
+        "name": "Aristotle (Harmonic)",
+        "type": "Other"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p>Three machine-checked Lean 4 theorems on connectivity-weighted conservation budgeting, derived as an application of the Viridis Intelligence Bound (dI/dt &le; P&middot;D/(k_B T ln 2)). <strong>equimarginal_of_optimal</strong> (KKT/equimarginal first-order optimality), <strong>strictConcave_unique_max</strong> (uniqueness of the maximizer under strict concavity), and <strong>linear_regime_corner</strong> (linear-yield regime forces a full-enrollment corner optimum). Verified by the Aristotle (Harmonic) automated proving system: zero <code>sorry</code>; axiom audit limited to {propext, Classical.choice, Quot.sound}; Lean toolchain v4.28.0; Mathlib pin 8f9d9cff. Aristotle project 452756cd-9b51-4bb7-9c43-e6b7365d2457. The proofs certify the validity of the reasoning, not empirical magnitudes. Part of the Viridis canon; concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>.</p>",
+    "doi": "10.5281/zenodo.20632180",
+    "keywords": [
+      "Lean 4",
+      "formal verification",
+      "intelligence bound",
+      "conservation finance",
+      "equimarginal allocation",
+      "KKT",
+      "Aristotle Harmonic",
+      "Mathlib",
+      "Viridis"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "apache2.0"
+    },
+    "publication_date": "2026-06-10",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20632179"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "title": "Software",
+      "type": "software"
+    },
+    "title": "The Stewardship Allocation Theorem (SAT): An Aristotle-Verified Lean 4 Module"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:30.750477+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "concept_id": "20632179",
+  "doi": "10.5281/zenodo.20632180",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "latest_observed_record_id": null,
+  "mode": "DRY_RUN_ONLY",
+  "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "6fba34b5a3c6026783d3983c6e77c72b653ff0a1e1e87699ee3f0288307f5642",
+    "after_payload.json": "3058ce519fa67e60574b581fc66472072708f6d1e49cc2e12a9d2d5dd64b3578",
+    "before_metadata.json": "5b6ec77ada48b84f4e7229c2c830555426b719fb0cbb020ccc8ca318d0a2182c",
+    "deposition_payload.json": "6e58aafcdd223a05f8cbd7c9c6b5f40c7d360fed3dd02c8855dc1867eafd6ce5",
+    "rollback_expected_public.json": "ad717f9359b872bd378a699786b3f537c7ae25f57f1a741084066e688bdfd426",
+    "rollback_payload.json": "2935c5fd778779a342097ad070c7b37d89c4874cfcaf9653db3dac40d65454c8"
+  },
+  "preconditions": [
+    "Justin approves these exact immutable titles and exact payload SHA256 values",
+    "Complete sandbox edit -> PUT -> publish and one newversion readback",
+    "Authenticated production GET must map this exact DOI and provide the actual deposition metadata base",
+    "Merge only description/keywords into the authenticated base; server version graph, DOI, license and all other public fields must survive readback",
+    "Reject any unjustified field conversion, error, timeout, conflict or unknown outcome; do not publish or retry blindly",
+    "Server version graph preservation requires sandbox and authenticated deposition readback"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "20632180",
+  "rollback": "Before republish: separately approved POST https://zenodo.org/api/deposit/depositions/20632180/actions/discard. After republish: separately approved edit -> PUT the rollback deposition projection based on authenticated metadata -> publish; verify original public metadata and unchanged files. Exact prior metadata and rollback hashes remain in this row. No production rollback was executed.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

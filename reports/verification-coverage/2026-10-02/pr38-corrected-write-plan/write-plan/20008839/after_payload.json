@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p>Machine-verified Lean 4 / Mathlib proofs for the thermodynamic analysis of plasma-mediated atmospheric nitrogen fixation (Hart 2026). 38 theorems, lemmas, corollaries, and system invariants. Zero sorry statements. Axioms: propext, Classical.choice, Quot.sound. Part of the Viridis Applied Proofs Series, supplementing the Intelligence Bound foundational canon (DOI: 10.5281/zenodo.20006414). Formal verification performed by Aristotle (Harmonic), project ID 7fc5f57e-1abb-4126-80fd-86daf035063e. Notable finding: verification uncovered a minor unit-conversion inconsistency in Theorem 4 (T4) of the paper, with all downstream arithmetic internally consistent.",
+    "doi": "10.5281/zenodo.20008839",
+    "keywords": [
+      "formal verification",
+      "Lean 4",
+      "Mathlib",
+      "Aristotle Harmonic",
+      "plasma chemistry",
+      "nitrogen fixation",
+      "thermodynamics",
+      "Haber-Bosch alternative",
+      "energy efficiency",
+      "atmospheric N2",
+      "Viridis canon",
+      "machine-checked proof",
+      "P7 module",
+      "sustainable agriculture",
+      "green chemistry",
+      "uncertified"
+    ],
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "publication_date": "2026-05-03",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20008838"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "title": "Software",
+      "type": "software"
+    },
+    "title": "Formal Verification of Plasma-Mediated N₂ Fixation — Viridis Applied Proofs Series 1"
+  }
+}

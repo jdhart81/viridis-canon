@@ -1,0 +1,247 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p>Companion manuscript submitted to <em>Physical Review E</em> (Regular Article, interdisciplinary physics section). The paper applies stochastic thermodynamics and information theory to a question usually treated outside physics: the structure of goal-directed human-AI dialogue.</p>\n\n<p>Building on the Intelligence Bound master inequality (Hart 2025) — which establishes that learning systems are data-limited, sitting 10^11 to 10^16 below the Landauer ceiling — the manuscript models dialogue as <em>adaptive co-measurement</em> and derives three results:</p>\n\n<ol>\n<li><strong>Adaptive questioning is a richness pump.</strong> By holding per-sample mutual information near its maximum, an inquiring agent raises the binding \"rho dot B\" term of the Intelligence Bound, pulling effective dI/dt closer to the thermodynamic ceiling than passive observation can.</li>\n<li><strong>Goal-directedness composes additively.</strong> The information-yield of a dialogue decomposes into geometric, computational, measurement, decoherence, and mutualistic terms — the same five-component slack accounting derived for the underlying Intelligence Bound (Hart 2026, Zenodo 20320324).</li>\n<li><strong>The Wavefunction analogy is mathematical, not metaphysical.</strong> The paper uses Hilbert-space formalism strictly as a tool for tracking superposed hypotheses under adaptive measurement; no claim depends on quantum mechanics or on a quantum description of cognition.</li>\n</ol>\n\n<p><strong>Files.</strong> <code>co-measurement.pdf</code> (manuscript), <code>co-measurement.tex</code> (LaTeX source, standard article class — APS RevTeX 4.2 port planned for final submission), <code>co-measurement-algorithms.pdf</code> + <code>.tex</code> (algorithmic supplement), <code>cover-letter.pdf</code> + <code>.md</code> (editorial cover letter).</p>\n\n<p><strong>Formal verification.</strong> Two layers of machine-checked formalization accompany this submission. (1) The Intelligence Bound itself is formalized in Lean 4 as the <code>P0_IntelligenceBound_COMPILED</code> module of the Viridis Compiled Theorem Stack (concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>). (2) The seven non-physical theorems supporting this paper's adaptive-measurement model are released as the <em>Co-Measurement Formal Verification Companion</em> (Zenodo 20399474), with every proof returning only the three standard Lean kernel axioms.</p>\n\n<p><strong>Citation.</strong> Hart, J. D. (2026). <em>Co-Measurement: Human-AI Dialogue as an Adaptive Measurement Instrument in the Data-Limited Regime of the Intelligence Bound.</em> Zenodo. <a href=\"https://doi.org/10.5281/zenodo.20399676\">https://doi.org/10.5281/zenodo.20399676</a></p>\n\n<p>Part of the Viridis canon. Affiliation: Viridis LLC, Columbia Falls, Montana, USA. Contact: viridisnorthllc@gmail.com.</p>",
+    "doi": "10.5281/zenodo.20399676",
+    "keywords": [
+      "co-measurement",
+      "Intelligence Bound",
+      "information thermodynamics",
+      "Landauer principle",
+      "optimal experimental design",
+      "measurement",
+      "human-AI interaction",
+      "AI alignment",
+      "data richness",
+      "richness pump",
+      "active inference",
+      "thermodynamics of prediction",
+      "quantum cognition",
+      "stochastic thermodynamics",
+      "uncertified"
+    ],
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "publication_date": "2026-05-26",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.20399474",
+        "relation": "isSupplementedBy",
+        "resource_type": "software",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.19317983",
+        "relation": "isSupplementTo",
+        "resource_type": "publication-other",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isPartOf",
+        "resource_type": "publication-other",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20399675"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "Co-Measurement: Human–AI Dialogue as an Adaptive Measurement Instrument in the Data-Limited Regime of the Intelligence Bound"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "Read actual authenticated deposition base and validate exact record identity; not executed",
+      "url": "https://zenodo.org/api/deposit/depositions/20399676"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20399676/actions/edit"
+    },
+    {
+      "execution": "UNAUTHORIZED_PLAN_ONLY; revalidate against authenticated deposition base and approve resolved exact hash",
+      "method": "PUT",
+      "payload_file": "deposition_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/20399676"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20399676/actions/publish"
+    },
+    {
+      "method": "GET",
+      "required_assertions": [
+        "title == before.title",
+        "doi == before.doi",
+        "relations == before.relations",
+        "all other fields except description/keywords semantically exact, including original license/resource_type/custom/alternate_identifiers"
+      ],
+      "url": "https://zenodo.org/api/records/20399676"
+    }
+  ],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p>Companion manuscript submitted to <em>Physical Review E</em> (Regular Article, interdisciplinary physics section). The paper applies stochastic thermodynamics and information theory to a question usually treated outside physics: the structure of goal-directed human-AI dialogue.</p>\n\n<p>Building on the Intelligence Bound master inequality (Hart 2025) — which establishes that learning systems are data-limited, sitting 10^11 to 10^16 below the Landauer ceiling — the manuscript models dialogue as <em>adaptive co-measurement</em> and derives three results:</p>\n\n<ol>\n<li><strong>Adaptive questioning is a richness pump.</strong> By holding per-sample mutual information near its maximum, an inquiring agent raises the binding \"rho dot B\" term of the Intelligence Bound, pulling effective dI/dt closer to the thermodynamic ceiling than passive observation can.</li>\n<li><strong>Goal-directedness composes additively.</strong> The information-yield of a dialogue decomposes into geometric, computational, measurement, decoherence, and mutualistic terms — the same five-component slack accounting derived for the underlying Intelligence Bound (Hart 2026, Zenodo 20320324).</li>\n<li><strong>The Wavefunction analogy is mathematical, not metaphysical.</strong> The paper uses Hilbert-space formalism strictly as a tool for tracking superposed hypotheses under adaptive measurement; no claim depends on quantum mechanics or on a quantum description of cognition.</li>\n</ol>\n\n<p><strong>Files.</strong> <code>co-measurement.pdf</code> (manuscript), <code>co-measurement.tex</code> (LaTeX source, standard article class — APS RevTeX 4.2 port planned for final submission), <code>co-measurement-algorithms.pdf</code> + <code>.tex</code> (algorithmic supplement), <code>cover-letter.pdf</code> + <code>.md</code> (editorial cover letter).</p>\n\n<p><strong>Formal verification.</strong> Two layers of machine-checked formalization accompany this submission. (1) The Intelligence Bound itself is formalized in Lean 4 as the <code>P0_IntelligenceBound_COMPILED</code> module of the Viridis Compiled Theorem Stack (concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>). (2) The seven non-physical theorems supporting this paper's adaptive-measurement model are released as the <em>Co-Measurement Formal Verification Companion</em> (Zenodo 20399474), with every proof returning only the three standard Lean kernel axioms.</p>\n\n<p><strong>Citation.</strong> Hart, J. D. (2026). <em>Co-Measurement: Human-AI Dialogue as an Adaptive Measurement Instrument in the Data-Limited Regime of the Intelligence Bound.</em> Zenodo. <a href=\"https://doi.org/10.5281/zenodo.20399676\">https://doi.org/10.5281/zenodo.20399676</a></p>\n\n<p>Part of the Viridis canon. Affiliation: Viridis LLC, Columbia Falls, Montana, USA. Contact: viridisnorthllc@gmail.com.</p>",
+    "doi": "10.5281/zenodo.20399676",
+    "keywords": [
+      "co-measurement",
+      "Intelligence Bound",
+      "information thermodynamics",
+      "Landauer principle",
+      "optimal experimental design",
+      "measurement",
+      "human-AI interaction",
+      "AI alignment",
+      "data richness",
+      "richness pump",
+      "active inference",
+      "thermodynamics of prediction",
+      "quantum cognition",
+      "stochastic thermodynamics"
+    ],
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "publication_date": "2026-05-26",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.20399474",
+        "relation": "isSupplementedBy",
+        "resource_type": "software",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.19317983",
+        "relation": "isSupplementTo",
+        "resource_type": "publication-other",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isPartOf",
+        "resource_type": "publication-other",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20399675"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "Co-Measurement: Human–AI Dialogue as an Adaptive Measurement Instrument in the Data-Limited Regime of the Intelligence Bound"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:29.793606+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "concept_id": "20399675",
+  "doi": "10.5281/zenodo.20399676",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "latest_observed_record_id": "20399676",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "d117f27d7a4f2eb0dc44bef1c7c3b5c1c2725bf4fd4337132fd493c32f2fc360",
+    "after_payload.json": "b73795ff2a484fb1bd34bbd96114919ecd2ddc3aa09b05f166cd495df5f9c589",
+    "before_metadata.json": "094352cabac44bc30d29ef049f213e5eb3caf07a6f4f26304ac41b7093b4bf2a",
+    "deposition_payload.json": "5390acf5c49aa38b4c94dff0409abea0b0c0386495bb426f93c0c76f342baff1",
+    "rollback_expected_public.json": "2b1f531cda7d8ee73a79683bfadc4fce5217dbaac35e243b192c86bb6cdcb25d",
+    "rollback_payload.json": "a056a34164203b8864c501968fc46b16c541e6ef2c55e32444cbae5f7e5edc88"
+  },
+  "preconditions": [
+    "Justin approves these exact immutable titles and exact payload SHA256 values",
+    "Complete sandbox edit -> PUT -> publish and one newversion readback",
+    "Authenticated production GET must map this exact DOI and provide the actual deposition metadata base",
+    "Merge only description/keywords into the authenticated base; server version graph, DOI, license and all other public fields must survive readback",
+    "Reject any unjustified field conversion, error, timeout, conflict or unknown outcome; do not publish or retry blindly",
+    "Server version graph preservation requires sandbox and authenticated deposition readback"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "20399676",
+  "rollback": "Before republish: separately approved POST https://zenodo.org/api/deposit/depositions/20399676/actions/discard. After republish: separately approved edit -> PUT the rollback deposition projection based on authenticated metadata -> publish; verify original public metadata and unchanged files. Exact prior metadata and rollback hashes remain in this row. No production rollback was executed.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

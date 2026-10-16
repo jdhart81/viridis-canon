@@ -1,0 +1,67 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Paper supported by machine-verified Lean 4.</strong> Conservation policy worldwide rests on an untested premise: that habitat destroyed can be compensated by habitat restored, at some multiplier set by administrative judgment. We show that the degrade–restore cycle is thermodynamically irreversible, and we derive the multiplier. Destruction requires no knowledge of where a landscape's connective backbone lies; restoration does, because habitat placed off the backbone is area without connectivity. Encoding this asymmetry as a <strong>siting efficiency</strong> <em>qin(0,1]</em> and taking the percolation giant-component fraction <em>S(a)</em> as the connectivity order parameter, we prove five results. (i) The restoration branch lies strictly below the degradation branch for every <em>q&lt;1</em>, so the cycle encloses a hysteresis loop whose area is a <em>dissipated connectivity work</em>, non-negative always and zero only in the perfectly targeted (quasi-static) limit—a Second Law in landscape form. (ii) The required restoration area exceeds the lost area by exactly <em>1/q</em>, so the correct biodiversity offset multiplier is <em>m=1/q</em>: an <em>information</em> premium, not a risk premium. Observed offset practice averaging <em>4.9:1</em> implies a real-world siting efficiency <em>qapprox0.20</em>. (iii) Because the connective backbone is observable only while a giant component survives, siting quality collapses from <em>q_1</em> to <em>q_0</em> at the percolation threshold, producing a <strong>latent heat of fragmentation</strong> <em>L=(1/q_0-1/q_1)Delta A</em>—a first-order irreversibility riding on a continuous transition. We name the threshold the <em>fragmentation horizon</em>. (iv) The latent heat is repayable in bits: each bit of siting information halves the restoration overshoot, up to a hard saturation depth <em>I^ast=log_2(q_1/q_0)</em>, yielding a closed-form optimal survey depth. (v) Bits cost time, and the acquisition rate is capped by the Intelligence Bound <em>dI/dtle PD/(k_BTln 2)</em>, giving a <strong>survey race condition</strong> and a minimum sensing power that diverges as a landscape nears its horizon. We name this operator the <em>Mender</em>. All results are numerically verified (71/71) against Newman–Ziff percolation with finite-size scaling. Three falsifiable predictions follow, one of which is testable today on existing offset registries.</p>",
+    "doi": "10.5281/zenodo.21609938",
+    "keywords": [
+      "habitat fragmentation",
+      "biodiversity offset",
+      "restoration debt",
+      "percolation",
+      "hysteresis",
+      "no net loss",
+      "latent heat",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Machine-verified: module FragmentationHysteresis (30 named theorems), landed new leans/2026-07-25_aristotle_FHT_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 71/71 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21609937"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Fragmentation Hysteresis Theorem: Restoration Debt, a Latent Heat of Habitat Loss, and the Information Price of Putting a Landscape Back",
+    "version": "1.0.0"
+  }
+}

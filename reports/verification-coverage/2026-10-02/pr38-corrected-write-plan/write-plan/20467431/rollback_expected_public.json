@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>The Viridis Canon — Lean-Checked Conditional Mathematics for the Intelligence Bound.</strong> A machine-checked formal corpus underpinning the Viridis research program on the thermodynamics of intelligence and its application to planetary conservation. Its spine is the <em>Intelligence Bound</em> — a Landauer/erasure-grounded limit on the rate of intelligence creation — formalized in Lean 4 and extended through a stack of modules spanning information theory (the D-Score biodiversity metric), graph-theoretic landscape optimality (HDFM / dendritic corridors), thermodynamic economics, alignment-as-feasibility (Goodhart impossibility), the speed-limit shadow-price tower, and the recovered post-Wolpert erasure-side footing.</p><p>Every theorem's <em>type</em> is machine-verified in Lean 4 (pinned toolchain; axioms audited to {propext, Classical.choice, Quot.sound}). The canon deliberately distinguishes proof validity from physical and empirical validity: it is <strong>conditional mathematics with explicit assumptions</strong>, not a claim that those assumptions describe nature. Headline results are graded by formal strength in <code>CLAIMS_MATRIX.md</code> via the labels in <code>THEOREM_STATUS_TAXONOMY.md</code> (Derived / Conditional / Definition-expansion / Bridge-assumption / Empirical-hypothesis / Conjecture / Exploratory), with separate formal and interpretive status. Empirical validation is reserved for the companion papers and field studies.</p><p>Concept DOI <strong>10.5281/zenodo.19317982</strong> always resolves to the latest version. Source mirror: <a href=\"https://github.com/jdhart81/viridis-canon\">github.com/jdhart81/viridis-canon</a>. Co-authored with Aristotle (Harmonic).</p>\n<p><strong>This version (v5).</strong> Added EcoChain dendritic-corridor formation (18 modules). Superseded as head by v9.1.1; the concept DOI resolves to the latest version.</p>",
+    "doi": "10.5281/zenodo.20467431",
+    "keywords": [
+      "Lean 4",
+      "formal verification",
+      "thermodynamics",
+      "intelligence bound",
+      "asymmetric reward",
+      "conservation operator",
+      "AI safety",
+      "alignment",
+      "biodiversity",
+      "conservation biology",
+      "biodiversity credits",
+      "payment for ecosystem services",
+      "smallholder conservation",
+      "Landauer",
+      "Goodhart impossibility",
+      "Aristotle Harmonic",
+      "Mathlib",
+      "EcoChain"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "apache2.0"
+    },
+    "publication_date": "2026-05-30",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isNewVersionOf",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.19317983",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 4,
+          "is_last": false,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "19317982"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "title": "Software",
+      "type": "software"
+    },
+    "title": "Viridis Compiled Theorem Stack — Canon v5 (Dendritic Corridor Formation)",
+    "version": "5.0.0"
+  }
+}

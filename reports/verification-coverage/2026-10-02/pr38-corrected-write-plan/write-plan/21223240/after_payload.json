@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Series S6 (Cognition &amp; Learning) of the Viridis Canon. The core Intelligence-Bound canon spine is unchanged (frozen at v10.1.0 &ldquo;The Keystone Wave&rdquo;, record 21223021); this record links to the spine via <code>isDerivedFrom</code> the concept DOI <a href=\"https://doi.org/10.5281/zenodo.19317982\">10.5281/zenodo.19317982</a>, and references the S6 series anchor (concept <a href=\"https://doi.org/10.5281/zenodo.21002783\">10.5281/zenodo.21002783</a>).</strong></p><p>&ldquo;Grokking&rdquo; &mdash; a neural network's sudden jump from memorization to generalization long after training loss has plateaued &mdash; has resisted a first-principles account of *why* the delay exists and *why* it is non-monotone in an effective temperature (learning rate / weight decay ratio, or similar control). The <strong>Grokking Nucleation Theorem (GNT)</strong> models generalization as a classical-nucleation-theory phase transition: a generalizing sub-network must cross a barrier set by a competition between a driving force &Delta; and a surface-tension-like cost &sigma;, exactly the same mathematical structure already certified elsewhere in the Viridis canon for reforestation (the Forest Nucleation Theorem and Afforestation Stewardship Theorem). GNT proves the resulting nucleation barrier matches the classical form, identifies the critical nucleus size, and &mdash; the headline result &mdash; proves the existence of a unique interior <em>Goldilocks temperature</em> T* at which the expected grokking delay is minimized, with the delay strictly convex and non-monotone around that optimum.</p><p>Five results are machine-checked in Lean 4 (zero <code>sorry</code>, axioms &sube; {<code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>}), module <code>GrokkingNucleation.lean</code>: (i) <code>gnt_barrier_eq_cnt</code> &mdash; the nucleation barrier takes the classical CNT closed form; (ii) <code>gnt_critical_point</code> &mdash; the critical nucleus size is a stationary point of the driving/tension competition; (iii) <code>tau_grok_nonmonotone_unique_min</code> &mdash; existence and uniqueness of an interior Goldilocks temperature minimizing expected grokking delay, via strict convexity; (iv) <code>nucleation_ib_floor</code> &mdash; a combined kinetic/information-generation floor on grokking delay, monotone in the information-generation term; (v) <code>gnt_nonvacuous</code> &mdash; an explicit interior witness.</p><p>GNT joins the S6 Cognition &amp; Learning cluster (Cognitive Throughput / Dissipative Generalization / Mutualistic Entropy Learning / Harmonized Descent) as a downstream application of nucleation-theory machinery to a deep-learning phenomenon, rather than a domain-defining extension of the Intelligence Bound itself &mdash; hence series (not spine) routing.</p><p><strong>Scope.</strong> The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "doi": "10.5281/zenodo.21223240",
+    "keywords": [
+      "grokking",
+      "classical nucleation theory",
+      "generalization",
+      "phase transition",
+      "Goldilocks temperature",
+      "Intelligence Bound",
+      "deep learning theory",
+      "thermodynamics of cognition",
+      "Lean 4",
+      "formal verification",
+      "uncertified"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Viridis Canon, Series S6 (Cognition &amp; Learning) member. Routed from nightly Run-090 (2026-07-05); ledger row 46. Spine unchanged (frozen at v10.1.0, record 21223021, 'The Keystone Wave'); this record links to the spine via isDerivedFrom the concept DOI 10.5281/zenodo.19317982, references the S6 series anchor (concept 21002783), and references the current spine head. Lean 4 proofs (module GrokkingNucleation.lean, all 5 sorry discharged, zero sorry, axiom audit exactly {propext, Classical.choice, Quot.sound} for every named theorem) certify the analytic core of GNT. The five verified theorems, statements preserved verbatim: (1) gnt_barrier_eq_cnt -- the classical-nucleation-theory barrier equals both sigma*(u*)^2 - Delta*(u*)^3 and sigma*(u*)^2/3, i.e. (4/27)*sigma^3/Delta^2, unfolding definitions with field_simp and ring; (2) gnt_critical_point -- u* = 2*sigma/(3*Delta) is a stationary point of g(u) = sigma*u^2 - Delta*u^3; (3) tau_grok_nonmonotone_unique_min -- the Goldilocks temperature T* = Td/(1+sqrt(B/A)) satisfies interiority 0 &lt; T* &lt; Td, the stationarity first-order condition, and strict convexity of the grokking-delay functional E(T) = A/T + B/(Td-T) on (0,Td), establishing a unique interior minimum (non-monotone in T); (4) nucleation_ib_floor -- the floor tauFloor = max(tK, c*Igen) dominates both the kinetic and information-generation floors and is monotone non-decreasing in Igen; (5) gnt_nonvacuous -- an explicit witness (sigma=Delta=A=B=Td=c=1, tK=Igen=0) giving barrier = 4/27 &gt; 0 and T* = 1/2 in the interior (0,1), confirming non-vacuity. No auxiliary definitions were strengthened or weakened; every conclusion is the original non-trivial one. Remaining compiler messages are benign unused-hypothesis linter warnings on positivity hypotheses kept to preserve the verbatim statements. GNT is a governance/learning-dynamics application of classical nucleation theory (already used in the Forest Nucleation Theorem and Afforestation Stewardship Theorem, applied there to reforestation) to the deep-learning grokking phenomenon, joining the S6 Cognition &amp; Learning cluster (Cognitive Throughput / Dissipative Generalization / Mutualistic Entropy Learning / Harmonized Descent). The Lean proofs certify the validity of the reasoning, not empirical magnitudes. Working paper; not peer-reviewed.",
+    "publication_date": "2026-07-06",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21002783",
+        "relation": "references",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21223021",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21223239"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Grokking Nucleation Theorem: A Classical-Nucleation-Theory Account of the Grokking Transition and a Goldilocks Temperature",
+    "version": "S6-GNT-v1"
+  }
+}

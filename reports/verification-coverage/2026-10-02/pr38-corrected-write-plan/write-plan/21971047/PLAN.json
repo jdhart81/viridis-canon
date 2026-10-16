@@ -1,0 +1,180 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled generated exploration of a two-party linear bilateral-benefit corridor for directional predictive-information exchange. This public working-corpus release includes the reviewed manuscript and paired Lean evidence. It is not peer reviewed or empirically validated; significance and novelty have not been independently established.",
+    "doi": "10.5281/zenodo.21971047",
+    "keywords": [
+      "transfer entropy",
+      "reciprocity",
+      "bilateral benefit",
+      "Nash bargaining",
+      "information thermodynamics",
+      "common-driver control"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "The paired Lean proof is audited verified and checks the stated mathematics under declared assumptions. This standalone working-corpus record is licensed CC BY 4.0. It is not an Intelligence Bound Canon spine admission, and no empirical, ecological, causal, adoption, commercial, procurement, or legal outcome is inferred.",
+    "publication_date": "2026-08-17",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 1,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21968360"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Reciprocity Corridor: A Bilateral-Benefit Test for Directional Information Exchange",
+    "version": "0.2.2-release-reconciled"
+  },
+  "api_calls": [],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Proof-reconciled generated exploration of a two-party linear bilateral-benefit corridor for directional predictive-information exchange. This public working-corpus release includes the reviewed manuscript and paired Lean evidence. It is not peer reviewed or empirically validated; significance and novelty have not been independently established.",
+    "doi": "10.5281/zenodo.21971047",
+    "keywords": [
+      "transfer entropy",
+      "reciprocity",
+      "bilateral benefit",
+      "Nash bargaining",
+      "information thermodynamics",
+      "common-driver control"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "The paired Lean proof is audited verified and checks the stated mathematics under declared assumptions. This standalone working-corpus record is licensed CC BY 4.0. It is not an Intelligence Bound Canon spine admission, and no empirical, ecological, causal, adoption, commercial, procurement, or legal outcome is inferred.",
+    "publication_date": "2026-08-17",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 1,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21968360"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Reciprocity Corridor: A Bilateral-Benefit Test for Directional Information Exchange",
+    "version": "0.2.2-release-reconciled"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:36.108268+00:00",
+  "bucket": "CURABLE_BY_NEW_VERSION",
+  "concept_id": "21968360",
+  "deposition_payload_execution": "FORBIDDEN_PENDING_PUBLICATION_BINDING",
+  "doi": "10.5281/zenodo.21971047",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "future_bundle": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/reports/verification-coverage/2026-10-02/doi-refinement-pr36-final/new-version-bundles/21971047",
+  "future_latest_parent": "21971047",
+  "latest_observed_record_id": "21971047",
+  "mode": "DRY_RUN_ONLY",
+  "note": "after_payload is an unchanged identity snapshot, not an interim unverified reissue. A VERIFIED payload is intentionally not prepared before valid publication binding.",
+  "old_prepared_bundle_sha256": "6439d99e4e2a5733d51a596cc5e229fc0eed3a9713e974dbd9dc4d3fe883eadd",
+  "operation": "NEW_VERSION",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "b7d12b5acb7e57ba369a69efb511ff1786fe5cd2f7afb4bc45cded0e39c21a6c",
+    "after_payload.json": "c54acfc7d2dbbd191a94e68538ad8d56e63b39f08c8f0b88a992225f68fabcca",
+    "before_metadata.json": "8fefc35a4aa0c13ac27a7da003162bee9485d7fc40b368cb111ff729a4dcedb9",
+    "deposition_payload.json": "18f62f1840cb135259c02d361837d5ec37f9ce68c225db264ec4350ed0320aea",
+    "rollback_expected_public.json": "c54acfc7d2dbbd191a94e68538ad8d56e63b39f08c8f0b88a992225f68fabcca",
+    "rollback_payload.json": "18f62f1840cb135259c02d361837d5ec37f9ce68c225db264ec4350ed0320aea"
+  },
+  "preconditions": [
+    "One reviewed PUBLICATION_BINDING receipt for the final manuscript per chain",
+    "Current valid exact proof/statement certificate, nontrivial one-claim/one-theorem map and model fidelity",
+    "No interim uncertified new version",
+    "One new version per concept chain, labeled verified only after all evidence passes",
+    "Titles remain exact original; final payload must receive a new exact hash approval"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "21971047",
+  "rollback": "No transaction is proposed now. Before a future approved publish, discard only the identified unpublished draft. After publication, preserve the version and prepare an independently approved correction; no deletion rollback.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_PUBLICATION_BINDING_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

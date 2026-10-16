@@ -1,0 +1,221 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p>Machine-verified Lean 4 / Mathlib proofs for the thermodynamic analysis of plasma-mediated atmospheric nitrogen fixation (Hart 2026). 38 theorems, lemmas, corollaries, and system invariants. Zero sorry statements. Axioms: propext, Classical.choice, Quot.sound. Part of the Viridis Applied Proofs Series, supplementing the Intelligence Bound foundational canon (DOI: 10.5281/zenodo.20006414). Formal verification performed by Aristotle (Harmonic), project ID 7fc5f57e-1abb-4126-80fd-86daf035063e. Notable finding: verification uncovered a minor unit-conversion inconsistency in Theorem 4 (T4) of the paper, with all downstream arithmetic internally consistent.",
+    "doi": "10.5281/zenodo.20008839",
+    "keywords": [
+      "formal verification",
+      "Lean 4",
+      "Mathlib",
+      "Aristotle Harmonic",
+      "plasma chemistry",
+      "nitrogen fixation",
+      "thermodynamics",
+      "Haber-Bosch alternative",
+      "energy efficiency",
+      "atmospheric N2",
+      "Viridis canon",
+      "machine-checked proof",
+      "P7 module",
+      "sustainable agriculture",
+      "green chemistry",
+      "uncertified"
+    ],
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "publication_date": "2026-05-03",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20008838"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "title": "Software",
+      "type": "software"
+    },
+    "title": "Formal Verification of Plasma-Mediated N₂ Fixation — Viridis Applied Proofs Series 1"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "Read actual authenticated deposition base and validate exact record identity; not executed",
+      "url": "https://zenodo.org/api/deposit/depositions/20008839"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20008839/actions/edit"
+    },
+    {
+      "execution": "UNAUTHORIZED_PLAN_ONLY; revalidate against authenticated deposition base and approve resolved exact hash",
+      "method": "PUT",
+      "payload_file": "deposition_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/20008839"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/20008839/actions/publish"
+    },
+    {
+      "method": "GET",
+      "required_assertions": [
+        "title == before.title",
+        "doi == before.doi",
+        "relations == before.relations",
+        "all other fields except description/keywords semantically exact, including original license/resource_type/custom/alternate_identifiers"
+      ],
+      "url": "https://zenodo.org/api/records/20008839"
+    }
+  ],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC",
+        "name": "Hart, Justin",
+        "orcid": "0009-0008-3082-2482"
+      }
+    ],
+    "description": "Machine-verified Lean 4 / Mathlib proofs for the thermodynamic analysis of plasma-mediated atmospheric nitrogen fixation (Hart 2026). 38 theorems, lemmas, corollaries, and system invariants. Zero sorry statements. Axioms: propext, Classical.choice, Quot.sound. Part of the Viridis Applied Proofs Series, supplementing the Intelligence Bound foundational canon (DOI: 10.5281/zenodo.20006414). Formal verification performed by Aristotle (Harmonic), project ID 7fc5f57e-1abb-4126-80fd-86daf035063e. Notable finding: verification uncovered a minor unit-conversion inconsistency in Theorem 4 (T4) of the paper, with all downstream arithmetic internally consistent.",
+    "doi": "10.5281/zenodo.20008839",
+    "keywords": [
+      "formal verification",
+      "Lean 4",
+      "Mathlib",
+      "Aristotle Harmonic",
+      "plasma chemistry",
+      "nitrogen fixation",
+      "thermodynamics",
+      "Haber-Bosch alternative",
+      "energy efficiency",
+      "atmospheric N2",
+      "Viridis canon",
+      "machine-checked proof",
+      "P7 module",
+      "sustainable agriculture",
+      "green chemistry"
+    ],
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "publication_date": "2026-05-03",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.20006414",
+        "relation": "isSupplementTo",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20008838"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "title": "Software",
+      "type": "software"
+    },
+    "title": "Formal Verification of Plasma-Mediated N₂ Fixation — Viridis Applied Proofs Series 1"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:29.789566+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "concept_id": "20008838",
+  "doi": "10.5281/zenodo.20008839",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "latest_observed_record_id": "20008839",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "ef8002f15fbb72d3ab03dd6aef45242bfb9f7ee54ca23f0fd8cfe7f67e44ae66",
+    "after_payload.json": "fe0d7bb86e37e225244ab90150639d737b82cb1aba1f8b4ce2e9009856359531",
+    "before_metadata.json": "071b965a6ace55d25389e83d8716ee1aab3b5acef8698a2ddadef277adc00bfb",
+    "deposition_payload.json": "4f5ed3a4a01a8ffcd0dd388fad47cd5addb4584ba8e332c504dc91f18504c5a6",
+    "rollback_expected_public.json": "39b7b0975b1c4b56e7fd0570b8c6d6862415dd7c8bdf3b550635517f531d2a39",
+    "rollback_payload.json": "599194d495fde8bab91835a934228a7c7abd803ed62052905e9825bea476e3d7"
+  },
+  "preconditions": [
+    "Justin approves these exact immutable titles and exact payload SHA256 values",
+    "Complete sandbox edit -> PUT -> publish and one newversion readback",
+    "Authenticated production GET must map this exact DOI and provide the actual deposition metadata base",
+    "Merge only description/keywords into the authenticated base; server version graph, DOI, license and all other public fields must survive readback",
+    "Reject any unjustified field conversion, error, timeout, conflict or unknown outcome; do not publish or retry blindly",
+    "Server version graph preservation requires sandbox and authenticated deposition readback"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "20008839",
+  "rollback": "Before republish: separately approved POST https://zenodo.org/api/deposit/depositions/20008839/actions/discard. After republish: separately approved edit -> PUT the rollback deposition projection based on authenticated metadata -> publish; verify original public metadata and unchanged files. Exact prior metadata and rollback hashes remain in this row. No production rollback was executed.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

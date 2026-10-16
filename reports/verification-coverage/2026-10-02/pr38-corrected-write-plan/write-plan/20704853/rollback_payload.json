@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "identifier": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Series S2 (Monitoring &amp; Certification) of the Viridis Canon.</strong> A steward who monitors many ecosystems under one budget has lacked a first-principles rule for splitting finite monitoring power across heterogeneous sites; effort is allocated by convention. Building on the D-Score Measurement Closure Theorem and fusing it with water-filling resource allocation, this paper proves the <strong>Monitoring Water-Filling Theorem (MWT)</strong>: the steward's deadweight functional is convex, so a unique optimum exists, and it is a generalized water-filling solution governed by a single broadcast monitoring shadow price &#955;<sub>mon</sub>. Four structural laws follow: (i) optimal effort scales as P*&#8201;&#8733;&#8201;D<sup>&#8722;1/3</sup>; (ii) no site is optimally left dark; (iii) uniform monitoring is wasteful by a power-mean factor &#961;&#8201;&#8805;&#8201;1; (iv) a critical certification budget P<sub>crit</sub> marks where added budget stops buying physical certifiability. This is the eleventh self-application of the Intelligence Bound (the &lsquo;Surveyor&rsquo;).</p><p><strong>Scope of verification.</strong> The Lean 4 proofs (Aristotle-verified, zero <code>sorry</code>) certify the mathematical structure, not empirical magnitudes. Working paper; not peer-reviewed.</p>",
+    "doi": "10.5281/zenodo.20704853",
+    "keywords": [
+      "Intelligence Bound",
+      "conservation monitoring",
+      "water-filling",
+      "shadow price",
+      "D-Score",
+      "thermodynamics of measurement",
+      "MRV",
+      "Lean 4",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "notes": "Viridis Canon, Series S2 (Monitoring &amp; Certification), v1. Verification scope: the Lean 4 proofs (Aristotle-verified, zero sorry) certify the mathematical structure only -- convexity/uniqueness, the D^(-1/3) exponent, the rho&gt;=1 misallocation inequality and its tightness, and the critical-budget identity. They do NOT certify empirical magnitudes or that real ecosystems carry these cost profiles. Working paper, not peer-reviewed. Lean co-verified by Aristotle (Harmonic): MonitoringWaterfilling.lean (project 6374c6f9), MisallocationLoss.lean (project a9a38a03).",
+    "publication_date": "2026-06-15",
+    "publication_type": "preprint",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20681251",
+        "relation": "references",
+        "scheme": "doi"
+      }
+    ],
+    "title": "The Surveyor: A Monitoring Water-Filling Theorem for Conservation Portfolios",
+    "upload_type": "publication",
+    "version": "S2-v1"
+  }
+}

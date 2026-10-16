@@ -1,0 +1,225 @@
+{
+  "after_expected_public_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p><hr/><p><strong>Historical description:</strong></p><p><strong>Paper supported by machine-verified Lean 4.</strong> An inferring agent must decide how hard to update its beliefs on incoming evidence—how much gain, or precision, to place on prediction error. Intuition and much of machine practice treat more precision as strictly better: trust the data, minimize error, force the model onto the world. We show this intuition is thermodynamically and epistemically wrong. Modeling an agent that tracks a fluctuating environment with a constant-gain (precision <em>g</em>) filter, and reading its dissipation through the Still–Sivak–Bell–Crooks thermodynamics of prediction—dissipated work equals the <em>non-predictive</em> information the agent retains—we prove that optimal cognition sits at an interior point of restraint. First, the Bayes/Kalman-optimal gain is strictly less than one: fully trusting noisy evidence <em>degrades</em> tracking, so even error-minimizing inference already \"lets go\" (<em>g_K&lt;1</em>). Second, and paradoxically, driving the gain past <em>g_K</em> toward maximal precision <em>lowers</em> the predictive information the agent holds about the future—a measurable <em>forcing tax</em>, <em>dI_rm pred/dg&lt;0</em> for <em>g&gt;g_K</em>. Third, once the metabolic cost of maintaining precision is priced, the net-predictive optimum—the <em>Wu-Wei gain</em> <em>g^ast</em>—falls strictly below the Bayes gain, <em>g^ast, and decreases monotonically as effort becomes dearer. The effortless first-order condition equates the marginal predictive gain to the marginal cost of forcing, <em>dI_rm pred/dg=2kappa g^ast</em>. We name the Intelligence-Bound self-application the <em>Harmonizer</em>: the useful predictive-intelligence rate is the raw bound throttled by an <em>effortlessness</em> <em>eta=I_rm pred/I_rm memin(0,1)</em>, so the bound is spent on prediction only at the harmonized gain. All results are numerically verified (21/21) against a Monte-Carlo of the exact filter. We give three falsifiable predictions spanning attention neuroscience, machine regularization, and ecological monitoring.</em></p>",
+    "doi": "10.5281/zenodo.21609952",
+    "keywords": [
+      "wu wei",
+      "effortless action",
+      "predictive inference",
+      "free energy",
+      "forcing",
+      "drift",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification",
+      "uncertified"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Machine-verified: module WuWeiInference (14 named theorems), landed new leans/2026-07-24_aristotle_WuWeiInference_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 21/21 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21609951"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Wu-Wei Inference Theorem: Effortless Cognition as a Thermodynamic Optimum Between Forcing and Drift",
+    "version": "1.0.0"
+  },
+  "api_calls": [
+    {
+      "method": "GET",
+      "purpose": "Read actual authenticated deposition base and validate exact record identity; not executed",
+      "url": "https://zenodo.org/api/deposit/depositions/21609952"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21609952/actions/edit"
+    },
+    {
+      "execution": "UNAUTHORIZED_PLAN_ONLY; revalidate against authenticated deposition base and approve resolved exact hash",
+      "method": "PUT",
+      "payload_file": "deposition_payload.json",
+      "url": "https://zenodo.org/api/deposit/depositions/21609952"
+    },
+    {
+      "body": {},
+      "execution": "UNAUTHORIZED_PLAN_ONLY",
+      "method": "POST",
+      "url": "https://zenodo.org/api/deposit/depositions/21609952/actions/publish"
+    },
+    {
+      "method": "GET",
+      "required_assertions": [
+        "title == before.title",
+        "doi == before.doi",
+        "relations == before.relations",
+        "all other fields except description/keywords semantically exact, including original license/resource_type/custom/alternate_identifiers"
+      ],
+      "url": "https://zenodo.org/api/records/21609952"
+    }
+  ],
+  "api_payload_role": "EXPECTED_PUBLIC_METADATA_NOT_AUTOMATICALLY_A_DEPOSITION_PUT",
+  "before_metadata": {
+    "access_right": "open",
+    "communities": [
+      {
+        "id": "viridis-canon"
+      }
+    ],
+    "creators": [
+      {
+        "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+        "name": "Hart, Justin D.",
+        "orcid": "0009-0008-3082-2482"
+      },
+      {
+        "affiliation": "Automated theorem prover (Lean 4 verification)",
+        "name": "Aristotle (Harmonic)"
+      }
+    ],
+    "description": "<p><strong>Paper supported by machine-verified Lean 4.</strong> An inferring agent must decide how hard to update its beliefs on incoming evidence—how much gain, or precision, to place on prediction error. Intuition and much of machine practice treat more precision as strictly better: trust the data, minimize error, force the model onto the world. We show this intuition is thermodynamically and epistemically wrong. Modeling an agent that tracks a fluctuating environment with a constant-gain (precision <em>g</em>) filter, and reading its dissipation through the Still–Sivak–Bell–Crooks thermodynamics of prediction—dissipated work equals the <em>non-predictive</em> information the agent retains—we prove that optimal cognition sits at an interior point of restraint. First, the Bayes/Kalman-optimal gain is strictly less than one: fully trusting noisy evidence <em>degrades</em> tracking, so even error-minimizing inference already \"lets go\" (<em>g_K&lt;1</em>). Second, and paradoxically, driving the gain past <em>g_K</em> toward maximal precision <em>lowers</em> the predictive information the agent holds about the future—a measurable <em>forcing tax</em>, <em>dI_rm pred/dg&lt;0</em> for <em>g&gt;g_K</em>. Third, once the metabolic cost of maintaining precision is priced, the net-predictive optimum—the <em>Wu-Wei gain</em> <em>g^ast</em>—falls strictly below the Bayes gain, <em>g^ast, and decreases monotonically as effort becomes dearer. The effortless first-order condition equates the marginal predictive gain to the marginal cost of forcing, <em>dI_rm pred/dg=2kappa g^ast</em>. We name the Intelligence-Bound self-application the <em>Harmonizer</em>: the useful predictive-intelligence rate is the raw bound throttled by an <em>effortlessness</em> <em>eta=I_rm pred/I_rm memin(0,1)</em>, so the bound is spent on prediction only at the harmonized gain. All results are numerically verified (21/21) against a Monte-Carlo of the exact filter. We give three falsifiable predictions spanning attention neuroscience, machine regularization, and ecological monitoring.</em></p>",
+    "doi": "10.5281/zenodo.21609952",
+    "keywords": [
+      "wu wei",
+      "effortless action",
+      "predictive inference",
+      "free energy",
+      "forcing",
+      "drift",
+      "Intelligence Bound",
+      "Lean 4",
+      "formal verification"
+    ],
+    "language": "eng",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "notes": "Machine-verified: module WuWeiInference (14 named theorems), landed new leans/2026-07-24_aristotle_WuWeiInference_forge; Lean 4 v4.28.0 / Mathlib pin 8f9d9cff, 0 sorry, per-theorem axiom audit within {propext, Classical.choice, Quot.sound}; Significance Gate PASS (6/6); numeric verify 21/21 PASS. Lean certifies the reasoning, not empirical magnitudes; working paper, not peer-reviewed.",
+    "publication_date": "2026-07-26",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.19317982",
+        "relation": "isDerivedFrom",
+        "scheme": "doi"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "21609951"
+          }
+        }
+      ]
+    },
+    "resource_type": {
+      "subtype": "preprint",
+      "title": "Preprint",
+      "type": "publication"
+    },
+    "title": "The Wu-Wei Inference Theorem: Effortless Cognition as a Thermodynamic Optimum Between Forcing and Drift",
+    "version": "1.0.0"
+  },
+  "before_read_at_utc": "2026-10-03T00:16:34.003196+00:00",
+  "bucket": "TRUE_CONJECTURE",
+  "concept_id": "21609951",
+  "doi": "10.5281/zenodo.21609952",
+  "execution_authorized": false,
+  "field_mappings": [
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "resource_type",
+      "reason": "Deposition API uses upload_type/publication_type/image_type; public display title is a response representation. Public expected resource_type stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "license",
+      "reason": "Deposition metadata license is a string ID; public expected license object stays exact."
+    },
+    {
+      "classification": "DOCUMENTED_TRANSPORT_MAPPING",
+      "docs": "https://developers.zenodo.org/#deposit-metadata",
+      "field": "communities",
+      "reason": "Deposition API names community identifiers identifier rather than public record id. Expected community membership stays exact."
+    },
+    {
+      "classification": "HOLD_SERVER_GRAPH_PRESERVATION_UNPROVEN",
+      "docs": "https://developers.zenodo.org/#new-version",
+      "field": "relations",
+      "reason": "relations is absent from documented deposition input; version actions create the server graph. This is an inference, not permission to drop relationships. Public expected relations are restored in after_payload. Actual authenticated edit metadata and sandbox readback are required."
+    }
+  ],
+  "field_preservation_status": "ALL_LOGICAL_FIELDS_EXCEPT_DESCRIPTION_KEYWORDS_EXACT",
+  "latest_observed_record_id": "21609952",
+  "mode": "DRY_RUN_ONLY",
+  "operation": "UNCERTIFIED_METADATA_AMENDMENT",
+  "payload_sha256": {
+    "FIELD_DIFF.json": "882b23bd6716819d078317c29b06c6a05bf2e9ec846f4567fc64094f971855c6",
+    "after_payload.json": "bcb2de0ba261b08632e36d220823c3e536601a08817573d3806e460e7fd884d8",
+    "before_metadata.json": "b7e8e5c389baa1213eabf15552845d72d8af5a688fa6b846d502d658fa9b7b6c",
+    "deposition_payload.json": "ff9c2a4c8cd99e1b3d02e761b3fc6f5934aae09987c0b94f7f3c59b6287df8c4",
+    "rollback_expected_public.json": "28d8464e30fdd09b577cee34f7585c8f296563bdb57dad2f690b7c5739a9e226",
+    "rollback_payload.json": "8e5370cd758cc6d6f4bc23e022b50459df687cb64e6364104c94a9d59fa2c823"
+  },
+  "preconditions": [
+    "Justin approves these exact immutable titles and exact payload SHA256 values",
+    "Complete sandbox edit -> PUT -> publish and one newversion readback",
+    "Authenticated production GET must map this exact DOI and provide the actual deposition metadata base",
+    "Merge only description/keywords into the authenticated base; server version graph, DOI, license and all other public fields must survive readback",
+    "Reject any unjustified field conversion, error, timeout, conflict or unknown outcome; do not publish or retry blindly",
+    "Server version graph preservation requires sandbox and authenticated deposition readback"
+  ],
+  "production_writes": 0,
+  "ready_to_execute": false,
+  "record_id": "21609952",
+  "rollback": "Before republish: separately approved POST https://zenodo.org/api/deposit/depositions/21609952/actions/discard. After republish: separately approved edit -> PUT the rollback deposition projection based on authenticated metadata -> publish; verify original public metadata and unchanged files. Exact prior metadata and rollback hashes remain in this row. No production rollback was executed.",
+  "rollback_requires_separate_approval": true,
+  "status": "HOLD_SANDBOX_AND_EXACT_APPROVAL_REQUIRED",
+  "title_policy": "IMMUTABLE_EXACT_ORIGINAL"
+}

@@ -25,8 +25,11 @@ class EnforcementClaimsTests(unittest.TestCase):
         claims_module.validate_model(self.claims)
         self.assertEqual([r["enforced"] for r in self.claims["routes"].values()], [False, True, True])
         status = claims_module.render_status(self.claims)
-        self.assertIn("installed dated publisher", status)
-        self.assertIn("does not yet enforce it", status)
+        self.assertIn("PDF gate call presence and operational release clearance are separate", status)
+        self.assertIn("Successor: PDF gate calls present", status)
+        self.assertIn("operational state QUARANTINED", status)
+        self.assertIn("Methods Digest: PDF gate calls present", status)
+        self.assertIn("operational state INACTIVE", status)
         self.assertEqual(status.count(claims_module.BEGIN), 1)
         self.assertEqual(status.count(claims_module.END), 1)
 
@@ -88,6 +91,8 @@ class EnforcementClaimsTests(unittest.TestCase):
             claims_module.validate_model(self.claims)
 
     def test_all_green_status_includes_installed_hashes(self):
+        for row in self.claims["routes"].values():
+            row.pop("operational", None)
         route = self.claims["routes"]["dated"]
         installed = next(row for row in route["sources"] if row["root"] == "core" and row.get("enforcement_source", True))
         source = next(row for row in route["sources"] if row["root"] == "repo" and row.get("enforcement_source", True))
@@ -114,6 +119,36 @@ class EnforcementClaimsTests(unittest.TestCase):
                 route["enforced"] = False
             result = claims_module.verify(self.claims, root)
             self.assertEqual(result["scope"], "repo_only_installed_not_verified")
+
+    def test_legacy_model_keeps_original_rendering_without_operational_fields(self):
+        for route in self.claims["routes"].values():
+            route.pop("operational")
+        self.assertIn("does not yet enforce it", claims_module.render_status(self.claims))
+
+    def test_ast_calls_do_not_clear_successor_quarantine(self):
+        status=claims_module.render_status(self.claims)
+        self.assertIn("Successor: PDF gate calls present in both declared sources; operational state QUARANTINED", status)
+        self.assertNotIn("operational state AVAILABLE", status)
+
+    def test_operational_state_requires_closed_model_for_all_routes(self):
+        for mutation in (lambda c:c['routes']['dated'].pop('operational'),
+                         lambda c:c['routes']['successor']['operational'].update(state='READY'),
+                         lambda c:c['routes']['successor']['operational'].update(extra=True)):
+            candidate=copy.deepcopy(self.claims);mutation(candidate)
+            with self.assertRaisesRegex(claims_module.EnforcementDrift,'closed operational'):
+                claims_module.validate_model(candidate)
+
+    def test_available_requires_three_separate_clearance_receipt_roles(self):
+        route=self.claims['routes']['successor'];route['operational']['state']='AVAILABLE'
+        with self.assertRaisesRegex(claims_module.EnforcementDrift,'separate clearance evidence'):
+            claims_module.validate_model(self.claims)
+        route['operational']['clearance_receipts']=[{'role':role,'root':'core','path':'receipts/'+role+'.json','sha256':'a'*64}
+            for role in ('installation','independent_review','authorization')]
+        claims_module.validate_model(self.claims)
+        self.assertIn('operational state AVAILABLE',claims_module.render_status(self.claims))
+        route['operational']['clearance_receipts'][0]['path']='../escape'
+        with self.assertRaisesRegex(claims_module.EnforcementDrift,'bound operational'):
+            claims_module.validate_model(self.claims)
 
 
 if __name__ == "__main__":

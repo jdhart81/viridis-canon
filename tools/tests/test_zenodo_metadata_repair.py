@@ -58,6 +58,87 @@ class Client:
 
 
 class RepairTests(unittest.TestCase):
+    def test_stats_drift_between_plan_and_apply_is_not_protected_drift(self):
+        before = baseline()
+        before["stats"] = {"views": 1}
+        client = Client(before)
+        client.current["stats"]["views"] = 2
+        with tempfile.TemporaryDirectory() as temporary:
+            receipt = self.run_apply(Path(temporary), self.plan(before), client)
+        self.assertEqual(receipt["state"], "PUBLIC_REPAIR_READBACK_VERIFIED")
+
+    def test_real_edit_phase_fields_normalize_without_losing_content(self):
+        before = json.loads((Path(__file__).parent / "fixtures/rdm-21855705.json").read_text())
+        before = before.get("response", before)
+        outer = self
+        class DraftClient(Client):
+            def __call__(self, method, url, data=None, *, rdm=False):
+                result = super().__call__(method, url, data, rdm=rdm)
+                if method == "POST" and url.endswith("/draft"):
+                    self.draft.update(is_draft=True,is_published=False)
+                    self.draft["expires_at"] = "2026-12-15T00:00:00+00:00"
+                    self.draft["versions"]["is_latest_draft"] = True
+                    for row in self.draft["files"]["entries"].values():
+                        row["links"] = {k:v.replace("/records/21855705/files/", "/records/21855705/draft/files/") for k,v in row["links"].items()}
+                        row["links"]["commit"] = row["links"]["self"] + "/commit"
+                    result = copy.deepcopy(self.draft)
+                    outer.assertEqual(M.draft_against_public(before, result), [])
+                return result
+        client = DraftClient(before)
+        with tempfile.TemporaryDirectory() as temporary:
+            receipt = self.run_apply(Path(temporary), self.plan(before), client)
+        self.assertEqual(receipt["state"], "PUBLIC_REPAIR_READBACK_VERIFIED")
+        changed = copy.deepcopy(receipt["draft_before"])
+        changed["custom_fields"]["unapproved"] = "must remain protected"
+        self.assertTrue(M.draft_against_public(before, changed))
+
+    def test_public_readback_extra_protected_path_holds(self):
+        class PublicDriftClient(Client):
+            def __call__(self, method, url, data=None, *, rdm=False):
+                result = super().__call__(method, url, data, rdm=rdm)
+                if method == "POST" and url.endswith("/actions/publish"):
+                    self.current["custom_fields"] = {"unplanned": "public drift"}
+                return result
+        client = PublicDriftClient(baseline())
+        with tempfile.TemporaryDirectory() as temporary:
+            with self.assertRaises(M.RepairHold):
+                self.run_apply(Path(temporary), self.plan(), client)
+        self.assertTrue(any(url.endswith("/actions/publish") for method,url in client.calls))
+        self.assertFalse(client.deleted)
+
+    def test_rehearsal_published_record_drift_holds_after_delete(self):
+        class DiscardDriftClient(Client):
+            def __call__(self, method, url, data=None, *, rdm=False):
+                result = super().__call__(method, url, data, rdm=rdm)
+                if method == "DELETE":
+                    self.current["custom_fields"] = {"unplanned": "discard drift"}
+                return result
+        client = DiscardDriftClient(baseline())
+        with tempfile.TemporaryDirectory() as temporary, mock.patch.dict(os.environ, VIRIDIS_ENGINE_ROOT=temporary):
+            root = Path(temporary) / "rehearsals/now"; root.mkdir(parents=True)
+            with self.assertRaises(M.RepairHold):
+                self.run_apply(root, self.plan(), client, rehearse=True)
+        self.assertTrue(client.deleted)
+        self.assertFalse(any(url.endswith("/actions/publish") for method,url in client.calls))
+
+    def test_unmt_ledger_flip_after_baseline_get_holds_before_post(self):
+        banner = "<p><strong>UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.</strong></p>"
+        with tempfile.TemporaryDirectory() as temporary, mock.patch.dict(os.environ, VIRIDIS_CORE_ROOT=temporary):
+            root = Path(temporary); digest = self.ledger(root); before = baseline("23329823")
+            plan = M.make_plan(before, "23329823", "description", banner + before["metadata"]["description"],
+                               verified_source={"sha256":"a"*64,"banner":banner}, expected_ledger_sha256=digest)
+            outer = self
+            class LedgerFlipClient(Client):
+                def __call__(self, method, url, data=None, *, rdm=False):
+                    result = super().__call__(method, url, data, rdm=rdm)
+                    if method == "GET" and not url.endswith("/draft"):
+                        outer.ledger(root, valid=True)
+                    return result
+            client = LedgerFlipClient(before)
+            with self.assertRaises(M.RepairHold):
+                self.run_apply(root, plan, client)
+            self.assertEqual([method for method,url in client.calls], ["GET"])
+
     def plan(self, before=None):
         return M.make_plan(before or baseline(), "21855705", "copyright", M.COPYRIGHTS["21855705"],
                            verified_source={"sha256": "a" * 64, "source": "DataCite activity v1"})

@@ -18,7 +18,7 @@ Invariants:
   * GitHub write access is probed before the publisher can mint a DOI.
   * New multi-file projects enter git under an abbreviation-scoped directory
     with their pinned build files; legacy flat bundles retain their old path.
-  * Every available PUBLISHED_DOI.txt is mirrored even if the publisher exits nonzero.
+  * A nonzero publisher exit forbids mirroring, including when a DOI receipt exists.
   * Success requires a fresh public clone whose files match the bundles byte-for-byte.
   * A JSON receipt records the DOI/file/commit correspondence.
 
@@ -30,6 +30,7 @@ immediately after each successful Zenodo publish and skip bundles that already h
 from __future__ import annotations
 
 import argparse
+import base64
 import dataclasses
 import datetime as dt
 import hashlib
@@ -45,10 +46,11 @@ import time
 from typing import Iterable, Sequence
 import urllib.error
 import urllib.request
+import uuid
 
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent
+ROOT = Path(os.environ.get("VIRIDIS_CORE_ROOT", str(HERE.parent)))
 if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
 import release_coherence
@@ -73,13 +75,12 @@ def verification_coverage_report(artifact, context, *, enforce_new_artifacts=Fal
 REPOSITORY = "jdhart81/viridis-canon"
 PUBLIC_REPO_URL = f"https://github.com/{REPOSITORY}.git"
 PUBLIC_CATALOG_URL = "https://jdhart81.github.io/viridis-canon/data/catalog.json"
-TOKEN_REPO_URL = "https://jdhart81:{token}@github.com/" + REPOSITORY + ".git"
 TOKEN_FILE = ROOT / "secrets" / "Github token Viridis LLC.md"
 RECEIPT_DIR = HERE / "LOCKSTEP_RECEIPTS"
 TOKEN_PATTERN = re.compile(
     r"ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}"
 )
-DOI_PATTERN = re.compile(r"10\.\d{4,9}/zenodo\.\d+")
+DOI_PATTERN = re.compile(r"^10\.5281/zenodo\.[0-9]+$")
 POST_ARISTOTLE_REVIEW_REQUIRED_AFTER = "2026-07-26"
 POST_ARISTOTLE_REVIEW_NAME = "POST_ARISTOTLE_REVIEW.json"
 LEGACY_CLAUDE_REVIEW_NAME = "CLAUDE_REVIEW.json"
@@ -237,7 +238,7 @@ def read_doi(path: Path) -> str | None:
         return None
     doi = path.read_text(encoding="utf-8").strip()
     if DOI_PATTERN.fullmatch(doi) is None:
-        raise LockstepError(f"{path}: invalid DOI {doi!r}")
+        raise LockstepError(f"{path}: invalid production DOI receipt")
     return doi
 
 
@@ -542,13 +543,29 @@ def git(
     check: bool = True,
     token: str = "",
 ) -> subprocess.CompletedProcess[str]:
-    env = dict(os.environ, GIT_TERMINAL_PROMPT="0")
+    env = github_git_environment(token)
     return run(
         ["git", "-C", str(repo), *args],
         env=env,
         check=check,
-        secrets=(token,),
+        secrets=github_git_redactions(token),
     )
+
+
+def github_git_redactions(token: str) -> tuple[str, ...]:
+    encoded = base64.b64encode(("x-access-token:" + token).encode()).decode() if token else ""
+    return (token, encoded)
+
+
+def github_git_environment(token: str) -> dict[str, str]:
+    """Supply Git's GitHub HTTP header through process-local config only."""
+    env = dict(os.environ, GIT_TERMINAL_PROMPT="0")
+    if token:
+        env.update(GIT_CONFIG_COUNT="2",
+                   GIT_CONFIG_KEY_0="http.https://github.com/.extraHeader",
+                   GIT_CONFIG_VALUE_0="Authorization: Basic " + github_git_redactions(token)[1],
+                   GIT_CONFIG_KEY_1="http.followRedirects", GIT_CONFIG_VALUE_1="false")
+    return env
 
 
 def gh(
@@ -772,6 +789,65 @@ def refresh_dois(bundles: Sequence[Bundle]) -> list[Bundle]:
         for bundle in bundles
     ]
 
+
+
+def reviewed_manuscript_gate():
+    path = HERE / "manuscript_pdf_gate.py"
+    if any(part.is_symlink() for part in (path, *path.parents)) or not path.is_file():
+        raise LockstepError("reviewed manuscript readback source required")
+    raw = path.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != "3ca55bf1e3e25e920ce9b79a5363e8d17138183ad592675d6fc058996fa41d0d":
+        raise LockstepError("reviewed manuscript readback source differs")
+    namespace = {"__file__": str(path), "__name__": "_bound_lockstep_manuscript_gate"}
+    exec(compile(raw, str(path), "exec"), namespace)
+    if path.read_bytes() != raw:
+        raise LockstepError("reviewed manuscript readback source changed")
+    return namespace
+
+
+def publication_uploads(bundle):
+    # Exact dated-publisher upload inventory; local receipts are never uploads.
+    excluded = {"BUNDLE_MANIFEST.json", "LEDGER_BINDING.json", "RELEASE_BINDING.json",
+                "zenodo_metadata.json", "PUBLISHED_DOI.txt", "ZENODO_DRAFT_ID.txt"}
+    return sorted(path for path in bundle.path.iterdir()
+                  if path.is_file() and path.name not in excluded and not path.name.startswith("."))
+
+
+def verify_publication_readbacks(bundles):
+    """A DOI receipt never replaces a current anonymous exact-upload readback.
+
+    This runs on every mirror invocation, including backfills with no publisher.
+    Failed or uncertain publication can be reconciled only by this same gate.
+    """
+    gate = reviewed_manuscript_gate(); receipts = []
+    for bundle in bundles:
+        receipt = {"standard": "VRS-CANON-CURRENT-PUBLIC-READBACK-1", "doi": bundle.doi,
+                   "bundle": str(bundle.path), "state": "HOLD_PUBLIC_READBACK",
+                   "verified_at_utc": dt.datetime.now(dt.timezone.utc).isoformat()}
+        directory = RECEIPT_DIR / "public-readbacks"; directory.mkdir(parents=True, exist_ok=True)
+        path = directory / (uuid.uuid4().hex + ".json")
+        try:
+            if not isinstance(bundle.doi, str) or DOI_PATTERN.fullmatch(bundle.doi) is None:
+                raise LockstepError("current production DOI required for public readback")
+            if read_doi(bundle.path / "PUBLISHED_DOI.txt") != bundle.doi:
+                raise LockstepError("published DOI receipt changed before readback")
+            approved = gate["require_local"](bundle.path, publication_uploads(bundle))
+            receipt["approved"] = approved
+            record = gate["public_record"](bundle.doi.rsplit(".", 1)[1]); receipt["public_record"] = record
+            if record.get("doi") != bundle.doi:
+                raise LockstepError("anonymous public record DOI differs")
+            receipt["readback"] = gate["require_public"](record, approved)
+            if (read_doi(bundle.path / "PUBLISHED_DOI.txt") != bundle.doi
+                    or gate["require_local"](bundle.path, publication_uploads(bundle)) != approved):
+                raise LockstepError("published bundle changed during public readback")
+            receipt["state"] = "CURRENT_PUBLIC_READBACK_VERIFIED"
+        except Exception as exc:
+            receipt["error_type"] = type(exc).__name__
+            raise LockstepError("current public upload/PDF readback HOLD; mirroring forbidden") from exc
+        finally:
+            path.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        receipts.append({"path": str(path), "sha256": sha256(path), **receipt})
+    return receipts
 
 def create_commit(
     repo: Path, date: str, bundles: Sequence[Bundle], targets: Sequence[str], token: str
@@ -1200,6 +1276,7 @@ def write_receipt(
     spine_version: str,
     workflows: Sequence[dict[str, object]],
     public_catalog_url: str,
+    publication_readbacks: Sequence[dict[str, object]] = (),
 ) -> Path:
     RECEIPT_DIR.mkdir(exist_ok=True)
     path = RECEIPT_DIR / f"{date}.json"
@@ -1213,6 +1290,7 @@ def write_receipt(
         "pull_request_url": pr_url,
         "catalog_digest": catalog_digest,
         "public_catalog_url": public_catalog_url,
+        "publication_readbacks": list(publication_readbacks),
         "workflows": list(workflows),
         "spine_version": spine_version,
         "spine_changed": False,
@@ -1301,7 +1379,9 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = parse_args(sys.argv[1:] if argv is None else argv)
-    if "--rehearse" in args.publisher:
+    if any(value.partition("=")[0].startswith("--")
+           and len(value.partition("=")[0]) > 2
+           and "--rehearse".startswith(value.partition("=")[0]) for value in args.publisher):
         raise LockstepError("rehearsal cannot enter the canon mirror route")
     bundles = discover_bundles(args.date)
     print_plan(args.date, bundles, args.publisher)
@@ -1323,11 +1403,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     repo = temp_root / "viridis-canon"
     publisher_rc = 0
     try:
-        env = dict(os.environ, GIT_TERMINAL_PROMPT="0")
+        env = github_git_environment(token)
         run(
-            ["git", "clone", "--quiet", TOKEN_REPO_URL.format(token=token), str(repo)],
+            ["git", "clone", "--quiet", PUBLIC_REPO_URL, str(repo)],
             env=env,
-            secrets=(token,),
+            secrets=github_git_redactions(token),
         )
         probe_git_write(repo, token)
         print("\nGitHub write preflight: OK (before Zenodo).")
@@ -1363,6 +1443,10 @@ def main(argv: Sequence[str] | None = None) -> int:
                 secrets=(token,),
             )
             publisher_rc = completed.returncode
+            if publisher_rc:
+                raise LockstepError(
+                    f"publisher exited {publisher_rc}; mirroring is forbidden even if a DOI receipt exists"
+                )
 
         refreshed = refresh_dois(bundles)
         published = [bundle for bundle in refreshed if bundle.doi]
@@ -1372,6 +1456,12 @@ def main(argv: Sequence[str] | None = None) -> int:
                 "no valid PUBLISHED_DOI.txt files exist; nothing may be pushed to git"
             )
 
+        publication_readbacks = verify_publication_readbacks(published)
+        # The prepublication copy must still correspond to the bytes just read
+        # anonymously. Do not mirror changed local payload on a recovery run.
+        for bundle in published:
+            if any(sha256(source) != sha256(repo / target) for source, target in payload_pairs(bundle)):
+                raise LockstepError("mirror payload changed since public readback; mirroring forbidden")
         published_targets = [
             target
             for bundle in published
@@ -1409,6 +1499,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             spine_version,
             workflows,
             public_catalog_url,
+            publication_readbacks,
         )
 
         print(f"\nGit mirror verified on main: {public_commit}")
@@ -1425,11 +1516,6 @@ def main(argv: Sequence[str] | None = None) -> int:
         run([sys.executable, str(ROOT / "RESEARCH_PIPELINE_v2/os_kernel_update_queue.py"),
              "--receipt", str(receipt)], cwd=ROOT, capture=False)
 
-        if publisher_rc:
-            raise LockstepError(
-                f"publisher exited {publisher_rc}; all {len(published)} DOI-bearing "
-                "bundles were still mirrored and verified"
-            )
         if missing:
             raise LockstepError(
                 "Git lockstep is satisfied for published bundles, but these bundles "

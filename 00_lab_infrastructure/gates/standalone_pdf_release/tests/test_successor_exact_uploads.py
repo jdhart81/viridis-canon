@@ -1,5 +1,6 @@
 """Successor publication must retain its original approval across HTTP and DOI outcomes."""
 import contextlib
+import copy
 import hashlib
 import importlib.util
 import json
@@ -67,10 +68,11 @@ class SuccessorExactUploadsTests(unittest.TestCase):
                replace_public=False, bad_put=False, bad_draft=None):
         bundle = candidate["bundle"]
         captured = {}; calls = []; approvals = []; published = False
+        native_metadata = copy.deepcopy(candidate["metadata"]["metadata"])
         real_public = gate.require_public
 
         def api(token, method, url, data=None, content_type="application/json", **kwargs):
-            nonlocal published
+            nonlocal published, native_metadata
             self.assertEqual(token, TOKEN)
             calls.append((method, url, data))
             if method == "DELETE" and url.endswith("/records/200/draft"):
@@ -78,7 +80,9 @@ class SuccessorExactUploadsTests(unittest.TestCase):
             if method == "GET" and url.endswith("/records/100"):
                 if mutate_during_http:
                     (bundle / "paper.pdf").write_bytes(b"%PDF-1.4 replaced during network activity")
-                return {"id": 100, "metadata": {}}
+                return {"id": 100, "metadata": copy.deepcopy(candidate["metadata"]["metadata"])}
+            if method == "GET" and url.endswith("/records/200/draft"):
+                return {"id": 200, "metadata": copy.deepcopy(native_metadata)}
             if method == "GET" and url.endswith("/records/200"):
                 if not published:
                     return None
@@ -102,6 +106,7 @@ class SuccessorExactUploadsTests(unittest.TestCase):
                 captured[name] = data
                 return {"checksum": "md5:" + ("0" * 32 if bad_put else hashlib.md5(data).hexdigest())}
             if method == "PUT" and url.endswith("/deposit/depositions/200"):
+                native_metadata = json.loads(data)["metadata"]
                 return {}
             if method == "POST" and url.endswith("/actions/publish"):
                 published = True

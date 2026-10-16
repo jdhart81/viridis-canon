@@ -21,14 +21,14 @@ ROOT = Path(os.environ.get('VIRIDIS_CORE_ROOT', str(Path(__file__).resolve().par
 INSTALLED = ROOT / '_ZENODO_DEPOSITS/standalone_pdf_runtime'
 PROFILE = INSTALLED / 'CURRENT_PACKAGING_PROFILE.json'
 NOMINATION = INSTALLED / 'INSTALLATION_NOMINATION.json'
-# Exact 19-module successor source set, fixed before source freeze and review.
+# Exact 18-module digest-only source set; successor publication is excluded.
 SOURCE_HASHES = {
     'digest_controller_v2.py':
         # SHA-256 of reviewed source bytes; not a credential
         '331105b8f557cecd50b4824da5ba07b77ae6aec62efcbebdef712334c1a72282',
     'install_packaging_runtime.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '96088caa1f784d86f3768f71a519d926eb2be2a0f2ccd56467ee5a5d30469e68',
+        '5b47b68d29ad5b0f267334cbad33681b1b56f079bbfebb7f5b77fa5061b91591',
     'invoke_digest_v2.py':
         # SHA-256 of reviewed source bytes; not a credential
         '932afcb894fb8581ee9718ec1894d3ca38520efa3fbcbe34e34e706226befaa3',
@@ -52,7 +52,7 @@ SOURCE_HASHES = {
         'b01598e2223b7fe2ee77c3f7f89086fed899925621c9862dc4c504b5c16aad95',
     'owner_content_worker.py':
         # SHA-256 of reviewed source bytes; not a credential
-        'e0af909495fe4ef14309b62b3037cec4a1cde3b9bfa1b124484719f180fa0080',
+        '44739ce77b3ac3c7c5d23f94eabbf78d841a79340e31d739eff870e7815cefbd',
     'packaging_catalog.py':
         # SHA-256 of reviewed source bytes; not a credential
         '30a3e49d919fbf97b100a07f45222d86f8565443f019916758dde3748f43bc1b',
@@ -70,16 +70,13 @@ SOURCE_HASHES = {
         'cd4169d3cc2c3af02829d20ce363908a9edb914501f134dc341dd8d085567014',
     'packaging_runtime.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '5499b8572df26ecfba3fec728136708fc74a213d3233550617d319b10b0e02b2',
+        '1c6e6a8ac5cd073712ac21c46e58fb603acf263fc3161543b278bbfc21cec92a',
     'publish_dated_bundles_guarded.py':
         # SHA-256 of reviewed source bytes; not a credential
         '38a9752d9c686312acab087955cc9ccecd2e18fdabc13d54275ace2994486698',
-    'publish_successor_wave_guarded.py':
-        # SHA-256 of reviewed source bytes; not a credential
-        'b754a9c09d4a98dcfb9add0fab2c714ab52d80b56a35d85d2c5572916b1527d3',
     'scientific_registration_worker.py':
         # SHA-256 of reviewed source bytes; not a credential
-        'b995b5e99de7a4d270bb23ea5e9f453b4243c0af394a6411b961eaa7d02ef97d',
+        'cc747b802b33bf27a40b66bb57aadb5f557b10b4112541952c6b38caaf2f256a',
 }
 SHARED_INPUT_NAME = 'stable_input_identity.py'
 SHARED_INPUT_SHA256 = '7e6c204993f0ba65650c58ad50a71073d803522d31fa08b93b7ce35054fa5eda'
@@ -124,10 +121,12 @@ def read(path, expected=None):
 
 
 def context(config_path, config_sha):
-    need(isinstance(SOURCE_HASHES, dict) and len(SOURCE_HASHES) == 19,
-         'actual reviewed successor source set required')
+    need(isinstance(SOURCE_HASHES, dict) and len(SOURCE_HASHES) == 18,
+         'actual reviewed digest-only source set required')
     need(sys.pycache_prefix is None,'external current-code import cache prefix present')
     artifacts=[INSTALLED/'__pycache__']
+    artifacts.extend(INSTALLED/('publish_successor_wave_guarded'+suffix) for suffix in
+        ('.py','','.pyc','.pyo',*importlib.machinery.EXTENSION_SUFFIXES))
     for name in sorted(SOURCE_HASHES):
         artifacts.extend(INSTALLED/(name[:-3]+suffix) for suffix in
             ('','.pyc','.pyo',*importlib.machinery.EXTENSION_SUFFIXES))
@@ -155,11 +154,11 @@ def context(config_path, config_sha):
     profile_raw, _, profile_frame = read(PROFILE, profile_binding['sha256'])
     profile = json.loads(profile_raw)
     need(isinstance(profile, dict)
-         and profile.get('standard') == 'VRS-STANDALONE-PDF-PACKAGING-PROFILE-12'
+         and profile.get('standard') == 'VRS-DIGEST-ONLY-PDF-PACKAGING-PROFILE-1'
          and profile.get('status') == 'INSTALLED_EXACT_ADDITIVE_SOURCE_READBACK_PASS'
          and profile.get('canonical_root') == str(ROOT), 'exact installed successor profile required')
     modules = profile.get('modules')
-    need(isinstance(modules, list) and len(modules) == 19
+    need(isinstance(modules, list) and len(modules) == 18
          and all(isinstance(row, dict) for row in modules)
          and {row.get('name') for row in modules} == set(SOURCE_HASHES),
          'complete exact successor source table required')

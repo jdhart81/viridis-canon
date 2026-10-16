@@ -148,7 +148,7 @@ class RuntimeTrustTests(unittest.TestCase):
             root=Path(tmp).resolve();rows=[]
             for name in runtime.MODULE_NAMES:
                 p=root/name;p.write_text('# fixture\n');rows.append({'name':name,'path':str(p),'sha256':runtime.sha(p.read_bytes()),'git_path':runtime.GIT_PREFIX+name})
-            self.assertEqual(len(runtime.module_table(root,rows)),19)
+            self.assertEqual(len(runtime.module_table(root,rows)),18)
             for bad in (rows[:-1],[*rows,deepcopy(rows[0])],[{**r,'name':'other.py'}if i==0 else r for i,r in enumerate(rows)]):
                 with self.assertRaisesRegex(runtime.PackagingHold,'CLOSED_ADDITIVE_MODULES'):runtime.module_table(root,bad)
 
@@ -182,7 +182,7 @@ class InstallerPreflightTests(unittest.TestCase):
             'legacy_closure':anchor,**runtime.SOURCE_REVIEW_CHANGE_FLAGS,
             'review_scope':'SOURCE_ONLY','actual_live_runtime_admission':False,
             'actual_seven_record_admission':'PENDING_POST_INSTALL_FRESH_READBACK'})
-        plan={'standard':'VRS-EXACT-ADDITIVE-PDF-RUNTIME-INSTALL-PLAN-12','status':'ROOT_REVIEWED_READY_NOT_INSTALLED',
+        plan={'standard':'VRS-EXACT-DIGEST-ONLY-RUNTIME-INSTALL-PLAN-1','status':'ROOT_REVIEWED_READY_NOT_INSTALLED',
             'canonical_root':str(root),'source_modules':[row],'shared_dependencies':[shared],'source_origin':{'synthetic':True},'source_review':source_review,
             'user_authority':authority,'access_registry':anchor,'historical_publisher':{'path':str(publisher),'sha256':original_sha},
             'installed_at_utc':'2020-01-02T00:00:00Z','root_review':None,
@@ -281,7 +281,7 @@ class InstalledPlanBindingTests(unittest.TestCase):
         shared=shared_row(root,prototype/'common')
         installed_shared=shared_row(root,installed/'common')
         profile['shared_dependencies']=[installed_shared]
-        plan={'standard':'VRS-EXACT-ADDITIVE-PDF-RUNTIME-INSTALL-PLAN-12','status':'ROOT_REVIEWED_READY_NOT_INSTALLED',
+        plan={'standard':'VRS-EXACT-DIGEST-ONLY-RUNTIME-INSTALL-PLAN-1','status':'ROOT_REVIEWED_READY_NOT_INSTALLED',
             'canonical_root':str(root),'source_modules':rows,'shared_dependencies':[shared],'historical_publisher':publisher_binding,'root_review':None,
             'predecessor_installation':runtime.PREDECESSOR_INSTALLATION,'transient_rehydration':runtime.TRANSIENT_REHYDRATION_POLICY,'data_alias_observation':authority,'platform_timezone_observation':authority,
             **{k:profile[k]for k in ('source_origin','source_review','user_authority','access_registry','installed_at_utc')}}

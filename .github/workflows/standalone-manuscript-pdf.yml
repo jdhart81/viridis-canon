@@ -8,6 +8,7 @@ on:
       - 'tools/mutate_manuscript_gate.py'
       - 'tools/mutate_gate_features.py'
       - 'tools/mutate_runbook_fixes.py'
+      - 'tools/mutate_audit_hardening.py'
       - 'tools/tests/**'
       - 'tools/zenodo_metadata_repair.py'
       - '.github/workflows/standalone-manuscript-pdf.yml'
@@ -19,6 +20,7 @@ on:
       - 'tools/mutate_manuscript_gate.py'
       - 'tools/mutate_gate_features.py'
       - 'tools/mutate_runbook_fixes.py'
+      - 'tools/mutate_audit_hardening.py'
       - 'tools/tests/**'
       - 'tools/zenodo_metadata_repair.py'
       - '.github/workflows/standalone-manuscript-pdf.yml'
@@ -60,6 +62,7 @@ jobs:
         run: |
           python3 tools/mutate_gate_features.py --source 00_lab_infrastructure/gates/standalone_pdf_release --output "$RUNNER_TEMP/manuscript-feature-mutations.json"
           python3 tools/mutate_runbook_fixes.py --repo . --output "$RUNNER_TEMP/review-finding-mutations.json"
+          python3 tools/mutate_audit_hardening.py --repo . --output "$RUNNER_TEMP/audit-hardening-mutations.json"
 
       - name: Verify immutable historical source without full runtime copies
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/common/tests -p 'test_*.py' -v

@@ -96,7 +96,21 @@ def verification_coverage_report(artifact, context, *, enforce_new_artifacts=Fal
         gates = ROOT / "RESEARCH_PIPELINE_v2/verification_coverage_gates"
         if str(gates) not in sys.path:
             sys.path.insert(0, str(gates))
-        from production_hooks import log_publication
+        from production_hooks import log_publication, publication_report
+        out = rehearsal.evidence_output()
+        if out is not None:
+            # Preserve the same science admission; only its observation sink is
+            # rehearsal-scoped, never the production reports directory.
+            result = publication_report(ROOT, artifact, context, enforce_new_artifacts=enforce_new_artifacts)
+            result["rehearsal"] = True
+            serialized = json.dumps(result, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
+            directory = out / "verification-coverage"; directory.mkdir(exist_ok=True)
+            with (directory / (hashlib.sha256(serialized.encode()).hexdigest() + ".json")).open("x") as stream:
+                stream.write(serialized)
+            if enforce_new_artifacts:
+                from publication_gate import require_new_artifact_publication
+                require_new_artifact_publication(result)
+            return result
         return log_publication(ROOT, artifact, context, enforce_new_artifacts=enforce_new_artifacts)
     except Exception as exc:
         if enforce_new_artifacts:
@@ -160,6 +174,7 @@ def api_call(
     *,
     allow_array: bool = False,
     allow_not_found: bool = False,
+    not_found_status: list[int] | None = None,
     accept_native: bool = False,
 ) -> Any:
     rehearsal.require_production()
@@ -185,7 +200,9 @@ def api_call(
                 exc.close()
             except Exception:
                 pass
-            if allow_not_found and method == "GET" and exc.code in (404, 410):
+            if allow_not_found and method in {"GET", "DELETE"} and exc.code in (404, 410):
+                if not_found_status is not None:
+                    not_found_status.append(exc.code)
                 return None
             if method in {"GET", "PUT"} and exc.code in {429, 502, 503, 504} and attempt < 3:
                 time.sleep(2 ** (attempt + 1))
@@ -384,13 +401,14 @@ def rehearse_bundle(bundle: Path, credential: str, *, output=None):
     # Reject a foreign DOI before even creating an evidence directory.
     read_doi(bundle / "PUBLISHED_DOI.txt")
     before = rehearsal.tree_hashes(bundle)
-    release_metadata = metadata_payload(bundle, enforce_new_artifacts=True)
-    approved = manuscript_pdf_gate.require_local(bundle, upload_files(bundle))
-    payloads = snapshot_uploads(bundle, approved)
-    out = rehearsal.output_directory(output)
+    out = rehearsal.output_directory(output, forbidden_roots=(bundle,))
     draft = None
     receipt = {"state": "REHEARSAL_STARTED", "published": False, "bundle_before": before}
     try:
+        with rehearsal.evidence_scope(out):
+            release_metadata = metadata_payload(bundle, enforce_new_artifacts=True)
+        approved = manuscript_pdf_gate.require_local(bundle, upload_files(bundle))
+        payloads = snapshot_uploads(bundle, approved)
         draft = api_call(credential, "POST", f"{BASE}/deposit/depositions", b"{}")
         identifier = draft.get("id")
         if type(identifier) is not int:
@@ -414,23 +432,28 @@ def rehearse_bundle(bundle: Path, credential: str, *, output=None):
     finally:
         rehearsal.cleanup_window()
         if isinstance(draft, dict) and type(draft.get("id")) is int:
-            # Keep the 404/410 code available while sanitizing all other failures.
             receipt["deletion"] = delete_rehearsal_draft(credential, draft["id"])
         receipt["bundle_after"] = rehearsal.tree_hashes(bundle)
-        if receipt["bundle_after"] != before:
-            raise PublisherError("rehearsal changed bundle bytes")
-        receipt["state"] = "REHEARSED_DRAFT_DELETED" if receipt["state"] == "DRAFT_READBACK_VERIFIED" else "HOLD_REHEARSAL_DRAFT_DELETED"
+        changed = receipt["bundle_after"] != before
+        cleanup_required = receipt.get("deletion", {}).get("deleted") is False
+        if cleanup_required:
+            receipt["state"] = "HOLD_DRAFT_CLEANUP_REQUIRED"
+        elif changed:
+            receipt["state"] = "HOLD_REHEARSAL_BUNDLE_CHANGED"
+        elif draft is None:
+            receipt["state"] = "HOLD_REHEARSAL_NO_DRAFT"
+        else:
+            receipt["state"] = "REHEARSED_DRAFT_DELETED" if receipt["state"] == "DRAFT_READBACK_VERIFIED" else "HOLD_REHEARSAL_DRAFT_DELETED"
         rehearsal.save(out, receipt, token=credential)
+        if cleanup_required:
+            raise PublisherError("HOLD_DRAFT_CLEANUP_REQUIRED: inspect the engine receipt's draft id") from None
+        if changed:
+            raise PublisherError("rehearsal changed bundle bytes or modes")
     return receipt
 
 
 def delete_rehearsal_draft(credential, identifier):
-    url = f"{BASE}/deposit/depositions/{identifier}"
-    api_call(credential, "DELETE", url)
-    result = api_call(credential, "GET", url, allow_not_found=True)
-    if result is not None:
-        raise PublisherError("rehearsal draft still exists after deletion")
-    return {"draft_id": identifier, "deleted": True, "status": "HTTP_404_OR_410"}
+    return rehearsal.discard(lambda method,url,**kwargs:api_call(credential,method,url,**kwargs), identifier)
 
 
 def plan(date: str, base: Path = HERE) -> dict[str, Any]:

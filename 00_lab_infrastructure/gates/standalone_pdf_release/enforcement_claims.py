@@ -92,11 +92,44 @@ def validate_model(claims: dict) -> None:
                 if not {"manuscript_pdf_gate.require_local", "manuscript_pdf_gate.require_public"} <= calls:
                     raise EnforcementDrift(f"local and public AST requirements missing: {route_id}")
 
+    operational = [route.get("operational") for route in claims["routes"].values()]
+    if any(row is not None for row in operational):
+        for route_id, route in claims["routes"].items():
+            row = route.get("operational")
+            if (not isinstance(row, dict) or set(row) != {"state", "reason", "clearance_receipts"}
+                    or row["state"] not in {"AVAILABLE", "INACTIVE", "QUARANTINED", "UNVERIFIED"}
+                    or not isinstance(row["reason"], str) or not row["reason"].strip()
+                    or not isinstance(row["clearance_receipts"], list)):
+                raise EnforcementDrift(f"closed operational route status required: {route_id}")
+            for receipt in row["clearance_receipts"]:
+                if (not isinstance(receipt, dict) or set(receipt) != {"role", "root", "path", "sha256"}
+                        or receipt["role"] not in {"installation", "independent_review", "authorization"}
+                        or receipt["root"] != "core" or not isinstance(receipt["path"], str)
+                        or Path(receipt["path"]).is_absolute() or ".." in Path(receipt["path"]).parts
+                        or not isinstance(receipt["sha256"], str) or len(receipt["sha256"]) != 64
+                        or any(c not in "0123456789abcdef" for c in receipt["sha256"])):
+                    raise EnforcementDrift(f"bound operational clearance receipt required: {route_id}")
+            roles = [receipt["role"] for receipt in row["clearance_receipts"]]
+            if len(roles) != len(set(roles)):
+                raise EnforcementDrift(f"duplicate operational receipt role: {route_id}")
+            if row["state"] == "AVAILABLE" and (not route["enforced"]
+                    or set(roles) != {"installation", "independent_review", "authorization"}):
+                raise EnforcementDrift(f"operational availability requires separate clearance evidence: {route_id}")
+
 
 def render_status(claims: dict) -> str:
     validate_model(claims)
     routes = claims["routes"]
     status = f"Enforcement status (verified {claims['verified_on']}): "
+    if all("operational" in route for route in routes.values()):
+        names = {"digest_guard": "Methods Digest", "successor": "Successor", "dated": "Dated"}
+        status += "PDF gate call presence and operational release clearance are separate. "
+        for route_id, route in routes.items():
+            calls = "present in both declared sources" if route["enforced"] else "incomplete across declared sources"
+            row = route["operational"]
+            status += f"{names[route_id]}: PDF gate calls {calls}; operational state {row['state']}: {row['reason']}. "
+        status += "A route marked INACTIVE, QUARANTINED or UNVERIFIED cannot execute a publication. Source checks alone do not authorize installation or publication."
+        return BEGIN + "\n" + status.rstrip() + "\n" + END
     if all(route["enforced"] for route in routes.values()):
         status += "the Methods Digest guard, successor publisher and installed dated publisher enforce this gate. "
         for route in routes.values():
@@ -135,8 +168,22 @@ def verify(claims: dict, repo_root: Path, core_root: Path | None = None) -> dict
             if entry["root"] not in roots:
                 continue
             observations.append(validate_source((roots[entry["root"]] / entry["path"]).read_bytes(), entry))
+    clearances = []
+    for route_id, route in claims["routes"].items():
+        operational = route.get("operational")
+        if operational is None:
+            continue
+        if core_root is not None:
+            for binding in operational["clearance_receipts"]:
+                path = core_root / binding["path"]
+                if (any(part.is_symlink() for part in (path, *path.parents)) or not path.is_file()
+                        or hashlib.sha256(path.read_bytes()).hexdigest() != binding["sha256"]):
+                    raise EnforcementDrift(f"operational clearance receipt differs: {route_id}")
+        clearances.append({"route": route_id, "declared_state": operational["state"],
+                           "clearance_receipts_verified": core_root is not None})
     return {
         "status": "PASS",
+        "operational_observations": clearances,
         "scope": "repo_and_installed" if core_root else "repo_only_installed_not_verified",
         "observations": observations,
     }

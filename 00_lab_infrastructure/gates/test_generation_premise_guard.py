@@ -1,4 +1,6 @@
 """Synthetic forward-seal regressions; no manuscript payload, Lean or network."""
+import importlib.util
+import shutil
 import hashlib
 import json
 import os
@@ -190,7 +192,8 @@ class StagedBoundaryTests(unittest.TestCase):
             for invalid in ((b"\xff", b"[", b"[]") if name.endswith(".json") else (b"\xff",)):
                 with self.subTest(name=name, invalid=invalid):
                     path.write_bytes(invalid)
-                    with self.assertRaises(guard.GenerationPremiseHold):
+                    label = "PREMISE_DRAFT_JSON_OBJECT_REQUIRED" if invalid == b"[]" else "PREMISE_DRAFT_ENCODING_OR_JSON_INVALID"
+                    with self.assertRaisesRegex(guard.GenerationPremiseHold, "^" + label + "$"):
                         guard.require_staged_premise(self.stage, self.manifest)
                     self.assertEqual(path.read_bytes(), invalid)
                     self.assertEqual(self.state.read_bytes(), before_state)
@@ -202,7 +205,8 @@ class StagedBoundaryTests(unittest.TestCase):
         for invalid in (b"\xff", b"[", b"[]"):
             with self.subTest(invalid=invalid):
                 path.write_bytes(invalid)
-                with self.assertRaises(guard.GenerationPremiseHold):
+                label = "PREMISE_MANIFEST_OBJECT_REQUIRED" if invalid == b"[]" else "PREMISE_MANIFEST_ENCODING_OR_JSON_INVALID"
+                with self.assertRaisesRegex(guard.GenerationPremiseHold, "^" + label + "$"):
                     guard.require_staged_manifest(self.stage, path)
                 self.assertEqual(path.read_bytes(), invalid)
                 self.assertFalse(self.live.exists())
@@ -218,6 +222,45 @@ class StagedBoundaryTests(unittest.TestCase):
         with patch.object(guard, "_premise", return_value=checker), patch.object(checker, "evaluate", side_effect=mutate):
             with self.assertRaisesRegex(guard.GenerationPremiseHold, "MANIFEST_CHANGED"):
                 guard.require_staged_manifest(self.stage, path)
+
+    def test_unchanged_checker_and_title_dependency_pins_are_enforced(self):
+        here=Path(guard.__file__).parent
+        for name in ("premise_declaration.py", "inv9_title_basis.py"):
+            with self.subTest(source=name), tempfile.TemporaryDirectory() as temporary:
+                folder=Path(temporary).resolve()
+                for filename in ("generation_premise_guard.py", "premise_declaration.py", "inv9_title_basis.py"):
+                    shutil.copy2(here/filename,folder/filename)
+                path=folder/name;path.write_bytes(path.read_bytes()+b"\n")
+                spec=importlib.util.spec_from_file_location("_test_exact_forward_pin",folder/"generation_premise_guard.py")
+                candidate=importlib.util.module_from_spec(spec);spec.loader.exec_module(candidate)
+                with self.assertRaisesRegex(candidate.GenerationPremiseHold,"^UNCHANGED_PREMISE_SOURCE_REQUIRED$"):
+                    candidate._premise()
+
+    def test_input_mutation_during_require_premise_has_exact_hold(self):
+        actual=guard.require_premise
+        def mutate(*args,**kwargs):
+            result=actual(*args,**kwargs)
+            with (self.stage/"paper.tex").open("a") as handle:handle.write("\n% changed after evaluation\n")
+            return result
+        with patch.object(guard,"require_premise",side_effect=mutate):
+            with self.assertRaisesRegex(guard.GenerationPremiseHold,"^PREMISE_DRAFT_INPUT_CHANGED$"):
+                guard.require_staged_premise(self.stage,self.manifest)
+        self.assertFalse((self.stage/"RUN_MANIFEST.json").exists())
+
+    def test_json_recursion_is_labeled_before_any_write(self):
+        path=self.stage/"DRAFT_MANIFEST.json";path.write_text(json.dumps(self.manifest))
+        for invoke,label in ((lambda:guard.require_staged_premise(self.stage,self.manifest),"PREMISE_DRAFT_ENCODING_OR_JSON_INVALID"),
+                             (lambda:guard.require_staged_manifest(self.stage,path),"PREMISE_MANIFEST_ENCODING_OR_JSON_INVALID")):
+            with patch.object(guard.json,"loads",side_effect=RecursionError("deep JSON")):
+                with self.assertRaisesRegex(guard.GenerationPremiseHold,"^"+label+"$"):
+                    invoke()
+        self.assertFalse((self.stage/"RUN_MANIFEST.json").exists())
+
+    def test_symlinked_stage_ancestor_has_exact_path_hold(self):
+        linked=self.root/"linked";linked.symlink_to(self.stage,target_is_directory=True)
+        with self.assertRaisesRegex(guard.GenerationPremiseHold,"^PREMISE_INPUT_PATH$"):
+            guard.require_staged_premise(linked,self.manifest)
+        self.assertFalse((self.stage/"RUN_MANIFEST.json").exists())
 
 
 if __name__ == "__main__":

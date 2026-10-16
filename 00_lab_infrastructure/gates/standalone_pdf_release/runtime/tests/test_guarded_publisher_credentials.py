@@ -70,6 +70,8 @@ DATED_ORIGINAL = load_file("_selected_dated_baseline_fixtures", OUTER / "tests/t
 DATED_EXACT = load_file("_selected_dated_exact_regressions", OUTER / "tests/test_dated_exact_uploads.py",
                         {"test_publish_dated_bundles": DATED_ORIGINAL})
 SUCCESSOR_EXACT = load_file("_selected_successor_exact_regressions", OUTER / "tests/test_successor_exact_uploads.py")
+SUCCESSOR_HARDENING = load_file("_selected_successor_audit_hardening", OUTER / "tests/test_successor_hardening.py",
+                              {"test_publish_successor_credentials": FIXTURE})
 
 
 class SelectedGateHardeningBehavior(HARDENING.HardeningTests):
@@ -103,6 +105,15 @@ class GuardedSuccessorExactBehavior(SUCCESSOR_EXACT.SuccessorExactUploadsTests):
         SUCCESSOR.importlib = types.SimpleNamespace(import_module=lambda name:
             SELECTED_GATE if name == "manuscript_pdf_gate" else REAL_COHERENCE if name == "release_coherence" else REAL_IMPORT(name))
         SUCCESSOR.manuscript_pdf_gate = SELECTED_GATE
+
+
+class GuardedSuccessorHardeningBehavior(SUCCESSOR_HARDENING.SuccessorHardeningTests):
+    def setUp(self):
+        self.publisher = SUCCESSOR
+        SUCCESSOR.packaging = fake_packaging()
+        SUCCESSOR.importlib = types.SimpleNamespace(import_module=lambda name:
+            FIXTURE.GATE if name == "manuscript_pdf_gate" else REAL_COHERENCE if name == "release_coherence" else REAL_IMPORT(name))
+        SUCCESSOR.manuscript_pdf_gate = FIXTURE.GATE
 
 
 class GuardedBoundaryTests(unittest.TestCase):

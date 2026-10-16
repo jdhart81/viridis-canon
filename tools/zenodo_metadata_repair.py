@@ -7,6 +7,7 @@ receipt, and the exact approved plan. Publication outcomes are never retried.
 from __future__ import annotations
 
 import copy
+from datetime import datetime
 import hashlib
 import json
 import os
@@ -71,7 +72,7 @@ def protected_diff(before, after):
 
 
 def draft_against_public(before, draft):
-    """Normalize only the known edit-phase flags; every content field stays exact."""
+    """Normalize known edit-only fields; retain all content and unknown drift."""
     value = copy.deepcopy(draft)
     if before.get("status") == "published" and value.get("status") in {"draft", "unsubmitted"}:
         value["status"] = "published"
@@ -83,6 +84,44 @@ def draft_against_public(before, draft):
         actual = value.get("links", {}).get(key)
         if isinstance(original, str) and actual == original.rstrip("/") + "/draft":
             value["links"][key] = original
+    if "expires_at" not in before and isinstance(value.get("expires_at"), str):
+        try:
+            expiry = datetime.fromisoformat(value["expires_at"].replace("Z", "+00:00"))
+        except ValueError:
+            pass
+        else:
+            if expiry.tzinfo is not None:
+                value.pop("expires_at")
+    original_versions = before.get("versions", {})
+    versions = value.get("versions", {})
+    if (isinstance(original_versions, dict) and isinstance(versions, dict)
+            and versions.get("is_latest_draft") is True
+            and ("is_latest_draft" not in original_versions or original_versions["is_latest_draft"] is False)):
+        if "is_latest_draft" in original_versions:
+            versions["is_latest_draft"] = original_versions["is_latest_draft"]
+        else:
+            versions.pop("is_latest_draft")
+    record_id = str(before.get("id"))
+    public_prefix = "/records/" + record_id + "/files/"
+    draft_prefix = "/records/" + record_id + "/draft/files/"
+    original_entries = before.get("files", {}).get("entries", {})
+    entries = value.get("files", {}).get("entries", {})
+    if isinstance(original_entries, dict) and isinstance(entries, dict):
+        for name, row in entries.items():
+            if not isinstance(row, dict) or not isinstance(original_entries.get(name), dict):
+                continue
+            old_links = original_entries[name].get("links", {})
+            links = row.get("links", {})
+            if not isinstance(old_links, dict) or not isinstance(links, dict):
+                continue
+            draft_self = links.get("self")
+            if ("commit" not in old_links and isinstance(draft_self, str)
+                    and draft_prefix in draft_self and links.get("commit") == draft_self + "/commit"):
+                links.pop("commit")
+            for key, original in old_links.items():
+                if (isinstance(original, str) and public_prefix in original
+                        and links.get(key) == original.replace(public_prefix, draft_prefix, 1)):
+                    links[key] = original
     return protected_diff(before, value)
 
 
@@ -195,7 +234,7 @@ def apply_plan(client, plan, receipt_path, *, installation_receipt, installed_tr
         temp.replace(path)
 
     current = client("GET", record_url, rdm=True)
-    if canonical_hash(current) != plan["before_sha256"]:
+    if protected_diff(plan["before"], current):
         changes = protected_diff(plan["planned_after"], current)
         if not changes:
             receipt.update(state="ALREADY_APPLIED_PENDING_REQUIRED_READBACK", after=current)

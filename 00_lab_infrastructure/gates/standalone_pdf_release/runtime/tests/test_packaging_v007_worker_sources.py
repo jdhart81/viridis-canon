@@ -69,11 +69,12 @@ class WorkerSourceTests(unittest.TestCase):
     def test_current19_and_fixed_historical17_tables_cannot_be_mixed_or_rebound(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp).resolve();rows=[]
-            for name in sorted(runtime.MODULE_NAMES):
+            for name in sorted(runtime.FROZEN_FULL_MODULE_NAMES):
                 file=root/name;file.write_bytes(b'# source fixture\n')
                 rows.append({'name':name,'path':str(file),'sha256':runtime.sha(file.read_bytes()),
                              'git_path':runtime.GIT_PREFIX+name})
-            self.assertEqual(len(runtime.module_table(root,rows)),19)
+            current=[r for r in rows if r['name'] in runtime.MODULE_NAMES]
+            self.assertEqual(len(runtime.module_table(root,current)),18)
             for prefix in runtime.FROZEN_GIT_PREFIXES:
                 old=[{**row,'git_path':prefix+row['name']} for row in rows if row['name'] in runtime.FROZEN_MODULE_NAMES]
                 if prefix.endswith(('/future_runtime_v007/','/future_runtime_v008/','/future_runtime_v009/','/future_runtime_v010/','/future_runtime_v011/')):
@@ -145,7 +146,7 @@ class WorkerSourceTests(unittest.TestCase):
             root=Path(tmp).resolve();profile,modules=self.fixture(root)
             with self.source_fixture(root):
                 manifest=runtime.build_worker_source_manifest(root,profile)
-                self.assertEqual(len(manifest['modules']),19);self.assertEqual(len(manifest['metadata']),3)
+                self.assertEqual(len(manifest['modules']),18);self.assertEqual(len(manifest['metadata']),3)
                 with self.assertRaisesRegex(runtime.PackagingHold,'READONLY_WORKER'):
                     runtime.verify_worker_source_manifest(root,profile,manifest)
                 with runtime.readonly_worker_scope():

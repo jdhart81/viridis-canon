@@ -26,7 +26,7 @@ import time
 import importlib.machinery
 import dataclasses
 
-STANDARD = 'VRS-STANDALONE-PDF-PACKAGING-PROFILE-12'
+STANDARD = 'VRS-DIGEST-ONLY-PDF-PACKAGING-PROFILE-1'
 STATUS = 'INSTALLED_EXACT_ADDITIVE_SOURCE_READBACK_PASS'
 USER_DIRECTIVE = 'make sure all our deposits have the actual papers as separate PDFs and make that standard for future releases'
 
@@ -155,7 +155,11 @@ FROZEN_MODULE_NAMES = frozenset({
     'packaging_run_flow.py', 'packaging_nightly_coverage.py',
     'packaging_nightly_intake.py',
 })
-MODULE_NAMES = FROZEN_MODULE_NAMES | frozenset({'scientific_registration_worker.py','owner_content_worker.py'})
+FROZEN_FULL_MODULE_NAMES = FROZEN_MODULE_NAMES | frozenset({'scientific_registration_worker.py','owner_content_worker.py'})
+# A fixed reviewed digest closure, not a caller-selected subset. Historical
+# v001-v011 closures retain their original complete source sets and bytes.
+MODULE_NAMES = FROZEN_FULL_MODULE_NAMES - {'publish_successor_wave_guarded.py'}
+PROHIBITED_CURRENT_MODULE_NAMES = frozenset({'publish_successor_wave_guarded.py'})
 SHARED_INPUT_NAME = 'stable_input_identity.py'
 SHARED_INPUT_SHA256 = '7e6c204993f0ba65650c58ad50a71073d803522d31fa08b93b7ce35054fa5eda'
 SHARED_INPUT_GIT_PATH = '00_lab_infrastructure/gates/standalone_pdf_release/common/stable_input_identity.py'
@@ -231,14 +235,6 @@ PROFILE_FIELDS = {
 }
 DEFAULT_ROUTES = {
     'digest': 'invoke_digest_v2.py',
-    'dated_publisher': 'publish_dated_bundles_guarded.py',
-    'successor_publisher': 'publish_successor_wave_guarded.py',
-    'catalog': 'packaging_catalog.py',
-    'nightly': 'packaging_nightly.py',
-    'checkpoint': 'packaging_nightly.py checkpoint',
-    'coverage': 'packaging_nightly.py health',
-    'cycle': 'packaging_nightly.py cycle',
-    'intake': 'packaging_nightly.py intake',
 }
 
 
@@ -703,7 +699,12 @@ def source_proof(root, value, modules, *, required_checks=REQUIRED_CHECKS):
 
 def module_table(root, rows, *, git_prefix=GIT_PREFIX):
     need(git_prefix==GIT_PREFIX or git_prefix in FROZEN_GIT_PREFIXES,'FIXED_MODULE_TABLE_NAMESPACE')
-    names = MODULE_NAMES if git_prefix in {GIT_PREFIX, '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/'} else FROZEN_MODULE_NAMES
+    if git_prefix == GIT_PREFIX:
+        names = MODULE_NAMES
+    elif git_prefix in {'00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v010/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v011/'}:
+        names = FROZEN_FULL_MODULE_NAMES
+    else:
+        names = FROZEN_MODULE_NAMES
     need(isinstance(rows, list) and len(rows) == len(names)
          and all(isinstance(r, dict) and set(r) == {'name', 'path', 'sha256', 'git_path'} for r in rows)
          and {r['name'] for r in rows} == names
@@ -717,7 +718,7 @@ def module_table(root, rows, *, git_prefix=GIT_PREFIX):
 
 
 def shared_dependency_table(root, rows, *, installed=False):
-    """Exactly one reviewed common source; it never changes the fixed19 set."""
+    """Exactly one reviewed common source, outside the fixed digest source set."""
     need(isinstance(rows, list) and len(rows) == 1 and isinstance(rows[0], dict)
          and set(rows[0]) == {'name','path','sha256','git_path'}, 'CLOSED_SHARED_INPUT_DEPENDENCY')
     row = rows[0]
@@ -1482,7 +1483,7 @@ def require_installed_plan(root, profile, nomination, proof):
             'user_authority','access_registry','historical_publisher','installed_at_utc','root_review',
             'predecessor_installation','transient_rehydration','data_alias_observation','platform_timezone_observation',
             'shared_dependencies'}
-    need(set(plan)==fields and plan['standard']=='VRS-EXACT-ADDITIVE-PDF-RUNTIME-INSTALL-PLAN-12'
+    need(set(plan)==fields and plan['standard']=='VRS-EXACT-DIGEST-ONLY-RUNTIME-INSTALL-PLAN-1'
          and plan['status']=='ROOT_REVIEWED_READY_NOT_INSTALLED'and plan['canonical_root']==str(root), 'CLOSED_INSTALLED_PLAN')
     for field in ('source_origin','source_review','user_authority','access_registry','installed_at_utc',
                   'predecessor_installation','transient_rehydration','data_alias_observation','platform_timezone_observation'):
@@ -1533,6 +1534,9 @@ def current_import_artifact_guard(directory):
     directory=Path(directory)
     need(sys.pycache_prefix is None,'CURRENT_EXTERNAL_IMPORT_CACHE_PREFIX')
     candidates=[directory/'__pycache__']
+    for name in sorted(PROHIBITED_CURRENT_MODULE_NAMES):
+        candidates.extend(directory/(name[:-3]+suffix) for suffix in
+            ('.py','','.pyc','.pyo',*importlib.machinery.EXTENSION_SUFFIXES))
     for name in sorted(MODULE_NAMES):
         stem=name[:-3]
         candidates.extend(directory/(stem+suffix) for suffix in
@@ -1728,7 +1732,7 @@ def build_worker_source_manifest(root, profile_binding):
     normalized_profile = {'path':str(root / PROFILE_PATH),'sha256':metadata[0]['sha256']}
     need(same_binding(root,normalized_profile,profile_binding)
          and same_binding(root,nomination['profile'],normalized_profile), 'WORKER_NOMINATED_CURRENT_PROFILE')
-    result = {'standard':'VRS-CURRENT-V012-WORKER-SOURCE-MANIFEST-1','canonical_root':str(root),
+    result = {'standard':'VRS-CURRENT-DIGEST-ONLY-WORKER-SOURCE-MANIFEST-1','canonical_root':str(root),
               'profile_binding':normalized_profile,'modules':modules,'metadata':metadata,
               'source_origin':profile['source_origin'],'legacy_closure':profile['legacy_closure'],
               'source_review_change_flags':dict(SOURCE_REVIEW_CHANGE_FLAGS),'shared_dependencies':shared}
@@ -1760,7 +1764,7 @@ def refresh_worker_source_manifest_data(root, expected_manifest):
     """
     root = Path(root).resolve(strict=True)
     need(isinstance(expected_manifest,dict) and set(expected_manifest)==WORKER_SOURCE_MANIFEST_FIELDS
-         and expected_manifest['standard']=='VRS-CURRENT-V012-WORKER-SOURCE-MANIFEST-1'
+         and expected_manifest['standard']=='VRS-CURRENT-DIGEST-ONLY-WORKER-SOURCE-MANIFEST-1'
          and expected_manifest['canonical_root']==str(root)
          and root==SCIENTIFIC_ALIAS_PATH.parent/SCIENTIFIC_ALIAS_READLINK,
          'CLOSED_CURRENT_WORKER_SOURCE_DATA')
@@ -1768,9 +1772,9 @@ def refresh_worker_source_manifest_data(root, expected_manifest):
     modules = expected_manifest['modules']; metadata = expected_manifest['metadata']
     shared = expected_manifest['shared_dependencies']
     current_import_artifact_guard(installed)
-    need(isinstance(modules,list) and len(modules)==19
+    need(isinstance(modules,list) and len(modules)==18
          and {row.get('name') for row in modules}==MODULE_NAMES
-         and len({row.get('path') for row in modules})==19
+         and len({row.get('path') for row in modules})==18
          and isinstance(metadata,list) and len(metadata)==3,
          'COMPLETE_CURRENT_WORKER_SOURCE_DATA')
     need(isinstance(shared,list) and len(shared)==1 and isinstance(shared[0],dict)

@@ -9,6 +9,7 @@ on:
       - 'tools/mutate_gate_features.py'
       - 'tools/mutate_runbook_fixes.py'
       - 'tools/mutate_audit_hardening.py'
+      - 'tools/mutate_nightly_access.py'
       - 'tools/tests/**'
       - 'tools/zenodo_metadata_repair.py'
       - '.github/workflows/standalone-manuscript-pdf.yml'
@@ -21,6 +22,7 @@ on:
       - 'tools/mutate_gate_features.py'
       - 'tools/mutate_runbook_fixes.py'
       - 'tools/mutate_audit_hardening.py'
+      - 'tools/mutate_nightly_access.py'
       - 'tools/tests/**'
       - 'tools/zenodo_metadata_repair.py'
       - '.github/workflows/standalone-manuscript-pdf.yml'
@@ -34,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       VIRIDIS_CORE_ROOT: /tmp/viridis-core-fixture
-    timeout-minutes: 20
+    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
@@ -63,6 +65,11 @@ jobs:
           python3 tools/mutate_gate_features.py --source 00_lab_infrastructure/gates/standalone_pdf_release --output "$RUNNER_TEMP/manuscript-feature-mutations.json"
           python3 tools/mutate_runbook_fixes.py --repo . --output "$RUNNER_TEMP/review-finding-mutations.json"
           python3 tools/mutate_audit_hardening.py --repo . --output "$RUNNER_TEMP/audit-hardening-mutations.json"
+
+      - name: Kill archival manuscript access and closed profile mutants
+        run: |
+          python3 tools/mutate_nightly_access.py --output "$RUNNER_TEMP/nightly-access-mutations"
+          python3 00_lab_infrastructure/gates/standalone_pdf_release/runtime/tests/run_archival_profile_mutants.py --python "$(command -v python3)" --output "$RUNNER_TEMP/archival-profile-mutations"
 
       - name: Verify immutable historical source without full runtime copies
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/common/tests -p 'test_*.py' -v

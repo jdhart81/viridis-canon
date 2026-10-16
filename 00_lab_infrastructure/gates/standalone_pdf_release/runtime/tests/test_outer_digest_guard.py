@@ -19,7 +19,7 @@ class OuterDigestGuardTests(unittest.TestCase):
         log = root / 'reports/calls.jsonl'
         config = root / 'CONFIG.json'
         hashes = {}; modules = []
-        names = ['invoke_digest_v2.py'] + ['source_%02d.py' % n for n in range(17)]
+        names = ['invoke_digest_v2.py'] + ['source_%02d.py' % n for n in range(19)]
         for name in names:
             raw = b'# synthetic reviewed source\n'
             if name == 'invoke_digest_v2.py':
@@ -38,12 +38,13 @@ class OuterDigestGuardTests(unittest.TestCase):
         shared = [{'name':guard.SHARED_INPUT_NAME,'path':str(shared_path),
                    'sha256':guard.SHARED_INPUT_SHA256,'git_path':guard.SHARED_INPUT_GIT_PATH}]
         profile = installed / 'CURRENT_PACKAGING_PROFILE.json'
-        profile.write_text(json.dumps({'standard': 'VRS-DIGEST-ONLY-PDF-PACKAGING-PROFILE-1',
+        profile.write_text(json.dumps({'standard': 'VRS-DIGEST-ARCHIVAL-PDF-PACKAGING-PROFILE-1',
                          'status': 'INSTALLED_EXACT_ADDITIVE_SOURCE_READBACK_PASS',
-                         'canonical_root': str(root), 'modules': modules, 'shared_dependencies':shared}))
+                         'canonical_root': str(root), 'modules': modules, 'shared_dependencies':shared,
+                         'default_routes':{'digest':'invoke_digest_v2.py'},'note_preparation':guard.NOTE_PREPARATION}))
         binding = {'path': str(profile), 'sha256': hashlib.sha256(profile.read_bytes()).hexdigest()}
         nomination = installed / 'INSTALLATION_NOMINATION.json'
-        nomination.write_text(json.dumps({'standard': 'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-12',
+        nomination.write_text(json.dumps({'standard': 'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-13',
                               'status': 'EXACT_SOURCE_AND_DEFAULT_BINDINGS_INSTALLED_RUNTIME_READBACK_PENDING',
                               'profile': binding}))
         config.write_text(json.dumps({'canonical_root': str(root), 'packaging_profile': binding}))

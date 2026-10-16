@@ -139,8 +139,9 @@ def synthetic_validation_case(mode='ok'):
                 'merged_tree': old_origin['tree'], 'source_rows': originals}})
         modules = []
         for name in sorted(runtime.MODULE_NAMES):
-            raw = b"ORIGIN = 'SYNTHETIC_CANDIDATE'\n" if name == 'packaging_catalog.py' else b'# synthetic additive pin\n'
-            value = put(root, 'candidate-gates/' + name, raw)
+            raw = (Path(runtime.__file__).read_bytes() if name == 'packaging_runtime.py' else
+                   b"ORIGIN = 'SYNTHETIC_CANDIDATE'\n" if name == 'packaging_catalog.py' else b'# synthetic additive pin\n')
+            value = put(root, str(Path(runtime.PROFILE_PATH).parent / name), raw)
             modules.append({'name': name, **value, 'git_path': runtime.GIT_PREFIX + name})
         shared_source=put(root,str(Path(runtime.PROFILE_PATH).parent/'common'/runtime.SHARED_INPUT_NAME),
                           (HERE.parent/'common'/runtime.SHARED_INPUT_NAME).read_bytes())
@@ -153,10 +154,10 @@ def synthetic_validation_case(mode='ok'):
         authority = put(root, 'authority.json', {'standard': 'VRS-DIRECT-USER-PDF-STANDARD-AUTHORITY-1',
             'source': 'Current user message in this Codex chat', 'user_text': runtime.USER_DIRECTIVE,
             'captured_at_utc': '2020-01-01T00:00:00Z', 'scientific_scope_changes': False, 'provider_instruction': provider})
-        review = put(root, 'review.json', {'standard': 'VRS-INDEPENDENT-PDF-RUNTIME-SOURCE-REVIEW-12',
+        review = put(root, 'review.json', {'standard': 'VRS-INDEPENDENT-PDF-RUNTIME-SOURCE-REVIEW-13',
             'status': 'EXACT_COMPLETE_CANDIDATE_REVIEW_PASS', 'reviewer': 'Synthetic fixture only; no production authority',
             'source_hashes': {r['name']: r['sha256'] for r in [*modules,*shared]}, 'legacy_closure': closure,
-            **runtime.SOURCE_REVIEW_CHANGE_FLAGS, 'review_scope': 'SOURCE_ONLY',
+            **runtime.CURRENT_SOURCE_REVIEW_CHANGE_FLAGS, 'review_scope': 'SOURCE_ONLY',
             'actual_live_runtime_admission': False, 'actual_seven_record_admission': 'PENDING_POST_INSTALL_FRESH_READBACK'})
         registry = put(root, 'registry.json', {'fixture': 'no live reads'})
         put(root, 'RESEARCH_PIPELINE_v2/corpus_ledger.json', {'publication_entities': [], 'fixture': 'not a science population'})
@@ -165,7 +166,7 @@ def synthetic_validation_case(mode='ok'):
             'legacy_closure': closure, 'legacy_consumer': by_name['runtime_successor.py'], 'legacy_scope': scope,
             'source_session_consumer': by_name['prepare_first_seven_plan.py'], 'modules': modules, 'shared_dependencies':shared,
             'source_origin': new_origin, 'source_review': review, 'access_registry': registry,
-            'default_routes': runtime.DEFAULT_ROUTES, 'predecessor_installation': runtime.PREDECESSOR_INSTALLATION,
+            'default_routes': runtime.DEFAULT_ROUTES, 'note_preparation':runtime.NOTE_PREPARATION, 'predecessor_installation': runtime.PREDECESSOR_INSTALLATION,
             'transient_rehydration': runtime.TRANSIENT_REHYDRATION_POLICY,'data_alias_observation':registry,'platform_timezone_observation':registry})
         events = []
         real_proof, real_load = runtime.source_proof, runtime.load
@@ -240,7 +241,7 @@ class ColdValidateEntryTests(unittest.TestCase):
         self.assertIs(report['result']['certifies'], False)
         self.assertEqual(report['result']['ssot_writes'], 0)
         self.assertTrue(report['finder_and_spec_restored'])
-        self.assertEqual(len(report['result']['source_pins']), 149)
+        self.assertEqual(len(report['result']['source_pins']), 151)
 
     def test_cold_child_failure_returns_nonzero_and_restores_genuine_scope(self):
         completed = self.child('helper-failure')

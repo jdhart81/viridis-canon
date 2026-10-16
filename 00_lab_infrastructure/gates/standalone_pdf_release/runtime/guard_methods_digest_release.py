@@ -21,14 +21,14 @@ ROOT = Path(os.environ.get('VIRIDIS_CORE_ROOT', str(Path(__file__).resolve().par
 INSTALLED = ROOT / '_ZENODO_DEPOSITS/standalone_pdf_runtime'
 PROFILE = INSTALLED / 'CURRENT_PACKAGING_PROFILE.json'
 NOMINATION = INSTALLED / 'INSTALLATION_NOMINATION.json'
-# Exact 18-module digest-only source set; successor publication is excluded.
+# Exact 20-module digest-only source set; successor publication is excluded.
 SOURCE_HASHES = {
     'digest_controller_v2.py':
         # SHA-256 of reviewed source bytes; not a credential
         '331105b8f557cecd50b4824da5ba07b77ae6aec62efcbebdef712334c1a72282',
     'install_packaging_runtime.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '5b47b68d29ad5b0f267334cbad33681b1b56f079bbfebb7f5b77fa5061b91591',
+        'fc58e65ec56e75808220bf10ab216a14d0b3940b484a895d8158a9c73b349366',
     'invoke_digest_v2.py':
         # SHA-256 of reviewed source bytes; not a credential
         '932afcb894fb8581ee9718ec1894d3ca38520efa3fbcbe34e34e706226befaa3',
@@ -46,13 +46,19 @@ SOURCE_HASHES = {
         '1542b85fab50b686354075914ea461536db5da7b7bd3fee3b290eb7815d7e200',
     'methods_digest_v2.py':
         # SHA-256 of reviewed source bytes; not a credential
-        'e3e8b5be4b99a9991066f49a60630c2a8d63eafd3c09b9b0ed85b50748706f39',
+        '41b7b96ca1800d9356120d0a349b171b9f873f04b407707eecbeb801647a0a76',
     'nightly_checkpoint_guarded.py':
         # SHA-256 of reviewed source bytes; not a credential
         'b01598e2223b7fe2ee77c3f7f89086fed899925621c9862dc4c504b5c16aad95',
+    'nightly_manuscript_access.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        'c08cf4f790af32f35fb671d428070a10eafa4f1c90a424fc354d1a2e604b01f9',
+    'nightly_manuscript_checkpoint.py':
+        # SHA-256 of reviewed source bytes; not a credential
+        'c6ff291eb7b89256ef21171653a47dca01e6b5ade7706bb8a38a7f26654ac3ba',
     'owner_content_worker.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '44739ce77b3ac3c7c5d23f94eabbf78d841a79340e31d739eff870e7815cefbd',
+        '223549c80276ab9e7b6e0b300122408f7ab809cf6fc87cf9b63b5d0c0eb3da05',
     'packaging_catalog.py':
         # SHA-256 of reviewed source bytes; not a credential
         '30a3e49d919fbf97b100a07f45222d86f8565443f019916758dde3748f43bc1b',
@@ -70,13 +76,19 @@ SOURCE_HASHES = {
         'cd4169d3cc2c3af02829d20ce363908a9edb914501f134dc341dd8d085567014',
     'packaging_runtime.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '1c6e6a8ac5cd073712ac21c46e58fb603acf263fc3161543b278bbfc21cec92a',
+        '9802c212ae005d4bed5c4a1537c7dc099e59fd1740c2513ffba9724b6c94c419',
     'publish_dated_bundles_guarded.py':
         # SHA-256 of reviewed source bytes; not a credential
         '38a9752d9c686312acab087955cc9ccecd2e18fdabc13d54275ace2994486698',
     'scientific_registration_worker.py':
         # SHA-256 of reviewed source bytes; not a credential
-        'cc747b802b33bf27a40b66bb57aadb5f557b10b4112541952c6b38caaf2f256a',
+        'b1ac87e67d1601fb81d657ff8526b54d9dbde37a1507b6596421675c8a097508',
+}
+PROFILE_STANDARD = 'VRS-DIGEST-ARCHIVAL-PDF-PACKAGING-PROFILE-1'
+NOTE_PREPARATION = {
+    'module': 'nightly_manuscript_checkpoint.py',
+    'entrypoints': ['source_for_cycle', 'stage_checkpoint', 'review_checkpoint',
+                    'prepare_access', 'new_note_specs', 'stage_weekly_package'],
 }
 SHARED_INPUT_NAME = 'stable_input_identity.py'
 SHARED_INPUT_SHA256 = '7e6c204993f0ba65650c58ad50a71073d803522d31fa08b93b7ce35054fa5eda'
@@ -121,7 +133,7 @@ def read(path, expected=None):
 
 
 def context(config_path, config_sha):
-    need(isinstance(SOURCE_HASHES, dict) and len(SOURCE_HASHES) == 18,
+    need(isinstance(SOURCE_HASHES, dict) and len(SOURCE_HASHES) == 20,
          'actual reviewed digest-only source set required')
     need(sys.pycache_prefix is None,'external current-code import cache prefix present')
     artifacts=[INSTALLED/'__pycache__']
@@ -142,7 +154,7 @@ def context(config_path, config_sha):
     nomination_raw, _, nomination_frame = read(NOMINATION)
     nomination = json.loads(nomination_raw)
     need(isinstance(nomination, dict)
-         and nomination.get('standard') == 'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-12'
+         and nomination.get('standard') == 'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-13'
          and nomination.get('status') == 'EXACT_SOURCE_AND_DEFAULT_BINDINGS_INSTALLED_RUNTIME_READBACK_PENDING',
          'exact installed successor nomination required')
     profile_binding = nomination.get('profile')
@@ -154,11 +166,13 @@ def context(config_path, config_sha):
     profile_raw, _, profile_frame = read(PROFILE, profile_binding['sha256'])
     profile = json.loads(profile_raw)
     need(isinstance(profile, dict)
-         and profile.get('standard') == 'VRS-DIGEST-ONLY-PDF-PACKAGING-PROFILE-1'
+         and profile.get('standard') == 'VRS-DIGEST-ARCHIVAL-PDF-PACKAGING-PROFILE-1'
          and profile.get('status') == 'INSTALLED_EXACT_ADDITIVE_SOURCE_READBACK_PASS'
-         and profile.get('canonical_root') == str(ROOT), 'exact installed successor profile required')
+         and profile.get('canonical_root') == str(ROOT)
+         and profile.get('default_routes') == {'digest':'invoke_digest_v2.py'}
+         and profile.get('note_preparation') == NOTE_PREPARATION, 'exact installed successor profile required')
     modules = profile.get('modules')
-    need(isinstance(modules, list) and len(modules) == 18
+    need(isinstance(modules, list) and len(modules) == 20
          and all(isinstance(row, dict) for row in modules)
          and {row.get('name') for row in modules} == set(SOURCE_HASHES),
          'complete exact successor source table required')

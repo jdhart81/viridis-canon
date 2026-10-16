@@ -2,17 +2,17 @@
 +++ b/RESEARCH_PIPELINE_v2/reconcile_publication_receipt.py
 @@ -8,6 +8,7 @@
  from __future__ import annotations
- 
+
  import argparse
 +import hashlib
  from datetime import date, datetime, timezone
  import json
  import os
-@@ -25,6 +26,46 @@
+@@ -25,6 +26,82 @@
      pass
- 
- 
-+EFFECTIVE_ALLOCATION_SOURCE_SHA256 = "96767f3129d21ccbab57795df779f12a4197e758fd35138c6f18773c1aaa06e5"
+
+
++EFFECTIVE_ALLOCATION_SOURCE_SHA256 = "dec096c7c03ad65c8473c8e2dd976ad57785cfa77d4eeb1b3127e2b656057406"
 +
 +
 +def load_effective_allocation():
@@ -33,15 +33,51 @@
 +                              ledger_path=None, expected_ledger_sha256=None):
 +    module = load_effective_allocation()
 +    try:
++        root = module["safe_path"](finalized_root)
++        if ledger_path is None:
++            ledger_path = root.parent.parent / "ZENODO_SUBMISSION_LEDGER.md"
++        if allocation_correction is None and (root / "Run-183/RELEASE_BINDING_PROPOSAL.json").exists():
++            # Fixed installed role + reviewed byte pin, never an ambient search.
++            allocation_correction = {"path": str(root / "Run-183" / module["OVERLAY_NAME"]),
++                                     "sha256": module["OVERLAY_SHA256"]}
++            if expected_ledger_sha256 is None:
++                expected_ledger_sha256 = module["sha"](module["regular"](ledger_path)[0])
 +        view = module["resolve"](finalized_root, reconciliation_surface,
 +            correction=allocation_correction, ledger_path=ledger_path,
 +            expected_ledger_sha256=expected_ledger_sha256)
 +        view.read(HERE / "effective_allocation.py", EFFECTIVE_ALLOCATION_SOURCE_SHA256)
 +        view.revalidate()
-+        return view
++        return ConsumerAllocationView(view, module["AllocationHold"])
 +    except module["AllocationHold"] as exc:
 +        raise ReconciliationError(str(exc)) from None
 +
++
++
++class ConsumerAllocationView:
++    """Translate late read/revalidate failures at every consumer boundary."""
++    def __init__(self, view, hold):
++        self._view, self._hold = view, hold
++
++    def __getattr__(self, name):
++        try:
++            value = getattr(self._view, name)
++        except self._hold as exc:
++            raise ReconciliationError(str(exc)) from None
++        if not callable(value):
++            return value
++        def call(*args, **kwargs):
++            try:
++                return value(*args, **kwargs)
++            except self._hold as exc:
++                raise ReconciliationError(str(exc)) from None
++        return call
++
++
++def serialized_receipt(value, *, sort_keys=True):
++    try:
++        return json.dumps(value, indent=2, sort_keys=sort_keys, allow_nan=False) + "\n"
++    except (TypeError, ValueError) as exc:
++        raise ReconciliationError("HOLD_RECEIPT_SERIALIZATION: " + str(exc)) from None
 +
 +def explicit_allocation_options(path, digest, ledger_digest):
 +    if path is None and digest is None and ledger_digest is None:
@@ -55,10 +91,10 @@
  def read_json(path: Path) -> dict[str, Any]:
      value = json.loads(path.read_text(encoding="utf-8"))
      if not isinstance(value, dict):
-@@ -42,17 +83,23 @@
+@@ -42,17 +119,23 @@
      write_text_atomic(path, json.dumps(value, indent=2, sort_keys=False) + "\n")
- 
- 
+
+
 -def proposal_map(finalized_root: Path) -> dict[str, dict[str, Any]]:
 -    result: dict[str, dict[str, Any]] = {}
 -    for path in sorted(finalized_root.glob("Run-*/RELEASE_BINDING_PROPOSAL.json")):
@@ -84,10 +120,10 @@
 +    return proposal_map_from_view(effective_allocation_view(finalized_root, reconciliation_surface,
 +        allocation_correction=allocation_correction, ledger_path=ledger_path,
 +        expected_ledger_sha256=expected_ledger_sha256))
- 
- 
+
+
  def route_for(run_id: str, finalized_root: Path) -> dict[str, Any]:
-@@ -197,6 +244,8 @@
+@@ -197,6 +280,8 @@
      *,
      apply: bool,
      root: Path = ROOT,
@@ -96,9 +132,9 @@
  ) -> dict[str, Any]:
      root = root.resolve()
      receipt_path = receipt_path.resolve()
-@@ -209,7 +258,12 @@
+@@ -209,7 +294,12 @@
          raise ReconciliationError("receipt bundles must be a non-empty array")
- 
+
      finalized_root = root / "RESEARCH_PIPELINE_v2/finalized_runs"
 -    proposals = proposal_map(finalized_root)
 +    ledger_path = root / "ZENODO_SUBMISSION_LEDGER.md"
@@ -110,8 +146,8 @@
      rows: list[dict[str, Any]] = []
      for bundle in bundles:
          if not isinstance(bundle, dict):
-@@ -245,9 +299,9 @@
- 
+@@ -245,9 +335,11 @@
+
      ledger_path = root / "ZENODO_SUBMISSION_LEDGER.md"
      intake_path = root / "ViridisOS/runtime/research_intake.json"
 -    ledger_before = ledger_path.read_text(encoding="utf-8")
@@ -119,30 +155,48 @@
      ledger_after, ledger_rows = reconcile_ledger(ledger_before, rows, commit_sha)
 -    intake = read_json(intake_path)
 +    intake = json.loads(allocation.read(intake_path))
++    if not isinstance(intake, dict):
++        raise ReconciliationError("intake must be a JSON object")
      intake_before = json.loads(json.dumps(intake))
      records = intake.get("records", [])
      if not isinstance(records, list) or any(not isinstance(record, dict) for record in records):
-@@ -304,13 +358,19 @@
+@@ -304,13 +396,9 @@
          intake.setdefault("external_mutation", False)
          intake["reconciled_at_utc"] = datetime.now(timezone.utc).isoformat()
      ledger_changed = ledger_after != ledger_before
-+    allocation.revalidate()
-     if apply:
-         if ledger_changed:
-             write_text_atomic(ledger_path, ledger_after)
-         if intake_changed:
-+            if ledger_changed:
-+                allocation.revalidate_after_ledger_write(ledger_after.encode("utf-8"))
-+            else:
-+                allocation.revalidate()
-             write_json_atomic(intake_path, intake)
-     return {
+-    if apply:
+-        if ledger_changed:
+-            write_text_atomic(ledger_path, ledger_after)
+-        if intake_changed:
+-            write_json_atomic(intake_path, intake)
+-    return {
++    result = {
          "status": "APPLIED" if apply else "DRY_RUN",
 +        "effective_allocation_projection": allocation.receipt(),
          "receipt": str(receipt_path),
          "commit_sha": commit_sha,
          "runs": [row["run_id"] for row in rows],
-@@ -330,9 +390,14 @@
+@@ -324,15 +412,34 @@
+         "deployment_performed": False,
+         "spine_changed": False,
+     }
++    serialized_receipt(result)
++    intake_bytes = serialized_receipt(intake, sort_keys=False)
++    allocation.revalidate()
++    if apply:
++        if ledger_changed:
++            write_text_atomic(ledger_path, ledger_after)
++        if intake_changed:
++            if ledger_changed:
++                allocation.revalidate_after_ledger_write(ledger_after.encode("utf-8"))
++            else:
++                allocation.revalidate()
++            write_text_atomic(intake_path, intake_bytes)
++    return result
++
+
+
+ def main() -> int:
      parser = argparse.ArgumentParser(description=__doc__)
      parser.add_argument("--receipt", required=True, type=Path)
      parser.add_argument("--apply", action="store_true")

@@ -4,7 +4,8 @@ Synthetic science/authority bytes exercise validation; only their test-local
 hash constants are substituted in fresh namespaces. Production authority pins
 are separately asserted. No CORE file is executed, installed or changed.
 """
-from contextlib import contextmanager
+from contextlib import contextmanager, ExitStack, redirect_stdout, redirect_stderr
+import io
 import copy
 import hashlib
 import importlib.util
@@ -136,6 +137,59 @@ class Fixture:
         return dict(allocation_correction=self.binding,expected_ledger_sha256=digest(self.ledger.read_bytes()))
 
 
+def stage_inputs(f, run='Run-183', abbreviation='MCSL', row=148):
+    r=f.finalized/run
+    if run!='Run-183':
+        r.mkdir(parents=True,exist_ok=True)
+        save(r/'PAPER_PACKAGE_MANIFEST.json',dict(title='Title '+run,run_id=run,
+            release_metadata=dict(abbreviation=abbreviation,description='d',version='1',license=None,
+            series_route='methods',spine_gate='NOT_ADMITTED',spine_reason='r',notes='n',keywords=['a','b','c'],ledger_row=None,spine_admitted=False),
+            artifacts={'paper_pdf':'paper.pdf'}))
+        save(r/'FINALIZED_PACKAGE.json',dict(status='FINALIZED',external_mutation=False,run_id=run))
+        save(r/'POST_ARISTOTLE_REVIEW.json',{'verdict':'pass'});(r/'paper.pdf').write_bytes(b'fixture '+run.encode())
+        (r/'X.lean').write_text('-- test');(r/'summary.md').write_text('summary')
+        save(r/'RELEASE_BINDING_PROPOSAL.json',dict(standard='VRS-RELEASE-BINDING-PROPOSAL-1',status='READY_FOR_EXACT_AUTHORIZATION',
+            run_id=run,title='Title '+run,abbreviation=abbreviation,proposed_ledger_row=row,proposed_license='cc-by-4.0'))
+    save(f.pipeline/'nightly_packages'/run/'QUALITY_GATE.json',dict(quality_verdict='PASS',saturday_status='CANDIDATE_FOR_LEDGER_G0_G9'))
+    save(f.pipeline/'viridisos_kernel_packages'/run/'VIRIDISOS_KERNEL_PACKAGE.json',dict(standard='VRS-VIRIDISOS-KERNEL-PACKAGE-1',
+        run_id=run,status='NO_RUNTIME_KERNEL',external_mutation=False,admission_review=dict(g7_verdict='PASS',complete_pdf_review=True,
+        runtime_verdict='NO_RUNTIME_KERNEL',lean_zero_sorry_certificate_sha256='0'*64)))
+
+
+def route_inputs(f):
+    r=f.finalized/'Run-191';r.mkdir()
+    save(r/'PAPER_PACKAGE_MANIFEST.json',dict(run_id='Run-191',title='New route',release_metadata=dict(spine_admitted=False,
+         abbreviation='NEW',series_route='methods'),viridisos_kernel_candidate=dict(status='NO_RUNTIME_KERNEL',reason='none')))
+    save(r/'POST_ARISTOTLE_REVIEW.json',dict(verdict='pass',spine_admission=dict(admitted=False)))
+    save(r/'FINALIZED_PACKAGE.json',dict(run_id='Run-191'));(r/'paper.pdf').write_bytes(b'x')
+    save(r/'LEAN_ZERO_SORRY_CERTIFICATE.json',{'fixture':True})
+    return ['--run','191']
+
+
+def reconcile_inputs(f):
+    receipt=save(f.root/'releases/2026-10-17.json',dict(status='verified',repository='jdhart81/viridis-canon',branch='main',
+        spine_changed=False,commit_sha='a'*40,verified_at_utc='2026-10-17T12:00:00+00:00',
+        bundles=[dict(abbreviation='MCSL',run_id='Run-183',doi='10.5281/zenodo.99999999')]))
+    save(f.root/'ViridisOS/runtime/research_intake.json',{'records':[],'lockstep_receipts':[]})
+    f.row148(status='✅ OK')
+    return ['--receipt',str(receipt),'--apply']
+
+
+@contextmanager
+def assembler_helpers(a):
+    with mock.patch.object(a,'load_lockstep',return_value=SimpleNamespace(load_post_aristotle_review=lambda *x:None)),mock.patch.object(a,'load_coherence',return_value=SimpleNamespace(unassigned_rights_notice=lambda title:'Unassigned')):
+        yield
+
+
+def cli(a, argv):
+    out=io.StringIO();err=io.StringIO()
+    with mock.patch.object(sys,'argv',['consumer',*argv]),redirect_stdout(out),redirect_stderr(err):
+        try:rc=a.main()
+        except Exception as exc:return -1,{'uncaught':type(exc).__name__+': '+str(exc)}
+    raw=out.getvalue() or err.getvalue()
+    return rc,json.loads(raw)
+
+
 class ResolverTests(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup)
@@ -151,7 +205,9 @@ class ResolverTests(unittest.TestCase):
         self.assertEqual(ns['ORIGINALS']['Run-177'],'290860184267124c6bc7f716e3a8ef591836c832c89a02047886ad4eef4856ae')
 
     def test_default_no_overlay_keeps_original_global_collision_hold(self):
-        with self.assertRaisesRegex(self.hold,'GLOBAL_RESERVATION_COLLISION'):self.f.resolve(correction=False)
+        with self.assertRaisesRegex(self.hold,'APPROVED_183_OVERLAY_REQUIRED'):self.f.resolve(correction=False)
+        save(self.f.finalized/'Run-191/RELEASE_BINDING_PROPOSAL.json',{'run_id':'Run-191','status':'READY_FOR_EXACT_AUTHORIZATION','proposed_ledger_row':148})
+        with self.assertRaisesRegex(self.hold,'GLOBAL_RESERVATION_COLLISION'):self.f.resolve()
 
     def test_exact_overlay_projects_only183_and_preserves_both_original_bytes(self):
         old={run:(self.f.finalized/run/'RELEASE_BINDING_PROPOSAL.json').read_bytes()for run in self.f.proposals}
@@ -331,8 +387,8 @@ class PatchedConsumerTests(unittest.TestCase):
     def test_no_overlay_and_partial_cli_options_hold_in_every_consumer(self):
         for consumer in self.modules.values():
             with self.subTest(consumer=consumer.__name__),self.f.test_pins_in_real_loader(consumer):
-                with self.assertRaisesRegex((consumer.RouteError if hasattr(consumer,'RouteError')else consumer.AssemblyError if hasattr(consumer,'AssemblyError')else consumer.ReconciliationError),'GLOBAL_RESERVATION_COLLISION'):
-                    consumer.effective_allocation_view(self.f.finalized,self.f.surface)
+                view=consumer.effective_allocation_view(self.f.finalized,self.f.surface)
+                self.assertEqual(view.proposal('Run-183')['proposed_ledger_row'],148)
                 with self.assertRaises(Exception):consumer.explicit_allocation_options(str(self.f.overlay_path),None,None)
 
     def test_hash_bound_loader_rejects_tampered_source_symlinks_and_ambient_module(self):
@@ -355,7 +411,7 @@ class PatchedConsumerTests(unittest.TestCase):
             result=a.stage_candidate('183','2026-10-17',finalized_root=f.finalized,package_root=f.pipeline/'nightly_packages',staging_root=f.pipeline/'staging',ledger_path=f.ledger,**f.options())
         manifest=json.loads((Path(result['bundle'])/'BUNDLE_MANIFEST.json').read_bytes());projection=manifest['release_binding_proposal']
         self.assertEqual(projection['original_proposed_ledger_row'],147);self.assertEqual(projection['proposed_ledger_row'],148)
-        self.assertEqual(projection['sha256'],f.proposals['Run-183']);self.assertEqual(projection['effective_allocation_projection']['correction']['overlay'],f.binding)
+        self.assertEqual(projection['sha256'],f.proposals['Run-183']);self.assertEqual(projection['effective_allocation_receipt']['correction']['overlay'],f.binding)
         self.assertIsNone(manifest['ledger_row']);self.assertEqual(result['ledger']['state'],'HOLD_LEDGER')
         self.assertEqual(json.loads((Path(result['bundle'])/'zenodo_metadata.json').read_bytes())['metadata']['license'],'unassigned')
         f.row148()
@@ -416,7 +472,7 @@ class PatchedConsumerTests(unittest.TestCase):
                 value=receipt();f.ledger.write_bytes(f.ledger.read_bytes()+b' ');return value
             view.receipt=changed;return view
         with f.test_pins_in_real_loader(a),mock.patch.object(a,'effective_allocation_view',side_effect=factory):
-            with self.assertRaisesRegex(ValueError,'INPUT_RACE'):
+            with self.assertRaisesRegex(a.RouteError if hasattr(a,'RouteError')else a.AssemblyError if hasattr(a,'AssemblyError')else a.ReconciliationError,'INPUT_RACE'):
                 a.seal_route_and_proposal('191',finalized_root=f.finalized,reconciliation_surface=f.surface,ledger_path=f.ledger,**f.options())
         self.assertFalse((r/'CANON_PRODUCT_ROUTE.json').exists());self.assertFalse((r/'RELEASE_BINDING_PROPOSAL.json').exists())
 
@@ -429,7 +485,7 @@ class PatchedConsumerTests(unittest.TestCase):
             f.authority_path.write_bytes(f.authority_path.read_bytes()+b' ')
             return SimpleNamespace(load_post_aristotle_review=lambda *args:None)
         with f.test_pins_in_real_loader(a),mock.patch.object(a,'load_lockstep',side_effect=load),mock.patch.object(a,'load_coherence',return_value=SimpleNamespace(unassigned_rights_notice=lambda title:'Unassigned')):
-            with self.assertRaisesRegex(ValueError,'INPUT_RACE'):
+            with self.assertRaisesRegex(a.RouteError if hasattr(a,'RouteError')else a.AssemblyError if hasattr(a,'AssemblyError')else a.ReconciliationError,'INPUT_RACE'):
                 a.stage_candidate('183','2026-10-17',finalized_root=f.finalized,package_root=f.pipeline/'nightly_packages',staging_root=f.pipeline/'staging',ledger_path=f.ledger,**f.options())
         self.assertFalse((f.pipeline/'staging').exists())
 
@@ -441,15 +497,193 @@ class PatchedConsumerTests(unittest.TestCase):
         def route(*args):
             f.authority_path.write_bytes(before_authority+b' ');return {'product_line':'test'}
         with f.test_pins_in_real_loader(a),mock.patch.object(a,'route_for',side_effect=route):
-            with self.assertRaisesRegex(ValueError,'INPUT_RACE'):a.reconcile(receipt,apply=True,root=f.root,**f.options())
+            with self.assertRaisesRegex(a.RouteError if hasattr(a,'RouteError')else a.AssemblyError if hasattr(a,'AssemblyError')else a.ReconciliationError,'INPUT_RACE'):a.reconcile(receipt,apply=True,root=f.root,**f.options())
         self.assertEqual(f.ledger.read_bytes(),before_ledger);self.assertEqual(intake.read_bytes(),before_intake)
         f.authority_path.write_bytes(before_authority);real_write=a.write_text_atomic
         def write(path,value):
             real_write(path,value)
             if path==f.ledger:f.authority_path.write_bytes(before_authority+b' ')
         with f.test_pins_in_real_loader(a),mock.patch.object(a,'write_text_atomic',side_effect=write):
-            with self.assertRaisesRegex(ValueError,'INPUT_RACE'):a.reconcile(receipt,apply=True,root=f.root,**f.options())
+            with self.assertRaisesRegex(a.RouteError if hasattr(a,'RouteError')else a.AssemblyError if hasattr(a,'AssemblyError')else a.ReconciliationError,'INPUT_RACE'):a.reconcile(receipt,apply=True,root=f.root,**f.options())
         self.assertIn('PUBLISHED',f.ledger.read_text());self.assertEqual(intake.read_bytes(),before_intake)
+
+
+    def test_real_argparse_cli_all_three_with_path_flags_and_automatic_defaults(self):
+        for mode in ('flags','automatic'):
+            for name in ('canon_product_router.py','assemble_saturday_candidate.py','reconcile_publication_receipt.py'):
+                with self.subTest(mode=mode,consumer=name),tempfile.TemporaryDirectory() as temp:
+                    f=Fixture(Path(temp).resolve());a=f.install_review_tree()[name]
+                    if name.startswith('canon'):argv=route_inputs(f)
+                    elif name.startswith('assemble'):
+                        stage_inputs(f);argv=['--run','183','--date','2026-10-17']
+                    else:argv=reconcile_inputs(f)
+                    if mode=='flags':argv+=['--allocation-correction',str(f.overlay_path),'--allocation-correction-sha256',f.binding['sha256'],'--expected-ledger-sha256',digest(f.ledger.read_bytes())]
+                    with ExitStack() as stack:
+                        stack.enter_context(f.test_pins_in_real_loader(a))
+                        if name.startswith('assemble'):stack.enter_context(assembler_helpers(a))
+                        rc,result=cli(a,argv)
+                        self.assertEqual(rc,0,result)
+                        self.assertIn(result['status'],('READY_FOR_EXACT_AUTHORIZATION','STAGED_CANDIDATE','APPLIED'))
+                        if name.startswith('canon'):
+                            self.assertEqual(result['proposed_ledger_row'],149)
+                            self.assertTrue((f.finalized/'Run-191/CANON_PRODUCT_ROUTE.json').is_file())
+                            self.assertTrue((f.finalized/'Run-191/RELEASE_BINDING_PROPOSAL.json').is_file())
+                        elif name.startswith('assemble'):
+                            self.assertFalse(any((f.pipeline/'saturday_candidates/2026-10-17').glob('.*.tmp')))
+                            self.assertEqual(cli(a,argv)[1]['status'],'ALREADY_STAGED')
+                        else:
+                            self.assertIn('PUBLISHED',f.ledger.read_text());self.assertEqual(result['ledger_rows_changed'],[148])
+
+    def test_receipt_serialization_failure_precedes_every_consumer_write(self):
+        for name in ('canon_product_router.py','assemble_saturday_candidate.py','reconcile_publication_receipt.py'):
+            with self.subTest(consumer=name),tempfile.TemporaryDirectory() as temp:
+                f=Fixture(Path(temp).resolve());a=f.install_review_tree()[name]
+                if name.startswith('canon'):argv=route_inputs(f)
+                elif name.startswith('assemble'):stage_inputs(f);argv=['--run','183','--date','2026-10-17']
+                else:argv=reconcile_inputs(f)
+                real=a.effective_allocation_view
+                def factory(*args,**kwargs):
+                    view=real(*args,**kwargs)
+                    if name.startswith('assemble'):
+                        call=view.run_receipt
+                        view.run_receipt=lambda run:{**call(run),'unserializable':object()}
+                    else:
+                        call=view.receipt
+                        view.receipt=lambda:{**call(),'unserializable':object()}
+                    return view
+                before={str(p):p.read_bytes() for p in f.root.rglob('*') if p.is_file()}
+                with ExitStack() as stack:
+                    stack.enter_context(f.test_pins_in_real_loader(a));stack.enter_context(mock.patch.object(a,'effective_allocation_view',side_effect=factory))
+                    if name.startswith('assemble'):stack.enter_context(assembler_helpers(a))
+                    writes=stack.enter_context(mock.patch.object(a,'write_json_atomic',wraps=a.write_json_atomic))
+                    rc,result=cli(a,argv)
+                self.assertEqual(rc,2,result);self.assertIn('SERIALIZATION',result.get('error',''))
+                self.assertEqual(writes.call_count,0)
+                self.assertEqual(before,{str(p):p.read_bytes() for p in f.root.rglob('*') if p.is_file()})
+                self.assertFalse((f.pipeline/'saturday_candidates').exists())
+
+    def test_path_overlay_receipt_is_frozen_as_json_string(self):
+        binding={**self.f.binding,'path':self.f.overlay_path}
+        view=self.f.ns['resolve'](self.f.finalized,self.f.surface,correction=binding,ledger_path=self.f.ledger,
+            expected_ledger_sha256=digest(self.f.ledger.read_bytes()))
+        self.assertEqual(json.loads(json.dumps(view.receipt()))['correction']['overlay'],self.f.binding)
+
+    def test_no_overlay_never_falls_back_when_original177_removed_or_not_ready(self):
+        f=self.f;p=f.finalized/'Run-177/RELEASE_BINDING_PROPOSAL.json';raw=p.read_bytes();f.row148()
+        for removed in (False,True):
+            if removed:p.unlink()
+            else:save(p,{**json.loads(raw),'status':'BOUND_LOCAL'})
+            with self.assertRaisesRegex(f.ns['AllocationHold'],'APPROVED_183_OVERLAY_REQUIRED'):f.resolve(correction=False)
+            p.write_bytes(raw)
+
+    def test_no_overlay_cannot_accept_ledger_cas_even_without183(self):
+        f=self.f;(f.finalized/'Run-183/RELEASE_BINDING_PROPOSAL.json').unlink()
+        with self.assertRaisesRegex(f.ns['AllocationHold'],'EXPLICIT_OVERLAY_REQUIRED'):
+            f.ns['resolve'](f.finalized,f.surface,ledger_path=f.ledger,expected_ledger_sha256=digest(f.ledger.read_bytes()))
+
+    def test_every_occupied_effective_proposal_row_requires_exact_same_identity(self):
+        f=self.f;stage_inputs(f,'Run-180','AAA',144)
+        for title,run in [('Title Run-180','Run-180'),('Other title','Run-180'),('Title Run-180','Run-181')]:
+            f.ledger.write_text(f'| 144 | d | **AAA — {title}** | nightly {run} | s | scope | route | HELD | — |\n')
+            if run=='Run-180' and title=='Title Run-180':self.assertEqual(f.resolve().proposal('Run-180')['proposed_ledger_row'],144)
+            else:
+                with self.assertRaisesRegex(f.ns['AllocationHold'],'OCCUPIED_PROPOSAL_IDENTITY'):f.resolve()
+
+    def test_historical_published_short_title_still_requires_exact_run_abbreviation_and_doi(self):
+        f=self.f;stage_inputs(f,'Run-180','AAA',144)
+        def line(abbreviation='AAA',run='Run-180',status='🌐 PUBLISHED — CC-BY-4.0',doi='`10.5281/zenodo.999`'):
+            return f'| 144 | date | **{abbreviation} — Historical short title** | nightly {run} | evidence | scope | route | {status} | {doi} |\n'
+        f.ledger.write_text(line());self.assertEqual(f.resolve().proposal('Run-180')['proposed_ledger_row'],144)
+        for kwargs in ({'abbreviation':'AAA extra'},{'run':'Run-181'},{'doi':'pending'},{'status':'HELD'}):
+            f.ledger.write_text(line(**kwargs))
+            with self.assertRaisesRegex(f.ns['AllocationHold'],'OCCUPIED_PROPOSAL_IDENTITY'):f.resolve()
+
+    def test_no_overlay_branch_crosschecks_ledger_and_uses_its_maximum(self):
+        f=self.f;(f.finalized/'Run-183/RELEASE_BINDING_PROPOSAL.json').unlink()
+        f.ledger.write_text('| 147 | d | **OTHER — another** | nightly Run-190 | s | scope | route | HELD | — |\n')
+        with self.assertRaisesRegex(f.ns['AllocationHold'],'OCCUPIED_PROPOSAL_IDENTITY'):f.resolve(correction=False)
+        f.ledger.write_text('| 150 | d | historical | old | s | scope | route | HELD | — |\n')
+        self.assertEqual(f.resolve(correction=False).authoritative_max,150)
+
+    def test_staging_idempotency_after_unrelated_inputs_and_legacy_unaffected_bundle(self):
+        a=self.modules['assemble_saturday_candidate.py'];f=self.f;stage_inputs(f,'Run-180','AAA',144)
+        kw=dict(finalized_root=f.finalized,package_root=f.pipeline/'nightly_packages',staging_root=f.pipeline/'staging',ledger_path=f.ledger)
+        def replay():
+            try:return a.stage_candidate('180','2026-10-17',**kw)['status']
+            except Exception as exc:return 'UNEXPECTED '+type(exc).__name__+': '+str(exc)
+        with f.test_pins_in_real_loader(a),assembler_helpers(a):
+            first=a.stage_candidate('180','2026-10-17',**kw);self.assertEqual(first['status'],'STAGED_CANDIDATE')
+            manifest=Path(first['bundle'])/'BUNDLE_MANIFEST.json';original=manifest.read_bytes()
+            for edit in ('ledger','proposal'):
+                if edit=='ledger':f.ledger.write_text(f.ledger.read_text()+'| 150 | d | **ZZZ — unrelated** | nightly Run-150 | s | scope | r | HELD | — |\n')
+                else:save(f.finalized/'Run-191/RELEASE_BINDING_PROPOSAL.json',dict(run_id='Run-191',status='READY_FOR_EXACT_AUTHORIZATION',proposed_ledger_row=149))
+                self.assertEqual(replay(),'ALREADY_STAGED')
+                self.assertEqual(manifest.read_bytes(),original)
+            legacy=json.loads(original);legacy['release_binding_proposal'].pop('effective_allocation_receipt')
+            save(manifest,legacy)
+            self.assertEqual(replay(),'ALREADY_STAGED')
+            legacy['release_binding_proposal']['proposed_ledger_row']=145;save(manifest,legacy)
+            with self.assertRaisesRegex(a.AssemblyError,'existing staged bundle differs'):a.stage_candidate('180','2026-10-17',**kw)
+
+    def test_same_run_stable_receipt_changes_only_when_its_inputs_change(self):
+        f=self.f;stage_inputs(f,'Run-180','AAA',144)
+        before={run:f.resolve().run_receipt(run) for run in ('Run-180','Run-183')}
+        f.row148();save(f.finalized/'Run-191/RELEASE_BINDING_PROPOSAL.json',dict(run_id='Run-191',status='READY_FOR_EXACT_AUTHORIZATION',proposed_ledger_row=149))
+        for run in before:self.assertEqual(f.resolve().run_receipt(run),before[run])
+        p=f.finalized/'Run-180/RELEASE_BINDING_PROPOSAL.json';save(p,{**json.loads(p.read_bytes()),'proposed_license':'different'})
+        self.assertNotEqual(f.resolve().run_receipt('Run-180'),before['Run-180'])
+
+    def test_scan_records_one_late_allocation_hold_and_continues(self):
+        a=self.modules['assemble_saturday_candidate.py'];f=self.f
+        stage_inputs(f);stage_inputs(f,'Run-180','AAA',144);stage_inputs(f,'Run-181','BBB',145)
+        real_stage=a.stage_candidate;active={'run':None}
+        def stage(run,*args,**kwargs):
+            active['run']=run
+            return real_stage(run,*args,**kwargs)
+        def lockstep():
+            if active['run']=='Run-180':f.ledger.write_bytes(f.ledger.read_bytes()+b' ')
+            return SimpleNamespace(load_post_aristotle_review=lambda *args:None)
+        with f.test_pins_in_real_loader(a),assembler_helpers(a),mock.patch.object(a,'load_lockstep',side_effect=lockstep),mock.patch.object(a,'stage_candidate',side_effect=stage):
+            try:result=a.scan('2026-10-17',finalized_root=f.finalized)
+            except Exception as exc:result={'scan_aborted':type(exc).__name__+': '+str(exc)}
+        self.assertIn('holds',result,result)
+        self.assertEqual([v['run_id'] for v in result['holds']],['Run-180'])
+        self.assertIn('INPUT_RACE',result['holds'][0]['reason'])
+        self.assertIn('Run-181',[v['run_id'] for v in result['staged']])
+
+    def test_bind_and_promotion_cli_never_gain_authority_from_overlay(self):
+        a=self.modules['assemble_saturday_candidate.py'];f=self.f
+        flags=['--allocation-correction',str(f.overlay_path),'--allocation-correction-sha256',f.binding['sha256'],'--expected-ledger-sha256',digest(f.ledger.read_bytes())]
+        for argv in (['--bind-ledger','183','--row','148','--justin-authorized'],['--promote-ledger-cleared']):
+            with mock.patch.object(a,'bind_ledger') as bind,mock.patch.object(a,'promote_ledger_cleared') as promote:
+                rc,result=cli(a,[*argv,'--date','2026-10-17',*flags])
+            self.assertEqual(rc,2);self.assertIn('does not authorize',result['error']);bind.assert_not_called();promote.assert_not_called()
+
+    def test_router_second_cas_removes_only_its_owned_route_on_race(self):
+        a=self.modules['canon_product_router.py'];f=self.f;route_inputs(f);real=a.write_json_atomic
+        def write(path,value):
+            real(path,value)
+            if path.name=='CANON_PRODUCT_ROUTE.json':f.ledger.write_bytes(f.ledger.read_bytes()+b' ')
+        with f.test_pins_in_real_loader(a),mock.patch.object(a,'write_json_atomic',side_effect=write):
+            rc,result=cli(a,['--run','191'])
+        self.assertEqual(rc,2);self.assertIn('INPUT_RACE',result['error'])
+        self.assertFalse((f.finalized/'Run-191/CANON_PRODUCT_ROUTE.json').exists())
+        self.assertFalse((f.finalized/'Run-191/RELEASE_BINDING_PROPOSAL.json').exists())
+
+    def test_automatic_overlay_missing_or_stale_pin_holds_closed(self):
+        pins={key:copy.deepcopy(self.f.ns[key]) for key in ('ORIGINALS','SCIENCE','OVERLAY_SHA256','AUTHORITY_SHA256',
+            'LINKED_PROPOSAL_SHA256','LOCAL_BINDING_SHA256','LOCAL_DECISIONS_SHA256')}
+        for a in self.modules.values():
+            real=a.load_effective_allocation
+            def load():
+                ns=real();ns.update(pins);return ns
+            raw=self.f.overlay_path.read_bytes();self.f.overlay_path.unlink()
+            with mock.patch.object(a,'load_effective_allocation',side_effect=load),self.assertRaisesRegex(Exception,'REGULAR_INPUT'):
+                a.effective_allocation_view(self.f.finalized,self.f.surface)
+            self.f.overlay_path.write_bytes(raw+b' ')
+            with mock.patch.object(a,'load_effective_allocation',side_effect=load),self.assertRaisesRegex(Exception,'EXACT_INPUT_HASH'):
+                a.effective_allocation_view(self.f.finalized,self.f.surface)
+            self.f.overlay_path.write_bytes(raw)
 
 
 if __name__=='__main__':unittest.main()

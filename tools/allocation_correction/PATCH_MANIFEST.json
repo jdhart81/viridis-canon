@@ -2,24 +2,24 @@
   "active": false,
   "merged_installed_or_publication_authority": false,
   "requires": "independent exact-head review, Justin merge, separate S4 installation and fresh CAS",
-  "resolver_source_sha256": "96767f3129d21ccbab57795df779f12a4197e758fd35138c6f18773c1aaa06e5",
+  "resolver_source_sha256": "dec096c7c03ad65c8473c8e2dd976ad57785cfa77d4eeb1b3127e2b656057406",
   "sources": {
     "assemble_saturday_candidate.py": {
-      "after_sha256": "418eb384de031e8bd7757f03a6dd1d78d113f6b44458dbd668accf734738d346",
+      "after_sha256": "a4b2f34f17ff3e04c2d59d52a29b5ed2b351b85c033c715b807f2f4c444ba8aa",
       "before_sha256": "a94df6572ad68ada2f7d524aabde3d9f3ff1d6f69c7440a5f47653c71185c7c6",
-      "patch_sha256": "e3cd866fe05901d7f839dec73cc7df29942b0b819673d64ee24bbf966091ea17",
+      "patch_sha256": "1668d8f7040c8011a4fcc98a96c5ef48a535f3fb849e326da16af59837f1d6e7",
       "target": "RESEARCH_PIPELINE_v2/assemble_saturday_candidate.py"
     },
     "canon_product_router.py": {
-      "after_sha256": "bc8c2ddf12943a2b728703b54262d52a32b5abf7403fa7de71d26b4a84446330",
+      "after_sha256": "f9bb3adafe3fe9cbecfe98d9b69b182b732f3f8cd10779ddf6ca7a0d6908108d",
       "before_sha256": "145409f74cee9ef48f3746050b731decaa5d9e9c33ec37d69b68b91d6f34a867",
-      "patch_sha256": "d8e82ed702c388b3ea124bab14812ea6271ca9d69c8de2b2ee59c9031d66f6c6",
+      "patch_sha256": "6512113cef809f1abc6a3f7a181557d7e87fe6acc0a84e186fa7639088b61602",
       "target": "RESEARCH_PIPELINE_v2/canon_product_router.py"
     },
     "reconcile_publication_receipt.py": {
-      "after_sha256": "218a4537fc2003bf0e672d4200342c550b82d6a75c7f6a91b900450468a3ef1d",
+      "after_sha256": "114b1b0eef3b589a30b6726f1279be78948c935a02329be54dbc116fafbf92a7",
       "before_sha256": "7d35e45713fe339ac543d9d3bb270897bd8e1bd611c8ebec568ce7d66f4386f8",
-      "patch_sha256": "3ad2819df057a9f3d05b64d9168c8f5df8a723ad736d589fc232baebb653dc72",
+      "patch_sha256": "722afbd6f8d6279983321be095be0a71e1ddaf82af13c418c27e179a408687c5",
       "target": "RESEARCH_PIPELINE_v2/reconcile_publication_receipt.py"
     }
   },

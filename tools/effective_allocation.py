@@ -181,6 +181,25 @@ class AllocationView:
                 'original_proposals_unchanged': True, 'publication_authorized': False,
                 'license_authorized': False, 'certifies': False}
 
+    def run_receipt(self, run_id):
+        """Stable staging identity: only this run's allocation and authority.
+
+        Global inventory, ledger CAS and source-frame evidence still gate every
+        invocation through revalidate(), but are not another run's bundle ID.
+        """
+        proposal = self._proposals.get(run_id)
+        original = self._originals.get(run_id)
+        path = self.root / run_id / 'RELEASE_BINDING_PROPOSAL.json'
+        correction = deepcopy(self.correction) if run_id == 'Run-183' else None
+        if correction is not None:
+            correction.pop('ledger_sha256')
+        return {'standard': 'VRS-RUN-EFFECTIVE-ALLOCATION-1', 'run_id': run_id,
+                'original_proposed_row': original.get('proposed_ledger_row') if original else None,
+                'effective_row': proposal.get('proposed_ledger_row') if proposal else None,
+                'original_proposal_sha256': self.input_bindings.get(str(path)),
+                'correction': correction, 'publication_authorized': False,
+                'license_authorized': False, 'certifies': False}
+
 
 def apply_correction(view, binding, ledger_path, expected_ledger_sha256):
     closed(binding, {'path','sha256'}, 'EXPLICIT_OVERLAY_BINDING')
@@ -261,7 +280,7 @@ def apply_correction(view, binding, ledger_path, expected_ledger_sha256):
     projected = deepcopy(view._proposals['Run-183']); projected['proposed_ledger_row'] = 148
     view._proposals['Run-183'] = projected
     view.correction = {'run_id':'Run-183','original_proposed_row':147,'effective_row':148,
-        'original_proposal':deepcopy(original),'overlay':deepcopy(binding),'authority':deepcopy(authority_binding),
+        'original_proposal':deepcopy(original),'overlay':{'path':str(overlay_path),'sha256':binding['sha256']},'authority':deepcopy(authority_binding),
         'scientific_evidence':deepcopy(rows),'ledger_sha256':expected_ledger_sha256,
         'local_binding':{'path':str(local_path),'sha256':LOCAL_BINDING_SHA256},
         'local_decisions_authority':deepcopy(local_authority),'publication_authorized':False}
@@ -287,10 +306,38 @@ def resolve(finalized_root, reconciliation_surface, *, correction=None, ledger_p
         apply_correction(view,correction,ledger_path,expected_ledger_sha256)
     else:
         need(expected_ledger_sha256 is None, 'EXPLICIT_OVERLAY_REQUIRED')
+        need(str(root/'Run-183/RELEASE_BINDING_PROPOSAL.json') not in view.input_bindings,
+             'APPROVED_183_OVERLAY_REQUIRED')
         if ledger_path is not None:
-            view.ledger_path = safe_path(ledger_path); view.read(view.ledger_path)
+            view.ledger_path = safe_path(ledger_path)
+            need(view.ledger_path == root.parent.parent/'ZENODO_SUBMISSION_LEDGER.md', 'CURRENT_ROOT_LEDGER_ROLE')
+            view.read(view.ledger_path)
     rows = [positive_row(value['proposed_ledger_row']) for value in view._proposals.values() if value.get('status') == 'READY_FOR_EXACT_AUTHORIZATION']
     need(len(set([*view.public_rows,*rows])) == len([*view.public_rows,*rows]), 'GLOBAL_RESERVATION_COLLISION')
+    if view.ledger_path is not None:
+        ledger_rows = {}
+        for line in view.read(view.ledger_path).decode('utf-8').splitlines():
+            if re.match(r'^\|\s*[0-9]+\s*\|', line):
+                cells = [cell.strip() for cell in line.strip().strip('|').split('|')]
+                ledger_rows.setdefault(positive_row(int(cells[0])), []).append(cells)
+        view.authoritative_max = max([view.authoritative_max, *ledger_rows], default=0)
+        for run, proposal in view._proposals.items():
+            if proposal.get('status') != 'READY_FOR_EXACT_AUTHORIZATION':
+                continue
+            occupied = ledger_rows.get(proposal['proposed_ledger_row'], [])
+            need(len(occupied) <= 1, 'UNIQUE_OCCUPIED_PROPOSAL_ROW')
+            if occupied:
+                cells = occupied[0]
+                # Historical published rows sometimes use a shortened title.
+                # Their exact abbreviation + nightly Run identity must still
+                # match, with a genuine published/DOI cell. Unpublished rows
+                # (including the approved183 binding) require the full title.
+                full_title = '**' + str(proposal.get('abbreviation')) + ' — ' + str(proposal.get('title')) + '**'
+                published_title = (len(cells) == 9 and cells[7].startswith('🌐 PUBLISHED — ')
+                    and re.fullmatch(r'`?10\.5281/zenodo\.[0-9]+`?', cells[8]) is not None
+                    and re.fullmatch(r'\*\*' + re.escape(str(proposal.get('abbreviation'))) + r' — .+\*\*', cells[2]) is not None)
+                need(len(cells) == 9 and (cells[2] == full_title or published_title)
+                     and cells[3] == 'nightly ' + run, 'OCCUPIED_PROPOSAL_IDENTITY')
     view.proposal_rows = tuple(sorted(rows))
     view.revalidate()
     return view

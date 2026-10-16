@@ -34,6 +34,24 @@ M=[
  ('reconciler second write CAS','after:reconcile_publication_receipt.py','                allocation.revalidate_after_ledger_write(ledger_after.encode("utf-8"))','                pass',1,T+'PatchedConsumerTests.test_reconciler_revalidates_before_first_write_and_after_its_owned_ledger_write'),
  ('reconciler ledger snapshot','after:reconcile_publication_receipt.py','ledger_before = allocation.read(ledger_path).decode("utf-8")','ledger_before = ledger_path.read_text(encoding="utf-8")',1,T+'PatchedConsumerTests.test_reconciler_uses_captured_ledger_bytes_instead_of_an_unbound_second_read'),
 ]
+# Round2 reviewer findings, exercised through real argv and semantic guards.
+M += [
+ ('B1 Path frozen as string',R,"'overlay':{'path':str(overlay_path),'sha256':binding['sha256']}","'overlay':deepcopy(binding)",1,T+'PatchedConsumerTests.test_real_argparse_cli_all_three_with_path_flags_and_automatic_defaults'),
+ ('B1 router receipt before writes','after:canon_product_router.py','    serialized_receipt(proposal)','    pass',1,T+'PatchedConsumerTests.test_receipt_serialization_failure_precedes_every_consumer_write'),
+ ('B1 assembler manifest before mkdir','after:assemble_saturday_candidate.py','    manifest_bytes = serialized_receipt(bundle_manifest).encode("utf-8")','    manifest_bytes = b""',1,T+'PatchedConsumerTests.test_receipt_serialization_failure_precedes_every_consumer_write'),
+ ('B1 reconciler receipt before apply','after:reconcile_publication_receipt.py','    serialized_receipt(result)','    pass',1,T+'PatchedConsumerTests.test_receipt_serialization_failure_precedes_every_consumer_write'),
+ ('B2 no incidental177 dependency',R,"need(str(root/'Run-183/RELEASE_BINDING_PROPOSAL.json') not in view.input_bindings,\n             'APPROVED_183_OVERLAY_REQUIRED')","pass",1,T+'PatchedConsumerTests.test_no_overlay_never_falls_back_when_original177_removed_or_not_ready'),
+ ('B2 occupied proposal identity',R,"need(len(cells) == 9 and (cells[2] == full_title or published_title)\n                     and cells[3] == 'nightly ' + run, 'OCCUPIED_PROPOSAL_IDENTITY')","pass",1,T+'PatchedConsumerTests.test_every_occupied_effective_proposal_row_requires_exact_same_identity'),
+ ('X9 no-overlay ledger CAS',R,"need(expected_ledger_sha256 is None, 'EXPLICIT_OVERLAY_REQUIRED')","pass",1,T+'PatchedConsumerTests.test_no_overlay_cannot_accept_ledger_cas_even_without183'),
+ ('M1 exclude unrelated inputs from source identity','after:assemble_saturday_candidate.py','    row = metadata["ledger_row"]','    bound_sources.update(allocation.input_bindings)\n    row = metadata["ledger_row"]',1,T+'PatchedConsumerTests.test_staging_idempotency_after_unrelated_inputs_and_legacy_unaffected_bundle'),
+ ('M1 run receipt excludes ledger CAS',R,"correction.pop('ledger_sha256')","pass",1,T+'PatchedConsumerTests.test_same_run_stable_receipt_changes_only_when_its_inputs_change'),
+ ('M1 compare same-run allocation on staged replay','after:assemble_saturday_candidate.py','if prior.get("source_sha256") == bound_sources and same_allocation:','if prior.get("source_sha256") == bound_sources:',1,T+'PatchedConsumerTests.test_staging_idempotency_after_unrelated_inputs_and_legacy_unaffected_bundle'),
+ ('M2 translate late per-run hold','after:assemble_saturday_candidate.py','return ConsumerAllocationView(view, module["AllocationHold"])','return view',1,T+'PatchedConsumerTests.test_scan_records_one_late_allocation_hold_and_continues'),
+ ('D1 automatic fixed approved overlay','after:assemble_saturday_candidate.py','if allocation_correction is None and (root / "Run-183/RELEASE_BINDING_PROPOSAL.json").exists():','if False:',1,T+'PatchedConsumerTests.test_real_argparse_cli_all_three_with_path_flags_and_automatic_defaults'),
+ ('C4 overlay never authorizes bind promotion','after:assemble_saturday_candidate.py','            raise AssemblyError("allocation projection does not authorize bind or promotion")','            pass',1,T+'PatchedConsumerTests.test_bind_and_promotion_cli_never_gain_authority_from_overlay'),
+ ('C6 second router CAS and owned rollback','after:canon_product_router.py','    try:\n        allocation.revalidate()\n        write_json_atomic(proposal_path, proposal)','    try:\n        write_json_atomic(proposal_path, proposal)',1,T+'PatchedConsumerTests.test_router_second_cas_removes_only_its_owned_route_on_race'),
+]
+
 RUNNER='''import json,sys,unittest
 class Counts(unittest.TextTestResult):
  def __init__(self,*a,**k):super().__init__(*a,**k);self.infrastructure_errors=0

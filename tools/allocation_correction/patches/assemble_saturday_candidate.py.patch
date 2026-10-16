@@ -1,12 +1,12 @@
 --- a/RESEARCH_PIPELINE_v2/assemble_saturday_candidate.py
 +++ b/RESEARCH_PIPELINE_v2/assemble_saturday_candidate.py
-@@ -31,6 +31,46 @@
- 
+@@ -31,6 +31,82 @@
+
  class AssemblyError(RuntimeError):
      """A fail-closed local assembly error."""
 +
 +
-+EFFECTIVE_ALLOCATION_SOURCE_SHA256 = "96767f3129d21ccbab57795df779f12a4197e758fd35138c6f18773c1aaa06e5"
++EFFECTIVE_ALLOCATION_SOURCE_SHA256 = "dec096c7c03ad65c8473c8e2dd976ad57785cfa77d4eeb1b3127e2b656057406"
 +
 +
 +def load_effective_allocation():
@@ -27,15 +27,51 @@
 +                              ledger_path=None, expected_ledger_sha256=None):
 +    module = load_effective_allocation()
 +    try:
++        root = module["safe_path"](finalized_root)
++        if ledger_path is None:
++            ledger_path = root.parent.parent / "ZENODO_SUBMISSION_LEDGER.md"
++        if allocation_correction is None and (root / "Run-183/RELEASE_BINDING_PROPOSAL.json").exists():
++            # Fixed installed role + reviewed byte pin, never an ambient search.
++            allocation_correction = {"path": str(root / "Run-183" / module["OVERLAY_NAME"]),
++                                     "sha256": module["OVERLAY_SHA256"]}
++            if expected_ledger_sha256 is None:
++                expected_ledger_sha256 = module["sha"](module["regular"](ledger_path)[0])
 +        view = module["resolve"](finalized_root, reconciliation_surface,
 +            correction=allocation_correction, ledger_path=ledger_path,
 +            expected_ledger_sha256=expected_ledger_sha256)
 +        view.read(HERE / "effective_allocation.py", EFFECTIVE_ALLOCATION_SOURCE_SHA256)
 +        view.revalidate()
-+        return view
++        return ConsumerAllocationView(view, module["AllocationHold"])
 +    except module["AllocationHold"] as exc:
 +        raise AssemblyError(str(exc)) from None
 +
++
++
++class ConsumerAllocationView:
++    """Translate late read/revalidate failures at every consumer boundary."""
++    def __init__(self, view, hold):
++        self._view, self._hold = view, hold
++
++    def __getattr__(self, name):
++        try:
++            value = getattr(self._view, name)
++        except self._hold as exc:
++            raise AssemblyError(str(exc)) from None
++        if not callable(value):
++            return value
++        def call(*args, **kwargs):
++            try:
++                return value(*args, **kwargs)
++            except self._hold as exc:
++                raise AssemblyError(str(exc)) from None
++        return call
++
++
++def serialized_receipt(value, *, sort_keys=True):
++    try:
++        return json.dumps(value, indent=2, sort_keys=sort_keys, allow_nan=False) + "\n"
++    except (TypeError, ValueError) as exc:
++        raise AssemblyError("HOLD_RECEIPT_SERIALIZATION: " + str(exc)) from None
 +
 +def explicit_allocation_options(path, digest, ledger_digest):
 +    if path is None and digest is None and ledger_digest is None:
@@ -44,10 +80,10 @@
 +        raise AssemblyError("HOLD_EFFECTIVE_ALLOCATION_EXPLICIT_PIN_AND_LEDGER_CAS_REQUIRED")
 +    return {"allocation_correction": {"path": path, "sha256": digest},
 +            "expected_ledger_sha256": ledger_digest}
- 
- 
+
+
  def read_json(path: Path) -> dict[str, Any]:
-@@ -380,6 +420,9 @@
+@@ -380,6 +456,9 @@
      staging_root: Path = STAGING_ROOT,
      ledger_path: Path = LEDGER_PATH,
      kernel_packages_root: Path | None = None,
@@ -57,7 +93,7 @@
  ) -> dict[str, Any]:
      run_id = canonical_run_id(run_value)
      date = validate_date(date)
-@@ -401,16 +444,13 @@
+@@ -401,16 +480,24 @@
      manifest = read_json(root / "PAPER_PACKAGE_MANIFEST.json")
      metadata = release_metadata(manifest)
      proposal_path = root / "RELEASE_BINDING_PROPOSAL.json"
@@ -78,58 +114,121 @@
 +        expected_ledger_sha256=expected_ledger_sha256)
 +    candidate = allocation.proposals.get(run_id)
 +    proposal = candidate if candidate and candidate.get("status") == "READY_FOR_EXACT_AUTHORIZATION" else None
++    if proposal is not None and (not isinstance(proposal.get("proposed_license"), str) or not proposal["proposed_license"].strip()):
++        raise AssemblyError("ready release proposal requires a proposed license")
++    allocation_identity = allocation.run_receipt(run_id)
++    proposal_binding = ({
++        "path": str(proposal_path),
++        "sha256": allocation.input_bindings[str(proposal_path.absolute())],
++        "original_proposed_ledger_row": allocation.original_proposal(run_id)["proposed_ledger_row"],
++        "proposed_license": proposal["proposed_license"],
++        "proposed_ledger_row": proposal["proposed_ledger_row"],
++        "effective_allocation_receipt": allocation_identity,
++    } if proposal is not None else None)
      title = manifest.get("title")
      if not isinstance(title, str) or not title.strip():
          raise AssemblyError("final package title is missing")
-@@ -449,6 +489,7 @@
-     lockstep = load_lockstep()
-     lockstep.load_post_aristotle_review(root, paper, lean, summaries)
-     bound_sources = source_hashes(root, gate_path, paper, lean, summaries, review, kernel_package, kernel_artifacts)
-+    bound_sources.update(allocation.input_bindings)
-     row = metadata["ledger_row"]
-     ledger = (
-         ledger_state(ledger_path, row, metadata["abbreviation"])
-@@ -470,6 +511,7 @@
+@@ -464,25 +551,30 @@
+     destination = date_root / bundle_name
+     if destination.exists():
+         prior = read_json(destination / "BUNDLE_MANIFEST.json")
+-        if prior.get("source_sha256") == bound_sources:
++        old_binding = prior.get("release_binding_proposal")
++        same_allocation = old_binding is None and proposal_binding is None
++        if isinstance(old_binding, dict) and isinstance(proposal_binding, dict):
++            same_allocation = all(old_binding.get(key) == proposal_binding[key]
++                for key in ("path", "sha256", "proposed_license", "proposed_ledger_row"))
++            # Legacy unaffected bundles can replay; a legacy183 row147 cannot.
++            if "effective_allocation_receipt" in old_binding:
++                same_allocation = same_allocation and old_binding["effective_allocation_receipt"] == allocation_identity
++        allocation.revalidate()
++        if prior.get("source_sha256") == bound_sources and same_allocation:
+             return {"status": "ALREADY_STAGED", "run_id": run_id, "bundle": str(destination), "ledger": ledger}
+         raise AssemblyError(f"existing staged bundle differs: {destination}")
      temp = date_root / f".{bundle_name}.tmp"
      if temp.exists():
          raise AssemblyError(f"stale assembly directory exists: {temp}")
-+    allocation.revalidate()
-     temp.mkdir(parents=True)
+-    temp.mkdir(parents=True)
++    # Freeze every output and receipt before mkdir or any other local write.
++    prepared = {}
      for source in (paper, *lean, *summaries, review, kernel_package):
-         shutil.copy2(source, temp / source.name)
-@@ -515,7 +557,9 @@
-         "release_binding_proposal": (
-             {
-                 "path": str(proposal_path),
+-        shutil.copy2(source, temp / source.name)
++        prepared[source.name] = source.read_bytes()
+     for relative, source in kernel_artifacts:
+-        target = temp / "viridisos_kernel" / relative
+-        target.parent.mkdir(parents=True, exist_ok=True)
+-        shutil.copy2(source, target)
+-    write_json_atomic(temp / "zenodo_metadata.json", zenodo_payload(title.strip(), metadata))
++        prepared[(Path("viridisos_kernel") / relative).as_posix()] = source.read_bytes()
++    prepared["zenodo_metadata.json"] = serialized_receipt(zenodo_payload(title.strip(), metadata)).encode("utf-8")
+     coherence = load_coherence()
+-    write_text_atomic(
+-        temp / "RIGHTS_AND_LICENSE.md",
+-        coherence.unassigned_rights_notice(title.strip()),
+-    )
++    prepared["RIGHTS_AND_LICENSE.md"] = coherence.unassigned_rights_notice(title.strip()).encode("utf-8")
+     bundle_manifest = {
+         "schema_version": 1,
+         "standard": "VRS-BUNDLE-1",
+@@ -512,24 +604,32 @@
+             "license_gate": "HOLD_UNASSIGNED",
+             "status": "READY_EXCEPT_RIGHTS_LICENSE_LEDGER_AUTHORIZATION",
+         },
+-        "release_binding_proposal": (
+-            {
+-                "path": str(proposal_path),
 -                "sha256": sha256(proposal_path),
-+                "sha256": allocation.input_bindings[str(proposal_path.absolute())],
-+                "original_proposed_ledger_row": allocation.original_proposal(run_id)["proposed_ledger_row"],
-+                "effective_allocation_projection": allocation.receipt(),
-                 "proposed_license": proposal["proposed_license"],
-                 "proposed_ledger_row": proposal["proposed_ledger_row"],
-             }
-@@ -526,8 +570,10 @@
+-                "proposed_license": proposal["proposed_license"],
+-                "proposed_ledger_row": proposal["proposed_ledger_row"],
+-            }
+-            if proposal is not None
+-            else None
+-        ),
+-        "artifact_sha256": tree_hashes(temp),
++        "release_binding_proposal": proposal_binding,
++        "effective_allocation_receipt": allocation_identity,
++        "allocation_input_sha256": allocation.input_bindings,
++        "artifact_sha256": {name: hashlib.sha256(raw).hexdigest() for name, raw in sorted(prepared.items())},
          "assembled_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
          "external_mutation": False,
      }
+-    write_json_atomic(temp / "BUNDLE_MANIFEST.json", bundle_manifest)
+-    date_root.mkdir(parents=True, exist_ok=True)
+-    os.replace(temp, destination)
+-    return {"status": "STAGED_CANDIDATE", "run_id": run_id, "bundle": str(destination), "ledger": ledger}
++    manifest_bytes = serialized_receipt(bundle_manifest).encode("utf-8")
++    result = {"status": "STAGED_CANDIDATE", "run_id": run_id, "bundle": str(destination), "ledger": ledger}
++    serialized_receipt(result)
 +    allocation.revalidate()
-     write_json_atomic(temp / "BUNDLE_MANIFEST.json", bundle_manifest)
-     date_root.mkdir(parents=True, exist_ok=True)
-+    allocation.revalidate()
-     os.replace(temp, destination)
-     return {"status": "STAGED_CANDIDATE", "run_id": run_id, "bundle": str(destination), "ledger": ledger}
- 
-@@ -775,7 +821,8 @@
++    temp.mkdir(parents=True)
++    try:
++        for name, raw in prepared.items():
++            target = temp / name
++            target.parent.mkdir(parents=True, exist_ok=True)
++            target.write_bytes(raw)
++        (temp / "BUNDLE_MANIFEST.json").write_bytes(manifest_bytes)
++        allocation.revalidate()
++        os.replace(temp, destination)
++    except Exception:
++        # This invocation exclusively created temp; never touch destination.
++        shutil.rmtree(temp)
++        raise
++    return result
++
+
+
+ def identical_tree(source: Path, destination: Path) -> bool:
+@@ -775,7 +875,8 @@
      }
- 
- 
+
+
 -def scan(date: str, *, finalized_root: Path = FINALIZED_ROOT) -> dict[str, Any]:
 +def scan(date: str, *, finalized_root: Path = FINALIZED_ROOT, allocation_correction=None,
 +         expected_ledger_sha256=None) -> dict[str, Any]:
      staged: list[dict[str, Any]] = []
      holds: list[dict[str, Any]] = []
      skipped_already_published: list[str] = []
-@@ -788,7 +835,8 @@
+@@ -788,7 +889,8 @@
                  skipped_already_published.append(root.name)
                  continue
              try:
@@ -139,7 +238,7 @@
              except AssemblyError as exc:
                  holds.append({"run_id": root.name, "reason": str(exc)})
      return {
-@@ -812,10 +860,17 @@
+@@ -812,10 +914,17 @@
      parser.add_argument("--row", type=int)
      parser.add_argument("--license", help="approved release license; valid with --bind-ledger")
      parser.add_argument("--justin-authorized", action="store_true")
@@ -158,7 +257,7 @@
          elif args.bind_ledger:
              if args.row is None:
                  raise AssemblyError("--bind-ledger requires --row")
-@@ -829,7 +884,7 @@
+@@ -829,7 +938,7 @@
          elif args.promote_ledger_cleared:
              result = promote_ledger_cleared(args.date)
          else:

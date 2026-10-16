@@ -334,7 +334,9 @@ def apply_plan(client, plan, receipt_path, *, installation_receipt, installed_tr
         payload["metadata"][field] = plan["planned_after"]["metadata"][field]
         client("PUT", record_url + "/draft", json.dumps(payload).encode(), rdm=True)
         checked = client("GET", record_url + "/draft", rdm=True)
-        receipt.update(draft_after=checked, draft_diff=protected_diff(
+        # Retain the full native readback even if phase validation cold-holds.
+        receipt["draft_after"] = checked
+        receipt.update(draft_diff=protected_diff(
                            normalized_edit_draft(current, draft), normalized_edit_draft(current, checked)),
                        draft_public_diff=draft_against_public(current, checked))
         if (checked.get("created") != draft.get("created")

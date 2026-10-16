@@ -44,6 +44,8 @@ M=[
  ('N3 unknown custom fields preserved','tools/zenodo_metadata_repair.py','    value = copy.deepcopy(draft)','    value = copy.deepcopy(draft); value["custom_fields"] = copy.deepcopy(before.get("custom_fields", {}))',1,'tools/tests','test_rdm_edit_phase.NativeEditPhaseTests.test_content_custom_fields_access_and_unknown_links_stay_protected'),
  ('N3 stable edit identity after PUT','tools/zenodo_metadata_repair.py','if (checked.get("created") != draft.get("created")','if (False',1,'tools/tests','test_rdm_edit_phase.NativeEditPhaseTests.test_semantic_after_put_protected_drift_or_invalid_phase_blocks_publish'),
 
+ ('N3 invalid phase full readback retained','tools/zenodo_metadata_repair.py','        receipt["draft_after"] = checked','        pass',1,'tools/tests','test_rdm_edit_phase.NativeEditPhaseTests.test_semantic_after_put_protected_drift_or_invalid_phase_blocks_publish'),
+
 
 ]
 RUNNER='''import json,sys,unittest

@@ -56,7 +56,11 @@ class NativeEditPhaseTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary, mock.patch.dict(os.environ, VIRIDIS_ENGINE_ROOT=temporary):
             root = Path(temporary) / "rehearsals/offline"; root.mkdir(parents=True)
             harness = helpers.RepairTests()
-            return harness.run_apply(root, harness.plan(client.current), client, rehearse=True)
+            try:
+                return harness.run_apply(root, harness.plan(client.current), client, rehearse=True)
+            except M.RepairHold:
+                client.saved_receipt = json.loads((root / "receipt.json").read_bytes())
+                raise
 
     def test_observed_native_post_projection_matches_public_without_changing_either_body(self):
         self.assertEqual(hashlib.sha256(FIXTURE.read_bytes()).hexdigest(), FIXTURE_SHA256)
@@ -170,6 +174,9 @@ class NativeEditPhaseTests(unittest.TestCase):
                 with self.assertRaises(M.RepairHold):
                     self.apply_rehearsal(client)
                 self.assertTrue(client.deleted)
+                self.assertIn("draft_after", client.saved_receipt)
+                expected = copy.deepcopy(client.puts[0]); change(expected)
+                self.assertEqual(client.saved_receipt["draft_after"], expected)
                 self.assertEqual(len(client.puts), 1)
                 self.assertFalse(any(url.endswith("/actions/publish") for method, url in client.calls))
 

@@ -112,10 +112,13 @@ if __name__=='__main__':unittest.main()
 
 class ControllerHoldPathTests(unittest.TestCase):
  def test_run_api_override_holds_before_source_or_transport(self):
-  with mock.patch.dict(os.environ,VIRIDIS_CORE_ROOT='/mock/core',VIRIDIS_ZENODO_API_BASE='https://sandbox.zenodo.org/api'),mock.patch.object(c,'loaded_sources')as loaded:
-   with self.assertRaisesRegex(c.Hold,'API_BASE_OVERRIDE_FORBIDDEN'):
-    c.run({},'/mock/output',TOKEN)
-   loaded.assert_not_called()
+  with tempfile.TemporaryDirectory()as folder:
+   root=Path(folder).resolve();validate=mock.Mock(side_effect=AssertionError('override reached source admission'))
+   runtime=SimpleNamespace(validate=validate)
+   with mock.patch.dict(os.environ,VIRIDIS_CORE_ROOT=str(root),VIRIDIS_ZENODO_API_BASE='https://sandbox.zenodo.org/api'),mock.patch.object(c,'ROOT',root),mock.patch.dict(sys.modules,packaging_runtime=runtime),mock.patch.object(c,'loaded_sources')as loaded:
+    with self.assertRaisesRegex(c.Hold,'API_BASE_OVERRIDE_FORBIDDEN'):
+     c.run({'packaging_profile':{},'source_pins':[]},str(root/'output'),TOKEN)
+    loaded.assert_not_called();validate.assert_not_called()
 
  def test_owned_checkpoint_hold_deletes_draft_through_actual_controller_except(self):
   from contextlib import ExitStack

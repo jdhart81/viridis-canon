@@ -77,18 +77,22 @@ class LockstepHardeningTests(unittest.TestCase):
     def test_fresh_recovery_invocation_cannot_mirror_persisted_uncertain_doi(self):
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary); work=root/'work'; work.mkdir()
-            row=SimpleNamespace(path=root,git_build_root=None,doi='10.5281/zenodo.777',abbreviation='XX')
+            row=SimpleNamespace(path=root,git_build_root=None,doi='10.5281/zenodo.777',abbreviation='XX',payload=(),payload_targets=())
             (root/'PUBLISHED_DOI.txt').write_text(row.doi)
-            with (mock.patch.object(L,'discover_bundles',return_value=[row]),mock.patch.object(L,'print_plan'),
-                  mock.patch.object(L,'read_github_token',return_value=TOKEN),
-                  mock.patch.object(L.tempfile,'mkdtemp',return_value=str(work)),
-                  mock.patch.object(L,'run',return_value=SimpleNamespace(returncode=0)),
-                  mock.patch.object(L,'probe_git_write'),mock.patch.object(L,'preflight_release'),
-                  mock.patch.object(L,'verification_coverage_report'),mock.patch.object(L,'copy_payload'),
-                  mock.patch.object(L,'refresh_dois',return_value=[row]),
-                  mock.patch.object(L,'verify_publication_readbacks',side_effect=L.LockstepError('current public upload/PDF readback HOLD')) as readback,
-                  mock.patch.object(L,'create_commit') as commit,mock.patch.object(L,'push_commit') as push,
-                  contextlib.redirect_stdout(io.StringIO())):
+            readback=mock.Mock(side_effect=L.LockstepError('current public upload/PDF readback HOLD'))
+            commit=mock.Mock(return_value=('a'*40,False));push=mock.Mock(return_value=('main',None,'a'*40))
+            patches=[mock.patch.object(L,'discover_bundles',return_value=[row]),mock.patch.object(L,'print_plan'),
+                mock.patch.object(L,'read_github_token',return_value=TOKEN),mock.patch.object(L.tempfile,'mkdtemp',return_value=str(work)),
+                mock.patch.object(L,'run',return_value=SimpleNamespace(returncode=0)),mock.patch.object(L,'probe_git_write'),
+                mock.patch.object(L,'preflight_release'),mock.patch.object(L,'verification_coverage_report'),mock.patch.object(L,'copy_payload'),
+                mock.patch.object(L,'refresh_dois',return_value=[row]),mock.patch.object(L,'verify_publication_readbacks',readback),
+                mock.patch.object(L,'ROOT',root),mock.patch.object(L,'update_public_surfaces',return_value=([],'digest','fixed')),
+                mock.patch.object(L,'create_commit',commit),mock.patch.object(L,'push_commit',push),
+                mock.patch.object(L,'wait_for_main_workflows',return_value=[]),mock.patch.object(L,'verify_public',return_value={}),
+                mock.patch.object(L,'verify_pages',return_value='https://example.invalid/catalog'),
+                mock.patch.object(L,'write_receipt',return_value=root/'receipt.json'),contextlib.redirect_stdout(io.StringIO())]
+            with contextlib.ExitStack() as stack:
+                for patch in patches:stack.enter_context(patch)
                 with self.assertRaisesRegex(L.LockstepError,'current public upload/PDF readback HOLD'):
                     L.main(['--date','2026-10-16','--go','--enforce-new-artifacts'])
                 readback.assert_called_once_with([row]);commit.assert_not_called();push.assert_not_called()

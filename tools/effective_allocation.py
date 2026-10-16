@@ -42,6 +42,54 @@ AUTHORITY_FIELDS = {'schema','at_utc','human_source','source_text','proposal_pat
 LOCAL_BINDING_FIELDS = {'standard','run_id','approved_ledger_row','license','authority',
     'original_approved_proposal','promotion_authorized','publication_authorized','publication_status',
     'row_correction_authority','scientific_evidence','source_manifest_unchanged'}
+# Closed compatibility for nine already-published shortened ledger titles.
+# Each complete cell vector and immutable original proposal is tied to its
+# exact verified-main publication receipt. No title/status/DOI wildcard.
+HISTORICAL_PUBLISHED = {'Run-120': {'cells_sha256': '64de8de6507f48d1438ab36ab63a63d603fee3e63c633eb6e9c58ea6c7325367',
+             'proposal_sha256': 'f3e6e8022da1f4efec55c41f299ad15e09ada0482b2cfeed358b445a533ef6da',
+             'receipt_path': '_ZENODO_DEPOSITS/LOCKSTEP_RECEIPTS/2026-09-01.json',
+             'receipt_sha256': 'd1df44bdccd2bd932c7e46357ce6621e1a831534207344e7fbadb3d7fbe26bdb',
+             'row': 100},
+ 'Run-121': {'cells_sha256': 'f12c87441dc84c1bb958b83d1cb5f7e2a95dfdfb261a876c1a6ae6719290a97e',
+             'proposal_sha256': '42fcb154c2ad9599b7332b89ea51dccdb8b53633441166a43ae410168023a399',
+             'receipt_path': '_ZENODO_DEPOSITS/LOCKSTEP_RECEIPTS/2026-09-01.json',
+             'receipt_sha256': 'd1df44bdccd2bd932c7e46357ce6621e1a831534207344e7fbadb3d7fbe26bdb',
+             'row': 101},
+ 'Run-122': {'cells_sha256': 'f3fc00feaa2f6071e2f345298441c867b98a85a71280441246fab5cec02edf2d',
+             'proposal_sha256': 'b78e3174268c64e4f019a40c3c848442041c7bbe7d6c11c0f546276fad6ec8bf',
+             'receipt_path': '_ZENODO_DEPOSITS/LOCKSTEP_RECEIPTS/2026-09-01.json',
+             'receipt_sha256': 'd1df44bdccd2bd932c7e46357ce6621e1a831534207344e7fbadb3d7fbe26bdb',
+             'row': 102},
+ 'Run-123': {'cells_sha256': '1476ca5923003e42d2afeca511b10904b34498d8f0fcb8d881a2d3d87bc14ba1',
+             'proposal_sha256': '2e40e679887d7164ce8e636c0182dd5cb25e7e80b36aa678c9356dcdbb17306f',
+             'receipt_path': '_ZENODO_DEPOSITS/LOCKSTEP_RECEIPTS/2026-09-01.json',
+             'receipt_sha256': 'd1df44bdccd2bd932c7e46357ce6621e1a831534207344e7fbadb3d7fbe26bdb',
+             'row': 107},
+ 'Run-132': {'cells_sha256': '5babcb1fb6bff1329bfeda11b51d72e9d2404f86caf485c1d5b7c8f273d7aa61',
+             'proposal_sha256': '1bd059a5892dfeea27ac56fb5eaf7c815478b01c7b92753a7c204cac1bf56aff',
+             'receipt_path': '_ZENODO_DEPOSITS/LOCKSTEP_RECEIPTS/2026-09-01.json',
+             'receipt_sha256': 'd1df44bdccd2bd932c7e46357ce6621e1a831534207344e7fbadb3d7fbe26bdb',
+             'row': 103},
+ 'Run-134': {'cells_sha256': '8e2a10db1decc73f5f9392d37f27148a9e0378a9e78c7ab8e9bdb3b32dc34a3d',
+             'proposal_sha256': '6ce9c05ec58976b5079356b842eedf7cf818b4284f674eb9600ff73f02de8fc4',
+             'receipt_path': '_ZENODO_DEPOSITS/LOCKSTEP_RECEIPTS/2026-08-31.json',
+             'receipt_sha256': '76acc2ffaeec085d85bff0052c0801e39fceeb8980ac047ce3d3f4f01ab7d170',
+             'row': 90},
+ 'Run-135': {'cells_sha256': '6f5a0c239a9a2d9f8d5a6cc27fbcad79ff79e1024b4399f41fc8013f10574654',
+             'proposal_sha256': '601584c1d8c9e74ff29c3feecc9d8bf5a38bfeee10c1710d15bce47e979f859e',
+             'receipt_path': '_ZENODO_DEPOSITS/LOCKSTEP_RECEIPTS/2026-09-01.json',
+             'receipt_sha256': 'd1df44bdccd2bd932c7e46357ce6621e1a831534207344e7fbadb3d7fbe26bdb',
+             'row': 104},
+ 'Run-137': {'cells_sha256': '25c5d258c10dfdb975746c11ec23e50b499b075f1f4405a2b454df7fc68d89ab',
+             'proposal_sha256': 'dc340bedc592900351e4876ee659383293e504eb958b9fb7bb27936f88879fda',
+             'receipt_path': '_ZENODO_DEPOSITS/LOCKSTEP_RECEIPTS/2026-09-01.json',
+             'receipt_sha256': 'd1df44bdccd2bd932c7e46357ce6621e1a831534207344e7fbadb3d7fbe26bdb',
+             'row': 105},
+ 'Run-138': {'cells_sha256': '79983b72205bedaa3615791c767ff6463feedd8afbbf1e03b9f8c00e074ca953',
+             'proposal_sha256': '15f95a145fc16cb7895f6165f92fb5156b1621630b344ae68e3ddfcba9a24f65',
+             'receipt_path': '_ZENODO_DEPOSITS/LOCKSTEP_RECEIPTS/2026-09-01.json',
+             'receipt_sha256': 'd1df44bdccd2bd932c7e46357ce6621e1a831534207344e7fbadb3d7fbe26bdb',
+             'row': 106}}
 MAX_BYTES = 32 * 1024 * 1024
 
 
@@ -128,7 +176,7 @@ def proposal_inventory(root):
 class AllocationView:
     def __init__(self, root, paths):
         self.root, self.paths = root, paths
-        self._reads = {}; self._proposals = {}; self._originals = {}; self.correction = None; self.ledger_path = None
+        self._reads = {}; self._proposals = {}; self._originals = {}; self._historical = {}; self.correction = None; self.ledger_path = None
 
     def read(self, path, expected=None):
         path = safe_path(path); raw, observed = regular(path)
@@ -197,6 +245,7 @@ class AllocationView:
                 'original_proposed_row': original.get('proposed_ledger_row') if original else None,
                 'effective_row': proposal.get('proposed_ledger_row') if proposal else None,
                 'original_proposal_sha256': self.input_bindings.get(str(path)),
+                'historical_publication': deepcopy(self._historical.get(run_id)),
                 'correction': correction, 'publication_authorized': False,
                 'license_authorized': False, 'certifies': False}
 
@@ -286,6 +335,29 @@ def apply_correction(view, binding, ledger_path, expected_ledger_sha256):
         'local_decisions_authority':deepcopy(local_authority),'publication_authorized':False}
 
 
+def historical_published_identity(view, run, proposal, cells):
+    pin = HISTORICAL_PUBLISHED.get(run)
+    if pin is None:
+        return False
+    proposal_path = view.root / run / 'RELEASE_BINDING_PROPOSAL.json'
+    need(proposal['proposed_ledger_row'] == pin['row']
+         and view.input_bindings[str(proposal_path)] == pin['proposal_sha256']
+         and sha(json.dumps(cells, ensure_ascii=False, separators=(',', ':')).encode()) == pin['cells_sha256'],
+         'EXACT_HISTORICAL_IDENTITY')
+    path = view.root.parent.parent / pin['receipt_path']
+    receipt = document(view.read(path, pin['receipt_sha256']))
+    need(receipt.get('status') == 'verified' and receipt.get('branch') == 'main'
+         and receipt.get('repository') == 'jdhart81/viridis-canon', 'HISTORICAL_VERIFIED_PUBLICATION')
+    matches = [value for value in receipt.get('bundles', []) if isinstance(value, dict)
+        and value.get('abbreviation') == proposal.get('abbreviation')
+        and value.get('title') == proposal.get('title')
+        and value.get('doi') == cells[8].strip('`')]
+    need(len(matches) == 1 and isinstance(receipt.get('commit_sha'), str)
+         and receipt['commit_sha'] in cells[7], 'HISTORICAL_PUBLICATION_IDENTITY')
+    view._historical[run] = deepcopy(pin)
+    return True
+
+
 def resolve(finalized_root, reconciliation_surface, *, correction=None, ledger_path=None, expected_ledger_sha256=None):
     root = safe_path(finalized_root); paths = proposal_inventory(root); view = AllocationView(root,paths)
     need(safe_path(reconciliation_surface) == root.parent/'PUBLIC_IDENTITY_RECONCILIATION_SURFACE_2026-08-30.json', 'RECONCILIATION_SURFACE_ROLE')
@@ -324,19 +396,19 @@ def resolve(finalized_root, reconciliation_surface, *, correction=None, ledger_p
         for run, proposal in view._proposals.items():
             if proposal.get('status') != 'READY_FOR_EXACT_AUTHORIZATION':
                 continue
+            need(all(number == proposal['proposed_ledger_row'] for number, values in ledger_rows.items()
+                     for cells in values if len(cells) == 9 and cells[3] == 'nightly ' + run),
+                 'LEDGER_RUN_ROW_CONFLICT')
             occupied = ledger_rows.get(proposal['proposed_ledger_row'], [])
             need(len(occupied) <= 1, 'UNIQUE_OCCUPIED_PROPOSAL_ROW')
+            if run in HISTORICAL_PUBLISHED:
+                need(len(occupied) == 1, 'HISTORICAL_OCCUPIED_ROW_REQUIRED')
             if occupied:
                 cells = occupied[0]
-                # Historical published rows sometimes use a shortened title.
-                # Their exact abbreviation + nightly Run identity must still
-                # match, with a genuine published/DOI cell. Unpublished rows
-                # (including the approved183 binding) require the full title.
                 full_title = '**' + str(proposal.get('abbreviation')) + ' — ' + str(proposal.get('title')) + '**'
-                published_title = (len(cells) == 9 and cells[7].startswith('🌐 PUBLISHED — ')
-                    and re.fullmatch(r'`?10\.5281/zenodo\.[0-9]+`?', cells[8]) is not None
-                    and re.fullmatch(r'\*\*' + re.escape(str(proposal.get('abbreviation'))) + r' — .+\*\*', cells[2]) is not None)
-                need(len(cells) == 9 and (cells[2] == full_title or published_title)
+                historical = run in HISTORICAL_PUBLISHED
+                published_title = len(cells) == 9 and historical_published_identity(view, run, proposal, cells) if historical else False
+                need(len(cells) == 9 and (published_title if historical else cells[2] == full_title)
                      and cells[3] == 'nightly ' + run, 'OCCUPIED_PROPOSAL_IDENTITY')
     view.proposal_rows = tuple(sorted(rows))
     view.revalidate()

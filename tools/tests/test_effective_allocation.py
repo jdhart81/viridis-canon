@@ -203,6 +203,8 @@ class ResolverTests(unittest.TestCase):
         self.assertEqual(ns['LOCAL_DECISIONS_SHA256'],'5c0ff7e4bf6d563266455fa8ab0df158a42baa8056dd5678198585b5a04a5af2')
         self.assertEqual(ns['ORIGINALS']['Run-183'],'3c6c883796aab54c14062f9e905c375fd705faa547779a18c2930692a6ddbe1d')
         self.assertEqual(ns['ORIGINALS']['Run-177'],'290860184267124c6bc7f716e3a8ef591836c832c89a02047886ad4eef4856ae')
+        self.assertEqual(set(ns['HISTORICAL_PUBLISHED']),{'Run-120','Run-121','Run-122','Run-123','Run-132','Run-134','Run-135','Run-137','Run-138'})
+        self.assertEqual(ns['HISTORICAL_PUBLISHED']['Run-120']['receipt_sha256'],'d1df44bdccd2bd932c7e46357ce6621e1a831534207344e7fbadb3d7fbe26bdb')
 
     def test_default_no_overlay_keeps_original_global_collision_hold(self):
         with self.assertRaisesRegex(self.hold,'APPROVED_183_OVERLAY_REQUIRED'):self.f.resolve(correction=False)
@@ -589,14 +591,48 @@ class PatchedConsumerTests(unittest.TestCase):
             else:
                 with self.assertRaisesRegex(f.ns['AllocationHold'],'OCCUPIED_PROPOSAL_IDENTITY'):f.resolve()
 
-    def test_historical_published_short_title_still_requires_exact_run_abbreviation_and_doi(self):
+    def historical_fixture(self):
         f=self.f;stage_inputs(f,'Run-180','AAA',144)
-        def line(abbreviation='AAA',run='Run-180',status='🌐 PUBLISHED — CC-BY-4.0',doi='`10.5281/zenodo.999`'):
-            return f'| 144 | date | **{abbreviation} — Historical short title** | nightly {run} | evidence | scope | route | {status} | {doi} |\n'
-        f.ledger.write_text(line());self.assertEqual(f.resolve().proposal('Run-180')['proposed_ledger_row'],144)
-        for kwargs in ({'abbreviation':'AAA extra'},{'run':'Run-181'},{'doi':'pending'},{'status':'HELD'}):
-            f.ledger.write_text(line(**kwargs))
-            with self.assertRaisesRegex(f.ns['AllocationHold'],'OCCUPIED_PROPOSAL_IDENTITY'):f.resolve()
+        proposal_path=f.finalized/'Run-180/RELEASE_BINDING_PROPOSAL.json'
+        receipt_path=save(f.root/'_ZENODO_DEPOSITS/LOCKSTEP_RECEIPTS/fixture.json',dict(status='verified',branch='main',
+            repository='jdhart81/viridis-canon',commit_sha='a'*40,bundles=[dict(abbreviation='AAA',title='Title Run-180',doi='10.5281/zenodo.999')]))
+        cells=['144','date','**AAA — Historical short title**','nightly Run-180','evidence','scope','route',
+               '🌐 PUBLISHED — CC-BY-4.0; verified at '+('a'*40),'`10.5281/zenodo.999`']
+        pin=dict(row=144,proposal_sha256=digest(proposal_path.read_bytes()),
+            cells_sha256=digest(json.dumps(cells,ensure_ascii=False,separators=(',',':')).encode()),
+            receipt_path=str(receipt_path.relative_to(f.root)),receipt_sha256=digest(receipt_path.read_bytes()))
+        f.ns['HISTORICAL_PUBLISHED']={'Run-180':pin}
+        f.ledger.write_text('| '+' | '.join(cells)+' |\n')
+        return cells,pin,receipt_path
+
+    def test_historical_published_short_title_requires_exact_complete_identity(self):
+        f=self.f;cells,pin,receipt_path=self.historical_fixture()
+        view=f.resolve();self.assertEqual(view.proposal('Run-180')['proposed_ledger_row'],144)
+        self.assertEqual(view.run_receipt('Run-180')['historical_publication'],pin)
+        self.assertEqual(view.input_bindings[str(receipt_path)],pin['receipt_sha256'])
+        for index,value in [(0,'145'),(2,'**AAA — COMPLETELY DIFFERENT SCIENCE**'),(3,'nightly Run-181'),
+            (7,'🌐 PUBLISHED — NOT ACTUALLY PUBLISHED'),(8,'`10.5281/zenodo.999999999`')]:
+            altered=cells.copy();altered[index]=value;f.ledger.write_text('| '+' | '.join(altered)+' |\n')
+            with self.assertRaises(f.ns['AllocationHold']):f.resolve()
+        f.ledger.write_text('| '+' | '.join(cells)+' |\n')
+        f.ns['HISTORICAL_PUBLISHED']={}
+        with self.assertRaisesRegex(f.ns['AllocationHold'],'OCCUPIED_PROPOSAL_IDENTITY'):f.resolve()
+
+    def test_historical_receipt_and_original_are_pinned_and_semantically_exact(self):
+        f=self.f;cells,pin,path=self.historical_fixture();raw=path.read_bytes()
+        path.write_bytes(raw+b' ')
+        with self.assertRaisesRegex(f.ns['AllocationHold'],'EXACT_INPUT_HASH'):f.resolve()
+        path.write_bytes(raw)
+        original=f.finalized/'Run-180/RELEASE_BINDING_PROPOSAL.json';proposal=original.read_bytes();original.write_bytes(proposal+b' ')
+        with self.assertRaisesRegex(f.ns['AllocationHold'],'EXACT_HISTORICAL_IDENTITY'):f.resolve()
+        original.write_bytes(proposal)
+        for key,value in [('status','NOT_ACTUALLY_PUBLISHED'),('branch','draft'),('repository','other/repo')]:
+            modified=json.loads(raw);modified[key]=value;save(path,modified);pin['receipt_sha256']=digest(path.read_bytes())
+            with self.assertRaisesRegex(f.ns['AllocationHold'],'HISTORICAL_VERIFIED_PUBLICATION'):f.resolve()
+        path.write_bytes(raw);pin['receipt_sha256']=digest(raw)
+        modified=cells.copy();modified[8]='`10.5281/zenodo.1`';f.ledger.write_text('| '+' | '.join(modified)+' |\n')
+        pin['cells_sha256']=digest(json.dumps(modified,ensure_ascii=False,separators=(',',':')).encode())
+        with self.assertRaisesRegex(f.ns['AllocationHold'],'HISTORICAL_PUBLICATION_IDENTITY'):f.resolve()
 
     def test_no_overlay_branch_crosschecks_ledger_and_uses_its_maximum(self):
         f=self.f;(f.finalized/'Run-183/RELEASE_BINDING_PROPOSAL.json').unlink()

@@ -39,11 +39,15 @@ boolean rows, changed authority, science, identity, bytes or file frames,
 symlink ancestry and reservation-set races HOLD. Row 148 must be absent or the
 unique exact MCSL/Run-183 identity. Historical lower ledger rows remain intact;
 ordinary global public/proposal reservation duplicates remain errors. Every
-occupied effective proposal row must match its exact nightly Run and
-abbreviation; unpublished rows also require the full title. Historical
-published rows may retain their existing shortened title only with the exact
-abbreviation, Run identity, published status and valid Zenodo DOI. Their bytes
-are preserved. All numeric ledger rows contribute to the allocation maximum.
+occupied effective proposal row must match its exact nightly Run and full
+title, and a Run cannot occupy another ledger row. Nine previously published
+shortened-title identities have a closed compatibility table binding the exact
+original proposal hash, all nine ledger cells (including exact title, status
+and DOI), and their fixed CORE-relative verified-main publication receipt hash.
+That receipt is re-read and its unique full-title/abbreviation/DOI identity is
+checked. Unknown shortened titles or changed proposal, cell, receipt or status
+HOLD. No new publication identity is inferred. Their bytes are preserved. All
+numeric ledger rows contribute to the allocation maximum.
 
 | Consumer | Result | Retained authority boundary |
 | --- | --- | --- |

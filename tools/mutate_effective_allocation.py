@@ -41,7 +41,7 @@ M += [
  ('B1 assembler manifest before mkdir','after:assemble_saturday_candidate.py','    manifest_bytes = serialized_receipt(bundle_manifest).encode("utf-8")','    manifest_bytes = b""',1,T+'PatchedConsumerTests.test_receipt_serialization_failure_precedes_every_consumer_write'),
  ('B1 reconciler receipt before apply','after:reconcile_publication_receipt.py','    serialized_receipt(result)','    pass',1,T+'PatchedConsumerTests.test_receipt_serialization_failure_precedes_every_consumer_write'),
  ('B2 no incidental177 dependency',R,"need(str(root/'Run-183/RELEASE_BINDING_PROPOSAL.json') not in view.input_bindings,\n             'APPROVED_183_OVERLAY_REQUIRED')","pass",1,T+'PatchedConsumerTests.test_no_overlay_never_falls_back_when_original177_removed_or_not_ready'),
- ('B2 occupied proposal identity',R,"need(len(cells) == 9 and (cells[2] == full_title or published_title)\n                     and cells[3] == 'nightly ' + run, 'OCCUPIED_PROPOSAL_IDENTITY')","pass",1,T+'PatchedConsumerTests.test_every_occupied_effective_proposal_row_requires_exact_same_identity'),
+ ('B2 occupied proposal identity',R,"need(len(cells) == 9 and (published_title if historical else cells[2] == full_title)\n                     and cells[3] == 'nightly ' + run, 'OCCUPIED_PROPOSAL_IDENTITY')","pass",1,T+'PatchedConsumerTests.test_every_occupied_effective_proposal_row_requires_exact_same_identity'),
  ('X9 no-overlay ledger CAS',R,"need(expected_ledger_sha256 is None, 'EXPLICIT_OVERLAY_REQUIRED')","pass",1,T+'PatchedConsumerTests.test_no_overlay_cannot_accept_ledger_cas_even_without183'),
  ('M1 exclude unrelated inputs from source identity','after:assemble_saturday_candidate.py','    row = metadata["ledger_row"]','    bound_sources.update(allocation.input_bindings)\n    row = metadata["ledger_row"]',1,T+'PatchedConsumerTests.test_staging_idempotency_after_unrelated_inputs_and_legacy_unaffected_bundle'),
  ('M1 run receipt excludes ledger CAS',R,"correction.pop('ledger_sha256')","pass",1,T+'PatchedConsumerTests.test_same_run_stable_receipt_changes_only_when_its_inputs_change'),
@@ -50,6 +50,14 @@ M += [
  ('D1 automatic fixed approved overlay','after:assemble_saturday_candidate.py','if allocation_correction is None and (root / "Run-183/RELEASE_BINDING_PROPOSAL.json").exists():','if False:',1,T+'PatchedConsumerTests.test_real_argparse_cli_all_three_with_path_flags_and_automatic_defaults'),
  ('C4 overlay never authorizes bind promotion','after:assemble_saturday_candidate.py','            raise AssemblyError("allocation projection does not authorize bind or promotion")','            pass',1,T+'PatchedConsumerTests.test_bind_and_promotion_cli_never_gain_authority_from_overlay'),
  ('C6 second router CAS and owned rollback','after:canon_product_router.py','    try:\n        allocation.revalidate()\n        write_json_atomic(proposal_path, proposal)','    try:\n        write_json_atomic(proposal_path, proposal)',1,T+'PatchedConsumerTests.test_router_second_cas_removes_only_its_owned_route_on_race'),
+]
+
+M += [
+ ('historical exact complete title status DOI cells',R,"and sha(json.dumps(cells, ensure_ascii=False, separators=(',', ':')).encode()) == pin['cells_sha256']","and True",1,T+'PatchedConsumerTests.test_historical_published_short_title_requires_exact_complete_identity'),
+ ('historical authentic receipt hash',R,"view.read(path, pin['receipt_sha256'])","view.read(path)",1,T+'PatchedConsumerTests.test_historical_receipt_and_original_are_pinned_and_semantically_exact'),
+ ('historical original proposal hash',R,"and view.input_bindings[str(proposal_path)] == pin['proposal_sha256']","and True",1,T+'PatchedConsumerTests.test_historical_receipt_and_original_are_pinned_and_semantically_exact'),
+ ('historical genuine verified status',R,"receipt.get('status') == 'verified'","True",1,T+'PatchedConsumerTests.test_historical_receipt_and_original_are_pinned_and_semantically_exact'),
+ ('historical exact publication DOI',R,"and value.get('doi') == cells[8].strip('`')","and True",1,T+'PatchedConsumerTests.test_historical_receipt_and_original_are_pinned_and_semantically_exact'),
 ]
 
 RUNNER='''import json,sys,unittest

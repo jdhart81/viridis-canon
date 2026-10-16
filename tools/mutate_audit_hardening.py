@@ -35,6 +35,15 @@ M=[
  ('107 N2 symlink ancestor','00_lab_infrastructure/gates/generation_premise_guard.py','any(p.is_symlink() for p in (path, *path.parents))','path.is_symlink()',2,'00_lab_infrastructure/gates','test_generation_premise_guard.StagedBoundaryTests.test_symlinked_stage_ancestor_has_exact_path_hold'),
  ('107 N3 malformed draft exact label','00_lab_infrastructure/gates/generation_premise_guard.py','if not isinstance(inventory, dict) or not isinstance(contract, dict):','if False:',1,'00_lab_infrastructure/gates','test_generation_premise_guard.StagedBoundaryTests.test_invalid_draft_encoding_and_json_raise_labeled_hold_without_writes'),
  ('107 N4 recursion labeled HOLD','00_lab_infrastructure/gates/generation_premise_guard.py','except (UnicodeError, json.JSONDecodeError, RecursionError):','except (UnicodeError, json.JSONDecodeError):',2,'00_lab_infrastructure/gates','test_generation_premise_guard.StagedBoundaryTests.test_json_recursion_is_labeled_before_any_write'),
+ ('N3 observed POST phase projection','tools/zenodo_metadata_repair.py','    value["created"] = before["created"]','    pass',1,'tools/tests','test_rdm_edit_phase.NativeEditPhaseTests.test_observed_native_post_projection_matches_public_without_changing_either_body'),
+ ('N3 shared public baseline after PUT','tools/zenodo_metadata_repair.py','normalized_edit_draft(current, draft), normalized_edit_draft(current, checked)','draft, checked',1,'tools/tests','test_rdm_edit_phase.NativeEditPhaseTests.test_same_public_baseline_normalizes_semantic_post_put_file_link_materialization'),
+ ('N3 exact edit phase flag','tools/zenodo_metadata_repair.py','or draft.get("is_draft") is not True or draft.get("is_published") is not True','or draft.get("is_draft") is not True',1,'tools/tests','test_rdm_edit_phase.NativeEditPhaseTests.test_wrong_record_parent_pid_and_edit_flags_are_cold_holds'),
+ ('N3 ordered edit timestamps','tools/zenodo_metadata_repair.py','if not old_created <= old_updated <= created <= updated:','if False:',1,'tools/tests','test_rdm_edit_phase.NativeEditPhaseTests.test_invalid_naive_or_out_of_order_phase_timestamps_are_cold_holds'),
+ ('N3 closed action URL normalization','tools/zenodo_metadata_repair.py','if key not in original_links and links.get(key) == expected:','if key not in original_links:',1,'tools/tests','test_rdm_edit_phase.NativeEditPhaseTests.test_content_custom_fields_access_and_unknown_links_stay_protected'),
+ ('N3 closed omitted file links','tools/zenodo_metadata_repair.py','or any(key not in expected_links or expected_links[key] != url for key, url in old_links.items())):','or False):',1,'tools/tests','test_rdm_edit_phase.NativeEditPhaseTests.test_omitted_file_links_require_closed_identity_bound_public_links'),
+ ('N3 unknown custom fields preserved','tools/zenodo_metadata_repair.py','    value = copy.deepcopy(draft)','    value = copy.deepcopy(draft); value["custom_fields"] = copy.deepcopy(before.get("custom_fields", {}))',1,'tools/tests','test_rdm_edit_phase.NativeEditPhaseTests.test_content_custom_fields_access_and_unknown_links_stay_protected'),
+ ('N3 stable edit identity after PUT','tools/zenodo_metadata_repair.py','if (checked.get("created") != draft.get("created")','if (False',1,'tools/tests','test_rdm_edit_phase.NativeEditPhaseTests.test_semantic_after_put_protected_drift_or_invalid_phase_blocks_publish'),
+
 
 ]
 RUNNER='''import json,sys,unittest
@@ -88,7 +97,7 @@ def main():
    'failing_tests':[line for line in pair[1][1].stderr.splitlines()if line.startswith(('FAIL:','ERROR:'))]})
   print(name+': '+result,flush=True)
  receipt={'status':'PASS'if len(rows)==len(M)and all(r['result']=='KILLED'for r in rows)else'HOLD',
-  'lineage':'current-code behavioral port of auditor M01,M02,M05,M06,M07,M09,M10,M13,M15,M18,M20,M22,M24 plus new blocking/nit and107 regressions',
+  'lineage':'current-code behavioral port of auditor M01,M02,M05,M06,M07,M09,M10,M13,M15,M18,M20,M22,M24 plus new blocking/nit, observed native edit phase, semantic after-PUT and107 regressions',
   'mutants':rows,'killed':sum(r['result']=='KILLED'for r in rows),'declared_mutants':len(M),'elapsed_seconds':round(time.monotonic()-started,3),
   'runner_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'python':sys.version.split()[0],'external_network':False}
  with a.output.open('x')as out:out.write(json.dumps(receipt,indent=2,sort_keys=True)+'\n')

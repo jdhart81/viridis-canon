@@ -16,7 +16,10 @@ DUMMY = "DUMMY_REPAIR_CREDENTIAL_" + "x" * 40
 
 
 def baseline(record="21855705"):
-    return {"id": record, "revision_id": 1, "updated": "before", "status": "published",
+    return {"id": record, "revision_id": 1, "created": "2026-08-08T00:00:00+00:00", "updated": "2026-10-13T00:00:00+00:00", "status": "published",
+            "is_draft": False, "is_published": True, "parent": {"id": "21855704"},
+            "pids": {"doi": {"identifier": "10.5281/zenodo." + record}},
+            "links": {"self": M.RDM + record, "self_html": "https://zenodo.org/records/" + record},
             "metadata": {"title": "Protected title", "creators": [{"person_or_org": {"name": "Example"}}],
                          "rights": [{"id": "cc-by-4.0"}], "description": "<p>Unchanged scientific claims</p>"},
             "files": {"entries": {"paper.pdf": {"key": "paper.pdf", "checksum": "md5:unchanged", "size": 12}}}}
@@ -45,7 +48,11 @@ class Client:
             if method == "GET" and self.deleted:
                 raise urllib.error.HTTPError(url, 404, "deleted", {}, None)
             if method == "POST":
-                self.draft = {**copy.deepcopy(self.current), "status": "draft"}
+                self.draft = copy.deepcopy(self.current)
+                self.draft.update(is_draft=True, is_published=True, status="published",
+                                  created="2026-10-16T12:16:01+00:00", updated="2026-10-16T12:16:02+00:00")
+                self.draft["links"].update(self=M.RDM + str(self.current["id"]) + "/draft",
+                                           self_html="https://zenodo.org/uploads/" + str(self.current["id"]))
                 if self.opening_drift:
                     self.draft["custom_fields"] = {"unexpected": "opening draft drift"}
             if method == "PUT":
@@ -75,7 +82,7 @@ class RepairTests(unittest.TestCase):
             def __call__(self, method, url, data=None, *, rdm=False):
                 result = super().__call__(method, url, data, rdm=rdm)
                 if method == "POST" and url.endswith("/draft"):
-                    self.draft.update(is_draft=True,is_published=False)
+                    self.draft.update(is_draft=True,is_published=True)
                     self.draft["expires_at"] = "2026-12-15T00:00:00+00:00"
                     self.draft["versions"]["is_latest_draft"] = True
                     for row in self.draft["files"]["entries"].values():

@@ -20,7 +20,7 @@ PREFIX = 'test_round2_stack.ComposedControllerTests.'
 MUTANTS = [
  ('N1_unchecked_cached_helper', 'install_integration.py',
   [('    exec(compile(terminal_raw, str(terminal), "exec"), module.__dict__)',
-    '    import importlib.util\n    spec = importlib.util.spec_from_file_location("_unchecked_cache", terminal)\n    spec.loader.exec_module(module)')],
+    '    import importlib.util\n    spec = importlib.util.spec_from_file_location("_checked_terminal_helper", terminal)\n    spec.loader.exec_module(module)')],
   PREFIX+'test_installer_real_CLI_ignores_timestamp_valid_substituted_bytecode_under_B'),
  ('N1_ambient_local_import_cache', 'install_integration.py',
   [('HELPERS = (', 'import scheduler_liveness\n\nHELPERS = (')],
@@ -43,6 +43,16 @@ MUTANTS = [
 ]
 
 
+CAUSE_ASSERTIONS = {
+    'N1_unchecked_cached_helper': 'Hash-checked source must be the only code executed; unchecked pycache ran',
+    'N1_ambient_local_import_cache': 'Installer executed unchecked local dependency cache',
+    'N1_stale_predecessor_installation': 'LivenessHold not raised',
+    'N2_terminal_original_blocks_certificate_visibility': "Lists differ: [] != ['Run-195']",
+    'N2_terminal_exclusion_not_reauthenticated': 'LivenessHold not raised',
+    'N2_rejected_request_misclassified_as_terminal_science': "Lists differ: ['Run-195'] != []",
+}
+
+
 def execute(root: Path, test: str) -> dict:
     process = subprocess.run([sys.executable, '-B', '-m', 'unittest', test, '-v'],
         cwd=root/'tests', capture_output=True, text=True, timeout=60,
@@ -51,6 +61,8 @@ def execute(root: Path, test: str) -> dict:
     failures = re.findall(r'^FAIL: (\w+)', process.stderr, re.M)
     errors = re.findall(r'^ERROR: (\w+)', process.stderr, re.M)
     return {'returncode':process.returncode,'assertion_failures':failures,'errors':errors,
+            'stdout':process.stdout,'stderr':process.stderr,
+            'infrastructure_errors':[kind for kind in ('ImportError:', 'ModuleNotFoundError:', 'SyntaxError:') if kind in process.stderr],
             'stdout_sha256':hashlib.sha256(process.stdout.encode()).hexdigest(),
             'stderr_sha256':hashlib.sha256(process.stderr.encode()).hexdigest()}
 
@@ -75,8 +87,11 @@ def run() -> int:
                 binding['source_files'][source_name]=hashlib.sha256((root/source_name).read_bytes()).hexdigest()
             manifest.write_text(json.dumps(binding,indent=2,sort_keys=True)+'\n')
             result=execute(root,test)
+            intended = CAUSE_ASSERTIONS[name] in result['stderr']
             rows.append({'mutant':name,'named_test':test,'baseline':baseline,'result':result,
-                         'killed':bool(result['returncode'] and result['assertion_failures'] and not result['errors'])})
+                         'expected_cause_assertion':CAUSE_ASSERTIONS[name],'intended_cause_observed':intended,
+                         'killed':bool(result['returncode'] and result['assertion_failures'] and not result['errors']
+                                       and not result['infrastructure_errors'] and intended)})
     value={'standard':'VRS-PRECHECK-CAUSE-SPECIFIC-MUTATIONS-1','total':len(rows),
            'killed':sum(row['killed'] for row in rows),'errors':sum(len(row['result']['errors']) for row in rows),'results':rows}
     print(json.dumps(value,indent=2,sort_keys=True))

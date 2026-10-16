@@ -258,7 +258,7 @@ MUTANTS.extend([
 MUTANTS.extend([
     ("N1 installer executes unchecked cached helper", "install_integration.py",
      '    exec(compile(terminal_raw, str(terminal), "exec"), module.__dict__)',
-     '    import importlib.util\n    spec = importlib.util.spec_from_file_location("_unchecked_cache", terminal)\n    spec.loader.exec_module(module)'),
+     '    import importlib.util\n    spec = importlib.util.spec_from_file_location("_checked_terminal_helper", terminal)\n    spec.loader.exec_module(module)'),
     ("N1 installer imports unchecked local dependency cache", "install_integration.py",
      'HELPERS = (', 'import scheduler_liveness\n\nHELPERS = ('),
     ("N2 terminal original blocks younger certificate visibility", "checkpoint_certification_lane.py",

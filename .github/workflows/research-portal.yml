@@ -52,3 +52,21 @@ jobs:
       - name: Deploy public research portal
         id: deployment
         uses: actions/deploy-pages@v5
+
+  sync-canon-cloud:
+    # Runs in the trusted push context instead of a workflow_run trigger, so no
+    # workflow ever checks out a commit chosen by another workflow's event while
+    # holding a secret. Dormant unless CANON_CLOUD_URL and the secret are set.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: verify-catalog
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      CANON_CLOUD_URL: ${{ vars.CANON_CLOUD_URL }}
+      CANON_CLOUD_SYNC_SECRET: ${{ secrets.CANON_CLOUD_SYNC_SECRET }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Synchronize deterministic catalog
+        run: python3 tools/sync_canon_cloud.py --catalog docs/data/catalog.json

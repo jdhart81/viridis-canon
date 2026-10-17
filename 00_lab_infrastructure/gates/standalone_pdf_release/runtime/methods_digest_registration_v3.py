@@ -30,7 +30,7 @@ def _original_registrar():
 
 def _require_download_inventory(rows,manifest):
  """Exact dynamic upload names; neither note count nor a summary is enough."""
- if not isinstance(manifest,dict)or manifest.get('standard')!=d.STANDARD:raise RegistrationHold('current v2 manifest required for v3 evidence')
+ if not isinstance(manifest,dict)or manifest.get('standard')not in {d.STANDARD,d.LABELLED_STANDARD}:raise RegistrationHold('current v2 manifest required for v3 evidence')
  uploads=manifest.get('uploads')
  if not isinstance(uploads,list)or not uploads or any(not isinstance(v,dict)or not isinstance(v.get('filename'),str)for v in uploads):raise RegistrationHold('exact manifest upload inventory required')
  names=[v['filename']for v in uploads]
@@ -256,11 +256,18 @@ def _check_public(package,root,m,evidence,snapshots,*,digest_consumer=current_di
  return result,actual_legacy,actual_native
 
 def _children(root,package,m):
- result=[]
+ result=[];labelled=m.get('standard')==d.LABELLED_STANDARD
  for note in m['notes']:
   path=Path(note['path']).resolve(strict=True)
   if not path.is_relative_to(Path(root).resolve(strict=True)):raise RegistrationHold('foreign note artifact')
   result.append({'id':'publication:methods-note:'+m['release_week']+':'+note['run_id'],'path':str(path.relative_to(root)),'run_id':note['run_id'],'certificate':{k:note['certificate'][k]for k in ('path','sha256')},'publication_binding':{k:note['publication_binding'][k]for k in ('path','sha256')}})
+  if labelled:
+   result[-1].update(certificate=None,artifact_label=d.ARTIFACT_LABEL,statement_certificate_evidence={
+    'scope':'EXACT_SEALED_PREDECESSOR_AND_QUOTED_FORMAL_STATEMENTS_ONLY',
+    'certificate':deepcopy(note['certificate']),'candidate':deepcopy(note['candidate']),
+    'formal_statement':deepcopy(note['formal_statement']),'statement_scope':deepcopy(note['statement_scope']),
+    'scientific_predecessor':deepcopy(note['scientific_predecessor']),
+    'certificate_valid':True,'certifies_current_artifact':False})
  if not result or len({v['run_id']for v in result})!=len(result)or len({v['path']for v in result})!=len(result):raise RegistrationHold('unique per-note Run/path required')
  return result
 
@@ -306,7 +313,8 @@ def _require_registration_pre_prior_processing(root,binding,ledger=None,*,digest
    cert=matches[0].get('certificate');cp=Path(cert)if isinstance(cert,str)else None
    if cp is None:raise RegistrationHold('Run certificate path absent')
    cp=cp if cp.is_absolute()else root/cp
-   if cp.resolve(strict=True)!=Path(child['certificate']['path']).resolve(strict=True)or d.sha(cp)!=child['certificate']['sha256']:raise RegistrationHold('per-note current main certificate changed')
+   statement_certificate=child['statement_certificate_evidence']['certificate']if m.get('standard')==d.LABELLED_STANDARD else child['certificate']
+   if cp.resolve(strict=True)!=Path(statement_certificate['path']).resolve(strict=True)or d.sha(cp)!=statement_certificate['sha256']:raise RegistrationHold('per-note current main certificate changed')
  for path,observed in parity_observations:
   if parity_consumer(root,path)!=observed:raise RegistrationHold('source/mirror inventory changed during registered-note readback')
  _finish(snapshots);return {'receipt':v,'manifest':m,'strict_readback':result,'public_legacy':legacy,'public_native':native}
@@ -360,12 +368,18 @@ def require_registration(root,binding,ledger=None,*,digest_consumer=current_dige
 
 def entity_rows(root,binding,ledger,*,consume=require_registration):
  result=consume(root,binding,ledger);v=result['receipt'];rid=v['record_id'];gid='publication:methods-digest:'+v['release_week']+':'+rid
+ labelled=result.get('manifest',{}).get('standard')==d.LABELLED_STANDARD
  shared={'kind':'PUBLICATION','doi':v['doi'],'registration_receipt':binding,'publication_binding_status':'PUBLICATION_BOUND','publication_registration_status':'PASS','enforcement_acceptable':True,'registration_revalidated':True,'reasons':[],'publication_registration_reasons':[]}
  group={**shared,'id':gid,'path':v['package_path'],'entity_type':'METHODS_DIGEST_GROUP','registration_route':GROUP_ROUTE,'status':'SCOPED_DIGEST','certificate_valid':False,'certifies':False,'note_ids':[c['id']for c in v['children']]}
  children=[]
  for c in v['children']:
-  cert=Path(c['certificate']['path']).resolve(strict=True)
-  children.append({**shared,'id':c['id'],'path':c['path'],'run_id':c['run_id'],'entity_type':'METHODS_DIGEST_NOTE','registration_route':NOTE_ROUTE,'group_id':gid,'status':'CERTIFIED','certificate_valid':True,'certificate':str(cert.relative_to(root)),'certificate_sha256':c['certificate']['sha256'],'note_publication_binding':c['publication_binding'],'certifies':'LISTED_NOTE_SCOPE_ONLY'})
+  statement_certificate=c['statement_certificate_evidence']['certificate']if labelled else c['certificate']
+  cert=Path(statement_certificate['path']).resolve(strict=True)
+  children.append({**shared,'id':c['id'],'path':c['path'],'run_id':c['run_id'],'entity_type':'METHODS_DIGEST_NOTE','registration_route':NOTE_ROUTE,'group_id':gid,'status':'CERTIFIED','certificate_valid':True,'certificate':str(cert.relative_to(root)),'certificate_sha256':statement_certificate['sha256'],'note_publication_binding':c['publication_binding'],'certifies':'LISTED_NOTE_SCOPE_ONLY'})
+ if labelled:
+  group.update(status='UNCERTIFIED',artifact_label=d.ARTIFACT_LABEL,statement_certificate_evidence=[deepcopy(c['statement_certificate_evidence'])for c in v['children']])
+  for row,child in zip(children,v['children']):
+   row.update(status='UNCERTIFIED',certificate_valid=False,certificate=None,certificate_sha256=None,certifies=False,artifact_label=d.ARTIFACT_LABEL,statement_certificate_evidence=deepcopy(child['statement_certificate_evidence']))
  return [group,*children]
 
 def preserve(ledger,previous,*,legacy,consume=require_registration):
@@ -388,7 +402,7 @@ def preserve(ledger,previous,*,legacy,consume=require_registration):
    old_by_id={v['id']:v for v in cohort}
    for new in fresh:
     old=old_by_id[new['id']]
-    for k in('id','path','doi','registration_route','entity_type','registration_receipt','group_id','run_id','certificate','certificate_sha256','note_publication_binding','note_ids','certifies'):
+    for k in('id','path','doi','registration_route','entity_type','registration_receipt','group_id','run_id','certificate','certificate_sha256','note_publication_binding','note_ids','certifies','artifact_label','statement_certificate_evidence'):
      if old.get(k)!=new.get(k):raise RegistrationHold('registered identity/path/certificate/group changed: '+k)
     if old.get('enforcement_acceptable')is not True:raise RegistrationHold('previous held group requires explicit re-registration')
    admitted=fresh
@@ -416,10 +430,12 @@ def evaluate_publication(artifact,ledger,*,legacy,scoped_legacy=None,entity_id=N
  try:
   rows=entity_rows(Path(ledger['tree_root']),entity['registration_receipt'],ledger,consume=consume)
   expected=next(v for v in rows if v['id']==entity['id'])
-  if any(entity.get(k)!=expected.get(k)for k in('path','doi','registration_route','group_id','run_id','certificate','certificate_sha256','note_publication_binding','note_ids')):raise RegistrationHold('named SSOT entity differs from actual registration')
+  if any(entity.get(k)!=expected.get(k)for k in('path','doi','registration_route','group_id','run_id','certificate','certificate_sha256','note_publication_binding','note_ids','artifact_label','statement_certificate_evidence')):raise RegistrationHold('named SSOT entity differs from actual registration')
   if entity.get('enforcement_acceptable')is not True or any(entity.get(k)!=expected.get(k)for k in('status','certificate_valid','publication_binding_status','publication_registration_status','registration_revalidated','certifies')):raise RegistrationHold('registration is held or its exact scope status changed')
   group=entity['registration_route']==GROUP_ROUTE
   result.update(status='PASS',verification_status='SCOPED_DIGEST'if group else'CERTIFIED',label='METHODS DIGEST — individually bound scoped notes'if group else'SCOPED CERTIFIED — approved per-note mathematical statements',exact_publication_binding=True,certifies=False if group else'LISTED_NOTE_SCOPE_ONLY',scope='Per-note source-bound claims only; no theorem certificate is assigned to the aggregate',registration_route=entity['registration_route'])
+  if expected.get('artifact_label')==d.ARTIFACT_LABEL:
+   result.update(verification_status='UNCERTIFIED',label=d.ARTIFACT_LABEL,certificate_valid=False,certifies=False,scope='Derived artifacts are uncertified. Attached certificates cover only their exact sealed predecessors and quoted formal statements under their stated hypotheses.',statement_certificate_evidence=deepcopy(expected['statement_certificate_evidence']))
  except Exception as exc:result['reasons'].append(type(exc).__name__+': '+str(exc))
  result.update(blocking=enforce and result['status']!='PASS',release_eligible=result['status']=='PASS',canon_eligible=result['status']=='PASS')
  return result
@@ -432,6 +448,8 @@ def augment_audit(root,ledger,audit,*,consume=require_registration):
   result=consume(root,group['registration_receipt'],ledger);v=result['receipt']
   if any(r.get('doi')==v['doi']for r in out['published_records']+out['methods_digest_groups']):raise RegistrationHold('digest DOI collides with an existing generic/digest public artifact join')
   row={'doi':v['doi'],'deposit_paths':[str(Path(root)/v['package_path'])],'run_ids':[],'certificate_valid':False,'kind':'METHODS_DIGEST_GROUP','certifies':False,'publication_registration_status':'PASS','methods_digest_registration':{'tree_root':str(Path(root).resolve()),'receipt':group['registration_receipt']},'note_run_ids':[c['run_id']for c in v['children']]}
+  if result.get('manifest',{}).get('standard')==d.LABELLED_STANDARD:
+   row.update(verification_status='UNCERTIFIED',artifact_label=d.ARTIFACT_LABEL,statement_certificate_evidence=[deepcopy(c['statement_certificate_evidence'])for c in v['children']])
   out['methods_digest_groups'].append(row)
  out.setdefault('counts',{})['methods_digest_groups']=len(out['methods_digest_groups'])
  return out
@@ -452,9 +470,13 @@ def _public_label_read_record_pre_prior_processing(row,*,legacy,getter=_get_reco
   if not isinstance(marker,dict)or set(marker)!={'tree_root','receipt'}:raise RegistrationHold('closed digest public-label join required')
   root=Path(marker['tree_root']).resolve(strict=True);actual=consume(root,marker['receipt']);v=actual['receipt']
   if row.get('doi')!=v['doi']or row.get('deposit_paths')!=[str(root/v['package_path'])]:raise RegistrationHold('public-label digest DOI/artifact differs')
+  labelled=actual.get('manifest',{}).get('standard')==d.LABELLED_STANDARD
+  if labelled:result.update(proposed_label=d.ARTIFACT_LABEL)
   old,h1=getter(v['record_id'],'application/json');native,h2=getter(v['record_id'],'application/vnd.inveniordm.v1+json')
   consume(root,marker['receipt'],views=(old,native))
   result.update(status='READ',url='https://zenodo.org/api/records/'+v['record_id'],title=old['metadata']['title'],description=old['metadata']['description'],files=old['files'],proposed_label_disagrees=False,public_verification_status='SCOPED_DIGEST',reason='Exact receipt-backed digest metadata/files and individually bound notes passed fresh readback; aggregate is not a theorem certificate',response_sha256=h1,native_response_sha256=h2)
+  if labelled:
+   result.update(public_verification_status='UNCERTIFIED',certificate_valid=False,certifies=False,reason='Exact public artifact bytes and the approved uncertified label passed readback; attached certificates cover only exact sealed predecessors and quoted formal statements.',statement_certificate_evidence=[deepcopy(c['statement_certificate_evidence'])for c in v['children']])
  except Exception as exc:result['error']=type(exc).__name__+': '+str(exc)
  return result
 

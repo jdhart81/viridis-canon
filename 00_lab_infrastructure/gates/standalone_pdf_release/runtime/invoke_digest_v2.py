@@ -29,6 +29,7 @@ def preflight(root, profile_binding, config_binding):
         package = controller.config_value(root, config)
         digest = importlib.import_module('methods_digest_v2')
         manifest, publication = digest.require_publication_bound(package, root)
+        digest.require_new_publication(manifest)
         scope = controller.obj(root, config['release_scope'])
         controller.require_cohort(scope, [n['run_id'] for n in manifest['notes']])
         runtime.need(manifest['release_week'] == scope['release_week'], 'EXACT_RELEASE_WEEK')

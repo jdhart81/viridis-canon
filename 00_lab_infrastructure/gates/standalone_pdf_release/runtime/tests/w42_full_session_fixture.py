@@ -49,7 +49,7 @@ class FullSessionFixture:
   globals_=type(self.science_fixture).context.__globals__;factory=globals_['_platform_builtins']
   self.platform_builtins=factory(self.science_fixture.binary,self.science_fixture.gen,self.science_fixture.historical_generation_literal)
   self.platform_builtins.compile=self.loader.compile;self.platform_builtins.exec=self.loader.execute
-  self.loader.post_load_data[sha(raw)]={'_FROZEN_HASHES':self.science_fixture.test_hashes,'builtins':self.platform_builtins}
+  self.loader.post_load_data[sha(raw)]={'_FROZEN_HASHES':self.science_fixture.test_hashes,'builtins':self.platform_builtins,'LABEL_AUTHORITY':self.science_fixture.label_authority,'NATIVE_RENDERER':str(self.science_fixture.binary),'RENDER_CACHE':self.science_fixture.cache}
   self.platform_adapter={'source_sha256':sha(Path(globals_['__file__']).read_bytes()),'function_ast_sha256':function_asts(Path(globals_['__file__']).read_bytes())['_platform_builtins'],'fixed_literal_paths':['/opt/homebrew/bin/tectonic',self.science_fixture.historical_generation_literal],'raw_installed_access_sha256':sha(raw),'installed_raw_unchanged':installed.read_bytes()==raw}
   self.source_names={r['name'][:-3]for r in [*self.source_pins130,*self.current['module_rows'],*self.current['shared_rows']] if r['name'].endswith('.py')}
   self.build_seconds=time.monotonic()-self.started

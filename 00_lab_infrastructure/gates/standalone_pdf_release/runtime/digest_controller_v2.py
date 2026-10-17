@@ -409,7 +409,7 @@ def run(config,output,token,*,opener=None,clock=now,rehearse=False):
   sl=obj(root,config['source_legacy_receipt'])['response'];sn=obj(root,config['source_native_before_create'])['response'];rid=str(sl['id']);l,lb=get(rid,True);n,nb=get(rid,True,True)
   created=receipt_obj(root,state['ownership']['creation_receipt'])if state['ownership']and start_kind=='NEW_VERSION'else None
   audit=prior.require_pair(l,n,sl,sn,creation=created,publish=receipt_obj(root,publish)if publish and start_kind=='NEW_VERSION'else None,preservation=mods['publication_preservation']);emit('prior/'+f'{t.sequence:03d}.json',audit);return l,n,lb,nb
- manifest,pub=d.require_publication_bound(package,root);scope=obj(root,config['release_scope']);start_kind=scope['start_kind'];need(manifest['release_week']==scope['release_week'],'CANONICAL_WEEK')
+ manifest,pub=d.require_publication_bound(package,root);d.require_new_publication(manifest);scope=obj(root,config['release_scope']);start_kind=scope['start_kind'];need(manifest['release_week']==scope['release_week'],'CANONICAL_WEEK')
  access_sequence=0
  def access_download(rid,name):
   nonlocal access_sequence

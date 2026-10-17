@@ -26,7 +26,7 @@ class FrozenV009PredecessorTests(unittest.TestCase):
         candidate, installed = root / 'candidate', root / 'installed'
         candidate.mkdir(); installed.mkdir()
         sources, modules, git = [], [], []
-        for name in sorted(runtime.MODULE_NAMES):
+        for name in sorted(runtime.FROZEN_FULL_MODULE_NAMES):
             raw = ('# synthetic exact prior source ' + name + '\n').encode()
             for directory in (candidate, installed):
                 (directory / name).write_bytes(raw)
@@ -177,8 +177,8 @@ class FrozenV009PredecessorTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp).resolve(); bindings, sources, modules, _ = self.fixture(root)
             for prefix in ('00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/', runtime.GIT_PREFIX):
-                rows = [{**r, 'git_path': prefix+r['name']} for r in sources]
-                self.assertEqual(len(runtime.module_table(root, rows, git_prefix=prefix)), 19)
+                rows = [{**r, 'git_path': prefix+r['name']} for r in sources if prefix != runtime.GIT_PREFIX or r['name'] in runtime.MODULE_NAMES]
+                self.assertEqual(len(runtime.module_table(root, rows, git_prefix=prefix)), 18 if prefix == runtime.GIT_PREFIX else 19)
                 with self.assertRaisesRegex(runtime.PackagingHold, 'CLOSED_ADDITIVE_MODULES'):
                     runtime.module_table(root, [r for r in rows if r['name'] in runtime.FROZEN_MODULE_NAMES], git_prefix=prefix)
             for version in range(1,7):

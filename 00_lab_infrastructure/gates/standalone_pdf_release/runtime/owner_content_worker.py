@@ -66,7 +66,7 @@ KIND_NAMES = {value: key for key, value in KINDS.items()}
 MODULE_NAMES = frozenset({'packaging_runtime.py', 'invoke_digest_v2.py', 'digest_controller_v2.py',
     'methods_digest_v2.py', 'methods_digest_registration_v3.py', 'manuscript_access_registry.py',
     'manuscript_access_correction.py', 'manuscript_pdf_gate.py', 'publish_dated_bundles_guarded.py',
-    'publish_successor_wave_guarded.py', 'packaging_catalog.py', 'install_packaging_runtime.py',
+     'packaging_catalog.py', 'install_packaging_runtime.py',
     'packaging_nightly.py', 'nightly_checkpoint_guarded.py', 'packaging_run_flow.py',
     'packaging_nightly_coverage.py', 'packaging_nightly_intake.py',
     'scientific_registration_worker.py', 'owner_content_worker.py'})
@@ -366,6 +366,8 @@ def reject_import_artifacts(installed):
     need(sys.pycache_prefix is None, 'CURRENT_NAMESPACE_ALTERNATE_PYCACHE_PREFIX')
     installed = Path(installed)
     probes = [installed / '__pycache__']
+    probes.extend(installed / ('publish_successor_wave_guarded' + suffix) for suffix in
+        ('.py', '', '.pyc', '.pyo', *importlib.machinery.EXTENSION_SUFFIXES))
     for name in sorted(MODULE_NAMES):
         stem = name[:-3]
         probes.extend(installed / (stem + suffix) for suffix in
@@ -377,10 +379,10 @@ def reject_import_artifacts(installed):
 def bootstrap_sources(manifest):
     """Only checked current source bytes may precede a runtime import/token."""
     need(type(manifest) is dict and set(manifest) == MANIFEST_FIELDS
-        and manifest['standard'] == 'VRS-CURRENT-V012-WORKER-SOURCE-MANIFEST-1', 'CLOSED_SOURCE_MANIFEST')
+        and manifest['standard'] == 'VRS-CURRENT-DIGEST-ONLY-WORKER-SOURCE-MANIFEST-1', 'CLOSED_SOURCE_MANIFEST')
     root = Path(manifest['canonical_root'])
     need(root == FIXED_CANONICAL_ROOT, 'FIXED_WORKER_CANONICAL_ROOT')
-    installed = root / '_ZENODO_DEPOSITS/standalone_pdf_runtime_v012'
+    installed = root / '_ZENODO_DEPOSITS/standalone_pdf_runtime'
     reject_import_artifacts(installed)
     modules, metadata = manifest['modules'], manifest['metadata']
     shared=manifest['shared_dependencies']
@@ -390,8 +392,8 @@ def bootstrap_sources(manifest):
          and Path(shared[0]['path'])==installed/'common'/SHARED_INPUT_NAME,
          'EXACT_SHARED_SOURCE_BOOTSTRAP')
     _strict_source_read(shared[0]['path'],shared[0]['sha256'],shared[0]['identity'])
-    need(type(modules) is list and len(modules) == 19 and type(metadata) is list and len(metadata) == 3,
-        'EXACT19_AND3_SOURCE_BOOTSTRAP')
+    need(type(modules) is list and len(modules) == 18 and type(metadata) is list and len(metadata) == 3,
+        'EXACT18_AND3_SOURCE_BOOTSTRAP')
     names = set()
     for row in modules:
         need(type(row) is dict and set(row) == {'name', 'path', 'sha256', 'identity'}
@@ -399,7 +401,7 @@ def bootstrap_sources(manifest):
             and row['name'] not in names and Path(row['path']) == installed / row['name'], 'FIXED_INSTALLED_MODULE')
         names.add(row['name'])
         _strict_source_read(row['path'], row['sha256'], row['identity'])
-    need(names == MODULE_NAMES, 'EXACT_CURRENT19_WORKER_MODULES')
+    need(names == MODULE_NAMES, 'EXACT_CURRENT18_WORKER_MODULES')
     expected = {'profile': 'CURRENT_PACKAGING_PROFILE.json', 'nomination': 'INSTALLATION_NOMINATION.json',
         'plan': 'INSTALL_PLAN.json'}
     roles = set()
@@ -425,7 +427,7 @@ def source_proof_valid(proof, manifest):
     need(type(proof) is dict and set(proof) == SOURCE_FIELDS
         and proof['status'] == 'ACTUAL_CURRENT_WORKER_SOURCE_AUTHORITY_AND_IDENTITY_VERIFIED'
         and proof['source_manifest_sha256'] == hashlib.sha256(encode_json(manifest)).hexdigest()
-        and proof['source_modules'] == 19 and proof['metadata_files'] == 3
+        and proof['source_modules'] == 18 and proof['metadata_files'] == 3
         and proof['transient_restore_allowed'] is False and proof['scientific_population_admitted'] is False
         and proof['certifies'] is False, 'CURRENT_WORKER_SOURCE_PROOF')
 
@@ -1099,7 +1101,7 @@ def child_main(input_fd, output_fd, error_fd):
         own = next(row for row in manifest['modules'] if row['name'] == 'owner_content_worker.py')
         need(Path(__file__).absolute() == Path(own['path']), 'EXECUTED_PUBLIC_OWNER_WORKER')
         import packaging_runtime as runtime
-        need(Path(runtime.__file__).absolute() == root / '_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/packaging_runtime.py',
+        need(Path(runtime.__file__).absolute() == root / '_ZENODO_DEPOSITS/standalone_pdf_runtime/packaging_runtime.py',
             'CURRENT_BOOTSTRAPPED_RUNTIME')
         with runtime.readonly_worker_scope(), runtime.json_data_scope(root):
             proof = runtime.verify_worker_source_manifest(root, manifest['profile_binding'], manifest)

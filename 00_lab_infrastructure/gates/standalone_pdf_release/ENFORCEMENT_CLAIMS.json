@@ -26,6 +26,11 @@
   "routes": {
     "dated": {
       "enforced": false,
+      "operational": {
+        "clearance_receipts": [],
+        "reason": "gated production route installation and release authorization pending",
+        "state": "INACTIVE"
+      },
       "sources": [
         {
           "gate_calls_present": true,
@@ -48,7 +53,7 @@
             }
           ],
           "root": "repo",
-          "sha256": "1d86c8bc134ecfcbe0af962dd591556727d098609f50ab6a2d35256cb058ec3a"
+          "sha256": "3054aed38bdbdcd3b6f3132ed6d851f813f9c6ea4e112df85166dd9b533f654d"
         },
         {
           "gate_calls_present": false,
@@ -79,6 +84,11 @@
     },
     "digest_guard": {
       "enforced": true,
+      "operational": {
+        "clearance_receipts": [],
+        "reason": "reviewed route closure activation and exact-head independent review pending",
+        "state": "INACTIVE"
+      },
       "sources": [
         {
           "gate_calls_present": true,
@@ -106,7 +116,7 @@
             }
           ],
           "root": "repo",
-          "sha256": "04223713b777e220a255081bb0eeb93fb4c67f0018c5404f033a3abf73dd13cc"
+          "sha256": "ae6a4ec78cd398a3ab03bf1537cac63b6f3fdc59f651cea116cf80db2401668e"
         },
         {
           "gate_calls_present": true,
@@ -140,6 +150,11 @@
     },
     "successor": {
       "enforced": true,
+      "operational": {
+        "clearance_receipts": [],
+        "reason": "independent audit B-1 and B-2 require exact-head re-review before installation or execution",
+        "state": "QUARANTINED"
+      },
       "sources": [
         {
           "gate_calls_present": true,
@@ -162,7 +177,7 @@
             }
           ],
           "root": "repo",
-          "sha256": "b083119a7a3b119d127486b7a862a296cfe8283b2781b1d2385606cab09a53c7"
+          "sha256": "a935e051c8cab726d174c86a6eed43871aaf4cbd68baa7f9e5620faa4c8760d8"
         },
         {
           "gate_calls_present": true,
@@ -191,5 +206,5 @@
     }
   },
   "schema": "VRS-ENFORCEMENT-CLAIMS-1",
-  "verified_on": "2026-10-14"
+  "verified_on": "2026-10-16"
 }

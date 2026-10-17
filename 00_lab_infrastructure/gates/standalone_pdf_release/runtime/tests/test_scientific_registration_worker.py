@@ -732,7 +732,7 @@ class ScienceTransportTests(unittest.TestCase):
             self.assertTrue(cleanup['wait_completed']);self.assertFalse(cleanup['source_finally_claimed'])
 
     def bootstrap_fixture(self, root, *, changed_git=False):
-        directory=root/'_ZENODO_DEPOSITS/standalone_pdf_runtime_v012';directory.mkdir(parents=True)
+        directory=root/'_ZENODO_DEPOSITS/standalone_pdf_runtime';directory.mkdir(parents=True)
         rows=[];modules=[]
         for name in sorted(science.BOOTSTRAP_MODULE_NAMES):
             p=directory/name;p.write_bytes(b'# synthetic source only\n');s=p.stat()
@@ -752,7 +752,7 @@ class ScienceTransportTests(unittest.TestCase):
         metadata=[]
         for role,p in (('profile',profile),('nomination',nomination),('plan',plan)):
             s=p.stat();metadata.append({'role':role,**science.binding(p),'identity':{'device':s.st_dev,'inode':s.st_ino,'mode':s.st_mode,'bytes':s.st_size,'mtime_ns':s.st_mtime_ns,'sha256':science.binding(p)['sha256']}})
-        manifest=root/'manifest.json';manifest.write_bytes(science.raw({'standard':'VRS-CURRENT-V012-WORKER-SOURCE-MANIFEST-1','canonical_root':str(root),
+        manifest=root/'manifest.json';manifest.write_bytes(science.raw({'standard':'VRS-CURRENT-DIGEST-ONLY-WORKER-SOURCE-MANIFEST-1','canonical_root':str(root),
             'profile_binding':science.binding(profile),'modules':rows,'metadata':metadata,'source_origin':{'synthetic':True},
             'legacy_closure':{'synthetic':True},'source_review_change_flags':{'synthetic':True},
             'shared_dependencies':[{**shared_row,'identity':shared_identity}]}))
@@ -821,7 +821,7 @@ class ScienceTransportTests(unittest.TestCase):
                 now=dt.datetime.now(dt.timezone.utc).isoformat();mono=science.time.monotonic()
                 source=root/'source.json';source_value={'synthetic':'complete bound source DATA'};source.write_bytes(science.raw(source_value))
                 proof={'status':'ACTUAL_CURRENT_WORKER_SOURCE_AUTHORITY_AND_IDENTITY_VERIFIED',
-                    'source_manifest_sha256':runtime.sha(transport.encode_json(source_value)), 'source_modules':19,'metadata_files':3,
+                    'source_manifest_sha256':runtime.sha(transport.encode_json(source_value)), 'source_modules':18,'metadata_files':3,
                     'transient_restore_allowed':False,'scientific_population_admitted':False,'certifies':False}
                 config={key:None for key in('operation','stage','ordinal','binding','profile','source_rows','environment','ledger','ledger_sha256','evaluation_state')}
                 config.update(operation=batch.operation,job_nonce='1'*32,stage='build',binding={'path':'registration','sha256':'1'*64},

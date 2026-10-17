@@ -181,7 +181,7 @@ def require_staged_premise(stage: Path, manifest: dict):
         statement = raw["formalization/VERIFICATION_STATEMENT.lean"].decode("utf-8")
         candidate = raw["formalization/VERIFICATION_CANDIDATE.lean"].decode("utf-8")
         paper = raw["paper.tex"].decode("utf-8")
-    except (UnicodeError, json.JSONDecodeError):
+    except (UnicodeError, json.JSONDecodeError, RecursionError):
         raise GenerationPremiseHold("PREMISE_DRAFT_ENCODING_OR_JSON_INVALID") from None
     if not isinstance(inventory, dict) or not isinstance(contract, dict):
         raise GenerationPremiseHold("PREMISE_DRAFT_JSON_OBJECT_REQUIRED")
@@ -208,7 +208,7 @@ def require_staged_manifest(stage: Path, manifest_path: Path):
     raw = _bytes(manifest_path)
     try:
         manifest = json.loads(raw)
-    except (UnicodeError, json.JSONDecodeError):
+    except (UnicodeError, json.JSONDecodeError, RecursionError):
         raise GenerationPremiseHold("PREMISE_MANIFEST_ENCODING_OR_JSON_INVALID") from None
     if not isinstance(manifest, dict):
         raise GenerationPremiseHold("PREMISE_MANIFEST_OBJECT_REQUIRED")

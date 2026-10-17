@@ -1,0 +1,343 @@
+#!/usr/bin/env python3
+"""Reconcile a verified Zenodo-Git receipt into the root ledger and ViridisOS intake.
+
+Default mode is read-only. The apply flag performs only local receipt-backed
+mutations; it never publishes, pushes, changes the Canon spine, or deploys.
+"""
+
+from __future__ import annotations
+
+import argparse
+from datetime import date, datetime, timezone
+import json
+import os
+from pathlib import Path
+import re
+from typing import Any
+
+
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parent
+DOI_RE = re.compile(r"10\.\d{4,9}/zenodo\.\d+")
+
+
+class ReconciliationError(RuntimeError):
+    pass
+
+
+def read_json(path: Path) -> dict[str, Any]:
+    value = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(value, dict):
+        raise ReconciliationError(f"{path}: expected JSON object")
+    return value
+
+
+def write_text_atomic(path: Path, value: str) -> None:
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(value, encoding="utf-8")
+    os.replace(temporary, path)
+
+
+def write_json_atomic(path: Path, value: dict[str, Any]) -> None:
+    write_text_atomic(path, json.dumps(value, indent=2, sort_keys=False) + "\n")
+
+
+def proposal_map(finalized_root: Path) -> dict[str, dict[str, Any]]:
+    result: dict[str, dict[str, Any]] = {}
+    for path in sorted(finalized_root.glob("Run-*/RELEASE_BINDING_PROPOSAL.json")):
+        proposal = read_json(path)
+        abbreviation = str(proposal.get("abbreviation", "")).strip().upper()
+        if not abbreviation:
+            raise ReconciliationError(f"{path}: abbreviation missing")
+        if abbreviation in result:
+            raise ReconciliationError(f"duplicate proposal abbreviation: {abbreviation}")
+        result[abbreviation] = proposal
+    return result
+
+
+def route_for(run_id: str, finalized_root: Path) -> dict[str, Any]:
+    path = finalized_root / run_id / "CANON_PRODUCT_ROUTE.json"
+    return read_json(path) if path.is_file() else {}
+
+
+def reconcile_ledger(
+    ledger_text: str,
+    rows: list[dict[str, Any]],
+    commit_sha: str,
+) -> tuple[str, list[int]]:
+    lines = ledger_text.splitlines()
+    changed: list[int] = []
+    tick = chr(96)
+    for item in rows:
+        row_number = int(item["ledger_row"])
+        abbreviation = str(item["abbreviation"])
+        doi = str(item["doi"])
+        matches = [
+            index for index, line in enumerate(lines)
+            if re.match(rf"^\|\s*{row_number}\s*\|", line)
+        ]
+        if len(matches) != 1:
+            raise ReconciliationError(
+                f"ledger row {row_number} occurs {len(matches)} times"
+            )
+        index = matches[0]
+        cells = [cell.strip() for cell in lines[index].strip().strip("|").split("|")]
+        if len(cells) < 9:
+            raise ReconciliationError(f"ledger row {row_number} is malformed")
+        if abbreviation.lower() not in cells[2].lower():
+            raise ReconciliationError(
+                f"ledger row {row_number} does not contain {abbreviation}"
+            )
+        existing_doi = cells[8].strip().strip(tick)
+        if "PUBLISHED" in cells[7].upper():
+            if existing_doi != doi:
+                raise ReconciliationError(
+                    f"ledger row {row_number} has conflicting DOI {existing_doi}"
+                )
+            continue
+        if "✅ OK" not in cells[7]:
+            raise ReconciliationError(
+                f"ledger row {row_number} is not authorized: {cells[7]}"
+            )
+        cells[7] = (
+            "🌐 PUBLISHED — CC-BY-4.0; Zenodo/Git lockstep verified "
+            f"at {tick}{commit_sha}{tick}; not spine"
+        )
+        cells[8] = f"{tick}{doi}{tick}"
+        lines[index] = "| " + " | ".join(cells) + " |"
+        changed.append(row_number)
+    return ("\n".join(lines) + "\n" if changed else ledger_text), changed
+
+
+def publication_reference(receipt: dict[str, Any], path: Path) -> tuple[str, datetime, str]:
+    """Read chronology from verified evidence, never file mtimes or SHA ordering."""
+    if (
+        receipt.get("status") != "verified"
+        or receipt.get("repository") != "jdhart81/viridis-canon"
+        or receipt.get("branch") != "main"
+        or receipt.get("spine_changed") is not False
+    ):
+        raise ReconciliationError("receipt is not a verified non-spine main release")
+    commit_sha = str(receipt.get("commit_sha", ""))
+    if re.fullmatch(r"[0-9a-f]{40}", commit_sha) is None:
+        raise ReconciliationError("receipt commit_sha is invalid")
+    if receipt.get("source_commit_sha", commit_sha) != commit_sha:
+        raise ReconciliationError("receipt source_commit_sha conflicts with commit_sha")
+    try:
+        verified_at = datetime.fromisoformat(str(receipt["verified_at_utc"]).replace("Z", "+00:00"))
+        if verified_at.tzinfo is None or verified_at.utcoffset() is None:
+            raise ValueError("timestamp has no timezone")
+        wave_date = date.fromisoformat(path.stem).isoformat()
+        if wave_date != path.stem:
+            raise ValueError("receipt filename must use an exact ISO wave date")
+    except (KeyError, TypeError, ValueError) as exc:
+        raise ReconciliationError(f"{path}: receipt chronology is missing or invalid") from exc
+    return commit_sha, verified_at.astimezone(timezone.utc), wave_date
+
+
+def confined_receipt_path(root: Path, value: str) -> Path:
+    relative = Path(value)
+    if relative.is_absolute() or ".." in relative.parts:
+        raise ReconciliationError("lockstep receipt must be a confined relative path")
+    path = (root / relative).resolve()
+    if not path.is_relative_to(root):
+        raise ReconciliationError("lockstep receipt escapes the project root")
+    return path
+
+
+def reconcile_aggregate(
+    intake: dict[str, Any], receipt: dict[str, Any], receipt_path: Path, root: Path
+) -> tuple[str, str, list[str]]:
+    """Keep the current head on historical replay; refuse ambiguous chronology."""
+    incoming = publication_reference(receipt, receipt_path)
+    references = intake.get("lockstep_receipts", [])
+    if not isinstance(references, list) or any(not isinstance(ref, str) or not ref for ref in references):
+        raise ReconciliationError("intake lockstep_receipts must be an array of paths")
+    known = [
+        publication_reference(read_json(path), path)
+        for path in (confined_receipt_path(root, ref) for ref in references)
+    ]
+    current_commit = intake.get("canon_commit")
+    current_wave = intake.get("wave_date")
+    if current_commit is None and current_wave is None and not known:
+        head = incoming
+    else:
+        anchors = [ref for ref in known if (ref[0], ref[2]) == (current_commit, current_wave)]
+        if not anchors:
+            raise ReconciliationError("aggregate canon_commit/wave_date lacks an exact verified receipt")
+        anchor = max(anchors, key=lambda ref: ref[1])
+        if any(
+            (ref[0], ref[2]) != (current_commit, current_wave)
+            and (ref[1] >= anchor[1] or ref[2] > current_wave)
+            for ref in known
+        ):
+            raise ReconciliationError("aggregate conflicts with existing receipt chronology")
+        head = anchor
+        if (incoming[0], incoming[2]) != (current_commit, current_wave):
+            if (
+                incoming[1] == anchor[1]
+                or (incoming[1] < anchor[1] and incoming[2] > current_wave)
+                or (incoming[1] > anchor[1] and incoming[2] < current_wave)
+            ):
+                raise ReconciliationError("incoming receipt chronology is ambiguous")
+            if incoming[1] > anchor[1]:
+                if any(ref[0] == incoming[0] for ref in known):
+                    raise ReconciliationError("incoming receipt would restore a historical Canon commit")
+                head = incoming
+    incoming_relative = str(receipt_path.relative_to(root))
+    # Preserve order and representation on replay; only append genuinely new evidence.
+    updated_references = list(references)
+    if incoming_relative not in updated_references:
+        updated_references.append(incoming_relative)
+    return head[0], head[2], updated_references
+
+
+def reconcile(
+    receipt_path: Path,
+    *,
+    apply: bool,
+    root: Path = ROOT,
+) -> dict[str, Any]:
+    root = root.resolve()
+    receipt_path = receipt_path.resolve()
+    if not receipt_path.is_relative_to(root):
+        raise ReconciliationError("receipt is outside the project root")
+    receipt = read_json(receipt_path)
+    commit_sha, _, _ = publication_reference(receipt, receipt_path)
+    bundles = receipt.get("bundles")
+    if not isinstance(bundles, list) or not bundles:
+        raise ReconciliationError("receipt bundles must be a non-empty array")
+
+    finalized_root = root / "RESEARCH_PIPELINE_v2/finalized_runs"
+    proposals = proposal_map(finalized_root)
+    rows: list[dict[str, Any]] = []
+    for bundle in bundles:
+        if not isinstance(bundle, dict):
+            raise ReconciliationError("receipt bundle must be an object")
+        abbreviation = str(bundle.get("abbreviation", "")).strip().upper()
+        doi = str(bundle.get("doi", "")).strip()
+        if DOI_RE.fullmatch(doi) is None:
+            raise ReconciliationError(f"{abbreviation}: invalid DOI {doi!r}")
+        proposal = proposals.get(abbreviation)
+        if proposal is None:
+            raise ReconciliationError(f"{abbreviation}: no sealed release proposal")
+        run_id = str(proposal.get("run_id", ""))
+        if re.fullmatch(r"Run-[0-9]+", run_id) is None:
+            raise ReconciliationError(f"{abbreviation}: invalid proposal run_id")
+        if bundle.get("run_id", run_id) != run_id:
+            raise ReconciliationError(f"{abbreviation}: conflicting receipt run_id")
+        ledger_row = proposal.get("proposed_ledger_row")
+        if not isinstance(ledger_row, int) or ledger_row <= 0:
+            raise ReconciliationError(f"{run_id}: invalid proposed ledger row")
+        route = route_for(run_id, finalized_root)
+        product_line = route.get("product_line")
+        if not isinstance(product_line, str) or not product_line.strip():
+            product_line = str(bundle.get("series_route", "Verified research")).strip()
+        rows.append(
+            {
+                "abbreviation": abbreviation,
+                "run_id": run_id,
+                "doi": doi,
+                "ledger_row": ledger_row,
+                "product_line": product_line,
+            }
+        )
+
+    ledger_path = root / "ZENODO_SUBMISSION_LEDGER.md"
+    intake_path = root / "ViridisOS/runtime/research_intake.json"
+    ledger_before = ledger_path.read_text(encoding="utf-8")
+    ledger_after, ledger_rows = reconcile_ledger(ledger_before, rows, commit_sha)
+    intake = read_json(intake_path)
+    intake_before = json.loads(json.dumps(intake))
+    records = intake.get("records", [])
+    if not isinstance(records, list) or any(not isinstance(record, dict) for record in records):
+        raise ReconciliationError("intake records must be an array of objects")
+    existing: dict[str, dict[str, Any]] = {}
+    doi_owners: dict[str, tuple[str, str]] = {}
+    run_owners: dict[str, str] = {}
+    for record in records:
+        abbreviation = str(record.get("abbreviation", "")).strip().upper()
+        run_id = str(record.get("run_id", ""))
+        doi = str(record.get("doi", ""))
+        if not abbreviation or re.fullmatch(r"Run-[0-9]+", run_id) is None:
+            raise ReconciliationError("intake record has an invalid scientific identity")
+        if abbreviation in existing or doi in doi_owners or run_id in run_owners:
+            raise ReconciliationError("intake contains duplicate or conflicting scientific identities")
+        existing[abbreviation] = record
+        doi_owners[doi] = (abbreviation, run_id)
+        run_owners[run_id] = abbreviation
+    for row in rows:
+        abbreviation, run_id, doi = row["abbreviation"], row["run_id"], row["doi"]
+        prior = existing.get(abbreviation)
+        if prior is not None:
+            if prior.get("doi") != doi:
+                raise ReconciliationError(f"{abbreviation}: conflicting intake DOI {prior.get('doi')}")
+            if prior.get("run_id") != run_id:
+                raise ReconciliationError(f"{abbreviation}: conflicting intake run_id {prior.get('run_id')}")
+            # Publication replay cannot erase a later wrapper admission or other metadata.
+            continue
+        if doi in doi_owners:
+            raise ReconciliationError(f"{abbreviation}: DOI already belongs to a different run or abbreviation")
+        if run_id in run_owners:
+            raise ReconciliationError(f"{abbreviation}: run_id already belongs to a different abbreviation")
+        record = {
+            "abbreviation": abbreviation,
+            "run_id": run_id,
+            "doi": doi,
+            "successor_version_candidate": "unassigned",
+            "state": "BACKLOG_NO_WRAPPER",
+            "product_line": row["product_line"],
+            "spine_admitted": False,
+        }
+        records.append(record)
+        existing[abbreviation] = record
+        doi_owners[doi] = (abbreviation, run_id)
+        run_owners[run_id] = abbreviation
+    commit_after, wave_after, receipts_after = reconcile_aggregate(intake, receipt, receipt_path, root)
+    intake["canon_commit"] = commit_after
+    intake["wave_date"] = wave_after
+    intake["records"] = records
+    intake["lockstep_receipts"] = receipts_after
+    intake_changed = intake != intake_before
+    if intake_changed:
+        intake.setdefault("successor_publication_state", "PUBLISHED_VERIFIED")
+        intake.setdefault("external_mutation", False)
+        intake["reconciled_at_utc"] = datetime.now(timezone.utc).isoformat()
+    ledger_changed = ledger_after != ledger_before
+    if apply:
+        if ledger_changed:
+            write_text_atomic(ledger_path, ledger_after)
+        if intake_changed:
+            write_json_atomic(intake_path, intake)
+    return {
+        "status": "APPLIED" if apply else "DRY_RUN",
+        "receipt": str(receipt_path),
+        "commit_sha": commit_sha,
+        "runs": [row["run_id"] for row in rows],
+        "ledger_rows_changed": ledger_rows,
+        "intake_changed": intake_changed,
+        "material_change": ledger_changed or intake_changed,
+        "writes_performed": apply and (ledger_changed or intake_changed),
+        "aggregate_canon_commit": commit_after,
+        "aggregate_wave_date": wave_after,
+        "intake_record_count": len(intake["records"]),
+        "deployment_performed": False,
+        "spine_changed": False,
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--receipt", required=True, type=Path)
+    parser.add_argument("--apply", action="store_true")
+    args = parser.parse_args()
+    try:
+        print(json.dumps(reconcile(args.receipt.resolve(), apply=args.apply), indent=2))
+        return 0
+    except (OSError, ValueError, KeyError, json.JSONDecodeError, ReconciliationError) as exc:
+        print(json.dumps({"status": "HOLD", "error": str(exc)}, indent=2))
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,841 @@
+#!/usr/bin/env python3
+"""Build deterministic local Saturday release candidates and promote only ledger-cleared ones."""
+
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import hashlib
+import importlib.util
+import json
+import os
+from pathlib import Path
+import re
+import shutil
+import sys
+from typing import Any
+
+
+HERE = Path(__file__).resolve().parent
+CONTROL_ROOT = HERE.parent
+FINALIZED_ROOT = HERE / "finalized_runs"
+PACKAGES_ROOT = HERE / "nightly_packages"
+STAGING_ROOT = HERE / "saturday_candidates"
+VIRIDISOS_KERNEL_PACKAGES_ROOT = HERE / "viridisos_kernel_packages"
+DEPOSITS_ROOT = CONTROL_ROOT / "_ZENODO_DEPOSITS"
+LEDGER_PATH = CONTROL_ROOT / "ZENODO_SUBMISSION_LEDGER.md"
+LOCKSTEP_PATH = DEPOSITS_ROOT / "weekend_canon_lockstep.py"
+COHERENCE_PATH = DEPOSITS_ROOT / "release_coherence.py"
+CONCEPT_DOI = "10.5281/zenodo.19317982"
+
+
+class AssemblyError(RuntimeError):
+    """A fail-closed local assembly error."""
+
+
+def read_json(path: Path) -> dict[str, Any]:
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise AssemblyError(f"{path}: missing or invalid JSON: {exc}") from exc
+    if not isinstance(value, dict):
+        raise AssemblyError(f"{path}: JSON root must be an object")
+    return value
+
+
+def write_json_atomic(path: Path, value: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temp = path.with_suffix(path.suffix + ".tmp")
+    temp.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    os.replace(temp, path)
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def load_lockstep():
+    spec = importlib.util.spec_from_file_location("viridis_bundle_lockstep", LOCKSTEP_PATH)
+    if spec is None or spec.loader is None:
+        raise AssemblyError(f"cannot load {LOCKSTEP_PATH}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def load_coherence():
+    spec = importlib.util.spec_from_file_location("viridis_release_coherence", COHERENCE_PATH)
+    if spec is None or spec.loader is None:
+        raise AssemblyError(f"cannot load {COHERENCE_PATH}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def write_text_atomic(path: Path, value: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temp = path.with_suffix(path.suffix + ".tmp")
+    temp.write_text(value, encoding="utf-8")
+    os.replace(temp, path)
+
+
+def rewrite_reproduction_rights(bundle: Path, rights_text: str) -> None:
+    archive_path = bundle / "REPRODUCTION_BUNDLE.zip"
+    if not archive_path.is_file():
+        return
+    import zipfile
+
+    temporary = archive_path.with_suffix(".zip.tmp")
+    with zipfile.ZipFile(archive_path, "r") as source, zipfile.ZipFile(
+        temporary, "w", compression=zipfile.ZIP_DEFLATED
+    ) as destination:
+        names = source.namelist()
+        if "RIGHTS_AND_LICENSE.md" not in names:
+            raise AssemblyError(f"{archive_path}: embedded rights notice is missing")
+        for name in sorted(names):
+            data = rights_text.encode("utf-8") if name == "RIGHTS_AND_LICENSE.md" else source.read(name)
+            info = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o100644 << 16
+            destination.writestr(info, data)
+    os.replace(temporary, archive_path)
+
+
+def refresh_checksums(bundle: Path) -> None:
+    checksum_path = bundle / "SHA256SUMS.txt"
+    if not checksum_path.is_file():
+        return
+    files = sorted(
+        path for path in bundle.rglob("*")
+        if path.is_file()
+        and path.name not in LOCAL_RECEIPTS
+        and path.name != "SHA256SUMS.txt"
+    )
+    write_text_atomic(
+        checksum_path,
+        "".join(f"{sha256(path)}  {path.relative_to(bundle).as_posix()}\n" for path in files),
+    )
+
+
+def canonical_run_id(value: str | int) -> str:
+    match = re.fullmatch(r"(?:Run-)?(\d+)", str(value), re.I)
+    if match is None:
+        raise AssemblyError(f"invalid run identity: {value!r}")
+    return f"Run-{int(match.group(1)):03d}"
+
+
+def validate_date(value: str) -> str:
+    try:
+        parsed = dt.date.fromisoformat(value)
+    except ValueError as exc:
+        raise AssemblyError("date must use YYYY-MM-DD") from exc
+    return parsed.isoformat()
+
+
+def safe_file(root: Path, value: Any) -> Path:
+    if not isinstance(value, str) or not value.strip():
+        raise AssemblyError("release artifact path must be a non-empty string")
+    relative = Path(value)
+    if relative.is_absolute() or ".." in relative.parts:
+        raise AssemblyError(f"unsafe release artifact path: {value!r}")
+    path = (root / relative).resolve()
+    try:
+        path.relative_to(root.resolve())
+    except ValueError as exc:
+        raise AssemblyError(f"release artifact escapes finalized root: {value!r}") from exc
+    if not path.is_file():
+        raise AssemblyError(f"missing release artifact: {path}")
+    return path
+
+
+def release_metadata(manifest: dict[str, Any]) -> dict[str, Any]:
+    metadata = manifest.get("release_metadata")
+    if not isinstance(metadata, dict):
+        raise AssemblyError("final package manifest lacks release_metadata")
+    # Rights and ledger identity are deliberately allowed to remain unassigned
+    # while the complete reversible release object is assembled.  They become
+    # authoritative only through bind_ledger().
+    metadata = {
+        **metadata,
+        "license": metadata.get("license") or "unassigned",
+        "spine_gate": metadata.get("spine_gate") or "NOT_ADMITTED",
+    }
+    strings = (
+        "abbreviation", "description", "version", "license", "series_route",
+        "spine_gate", "spine_reason", "notes",
+    )
+    missing = [key for key in strings if not isinstance(metadata.get(key), str) or not metadata[key].strip()]
+    if missing:
+        raise AssemblyError(f"release_metadata missing strings: {missing}")
+    abbreviation = metadata["abbreviation"].strip().upper()
+    if re.fullmatch(r"[A-Z0-9]{2,12}", abbreviation) is None:
+        raise AssemblyError("release abbreviation must be 2-12 uppercase letters/digits")
+    keywords = metadata.get("keywords")
+    if not isinstance(keywords, list) or len(keywords) < 3 or not all(isinstance(item, str) and item.strip() for item in keywords):
+        raise AssemblyError("release_metadata.keywords requires at least three non-empty strings")
+    row = metadata.get("ledger_row")
+    if row is not None and (not isinstance(row, int) or isinstance(row, bool) or row <= 0):
+        raise AssemblyError("release_metadata.ledger_row must be a positive authoritative row or null")
+    if metadata.get("spine_admitted") is not False:
+        raise AssemblyError("standalone candidate must declare spine_admitted=false")
+    return {**metadata, "abbreviation": abbreviation}
+
+
+def exact_release_artifacts(root: Path, manifest: dict[str, Any]) -> tuple[Path, list[Path], list[Path], Path]:
+    artifacts = manifest.get("artifacts")
+    if not isinstance(artifacts, dict):
+        raise AssemblyError("manifest artifacts map is missing")
+    paper = safe_file(root, artifacts.get("paper_pdf"))
+    lean = sorted(path for path in root.glob("*.lean") if path.is_file())
+    summaries = sorted(path for path in root.glob("*.md") if path.is_file() and "summary" in path.name.lower())
+    review = root / "POST_ARISTOTLE_REVIEW.json"
+    if not lean or not summaries or not review.is_file():
+        raise AssemblyError("finalized package requires Lean, Aristotle summary, and review")
+    return paper, lean, summaries, review
+
+
+def ledger_rows(ledger_path: Path, row_number: int) -> list[list[str]]:
+    try:
+        text = ledger_path.read_text(encoding="utf-8")
+    except OSError as exc:
+        raise AssemblyError(f"cannot read authoritative ledger: {exc}") from exc
+    rows: list[list[str]] = []
+    for line in text.splitlines():
+        if re.match(rf"^\|\s*{row_number}\s*\|", line):
+            cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+            rows.append(cells)
+    return rows
+
+
+def published_run_ids(ledger_path: Path) -> set[str]:
+    """Return nightly runs whose authoritative ledger row is already published."""
+
+    try:
+        text = ledger_path.read_text(encoding="utf-8")
+    except OSError as exc:
+        raise AssemblyError(f"cannot read authoritative ledger: {exc}") from exc
+    published: set[str] = set()
+    for line in text.splitlines():
+        if not re.match(r"^\|\s*\d+\s*\|", line):
+            continue
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        if len(cells) < 9 or "PUBLISHED" not in cells[7].upper():
+            continue
+        match = re.search(r"\bRun[- ]?(\d{1,3})\b", cells[3], re.I)
+        if match:
+            published.add(f"Run-{int(match.group(1)):03d}")
+    return published
+
+
+def ledger_state(ledger_path: Path, row_number: int, identity_token: str) -> dict[str, Any]:
+    rows = ledger_rows(ledger_path, row_number)
+    if len(rows) != 1:
+        return {"state": "HOLD_LEDGER", "reason": f"row {row_number} occurs {len(rows)} times"}
+    row = rows[0]
+    if len(row) < 9:
+        return {"state": "HOLD_LEDGER", "reason": f"row {row_number} is malformed"}
+    item = row[2]
+    route = row[6]
+    status = row[7]
+    if identity_token.lower() not in item.lower():
+        return {"state": "HOLD_LEDGER", "reason": f"row {row_number} identity does not contain {identity_token!r}"}
+    if "PUBLISHED" in status.upper():
+        return {"state": "ALREADY_PUBLISHED", "reason": status, "route": route}
+    if "✅ OK" not in status:
+        return {"state": "HOLD_LEDGER", "reason": f"row {row_number} is not Justin-approved: {status}", "route": route}
+    if any(token in status.upper() for token in ("HELD", "REJECTED", "DO NOT")):
+        return {"state": "HOLD_LEDGER", "reason": status, "route": route}
+    return {"state": "LEDGER_CLEARED", "reason": status, "route": route}
+
+
+def zenodo_payload(title: str, metadata: dict[str, Any]) -> dict[str, Any]:
+    related = metadata.get("related_identifiers")
+    if related is None:
+        related = [{"relation": "isDerivedFrom", "identifier": CONCEPT_DOI, "scheme": "doi"}]
+    if not isinstance(related, list) or not related:
+        raise AssemblyError("related_identifiers must be a non-empty array")
+    return {
+        "metadata": {
+            "upload_type": "publication",
+            "publication_type": "preprint",
+            "title": title,
+            "creators": [
+                {
+                    "name": "Hart, Justin D.",
+                    "affiliation": "Viridis LLC, Columbia Falls, Montana, USA",
+                    "orcid": "0009-0008-3082-2482",
+                }
+            ],
+            "communities": [{"identifier": "viridis-canon"}],
+            "license": metadata["license"],
+            "access_right": "open",
+            "related_identifiers": related,
+            "keywords": metadata["keywords"],
+            "version": metadata["version"],
+            "language": "eng",
+            "notes": metadata["notes"],
+            "description": metadata["description"],
+        }
+    }
+
+
+LOCAL_RECEIPTS = {
+    "BUNDLE_MANIFEST.json",
+    "LEDGER_BINDING.json",
+    "RELEASE_BINDING.json",
+    "PUBLISHED_DOI.txt",
+    "ZENODO_DRAFT_ID.txt",
+}
+
+
+def tree_hashes(root: Path) -> dict[str, str]:
+    return {
+        path.relative_to(root).as_posix(): sha256(path)
+        for path in sorted(root.rglob("*"))
+        if path.is_file() and path.name not in LOCAL_RECEIPTS
+    }
+
+
+def source_hashes(
+    root: Path,
+    gate_path: Path,
+    paper: Path,
+    lean: list[Path],
+    summaries: list[Path],
+    review: Path,
+    kernel_package: Path,
+    kernel_artifacts: list[tuple[Path, Path]],
+) -> dict[str, str]:
+    paths = (
+        root / "FINALIZED_PACKAGE.json",
+        root / "PAPER_PACKAGE_MANIFEST.json",
+        gate_path,
+        paper,
+        *lean,
+        *summaries,
+        review,
+        kernel_package,
+        *(source for _, source in kernel_artifacts),
+    )
+    return {str(path): sha256(path) for path in paths}
+
+
+def kernel_implementation_artifacts(
+    root: Path, receipt: dict[str, Any]
+) -> list[tuple[Path, Path]]:
+    """Resolve every executable-kernel file bound by a ready receipt."""
+
+    if receipt.get("status") == "NO_RUNTIME_KERNEL":
+        return []
+    if receipt.get("status") not in {"KERNEL_IMPLEMENTATION_READY", "KERNEL_IMPLEMENTED"}:
+        raise AssemblyError("unknown ViridisOS kernel package state")
+    implementation = receipt.get("implementation")
+    source_hashes_map = receipt.get("source_sha256")
+    if not isinstance(implementation, dict) or not isinstance(source_hashes_map, dict):
+        raise AssemblyError("ready ViridisOS kernel receipt lacks implementation bindings")
+
+    bound: dict[str, Path] = {}
+
+    def add(value: Any, expected: Any) -> None:
+        source = safe_file(root, value)
+        relative = source.relative_to(root.resolve())
+        if not isinstance(expected, str) or sha256(source) != expected:
+            raise AssemblyError(f"ViridisOS kernel artifact hash mismatch: {value}")
+        prior = bound.get(relative.as_posix())
+        if prior is not None and prior != source:
+            raise AssemblyError(f"ViridisOS kernel artifact collision: {relative}")
+        bound[relative.as_posix()] = source
+
+    add("VIRIDISOS_KERNEL_SPEC.json", source_hashes_map.get("kernel_spec"))
+    engine = implementation.get("engine")
+    tests = implementation.get("tests")
+    fixtures = implementation.get("fixtures")
+    if not isinstance(engine, dict) or not isinstance(tests, list) or not tests or not isinstance(fixtures, list) or not fixtures:
+        raise AssemblyError("ready ViridisOS kernel receipt is incomplete")
+    add(engine.get("path"), engine.get("sha256"))
+    for row in tests:
+        if not isinstance(row, dict):
+            raise AssemblyError("ViridisOS kernel test binding must be an object")
+        add(row.get("path"), row.get("sha256"))
+    for row in fixtures:
+        if not isinstance(row, dict):
+            raise AssemblyError("ViridisOS kernel fixture binding must be an object")
+        add(row.get("input"), row.get("input_sha256"))
+        add(row.get("expected"), row.get("expected_sha256"))
+    return [(Path(relative), source) for relative, source in sorted(bound.items())]
+
+
+def stage_candidate(
+    run_value: str,
+    date: str,
+    *,
+    finalized_root: Path = FINALIZED_ROOT,
+    package_root: Path = PACKAGES_ROOT,
+    staging_root: Path = STAGING_ROOT,
+    ledger_path: Path = LEDGER_PATH,
+    kernel_packages_root: Path | None = None,
+) -> dict[str, Any]:
+    run_id = canonical_run_id(run_value)
+    date = validate_date(date)
+    if run_id in published_run_ids(ledger_path):
+        return {
+            "status": "ALREADY_PUBLISHED",
+            "run_id": run_id,
+            "bundle": None,
+            "ledger": {"state": "ALREADY_PUBLISHED", "reason": "authoritative ledger marks this run published"},
+        }
+    root = finalized_root / run_id
+    finalized = read_json(root / "FINALIZED_PACKAGE.json")
+    if finalized.get("status") != "FINALIZED" or finalized.get("external_mutation") is not False:
+        raise AssemblyError(f"{run_id} is not a finalized local package")
+    gate_path = package_root / run_id / "QUALITY_GATE.json"
+    gate = read_json(gate_path)
+    if gate.get("quality_verdict") != "PASS" or gate.get("saturday_status") != "CANDIDATE_FOR_LEDGER_G0_G9":
+        raise AssemblyError(f"{run_id} is not G0-G9 candidate quality")
+    manifest = read_json(root / "PAPER_PACKAGE_MANIFEST.json")
+    metadata = release_metadata(manifest)
+    proposal_path = root / "RELEASE_BINDING_PROPOSAL.json"
+    proposal: dict[str, Any] | None = None
+    if proposal_path.is_file():
+        candidate = read_json(proposal_path)
+        if (
+            candidate.get("status") == "READY_FOR_EXACT_AUTHORIZATION"
+            and candidate.get("run_id") == run_id
+            and candidate.get("proposed_license")
+            and isinstance(candidate.get("proposed_ledger_row"), int)
+        ):
+            proposal = candidate
+    title = manifest.get("title")
+    if not isinstance(title, str) or not title.strip():
+        raise AssemblyError("final package title is missing")
+    if kernel_packages_root is None:
+        kernel_packages_root = (
+            VIRIDISOS_KERNEL_PACKAGES_ROOT
+            if finalized_root == FINALIZED_ROOT
+            else finalized_root.parent / "viridisos_kernel_packages"
+        )
+    kernel_package = kernel_packages_root / run_id / "VIRIDISOS_KERNEL_PACKAGE.json"
+    kernel_receipt = read_json(kernel_package)
+    if (
+        kernel_receipt.get("standard") != "VRS-VIRIDISOS-KERNEL-PACKAGE-1"
+        or kernel_receipt.get("run_id") != run_id
+        or kernel_receipt.get("status") not in {"NO_RUNTIME_KERNEL", "KERNEL_IMPLEMENTATION_READY", "KERNEL_IMPLEMENTED"}
+        or kernel_receipt.get("external_mutation") is not False
+    ):
+        raise AssemblyError(f"{run_id} has no valid ViridisOS kernel disposition")
+    if int(run_id.removeprefix("Run-")) >= 151:
+        admission = kernel_receipt.get("admission_review")
+        expected_runtime_verdict = (
+            "NO_RUNTIME_KERNEL"
+            if kernel_receipt.get("status") == "NO_RUNTIME_KERNEL"
+            else "ADMIT_CANDIDATE"
+        )
+        if (
+            not isinstance(admission, dict)
+            or admission.get("g7_verdict") != "PASS"
+            or admission.get("complete_pdf_review") is not True
+            or admission.get("runtime_verdict") != expected_runtime_verdict
+            or not isinstance(admission.get("lean_zero_sorry_certificate_sha256"), str)
+        ):
+            raise AssemblyError(f"{run_id} has no valid science-to-kernel admission review")
+    kernel_artifacts = kernel_implementation_artifacts(root, kernel_receipt)
+    paper, lean, summaries, review = exact_release_artifacts(root, manifest)
+    lockstep = load_lockstep()
+    lockstep.load_post_aristotle_review(root, paper, lean, summaries)
+    bound_sources = source_hashes(root, gate_path, paper, lean, summaries, review, kernel_package, kernel_artifacts)
+    row = metadata["ledger_row"]
+    ledger = (
+        ledger_state(ledger_path, row, metadata["abbreviation"])
+        if isinstance(row, int)
+        else {
+            "state": "HOLD_LEDGER",
+            "reason": "authoritative ledger row has not been assigned",
+        }
+    )
+
+    bundle_name = f"{date}_{metadata['abbreviation']}_standalone"
+    date_root = staging_root / date
+    destination = date_root / bundle_name
+    if destination.exists():
+        prior = read_json(destination / "BUNDLE_MANIFEST.json")
+        if prior.get("source_sha256") == bound_sources:
+            return {"status": "ALREADY_STAGED", "run_id": run_id, "bundle": str(destination), "ledger": ledger}
+        raise AssemblyError(f"existing staged bundle differs: {destination}")
+    temp = date_root / f".{bundle_name}.tmp"
+    if temp.exists():
+        raise AssemblyError(f"stale assembly directory exists: {temp}")
+    temp.mkdir(parents=True)
+    for source in (paper, *lean, *summaries, review, kernel_package):
+        shutil.copy2(source, temp / source.name)
+    for relative, source in kernel_artifacts:
+        target = temp / "viridisos_kernel" / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+    write_json_atomic(temp / "zenodo_metadata.json", zenodo_payload(title.strip(), metadata))
+    coherence = load_coherence()
+    write_text_atomic(
+        temp / "RIGHTS_AND_LICENSE.md",
+        coherence.unassigned_rights_notice(title.strip()),
+    )
+    bundle_manifest = {
+        "schema_version": 1,
+        "standard": "VRS-BUNDLE-1",
+        "run_id": run_id,
+        "release_date": date,
+        "abbreviation": metadata["abbreviation"],
+        "ledger_row": metadata["ledger_row"],
+        "ledger_state": ledger,
+        "source_finalized": str(root / "FINALIZED_PACKAGE.json"),
+        "source_finalized_sha256": sha256(root / "FINALIZED_PACKAGE.json"),
+        "source_sha256": bound_sources,
+        "viridisos_kernel_package": {
+            "path": "VIRIDISOS_KERNEL_PACKAGE.json",
+            "sha256": sha256(kernel_package),
+            "status": kernel_receipt["status"],
+            "implementation_files": [
+                {
+                    "path": (Path("viridisos_kernel") / relative).as_posix(),
+                    "sha256": sha256(source),
+                }
+                for relative, source in kernel_artifacts
+            ],
+        },
+        "package_completeness": {
+            "paper_pdf": paper.name,
+            "rights_notice": "RIGHTS_AND_LICENSE.md",
+            "license_gate": "HOLD_UNASSIGNED",
+            "status": "READY_EXCEPT_RIGHTS_LICENSE_LEDGER_AUTHORIZATION",
+        },
+        "release_binding_proposal": (
+            {
+                "path": str(proposal_path),
+                "sha256": sha256(proposal_path),
+                "proposed_license": proposal["proposed_license"],
+                "proposed_ledger_row": proposal["proposed_ledger_row"],
+            }
+            if proposal is not None
+            else None
+        ),
+        "artifact_sha256": tree_hashes(temp),
+        "assembled_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
+        "external_mutation": False,
+    }
+    write_json_atomic(temp / "BUNDLE_MANIFEST.json", bundle_manifest)
+    date_root.mkdir(parents=True, exist_ok=True)
+    os.replace(temp, destination)
+    return {"status": "STAGED_CANDIDATE", "run_id": run_id, "bundle": str(destination), "ledger": ledger}
+
+
+def identical_tree(source: Path, destination: Path) -> bool:
+    source_files = {
+        path.relative_to(source).as_posix(): sha256(path)
+        for path in sorted(source.rglob("*"))
+        if path.is_file()
+    }
+    destination_files = {
+        path.relative_to(destination).as_posix(): sha256(path)
+        for path in sorted(destination.rglob("*"))
+        if path.is_file()
+    }
+    return source_files == destination_files
+
+
+def effective_ledger_row(bundle: Path, manifest: dict[str, Any]) -> int | None:
+    row = manifest.get("ledger_row")
+    binding_path = bundle / "LEDGER_BINDING.json"
+    if not binding_path.is_file():
+        return row if isinstance(row, int) and not isinstance(row, bool) else None
+    binding = read_json(binding_path)
+    expected = {
+        "standard": "VRS-BUNDLE-LEDGER-BINDING-1",
+        "run_id": manifest.get("run_id"),
+        "release_date": manifest.get("release_date"),
+        "abbreviation": manifest.get("abbreviation"),
+        "approved_by": "Justin D. Hart",
+        "external_mutation": False,
+        "artifact_sha256": manifest.get("artifact_sha256"),
+    }
+    mismatches = [key for key, value in expected.items() if binding.get(key) != value]
+    bound_row = binding.get("ledger_row")
+    if mismatches or not isinstance(bound_row, int) or isinstance(bound_row, bool) or bound_row <= 0:
+        raise AssemblyError(f"{binding_path}: invalid binding fields {mismatches}")
+    if tree_hashes(bundle) != manifest.get("artifact_sha256"):
+        raise AssemblyError(f"{binding_path}: staged artifact hashes drifted after approval")
+    if isinstance(row, int) and row != bound_row:
+        raise AssemblyError(f"{binding_path}: conflicts with assembled ledger row {row}")
+    return bound_row
+
+
+def bind_ledger(
+    run_value: str,
+    date: str,
+    row: int,
+    *,
+    justin_authorized: bool,
+    license_id: str | None = None,
+    staging_root: Path = STAGING_ROOT,
+    ledger_path: Path = LEDGER_PATH,
+) -> dict[str, Any]:
+    if not justin_authorized:
+        raise AssemblyError("ledger binding requires Justin's exact Saturday authorization")
+    run_id = canonical_run_id(run_value)
+    date = validate_date(date)
+    if not isinstance(row, int) or isinstance(row, bool) or row <= 0:
+        raise AssemblyError("--row must be a positive authoritative ledger row")
+    matches: list[tuple[Path, dict[str, Any]]] = []
+    for bundle in sorted((staging_root / date).glob(f"{date}_*_standalone")):
+        if not bundle.is_dir():
+            continue
+        manifest = read_json(bundle / "BUNDLE_MANIFEST.json")
+        if manifest.get("run_id") == run_id:
+            matches.append((bundle, manifest))
+    if len(matches) != 1:
+        raise AssemblyError(f"expected one staged bundle for {run_id}; found {len(matches)}")
+    bundle, manifest = matches[0]
+    if tree_hashes(bundle) != manifest.get("artifact_sha256"):
+        raise AssemblyError("staged artifact hashes changed before ledger binding")
+    ledger = ledger_state(ledger_path, row, str(manifest.get("abbreviation", "")))
+    if ledger["state"] != "LEDGER_CLEARED":
+        raise AssemblyError(f"row {row} is not Justin-cleared: {ledger['reason']}")
+
+    if license_id is not None:
+        normalized_license = license_id.strip().lower()
+        if normalized_license != "cc-by-4.0":
+            raise AssemblyError("this authorized wave requires --license cc-by-4.0")
+        metadata_path = bundle / "zenodo_metadata.json"
+        metadata_payload = read_json(metadata_path)
+        metadata = metadata_payload.get("metadata")
+        if not isinstance(metadata, dict):
+            raise AssemblyError(f"{metadata_path}: metadata object is missing")
+        current_license = str(metadata.get("license", "")).strip().lower()
+        release_binding_path = bundle / "RELEASE_BINDING.json"
+        if current_license in {"", "unassigned", "none", "pending"}:
+            if release_binding_path.exists():
+                raise AssemblyError("release binding exists before license metadata was applied")
+            base_manifest_sha256 = sha256(bundle / "BUNDLE_MANIFEST.json")
+            base_artifact_sha256 = manifest["artifact_sha256"]
+            base_metadata_sha256 = sha256(metadata_path)
+            coherence = load_coherence()
+            metadata["license"] = normalized_license
+            metadata["description"] = coherence.publication_description(
+                metadata.get("description")
+            )
+            metadata["notes"] = coherence.publication_notes()
+            write_json_atomic(metadata_path, metadata_payload)
+            rights_text = coherence.assigned_rights_notice(
+                str(metadata.get("title", manifest["abbreviation"])), normalized_license
+            )
+            write_text_atomic(bundle / "RIGHTS_AND_LICENSE.md", rights_text)
+            rewrite_reproduction_rights(bundle, rights_text)
+            completeness = manifest.get("package_completeness")
+            if not isinstance(completeness, dict):
+                raise AssemblyError("authorized release requires package_completeness")
+            completeness["license_gate"] = coherence.license_gate(normalized_license)
+            completeness["status"] = "READY_FOR_PUBLICATION"
+            refresh_checksums(bundle)
+            final_artifact_sha256 = tree_hashes(bundle)
+            release_binding = {
+                "schema_version": 1,
+                "standard": "VRS-BUNDLE-RELEASE-BINDING-1",
+                "run_id": run_id,
+                "release_date": date,
+                "abbreviation": manifest["abbreviation"],
+                "ledger_row": row,
+                "license": normalized_license,
+                "approved_by": "Justin D. Hart",
+                "approved_base_bundle_manifest_sha256": base_manifest_sha256,
+                "base_artifact_sha256": base_artifact_sha256,
+                "base_zenodo_metadata_sha256": base_metadata_sha256,
+                "final_zenodo_metadata_sha256": sha256(metadata_path),
+                "final_artifact_sha256": final_artifact_sha256,
+                "external_mutation": False,
+                "bound_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
+            }
+            write_json_atomic(release_binding_path, release_binding)
+            manifest["ledger_row"] = row
+            manifest["artifact_sha256"] = final_artifact_sha256
+            manifest["release_binding"] = {
+                "path": "RELEASE_BINDING.json",
+                "sha256": sha256(release_binding_path),
+                "approved_base_bundle_manifest_sha256": base_manifest_sha256,
+            }
+            write_json_atomic(bundle / "BUNDLE_MANIFEST.json", manifest)
+            try:
+                coherence.validate_bundle(bundle)
+            except coherence.CoherenceError as exc:
+                raise AssemblyError(str(exc)) from exc
+        elif current_license == normalized_license:
+            if not release_binding_path.is_file():
+                raise AssemblyError("assigned release license lacks an authorization binding")
+            release_binding = read_json(release_binding_path)
+            expected_release = {
+                "standard": "VRS-BUNDLE-RELEASE-BINDING-1",
+                "run_id": run_id,
+                "release_date": date,
+                "abbreviation": manifest["abbreviation"],
+                "ledger_row": row,
+                "license": normalized_license,
+                "approved_by": "Justin D. Hart",
+                "external_mutation": False,
+            }
+            mismatches = [
+                key for key, value in expected_release.items()
+                if release_binding.get(key) != value
+            ]
+            if mismatches or release_binding.get("final_artifact_sha256") != tree_hashes(bundle):
+                raise AssemblyError(f"invalid release binding fields: {mismatches}")
+            coherence = load_coherence()
+            try:
+                coherence.validate_bundle(bundle)
+            except coherence.CoherenceError as exc:
+                raise AssemblyError(str(exc)) from exc
+        else:
+            raise AssemblyError(
+                f"refusing to replace conflicting release license {current_license!r}"
+            )
+
+    binding_path = bundle / "LEDGER_BINDING.json"
+    core = {
+        "schema_version": 1,
+        "standard": "VRS-BUNDLE-LEDGER-BINDING-1",
+        "run_id": run_id,
+        "release_date": date,
+        "abbreviation": manifest["abbreviation"],
+        "ledger_row": row,
+        "approved_by": "Justin D. Hart",
+        "artifact_sha256": manifest["artifact_sha256"],
+        "external_mutation": False,
+    }
+    if binding_path.is_file():
+        existing = read_json(binding_path)
+        if all(existing.get(key) == value for key, value in core.items()):
+            return {"status": "ALREADY_BOUND", "bundle": str(bundle), "ledger": ledger}
+        raise AssemblyError(f"refusing to overwrite conflicting ledger binding: {binding_path}")
+    core["bound_at_utc"] = dt.datetime.now(dt.timezone.utc).isoformat()
+    write_json_atomic(binding_path, core)
+    return {"status": "LEDGER_BOUND", "bundle": str(bundle), "ledger": ledger}
+
+
+def promote_ledger_cleared(
+    date: str,
+    *,
+    staging_root: Path = STAGING_ROOT,
+    deposits_root: Path = DEPOSITS_ROOT,
+    ledger_path: Path = LEDGER_PATH,
+) -> dict[str, Any]:
+    date = validate_date(date)
+    promoted: list[str] = []
+    holds: list[dict[str, Any]] = []
+    published_runs = published_run_ids(ledger_path)
+    for bundle in sorted((staging_root / date).glob(f"{date}_*_standalone")):
+        if not bundle.is_dir():
+            continue
+        manifest = read_json(bundle / "BUNDLE_MANIFEST.json")
+        if manifest.get("run_id") in published_runs:
+            holds.append({
+                "bundle": str(bundle),
+                "reason": "already published; stale restaging is excluded",
+            })
+            continue
+        abbreviation = str(manifest.get("abbreviation", ""))
+        row = effective_ledger_row(bundle, manifest)
+        if row is None:
+            holds.append({"bundle": str(bundle), "reason": "ledger row missing"})
+            continue
+        ledger = ledger_state(ledger_path, row, abbreviation)
+        if ledger["state"] != "LEDGER_CLEARED":
+            holds.append({"bundle": str(bundle), "reason": ledger["reason"]})
+            continue
+        coherence = load_coherence()
+        try:
+            coherence.validate_bundle(bundle)
+        except coherence.CoherenceError as exc:
+            holds.append({"bundle": str(bundle), "reason": str(exc)})
+            continue
+        destination = deposits_root / bundle.name
+        if destination.exists():
+            if identical_tree(bundle, destination):
+                promoted.append(str(destination))
+                continue
+            raise AssemblyError(f"existing deposit bundle differs; refusing overwrite: {destination}")
+        shutil.copytree(bundle, destination)
+        promoted.append(str(destination))
+    return {
+        "status": "READY_FOR_DRY_RUN" if promoted else "HOLD_NO_LEDGER_CLEARED_BUNDLES",
+        "date": date,
+        "promoted": promoted,
+        "holds": holds,
+        "external_mutation": False,
+    }
+
+
+def scan(date: str, *, finalized_root: Path = FINALIZED_ROOT) -> dict[str, Any]:
+    staged: list[dict[str, Any]] = []
+    holds: list[dict[str, Any]] = []
+    skipped_already_published: list[str] = []
+    published_runs = published_run_ids(LEDGER_PATH)
+    if finalized_root.is_dir():
+        for root in sorted(path for path in finalized_root.glob("Run-*") if path.is_dir()):
+            if not (root / "FINALIZED_PACKAGE.json").is_file():
+                continue
+            if root.name in published_runs:
+                skipped_already_published.append(root.name)
+                continue
+            try:
+                staged.append(stage_candidate(root.name, date, finalized_root=finalized_root))
+            except AssemblyError as exc:
+                holds.append({"run_id": root.name, "reason": str(exc)})
+    return {
+        "status": "STAGED" if staged else "HOLD_NO_FINALIZED_CANDIDATES",
+        "date": validate_date(date),
+        "staged": staged,
+        "holds": holds,
+        "skipped_already_published": skipped_already_published,
+        "external_mutation": False,
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--run", metavar="RUN")
+    mode.add_argument("--scan", action="store_true")
+    mode.add_argument("--promote-ledger-cleared", action="store_true")
+    mode.add_argument("--bind-ledger", metavar="RUN")
+    parser.add_argument("--date", required=True)
+    parser.add_argument("--row", type=int)
+    parser.add_argument("--license", help="approved release license; valid with --bind-ledger")
+    parser.add_argument("--justin-authorized", action="store_true")
+    args = parser.parse_args()
+    try:
+        if args.run:
+            result = stage_candidate(args.run, args.date)
+        elif args.bind_ledger:
+            if args.row is None:
+                raise AssemblyError("--bind-ledger requires --row")
+            result = bind_ledger(
+                args.bind_ledger,
+                args.date,
+                args.row,
+                justin_authorized=args.justin_authorized,
+                license_id=args.license,
+            )
+        elif args.promote_ledger_cleared:
+            result = promote_ledger_cleared(args.date)
+        else:
+            result = scan(args.date)
+        print(json.dumps(result, indent=2, sort_keys=True))
+        return 0
+    except (AssemblyError, OSError, KeyError, TypeError, json.JSONDecodeError) as exc:
+        print(json.dumps({"status": "HOLD", "error": str(exc), "external_mutation": False}, indent=2), file=sys.stderr)
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

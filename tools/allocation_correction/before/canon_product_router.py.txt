@@ -1,0 +1,269 @@
+#!/usr/bin/env python3
+"""Seal a reviewed non-spine Canon route and collision-safe release proposal."""
+
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+from typing import Any
+
+
+HERE = Path(__file__).resolve().parent
+FINALIZED_ROOT = HERE / "finalized_runs"
+RECONCILIATION_SURFACE = HERE / "PUBLIC_IDENTITY_RECONCILIATION_SURFACE_2026-08-30.json"
+
+
+class RouteError(RuntimeError):
+    pass
+
+
+def read_json(path: Path) -> dict[str, Any]:
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RouteError(f"{path}: missing or invalid JSON: {exc}") from exc
+    if not isinstance(value, dict):
+        raise RouteError(f"{path}: JSON root must be an object")
+    return value
+
+
+def write_json_atomic(path: Path, value: dict[str, Any]) -> None:
+    temp = path.with_suffix(path.suffix + ".tmp")
+    temp.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    os.replace(temp, path)
+
+
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def json_sha256(value: dict[str, Any]) -> str:
+    payload = (json.dumps(value, indent=2, sort_keys=True) + "\n").encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
+def canonical_run_id(value: str) -> str:
+    match = re.fullmatch(r"(?:Run-)?(\d+)", value, re.I)
+    if match is None:
+        raise RouteError(f"invalid run identity: {value!r}")
+    return f"Run-{int(match.group(1)):03d}"
+
+
+def display_path(path: Path) -> str:
+    try:
+        return str(path.relative_to(HERE.parent))
+    except ValueError:
+        return str(path)
+
+
+def runtime_kernel_candidate(manifest: dict[str, Any]) -> dict[str, Any] | None:
+    """Return a complete declared runtime candidate, or fail closed.
+
+    A new route requires an explicit runtime classification. Missing wrapper
+    design is unresolved review work, not evidence that a paper has no runtime
+    role. Already sealed historical routes remain immutable.
+    """
+
+    candidate = manifest.get("viridisos_kernel_candidate")
+    if candidate is None:
+        raise RouteError(
+            "runtime classification is missing; declare a candidate or record "
+            "an explicit NO_RUNTIME_KERNEL decision with its reason"
+        )
+    if not isinstance(candidate, dict):
+        raise RouteError("viridisos_kernel_candidate must be an object")
+    status = candidate.get("status")
+    if status == "NO_RUNTIME_KERNEL":
+        reason = candidate.get("reason")
+        if not isinstance(reason, str) or not reason.strip():
+            raise RouteError("NO_RUNTIME_KERNEL requires a non-empty reason")
+        return None
+    if status != "CANDIDATE":
+        raise RouteError("viridisos_kernel_candidate.status must be CANDIDATE or NO_RUNTIME_KERNEL")
+    for field in (
+        "module_id",
+        "module_name",
+        "product_line",
+        "decision_output",
+        "scope",
+        "kernel_spec_artifact",
+    ):
+        if not isinstance(candidate.get(field), str) or not candidate[field].strip():
+            raise RouteError(f"viridisos_kernel_candidate.{field} is required")
+    return candidate
+
+
+def reserved_ledger_state(
+    finalized_root: Path,
+    reconciliation_surface: Path,
+) -> tuple[int, list[int], list[int], list[str]]:
+    surface = read_json(reconciliation_surface)
+    authoritative_max = int(surface.get("authoritative_ledger_max_row_observed", 0))
+    public_rows = sorted(
+        int(row["proposed_ledger_row"])
+        for row in surface.get("records", [])
+        if isinstance(row, dict) and isinstance(row.get("proposed_ledger_row"), int)
+    )
+    proposal_rows: list[int] = []
+    surfaces = [display_path(reconciliation_surface)]
+    for proposal_path in sorted(finalized_root.glob("Run-*/RELEASE_BINDING_PROPOSAL.json")):
+        proposal = read_json(proposal_path)
+        row = proposal.get("proposed_ledger_row")
+        if proposal.get("status") == "READY_FOR_EXACT_AUTHORIZATION" and isinstance(row, int):
+            proposal_rows.append(row)
+            surfaces.append(display_path(proposal_path))
+    if len(set([*public_rows, *proposal_rows])) != len([*public_rows, *proposal_rows]):
+        raise RouteError("ledger reservation collision detected")
+    return authoritative_max, public_rows, sorted(proposal_rows), surfaces
+
+
+def seal_route_and_proposal(
+    run_value: str,
+    *,
+    finalized_root: Path = FINALIZED_ROOT,
+    reconciliation_surface: Path = RECONCILIATION_SURFACE,
+    proposed_license: str = "cc-by-4.0",
+) -> dict[str, Any]:
+    run_id = canonical_run_id(run_value)
+    root = finalized_root / run_id
+    required = {
+        "manifest": root / "PAPER_PACKAGE_MANIFEST.json",
+        "review": root / "POST_ARISTOTLE_REVIEW.json",
+        "finalized": root / "FINALIZED_PACKAGE.json",
+        "paper": root / "paper.pdf",
+        "certificate": root / "LEAN_ZERO_SORRY_CERTIFICATE.json",
+    }
+    for name, path in required.items():
+        if not path.is_file():
+            raise RouteError(f"{run_id}: required {name} evidence is missing")
+    route_path = root / "CANON_PRODUCT_ROUTE.json"
+    proposal_path = root / "RELEASE_BINDING_PROPOSAL.json"
+    if route_path.exists() or proposal_path.exists():
+        raise RouteError(f"{run_id}: route or proposal already exists; immutable overwrite refused")
+
+    manifest = read_json(required["manifest"])
+    review = read_json(required["review"])
+    finalized = read_json(required["finalized"])
+    release = manifest.get("release_metadata")
+    if manifest.get("run_id") != run_id or finalized.get("run_id") != run_id:
+        raise RouteError(f"{run_id}: run identity mismatch")
+    if review.get("verdict") != "pass":
+        raise RouteError(f"{run_id}: independent review has not passed")
+    if not isinstance(release, dict) or release.get("spine_admitted") is not False:
+        raise RouteError(f"{run_id}: explicit non-spine release metadata is required")
+    spine = review.get("spine_admission")
+    if not isinstance(spine, dict) or spine.get("admitted") is not False:
+        raise RouteError(f"{run_id}: independent review must explicitly reject spine admission")
+
+    route_name = str(review.get("series_route") or release.get("series_route") or "working-corpus")
+    wrapper_candidate = runtime_kernel_candidate(manifest)
+    disposition = "ADAPTER_REVIEW" if wrapper_candidate is not None else "NO_RUNTIME_KERNEL"
+    spine_reason = str(spine.get("reason") or release.get("spine_reason") or "non-spine methods note")
+    now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    evidence = {
+        "paper_pdf_sha256": sha256(required["paper"]),
+        "paper_package_manifest_sha256": sha256(required["manifest"]),
+        "post_review_sha256": sha256(required["review"]),
+        "finalized_package_sha256": sha256(required["finalized"]),
+        "lean_zero_sorry_certificate_sha256": sha256(required["certificate"]),
+    }
+    route = {
+        "schema_version": 1,
+        "standard": "VRS-CANON-PRODUCT-ROUTE-1",
+        "run_id": run_id,
+        "recorded_at_utc": now,
+        "result": "PRODUCT_CANDIDATE" if wrapper_candidate is not None else "EXCLUDE_METHODS_NOTE",
+        "spine_admitted": False,
+        "significance_classification": {
+            "state": "UNASSESSED_NO_CLAIM",
+            "publication_effect": "No novelty or priority claim is made; scientific verification remains a separate verdict.",
+        },
+        "five_gate_verdicts": {
+            "FOUNDATIONAL": {"pass": False, "reason": spine_reason},
+            "IRREDUCIBLE": {"pass": False, "reason": "The reviewed result is reducible to established methods."},
+            "DOMAIN_DEFINING": {"pass": False, "reason": "The reviewed result applies an existing method and does not define a new Viridis domain."},
+            "MILESTONE_COHERENT": {"pass": False, "reason": "No named foundational milestone wave is established by this isolated note."},
+            "STABLE": {"pass": True, "reason": "Exact paper and theorem artifacts are independently reviewed, replayed, and dual-kernel certified."},
+        },
+        "publication_route": route_name,
+        "product_line": (
+            wrapper_candidate["product_line"]
+            if wrapper_candidate is not None
+            else "Verified computational methods"
+        ),
+        "product_disposition": disposition,
+        "wrapper_candidate": wrapper_candidate,
+        "product_reason": (
+            str(wrapper_candidate.get("reason") or "Complete declared science-kernel candidate requires deterministic adapter review.")
+            if wrapper_candidate is not None
+            else manifest["viridisos_kernel_candidate"]["reason"].strip()
+        ),
+        "evidence": evidence,
+        "external_mutation": False,
+    }
+    authoritative_max, public_rows, proposal_rows, surfaces = reserved_ledger_state(
+        finalized_root, reconciliation_surface
+    )
+    proposed_row = max([authoritative_max, *public_rows, *proposal_rows], default=0) + 1
+    proposal = {
+        "schema_version": 1,
+        "standard": "VRS-RELEASE-BINDING-PROPOSAL-1",
+        "status": "READY_FOR_EXACT_AUTHORIZATION",
+        "recorded_at_utc": now,
+        "run_id": run_id,
+        "title": manifest.get("title"),
+        "abbreviation": release.get("abbreviation"),
+        "proposed_license": proposed_license,
+        "proposed_ledger_row": proposed_row,
+        "ledger_basis": {
+            "authoritative_max_row_observed": authoritative_max,
+            "reserved_existing_public_identity_rows": public_rows,
+            "reserved_unpublished_rows": proposal_rows,
+            "reservation_surfaces": surfaces,
+        },
+        "route": route_name,
+        "spine_admitted": False,
+        "product_disposition": disposition,
+        "staging_state": "HOLD_EXACT_LICENSE_AND_LEDGER_AUTHORIZATION",
+        "authorized_local_effect_if_approved": (
+            f"Assign {proposed_license} and ledger row {proposed_row}, reseal release metadata, "
+            "build the local standalone candidate, and stop at the separate exact publication boundary."
+        ),
+        "publication_authorized": False,
+        "evidence": {**evidence, "canon_product_route_sha256": json_sha256(route)},
+        "external_mutation": False,
+    }
+    write_json_atomic(route_path, route)
+    write_json_atomic(proposal_path, proposal)
+    return {
+        "status": "READY_FOR_EXACT_AUTHORIZATION",
+        "run_id": run_id,
+        "route": route["result"],
+        "product_disposition": disposition,
+        "proposed_license": proposed_license,
+        "proposed_ledger_row": proposed_row,
+        "external_mutation": False,
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--run", required=True)
+    parser.add_argument("--proposed-license", default="cc-by-4.0")
+    args = parser.parse_args()
+    try:
+        result = seal_route_and_proposal(args.run, proposed_license=args.proposed_license)
+        print(json.dumps(result, indent=2, sort_keys=True))
+        return 0
+    except (RouteError, OSError, KeyError, TypeError, ValueError) as exc:
+        print(json.dumps({"status": "HOLD", "error": str(exc), "external_mutation": False}, indent=2))
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

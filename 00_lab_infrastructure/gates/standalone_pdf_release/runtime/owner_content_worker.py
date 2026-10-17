@@ -52,13 +52,19 @@ FIXED_CANONICAL_ROOT = Path(os.environ["VIRIDIS_CORE_ROOT"])
 NATIVE_ACCEPT = 'application/vnd.inveniordm.v1+json'
 ACCEPTS = frozenset({'application/json', NATIVE_ACCEPT})
 MANIFEST_FIELDS = frozenset({'standard', 'canonical_root', 'profile_binding',
-    'modules', 'metadata', 'source_origin', 'legacy_closure', 'source_review_change_flags','shared_dependencies'})
+    'modules', 'metadata', 'source_origin', 'legacy_closure', 'source_review_change_flags','shared_dependencies','note_preparation'})
 IDENTITY_FIELDS = frozenset({'device', 'inode', 'mode', 'bytes', 'mtime_ns', 'sha256'})
 SHARED_INPUT_NAME='stable_input_identity.py'
 SHARED_INPUT_SHA256='7e6c204993f0ba65650c58ad50a71073d803522d31fa08b93b7ce35054fa5eda'
 SHARED_INPUT_GIT_PATH='00_lab_infrastructure/gates/standalone_pdf_release/common/stable_input_identity.py'
+PROFILE_STANDARD = 'VRS-DIGEST-ARCHIVAL-PDF-PACKAGING-PROFILE-1'
+NOTE_PREPARATION = {
+    'module': 'nightly_manuscript_checkpoint.py',
+    'entrypoints': ['source_for_cycle', 'stage_checkpoint', 'review_checkpoint',
+                    'prepare_access', 'new_note_specs', 'stage_weekly_package'],
+}
 SOURCE_FIELDS = frozenset({'status', 'source_manifest_sha256', 'source_modules',
-    'metadata_files', 'transient_restore_allowed', 'scientific_population_admitted', 'certifies'})
+    'metadata_files', 'transient_restore_allowed', 'scientific_population_admitted', 'certifies', 'note_preparation'})
 KINDS = {'HELLO': 1, 'SOURCE_READY': 2, 'TOKEN': 3, 'READY': 4, 'GRANT': 5,
     'HEADER_ACK': 6, 'RESPONSE': 7, 'DATA': 8, 'SOURCE_FINAL': 9, 'DONE': 10,
     'ERROR': 11}
@@ -69,7 +75,7 @@ MODULE_NAMES = frozenset({'packaging_runtime.py', 'invoke_digest_v2.py', 'digest
      'packaging_catalog.py', 'install_packaging_runtime.py',
     'packaging_nightly.py', 'nightly_checkpoint_guarded.py', 'packaging_run_flow.py',
     'packaging_nightly_coverage.py', 'packaging_nightly_intake.py',
-    'scientific_registration_worker.py', 'owner_content_worker.py'})
+    'scientific_registration_worker.py', 'owner_content_worker.py','nightly_manuscript_access.py','nightly_manuscript_checkpoint.py'})
 
 
 class TransportHold(ValueError):
@@ -379,7 +385,7 @@ def reject_import_artifacts(installed):
 def bootstrap_sources(manifest):
     """Only checked current source bytes may precede a runtime import/token."""
     need(type(manifest) is dict and set(manifest) == MANIFEST_FIELDS
-        and manifest['standard'] == 'VRS-CURRENT-DIGEST-ONLY-WORKER-SOURCE-MANIFEST-1', 'CLOSED_SOURCE_MANIFEST')
+        and manifest['standard'] == 'VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-1', 'CLOSED_SOURCE_MANIFEST')
     root = Path(manifest['canonical_root'])
     need(root == FIXED_CANONICAL_ROOT, 'FIXED_WORKER_CANONICAL_ROOT')
     installed = root / '_ZENODO_DEPOSITS/standalone_pdf_runtime'
@@ -392,8 +398,8 @@ def bootstrap_sources(manifest):
          and Path(shared[0]['path'])==installed/'common'/SHARED_INPUT_NAME,
          'EXACT_SHARED_SOURCE_BOOTSTRAP')
     _strict_source_read(shared[0]['path'],shared[0]['sha256'],shared[0]['identity'])
-    need(type(modules) is list and len(modules) == 18 and type(metadata) is list and len(metadata) == 3,
-        'EXACT18_AND3_SOURCE_BOOTSTRAP')
+    need(type(modules) is list and len(modules) == 20 and type(metadata) is list and len(metadata) == 3,
+        'EXACT20_AND3_SOURCE_BOOTSTRAP')
     names = set()
     for row in modules:
         need(type(row) is dict and set(row) == {'name', 'path', 'sha256', 'identity'}
@@ -401,7 +407,7 @@ def bootstrap_sources(manifest):
             and row['name'] not in names and Path(row['path']) == installed / row['name'], 'FIXED_INSTALLED_MODULE')
         names.add(row['name'])
         _strict_source_read(row['path'], row['sha256'], row['identity'])
-    need(names == MODULE_NAMES, 'EXACT_CURRENT18_WORKER_MODULES')
+    need(names == MODULE_NAMES, 'EXACT_CURRENT20_WORKER_MODULES')
     expected = {'profile': 'CURRENT_PACKAGING_PROFILE.json', 'nomination': 'INSTALLATION_NOMINATION.json',
         'plan': 'INSTALL_PLAN.json'}
     roles = set()
@@ -419,6 +425,9 @@ def bootstrap_sources(manifest):
     expected_shared=[{k:shared[0][k]for k in('name','path','sha256')}|{'git_path':SHARED_INPUT_GIT_PATH}]
     need(type(profile_value)is dict and profile_value.get('shared_dependencies')==expected_shared,
          'NOMINATED_BOOTSTRAP_SHARED_DEPENDENCY')
+    need(profile_value.get('standard') == PROFILE_STANDARD
+         and profile_value.get('note_preparation') == NOTE_PREPARATION
+         and manifest['note_preparation'] == NOTE_PREPARATION, 'NOMINATED_BOOTSTRAP_NOTE_PREPARATION')
     reject_import_artifacts(installed)
     return root
 
@@ -427,9 +436,10 @@ def source_proof_valid(proof, manifest):
     need(type(proof) is dict and set(proof) == SOURCE_FIELDS
         and proof['status'] == 'ACTUAL_CURRENT_WORKER_SOURCE_AUTHORITY_AND_IDENTITY_VERIFIED'
         and proof['source_manifest_sha256'] == hashlib.sha256(encode_json(manifest)).hexdigest()
-        and proof['source_modules'] == 18 and proof['metadata_files'] == 3
+        and proof['source_modules'] == 20 and proof['metadata_files'] == 3
         and proof['transient_restore_allowed'] is False and proof['scientific_population_admitted'] is False
-        and proof['certifies'] is False, 'CURRENT_WORKER_SOURCE_PROOF')
+        and proof['certifies'] is False and proof['note_preparation'] == NOTE_PREPARATION
+        and manifest.get('note_preparation') == NOTE_PREPARATION, 'CURRENT_WORKER_SOURCE_PROOF')
 
 
 def _url(record_id, filename=None):

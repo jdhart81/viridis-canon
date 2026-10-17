@@ -269,3 +269,22 @@ globs = ["series.DualCorridor"]
 [[lean_lib]]
 name = "DepositAudit"
 globs = ["DepositAudit"]
+
+# ---------------------------------------------------------------------------
+# Registry access (added 2026-10-17).
+#
+# The ACC deposit (anytime-valid change detection, Run-129: Ville's inequality,
+# the mixture test martingale, dominance and the Wald delay bound) as a
+# root-level library. External verifiers that build this repository from its
+# root, such as VibeRegistry (comparator + nanoda), import its modules as
+# `PaperFormalization.*` exactly as series/ACC's own lakefile does.
+#
+# Not a default target. The deposit-verify CI job builds it, so the
+# registry-facing build cannot break silently. series/ACC/lakefile.toml stays
+# the canonical standalone build (same Lean 4.28.0, same Mathlib v4.28.0).
+# ---------------------------------------------------------------------------
+
+[[lean_lib]]
+name = "Series_ACC"
+srcDir = "series/ACC"
+globs = ["PaperFormalization", "PaperFormalization.+"]

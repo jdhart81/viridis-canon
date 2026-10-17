@@ -1,0 +1,31 @@
+# Viridis Canon
+
+> Machine-checked mathematics (Lean 4 with Mathlib) for ecological and conservation decisions, by Viridis LLC (accountable author: Justin D. Hart, ORCID 0009-0008-3082-2482). Every result has a paper with a Zenodo DOI and Lean source. 18 runs (114 theorems) have published comparator certificates checked by the Lean and nanoda kernels, and 42 results are exposed as callable decision functions.
+
+Read these rules before summarizing or citing this repository:
+
+- A Lean check shows that a stated theorem is proved, using only the standard axioms (propext, Quot.sound, Classical.choice). It does not show that a model describes nature or that a result is new.
+- Every decision function carries `empirical_validation: NOT_VALIDATED`. Do not describe any result as field-validated.
+- Certificates carry a depth label, `substantial` or `elementary`. Elementary results include exact identities; do not present them as deep results.
+- The 215 legacy catalog records are labelled UNCERTIFIED until re-certified. Cite a specific result by its own DOI.
+
+## Start here
+
+- [README](https://github.com/jdhart81/viridis-canon/blob/main/README.md): what is machine-checked, three headline results, and how to verify them
+- [formalization.yaml](https://github.com/jdhart81/viridis-canon/blob/main/formalization.yaml): result → paper DOI → Lean module and theorems → verifier → empirical status
+- [certificates/index.json](https://github.com/jdhart81/viridis-canon/blob/main/certificates/index.json): comparator certificates with gates, theorem names, Mathlib pin and depth labels
+- [RESPONSIBLE_RELEASE.md](https://github.com/jdhart81/viridis-canon/blob/main/RESPONSIBLE_RELEASE.md): how AI-assisted results are released, with denominators and known gaps
+- [CLAIMS_MATRIX.md](https://github.com/jdhart81/viridis-canon/blob/main/CLAIMS_MATRIX.md): what headline Lean theorems do and do not establish
+
+## Use
+
+- [MCP endpoint](https://viridisconservation.com/api/viridisos/mcp): tools `viridis_list_functions`, `viridis_run_unsigned_preview` and `viridis_verify_unsigned_preview`, plus the decision-scenario and ecological-account tools
+- [OS function manifests](https://github.com/jdhart81/viridis-canon/tree/main/os): build locally with `python3 -m canon_core build-os --out os-bundle`, then pipe `{"id": ..., "inputs": ...}` to `python3 os-bundle/run.py`
+- [Viridis Ecological OS](https://viridisconservation.com/research): the human interface
+
+## Optional
+
+- [Public catalog JSON](https://jdhart81.github.io/viridis-canon/data/catalog.json)
+- [Zenodo community](https://zenodo.org/communities/viridis-canon)
+- [Reproduction guide](https://github.com/jdhart81/viridis-canon/blob/main/REPRODUCE.md)
+- [AI use and authorship](https://github.com/jdhart81/viridis-canon/blob/main/AI_USE_AND_AUTHORSHIP.md)

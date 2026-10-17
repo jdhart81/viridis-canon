@@ -20,10 +20,9 @@ ACCESS=RUNTIME/'nightly_manuscript_access.py'
 DIGEST=RUNTIME/'methods_digest_v2.py'
 TESTS=RUNTIME/'tests'
 MUTANTS=[
- ('W01_unbound_file_dependencies',ACCESS,[('    require_self_contained_original(original)\n','')],
+ ('W01_unbound_file_dependencies',ACCESS,[("                need(word in words, 'unbound historical or unsupported control word: '+word)","                need(True, 'unbound historical or unsupported control word: '+word)")],
   'HistoricalInputTests.test_unbound_file_input_graphics_dynamic_and_external_package_hold',
-  [('    need(not forbidden.intersection(commands),', '    need(True or not forbidden.intersection(commands),'),
-   ("        need(all(re.fullmatch(r'[A-Za-z0-9_-]+', n) for n in names.split(',')),", "        need(True or all(re.fullmatch(r'[A-Za-z0-9_-]+', n) for n in names.split(',')),")]),
+  []),
  ('W02_frozen_source_hash',ACCESS,[("        need(d.digest(raw) == expected, 'frozen source changed: ' + name)","        need(True, 'frozen source changed: ' + name)")],
   'FrozenInputBoundaryTests.test_frozen_hash_boundary_rejects_source_drift_before_execution',[]),
  ('W03_frozen_source_race',ACCESS,[("            need(d.read_regular(path) == raw, 'frozen source race: ' + name)","            need(True, 'frozen source race: ' + name)")],
@@ -44,6 +43,22 @@ MUTANTS=[
   'DigestAccessTests.test_partitioned_actual_consumer_digest_exact_two_roles_and_recursive_gate',[]),
  ('W11_complete_historical_pdf',ACCESS,[("    require_pdf_envelope(pdf)","    pass  # MUTANT accepts header-only historical PDF")],
   'ArchivalAccessTests.test_header_only_pdf_cannot_become_bound_even_with_matching_observation',[]),
+ ('W12_original_helper_origins',ACCESS,[("    return _HELPER_ORIGINS[name] if name in _HELPER_ORIGINS else GATES + '/' + name","    return GATES + '/' + name")],
+  'FrozenInputBoundaryTests.test_actual_helper_origins_are_required_and_never_recovered_from_relocated_copies',[]),
+ ('W13_manifest_original_helper_origins',ACCESS,[("'path':str(Path(root) / frozen_source_relative(n))","'path':str(Path(root) / GATES / n)")],
+  'ArchivalAccessTests.test_actual_default_base_and_access_preserve_science_and_both_pdfs',[]),
+ ('W14_internal_input_aliases',ACCESS,[("                need(word in words, 'unbound historical or unsupported control word: '+word)","                need(True, 'unbound historical or unsupported control word: '+word)")],
+  'HistoricalInputTests.test_internal_aliases_translation_custom_macros_and_package_readers_hold',[]),
+ ('W15_tex_translation',ACCESS,[("    need('^^' not in text, 'unbound historical translation syntax')","    need(True, 'unbound historical translation syntax')")],
+  'HistoricalInputTests.test_translation_syntax_is_rejected_before_tokenization',[]),
+ ('W16_unknown_environment',ACCESS,[("            need(match is not None and match[1] in {'document'","            need(True or match is not None and match[1] in {'document'")],
+  'HistoricalInputTests.test_unknown_environment_is_rejected_even_without_a_control_alias',[]),
+ ('W17_pre_render_dependency_boundary',ACCESS,[("        original = require_self_contained_original(d.read_regular(Path(base) / HISTORICAL_TEX))","        original = d.read_regular(Path(base) / HISTORICAL_TEX)")],
+  'HistoricalRenderBoundaryTests.test_actual_admitted_predecessor_internal_input_holds_before_renderer_or_access_write',[]),
+ ('W18_cr_comment_boundary',ACCESS,[("            ends=[n for n in (text.find('\\n',i),text.find('\\r',i)) if n>=0]\n            i=min(ends) if ends else len(text)","            end=text.find('\\n',i);i=len(text) if end<0 else end")],
+  'HistoricalInputTests.test_cr_comment_boundary_cannot_hide_a_later_input_alias',[]),
+ ('W19_control_character_translation',ACCESS,[("    need(all(c in '\\t\\r\\n' or unicodedata.category(c) not in {'Cc','Cf','Cs'} for c in text),","    need(True or all(c in '\\t\\r\\n' or unicodedata.category(c) not in {'Cc','Cf','Cs'} for c in text),")],
+  'HistoricalInputTests.test_ignored_or_formatting_characters_cannot_construct_a_control_word',[]),
 ]
 
 HARNESS=r'''import json,sys,unittest

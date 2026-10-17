@@ -52,7 +52,7 @@ SOURCE_HASHES = {
         'b01598e2223b7fe2ee77c3f7f89086fed899925621c9862dc4c504b5c16aad95',
     'nightly_manuscript_access.py':
         # SHA-256 of reviewed source bytes; not a credential
-        'c08cf4f790af32f35fb671d428070a10eafa4f1c90a424fc354d1a2e604b01f9',
+        '90c21ce3848a2a7c3b617836e9d93fb82c76d52be20f96f894899e0766d4a57a',
     'nightly_manuscript_checkpoint.py':
         # SHA-256 of reviewed source bytes; not a credential
         'c6ff291eb7b89256ef21171653a47dca01e6b5ade7706bb8a38a7f26654ac3ba',

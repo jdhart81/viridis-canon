@@ -27,6 +27,11 @@ certificate. A new access validator freshly compiles the closed original source
 bytes into private modules and executes that same default reader on every
 validation, including a second read after deriving access bytes. Saved PASS
 objects, ambient canonical modules and bytecode cannot replace that reader.
+All51 frozen source hashes already occur in the historical130-source scope.
+The49 gate modules retain their original gate paths; the two producer helpers
+retain their exact `reports/.../weekly-source-adoption-v001` origins. A closed
+per-helper origin map is used both for loading and manifest records. A relocated
+copy, missing original, symlink, changed hash or exit-time race is refused.
 
 The scientific base stays at its own immutable path. A distinct
 `VRS-NIGHTLY-ARCHIVAL-MANUSCRIPT-ACCESS-1` manifest identifies that predecessor's
@@ -44,7 +49,11 @@ basename satisfies the existing observer ABI without renaming the archived
 source. The old pinned binary/cache/source/PDF observer validates the new render
 independently. This first closed format supports standalone TeX plus the exact
 pinned cache. A manuscript with unbound local file dependencies or dynamic input
-stays HOLD; its source is never edited to compile. A corrected R3 manuscript or
+stays HOLD; its source is never edited to compile. The supported syntax is a
+fixed article class, seven fixed cache packages with closed options, fixed
+markup environments and control words. Internal input aliases, category or
+macro construction, translation escapes and unknown commands are refused.
+Escaped control symbols and line breaks are tokenized as such. A corrected R3 manuscript or
 a merely paired old PDF cannot replace the original manuscript/render evidence.
 
 The access binding is a separate byte binding, with `certifies: false` and
@@ -78,12 +87,21 @@ legitimate private-bootstrap and canonical runtime instances, resets their
 context on exit and revalidates the closure. Historical direct consumers retain
 their prior behavior.
 
-Coverage is partitioned explicitly. Portable tests exercise the real old
-scientific default path through PB and access, then call that same real access
-validator explicitly for digest/archive/public-download tests. Separate source
-contract tests exercise the fixed facade and genuine SourceFinder/session
-bodies over declared synthetic trust data. A combined positive through every
-historical installed-profile, alias/timezone/transient, original99/130 closure
-and normal current source session is not established by these partitions.
-Unscoped normal default dispatch is tested to HOLD. A genuine operational
-source-session readback remains required before claiming that combined path.
+Coverage is partitioned explicitly. Smaller tests exercise the real old
+scientific default path through PB and access, and separate source contract
+tests cover facade/session boundaries. The complete-source regression below
+joins all eleven historical predecessors, alias/timezone/transient checks, the
+original99/130 closure and the current20+1 session with all six actual facade
+operations, the unchanged recursive PDF gate and exact simulated public
+readbacks. It uses declared synthetic trust/platform/render/provider DATA;
+a genuine operational source-session and production readback remain separate.
+Unscoped normal default dispatch is tested to HOLD.
+
+The complete-source integration regression is an explicit separate command:
+`python3 -B -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/runtime/tests -p 'w42_complete_default_route_test.py' -v`.
+Its filename deliberately keeps this expensive, fresh-validation route out of
+the ordinary `test_*.py` matrix. The workflow selects the normal route and the
+three negative controls in separate ten-minute jobs on both Python versions.
+The required aggregate depends on all four complete-source jobs and both
+ordinary matrix jobs; a failed, canceled or skipped job cannot satisfy it.
+No validation result is cached to meet that time bound.

@@ -39,6 +39,10 @@ class ArchivalAccessTests(unittest.TestCase):
         self.assertTrue(self.current['exact_publication_binding']);self.assertFalse(self.current['publication_authorized'])
         manifest=self.read(self.out/'SCOPED_RELEASE_MANIFEST.json')
         self.assertEqual(manifest['standard'],access.STANDARD)
+        origins={r['name']:r['path'] for r in manifest['execution_sources']}
+        for name in ['prepare_nightly_note.py','nightly_release_checkpoint.py']:
+            self.assertEqual(origins[name],str(self.f.root/'reports/verification-coverage/2026-10-09/prior-content-digest-execution-v001/weekly-source-adoption-v001'/name))
+            self.assertFalse((self.f.gates/name).exists())
         base_manifest=self.read(self.base/'SCOPED_RELEASE_MANIFEST.json')
         for row in base_manifest['uploads']:
             if row['filename']!='SCOPE_EVIDENCE.zip':self.assertEqual((self.base/row['filename']).read_bytes(),(self.out/row['filename']).read_bytes())
@@ -152,7 +156,30 @@ class FrozenInputBoundaryTests(unittest.TestCase):
             choices=[source_root/name,*source_root.rglob(name)]
             source=next((p for p in choices if p.is_file()and digest.sha(p)==h),None)
             self.assertIsNotNone(source,'exact public repository predecessor source '+name)
-            (self.gates/name).write_bytes(source.read_bytes())
+            target=self.root/access.frozen_source_relative(name)
+            target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(source.read_bytes())
+    def test_actual_helper_origins_are_required_and_never_recovered_from_relocated_copies(self):
+        for name in ['prepare_nightly_note.py','nightly_release_checkpoint.py']:
+            path=self.root/access.frozen_source_relative(name)
+            self.assertIn('reports/verification-coverage/',str(path.relative_to(self.root)))
+            self.assertFalse((self.gates/name).exists())
+        with access.frozen_sources(self.root):pass
+        path=self.root/access.frozen_source_relative('prepare_nightly_note.py')
+        moved=self.gates/path.name;path.rename(moved)
+        with self.assertRaisesRegex(ValueError,'regular unsymlinked'):
+            with access.frozen_sources(self.root):self.fail('relocated helper copy accepted')
+    def test_report_helper_hash_symlink_and_exit_race_hold(self):
+        path=self.root/access.frozen_source_relative('nightly_release_checkpoint.py')
+        original=path.read_bytes();path.write_bytes(original+b'\n# drift\n')
+        with self.assertRaisesRegex(access.AccessHold,'frozen source changed: nightly_release_checkpoint.py'):
+            with access.frozen_sources(self.root):self.fail('wrong helper hash accepted')
+        path.write_bytes(original)
+        with self.assertRaisesRegex(access.AccessHold,'frozen source race'):
+            with access.frozen_sources(self.root):path.write_bytes(original+b'\n# race\n')
+        path.write_bytes(original);other=self.root/'same-helper.py';other.write_bytes(original)
+        path.unlink();path.symlink_to(other)
+        with self.assertRaisesRegex(ValueError,'regular unsymlinked'):
+            with access.frozen_sources(self.root):self.fail('linked helper origin accepted')
     def test_frozen_hash_boundary_rejects_source_drift_before_execution(self):
         p=self.gates/'phase7_audit_policy.py';p.write_bytes(p.read_bytes()+b'\n# drift\n')
         with self.assertRaisesRegex(access.AccessHold,'frozen source changed'):
@@ -178,6 +205,65 @@ class HistoricalInputTests(unittest.TestCase):
                       br'\usepackage{../../outside}',br'\documentclass{../outside}']:
             with self.subTest(extra=extra),self.assertRaisesRegex(access.AccessHold,'unbound historical|pinned-cache'):
                 access.require_self_contained_original(ORIGINAL+extra)
+    def test_internal_aliases_translation_custom_macros_and_package_readers_hold(self):
+        for extra in [br'\makeatletter\@input{../unbound.tex}\makeatother',
+                      br'\makeatletter\@@input{../unbound.tex}\makeatother',
+                      br'\@input{../unbound.tex}',br'\@@input{../unbound.tex}',
+                      br'\let\alias\input\alias{../unbound.tex}',
+                      br'\in^^70ut{../unbound.tex}',br'\unknownMacro{../unbound.tex}',
+                      br'\usepackage{listings}\lstinputlisting{other.tex}',
+                      br'\begin{filecontents}{outside}\end{filecontents}',
+                      br'\newtheorem{input}{Input}',br'\hypersetup{driverfallback=dvips}']:
+            with self.subTest(extra=extra),self.assertRaises(access.AccessHold):
+                access.require_self_contained_original(ORIGINAL+extra)
+    def test_translation_syntax_is_rejected_before_tokenization(self):
+        with self.assertRaisesRegex(access.AccessHold,'translation syntax'):
+            access.require_self_contained_original(ORIGINAL+br'\in^^70ut{outside.tex}')
+    def test_cr_comment_boundary_cannot_hide_a_later_input_alias(self):
+        for ending in [b'\r',b'\n',b'\r\n']:
+            raw=ORIGINAL+b'% comment'+ending+br'\@input{outside.tex}'
+            with self.subTest(ending=ending),self.assertRaisesRegex(access.AccessHold,'unsupported control word'):
+                access.require_self_contained_original(raw)
+    def test_ignored_or_formatting_characters_cannot_construct_a_control_word(self):
+        for char in ['\x00','\x7f','\u200b','\ufeff']:
+            raw=ORIGINAL+('\\in'+char+'put{outside.tex}').encode('utf-8')
+            with self.subTest(char=repr(char)),self.assertRaisesRegex(access.AccessHold,'control or formatting character'):
+                access.require_self_contained_original(raw)
+    def test_unknown_environment_is_rejected_even_without_a_control_alias(self):
+        with self.assertRaisesRegex(access.AccessHold,'fixed historical markup environments'):
+            access.require_self_contained_original(ORIGINAL+br'\begin{filecontents}{outside}\end{filecontents}')
+    def test_escaped_control_symbols_comments_and_fixed_article_markup_are_supported(self):
+        raw=(br'\documentclass[10pt]{article}\usepackage[margin=0.78in]{geometry}'
+             br'\usepackage{amsmath,amssymb,amsthm,booktabs,microtype,hyperref}'
+             br'\hypersetup{hidelinks}\newtheorem{proposition}{Proposition}'
+             br'\author{Author\\Viridis Research\\\texttt{fixture@example.invalid}}'
+             br'\begin{document}Escaped \% then \\literal; 25\% and \{x\}.'
+             b'% \\input{comment-only.tex}\n'
+             br'\begin{proposition}\(a\le b\)\end{proposition}'
+             br'\end{document}')
+        self.assertEqual(access.require_self_contained_original(raw),raw)
+
+class HistoricalRenderBoundaryTests(unittest.TestCase):
+    def test_actual_admitted_predecessor_internal_input_holds_before_renderer_or_access_write(self):
+        import w42_portable_fixture as fixture
+        for alias in [br'\@input{../unbound.tex}',br'\@@input{../unbound.tex}']:
+            with self.subTest(alias=alias),tempfile.TemporaryDirectory(prefix='w42-unbound-input-')as tmp:
+                original=ORIGINAL.replace(br'\end{document}',alias+br'\end{document}')
+                # This changes only declared synthetic manuscript DATA. Every
+                # original producer/review/default validator still executes.
+                with patch.object(fixture,'ORIGINAL',original):f=PortableFixture(tmp)
+                with f.context():
+                    base=f.base_note()
+                    self.assertEqual((base/access.HISTORICAL_TEX).read_bytes(),original)
+                    self.assertEqual(json.loads((base/'PUBLICATION_BINDING.json').read_bytes())['status'],'PUBLICATION_BOUND')
+                    out=f.root/'RESEARCH_PIPELINE_v2/science_release_queue/manuscript_access'/f.run
+                    calls=[]
+                    def render(tex,*,root):
+                        calls.append(str(tex));return f.render(tex,root=root)
+                    with self.assertRaisesRegex(access.AccessHold,'unbound historical or unsupported control word'):
+                        access.prepare(f.root,base,out,f.authority,render=render)
+                    self.assertEqual(calls,[],'unsupported original reached renderer')
+                    self.assertFalse(out.exists(),'unsupported original created an access output')
 
 class DigestRoleTests(unittest.TestCase):
     def test_closed_role_binding_rejects_omission_swap_extra_or_changed_hash(self):

@@ -128,7 +128,7 @@ class PortableFixture:
             path=REPO/FROZEN_PUBLIC_SOURCES[name] if name in FROZEN_PUBLIC_SOURCES else GATES/name
             raw=path.read_bytes();assert digest.digest(raw)==h,name
             self.original_source_bytes[name]=raw
-            self.write(G+name,raw)
+            self.write(access.frozen_source_relative(name),raw)
         parity_tree=ast.parse(self.read(G+'mirror_parity.py'))
         self.historical_generation_literal=next(ast.literal_eval(n.value.args[0])for n in parity_tree.body
             if isinstance(n,ast.Assign)and any(isinstance(t,ast.Name)and t.id=='GENERATION_ROOT'for t in n.targets))
@@ -161,7 +161,7 @@ class PortableFixture:
         self.append_constants('phase7_audit_policy.py',self.audit_constants)
         self.append_constants('phase7_policy_versions.py',self.version_constants)
         self.runtime_trust(audit)
-        self.test_hashes={name:digest.sha(self.gates/name)for name in self.original_source_hashes}
+        self.test_hashes={name:digest.sha(self.root/access.frozen_source_relative(name))for name in self.original_source_hashes}
         self.install_current_fixture()
         self.scientific_fixture()
 
@@ -277,7 +277,7 @@ class PortableFixture:
         """Prove original source prefixes/ASTs and disclose every test override."""
         rows=[]
         for name,original in self.original_source_bytes.items():
-            actual=self.read(G+name)
+            actual=self.read(access.frozen_source_relative(name))
             assert actual.startswith(original),name
             old=ast.parse(original);new=ast.parse(actual)
             assert ast.dump(ast.Module(body=old.body,type_ignores=[]),include_attributes=False)==ast.dump(ast.Module(body=new.body[:len(old.body)],type_ignores=[]),include_attributes=False),name
@@ -290,7 +290,8 @@ class PortableFixture:
                 assert ast.literal_eval(node.value)==self.constant_overrides[name][key],(name,key)
             rows.append({'name':name,'production_sha256':digest.digest(original),'test_copy_sha256':digest.digest(actual),
                 'original_bytes_and_all_AST_nodes_preserved':True,'appended_trust_constant_names':names,
-                'public_source':FROZEN_PUBLIC_SOURCES.get(name,'00_lab_infrastructure/gates/'+name)})
+                'public_source':FROZEN_PUBLIC_SOURCES.get(name,'00_lab_infrastructure/gates/'+name),
+                'canonical_fixture_relative_origin':access.frozen_source_relative(name)})
         provider=ast.parse((HERE/'fixtures/w42_proof_provider.py').read_bytes())
         for name,expected in PROVIDER_FUNCTION_AST_SHA256.items():
             node=next(n for n in provider.body if isinstance(n,ast.FunctionDef)and n.name==name)
@@ -358,12 +359,41 @@ class PortableFixture:
         self.put(directory/'RENDERER_OBSERVATION.json',{'source_tex_sha256':digest.digest(raw),'rendered_pdf_sha256':digest.digest(result),'command':['/opt/homebrew/bin/tectonic','--only-cached','--keep-logs','--outdir',str(directory),'paper.tex'],'renderer_binary':{'invoked_path':'/opt/homebrew/bin/tectonic','resolved_path':str(self.binary),'sha256':digest.sha(self.binary)},'cache_manifest':self.cache,'cache_file_count':556,'cache_and_binary_exact_after':True,'started_at_utc':'2026-10-15T00:00:00Z','ended_at_utc':'2026-10-15T00:00:01Z','returncode':0,'network_resource_fetch_disabled':True,'no_env_or_stdin_or_credentials_captured':True,'local_lean_execution':False})
         return result
 
+    def account_discovery(self,week='2026-W42'):
+        """Simulated complete double-pass DATA; the real selector must consume it.
+
+        No HTTP took place. The empty test account is deliberately local fixture
+        material, never a claim about a real owned Zenodo account.
+        """
+        passes=[]
+        for label in ['first','second']:
+            response=self.put('simulated-account/'+label+'-response.json',
+                {'hits':{'total':{'value':0,'relation':'eq'},'hits':[]}})
+            receipt=self.put('simulated-account/'+label+'-get.json',{
+                'standard':'VRS-PHASE7-READONLY-ACCOUNT-GET-1','method':'GET',
+                'url':'https://zenodo.org/api/user/records?page=1&size=100',
+                'status':'RAW_ACCOUNT_GET_CAPTURED_NOT_COMPLETE','http_status':200,
+                'response_path':response['path'],'response_sha256':response['sha256'],
+                'response_bytes':len(self.read(response['path'])),
+                'fixture':'SIMULATED_ACCOUNT_DATA_NO_HTTP'})
+            passes.append([receipt])
+        records=self.put('simulated-account/records.json',{'records':[]})
+        with self.context(),access.frozen_sources(self.root)as load:
+            weekly=load('digest_weekly_state')
+            proof={'standard':'VRS-OWNED-WEEKLY-DISCOVERY-1','release_week':week,
+                'record_id':None,'concept_id':None,'passes':passes,'records':records,
+                'record_count':0,'producer_sha256':weekly.OWNED_DISCOVERY_PRODUCER_SHA,
+                'writes':0,'start_kind':'CREATE_WEEK'}
+            result=weekly.require_account_discovery(proof,root=self.root)
+            assert result['status']=='NO_EXISTING_WEEKLY_RECORD',result
+        return self.put('simulated-account/DISCOVERY.json',proof)
+
     def base_note(self):
         out=self.root/'RESEARCH_PIPELINE_v2/science_release_queue/base/Run-191'
         with self.context():
             with access.frozen_sources(self.root)as load:
                 checkpoint=load('nightly_release_checkpoint')
-                pins=[{'name':n,'path':str(self.gates/n),'sha256':h}for n,h in self.test_hashes.items()]
+                pins=[{'name':n,'path':str(self.root/access.frozen_source_relative(n)),'sha256':h}for n,h in self.test_hashes.items()]
                 source=checkpoint.source_for_cycle(self.root,self.run,self.cycle,self.before_metadata,pins,selection_invocation='TEST_ONLY_SOURCE_INVOCATION',selected_theorems=['bounded'],selection_at_utc='2026-10-14T00:00:00Z')
                 load('prepare_nightly_note').prepare_source(self.root,out,source,render=self.render)
                 result=checkpoint.review_checkpoint(self.root,out,self.authority,review_invocation='TEST_ONLY_LATER_REVIEW_INVOCATION')

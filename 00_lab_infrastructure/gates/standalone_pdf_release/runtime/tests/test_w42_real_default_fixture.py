@@ -83,6 +83,16 @@ class RealDefaultFixtureTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'exact nominated current nightly consumer required'):
             self.require_default(note)
 
+    def test_simulated_account_pages_are_reconsumed_by_actual_complete_selector(self):
+        f=self.fixture;bound=f.account_discovery();proof=json.loads(Path(bound['path']).read_bytes())
+        with f.context(),__import__('nightly_manuscript_access').frozen_sources(f.root)as load:
+            weekly=load('digest_weekly_state')
+            self.assertEqual(weekly.require_account_discovery(proof,root=f.root)['status'],'NO_EXISTING_WEEKLY_RECORD')
+            second=json.loads(Path(proof['passes'][1][0]['path']).read_bytes())
+            Path(second['response_path']).write_bytes(b'{}')
+            with self.assertRaisesRegex(ValueError,'ACCOUNT_RAW_BINDING'):
+                weekly.require_account_discovery(proof,root=f.root)
+
     def test_pdf_fixture_has_consistent_objects_xref_and_one_page(self):
         raw=pdf('SIMULATED fixture only')
         self.assertTrue(raw.startswith(b'%PDF-1.4\n'))

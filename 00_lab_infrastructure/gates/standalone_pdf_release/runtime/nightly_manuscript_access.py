@@ -16,6 +16,7 @@ import re
 from pathlib import Path
 import sys
 import types
+import unicodedata
 import uuid
 import zipfile
 import methods_digest_v2 as d
@@ -24,6 +25,12 @@ STANDARD = 'VRS-NIGHTLY-ARCHIVAL-MANUSCRIPT-ACCESS-1'
 BINDING_STANDARD = 'VRS-NIGHTLY-ARCHIVAL-MANUSCRIPT-ACCESS-BINDING-1'
 RENDER_STANDARD = 'VRS-EXACT-HISTORICAL-MANUSCRIPT-RENDER-1'
 GATES = 'RESEARCH_PIPELINE_v2/verification_coverage_gates'
+# These two immutable helpers are already admitted at these original origins
+# by the historical 130-source scope. No relocated copy is an input.
+_HELPER_ORIGINS = {
+    'nightly_release_checkpoint.py': 'reports/verification-coverage/2026-10-09/prior-content-digest-execution-v001/weekly-source-adoption-v001/nightly_release_checkpoint.py',
+    'prepare_nightly_note.py': 'reports/verification-coverage/2026-10-09/prior-content-digest-execution-v001/weekly-source-adoption-v001/prepare_nightly_note.py',
+}
 HISTORICAL_TEX = 'historical/ORIGINAL_paper.tex'
 HISTORICAL_PDF = 'historical/ORIGINAL_paper.pdf'
 TOP_PDF = 'Historical-Paper.pdf'
@@ -99,6 +106,10 @@ def closed_binding(root, value):
 def binding(path):
     return {k: d.binding(path)[k] for k in ('path','sha256')}
 
+def frozen_source_relative(name):
+    need(name in _FROZEN_HASHES, 'unknown frozen source origin')
+    return _HELPER_ORIGINS[name] if name in _HELPER_ORIGINS else GATES + '/' + name
+
 @contextmanager
 def frozen_sources(root):
     """Fresh private import graph, preserving ordinary default-reader dispatch.
@@ -110,7 +121,7 @@ def frozen_sources(root):
     root = Path(root).resolve(strict=True)
     sources = {}
     for name, expected in _FROZEN_HASHES.items():
-        path = root / GATES / name
+        path = root / frozen_source_relative(name)
         raw = d.read_regular(path)
         need(d.digest(raw) == expected, 'frozen source changed: ' + name)
         sources[name[:-3]] = (path, raw)
@@ -199,16 +210,89 @@ def require_self_contained_original(original):
     """
     need(isinstance(original, bytes), 'exact historical TeX bytes')
     text=original.decode('utf-8')
-    text=re.sub(r'(?<!\\)%[^\n]*', '', text)
-    commands=re.findall(r'\\([A-Za-z]+)', text)
-    forbidden={'input','include','includegraphics','bibliography','addbibresource',
-               'openin','openout','read','write','write18','special','directlua',
-               'csname','catcode','scantokens','InputIfFileExists','IfFileExists',
-               'loadclass','LoadClass','RequirePackage'}
-    need(not forbidden.intersection(commands), 'unbound historical file dependency or dynamic input')
-    for names in re.findall(r'\\(?:usepackage|documentclass)(?:\[[^]\n]*\])?\{([^}]*)\}', text):
-        need(all(re.fullmatch(r'[A-Za-z0-9_-]+', n) for n in names.split(',')),
-             'only pinned-cache package and class names')
+    # TeX translates ^^ before tokenization, including inside a control word.
+    # The supported format also excludes category changes, macro construction,
+    # custom commands and unreviewed package/environment file readers.
+    need('^^' not in text, 'unbound historical translation syntax')
+    need(all(c in '\t\r\n' or unicodedata.category(c) not in {'Cc','Cf','Cs'} for c in text),
+         'unsupported historical control or formatting character')
+    words={
+        'documentclass','usepackage','begin','end','author','title','date',
+        'maketitle','section','subsection','subsubsection','paragraph','emph',
+        'textbf','textit','texttt','textrm','text','footnote','cite','bibitem',
+        'label','ref','eqref','pageref','url','href','hypersetup','newtheorem',
+        'setlength','parindent','parskip','baselineskip','linewidth','textwidth',
+        'hfill','vfill','quad','qquad','noindent','sloppy','fussy','enlargethispage',
+        'item','centering','small','footnotesize','scriptsize','tiny','large',
+        'Large','LARGE','huge','Huge','rm','mathrm','mathbf','mathbb','mathcal',
+        'mathit','mathsf','operatorname','frac','tfrac','dfrac','sqrt','bar','hat',
+        'overline','underline','left','right','big','Big','bigl','bigr','Bigl',
+        'Bigr','langle','rangle','lceil','rceil','lfloor','rfloor','vert','Vert',
+        'sum','prod','int','lim','min','max','inf','sup','log','ln','exp','sin',
+        'cos','tan','det','dim','ker','Pr','in','notin','subset','subseteq',
+        'supset','supseteq','cup','cap','emptyset','forall','exists','neg','land',
+        'lor','implies','iff','to','mapsto','rightarrow','leftarrow',
+        'Rightarrow','Leftarrow','Leftrightarrow','Longleftrightarrow',
+        'le','leq','ge','geq','ne','neq','equiv','approx','sim','simeq','cong',
+        'propto','times','cdot','pm','mp','infty','partial','nabla','ell','square',
+        'alpha','beta','gamma','delta','epsilon','varepsilon','zeta','eta',
+        'theta','vartheta','iota','kappa','lambda','mu','nu','xi','pi','varpi',
+        'rho','varrho','sigma','varsigma','tau','upsilon','phi','varphi','chi',
+        'psi','omega','Gamma','Delta','Theta','Lambda','Xi','Pi','Sigma',
+        'Upsilon','Phi','Psi','Omega','toprule','midrule','bottomrule','hline',
+        'multicolumn','cline','ldots','cdots','vdots','ddots',
+    }
+    symbols=set('\\{}%$&#_~^ ,;:!/.=|()-[]\'"`\n\r\t')
+    tokens=[];plain=[];i=0
+    while i<len(text):
+        if text[i]=='%':
+            ends=[n for n in (text.find('\n',i),text.find('\r',i)) if n>=0]
+            i=min(ends) if ends else len(text)
+        elif text[i]=='\\':
+            start=i;i+=1
+            need(i<len(text), 'unsupported trailing historical control escape')
+            if text[i].isascii() and (text[i].isalpha() or text[i]=='@'):
+                begin=i
+                while i<len(text) and text[i].isascii() and (text[i].isalpha() or text[i]=='@'):i+=1
+                word=text[begin:i]
+                need(word in words, 'unbound historical or unsupported control word: '+word)
+                tokens.append((word,len(''.join(plain))))
+            else:
+                need(text[i] in symbols, 'unsupported historical control symbol')
+                i+=1
+            plain.append(text[start:i])
+        else:
+            plain.append(text[i]);i+=1
+    clean=''.join(plain)
+    # Bind every admitted file-loading markup operation to a fixed cache role.
+    # Whitespace after the command is accepted; macro-valued arguments are not.
+    for word,pos in tokens:
+        tail=clean[pos:]
+        if word in {'documentclass','usepackage'}:
+            match=re.match(r'\\'+word+r'\s*(?:\[([^]\n]*)\])?\s*\{([^{}\\]*)\}',tail)
+            need(match is not None, 'literal pinned-cache package and class declaration')
+            options,names=match.groups();names=names.split(',')
+            if word=='documentclass':
+                need(names==['article'] and options in {None,'10pt','11pt','12pt'}, 'only pinned-cache article class')
+            else:
+                need(all(n in {'geometry','amsmath','amssymb','amsthm','booktabs','microtype','hyperref'} for n in names), 'only fixed pinned-cache packages')
+                need(options is None or names==['hyperref'] and options=='hidelinks'
+                     or names==['geometry'] and re.fullmatch(r'margin=(?:[0-9]+(?:\.[0-9]+)?|\.[0-9]+)(?:in|cm|mm|pt)',options) is not None,
+                     'only fixed pinned-cache package options')
+        elif word in {'begin','end'}:
+            match=re.match(r'\\'+word+r'\s*\{([^{}\\]*)\}',tail)
+            need(match is not None and match[1] in {'document','abstract','equation','equation*',
+                 'align','align*','aligned','gather','gather*','split','pmatrix','bmatrix','matrix',
+                 'cases','center','tabular','thebibliography','itemize','enumerate','description',
+                 'theorem','proposition','corollary','lemma','definition','remark','proof'},
+                 'only fixed historical markup environments')
+        elif word=='newtheorem':
+            match=re.match(r'\\newtheorem\s*\{([^{}\\]*)\}\s*\{([^{}\\]*)\}',tail)
+            need(match is not None and match[1] in {'theorem','proposition','corollary','lemma','definition','remark'}
+                 and match[2]==match[1].capitalize(), 'only fixed historical theorem environment declaration')
+        elif word=='hypersetup':
+            need(re.match(r'\\hypersetup\s*\{hidelinks\}',tail) is not None,
+                 'only fixed historical hyperlink options')
     return original
 
 def require_pdf_envelope(pdf):
@@ -271,7 +355,7 @@ def _derive(root, base, authority, out, load):
         'predecessor':{'path':str(base),'manifest':binding(base / 'SCOPED_RELEASE_MANIFEST.json'),
                        'publication_binding':binding(base / 'PUBLICATION_BINDING.json')},
         'authority':deepcopy(authority),
-        'execution_sources':[{'name':n,'path':str(Path(root) / GATES / n),'sha256':h}
+        'execution_sources':[{'name':n,'path':str(Path(root) / frozen_source_relative(n)),'sha256':h}
                              for n,h in sorted(_FROZEN_HASHES.items())],
         'uploads':[{'filename':n,'sha256':d.digest(b)} for n,b in sorted(expected.items())],
         'archive_members':d.member_inventory(members),

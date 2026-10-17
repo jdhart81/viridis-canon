@@ -12,6 +12,7 @@ import signal
 import stat
 import subprocess
 import sys
+import threading
 import time
 import unittest
 
@@ -206,6 +207,38 @@ def seconds(value, cap=WHOLE_JOB_SECONDS):
     return value
 
 
+def require_native_supervision():
+    """No auto-reaping handler or competing Python thread may lose the leader."""
+    need(signal.getsignal(signal.SIGCHLD) == signal.SIG_DFL,
+         "SIGCHLD_DEFAULT_HANDLER_REQUIRED")
+    need(threading.current_thread() is threading.main_thread() and
+         threading.active_count() == 1, "SINGLE_THREAD_NATIVE_SUPERVISION_REQUIRED")
+    need(all(hasattr(os, name) for name in (
+        "waitid", "WNOWAIT", "P_PID", "WEXITED", "WNOHANG",
+        "CLD_EXITED", "CLD_KILLED", "CLD_DUMPED", "getpgid", "getsid", "killpg")),
+        "UNSUPPORTED_NATIVE_SUPERVISION")
+
+
+def reserved_child_state(process):
+    """Observe this actual Popen child without consuming its PID reservation."""
+    require_native_supervision()
+    need(type(process) is subprocess.Popen and process.returncode is None,
+         "ACTUAL_UNREAPED_CHILD_REQUIRED")
+    try:
+        state = os.waitid(os.P_PID, process.pid, os.WEXITED | os.WNOHANG | os.WNOWAIT)
+    except ChildProcessError as error:
+        raise ValueError("NATIVE_CHILD_RESERVATION_LOST") from error
+    need(state is None or state.si_pid == process.pid, "NATIVE_CHILD_IDENTITY")
+    return state
+
+
+def native_returncode(state):
+    if state.si_code == os.CLD_EXITED:
+        return state.si_status
+    need(state.si_code in {os.CLD_KILLED, os.CLD_DUMPED}, "NATIVE_CHILD_EXIT_KIND")
+    return -state.si_status
+
+
 def group_exists(pid):
     try:
         os.killpg(pid, 0)
@@ -214,31 +247,40 @@ def group_exists(pid):
         return False
 
 
-def signal_group(pid, sig):
+def signal_group(process, sig):
+    # A live or zombie *own child* reserves this PID/PGID until our last signal.
+    # Never accept a reported integer/JSON PID as a substitute for that child.
+    reserved_child_state(process)
+    need(sig in {signal.SIGTERM, signal.SIGKILL}, "CLOSED_GROUP_SIGNAL")
+    need(os.getpgid(process.pid) == os.getsid(process.pid) == process.pid,
+         "ACTUAL_CHILD_SESSION_GROUP_REQUIRED")
     try:
-        os.killpg(pid, sig)
+        os.killpg(process.pid, sig)
     except ProcessLookupError:
         pass
 
 
 def cleanup_group(process, grace=TERM_GRACE_SECONDS):
     started = time.monotonic()
-    signal_group(process.pid, signal.SIGTERM)
+    seconds(grace, TERM_GRACE_SECONDS)
+    signal_group(process, signal.SIGTERM)
     term_deadline = started + grace
-    while True:
-        process.poll()  # Reap our own exited leader BEFORE the independent query.
-        if not group_exists(process.pid):  # EPERM always propagates as a failure.
-            need(process.poll() is not None, "LEADER_ESCAPED_OR_UNREAPED")
-            return time.monotonic() - started
-        if time.monotonic() >= term_deadline:
-            break
+    # The reserved zombie itself can keep the group visible. Do not poll/wait
+    # or infer descendant absence during TERM grace: either would lose the
+    # kernel reservation before the later KILL. The full grace stays bounded.
+    while time.monotonic() < term_deadline:
         time.sleep(min(0.01, max(0, term_deadline - time.monotonic())))
-    signal_group(process.pid, signal.SIGKILL)
+    signal_group(process, signal.SIGKILL)  # Last possible nonzero group signal.
     post_kill_deadline = time.monotonic() + REAP_SECONDS
     while True:
-        process.poll()
+        if process.returncode is None:
+            try:
+                process.wait(timeout=max(0, post_kill_deadline - time.monotonic()))
+            except subprocess.TimeoutExpired as error:
+                raise ValueError("LEADER_NOT_REAPED_AFTER_LAST_SIGNAL") from error
+        # After reap: ONLY group-absence probes, never another group signal.
         if not group_exists(process.pid):
-            need(process.poll() is not None, "LEADER_ESCAPED_OR_UNREAPED")
+            need(process.returncode is not None, "LEADER_ESCAPED_OR_UNREAPED")
             return time.monotonic() - started
         need(time.monotonic() < post_kill_deadline, "PROCESS_GROUP_STILL_PRESENT_AFTER_KILL")
         time.sleep(min(0.01, max(0, post_kill_deadline - time.monotonic())))
@@ -246,22 +288,30 @@ def cleanup_group(process, grace=TERM_GRACE_SECONDS):
 
 def run_bounded_command(argv, cwd, deadline, grace=TERM_GRACE_SECONDS):
     """One absolute active deadline shared across every phase; never per-child reset."""
+    require_native_supervision()  # Fail unsupported/SIGCHLD state BEFORE child.
     remaining = deadline - time.monotonic()
     need(remaining > 0, "ACTIVE_BUDGET_EXHAUSTED")
     started = time.monotonic()
     process = subprocess.Popen(argv, cwd=cwd, start_new_session=True)
     timed_out = False
     try:
-        try:
-            returncode = process.wait(timeout=remaining)
-        except subprocess.TimeoutExpired:
-            timed_out = True
-            returncode = None
+        while True:
+            state = reserved_child_state(process)
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                timed_out = True
+                returncode = None
+                break
+            if state is not None:
+                returncode = native_returncode(state)
+                break
+            time.sleep(min(0.01, remaining))
     finally:
         cleanup_seconds = cleanup_group(process, grace)
+    need(timed_out or process.returncode == returncode, "NATIVE_EXIT_STATUS_CHANGED")
     return {"returncode": returncode, "timed_out": timed_out,
             "seconds": time.monotonic() - started, "cleanup_seconds": cleanup_seconds,
-            "leader_reaped": process.poll() is not None, "group_absent": True}
+            "leader_reaped": process.returncode is not None, "group_absent": True}
 
 
 def context(revision, source_head):

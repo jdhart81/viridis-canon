@@ -76,6 +76,22 @@ def causal_mutant(kind):
         count = 0
 
         def visit_FunctionDef(self, node):
+            if kind == "REAP_BEFORE_GROUP_SIGNAL" and node.name == "cleanup_group":
+                matches = [index for index, item in enumerate(node.body)
+                           if isinstance(item, ast.Expr) and isinstance(item.value, ast.Call)
+                           and isinstance(item.value.func, ast.Name)
+                           and item.value.func.id == "signal_group"]
+                if len(matches) != 2:
+                    raise AssertionError("Reserved-leader signal mutation shape drift")
+                # The named real natural-exit oracle has observed WNOWAIT exit
+                # before cleanup; poll consumes exactly that genuine child.
+                # Its independent pre-signal oracle must stop the unsafe request
+                # BEFORE any OS signal, without simulating a reused PID.
+                node.body.insert(matches[0], ast.copy_location(ast.Expr(value=ast.Call(
+                    func=ast.Attribute(value=ast.Name(id="process", ctx=ast.Load()),
+                                       attr="poll", ctx=ast.Load()), args=[], keywords=[])), node.body[matches[0]]))
+                self.count += 1
+                return node
             if kind == "POST_KILL_ABSENCE_QUERY_BYPASS" and node.name == "cleanup_group":
                 matches = [index for index, item in enumerate(node.body)
                            if isinstance(item, ast.Assign) and any(
@@ -90,7 +106,7 @@ def causal_mutant(kind):
                         for item in ast.walk(loop)):
                     raise AssertionError("Post-KILL proof loop missing")
                 # Bypass exactly the bounded post-KILL proof, leaving TERM,
-                # KILL and the ordinary pre-KILL group query unchanged.
+                # KILL and the reserved-leader TERM grace unchanged.
                 node.body[-1] = ast.copy_location(ast.Return(value=ast.BinOp(
                     left=ast.Call(func=ast.Attribute(value=ast.Name(id="time", ctx=ast.Load()),
                                                     attr="monotonic", ctx=ast.Load()), args=[], keywords=[]),
@@ -131,6 +147,21 @@ def isolated_function(function, **overrides):
     namespace.update(overrides)
     return types.FunctionType(function.__code__, namespace, function.__name__,
                               function.__defaults__, function.__closure__)
+
+
+def observed_reserved_cleanup(testcase, cleanup=runner.cleanup_group):
+    """Transparent actual-OS signal oracle; never report fabricated absence."""
+    observations = []
+    def before_signal(process, sig):
+        try:
+            state = os.waitid(os.P_PID, process.pid, os.WEXITED | os.WNOHANG | os.WNOWAIT)
+        except ChildProcessError as error:
+            raise testcase.failureException("ACTUAL_LEADER_REAPED_BEFORE_GROUP_SIGNAL") from error
+        testcase.assertIsNone(process.returncode, "ACTUAL_LEADER_REAPED_BEFORE_GROUP_SIGNAL")
+        testcase.assertTrue(state is None or state.si_pid == process.pid)
+        observations.append({"pid": process.pid, "signal": sig, "native_exit_observed": state is not None})
+        runner.signal_group(process, sig)  # Actual signal; source guard remains intact.
+    return isolated_function(cleanup, signal_group=before_signal), observations
 
 
 class LoaderControls(unittest.TestCase):
@@ -390,9 +421,17 @@ class DeadlineControls(unittest.TestCase):
                     raise AssertionError("Unbounded inert wait")
                 self.now += max(delay, 0.000001)
         clock, signals, queries = Clock(), [], []
-        process = types.SimpleNamespace(pid=4242, poll=lambda: 0)
-        def signal_group(pid, sig):
-            signals.append((pid, sig))
+        process = types.SimpleNamespace(pid=4242, returncode=None)
+        def wait(timeout):
+            # Negative-only fake leader reaps after both recorded signals. The
+            # group is still ALWAYS present: this cannot prove real cleanup.
+            self.assertEqual(len(signals), 2)
+            process.returncode = 0
+            return 0
+        process.wait = wait
+        def signal_group(process, sig):
+            self.assertIsNone(process.returncode)
+            signals.append((process.pid, sig))
         def group_exists(pid):
             queries.append((pid, len(signals), clock.now))
             return True
@@ -446,7 +485,8 @@ class DeadlineControls(unittest.TestCase):
                 return process
             # A transparent wrapper captures the genuine Popen PID. The
             # command, cleanup, actual signals and real clock remain intact.
-            command = isolated_function(runner.run_bounded_command,
+            cleanup, signals = observed_reserved_cleanup(self)
+            command = isolated_function(runner.run_bounded_command, cleanup_group=cleanup,
                 subprocess=types.SimpleNamespace(Popen=observed_popen,
                                                  TimeoutExpired=runner.subprocess.TimeoutExpired))
             started = time.monotonic()
@@ -465,6 +505,7 @@ class DeadlineControls(unittest.TestCase):
             self.assertTrue(result["timed_out"])
             self.assertTrue(result["leader_reaped"])
             self.assertTrue(result["group_absent"])
+            self.assertEqual([row["signal"] for row in signals], [runner.signal.SIGTERM, runner.signal.SIGKILL])
             self.assertEqual((Path(directory) / "child-ready").read_text(), "ready")
             self.assertEqual((Path(directory) / "child-term").read_text(), "TERM")
             self.assertEqual((Path(directory) / "leader-term").read_text(), "TERM")
@@ -485,6 +526,99 @@ class DeadlineControls(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "BUDGET_EXHAUSTED"):
                 runner.run_bounded_command([sys.executable, "-c", "raise SystemExit(99)"],
                                            directory, deadline, grace=0.02)
+
+
+class NativePrerequisiteControls(unittest.TestCase):
+    def test_nondefault_sigchld_refuses_before_any_child_start(self):
+        calls = []
+        def forbidden(*args, **kwargs):
+            calls.append((args, kwargs))
+            raise AssertionError("CHILD_STARTED_BEFORE_NATIVE_PREREQUISITE")
+        command = isolated_function(runner.run_bounded_command,
+                                    subprocess=types.SimpleNamespace(Popen=forbidden))
+        original = runner.signal.getsignal(runner.signal.SIGCHLD)
+        try:
+            for handler in (runner.signal.SIG_IGN, lambda *_: None):
+                with self.subTest(handler=str(handler)):
+                    runner.signal.signal(runner.signal.SIGCHLD, handler)
+                    with self.assertRaisesRegex(ValueError, "SIGCHLD_DEFAULT_HANDLER_REQUIRED"):
+                        command([sys.executable, "-c", "pass"], Path.cwd(), time.monotonic() + 1)
+                    self.assertEqual(calls, [])
+        finally:
+            runner.signal.signal(runner.signal.SIGCHLD, original)
+
+    def test_missing_waitid_refuses_before_any_child_start(self):
+        # Deliberate capability-negative logic fixture, never a simulated
+        # native positive or an unsupported-platform qualification claim.
+        class MissingWaitid:
+            def __getattr__(self, name):
+                if name == "waitid":
+                    raise AttributeError(name)
+                return getattr(os, name)
+        calls = []
+        def forbidden(*args, **kwargs):
+            calls.append((args, kwargs))
+            raise AssertionError("CHILD_STARTED_ON_UNSUPPORTED_NATIVE_PLATFORM")
+        prerequisite = isolated_function(runner.require_native_supervision, os=MissingWaitid())
+        command = isolated_function(runner.run_bounded_command,
+            require_native_supervision=prerequisite, subprocess=types.SimpleNamespace(Popen=forbidden))
+        with self.assertRaisesRegex(ValueError, "UNSUPPORTED_NATIVE_SUPERVISION"):
+            command([sys.executable, "-c", "pass"], Path.cwd(), time.monotonic() + 1)
+        self.assertEqual(calls, [])
+
+
+class NativeReservationControls(unittest.TestCase):
+    def natural_exit_oracle(self, cleanup=runner.cleanup_group, exit_code=0):
+        with tempfile.TemporaryDirectory() as directory:
+            actual = []
+            def popen(*args, **kwargs):
+                process = runner.subprocess.Popen(*args, **kwargs)
+                actual.append(process)
+                return process
+            checked_cleanup, signals = observed_reserved_cleanup(self, cleanup)
+            command = isolated_function(runner.run_bounded_command,
+                cleanup_group=checked_cleanup, subprocess=types.SimpleNamespace(Popen=popen))
+            result = command([sys.executable, "-I", "-B", "-c", "raise SystemExit(" + str(exit_code) + ")"],
+                             directory, time.monotonic() + 3, grace=0.02)
+            self.assertEqual(len(actual), 1)
+            self.assertEqual(result["returncode"], exit_code)
+            self.assertFalse(result["timed_out"])
+            self.assertEqual([row["signal"] for row in signals], [runner.signal.SIGTERM, runner.signal.SIGKILL])
+            self.assertTrue(all(row["native_exit_observed"] and row["pid"] == actual[0].pid for row in signals))
+            # Actual independent observations AFTER the helper returns. No
+            # nonzero signal is sent after the genuine child's native reap.
+            with self.assertRaises(ChildProcessError):
+                os.waitid(os.P_PID, actual[0].pid, os.WEXITED | os.WNOHANG | os.WNOWAIT)
+            with self.assertRaises(ProcessLookupError):
+                os.killpg(actual[0].pid, 0)
+            with self.assertRaises(ProcessLookupError):
+                os.kill(actual[0].pid, 0)
+            self.assertTrue(result["leader_reaped"])
+            self.assertTrue(result["group_absent"])
+
+    def test_natural_exit_reserves_actual_leader_through_every_group_signal(self):
+        for exit_code in (0, 7):
+            with self.subTest(exit_code=exit_code):
+                self.natural_exit_oracle(exit_code=exit_code)
+
+    def test_timeout_reserves_actual_leader_through_term_and_kill(self):
+        cleanup, signals = observed_reserved_cleanup(self)
+        command = isolated_function(runner.run_bounded_command, cleanup_group=cleanup)
+        with tempfile.TemporaryDirectory() as directory:
+            result = command([sys.executable, "-I", "-B", "-c", "import time;time.sleep(60)"],
+                             directory, time.monotonic() + 0.05, grace=0.02)
+        self.assertTrue(result["timed_out"])
+        self.assertEqual([row["signal"] for row in signals], [runner.signal.SIGTERM, runner.signal.SIGKILL])
+        with self.assertRaises(ProcessLookupError):
+            os.killpg(signals[0]["pid"], 0)
+
+    def test_reap_before_group_signal_mutant_is_killed_by_natural_exit_oracle(self):
+        self.natural_exit_oracle()
+        mutant = causal_mutant("REAP_BEFORE_GROUP_SIGNAL")
+        with self.assertRaisesRegex(self.failureException, "ACTUAL_LEADER_REAPED_BEFORE_GROUP_SIGNAL"):
+            self.natural_exit_oracle(cleanup=mutant["cleanup_group"])
+        print(json.dumps({"native_reserved_leader_mutants": 1, "killed": 1,
+                          "oracle": "test_natural_exit_reserves_actual_leader_through_every_group_signal"}))
 
 
 if __name__ == "__main__":

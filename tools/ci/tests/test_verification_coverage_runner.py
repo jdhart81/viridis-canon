@@ -197,7 +197,7 @@ class AggregateControls(unittest.TestCase):
         self.assertEqual(self.check()["skips"], 5)
 
     def test_missing_extra_and_duplicate_shards_refused(self):
-        for reports in (self.reports[:2], self.reports + [self.reports[0]],
+        for reports in ([], self.reports[:2], self.reports + [self.reports[0]],
                         [self.reports[0], self.reports[0], self.reports[2]]):
             with self.subTest(length=len(reports)), self.assertRaises(ValueError):
                 runner.aggregate(reports, self.value, self.binding, self.api, "success")
@@ -345,10 +345,18 @@ class RawSkipControls(unittest.TestCase):
         finally:
             sys.modules.pop(name)
 
-    def test_subtest_skip_remains_visible_after_parent_success(self):
+    def test_subtest_skip_remains_visible_independent_of_parent_outcome(self):
         report = self.exercise("subtest")
-        self.assertEqual(report["executions"][0]["outcome"], "ok")
+        self.assertEqual(len(report["executions"]), 1)
         self.assertNotEqual(report["skip_event_ids"][0], report["executions"][0]["id"])
+        # A skipped subTest need not be followed by parent addSuccess. The
+        # real skip event must survive either parent outcome.
+        parent_ok = copy.deepcopy(report)
+        parent_ok["executions"][0]["outcome"] = "ok"
+        value = {"primary": [["inert_raw_skip_subtest", [report["executions"][0]["id"]]]],
+                 "secondary": []}
+        with self.assertRaisesRegex(ValueError, "RAW_SKIP_EVENT_MULTISET"):
+            runner.validate_phase(parent_ok, value, "primary", "C")
 
     def test_class_skiptest_does_not_fake_started_test_executions(self):
         report = self.exercise("class")
@@ -366,7 +374,7 @@ class RawSkipControls(unittest.TestCase):
         with self.assertRaisesRegex(self.failureException, "RAW_SKIP_LEDGER_EVENT_LOST"):
             self.exercise("subtest", resultclass=mutant["RecordingResult"])
         print(json.dumps({"inert_raw_skip_ledger_mutants": 1, "killed": 1,
-                          "oracle": "test_subtest_skip_remains_visible_after_parent_success"}))
+                          "oracle": "test_subtest_skip_remains_visible_independent_of_parent_outcome"}))
 
 
 class DeadlineControls(unittest.TestCase):

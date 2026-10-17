@@ -1,0 +1,38 @@
+{
+  "aligned_challenge": {
+    "path": "RESEARCH_PIPELINE_v2/lean_certificates/Run-135/VERIFICATION_CHALLENGE_ALIGNED.lean",
+    "sha256": "ed7b51ec1a878f5e06f36f7a36146b97ac77b3475333c7e1d451cb41bb98982c"
+  },
+  "candidate": {
+    "path": "RESEARCH_PIPELINE_v2/lean_certificates/Run-135/VERIFICATION_CANDIDATE.lean",
+    "sha256": "e95ad53230883a723f5e3f0cc1d744e329ff5a36e91635f7f67eaf3703d5b21c"
+  },
+  "candidate_forbidden_constructs_empty": true,
+  "expected_theorem_names": [
+    "relevance_chain_identity",
+    "entropy_decomposition_deterministic",
+    "exact_sufficiency_preserves_relevance",
+    "approximate_sufficiency_loss_bound",
+    "sufficient_sanitization_nonvacuous"
+  ],
+  "external_mutation": false,
+  "introduced_sorry_count": 5,
+  "local_lean_execution": false,
+  "operation": "candidate-order challenge with only expected theorem proof bodies replaced by sorry",
+  "schema_version": 1,
+  "sealed_statement": {
+    "path": "RESEARCH_PIPELINE_v2/lean_certificates/Run-135/VERIFICATION_STATEMENT.lean",
+    "sha256": "e95ad53230883a723f5e3f0cc1d744e329ff5a36e91635f7f67eaf3703d5b21c"
+  },
+  "shared_declaration_order_source": "candidate",
+  "signature_sha256": {
+    "approximate_sufficiency_loss_bound": "f4c657e07c4ba23e4c5d218f0367864a6f9abab01aa9006d918cbead6d935667",
+    "entropy_decomposition_deterministic": "7b8d63a3c5ebe3092c30318e0d2f2f863021dcdcfd6eae25ea758874548484ed",
+    "exact_sufficiency_preserves_relevance": "1e987de5798c17b72288fe50c680e1d8ad859d0c2138db2cec1189d59968db3e",
+    "relevance_chain_identity": "1dc0389be0f7bcf97b097420c63dd872b78cd2f52541557ecceceb56477bc08b",
+    "sufficient_sanitization_nonvacuous": "0254b20637e177a4c5e3597a3cfed23ddb495a6fb2086cd20b148db75bd13ebe"
+  },
+  "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+  "status": "FROZEN",
+  "target_signatures_match_sealed_statement": true
+}

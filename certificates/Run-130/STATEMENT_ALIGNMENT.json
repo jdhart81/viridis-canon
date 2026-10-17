@@ -1,0 +1,36 @@
+{
+  "aligned_challenge": {
+    "path": "comparator-deploy/backlog/Run-130/VERIFICATION_CHALLENGE_ALIGNED.lean",
+    "sha256": "2ef5f3d081483d3a6e12c69bc9f78e1b84b778dd40a4ba7c11d69c73c9c883c9"
+  },
+  "candidate": {
+    "path": "comparator-deploy/backlog/Run-130/VERIFICATION_CANDIDATE.lean",
+    "sha256": "1260b3565b55ec536a94c59b13ac55cfadaa6e17f6b01b965e5d1014e609bd36"
+  },
+  "candidate_forbidden_constructs_empty": true,
+  "expected_theorem_names": [
+    "seed_routing_common_fraction_eq_min_cut_ratio",
+    "seed_routing_feasible_iff_cut_conditions",
+    "capacity_outside_active_bottleneck_irrelevant",
+    "scenario_intersection_certificate_le_each_scenario"
+  ],
+  "external_mutation": false,
+  "introduced_sorry_count": 4,
+  "local_lean_execution": false,
+  "operation": "candidate-order challenge with only expected theorem proof bodies replaced by sorry",
+  "schema_version": 1,
+  "sealed_statement": {
+    "path": "comparator-deploy/backlog/Run-130/VERIFICATION_CANDIDATE.lean",
+    "sha256": "1260b3565b55ec536a94c59b13ac55cfadaa6e17f6b01b965e5d1014e609bd36"
+  },
+  "shared_declaration_order_source": "candidate",
+  "signature_sha256": {
+    "capacity_outside_active_bottleneck_irrelevant": "010c9f76359305896a55247eb2feb34fde919c14f81a28cb386d99cc04d8f827",
+    "scenario_intersection_certificate_le_each_scenario": "867f37ccb4781184e9646afda29b8430fa3a55c031fb371ade03d8b206cc367e",
+    "seed_routing_common_fraction_eq_min_cut_ratio": "4be54950c2581cdf1d48bff51b37bdcdb2f720f3b888e7a7f71e1adf0fa7171f",
+    "seed_routing_feasible_iff_cut_conditions": "3b4649f510a5a8e6394ad8df6f13ca75a7398351eb9929e056f358c0e6ebe8b2"
+  },
+  "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+  "status": "FROZEN",
+  "target_signatures_match_sealed_statement": true
+}

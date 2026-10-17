@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "run_id": "Run-129_anytime-change-certificate",
+  "stage": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "claims": [
+    {
+      "claim_id": "C129-01",
+      "claim": "The heavy-tailed mixture M_n is a nonnegative mean-one martingale under the declared iid null.",
+      "status": "DERIVED_UNDER_ASSUMPTIONS",
+      "evidence": ["paper.tex", "verification.py", "verification_output.txt"],
+      "formal_proof_status": "PROPOSED_UNPROVED",
+      "exclusions": ["dependent nulls", "estimated or adaptively changed null without additional proof"]
+    },
+    {
+      "claim_id": "C129-02",
+      "claim": "Thresholding M_n at 1/alpha controls the probability of ever alarming under the declared null by alpha.",
+      "status": "DERIVED_FROM_VILLE_INEQUALITY",
+      "evidence": ["paper.tex", "verification_output.txt"],
+      "formal_proof_status": "PROPOSED_UNPROVED",
+      "exclusions": ["opportunistic restarts", "average-run-length equivalence"]
+    },
+    {
+      "claim_id": "C129-03",
+      "claim": "The true-change component pays log(1/alpha)+log[nu(nu+1)] evidence, an asymptotically 2 log nu late-change penalty.",
+      "status": "ALGEBRAIC_DERIVATION",
+      "evidence": ["paper.tex", "verification_output.txt"],
+      "formal_proof_status": "PROPOSED_UNPROVED",
+      "exclusions": ["optimality among all priors or detectors"]
+    },
+    {
+      "claim_id": "C129-04",
+      "claim": "For bounded iid correctly specified post-change log-likelihood increments with positive mean, the embedded component has the stated bounded-overshoot expected-delay corridor.",
+      "status": "DERIVED_UNDER_WALD_CONDITIONS",
+      "evidence": ["paper.tex", "verification_output.txt"],
+      "formal_proof_status": "PROPOSED_UNPROVED",
+      "exclusions": ["model mismatch", "unbounded increments without replacement conditions", "mixture equality rather than dominance"]
+    },
+    {
+      "claim_id": "C129-05",
+      "claim": "All 15 registered numerical and symbolic checks passed for the fixed Bernoulli instance and seed.",
+      "status": "COMPUTATIONALLY_VERIFIED",
+      "evidence": ["verification.py", "verification_output.txt"],
+      "formal_proof_status": "NOT_A_FORMAL_PROOF",
+      "exclusions": ["field efficacy", "all parameter values"]
+    },
+    {
+      "claim_id": "C129-06",
+      "claim": "The delay corridor induces an ideal Landauer-normalized erasure-work corridor only for the declared reversible binary-memory reset model.",
+      "status": "MODEL_DEPENDENT_COROLLARY",
+      "evidence": ["paper.tex", "verification_output.txt"],
+      "formal_proof_status": "PROPOSED_UNPROVED",
+      "exclusions": ["universal monitor energy", "sensing", "communications", "computation", "leakage", "finite-time overhead", "biology"]
+    }
+  ],
+  "claims_explicitly_not_made": [
+    "novelty established",
+    "significance established",
+    "formal proof complete",
+    "empirical ecological validation",
+    "universal thermodynamic lower bound for monitoring",
+    "canon, spine, ledger, publication, adoption, demand, delivery, payment, repeat use, or MRR readiness"
+  ]
+}

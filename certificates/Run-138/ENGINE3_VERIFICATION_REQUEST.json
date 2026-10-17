@@ -1,0 +1,56 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-138-GaianAlignmentCone-Comparator-attempt-1",
+  "root_candidate_id": "Run-138-GaianAlignmentCone-Comparator",
+  "attempt": 1,
+  "source_run": "Run-138",
+  "module": "GaianAlignmentCone",
+  "namespace": "Viridis.GaianSystems.AlignmentCone",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "1830f9cf99db8a26fb394dcdd5d343c866803495856f70258680ec9977ed4a73",
+  "input_sha256": {
+    "SEALED_paper.pdf": "e3921df05ae1728a39ee3f5107892a05a9580775447dfc88926897c211ff3a1e",
+    "SEALED_paper.tex": "5e84af5435cb09aa72dea63f01e5828766e2b2b43ec9074607ae4734b8578b3d",
+    "SEALED_CLAIM_INVENTORY.json": "5d2bb8981a257838f9a65772d86ba879a99650632eca24dfee0f6c1ccfed10c8",
+    "SEALED_RUN_MANIFEST.json": "f2cdbd3b3e115a2629bc199a9b85706d996039acaab9abbbc1a8ad58a398a094",
+    "CANDIDATE_AUTHORSHIP.json": "fc7576e6af49debbfaedd5b03810754b3e21ea4d561b7b1bee8c7813d17e53f7",
+    "VERIFICATION_CANDIDATE.lean": "1830f9cf99db8a26fb394dcdd5d343c866803495856f70258680ec9977ed4a73",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "0ddb1628c0ad7a0110044388519cce1dde218f0c1851a47338ff3f1e88a43b14",
+    "STATEMENT_ALIGNMENT.json": "7016ca7a7e266707e3f1f3aba5c98d205266152eafb495ebae96c8067355ac70"
+  },
+  "statement_alignment": {
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "sha256": "1830f9cf99db8a26fb394dcdd5d343c866803495856f70258680ec9977ed4a73"
+    },
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT.json",
+      "sha256": "7016ca7a7e266707e3f1f3aba5c98d205266152eafb495ebae96c8067355ac70"
+    }
+  },
+  "expected_theorem_names": [
+    "aggregate_projection_positive",
+    "aggregate_residual_bound",
+    "common_cone_closed_under_weighted_sum",
+    "alignment_floor_of_residual_bound",
+    "uniform_cone_alignment_floor",
+    "cancellation_gives_perfect_alignment",
+    "magnitude_masking_witness",
+    "gaian_alignment_nonvacuous"
+  ],
+  "nonvacuity_obligations": ["gaian_alignment_nonvacuous"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "candidate_authorship_binding": {
+    "author": "CODEX",
+    "receipt": "CANDIDATE_AUTHORSHIP.json",
+    "historical_provider_artifact_role": "DIAGNOSTIC_INPUT_ONLY_NOT_PROOF"
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

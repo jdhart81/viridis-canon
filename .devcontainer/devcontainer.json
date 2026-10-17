@@ -1,0 +1,23 @@
+{
+  "name": "Viridis Canon (Lean 4 + Mathlib)",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    }
+  },
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "16gb",
+    "storage": "32gb"
+  },
+  "postCreateCommand": "curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none && ~/.elan/bin/lake exe cache get && python3 certificates/verify_bundle.py",
+  "postAttachCommand": "echo 'Ready. Try: certificates/rerun.sh Run-129 --axioms-only  |  lake build  |  python3 -m canon_core build-os --out os-bundle'",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "leanprover.lean4"
+      ]
+    }
+  }
+}

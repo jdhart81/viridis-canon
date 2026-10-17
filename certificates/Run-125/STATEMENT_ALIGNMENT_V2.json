@@ -1,0 +1,40 @@
+{
+  "aligned_challenge": {
+    "path": "comparator-deploy/backlog/Run-125/VERIFICATION_CHALLENGE_ALIGNED_V2.lean",
+    "sha256": "2b958be648f24ffebb06af4c28abe31046ea1f52ea67832346fac150b5e80644"
+  },
+  "candidate": {
+    "path": "comparator-deploy/backlog/Run-125/VERIFICATION_CANDIDATE_V2.lean",
+    "sha256": "adb5eb9b25d9be09f75aa3fc2de64d982e2787b9d2d8de453745b22e601ac6ed"
+  },
+  "candidate_forbidden_constructs_empty": true,
+  "expected_theorem_names": [
+    "shared_channel_inverse",
+    "directional_gain_bounds",
+    "rank_deficient_unit_gain",
+    "worstcase_deadline",
+    "top_subspace_mean_cost",
+    "isotropic_rank_fraction"
+  ],
+  "external_mutation": false,
+  "introduced_sorry_count": 6,
+  "local_lean_execution": false,
+  "operation": "candidate-order challenge with only expected theorem proof bodies replaced by sorry",
+  "schema_version": 1,
+  "sealed_statement": {
+    "path": "comparator-deploy/backlog/Run-125/VERIFICATION_STATEMENT_V2.lean",
+    "sha256": "2b958be648f24ffebb06af4c28abe31046ea1f52ea67832346fac150b5e80644"
+  },
+  "shared_declaration_order_source": "candidate",
+  "signature_sha256": {
+    "directional_gain_bounds": "163142e9e0996672bd9e153d0f1b932ef11e34ba52b69e91a504a6d14409e8e6",
+    "isotropic_rank_fraction": "ef2ca62f36322b80e1ed88a3ac1f3ce5343d9c7f6493a406dc33db15ca34d2e3",
+    "rank_deficient_unit_gain": "dcc79113d3fbc50e9fddeb2c9f3e69f28770ab713c3c228bd60e52b82c5ce426",
+    "shared_channel_inverse": "cc1750845d68aef5ca44a9de286b78dee3f12227c59d27a1b7db3d57416a83ff",
+    "top_subspace_mean_cost": "013a76d4f20777fb0ad74d31a9cfd6bbf49878421d02707363364296c21e5736",
+    "worstcase_deadline": "085c12fa44780f1730d251d94463ca0f5f1c7f1f16101c66b3e96f8e828e5818"
+  },
+  "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+  "status": "FROZEN",
+  "target_signatures_match_sealed_statement": true
+}

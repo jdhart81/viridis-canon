@@ -1,0 +1,46 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-121-PaperFormalizationProof-Comparator-attempt-1",
+  "root_candidate_id": "Run-121-PaperFormalizationProof-Comparator",
+  "attempt": 1,
+  "source_run": "Run-121",
+  "module": "Run121Monolith",
+  "namespace": "Viridis.Run121",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "8e90823b3bf35caaaaa2804816392216fccae8f268038fd07b61525abcbafd1e",
+  "input_sha256": {
+    "SEALED_paper.pdf": "1c5cb4a3a5c8d40d15554f7a6268964b3acc25c6996c11842b5f26d654d6e239",
+    "SEALED_paper.tex": "c2369b55def3b370e86b40e4ccd6eb3d4b13c51c390a4622b1064b5fe8d37331",
+    "SEALED_CLAIM_INVENTORY.json": "d3863aed2a18f438d28d13c448d3ab91fd9aa720a648fbab3b68475519d229ec",
+    "SEALED_RUN_MANIFEST.json": "d7de050ce9587975ec1fbcb32c62bedc553b448e76ba7fbda3ef5645958550bb",
+    "VERIFICATION_STATEMENT.lean": "6d90c74247be843e629ce558b5863516f7eeba49ff8bb2f11efad02ac4463eb3",
+    "VERIFICATION_CANDIDATE.lean": "6d90c74247be843e629ce558b5863516f7eeba49ff8bb2f11efad02ac4463eb3"
+  },
+  "expected_theorem_names": [
+    "information_symbiosis_chain_rule",
+    "conditional_independence_no_positive_balance",
+    "net_symbiosis_cost_criterion",
+    "duplicate_and_xor_extremes"
+  ],
+  "nonvacuity_obligations": [
+    "chain_rule_nonvacuous",
+    "conditional_independence_nonvacuous",
+    "net_symbiosis_cost_nonvacuous",
+    "control_distributions_are_mass_functions",
+    "control_balances_distinct"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "monolith_receipt": "MONOLITH_RECEIPT.json",
+  "legacy_provenance": {
+    "candidate_source": "immutable Run-121 attempt-2 audited multi-module candidate",
+    "formal_declaration_source": "same frozen audited declaration set; Comparator independently rechecks types and proofs",
+    "aristotle_required_for_this_certificate": false
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

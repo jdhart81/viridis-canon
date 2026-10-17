@@ -1,0 +1,110 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 125,
+  "run_id": "Run-125",
+  "slug": "symbiotic-bandwidth-bound",
+  "title": "The Symbiotic Bandwidth Bound: Low-Rank Shared Channels Cannot Remove Worst-Case Thermodynamic Speed Limits",
+  "generated_at_utc": "2026-08-09T08:15:36Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-125_symbiotic-bandwidth-bound",
+  "selection": {
+    "area_id": "05",
+    "area": "Thermodynamic Speed Limits",
+    "lens": "Symbiosis",
+    "directive_kind": "locked_area",
+    "reason": "tier_starvation_floor",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true,
+    "combination_guard": "PASS_DISTANCE_18_FROM_RUN_107"
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "significance": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 18,
+    "failed": 0,
+    "checks": 18,
+    "failure_conditions_triggered": 0,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "scope": "whitened finite-dimensional quadratic dissipation model, rank-r orthogonal-projector mobility addition, exact inverse and gain identities, null-space worst-case deadline, covariance top-subspace design, isotropic rank fraction, random projector stress tests, convergence, distribution-shift, sign, full-rank, and finite-time controls"
+  },
+  "aristotle": {
+    "status": "NOT_RUN",
+    "submitted": false
+  },
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus thermodynamic-control methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 126,
+    "kind": "area",
+    "area_id": "09",
+    "area": "Intelligence Capacity",
+    "lens": "Alignment",
+    "reason": "tier_starvation_floor"
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs --keep-intermediates paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 5,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "visual_review": "PASS_ALL_5_PAGES_RENDERED_AT_150_DPI"
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Viridis corpus and current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "historical Viridis research artifacts read with attribution preserved and no historical text rewritten"
+      }
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "3b3d502601674a1906819d53514a634d149bd2425ead45a5583b919041d95255",
+    "resulting_nightly_state_sha256": "350d856ec8f6eceb5a3eb1ebf4e160bb6985b08b4e4ae5d6d0218bff44179c09",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "CEO_ALERT.md": "9d5bfc016990800b8964503b7080a7ce0b0213c278d88a21646566d5dd9643c6",
+      "CLAIM_INVENTORY.json": "33497d6c47810113fe18c2d18692c05190a81e5674fd1bb3fd756578c073e079",
+      "INPUT_STATE_SNAPSHOT.json": "4ca57f9891749c416b42c94db18e39f109a9e1dd8f43804a187cb3181e36f973",
+      "PAPER_PACKAGE_MANIFEST.json": "787bf10881ba3c2335045cb6b01df4a38d2615b9928bb6e604f15058f5df0e6a",
+      "PREREGISTRATION.md": "390b4f393d504104fa47daa711fa769d4cc94928c230e13ac4ff6ddf34f590c9",
+      "README.md": "0d8c9995304227b675297ba4bf5e8a90178f1b7f4820eaae78555424cad81730",
+      "SOURCE_LEDGER.json": "d7236972cb32e1f06376036c99298b03c6b2e35fe630494a47572e80a96b0cee",
+      "business_EV-125.md": "a300d20d095769f7d622ae3029aafce53502e34f4f09c8003d4e6aea0a3dac6c",
+      "finding.md": "810618589893282b468a154b03dc33cebf7dd4386911b646382da9a86ef689ac",
+      "paper.aux": "3e46cd848cdf1718643409776786b267d685ef875c9d18ef06ce10ef00d5c203",
+      "paper.log": "301fc33e1fe41c7887bbbe76494a1600b0f4d47754e32687262c4e5b2eee7e2a",
+      "paper.out": "ab8f54b643e079ea13958faf45307aade2aeaf26d744dbc48bb817d6b3ece831",
+      "paper.pdf": "c0a1605386099f7bc69ad3d80a53f31ef5134b258ea3b48053930100ff59183e",
+      "paper.tex": "eb771d954d02974fca557d4cff5e66363e1fb7503d32d86c70078dcc1c2c702e",
+      "verification.py": "b364865c483bd1d5885862878152601fe17d688549f2f793bf7db600e60de16e",
+      "verification_output.txt": "d9cea9baf07edf495365efe962e76e300dee1e487ad2f9376b74dbf1036d172b"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed only after sealing; its hash is recorded in NIGHTLY_STATE.md and INDEX.md because a manifest cannot contain its own cryptographic hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {
+    "published": false,
+    "pushed": false,
+    "submitted": false,
+    "outreach_sent": false,
+    "external_account_mutated": false,
+    "money_moved": false
+  }
+}

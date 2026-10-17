@@ -1,0 +1,20 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.IntelligenceBound.SymbioticAccounting.conjunctive_rate_upper_bound_as_frozen_is_false",
+    "Viridis.IntelligenceBound.SymbioticAccounting.conjunctive_rate_upper_bound",
+    "Viridis.IntelligenceBound.SymbioticAccounting.symbiotic_allocation_attains",
+    "Viridis.IntelligenceBound.SymbioticAccounting.normalized_rates_equal",
+    "Viridis.IntelligenceBound.SymbioticAccounting.weighted_harmonic_le_max",
+    "Viridis.IntelligenceBound.SymbioticAccounting.two_partner_closed_form",
+    "Viridis.IntelligenceBound.SymbioticAccounting.additive_rate_upper_bound_as_frozen_is_false",
+    "Viridis.IntelligenceBound.SymbioticAccounting.additive_rate_upper_bound",
+    "Viridis.IntelligenceBound.SymbioticAccounting.symbiotic_accounting_nonvacuous"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

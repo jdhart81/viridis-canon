@@ -1,0 +1,19 @@
+{
+  "schema_version": "VRS-CLAIM-INVENTORY-1",
+  "run": 132,
+  "claims": [
+    {"id":"C1","class":"FORMAL_TARGET","claim":"TV-range certificate for simplex weights","status":"CORRECTED_ZERO_SORRY_CANDIDATE_AWAITING_COMPARATOR","target":"tv_range_certificate"},
+    {"id":"C2","class":"FORMAL_TARGET","claim":"Strict charter margin prevents allowed rank reversal","status":"CORRECTED_ZERO_SORRY_CANDIDATE_AWAITING_COMPARATOR","target":"strict_rank_stability"},
+    {"id":"C3","class":"FORMAL_TARGET","claim":"The supremum over the subtype of valid simplex weights is the maximum component contrast, including when every contrast is negative","status":"CORRECTED_ZERO_SORRY_CANDIDATE_AWAITING_COMPARATOR","target":"unrestricted_simplex_optimum"},
+    {"id":"C4","class":"NUMERIC","claim":"Final adversarial gate passed 15 of 15 checks after one preserved initial failure","support":"verification_output.txt and VERIFICATION_FAILURE_NOTE.md"},
+    {"id":"C5","class":"CITED","claim":"Composite biodiversity units face aggregation, normalization, gaming, and governance risks","support":"SOURCE_LEDGER.json"},
+    {"id":"C6","class":"ASSUMED","claim":"Components, normalization, direction, and observations are frozen and aggregation is linear"},
+    {"id":"C7","class":"DEFERRED","claim":"The certificate predicts real ecological or credit-integrity outcomes","reason":"No empirical dataset, causal design, or field validation"},
+    {"id":"C8","class":"CONJECTURED","claim":"A Weight-Charter Robustness Audit could reduce costly metric disputes","status":"BUSINESS_HYPOTHESIS_ONLY"},
+    {"id":"C9","class":"FORMAL_CORRECTION","claim":"The original proof-indexed supremum transcription is false for an all-negative contrast because invalid weights contribute an empty real supremum of zero","status":"COUNTEREXAMPLE_PRESERVED","target":"unrestricted_simplex_optimum_counterexample"}
+  ],
+  "formal_verification": false,
+  "aristotle_status": "NOT_RUN",
+  "novelty": "UNASSESSED",
+  "integrity_flags": []
+}

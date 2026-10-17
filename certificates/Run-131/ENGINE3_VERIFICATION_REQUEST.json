@@ -1,0 +1,58 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-131-CognitiveSwitchingHysteresis-Comparator-attempt-1",
+  "root_candidate_id": "Run-131-CognitiveSwitchingHysteresis-Comparator",
+  "attempt": 1,
+  "source_run": "Run-131",
+  "module": "CognitiveSwitchingHysteresis",
+  "namespace": "Viridis.Cognition.CognitiveSwitchingHysteresis",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "842943f1da4b1dc2e55b07d2f9eb0edbeffe381e82bc44b51cabd08296295412",
+  "input_sha256": {
+    "SEALED_paper.pdf": "5ad1d8d02db0d3c3b75b78f41c7670e5adc852d9c8eb2720d31c6f565c62d92e",
+    "SEALED_paper.tex": "2b2fa0229787647ffdac5610b47d5965f4d94211933331ea79194a1c6a34dfa3",
+    "SEALED_CLAIM_INVENTORY.json": "d31be5ba3f43090e08b26c26ecc7339b06f4b98999aa74048829b00267f38bf8",
+    "SEALED_RUN_MANIFEST.json": "ff58288d8cd9b96ae72c97c050b8c399341a76ea964d460f80c54202826beb4b",
+    "VERIFICATION_CANDIDATE.lean": "842943f1da4b1dc2e55b07d2f9eb0edbeffe381e82bc44b51cabd08296295412",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "13803e64077b8a4c7919af31f348aeb19b785f14dabb59fe876cffc6210d98c8",
+    "STATEMENT_ALIGNMENT.json": "037ad1b46d259e1265c9f27ed8bc024989451b9256bae481e7fee2b93693ade3"
+  },
+  "statement_alignment": {
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+    "sealed_statement": {
+      "filename": "VERIFICATION_CANDIDATE.lean",
+      "sha256": "842943f1da4b1dc2e55b07d2f9eb0edbeffe381e82bc44b51cabd08296295412"
+    },
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT.json",
+      "sha256": "037ad1b46d259e1265c9f27ed8bc024989451b9256bae481e7fee2b93693ade3"
+    }
+  },
+  "expected_theorem_names": [
+    "threshold_order",
+    "band_width_identity",
+    "closed_loop_area_identity",
+    "bias_translation",
+    "directional_cost_recovery"
+  ],
+  "nonvacuity_obligations": [
+    "cshc_nonvacuous"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "legacy_provenance": {
+    "candidate_source": "zero-sorry finalized Run-131 Lean source; historical provider receipt is provenance only",
+    "fresh_comparator_verification_required": true,
+    "aristotle_required_for_this_certificate": false
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

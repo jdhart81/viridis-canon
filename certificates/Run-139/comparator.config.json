@@ -1,0 +1,17 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.ThermodynamicEconomics.RetrofitWaterFilling.clippedAllocation_nonnegative",
+    "Viridis.ThermodynamicEconomics.RetrofitWaterFilling.clippedAllocation_le_one",
+    "Viridis.ThermodynamicEconomics.RetrofitWaterFilling.interior_stationarity",
+    "Viridis.ThermodynamicEconomics.RetrofitWaterFilling.coordinate_improvement_identity",
+    "Viridis.ThermodynamicEconomics.RetrofitWaterFilling.embodied_burden_lowers_benefit",
+    "Viridis.ThermodynamicEconomics.RetrofitWaterFilling.retrofit_allocation_nonvacuous"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

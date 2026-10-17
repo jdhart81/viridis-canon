@@ -247,8 +247,13 @@ class ClosedDataLoader:
   for digest,paths in self.source_paths.items():
    if filename in paths and digest in self.post_load_data:
     data=self.post_load_data[digest]
-    if set(data)!={'_FROZEN_HASHES','builtins'}:raise ValueError('CLOSED_ACCESS_PLATFORM_DATA_KEYS')
+    if set(data)!={'_FROZEN_HASHES','builtins','LABEL_AUTHORITY','NATIVE_RENDERER','RENDER_CACHE'}:raise ValueError('CLOSED_ACCESS_PLATFORM_DATA_KEYS')
     if Path(filename).name!='nightly_manuscript_access.py':raise ValueError('FIXED_ACCESS_PLATFORM_DATA_SOURCE')
+    binding=data['LABEL_AUTHORITY']
+    if not isinstance(binding,dict)or set(binding)!={'path','sha256'}or not Path(binding['path']).is_relative_to(self.root):raise ValueError('CLOSED_LABEL_AUTHORITY_FIXTURE_DATA')
+    if not Path(data['NATIVE_RENDERER']).is_relative_to(self.root):raise ValueError('CLOSED_NATIVE_RENDERER_FIXTURE_DATA')
+    cache=data['RENDER_CACHE']
+    if not isinstance(cache,dict)or set(cache)!={'path','sha256'}or not Path(cache['path']).is_relative_to(self.root):raise ValueError('CLOSED_RENDER_CACHE_FIXTURE_DATA')
     globals.update(data)
   return result
  def load(self,path):

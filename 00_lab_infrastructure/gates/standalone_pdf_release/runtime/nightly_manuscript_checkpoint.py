@@ -25,14 +25,17 @@ def stage_checkpoint(root, *args, **kwargs):
 
 
 def review_checkpoint(root, note_path, authority, *, review_invocation):
+    manifest=json.loads(digest.read_regular(Path(note_path)/'SCOPED_RELEASE_MANIFEST.json'))
+    if manifest.get('standard')==access.LABELLED_STANDARD:
+        return access.review_labelled(root,note_path,authority,review_invocation=review_invocation)
     with access.frozen_sources(root) as load:
         return load('nightly_release_checkpoint').review_checkpoint(
             root, note_path, authority, review_invocation=review_invocation)
 
 
-def prepare_access(root, note_path, out, authority, *, render):
+def prepare_access(root, note_path, out, authority, *, render=None):
     """Only an already genuinely reviewed immutable base may be extended."""
-    return access.prepare(root, note_path, out, authority, render=render)
+    return access.prepare_labelled(root, note_path, out, authority, render=render)
 
 
 def new_note_specs(root, notes, authority, *, week, account_discovery,
@@ -75,7 +78,7 @@ def new_note_specs(root, notes, authority, *, week, account_discovery,
 
 def stage_weekly_package(root, out, week, notes, authority, source_metadata,
                          publication_date, *, account_discovery,
-                         predecessor_registration=None, render):
+                         predecessor_registration=None, render=None):
     specs, discovery = new_note_specs(root, notes, authority, week=week,
         account_discovery=account_discovery, predecessor_registration=predecessor_registration)
     title = digest.week_title(week) if discovery['status'] == 'EXISTING_WEEKLY_RECORD' else None

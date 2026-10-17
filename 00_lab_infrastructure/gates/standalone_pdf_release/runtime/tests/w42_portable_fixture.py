@@ -58,7 +58,7 @@ theorem witness : (0 : ℝ) ≤ 1 := by norm_num
 end Example
 '''
 FORMAL=CANDIDATE.replace('by exact hq1','by sorry').replace('by norm_num','by sorry')
-ORIGINAL=b'\\documentclass{article}\n\\begin{document}\nINDEPENDENT historical manuscript. All physical assumptions remain uncertified.\n\\end{document}\n'
+ORIGINAL=b'\\documentclass{article}\n\\title{Synthetic historical manuscript}\n\\author{Fixture author}\n\\date{}\n\\begin{document}\n\\maketitle\nINDEPENDENT historical manuscript. All physical assumptions remain uncertified.\n\\end{document}\n'
 
 def pdf(text):
     """Small valid one-page PDF bytes; simulated renderer output, no TeX run."""
@@ -133,12 +133,20 @@ class PortableFixture:
         self.historical_generation_literal=next(ast.literal_eval(n.value.args[0])for n in parity_tree.body
             if isinstance(n,ast.Assign)and any(isinstance(t,ast.Name)and t.id=='GENERATION_ROOT'for t in n.targets))
         self.gen=self.root/'simulated-generation';self.gen.mkdir()
-        self.binary=self.root/'simulated-platform/tectonic';self.write(self.binary,b'TEST_ONLY_NOT_AN_EXECUTABLE_RENDERER\n')
+        self.binary=self.root/'simulated-platform/tectonic'
+        # An explicit simulated platform executable exercises the real current
+        # subprocess/provenance body; its bytes are TEST DATA, never production.
+        pdf_source=ast.get_source_segment(Path(__file__).read_text(),next(n for n in ast.parse(Path(__file__).read_bytes()).body if isinstance(n,ast.FunctionDef)and n.name=='pdf'))
+        script=('#!'+sys.executable+'\nimport hashlib,sys\nfrom pathlib import Path\n'+pdf_source+'\n'
+                +"out=Path(sys.argv[sys.argv.index('--outdir')+1]);out.mkdir(exist_ok=True)\n"
+                +"raw=Path('paper.tex').read_bytes();(out/'paper.pdf').write_bytes(pdf('SIMULATED '+hashlib.sha256(raw).hexdigest()))\n")
+        self.write(self.binary,script.encode());self.binary.chmod(0o700)
         cache=self.root/'simulated-cache';cache.mkdir()
         cachefiles={}
         for i in range(556):
             name='asset-%03d.dat'%i;raw=('TEST_ONLY_CACHE_ASSET_%03d'%i).encode();self.write(cache/name,raw);cachefiles[name]=digest.digest(raw)
         self.cache=self.put('simulated-platform/CACHE.json',{'schema':'VRS-PHASE7-TECTONIC-CACHE-1','cache_root':str(cache),'files':cachefiles})
+        self.label_authority=self.put('synthetic-trust/LABEL_AUTHORITY.json',{'fixture':'SIMULATED_AUTHORITY_NOT_A_LIVE_GRANT','answer':'Approve artifact-specific wording','approved_text':access.LABEL_TEXT,'proposal_sha256':'76b32310416d262351666e2b3baa8f19916e87400960659ddb334b82ce5e6cde','at_utc':'2026-10-14T00:00:00Z'})
         self.sections={header:(header+'\nTEST ONLY SYNTHETIC TRUST SECTION; NOT JUSTIN AUTHORITY.').encode()for header in [AUDIT,DECOUPLE,SIMPLIFY,APPENDIX]}
         self.write('reports/verification-coverage/GAME_PLAN.md',b'\n'.join(self.sections.values()))
         audit=self.put('synthetic-trust/AUDIT.md',self.sections[AUDIT]);md=self.put('synthetic-trust/PACKET.md',b'TEST ONLY56 IDENTITIES\n')
@@ -265,6 +273,9 @@ class PortableFixture:
             if isinstance(n,ast.FunctionDef)and n.name=='_platform_builtins')
         supplement=('\n# TEST ONLY synthetic trust/platform material; all production bodies unchanged.\n'
             +'_FROZEN_HASHES = '+repr(self.test_hashes)+'\n'
+            +'LABEL_AUTHORITY = '+repr(self.label_authority)+'\n'
+            +'NATIVE_RENDERER = '+repr(str(self.binary))+'\n'
+            +'RENDER_CACHE = '+repr(self.cache)+'\n'
             +ast.unparse(platform)+'\n'
             +'builtins = _platform_builtins('+repr(str(self.binary))+','+repr(str(self.gen))+','+repr(self.historical_generation_literal)+')\n')
         p.write_bytes(p.read_bytes()+supplement.encode())
@@ -347,7 +358,7 @@ class PortableFixture:
         synthetic=_platform_builtins(self.binary,self.gen,self.historical_generation_literal)
         class Scope:
             def __enter__(self):
-                self.patches=[patch.object(access,'_FROZEN_HASHES',fixture.test_hashes),patch.object(access,'builtins',synthetic)]
+                self.patches=[patch.object(access,'_FROZEN_HASHES',fixture.test_hashes),patch.object(access,'builtins',synthetic),patch.object(access,'LABEL_AUTHORITY',fixture.label_authority),patch.object(access,'NATIVE_RENDERER',str(fixture.binary)),patch.object(access,'RENDER_CACHE',fixture.cache)]
                 for p in self.patches:p.start()
             def __exit__(self,*args):
                 for p in reversed(self.patches):p.stop()

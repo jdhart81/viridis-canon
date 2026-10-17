@@ -363,16 +363,17 @@ class ClosedDataLoaderCacheTests(unittest.TestCase):
         raw = b'_FROZEN_HASHES = {"from_source": 1}\nbuiltins = "from_source"\n'
         path, digest = self.source('nightly_manuscript_access.py', raw)
         first = self.loader.compile(raw, str(path), 'exec')
-        self.loader.post_load_data[digest] = {'_FROZEN_HASHES': {'first': 1}, 'builtins': 'first DATA'}
+        self.loader.post_load_data[digest] = {'_FROZEN_HASHES': {'first': 1}, 'builtins': 'first DATA','LABEL_AUTHORITY':{'path':str(self.loader.root/'first-authority.json'),'sha256':'0'*64},'NATIVE_RENDERER':str(self.loader.root/'fixture-executable'),'RENDER_CACHE':{'path':str(self.loader.root/'fixture-cache.json'),'sha256':'2'*64}}
         a = {}; self.loader.execute(first, a)
         second = self.loader.compile(raw, str(path), 'exec')
-        self.loader.post_load_data[digest] = {'_FROZEN_HASHES': {'second': 2}, 'builtins': 'second DATA'}
+        self.loader.post_load_data[digest] = {'_FROZEN_HASHES': {'second': 2}, 'builtins': 'second DATA','LABEL_AUTHORITY':{'path':str(self.loader.root/'second-authority.json'),'sha256':'1'*64},'NATIVE_RENDERER':str(self.loader.root/'fixture-executable'),'RENDER_CACHE':{'path':str(self.loader.root/'fixture-cache.json'),'sha256':'2'*64}}
         b = {}; self.loader.execute(second, b)
         self.assertIs(first, second)
         self.assertEqual(a['_FROZEN_HASHES'], {'first': 1})
         self.assertEqual(a['builtins'], 'first DATA')
         self.assertEqual(b['_FROZEN_HASHES'], {'second': 2})
         self.assertEqual(b['builtins'], 'second DATA')
+        self.assertNotEqual(a['LABEL_AUTHORITY'],b['LABEL_AUTHORITY'])
         self.loader.post_load_data[digest]['UNDECLARED'] = True
         self.assert_holds(lambda: self.loader.execute(second, {}), 'closed post-load DATA keys')
 

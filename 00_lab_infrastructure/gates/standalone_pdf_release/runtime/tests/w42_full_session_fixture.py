@@ -60,6 +60,7 @@ class FullSessionFixture:
   names=sorted(self.source_names);saved={name:sys.modules.pop(name)for name in names if name in sys.modules}
   try:yield self
   finally:
+   self.loader.clear_code_cache()
    for name in names:sys.modules.pop(name,None)
    sys.modules.update(saved)
    for key,value in self.saved_env.items():
@@ -70,7 +71,7 @@ class FullSessionFixture:
   unique={}
   for row in self.loader.receipts:
    key=row['executed_raw_sha256'];unique[key]={'original_public_sha256':row['original_sha256'],'executed_raw_sha256':key,'original_function_class_ast_hashes':row['function_class_ast_hashes'],'appended_literal_data_names':row['appended_literal_data_names'],'declared_data_globals':sorted(row['declared_data_globals']),'all_function_class_asts_equal':row['all_function_class_asts_equal'],'all_non_data_control_flow_equal':row['all_non_data_control_flow_equal']}
-  return {'fixture_only':True,'authority':False,'python':sys.version,'build_seconds':self.build_seconds,'source_body_proofs':unique,'closed_runtime_data_remap_names':self.runtime_data['data_globals'],'private_runtime_original_sha256':sha(self.constructor.original_raw),'private_runtime_original_function_class_ast_hashes':function_asts(self.constructor.original_raw),'legacy_source_pins':len(self.source_pins130),'current_modules':len(self.current['module_rows']),'shared_helpers':len(self.current['shared_rows']),'predecessor':self.predecessor,'platform_adapter':self.platform_adapter,'loader_executions':len(self.loader.receipts),'all_function_class_asts_equal':all(r['all_function_class_asts_equal']for r in self.loader.receipts),'all_non_data_control_flow_equal':all(r['all_non_data_control_flow_equal']for r in self.loader.receipts),'core_open_attempts':self.loader.blocked,'mocked_validate_or_current_closure':False,'context_mints':0,'module_aliases':0}
+  return {'fixture_only':True,'authority':False,'python':sys.version,'build_seconds':self.build_seconds,'source_body_proofs':unique,'closed_runtime_data_remap_names':self.runtime_data['data_globals'],'private_runtime_original_sha256':sha(self.constructor.original_raw),'private_runtime_original_function_class_ast_hashes':function_asts(self.constructor.original_raw),'legacy_source_pins':len(self.source_pins130),'current_modules':len(self.current['module_rows']),'shared_helpers':len(self.current['shared_rows']),'predecessor':self.predecessor,'platform_adapter':self.platform_adapter,'loader_executions':len(self.loader.receipts),'compiler_cache':self.loader.compile_cache_stats(),'all_function_class_asts_equal':all(r['all_function_class_asts_equal']for r in self.loader.receipts),'all_non_data_control_flow_equal':all(r['all_non_data_control_flow_equal']for r in self.loader.receipts),'core_open_attempts':self.loader.blocked,'mocked_validate_or_current_closure':False,'context_mints':0,'module_aliases':0}
 
 if __name__=='__main__':
  import json

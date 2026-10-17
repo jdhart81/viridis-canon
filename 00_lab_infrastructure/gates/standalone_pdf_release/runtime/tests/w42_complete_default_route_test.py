@@ -38,11 +38,15 @@ class CompleteDefaultRouteTests(unittest.TestCase):
         assert proof['all_function_class_asts_equal']and proof['all_non_data_control_flow_equal']
         assert proof['core_open_attempts']==[]and proof['mocked_validate_or_current_closure']is False
         assert proof['context_mints']==0 and proof['module_aliases']==0
+        stats=proof['compiler_cache']
+        assert stats['cache_hits']>0 and stats['actual_exec_calls']>=stats['cache_hits']
+        assert stats['cache_entries']<=stats['max_cache_entries']
+        assert stats['cache_serialized_bytes']<=stats['max_cache_serialized_bytes']
         print('VRS_COMPLETE_SOURCE_ROUTE_PROOF='+json.dumps({
             k:proof[k]for k in ('legacy_source_pins','current_modules','shared_helpers',
                 'loader_executions','all_function_class_asts_equal',
                 'all_non_data_control_flow_equal','core_open_attempts',
-                'mocked_validate_or_current_closure','context_mints','module_aliases')
+                'mocked_validate_or_current_closure','context_mints','module_aliases','compiler_cache')
         }|{'completed_actual_facade_operations':cls.completed},sort_keys=True),flush=True)
 
     def invoke(self,entrypoint,*args,**kwargs):

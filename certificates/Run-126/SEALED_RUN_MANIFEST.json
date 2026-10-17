@@ -1,0 +1,112 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 126,
+  "run_id": "Run-126",
+  "slug": "invariance-capacity-ceiling",
+  "title": "The Invariance Capacity Ceiling: Forbidden-Proxy Alignment Caps Predictive Information",
+  "generated_at_utc": "2026-08-10T08:15:22Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-126_invariance-capacity-ceiling",
+  "selection": {
+    "area_id": "09",
+    "area": "Intelligence Capacity",
+    "lens": "Alignment",
+    "directive_kind": "locked_area",
+    "reason": "tier_starvation_floor",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true,
+    "combination_guard": "PASS_DISTANCE_62_FROM_RUN_064"
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "significance": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 14,
+    "failed": 0,
+    "checks": 14,
+    "failure_conditions_triggered": 0,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "scope": "finite-alphabet mutual-information chain balance, forbidden-proxy leakage ceiling, exact slack decomposition, 20,000 seeded positive random tables, tight erasure family, target-independent and target-equals-proxy boundaries, nonlinear zero-covariance control, high-entropy-noise control, and nested plug-in convergence"
+  },
+  "aristotle": {
+    "status": "NOT_RUN",
+    "submitted": false
+  },
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus information-governance methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 127,
+    "kind": "area",
+    "area_id": "01",
+    "area": "Intelligence Bound",
+    "lens": "Stewardship",
+    "reason": "scored_selection",
+    "lens_note": "Thermodynamic was rotation-next but blocked by the 16-run combination guard at distance 14 from Run 113; Stewardship is admissible at distance 25 from Run 102."
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs --keep-intermediates paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 4,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "visual_review": "PASS_ALL_4_PAGES_RENDERED_AT_150_DPI"
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Viridis corpus and current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "historical Viridis research artifacts read with attribution preserved and no historical text rewritten"
+      }
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "350d856ec8f6eceb5a3eb1ebf4e160bb6985b08b4e4ae5d6d0218bff44179c09",
+    "resulting_nightly_state_sha256": "7272121eec9f94fdfa2fc4836cc2aed12591f95687e4943f4e0f958aa3eed7dc",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "CEO_ALERT.md": "e139a545cb32e846c173c0db8307a55a1d6e2ffbbe07a27a38480655c7fc7a13",
+      "CLAIM_INVENTORY.json": "abaa7fb9f1c281f955b9f83568feb9f9862f39af13391ea51bfd97b2aac4eaac",
+      "INPUT_STATE_SNAPSHOT.json": "350d856ec8f6eceb5a3eb1ebf4e160bb6985b08b4e4ae5d6d0218bff44179c09",
+      "PAPER_PACKAGE_MANIFEST.json": "6e1153bba999aa33ebe40cda875d6ba23c4f529b1122c62b8dbde5e26dc58954",
+      "PREREGISTRATION.md": "884cc6ba6374cc2bb922ee0d341b1fe5fb3197e9ca77e2793b7e48efb04ffc50",
+      "README.md": "25f38898353fb2793a13b479e2ee9171e66f117a46f6294e4e61dd81856afabb",
+      "SOURCE_LEDGER.json": "8f4152f3c6b1e503c50af393480ac8001966d300a7c50374c14d04d88ab1297a",
+      "business_EV-126.md": "8c161e99cc635e90edc46ac8959f99c8bae8039c455f6cd82d890554b2ba8cde",
+      "finding.md": "2d978e5c24447e7c3b60fe5603bf0b03d97d5dd6ec2b90846584f61f4573a57a",
+      "paper.aux": "294b150a08b45801aaa1940fef9bba165e36792408c1036bab112e7766aa9197",
+      "paper.log": "69555df16492380bc7dcb02c981340fc3cd1d897436dbc6ce924d244e8eba75c",
+      "paper.out": "fa6c4cd5b04e71fd780533c90e92095a542be44ee1ebe954ce6b9f44b35a8148",
+      "paper.pdf": "5972866ede2d43e4c65aeb7feaaaae252849426975f34e3083e63b84b4a3827f",
+      "paper.tex": "1363fd5d4087085b3abd2b6416cee2e02327db5d1eae1a5b35ae4a8c529053f0",
+      "verification.py": "439404977b424bdeb57b862d2c73f12f5911190ba516de336e5180bbd3d48673",
+      "verification_output.txt": "05921aee6d033151b8aa1f2ac6bf0f7e02da799f19d994c671a931e34db0e7f6"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed only after sealing; its hash is recorded in NIGHTLY_STATE.md and INDEX.md because a manifest cannot contain its own cryptographic hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {
+    "published": false,
+    "pushed": false,
+    "submitted": false,
+    "outreach_sent": false,
+    "external_account_mutated": false,
+    "money_moved": false
+  }
+}
+

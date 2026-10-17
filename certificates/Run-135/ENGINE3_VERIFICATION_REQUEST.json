@@ -1,0 +1,52 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-135-SufficientSanitization-Comparator-attempt-1",
+  "root_candidate_id": "Run-135-SufficientSanitization-Comparator",
+  "attempt": 1,
+  "source_run": "Run-135",
+  "module": "SufficientSanitization",
+  "namespace": "Viridis.Applications.SufficientSanitization",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "e95ad53230883a723f5e3f0cc1d744e329ff5a36e91635f7f67eaf3703d5b21c",
+  "input_sha256": {
+    "SEALED_paper.pdf": "551379cc80a369e96a4da0bb6ac98e03e4890d945bf17741f49c154b082b59d9",
+    "SEALED_paper.tex": "d7a2bb6413083ac1300e2ecbc0308dc396a252c85b7c218d91fcc94ad23118e0",
+    "SEALED_CLAIM_INVENTORY.json": "6bdddb10f1ec6fd9407f96cb36b7ca03ef503e5fd485d61d258a11175fa2ff27",
+    "SEALED_RUN_MANIFEST.json": "a49074667c9a30876776550ef234b957daec17fbe90fb677cd8170ff5c62c91c",
+    "STATEMENT_CONTRACT.json": "231b55eed48f36b716ccaf4879312cf9c2724c422932811cb870189efde01395",
+    "VERIFICATION_CANDIDATE.lean": "e95ad53230883a723f5e3f0cc1d744e329ff5a36e91635f7f67eaf3703d5b21c",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "ed7b51ec1a878f5e06f36f7a36146b97ac77b3475333c7e1d451cb41bb98982c",
+    "STATEMENT_ALIGNMENT.json": "ec6437901f82dcf90ff432b8e80b3309a55d8165382b3f9df52dfae66f19f39a"
+  },
+  "statement_alignment": {
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "sha256": "e95ad53230883a723f5e3f0cc1d744e329ff5a36e91635f7f67eaf3703d5b21c"
+    },
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT.json",
+      "sha256": "ec6437901f82dcf90ff432b8e80b3309a55d8165382b3f9df52dfae66f19f39a"
+    }
+  },
+  "expected_theorem_names": [
+    "relevance_chain_identity",
+    "entropy_decomposition_deterministic",
+    "exact_sufficiency_preserves_relevance",
+    "approximate_sufficiency_loss_bound",
+    "sufficient_sanitization_nonvacuous"
+  ],
+  "nonvacuity_obligations": ["sufficient_sanitization_nonvacuous"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "legacy_provenance": {
+    "candidate_source": "zero-sorry Run-135 provider output used as a Codex proof scaffold; fresh Comparator verification required",
+    "historical_axiom_audit_counts_as_certificate": false
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

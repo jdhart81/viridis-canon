@@ -1,0 +1,53 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-133-CorridorOverlapDuality-Comparator-attempt-1",
+  "root_candidate_id": "Run-133-CorridorOverlapDuality-Comparator",
+  "attempt": 1,
+  "source_run": "Run-133",
+  "module": "CorridorOverlapDuality",
+  "namespace": "Viridis.HDFM.CorridorOverlapDuality",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "153531dbead8ae7e94e1bb5a98ceb73f6aed50d75498e70919500029a7e2d2aa",
+  "input_sha256": {
+    "SEALED_paper.pdf": "a67f1069dbb3ca5690e2763bfaa883289dfde6a4f3f11b22238b1dca69f30c20",
+    "SEALED_paper.tex": "e9fce1d1f623fdabd96bb2de61e93d59c0f4e9bc8c4786ad130e639601fc6c9d",
+    "SEALED_CLAIM_INVENTORY.json": "4f6972bf1af9aa03821f45e74e40adad5a5cae3e26970c8d7da944f5e0290530",
+    "SEALED_RUN_MANIFEST.json": "ba2161f99f96841180efa0136d080071f82563256efbbbf24c8764a349f18ee4",
+    "STATEMENT_CONTRACT.json": "5d4713a79225c52fce99680a597dc0e5075ea266decba13386fc3872aeadd639",
+    "VERIFICATION_CANDIDATE.lean": "153531dbead8ae7e94e1bb5a98ceb73f6aed50d75498e70919500029a7e2d2aa",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "bcaeb2d0b29f1a1bccd57cba42e94169a21649b069346398483e10b171bf9612",
+    "STATEMENT_ALIGNMENT.json": "1c7cc2cb2b3ba33625c42b7334a1919d84ad2f8d681869a17de59a3fab4f85bd"
+  },
+  "statement_alignment": {
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "sha256": "153531dbead8ae7e94e1bb5a98ceb73f6aed50d75498e70919500029a7e2d2aa"
+    },
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT.json",
+      "sha256": "1c7cc2cb2b3ba33625c42b7334a1919d84ad2f8d681869a17de59a3fab4f85bd"
+    }
+  },
+  "expected_theorem_names": [
+    "synchrony_dividend_identity",
+    "availability_penalty_eq_synchrony_dividend",
+    "overlap_tradeoff_nonnegative",
+    "overlap_tradeoff_strict",
+    "additive_shared_cost_saving",
+    "corridor_overlap_nonvacuous"
+  ],
+  "nonvacuity_obligations": ["corridor_overlap_nonvacuous"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "legacy_provenance": {
+    "candidate_source": "zero-sorry Run-133 provider output used as a Codex proof scaffold; fresh Comparator verification required",
+    "historical_axiom_audit_counts_as_certificate": false
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

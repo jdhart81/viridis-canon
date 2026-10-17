@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "run": 124,
+  "stage": "pre_aristotle",
+  "novelty": "UNASSESSED",
+  "claims": [
+    {"id":"C1","claim":"For independent edge states, two-terminal reliability is affine in each edge survival probability and its partial derivative equals that edge's pivotal probability.","paper_locator":"Theorem 1","evidence_class":"FORMAL_TARGET","aristotle_target":"reliability_derivative_eq_pivotal_probability","formal_status":"UNPROVED","numeric_support":"verification.py checks 1-4","cited_support":"SOURCE_LEDGER.json S1-S2"},
+    {"id":"C2","claim":"The pivotal derivative is independent of the target edge's own survival probability.","paper_locator":"Corollary 1","evidence_class":"FORMAL_TARGET","aristotle_target":"pivotal_probability_independent_of_own_probability","formal_status":"UNPROVED","numeric_support":"verification.py check 4","cited_support":"SOURCE_LEDGER.json S1-S2"},
+    {"id":"C3","claim":"Under an infinitesimal linear budget, the maximum first-order gain equals B times the maximum pivotality-to-cost ratio.","paper_locator":"Corollary 2","evidence_class":"FORMAL_TARGET","aristotle_target":"local_linear_budget_gain_le_best_ratio","formal_status":"UNPROVED","numeric_support":"verification.py check 7"},
+    {"id":"C4","claim":"Two required series edges have positive mixed interaction while two parallel edges have negative mixed interaction.","paper_locator":"Proposition 1","evidence_class":"FORMAL_TARGET","aristotle_target":"series_parallel_mixed_difference_signs","formal_status":"UNPROVED","numeric_support":"verification.py checks 5-6","cited_support":"SOURCE_LEDGER.json S1"},
+    {"id":"C5","claim":"In the specified triangle, equal-conductance current and independent-failure pivotality produce opposite priority rankings.","paper_locator":"Proposition 2","evidence_class":"NUMERIC","support":"verification.py checks 8-9"},
+    {"id":"C6","claim":"Marginal edge survival probabilities do not identify terminal reliability when failures are correlated.","paper_locator":"Negative control","evidence_class":"FORMAL_TARGET","aristotle_target":"equal_marginals_do_not_identify_reliability","formal_status":"UNPROVED","numeric_support":"verification.py checks 10-11"},
+    {"id":"C7","claim":"The adversarial gate passed 13 aggregate checks with no preregistered failure triggered.","paper_locator":"Verification","evidence_class":"NUMERIC","support":"verification_output.txt"},
+    {"id":"C8","claim":"Current-flow and edge-removal corridor models are established ecological-priority methods, and independent validation can change corridor recommendations.","paper_locator":"Prior work","evidence_class":"CITED","support":"SOURCE_LEDGER.json S3,S5,S6"},
+    {"id":"C9","claim":"Static and single-dimension connectivity priorities can miss changing long-horizon exposure.","paper_locator":"Prior work and limitations","evidence_class":"CITED","support":"SOURCE_LEDGER.json S7"},
+    {"id":"C10","claim":"The independent Bernoulli edge model accurately represents a real corridor network.","paper_locator":"Assumptions and limitations","evidence_class":"DEFERRED","support":"Requires field-calibrated failures and validation"},
+    {"id":"C11","claim":"A $7,500 audit will create customer value.","paper_locator":"business EV only","evidence_class":"CONJECTURED","support":"business_EV-124.md; signed revenue $0"},
+    {"id":"C12","claim":"The HDFM specialization is novel or scientifically significant beyond established Birnbaum importance and corridor-priority literature.","paper_locator":"Prior work and conclusion","evidence_class":"DEFERRED","support":"Independent significance and prior-art review required"}
+  ]
+}

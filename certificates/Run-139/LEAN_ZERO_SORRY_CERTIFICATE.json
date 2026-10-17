@@ -1,0 +1,67 @@
+{
+  "bindings": {
+    "candidate_proof": {
+      "path": "lean_certificates/Run-139/VERIFICATION_CANDIDATE.lean",
+      "sha256": "26144b575077db3d20d650a13321abf99d9fd5105d01209e760bdaa5130b8530"
+    },
+    "formal_statement": {
+      "path": "lean_certificates/Run-139/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "sha256": "4a36080607c0be7b17a5eceade22711c8127031e741f3d74ebcf8b98590ad617"
+    },
+    "independent_cloud_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-139/COMPARATOR_CLOUD_RECEIPT.json",
+      "sha256": "6a3a9d697c18f9861c6d3acda5f0bd523eae433e7d57f49119f5213f91b8cf93"
+    },
+    "request": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-139/ENGINE3_VERIFICATION_REQUEST.json",
+      "sha256": "40a5cf589f8c894ad80fd43b64eb4f404877d0a42976bf84dc14a4271613b5af"
+    },
+    "sealed_paper_inputs": {
+      "SEALED_CLAIM_INVENTORY.json": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-139/SEALED_CLAIM_INVENTORY.json",
+        "sha256": "fa6d6f54578da47ee01037cdca75490c549ebf1a2c6b62e5225aff5de5eb7097"
+      },
+      "SEALED_RUN_MANIFEST.json": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-139/SEALED_RUN_MANIFEST.json",
+        "sha256": "6ee61e9b389384a4288db4db1821cdfff81b24f95029b1d0fd13eede69214a87"
+      },
+      "SEALED_paper.pdf": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-139/SEALED_paper.pdf",
+        "sha256": "7a02d49abc85f0a885a5ec946bc24078bac8665d457deb134b37f452d6a623ca"
+      },
+      "SEALED_paper.tex": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-139/SEALED_paper.tex",
+        "sha256": "1c9406c3a050e71311d49ff1bd250ddf4caead1bbc46cc0ff23b20d92997438e"
+      }
+    },
+    "sealed_statement_contract": {
+      "path": "lean_certificates/Run-139/VERIFICATION_STATEMENT.lean",
+      "sha256": "26144b575077db3d20d650a13321abf99d9fd5105d01209e760bdaa5130b8530"
+    },
+    "statement_alignment_receipt": {
+      "path": "lean_certificates/Run-139/STATEMENT_ALIGNMENT.json",
+      "sha256": "4ce2dad0c20685eb850a1fa6b93294749f491de54ccc1b221e7213d91be20c1f"
+    }
+  },
+  "candidate_id": "Run-139-ThermodynamicRetrofitWaterFilling-Comparator-attempt-1",
+  "gates": {
+    "allowed_axioms_only": true,
+    "aristotle_required": false,
+    "comparator_lean_kernel": true,
+    "comparator_nanoda_kernel": true,
+    "comparator_statement_identity": true,
+    "frozen_statement_and_candidate_hash_bound": true,
+    "independent_cloud_kernel_verification": true,
+    "local_lean_execution": false,
+    "nonvacuity_witnesses": true,
+    "sealed_statement_signature_alignment": true,
+    "zero_sorries_or_admits": true
+  },
+  "issued_at_utc": "2026-08-30T15:06:39.207537+00:00",
+  "run_id": "Run-139",
+  "schema_version": "1.0",
+  "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+  "standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+  "status": "LEAN_ZERO_SORRY_CERTIFIED",
+  "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1"
+}

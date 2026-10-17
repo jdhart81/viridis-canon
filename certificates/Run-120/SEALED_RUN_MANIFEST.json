@@ -1,0 +1,107 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 120,
+  "run_id": "Run-120",
+  "slug": "conjunctive-audit-stewardship",
+  "title": "Conjunctive Audit Stewardship: Exact Targeting and a Greedy Failure Certificate",
+  "generated_at_utc": "2026-08-05T07:19:48Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-120_conjunctive-audit-stewardship",
+  "selection": {
+    "area_id": "13",
+    "area": "Computational Theory",
+    "lens": "Stewardship",
+    "directive_kind": "locked_area",
+    "reason": "severe_starvation",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 14,
+    "failed": 0,
+    "failure_conditions_triggered": 0,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "scope": "exact rational checks for independent conjunctive evidence, equal-cost perfect audits, overlapping weighted claim portfolios, negative controls, convergence, and the explicit greedy-ratio counterexample family"
+  },
+  "aristotle": {
+    "status": "NOT_RUN",
+    "submitted": false
+  },
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_ARISTOTLE",
+    "proposed_route": "working-corpus-formal-methods",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 121,
+    "kind": "area",
+    "area_id": "06",
+    "area": "Entropy-Driven Learning",
+    "lens": "Symbiosis",
+    "reason": "tier_starvation_floor"
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs --keep-intermediates paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 4,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "visual_review": "PASS_ALL_4_PAGES",
+    "preserved_initial_failure": "BUILD_FAILURE_NOTE.md"
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Viridis corpus and current primary-literature search, preregistration, exact verification code and execution, manuscript drafting, packaging, and QA under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "historical Viridis research artifacts read with attribution preserved and no historical text rewritten"
+      }
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "a52d92407685a1f2ff830f6d72437792c0cdb041ecf114aab2442910b36c55d4",
+    "resulting_nightly_state_sha256": "71519d11111b657213fdad0ad5c54a23f3f3e12034f68f67c5f14d8684776190",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "BUILD_FAILURE_NOTE.md": "d421ec47fdc939f2152b520fe46275f026b83e6dd1684e310429e35c0a08428b",
+      "CEO_ALERT.md": "6663ee63f4c4bca1148a20a6a559923d6baff15d6d299b851d8760928c69c13a",
+      "CLAIM_INVENTORY.json": "5c238b148168eaf9e8675b30fde538245b106d4a884bd4034e3ae0ef9dda57de",
+      "INPUT_STATE_SNAPSHOT.json": "a52d92407685a1f2ff830f6d72437792c0cdb041ecf114aab2442910b36c55d4",
+      "PAPER_PACKAGE_MANIFEST.json": "ba8790544f3a7db78de561318e601948de030fe50d6b5ba948e87bd3c49bfb52",
+      "PREREGISTRATION.md": "931d5a1b3e3da5ac23a3fa680c6005ddde1ff66c5bc92d80808698c5012280d0",
+      "README.md": "cd8757377618828ec12d8056d32605436abbcb0d318370368b4483ea8bf3d559",
+      "SOURCE_LEDGER.json": "c7370dec0a0cbc42ddb8afaefa0b30b20aef7269c2d2da1d0caebc44ca90541e",
+      "business_EV-120.md": "361da2073a6508fa4d5f44e064b803e34662165536ca28c8ce6af1bd4bd10cfa",
+      "finding.md": "52960e85f074246ef4a3a18fe8796e83563ba456b75bd31630aea618e4501411",
+      "paper.aux": "f746e3894e89e9e12946ec7170841665cd2163a993f4ffff0f5f23e7aa828f99",
+      "paper.log": "2942fe86b9ca36024255d10b166f97260a8f02f2a42cde0e7dfb877216100467",
+      "paper.out": "e6aebb9af319ac80f74f960f4bbdb157d990d8a6cd145d7467fd3d6b9b69e7d4",
+      "paper.pdf": "f212374147b81e2e25fe72637be9596e875dabed2e4644cb7832a2456a8cf63e",
+      "paper.tex": "3f455193edb0193a97950c9eccbe1a99f436cb6ef0728133130e6f55ae94d601",
+      "verification.py": "5da63931306b2305030498cb6ce80effb252f671287f320309a6082552819d9f",
+      "verification_output.txt": "35c3307430a8090c5bca7eaa93fbc41632276f963b33081c171a0df38bdb440f"
+    },
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {
+    "published": false,
+    "pushed": false,
+    "submitted": false,
+    "outreach_sent": false,
+    "external_account_mutated": false,
+    "money_moved": false
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 128,
+  "run_id": "Run-128",
+  "slug": "reciprocity-corridor",
+  "title": "The Reciprocity Corridor: A Bilateral-Benefit Test for Directional Information Exchange",
+  "generated_at_utc": "2026-08-12T08:19:42Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-128_reciprocity-corridor",
+  "selection": {
+    "area_id": "02",
+    "area": "Thermodynamic Economics",
+    "lens": "Symbiosis",
+    "directive_kind": "locked_area",
+    "reason": "scored_selection",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true,
+    "combination_guard": "PASS_DISTANCE_18_FROM_RUN_110"
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "significance": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 15,
+    "failed": 0,
+    "checks": 15,
+    "failure_conditions_triggered": 0,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "scope": "two-partner linear directional-information exchange; 120,000 seeded payoff-flow corridor checks; 120,000 coefficient feasibility checks; exact share conversion and payoff identities; 1,962 dense-grid Nash midpoint comparisons; 2,510 empty-corridor adversarial grids; 6,000 stable Gaussian VAR covariance checks; one-way, symmetric-flow, common-driver, zero-flow, regression, convergence, total-budget, and temperature-indexed cost controls"
+  },
+  "aristotle": {
+    "status": "NOT_RUN",
+    "submitted": false
+  },
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus thermodynamic-economics methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 129,
+    "kind": "area",
+    "area_id": "10",
+    "area": "Monitoring Technology",
+    "lens": "Thermodynamic",
+    "reason": "scored_selection",
+    "selection_note": "No severe-starvation or tier-floor rail is armed after Run 128. Area 10 has the highest post-transition stated score, 1.5*17+3.0=28.5. Alignment is rotation-next but excluded by area 10's standing next-lens constraint; Thermodynamic is the first admissible rotation-preserving swap and is combination-clean outside the 16-run guard."
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs --keep-intermediates paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 4,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "visual_review": "PASS_ALL_4_PAGES_RENDERED_AT_120_DPI",
+    "preserved_failure_evidence": "BUILD_FAILURE_NOTE.md"
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Binding-standard and Viridis-corpus review, current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "Historical Viridis research artifacts read with attribution preserved and no historical text rewritten"
+      }
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "6d96e11c8d42bcc06f20d1f95e9ce04d85e3862eda200782c7d17fd7c9eb081f",
+    "resulting_nightly_state_sha256": "82b5cbde4731f8e0af27c42507682e1bffd6c3f9697d9070cbf0e60c3669bf6c",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "BUILD_FAILURE_NOTE.md": "9660d59307144b0df38b728aa9fdbee801d582673313c6369c25d14af02043df",
+      "CEO_ALERT.md": "e82503dbceb738ff8b39a578b9dabac0dd05fb3c7b1af0032ee667ad2cc408f8",
+      "CLAIM_INVENTORY.json": "90145c1a91e60f57d7ced3672d972f776b04d6373628b52eb99a0e80a90d7e6f",
+      "PAPER_PACKAGE_MANIFEST.json": "063e4f53100fefa862e0780c02328373d84ac7a408184f6449ba177511bb6f7b",
+      "PREREGISTRATION.md": "e047bc546e599562a741d4feb69746e72190b2538809140c1ddc0995bba7e79a",
+      "README.md": "414af798072fcce7a66079d3aef1fcd1ab9a2ee68d828cdf14f32643b5ba5a8f",
+      "SOURCE_LEDGER.json": "f56497d327cc8ea46b37e98f5b69b2a56e8ac72cef351f7fd9a8bfe06bf0e6b2",
+      "business_EV-128.md": "498921430d0bc27db574ae00f94abef3843061e7d729eee90a038a3a05ad8d52",
+      "finding.md": "67746727d8e8e270ffebd30ebddf15dabadd775c208031948ce5a686d782cf59",
+      "paper.aux": "d3d47859709c07c8eb4336218f33f6c53ac94e64bc28cde32ad2c7ba1d1a62ad",
+      "paper.log": "e8299613f4a601b3cc49b97d53c2b72cfbaaf7ec2ec08d2dbf2198cdc51f351a",
+      "paper.out": "40ac4fe6f87115b6de0c227d880d6295ddaedd42d3ff18af9fde27c417540cbc",
+      "paper.pdf": "6639d5c5e4a7575f665ca9827700539bcc0dca7004b425fdfb7a44ec81748aa9",
+      "paper.tex": "6705b271f857cb3e1df79604ee4e9569043b0412a9d4fa8408d049a40bd42996",
+      "verification.py": "7f772ee876450e135a61bb6f7174a37876aeeb4708cd772c5cf457734bbccb6d",
+      "verification_output.txt": "af8c83c732e2243b65fbe7ef5795e4139ff3d4b2032aaad03dd8addf5b3212c9"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed only after sealing; its hash is recorded in NIGHTLY_STATE.md and INDEX.md because a manifest cannot contain its own cryptographic hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {
+    "published": false,
+    "pushed": false,
+    "submitted": false,
+    "outreach_sent": false,
+    "external_account_mutated": false,
+    "money_moved": false
+  }
+}

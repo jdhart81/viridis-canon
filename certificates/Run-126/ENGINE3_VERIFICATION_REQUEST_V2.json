@@ -1,0 +1,61 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-126-InvarianceCapacity-Comparator-attempt-1",
+  "root_candidate_id": "Run-126-InvarianceCapacity-Comparator",
+  "attempt": 1,
+  "source_run": "Run-126",
+  "module": "PaperFormalization",
+  "namespace": "Viridis.Run126.PaperFormalization",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "a3016266e251f570721253ebfae431c1d76bc88e88d8da6eb5b6afc9d0913e03",
+  "input_sha256": {
+    "SEALED_paper.pdf": "5972866ede2d43e4c65aeb7feaaaae252849426975f34e3083e63b84b4a3827f",
+    "SEALED_paper.tex": "1363fd5d4087085b3abd2b6416cee2e02327db5d1eae1a5b35ae4a8c529053f0",
+    "SEALED_CLAIM_INVENTORY.json": "abaa7fb9f1c281f955b9f83568feb9f9862f39af13391ea51bfd97b2aac4eaac",
+    "SEALED_RUN_MANIFEST.json": "934a26955fb48be0e12a8df8924b29df7b124b616268e7aa7ce53ba80cb69663",
+    "VERIFICATION_STATEMENT_V2.lean": "a3016266e251f570721253ebfae431c1d76bc88e88d8da6eb5b6afc9d0913e03",
+    "VERIFICATION_CHALLENGE_ALIGNED_V2.lean": "a3016266e251f570721253ebfae431c1d76bc88e88d8da6eb5b6afc9d0913e03",
+    "STATEMENT_ALIGNMENT_V2.json": "50f239eb13c5092de23d962d3ffcb0406a8827935455a54c5dffb68a013d015f",
+    "VERIFICATION_CANDIDATE.lean": "e8dc8803fb3c1e465b354b575886c0acf67ba19b28434d16e5abb4c62910101a"
+  },
+  "statement_alignment": {
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT_V2.lean",
+      "sha256": "a3016266e251f570721253ebfae431c1d76bc88e88d8da6eb5b6afc9d0913e03"
+    },
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT_V2.json",
+      "sha256": "50f239eb13c5092de23d962d3ffcb0406a8827935455a54c5dffb68a013d015f"
+    }
+  },
+  "expected_theorem_names": [
+    "mutual_information_chain_balance",
+    "forbidden_proxy_capacity_ceiling",
+    "capacity_ceiling_slack_decomposition",
+    "perfect_invariance_target_proxy_collapse",
+    "erasure_family_tightness"
+  ],
+  "nonvacuity_obligations": [
+    "mutual_information_chain_balance_nonvacuity",
+    "forbidden_proxy_capacity_ceiling_nonvacuity",
+    "capacity_ceiling_slack_decomposition_nonvacuity",
+    "perfect_invariance_target_proxy_collapse_nonvacuity",
+    "erasure_family_tightness_nonvacuity"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "legacy_provenance": {
+    "historical_root_module_sha256": "fe79a19f104fb1e1252f13df3c31b1bb066f7e70c0232e4abeb6616a3e56e4ec",
+    "historical_audit_sha256": "808186890a209e7b9c59fba5e7f334ab2a048318aa68fd835dbc7cb293762640",
+    "candidate_source": "Codex-reconstructed and reviewed monolith from immutable historical proof modules; historical provider status carries no certification authority",
+    "fresh_comparator_verification_required": true,
+    "aristotle_required_for_this_certificate": false
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

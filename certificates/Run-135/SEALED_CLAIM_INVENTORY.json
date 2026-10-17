@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "run": 135,
+  "stage": "pre_aristotle",
+  "novelty": "UNASSESSED",
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "For finite X,Y and deterministic S=f(X), I(Y;X)=I(Y;S)+I(Y;X|S).",
+      "paper_locator": "Main results, Theorem 1",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "relevance_chain_identity",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 1 and 3"
+    },
+    {
+      "id": "C2",
+      "claim": "For deterministic S=f(X), H(X)=H(S)+H(X|S).",
+      "paper_locator": "Main results, Theorem 2",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "entropy_decomposition_deterministic",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 2 and 4"
+    },
+    {
+      "id": "C3",
+      "claim": "Exact sufficiency preserves task relevance; delta-sufficiency loses at most delta relevant bits.",
+      "paper_locator": "Main results, Theorem 1",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "exact_sufficiency_preserves_relevance and approximate_sufficiency_loss_bound",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 5 and 7"
+    },
+    {
+      "id": "C4",
+      "claim": "The X=(Y,N), S=Y fair-bit witness preserves one task bit and leaves one residual raw bit.",
+      "paper_locator": "Main results, Witness",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "sufficient_sanitization_nonvacuous",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 5-6"
+    },
+    {
+      "id": "C5",
+      "claim": "Under optimally coded logically irreversible erasure at temperature T with no retained side information, the raw-versus-sanitized minimum-heat difference is k_B T ln(2) H(X|S).",
+      "paper_locator": "Main results, Theorem 2",
+      "evidence_class": "CITED",
+      "support": "SOURCE_LEDGER.json S1 and S4 plus the Shannon entropy decomposition; implementation assumptions are explicit."
+    },
+    {
+      "id": "C6",
+      "claim": "For a declared sensitive attribute A, deterministic sanitization cannot increase I(A;S) above I(A;X).",
+      "paper_locator": "Main results, Proposition 1",
+      "evidence_class": "CITED",
+      "support": "Standard data-processing inequality; verification.py check 8."
+    },
+    {
+      "id": "C7",
+      "claim": "The preregistered finite-distribution gate passed all 14 checks.",
+      "paper_locator": "Numerical and symbolic verification",
+      "evidence_class": "NUMERIC",
+      "support": "verification_output.txt"
+    },
+    {
+      "id": "C8",
+      "claim": "The variables are finite, the sanitizer deterministic, the task and sensitive variables declared, and the erasure model has no retained side information.",
+      "paper_locator": "Model and assumptions",
+      "evidence_class": "ASSUMED",
+      "support": "PREREGISTRATION.md"
+    },
+    {
+      "id": "C9",
+      "claim": "The certificate proves privacy compliance, actual device energy savings, carbon reduction, causal validity, or decision lift.",
+      "paper_locator": "Limitations",
+      "evidence_class": "DEFERRED",
+      "support": "Requires legal/privacy review, implementation measurement, held-out task validation, and causal or operational evidence."
+    },
+    {
+      "id": "C10",
+      "claim": "A Sufficient-Sanitization Intake Audit creates customer value or revenue.",
+      "paper_locator": "business_EV-135.md",
+      "evidence_class": "CONJECTURED",
+      "support": "No buyer interview, paid delivery, adoption, energy measurement, or revenue evidence exists."
+    }
+  ]
+}

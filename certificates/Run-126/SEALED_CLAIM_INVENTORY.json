@@ -1,0 +1,83 @@
+{
+  "schema_version": "VRS-CLAIM-INVENTORY-1",
+  "run": 126,
+  "stage": "pre_aristotle",
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "For finite R,Y,S, I(R;Y)=I(R;Y|S)+I(R;S)-I(R;S|Y).",
+      "paper_locator": "Theorem 1, Eq. 1",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "mutual_information_chain_balance",
+      "current_support": "Entropy-algebra derivation and 20,000 random finite-table checks; Lean not run."
+    },
+    {
+      "id": "C2",
+      "claim": "If I(R;S)<=delta, then I(R;Y)<=H(Y|S)+delta.",
+      "paper_locator": "Corollary 1, Eq. 2",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "forbidden_proxy_capacity_ceiling",
+      "current_support": "Chain-rule corollary and no violations in 20,000 random tables; Lean not run."
+    },
+    {
+      "id": "C3",
+      "claim": "The ceiling slack equals H(Y|R,S)+I(R;S|Y).",
+      "paper_locator": "Theorem 1, Eq. 3",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "capacity_ceiling_slack_decomposition",
+      "current_support": "Entropy-algebra derivation and 20,000 random-table checks; Lean not run."
+    },
+    {
+      "id": "C4",
+      "claim": "When Y=S, perfect invariance forces zero task information.",
+      "paper_locator": "Boundary cases",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "perfect_invariance_target_proxy_collapse",
+      "current_support": "Direct identity plus binary symmetric-channel sweep; Lean not run."
+    },
+    {
+      "id": "C5",
+      "claim": "The independent-bit plus erasure-leakage family saturates the ceiling for every q in [0,1].",
+      "paper_locator": "Proposition 1",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "erasure_family_tightness",
+      "current_support": "Analytic construction and 101-point exact numerical sweep; Lean not run."
+    },
+    {
+      "id": "C6",
+      "claim": "The preregistered executable gate completed 14 PASS / 0 FAIL / 14 CHECKS.",
+      "paper_locator": "Verification and controls",
+      "evidence_class": "NUMERIC",
+      "support": "verification.py and verification_output.txt"
+    },
+    {
+      "id": "C7",
+      "claim": "Zero covariance does not certify representation-proxy independence.",
+      "paper_locator": "Negative controls",
+      "evidence_class": "NUMERIC",
+      "support": "Explicit S in {-1,0,1}, R=S^2 construction in verification.py"
+    },
+    {
+      "id": "C8",
+      "claim": "Privacy-funnel and fair/invariant-representation literature already studies mutual-information privacy-utility tradeoffs.",
+      "paper_locator": "Introduction and prior work",
+      "evidence_class": "CITED",
+      "support": "SOURCE_LEDGER.json"
+    },
+    {
+      "id": "C9",
+      "claim": "A Forbidden-Proxy Capacity Audit could create buyer value.",
+      "paper_locator": "business_EV-126.md only",
+      "evidence_class": "CONJECTURED",
+      "support": "Business hypothesis; no customer, delivery, adoption, or revenue evidence."
+    },
+    {
+      "id": "C10",
+      "claim": "Novelty and scientific significance are unassessed.",
+      "paper_locator": "Abstract, Discussion, Conclusion",
+      "evidence_class": "DEFERRED",
+      "support": "Generator cannot self-approve novelty or significance."
+    }
+  ]
+}
+

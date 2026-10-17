@@ -1,0 +1,19 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.GaianSystems.AlignmentCone.aggregate_projection_positive",
+    "Viridis.GaianSystems.AlignmentCone.aggregate_residual_bound",
+    "Viridis.GaianSystems.AlignmentCone.common_cone_closed_under_weighted_sum",
+    "Viridis.GaianSystems.AlignmentCone.alignment_floor_of_residual_bound",
+    "Viridis.GaianSystems.AlignmentCone.uniform_cone_alignment_floor",
+    "Viridis.GaianSystems.AlignmentCone.cancellation_gives_perfect_alignment",
+    "Viridis.GaianSystems.AlignmentCone.magnitude_masking_witness",
+    "Viridis.GaianSystems.AlignmentCone.gaian_alignment_nonvacuous"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

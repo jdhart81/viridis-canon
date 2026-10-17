@@ -23,7 +23,7 @@ def platform(c, certificate=None):
  os.environ['PYTHONTZPATH']=str(logical.parent.parent)
  frame={'TZif_header_hex':raw[:5].hex(),'bytes':len(raw),'sha256':sha(raw),'physical_file_identity':m.platform_file_identity(physical),'physical_regular_parent_chain':[{'path':str(p),'identity':m.platform_file_identity(p)}for p in reversed(physical.parents)],'resolution_symlink_chain':[{'path':str(p),'identity':m.data_alias_identity(p),'resolved_target':str(p.resolve(strict=True))}for p in links]}
  observation={'standard':'VRS-ROOT-EXACT-PLATFORM-TIMEZONE-DATA-READBACK-1','status':'EXACT_CURRENT_NATIVE_DATA_PATH_VERIFIED_NOT_RUNTIME_ADMISSION','zone_key':'America/New_York','logical_selected_path':str(logical),'physical_path':str(physical),'root_executable':sys.executable,'stdlib_TZPATH':[str(logical.parent.parent)],'before':copy.deepcopy(frame),'after':copy.deepcopy(frame),'created_at_utc':'2020-01-01T00:00:00Z','actual_failed_child_path_limitation':'TEST ONLY temporary descriptor','actual_failed_execution':c.marker,'independent_platform_path_evidence':c.marker,'scope':'TEST ONLY exact3552byte NY fixture and three links','heavy_scientific_executions':0,'network_requests':0,'source_certificate_alias_ledger_timezone_writes':0,'certifies':False}
- tz=c.put('metadata/TIMEZONE.json',observation);c.remap('PLATFORM_TIMEZONE_OBSERVATION',tz)
+ tz=c.put('metadata/TIMEZONE.json',observation);c.remap('CURRENT_PLATFORM_TIMEZONE_OBSERVATION',tz)
  m.require_data_alias_observation(c.root,binding);m.require_platform_timezone_observation(c.root,tz)
  return {'alias':binding,'timezone':tz,'genuine_validator_bodies':True,'tzif_bytes':len(raw)}
 

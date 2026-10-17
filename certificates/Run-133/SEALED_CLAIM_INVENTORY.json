@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "run": 133,
+  "stage": "pre_aristotle",
+  "novelty": "UNASSESSED",
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "For two finite fixed paths under independent edge survival, Q_A Q_B = Q_union Q_intersection.",
+      "paper_locator": "Proposition 1",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "synchrony_dividend_identity",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 1-2"
+    },
+    {
+      "id": "C2",
+      "claim": "Sharing physical overlap instead of duplicating independent copies increases both-success probability by Q_union(1-Q_intersection).",
+      "paper_locator": "Theorem 1, Eq. 2",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "synchrony_dividend_identity",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 1-6"
+    },
+    {
+      "id": "C3",
+      "claim": "The same quantity is the duplicated design's advantage in at-least-one-survives probability.",
+      "paper_locator": "Theorem 1, Eq. 3",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "availability_penalty_eq_synchrony_dividend",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 1-6"
+    },
+    {
+      "id": "C4",
+      "claim": "The tradeoff is nonnegative, strict when union reliability is positive and shared reliability is below one, and zero for disjoint paths.",
+      "paper_locator": "Theorem 1 and boundaries",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "overlap_tradeoff_nonnegative and overlap_tradeoff_strict",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 3-6 and 14"
+    },
+    {
+      "id": "C5",
+      "claim": "With additive edge costs, separate-path cost minus union-path cost equals the total cost of shared edges.",
+      "paper_locator": "Proposition 2",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "additive_shared_cost_saving",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 7 and 13"
+    },
+    {
+      "id": "C6",
+      "claim": "The explicit quarter-quarter/eighth/half witness has a strict dividend of one sixteenth.",
+      "paper_locator": "Worked witness",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "corridor_overlap_nonvacuous",
+      "formal_status": "UNPROVED"
+    },
+    {
+      "id": "C7",
+      "claim": "The preregistered gate passed 14 of 14 checks.",
+      "paper_locator": "Adversarial verification",
+      "evidence_class": "NUMERIC",
+      "support": "verification_output.txt"
+    },
+    {
+      "id": "C8",
+      "claim": "Multispecies corridor planning, shared-corridor reliability, and dependent network failure are established research areas.",
+      "paper_locator": "Problem and prior work",
+      "evidence_class": "CITED",
+      "support": "SOURCE_LEDGER.json S1-S5"
+    },
+    {
+      "id": "C9",
+      "claim": "The independent fixed-path model accurately predicts ecological, demographic, or field outcomes.",
+      "paper_locator": "Limitations",
+      "evidence_class": "DEFERRED",
+      "support": "Requires telemetry, calibrated survival, joint hazards, rerouting, and population validation."
+    },
+    {
+      "id": "C10",
+      "claim": "The diagnostic creates customer value or revenue.",
+      "paper_locator": "business_EV-133.md",
+      "evidence_class": "CONJECTURED",
+      "support": "No buyer interview, paid delivery, demand, adoption, or revenue evidence."
+    }
+  ]
+}

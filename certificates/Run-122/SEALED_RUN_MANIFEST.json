@@ -1,0 +1,98 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 122,
+  "run_id": "Run-122",
+  "slug": "zeno-alignment-budget",
+  "title": "The Zeno Alignment Budget: Uniform Projective Steps and a Noise-Limited Measurement Count",
+  "generated_at_utc": "2026-08-07T07:11:30Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-122_zeno-alignment-budget",
+  "selection": {
+    "area_id": "12",
+    "area": "AI Wavefunction Collapse",
+    "lens": "Alignment",
+    "directive_kind": "locked_area",
+    "reason": "severe_starvation",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 15,
+    "failed": 0,
+    "failure_conditions_triggered": 0,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "scope": "ideal two-level geodesic projective schedules, strong-concavity dispersion certificate, constant per-step survival, continuous and integer measurement-count optima, asymptotic convergence, and an assumption-breaking schedule-dependent-quality control"
+  },
+  "aristotle": {"status":"NOT_RUN","submitted":false},
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus quantum-control methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 123,
+    "kind": "area",
+    "area_id": "07",
+    "area": "Gaian Systems",
+    "lens": "Thermodynamic",
+    "reason": "tier_starvation_floor"
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs --keep-intermediates paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 4,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "visual_review": "PASS_ALL_4_PAGES"
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {"name":"Codex","role":"Viridis corpus and current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"},
+      {"name":"Claude","role":"historical Viridis research artifacts read with attribution preserved and no historical text rewritten"}
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "b218a2160465cb03b955c9d33fbc49b5224be19141909cf6c92eac675c07d884",
+    "resulting_nightly_state_sha256": "73d00fa96cd3967c831b33f4b59025aa6369de00163eb4512457bc30e5b025ca",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "BUILD_FAILURE_NOTE.md": "a7a62055f0d2bd355ac77ae33836b97cb164fa0d7a28e50b90f8b4ac375e4706",
+      "CEO_ALERT.md": "79a13fe98d37c37ccf955ae74136c6239fb1f6a143e750528559faa358af834a",
+      "CLAIM_INVENTORY.json": "08a414bbb4910d3958f241cda9449a83898a13f66b492838f0e43922a89efa48",
+      "INPUT_STATE_SNAPSHOT.json": "b218a2160465cb03b955c9d33fbc49b5224be19141909cf6c92eac675c07d884",
+      "PAPER_PACKAGE_MANIFEST.json": "6b5b2310de69925ba14c4445c9b77aa3ccc178ebe39449235903b2d7f31e23b2",
+      "PREREGISTRATION.md": "404414065e43dc2a734fe233bd4f9ca56a0a150a7fac2af8f0f5c93af3336034",
+      "README.md": "fffb014f259636bdcd4763220deaa212dc06d615503f89bb1dc22d7114db48d4",
+      "SOURCE_LEDGER.json": "2b0c7785b4f47a67ee447c405b0587ea4242ab258750caa0fd7025c7545a4562",
+      "business_EV-122.md": "9dc5be8818c624f1c6e0bdc97cf4b1faece90be1c9a3ff4aadffd2d17641ccc4",
+      "finding.md": "91fe1327efb5a5c60ecc2f2ac77745d66c28c03fbb2387b905cc068621863c77",
+      "paper.aux": "13e49be22887e706a5585ac78857692d824b4b16741ba17514a93d488062ca0f",
+      "paper.log": "ab09287c9b8d9c18583dba89909030f86be6f51e748b333cd46c3e97cda22636",
+      "paper.out": "f37496c70f91b9104b9e6eaabe716dcc81f29e807e7caf8b847f95374f9d2aa7",
+      "paper.pdf": "5443c4a92c061d2bee9fa58ef583852dbaf6af59b740fb49cdfad0b718c9841d",
+      "paper.tex": "c77870c679dc26acaeb66277ca2df9f1121de4e18a12d51a091a2947851912c8",
+      "verification.py": "175c497e8651d41096b4fc41c875fec3403c6e0d41bf8a3994a8e82aa786da1c",
+      "verification_output.txt": "cea86f15ef79236fa85d789c592e25750d3433728d500c84481ef48f0ca9a3ab"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed after sealing and its hash is recorded in NIGHTLY_STATE.md and INDEX.md; the manifest cannot contain its own cryptographic hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {
+    "published": false,
+    "pushed": false,
+    "submitted": false,
+    "outreach_sent": false,
+    "external_account_mutated": false,
+    "money_moved": false
+  }
+}

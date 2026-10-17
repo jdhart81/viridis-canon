@@ -1,0 +1,90 @@
+{
+  "schema_version": "VRS-CLAIM-INVENTORY-1",
+  "run": 128,
+  "stage": "pre_aristotle",
+  "novelty": "UNASSESSED",
+  "significance": "UNASSESSED",
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Strict bilateral benefit is equivalent to the reciprocity ratio corridor.",
+      "classification": ["FORMAL_TARGET", "NUMERIC"],
+      "support": ["PREREGISTRATION.md", "verification.py: corridor_equivalence_randomized", "paper.tex: Theorem 1"],
+      "formal_status": "UNPROVED"
+    },
+    {
+      "id": "C2",
+      "claim": "The strict reciprocity corridor is nonempty iff c_X c_Y < v_X v_Y.",
+      "classification": ["FORMAL_TARGET", "NUMERIC"],
+      "support": ["verification.py: strict_feasibility_product_condition", "paper.tex: Theorem 2"],
+      "formal_status": "UNPROVED"
+    },
+    {
+      "id": "C3",
+      "claim": "At fixed positive total flow, the symmetric Nash-product maximizer is the midpoint of the zero-payoff share boundaries.",
+      "classification": ["FORMAL_TARGET", "NUMERIC"],
+      "support": ["verification.py: nash_midpoint_matches_dense_grid", "paper.tex: Theorem 3"],
+      "formal_status": "UNPROVED"
+    },
+    {
+      "id": "C4",
+      "claim": "Bandwidth scales feasible payoffs but cannot create feasibility when the corridor is empty.",
+      "classification": ["FORMAL_TARGET", "NUMERIC"],
+      "support": ["verification.py: bandwidth and empty-corridor controls", "paper.tex: Corollary 1"],
+      "formal_status": "UNPROVED"
+    },
+    {
+      "id": "C5",
+      "claim": "The stated stationary Gaussian VAR transfer entropy equals the conditional-variance formula.",
+      "classification": ["CITED", "NUMERIC"],
+      "support": ["SOURCE_LEDGER.json:S1,S4", "verification.py: Gaussian VAR and regression checks"],
+      "formal_status": "NOT_A_NEW_FORMAL_CLAIM"
+    },
+    {
+      "id": "C6",
+      "claim": "High mutual information does not certify reciprocity, and pairwise transfer entropy can be confounded by a common driver.",
+      "classification": ["NUMERIC", "CITED"],
+      "support": ["verification.py: one-way and common-driver controls", "SOURCE_LEDGER.json:S4,S7,S9"],
+      "formal_status": "CONTROL_RESULT"
+    },
+    {
+      "id": "C7",
+      "claim": "Transfer entropy is directed predictive information, not automatically causal effect, resource transfer, fitness, or welfare.",
+      "classification": ["CITED", "ASSUMED"],
+      "support": ["SOURCE_LEDGER.json:S1,S4,S7,S9", "paper.tex: Limitations"],
+      "formal_status": "SCOPE_BOUNDARY"
+    },
+    {
+      "id": "C8",
+      "claim": "Landauer cost is only a lower-bound component for specified irreversible bit operations, not an all-in biological or economic cost.",
+      "classification": ["CITED"],
+      "support": ["SOURCE_LEDGER.json:S10", "paper.tex: Model and limitations"],
+      "formal_status": "SCOPE_BOUNDARY"
+    },
+    {
+      "id": "C9",
+      "claim": "A $9,500 Directional Reciprocity Audit may be a testable service concept.",
+      "classification": ["CONJECTURED"],
+      "support": ["business_EV-128.md"],
+      "formal_status": "BUSINESS_HYPOTHESIS_ONLY"
+    }
+  ],
+  "proposed_lean_targets": [
+    "bilateral_benefit_iff_reciprocity_corridor",
+    "strict_corridor_nonempty_iff_product_condition",
+    "share_coordinate_corridor_equivalence",
+    "nash_midpoint_unique_maximizer",
+    "bandwidth_scaling_cannot_restore_feasibility"
+  ],
+  "all_proposed_lean_targets_unproved": true,
+  "aristotle_status": "NOT_RUN",
+  "high_risk_language": {
+    "novelty_claimed": false,
+    "priority_claimed": false,
+    "universal_physical_law_claimed": false,
+    "causal_ecological_claimed": false,
+    "journal_ready_claimed": false,
+    "canon_or_spine_claimed": false
+  },
+  "open_integrity_flags": []
+}

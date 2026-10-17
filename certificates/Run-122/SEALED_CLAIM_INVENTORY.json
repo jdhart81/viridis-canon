@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "run": 122,
+  "stage": "pre_aristotle",
+  "novelty": "UNASSESSED",
+  "claims": [
+    {"id":"C1","claim":"Uniform angular increments uniquely maximize ideal post-selected success for fixed N and endpoint angle in the stated two-level geodesic model.","paper_locator":"Proposition 1","evidence_class":"FORMAL_TARGET","aristotle_target":"uniform_zeno_schedule_maximizes_success","formal_status":"UNPROVED","numeric_support":"verification.py checks 5, 6, 15"},
+    {"id":"C2","claim":"The uniform-to-schedule log-success gap is at least the sum of squared increment deviations.","paper_locator":"Proposition 2","evidence_class":"FORMAL_TARGET","aristotle_target":"zeno_schedule_log_gap_ge_variance","formal_status":"UNPROVED","numeric_support":"verification.py check 7"},
+    {"id":"C3","claim":"With constant q in (0,1), the continuous noisy log objective is strictly concave and has a boundary or unique interior optimizer.","paper_locator":"Proposition 3","evidence_class":"FORMAL_TARGET","aristotle_target":"noisy_zeno_log_objective_strictConcave","formal_status":"UNPROVED","numeric_support":"verification.py checks 9-12"},
+    {"id":"C4","claim":"The integer optimum is among floor and ceiling of the continuous optimizer.","paper_locator":"Corollary 1","evidence_class":"FORMAL_TARGET","aristotle_target":"noisy_zeno_integer_optimum_floor_or_ceil","formal_status":"UNPROVED","numeric_support":"verification.py check 10"},
+    {"id":"C5","claim":"The high-quality optimizer scales as Theta/sqrt(-log q).","paper_locator":"Asymptotic note","evidence_class":"FORMAL_TARGET","aristotle_target":"noisy_zeno_high_quality_asymptotic","formal_status":"UNPROVED","numeric_support":"verification.py check 13"},
+    {"id":"C6","claim":"The adversarial gate passed 15 aggregate checks with no preregistered failure condition triggered.","paper_locator":"Verification","evidence_class":"NUMERIC","support":"verification_output.txt"},
+    {"id":"C7","claim":"Schedule-dependent step quality can make a nonuniform schedule outperform the uniform one.","paper_locator":"Negative control","evidence_class":"NUMERIC","support":"verification.py check 14"},
+    {"id":"C8","claim":"Quantum Zeno dynamics and optimized Zeno dragging are established, active research areas.","paper_locator":"Prior work","evidence_class":"CITED","support":"SOURCE_LEDGER.json S1-S5"},
+    {"id":"C9","claim":"Rank-one ideal projections, post-selection, no drift, and schedule-independent q describe the intended application.","paper_locator":"Model assumptions","evidence_class":"ASSUMED","support":"PREREGISTRATION.md"},
+    {"id":"C10","claim":"The certificate improves a laboratory or AI controller.","paper_locator":"Limitations and business EV","evidence_class":"DEFERRED","support":"Requires customer or laboratory data and held-out comparison"},
+    {"id":"C11","claim":"A $15,000 schedule audit will produce customer value.","paper_locator":"business EV only","evidence_class":"CONJECTURED","support":"business_EV-122.md; signed revenue $0"},
+    {"id":"C12","claim":"The result is novel or significant beyond recent Zeno-dragging literature.","paper_locator":"Distinctness and conclusion","evidence_class":"DEFERRED","support":"Independent significance and prior-art review required"}
+  ]
+}

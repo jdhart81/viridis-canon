@@ -1,0 +1,38 @@
+{
+  "aligned_challenge": {
+    "path": "comparator-deploy/backlog/Run-131/VERIFICATION_CHALLENGE_ALIGNED.lean",
+    "sha256": "13803e64077b8a4c7919af31f348aeb19b785f14dabb59fe876cffc6210d98c8"
+  },
+  "candidate": {
+    "path": "comparator-deploy/backlog/Run-131/VERIFICATION_CANDIDATE.lean",
+    "sha256": "842943f1da4b1dc2e55b07d2f9eb0edbeffe381e82bc44b51cabd08296295412"
+  },
+  "candidate_forbidden_constructs_empty": true,
+  "expected_theorem_names": [
+    "threshold_order",
+    "band_width_identity",
+    "closed_loop_area_identity",
+    "bias_translation",
+    "directional_cost_recovery"
+  ],
+  "external_mutation": false,
+  "introduced_sorry_count": 5,
+  "local_lean_execution": false,
+  "operation": "candidate-order challenge with only expected theorem proof bodies replaced by sorry",
+  "schema_version": 1,
+  "sealed_statement": {
+    "path": "comparator-deploy/backlog/Run-131/VERIFICATION_CANDIDATE.lean",
+    "sha256": "842943f1da4b1dc2e55b07d2f9eb0edbeffe381e82bc44b51cabd08296295412"
+  },
+  "shared_declaration_order_source": "candidate",
+  "signature_sha256": {
+    "band_width_identity": "9c350f822179c976355f9ff7f7fc1f49132064c7b7ad9620798a0de94e77feff",
+    "bias_translation": "81279e6ec88e7b369ab0cf1c23c756a92fa318af2203ee39ce7b57f592f6bcbb",
+    "closed_loop_area_identity": "6bc4fea39a6a62f1487ca3d4e1a6c9c4bbc35af1b039d4caac0fc83d2221a003",
+    "directional_cost_recovery": "dbccf8a4646e275f5fe010e5f50d871e8329d88997f698c60116c5b0b5daebd4",
+    "threshold_order": "276e08c1df97f88558acbf60a83a9a22feb3c8f8bd34610828074ab6be31326b"
+  },
+  "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+  "status": "FROZEN",
+  "target_signatures_match_sealed_statement": true
+}

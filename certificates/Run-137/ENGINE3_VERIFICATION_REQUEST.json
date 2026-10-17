@@ -1,0 +1,60 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-137-SymbioticAccountingCorrection-r1-Comparator-attempt-1",
+  "root_candidate_id": "Run-137-SymbioticAccountingCorrection-r1-Comparator",
+  "attempt": 1,
+  "source_run": "Run-137",
+  "module": "SymbioticAccounting",
+  "namespace": "Viridis.IntelligenceBound.SymbioticAccounting",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "afe2ac826cb598d998a4e32baa19c17ffba3df7706b8dc0015d36c1ff5c65daa",
+  "input_sha256": {
+    "SEALED_paper.pdf": "6453b4a6d70a4f766aed0722c0bdd801fc408dfd0365a3d05da12c4804def9f6",
+    "SEALED_paper.tex": "f1d3f71e95174e43422c9cc9add4b844e5d12beed803fe502d453d76eecf919d",
+    "SEALED_CLAIM_INVENTORY.json": "d496610e6fcec5ff303163e4e3a22dbf6914d5d13f2eb98e982d0f538fb876d3",
+    "SEALED_RUN_MANIFEST.json": "3076313dc45d2bf62789e3294bdcdc346a5bf2388b29154ef51da587ee59f950",
+    "CORRECTION_RECEIPT.json": "7fd6170ddf5c1f3acd6d758d2efa4cd71db7005c31a3ca4e4e39bc3f45bf0d5e",
+    "VERIFICATION_CANDIDATE.lean": "afe2ac826cb598d998a4e32baa19c17ffba3df7706b8dc0015d36c1ff5c65daa",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "914947efc9341f44104a52c6283ac6d4ac1c96c33226381d07ac3d55a5f53cbb",
+    "STATEMENT_ALIGNMENT.json": "ad6aa76d61675f07c38c58ac295f007dbbe62a0a5d5dc3a64aeaf8feece276f3"
+  },
+  "statement_alignment": {
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "sha256": "afe2ac826cb598d998a4e32baa19c17ffba3df7706b8dc0015d36c1ff5c65daa"
+    },
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT.json",
+      "sha256": "ad6aa76d61675f07c38c58ac295f007dbbe62a0a5d5dc3a64aeaf8feece276f3"
+    }
+  },
+  "expected_theorem_names": [
+    "conjunctive_rate_upper_bound_as_frozen_is_false",
+    "conjunctive_rate_upper_bound",
+    "symbiotic_allocation_attains",
+    "normalized_rates_equal",
+    "weighted_harmonic_le_max",
+    "two_partner_closed_form",
+    "additive_rate_upper_bound_as_frozen_is_false",
+    "additive_rate_upper_bound",
+    "symbiotic_accounting_nonvacuous"
+  ],
+  "nonvacuity_obligations": ["symbiotic_accounting_nonvacuous"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "correction_binding": {
+    "correction_id": "Run-137_symbiotic-accounting-certificate-r1",
+    "receipt": "CORRECTION_RECEIPT.json",
+    "original_run_preserved": true,
+    "original_false_statements_preserved_as_counterexamples": true,
+    "linked_paper_corrected": true,
+    "statement_weakened_relative_to_corrected_paper": false
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

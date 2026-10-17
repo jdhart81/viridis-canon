@@ -1,0 +1,112 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 127,
+  "run_id": "Run-127",
+  "slug": "precautionary-capacity-reserve",
+  "title": "The Precautionary Capacity Reserve: A Sharp Moment-Robust Stewardship Discount for an Intelligence-Rate Model",
+  "generated_at_utc": "2026-08-11T08:12:45Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-127_precautionary-capacity-reserve",
+  "selection": {
+    "area_id": "01",
+    "area": "Intelligence Bound",
+    "lens": "Stewardship",
+    "directive_kind": "locked_area",
+    "reason": "scored_selection",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true,
+    "combination_guard": "PASS_DISTANCE_25_FROM_RUN_102"
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "significance": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 14,
+    "failed": 0,
+    "checks": 14,
+    "failure_conditions_triggered": 0,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "scope": "one-period nonnegative two-moment capacity chance certificate, 100,000 seeded finite law-risk pairs, analytic two-point moment recovery, 320 above-floor sharpness counterexamples, deterministic and clipped-zero boundaries, risk and uncertainty monotonicity, power-temperature scaling, mean-only failure, support and Gaussian controls, marginal-versus-path dependence, naive sample-moment failure, Monte Carlo convergence, expectation-versus-chance separation, and strict-event boundary approach"
+  },
+  "aristotle": {
+    "status": "NOT_RUN",
+    "submitted": false
+  },
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus robustness/decision methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 128,
+    "kind": "area",
+    "area_id": "02",
+    "area": "Thermodynamic Economics",
+    "lens": "Symbiosis",
+    "reason": "scored_selection",
+    "selection_note": "No severe-starvation or tier-floor rail is armed after Run 127. Area 02 has the highest post-transition stated score, 3.0*11=33, ahead of area 10 at 1.5*16+3.0=27. Symbiosis follows Stewardship in the lens rotation and is combination-clean at distance 18 from Run 110."
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs --keep-intermediates paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 5,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "visual_review": "PASS_ALL_5_PAGES_RENDERED_AT_120_DPI",
+    "preserved_failure_evidence": "BUILD_FAILURE_NOTE.md"
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Binding-standard and Viridis-corpus review, current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "Historical Viridis research artifacts read with attribution preserved and no historical text rewritten"
+      }
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "7272121eec9f94fdfa2fc4836cc2aed12591f95687e4943f4e0f958aa3eed7dc",
+    "resulting_nightly_state_sha256": "6d96e11c8d42bcc06f20d1f95e9ce04d85e3862eda200782c7d17fd7c9eb081f",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "BUILD_FAILURE_NOTE.md": "802a6bd00264e92b6c9aaaddc209226ebc9ba17f1adde6a22a6fbad437a9a9d6",
+      "CEO_ALERT.md": "08c035cc80238b12c0dfb661a4e36e1b7ce021b13c8a81bb8b897910682e0f1a",
+      "CLAIM_INVENTORY.json": "4e20d24437b5b4a556cabb60c58f4de411737d447be366801ed5ff8918b02316",
+      "PAPER_PACKAGE_MANIFEST.json": "837e7b0df580cd830b3bfaa92a8c4686591beda8681e9f3c19ae5dbc8697a01f",
+      "PREREGISTRATION.md": "46b86cca54470c075db7e33f3bb07c6e4d901a00d6fb55881135d68cec110f8d",
+      "README.md": "c0de935b5cc4fe09792a1365feab146bca3fd4cbb626487ee364f216c01830ee",
+      "SOURCE_LEDGER.json": "e102aaf35a632014640c8f3c405630d0eabf0dcc739a6973cee591867d641a5f",
+      "business_EV-127.md": "a71bef3025e78d203a025b274dc348e81073ac3627e6bf9ca0657f64464fda6b",
+      "finding.md": "7a7ac03e06206147a6a6f9499e4581652079892a2c5aa5674a2eca741ac3a549",
+      "paper.aux": "bc3063c7f0e077708be12237904a0a1f164ddd98b6748a3c80eac822e52dfb1f",
+      "paper.log": "16a1b43623947a537eb490c1dae7974e7c6dc8f36c109fe6264c262c5aa8d5c1",
+      "paper.out": "c2031c8ca3876939784f5971aa2d22500a18601d36141a29a0f15f385e6653f4",
+      "paper.pdf": "3c243b09d60a81e3bdf6e17f5bb28b46dc5f9dcba7978ddd4d139c77d7c84969",
+      "paper.tex": "790b39df97c54aad1336da6b708c000043c0f1ef23af042cbc71a0a44f6fe2c2",
+      "verification.py": "2998a1a8b82ded6a7627179726754f2e7135605f3945a4f5dbbf51ec3bcc1a15",
+      "verification_output.txt": "7cdf24e6efaf5a9641aae7f50642a624d6c0c71227177059ccacee0b57871495"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed only after sealing; its hash is recorded in NIGHTLY_STATE.md and INDEX.md because a manifest cannot contain its own cryptographic hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {
+    "published": false,
+    "pushed": false,
+    "submitted": false,
+    "outreach_sent": false,
+    "external_account_mutated": false,
+    "money_moved": false
+  }
+}

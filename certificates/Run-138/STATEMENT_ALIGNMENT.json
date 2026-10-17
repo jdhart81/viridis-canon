@@ -1,0 +1,44 @@
+{
+  "aligned_challenge": {
+    "path": "lean_certificates/Run-138/VERIFICATION_CHALLENGE_ALIGNED.lean",
+    "sha256": "0ddb1628c0ad7a0110044388519cce1dde218f0c1851a47338ff3f1e88a43b14"
+  },
+  "candidate": {
+    "path": "lean_certificates/Run-138/VERIFICATION_CANDIDATE.lean",
+    "sha256": "1830f9cf99db8a26fb394dcdd5d343c866803495856f70258680ec9977ed4a73"
+  },
+  "candidate_forbidden_constructs_empty": true,
+  "expected_theorem_names": [
+    "aggregate_projection_positive",
+    "aggregate_residual_bound",
+    "common_cone_closed_under_weighted_sum",
+    "alignment_floor_of_residual_bound",
+    "uniform_cone_alignment_floor",
+    "cancellation_gives_perfect_alignment",
+    "magnitude_masking_witness",
+    "gaian_alignment_nonvacuous"
+  ],
+  "external_mutation": false,
+  "introduced_sorry_count": 8,
+  "local_lean_execution": false,
+  "operation": "candidate-order challenge with only expected theorem proof bodies replaced by sorry",
+  "schema_version": 1,
+  "sealed_statement": {
+    "path": "lean_certificates/Run-138/VERIFICATION_STATEMENT.lean",
+    "sha256": "1830f9cf99db8a26fb394dcdd5d343c866803495856f70258680ec9977ed4a73"
+  },
+  "shared_declaration_order_source": "candidate",
+  "signature_sha256": {
+    "aggregate_projection_positive": "0bf09ada37eaf37ec2327226018bb1599805611929476ab5e42fa5731bd234a0",
+    "aggregate_residual_bound": "969b1cbeac2230fff484dcccffe919686e945aad3982a760ef071dc41851da67",
+    "alignment_floor_of_residual_bound": "2118c10ebbb1fd5e19727b17c5a03e40576008f8acc913239cc5b2c92bf375b8",
+    "cancellation_gives_perfect_alignment": "9f858ce993e503485370d3b72cfffd7b9097c06c5ce603e2c7947ca7fdd624df",
+    "common_cone_closed_under_weighted_sum": "3f93140dc185f5d4e61f1c03c2e1ae1b1f93a3a8fe1a22490235a78003fd35cf",
+    "gaian_alignment_nonvacuous": "610a00e34e852fba0bc11aa8653508bc56e45e73f6746558296d39a0fbaa1c30",
+    "magnitude_masking_witness": "8e09a89e1786e14090ac1a38718914fba8d5545f405492a76de323b01c895cc1",
+    "uniform_cone_alignment_floor": "656a123e8e621cc21e3a1f86ad125560755ae943a4d6bfc8b8aefee754c750c1"
+  },
+  "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+  "status": "FROZEN",
+  "target_signatures_match_sealed_statement": true
+}

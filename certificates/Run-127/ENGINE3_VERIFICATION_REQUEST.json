@@ -1,0 +1,65 @@
+{
+  "aristotle_required": false,
+  "attempt": 1,
+  "candidate_id": "Run-127-PrecautionaryCapacity-Comparator-attempt-1",
+  "expected_theorem_names": [
+    "cantelli_capacity_certificate",
+    "precautionary_rate_le_violation_budget",
+    "capacity_reserve_fraction_eq",
+    "positive_floor_sharp_two_point_counterexample",
+    "mean_only_plugin_arbitrarily_unsafe"
+  ],
+  "input_sha256": {
+    "SEALED_CLAIM_INVENTORY.json": "4e20d24437b5b4a556cabb60c58f4de411737d447be366801ed5ff8918b02316",
+    "SEALED_RUN_MANIFEST.json": "322ec9067d64694f6c4d28060b8ab3ef535963a9db9118cee6fd55cdf38d97ec",
+    "SEALED_paper.pdf": "3c243b09d60a81e3bdf6e17f5bb28b46dc5f9dcba7978ddd4d139c77d7c84969",
+    "SEALED_paper.tex": "790b39df97c54aad1336da6b708c000043c0f1ef23af042cbc71a0a44f6fe2c2",
+    "STATEMENT_ALIGNMENT.json": "0c2abf575df0416f32ecc1457dff48155909698057850e79073e8e81e685c80a",
+    "VERIFICATION_CANDIDATE.lean": "e930944c7b5efe69cecc90884243a8aca6a09a6930442196347b6d4227334d9a",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "cb9a966f3d2130bb5a91a15baaa809dc976f35713623190116a235f4867a1b44",
+    "VERIFICATION_STATEMENT.lean": "cb9a966f3d2130bb5a91a15baaa809dc976f35713623190116a235f4867a1b44"
+  },
+  "legacy_provenance": {
+    "aristotle_required_for_this_certificate": false,
+    "candidate_source": "Codex-reconstructed and reviewed monolith from immutable historical proof modules; historical provider status carries no certification authority",
+    "fresh_comparator_verification_required": true,
+    "historical_audit_sha256": "9d16825a747c528dd906734c62c2da04f38582cb87d5b33d2ebe1c365fd2c90a",
+    "historical_root_module_sha256": "c39845a9f92402521fa37f758c65af95e5fdab65b24b5e92544d94c0296c8364"
+  },
+  "local_lean_execution": false,
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "module": "PaperFormalization",
+  "namespace": "Viridis.Run127.PaperFormalization",
+  "nonvacuity_obligations": [
+    "cantelli_capacity_certificate_nonvacuous",
+    "precautionary_rate_le_violation_budget_nonvacuous",
+    "capacity_reserve_fraction_eq_nonvacuous",
+    "positive_floor_sharp_two_point_counterexample_nonvacuous",
+    "mean_only_plugin_arbitrarily_unsafe_nonvacuous"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "request_kind": "LEAN_PROOF",
+  "root_candidate_id": "Run-127-PrecautionaryCapacity-Comparator",
+  "schema_version": "3.0",
+  "source_run": "Run-127",
+  "statement_alignment": {
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT.json",
+      "sha256": "0c2abf575df0416f32ecc1457dff48155909698057850e79073e8e81e685c80a"
+    },
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "sha256": "cb9a966f3d2130bb5a91a15baaa809dc976f35713623190116a235f4867a1b44"
+    },
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1"
+  },
+  "statement_contract_sha256": "cb9a966f3d2130bb5a91a15baaa809dc976f35713623190116a235f4867a1b44",
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION",
+  "toolchain": "leanprover/lean4:v4.28.0"
+}

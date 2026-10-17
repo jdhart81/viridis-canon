@@ -1,0 +1,129 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 137,
+  "run_id": "Run-137",
+  "slug": "symbiotic-accounting-certificate",
+  "title": "The Symbiotic Accounting Certificate: Complementarity Does Not Create Thermodynamic Capacity",
+  "generated_at_utc": "2026-08-21T08:14:09Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-137_symbiotic-accounting-certificate",
+  "selection": {
+    "area_id": "01",
+    "area": "Intelligence Bound",
+    "lens": "Symbiosis",
+    "directive_kind": "locked_area",
+    "reason": "scored_selection",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true,
+    "combination_guard": "PASS_INTELLIGENCE_BOUND_SYMBIOSIS_PAIRING_OUTSIDE_16_RUN_GUARD"
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "significance": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 16,
+    "failed": 0,
+    "checks": 16,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "deterministic_seed": 137,
+    "scope": "20,000 random feasible upper-bound trials, 10,000 random attaining allocations, budget and normalized-rate identities, 20,000 harmonic-mean cases, equal-efficiency and two-partner boundaries, a 20,001-point allocation grid, slow-partner and task-share controls, scaling controls, independent-budget and changed-efficiency negative controls, 100,000 additive allocations, and an excess-rate diagnostic",
+    "preserved_failure_evidence": null
+  },
+  "formalization": {
+    "status": "FROZEN_PROPOSED_UNPROVED",
+    "lean_file": "formalization/SymbioticAccounting.lean",
+    "targets": [
+      "conjunctive_rate_upper_bound",
+      "symbiotic_allocation_attains",
+      "normalized_rates_equal",
+      "weighted_harmonic_le_max",
+      "two_partner_closed_form",
+      "additive_rate_upper_bound",
+      "symbiotic_accounting_nonvacuous"
+    ],
+    "contains_explicit_sorry_placeholders": true
+  },
+  "aristotle": {
+    "status": "NOT_RUN",
+    "submitted": false
+  },
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus symbiotic-accounting methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 138,
+    "kind": "area",
+    "area_id": "07",
+    "area": "Gaian Systems",
+    "lens": "Alignment",
+    "reason": "tier_starvation_floor",
+    "selection_note": "Area 07 reaches the Tier-2 starvation floor at staleness 14. Alignment follows Symbiosis and its last area-07 pairing was Run 028, outside the 16-run guard."
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 4,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "visual_review": "PASS_ALL_4_PAGES_RENDERED_AT_120_DPI",
+    "preserved_failure_evidence": null
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Binding-standard and Viridis-corpus review, current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "Historical Viridis research artifacts read with attribution preserved and no historical text rewritten"
+      }
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "4ec971b436bfd9f54bb6dad7a264c90a1ecf448fa40bc5f9467534ddc49630f7",
+    "resulting_nightly_state_sha256": "85a639e0897e4f52725b0424971d435888c27cdb7d0a84579deed7ff58dbc243",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "CEO_ALERT.md": "4b39bbd4f4c194ef6c988888f8ff74047e47e1197fe2702456ce17285b68e8a8",
+      "CLAIM_INVENTORY.json": "ac5e800a1dc9c65cfc8c628c600e32efd4190b379e1d97078644fced36fdcc48",
+      "PAPER_PACKAGE_MANIFEST.json": "5f4e60bd955b937bf6723b6764dd426f2e39df2e52a9e5154887ac0784bbb0ea",
+      "PREREGISTRATION.md": "50e587d0a5c82caef56533ba6bbac0abafa67e445249b159b094e7b25c7e90df",
+      "README.md": "565126edffd877c79c17204f1bf5ba72e56c97d25373d2d3934f32ef2d0c1098",
+      "SOURCE_LEDGER.json": "720fdede760f4646f79b85f62b6df06b553fbafead493879e27ad24eeb7c774d",
+      "business_EV-137.md": "707ccedfdfe9febff80ffd87dc6fa81ee54a4d374e7ad32f7436a24d0027f4d0",
+      "finding.md": "12e3f8965a62107fb7e3b569a94dba68e7196d881d3225b2850621e4ac613285",
+      "formalization/ARISTOTLE_PROMPT.md": "60399f26dee1967f69693c62190bd9b85eed9bfa77522e98b5d7e62889c5422d",
+      "formalization/STATEMENT_CONTRACT.json": "51b5e5037656be38e9cc0818cd9b84286f0a18c5b28e5b7cec70b75f779ce44a",
+      "formalization/SymbioticAccounting.lean": "dfc2f2c9af2239ee044c485a4c292de5faab451d1201e8e1f152a6ef662a4774",
+      "formalization/lakefile.toml": "d8582076d8fee418e19e757f9cea33181f55f31a2dcaeca3560389a6867346aa",
+      "formalization/lean-toolchain": "c23d07a83207c0097d2f7216e124d88cfd47bb976328c60094178c2128626a77",
+      "paper.log": "ca87c2f965debe9f749c862da97991d3594cb610e6bb6dcf42fcef88a42d565e",
+      "paper.pdf": "c63dbbbceebbba1f988193f37d76496583a9fe6274f41603dcbdb7e9d5c47473",
+      "paper.tex": "89bd10ff8474a76fb5a77b9868aaaea3ea92606c171a99efb97415551d6251ca",
+      "verification.py": "c0c95bf09c743b02cd878d796c0d2b31245cb530f41bb62055423f76f32ff8d9",
+      "verification_output.txt": "bf6b00d33b0afec184e646718d093050a328a1b328818664b5791b75a9b6a31b"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed only after sealing; its hash is recorded in NIGHTLY_STATE.md and INDEX.md because a manifest cannot contain its own hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {
+    "published": false,
+    "pushed": false,
+    "submitted": false,
+    "outreach_sent": false,
+    "external_account_mutated": false,
+    "money_moved": false
+  }
+}

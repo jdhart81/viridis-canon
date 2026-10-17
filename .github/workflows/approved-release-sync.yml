@@ -1,0 +1,45 @@
+name: Approved science release continuation
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '00_lab_infrastructure/gates/approved_release_sync/**'
+      - '.github/workflows/approved-release-sync.yml'
+  push:
+    branches: [main]
+    paths:
+      - '00_lab_infrastructure/gates/approved_release_sync/**'
+      - '.github/workflows/approved-release-sync.yml'
+permissions:
+  contents: read
+jobs:
+  approved-release-sync:
+    name: approved-release-sync (${{ matrix.python }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.12', '3.14']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        timeout-minutes: 1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Record exact tested source
+        timeout-minutes: 1
+        env:
+          EXPECTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_COMMIT"
+          git show --no-patch --format='verified_commit=%H%nverified_tree=%T' HEAD
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        timeout-minutes: 2
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Inert approved-release and exit-boundary regressions
+        timeout-minutes: 6
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: timeout --signal=TERM --kill-after=5s 300s python3 -B -m unittest discover -s 00_lab_infrastructure/gates/approved_release_sync/tests -p 'test_*.py' -v

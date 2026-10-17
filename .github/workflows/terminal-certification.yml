@@ -1,0 +1,39 @@
+name: Terminal premise HOLD selection
+
+on:
+  pull_request:
+    paths:
+      - '00_lab_infrastructure/gates/terminal_certification/**'
+      - '00_lab_infrastructure/gates/premise_declaration.py'
+      - '00_lab_infrastructure/gates/inv9_title_basis.py'
+      - 'comparator-deploy/engine3_align_challenge.py'
+      - '.github/workflows/terminal-certification.yml'
+  push:
+    branches: [main]
+    paths:
+      - '00_lab_infrastructure/gates/terminal_certification/**'
+      - '00_lab_infrastructure/gates/premise_declaration.py'
+      - '00_lab_infrastructure/gates/inv9_title_basis.py'
+      - 'comparator-deploy/engine3_align_challenge.py'
+      - '.github/workflows/terminal-certification.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  terminal-certification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.12', '3.14']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Verify exact terminal evidence and actual inactive selection patch
+        run: python3 -m unittest discover -s 00_lab_infrastructure/gates/terminal_certification/tests -v
+      - name: Kill terminal evidence and selection mutants
+        run: python3 00_lab_infrastructure/gates/terminal_certification/run_mutations.py --output "$RUNNER_TEMP/terminal-hold-mutations.json"

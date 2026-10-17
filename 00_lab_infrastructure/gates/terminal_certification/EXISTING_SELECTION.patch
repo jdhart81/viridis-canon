@@ -1,0 +1,46 @@
+--- a/RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py
++++ b/RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py
+@@ -285,0 +286,12 @@
++def terminal_premise_work_item(path: Path, certificate_root: Path) -> WorkItem | None:
++    from verification_coverage_gates.terminal_certification.terminal_hold import terminal_hold
++    evidence = terminal_hold(path, certificate_root)
++    if evidence is None:
++        return None
++    return WorkItem(path.name, "TERMINAL_PREMISE_HOLD",
++                    "PRESERVE_SEALED_OBJECT_AWAIT_REVIEWED_SUCCESSOR", True,
++                    "Exact reviewed terminal premise HOLD; do not resubmit this sealed object. "
++                    "Certification debt and publication admission remain unchanged. Receipt SHA-256: "
++                    + evidence["receipt_sha256"])
++
++
+@@ -308,0 +321,3 @@
++        terminal = terminal_premise_work_item(path, certificate_root)
++        if terminal is not None:
++            return terminal
+@@ -403,0 +419,3 @@
++    terminal = terminal_premise_work_item(path, certificate_root)
++    if terminal is not None:
++        return terminal
+--- a/RESEARCH_PIPELINE_v2/science_foundry_continuity.py
++++ b/RESEARCH_PIPELINE_v2/science_foundry_continuity.py
+@@ -148,0 +149,13 @@
++    # Dispatch eligibility is separate from debt and certificate credit.
++    from verification_coverage_gates.terminal_certification.terminal_hold import terminal_hold
++    terminal = []
++    for number in debt:
++        run_id = f"Run-{number:03d}"
++        finalized = control_root / "RESEARCH_PIPELINE_v2/finalized_runs" / run_id
++        package = finalized if finalized.is_dir() else package_inventory / run_id
++        evidence = terminal_hold(package, certificate_root)
++        if evidence is not None:
++            terminal.append(evidence)
++    terminal_ids = {row["run_id"] for row in terminal}
++    dispatch_fifo = [f"Run-{number:03d}" for number in debt
++                     if f"Run-{number:03d}" not in terminal_ids]
+@@ -223,0 +237,2 @@
++            "dispatch_fifo_runs": dispatch_fifo,
++            "terminal_held_objects": terminal,
+@@ -235 +250,2 @@
+-            else "verify the oldest FIFO frozen request with Comparator and issue one certificate" if debt
++            else "verify the oldest eligible FIFO frozen request with Comparator: " + dispatch_fifo[0] if dispatch_fifo
++            else "preserve terminal-held sealed objects; a reviewed new successor is required" if debt

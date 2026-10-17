@@ -66,18 +66,26 @@ BOOTSTRAP_GIT_PREFIX='00_lab_infrastructure/gates/standalone_pdf_release/runtime
 BOOTSTRAP_SHARED_NAME='stable_input_identity.py'
 BOOTSTRAP_SHARED_SHA256='7e6c204993f0ba65650c58ad50a71073d803522d31fa08b93b7ce35054fa5eda'
 BOOTSTRAP_SHARED_GIT_PATH='00_lab_infrastructure/gates/standalone_pdf_release/common/stable_input_identity.py'
+PROFILE_STANDARD = 'VRS-DIGEST-ARCHIVAL-PDF-PACKAGING-PROFILE-1'
+NOTE_PREPARATION = {
+    'module': 'nightly_manuscript_checkpoint.py',
+    'entrypoints': ['source_for_cycle', 'stage_checkpoint', 'review_checkpoint',
+                    'prepare_access', 'new_note_specs', 'stage_weekly_package'],
+}
 BOOTSTRAP_MODULE_NAMES=frozenset({'packaging_runtime.py','invoke_digest_v2.py','digest_controller_v2.py',
     'methods_digest_v2.py','methods_digest_registration_v3.py','manuscript_access_registry.py',
     'manuscript_access_correction.py','manuscript_pdf_gate.py','publish_dated_bundles_guarded.py',
-    'publish_successor_wave_guarded.py','packaging_catalog.py','install_packaging_runtime.py',
+    'packaging_catalog.py','install_packaging_runtime.py',
     'packaging_nightly.py','nightly_checkpoint_guarded.py','packaging_run_flow.py',
     'packaging_nightly_coverage.py','packaging_nightly_intake.py','scientific_registration_worker.py',
-    'owner_content_worker.py'})
+    'owner_content_worker.py','nightly_manuscript_access.py','nightly_manuscript_checkpoint.py'})
 
 
 def _bootstrap_artifacts(directory):
     if sys.pycache_prefix is not None:raise ValueError('WORKER_CURRENT_NAMESPACE_IMPORT_ARTIFACT:EXTERNAL_CACHE_PREFIX')
     probes=[Path(directory)/'__pycache__']
+    probes.extend(Path(directory)/('publish_successor_wave_guarded'+suffix) for suffix in
+        ('.py','','.pyc','.pyo',*importlib.machinery.EXTENSION_SUFFIXES))
     for name in sorted(BOOTSTRAP_MODULE_NAMES):
         stem=name[:-3]
         probes.extend(Path(directory)/(stem+suffix)for suffix in('', '.pyc','.pyo',*importlib.machinery.EXTENSION_SUFFIXES))
@@ -99,13 +107,13 @@ def _bootstrap():
     manifest = json.loads(_bootstrap_read(bound['path'],bound['sha256']))
     root = BOOTSTRAP_ROOT
     fields = {'standard','canonical_root','profile_binding','modules','metadata','source_origin',
-              'legacy_closure','source_review_change_flags','shared_dependencies'}
-    if set(manifest) != fields or manifest['standard'] != 'VRS-CURRENT-V012-WORKER-SOURCE-MANIFEST-1' or manifest['canonical_root'] != str(root):
+              'legacy_closure','source_review_change_flags','shared_dependencies','note_preparation'}
+    if set(manifest) != fields or manifest['standard'] != 'VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-1' or manifest['canonical_root'] != str(root):
         raise ValueError('WORKER_BOOTSTRAP_CLOSED_FIXED_ROOT_MANIFEST')
-    directory = root/'_ZENODO_DEPOSITS/standalone_pdf_runtime_v012'
+    directory = root/'_ZENODO_DEPOSITS/standalone_pdf_runtime'
     names = {'profile':'CURRENT_PACKAGING_PROFILE.json','nomination':'INSTALLATION_NOMINATION.json','plan':'INSTALL_PLAN.json'}
-    if len(manifest['modules']) != 19 or {r['name'] for r in manifest['modules']} != BOOTSTRAP_MODULE_NAMES or len(manifest['metadata']) != 3:
-        raise ValueError('WORKER_BOOTSTRAP_NINETEEN_AND_THREE')
+    if len(manifest['modules']) != 20 or {r['name'] for r in manifest['modules']} != BOOTSTRAP_MODULE_NAMES or len(manifest['metadata']) != 3:
+        raise ValueError('WORKER_BOOTSTRAP_TWENTY_AND_THREE')
     metadata = {}
     for row in manifest['metadata']:
         if set(row) != {'role','path','sha256','identity'} or row['role'] not in names or row['role'] in metadata or Path(row['path']) != directory/names[row['role']]:
@@ -124,6 +132,10 @@ def _bootstrap():
     expected_shared=[{k:shared[0][k] for k in ('name','path','sha256')} | {'git_path':BOOTSTRAP_SHARED_GIT_PATH}]
     if metadata['profile'].get('shared_dependencies')!=expected_shared:
         raise ValueError('WORKER_BOOTSTRAP_SHARED_PROFILE_BINDING')
+    if (metadata['profile'].get('standard') != PROFILE_STANDARD
+            or metadata['profile'].get('note_preparation') != NOTE_PREPARATION
+            or manifest['note_preparation'] != NOTE_PREPARATION):
+        raise ValueError('WORKER_BOOTSTRAP_NOTE_PREPARATION_BINDING')
     module_rows = []
     for row in manifest['modules']:
         if set(row) != {'name','path','sha256','identity'} or Path(row['path']) != directory/row['name'] or '/' in row['name']:
@@ -131,7 +143,7 @@ def _bootstrap():
         _bootstrap_read(row['path'],row['sha256'],row['identity'])
         module_rows.append({k:row[k] for k in ('name','path','sha256')})
     profile_rows=metadata['profile']['modules']
-    if len(profile_rows)!=19 or any(set(r)!={'name','path','sha256','git_path'}
+    if len(profile_rows)!=20 or any(set(r)!={'name','path','sha256','git_path'}
         or r['git_path']!=BOOTSTRAP_GIT_PREFIX+r['name']for r in profile_rows):
         raise ValueError('WORKER_BOOTSTRAP_CLOSED_FOUR_KEY_PROFILE_MODULES')
     projected=[{k:r[k]for k in('name','path','sha256')}for r in profile_rows]
@@ -405,9 +417,14 @@ def environment_frame(value=None):
 
 
 def source_rows(root, profile):
-    rows = runtime.object_at(root, profile)[2]['modules']
-    runtime.need(len(rows) == 19 and len({r['name'] for r in rows}) == 19,
-                 'SCIENCE_CURRENT_NINETEEN_SOURCES')
+    value = runtime.object_at(root, profile)[2]
+    runtime.need(value.get('standard') == runtime.STANDARD
+                 and value.get('note_preparation') == runtime.NOTE_PREPARATION,
+                 'SCIENCE_CURRENT_NOTE_PREPARATION')
+    rows = value['modules']
+    runtime.module_table(root, rows)
+    runtime.need(len(rows) == 20 and {r['name'] for r in rows} == runtime.MODULE_NAMES,
+                 'SCIENCE_CURRENT_TWENTY_SOURCES')
     for row in rows:
         runtime.read(root, {k: row[k] for k in ('path', 'sha256')})
     return deepcopy(rows)

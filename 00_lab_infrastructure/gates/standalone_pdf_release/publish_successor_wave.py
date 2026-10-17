@@ -134,6 +134,7 @@ def api_call(
     content_type: str | None = "application/json",
     *,
     allow_not_found: bool = False,
+    not_found_status: list[int] | None = None,
     rdm: bool = False,
 ) -> dict[str, Any] | None:
     validated_zenodo_url(url)
@@ -151,7 +152,7 @@ def api_call(
     for attempt in range(4):
         try:
             request = urllib.request.Request(url, method=method, data=data, headers=headers)
-            with opener.open(request, timeout=120) as response:
+            with opener.open(request, timeout=rehearsal.timeout(120)) as response:
                 raw = response.read().decode("utf-8")
             break
         except urllib.error.HTTPError as exc:
@@ -159,7 +160,9 @@ def api_call(
                 body = redact(exc.read().decode("utf-8", errors="replace"), token)[:500]
             finally:
                 exc.close()
-            if allow_not_found and exc.code == 404:
+            if allow_not_found and method in {"GET", "DELETE"} and exc.code in (404, 410):
+                if not_found_status is not None:
+                    not_found_status.append(exc.code)
                 return None
             if method != "POST" and exc.code in {429, 502, 503, 504} and attempt < 3:
                 time.sleep(2 ** (attempt + 1))
@@ -327,7 +330,76 @@ def inherit_predecessor_copyright(candidate: dict[str, Any], token: str) -> str 
     if copyright_value is not None and not isinstance(copyright_value, str):
         raise SuccessorPublisherError("predecessor copyright has an invalid type")
     candidate["expected_copyright"] = copyright_value
+    candidate["predecessor_native"] = copy.deepcopy(record)
     return copyright_value
+
+
+def native_projection(value):
+    """Execute only the unchanged, hash-bound reviewed native projection source."""
+    installed = ROOT / "RESEARCH_PIPELINE_v2/verification_coverage_gates/own_record_comparison.py"
+    # Repository test/review execution has the same immutable source next to
+    # this gate directory. Installed execution has no such repository fallback.
+    repository = next((parent / "own_record_comparison.py" for parent in Path(__file__).absolute().parents
+                       if (parent / "own_record_comparison.py").is_file()), None)
+    path = installed if installed.exists() or installed.is_symlink() else repository
+    if path is None or any(part.is_symlink() for part in (path, *path.parents)) or not path.is_file():
+        raise SuccessorPublisherError("reviewed native protected projection source required")
+    before = path.stat(); raw = path.read_bytes(); after = path.stat()
+    if (hashlib.sha256(raw).hexdigest() != "55e9e4a070cd6d3ac0f0ceb5398d163b1f64c2463b41810bf82b63be537003bf"
+            or (before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns)
+            != (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns)):
+        raise SuccessorPublisherError("reviewed native protected projection source differs")
+    namespace = {"__file__": str(path), "__name__": "_bound_successor_native_projection"}
+    exec(compile(raw, str(path), "exec"), namespace)
+    result = namespace["prior_protected_projection"](value, representation="NATIVE")
+    if path.read_bytes() != raw:
+        raise SuccessorPublisherError("reviewed native protected projection source changed")
+    return result
+
+
+def snapshot_native_successor(candidate, token, draft):
+    """Retain the complete native draft before the lossy legacy round trip."""
+    before = api_call(token, "GET", f"{BASE}/records/{draft}/draft", rdm=True)
+    if not isinstance(before, dict) or str(before.get("id")) != str(draft):
+        raise SuccessorPublisherError("native successor draft identity differs")
+    # Record identity, phase, generated links/PIDs and the explicitly replaced
+    # files belong to the new version. Every other native field is inherited.
+    operation_fields = {"id", "created", "expires_at", "status", "is_draft", "is_published", "versions", "pids", "links", "files"}
+    planned_fields = {"version", "publication_date", "related_identifiers"}
+    def inherited(value):
+        projected = native_projection(value)
+        for key in operation_fields:
+            projected.pop(key, None)
+        metadata = projected.get("metadata")
+        if not isinstance(metadata, dict):
+            raise SuccessorPublisherError("native successor metadata required")
+        for key in planned_fields:
+            metadata.pop(key, None)
+        return projected
+    if inherited(before) != inherited(candidate["predecessor_native"]):
+        raise SuccessorPublisherError("native successor creation changed protected predecessor content")
+    candidate["native_before_metadata"] = copy.deepcopy(before)
+    return before
+
+
+def verify_native_successor(candidate, token, draft):
+    """Require the full native projection plus only the approved metadata edits."""
+    expected = copy.deepcopy(candidate["native_before_metadata"])
+    planned = candidate["metadata"]["metadata"]
+    for key in ("version", "publication_date", "related_identifiers"):
+        if key in planned:
+            expected["metadata"][key] = copy.deepcopy(planned[key])
+    if candidate["expected_copyright"] is not None:
+        expected["metadata"]["copyright"] = candidate["expected_copyright"]
+    actual = api_call(token, "GET", f"{BASE}/records/{draft}/draft", rdm=True)
+    matched = native_projection(expected) == native_projection(actual)
+    receipt = {"state": "NATIVE_SUCCESSOR_READBACK_VERIFIED" if matched else "HOLD_NATIVE_SUCCESSOR_PROTECTED_DIFF",
+               "draft_id": str(draft), "predecessor": candidate["predecessor_native"],
+               "before_legacy_put": candidate["native_before_metadata"], "planned_after": expected, "after": actual}
+    json_write_atomic(candidate.get("receipt_root", candidate["bundle"]) / "NATIVE_SUCCESSOR_READBACK.json", receipt, token=token)
+    if not matched:
+        raise SuccessorPublisherError("native successor protected content differs before publication")
+    return actual
 
 
 def preserve_draft_copyright(candidate: dict[str, Any], token: str, draft: str) -> None:
@@ -352,20 +424,15 @@ def preserve_draft_copyright(candidate: dict[str, Any], token: str, draft: str) 
     try:
         api_call(token, "PUT", url, json.dumps(corrected).encode("utf-8"), rdm=True)
         readback = api_call(token, "GET", url, rdm=True)
-        # Reuse the native protected projection, retaining raw JSON as evidence.
-        from pathlib import Path as _Path
-        gates = (ROOT / "RESEARCH_PIPELINE_v2/verification_coverage_gates" if (ROOT / "RESEARCH_PIPELINE_v2/verification_coverage_gates/own_record_comparison.py").is_file() else _Path(__file__).resolve().parents[1])
-        if str(gates) not in sys.path:
-            sys.path.insert(0, str(gates))
-        from own_record_comparison import prior_protected_projection
-        matched = prior_protected_projection(corrected, representation="NATIVE") == prior_protected_projection(readback, representation="NATIVE")
+        # Reconsume the same exact reviewed projection without ambient imports.
+        matched = native_projection(corrected) == native_projection(readback)
         receipt.update(state="COPYRIGHT_INHERITED" if matched else "HOLD_UNPLANNED_RDM_DIFF", after=readback)
         json_write_atomic(receipt_path, receipt, token=token)
         if not matched:
             raise SuccessorPublisherError("copyright-only RDM draft readback differs; publication held")
     except Exception:
         try:
-            api_call(token, "DELETE", url, rdm=True)
+            api_call(token, "DELETE", url, rdm=True, allow_not_found=True)
         except Exception:
             raise SuccessorPublisherError("copyright repair held and draft cleanup requires readback") from None
         raise
@@ -487,6 +554,7 @@ def publish_candidate(candidate: dict[str, Any], token: str) -> dict[str, Any]:
     inherit_predecessor_copyright(candidate, token)
     draft = ensure_draft(candidate, token)
     publish_requested = False
+    doi_observed = False
     try:
         public_record = api_call(
             token,
@@ -495,8 +563,12 @@ def publish_candidate(candidate: dict[str, Any], token: str) -> dict[str, Any]:
             allow_not_found=True,
         )
         if public_record is not None:
+            doi_observed = True
             published_doi = extract_doi(public_record)
+            if published_doi is None:
+                raise SuccessorPublisherError("existing published record lacks a production DOI; preserve it")
             if published_doi:
+                doi_observed = True
                 write_once(doi_receipt, published_doi, token=token)
                 verify_manuscript_readback(candidate, token, published_doi, approved)
                 return {
@@ -508,7 +580,11 @@ def publish_candidate(candidate: dict[str, Any], token: str) -> dict[str, Any]:
         deposition = api_call(token, "GET", f"{BASE}/deposit/depositions/{draft}")
         assert deposition is not None
         already_published = extract_doi(deposition)
-        if already_published and deposition.get("submitted") is True:
+        if deposition.get("submitted") is True:
+            doi_observed = True
+            if already_published is None:
+                raise SuccessorPublisherError("submitted deposition lacks a production DOI; preserve it")
+            doi_observed = True
             write_once(doi_receipt, already_published, token=token)
             verify_manuscript_readback(candidate, token, already_published, approved)
             return {
@@ -542,6 +618,7 @@ def publish_candidate(candidate: dict[str, Any], token: str) -> dict[str, Any]:
             if not isinstance(uploaded, dict) or str(uploaded.get("checksum", "")).removeprefix("md5:") != hashlib.md5(raw).hexdigest():
                 raise SuccessorPublisherError("PUT response checksum differs from uploaded bytes")
 
+        snapshot_native_successor(candidate, token, draft)
         metadata_payload = copy.deepcopy(candidate["metadata"])
         if candidate["expected_copyright"] is not None:
             metadata_payload["metadata"]["copyright"] = candidate["expected_copyright"]
@@ -552,6 +629,7 @@ def publish_candidate(candidate: dict[str, Any], token: str) -> dict[str, Any]:
             json.dumps(metadata_payload).encode("utf-8"),
         )
         preserve_draft_copyright(candidate, token, draft)
+        verify_native_successor(candidate, token, draft)
         verified = api_call(token, "GET", f"{BASE}/deposit/depositions/{draft}")
         assert verified is not None
         check_draft_files(verified, approved)
@@ -575,9 +653,9 @@ def publish_candidate(candidate: dict[str, Any], token: str) -> dict[str, Any]:
         verify_manuscript_readback(candidate, token, doi, approved)
         return {"abbreviation": candidate["abbreviation"], "doi": doi, "record_id": draft}
     except Exception:
-        if not publish_requested:
+        if not publish_requested and not doi_observed:
             try:
-                api_call(token, "DELETE", f"{BASE}/records/{draft}/draft", rdm=True)
+                api_call(token, "DELETE", f"{BASE}/records/{draft}/draft", rdm=True, allow_not_found=True)
             except Exception:
                 raise SuccessorPublisherError("prepublication HOLD; draft cleanup requires exact readback") from None
         raise
@@ -599,7 +677,7 @@ def rehearse_candidate(candidate, token, *, output=None):
     existing = api_call(token, "GET", f"{BASE}/records/{predecessor.group(1)}/draft", allow_not_found=True)
     if existing is not None:
         raise SuccessorPublisherError("existing predecessor draft prevents isolated rehearsal")
-    out = rehearsal.output_directory(output)
+    out = rehearsal.output_directory(output, forbidden_roots=(bundle,))
     receipt = {"state": "REHEARSAL_STARTED", "published": False, "bundle_before": before}
     draft = None
     try:
@@ -613,13 +691,15 @@ def rehearse_candidate(candidate, token, *, output=None):
             uploaded = api_call(token, "PUT", deposition["links"]["bucket"] + "/" + urllib.parse.quote(name, safe=""), raw, "application/octet-stream")
             if str(uploaded.get("checksum", "")).removeprefix("md5:") != hashlib.md5(raw).hexdigest():
                 raise SuccessorPublisherError("rehearsal upload checksum differs")
+        candidate = {**candidate, "receipt_root": out}
+        snapshot_native_successor(candidate, token, draft)
         payload = copy.deepcopy(candidate["metadata"])
         if candidate["expected_copyright"] is not None:
             payload["metadata"]["copyright"] = candidate["expected_copyright"]
         api_call(token, "PUT", f"{BASE}/deposit/depositions/{draft}", json.dumps(payload).encode("utf-8"))
         preserve_draft_copyright({**candidate, "receipt_root": out}, token, draft)
         checked = api_call(token, "GET", f"{BASE}/deposit/depositions/{draft}")
-        native = api_call(token, "GET", f"{BASE}/records/{draft}/draft", rdm=True)
+        native = verify_native_successor(candidate, token, draft)
         check_draft_files(checked, approved)
         if any(checked.get("metadata", {}).get(k) != v for k, v in payload["metadata"].items() if k != "copyright") or native.get("metadata", {}).get("copyright") != candidate["expected_copyright"]:
             raise SuccessorPublisherError("rehearsal metadata or copyright readback differs")
@@ -629,15 +709,23 @@ def rehearse_candidate(candidate, token, *, output=None):
     finally:
         rehearsal.cleanup_window()
         if draft is not None:
-            api_call(token, "DELETE", f"{BASE}/deposit/depositions/{draft}")
-            if api_call(token, "GET", f"{BASE}/deposit/depositions/{draft}", allow_not_found=True) is not None:
-                raise SuccessorPublisherError("rehearsal draft still exists after deletion")
-            receipt["deletion"] = {"deleted": True, "status": "HTTP_404_OR_410"}
+            receipt["deletion"] = rehearsal.discard(lambda method,url,**kwargs:api_call(token,method,url,**kwargs), draft)
         receipt["bundle_after"] = rehearsal.tree_hashes(bundle)
-        if before != receipt["bundle_after"]:
-            raise SuccessorPublisherError("rehearsal changed bundle bytes")
-        receipt["state"] = "REHEARSED_DRAFT_DELETED" if receipt["state"] == "DRAFT_READBACK_VERIFIED" else "HOLD_REHEARSAL_DRAFT_DELETED"
+        changed = before != receipt["bundle_after"]
+        cleanup_required = receipt.get("deletion", {}).get("deleted") is False
+        if cleanup_required:
+            receipt["state"] = "HOLD_DRAFT_CLEANUP_REQUIRED"
+        elif changed:
+            receipt["state"] = "HOLD_REHEARSAL_BUNDLE_CHANGED"
+        elif draft is None:
+            receipt["state"] = "HOLD_REHEARSAL_NO_DRAFT"
+        else:
+            receipt["state"] = "REHEARSED_DRAFT_DELETED" if receipt["state"] == "DRAFT_READBACK_VERIFIED" else "HOLD_REHEARSAL_DRAFT_DELETED"
         rehearsal.save(out, receipt, token=token)
+        if cleanup_required:
+            raise SuccessorPublisherError("HOLD_DRAFT_CLEANUP_REQUIRED: inspect the engine receipt's draft id") from None
+        if changed:
+            raise SuccessorPublisherError("rehearsal changed bundle bytes or modes")
     return receipt
 
 

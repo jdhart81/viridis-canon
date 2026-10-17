@@ -1,0 +1,573 @@
+{
+  "before": {
+    "access": {
+      "embargo": {
+        "active": false,
+        "reason": null
+      },
+      "files": "public",
+      "record": "public",
+      "status": "open"
+    },
+    "created": "2026-08-08T23:42:11.352523+00:00",
+    "custom_fields": {
+      "code:codeRepository": "https://github.com/jdhart81/viridis-canon/tree/main/releases/2026-08-08/Robustness_Before_Performance"
+    },
+    "deletion_status": {
+      "is_deleted": false,
+      "status": "P"
+    },
+    "files": {
+      "count": 1,
+      "enabled": true,
+      "entries": {
+        "RBPA_reproducible_release_candidate.zip": {
+          "access": {
+            "hidden": false
+          },
+          "checksum": "md5:a14b7cf6104b8f7f3379bd59d8428063",
+          "ext": "zip",
+          "id": "0d73d5cc-388f-451a-affa-6cea0ae5e04f",
+          "key": "RBPA_reproducible_release_candidate.zip",
+          "links": {
+            "container": "https://zenodo.org/api/records/21855705/files/RBPA_reproducible_release_candidate.zip/container",
+            "content": "https://zenodo.org/api/records/21855705/files/RBPA_reproducible_release_candidate.zip/content",
+            "self": "https://zenodo.org/api/records/21855705/files/RBPA_reproducible_release_candidate.zip"
+          },
+          "metadata": {},
+          "mimetype": "application/zip",
+          "size": 211110,
+          "storage_class": "L"
+        }
+      },
+      "order": [],
+      "total_bytes": 211110
+    },
+    "id": "21855705",
+    "is_draft": false,
+    "is_published": true,
+    "links": {
+      "access": "https://zenodo.org/api/records/21855705/access",
+      "access_grants": "https://zenodo.org/api/records/21855705/access/grants",
+      "access_links": "https://zenodo.org/api/records/21855705/access/links",
+      "access_request": "https://zenodo.org/api/records/21855705/access/request",
+      "access_users": "https://zenodo.org/api/records/21855705/access/users",
+      "communities": "https://zenodo.org/api/records/21855705/communities",
+      "communities-suggestions": "https://zenodo.org/api/records/21855705/communities-suggestions",
+      "doi": "https://doi.org/10.5281/zenodo.21855705",
+      "draft": "https://zenodo.org/api/records/21855705/draft",
+      "file_modification": "https://zenodo.org/api/records/21855705/file-modification",
+      "files": "https://zenodo.org/api/records/21855705/files",
+      "latest": "https://zenodo.org/api/records/21855705/versions/latest",
+      "latest_html": "https://zenodo.org/records/21855705/latest",
+      "media_files": "https://zenodo.org/api/records/21855705/media-files",
+      "parent": "https://zenodo.org/api/records/21855704",
+      "parent_doi": "https://doi.org/10.5281/zenodo.21855704",
+      "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.21855704",
+      "parent_html": "https://zenodo.org/records/21855704",
+      "preview_html": "https://zenodo.org/records/21855705?preview=1",
+      "quota_increase": "https://zenodo.org/api/records/21855705/quota-increase",
+      "request_deletion": "https://zenodo.org/api/records/21855705/request-deletion",
+      "requests": "https://zenodo.org/api/records/21855705/requests",
+      "reserve_doi": "https://zenodo.org/api/records/21855705/draft/pids/doi",
+      "self": "https://zenodo.org/api/records/21855705",
+      "self_doi": "https://doi.org/10.5281/zenodo.21855705",
+      "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.21855705",
+      "self_html": "https://zenodo.org/records/21855705",
+      "self_iiif_manifest": "https://zenodo.org/api/iiif/record:21855705/manifest",
+      "self_iiif_sequence": "https://zenodo.org/api/iiif/record:21855705/sequence/default",
+      "versions": "https://zenodo.org/api/records/21855705/versions"
+    },
+    "media_files": {
+      "count": 0,
+      "enabled": false,
+      "entries": {},
+      "order": [],
+      "total_bytes": 0
+    },
+    "metadata": {
+      "creators": [
+        {
+          "affiliations": [
+            {
+              "name": "Viridis Research"
+            }
+          ],
+          "person_or_org": {
+            "family_name": "Hart",
+            "given_name": "Justin D.",
+            "identifiers": [
+              {
+                "identifier": "0009-0008-3082-2482",
+                "scheme": "orcid"
+              }
+            ],
+            "name": "Hart, Justin D.",
+            "type": "personal"
+          }
+        }
+      ],
+      "description": "<p>A domain-independent, non-actuating robustness decision kernel with explicit evidence, authority, lineage, interval, trajectory, and release-state boundaries. The paper is reconciled to 27 named Lean theorems and 19 review checks with zero proof holes. It does not claim empirical effectiveness, security certification, legitimate authority, or observed benefit.</p>",
+      "languages": [
+        {
+          "id": "eng",
+          "title": {
+            "en": "English"
+          }
+        }
+      ],
+      "publication_date": "2026-08-08",
+      "publisher": "Zenodo",
+      "resource_type": {
+        "id": "publication-preprint",
+        "title": {
+          "de": "Preprint",
+          "en": "Preprint"
+        }
+      },
+      "rights": [
+        {
+          "description": {
+            "en": "The Creative Commons Attribution license allows re-distribution and re-use of a licensed work on the condition that the creator is appropriately credited."
+          },
+          "icon": "cc-by-icon",
+          "id": "cc-by-4.0",
+          "props": {
+            "scheme": "spdx",
+            "url": "https://creativecommons.org/licenses/by/4.0/legalcode"
+          },
+          "title": {
+            "en": "Creative Commons Attribution 4.0 International"
+          }
+        }
+      ],
+      "subjects": [
+        {
+          "subject": "robustness engineering"
+        },
+        {
+          "subject": "decision governance"
+        },
+        {
+          "subject": "formal verification"
+        },
+        {
+          "subject": "uncertainty"
+        },
+        {
+          "subject": "lineage"
+        },
+        {
+          "subject": "release engineering"
+        }
+      ],
+      "title": "Robustness Before Performance: A Governed Decision Kernel with Formally Verified Release Boundaries",
+      "version": "1.0.0-formal"
+    },
+    "parent": {
+      "access": {
+        "grants": [],
+        "links": [],
+        "owned_by": {
+          "user": "1591505"
+        },
+        "settings": {
+          "accept_conditions_text": null,
+          "allow_guest_requests": false,
+          "allow_user_requests": false,
+          "secret_link_expiration": 0
+        }
+      },
+      "communities": {},
+      "id": "21855704",
+      "pids": {
+        "doi": {
+          "client": "datacite",
+          "identifier": "10.5281/zenodo.21855704",
+          "provider": "datacite"
+        }
+      }
+    },
+    "pids": {
+      "doi": {
+        "client": "datacite",
+        "identifier": "10.5281/zenodo.21855705",
+        "provider": "datacite"
+      },
+      "oai": {
+        "identifier": "oai:zenodo.org:21855705",
+        "provider": "oai"
+      }
+    },
+    "revision_id": 5,
+    "stats": {
+      "all_versions": {
+        "data_volume": 821290.0,
+        "downloads": 7,
+        "unique_downloads": 7,
+        "unique_views": 66,
+        "views": 67
+      },
+      "this_version": {
+        "data_volume": 211110.0,
+        "downloads": 1,
+        "unique_downloads": 1,
+        "unique_views": 65,
+        "views": 66
+      }
+    },
+    "status": "published",
+    "swh": {},
+    "ui": {
+      "access_status": {
+        "description_l10n": "The record and files are publicly accessible.",
+        "embargo_date_l10n": null,
+        "icon": "unlock",
+        "id": "open",
+        "message_class": "",
+        "title_l10n": "Open"
+      },
+      "created_date_l10n_long": "August 8, 2026",
+      "creators": {
+        "affiliations": [
+          [
+            1,
+            "Viridis Research",
+            null
+          ]
+        ],
+        "creators": [
+          {
+            "affiliations": [
+              [
+                1,
+                "Viridis Research"
+              ]
+            ],
+            "person_or_org": {
+              "family_name": "Hart",
+              "given_name": "Justin D.",
+              "identifiers": [
+                {
+                  "identifier": "0009-0008-3082-2482",
+                  "scheme": "orcid"
+                }
+              ],
+              "name": "Hart, Justin D.",
+              "type": "personal"
+            }
+          }
+        ]
+      },
+      "custom_fields": {
+        "code:codeRepository": "https://github.com/jdhart81/viridis-canon/tree/main/releases/2026-08-08/Robustness_Before_Performance"
+      },
+      "description_stripped": "A domain-independent, non-actuating robustness decision kernel with explicit evidence, authority, lineage, interval, trajectory, and release-state boundaries. The paper is reconciled to 27 named Lean theorems and 19 review checks with zero proof holes. It does not claim empirical effectiveness, security certification, legitimate authority, or observed benefit.",
+      "is_draft": false,
+      "languages": [
+        {
+          "id": "eng",
+          "title_l10n": "English"
+        }
+      ],
+      "publication_date_l10n_long": "August 8, 2026",
+      "publication_date_l10n_medium": "Aug 8, 2026",
+      "resource_type": {
+        "id": "publication-preprint",
+        "title_l10n": "Preprint"
+      },
+      "rights": [
+        {
+          "description_l10n": "The Creative Commons Attribution license allows re-distribution and re-use of a licensed work on the condition that the creator is appropriately credited.",
+          "icon": "cc-by-icon",
+          "id": "cc-by-4.0",
+          "props": {
+            "scheme": "spdx",
+            "url": "https://creativecommons.org/licenses/by/4.0/legalcode"
+          },
+          "title_l10n": "Creative Commons Attribution 4.0 International"
+        }
+      ],
+      "updated_date_l10n_long": "October 13, 2026",
+      "version": "1.0.0-formal"
+    },
+    "updated": "2026-10-13T02:12:59.211479+00:00",
+    "versions": {
+      "index": 1,
+      "is_latest": false,
+      "is_latest_draft": false
+    }
+  },
+  "draft_before": {
+    "access": {
+      "embargo": {
+        "active": false,
+        "reason": null
+      },
+      "files": "public",
+      "record": "public",
+      "status": "open"
+    },
+    "created": "2026-10-16T12:16:01.852873+00:00",
+    "custom_fields": {
+      "code:codeRepository": "https://github.com/jdhart81/viridis-canon/tree/main/releases/2026-08-08/Robustness_Before_Performance"
+    },
+    "expires_at": "2026-10-16 12:16:01.852869+00:00",
+    "files": {
+      "count": 1,
+      "enabled": true,
+      "entries": {
+        "RBPA_reproducible_release_candidate.zip": {
+          "access": {
+            "hidden": false
+          },
+          "checksum": "md5:a14b7cf6104b8f7f3379bd59d8428063",
+          "ext": "zip",
+          "id": "0d73d5cc-388f-451a-affa-6cea0ae5e04f",
+          "key": "RBPA_reproducible_release_candidate.zip",
+          "metadata": {},
+          "mimetype": "application/zip",
+          "size": 211110,
+          "storage_class": "L"
+        }
+      },
+      "order": [],
+      "total_bytes": 211110
+    },
+    "id": "21855705",
+    "is_draft": true,
+    "is_published": true,
+    "links": {
+      "access": "https://zenodo.org/api/records/21855705/access",
+      "access_grants": "https://zenodo.org/api/records/21855705/access/grants",
+      "access_links": "https://zenodo.org/api/records/21855705/access/links",
+      "access_request": "https://zenodo.org/api/records/21855705/access/request",
+      "access_users": "https://zenodo.org/api/records/21855705/access/users",
+      "communities": "https://zenodo.org/api/records/21855705/communities",
+      "communities-suggestions": "https://zenodo.org/api/records/21855705/communities-suggestions",
+      "doi": "https://doi.org/10.5281/zenodo.21855705",
+      "file_modification": "https://zenodo.org/api/records/21855705/file-modification",
+      "files": "https://zenodo.org/api/records/21855705/draft/files",
+      "media_files": "https://zenodo.org/api/records/21855705/draft/media-files",
+      "parent_doi": "https://doi.org/10.5281/zenodo.21855704",
+      "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.21855704",
+      "preview_html": "https://zenodo.org/records/21855705?preview=1",
+      "publish": "https://zenodo.org/api/records/21855705/draft/actions/publish",
+      "quota_increase": "https://zenodo.org/api/records/21855705/quota-increase",
+      "record": "https://zenodo.org/api/records/21855705",
+      "record_html": "https://zenodo.org/records/21855705",
+      "request_deletion": "https://zenodo.org/api/records/21855705/request-deletion",
+      "requests": "https://zenodo.org/api/records/21855705/requests",
+      "reserve_doi": "https://zenodo.org/api/records/21855705/draft/pids/doi",
+      "review": "https://zenodo.org/api/records/21855705/draft/review",
+      "self": "https://zenodo.org/api/records/21855705/draft",
+      "self_doi": "https://doi.org/10.5281/zenodo.21855705",
+      "self_html": "https://zenodo.org/uploads/21855705",
+      "self_iiif_manifest": "https://zenodo.org/api/iiif/draft:21855705/manifest",
+      "self_iiif_sequence": "https://zenodo.org/api/iiif/draft:21855705/sequence/default",
+      "versions": "https://zenodo.org/api/records/21855705/versions"
+    },
+    "media_files": {
+      "count": 0,
+      "enabled": false,
+      "entries": {},
+      "order": [],
+      "total_bytes": 0
+    },
+    "metadata": {
+      "creators": [
+        {
+          "affiliations": [
+            {
+              "name": "Viridis Research"
+            }
+          ],
+          "person_or_org": {
+            "family_name": "Hart",
+            "given_name": "Justin D.",
+            "identifiers": [
+              {
+                "identifier": "0009-0008-3082-2482",
+                "scheme": "orcid"
+              }
+            ],
+            "name": "Hart, Justin D.",
+            "type": "personal"
+          }
+        }
+      ],
+      "description": "<p>A domain-independent, non-actuating robustness decision kernel with explicit evidence, authority, lineage, interval, trajectory, and release-state boundaries. The paper is reconciled to 27 named Lean theorems and 19 review checks with zero proof holes. It does not claim empirical effectiveness, security certification, legitimate authority, or observed benefit.</p>",
+      "languages": [
+        {
+          "id": "eng",
+          "title": {
+            "en": "English"
+          }
+        }
+      ],
+      "publication_date": "2026-08-08",
+      "publisher": "Zenodo",
+      "resource_type": {
+        "id": "publication-preprint",
+        "title": {
+          "de": "Preprint",
+          "en": "Preprint"
+        }
+      },
+      "rights": [
+        {
+          "description": {
+            "en": "The Creative Commons Attribution license allows re-distribution and re-use of a licensed work on the condition that the creator is appropriately credited."
+          },
+          "icon": "cc-by-icon",
+          "id": "cc-by-4.0",
+          "props": {
+            "scheme": "spdx",
+            "url": "https://creativecommons.org/licenses/by/4.0/legalcode"
+          },
+          "title": {
+            "en": "Creative Commons Attribution 4.0 International"
+          }
+        }
+      ],
+      "subjects": [
+        {
+          "subject": "robustness engineering"
+        },
+        {
+          "subject": "decision governance"
+        },
+        {
+          "subject": "formal verification"
+        },
+        {
+          "subject": "uncertainty"
+        },
+        {
+          "subject": "lineage"
+        },
+        {
+          "subject": "release engineering"
+        }
+      ],
+      "title": "Robustness Before Performance: A Governed Decision Kernel with Formally Verified Release Boundaries",
+      "version": "1.0.0-formal"
+    },
+    "parent": {
+      "access": {
+        "grants": [],
+        "links": [],
+        "owned_by": {
+          "user": "1591505"
+        },
+        "settings": {
+          "accept_conditions_text": null,
+          "allow_guest_requests": false,
+          "allow_user_requests": false,
+          "secret_link_expiration": 0
+        }
+      },
+      "communities": {},
+      "id": "21855704",
+      "pids": {
+        "doi": {
+          "client": "datacite",
+          "identifier": "10.5281/zenodo.21855704",
+          "provider": "datacite"
+        }
+      }
+    },
+    "pids": {
+      "doi": {
+        "client": "datacite",
+        "identifier": "10.5281/zenodo.21855705",
+        "provider": "datacite"
+      },
+      "oai": {
+        "identifier": "oai:zenodo.org:21855705",
+        "provider": "oai"
+      }
+    },
+    "revision_id": 4,
+    "status": "published",
+    "ui": {
+      "access_status": {
+        "description_l10n": "The record and files are publicly accessible.",
+        "embargo_date_l10n": null,
+        "icon": "unlock",
+        "id": "open",
+        "message_class": "",
+        "title_l10n": "Open"
+      },
+      "created_date_l10n_long": "October 16, 2026",
+      "creators": {
+        "affiliations": [
+          [
+            1,
+            "Viridis Research",
+            null
+          ]
+        ],
+        "creators": [
+          {
+            "affiliations": [
+              [
+                1,
+                "Viridis Research"
+              ]
+            ],
+            "person_or_org": {
+              "family_name": "Hart",
+              "given_name": "Justin D.",
+              "identifiers": [
+                {
+                  "identifier": "0009-0008-3082-2482",
+                  "scheme": "orcid"
+                }
+              ],
+              "name": "Hart, Justin D.",
+              "type": "personal"
+            }
+          }
+        ]
+      },
+      "custom_fields": {
+        "code:codeRepository": "https://github.com/jdhart81/viridis-canon/tree/main/releases/2026-08-08/Robustness_Before_Performance"
+      },
+      "description_stripped": "A domain-independent, non-actuating robustness decision kernel with explicit evidence, authority, lineage, interval, trajectory, and release-state boundaries. The paper is reconciled to 27 named Lean theorems and 19 review checks with zero proof holes. It does not claim empirical effectiveness, security certification, legitimate authority, or observed benefit.",
+      "is_draft": true,
+      "languages": [
+        {
+          "id": "eng",
+          "title_l10n": "English"
+        }
+      ],
+      "publication_date_l10n_long": "August 8, 2026",
+      "publication_date_l10n_medium": "Aug 8, 2026",
+      "resource_type": {
+        "id": "publication-preprint",
+        "title_l10n": "Preprint"
+      },
+      "rights": [
+        {
+          "description_l10n": "The Creative Commons Attribution license allows re-distribution and re-use of a licensed work on the condition that the creator is appropriately credited.",
+          "icon": "cc-by-icon",
+          "id": "cc-by-4.0",
+          "props": {
+            "scheme": "spdx",
+            "url": "https://creativecommons.org/licenses/by/4.0/legalcode"
+          },
+          "title_l10n": "Creative Commons Attribution 4.0 International"
+        }
+      ],
+      "updated_date_l10n_long": "October 16, 2026",
+      "version": "1.0.0-formal"
+    },
+    "updated": "2026-10-16T12:16:02.077234+00:00",
+    "versions": {
+      "index": 1,
+      "is_latest": false,
+      "is_latest_draft": false
+    }
+  }
+}

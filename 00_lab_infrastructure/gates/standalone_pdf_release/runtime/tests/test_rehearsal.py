@@ -109,3 +109,69 @@ class RehearsalBoundaryTests(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+
+class ControllerHoldPathTests(unittest.TestCase):
+ def test_run_api_override_holds_before_source_or_transport(self):
+  with tempfile.TemporaryDirectory()as folder:
+   root=Path(folder).resolve();validate=mock.Mock(side_effect=AssertionError('override reached source admission'))
+   runtime=SimpleNamespace(validate=validate)
+   with mock.patch.dict(os.environ,VIRIDIS_CORE_ROOT=str(root),VIRIDIS_ZENODO_API_BASE='https://sandbox.zenodo.org/api'),mock.patch.object(c,'ROOT',root),mock.patch.dict(sys.modules,packaging_runtime=runtime),mock.patch.object(c,'loaded_sources')as loaded:
+    with self.assertRaisesRegex(c.Hold,'API_BASE_OVERRIDE_FORBIDDEN'):
+     c.run({'packaging_profile':{},'source_pins':[]},str(root/'output'),TOKEN)
+    loaded.assert_not_called();validate.assert_not_called()
+
+ def test_owned_checkpoint_hold_deletes_draft_through_actual_controller_except(self):
+  from contextlib import ExitStack
+  with tempfile.TemporaryDirectory()as folder:
+   root=Path(folder).resolve();package=root/'package';package.mkdir();out=root/'engine/rehearsals/now';out.mkdir(parents=True)
+   config={'package':str(package),'packaging_profile':{},'source_pins':[],
+    'release_scope':'scope','source_legacy_receipt':'legacy','source_native_before_create':'native',
+    'account_discovery':'account','predecessor_registration':'registration','access_registry':{}}
+   (out/'CONFIG.json').write_bytes(c.encoded(config));checkpoints=out/'checkpoints';checkpoints.mkdir()
+   state={'standard':c.STANDARD,'config':c.binding(out/'CONFIG.json'),'published':False,'record_id':'123','concept_id':'100',
+    'ownership':None,'controlled':{},'pending':0,'operations':[{'step':'PUBLISH','outcome':'ACKNOWLEDGED_NOT_ADMITTED','transport':'badack'}]}
+   (checkpoints/'00001.json').write_bytes(c.encoded(state));calls=[]
+   class Response:
+    status=200
+    def __init__(self,data,status=200):self.data=data;self.status=status
+    def read(self):return self.data
+    def __enter__(self):return self
+    def __exit__(self,*a):pass
+   class Opener:
+    deleted=False;deadline=0
+    def open(self,request,timeout=120):
+     calls.append((request.get_method(),request.full_url))
+     if request.get_method()=='DELETE':self.deleted=True;return Response(b'',204)
+     if self.deleted:raise urllib.error.HTTPError(request.full_url,410,'gone',{},io.BytesIO(b'{}'))
+     return Response(json.dumps({'id':123,'submitted':False,'state':'unsubmitted'}).encode())
+   sl={'id':100,'metadata':{'title':'same'}};sn={'id':100,'metadata':{'copyright':'retained'}}
+   manifest={'release_week':'2026-W42','notes':[],'public_metadata':{'title':'same'}}
+   registry=SimpleNamespace(require_registration=lambda *a,**k:{'receipt':{'record_id':'100'}},registered_relation_template=lambda *a,**k:{})
+   mods={'methods_digest_v2':SimpleNamespace(require_publication_bound=lambda *a:(manifest,{})),
+    'methods_digest_registration_v3':registry,'own_record_comparison':SimpleNamespace(),
+    'own_prior_record':SimpleNamespace(),'digest_metadata':SimpleNamespace(closed_payload=lambda *a:{'metadata':{}},native_metadata=lambda *a:{}),
+    'first_digest_state':SimpleNamespace(encode_api_communities=lambda x:x),'digest_weekly_state':SimpleNamespace(),
+    'zenodo_transport':transport,'owned_weekly_discovery':SimpleNamespace(require_discovery=lambda *a,**k:{}),
+    'manuscript_access_registry':SimpleNamespace(RegistryContext=lambda *a,**k:registry),
+    'manuscript_pdf_gate':SimpleNamespace(require_local=lambda *a:{}),'publication_preservation':SimpleNamespace()}
+   def obj(_root,binding):
+    return {'scope':{'start_kind':'CREATE_WEEK','release_week':'2026-W42'},'legacy':{'response':sl},'native':{'response':sn},'account':{}}[binding]
+   with ExitStack()as stack:
+    stack.enter_context(mock.patch.dict(os.environ,VIRIDIS_CORE_ROOT=str(root)))
+    stack.enter_context(mock.patch.object(c,'ROOT',root));stack.enter_context(mock.patch.dict(sys.modules,packaging_runtime=SimpleNamespace(validate=lambda *a,**k:{})))
+    for name,value in {'config_value':lambda *a:package,'loaded_sources':lambda *a:mods,'obj':obj,
+                       'require_cohort':lambda *a:None,'require_predecessor':lambda *a:None,
+                       'inherited_inventory':lambda *a:{},'approved_inventory':lambda *a:{}}.items():
+     stack.enter_context(mock.patch.object(c,name,side_effect=value))
+    stack.enter_context(mock.patch.object(c,'RehearsalJournal'))
+    original_receipt_obj=c.receipt_obj
+    stack.enter_context(mock.patch.object(c,'receipt_obj',side_effect=lambda r,b:{}if b=='badack'else original_receipt_obj(r,b)))
+    scope=c._REHEARSAL_OUTPUT.set(out)
+    try:
+     with self.assertRaisesRegex(c.Hold,'OWN_EXACT_ACK'):
+      c.run(config,str(out),TOKEN,opener=Opener(),rehearse=True)
+    finally:c._REHEARSAL_OUTPUT.reset(scope)
+   self.assertEqual([method for method,url in calls],['GET','DELETE','GET'])
+   deletion=json.loads((out/'attempt-0001/HOLD_DRAFT_DELETION.json').read_text())
+   self.assertEqual((deletion['draft_id'],deletion['http_status']),('123',410))
+   self.assertFalse(any(url.endswith('/actions/publish')for _,url in calls))

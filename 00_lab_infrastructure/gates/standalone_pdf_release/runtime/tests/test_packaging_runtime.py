@@ -39,10 +39,10 @@ class RuntimeTrustTests(unittest.TestCase):
             'captured_at_utc':'2020-01-01T00:00:00Z','scientific_scope_changes':False,'provider_instruction':provider})
         fields={k:None for k in runtime.PROFILE_FIELDS}
         fields.update(standard=runtime.STANDARD,status=runtime.STATUS,canonical_root=str(root),
-            installed_at_utc='2020-01-02T00:00:00Z',user_authority=authority,default_routes=runtime.DEFAULT_ROUTES)
+            installed_at_utc='2020-01-02T00:00:00Z',user_authority=authority,default_routes=runtime.DEFAULT_ROUTES,note_preparation=runtime.NOTE_PREPARATION)
         profile=put(root,runtime.PROFILE_PATH,fields)
         dummy=put(root,'review.json',{'fixture':True})
-        nomination=put(root,runtime.NOMINATION_PATH,{'standard':'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-12',
+        nomination=put(root,runtime.NOMINATION_PATH,{'standard':'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-13',
             'status':'EXACT_SOURCE_AND_DEFAULT_BINDINGS_INSTALLED_RUNTIME_READBACK_PENDING','profile':profile,
             'installer_source':dummy,'merged_source_commit':'a'*40,'root_review_receipt':dummy})
         return fields,profile,provider
@@ -148,7 +148,7 @@ class RuntimeTrustTests(unittest.TestCase):
             root=Path(tmp).resolve();rows=[]
             for name in runtime.MODULE_NAMES:
                 p=root/name;p.write_text('# fixture\n');rows.append({'name':name,'path':str(p),'sha256':runtime.sha(p.read_bytes()),'git_path':runtime.GIT_PREFIX+name})
-            self.assertEqual(len(runtime.module_table(root,rows)),19)
+            self.assertEqual(len(runtime.module_table(root,rows)),20)
             for bad in (rows[:-1],[*rows,deepcopy(rows[0])],[{**r,'name':'other.py'}if i==0 else r for i,r in enumerate(rows)]):
                 with self.assertRaisesRegex(runtime.PackagingHold,'CLOSED_ADDITIVE_MODULES'):runtime.module_table(root,bad)
 
@@ -177,20 +177,20 @@ class InstallerPreflightTests(unittest.TestCase):
         file=Path(installer.__file__).resolve();row={'name':file.name,'path':str(file),'sha256':runtime.sha(file.read_bytes()),'git_path':runtime.GIT_PREFIX+file.name}
         shared=shared_row(root,root/'common-source')
         hashes={r['name']:r['sha256']for r in (row,shared)}
-        source_review=put(root,'source-review.json',{'standard':'VRS-INDEPENDENT-PDF-RUNTIME-SOURCE-REVIEW-12',
+        source_review=put(root,'source-review.json',{'standard':'VRS-INDEPENDENT-PDF-RUNTIME-SOURCE-REVIEW-13',
             'status':'EXACT_COMPLETE_CANDIDATE_REVIEW_PASS','reviewer':'explicit synthetic test fixture','source_hashes':hashes,
-            'legacy_closure':anchor,**runtime.SOURCE_REVIEW_CHANGE_FLAGS,
+            'legacy_closure':anchor,**runtime.CURRENT_SOURCE_REVIEW_CHANGE_FLAGS,
             'review_scope':'SOURCE_ONLY','actual_live_runtime_admission':False,
             'actual_seven_record_admission':'PENDING_POST_INSTALL_FRESH_READBACK'})
-        plan={'standard':'VRS-EXACT-ADDITIVE-PDF-RUNTIME-INSTALL-PLAN-12','status':'ROOT_REVIEWED_READY_NOT_INSTALLED',
-            'canonical_root':str(root),'source_modules':[row],'shared_dependencies':[shared],'source_origin':{'synthetic':True},'source_review':source_review,
+        plan={'standard':'VRS-EXACT-DIGEST-ARCHIVAL-PDF-RUNTIME-INSTALL-PLAN-1','status':'ROOT_REVIEWED_READY_NOT_INSTALLED',
+            'canonical_root':str(root),'note_preparation':runtime.NOTE_PREPARATION,'source_modules':[row],'shared_dependencies':[shared],'source_origin':{'synthetic':True},'source_review':source_review,
             'user_authority':authority,'access_registry':anchor,'historical_publisher':{'path':str(publisher),'sha256':original_sha},
             'installed_at_utc':'2020-01-02T00:00:00Z','root_review':None,
             'predecessor_installation':runtime.PREDECESSOR_INSTALLATION,'transient_rehydration':runtime.TRANSIENT_REHYDRATION_POLICY,'data_alias_observation':anchor,'platform_timezone_observation':anchor}
         def finish():
-            review={'standard':'VRS-ROOT-EXACT-PDF-RUNTIME-INSTALL-REVIEW-12','status':'EXACT_MERGED_SOURCE_AND_INSTALL_PLAN_REVIEW_PASS',
+            review={'standard':'VRS-ROOT-EXACT-PDF-RUNTIME-INSTALL-REVIEW-13','status':'EXACT_MERGED_SOURCE_AND_INSTALL_PLAN_REVIEW_PASS',
                 'reviewer':'synthetic test reviewer','plan_projection_sha256':runtime.sha(installer.encoded({k:v for k,v in plan.items()if k!='root_review'})),
-                'merged_source_commit':'a'*40,'source_hashes':hashes,'historical_publisher_sha256':original_sha,**runtime.SOURCE_REVIEW_CHANGE_FLAGS}
+                'merged_source_commit':'a'*40,'source_hashes':hashes,'historical_publisher_sha256':original_sha,**runtime.CURRENT_SOURCE_REVIEW_CHANGE_FLAGS}
             plan['root_review']=put(root,'root-review.json',review)
             return put(root,'plan.json',plan)
         patches=[patch.object(installer,'ROOT',root),patch.object(installer,'ORIGINAL_PUBLISHER_SHA',original_sha),
@@ -276,19 +276,19 @@ class InstalledPlanBindingTests(unittest.TestCase):
         publisher=root/'_ZENODO_DEPOSITS/publish_dated_bundles.py';publisher.write_bytes(b'# pointer-only fixture\n')
         publisher_binding={'path':str(publisher),'sha256':runtime.sha(publisher.read_bytes())}
         profile={k:authority for k in ('source_origin','source_review','user_authority','access_registry')}
-        profile.update(installed_at_utc='2020-01-01T00:00:00Z',modules=current,
+        profile.update(note_preparation=runtime.NOTE_PREPARATION,installed_at_utc='2020-01-01T00:00:00Z',modules=current,
             predecessor_installation=runtime.PREDECESSOR_INSTALLATION,transient_rehydration=runtime.TRANSIENT_REHYDRATION_POLICY,data_alias_observation=authority,platform_timezone_observation=authority)
         shared=shared_row(root,prototype/'common')
         installed_shared=shared_row(root,installed/'common')
         profile['shared_dependencies']=[installed_shared]
-        plan={'standard':'VRS-EXACT-ADDITIVE-PDF-RUNTIME-INSTALL-PLAN-12','status':'ROOT_REVIEWED_READY_NOT_INSTALLED',
-            'canonical_root':str(root),'source_modules':rows,'shared_dependencies':[shared],'historical_publisher':publisher_binding,'root_review':None,
+        plan={'standard':'VRS-EXACT-DIGEST-ARCHIVAL-PDF-RUNTIME-INSTALL-PLAN-1','status':'ROOT_REVIEWED_READY_NOT_INSTALLED',
+            'canonical_root':str(root),'note_preparation':runtime.NOTE_PREPARATION,'source_modules':rows,'shared_dependencies':[shared],'historical_publisher':publisher_binding,'root_review':None,
             'predecessor_installation':runtime.PREDECESSOR_INSTALLATION,'transient_rehydration':runtime.TRANSIENT_REHYDRATION_POLICY,'data_alias_observation':authority,'platform_timezone_observation':authority,
             **{k:profile[k]for k in ('source_origin','source_review','user_authority','access_registry','installed_at_utc')}}
-        review={'standard':'VRS-ROOT-EXACT-PDF-RUNTIME-INSTALL-REVIEW-12','status':'EXACT_MERGED_SOURCE_AND_INSTALL_PLAN_REVIEW_PASS',
+        review={'standard':'VRS-ROOT-EXACT-PDF-RUNTIME-INSTALL-REVIEW-13','status':'EXACT_MERGED_SOURCE_AND_INSTALL_PLAN_REVIEW_PASS',
             'reviewer':'synthetic fixture reviewer','plan_projection_sha256':runtime.sha(installer.encoded({k:v for k,v in plan.items()if k!='root_review'})),
             'merged_source_commit':'a'*40,'source_hashes':{r['name']:r['sha256']for r in [*rows,shared]},
-            'historical_publisher_sha256':installer.ORIGINAL_PUBLISHER_SHA,**runtime.SOURCE_REVIEW_CHANGE_FLAGS}
+            'historical_publisher_sha256':installer.ORIGINAL_PUBLISHER_SHA,**runtime.CURRENT_SOURCE_REVIEW_CHANGE_FLAGS}
         plan['root_review']=put(root,'root-review.json',review)
         (installed/'INSTALL_PLAN.json').write_bytes(installer.encoded(plan))
         row=next(r for r in rows if r['name']=='install_packaging_runtime.py')

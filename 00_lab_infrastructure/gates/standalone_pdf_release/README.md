@@ -43,7 +43,7 @@ A truly manuscript-free dataset, code archive or index needs a truthful scoped
 exception through separate reviewed routing; this publisher has no automatic
 resource-type or figure-only exemption.
 <!-- ENFORCEMENT-STATUS:BEGIN -->
-Enforcement status (verified 2026-10-14): the Methods Digest guard (`guard_methods_digest_release.py`) and the successor publisher (`publish_successor_wave.py`) enforce this gate. The installed dated publisher (`publish_dated_bundles.py`, reached through `weekend_canon_lockstep.py`) does not yet enforce it. Until the reviewed gated version is installed, a Saturday wave must not publish any bundle whose actual manuscript lacks a separate top-level PDF, and every published PDF must be downloaded anonymously and hash-checked after publication.
+Enforcement status (verified 2026-10-16): PDF gate call presence and operational release clearance are separate. Dated: PDF gate calls incomplete across declared sources; operational state INACTIVE: gated production route installation and release authorization pending. Methods Digest: PDF gate calls present in both declared sources; operational state INACTIVE: reviewed route closure activation and exact-head independent review pending. Successor: PDF gate calls present in both declared sources; operational state QUARANTINED: independent audit B-1 and B-2 require exact-head re-review before installation or execution. A route marked INACTIVE, QUARANTINED or UNVERIFIED cannot execute a publication. Source checks alone do not authorize installation or publication.
 <!-- END -->
 
 Future Methods Digest releases use this mandatory default entry point:

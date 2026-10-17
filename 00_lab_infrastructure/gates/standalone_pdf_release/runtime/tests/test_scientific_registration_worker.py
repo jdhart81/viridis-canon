@@ -732,7 +732,7 @@ class ScienceTransportTests(unittest.TestCase):
             self.assertTrue(cleanup['wait_completed']);self.assertFalse(cleanup['source_finally_claimed'])
 
     def bootstrap_fixture(self, root, *, changed_git=False):
-        directory=root/'_ZENODO_DEPOSITS/standalone_pdf_runtime_v012';directory.mkdir(parents=True)
+        directory=root/'_ZENODO_DEPOSITS/standalone_pdf_runtime';directory.mkdir(parents=True)
         rows=[];modules=[]
         for name in sorted(science.BOOTSTRAP_MODULE_NAMES):
             p=directory/name;p.write_bytes(b'# synthetic source only\n');s=p.stat()
@@ -745,16 +745,16 @@ class ScienceTransportTests(unittest.TestCase):
         shared_row={'name':science.BOOTSTRAP_SHARED_NAME,**science.binding(shared)}
         observed=shared.stat();shared_identity={'device':observed.st_dev,'inode':observed.st_ino,'mode':observed.st_mode,
             'bytes':observed.st_size,'mtime_ns':observed.st_mtime_ns,'sha256':shared_row['sha256']}
-        profile=directory/'CURRENT_PACKAGING_PROFILE.json';profile.write_bytes(science.raw({'modules':modules,
+        profile=directory/'CURRENT_PACKAGING_PROFILE.json';profile.write_bytes(science.raw({'standard':science.PROFILE_STANDARD,'note_preparation':science.NOTE_PREPARATION,'modules':modules,
             'shared_dependencies':[{**shared_row,'git_path':science.BOOTSTRAP_SHARED_GIT_PATH}]}))
         nomination=directory/'INSTALLATION_NOMINATION.json';nomination.write_bytes(science.raw({'profile':science.binding(profile)}))
         plan=directory/'INSTALL_PLAN.json';plan.write_bytes(science.raw({'synthetic_only':True}))
         metadata=[]
         for role,p in (('profile',profile),('nomination',nomination),('plan',plan)):
             s=p.stat();metadata.append({'role':role,**science.binding(p),'identity':{'device':s.st_dev,'inode':s.st_ino,'mode':s.st_mode,'bytes':s.st_size,'mtime_ns':s.st_mtime_ns,'sha256':science.binding(p)['sha256']}})
-        manifest=root/'manifest.json';manifest.write_bytes(science.raw({'standard':'VRS-CURRENT-V012-WORKER-SOURCE-MANIFEST-1','canonical_root':str(root),
+        manifest=root/'manifest.json';manifest.write_bytes(science.raw({'standard':'VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-1','canonical_root':str(root),
             'profile_binding':science.binding(profile),'modules':rows,'metadata':metadata,'source_origin':{'synthetic':True},
-            'legacy_closure':{'synthetic':True},'source_review_change_flags':{'synthetic':True},
+            'legacy_closure':{'synthetic':True},'source_review_change_flags':{'synthetic':True},'note_preparation':science.NOTE_PREPARATION,
             'shared_dependencies':[{**shared_row,'identity':shared_identity}]}))
         config=root/'config.json';config.write_bytes(science.raw({'source_manifest':science.binding(manifest)}))
         return directory,config
@@ -819,10 +819,10 @@ class ScienceTransportTests(unittest.TestCase):
             with self.subTest(change=change),tempfile.TemporaryDirectory()as tmp:
                 root, _, _, batch, _=self.fixture(tmp)
                 now=dt.datetime.now(dt.timezone.utc).isoformat();mono=science.time.monotonic()
-                source=root/'source.json';source_value={'synthetic':'complete bound source DATA'};source.write_bytes(science.raw(source_value))
+                source=root/'source.json';source_value={'synthetic':'complete bound source DATA','note_preparation':runtime.NOTE_PREPARATION};source.write_bytes(science.raw(source_value))
                 proof={'status':'ACTUAL_CURRENT_WORKER_SOURCE_AUTHORITY_AND_IDENTITY_VERIFIED',
-                    'source_manifest_sha256':runtime.sha(transport.encode_json(source_value)), 'source_modules':19,'metadata_files':3,
-                    'transient_restore_allowed':False,'scientific_population_admitted':False,'certifies':False}
+                    'source_manifest_sha256':runtime.sha(transport.encode_json(source_value)), 'source_modules':20,'metadata_files':3,
+                    'transient_restore_allowed':False,'scientific_population_admitted':False,'certifies':False,'note_preparation':runtime.NOTE_PREPARATION}
                 config={key:None for key in('operation','stage','ordinal','binding','profile','source_rows','environment','ledger','ledger_sha256','evaluation_state')}
                 config.update(operation=batch.operation,job_nonce='1'*32,stage='build',binding={'path':'registration','sha256':'1'*64},
                     evaluation_kwargs={'views':None,'prior_chain_receipts':None},source_manifest=science.binding(source),started_utc=now,started_monotonic=mono)

@@ -18,7 +18,7 @@ if not os.environ.get("VIRIDIS_CORE_ROOT"):
 ROOT=Path(os.environ["VIRIDIS_CORE_ROOT"])
 ORIGINAL_PUBLISHER_SHA='4f099eaffb9a35fbd24e5c57ef34801391fabcd5c3272b58a379d7ac52b35e94'
 PLAN_FIELDS={'standard','status','canonical_root','source_modules','source_origin','source_review',
-             'user_authority','access_registry','historical_publisher','installed_at_utc','root_review','predecessor_installation','transient_rehydration','data_alias_observation','platform_timezone_observation','shared_dependencies'}
+             'user_authority','access_registry','historical_publisher','installed_at_utc','root_review','predecessor_installation','transient_rehydration','data_alias_observation','platform_timezone_observation','shared_dependencies','note_preparation'}
 REVIEW_FIELDS=runtime.ROOT_REVIEW_FIELDS
 
 
@@ -28,8 +28,9 @@ def encoded(v):return json.dumps(v,sort_keys=True,indent=2,ensure_ascii=False,al
 def preflight(root,plan_binding):
     root=Path(root).resolve(strict=True);runtime.need(root==ROOT.resolve(strict=True),'INSTALL_CANONICAL_ROOT')
     _,raw,plan=runtime.object_at(root,plan_binding)
-    runtime.need(set(plan)==PLAN_FIELDS and plan['standard']=='VRS-EXACT-ADDITIVE-PDF-RUNTIME-INSTALL-PLAN-12'
+    runtime.need(set(plan)==PLAN_FIELDS and plan['standard']=='VRS-EXACT-DIGEST-ARCHIVAL-PDF-RUNTIME-INSTALL-PLAN-1'
                  and plan['status']=='ROOT_REVIEWED_READY_NOT_INSTALLED'and plan['canonical_root']==str(root), 'CLOSED_INSTALL_PLAN')
+    runtime.need(plan['note_preparation']==runtime.NOTE_PREPARATION,'EXACT_NOTE_PREPARATION_NOMINATION')
     pins=runtime.module_table(root,plan['source_modules'])
     runtime.shared_dependency_table(root,plan['shared_dependencies'])
     installers=[r for r in pins if r['name']=='install_packaging_runtime.py']
@@ -40,12 +41,12 @@ def preflight(root,plan_binding):
     hashes={r['name']:r['sha256']for r in [*plan['source_modules'],*plan['shared_dependencies']]}
     runtime.require_source_review(source_review, hashes, runtime.LEGACY_CLOSURE)
     review=runtime.object_at(root,plan['root_review'])[2]
-    runtime.need(set(review)==REVIEW_FIELDS and review['standard']=='VRS-ROOT-EXACT-PDF-RUNTIME-INSTALL-REVIEW-12'
+    runtime.need(set(review)==REVIEW_FIELDS and review['standard']=='VRS-ROOT-EXACT-PDF-RUNTIME-INSTALL-REVIEW-13'
                  and review['status']=='EXACT_MERGED_SOURCE_AND_INSTALL_PLAN_REVIEW_PASS'
                  and isinstance(review['reviewer'],str)and review['reviewer']
                  and review['plan_projection_sha256']==runtime.sha(encoded({k:v for k,v in plan.items()if k!='root_review'})) and review['merged_source_commit']==proof['merge_commit']
                  and review['source_hashes']==hashes and review['historical_publisher_sha256']==ORIGINAL_PUBLISHER_SHA
-                 and all(review.get(k) is v for k,v in runtime.SOURCE_REVIEW_CHANGE_FLAGS.items()),'ACTUAL_ROOT_INSTALL_REVIEW')
+                 and all(review.get(k) is v for k,v in runtime.CURRENT_SOURCE_REVIEW_CHANGE_FLAGS.items()),'ACTUAL_ROOT_INSTALL_REVIEW')
     runtime.need(plan['predecessor_installation']==runtime.PREDECESSOR_INSTALLATION
                  and plan['transient_rehydration']==runtime.TRANSIENT_REHYDRATION_POLICY,
                  'EXACT_PREDECESSOR_AND_TRANSIENT_POLICY')
@@ -121,12 +122,13 @@ def install(root,plan_binding,*,go=False):
                  'legacy_scope':runtime.LEGACY_SCOPE,'source_session_consumer':runtime.SESSION_CONSUMER,
                  'modules':installed,'shared_dependencies':shared_installed,'source_origin':plan['source_origin'],'source_review':plan['source_review'],
                  'access_registry':plan['access_registry'],'default_routes':runtime.DEFAULT_ROUTES,
+                 'note_preparation':plan['note_preparation'],
                  'predecessor_installation':plan['predecessor_installation'],
                  'transient_rehydration':plan['transient_rehydration'],
                  'data_alias_observation':plan['data_alias_observation'],
                  'platform_timezone_observation':plan['platform_timezone_observation']}
         exclusive(target,encoded(profile));profile_binding={'path':str(target),'sha256':runtime.sha(target.read_bytes())}
-        nomination={'standard':'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-12',
+        nomination={'standard':'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-13',
                     'status':'EXACT_SOURCE_AND_DEFAULT_BINDINGS_INSTALLED_RUNTIME_READBACK_PENDING',
                     'profile':profile_binding,'installer_source':{'path':str(Path(__file__).resolve()),'sha256':runtime.sha(Path(__file__).read_bytes())},
                     'merged_source_commit':proof['merge_commit'],'root_review_receipt':plan['root_review']}
@@ -137,7 +139,8 @@ def install(root,plan_binding,*,go=False):
         result={'status':'EXACT_SOURCE_COPIED_AND_DEFAULT_NOMINATED_AWAITING_FRESH_RUNTIME_READBACK',
                 'profile':profile_binding,'modules':installed,'shared_dependencies':shared_installed,'historical_publisher_preserved_sha256':ORIGINAL_PUBLISHER_SHA,
                 'predecessor_installation':predecessor,'transient_source_readback':recovered,
-                'default_routes':runtime.DEFAULT_ROUTES,'merged_source_commit':proof['merge_commit'],
+                'default_routes':runtime.DEFAULT_ROUTES,'note_preparation':plan['note_preparation'],
+                'merged_source_commit':proof['merge_commit'],
                 'ssot_writes':0,'zenodo_writes':0,'certifies':False}
         runtime.need(publisher.read_bytes()==before,'HISTORICAL_PUBLISHER_EXIT_PRESERVATION')
         runtime.predecessor_installation(root)

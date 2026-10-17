@@ -28,6 +28,30 @@ MUTANTS={
 'N19 digest JSON shape':('if not isinstance(manifest, dict):','if False:'),
 'N20 declared size limit':('if not 0 <= size <= MAX_MEMBER_BYTES:','if False:'),
 }
+def classify_test_run(returncode, counts, *, baseline=False):
+ """Use TestResult counts and exception types, never traceback word searches."""
+ keys={'tests_run','failures','errors','infrastructure_errors'}
+ if not isinstance(counts,dict)or set(counts)!=keys or any(type(v)is not int or v<0 for v in counts.values()):
+  return {'result':'BASELINE_FAILURE'if baseline else'INVALID_TEST_ERROR'}
+ tests,failures,errors,invalid=(counts[k]for k in('tests_run','failures','errors','infrastructure_errors'))
+ if invalid>errors or not tests or (returncode==0 and failures+errors):return {'result':'BASELINE_FAILURE'if baseline else'INVALID_TEST_ERROR'}
+ if baseline:result='PASS'if returncode==0 and tests else'BASELINE_FAILURE'
+ elif returncode==0:result='SURVIVED'
+ elif tests and failures+errors-invalid:result='KILLED'
+ else:result='INVALID_TEST_ERROR'
+ return {'result':result,**counts}
+
+TEST_RUNNER='''import json,unittest
+class Counts(unittest.TextTestResult):
+ def __init__(self,*a,**k):super().__init__(*a,**k);self.infrastructure_errors=0
+ def addError(self,test,error):
+  if issubclass(error[0],(ImportError,SyntaxError)) or type(test).__name__=="_FailedTest":self.infrastructure_errors+=1
+  super().addError(test,error)
+result=unittest.TextTestRunner(resultclass=Counts).run(unittest.defaultTestLoader.discover("tests",pattern="test_gate_hardening.py"))
+print("VRS_MUTATION_TEST_COUNTS:"+json.dumps(dict(tests_run=result.testsRun,failures=len(result.failures),errors=len(result.errors),infrastructure_errors=result.infrastructure_errors)))
+raise SystemExit(not result.wasSuccessful())
+'''
+
 def main():
  p=argparse.ArgumentParser();p.add_argument('--source',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();source=a.source.resolve();original=(source/'manuscript_pdf_gate.py').read_text();tests=(source/'tests/test_gate_hardening.py').read_bytes();rows=[];started=time.monotonic();baseline=None
  for name,change in [('BASELINE',None),*MUTANTS.items()]:
@@ -39,10 +63,12 @@ def main():
   ast.parse(modified)
   with tempfile.TemporaryDirectory(prefix='viridis-feature-mutant-')as temp:
    root=Path(temp);(root/'tests').mkdir();(root/'manuscript_pdf_gate.py').write_text(modified);(root/'tests/test_gate_hardening.py').write_bytes(tests)
-   run=subprocess.run([sys.executable,'-m','unittest','discover','-s','tests','-p','test_gate_hardening.py'],cwd=root,env={**os.environ,'PYTHONDONTWRITEBYTECODE':'1'},capture_output=True,text=True,timeout=30)
-  import_error=any(value in run.stderr for value in ('ImportError:','ModuleNotFoundError:','SyntaxError:'))
-  result=('PASS'if run.returncode==0 else'BASELINE_FAILURE')if change is None else('KILLED'if run.returncode and not import_error else'INVALID_IMPORT'if import_error else'SURVIVED')
-  row={'mutant':name,'result':result,'exit_code':run.returncode,'stderr_sha256':hashlib.sha256(run.stderr.encode()).hexdigest()}
+   run=subprocess.run([sys.executable,'-c',TEST_RUNNER],cwd=root,env={**os.environ,'PYTHONDONTWRITEBYTECODE':'1'},capture_output=True,text=True,timeout=30)
+  metrics=[line.removeprefix('VRS_MUTATION_TEST_COUNTS:')for line in run.stdout.splitlines()if line.startswith('VRS_MUTATION_TEST_COUNTS:')]
+  try:counts=json.loads(metrics[0])if len(metrics)==1 else None
+  except ValueError:counts=None
+  classification=classify_test_run(run.returncode,counts,baseline=change is None)
+  row={'mutant':name,**classification,'exit_code':run.returncode,'stderr_sha256':hashlib.sha256(run.stderr.encode()).hexdigest()}
   if change:rows.append(row)
   else:baseline=row
  receipt={'status':'PASS'if baseline['result']=='PASS'and sum(x['result']=='KILLED'for x in rows)>=19 and len(rows)==20 else'HOLD','baseline':baseline,'mutants':rows,'killed':sum(x['result']=='KILLED'for x in rows),'declared_mutants':20,'gate_sha256':hashlib.sha256(original.encode()).hexdigest(),'elapsed_seconds':round(time.monotonic()-started,3),'lineage':'current-code port of documented independent feature classes; original scratchpad script unavailable'}

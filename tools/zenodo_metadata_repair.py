@@ -7,6 +7,7 @@ receipt, and the exact approved plan. Publication outcomes are never retried.
 from __future__ import annotations
 
 import copy
+from datetime import datetime
 import hashlib
 import json
 import os
@@ -70,20 +71,122 @@ def protected_diff(before, after):
                      prior_protected_projection(after, representation="NATIVE"))
 
 
-def draft_against_public(before, draft):
-    """Normalize only the known edit-phase flags; every content field stays exact."""
+def _phase_timestamp(value):
+    # RDM uses both ISO T and SQL-style space separators for edit timestamps.
+    if not isinstance(value, str) or re.fullmatch(
+            r"[0-9]{4}-[0-9]{2}-[0-9]{2}[T ][0-9]{2}:[0-9]{2}:[0-9]{2}"
+            r"(?:[.][0-9]{1,6})?(?:Z|[+-][0-9]{2}:[0-9]{2})", value) is None:
+        raise RepairHold("edit phase timestamp requires an explicit timezone")
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        raise RepairHold("invalid edit phase timestamp") from None
+
+
+def normalized_edit_draft(before, draft):
+    """Project one same-record published edit onto its public protected baseline.
+
+    Only the observed edit-phase signature and closed, identity-derived URLs
+    obtain these transformations. Unknown fields and unknown links stay exact.
+    This function never supplies an update payload or changes public comparison.
+    """
+    if (not isinstance(before, dict) or not isinstance(draft, dict)
+            or any(not isinstance(row.get("parent"), dict) or not isinstance(row.get("pids"), dict)
+                   or not isinstance(row["pids"].get("doi"), dict) for row in (before, draft))):
+        raise RepairHold("native published and edit identity objects required")
+    record_id = before.get("id")
+    parent_id = before["parent"].get("id")
+    if (not isinstance(record_id, str) or re.fullmatch(r"[1-9][0-9]*", record_id) is None
+            or not isinstance(parent_id, str) or re.fullmatch(r"[1-9][0-9]*", parent_id) is None
+            or draft.get("id") != record_id or draft.get("parent", {}).get("id") != parent_id
+            or before.get("status") != "published" or before.get("is_draft") is not False
+            or before.get("is_published") is not True or draft.get("status") != "published"
+            or draft.get("is_draft") is not True or draft.get("is_published") is not True
+            or before.get("pids", {}).get("doi", {}).get("identifier") != "10.5281/zenodo." + record_id
+            or draft.get("pids") != before.get("pids")):
+        raise RepairHold("same published record edit phase and PID identity required")
+    public_url = RDM + record_id
+    public_html = "https://zenodo.org/records/" + record_id
+    original_links, draft_links = before.get("links"), draft.get("links")
+    if (not isinstance(original_links, dict) or not isinstance(draft_links, dict)
+            or original_links.get("self") != public_url
+            or original_links.get("self_html") != public_html
+            or draft_links.get("self") != public_url + "/draft"
+            or draft_links.get("self_html") != "https://zenodo.org/uploads/" + record_id):
+        raise RepairHold("same record edit navigation identity required")
     value = copy.deepcopy(draft)
-    if before.get("status") == "published" and value.get("status") in {"draft", "unsubmitted"}:
-        value["status"] = "published"
-    for key, old, new in (("is_draft", False, True), ("is_published", True, False)):
-        if before.get(key) is old and key in before and value.get(key) is new:
-            value[key] = old
-    for key in ("self", "self_html"):
-        original = before.get("links", {}).get(key)
-        actual = value.get("links", {}).get(key)
-        if isinstance(original, str) and actual == original.rstrip("/") + "/draft":
-            value["links"][key] = original
-    return protected_diff(before, value)
+    value["is_draft"] = False
+    links = value["links"]
+    links["self"], links["self_html"] = public_url, public_html
+    # Public-only navigation can be omitted by an edit representation. A
+    # different URL or an unrecognized link is never discarded or reconstructed.
+    public_only = {"draft": public_url + "/draft", "latest": public_url + "/versions/latest",
+                   "latest_html": public_html + "/latest", "parent": RDM + parent_id,
+                   "parent_html": "https://zenodo.org/records/" + parent_id,
+                   "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo." + record_id}
+    for key, expected in public_only.items():
+        if original_links.get(key) == expected and key not in links:
+            links[key] = expected
+    draft_only = {"publish": public_url + "/draft/actions/publish", "record": public_url,
+                  "record_html": public_html, "review": public_url + "/draft/review"}
+    for key, expected in draft_only.items():
+        if key not in original_links and links.get(key) == expected:
+            links.pop(key)
+    if (original_links.get("files") == public_url + "/files"
+            and links.get("files") == public_url + "/draft/files"):
+        links["files"] = original_links["files"]
+    created, updated = _phase_timestamp(draft.get("created")), _phase_timestamp(draft.get("updated"))
+    old_created, old_updated = _phase_timestamp(before.get("created")), _phase_timestamp(before.get("updated"))
+    if not old_created <= old_updated <= created <= updated:
+        raise RepairHold("edit creation timestamp is outside the public-to-draft observation order")
+    value["created"] = before["created"]
+    if "expires_at" not in before and "expires_at" in value:
+        if _phase_timestamp(value["expires_at"]) < old_created:
+            raise RepairHold("edit expiry precedes the published record")
+        value.pop("expires_at")
+    if (before.get("deletion_status") == {"is_deleted": False, "status": "P"}
+            and "deletion_status" not in value):
+        value["deletion_status"] = copy.deepcopy(before["deletion_status"])
+    original_versions, versions = before.get("versions", {}), value.get("versions", {})
+    if (isinstance(original_versions, dict) and isinstance(versions, dict)
+            and versions.get("is_latest_draft") is True
+            and original_versions.get("is_latest_draft", False) is False):
+        if "is_latest_draft" in original_versions:
+            versions["is_latest_draft"] = original_versions["is_latest_draft"]
+        else:
+            versions.pop("is_latest_draft")
+    original_entries = before.get("files", {}).get("entries", {})
+    entries = value.get("files", {}).get("entries", {})
+    if isinstance(original_entries, dict) and isinstance(entries, dict):
+        from urllib.parse import quote
+        for name, row in entries.items():
+            if not isinstance(row, dict) or not isinstance(original_entries.get(name), dict):
+                continue
+            old_links = original_entries[name].get("links")
+            file_url = public_url + "/files/" + quote(name, safe="")
+            expected_links = {"self": file_url, "content": file_url + "/content",
+                              "container": file_url + "/container"}
+            if (not isinstance(old_links, dict) or "self" not in old_links
+                    or any(key not in expected_links or expected_links[key] != url for key, url in old_links.items())):
+                continue
+            if "links" not in row:
+                row["links"] = copy.deepcopy(old_links)
+                continue
+            file_links = row["links"]
+            if not isinstance(file_links, dict):
+                continue
+            draft_file_url = public_url + "/draft/files/" + quote(name, safe="")
+            if ("commit" not in old_links and file_links.get("self") == draft_file_url
+                    and file_links.get("commit") == draft_file_url + "/commit"):
+                file_links.pop("commit")
+            for key, original in old_links.items():
+                if file_links.get(key) == original.replace(public_url + "/files/", public_url + "/draft/files/", 1):
+                    file_links[key] = original
+    return value
+
+
+def draft_against_public(before, draft):
+    return protected_diff(before, normalized_edit_draft(before, draft))
 
 
 def unmt_ledger(expected_sha256):
@@ -195,7 +298,7 @@ def apply_plan(client, plan, receipt_path, *, installation_receipt, installed_tr
         temp.replace(path)
 
     current = client("GET", record_url, rdm=True)
-    if canonical_hash(current) != plan["before_sha256"]:
+    if protected_diff(plan["before"], current):
         changes = protected_diff(plan["planned_after"], current)
         if not changes:
             receipt.update(state="ALREADY_APPLIED_PENDING_REQUIRED_READBACK", after=current)
@@ -231,9 +334,13 @@ def apply_plan(client, plan, receipt_path, *, installation_receipt, installed_tr
         payload["metadata"][field] = plan["planned_after"]["metadata"][field]
         client("PUT", record_url + "/draft", json.dumps(payload).encode(), rdm=True)
         checked = client("GET", record_url + "/draft", rdm=True)
-        receipt.update(draft_after=checked, draft_diff=protected_diff(draft, checked),
+        # Retain the full native readback even if phase validation cold-holds.
+        receipt["draft_after"] = checked
+        receipt.update(draft_diff=protected_diff(
+                           normalized_edit_draft(current, draft), normalized_edit_draft(current, checked)),
                        draft_public_diff=draft_against_public(current, checked))
-        if (checked.get("metadata") != payload["metadata"]
+        if (checked.get("created") != draft.get("created")
+                or checked.get("metadata") != payload["metadata"]
                 or [row["path"] for row in receipt["draft_diff"]] != [allowed_path]
                 or [row["path"] for row in receipt["draft_public_diff"]] != [allowed_path]):
             raise RepairHold("unplanned full RDM draft change; publish blocked")

@@ -1,0 +1,35 @@
+{
+  "activation": {
+    "path": "reports/verification-coverage/2026-10-08/first-digest-audited-catalog-backlog-v001/own-record-runtime-install-v001/ENFORCEMENT_ACTIVATION_RUNTIME_SUCCESSOR.json",
+    "sha256": "9c093e8ffce808ca7fb6c9cd46ce603fe1863c17081c701d8e91add971560b68"
+  },
+  "additional_modules": 57,
+  "after_ssot_sha256": "e5adae6f5f6b6b4ec6acced24acb011909ecf4fe1e0a1ad5d5cd273654eef086",
+  "all35_rows_unchanged": true,
+  "all_four_catalog_rows_unchanged": true,
+  "before_ssot_sha256": "0d40c113b9ff7a0fdcae618434c000faa9a39bae6b5842e7f788bafefd66fe4c",
+  "certificates_issued": 0,
+  "certifies": false,
+  "clean_nights_credited": 0,
+  "current_runtime_closure": {
+    "path": "reports/verification-coverage/2026-10-08/first-digest-audited-catalog-backlog-v001/own-record-runtime-install-v001/CURRENT_RUNTIME_CLOSURE.json",
+    "sha256": "d4321fae40b3306b666042b24239040c01bd60756846bfc986b8b33b8d9678ff"
+  },
+  "cutover": "Run-188",
+  "original_controls_unchanged": true,
+  "runtime_targets": 22,
+  "runtime_update": {
+    "path": "reports/verification-coverage/2026-10-08/first-digest-audited-catalog-backlog-v001/own-record-runtime-install-v001/RUNTIME_UPDATE_RECEIPT.json",
+    "sha256": "ef58b54853ad5c944c624205f9d82a152dbb5afcff1b9b2da2d74ba95904a41f"
+  },
+  "runtime_writes": 6,
+  "scan_modes": [
+    "PROSPECTIVE_PRE_CAS",
+    "PROSPECTIVE_PRE_CAS",
+    "REAL_DISK_UNWRAPPED"
+  ],
+  "ssot_writes": 1,
+  "standard": "VRS-PHASE7-OWN-RECORD-RUNTIME-SUCCESSOR-INSTALL-1",
+  "status": "INSTALLED_ACTUAL_SOURCE_VALIDATOR_FRESH35_PROTECTED22_PASS",
+  "zenodo_writes": 0
+}

@@ -26,7 +26,7 @@ class FrozenV008PredecessorTests(unittest.TestCase):
         candidate, installed = root / 'candidate', root / 'installed'
         candidate.mkdir(); installed.mkdir()
         sources, modules, git = [], [], []
-        for name in sorted(runtime.MODULE_NAMES):
+        for name in sorted(runtime.FROZEN_FULL_MODULE_NAMES):
             raw = ('# synthetic exact prior source ' + name + '\n').encode()
             for directory in (candidate, installed):
                 (directory / name).write_bytes(raw)
@@ -173,12 +173,19 @@ class FrozenV008PredecessorTests(unittest.TestCase):
                     self.consume(root, bindings)
             self.assertTrue(fired)
 
-    def test_namespace_cardinality_is19_for_v7_v8_and_current_but17_for_six_older(self):
+    def test_namespace_cardinality_is20_for_current_and19_for_v7_v8_and_current_but17_for_six_older(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp).resolve(); bindings, sources, modules, _ = self.fixture(root)
             for prefix in ('00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v007/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v008/', '00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v009/', runtime.GIT_PREFIX):
-                rows = [{**r, 'git_path': prefix+r['name']} for r in sources]
-                self.assertEqual(len(runtime.module_table(root, rows, git_prefix=prefix)), 19)
+                if prefix == runtime.GIT_PREFIX:
+                    rows = []
+                    for name in sorted(runtime.MODULE_NAMES):
+                        file = root / ('current-' + name); file.mkdir(exist_ok=True)
+                        path = file / name; path.write_bytes(b'# synthetic current source\n')
+                        rows.append({'name':name,'path':str(path),'sha256':runtime.sha(path.read_bytes()),'git_path':prefix+name})
+                else:
+                    rows = [{**r, 'git_path': prefix+r['name']} for r in sources]
+                self.assertEqual(len(runtime.module_table(root, rows, git_prefix=prefix)), 20 if prefix == runtime.GIT_PREFIX else 19)
                 with self.assertRaisesRegex(runtime.PackagingHold, 'CLOSED_ADDITIVE_MODULES'):
                     runtime.module_table(root, [r for r in rows if r['name'] in runtime.FROZEN_MODULE_NAMES], git_prefix=prefix)
             for version in range(1,7):

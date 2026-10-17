@@ -39,7 +39,7 @@ recommendations and including our known gaps, is set out in
 ## Three results worth your time
 
 **1. Anytime-valid change detection for ecological monitoring.**
-[`series/ACC`](./series/ACC/) · [certificate](./certificates/Run-129/) · [paper](https://doi.org/10.5281/zenodo.21971041) · function `anytime-change`
+[`series/ACC`](./series/ACC/) · [certificate](./certificates/Run-129/) · [paper](https://doi.org/10.5281/zenodo.21971041) · function `anytime-change` · [plain-language page](https://jdhart81.github.io/viridis-canon/results/anytime-change/)
 
 - Ville's inequality for non-negative martingales: P(∃n, c ≤ Mₙ) ≤ E[M₀]/c.
 - A mixture likelihood-ratio martingale.
@@ -51,14 +51,14 @@ Doob's finite-horizon `maximal_ineq`. If it would be welcome there, we would lik
 to contribute it upstream.
 
 **2. When a seed supply network can meet restoration demand.**
-[`series/SSBC`](./series/SSBC/) · [certificate](./certificates/Run-130/) · [paper](https://doi.org/10.5281/zenodo.21971057) · function `seed-source-bottleneck`
+[`series/SSBC`](./series/SSBC/) · [certificate](./certificates/Run-130/) · [paper](https://doi.org/10.5281/zenodo.21971057) · function `seed-source-bottleneck` · [plain-language page](https://jdhart81.github.io/viridis-canon/results/seed-supply-bottleneck/)
 
 - The largest fraction of every site's demand that can be met equals min{1, min over site sets U of S(N(U))/D(U)}.
 - Full demand is feasible exactly when every site set passes a capacitated Hall condition.
 - Adding capacity outside the bottleneck cannot help.
 
 **3. A precautionary capacity rule that is provably safe and provably tight.**
-[`series/PCR`](./series/PCR/) · [certificate](./certificates/Run-127/) · [paper](https://doi.org/10.5281/zenodo.21971046) · function `precautionary-capacity`
+[`series/PCR`](./series/PCR/) · [certificate](./certificates/Run-127/) · [paper](https://doi.org/10.5281/zenodo.21971046) · function `precautionary-capacity` · [plain-language page](https://jdhart81.github.io/viridis-canon/results/precautionary-capacity/)
 
 - From the mean and variance alone, a Cantelli-based ceiling keeps the violation probability at or below α.
 - A two-point distribution shows that no mean-and-variance rule can do better.
@@ -67,6 +67,9 @@ to contribute it upstream.
 On 2026-10-17 we re-elaborated all three certified solutions on a fresh machine
 against the pinned toolchain and Mathlib, without the Viridis pipeline. All 98
 listed theorems depend only on the three standard axioms.
+
+**Theorem bounty.** We pay $50 for each vacuous, trivial or misstated theorem you find
+among the 18 certified runs (cap $500, until 2027-01-31). See [`BOUNTY.md`](./BOUNTY.md).
 
 ## Check it yourself
 

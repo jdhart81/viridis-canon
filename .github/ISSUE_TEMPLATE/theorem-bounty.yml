@@ -1,0 +1,55 @@
+name: Theorem bounty report
+description: Report a vacuous, trivial or misstated theorem among the 18 certified runs ($50 per confirmed finding; see BOUNTY.md).
+title: "[bounty] Run-NNN: <theorem name>"
+labels: ["theorem-bounty"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for checking our work. Terms are in [BOUNTY.md](https://github.com/jdhart81/viridis-canon/blob/main/BOUNTY.md).
+        Do not include payment details here; we contact confirmed reporters privately.
+  - type: input
+    id: run
+    attributes:
+      label: Run
+      description: The certified run, as listed in certificates/index.json.
+      placeholder: Run-129
+    validations:
+      required: true
+  - type: input
+    id: theorem
+    attributes:
+      label: Theorem or witness name
+      placeholder: anytime_change_ville_certificate
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Vacuous (hypotheses cannot all hold, or the conclusion holds for a degenerate reason)
+        - Trivial (presented as substantive, but restates a hypothesis or follows in one step)
+        - Misstated (the Lean statement does not match the paper's claim)
+    validations:
+      required: true
+  - type: textarea
+    id: argument
+    attributes:
+      label: Your argument
+      description: Explain the problem. Quote the paper's claim and the Lean statement where relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: lean
+    attributes:
+      label: Lean evidence (optional)
+      description: A counterexample, or a proof that the hypotheses are contradictory, speeds up confirmation.
+      render: lean
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Terms
+      options:
+        - label: I have read BOUNTY.md and I am not Viridis staff or a contractor.
+          required: true

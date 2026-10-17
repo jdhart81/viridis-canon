@@ -22,16 +22,16 @@ class DigestRouteScopeTests(unittest.TestCase):
                 'git_path': prefix + name})
         return result
 
-    def test_exact_digest_set_excludes_only_successor_and_has_one_default_route(self):
-        self.assertEqual(len(runtime.MODULE_NAMES), 18)
+    def test_exact_digest_set_includes_archival_access_and_excludes_successor_and_has_one_default_route(self):
+        self.assertEqual(len(runtime.MODULE_NAMES), 20)
         self.assertEqual(runtime.MODULE_NAMES,
-                         runtime.FROZEN_FULL_MODULE_NAMES - {'publish_successor_wave_guarded.py'})
+                         runtime.PRIOR_DIGEST_MODULE_NAMES | {'nightly_manuscript_access.py', 'nightly_manuscript_checkpoint.py'})
         self.assertEqual(runtime.DEFAULT_ROUTES, {'digest': 'invoke_digest_v2.py'})
-        self.assertEqual(runtime.STANDARD, 'VRS-DIGEST-ONLY-PDF-PACKAGING-PROFILE-1')
+        self.assertEqual(runtime.STANDARD, 'VRS-DIGEST-ARCHIVAL-PDF-PACKAGING-PROFILE-1')
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp).resolve()
             rows = self.rows(root, runtime.MODULE_NAMES, runtime.GIT_PREFIX)
-            self.assertEqual(len(runtime.module_table(root, rows)), 18)
+            self.assertEqual(len(runtime.module_table(root, rows)), 20)
             successor = self.rows(root, {'publish_successor_wave_guarded.py'}, runtime.GIT_PREFIX)[0]
             for bad in [rows[:-1], rows + [successor], rows[:-1] + [successor], rows + [rows[0]]]:
                 with self.assertRaisesRegex(runtime.PackagingHold, 'CLOSED_ADDITIVE_MODULES'):

@@ -9,8 +9,12 @@ on:
       - 'tools/mutate_gate_features.py'
       - 'tools/mutate_runbook_fixes.py'
       - 'tools/mutate_audit_hardening.py'
+      - 'tools/mutate_nightly_access.py'
       - 'tools/tests/**'
       - 'tools/zenodo_metadata_repair.py'
+      - 'tools/effective_allocation.py'
+      - 'tools/mutate_effective_allocation.py'
+      - 'tools/allocation_correction/**'
       - '.github/workflows/standalone-manuscript-pdf.yml'
   push:
     branches: [main]
@@ -21,8 +25,12 @@ on:
       - 'tools/mutate_gate_features.py'
       - 'tools/mutate_runbook_fixes.py'
       - 'tools/mutate_audit_hardening.py'
+      - 'tools/mutate_nightly_access.py'
       - 'tools/tests/**'
       - 'tools/zenodo_metadata_repair.py'
+      - 'tools/effective_allocation.py'
+      - 'tools/mutate_effective_allocation.py'
+      - 'tools/allocation_correction/**'
       - '.github/workflows/standalone-manuscript-pdf.yml'
 
 permissions:
@@ -34,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       VIRIDIS_CORE_ROOT: /tmp/viridis-core-fixture
-    timeout-minutes: 20
+    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
@@ -64,21 +72,55 @@ jobs:
           python3 tools/mutate_runbook_fixes.py --repo . --output "$RUNNER_TEMP/review-finding-mutations.json"
           python3 tools/mutate_audit_hardening.py --repo . --output "$RUNNER_TEMP/audit-hardening-mutations.json"
 
+      - name: Kill archival manuscript access and closed profile mutants
+        run: |
+          python3 tools/mutate_nightly_access.py --output "$RUNNER_TEMP/nightly-access-mutations"
+          python3 00_lab_infrastructure/gates/standalone_pdf_release/runtime/tests/run_archival_profile_mutants.py --python "$(command -v python3)" --output "$RUNNER_TEMP/archival-profile-mutations"
+          python3 00_lab_infrastructure/gates/standalone_pdf_release/runtime/tests/run_closed_data_loader_cache_mutants.py --python "$(command -v python3)" --output "$RUNNER_TEMP/compiler-cache-mutations"
+
       - name: Verify immutable historical source without full runtime copies
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/common/tests -p 'test_*.py' -v
       - name: Verify selected V012 functional coverage and retained provenance gates
         run: python3 -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/runtime/tests -p 'test_*.py' -v
 
+  complete_archival_source_session:
+    name: archival-default-source-session (${{ matrix.python }}, ${{ matrix.partition }})
+    runs-on: ubuntu-latest
+    env:
+      VIRIDIS_CORE_ROOT: /tmp/viridis-core-fixture
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.12', '3.14']
+        partition: ['normal-route', 'negative-controls']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Verify complete measured source and actual normal default archival route
+        if: matrix.partition == 'normal-route'
+        run: timeout --signal=TERM --kill-after=5s 540s python3 -B -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/runtime/tests -p 'w42_complete_default_route_test.py' -k test_complete_normal_default_source_review_access_digest_and_pdf_readbacks -v
+      - name: Verify complete-source drift and capability negative controls
+        if: matrix.partition == 'negative-controls'
+        run: timeout --signal=TERM --kill-after=5s 540s python3 -B -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/runtime/tests -p 'w42_complete_default_route_test.py' -k test_changed_required_source_holds_before_any_note_write -k test_real_facade_exception_revokes_all_session_capabilities -k test_genuine_capability_cannot_authorize_another_root_or_profile_path -v
+
   standalone-manuscript-pdf:
     # Preserve the exact check name consumed by current and historical source
     # proofs. Neither a failed nor a skipped matrix establishes source CI.
     name: standalone-manuscript-pdf
-    needs: manuscript_pdf_matrix
+    needs: [manuscript_pdf_matrix, complete_archival_source_session]
     if: ${{ always() }}
     runs-on: ubuntu-latest
     timeout-minutes: 1
     steps:
-      - name: Require both Python matrix jobs to pass
+      - name: Require both Python matrices and complete default source sessions to pass
         env:
           MATRIX_RESULT: ${{ needs.manuscript_pdf_matrix.result }}
-        run: test "$MATRIX_RESULT" = success
+          COMPLETE_SOURCE_RESULT: ${{ needs.complete_archival_source_session.result }}
+        run: |
+          test "$MATRIX_RESULT" = success
+          test "$COMPLETE_SOURCE_RESULT" = success

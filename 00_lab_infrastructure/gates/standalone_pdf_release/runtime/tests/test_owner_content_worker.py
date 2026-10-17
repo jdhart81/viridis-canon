@@ -29,8 +29,8 @@ import owner_content_worker as worker
 def proof(manifest):
     return {'status': 'ACTUAL_CURRENT_WORKER_SOURCE_AUTHORITY_AND_IDENTITY_VERIFIED',
         'source_manifest_sha256': hashlib.sha256(worker.encode_json(manifest)).hexdigest(),
-        'source_modules': 18, 'metadata_files': 3, 'transient_restore_allowed': False,
-        'scientific_population_admitted': False, 'certifies': False}
+        'source_modules': 20, 'metadata_files': 3, 'transient_restore_allowed': False,
+        'scientific_population_admitted': False, 'certifies': False, 'note_preparation':worker.NOTE_PREPARATION}
 
 
 def fixture_body(rid, name):
@@ -60,13 +60,14 @@ def fixture():
         for role, name in [('profile', 'CURRENT_PACKAGING_PROFILE.json'), ('nomination', 'INSTALLATION_NOMINATION.json'),
                            ('plan', 'INSTALL_PLAN.json')]:
             target = installed / name
-            target.write_bytes(worker.encode_json({'shared_dependencies':[{**shared_bound,'git_path':worker.SHARED_INPUT_GIT_PATH}]})if role=='profile'else b'{}')
+            target.write_bytes(worker.encode_json({'standard':worker.PROFILE_STANDARD,'note_preparation':worker.NOTE_PREPARATION,
+                'shared_dependencies':[{**shared_bound,'git_path':worker.SHARED_INPUT_GIT_PATH}]})if role=='profile'else b'{}')
             metadata.append({'role': role, 'path': str(target), 'sha256': hashlib.sha256(target.read_bytes()).hexdigest(),
                 'identity': worker._identity(target.stat(),target.read_bytes())})
-        manifest = {'standard': 'VRS-CURRENT-DIGEST-ONLY-WORKER-SOURCE-MANIFEST-1', 'canonical_root': str(root),
+        manifest = {'standard': 'VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-1', 'canonical_root': str(root),
             'profile_binding': {'path': metadata[0]['path'], 'sha256': metadata[0]['sha256']},
             'modules': modules, 'metadata': metadata, 'source_origin': {}, 'legacy_closure': {},
-            'source_review_change_flags': {},'shared_dependencies':[shared_manifest]}
+            'source_review_change_flags': {},'shared_dependencies':[shared_manifest],'note_preparation':worker.NOTE_PREPARATION}
         descriptors, pairs = [], {}
         for index, count in enumerate([7, 10, 10, 10, 10, 9, 2]):
             rid = str(900000 + index)

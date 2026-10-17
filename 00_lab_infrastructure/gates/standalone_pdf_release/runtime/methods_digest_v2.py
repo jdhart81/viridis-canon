@@ -96,13 +96,35 @@ def require_archive(data,inventory):
     if actual!=expected:raise DigestHold('missing/changed archive members')
     return {'status':'EXACT_ARCHIVE_BYTES_PASS','members':len(actual)}
 
+def _current_access(root):
+    """Load only the fixed installed format consumer from the nominated table."""
+    import packaging_runtime as runtime
+    nominated=runtime.nominated_binding(root)
+    runtime.require_source_session(root,nominated)
+    profile=runtime.object_at(root,nominated)[2]
+    if (profile.get('standard')!=runtime.STANDARD
+            or profile.get('note_preparation')!=runtime.NOTE_PREPARATION):
+        raise DigestHold('current archival access profile required')
+    pins=runtime.module_table(root,profile.get('modules'))
+    rows=[r for r in pins if r['name']=='nightly_manuscript_access.py']
+    if len(rows)!=1:raise DigestHold('fixed archival access consumer required')
+    return runtime.load(root,{k:rows[0][k]for k in ('path','sha256')},'_exact_current_archival_access')
+
 def current_note_consumer(note_path,root,authority_binding):
     """Default authority seam; no caller's cached PASS substitutes for it."""
+    manifest=json.loads(read_regular(Path(note_path)/'SCOPED_RELEASE_MANIFEST.json'))
+    if manifest.get('standard')=='VRS-NIGHTLY-ARCHIVAL-MANUSCRIPT-ACCESS-1':
+        return _current_access(root).require_current(Path(note_path),Path(root),authority_binding)
     try:policy=importlib.import_module('phase7_audit_policy')
     except ModuleNotFoundError as exc:raise DigestHold('approved phase7_audit_policy consumer not installed')from exc
     return policy.require_note_publication_bound(Path(note_path),Path(root),authority_binding)
 
 def current_authority_consumer(root,authority_binding):
+    # A nominated current profile always uses the same fresh frozen authority
+    # graph as its access notes. Historical direct-reader behavior is retained.
+    import packaging_runtime as runtime
+    if (Path(root)/runtime.NOMINATION_PATH).exists():
+        return _current_access(root).require_authority(Path(root),authority_binding)
     try:policy=importlib.import_module('phase7_audit_policy')
     except ModuleNotFoundError as exc:raise DigestHold('approved phase7_audit_policy consumer not installed')from exc
     return policy.require_audit_authority(Path(root),authority_binding)
@@ -167,10 +189,28 @@ def consume_notes(root,note_specs,authority_binding,*,consume=current_note_consu
         if not isinstance(metadata,dict)or not isinstance(metadata_binding,dict)or metadata_binding not in uploads:raise DigestHold('unreviewed note metadata')
         raw=json.loads(read_regular(p/metadata_binding['filename']));raw=raw.get('metadata',raw)
         if raw!=metadata:raise DigestHold('note public metadata differs from reviewed bytes')
-        notes.append({'run_id':rid,'path':str(p.resolve()),'certificate':certificate,'candidate':current['candidate'],'formal_statement':current['formal_statement'],'foundation_basis':current['foundation_basis'],'statement_scope':claims,'claim_table':table,'section':'MAIN_NOTES'if any(c['headline_eligible']for c in table)else'DEFINITIONAL_OR_NONVACUITY_PENDING_APPENDIX','metadata_binding':metadata_binding,'policy_receipt':policy,'publication_binding':binding(p/'PUBLICATION_BINDING.json'),'uploads':uploads,'prior_dois':current.get('prior_dois',[])})
+        notes.append({'run_id':rid,'path':str(p.resolve()),'certificate':certificate,'candidate':current['candidate'],'formal_statement':current['formal_statement'],'foundation_basis':current['foundation_basis'],'statement_scope':claims,'claim_table':table,'section':'MAIN_NOTES'if any(c['headline_eligible']for c in table)else'DEFINITIONAL_OR_NONVACUITY_PENDING_APPENDIX','metadata_binding':metadata_binding,'policy_receipt':policy,'publication_binding':binding(p/'PUBLICATION_BINDING.json'),'uploads':uploads,'prior_dois':current.get('prior_dois',[]),**({'manuscripts':access_manuscripts(current,declared,rid)}if current.get('access_standard')=='VRS-NIGHTLY-ARCHIVAL-MANUSCRIPT-ACCESS-1'else{})})
     for name,h in inputs.items():
         if sha(name)!=h:raise DigestHold('note/authority inputs changed during consumption')
     return {'notes':sorted(notes,key=lambda n:n['run_id']),'members':members,'input_bindings':inputs,'authority':authority_binding}
+
+def access_manuscripts(current, declared, run):
+    roles=current.get('manuscripts')
+    expected=[
+        {'role':'CURRENT_SCOPED_MANUSCRIPT','filename':'paper.pdf','archive_member':None,
+         'sha256':declared['paper.pdf']['sha256'],'certification':'EXACT_SCOPED_PREDECESSOR_ONLY'},
+        {'role':'UNCERTIFIED_HISTORICAL_MANUSCRIPT','filename':run+'-Historical-Paper.pdf',
+         'archive_member':'SCOPE_EVIDENCE.zip!/historical/ORIGINAL_paper.pdf',
+         'sha256':declared.get(run+'-Historical-Paper.pdf',{}).get('sha256'),
+         'certification':'ENTIRELY_UNCERTIFIED'}]
+    if roles!=expected or expected[1]['sha256']is None:raise DigestHold('closed actual manuscript roles required')
+    return roles
+
+def manuscript_copies(note):
+    copies=[(note['run_id']+'-Paper.pdf','paper.pdf')]
+    if 'manuscripts'in note:
+        copies.append((note['run_id']+'-Historical-Paper.pdf',note['run_id']+'-Historical-Paper.pdf'))
+    return copies
 
 def week_title(week):
     if not isinstance(week,str)or re.fullmatch('[0-9]{4}-W(?:0[1-9]|[1-4][0-9]|5[0-3])',week)is None:raise DigestHold('canonical ISO release week required')
@@ -239,9 +279,10 @@ def prepare(root,out,week,note_specs,authority_binding,source_metadata_binding,p
     note_pdfs=[]
     archived=dict(consumed['members'])
     for note in consumed['notes']:
-        name=note['run_id']+'-Paper.pdf';data=archived['notes/'+note['run_id']+'/paper.pdf']
-        if not data.startswith(b'%PDF-'):raise DigestHold('actual note PDF bytes required')
-        immutable(out/name,data);note_pdfs.append(name)
+        for name,source in manuscript_copies(note):
+            data=archived['notes/'+note['run_id']+'/'+source]
+            if not data.startswith(b'%PDF-'):raise DigestHold('actual note PDF bytes required')
+            immutable(out/name,data);note_pdfs.append(name)
     upload_names=('paper.tex','paper.pdf','metadata.json','METHODS_NOTES.zip',*note_pdfs)
     manifest={'standard':STANDARD,'release_week':week,'status':'ASSEMBLED_NOT_PUBLICATION_BOUND','authority':authority_binding,'source_metadata':source_metadata_binding,'notes':consumed['notes'],'archive_members':inventory,'input_bindings':inputs,'uploads':[{'filename':n,'sha256':sha(out/n),'md5':hashlib.md5(read_regular(out/n)).hexdigest(),'bytes':(out/n).stat().st_size}for n in upload_names],'public_metadata':metadata,'review_pdf_is_publication':False,'certifies':False,'local_lean_execution':False,'zenodo_writes':0}
     for path,h in inputs.items():
@@ -259,11 +300,12 @@ def require_current(package,root,*,consume=current_note_consumer,consume_authori
     if current['notes']!=manifest['notes']or current_inputs!=manifest['input_bindings']:raise DigestHold('aggregate current note/authority bindings changed')
     for path,h in manifest['input_bindings'].items():
         if sha(path)!=h:raise DigestHold('aggregate input changed')
-    expected={'paper.tex','paper.pdf','metadata.json','METHODS_NOTES.zip',*(n['run_id']+'-Paper.pdf'for n in current['notes'])}
+    expected={'paper.tex','paper.pdf','metadata.json','METHODS_NOTES.zip',*(name for n in current['notes']for name,_ in manuscript_copies(n))}
     archived=dict(current['members'])
     for note in current['notes']:
-        data=read_regular(package/(note['run_id']+'-Paper.pdf'))
-        if not data.startswith(b'%PDF-')or data!=archived['notes/'+note['run_id']+'/paper.pdf']:raise DigestHold('separate note manuscript differs from admitted archived paper')
+        for name,source in manuscript_copies(note):
+            data=read_regular(package/name)
+            if not data.startswith(b'%PDF-')or data!=archived['notes/'+note['run_id']+'/'+source]:raise DigestHold('separate note manuscript differs from admitted archived paper')
     if {u['filename']for u in manifest['uploads']}!=expected or len(manifest['uploads'])!=len(expected):raise DigestHold('exact aggregate upload set required')
     for u in manifest['uploads']:
         b=read_regular(package/u['filename'])

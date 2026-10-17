@@ -26,7 +26,7 @@ import time
 import importlib.machinery
 import dataclasses
 
-STANDARD = 'VRS-DIGEST-ONLY-PDF-PACKAGING-PROFILE-1'
+STANDARD = 'VRS-DIGEST-ARCHIVAL-PDF-PACKAGING-PROFILE-1'
 STATUS = 'INSTALLED_EXACT_ADDITIVE_SOURCE_READBACK_PASS'
 USER_DIRECTIVE = 'make sure all our deposits have the actual papers as separate PDFs and make that standard for future releases'
 
@@ -158,7 +158,13 @@ FROZEN_MODULE_NAMES = frozenset({
 FROZEN_FULL_MODULE_NAMES = FROZEN_MODULE_NAMES | frozenset({'scientific_registration_worker.py','owner_content_worker.py'})
 # A fixed reviewed digest closure, not a caller-selected subset. Historical
 # v001-v011 closures retain their original complete source sets and bytes.
-MODULE_NAMES = FROZEN_FULL_MODULE_NAMES - {'publish_successor_wave_guarded.py'}
+PRIOR_DIGEST_MODULE_NAMES = FROZEN_FULL_MODULE_NAMES - {'publish_successor_wave_guarded.py'}
+MODULE_NAMES = PRIOR_DIGEST_MODULE_NAMES | {'nightly_manuscript_access.py', 'nightly_manuscript_checkpoint.py'}
+NOTE_PREPARATION = {
+    'module': 'nightly_manuscript_checkpoint.py',
+    'entrypoints': ['source_for_cycle', 'stage_checkpoint', 'review_checkpoint',
+                    'prepare_access', 'new_note_specs', 'stage_weekly_package'],
+}
 PROHIBITED_CURRENT_MODULE_NAMES = frozenset({'publish_successor_wave_guarded.py'})
 SHARED_INPUT_NAME = 'stable_input_identity.py'
 SHARED_INPUT_SHA256 = '7e6c204993f0ba65650c58ad50a71073d803522d31fa08b93b7ce35054fa5eda'
@@ -217,10 +223,16 @@ SOURCE_REVIEW_CHANGE_FLAGS = {
     'scientific_scope_or_certificate_labels_changed': False,
     'historical_sources_changed': False,
 }
+CURRENT_SOURCE_REVIEW_CHANGE_FLAGS = {**SOURCE_REVIEW_CHANGE_FLAGS,
+    'archival_manuscript_access_packaging_changed': True,
+    'note_preparation_facade_changed': True,
+}
 SOURCE_REVIEW_FIELDS = frozenset({'standard','status','reviewer','source_hashes','legacy_closure',
     'review_scope','actual_live_runtime_admission','actual_seven_record_admission'}) | SOURCE_REVIEW_CHANGE_FLAGS.keys()
+CURRENT_SOURCE_REVIEW_FIELDS = frozenset({'standard','status','reviewer','source_hashes','legacy_closure',
+    'review_scope','actual_live_runtime_admission','actual_seven_record_admission'}) | CURRENT_SOURCE_REVIEW_CHANGE_FLAGS.keys()
 ROOT_REVIEW_FIELDS = frozenset({'standard','status','reviewer','plan_projection_sha256',
-    'merged_source_commit','source_hashes','historical_publisher_sha256'}) | SOURCE_REVIEW_CHANGE_FLAGS.keys()
+    'merged_source_commit','source_hashes','historical_publisher_sha256'}) | CURRENT_SOURCE_REVIEW_CHANGE_FLAGS.keys()
 REQUIRED_CHECKS = frozenset({
     'report-only-consumers', 'verify-catalog', 'verify-functions', 'verify',
     'deposit-verify', 'lean-build-current', 'lean-build-p0', 'gitleaks',
@@ -231,7 +243,7 @@ PROFILE_FIELDS = {
     'legacy_closure', 'legacy_consumer', 'legacy_scope', 'source_session_consumer', 'modules',
     'source_origin', 'source_review', 'access_registry', 'default_routes',
     'predecessor_installation', 'transient_rehydration', 'data_alias_observation', 'platform_timezone_observation',
-    'shared_dependencies',
+    'shared_dependencies', 'note_preparation',
 }
 DEFAULT_ROUTES = {
     'digest': 'invoke_digest_v2.py',
@@ -281,6 +293,7 @@ def sha(raw):
 
 _JSON_DATA = contextvars.ContextVar('one_operation_pure_json_data', default=None)
 _RESTORE_TRANSIENTS = contextvars.ContextVar('exact_original_transient_restore_authority', default=True)
+_ACTIVE_SOURCE_SESSION = contextvars.ContextVar('fresh_complete_packaging_source_session', default=None)
 
 
 @contextlib.contextmanager
@@ -298,13 +311,13 @@ def readonly_worker_scope():
 
 
 def require_change_flags(review):
-    need(all(review.get(k) is v for k,v in SOURCE_REVIEW_CHANGE_FLAGS.items()),
+    need(all(review.get(k) is v for k,v in CURRENT_SOURCE_REVIEW_CHANGE_FLAGS.items()),
          'EXPLICIT_CURRENT_ADMISSION_IMPLEMENTATION_CHANGE_FLAGS')
 
 
 def require_source_review(review, hashes, legacy_closure):
-    need(isinstance(review,dict) and set(review)==SOURCE_REVIEW_FIELDS
-         and review['standard']=='VRS-INDEPENDENT-PDF-RUNTIME-SOURCE-REVIEW-12'
+    need(isinstance(review,dict) and set(review)==CURRENT_SOURCE_REVIEW_FIELDS
+         and review['standard']=='VRS-INDEPENDENT-PDF-RUNTIME-SOURCE-REVIEW-13'
          and review['status']=='EXACT_COMPLETE_CANDIDATE_REVIEW_PASS'
          and isinstance(review['reviewer'],str) and review['reviewer']
          and review['source_hashes']==hashes and review['legacy_closure']==legacy_closure
@@ -1460,7 +1473,7 @@ def require_nomination(root, profile_binding):
     need(nomination_path.is_file() and not any(p.is_symlink() for p in (nomination_path,*nomination_path.parents)), 'CANONICAL_INSTALLATION_NOMINATION')
     _,raw,nomination=json_file(root,nomination_path)
     need(set(nomination) == {'standard','status','profile','installer_source','merged_source_commit','root_review_receipt'}
-         and nomination['standard'] == 'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-12'
+         and nomination['standard'] == 'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-13'
          and nomination['status'] == 'EXACT_SOURCE_AND_DEFAULT_BINDINGS_INSTALLED_RUNTIME_READBACK_PENDING'
          and same_binding(root,nomination['profile'],profile_binding)
          and re.fullmatch('[0-9a-f]{40}',str(nomination['merged_source_commit'])), 'ROOT_REVIEWED_INSTALLED_NOMINATION')
@@ -1482,13 +1495,14 @@ def require_installed_plan(root, profile, nomination, proof):
     fields={'standard','status','canonical_root','source_modules','source_origin','source_review',
             'user_authority','access_registry','historical_publisher','installed_at_utc','root_review',
             'predecessor_installation','transient_rehydration','data_alias_observation','platform_timezone_observation',
-            'shared_dependencies'}
-    need(set(plan)==fields and plan['standard']=='VRS-EXACT-DIGEST-ONLY-RUNTIME-INSTALL-PLAN-1'
+            'shared_dependencies','note_preparation'}
+    need(set(plan)==fields and plan['standard']=='VRS-EXACT-DIGEST-ARCHIVAL-PDF-RUNTIME-INSTALL-PLAN-1'
          and plan['status']=='ROOT_REVIEWED_READY_NOT_INSTALLED'and plan['canonical_root']==str(root), 'CLOSED_INSTALLED_PLAN')
     for field in ('source_origin','source_review','user_authority','access_registry','installed_at_utc',
-                  'predecessor_installation','transient_rehydration','data_alias_observation','platform_timezone_observation'):
+                  'predecessor_installation','transient_rehydration','data_alias_observation','platform_timezone_observation','note_preparation'):
         need(plan[field]==profile[field],'INSTALLED_PLAN_PROFILE_BINDING:'+field)
     need(plan['root_review']==nomination['root_review_receipt'], 'NOMINATED_ACTUAL_ROOT_REVIEW')
+    need(plan['note_preparation']==NOTE_PREPARATION,'EXACT_INSTALLED_NOTE_PREPARATION')
     rows=plan['source_modules'];module_table(root,rows)
     shared_dependency_table(root,plan['shared_dependencies'])
     shared_dependency_table(root,profile['shared_dependencies'],installed=True)
@@ -1506,14 +1520,14 @@ def require_installed_plan(root, profile, nomination, proof):
          'NOMINATED_PROVED_EXECUTED_INSTALLER')
     review=object_at(root,plan['root_review'])[2]
     need(set(review)==ROOT_REVIEW_FIELDS
-         and review['standard']=='VRS-ROOT-EXACT-PDF-RUNTIME-INSTALL-REVIEW-12'
+         and review['standard']=='VRS-ROOT-EXACT-PDF-RUNTIME-INSTALL-REVIEW-13'
          and review['status']=='EXACT_MERGED_SOURCE_AND_INSTALL_PLAN_REVIEW_PASS'
          and isinstance(review['reviewer'],str)and review['reviewer']
          and review['plan_projection_sha256']==sha((json.dumps({k:v for k,v in plan.items()if k!='root_review'},sort_keys=True,indent=2,ensure_ascii=False,allow_nan=False)+'\n').encode())
          and review['merged_source_commit']==proof['merge_commit']==nomination['merged_source_commit']
          and review['source_hashes']=={r['name']:r['sha256']for r in [*rows,*plan['shared_dependencies']]}
          and review['historical_publisher_sha256']=='4f099eaffb9a35fbd24e5c57ef34801391fabcd5c3272b58a379d7ac52b35e94'
-         and all(review.get(k) is v for k,v in SOURCE_REVIEW_CHANGE_FLAGS.items()), 'ROOT_REVIEW_EXACT_INSTALLED_PLAN_AND_SOURCE')
+         and all(review.get(k) is v for k,v in CURRENT_SOURCE_REVIEW_CHANGE_FLAGS.items()), 'ROOT_REVIEW_EXACT_INSTALLED_PLAN_AND_SOURCE')
     need(same_binding(root,plan['historical_publisher'],HISTORICAL_PUBLISHER),'PRESERVED_HISTORICAL_PUBLISHER_BINDING')
     need(plan_path.read_bytes()==raw,'INSTALLED_PLAN_RACE')
 
@@ -1553,7 +1567,8 @@ def validate(root, profile_binding, *, purpose_pins=None):
     _, profile_raw, profile = object_at(root, profile_binding)
     need(set(profile) == PROFILE_FIELDS and profile['standard'] == STANDARD
          and profile['status'] == STATUS and profile['canonical_root'] == str(root)
-         and profile['default_routes'] == DEFAULT_ROUTES, 'CLOSED_INSTALLED_PROFILE')
+         and profile['default_routes'] == DEFAULT_ROUTES
+         and profile['note_preparation'] == NOTE_PREPARATION, 'CLOSED_INSTALLED_PROFILE')
     installed = dt.datetime.fromisoformat(profile['installed_at_utc'].replace('Z', '+00:00'))
     need(installed.tzinfo is not None and installed <= dt.datetime.now(dt.timezone.utc), 'INSTALLATION_TIME')
     _, authority_raw, authority = object_at(root, profile['user_authority'])
@@ -1666,6 +1681,27 @@ def validate(root, profile_binding, *, purpose_pins=None):
             'ssot_writes': 0, 'zenodo_writes': 0}
 
 
+def _source_session_contexts(root, source_pins):
+    """Locate only the canonical runtime imported by the genuine finder."""
+    rows = [row for row in source_pins if row['name'] == 'packaging_runtime.py']
+    need(len(rows) == 1, 'CANONICAL_SESSION_RUNTIME_SOURCE')
+    row = rows[0]
+    binding = {key:row[key] for key in ('path','sha256')}
+    path, raw = read(root, binding)
+    canonical = importlib.import_module('packaging_runtime')
+    need(getattr(canonical, '__file__', None) is not None
+         and Path(canonical.__file__).resolve(strict=True) == path
+         and canonical.STANDARD == STANDARD and canonical.MODULE_NAMES == MODULE_NAMES
+         and canonical.NOTE_PREPARATION == NOTE_PREPARATION
+         and isinstance(canonical._ACTIVE_SOURCE_SESSION, contextvars.ContextVar),
+         'EXACT_CANONICAL_SESSION_RUNTIME_MODULE')
+    need(read(root, binding)[1] == raw, 'CANONICAL_SESSION_RUNTIME_SOURCE_RACE')
+    contexts = [_ACTIVE_SOURCE_SESSION]
+    if canonical._ACTIVE_SOURCE_SESSION is not _ACTIVE_SOURCE_SESSION:
+        contexts.append(canonical._ACTIVE_SOURCE_SESSION)
+    return contexts
+
+
 @contextlib.contextmanager
 def session(root, profile_binding):
     """Default v5 source scope: fresh byte checks plus pure parse DATA reuse."""
@@ -1675,14 +1711,60 @@ def session(root, profile_binding):
         builder = load(root, profile['source_session_consumer'], '_exact_packaging_session_builder')
         with builder.source_session(root, result['source_pins']):
             validate(root, profile_binding, purpose_pins=result['source_pins'])
+            profile_path, _ = read(root, profile_binding)
+            value = (str(Path(root).resolve(strict=True)), str(profile_path), profile_binding['sha256'])
+            tokens = []
             try:
+                for context in _source_session_contexts(root, result['source_pins']):
+                    tokens.append((context, context.set(value)))
                 yield result
             finally:
+                for context, token in reversed(tokens):
+                    context.reset(token)
                 validate(root, profile_binding, purpose_pins=result['source_pins'])
 
 
+def require_source_session(root, profile_binding):
+    """Require this exact profile inside a currently fresh complete source scope.
+
+    This exports no reusable admission result. Only session() sets the private
+    context after genuine validation and SourceFinder entry; its finalizer
+    revokes the context and freshly validates the unchanged closure again.
+    """
+    active = _ACTIVE_SOURCE_SESSION.get()
+    need(active is not None, 'ACTIVE_COMPLETE_SOURCE_SESSION_REQUIRED')
+    path, _ = read(root, profile_binding)
+    need(active == (str(Path(root).resolve(strict=True)), str(path), profile_binding['sha256']),
+         'ACTIVE_EXACT_NOMINATED_SOURCE_SESSION')
+
+
+def note_preparation(root, entrypoint, *args, **kwargs):
+    """Call one fixed preparation facade through fresh installed source gates.
+
+    The caller selects only one of the reviewed preparation operations. The
+    root nomination selects the exact profile and facade source; the genuine
+    session freshly checks the complete source closure on entry and exit.
+    """
+    need(type(entrypoint) is str and entrypoint in NOTE_PREPARATION['entrypoints'],
+         'FIXED_NOTE_PREPARATION_ENTRYPOINT')
+    root = Path(root).resolve(strict=True)
+    binding = nominated_binding(root)
+    with session(root, binding):
+        profile = object_at(root, binding)[2]
+        need(profile.get('standard') == STANDARD
+             and profile.get('note_preparation') == NOTE_PREPARATION,
+             'NOMINATED_NOTE_PREPARATION_PROFILE')
+        pins = module_table(root, profile.get('modules'))
+        row = next(row for row in pins if row['name'] == NOTE_PREPARATION['module'])
+        facade = load(root, {key:row[key] for key in ('path','sha256')},
+                      '_exact_nominated_note_preparation')
+        operation = getattr(facade, entrypoint, None)
+        need(callable(operation), 'ACTUAL_NOTE_PREPARATION_ENTRYPOINT')
+        return operation(root, *args, **kwargs)
+
+
 WORKER_SOURCE_MANIFEST_FIELDS = frozenset({'standard','canonical_root','profile_binding','modules',
-    'metadata','source_origin','legacy_closure','source_review_change_flags','shared_dependencies'})
+    'metadata','source_origin','legacy_closure','source_review_change_flags','shared_dependencies','note_preparation'})
 
 
 def _worker_source_row(root, binding, *, name=None, role=None):
@@ -1732,10 +1814,11 @@ def build_worker_source_manifest(root, profile_binding):
     normalized_profile = {'path':str(root / PROFILE_PATH),'sha256':metadata[0]['sha256']}
     need(same_binding(root,normalized_profile,profile_binding)
          and same_binding(root,nomination['profile'],normalized_profile), 'WORKER_NOMINATED_CURRENT_PROFILE')
-    result = {'standard':'VRS-CURRENT-DIGEST-ONLY-WORKER-SOURCE-MANIFEST-1','canonical_root':str(root),
+    result = {'standard':'VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-1','canonical_root':str(root),
               'profile_binding':normalized_profile,'modules':modules,'metadata':metadata,
               'source_origin':profile['source_origin'],'legacy_closure':profile['legacy_closure'],
-              'source_review_change_flags':dict(SOURCE_REVIEW_CHANGE_FLAGS),'shared_dependencies':shared}
+              'source_review_change_flags':dict(CURRENT_SOURCE_REVIEW_CHANGE_FLAGS),'shared_dependencies':shared,
+              'note_preparation':profile['note_preparation']}
     need(set(result)==WORKER_SOURCE_MANIFEST_FIELDS,'CLOSED_WORKER_SOURCE_MANIFEST')
     return result
 
@@ -1751,6 +1834,7 @@ def verify_worker_source_manifest(root, profile_binding, expected_manifest):
     return {'status':'ACTUAL_CURRENT_WORKER_SOURCE_AUTHORITY_AND_IDENTITY_VERIFIED',
             'source_manifest_sha256':sha(raw),'source_modules':len(current['modules']),
             'metadata_files':len(current['metadata']),'transient_restore_allowed':False,
+            'note_preparation':current['note_preparation'],
             'scientific_population_admitted':False,'certifies':False}
 
 
@@ -1764,7 +1848,7 @@ def refresh_worker_source_manifest_data(root, expected_manifest):
     """
     root = Path(root).resolve(strict=True)
     need(isinstance(expected_manifest,dict) and set(expected_manifest)==WORKER_SOURCE_MANIFEST_FIELDS
-         and expected_manifest['standard']=='VRS-CURRENT-DIGEST-ONLY-WORKER-SOURCE-MANIFEST-1'
+         and expected_manifest['standard']=='VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-1'
          and expected_manifest['canonical_root']==str(root)
          and root==SCIENTIFIC_ALIAS_PATH.parent/SCIENTIFIC_ALIAS_READLINK,
          'CLOSED_CURRENT_WORKER_SOURCE_DATA')
@@ -1772,9 +1856,9 @@ def refresh_worker_source_manifest_data(root, expected_manifest):
     modules = expected_manifest['modules']; metadata = expected_manifest['metadata']
     shared = expected_manifest['shared_dependencies']
     current_import_artifact_guard(installed)
-    need(isinstance(modules,list) and len(modules)==18
+    need(isinstance(modules,list) and len(modules)==20
          and {row.get('name') for row in modules}==MODULE_NAMES
-         and len({row.get('path') for row in modules})==18
+         and len({row.get('path') for row in modules})==20
          and isinstance(metadata,list) and len(metadata)==3,
          'COMPLETE_CURRENT_WORKER_SOURCE_DATA')
     need(isinstance(shared,list) and len(shared)==1 and isinstance(shared[0],dict)
@@ -1800,7 +1884,9 @@ def refresh_worker_source_manifest_data(root, expected_manifest):
     need(expected_manifest['profile_binding']=={'path':str(root/PROFILE_PATH),'sha256':metadata[0]['sha256']}
          and expected_manifest['source_origin']==profile['source_origin']
          and expected_manifest['legacy_closure']==profile['legacy_closure']
-         and expected_manifest['source_review_change_flags']==SOURCE_REVIEW_CHANGE_FLAGS,
+         and expected_manifest['source_review_change_flags']==CURRENT_SOURCE_REVIEW_CHANGE_FLAGS
+         and profile.get('standard')==STANDARD and profile.get('note_preparation')==NOTE_PREPARATION
+         and expected_manifest['note_preparation']==NOTE_PREPARATION,
          'CURRENT_WORKER_MANIFEST_DATA_PROFILE_RELATION')
     shared_dependency_table(root,profile['shared_dependencies'],installed=True)
     need([{k:r[k] for k in ('name','path','sha256')} for r in shared]

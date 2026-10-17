@@ -44,17 +44,17 @@ class WorkerSourceTests(unittest.TestCase):
             self.assertTrue(path.is_symlink())
 
     def review(self):
-        return {'standard':'VRS-INDEPENDENT-PDF-RUNTIME-SOURCE-REVIEW-12',
+        return {'standard':'VRS-INDEPENDENT-PDF-RUNTIME-SOURCE-REVIEW-13',
             'status':'EXACT_COMPLETE_CANDIDATE_REVIEW_PASS','reviewer':'synthetic isolated test',
             'source_hashes':{},'legacy_closure':runtime.LEGACY_CLOSURE,
             'review_scope':'SOURCE_ONLY','actual_live_runtime_admission':False,
             'actual_seven_record_admission':'PENDING_POST_INSTALL_FRESH_READBACK',
-            **runtime.SOURCE_REVIEW_CHANGE_FLAGS}
+            **runtime.CURRENT_SOURCE_REVIEW_CHANGE_FLAGS}
 
     def test_each_change_flag_is_required_with_exact_boolean_and_old_schema_refused(self):
         review=self.review()
         runtime.require_source_review(review,{},runtime.LEGACY_CLOSURE)
-        for key,correct in runtime.SOURCE_REVIEW_CHANGE_FLAGS.items():
+        for key,correct in runtime.CURRENT_SOURCE_REVIEW_CHANGE_FLAGS.items():
             for bad in (not correct,int(correct),'true',None):
                 value={**review,key:bad}
                 with self.subTest(key=key,bad=bad),self.assertRaises(runtime.PackagingHold):
@@ -66,19 +66,19 @@ class WorkerSourceTests(unittest.TestCase):
         with self.assertRaises(runtime.PackagingHold):
             runtime.require_source_review(old,{},runtime.LEGACY_CLOSURE)
 
-    def test_current19_and_fixed_historical17_tables_cannot_be_mixed_or_rebound(self):
+    def test_current20_and_fixed_historical17_tables_cannot_be_mixed_or_rebound(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp).resolve();rows=[]
-            for name in sorted(runtime.FROZEN_FULL_MODULE_NAMES):
+            for name in sorted(runtime.FROZEN_FULL_MODULE_NAMES | runtime.MODULE_NAMES):
                 file=root/name;file.write_bytes(b'# source fixture\n')
                 rows.append({'name':name,'path':str(file),'sha256':runtime.sha(file.read_bytes()),
                              'git_path':runtime.GIT_PREFIX+name})
             current=[r for r in rows if r['name'] in runtime.MODULE_NAMES]
-            self.assertEqual(len(runtime.module_table(root,current)),18)
+            self.assertEqual(len(runtime.module_table(root,current)),20)
             for prefix in runtime.FROZEN_GIT_PREFIXES:
                 old=[{**row,'git_path':prefix+row['name']} for row in rows if row['name'] in runtime.FROZEN_MODULE_NAMES]
                 if prefix.endswith(('/future_runtime_v007/','/future_runtime_v008/','/future_runtime_v009/','/future_runtime_v010/','/future_runtime_v011/')):
-                    full=[{**row,'git_path':prefix+row['name']} for row in rows]
+                    full=[{**row,'git_path':prefix+row['name']} for row in rows if row['name'] in runtime.FROZEN_FULL_MODULE_NAMES]
                     self.assertEqual(len(runtime.module_table(root,full,git_prefix=prefix)),19)
                     with self.assertRaises(runtime.PackagingHold):
                         runtime.module_table(root,old,git_prefix=prefix)
@@ -100,15 +100,17 @@ class WorkerSourceTests(unittest.TestCase):
         builder=types.SimpleNamespace(source_session=source_session)
         with tempfile.TemporaryDirectory() as tmp,patch.object(runtime,'validate',side_effect=validate),\
              patch.object(runtime,'object_at',return_value=(None,b'{}',{'source_session_consumer':{}})),\
-             patch.object(runtime,'load',return_value=builder):
+             patch.object(runtime,'load',return_value=builder),\
+             patch.object(runtime,'_source_session_contexts',return_value=[runtime._ACTIVE_SOURCE_SESSION]):
+            binding=put(Path(tmp).resolve()/'isolated-source-profile.json',{'fixture':'source lifecycle only'})
             with runtime.readonly_worker_scope():
-                with runtime.session(tmp,{}):
-                    with runtime.session(tmp,{}):pass
+                with runtime.session(tmp,binding):
+                    with runtime.session(tmp,binding):pass
                 with self.assertRaisesRegex(RuntimeError,'fixture failure'):
-                    with runtime.session(tmp,{}):raise RuntimeError('fixture failure')
+                    with runtime.session(tmp,binding):raise RuntimeError('fixture failure')
             self.assertEqual(calls,[False]*9)
             calls.clear()
-            with runtime.session(tmp,{}):pass
+            with runtime.session(tmp,binding):pass
             self.assertEqual(calls,[True]*3)
 
     def fixture(self,root):
@@ -123,10 +125,10 @@ class WorkerSourceTests(unittest.TestCase):
         shared.write_bytes((Path(runtime.__file__).resolve().parent.parent/'common'/runtime.SHARED_INPUT_NAME).read_bytes())
         dependencies=[{'name':runtime.SHARED_INPUT_NAME,'path':str(shared),'sha256':runtime.SHARED_INPUT_SHA256,
                        'git_path':runtime.SHARED_INPUT_GIT_PATH}]
-        profile=put(root/runtime.PROFILE_PATH,{'modules':modules,'source_origin':{'synthetic_only':True},
+        profile=put(root/runtime.PROFILE_PATH,{'standard':runtime.STANDARD,'note_preparation':runtime.NOTE_PREPARATION,'modules':modules,'source_origin':{'synthetic_only':True},
                   'legacy_closure':runtime.LEGACY_CLOSURE,'shared_dependencies':dependencies})
         installer=next(row for row in modules if row['name']=='install_packaging_runtime.py')
-        put(root/runtime.NOMINATION_PATH,{'standard':'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-12',
+        put(root/runtime.NOMINATION_PATH,{'standard':'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-13',
             'status':'EXACT_SOURCE_AND_DEFAULT_BINDINGS_INSTALLED_RUNTIME_READBACK_PENDING',
             'profile':profile,'installer_source':{k:installer[k] for k in ('path','sha256')},
             'merged_source_commit':'a'*40,'root_review_receipt':review})
@@ -146,7 +148,7 @@ class WorkerSourceTests(unittest.TestCase):
             root=Path(tmp).resolve();profile,modules=self.fixture(root)
             with self.source_fixture(root):
                 manifest=runtime.build_worker_source_manifest(root,profile)
-                self.assertEqual(len(manifest['modules']),18);self.assertEqual(len(manifest['metadata']),3)
+                self.assertEqual(len(manifest['modules']),20);self.assertEqual(len(manifest['metadata']),3)
                 with self.assertRaisesRegex(runtime.PackagingHold,'READONLY_WORKER'):
                     runtime.verify_worker_source_manifest(root,profile,manifest)
                 with runtime.readonly_worker_scope():
@@ -178,7 +180,7 @@ class WorkerSourceTests(unittest.TestCase):
             with self.source_fixture(root):
                 manifest=runtime.build_worker_source_manifest(root,profile)
                 with patch.object(runtime,'validate',side_effect=runtime.PackagingHold('old source drift')):
-                    # Current19+3 DATA is still exact, but full child authority
+                    # Current20+1+3 DATA is still exact, but full child authority
                     # refuses the changed original/predecessor closure.
                     current=runtime.refresh_worker_source_manifest_data(root,manifest)
                     self.assertEqual(current,manifest)

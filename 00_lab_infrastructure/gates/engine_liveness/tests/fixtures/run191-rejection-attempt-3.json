@@ -1,0 +1,181 @@
+{
+  "description": "Compilation of olean for Solution failed or terminated",
+  "executionEvidence": {
+    "delivery": {
+      "mode": "FRESH_EXECUTION",
+      "servedForRequestId": "c5fc67eb-f240-4961-aea1-fd724b83a06c"
+    }
+  },
+  "output": "\u2716 [8026/8027] Building Solution (13s)\ntrace: .> LEAN_PATH=SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH:SANITIZED_PATH SANITIZED_PATH SANITIZED_PATH -o SANITIZED_PATH -i SANITIZED_PATH -c SANITIZED_PATH --setup SANITIZED_PATH --json\nerror: Solution.lean:12:42: unsolved goals\np : \u211d\n\u22a2 purityLoss p = disturbanceSq p * 2\nerror: Lean exited with code 1\nSome required targets logged failures:\n- Solution\nerror: build failed\n",
+  "processDiagnostics": {
+    "capture_status": "RECORDED",
+    "profile": "nightly-default",
+    "records": [
+      {
+        "accounting": {
+          "available": false,
+          "max_rss_bytes": null,
+          "reason": "Node ChildProcess does not expose per-child wait4/rusage; no accounting probe enabled",
+          "scope": "spawned phase process; no parent/service aggregates substituted",
+          "system_cpu_seconds": null,
+          "user_cpu_seconds": null
+        },
+        "elapsed_ms": 34562.10250890255,
+        "end": "2026-10-11T17:08:29.866Z",
+        "exitCode": 0,
+        "guard_fired": false,
+        "guard_reason": null,
+        "kernel_process_accounting": [],
+        "limits": {
+          "comparator_cpu_seconds": 600,
+          "configured_phase_wall_ms": 285000,
+          "guard_reason": "phase_wall_limit",
+          "memory_max_bytes": 7864320000,
+          "operation_reserve_ms": null,
+          "operation_wrapper_seconds": 1200,
+          "policy_client_wait_seconds": 300,
+          "source": "server-allowlist",
+          "toolchain": "leanprover/lean4:v4.28.0",
+          "wall_ms": 285000
+        },
+        "phase": "compile-Challenge",
+        "process_group_target": "not_sent",
+        "profile": "nightly-default",
+        "reason": "exited",
+        "requestId": "c5fc67eb-f240-4961-aea1-fd724b83a06c",
+        "signal": null,
+        "start": "2026-10-11T17:07:55.304Z"
+      },
+      {
+        "accounting": {
+          "available": false,
+          "max_rss_bytes": null,
+          "reason": "Node ChildProcess does not expose per-child wait4/rusage; no accounting probe enabled",
+          "scope": "spawned phase process; no parent/service aggregates substituted",
+          "system_cpu_seconds": null,
+          "user_cpu_seconds": null
+        },
+        "elapsed_ms": 34876.20364892483,
+        "end": "2026-10-11T17:08:30.170Z",
+        "exitCode": 1,
+        "guard_fired": false,
+        "guard_reason": null,
+        "kernel_process_accounting": [],
+        "limits": {
+          "comparator_cpu_seconds": 600,
+          "configured_phase_wall_ms": 285000,
+          "guard_reason": "phase_wall_limit",
+          "memory_max_bytes": 7864320000,
+          "operation_reserve_ms": null,
+          "operation_wrapper_seconds": 1200,
+          "policy_client_wait_seconds": 300,
+          "source": "server-allowlist",
+          "toolchain": "leanprover/lean4:v4.28.0",
+          "wall_ms": 285000
+        },
+        "phase": "compile-Solution",
+        "process_group_target": "not_sent",
+        "profile": "nightly-default",
+        "reason": "exited",
+        "requestId": "c5fc67eb-f240-4961-aea1-fd724b83a06c",
+        "signal": null,
+        "start": "2026-10-11T17:07:55.294Z"
+      }
+    ],
+    "requestId": "c5fc67eb-f240-4961-aea1-fd724b83a06c",
+    "standard": "VRS-COMPARATOR-TERMINATION-1"
+  },
+  "project": "viridis-lean-4.28",
+  "recoveredFromTerminalJournal": true,
+  "requestId": "c5fc67eb-f240-4961-aea1-fd724b83a06c",
+  "resourceProfile": {
+    "client_wait_seconds": 300,
+    "collection_wall_ms": 285000,
+    "comparator_cpu_seconds": 600,
+    "comparator_wall_ms": 285000,
+    "compile_wall_ms": 285000,
+    "memory_max_bytes": 7864320000,
+    "name": "nightly-default",
+    "toolchain": "leanprover/lean4:v4.28.0",
+    "wrapper_seconds": 1200
+  },
+  "terminationDiagnostics": {
+    "capture_status": "RECORDED",
+    "profile": "nightly-default",
+    "records": [
+      {
+        "accounting": {
+          "available": false,
+          "max_rss_bytes": null,
+          "reason": "Node ChildProcess does not expose per-child wait4/rusage; no accounting probe enabled",
+          "scope": "spawned phase process; no parent/service aggregates substituted",
+          "system_cpu_seconds": null,
+          "user_cpu_seconds": null
+        },
+        "elapsed_ms": 34562.10250890255,
+        "end": "2026-10-11T17:08:29.866Z",
+        "exitCode": 0,
+        "guard_fired": false,
+        "guard_reason": null,
+        "kernel_process_accounting": [],
+        "limits": {
+          "comparator_cpu_seconds": 600,
+          "configured_phase_wall_ms": 285000,
+          "guard_reason": "phase_wall_limit",
+          "memory_max_bytes": 7864320000,
+          "operation_reserve_ms": null,
+          "operation_wrapper_seconds": 1200,
+          "policy_client_wait_seconds": 300,
+          "source": "server-allowlist",
+          "toolchain": "leanprover/lean4:v4.28.0",
+          "wall_ms": 285000
+        },
+        "phase": "compile-Challenge",
+        "process_group_target": "not_sent",
+        "profile": "nightly-default",
+        "reason": "exited",
+        "requestId": "c5fc67eb-f240-4961-aea1-fd724b83a06c",
+        "signal": null,
+        "start": "2026-10-11T17:07:55.304Z"
+      },
+      {
+        "accounting": {
+          "available": false,
+          "max_rss_bytes": null,
+          "reason": "Node ChildProcess does not expose per-child wait4/rusage; no accounting probe enabled",
+          "scope": "spawned phase process; no parent/service aggregates substituted",
+          "system_cpu_seconds": null,
+          "user_cpu_seconds": null
+        },
+        "elapsed_ms": 34876.20364892483,
+        "end": "2026-10-11T17:08:30.170Z",
+        "exitCode": 1,
+        "guard_fired": false,
+        "guard_reason": null,
+        "kernel_process_accounting": [],
+        "limits": {
+          "comparator_cpu_seconds": 600,
+          "configured_phase_wall_ms": 285000,
+          "guard_reason": "phase_wall_limit",
+          "memory_max_bytes": 7864320000,
+          "operation_reserve_ms": null,
+          "operation_wrapper_seconds": 1200,
+          "policy_client_wait_seconds": 300,
+          "source": "server-allowlist",
+          "toolchain": "leanprover/lean4:v4.28.0",
+          "wall_ms": 285000
+        },
+        "phase": "compile-Solution",
+        "process_group_target": "not_sent",
+        "profile": "nightly-default",
+        "reason": "exited",
+        "requestId": "c5fc67eb-f240-4961-aea1-fd724b83a06c",
+        "signal": null,
+        "start": "2026-10-11T17:07:55.294Z"
+      }
+    ],
+    "requestId": "c5fc67eb-f240-4961-aea1-fd724b83a06c",
+    "standard": "VRS-COMPARATOR-TERMINATION-1"
+  },
+  "type": "verification-failed"
+}

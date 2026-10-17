@@ -1,0 +1,105 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 123,
+  "run_id": "Run-123",
+  "slug": "habitable-concentration-floor",
+  "title": "A Free-Energy Floor for Habitable-State Concentration: A Coarse-Grained Relative-Entropy Audit for Gaian Models",
+  "generated_at_utc": "2026-08-08T07:12:56Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-123_habitable-concentration-floor",
+  "selection": {
+    "area_id": "07",
+    "area": "Gaian Systems",
+    "lens": "Thermodynamic",
+    "directive_kind": "locked_area",
+    "reason": "tier_starvation_floor",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 16,
+    "failed": 0,
+    "failure_conditions_triggered": 0,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "scope": "finite-state KL partition chain rule, data-processing floor, reference-shaped equality construction, above-baseline reliability threshold, Gibbs-reference reversible-work interpretation, exhaustive and randomized checks, boundary cases, convergence, and assumption-breaking controls"
+  },
+  "aristotle": {
+    "status": "NOT_RUN",
+    "submitted": false
+  },
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus Gaian thermodynamics methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 124,
+    "kind": "area",
+    "area_id": "03",
+    "area": "HDFM Corridors",
+    "lens": "Stewardship",
+    "reason": "tier_starvation_floor"
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs --keep-intermediates paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 4,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "visual_review": "PASS_ALL_4_PAGES"
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Viridis corpus and current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "historical Viridis research artifacts read with attribution preserved and no historical text rewritten"
+      }
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "73d00fa96cd3967c831b33f4b59025aa6369de00163eb4512457bc30e5b025ca",
+    "resulting_nightly_state_sha256": "1ba0d5726dc640a37d0ac8faeae88f37e87ba8abb465f41289dba9d30014bfe5",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "CEO_ALERT.md": "002d9858de78dd2001df6094ccbdd0afacd6512811464f4dbc88f589bb25c722",
+      "CLAIM_INVENTORY.json": "c7ade4850898fdfc95c942bc0c64f83db2c4f4284d16df3427614dac9b738cce",
+      "PAPER_PACKAGE_MANIFEST.json": "d525ac440e658012c133cee4f66cb3a3d9fbdfef738ad92ec1bd14991e2873af",
+      "PREREGISTRATION.md": "633041498f2f449a57f652b1ee4276e0e69688fe75f4fb8c6d70a58ad1158981",
+      "README.md": "3be542f3bc1be8410d4771b08298c5c9e1af30a3fb1c78bc70cc20092de94ab7",
+      "SOURCE_LEDGER.json": "ff7c4c5e368f5c3e0b7e662629ab16c51e86a290f299f483c2105835845a3644",
+      "business_EV-123.md": "8086ca0626bc50ab28b310e2b40dddf75de2514a5fa36f31031237b0742a393f",
+      "finding.md": "b60d365916356e694b16ac3d687f5b5c17132ebe2f463763ee4ac572ee82f9d8",
+      "paper.aux": "ae8bafbe418606eba26c06bceeaa91d170a7cde7b47d62eebac78df2e36b8e29",
+      "paper.log": "f473f87502c887c5248d629456484273e232b4d27ef52302a1b7c0718b481f9e",
+      "paper.out": "a3d99cc21eaf75ac5e231dc47b0f3d057af6217e8d9b61642cbc08a6103d10ad",
+      "paper.pdf": "d1009a772e69cfd3d31a8680c2bbc538c8576025518daf2d2550e87409964f89",
+      "paper.tex": "246e1c82d43018b64d4b1e6504b6dc8225ac06417dd496f1fc4a74fd75bbf878",
+      "verification.py": "d0f44d3eca2288bd6e1c06a48e90f7344a8d6691eaafa8eeaf7c9992e3a98c43",
+      "verification_output.txt": "f32d7a0778e7893de845e281789de6bfd4680851eadc4efb84747a508eb13b00"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed after sealing and its hash is recorded in NIGHTLY_STATE.md and INDEX.md; the manifest cannot contain its own cryptographic hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {
+    "published": false,
+    "pushed": false,
+    "submitted": false,
+    "outreach_sent": false,
+    "external_account_mutated": false,
+    "money_moved": false
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "aligned_challenge": {
+    "path": "RESEARCH_PIPELINE_v2/lean_certificates/Run-128/VERIFICATION_CHALLENGE_ALIGNED.lean",
+    "sha256": "20188ee7c055802711586a9fce3b6d8abce2c6f4a54560460e2890ba300fa0e8"
+  },
+  "candidate": {
+    "path": "RESEARCH_PIPELINE_v2/lean_certificates/Run-128/VERIFICATION_CANDIDATE.lean",
+    "sha256": "1de8f6a1f2ac05dd8026ad92a646b910d17b8369ba72c3dc6ebf7628ba1696ee"
+  },
+  "candidate_forbidden_constructs_empty": true,
+  "expected_theorem_names": [
+    "bilateral_benefit_iff_reciprocity_corridor",
+    "strict_corridor_nonempty_iff_product_condition",
+    "share_coordinate_corridor_equivalence",
+    "nash_midpoint_unique_maximizer",
+    "bandwidth_scaling_cannot_restore_feasibility"
+  ],
+  "external_mutation": false,
+  "introduced_sorry_count": 5,
+  "local_lean_execution": false,
+  "operation": "candidate-order challenge with only expected theorem proof bodies replaced by sorry",
+  "schema_version": 1,
+  "sealed_statement": {
+    "path": "RESEARCH_PIPELINE_v2/lean_certificates/Run-128/VERIFICATION_STATEMENT.lean",
+    "sha256": "20188ee7c055802711586a9fce3b6d8abce2c6f4a54560460e2890ba300fa0e8"
+  },
+  "shared_declaration_order_source": "candidate",
+  "signature_sha256": {
+    "bandwidth_scaling_cannot_restore_feasibility": "666c2423bbf8c97f0e4474807fb74bf8dd1568448287e5cce178dc45639da2c5",
+    "bilateral_benefit_iff_reciprocity_corridor": "26743a40a9673150acd4a547a52b33f991a68fcd3d10a37929cd9467b68de08f",
+    "nash_midpoint_unique_maximizer": "91761397f71f7ac936b823ad2edca1a0f3c1b78d0665e0226ddba8c08cd869c6",
+    "share_coordinate_corridor_equivalence": "3879c579abb7777918803aa49898958236767b5b4304054703f5961b1922f7ea",
+    "strict_corridor_nonempty_iff_product_condition": "c2c297fbab290b8b4798af173a31f572dffa7e5f674a6a1b1104c82f92169426"
+  },
+  "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+  "status": "FROZEN",
+  "target_signatures_match_sealed_statement": true
+}

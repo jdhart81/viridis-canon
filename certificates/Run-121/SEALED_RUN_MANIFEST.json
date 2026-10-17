@@ -1,0 +1,97 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 121,
+  "run_id": "Run-121",
+  "slug": "information-symbiosis-balance",
+  "title": "Information Symbiosis Balance: A Conditional-Dependence Criterion for Cooperative Learning",
+  "generated_at_utc": "2026-08-06T07:13:47Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-121_information-symbiosis-balance",
+  "selection": {
+    "area_id": "06",
+    "area": "Entropy-Driven Learning",
+    "lens": "Symbiosis",
+    "directive_kind": "locked_area",
+    "reason": "tier_starvation_floor",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 16,
+    "failed": 0,
+    "failure_conditions_triggered": 0,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "scope": "finite joint-distribution entropy identities, duplicate/XOR/additive controls, randomized positive rational tables, conditionally independent common-cause models, bit-equivalent cost threshold, and deterministic plug-in convergence"
+  },
+  "aristotle": {"status":"NOT_RUN","submitted":false},
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "S6 Cognition and Learning / working-corpus methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 122,
+    "kind": "area",
+    "area_id": "12",
+    "area": "AI Wavefunction Collapse",
+    "lens": "Alignment",
+    "reason": "severe_starvation"
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs --keep-intermediates paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 5,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "visual_review": "PASS_ALL_5_PAGES"
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {"name":"Codex","role":"Viridis corpus and current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"},
+      {"name":"Claude","role":"historical Viridis research artifacts read with attribution preserved and no historical text rewritten"}
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "71519d11111b657213fdad0ad5c54a23f3f3e12034f68f67c5f14d8684776190",
+    "resulting_nightly_state_sha256": "b218a2160465cb03b955c9d33fbc49b5224be19141909cf6c92eac675c07d884",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "CEO_ALERT.md": "0a9ea44eb278141e8d2165065c112229251ee078536d13c4a5ef86f8b326887a",
+      "CLAIM_INVENTORY.json": "d3863aed2a18f438d28d13c448d3ab91fd9aa720a648fbab3b68475519d229ec",
+      "INPUT_STATE_SNAPSHOT.json": "71519d11111b657213fdad0ad5c54a23f3f3e12034f68f67c5f14d8684776190",
+      "PAPER_PACKAGE_MANIFEST.json": "a33db76675f1374601a950c8b7758ad815f8d348cd5ba598fc6fb252d98c8672",
+      "PREREGISTRATION.md": "5ba1bc3899fe4f7761fcfda312506566ccb043610ebf2ea280529c6ebf53ffbe",
+      "README.md": "f70130602115c48572cc2fbff0555ed0054707536bcab89060f107f1fe98d296",
+      "SOURCE_LEDGER.json": "81a218a6d8c49acaea9d9d1eb34a3cafcf913ba5538ecc38600a023da5413a98",
+      "business_EV-121.md": "c1dcaf7d4572d1df5ae8c83c014de38aa3e44416c22ac1a677ec93dcbed873af",
+      "finding.md": "c53cd4ae4962a871ab8f800329c19723e7dc678d1b4e4505104ccc9a6afe4b1e",
+      "paper.aux": "6b529614df0f61dc9e0e21f0dfa33fb91fb022d25d2e69f66dd81042e760b58e",
+      "paper.log": "54fa6ea28b0adfaf3347268b82bed3c595ae633a96c44de1b61289a50613801b",
+      "paper.out": "7d27e8b2bedafeedf1ef943da6d4a052785c516ccd8b9041b39646bf725113e3",
+      "paper.pdf": "1c5cb4a3a5c8d40d15554f7a6268964b3acc25c6996c11842b5f26d654d6e239",
+      "paper.tex": "c2369b55def3b370e86b40e4ccd6eb3d4b13c51c390a4622b1064b5fe8d37331",
+      "verification.py": "c37466034521f6f7a3efef6409358e558b7723211bfc0880f1e89a41c3756742",
+      "verification_output.txt": "58bb3b24b89492756033c94386fc3fba19190b3fc8f0af53cf41f508b4479118"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed after sealing and its hash is recorded in NIGHTLY_STATE.md and INDEX.md; the manifest cannot contain its own cryptographic hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {
+    "published": false,
+    "pushed": false,
+    "submitted": false,
+    "outreach_sent": false,
+    "external_account_mutated": false,
+    "money_moved": false
+  }
+}

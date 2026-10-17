@@ -1,0 +1,40 @@
+{
+  "aligned_challenge": {
+    "path": "RESEARCH_PIPELINE_v2/lean_certificates/Run-133/VERIFICATION_CHALLENGE_ALIGNED.lean",
+    "sha256": "bcaeb2d0b29f1a1bccd57cba42e94169a21649b069346398483e10b171bf9612"
+  },
+  "candidate": {
+    "path": "RESEARCH_PIPELINE_v2/lean_certificates/Run-133/VERIFICATION_CANDIDATE.lean",
+    "sha256": "153531dbead8ae7e94e1bb5a98ceb73f6aed50d75498e70919500029a7e2d2aa"
+  },
+  "candidate_forbidden_constructs_empty": true,
+  "expected_theorem_names": [
+    "synchrony_dividend_identity",
+    "availability_penalty_eq_synchrony_dividend",
+    "overlap_tradeoff_nonnegative",
+    "overlap_tradeoff_strict",
+    "additive_shared_cost_saving",
+    "corridor_overlap_nonvacuous"
+  ],
+  "external_mutation": false,
+  "introduced_sorry_count": 6,
+  "local_lean_execution": false,
+  "operation": "candidate-order challenge with only expected theorem proof bodies replaced by sorry",
+  "schema_version": 1,
+  "sealed_statement": {
+    "path": "RESEARCH_PIPELINE_v2/lean_certificates/Run-133/VERIFICATION_STATEMENT.lean",
+    "sha256": "153531dbead8ae7e94e1bb5a98ceb73f6aed50d75498e70919500029a7e2d2aa"
+  },
+  "shared_declaration_order_source": "candidate",
+  "signature_sha256": {
+    "additive_shared_cost_saving": "8508e6b9929e11347d203b78b4972e946d85bba4cdb80bed0d645159bf257749",
+    "availability_penalty_eq_synchrony_dividend": "d7bfb3d63449bee8ef1fe9d490f775dac98d804eaf6f6f95e08f70cd49e602f2",
+    "corridor_overlap_nonvacuous": "725c9049f2d52429f627612bdb732ee878be904f05729d19e5ff634ff4104d40",
+    "overlap_tradeoff_nonnegative": "3b051613cefd3ee8b0e7663561dbbef51d0ec267f03409506fe5810cba07dc95",
+    "overlap_tradeoff_strict": "1b656b6b786bdc3f028a64628e0e5de6297e08c274ca29ae2fd3e036844bb63c",
+    "synchrony_dividend_identity": "e2dc7ab5ad75042efc6d7dcdc4c23a77d74a043da174f1ca7d1281cc2b76e9e9"
+  },
+  "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+  "status": "FROZEN",
+  "target_signatures_match_sealed_statement": true
+}

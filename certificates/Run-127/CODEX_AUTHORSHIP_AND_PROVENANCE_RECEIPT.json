@@ -1,0 +1,12 @@
+{
+  "candidate_sha256": "e930944c7b5efe69cecc90884243a8aca6a09a6930442196347b6d4227334d9a",
+  "external_mutation": false,
+  "fresh_comparator_verification_required": true,
+  "historical_provider_authority": false,
+  "local_lean_execution": false,
+  "operation": "Codex reviewed and reconstructed the ordered proof modules as one exact Comparator candidate; no theorem statement or proof body was changed",
+  "schema_version": 1,
+  "source_run": "Run-127",
+  "standard": "VRS-ENGINE3-CODEX-CANDIDATE-PROVENANCE-1",
+  "status": "FROZEN"
+}

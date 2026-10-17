@@ -1,0 +1,43 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.Run128.PaperFormalization.witness_C3",
+    "Viridis.Run128.PaperFormalization.witness_feasible_product_condition",
+    "Viridis.Run128.PaperFormalization.share_payoff_identities",
+    "Viridis.Run128.PaperFormalization.share_payoff_identities._simp_1_4",
+    "Viridis.Run128.PaperFormalization.share_payoff_identities._simp_1_6",
+    "Viridis.Run128.PaperFormalization.witness_C2_corridor_empty",
+    "Viridis.Run128.PaperFormalization.share_payoff_identities._simp_1_7",
+    "Viridis.Run128.PaperFormalization.share_payoff_identities._simp_1_10",
+    "Viridis.Run128.PaperFormalization.witness_C4",
+    "Viridis.Run128.PaperFormalization.bandwidth_scaling_cannot_restore_feasibility",
+    "Viridis.Run128.PaperFormalization.witness_C1_benefit",
+    "Viridis.Run128.PaperFormalization.witness_C1_no_benefit",
+    "Viridis.Run128.PaperFormalization.nash_midpoint_unique_maximizer",
+    "Viridis.Run128.PaperFormalization.InCorridor.eq_1",
+    "Viridis.Run128.PaperFormalization.uX.eq_1",
+    "Viridis.Run128.PaperFormalization.qL_lt_qU_iff_product_condition",
+    "Viridis.Run128.PaperFormalization.uY.eq_1",
+    "Viridis.Run128.PaperFormalization.qU.eq_1",
+    "Viridis.Run128.PaperFormalization.witness_C2_corridor_nonempty",
+    "Viridis.Run128.PaperFormalization.nashProduct.eq_1",
+    "Viridis.Run128.PaperFormalization.share_payoff_identities._simp_1_5",
+    "Viridis.Run128.PaperFormalization.share_coordinate_corridor_equivalence",
+    "Viridis.Run128.PaperFormalization.uXshare.eq_1",
+    "Viridis.Run128.PaperFormalization.share_payoff_identities._simp_1_8",
+    "Viridis.Run128.PaperFormalization.share_payoff_identities._simp_1_9",
+    "Viridis.Run128.PaperFormalization.witness_infeasible_product_condition",
+    "Viridis.Run128.PaperFormalization.qL.eq_1",
+    "Viridis.Run128.PaperFormalization.ratio_interval_nonempty_iff_product_condition",
+    "Viridis.Run128.PaperFormalization.ProductCondition.eq_1",
+    "Viridis.Run128.PaperFormalization.strict_corridor_nonempty_iff_product_condition",
+    "Viridis.Run128.PaperFormalization.uYshare.eq_1",
+    "Viridis.Run128.PaperFormalization.bilateral_benefit_iff_reciprocity_corridor"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

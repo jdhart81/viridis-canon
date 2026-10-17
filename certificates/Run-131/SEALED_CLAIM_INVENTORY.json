@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "run_id": "Run-131_cognitive-switching-hysteresis-certificate",
+  "stage": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "claims": [
+    {
+      "claim_id": "C131-01",
+      "claim": "In the declared two-state incremental objective, the down- and up-switch thresholds are -b-c_{+to-}/2 and -b+c_{-to+}/2.",
+      "evidence_class": "FORMAL_TARGET",
+      "evidence": ["PREREGISTRATION.md", "paper.tex", "verification.py", "verification_output.txt", "formalization/CognitiveSwitchingHysteresis.lean"],
+      "formal_proof_status": "FROZEN_PROPOSED_UNPROVED",
+      "aristotle_target": "threshold_order",
+      "exclusions": ["more than two states", "nonlinear evidence utility", "time-varying penalties", "stochastic lapses"]
+    },
+    {
+      "claim_id": "C131-02",
+      "claim": "The strict history-dependent band has width (c_{+to-}+c_{-to+})/2; bias translates its center without changing that width.",
+      "evidence_class": "FORMAL_TARGET",
+      "evidence": ["paper.tex", "verification_output.txt", "formalization/CognitiveSwitchingHysteresis.lean"],
+      "formal_proof_status": "FROZEN_PROPOSED_UNPROVED",
+      "aristotle_target": "band_width_identity",
+      "exclusions": ["claim that all observed persistence is caused by switching cost"]
+    },
+    {
+      "claim_id": "C131-03",
+      "claim": "For a completed monotone loop crossing both thresholds, the absolute state-evidence loop integral equals c_{+to-}+c_{-to+}, the sum of the two modeled switching penalties.",
+      "evidence_class": "FORMAL_TARGET",
+      "evidence": ["paper.tex", "verification.py", "verification_output.txt", "formalization/CognitiveSwitchingHysteresis.lean"],
+      "formal_proof_status": "FROZEN_PROPOSED_UNPROVED",
+      "aristotle_target": "closed_loop_area_identity",
+      "exclusions": ["subthreshold sweeps", "minor loops", "finite-rate adaptation", "heat or work without a physical protocol"]
+    },
+    {
+      "claim_id": "C131-04",
+      "claim": "With independently known bias and thresholds, the two directional switching penalties are algebraically recoverable.",
+      "evidence_class": "FORMAL_TARGET",
+      "evidence": ["paper.tex", "verification_output.txt", "formalization/CognitiveSwitchingHysteresis.lean"],
+      "formal_proof_status": "FROZEN_PROPOSED_UNPROVED",
+      "aristotle_target": "directional_cost_recovery",
+      "exclusions": ["statistical identifiability under noisy or sparse observations"]
+    },
+    {
+      "claim_id": "C131-05",
+      "claim": "The executable preregistered gate completed 15 PASS / 0 FAIL / 15 CHECKS across 250,000 randomized cases plus analytic and convergence controls.",
+      "evidence_class": "NUMERIC",
+      "evidence": ["verification.py", "verification_output.txt"],
+      "formal_proof_status": "NOT_A_FORMAL_PROOF",
+      "exclusions": ["all possible cognitive models", "empirical validation"]
+    },
+    {
+      "claim_id": "C131-06",
+      "claim": "Recent experiments report cognitive-strategy and perceptual task-switch costs, while prior attractor models provide a distinct residual-activity mechanism for choice hysteresis.",
+      "evidence_class": "CITED",
+      "evidence": ["SOURCE_LEDGER.json", "paper.tex"],
+      "formal_proof_status": "NOT_APPLICABLE",
+      "exclusions": ["claim that the present relay model explains those datasets"]
+    },
+    {
+      "claim_id": "C131-07",
+      "claim": "The abstract penalties are not identified with Landauer heat or physical work at generator exit.",
+      "evidence_class": "ASSUMED_SCOPE_BOUNDARY",
+      "evidence": ["PREREGISTRATION.md", "verification_output.txt", "SOURCE_LEDGER.json", "paper.tex"],
+      "formal_proof_status": "NOT_APPLICABLE",
+      "exclusions": ["a universal thermodynamic lower bound"]
+    }
+  ],
+  "claims_explicitly_not_made": [
+    "novelty or significance established",
+    "formal proof complete",
+    "Aristotle submitted or returned",
+    "the relay is a unique or complete neural mechanism",
+    "behavioral latency is energy",
+    "the switching penalties equal k_B T ln 2",
+    "any human, neural, device, or field dataset validates the model",
+    "canon, spine, ledger, publication, adoption, demand, delivery, payment, repeat use, subscription, or MRR readiness"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "run": 123,
+  "stage": "pre_aristotle",
+  "novelty": "UNASSESSED",
+  "claims": [
+    {"id":"C1","claim":"KL decomposes exactly into the binary H versus H-complement divergence plus two conditional divergences.","paper_locator":"Proposition 1","evidence_class":"FORMAL_TARGET","aristotle_target":"kl_chain_rule_habitable_partition","formal_status":"UNPROVED","numeric_support":"verification.py checks 2 and 15"},
+    {"id":"C2","claim":"D(p||r) is at least d(p(H)||r(H)), with equality for reference-shaped conditionals.","paper_locator":"Corollary 1","evidence_class":"FORMAL_TARGET","aristotle_target":"kl_ge_binary_habitable_mass","formal_status":"UNPROVED","numeric_support":"verification.py checks 3-5 and 8"},
+    {"id":"C3","claim":"For q>=tau>=alpha, d(q||alpha)>=d(tau||alpha).","paper_locator":"Proposition 2","evidence_class":"FORMAL_TARGET","aristotle_target":"binary_kl_monotone_above_reference","formal_status":"UNPROVED","numeric_support":"verification.py checks 6-7 and 13"},
+    {"id":"C4","claim":"Under the fixed Gibbs-reference weak-coupling preparation model, W>=kBT d(tau||alpha).","paper_locator":"Corollary 2","evidence_class":"FORMAL_TARGET","aristotle_target":"habitable_threshold_free_energy_floor","formal_status":"UNPROVED","numeric_support":"verification.py check 11","cited_support":"SOURCE_LEDGER.json S2-S5"},
+    {"id":"C5","claim":"All within-class rearrangement above the reference conditionals adds nonnegative excess KL cost.","paper_locator":"Proposition 1 and equality discussion","evidence_class":"FORMAL_TARGET","aristotle_target":"equality_iff_reference_conditionals","formal_status":"UNPROVED","numeric_support":"verification.py checks 4-5 and 14"},
+    {"id":"C6","claim":"The adversarial gate passed 16 aggregate checks with no preregistered failure triggered.","paper_locator":"Adversarial verification","evidence_class":"NUMERIC","support":"verification_output.txt"},
+    {"id":"C7","claim":"Cardinality fraction is not a valid replacement for r(H) under nonuniform references.","paper_locator":"Negative controls","evidence_class":"NUMERIC","support":"verification.py check 12"},
+    {"id":"C8","claim":"Stability and self-regulation do not imply concentration in a declared habitable set.","paper_locator":"Negative controls and interpretation","evidence_class":"ASSUMED","numeric_support":"verification.py check 16","cited_support":"SOURCE_LEDGER.json S6"},
+    {"id":"C9","claim":"A 2025 Mars model exhibits carbonate-feedback self-regulation into a desert state with intermittent oases.","paper_locator":"Gaian interpretation","evidence_class":"CITED","support":"SOURCE_LEDGER.json S6"},
+    {"id":"C10","claim":"The state partition, reference distribution, temperature, Hamiltonian, and weak-coupling preparation model describe a real Earth system.","paper_locator":"Assumptions and limitations","evidence_class":"DEFERRED","support":"Requires system-specific empirical identification"},
+    {"id":"C11","claim":"A $9,500 audit will create customer value.","paper_locator":"business EV only","evidence_class":"CONJECTURED","support":"business_EV-123.md; signed revenue $0"},
+    {"id":"C12","claim":"The Gaian specialization is novel or scientifically significant beyond standard relative-entropy theory.","paper_locator":"Prior work and conclusion","evidence_class":"DEFERRED","support":"Independent significance and prior-art review required"}
+  ]
+}

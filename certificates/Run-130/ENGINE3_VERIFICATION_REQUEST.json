@@ -1,0 +1,63 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-130-SeedSourceBottleneck-Comparator-attempt-1",
+  "root_candidate_id": "Run-130-SeedSourceBottleneck-Comparator",
+  "attempt": 1,
+  "source_run": "Run-130",
+  "module": "PaperFormalization",
+  "namespace": "Viridis.Run130",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "1260b3565b55ec536a94c59b13ac55cfadaa6e17f6b01b965e5d1014e609bd36",
+  "input_sha256": {
+    "SEALED_paper.pdf": "4ef8229fb24918f38fdcfcd4ba67101bcc6b199e6799fad910441d6852d7f48d",
+    "SEALED_paper.tex": "0311d68b977ffc6b331aef05b1fe039059c9acd2e481bf9eb2b87b4cc0e00961",
+    "SEALED_CLAIM_INVENTORY.json": "9973670e43df6bad96d3af196c14057f83502b7ae1fe06f202fb21fff56c6c81",
+    "SEALED_RUN_MANIFEST.json": "7df3dbe4d90e83f39e1bfe907dc12673779160a2b1614518b6e54bd7c6965be9",
+    "VERIFICATION_CANDIDATE.lean": "1260b3565b55ec536a94c59b13ac55cfadaa6e17f6b01b965e5d1014e609bd36",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "2ef5f3d081483d3a6e12c69bc9f78e1b84b778dd40a4ba7c11d69c73c9c883c9",
+    "STATEMENT_ALIGNMENT.json": "a107510f3a71c9e479337993b55291141ff0c6ccd546604fb8e1f43f3758c354"
+  },
+  "statement_alignment": {
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+    "sealed_statement": {
+      "filename": "VERIFICATION_CANDIDATE.lean",
+      "sha256": "1260b3565b55ec536a94c59b13ac55cfadaa6e17f6b01b965e5d1014e609bd36"
+    },
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT.json",
+      "sha256": "a107510f3a71c9e479337993b55291141ff0c6ccd546604fb8e1f43f3758c354"
+    }
+  },
+  "expected_theorem_names": [
+    "seed_routing_common_fraction_eq_min_cut_ratio",
+    "seed_routing_feasible_iff_cut_conditions",
+    "capacity_outside_active_bottleneck_irrelevant",
+    "scenario_intersection_certificate_le_each_scenario"
+  ],
+  "nonvacuity_obligations": [
+    "C1_witness",
+    "C1_witness_nontrivial",
+    "C2_witness_infeasible",
+    "C2_witness_feasible",
+    "C3_witness",
+    "C4_witness",
+    "negative_control_arbitrarily_severe"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "legacy_provenance": {
+    "candidate_source": "zero-sorry finalized Run-130 proof modules frozen as one Comparator source; historical Aristotle artifacts are provenance only",
+    "fresh_comparator_verification_required": true,
+    "aristotle_required_for_this_certificate": false
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

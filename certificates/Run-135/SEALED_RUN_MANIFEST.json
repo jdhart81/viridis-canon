@@ -1,0 +1,126 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 135,
+  "run_id": "Run-135",
+  "slug": "sufficient-sanitization-certificate",
+  "title": "The Sufficient Sanitization Certificate: Task Information, Data Minimization, and an Ideal Erasure Gap",
+  "generated_at_utc": "2026-08-19T08:16:28Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-135_sufficient-sanitization-certificate",
+  "selection": {
+    "area_id": "16",
+    "area": "Applications",
+    "lens": "Thermodynamic",
+    "directive_kind": "locked_area",
+    "reason": "severe_starvation",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true,
+    "combination_guard": "PASS_APPLICATIONS_THERMODYNAMIC_PAIRING_OUTSIDE_16_RUN_GUARD"
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "significance": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 14,
+    "failed": 0,
+    "checks": 14,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "deterministic_replay": "BYTE_IDENTICAL",
+    "scope": "20,000 finite-law chain-rule cases, 10,000 sensitive-attribute data-processing cases, exact nonvacuity and negative controls, and nested empirical-convergence checks"
+  },
+  "formalization": {
+    "status": "FROZEN_PROPOSED_UNPROVED",
+    "lean_file": "formalization/SufficientSanitization.lean",
+    "targets": [
+      "relevance_chain_identity",
+      "entropy_decomposition_deterministic",
+      "exact_sufficiency_preserves_relevance",
+      "approximate_sufficiency_loss_bound",
+      "sufficient_sanitization_nonvacuous"
+    ],
+    "contains_explicit_sorry_placeholders": true
+  },
+  "aristotle": {
+    "status": "NOT_RUN",
+    "submitted": false
+  },
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus application privacy-and-efficiency methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 136,
+    "kind": "area",
+    "area_id": "06",
+    "area": "Entropy-Driven Learning",
+    "lens": "Stewardship",
+    "reason": "tier_starvation_floor",
+    "selection_note": "After Run 135, area 06 reaches the T2 starvation floor at staleness 14. Stewardship follows Thermodynamic and is combination-clean within the 16-run guard."
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 3,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "visual_review": "PASS_ALL_3_PAGES_RENDERED_AT_120_DPI",
+    "preserved_failure_evidence": null
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Binding-standard and Viridis-corpus review, current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "Historical Viridis research artifacts read with attribution preserved and no historical text rewritten"
+      }
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "d8543580e1058756fc727d5eea9dc8f4320591df8d062a60a7b8220b7e33b5ea",
+    "resulting_nightly_state_sha256": "1b842ce2da4122ea3d2b62a169b41df837bd15c19bec15ec001f760bbc782805",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "CEO_ALERT.md": "0283836ff0322d8007d057ec5b0ebe82b26dfe7b6e38e667bfc35ac9dc524fd2",
+      "CLAIM_INVENTORY.json": "6bdddb10f1ec6fd9407f96cb36b7ca03ef503e5fd485d61d258a11175fa2ff27",
+      "PAPER_PACKAGE_MANIFEST.json": "9e320f991e32e1c1c24b247d7614f98f1761048446cd35af8e28e8f4bb8bd0f0",
+      "PREREGISTRATION.md": "d3bedd47231e131b306d9630f9614c2be5fd06a19a36c48fc0784d6b38bc53b9",
+      "README.md": "12e492a3fad72da3df4147c10a12173bc288aac25f2c0c99f2d7f82b896ed9a2",
+      "SOURCE_LEDGER.json": "91bc6c30ef499c359c68fb86e58b53d0851a2412d571db443aab7ca7172a976b",
+      "business_EV-135.md": "d6eea9c68d4b1dbfced6e4ac6adebff408502b3a9600a00623e21a87e71a5148",
+      "finding.md": "229a35df5f353aff05be83e0cb381cc22234758c910317b8d429c2385fb2dd99",
+      "formalization/ARISTOTLE_PROMPT.md": "00a1cd890f49f7b6815714b83d4b90a07e25e0f18001a61153296b211b3f0e49",
+      "formalization/STATEMENT_CONTRACT.json": "231b55eed48f36b716ccaf4879312cf9c2724c422932811cb870189efde01395",
+      "formalization/SufficientSanitization.lean": "ed7b51ec1a878f5e06f36f7a36146b97ac77b3475333c7e1d451cb41bb98982c",
+      "formalization/lakefile.toml": "15d880a75d55ff25ce6574fec18169b2621fb3d08eee00fa69a29ab252f6ad52",
+      "formalization/lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028",
+      "paper.log": "34342fca90844052e45851623f7a9913d329946c3423b0669dcf575c5a830905",
+      "paper.pdf": "551379cc80a369e96a4da0bb6ac98e03e4890d945bf17741f49c154b082b59d9",
+      "paper.tex": "d7a2bb6413083ac1300e2ecbc0308dc396a252c85b7c218d91fcc94ad23118e0",
+      "verification.py": "aa9e0ad768e706a8a006953dcb29ca0d5e1c9734b4794ac05049bf553e1154d4",
+      "verification_output.txt": "5f8adb84bfbb429cc674dba0982953bd8f203151d7b9613117f3514f829b8c28"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed only after sealing; its hash is recorded in NIGHTLY_STATE.md and INDEX.md because a manifest cannot contain its own hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {
+    "published": false,
+    "pushed": false,
+    "submitted": false,
+    "outreach_sent": false,
+    "external_account_mutated": false,
+    "money_moved": false
+  }
+}

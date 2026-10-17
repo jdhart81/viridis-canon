@@ -1,0 +1,67 @@
+{
+  "bindings": {
+    "candidate_proof": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-130/VERIFICATION_CANDIDATE.lean",
+      "sha256": "1260b3565b55ec536a94c59b13ac55cfadaa6e17f6b01b965e5d1014e609bd36"
+    },
+    "formal_statement": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-130/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "sha256": "2ef5f3d081483d3a6e12c69bc9f78e1b84b778dd40a4ba7c11d69c73c9c883c9"
+    },
+    "independent_cloud_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-130/COMPARATOR_CLOUD_RECEIPT.json",
+      "sha256": "33a5ad0d2166e40d995fe73a92b0726a1bf891f9f31c222dd842a6b34101d6b8"
+    },
+    "request": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-130/ENGINE3_VERIFICATION_REQUEST.json",
+      "sha256": "ab95c9e1f24e545d1f4b710c5858f408852def89bf570e54a2511bd268057b46"
+    },
+    "sealed_paper_inputs": {
+      "SEALED_CLAIM_INVENTORY.json": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-130/SEALED_CLAIM_INVENTORY.json",
+        "sha256": "9973670e43df6bad96d3af196c14057f83502b7ae1fe06f202fb21fff56c6c81"
+      },
+      "SEALED_RUN_MANIFEST.json": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-130/SEALED_RUN_MANIFEST.json",
+        "sha256": "7df3dbe4d90e83f39e1bfe907dc12673779160a2b1614518b6e54bd7c6965be9"
+      },
+      "SEALED_paper.pdf": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-130/SEALED_paper.pdf",
+        "sha256": "4ef8229fb24918f38fdcfcd4ba67101bcc6b199e6799fad910441d6852d7f48d"
+      },
+      "SEALED_paper.tex": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-130/SEALED_paper.tex",
+        "sha256": "0311d68b977ffc6b331aef05b1fe039059c9acd2e481bf9eb2b87b4cc0e00961"
+      }
+    },
+    "sealed_statement_contract": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-130/VERIFICATION_CANDIDATE.lean",
+      "sha256": "1260b3565b55ec536a94c59b13ac55cfadaa6e17f6b01b965e5d1014e609bd36"
+    },
+    "statement_alignment_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-130/STATEMENT_ALIGNMENT.json",
+      "sha256": "a107510f3a71c9e479337993b55291141ff0c6ccd546604fb8e1f43f3758c354"
+    }
+  },
+  "candidate_id": "Run-130-SeedSourceBottleneck-Comparator-attempt-1",
+  "gates": {
+    "allowed_axioms_only": true,
+    "aristotle_required": false,
+    "comparator_lean_kernel": true,
+    "comparator_nanoda_kernel": true,
+    "comparator_statement_identity": true,
+    "frozen_statement_and_candidate_hash_bound": true,
+    "independent_cloud_kernel_verification": true,
+    "local_lean_execution": false,
+    "nonvacuity_witnesses": true,
+    "sealed_statement_signature_alignment": true,
+    "zero_sorries_or_admits": true
+  },
+  "issued_at_utc": "2026-08-30T05:36:17.996556+00:00",
+  "run_id": "Run-130",
+  "schema_version": "1.0",
+  "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+  "standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+  "status": "LEAN_ZERO_SORRY_CERTIFIED",
+  "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1"
+}

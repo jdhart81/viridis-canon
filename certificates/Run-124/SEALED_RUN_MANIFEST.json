@@ -1,0 +1,106 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 124,
+  "run_id": "Run-124",
+  "slug": "pivotal-corridor-stewardship",
+  "title": "Pivotal Corridor Stewardship: Exact Reliability Gradients and a Failure-Aware Priority Rule",
+  "generated_at_utc": "2026-08-08T08:15:56Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-124_pivotal-corridor-stewardship",
+  "selection": {
+    "area_id": "03",
+    "area": "HDFM Corridors",
+    "lens": "Stewardship",
+    "directive_kind": "locked_area",
+    "reason": "tier_starvation_floor",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 13,
+    "failed": 0,
+    "failure_conditions_triggered": 0,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "scope": "independent Bernoulli edge survival, exact two-terminal reliability and pivotality enumeration, exhaustive small graphs, 500 randomized graphs, finite-difference checks, topology interactions, local linear budget, electrical-current ranking reversal, correlated-failure controls, and Monte Carlo convergence"
+  },
+  "aristotle": {
+    "status": "NOT_RUN",
+    "submitted": false
+  },
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus HDFM corridor reliability methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 125,
+    "kind": "area",
+    "area_id": "05",
+    "area": "Thermodynamic Speed Limits",
+    "lens": "Symbiosis",
+    "reason": "tier_starvation_floor"
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs --keep-intermediates paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 4,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "visual_review": "PASS_ALL_4_PAGES"
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Viridis corpus and current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "historical Viridis research artifacts read with attribution preserved and no historical text rewritten"
+      }
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "1ba0d5726dc640a37d0ac8faeae88f37e87ba8abb465f41289dba9d30014bfe5",
+    "resulting_nightly_state_sha256": "3b3d502601674a1906819d53514a634d149bd2425ead45a5583b919041d95255",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "BUILD_FAILURE_NOTE.md": "0db60146a50b5bf516479345f25a61943cb733dd252e532bfb66a7133f9fdf9a",
+      "CEO_ALERT.md": "fed417e1756b77928fb5513df178c373146deb1af0678ba903b3c25b9a12af6d",
+      "CLAIM_INVENTORY.json": "02340c0d3f7789f45c69396f2a28324a5f8b021ae9312b4490e506e0f415f5b5",
+      "PAPER_PACKAGE_MANIFEST.json": "5d635b9b2470d2754363fe7d1f38a4b0a2347ee6d27af77d544e3b7e342b0dd1",
+      "PREREGISTRATION.md": "9dbb176aea7bb428a9999c5ea5677ff9bfa71c4c72b388507585fc0839d417ef",
+      "README.md": "fb1817de2659b3cbb7b98effcd2c998bd88ad84afed096860888fdf929e9e3f0",
+      "SOURCE_LEDGER.json": "efd7c1b4bd508ae4b5abbe624b395a52be7bc3073e1b4a914e46f2533166ba6f",
+      "business_EV-124.md": "0c2bb5d7461915fe049d5cabbffb7b1a582013315cdc264236a6e2acd1e408b5",
+      "finding.md": "462fa3926d5dd0f202ca3a6bacad97fd5c1f9083459210fa170b9b85f6ae1c9b",
+      "paper.aux": "49aded1b04adf5416566ab84a6e9b3e2f43b19f703635b90d6ebdc6d3c8b354e",
+      "paper.log": "c415ed9533e5d6f4eb11098da07994b855efe9f43e9169adf1dfee380686600a",
+      "paper.out": "7e44fbdc7f1edfcb0c5b9c79b979c641ca4eced926172046b5157e04ab22c6cb",
+      "paper.pdf": "4ab0c80f8b7d40974c0928e3fbe398a317ab58bd99899ae0420f0c8f38bd4619",
+      "paper.tex": "225720480220a38583409f221870da31b6ae04cb663d9f161cb5cdf48c8e4c3c",
+      "verification.py": "dc32df7b3fe99621bce50732d4ee918487319b8fb0a17da80897a925be7525e1",
+      "verification_output.txt": "2a8d3a2ca5cbce6f4649c1775f7176d4ddb065c3c8ca39679a773a5ff5665d66"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed after sealing and its hash is recorded in NIGHTLY_STATE.md and INDEX.md; the manifest cannot contain its own cryptographic hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {
+    "published": false,
+    "pushed": false,
+    "submitted": false,
+    "outreach_sent": false,
+    "external_account_mutated": false,
+    "money_moved": false
+  }
+}

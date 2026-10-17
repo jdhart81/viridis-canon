@@ -129,8 +129,14 @@ V011_PLAN = {'path':'_ZENODO_DEPOSITS/standalone_pdf_runtime_v011/INSTALL_PLAN.j
 V011_INSTALLATION = {'profile':V011_PROFILE,'nomination':V011_NOMINATION,'plan':V011_PLAN}
 PREDECESSOR_INSTALLATION = {'v001':V001_INSTALLATION,'v002':V002_INSTALLATION,'v003':V003_INSTALLATION,'v004':V004_INSTALLATION,'v005':V005_INSTALLATION,'v006':V006_INSTALLATION,'v007':V007_INSTALLATION,'v008':V008_INSTALLATION,'v009':V009_INSTALLATION,'v010':V010_INSTALLATION,'v011':V011_INSTALLATION}
 PLATFORM_TIMEZONE_OBSERVATION = {'path':'reports/verification-coverage/2026-10-13/standalone-pdf-platform-timezone-v001/PLATFORM_NEW_YORK_TZIF_READBACK.json','sha256':'3bde531e08f840dab3a55ce4f492d660f48597a7e2490e13ffda7e58875ea94e'}
+# Frozen predecessor profiles retain the historical binding above. Only current
+# admission uses this independently observed native2026e environment binding.
+CURRENT_PLATFORM_TIMEZONE_OBSERVATION = {
+    'path': 'reports/verification-coverage/2026-10-17/standalone-pdf-platform-timezone-2026e/PLATFORM_NEW_YORK_TZIF_READBACK.json',
+    'sha256': '5012617020f643e80c4fad18ffdef9bf119d6687efaa53ba47585e8cf1696dc4',
+}
 PLATFORM_TZ_LOGICAL = Path('/usr/share/zoneinfo/America/New_York')
-PLATFORM_TZ_PHYSICAL = Path('/private/var/db/timezone/tz/2026d.1.0/zoneinfo/America/New_York')
+PLATFORM_TZ_PHYSICAL = Path('/private/var/db/timezone/tz/2026e.1.0/zoneinfo/America/New_York')
 PLATFORM_TZ_LINK_PATHS = (Path('/usr/share/zoneinfo'),Path('/var'),Path('/private/var/db/timezone/zoneinfo'))
 DATA_ALIAS_OBSERVATION = {'path':'reports/verification-coverage/2026-10-13/standalone-pdf-path-alias-v001/HISTORICAL_CONTROLPLANE_ALIAS_READBACK.json','sha256':'e65f0cf031a64103fad9d059972394d7a99832fba7863a8c375434d51a1f6ca9'}
 if not os.environ.get("VIRIDIS_CORE_ROOT"):
@@ -1345,7 +1351,7 @@ def platform_timezone_frame(observation):
 
 
 def require_platform_timezone_observation(root,binding):
-    need(same_binding(root,binding,PLATFORM_TIMEZONE_OBSERVATION),'FIXED_NATIVE_PLATFORM_TIMEZONE_OBSERVATION')
+    need(same_binding(root,binding,CURRENT_PLATFORM_TIMEZONE_OBSERVATION),'FIXED_NATIVE_PLATFORM_TIMEZONE_OBSERVATION')
     observation=object_at(root,binding)[2]
     fields={'actual_failed_child_path_limitation','actual_failed_execution','after','before','certifies','created_at_utc',
             'heavy_scientific_executions','independent_platform_path_evidence','logical_selected_path','network_requests',

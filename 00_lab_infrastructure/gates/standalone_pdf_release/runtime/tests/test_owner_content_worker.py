@@ -29,7 +29,7 @@ import owner_content_worker as worker
 def proof(manifest):
     return {'status': 'ACTUAL_CURRENT_WORKER_SOURCE_AUTHORITY_AND_IDENTITY_VERIFIED',
         'source_manifest_sha256': hashlib.sha256(worker.encode_json(manifest)).hexdigest(),
-        'source_modules': 19, 'metadata_files': 3, 'transient_restore_allowed': False,
+        'source_modules': 18, 'metadata_files': 3, 'transient_restore_allowed': False,
         'scientific_population_admitted': False, 'certifies': False}
 
 
@@ -45,7 +45,7 @@ def fixture():
         data.write_bytes(b'{"synthetic":true}')
         binding = {'path': str(data), 'sha256': hashlib.sha256(data.read_bytes()).hexdigest()}
         modules = []
-        installed = root / '_ZENODO_DEPOSITS/standalone_pdf_runtime_v012'
+        installed = root / '_ZENODO_DEPOSITS/standalone_pdf_runtime'
         installed.mkdir(parents=True)
         for name in sorted(worker.MODULE_NAMES):
             target = installed / name
@@ -63,7 +63,7 @@ def fixture():
             target.write_bytes(worker.encode_json({'shared_dependencies':[{**shared_bound,'git_path':worker.SHARED_INPUT_GIT_PATH}]})if role=='profile'else b'{}')
             metadata.append({'role': role, 'path': str(target), 'sha256': hashlib.sha256(target.read_bytes()).hexdigest(),
                 'identity': worker._identity(target.stat(),target.read_bytes())})
-        manifest = {'standard': 'VRS-CURRENT-V012-WORKER-SOURCE-MANIFEST-1', 'canonical_root': str(root),
+        manifest = {'standard': 'VRS-CURRENT-DIGEST-ONLY-WORKER-SOURCE-MANIFEST-1', 'canonical_root': str(root),
             'profile_binding': {'path': metadata[0]['path'], 'sha256': metadata[0]['sha256']},
             'modules': modules, 'metadata': metadata, 'source_origin': {}, 'legacy_closure': {},
             'source_review_change_flags': {},'shared_dependencies':[shared_manifest]}
@@ -303,7 +303,7 @@ class FramingAndDescriptorTests(unittest.TestCase):
                      'packaging_runtime', *('packaging_runtime' + suffix
                          for suffix in worker.importlib.machinery.EXTENSION_SUFFIXES)):
             with self.subTest(name=name), fixture() as f:
-                installed = f.root / '_ZENODO_DEPOSITS/standalone_pdf_runtime_v012'
+                installed = f.root / '_ZENODO_DEPOSITS/standalone_pdf_runtime'
                 path = installed / name
                 if name in ('__pycache__', 'packaging_runtime'): path.mkdir()
                 else: path.write_bytes(b'never admitted as source')
@@ -435,7 +435,7 @@ class ActualPipeProcessTests(unittest.TestCase):
                 def endheaders(self): calls.append('actual_header_send')
                 def getresponse(self): return Response()
                 def close(self): calls.append('connection_closed')
-            current = SimpleNamespace(__file__=str(f.root / '_ZENODO_DEPOSITS/standalone_pdf_runtime_v012/packaging_runtime.py'),
+            current = SimpleNamespace(__file__=str(f.root / '_ZENODO_DEPOSITS/standalone_pdf_runtime/packaging_runtime.py'),
                 readonly_worker_scope=readonly, json_data_scope=json_scope, verify_worker_source_manifest=verify)
             cin, pin = worker.pipe_pair(); pout, cout = worker.pipe_pair(); perr, cerr = worker.pipe_pair()
             deadline = time.monotonic() + 3

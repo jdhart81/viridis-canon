@@ -240,7 +240,7 @@ class ColdValidateEntryTests(unittest.TestCase):
         self.assertIs(report['result']['certifies'], False)
         self.assertEqual(report['result']['ssot_writes'], 0)
         self.assertTrue(report['finder_and_spec_restored'])
-        self.assertEqual(len(report['result']['source_pins']), 150)
+        self.assertEqual(len(report['result']['source_pins']), 149)
 
     def test_cold_child_failure_returns_nonzero_and_restores_genuine_scope(self):
         completed = self.child('helper-failure')

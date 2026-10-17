@@ -18,6 +18,10 @@ import manuscript_pdf_gate
 import rehearsal
 
 
+class CredentialFreeDispatchHold(manuscript_pdf_gate.ManuscriptPDFHold):
+    """An owned input check failed before controller code or credentials loaded."""
+
+
 def _object(raw: bytes, label: str) -> dict:
     try:
         value = json.loads(raw)
@@ -69,29 +73,32 @@ def preflight(config_path: Path, expected_sha256: str) -> dict:
 
 def dispatch(config_path: Path, expected_sha256: str, output: Path, *, rehearse=False):
     """Invoke only the config's own hash-bound, reviewed controller."""
-    rehearsal.require_production()
-    checked = preflight(config_path, expected_sha256)
-    config_raw = manuscript_pdf_gate._read(config_path)
-    if hashlib.sha256(config_raw).hexdigest() != expected_sha256:
-        raise manuscript_pdf_gate.ManuscriptPDFHold("digest execution config hash differs before dispatch")
-    config = _object(config_raw, "digest execution config")
-    root = Path(config["canonical_root"]).resolve(strict=True)
-    bound = config.get("controller")
-    if not isinstance(bound, dict) or set(bound) != {"path", "sha256"}:
-        raise manuscript_pdf_gate.ManuscriptPDFHold("exact reviewed controller source binding required")
-    controller = Path(bound["path"])
-    controller = controller if controller.is_absolute() else root / controller
-    if not controller.resolve(strict=True).is_relative_to(root):
-        raise manuscript_pdf_gate.ManuscriptPDFHold("reviewed controller outside canonical root")
-    source = manuscript_pdf_gate._read(controller)
-    if hashlib.sha256(source).hexdigest() != bound["sha256"]:
-        raise manuscript_pdf_gate.ManuscriptPDFHold("reviewed controller source hash differs")
-    if rehearse:
-        engine = __import__("os").environ.get("VIRIDIS_ENGINE_ROOT")
-        if not engine or not output.resolve().is_relative_to(Path(engine).resolve(strict=True) / "rehearsals"):
-            raise manuscript_pdf_gate.ManuscriptPDFHold("rehearsal output must remain in ENGINE/rehearsals/<UTC>")
-    elif not output.resolve().is_relative_to(root / "reports"):
-        raise manuscript_pdf_gate.ManuscriptPDFHold("controller output must remain in canonical private reports")
+    try:
+        rehearsal.require_production()
+        checked = preflight(config_path, expected_sha256)
+        config_raw = manuscript_pdf_gate._read(config_path)
+        if hashlib.sha256(config_raw).hexdigest() != expected_sha256:
+            raise manuscript_pdf_gate.ManuscriptPDFHold("digest execution config hash differs before dispatch")
+        config = _object(config_raw, "digest execution config")
+        root = Path(config["canonical_root"]).resolve(strict=True)
+        bound = config.get("controller")
+        if not isinstance(bound, dict) or set(bound) != {"path", "sha256"}:
+            raise manuscript_pdf_gate.ManuscriptPDFHold("exact reviewed controller source binding required")
+        controller = Path(bound["path"])
+        controller = controller if controller.is_absolute() else root / controller
+        if not controller.resolve(strict=True).is_relative_to(root):
+            raise manuscript_pdf_gate.ManuscriptPDFHold("reviewed controller outside canonical root")
+        source = manuscript_pdf_gate._read(controller)
+        if hashlib.sha256(source).hexdigest() != bound["sha256"]:
+            raise manuscript_pdf_gate.ManuscriptPDFHold("reviewed controller source hash differs")
+        if rehearse:
+            engine = __import__("os").environ.get("VIRIDIS_ENGINE_ROOT")
+            if not engine or not output.resolve().is_relative_to(Path(engine).resolve(strict=True) / "rehearsals"):
+                raise manuscript_pdf_gate.ManuscriptPDFHold("rehearsal output must remain in ENGINE/rehearsals/<UTC>")
+        elif not output.resolve().is_relative_to(root / "reports"):
+            raise manuscript_pdf_gate.ManuscriptPDFHold("controller output must remain in canonical private reports")
+    except (manuscript_pdf_gate.ManuscriptPDFHold, rehearsal.RehearsalHold) as exc:
+        raise CredentialFreeDispatchHold(str(exc)) from None
     module = types.ModuleType("_standalone_pdf_reviewed_digest_controller")
     module.__file__ = str(controller.resolve(strict=True))
     # The existing controller freshly verifies merged source closure, science,
@@ -167,7 +174,8 @@ def main(argv=None) -> int:
         print(json.dumps({"reviewed_controller_result": result}, sort_keys=True, indent=2))
         return 0
     except Exception as exc:
-        if not credential_boundary and isinstance(exc, manuscript_pdf_gate.ManuscriptPDFHold):
+        if (isinstance(exc, CredentialFreeDispatchHold)
+                or not credential_boundary and isinstance(exc, (manuscript_pdf_gate.ManuscriptPDFHold, rehearsal.RehearsalHold))):
             print("HOLD_STANDALONE_MANUSCRIPT_PDF: " + str(exc), file=sys.stderr)
             return 1
         # Preflight and public-readback exceptions can also contain unsafe

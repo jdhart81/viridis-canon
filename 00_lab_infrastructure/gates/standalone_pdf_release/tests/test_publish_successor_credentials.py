@@ -71,7 +71,8 @@ class SuccessorHTTP:
     def __init__(self):
         self.requests = []
         self.files = []
-        self.metadata = {"title": "Retained scientific title", "creators": [{"name": "Example"}]}
+        self.metadata = {"title": "Retained scientific title", "creators": [{"name": "Example"}], "copyright": COPYRIGHT}
+        self.predecessor_metadata = copy.deepcopy(self.metadata)
         self.published = False
         self.rdm_updates = []
 
@@ -83,7 +84,7 @@ class SuccessorHTTP:
         method = request.get_method()
         if path == "/api/records/100" and method == "GET":
             assert request.get_header("Accept") == "application/vnd.inveniordm.v1+json"
-            return Response({"id": 100, "metadata": {"copyright": COPYRIGHT}})
+            return Response({"id": 100, "metadata": self.predecessor_metadata})
         if path == "/api/records/100/draft" and method == "GET":
             raise urllib.error.HTTPError(request.full_url, 404, "missing", {}, io.BytesIO())
         if path == "/api/records/100/versions" and method == "POST":
@@ -281,15 +282,20 @@ class CredentialTests(unittest.TestCase):
         self.assertEqual([method for method, data in calls], ["GET", "PUT", "GET"])
 
     def test_copyright_fallback_holds_on_unplanned_metadata_diff(self):
+        calls = []
         responses = iter([
             {"metadata": {"title": "Approved", "creators": [{"name": "Example"}]}}, {},
             {"metadata": {"title": "Changed unexpectedly", "creators": [{"name": "Example"}], "copyright": COPYRIGHT}}, {},
         ])
-        with patch.object(PUBLISHER, "api_call", side_effect=lambda *a, **k: next(responses)), \
+        def api(token, method, *args, **kwargs):
+            calls.append(method)
+            return next(responses)
+        with patch.object(PUBLISHER, "api_call", side_effect=api), \
              patch.object(PUBLISHER, "json_write_atomic"):
             with self.assertRaises(PUBLISHER.SuccessorPublisherError):
                 PUBLISHER.preserve_draft_copyright({"expected_copyright": COPYRIGHT, "bundle": Path("."),
                                                   "predecessor_doi": "10.5281/zenodo.100"}, TOKEN, "200")
+        self.assertEqual(calls[-1], "DELETE")
 
     def test_public_gate_inventory_stays_legacy_while_copyright_readback_is_native(self):
         http = SuccessorHTTP()

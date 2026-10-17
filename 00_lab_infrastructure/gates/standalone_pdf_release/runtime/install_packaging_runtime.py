@@ -28,7 +28,7 @@ def encoded(v):return json.dumps(v,sort_keys=True,indent=2,ensure_ascii=False,al
 def preflight(root,plan_binding):
     root=Path(root).resolve(strict=True);runtime.need(root==ROOT.resolve(strict=True),'INSTALL_CANONICAL_ROOT')
     _,raw,plan=runtime.object_at(root,plan_binding)
-    runtime.need(set(plan)==PLAN_FIELDS and plan['standard']=='VRS-EXACT-ADDITIVE-PDF-RUNTIME-INSTALL-PLAN-12'
+    runtime.need(set(plan)==PLAN_FIELDS and plan['standard']=='VRS-EXACT-DIGEST-ONLY-RUNTIME-INSTALL-PLAN-1'
                  and plan['status']=='ROOT_REVIEWED_READY_NOT_INSTALLED'and plan['canonical_root']==str(root), 'CLOSED_INSTALL_PLAN')
     pins=runtime.module_table(root,plan['source_modules'])
     runtime.shared_dependency_table(root,plan['shared_dependencies'])

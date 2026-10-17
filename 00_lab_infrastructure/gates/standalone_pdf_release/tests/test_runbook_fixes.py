@@ -47,7 +47,9 @@ class RehearsalTests(unittest.TestCase):
                 if url.endswith('/actions/publish'):self.fail('publish reached in rehearsal')
                 if method=='POST':return {'id':123,'links':{'bucket':'https://zenodo.org/api/files/bucket'}}
                 if method=='DELETE':deleted=True;return {}
-                if method=='GET' and deleted:return None
+                if method=='GET' and deleted:
+                    kw.get('not_found_status',[]).append(404)
+                    return None
                 if method=='PUT' and '/api/files/'in url:
                     name=url.rsplit('/',1)[1];files[name]=data;return {'checksum':hashlib.md5(data).hexdigest()}
                 if method=='PUT':metadata=json.loads(data)['metadata'];return {}
@@ -92,3 +94,27 @@ class GuardRepreflightTests(security.DigestGuardSecurityTests):
         with contextlib.redirect_stdout(out),contextlib.redirect_stderr(err),mock.patch.object(security.publisher,'token') as token:
             code=security.guard.main(['--config',str(self.config),'--expected-config-sha256',self.digest])
         self.assertEqual(code,1);token.assert_not_called();self.assertIn('regular manuscript/reproduction file required',err.getvalue())
+
+    def test_credential_free_dispatch_hash_hold_echoes_reason(self):
+        self.controller.write_text(self.controller.read_text() + '\n# drift')
+        out=StringIO();err=StringIO()
+        with contextlib.redirect_stdout(out),contextlib.redirect_stderr(err),mock.patch.object(security.publisher,'token') as token:
+            code=security.guard.main(['--config',str(self.config),'--expected-config-sha256',self.digest,'--go','--output',str(self.output)])
+        self.assertEqual(code,1);token.assert_not_called()
+        self.assertIn('reviewed controller source hash differs',err.getvalue())
+
+    def test_credential_free_dispatch_output_hold_echoes_reason(self):
+        out=StringIO();err=StringIO()
+        with contextlib.redirect_stdout(out),contextlib.redirect_stderr(err),mock.patch.object(security.publisher,'token') as token:
+            code=security.guard.main(['--config',str(self.config),'--expected-config-sha256',self.digest,'--go','--output',str(self.root/'outside-reports')])
+        self.assertEqual(code,1);token.assert_not_called()
+        self.assertIn('controller output must remain in canonical private reports',err.getvalue())
+
+    def test_guard_override_refused_before_any_credential_or_network(self):
+        out=StringIO();err=StringIO()
+        with mock.patch.dict(os.environ,VIRIDIS_ZENODO_API_BASE='https://sandbox.zenodo.org/api'), \
+             contextlib.redirect_stdout(out),contextlib.redirect_stderr(err),mock.patch.object(security.publisher,'token') as token, \
+             mock.patch.object(security.gate,'public_record') as network:
+            code=security.guard.main(['--config',str(self.config),'--expected-config-sha256',self.digest,'--go','--output',str(self.output)])
+        self.assertEqual(code,1);token.assert_not_called();network.assert_not_called()
+        self.assertIn('VIRIDIS_ZENODO_API_BASE is forbidden',err.getvalue())

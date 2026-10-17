@@ -19,7 +19,7 @@ class OuterDigestGuardTests(unittest.TestCase):
         log = root / 'reports/calls.jsonl'
         config = root / 'CONFIG.json'
         hashes = {}; modules = []
-        names = ['invoke_digest_v2.py'] + ['source_%02d.py' % n for n in range(18)]
+        names = ['invoke_digest_v2.py'] + ['source_%02d.py' % n for n in range(17)]
         for name in names:
             raw = b'# synthetic reviewed source\n'
             if name == 'invoke_digest_v2.py':
@@ -38,7 +38,7 @@ class OuterDigestGuardTests(unittest.TestCase):
         shared = [{'name':guard.SHARED_INPUT_NAME,'path':str(shared_path),
                    'sha256':guard.SHARED_INPUT_SHA256,'git_path':guard.SHARED_INPUT_GIT_PATH}]
         profile = installed / 'CURRENT_PACKAGING_PROFILE.json'
-        profile.write_text(json.dumps({'standard': 'VRS-STANDALONE-PDF-PACKAGING-PROFILE-12',
+        profile.write_text(json.dumps({'standard': 'VRS-DIGEST-ONLY-PDF-PACKAGING-PROFILE-1',
                          'status': 'INSTALLED_EXACT_ADDITIVE_SOURCE_READBACK_PASS',
                          'canonical_root': str(root), 'modules': modules, 'shared_dependencies':shared}))
         binding = {'path': str(profile), 'sha256': hashlib.sha256(profile.read_bytes()).hexdigest()}

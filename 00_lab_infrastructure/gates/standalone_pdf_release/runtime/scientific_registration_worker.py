@@ -69,7 +69,7 @@ BOOTSTRAP_SHARED_GIT_PATH='00_lab_infrastructure/gates/standalone_pdf_release/co
 BOOTSTRAP_MODULE_NAMES=frozenset({'packaging_runtime.py','invoke_digest_v2.py','digest_controller_v2.py',
     'methods_digest_v2.py','methods_digest_registration_v3.py','manuscript_access_registry.py',
     'manuscript_access_correction.py','manuscript_pdf_gate.py','publish_dated_bundles_guarded.py',
-    'publish_successor_wave_guarded.py','packaging_catalog.py','install_packaging_runtime.py',
+    'packaging_catalog.py','install_packaging_runtime.py',
     'packaging_nightly.py','nightly_checkpoint_guarded.py','packaging_run_flow.py',
     'packaging_nightly_coverage.py','packaging_nightly_intake.py','scientific_registration_worker.py',
     'owner_content_worker.py'})
@@ -78,6 +78,8 @@ BOOTSTRAP_MODULE_NAMES=frozenset({'packaging_runtime.py','invoke_digest_v2.py','
 def _bootstrap_artifacts(directory):
     if sys.pycache_prefix is not None:raise ValueError('WORKER_CURRENT_NAMESPACE_IMPORT_ARTIFACT:EXTERNAL_CACHE_PREFIX')
     probes=[Path(directory)/'__pycache__']
+    probes.extend(Path(directory)/('publish_successor_wave_guarded'+suffix) for suffix in
+        ('.py','','.pyc','.pyo',*importlib.machinery.EXTENSION_SUFFIXES))
     for name in sorted(BOOTSTRAP_MODULE_NAMES):
         stem=name[:-3]
         probes.extend(Path(directory)/(stem+suffix)for suffix in('', '.pyc','.pyo',*importlib.machinery.EXTENSION_SUFFIXES))
@@ -100,12 +102,12 @@ def _bootstrap():
     root = BOOTSTRAP_ROOT
     fields = {'standard','canonical_root','profile_binding','modules','metadata','source_origin',
               'legacy_closure','source_review_change_flags','shared_dependencies'}
-    if set(manifest) != fields or manifest['standard'] != 'VRS-CURRENT-V012-WORKER-SOURCE-MANIFEST-1' or manifest['canonical_root'] != str(root):
+    if set(manifest) != fields or manifest['standard'] != 'VRS-CURRENT-DIGEST-ONLY-WORKER-SOURCE-MANIFEST-1' or manifest['canonical_root'] != str(root):
         raise ValueError('WORKER_BOOTSTRAP_CLOSED_FIXED_ROOT_MANIFEST')
-    directory = root/'_ZENODO_DEPOSITS/standalone_pdf_runtime_v012'
+    directory = root/'_ZENODO_DEPOSITS/standalone_pdf_runtime'
     names = {'profile':'CURRENT_PACKAGING_PROFILE.json','nomination':'INSTALLATION_NOMINATION.json','plan':'INSTALL_PLAN.json'}
-    if len(manifest['modules']) != 19 or {r['name'] for r in manifest['modules']} != BOOTSTRAP_MODULE_NAMES or len(manifest['metadata']) != 3:
-        raise ValueError('WORKER_BOOTSTRAP_NINETEEN_AND_THREE')
+    if len(manifest['modules']) != 18 or {r['name'] for r in manifest['modules']} != BOOTSTRAP_MODULE_NAMES or len(manifest['metadata']) != 3:
+        raise ValueError('WORKER_BOOTSTRAP_EIGHTEEN_AND_THREE')
     metadata = {}
     for row in manifest['metadata']:
         if set(row) != {'role','path','sha256','identity'} or row['role'] not in names or row['role'] in metadata or Path(row['path']) != directory/names[row['role']]:
@@ -131,7 +133,7 @@ def _bootstrap():
         _bootstrap_read(row['path'],row['sha256'],row['identity'])
         module_rows.append({k:row[k] for k in ('name','path','sha256')})
     profile_rows=metadata['profile']['modules']
-    if len(profile_rows)!=19 or any(set(r)!={'name','path','sha256','git_path'}
+    if len(profile_rows)!=18 or any(set(r)!={'name','path','sha256','git_path'}
         or r['git_path']!=BOOTSTRAP_GIT_PREFIX+r['name']for r in profile_rows):
         raise ValueError('WORKER_BOOTSTRAP_CLOSED_FOUR_KEY_PROFILE_MODULES')
     projected=[{k:r[k]for k in('name','path','sha256')}for r in profile_rows]
@@ -406,8 +408,8 @@ def environment_frame(value=None):
 
 def source_rows(root, profile):
     rows = runtime.object_at(root, profile)[2]['modules']
-    runtime.need(len(rows) == 19 and len({r['name'] for r in rows}) == 19,
-                 'SCIENCE_CURRENT_NINETEEN_SOURCES')
+    runtime.need(len(rows) == 18 and len({r['name'] for r in rows}) == 18,
+                 'SCIENCE_CURRENT_EIGHTEEN_SOURCES')
     for row in rows:
         runtime.read(root, {k: row[k] for k in ('path', 'sha256')})
     return deepcopy(rows)

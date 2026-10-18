@@ -1,0 +1,19 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.Run129.PaperFormalization.anytime_change_mixture_martingale",
+    "Viridis.Run129.PaperFormalization.anytime_change_ville_certificate",
+    "Viridis.Run129.PaperFormalization.change_component_dominance_and_penalty",
+    "Viridis.Run129.PaperFormalization.bounded_overshoot_expected_delay",
+    "Viridis.Run129.PaperFormalization.C12Witness.c12_nonvacuous",
+    "Viridis.Run129.PaperFormalization.C12Witness.c2_sup_nonvacuous",
+    "Viridis.Run129.PaperFormalization.C3Witness.c3_nonvacuous",
+    "Viridis.Run129.PaperFormalization.C4Witness.c4_nonvacuous"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

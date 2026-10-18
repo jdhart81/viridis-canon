@@ -1,0 +1,54 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-122-PaperFormalizationProof-Comparator-attempt-5",
+  "root_candidate_id": "Run-122-PaperFormalizationProof-Comparator",
+  "attempt": 5,
+  "source_run": "Run-122",
+  "module": "Run122Monolith",
+  "namespace": "Viridis.Run122.PaperFormalization",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "08a414bbb4910d3958f241cda9449a83898a13f66b492838f0e43922a89efa48",
+  "input_sha256": {
+    "SEALED_paper.pdf": "5443c4a92c061d2bee9fa58ef583852dbaf6af59b740fb49cdfad0b718c9841d",
+    "SEALED_paper.tex": "c77870c679dc26acaeb66277ca2df9f1121de4e18a12d51a091a2947851912c8",
+    "SEALED_CLAIM_INVENTORY.json": "08a414bbb4910d3958f241cda9449a83898a13f66b492838f0e43922a89efa48",
+    "SEALED_RUN_MANIFEST.json": "a3e26ba7d8b94f502f5f2a0c261b78ddeaf312210abc77b29ba628e7bd7f043d",
+    "VERIFICATION_STATEMENT_ATTEMPT_5.lean": "14ebbfa7c73f86cb2eccaf1c83e8e18a139d45a9f4c5d244e0aa03b56b24ac13",
+    "VERIFICATION_CANDIDATE_ATTEMPT_5.lean": "14ebbfa7c73f86cb2eccaf1c83e8e18a139d45a9f4c5d244e0aa03b56b24ac13"
+  },
+  "expected_theorem_names": [
+    "uniform_zeno_schedule_maximizes_success",
+    "zeno_schedule_log_gap_ge_variance",
+    "ideal_zeno_uniform_success_tendsto_one",
+    "noisy_zeno_log_objective_strictConcave",
+    "noisy_zeno_integer_optimum_floor_or_ceil",
+    "noisy_zeno_high_quality_asymptotic"
+  ],
+  "nonvacuity_obligations": [
+    "witness_C1",
+    "witness_C2",
+    "idealSuccess_uniform_eq",
+    "witness_C3_strictConcave",
+    "witness_C4",
+    "witness_C5"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "monolith_receipt": "MONOLITH_RECEIPT_ATTEMPT_1.json",
+  "compaction_receipts": ["COMPACTION_RECEIPT_STATEMENT_ATTEMPT_2.json", "COMPACTION_RECEIPT_CANDIDATE_ATTEMPT_2.json"],
+  "selective_import_receipts": ["SELECTIVE_IMPORTS_RECEIPT_STATEMENT_ATTEMPT_5.json", "SELECTIVE_IMPORTS_RECEIPT_CANDIDATE_ATTEMPT_5.json"],
+  "repair_provenance": {
+    "previous_attempt_receipt": "COMPARATOR_CLOUD_RECEIPT_ATTEMPT_4.json",
+    "repair": "add the exact pinned Mathlib.Analysis.Real.Pi.Bounds import required for Real.pi_gt_three; declarations and proof bodies unchanged",
+    "added_frozen_target": "ideal_zeno_uniform_success_tendsto_one",
+    "added_target_diagnostic_receipt": "COMPARATOR_DIAGNOSTIC_RECEIPT_ATTEMPT_4.json",
+    "claim_weakening": false,
+    "aristotle_required_for_this_certificate": false
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

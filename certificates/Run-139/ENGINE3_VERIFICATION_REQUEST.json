@@ -1,0 +1,44 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-139-ThermodynamicRetrofitWaterFilling-Comparator-attempt-1",
+  "root_candidate_id": "Run-139-ThermodynamicRetrofitWaterFilling-Comparator",
+  "attempt": 1,
+  "source_run": "Run-139",
+  "module": "ThermodynamicRetrofitWaterFilling",
+  "namespace": "Viridis.ThermodynamicEconomics.RetrofitWaterFilling",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "26144b575077db3d20d650a13321abf99d9fd5105d01209e760bdaa5130b8530",
+  "input_sha256": {
+    "SEALED_paper.pdf": "7a02d49abc85f0a885a5ec946bc24078bac8665d457deb134b37f452d6a623ca",
+    "SEALED_paper.tex": "1c9406c3a050e71311d49ff1bd250ddf4caead1bbc46cc0ff23b20d92997438e",
+    "SEALED_CLAIM_INVENTORY.json": "fa6d6f54578da47ee01037cdca75490c549ebf1a2c6b62e5225aff5de5eb7097",
+    "SEALED_RUN_MANIFEST.json": "6ee61e9b389384a4288db4db1821cdfff81b24f95029b1d0fd13eede69214a87",
+    "CANDIDATE_AUTHORSHIP.json": "061de2f485cdd970475646601e16a23c2d8dbbf2f17117edd43a930605824253",
+    "VERIFICATION_CANDIDATE.lean": "26144b575077db3d20d650a13321abf99d9fd5105d01209e760bdaa5130b8530",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "4a36080607c0be7b17a5eceade22711c8127031e741f3d74ebcf8b98590ad617",
+    "STATEMENT_ALIGNMENT.json": "4ce2dad0c20685eb850a1fa6b93294749f491de54ccc1b221e7213d91be20c1f"
+  },
+  "statement_alignment": {
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+    "sealed_statement": {"filename": "VERIFICATION_STATEMENT.lean", "sha256": "26144b575077db3d20d650a13321abf99d9fd5105d01209e760bdaa5130b8530"},
+    "receipt": {"filename": "STATEMENT_ALIGNMENT.json", "sha256": "4ce2dad0c20685eb850a1fa6b93294749f491de54ccc1b221e7213d91be20c1f"}
+  },
+  "expected_theorem_names": [
+    "clippedAllocation_nonnegative",
+    "clippedAllocation_le_one",
+    "interior_stationarity",
+    "coordinate_improvement_identity",
+    "embodied_burden_lowers_benefit",
+    "retrofit_allocation_nonvacuous"
+  ],
+  "nonvacuity_obligations": ["retrofit_allocation_nonvacuous"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "candidate_authorship_binding": {"author": "CODEX", "receipt": "CANDIDATE_AUTHORSHIP.json", "historical_provider_artifact_role": "DIAGNOSTIC_INPUT_ONLY_NOT_PROOF"},
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

@@ -1,0 +1,68 @@
+{
+  "aristotle_required": false,
+  "attempt": 1,
+  "candidate_id": "Run-128-ReciprocityCorridor-Comparator-attempt-1",
+  "expected_theorem_names": [
+    "bilateral_benefit_iff_reciprocity_corridor",
+    "strict_corridor_nonempty_iff_product_condition",
+    "share_coordinate_corridor_equivalence",
+    "nash_midpoint_unique_maximizer",
+    "bandwidth_scaling_cannot_restore_feasibility"
+  ],
+  "input_sha256": {
+    "SEALED_CLAIM_INVENTORY.json": "90145c1a91e60f57d7ced3672d972f776b04d6373628b52eb99a0e80a90d7e6f",
+    "SEALED_RUN_MANIFEST.json": "13341dce73e76c4b7f6d5f596f7106ff84a775bac28efd4f61bd63e71ff6c274",
+    "SEALED_paper.pdf": "6639d5c5e4a7575f665ca9827700539bcc0dca7004b425fdfb7a44ec81748aa9",
+    "SEALED_paper.tex": "6705b271f857cb3e1df79604ee4e9569043b0412a9d4fa8408d049a40bd42996",
+    "STATEMENT_ALIGNMENT.json": "0b3967945ff84b08419d07bcdfac2dd47e99a627d84139e22bc7c9f51f3b142e",
+    "VERIFICATION_CANDIDATE.lean": "1de8f6a1f2ac05dd8026ad92a646b910d17b8369ba72c3dc6ebf7628ba1696ee",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "20188ee7c055802711586a9fce3b6d8abce2c6f4a54560460e2890ba300fa0e8",
+    "VERIFICATION_STATEMENT.lean": "20188ee7c055802711586a9fce3b6d8abce2c6f4a54560460e2890ba300fa0e8"
+  },
+  "legacy_provenance": {
+    "aristotle_required_for_this_certificate": false,
+    "candidate_source": "Codex-reviewed exact monolith; historical provider status carries no certification authority",
+    "fresh_comparator_verification_required": true,
+    "historical_audit_sha256": "1e6f3c9f9657cd37ab51cf197bdfb29436bd50870c4dc359f82a05c24bda552f",
+    "historical_root_module_sha256": "1de8f6a1f2ac05dd8026ad92a646b910d17b8369ba72c3dc6ebf7628ba1696ee"
+  },
+  "local_lean_execution": false,
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "module": "PaperFormalization",
+  "namespace": "Viridis.Run128.PaperFormalization",
+  "nonvacuity_obligations": [
+    "witness_feasible_product_condition",
+    "witness_infeasible_product_condition",
+    "witness_C1_benefit",
+    "witness_C1_no_benefit",
+    "witness_C2_corridor_nonempty",
+    "witness_C2_corridor_empty",
+    "witness_C3",
+    "witness_C4"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "request_kind": "LEAN_PROOF",
+  "root_candidate_id": "Run-128-ReciprocityCorridor-Comparator",
+  "schema_version": "3.0",
+  "source_run": "Run-128",
+  "statement_alignment": {
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT.json",
+      "sha256": "0b3967945ff84b08419d07bcdfac2dd47e99a627d84139e22bc7c9f51f3b142e"
+    },
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "sha256": "20188ee7c055802711586a9fce3b6d8abce2c6f4a54560460e2890ba300fa0e8"
+    },
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1"
+  },
+  "statement_contract_sha256": "20188ee7c055802711586a9fce3b6d8abce2c6f4a54560460e2890ba300fa0e8",
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION",
+  "toolchain": "leanprover/lean4:v4.28.0"
+}

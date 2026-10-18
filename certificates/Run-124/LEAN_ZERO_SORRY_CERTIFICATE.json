@@ -1,0 +1,67 @@
+{
+  "bindings": {
+    "candidate_proof": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-124/VERIFICATION_CANDIDATE_V6.lean",
+      "sha256": "ede2d3f68dcc19d77508ab1be245c3be763e32ae4eb69605023b9f3faa31df17"
+    },
+    "formal_statement": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-124/VERIFICATION_CHALLENGE_ALIGNED_V7.lean",
+      "sha256": "c905cf767bf3788369ac95f4dc0661ee8098ec76e8eb1e400eebe2cc4fe311ec"
+    },
+    "independent_cloud_receipt": {
+      "path": "lean_certificates/Run-124/COMPARATOR_CLOUD_RECEIPT_V7.json",
+      "sha256": "ee167cee604a08bd49b78e3fd379410b4624b25a5ad127f29eb8561ef5affb04"
+    },
+    "request": {
+      "path": "lean_certificates/Run-124/ENGINE3_VERIFICATION_REQUEST_V7.json",
+      "sha256": "e103c6b5b36cd032674dc3a9266b2f55e84518feedefeda2e648f53e25eecddb"
+    },
+    "sealed_paper_inputs": {
+      "SEALED_CLAIM_INVENTORY.json": {
+        "path": "lean_certificates/Run-124/SEALED_CLAIM_INVENTORY.json",
+        "sha256": "02340c0d3f7789f45c69396f2a28324a5f8b021ae9312b4490e506e0f415f5b5"
+      },
+      "SEALED_RUN_MANIFEST.json": {
+        "path": "lean_certificates/Run-124/SEALED_RUN_MANIFEST.json",
+        "sha256": "6114654d358d51dbbe9ebb355afb6a729d585a3d3a81c844c2cf6a0654a88b17"
+      },
+      "SEALED_paper.pdf": {
+        "path": "lean_certificates/Run-124/SEALED_paper.pdf",
+        "sha256": "4ab0c80f8b7d40974c0928e3fbe398a317ab58bd99899ae0420f0c8f38bd4619"
+      },
+      "SEALED_paper.tex": {
+        "path": "lean_certificates/Run-124/SEALED_paper.tex",
+        "sha256": "225720480220a38583409f221870da31b6ae04cb663d9f161cb5cdf48c8e4c3c"
+      }
+    },
+    "sealed_statement_contract": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-124/VERIFICATION_STATEMENT_V6.lean",
+      "sha256": "57f4e956fcbf6c97147f676d77cf7b16c8fa76edf27fca4318ad26dafbbd32f5"
+    },
+    "statement_alignment_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-124/STATEMENT_ALIGNMENT_V7.json",
+      "sha256": "7226e97dca334fce32708b127b0ac951396af89a7de6a943ec89d19e25756b48"
+    }
+  },
+  "candidate_id": "Run-124-PivotalCorridorStewardship-Comparator-attempt-7",
+  "gates": {
+    "allowed_axioms_only": true,
+    "aristotle_required": false,
+    "comparator_lean_kernel": true,
+    "comparator_nanoda_kernel": true,
+    "comparator_statement_identity": true,
+    "frozen_statement_and_candidate_hash_bound": true,
+    "independent_cloud_kernel_verification": true,
+    "local_lean_execution": false,
+    "nonvacuity_witnesses": true,
+    "sealed_statement_signature_alignment": true,
+    "zero_sorries_or_admits": true
+  },
+  "issued_at_utc": "2026-08-29T22:01:42.916848+00:00",
+  "run_id": "Run-124",
+  "schema_version": "1.0",
+  "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+  "standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+  "status": "LEAN_ZERO_SORRY_CERTIFIED",
+  "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1"
+}

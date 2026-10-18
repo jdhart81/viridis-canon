@@ -1,0 +1,114 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 138,
+  "run_id": "Run-138",
+  "slug": "gaian-alignment-cone-certificate",
+  "title": "The Gaian Alignment Cone Certificate: When Local Directional Bounds Survive Aggregation",
+  "generated_at_utc": "2026-08-22T08:09:41Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-138_gaian-alignment-cone-certificate",
+  "selection": {
+    "area_id": "07",
+    "area": "Gaian Systems",
+    "lens": "Alignment",
+    "directive_kind": "locked_area",
+    "reason": "tier_starvation_floor",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true,
+    "combination_guard": "PASS_GAIAN_SYSTEMS_ALIGNMENT_PAIRING_OUTSIDE_16_RUN_GUARD"
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "significance": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 16,
+    "failed": 0,
+    "checks": 16,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "deterministic_seed": 138,
+    "scope": "40,000 componentwise aggregate-residual trials, 40,000 alignment-floor trials, 20,000 uniform-cone trials, 20,000 positive-projection trials, sharp co-directional and cancellation boundaries, scale and partition invariance, zero-residual and monotonicity checks, negative-weight and anti-aligned controls, magnitude masking, weighting-authority control, non-vacuity, and static-scope negative control",
+    "preserved_failure_evidence": null
+  },
+  "formalization": {
+    "status": "FROZEN_PROPOSED_UNPROVED",
+    "lean_file": "formalization/GaianAlignmentCone.lean",
+    "targets": [
+      "aggregate_projection_positive",
+      "aggregate_residual_bound",
+      "common_cone_closed_under_weighted_sum",
+      "alignment_floor_of_residual_bound",
+      "uniform_cone_alignment_floor",
+      "cancellation_gives_perfect_alignment",
+      "magnitude_masking_witness",
+      "gaian_alignment_nonvacuous"
+    ],
+    "contains_explicit_sorry_placeholders": true
+  },
+  "aristotle": {"status":"NOT_RUN","submitted":false},
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus Gaian coordination methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 139,
+    "kind": "area",
+    "area_id": "02",
+    "area": "Thermodynamic Economics",
+    "lens": "Thermodynamic",
+    "reason": "scored_selection",
+    "selection_note": "After Run 138, area 02 leads the deterministic score at 30.0; Thermodynamic follows Alignment and its last area-02 pairing is outside the 16-run guard."
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 4,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "visual_review": "PASS_ALL_4_PAGES_RENDERED_AT_120_DPI",
+    "preserved_failure_evidence": "Initial restricted-runtime build could not fetch cached size11.clo; the dependency fetch was authorized, then the final clean build completed. No scientific content changed."
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {"name":"Codex","role":"Binding-standard and Viridis-corpus review, current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"},
+      {"name":"Claude","role":"Historical Viridis research artifacts read with attribution preserved and no historical text rewritten"}
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "85a639e0897e4f52725b0424971d435888c27cdb7d0a84579deed7ff58dbc243",
+    "resulting_nightly_state_sha256": "ec14a61209ec1902237a880fcd9bf9d5eddeb6691323e45b37b4713d3e121df2",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "CEO_ALERT.md": "b53826f55660b078999176d931060b46d670acdd5b6de46de439965786c89f37",
+      "CLAIM_INVENTORY.json": "5d2bb8981a257838f9a65772d86ba879a99650632eca24dfee0f6c1ccfed10c8",
+      "PAPER_PACKAGE_MANIFEST.json": "1d1c540ed725ed5c54e6dadbe5cefc8e6fb4213b738434fea711e2a3d610c964",
+      "PREREGISTRATION.md": "4619b0e266572fb5a78811653b6fe43fb90ba8869fe71c1a2ef7e3c0f773562e",
+      "README.md": "bea1ed2946c82a179e24c2d3b131d0f76936ba626f7178fe039c09496b51f5d7",
+      "SOURCE_LEDGER.json": "1ea6452cc7442b9d1e3b40fb23ee87feaca95dd8dad10a7c54947b64b27d69be",
+      "business_EV-138.md": "a0e68b3c39c2900e3f0540fe43dfe4d2d096163595089ec00f38708253296ece",
+      "finding.md": "34595aec0b52be8e8e32d05acab48b082a72e976f05861894cd63f7ba5f5e430",
+      "formalization/ARISTOTLE_PROMPT.md": "471545beeaeaf9b51bd9a0f779957b633b2de19d25aa3782c8ff0095ea36bf4b",
+      "formalization/GaianAlignmentCone.lean": "242265fe2e7705f2002c15cc18cf7a86a5bb546c48f444a6e7f50c7336d28a3c",
+      "formalization/STATEMENT_CONTRACT.json": "49099723ef6663955f2d87cb61bec7ced8cbe21d1e0d4547308a9724c39df5e5",
+      "formalization/lakefile.toml": "3503d388dba035f4887b34e7e63733cdd66efc4993ec4e7f569470f6adbdecd5",
+      "formalization/lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028",
+      "paper.log": "03492e1947608baceb18ee7e84f5721bc19252443f7d2cf94f68c5ed056be9af",
+      "paper.pdf": "e3921df05ae1728a39ee3f5107892a05a9580775447dfc88926897c211ff3a1e",
+      "paper.tex": "5e84af5435cb09aa72dea63f01e5828766e2b2b43ec9074607ae4734b8578b3d",
+      "verification.py": "770b2c779c8e0ac8d9fb126f2a9fb74a1aea1c1bd653075754d0fbd267942fd0",
+      "verification_output.txt": "3cd87f11d10686705fa74a4312088f3077e99c0efd2b0db1f273456743d7d0d8"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed only after sealing; its hash is recorded in NIGHTLY_STATE.md and INDEX.md because a manifest cannot contain its own hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {"published":false,"pushed":false,"submitted":false,"outreach_sent":false,"external_account_mutated":false,"money_moved":false}
+}

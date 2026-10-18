@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.1-correction",
+  "run": 137,
+  "correction_id": "Run-137_symbiotic-accounting-certificate-r1",
+  "novelty": "UNASSESSED",
+  "formal_status": "ZERO_SORRY_CANDIDATE_PENDING_ALIGNED_DUAL_KERNEL_COMPARATOR",
+  "changes": [
+    {
+      "claim_id": "C1",
+      "paper_claim_changed": false,
+      "lean_target": "conjunctive_rate_upper_bound",
+      "repair": "add a positive harmonic-denominator hypothesis, matching the paper domain n >= 1 with positive weights and efficiencies",
+      "preserved_counterexample": "n = 0, P = 0, eps = 1, R = 1"
+    },
+    {
+      "claim_id": "C6",
+      "paper_claim_changed": false,
+      "lean_target": "additive_rate_upper_bound",
+      "repair": "add hdmax0 : 0 <= dmax, automatic for the paper domain with a nonempty positive-efficiency family",
+      "preserved_counterexample": "n = 0, P = 1, eps = 1, dmax = -1"
+    }
+  ],
+  "unchanged_scope": "All numerical evidence, novelty, significance, rights, publication, deployment, Canon, Spine, and outcome gates remain separate."
+}

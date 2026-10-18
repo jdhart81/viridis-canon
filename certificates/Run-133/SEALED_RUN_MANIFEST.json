@@ -1,0 +1,111 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 133,
+  "run_id": "Run-133",
+  "slug": "corridor-overlap-duality-certificate",
+  "title": "The Corridor Overlap Duality Certificate: An exact synchrony-diversification tradeoff for two shared habitat paths",
+  "generated_at_utc": "2026-08-17T08:12:32Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-133_corridor-overlap-duality-certificate",
+  "selection": {
+    "area_id": "03",
+    "area": "HDFM Corridors",
+    "lens": "Symbiosis",
+    "directive_kind": "locked_area",
+    "reason": "scored_selection",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true,
+    "combination_guard": "PASS_PRIOR_AREA_03_LENS_WAS_SYMBIOSIS_AT_RUN_089"
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "significance": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 14,
+    "failed": 0,
+    "checks": 14,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "deterministic_replay": "BYTE_IDENTICAL_1122_BYTES",
+    "scope": "3,844 exhaustive path-pair/grid cases, 100,000 seeded random overlap cases, 50,000 additive cost cases, 300,000 Monte Carlo draws, and disjoint, identical, boundary, strictness, marginal, covariance, dependence, scaling, and probability-bound controls"
+  },
+  "formalization": {
+    "status": "FROZEN_PROPOSED_UNPROVED",
+    "lean_file": "formalization/CorridorOverlapDuality.lean",
+    "targets": [
+      "synchrony_dividend_identity",
+      "availability_penalty_eq_synchrony_dividend",
+      "overlap_tradeoff_nonnegative",
+      "overlap_tradeoff_strict",
+      "additive_shared_cost_saving",
+      "corridor_overlap_nonvacuous"
+    ],
+    "contains_explicit_sorry_placeholders": true
+  },
+  "aristotle": {"status": "NOT_RUN", "submitted": false},
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus HDFM reliability methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 134,
+    "kind": "area",
+    "area_id": "08",
+    "area": "Ecoservices Platform",
+    "lens": "Alignment",
+    "reason": "tier_starvation_floor",
+    "selection_note": "After Run 133, area 08 reaches the T3 starvation floor at staleness 18 and is therefore forced before scored selection. Alignment follows Symbiosis in the lens rotation and the area-08 Alignment combination is clean outside the 16-run guard."
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 3,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "visual_review": "PASS_ALL_3_PAGES_RENDERED_AT_120_DPI",
+    "preserved_failure_evidence": null
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {"name":"Codex","role":"Binding-standard and Viridis-corpus review, current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"},
+      {"name":"Claude","role":"Historical Viridis research artifacts read with attribution preserved and no historical text rewritten"}
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "e191be13e7f63058709cf2870a0121d6df1c052af009f737e5f3a76f2b3e686d",
+    "resulting_nightly_state_sha256": "77754e07400f51d32ae6d0e676669d198a1a554a6516e1e106d1fe3f0d7f9b7a",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "CEO_ALERT.md":"5958f532d2b09f8c95c26af6d9bbda4c717abaaacda23eabb7e397246ca04e58",
+      "CLAIM_INVENTORY.json":"4f6972bf1af9aa03821f45e74e40adad5a5cae3e26970c8d7da944f5e0290530",
+      "PAPER_PACKAGE_MANIFEST.json":"a6df553c424fff5dc5a87da069855a412ce44086bf07ce00ff02239ef014e97b",
+      "PREREGISTRATION.md":"f5893662a27897bbbeac29702ce9519e0a6c913ae6fe60bfebeaa666ff2f6a40",
+      "README.md":"4140c322ca469d2074e754686e0bd0267c589d3d2f57c43b63f79f0b1db58415",
+      "SOURCE_LEDGER.json":"439ce63dd9026278c32d8418aa5e8ccd435723103e3dd75714a48a3efe4d921c",
+      "business_EV-133.md":"1077a708b53e9281bf2b05a0a5c3823162ff4bd56cf94c87a0f3c970d9a39542",
+      "finding.md":"6d84a5cdcf16dfdbc8d8748797584251ca6b04223168d37855accc50a7d823c8",
+      "formalization/ARISTOTLE_PROMPT.md":"3451caee51a8c8d5cdf05103c2c4b455ec46d5d5c1c340da797b1b71a152280c",
+      "formalization/CorridorOverlapDuality.lean":"bcaeb2d0b29f1a1bccd57cba42e94169a21649b069346398483e10b171bf9612",
+      "formalization/STATEMENT_CONTRACT.json":"5d4713a79225c52fce99680a597dc0e5075ea266decba13386fc3872aeadd639",
+      "formalization/lakefile.toml":"58d5b3d4cf78dc7e0c8e56ebe764ec1cacc987dd3492f4ee4104eb7fc048b23d",
+      "formalization/lean-toolchain":"db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028",
+      "paper.log":"59a14d48c8cb5032d99dd41cfdd4603a8b0c0e043d9cd0fd77e0abb6d7d9af5e",
+      "paper.pdf":"a67f1069dbb3ca5690e2763bfaa883289dfde6a4f3f11b22238b1dca69f30c20",
+      "paper.tex":"e9fce1d1f623fdabd96bb2de61e93d59c0f4e9bc8c4786ad130e639601fc6c9d",
+      "verification.py":"010aaa19f24ff057f523a1fa8ee36148ae28f1aac325df374d5e5bdf3b331efc",
+      "verification_output.txt":"1752797662ffa83b6f38a40be1be5adc92e10ddbf9f830cda636031e78f83de8"
+    },
+    "self_reference_note":"RUN_MANIFEST.json is hashed only after sealing; its hash is recorded in NIGHTLY_STATE.md and INDEX.md because a manifest cannot contain its own hash.",
+    "run_manifest_hash_recorded_in":"NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {"published":false,"pushed":false,"submitted":false,"outreach_sent":false,"external_account_mutated":false,"money_moved":false}
+}

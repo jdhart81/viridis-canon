@@ -146,3 +146,14 @@ jobs:
           grep -q "Deposit axiom audit PASSED" deposit.log \
             || { echo "::error::DepositAudit did not report PASSED"; exit 1; }
           echo "deposit axiom allowlist enforced"
+
+      - name: Build the registry-facing ACC library (Series_ACC)
+        # External verifiers (VibeRegistry) build series/ACC from the repo root.
+        # Keep that build green and sorry-free.
+        run: |
+          set -o pipefail
+          lake build Series_ACC 2>&1 | tee acc.log
+          if grep -nE "declaration uses 'sorry'|sorryAx" acc.log; then
+            echo "::error::Series_ACC emitted a sorry"; exit 1
+          fi
+          echo "Series_ACC builds from the repository root without sorry"

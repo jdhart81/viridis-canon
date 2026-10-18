@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "run": 121,
+  "stage": "pre_aristotle",
+  "novelty": "UNASSESSED",
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "For every finite joint distribution, B = I(Y;X1,X2)-I(Y;X1)-I(Y;X2) equals I(X1;X2|Y)-I(X1;X2).",
+      "paper_locator": "Proposition 1",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "information_symbiosis_chain_rule",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 4-7"
+    },
+    {
+      "id": "C2",
+      "claim": "Conditional independence X1 independent X2 given Y implies B=-I(X1;X2)<=0.",
+      "paper_locator": "Corollary 1",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "conditional_independence_no_positive_balance",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 8-12"
+    },
+    {
+      "id": "C3",
+      "claim": "For bit-equivalent cost c>=0, B-c>0 exactly when I(X1;X2|Y)>I(X1;X2)+c.",
+      "paper_locator": "Corollary 2",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "net_symbiosis_cost_criterion",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 13-14"
+    },
+    {
+      "id": "C4",
+      "claim": "Fair-binary duplication, XOR, and complementary unique-bit controls have balances -1, +1, and 0 bit respectively.",
+      "paper_locator": "Control table",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "duplicate_and_xor_extremes",
+      "formal_status": "UNPROVED",
+      "numeric_support": "verification.py checks 1-4"
+    },
+    {
+      "id": "C5",
+      "claim": "The captured adversarial gate passed 16 aggregate checks with no preregistered failure condition triggered.",
+      "paper_locator": "Adversarial verification",
+      "evidence_class": "NUMERIC",
+      "support": "verification_output.txt"
+    },
+    {
+      "id": "C6",
+      "claim": "In the specified binary common-cause control, joint information exceeds the better individual channel while the balance is negative.",
+      "paper_locator": "Control table and negative result",
+      "evidence_class": "NUMERIC",
+      "support": "verification.py checks 11-12"
+    },
+    {
+      "id": "C7",
+      "claim": "PID and recent neural-learning studies distinguish redundant from synergistic distributed information.",
+      "paper_locator": "Prior work",
+      "evidence_class": "CITED",
+      "support": "SOURCE_LEDGER.json S2-S6"
+    },
+    {
+      "id": "C8",
+      "claim": "Run 031/MELT formally checks a sign trichotomy for its defined scalar cross term; positive coupling alone is not an empirical estimate of Run 121's balance.",
+      "paper_locator": "Relation to MELT",
+      "evidence_class": "CITED",
+      "support": "SOURCE_LEDGER.json S7-S8"
+    },
+    {
+      "id": "C9",
+      "claim": "The coordination cost c is already expressed in bit-equivalent units and the joint distribution is fully specified.",
+      "paper_locator": "Model and assumptions",
+      "evidence_class": "ASSUMED",
+      "support": "PREREGISTRATION.md"
+    },
+    {
+      "id": "C10",
+      "claim": "A physical conversion from communication energy or entropy production to c can be made for a real system.",
+      "paper_locator": "Limitations and future work",
+      "evidence_class": "DEFERRED",
+      "support": "Requires an operational thermodynamic model and measurements"
+    },
+    {
+      "id": "C11",
+      "claim": "A Symbiosis Signal Audit can create customer value by changing channel-selection or ensemble decisions.",
+      "paper_locator": "Business EV only",
+      "evidence_class": "CONJECTURED",
+      "support": "business_EV-121.md; signed revenue $0"
+    },
+    {
+      "id": "C12",
+      "claim": "No current Viridis fingerprint exactly matches this bounded claim family.",
+      "paper_locator": "Distinctness statement",
+      "evidence_class": "DEFERRED",
+      "support": "Fingerprint search found no exact match; novelty remains UNASSESSED pending independent review"
+    }
+  ]
+}
+

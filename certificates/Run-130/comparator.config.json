@@ -1,0 +1,22 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.Run130.seed_routing_common_fraction_eq_min_cut_ratio",
+    "Viridis.Run130.seed_routing_feasible_iff_cut_conditions",
+    "Viridis.Run130.capacity_outside_active_bottleneck_irrelevant",
+    "Viridis.Run130.scenario_intersection_certificate_le_each_scenario",
+    "Viridis.Run130.Witnesses.C1_witness",
+    "Viridis.Run130.Witnesses.C1_witness_nontrivial",
+    "Viridis.Run130.Witnesses.C2_witness_infeasible",
+    "Viridis.Run130.Witnesses.C2_witness_feasible",
+    "Viridis.Run130.Witnesses.C3_witness",
+    "Viridis.Run130.Witnesses.C4_witness",
+    "Viridis.Run130.Witnesses.negative_control_arbitrarily_severe"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

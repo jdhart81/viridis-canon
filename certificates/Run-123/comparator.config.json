@@ -1,0 +1,18 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.Run123.within_class_excess_witness",
+    "Viridis.Run123.reference_shaped_conditionals_witness",
+    "Viridis.Run123.equality_iff_reference_conditionals",
+    "Viridis.Run123.kl_chain_rule_habitable_partition",
+    "Viridis.Run123.kl_ge_binary_habitable_mass",
+    "Viridis.Run123.binary_kl_monotone_above_reference",
+    "Viridis.Run123.habitable_threshold_free_energy_floor"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

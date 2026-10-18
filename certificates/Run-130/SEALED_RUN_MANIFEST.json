@@ -1,0 +1,112 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 130,
+  "run_id": "Run-130",
+  "slug": "seed-source-bottleneck-certificate",
+  "title": "The Seed-Source Bottleneck Certificate: A cut condition for climate-aligned afforestation supply networks",
+  "generated_at_utc": "2026-08-14T08:19:41Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-130_seed-source-bottleneck-certificate",
+  "selection": {
+    "area_id": "11",
+    "area": "Afforestation Systems",
+    "lens": "Alignment",
+    "directive_kind": "locked_area",
+    "reason": "scored_selection",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true,
+    "combination_guard": "PASS_DISTANCE_16_FROM_RUN_114"
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "significance": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 15,
+    "failed": 0,
+    "checks": 15,
+    "initial_failed_checks_preserved": 2,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "deterministic_replay": "BYTE_IDENTICAL_1164_BYTES",
+    "scope": "1,536 exhaustive graph and capacity comparisons; 3,000 candidate-fraction Hall comparisons; 2,000 seeded random cut-versus-flow instances; 1,997 witnessed irrelevant-capacity cases; 1,000 scenario pairs; 200 binary-search convergence cases; scaling, permutation, edge-addition, edge-deletion, zero-neighborhood, complete-graph, and false-edge controls"
+  },
+  "aristotle": {
+    "status": "NOT_RUN",
+    "submitted": false
+  },
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus restoration operations-research branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 131,
+    "kind": "area",
+    "area_id": "14",
+    "area": "Cognitive Modeling",
+    "lens": "Thermodynamic",
+    "reason": "severe_starvation",
+    "selection_note": "After Run 130, area 14 reaches the severe-starvation threshold at staleness 22 and is therefore forced before scored selection. Alignment was consumed by Run 130, so the four-lens rotation advances to Thermodynamic. Area 14 x Thermodynamic is combination-clean; the area's most recent run, Run 108, used Alignment."
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 4,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "visual_review": "PASS_ALL_4_PAGES_RENDERED_AT_150_DPI",
+    "preserved_failure_evidence": "BUILD_FAILURE_NOTE.md"
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Binding-standard and Viridis-corpus review, current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "Historical Viridis research artifacts read with attribution preserved and no historical text rewritten"
+      }
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "5898c578cc6312f26a34f7f569201f302cc0653d29d5dfe259f3e553753ef18e",
+    "resulting_nightly_state_sha256": "659ebf6c68e2417a46ceb7c184f7f7498862af6c130cf15ec2ccd110656997b8",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "BUILD_FAILURE_NOTE.md": "beecef7136c30f3d255bad45848918a223379a0a72911699094370beddfc0f0e",
+      "CEO_ALERT.md": "d7389e2e5498c794092db4bb8afb33f59dab805716b50edcb654af22f7d88a41",
+      "CLAIM_INVENTORY.json": "9973670e43df6bad96d3af196c14057f83502b7ae1fe06f202fb21fff56c6c81",
+      "PAPER_PACKAGE_MANIFEST.json": "dd20c5084fee4752daf2bccebc5a36862d4099ba310449e102b7dbedeeb8a945",
+      "PREREGISTRATION.md": "6f48e4e46dc24c0c18db0b1b3c04138e05c2c471a0349ac19c5a55243917a087",
+      "README.md": "def4677582dc10ce86a1fee9dd363974613d2ed2302adfc62143c51d6d0af6b1",
+      "SOURCE_LEDGER.json": "97ab5620f82bd8214a414ed2defa0e9fb0080299c39c8ece33e0e99e1378d37a",
+      "VERIFICATION_FAILURE_NOTE.md": "f3d4f7f9c55e1ddb133a3df8ee44626cdfeac2a74d13b69285abbd0731d38ff2",
+      "business_EV-130.md": "25a098c75b09f350a132d6d36f4e6afceb3d681da6c8f6effc45c412b3cb9701",
+      "finding.md": "3f86e5bbfe3dec6b37b969347e331f6154fcf82351318deec3478ba7f0b4813b",
+      "paper.log": "fdecd5d688c9e604a2c76214e52e9f9f8bee48c30e29a09db52847db1a874e91",
+      "paper.pdf": "4ef8229fb24918f38fdcfcd4ba67101bcc6b199e6799fad910441d6852d7f48d",
+      "paper.tex": "0311d68b977ffc6b331aef05b1fe039059c9acd2e481bf9eb2b87b4cc0e00961",
+      "verification.py": "40d1de59c8a8c5127384080524f6c5388ccea4eac7bce2618d38e03966915721",
+      "verification_output.txt": "17712c7537e5009a676027c2457ada3fcb2fcd11fe3d2d4f50c878791f5a41d9"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed only after sealing; its hash is recorded in NIGHTLY_STATE.md and INDEX.md because a manifest cannot contain its own cryptographic hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {
+    "published": false,
+    "pushed": false,
+    "submitted": false,
+    "outreach_sent": false,
+    "external_account_mutated": false,
+    "money_moved": false
+  }
+}

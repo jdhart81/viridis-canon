@@ -1,0 +1,17 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.HDFM.CorridorOverlapDuality.synchrony_dividend_identity",
+    "Viridis.HDFM.CorridorOverlapDuality.availability_penalty_eq_synchrony_dividend",
+    "Viridis.HDFM.CorridorOverlapDuality.overlap_tradeoff_nonnegative",
+    "Viridis.HDFM.CorridorOverlapDuality.overlap_tradeoff_strict",
+    "Viridis.HDFM.CorridorOverlapDuality.additive_shared_cost_saving",
+    "Viridis.HDFM.CorridorOverlapDuality.corridor_overlap_nonvacuous"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

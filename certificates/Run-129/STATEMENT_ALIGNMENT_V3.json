@@ -1,0 +1,36 @@
+{
+  "aligned_challenge": {
+    "path": "comparator-deploy/backlog/Run-129/VERIFICATION_CHALLENGE_ALIGNED_V3.lean",
+    "sha256": "d68413572ef573abdcecf422c1bfb8ab5c958c4281bccce268fae89aa783aa0e"
+  },
+  "candidate": {
+    "path": "comparator-deploy/backlog/Run-129/VERIFICATION_CANDIDATE_V3.lean",
+    "sha256": "d5ac9ca2978b106699038d4d2672e3cf99939cbc8a0b7fedcd2e4fc01cf2b72b"
+  },
+  "candidate_forbidden_constructs_empty": true,
+  "expected_theorem_names": [
+    "anytime_change_mixture_martingale",
+    "anytime_change_ville_certificate",
+    "change_component_dominance_and_penalty",
+    "bounded_overshoot_expected_delay"
+  ],
+  "external_mutation": false,
+  "introduced_sorry_count": 4,
+  "local_lean_execution": false,
+  "operation": "candidate-order challenge with only expected theorem proof bodies replaced by sorry",
+  "schema_version": 1,
+  "sealed_statement": {
+    "path": "comparator-deploy/backlog/Run-129/VERIFICATION_STATEMENT.lean",
+    "sha256": "3fcba2c56436decc06a637d3ab522de0b96924c4c0ed54b0a341af03bc5f763a"
+  },
+  "shared_declaration_order_source": "candidate",
+  "signature_sha256": {
+    "anytime_change_mixture_martingale": "87ac95ee9f863fb27927c9bb7561197064478dcd9e96c4854b0d05fea6f6bdc6",
+    "anytime_change_ville_certificate": "de55a42794ab66704efee1edb88e1e546533246458f4dac4376046a1ce630faa",
+    "bounded_overshoot_expected_delay": "af368e4723b5832fc5a109dbc2cb6a8ed03400be6b2d240b3a71b0e8e0a11d64",
+    "change_component_dominance_and_penalty": "548f91159900b1802faf56bc965141eeadedbadbc0b18b370b62cc55f6c1a9e4"
+  },
+  "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+  "status": "FROZEN",
+  "target_signatures_match_sealed_statement": true
+}

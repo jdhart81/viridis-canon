@@ -1,0 +1,17 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.Cognition.CognitiveSwitchingHysteresis.threshold_order",
+    "Viridis.Cognition.CognitiveSwitchingHysteresis.band_width_identity",
+    "Viridis.Cognition.CognitiveSwitchingHysteresis.closed_loop_area_identity",
+    "Viridis.Cognition.CognitiveSwitchingHysteresis.bias_translation",
+    "Viridis.Cognition.CognitiveSwitchingHysteresis.directional_cost_recovery",
+    "Viridis.Cognition.CognitiveSwitchingHysteresis.cshc_nonvacuous"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

@@ -4,13 +4,17 @@ The bounded loader-local cache retains immutable compiled CodeType objects and
 serialized structural proof only. Every compile interface call freshly checks
 registered physical source bytes/path and DATA state; every execute call still
 runs the code and applies current post-load DATA. No admission result is cached.
+A separate fixed TEST ONLY prerequisite adapter replaces only the disclosed
+Mac prerequisite call binding for actual Linux synthetic-renderer semantics.
+Original compiled source/native helper bodies remain exact; this is not Mac
+qualification and does not substitute any scientific/source-session validator.
 ``pure_code_derivations`` counts completed CodeType compilations, including any
 re-derivation after eviction; it is not a count of globally unique sources.
 The byte bound measures serialized code plus proof; the entry count also bounds
 keys. Requested filename spelling and resolved origin both remain key material.
 """
 from __future__ import annotations
-import ast,builtins,copy,hashlib,json,marshal,os,stat,sys,types
+import ast,builtins,copy,hashlib,json,marshal,os,signal,stat,sys,threading,types
 import __future__
 from collections import OrderedDict
 from pathlib import Path
@@ -26,6 +30,7 @@ class ClosedDataLoader:
   self.root=Path(root).resolve();self.root.mkdir(exist_ok=False)
   self.known={};self.source_paths={};self.source_baselines={};self.remaps={};self.receipts=[];self.blocked=[]
   self.post_load_data={}
+  self._portable_access=None;self.portable_access_receipts=[]
   self._registered_known={};self._registered_paths={};self._registered_baselines={}
   self._code_cache=OrderedDict();self._cache_weight=0
   self._compiler_stats={name:0 for name in ('compile_interface_calls','pure_code_derivations',
@@ -237,6 +242,82 @@ class ClosedDataLoader:
    self._compiler_stats['pure_code_derivations']+=1
    if eligible:self._cache_put(key,code,proof)
   return code
+ def enroll_portable_access_prerequisite(self,path):
+  """TEST ONLY: fixed Linux prerequisite, never an authority/renderer override.
+
+  No callable argument is accepted. The sole replacement is extracted from the
+  exact passing Linux portable fixture. Original access bytes, all native
+  lifetimes, scientific validators and the five post-load DATA keys stay exact.
+  """
+  if self._portable_access is not None:raise ValueError('PORTABLE_ACCESS_ALREADY_ENROLLED')
+  path=Path(path);canonical=self.root/'canonical-root/_ZENODO_DEPOSITS/standalone_pdf_runtime/nightly_manuscript_access.py'
+  if path!=canonical or path.resolve(strict=True)!=canonical:
+   raise ValueError('PORTABLE_ACCESS_CANONICAL_SOURCE_ONLY')
+  source=path.read_bytes()
+  if sha(source)!='8152817f47e31bd02e82c9d1a09e20ef9c7d137ef421ac2b56aa076d0c0d63b6':
+   raise ValueError('PORTABLE_ACCESS_EXACT815_SOURCE_REQUIRED')
+  self._source_guard(source,str(path))
+  source_code=self.real_compile(source,str(path),'exec')
+  fixture=RUNTIME/'tests/w42_portable_fixture.py';before=self._physical_identity(fixture);fixture_raw=fixture.read_bytes()
+  if sha(fixture_raw)!='2b3f153b07764bedac2e8ae797deb29613565f0fdeb4dc049e71e0448d6a9eb7':
+   raise ValueError('PORTABLE_ACCESS_EXACT_PREREQUISITE_SOURCE')
+  functions=[n for n in ast.parse(fixture_raw).body if isinstance(n,ast.FunctionDef)and n.name=='_portable_renderer_prerequisites']
+  if len(functions)!=1:raise ValueError('PORTABLE_ACCESS_ONE_PREREQUISITE_FUNCTION')
+  node=functions[0];piece=b''.join(fixture_raw.splitlines(keepends=True)[node.lineno-1:node.end_lineno])
+  helper_builtins=types.MappingProxyType({'all':all,'hasattr':hasattr,'RuntimeError':RuntimeError,'ChildProcessError':ChildProcessError})
+  namespace={'os':os,'signal':signal,'threading':threading,'__builtins__':helper_builtins}
+  helper_code=self.real_compile(ast.Module(body=[node],type_ignores=[]),str(fixture),'exec',dont_inherit=True)
+  self.real_exec(helper_code,namespace,namespace)
+  helper=namespace['_portable_renderer_prerequisites']
+  if self._physical_identity(fixture)!=before or fixture.read_bytes()!=fixture_raw:
+   raise ValueError('PORTABLE_ACCESS_PREREQUISITE_SOURCE_RACE')
+  self._portable_access={'path':str(path),'source':source,'source_code':source_code,'fixture':str(fixture),'fixture_raw':fixture_raw,
+   'helper':helper,'helper_code':helper.__code__,'helper_globals':namespace,'helper_builtins':helper_builtins,
+   'function_source_sha256':sha(piece)}
+ def _apply_portable_access_prerequisite(self,code,globals):
+  enrolled=self._portable_access
+  if enrolled is None or str(Path(code.co_filename).resolve())!=enrolled['path']:return
+  # This runs only after the exact canonical module has genuinely executed.
+  path=Path(enrolled['path']);self._source_guard(enrolled['source'],str(path))
+  fixture=Path(enrolled['fixture']);before=self._physical_identity(fixture)
+  if fixture.read_bytes()!=enrolled['fixture_raw']or self._physical_identity(fixture)!=before:
+   raise ValueError('PORTABLE_ACCESS_PREREQUISITE_SOURCE_RACE')
+  if code!=enrolled['source_code']:raise ValueError('PORTABLE_ACCESS_FULL_ORIGINAL_MODULE_CODE_REQUIRED')
+  module_name=globals.get('__name__');module=sys.modules.get('nightly_manuscript_access')
+  if module_name not in {'nightly_manuscript_access','_exact_current_archival_access'} or globals.get('__file__')!=str(path):
+   raise ValueError('PORTABLE_ACCESS_ACTUAL_CANONICAL_MODULE_REQUIRED')
+  if module_name=='nightly_manuscript_access'and(not isinstance(module,types.ModuleType)or module.__dict__ is not globals):
+   raise ValueError('PORTABLE_ACCESS_AMBIENT_CANONICAL_MODULE')
+  target='require_native_render_supervision'
+  codes={c.co_name:c for c in code.co_consts if isinstance(c,types.CodeType)}
+  names=[n.name for n in ast.parse(enrolled['source']).body
+   if isinstance(n,(ast.FunctionDef,ast.ClassDef))and(n.name.startswith('native_render')or n.name in {target,'close_render_group','NativeRenderAdmission'})]
+  for name in names:
+   value=globals.get(name);expected=codes.get(name)
+   if isinstance(value,types.FunctionType):
+    valid=value.__globals__ is globals and value.__code__==expected
+   elif isinstance(value,type)and isinstance(expected,types.CodeType):
+    members={c.co_name:c for c in expected.co_consts if isinstance(c,types.CodeType)}
+    valid=all(isinstance(vars(value).get(k),types.FunctionType)and vars(value)[k].__globals__ is globals
+              and vars(value)[k].__code__==v for k,v in members.items())
+   else:valid=False
+   if not valid:raise ValueError('PORTABLE_ACCESS_ORIGINAL_NATIVE_BODY_REQUIRED:'+name)
+  helper=enrolled['helper'];namespace=enrolled['helper_globals']
+  if (type(helper)is not types.FunctionType or helper.__code__ is not enrolled['helper_code']or helper.__globals__ is not namespace
+      or namespace.get('_portable_renderer_prerequisites')is not helper or namespace.get('os')is not os
+      or namespace.get('signal')is not signal or namespace.get('threading')is not threading
+      or helper.__builtins__ is not enrolled['helper_builtins']or namespace.get('__builtins__')is not enrolled['helper_builtins']):
+   raise ValueError('PORTABLE_ACCESS_FIXED_PREREQUISITE_IDENTITY')
+  native_before={name:globals[name]for name in names if name!=target}
+  globals['require_native_render_supervision']=helper
+  if any(globals[name]is not value for name,value in native_before.items()):
+   raise ValueError('PORTABLE_ACCESS_NATIVE_HELPER_REPLACED')
+  self.portable_access_receipts.append({'TEST_ONLY_native_platform_prerequisite_override':True,
+   'Mac_native_qualification':False,'scientific_validator_or_source_session_override':False,
+   'canonical_source_sha256':sha(enrolled['source']),'prerequisite_fixture_sha256':sha(enrolled['fixture_raw']),
+   'prerequisite_function_source_sha256':enrolled['function_source_sha256'],
+   'canonical_module_name':module_name,'native_helper_names':sorted(native_before),
+   'actual_native_helpers_code_equal_original_source':True})
  def execute(self,code,globals=None,locals=None,**kwargs):
   if globals is None:raise ValueError('EXPLICIT_SOURCE_MODULE_GLOBALS_REQUIRED')
   globals.setdefault('__builtins__',self.fixture_builtins)
@@ -255,6 +336,7 @@ class ClosedDataLoader:
     cache=data['RENDER_CACHE']
     if not isinstance(cache,dict)or set(cache)!={'path','sha256'}or not Path(cache['path']).is_relative_to(self.root):raise ValueError('CLOSED_RENDER_CACHE_FIXTURE_DATA')
     globals.update(data)
+  self._apply_portable_access_prerequisite(code,globals)
   return result
  def load(self,path):
   raw=Path(path).read_bytes();module=types.ModuleType('_private_exact_legacy_fixture');module.__file__=str(path)

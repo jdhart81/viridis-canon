@@ -389,5 +389,147 @@ class ClosedDataLoaderCacheTests(unittest.TestCase):
         self.assertEqual(self.delta(before, 'successful_exec_calls'), 1)
 
 
+class ClosedFixtureCorrectionTests(unittest.TestCase):
+    """Pure source-selection/adapter controls; no native helper is called.
+
+    Native function objects below are constructed from exact code constants but
+    never invoked. Full canonical source-session execution remains the separate
+    real normal/negative CI route; these controls cannot qualify Mac or science.
+    """
+    def setUp(self):
+        self.temporary=tempfile.TemporaryDirectory(prefix='closed-platform-source-')
+        self.addCleanup(self.temporary.cleanup)
+        self.loader=ClosedDataLoader(Path(self.temporary.name)/'loader')
+        self.path=self.loader.root/'canonical-root/_ZENODO_DEPOSITS/standalone_pdf_runtime/nightly_manuscript_access.py'
+        self.path.parent.mkdir(parents=True)
+        self.raw=(HERE.parent/'nightly_manuscript_access.py').read_bytes()
+        self.path.write_bytes(self.raw);self.loader.register_source(self.path,self.raw)
+        self.loader.enroll_portable_access_prerequisite(self.path)
+        self.code=self.loader.real_compile(self.raw,str(self.path),'exec')
+        self.namespace_modules={}
+
+    @staticmethod
+    def span(source,name):
+        nodes=[n for n in ast.parse(source).body if isinstance(n,ast.FunctionDef)and n.name==name]
+        assert len(nodes)==1
+        node=nodes[0];lines=source.splitlines(keepends=True)
+        return sum(map(len,lines[:node.lineno-1])),sum(map(len,lines[:node.end_lineno]))
+
+    def test_both_actual_legacy_mutation_spans_preserve_linked_and_all_other_bytes(self):
+        from run_archival_profile_mutants import MUTANTS,exact_function_mutation
+        source=(HERE.parent/'packaging_runtime.py').read_text()
+        scopes={'profile_accepts_wrong_note_preparation':'_validate_legacy',
+                'source_session_capability_not_revoked':'_session_legacy'}
+        for name,file,old,replacement,test in MUTANTS:
+            if name not in scopes:continue
+            with self.subTest(name=name):
+                self.assertEqual(file,'packaging_runtime.py');self.assertEqual(source.count(old),2)
+                function=scopes[name];start,end=self.span(source,function)
+                changed=exact_function_mutation(source,function,old,replacement)
+                expected=source[start:end].replace(old,replacement)
+                self.assertEqual(changed,source[:start]+expected+source[end:])
+                self.assertEqual(changed.count(old),1)
+                # Removing either scoped distinction must fail the same exact
+                # byte oracle, rather than being credited as an import error.
+                wrong=source.replace(old,replacement)
+                with self.assertRaises(AssertionError):
+                    self.assertEqual(wrong,source[:start]+expected+source[end:])
+
+    def test_mutation_selector_rejects_missing_duplicate_function_and_duplicate_guard(self):
+        from run_archival_profile_mutants import exact_function_mutation
+        old='return True';replacement='return False'
+        cases=[('def other():\n    return True\n','wanted'),
+               ('def wanted():\n    return True\ndef wanted():\n    return True\n','wanted'),
+               ('def wanted():\n    return 1\n','wanted'),
+               ('def wanted():\n    if True:\n        return True\n    return True\n','wanted')]
+        for source,name in cases:
+            with self.subTest(source=source),self.assertRaisesRegex(ValueError,'MUTATION_'):
+                exact_function_mutation(source,name,old,replacement)
+
+    def namespace(self,name='nightly_manuscript_access'):
+        # Construct code objects only; do not execute the access module or call
+        # its prerequisites/native/renderer/validator functions in pure tests.
+        module=types.ModuleType(name);namespace=module.__dict__
+        namespace['__file__']=str(self.path)
+        for code in self.code.co_consts:
+            if not isinstance(code,types.CodeType):continue
+            if code.co_name=='NativeRenderAdmission':
+                methods={c.co_name:types.FunctionType(c,namespace)for c in code.co_consts
+                         if isinstance(c,types.CodeType)}
+                namespace[code.co_name]=type(code.co_name,(),methods)
+            elif code.co_name.startswith('native_render')or code.co_name in {
+                    'require_native_render_supervision','close_render_group'}:
+                namespace[code.co_name]=types.FunctionType(code,namespace)
+        self.namespace_modules[id(namespace)]=module
+        return module,namespace
+
+    def apply(self,operation,namespace):
+        from unittest.mock import patch
+        module=self.namespace_modules[id(namespace)]
+        with patch.dict(sys.modules,{'nightly_manuscript_access':module}):
+            before={k:v for k,v in namespace.items()if k!='require_native_render_supervision'}
+            operation(self.code,namespace)
+            self.assertIs(namespace['require_native_render_supervision'],self.loader._portable_access['helper'])
+            self.assertTrue(all(namespace[k]is value for k,value in before.items()))
+            receipt=self.loader.portable_access_receipts[-1]
+            self.assertIs(receipt['Mac_native_qualification'],False)
+            self.assertIs(receipt['scientific_validator_or_source_session_override'],False)
+            self.assertIs(receipt['actual_native_helpers_code_equal_original_source'],True)
+            self.assertEqual(receipt['canonical_module_name'],namespace['__name__'])
+
+    def test_closed_adapter_accepts_only_two_actual_producer_objects_and_preserves_native_bodies(self):
+        for name in ('nightly_manuscript_access','_exact_current_archival_access'):
+            with self.subTest(name=name):
+                module,namespace=self.namespace(name)
+                self.apply(self.loader._apply_portable_access_prerequisite,namespace)
+        self.assertEqual(len(self.loader.portable_access_receipts),2)
+
+    def test_adapter_drift_counterfeit_and_arbitrary_callable_hold_before_replacement(self):
+        from unittest.mock import patch
+        helper=self.loader._portable_access['helper']
+        for change in ('unknown_name','ambient_object','wrong_file','native_body','arbitrary_helper','physical_source'):
+            with self.subTest(change=change):
+                module,namespace=self.namespace();original=namespace['require_native_render_supervision']
+                if change=='unknown_name':namespace['__name__']='ambient_access'
+                if change=='wrong_file':namespace['__file__']=str(self.path.with_name('other.py'))
+                if change=='native_body':namespace['native_render']=lambda *a,**k:None
+                if change=='arbitrary_helper':self.loader._portable_access['helper']=lambda:None
+                if change=='physical_source':self.path.write_bytes(self.raw+b'\n# changed TEST ONLY source\n')
+                published=types.ModuleType('nightly_manuscript_access')if change=='ambient_object'else module
+                try:
+                    with patch.dict(sys.modules,{'nightly_manuscript_access':published}):
+                        with self.assertRaisesRegex(ValueError,'PORTABLE_ACCESS|REGISTERED_SOURCE'):
+                            self.loader._apply_portable_access_prerequisite(self.code,namespace)
+                    self.assertIs(namespace['require_native_render_supervision'],original)
+                finally:
+                    self.path.write_bytes(self.raw);self.loader._portable_access['helper']=helper
+
+    def test_actual_adapter_assignment_omission_is_killed_by_same_positive_assertion_oracle(self):
+        import closed_data_loader
+        import copy
+        module,namespace=self.namespace()
+        self.apply(self.loader._apply_portable_access_prerequisite,namespace)
+        tree=ast.parse(Path(closed_data_loader.__file__).read_bytes())
+        klass=next(n for n in tree.body if isinstance(n,ast.ClassDef)and n.name=='ClosedDataLoader')
+        method=copy.deepcopy(next(n for n in klass.body if isinstance(n,ast.FunctionDef)
+            and n.name=='_apply_portable_access_prerequisite'))
+        selected=[(i,n)for i,n in enumerate(method.body)if isinstance(n,ast.Assign)
+            and len(n.targets)==1 and isinstance(n.targets[0],ast.Subscript)
+            and isinstance(n.targets[0].value,ast.Name)and n.targets[0].value.id=='globals'
+            and isinstance(n.targets[0].slice,ast.Constant)
+            and n.targets[0].slice.value=='require_native_render_supervision']
+        self.assertEqual(len(selected),1)
+        index,node=selected[0];method.body[index]=ast.copy_location(ast.Pass(),node)
+        mutant_tree=ast.fix_missing_locations(ast.Module(body=[method],type_ignores=[]))
+        defined={};exec(compile(mutant_tree,'<TEST_ONLY_PREREQUISITE_ASSIGNMENT_OMISSION>','exec'),vars(closed_data_loader),defined)
+        mutant=types.MethodType(defined[method.name],self.loader)
+        module,namespace=self.namespace()
+        # ValueError/import/runtime errors propagate as ERROR; only this exact
+        # positive assertion oracle's AssertionError is causal kill evidence.
+        with self.assertRaises(AssertionError):self.apply(mutant,namespace)
+        print('CLOSED_PORTABLE_PREREQUISITE_MUTANT_ASSERTION_KILLED=omit_fixed_assignment')
+
+
+
 if __name__ == '__main__':
     unittest.main()

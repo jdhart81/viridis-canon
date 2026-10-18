@@ -41,6 +41,12 @@ class CompleteDefaultRouteTests(unittest.TestCase):
         assert proof['all_function_class_asts_equal']and proof['all_non_data_control_flow_equal']
         assert proof['core_open_attempts']==[]and proof['mocked_validate_or_current_closure']is False
         assert proof['context_mints']==0 and proof['module_aliases']==0
+        adapters=proof['portable_access_prerequisite']
+        assert adapters, 'exact canonical portable prerequisite was never applied'
+        assert all(r['TEST_ONLY_native_platform_prerequisite_override']is True
+            and r['Mac_native_qualification']is False
+            and r['scientific_validator_or_source_session_override']is False
+            and r['actual_native_helpers_code_equal_original_source']is True for r in adapters)
         stats=proof['compiler_cache']
         assert stats['cache_hits']>0 and stats['actual_exec_calls']>=stats['cache_hits']
         assert stats['cache_entries']<=stats['max_cache_entries']
@@ -49,7 +55,7 @@ class CompleteDefaultRouteTests(unittest.TestCase):
             k:proof[k]for k in ('legacy_source_pins','current_modules','shared_helpers',
                 'loader_executions','all_function_class_asts_equal',
                 'all_non_data_control_flow_equal','core_open_attempts',
-                'mocked_validate_or_current_closure','context_mints','module_aliases','compiler_cache')
+                'mocked_validate_or_current_closure','context_mints','module_aliases','compiler_cache','portable_access_prerequisite')
         }|{'completed_actual_facade_operations':list(dict.fromkeys(cls.completed)),'actual_facade_call_trace':cls.completed,
            'deliberate_rejected_ambient_counterfeit_injections':cls.rejected_ambient_counterfeit_attempts},sort_keys=True),flush=True)
 

@@ -1,7 +1,7 @@
 """TEST ONLY: synthetic trust/provider/platform/render material, never admission.
 
-All production validator bodies execute. Only trust constants in copied test
-sources and the test importer's platform path mapping differ from production.
+Scientific validators and native lifetime helpers remain exact. Trust data,
+path mapping and an explicit platform prerequisite substitute are TEST ONLY.
 No CORE read/import, network, renderer or Lean execution occurs in these tests.
 Production source SHA pins are checked before any test-specific substitutions.
 """
@@ -13,6 +13,8 @@ import datetime as dt
 import hashlib
 import json
 import os
+import signal
+import threading
 from pathlib import Path
 import shutil
 import sys
@@ -115,11 +117,32 @@ def _platform_builtins(binary,generation,historical_generation_literal):
     synthetic.__import__=test_import
     return synthetic
 
+def _portable_renderer_prerequisites():
+    """TEST ONLY platform substitution; real kernel reservation is NOT faked.
+
+    Ubuntu3.12/3.14 synthetic-renderer semantics, not Mac/Tectonic qualification.
+    Production require_native_render_supervision remains unchanged and pinned.
+    Unsupported native primitives are fixture errors, never skips/mutant kills.
+    """
+    if signal.getsignal(signal.SIGCHLD) != signal.SIG_DFL:
+        raise RuntimeError('TEST_ONLY_DEFAULT_SIGCHLD_REQUIRED')
+    if threading.active_count() != 1 or threading.current_thread() is not threading.main_thread():
+        raise RuntimeError('TEST_ONLY_SINGLE_MAIN_THREAD_REQUIRED')
+    if not all(hasattr(os, n) for n in ('waitid','P_PID','WNOWAIT','WEXITED','WNOHANG','waitpid','waitstatus_to_exitcode')):
+        raise RuntimeError('TEST_ONLY_ACTUAL_WNOWAIT_UNAVAILABLE_NO_QUALIFICATION')
+    try:
+        os.waitid(os.P_PID, os.getpid(), os.WEXITED | os.WNOHANG | os.WNOWAIT)
+    except ChildProcessError:
+        return
+    raise RuntimeError('TEST_ONLY_NONCHILD_PROBE_AMBIGUOUS')
+
 class PortableFixture:
-    def __init__(self,root):
+    def __init__(self,root,*,renderer_mode='normal'):
+        if renderer_mode not in {'normal','timeout180'}:raise ValueError('closed TEST_ONLY renderer mode')
         self.root=Path(root).resolve();self.root.mkdir(exist_ok=True)
         self.gates=self.root/G;self.gates.mkdir(parents=True)
         self.seed=json.loads((HERE/'fixtures/w42_trust_seed.json').read_bytes())
+        self.production_native_prerequisite=access.require_native_render_supervision
         self.original_source_hashes=deepcopy(access._FROZEN_HASHES)
         self.original_source_bytes={}
         self.constant_overrides={}
@@ -140,6 +163,8 @@ class PortableFixture:
         script=('#!'+sys.executable+'\nimport hashlib,sys\nfrom pathlib import Path\n'+pdf_source+'\n'
                 +"out=Path(sys.argv[sys.argv.index('--outdir')+1]);out.mkdir(exist_ok=True)\n"
                 +"raw=Path('paper.tex').read_bytes();(out/'paper.pdf').write_bytes(pdf('SIMULATED '+hashlib.sha256(raw).hexdigest()))\n")
+        if renderer_mode=='timeout180':
+            script='#!'+sys.executable+'\nimport time\ntime.sleep(220)\n'
         self.write(self.binary,script.encode());self.binary.chmod(0o700)
         cache=self.root/'simulated-cache';cache.mkdir()
         cachefiles={}
@@ -271,12 +296,15 @@ class PortableFixture:
         self.installed_access_original=p.read_bytes()
         platform=next(n for n in ast.parse(Path(__file__).read_bytes()).body
             if isinstance(n,ast.FunctionDef)and n.name=='_platform_builtins')
-        supplement=('\n# TEST ONLY synthetic trust/platform material; all production bodies unchanged.\n'
+        portable=next(n for n in ast.parse(Path(__file__).read_bytes()).body
+            if isinstance(n,ast.FunctionDef)and n.name=='_portable_renderer_prerequisites')
+        supplement=('\n# TEST ONLY trust/platform; native prerequisite override is explicit, not Mac qualification.\n'
             +'_FROZEN_HASHES = '+repr(self.test_hashes)+'\n'
             +'LABEL_AUTHORITY = '+repr(self.label_authority)+'\n'
             +'NATIVE_RENDERER = '+repr(str(self.binary))+'\n'
             +'RENDER_CACHE = '+repr(self.cache)+'\n'
-            +ast.unparse(platform)+'\n'
+            +ast.unparse(platform)+'\n'+ast.unparse(portable)+'\n'
+            +'require_native_render_supervision = _portable_renderer_prerequisites\n'
             +'builtins = _platform_builtins('+repr(str(self.binary))+','+repr(str(self.gen))+','+repr(self.historical_generation_literal)+')\n')
         p.write_bytes(p.read_bytes()+supplement.encode())
         next(r for r in rows if r['name']==p.name)['sha256']=digest.sha(p)
@@ -317,7 +345,7 @@ class PortableFixture:
             'installed_access_original_bytes_and_AST_preserved':True,
             'platform_mapping':'Exactly pinned mirror_parity.GENERATION_ROOT literal and exact /opt/homebrew/bin/tectonic; no prefix/suffix mapping',
             'simulated_platform_renderer_cache_and_provider_not_production_evidence':True,
-            'mocked_validator_or_PB_outputs':False,'genuine_complete_packaging_session':'NOT_ESTABLISHED'}
+            'TEST_ONLY_native_platform_prerequisite_override':True,'actual_waitid_reservation_signal_reap_helpers_unchanged':True,'Mac_native_qualification':False,'mocked_validator_or_PB_outputs':False,'genuine_complete_packaging_session':'NOT_ESTABLISHED'}
 
     def scientific_fixture(self):
         # A source-only provider fixture implements ordinary binding selection;
@@ -358,7 +386,7 @@ class PortableFixture:
         synthetic=_platform_builtins(self.binary,self.gen,self.historical_generation_literal)
         class Scope:
             def __enter__(self):
-                self.patches=[patch.object(access,'_FROZEN_HASHES',fixture.test_hashes),patch.object(access,'builtins',synthetic),patch.object(access,'LABEL_AUTHORITY',fixture.label_authority),patch.object(access,'NATIVE_RENDERER',str(fixture.binary)),patch.object(access,'RENDER_CACHE',fixture.cache)]
+                self.patches=[patch.object(access,'require_native_render_supervision',_portable_renderer_prerequisites),patch.object(access,'_FROZEN_HASHES',fixture.test_hashes),patch.object(access,'builtins',synthetic),patch.object(access,'LABEL_AUTHORITY',fixture.label_authority),patch.object(access,'NATIVE_RENDERER',str(fixture.binary)),patch.object(access,'RENDER_CACHE',fixture.cache)]
                 for p in self.patches:p.start()
             def __exit__(self,*args):
                 for p in reversed(self.patches):p.stop()

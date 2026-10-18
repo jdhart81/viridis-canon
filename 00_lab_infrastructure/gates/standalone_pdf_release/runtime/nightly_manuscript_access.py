@@ -15,10 +15,12 @@ import json
 import html
 import os
 import signal
+import select
 import shutil
 import stat
 import subprocess
 import tempfile
+import threading
 import time
 import re
 from pathlib import Path
@@ -476,17 +478,258 @@ def cache_snapshot(directory):
     return rows
 
 
-def close_render_group(process):
-    """Reap the parent and prove its owned group gone before cache cleanup."""
-    try:os.killpg(process.pid,signal.SIGKILL)
-    except ProcessLookupError:pass
-    process.wait(timeout=5)
-    deadline=time.monotonic()+5
+def require_native_render_supervision():
+    """Fail before scratch or Popen; capabilities are checked, never inferred."""
+    need(sys.platform == 'darwin' and sys.version_info[:2] == (3, 14),
+         'native renderer requires actual supported Mac Python3.14')
+    need(signal.getsignal(signal.SIGCHLD) == signal.SIG_DFL,
+         'native renderer requires default SIGCHLD')
+    need(threading.active_count() == 1 and threading.current_thread() is threading.main_thread(),
+         'native renderer requires one main thread')
+    need(all(hasattr(os, name) for name in ('waitid', 'P_PID', 'WNOWAIT', 'WEXITED', 'WNOHANG',
+                                           'waitpid', 'waitstatus_to_exitcode')),
+         'native renderer requires actual waitid WNOWAIT')
+    try:
+        os.waitid(os.P_PID, os.getpid(), os.WEXITED | os.WNOHANG | os.WNOWAIT)
+    except ChildProcessError:
+        return  # Valid native non-child probe; not child/OS qualification.
+    except (OSError, NotImplementedError) as exc:
+        raise AccessHold('native renderer waitid capability unavailable') from exc
+    raise AccessHold('native renderer non-child capability probe ambiguous')
+
+
+def native_render_observe(reservation):
+    process = reservation['process'];pid = reservation['pid']
+    need(type(process) is subprocess.Popen and process.pid==pid
+         and reservation['parent_pid']==os.getpid()
+         and not reservation['reaped'] and not reservation['lost'] and process.returncode is None,
+         'native renderer reservation lost or already reaped')
+    try:
+        observed = os.waitid(os.P_PID, pid, os.WEXITED | os.WNOHANG | os.WNOWAIT)
+    except (ChildProcessError, OSError) as exc:
+        reservation['lost'] = True
+        raise AccessHold('native renderer own unreaped reservation unavailable') from exc
+    need(observed is None or observed.si_pid == pid, 'native renderer wrong native child observation')
+    return observed
+
+
+# Executed only by the original parent's actual Popen child, after Python exec.
+# This is NOT preexec_fn: the constructor's exec-error pipe has already closed.
+# The fixed shim has no fork, Core/network operation or arbitrary-command API.
+_NATIVE_RENDER_STARTUP = r'''
+import os, sys
+try:
+    if len(sys.argv) != 6:
+        raise RuntimeError('CLOSED_RENDER_STARTUP_ARGV')
+    ready, go, parent = (int(value) for value in sys.argv[1:4])
+    binary, outdir = sys.argv[4:6]
+    pid = os.getpid()
+    if os.getppid() != parent or os.getsid(0) != pid or os.getpgid(0) != pid:
+        raise RuntimeError('ORIGINAL_NATIVE_PARENT_AND_SESSION')
+    if os.write(ready, b'R') != 1:
+        raise RuntimeError('RENDER_READY_WRITE')
+    os.close(ready)
+    if os.read(go, 1) != b'G':
+        raise RuntimeError('RENDER_GO_REQUIRED')
+    os.close(go)
+    if os.getppid() != parent or os.getsid(0) != pid or os.getpgid(0) != pid:
+        raise RuntimeError('ORIGINAL_PARENT_BEFORE_RENDER_EXEC')
+    os.execve(binary, ['/opt/homebrew/bin/tectonic', '--only-cached', '--keep-logs',
+                       '--outdir', outdir, 'paper.tex'], os.environ)
+finally:
+    os._exit(127)
+'''
+
+
+def native_render_reservation(process):
+    """Bind only original native parent/child here; isolation needs live READY.
+
+    WNOWAIT exit remains valid ownership even when Darwin live SID queries
+    return ESRCH. This function NEVER queries SID/PGID or invents isolation.
+    """
+    need(type(process) is subprocess.Popen and type(process.pid) is int and process.pid > 1,
+         'native renderer actual owned Popen required')
+    reservation = {'process':process, 'pid':process.pid, 'parent_pid':os.getpid(),
+        'reaped':False, 'lost':False, 'isolated':False, 'bound_sid':None, 'bound_pgid':None,
+        'bound_before_go':False, 'go_attempted':False, 'term_attempted':False,
+        'final_signal_attempted':False, 'reap_started':False, 'returncode':None,
+        'group_absent':False, 'term_deadline':None, 'reap_deadline':None, 'absence_deadline':None}
+    native_render_observe(reservation)
+    return reservation
+
+
+class NativeRenderAdmission:
+    """One actual own Popen object and pre-render READY/GO control descriptors.
+
+    Unknown constructor ownership closes GO and retains cache. There is no
+    saved/reported PID fallback, callback, extra process or post-reap signal.
+    """
+    def __init__(self, binary, command, directory, environment, stdout, stderr, deadline):
+        self.binary = str(binary);self.command = list(command);self.directory = directory
+        self.environment = environment;self.stdout = stdout;self.stderr = stderr
+        self.deadline = deadline;self.parent_pid = os.getpid()
+        self.process = None;self.reservation = None
+        self.constructor_attempted = False;self.constructor_completed = False
+        self.ready_read = None;self.ready_write = None;self.go_read = None;self.go_write = None
+
+    def close_control(self):
+        # Close the original owner GO writer first. A constructor-loss shim can
+        # then only see EOF and exit127 before any renderer exec.
+        for name in ('go_write', 'go_read', 'ready_write', 'ready_read'):
+            fd = getattr(self, name)
+            if fd is not None:
+                setattr(self, name, None)  # Never re-close a reused descriptor.
+                os.close(fd)
+
+    def start(self):
+        require_native_render_supervision()
+        need(self.process is None and not self.constructor_attempted,
+             'exclusive native renderer constructor')
+        need(self.command == ['/opt/homebrew/bin/tectonic', '--only-cached', '--keep-logs',
+                              '--outdir', str(Path(self.directory)/'render-observation'), 'paper.tex'],
+             'fixed native renderer command')
+        need(time.monotonic() < self.deadline, 'native startup inside original180 deadline')
+        self.ready_read,self.ready_write = os.pipe()
+        self.go_read,self.go_write = os.pipe()
+        self.constructor_attempted = True
+        # Python shim exec completes before Popen returns. The payload still
+        # waits for GO, so the parent can genuinely bind live SID/PGID first.
+        self.process = subprocess.Popen([sys.executable, '-I', '-S', '-B', '-c',
+            _NATIVE_RENDER_STARTUP, str(self.ready_write), str(self.go_read),
+            str(self.parent_pid), self.binary, str(Path(self.directory)/'render-observation')],
+            executable=sys.executable, cwd=self.directory, env=self.environment,
+            stdin=subprocess.DEVNULL, stdout=self.stdout, stderr=self.stderr,
+            start_new_session=True, pass_fds=(self.ready_write,self.go_read))
+        self.constructor_completed = True
+        self.reservation = native_render_reservation(self.process)
+        for name in ('ready_write','go_read'):
+            fd=getattr(self,name);setattr(self,name,None);os.close(fd)
+        return self
+
+    def bind_ready(self):
+        state=self.reservation
+        need(state is not None and not state['go_attempted'] and self.parent_pid==os.getpid(),
+             'original native admission owner')
+        while True:
+            need(time.monotonic()<self.deadline, 'native READY inside original180 deadline')
+            readable,_,_=select.select([self.ready_read],[],[],min(.01,max(0,self.deadline-time.monotonic())))
+            if readable:
+                need(os.read(self.ready_read,1)==b'R', 'native READY missing or EOF')
+                # The fixed shim remains blocked on GO throughout these actual
+                # kernel queries. An externally killed/unbound child stays HOLD.
+                need(native_render_observe(state) is None, 'native child exited before READY binding')
+                try:
+                    sid=os.getsid(state['pid']);pgid=os.getpgid(state['pid'])
+                except OSError as exc:
+                    raise AccessHold('native live isolation binding unavailable') from exc
+                need(sid==pgid==state['pid'] and native_render_observe(state) is None,
+                     'actual live original child SID/PGID before GO')
+                state['bound_sid']=sid;state['bound_pgid']=pgid
+                state['bound_before_go']=True;state['isolated']=True
+                fd=self.ready_read;self.ready_read=None;os.close(fd)
+                return state
+            need(native_render_observe(state) is None, 'native child exited before READY')
+
+    def go(self):
+        state=self.reservation
+        need(state is not None and state['isolated'] and state['bound_before_go']
+             and not state['go_attempted'] and self.parent_pid==os.getpid(),
+             'genuine pre-exec native binding required')
+        need(native_render_observe(state) is None and time.monotonic()<self.deadline,
+             'original live child before GO inside original180 deadline')
+        state['go_attempted']=True  # A failed/interrupted write is never replayed.
+        need(os.write(self.go_write,b'G')==1, 'single exact native renderer GO')
+        fd=self.go_write;self.go_write=None;os.close(fd)
+
+    def close(self):
+        self.close_control()
+        if self.process is None:
+            need(not self.constructor_attempted, 'unknown renderer constructor; cache retained')
+            return
+        if self.reservation is None:
+            self.reservation=native_render_reservation(self.process)
+        close_render_group(self.reservation)
+
+
+def native_render_signal(reservation, sig):
+    # Every nonzero signal has a fresh native OWN-child reservation. A saved
+    # numeric PGID, successful wait, or parent JSON can never satisfy this.
+    need(sig in (signal.SIGTERM, signal.SIGKILL) and reservation['parent_pid']==os.getpid()
+         and not reservation['reap_started'] and not reservation['reaped']
+         and not reservation['final_signal_attempted']
+         and (not reservation['isolated'] or (reservation['bound_before_go']
+              and reservation['bound_sid']==reservation['bound_pgid']==reservation['pid'])),
+         'native renderer signal phase closed')
+    observed = native_render_observe(reservation)
+    if sig == signal.SIGKILL:
+        reservation['final_signal_attempted'] = True  # Before syscall/interruption.
+    else:
+        reservation['term_attempted'] = True
+    try:
+        (os.killpg if reservation['isolated'] else os.kill)(reservation['pid'], sig)
+    except ProcessLookupError:
+        pass
+    except PermissionError as exc:
+        # A zombie-only Darwin group can deny a signal. This is NEVER absence:
+        # exact exit, own reap AND subsequent ESRCH are still mandatory.
+        if native_render_observe(reservation) is None:
+            raise AccessHold('native renderer live signal permission unknown') from exc
+
+
+def close_render_group(reservation):
+    """Last nonzero signal, native reap, then ONLY zero/ESRCH absence probes.
+
+    One-way state and absolute per-phase deadlines survive error/finally
+    reentry. Lost reservation or unknown cleanup retains the private cache.
+    This does not qualify owner-death or a whole-action outer600 supervisor.
+    """
+    process = reservation['process'];pid = reservation['pid']
+    if not reservation['reaped']:
+        if not reservation['reap_started']:
+            if not reservation['final_signal_attempted']:
+                observed = native_render_observe(reservation)
+                if observed is None:
+                    if reservation['term_deadline'] is None:
+                        reservation['term_deadline'] = time.monotonic() + 10
+                    if not reservation['term_attempted']:
+                        native_render_signal(reservation, signal.SIGTERM)
+                    while time.monotonic() < reservation['term_deadline']:
+                        if native_render_observe(reservation) is not None:
+                            break
+                        time.sleep(.01)
+                native_render_signal(reservation, signal.SIGKILL)
+            # Even if interrupted after final-signal flag/before syscall, no
+            # reentry can signal after a later reap; unproved exit stays HOLD.
+            reservation['reap_started'] = True
+        if reservation['reap_deadline'] is None:
+            reservation['reap_deadline'] = time.monotonic() + 5
+        while native_render_observe(reservation) is None:
+            need(time.monotonic() < reservation['reap_deadline'],
+                 'native renderer exit unobserved after final signal; cache retained')
+            time.sleep(.01)
+        actual, status = os.waitpid(pid, 0)
+        need(actual == pid, 'native renderer wrong own child reap')
+        code = os.waitstatus_to_exitcode(status)
+        # reap_started was set BEFORE waitpid. An interruption after kernel
+        # reap but before these stores cannot reopen any nonzero signal path.
+        reservation['returncode'] = code
+        process.returncode = code
+        reservation['reaped'] = True
+    need(reservation['isolated'] and reservation['bound_before_go'],
+         'unbound renderer reaped; group closure unproven; cache retained')
+    if reservation['absence_deadline'] is None:
+        reservation['absence_deadline'] = time.monotonic() + 5
     while True:
-        try:os.killpg(process.pid,0)
-        except ProcessLookupError:return
-        need(time.monotonic()<deadline,'native renderer child group still exists; private cache retained')
-        time.sleep(0.01)
+        try:
+            os.killpg(pid, 0)
+        except ProcessLookupError:
+            reservation['group_absent'] = True
+            return reservation['returncode']
+        except PermissionError:
+            pass  # Unknown/present. Never manufacture ESRCH.
+        need(time.monotonic() < reservation['absence_deadline'],
+             'native renderer group absence unproved; private cache retained')
+        time.sleep(.01)
 
 
 def require_render_logs(directory,seen):
@@ -517,6 +760,7 @@ def native_render(path,*,root):
     the renderer exits and its exact hashes are compared; no cache copy becomes
     release evidence. This function runs no Lean, network fetch or publisher.
     """
+    require_native_render_supervision()
     root=Path(root).resolve(strict=True);path=Path(path)
     need(not any(p.is_symlink()for p in(path,*path.parents)),'regular native render input ancestry')
     path=path.resolve(strict=True)
@@ -535,7 +779,7 @@ def native_render(path,*,root):
     build=path.parent/'render-observation';need(not build.exists(),'exclusive native render attempt')
     build.mkdir()
     command=['/opt/homebrew/bin/tectonic','--only-cached','--keep-logs','--outdir',str(build),'paper.tex']
-    process=None;group_closed=False;started=dt.datetime.now(dt.timezone.utc).isoformat()
+    process=None;reservation=None;admission=None;spawn_attempted=False;group_closed=False;started=dt.datetime.now(dt.timezone.utc).isoformat()
     private=Path(tempfile.mkdtemp(prefix='vrs-labelled-render-cache-')).resolve(strict=True)
     try:
         for name,pin in expected.items():
@@ -546,15 +790,17 @@ def native_render(path,*,root):
         environment['TECTONIC_CACHE_DIR']=str(private)
         try:
             with (build/'stdout.txt').open('xb')as stdout,(build/'stderr.txt').open('xb')as stderr:
-                process=subprocess.Popen(command,executable=str(binary),cwd=path.parent,env=environment,
-                    stdin=subprocess.DEVNULL,stdout=stdout,stderr=stderr,start_new_session=True)
-                try:process.wait(timeout=180)
-                except subprocess.TimeoutExpired:
-                    os.killpg(process.pid,signal.SIGTERM)
-                    try:process.wait(timeout=10)
-                    except subprocess.TimeoutExpired:os.killpg(process.pid,signal.SIGKILL);process.wait(timeout=5)
-                    raise AccessHold('HOLD_NATIVE_RENDER_180S_WITH_CLEANUP')
-            close_render_group(process);group_closed=True
+                render_deadline=time.monotonic()+180  # Startup consumes this original budget.
+                admission=NativeRenderAdmission(binary,command,path.parent,environment,stdout,stderr,render_deadline)
+                spawn_attempted=True
+                admission.start();admission.bind_ready();admission.go()
+                process=admission.process;reservation=admission.reservation
+                while native_render_observe(reservation) is None:
+                    if time.monotonic() >= render_deadline:
+                        close_render_group(reservation);group_closed=True
+                        raise AccessHold('HOLD_NATIVE_RENDER_180S_WITH_CLEANUP')
+                    time.sleep(.01)
+            close_render_group(reservation);group_closed=True
             ended=dt.datetime.now(dt.timezone.utc).isoformat()
             closure=(cache_snapshot(cache)==cache_snapshot(private)==expected
                 and d.read_regular(binary)==binary_before and Path(NATIVE_RENDERER).resolve(strict=True)==binary
@@ -570,12 +816,16 @@ def native_render(path,*,root):
             need(process.returncode==0 and closure,'native renderer failed or input closure changed')
             require_pdf_envelope(pdf)
         finally:
-            if process is not None and not group_closed:
-                close_render_group(process);group_closed=True
+            if admission is not None:
+                admission.close_control()
+                if not group_closed:
+                    admission.close();group_closed=True
     finally:
         # A failed group closure retains this one scratch tree for diagnosis.
         # Never delete input files while a renderer descendant may still use them.
-        if process is None or group_closed:shutil.rmtree(private)
+        if not spawn_attempted or group_closed:shutil.rmtree(private)
+        # Constructor loss/unknown reservation never proves no child exists.
+        # The scratch cache remains; future Root orchestration must HOLD.
     return pdf
 
 def labelled_tex(original, *, historical):

@@ -11,13 +11,11 @@ on:
       - 'tools/mutate_audit_hardening.py'
       - 'tools/mutate_nightly_access.py'
       - 'tools/tests/**'
-      - 'tools/ci/**'
       - 'tools/zenodo_metadata_repair.py'
       - 'tools/effective_allocation.py'
       - 'tools/mutate_effective_allocation.py'
       - 'tools/allocation_correction/**'
       - '.github/workflows/standalone-manuscript-pdf.yml'
-      - '.github/workflows/verification-coverage.yml'
   push:
     branches: [main]
     paths:
@@ -29,13 +27,11 @@ on:
       - 'tools/mutate_audit_hardening.py'
       - 'tools/mutate_nightly_access.py'
       - 'tools/tests/**'
-      - 'tools/ci/**'
       - 'tools/zenodo_metadata_repair.py'
       - 'tools/effective_allocation.py'
       - 'tools/mutate_effective_allocation.py'
       - 'tools/allocation_correction/**'
       - '.github/workflows/standalone-manuscript-pdf.yml'
-      - '.github/workflows/verification-coverage.yml'
 
 permissions:
   contents: read

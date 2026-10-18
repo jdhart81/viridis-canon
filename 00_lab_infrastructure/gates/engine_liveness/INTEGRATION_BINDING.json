@@ -1,0 +1,52 @@
+{
+  "G2_active": false,
+  "activation": "INACTIVE_UNMERGED",
+  "advisory_modules_installed_under": "RESEARCH_PIPELINE_v2/pipeline_advisory",
+  "advisory_playbook_sha256": "87ded0138f522738aeb4dbe68be3861f4c46e11bc61ae65c2be0e0557de2c8eb",
+  "audit_remediation_of": "e1ee10fc4fa614e1a2d48fef5603f1e599452bca",
+  "base_commit": "a6d6b3d7fd53acedf1c476c425776e26ee83ccab",
+  "controller_before_stack": {
+    "controller_after_sha256": "86f1691fec4195fe3f0c499df47a934373d6fb55d616cfc7841479511d97fd22",
+    "parent_binding": "00_lab_infrastructure/gates/terminal_certification/INTEGRATION_BINDING.json",
+    "parent_head": "c86cbde19652067209d0249267e3579c04b48e9a",
+    "parent_pr": 109
+  },
+  "current_main_commit": "a6d6b3d7fd53acedf1c476c425776e26ee83ccab",
+  "files": [
+    {
+      "after_sha256": "2ab91c84b9df1d2e5ba0a9078714274731200879cc7bef623f1fafce7cedd0ec",
+      "before_sha256": "749ecb7a95e22f9ac0251986012cbb664e8709948c2b7e13b8454d2111e6b865",
+      "path": "RESEARCH_PIPELINE_v2/autonomous_transition_executor.py"
+    },
+    {
+      "after_sha256": "9e69f4e9f7812e8c752022e69c33ed1f2c344420849e0fc9bb65363d297a0f38",
+      "before_sha256": "86f1691fec4195fe3f0c499df47a934373d6fb55d616cfc7841479511d97fd22",
+      "path": "RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py"
+    },
+    {
+      "after_sha256": "061ad7e5bedd09e62cd0ed11c0f50e9141e94f26592cc4cc8ef4151b4ffe4f41",
+      "before_sha256": "f550c0f808bb15e603b875aed55962b0297731e5a2e4edf4aac99f33eab959df",
+      "path": "RESEARCH_PIPELINE_v2/nightly_checkpoint.py"
+    }
+  ],
+  "formerly_stacked_parent_pr": 106,
+  "installed": false,
+  "original_first_precheck_head": "9f4778c36af3f1004589a88191b7d02b97d836d8",
+  "parent_pr": null,
+  "scheduler_id": "viridis-nightly-science-generator",
+  "scheduler_nonprompt_fields_sha256": "fe6cfdd313e201a644f72370d0cc31d34d2fcd3ccdef5fad57bd1d2635bbe802",
+  "scheduler_prompt_before_sha256": "5b46a83d8d27bb70f8241da01b5351e7f21a8057b78903dc23f8366e54a3ea18",
+  "source_files": {
+    "G1_CONTROLLER_EXECUTOR.patch": "5ad864efdb7ac0e3004ca447dd3e022b82ee6fae5183bdc3f7b735befb12104c",
+    "G2_EXISTING_CHECKPOINT.patch": "f61993a23227f113ef9da52fdefb903fd0b47a9dc842b340540e20418a8e2648",
+    "checkpoint_advisory.py": "2b23bdf570598484e4014a5ad3029c54ec9a115039343522d8774db3a568f3c0",
+    "checkpoint_certification_lane.py": "3e95fa10218f6f052cc11d5a262e5c05f885bf1a8d6455a6cb64598a34baa072",
+    "install_integration.py": "b6f4e8bf65bf5c0637fe377cabde47d773c1218ab55c57546e98bf7d96ea6216",
+    "scheduler_liveness.py": "71ec14861c5f0fb6fcb56da70989b5dae0c31059640d42390f758498de2334bd"
+  },
+  "stack_parent_head": "c86cbde19652067209d0249267e3579c04b48e9a",
+  "stack_parent_pr": 109,
+  "standard": "VRS-ENGINE-LIVENESS-INTEGRATION-1",
+  "terminal_helper_sha256": "c131bc30020abea90b646023e6c9c1b8974ee15e1c9024b11fd6a1a48379a5f3",
+  "unchanged_job_observation_sha256": "63aa5ad5ccd0b3c299b1a262d0a7ebd2ff96ff46294a73c86600ea8db47e73c8"
+}

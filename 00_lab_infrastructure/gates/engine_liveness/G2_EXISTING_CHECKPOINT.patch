@@ -1,0 +1,42 @@
+--- a/RESEARCH_PIPELINE_v2/nightly_checkpoint.py
++++ b/RESEARCH_PIPELINE_v2/nightly_checkpoint.py
+@@ -142,0 +143,12 @@
++def checkpoint_advisory_after_checkpoint(output):
++    # Bounded child only; advisory failure cannot change a foundry gate.
++    try:
++        import subprocess
++        subprocess.run([sys.executable, "-I", str(HERE / "checkpoint_advisory.py"),
++                        "--root", str(HERE.parent), "--checkpoint", str(output)],
++                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
++                       timeout=15, check=False)
++    except Exception:
++        pass
++
++
+@@ -151,0 +164 @@
++    checkpoint_advisory_after_checkpoint(output)
+@@ -160,0 +174,3 @@
++    group.add_argument("--drain-certification", type=Path, metavar="START_RECEIPT")
++    group.add_argument("--reconcile-certification", type=Path, metavar="START_RECEIPT")
++    parser.add_argument("--certification-queue", type=Path)
+@@ -164,0 +181,14 @@
++        if args.drain_certification or args.reconcile_certification:
++            if args.certification_queue is None:
++                raise ValueError("hash-bound certification queue required")
++            if args.drain_certification:
++                from checkpoint_certification_lane import drain_checkpoint
++                handler = drain_checkpoint
++            else:
++                from checkpoint_certification_lane import reconcile_checkpoint
++                handler = reconcile_checkpoint
++            start_receipt = args.drain_certification or args.reconcile_certification
++            result = handler(start_receipt, args.certification_queue)
++            checkpoint_advisory_after_checkpoint(start_receipt)
++            print(json.dumps(result, indent=2, sort_keys=True))
++            return 2 if result["status"] == "HOLD" else 0
+@@ -172,0 +203 @@
++                checkpoint_advisory_after_checkpoint(path)
+@@ -187,0 +219 @@
++            checkpoint_advisory_after_checkpoint(path)
+@@ -207,0 +240 @@
++        checkpoint_advisory_after_checkpoint(output)

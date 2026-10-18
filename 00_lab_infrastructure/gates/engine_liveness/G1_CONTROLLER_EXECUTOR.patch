@@ -1,0 +1,73 @@
+--- a/RESEARCH_PIPELINE_v2/autonomous_transition_executor.py
++++ b/RESEARCH_PIPELINE_v2/autonomous_transition_executor.py
+@@ -12,6 +12,8 @@
+ """
+
+ from __future__ import annotations
++
++from scheduler_liveness import writer_hold_code, redacted_stderr_tail
+
+ import argparse
+ from dataclasses import asdict, dataclass
+@@ -46,6 +48,8 @@
+
+ JUDGMENT_ACTIONS = {
+     "CERTIFY_COMPARATOR_FIFO",
++    "DRAIN_SCHEDULER_CERTIFICATION_LANE",
++    "REVIEW_FINALIZED_PACKAGE_BINDINGS",
+     "CREATE_VERSIONED_PRE_CURATOR_PAPER_CORRECTION",
+     "CURATE_PROOF_RECONCILED_DRAFT",
+     "REVIEW_PRIOR_INVOCATION_DRAFT",
+@@ -169,7 +173,9 @@
+     if completed.returncode != 0:
+         raise ExecutorError(
+             f"local writer failed ({completed.returncode}): {' '.join(argv[1:])}; "
+-            f"stderr={result.stderr_tail!r}"
++            f"writer_hold={writer_hold_code(completed.stdout)!r}; "
++            f"stdout_sha256={result.stdout_sha256}; stderr_sha256={result.stderr_sha256}; "
++            f"stderr_tail={redacted_stderr_tail(result.stderr_tail)!r}"
+         )
+     return result
+
+--- a/RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py
++++ b/RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py
+@@ -9,6 +9,8 @@
+ """
+
+ from __future__ import annotations
++
++from scheduler_liveness import LivenessHold, paper_review_pending, certification_action
+
+ import argparse
+ from dataclasses import asdict, dataclass
+@@ -325,7 +327,7 @@
+             return WorkItem(run_id, "READY_FOR_COMPARATOR_TRANSPORT_AUTHORIZATION",
+                             "WAIT_FOR_EXACT_COMPARATOR_PAYLOAD_DESTINATION_AUTHORIZATION", True,
+                             "Frozen proof inputs may not leave the workspace because the standing private-Comparator authorization is missing or invalid.")
+-        return WorkItem(run_id, "CERTIFICATE_REQUIRED", "CERTIFY_COMPARATOR_FIFO", False,
++        return WorkItem(run_id, "CERTIFICATE_REQUIRED", certification_action(certificate_root), False,
+                         "No clean dual-kernel zero-sorry certificate is bound.")
+     if not (path / "CURATOR_DRAFT_READY.json").is_file():
+         return WorkItem(run_id, "RECONCILIATION_REQUIRED", "CURATE_PROOF_RECONCILED_DRAFT", False,
+@@ -350,6 +352,14 @@
+     if not (path / "FINALIZED_PACKAGE.json").is_file():
+         return WorkItem(run_id, "FINALIZATION_REQUIRED", "FINALIZE_REVIEWED_PACKAGE", False,
+                         "Independent review passes; deterministic finalizer has not sealed the package.")
++    try:
++        pending_finalized_review = paper_review_pending(path)
++    except (OSError, ValueError, TypeError, AttributeError, UnicodeError, LivenessHold):
++        pending_finalized_review = True
++    if pending_finalized_review:
++        return WorkItem(run_id, "FINALIZED_PACKAGE_RECONCILIATION_REQUIRED",
++                        "REVIEW_FINALIZED_PACKAGE_BINDINGS", False,
++                        "Finalized package review binding is absent, malformed or contradictory; preserve sealed bytes and prepare a versioned successor with later independent review.")
+     if not (path / "CANON_PRODUCT_ROUTE.json").is_file():
+         return WorkItem(run_id, "CANON_SCAN_REQUIRED", "RUN_CANON_AND_PRODUCT_ROUTE", False,
+                         "Apply significance, five-gate Canon scan, and ViridisOS disposition.")
+@@ -434,5 +444,5 @@
+         return WorkItem(run_id, "READY_FOR_COMPARATOR_TRANSPORT_AUTHORIZATION",
+                         "WAIT_FOR_EXACT_COMPARATOR_PAYLOAD_DESTINATION_AUTHORIZATION", True,
+                         "Frozen proof inputs may not leave the workspace because the standing private-Comparator authorization is missing or invalid.")
+-    return WorkItem(run_id, "CERTIFICATE_REQUIRED", "CERTIFY_COMPARATOR_FIFO", False,
++    return WorkItem(run_id, "CERTIFICATE_REQUIRED", certification_action(certificate_root), False,
+                     "Open nightly package lacks a clean certificate; the active standing authorization covers exact frozen transport to the private Comparator.")

@@ -189,16 +189,27 @@ class ManuscriptPDFGateTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root, _ = self.bundle(tmp); plan = gate.require_local(root)
             record = {"id": 23290748, "files": [{"key": f["filename"], "size": f["bytes"], "checksum": "md5:" + f["md5"]} for f in plan["upload_files"]]}
-            with self.assertRaisesRegex(gate.ManuscriptPDFHold, "downloaded upload differs"):
-                gate.require_public(record, plan, download=lambda rid, name: b"%PDF-changed")
+            target = "Run-167-Paper.pdf"
+            download = mock.Mock(side_effect=lambda rid, name:
+                b"%PDF-changed" if name == target else (root / name).read_bytes())
+            with self.assertRaisesRegex(gate.ManuscriptPDFHold,
+                    r"downloaded upload differs from approved bytes: Run-167-Paper[.]pdf"):
+                gate.require_public(record, plan, download=download)
+            self.assertIn(mock.call("23290748", target), download.call_args_list)
             receipt = gate.require_public(record, plan, download=lambda rid, name: (root / name).read_bytes())
             self.assertEqual(len(receipt["pdfs"]), 2)
 
     def test_public_missing_separate_pdf_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             root, _ = self.bundle(tmp); plan = gate.require_local(root)
+            missing_name = "Run-167-Paper.pdf"
+            record = {"id": 23290748, "files": [
+                {"key": f["filename"], "size": f["bytes"], "checksum": "md5:" + f["md5"]}
+                for f in plan["upload_files"] if f["filename"] != missing_name]}
+            download = mock.Mock()
             with self.assertRaisesRegex(gate.ManuscriptPDFHold, "exact approved uploads"):
-                gate.require_public({"id": 23290748, "files": []}, plan)
+                gate.require_public(record, plan, download=download)
+            download.assert_not_called()
 
     def test_outer_guard_blocks_legacy_config_before_dispatch(self):
         with tempfile.TemporaryDirectory() as tmp:

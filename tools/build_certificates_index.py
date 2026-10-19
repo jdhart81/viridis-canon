@@ -182,9 +182,12 @@ def build() -> tuple[dict, dict[Path, str]]:
     index = {
         "schema": "viridis-certificates-index/1",
         "description": (
-            "Comparator certificates for Viridis Canon results. Each run directory holds byte-exact "
-            "copies of the files its certificate binds by SHA-256 (the sealed paper itself is excluded; "
-            "it is published on Zenodo under the linked DOI)."
+            "Comparator certificates for Viridis Canon results. Each run directory provides the listed "
+            "certificate evidence. This export omits sealed manuscripts. A linked Zenodo DOI is a "
+            "manuscript-access link, not a representation that its public PDF is byte-identical to the "
+            "sealed manuscript. Each certificate covers only its hash-bound artifacts and stated formal "
+            "theorem scope; a different public manuscript requires its own reviewed publication-binding "
+            "evidence."
         ),
         "what_a_certificate_establishes": (
             "The listed Lean theorems are proved in the solution file, their statements match the challenge "

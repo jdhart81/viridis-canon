@@ -6,3 +6,9 @@
 # module digests match the exact same-commit files. Keep exceptions commit/line exact.
 28a5f50c709e5af6b4ac23297f7766bd76769039:00_lab_infrastructure/gates/standalone_pdf_release/future_runtime_v012/guard_methods_digest_release.py:generic-api-key:25
 e4402dc7145aa84951ab4ca3acb78dd930d17d16:00_lab_infrastructure/gates/standalone_pdf_release/runtime/guard_methods_digest_release.py:generic-api-key:25
+
+# Audited same-commit source SHA-256 maps, not credentials: six findings are
+# the exact correction, registry and815 renderer file digests in two guards.
+# Exceptions are immutable source-commit/path/rule/line fingerprints only.
+0a9e22ee9eae349a2fca82d182ca501f400c9f06:00_lab_infrastructure/gates/standalone_pdf_release/runtime/guard_methods_digest_release.py:generic-api-key:25
+0a9e22ee9eae349a2fca82d182ca501f400c9f06:00_lab_infrastructure/gates/standalone_pdf_release/tools/guard_methods_digest_release_linked109.py:generic-api-key:25

@@ -1,0 +1,28 @@
+name: Corrective label policy source
+on:
+  pull_request:
+    paths:
+      - 'tools/label_policy_repair/**'
+      - '.github/workflows/label-policy-repair.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/label_policy_repair/**'
+      - '.github/workflows/label-policy-repair.yml'
+permissions:
+  contents: read
+jobs:
+  pure-policy-guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: true
+      matrix:
+        python: ['3.12', '3.14']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Pure metadata policy guard tests
+        run: python -m unittest discover -s tools/label_policy_repair -p 'test_*.py' -v -f

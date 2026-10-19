@@ -66,6 +66,7 @@
     "baseline_origin_filename": "weekly-terminal-baseline-origin.json",
     "before_header": "--- before/nightly_proof_track.py\n",
     "fixture_path": "RESEARCH_PIPELINE_v2/nightly_proof_track_terminal_report.py",
+    "full_source_public_path": "tools/weekly_terminal_reporter/nightly_proof_track.py",
     "patch_public_path": "tools/weekly_terminal_reporter/reporter.patch",
     "patch_sha256": "c1163e0f0257dfdc3703cd3c78b6352779efaac8c84d8293d63614a888d8cc00"
   },

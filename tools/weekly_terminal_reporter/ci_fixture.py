@@ -12,7 +12,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[2]
 CLOSURE = ROOT / 'tools/weekly_terminal_reporter/CI_CLOSURE.json'
-CLOSURE_SHA256 = '9d85b2380019b16d12386abf81926c226d7323c8af1c6cda55de1888c81fed68'
+CLOSURE_SHA256 = '441c85458e3e1a4dc1172472ecbdf2a89ca954877e828155a2864df814161fdf'
 
 class FixtureHold(ValueError):
     pass
@@ -176,7 +176,10 @@ def payloads(value):
     normalized = ('--- a/' + target + '\n+++ b/' + target + '\n' + ''.join(lines[2:])).encode()
     after = _derive(baseline, normalized, target)
     need(sha(after) == item['after_sha256'] and len(after) == item['after_bytes'], 'EXACT_REVIEWED_REPORTER')
-    add(item['fixture_path'], after, {'baseline': baseline_origin, 'patch_public_path': item['patch_public_path']})
+    full_source = bound(ROOT / relative(item['full_source_public_path']), item['after_sha256'])
+    need(full_source == after and len(full_source) == item['after_bytes'], 'MERGED_FULL_SOURCE_EQUALS_STRICT_PATCH_AFTERIMAGE')
+    add(item['fixture_path'], after, {'baseline': baseline_origin, 'patch_public_path': item['patch_public_path'],
+        'full_source_public_path': item['full_source_public_path'], 'full_source_sha256': sha(full_source)})
     item = value['test']
     raw = bound(ROOT / relative(item['public_path']), item['sha256'])
     need(len(raw) == item['bytes'] and sha(raw[:item['retained_prefix_bytes']]) == item['retained_prefix_sha256'], 'ORIGINAL16_PREFIX')

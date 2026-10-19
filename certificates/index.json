@@ -1,6 +1,6 @@
 {
   "schema": "viridis-certificates-index/1",
-  "description": "Comparator certificates for Viridis Canon results. Each run directory holds byte-exact copies of the files its certificate binds by SHA-256 (the sealed paper itself is excluded; it is published on Zenodo under the linked DOI).",
+  "description": "Comparator certificates for Viridis Canon results. Each run directory provides the listed certificate evidence. This export omits sealed manuscripts. A linked Zenodo DOI is a manuscript-access link, not a representation that its public PDF is byte-identical to the sealed manuscript. Each certificate covers only its hash-bound artifacts and stated formal theorem scope; a different public manuscript requires its own reviewed publication-binding evidence.",
   "what_a_certificate_establishes": "The listed Lean theorems are proved in the solution file, their statements match the challenge file, they use only the permitted axioms, and the Lean kernel and the nanoda kernel accept them. It does not establish that the formal statement captures the paper's prose claim, that the model describes nature, that the result is new, or that any decision built on it is correct.",
   "depth_rule": "substantial if the certified candidate has at least 200 non-blank lines and the median proof length of its listed theorems is at least 6 lines; otherwise elementary. Size indicator only: it does not measure novelty, difficulty or scientific value.",
   "counts": {

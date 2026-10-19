@@ -1,0 +1,114 @@
+{
+  "active": false,
+  "expected_cases": [
+    "test_canonical_run_id",
+    "test_sealed_saturday_report_cannot_be_overwritten",
+    "test_unsealed_saturday_report_remains_writable",
+    "test_missing_request_is_visible_even_when_paper_is_held",
+    "test_bound_significance_hold_does_not_cancel_proof_obligation",
+    "test_direct_request_surfaces_audited_significance_hold",
+    "test_ready_request_is_not_hidden_by_paper_hold",
+    "test_engine3_request_routes_directly_to_comparator",
+    "test_engine3_certificate_outranks_terminal_legacy_formalization",
+    "test_paper_to_lean_request_is_not_mislabeled_as_verified_proof",
+    "test_audited_formalization_return_still_is_not_verified_proof",
+    "test_separate_proof_request_advances_after_formalization_contract_audit",
+    "test_active_request_is_matched_by_resolved_path",
+    "test_provider_warning_is_certificate_debt_not_a_pass",
+    "test_aristotle_audit_without_independent_certificate_remains_debt",
+    "test_engine3_certificate_accepts_control_relative_bindings",
+    "test_synthetic_join_bridges_distinct_staged_and_source_hashes_without_scope_promotion",
+    "test_synthetic_unjoined_same_run_is_unresolved_not_inherited_hold_or_successor_ready[source]",
+    "test_synthetic_unjoined_same_run_is_unresolved_not_inherited_hold_or_successor_ready[mirror]",
+    "test_synthetic_unjoined_same_run_is_unresolved_not_inherited_hold_or_successor_ready[stage_snapshot]",
+    "test_synthetic_unjoined_same_run_is_unresolved_not_inherited_hold_or_successor_ready[source_manifest_key]",
+    "test_synthetic_unjoined_same_run_is_unresolved_not_inherited_hold_or_successor_ready[missing_package]",
+    "test_synthetic_same_exact_object_certificate_retains_both_records_as_conflict",
+    "test_synthetic_same_run_unknown_certificate_linkage_is_unresolved_and_preserved",
+    "test_synthetic_source_reread_drift_cannot_be_promoted_to_terminal_currentness",
+    "test_synthetic_each_staged_input_and_selected_package_must_survive_join_reread[ENGINE3_VERIFICATION_REQUEST.json]",
+    "test_synthetic_each_staged_input_and_selected_package_must_survive_join_reread[VERIFICATION_STATEMENT.lean]",
+    "test_synthetic_each_staged_input_and_selected_package_must_survive_join_reread[VERIFICATION_CANDIDATE.lean]",
+    "test_synthetic_each_staged_input_and_selected_package_must_survive_join_reread[SEALED_RUN_MANIFEST.json]",
+    "test_synthetic_each_staged_input_and_selected_package_must_survive_join_reread[SEALED_CLAIM_INVENTORY.json]",
+    "test_synthetic_each_staged_input_and_selected_package_must_survive_join_reread[SEALED_paper.tex]",
+    "test_synthetic_each_staged_input_and_selected_package_must_survive_join_reread[selected_package]",
+    "test_synthetic_source_read_uncertainty_is_preserved_as_unresolved",
+    "test_synthetic_terminal_detail_does_not_hide_generation_or_mirror_debt[generated]",
+    "test_synthetic_terminal_detail_does_not_hide_generation_or_mirror_debt[mirrored]",
+    "test_real_fixed_c131_missing_or_corrupt_receipt_returns_none_and_reporter_holds[missing]",
+    "test_real_fixed_c131_missing_or_corrupt_receipt_returns_none_and_reporter_holds[malformed]",
+    "test_real_fixed_c131_missing_or_corrupt_receipt_returns_none_and_reporter_holds[different_bytes]",
+    "test_real_helper_own_source_drift_is_unresolved_without_importing_drifted_bytes",
+    "test_real_c131_checker_source_pin_negative_without_private_positive_authentication[premise_declaration.py]",
+    "test_real_c131_checker_source_pin_negative_without_private_positive_authentication[inv9_title_basis.py]",
+    "test_real_c131_checker_source_pin_negative_without_private_positive_authentication[engine3_align_challenge.py]",
+    "test_untrusted_other_run_remains_not_applicable_and_ordinary_ready",
+    "test_synthetic_seven_run_report_retains_ids_and_held_row_without_readiness_upgrade"
+  ],
+  "installed": false,
+  "new_cases": 28,
+  "production_admitted": false,
+  "qualification": "Synthetic reporter-positive logic and unchanged-helper negatives only. No fixed0c03 positive authentication, proof evaluation, source admission, runtime/install/refresh/publication or held-line authority.",
+  "reporter": {
+    "after_bytes": 37124,
+    "after_header": "+++ after/nightly_proof_track_terminal_report.py\n",
+    "after_sha256": "98e1971ed91573898cb8968aa78993fb1093554eb3e74bbf962291d584fc5a6f",
+    "base_sha256": "b63c3866db0e3538f6462ca32f0bbf916a6e80081d1bdf74514b1fa6c7dc2b06",
+    "baseline_filename": "weekly-terminal-baseline.py.data",
+    "baseline_origin": {
+      "blob_oid": "a1128de3b2ebe5dc0666dfb735760bc47bced584",
+      "bytes": 21834,
+      "commit": "ce8e4c97bad2e12ff6f87e4b53280cccbfe9455e",
+      "path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/nightly_proof_track.py",
+      "sha256": "b63c3866db0e3538f6462ca32f0bbf916a6e80081d1bdf74514b1fa6c7dc2b06"
+    },
+    "baseline_origin_filename": "weekly-terminal-baseline-origin.json",
+    "before_header": "--- before/nightly_proof_track.py\n",
+    "fixture_path": "RESEARCH_PIPELINE_v2/nightly_proof_track_terminal_report.py",
+    "full_source_public_path": "tools/weekly_terminal_reporter/nightly_proof_track.py",
+    "patch_public_path": "tools/weekly_terminal_reporter/reporter.patch",
+    "patch_sha256": "c1163e0f0257dfdc3703cd3c78b6352779efaac8c84d8293d63614a888d8cc00"
+  },
+  "retained_cases": 16,
+  "seam": {
+    "content": "\"\"\"TEST ONLY: bounded scratch root; no production path or adoption authority.\"\"\"\nfrom pathlib import Path\n\nTEST_FIXTURE_ONLY = True\nCONTROL_ROOT = Path(__file__).resolve().parent.parent\nFORGE_STATE = CONTROL_ROOT / \"RESEARCH_PIPELINE_v2/aristotle_forge_state.json\"\n",
+    "fixture_path": "RESEARCH_PIPELINE_v2/viridis_paths.py",
+    "sha256": "3dd991f8c17073430f04b4b37f0f04d9b1ac8c3857cce553b88203716977faaa"
+  },
+  "standard": "VRS-WEEKLY-TERMINAL-REPORTER-PUBLIC-CI-1",
+  "support": [
+    {
+      "bytes": 8585,
+      "fixture_path": "RESEARCH_PIPELINE_v2/terminal_report_public_sources/RESEARCH_PIPELINE_v2/verification_coverage_gates/terminal_certification/terminal_hold.py",
+      "public_path": "00_lab_infrastructure/gates/terminal_certification/terminal_hold.py",
+      "sha256": "c131bc30020abea90b646023e6c9c1b8974ee15e1c9024b11fd6a1a48379a5f3"
+    },
+    {
+      "bytes": 17794,
+      "fixture_path": "RESEARCH_PIPELINE_v2/terminal_report_public_sources/RESEARCH_PIPELINE_v2/verification_coverage_gates/premise_declaration.py",
+      "public_path": "00_lab_infrastructure/gates/premise_declaration.py",
+      "sha256": "e00404ad578efa7dcd9299a5d947be594f36c15e53fd44479d22d578caab5137"
+    },
+    {
+      "bytes": 3241,
+      "fixture_path": "RESEARCH_PIPELINE_v2/terminal_report_public_sources/RESEARCH_PIPELINE_v2/verification_coverage_gates/inv9_title_basis.py",
+      "public_path": "00_lab_infrastructure/gates/inv9_title_basis.py",
+      "sha256": "5c9981fe2536a6cde3c8a1d2e7cdc9684c1369aeb145be4fda635c8af8dfec81"
+    },
+    {
+      "bytes": 8440,
+      "fixture_path": "RESEARCH_PIPELINE_v2/terminal_report_public_sources/RESEARCH_PIPELINE_v2/engine3_align_challenge.py",
+      "public_path": "comparator-deploy/engine3_align_challenge.py",
+      "sha256": "d8d06e582d80bddae73dbb68a23a866ed8cac241f5c9780c3bc779a50fcd4870"
+    }
+  ],
+  "test": {
+    "bytes": 34851,
+    "fixture_path": "RESEARCH_PIPELINE_v2/test_nightly_proof_track_terminal_report.py",
+    "public_path": "tools/weekly_terminal_reporter/test_nightly_proof_track_terminal_report.py",
+    "retained_prefix_bytes": 15884,
+    "retained_prefix_sha256": "881d1e0ac947115b65a6b44064d3f5557586242073dbc04dbca0fdf15247c6df",
+    "sha256": "4de30f3fe3424d822e6d85eb7fe22664b92185267c6282b2138d576735686017"
+  }
+}

@@ -478,6 +478,7 @@ def worker(args) -> int:
     return pytest.main(["-c", os.devnull, "--rootdir=" + str(fixture),
                         "--confcutdir=" + str(fixture), "-p", "no:cacheprovider",
                         "--basetemp=" + str(output / "pytest-fixtures"),
+                        "--log-file=" + str(output / "pytest.log"),
                         "--junitxml=" + str(output / "tests.xml"), "-vv", "-rA", str(target)])
 
 

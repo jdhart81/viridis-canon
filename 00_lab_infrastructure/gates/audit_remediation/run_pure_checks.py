@@ -476,7 +476,7 @@ def worker(args) -> int:
     else:
         raise ValueError("unknown pure test scope")
     return pytest.main(["-c", os.devnull, "--rootdir=" + str(fixture),
-                        "--confcutdir=" + str(fixture), "-p", "no:cacheprovider",
+                        "--confcutdir=" + str(HERE if args.scope == "fixture" else fixture), "-p", "no:cacheprovider",
                         "--basetemp=" + str(output / "pytest-fixtures"),
                         "--log-file=" + str(output / "pytest.log"),
                         "--junitxml=" + str(output / "tests.xml"), "-vv", "-rA", str(target)])

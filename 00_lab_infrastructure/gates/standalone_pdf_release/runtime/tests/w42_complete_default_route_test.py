@@ -8,7 +8,9 @@ from pathlib import Path
 import json
 import sys
 import tempfile
+import types
 import unittest
+from unittest.mock import patch,MagicMock
 
 HERE=Path(__file__).resolve().parent
 sys.path.insert(0,str(HERE));sys.path.insert(0,str(HERE.parent))
@@ -27,6 +29,7 @@ class CompleteDefaultRouteTests(unittest.TestCase):
         cls.full=FullSessionFixture(Path(cls.temp.name).resolve())
         cls.f=cls.full.science_fixture
         cls.completed=[]
+        cls.rejected_ambient_counterfeit_attempts=0
         cls.canonical_runtime=None
         cls.context=cls.full.context();cls.context.__enter__()
         cls.addClassCleanup(cls.context.__exit__,None,None,None)
@@ -38,6 +41,12 @@ class CompleteDefaultRouteTests(unittest.TestCase):
         assert proof['all_function_class_asts_equal']and proof['all_non_data_control_flow_equal']
         assert proof['core_open_attempts']==[]and proof['mocked_validate_or_current_closure']is False
         assert proof['context_mints']==0 and proof['module_aliases']==0
+        adapters=proof['portable_access_prerequisite']
+        assert adapters, 'exact canonical portable prerequisite was never applied'
+        assert all(r['TEST_ONLY_native_platform_prerequisite_override']is True
+            and r['Mac_native_qualification']is False
+            and r['scientific_validator_or_source_session_override']is False
+            and r['actual_native_helpers_code_equal_original_source']is True for r in adapters)
         stats=proof['compiler_cache']
         assert stats['cache_hits']>0 and stats['actual_exec_calls']>=stats['cache_hits']
         assert stats['cache_entries']<=stats['max_cache_entries']
@@ -46,8 +55,9 @@ class CompleteDefaultRouteTests(unittest.TestCase):
             k:proof[k]for k in ('legacy_source_pins','current_modules','shared_helpers',
                 'loader_executions','all_function_class_asts_equal',
                 'all_non_data_control_flow_equal','core_open_attempts',
-                'mocked_validate_or_current_closure','context_mints','module_aliases','compiler_cache')
-        }|{'completed_actual_facade_operations':cls.completed},sort_keys=True),flush=True)
+                'mocked_validate_or_current_closure','context_mints','module_aliases','compiler_cache','portable_access_prerequisite')
+        }|{'completed_actual_facade_operations':list(dict.fromkeys(cls.completed)),'actual_facade_call_trace':cls.completed,
+           'deliberate_rejected_ambient_counterfeit_injections':cls.rejected_ambient_counterfeit_attempts},sort_keys=True),flush=True)
 
     def invoke(self,entrypoint,*args,**kwargs):
         if 'render' in kwargs:
@@ -103,7 +113,10 @@ class CompleteDefaultRouteTests(unittest.TestCase):
     def test_complete_normal_default_source_review_access_digest_and_pdf_readbacks(self):
         base=self.prepare_base()
         out=self.full.root/'RESEARCH_PIPELINE_v2/science_release_queue/manuscript_access'/self.f.run
-        current=self.invoke('prepare_access',base,out,self.f.authority,render=self.f.render)
+        staged_access=self.invoke('prepare_access',base,out,self.f.authority)
+        self.assertEqual(staged_access['status'],'LABELLED_ARTIFACT_STAGED_REVIEW_REQUIRED')
+        self.assertFalse((out/'PUBLICATION_BINDING.json').exists())
+        current=self.invoke('review_checkpoint',out,self.f.authority,review_invocation='TEST_ONLY_SEPARATE_LABELLED_ARTIFACT_REVIEW')
         self.assertTrue(current['exact_publication_binding'])
         self.assertFalse(current['publication_authorized'])
         discovery=self.f.account_discovery()
@@ -114,13 +127,15 @@ class CompleteDefaultRouteTests(unittest.TestCase):
         package=self.full.root/'RESEARCH_PIPELINE_v2/science_release_queue/digests/complete-W42'
         staged=self.invoke('stage_weekly_package',package,'2026-W42',[out],
             self.f.authority,self.f.before_metadata,'2026-10-16',
-            account_discovery=discovery,render=lambda p:self.f.render(p,root=self.full.root))
+            account_discovery=discovery)
         self.assertEqual(staged['status'],'ACTUAL_DEFAULT_NOTE_COHORT_AND_METHODS_PACKAGE_STAGED_NOT_PUBLISHED')
         self.assertTrue(staged['full_pdf_review_and_publication_authority_still_required'])
         manifest=json.loads((package/'DIGEST_MANIFEST.json').read_bytes())
+        self.assertEqual(manifest['notes'][0]['scientific_predecessor'],current['scientific_predecessor'])
+        self.assertEqual(current['scientific_predecessor']['path'],str(base))
         names={u['filename']for u in manifest['uploads']}
         self.assertEqual(names,{'paper.tex','paper.pdf','metadata.json','METHODS_NOTES.zip',
-            'Run-191-Paper.pdf','Run-191-Historical-Paper.pdf'})
+            'Run-191-Paper.pdf','Run-191-Historical-Paper-UNCERTIFIED.pdf'})
         uploads=[package/u['filename']for u in manifest['uploads']]+[package/'DIGEST_MANIFEST.json']
         preflight=gate.require_local(package,uploads)
         self.assertEqual(preflight['status'],'SEPARATE_MANUSCRIPT_PDF_PREFLIGHT_PASS')
@@ -132,7 +147,7 @@ class CompleteDefaultRouteTests(unittest.TestCase):
         public=gate.require_public({'id':123,'files':files},preflight,download=download)
         self.assertEqual(public['status'],'SEPARATE_MANUSCRIPT_PDF_PUBLIC_READBACK_PASS')
         self.assertEqual(set(calls),{p.name for p in uploads})
-        historical=package/'Run-191-Historical-Paper.pdf'
+        historical=package/'Run-191-Historical-Paper-UNCERTIFIED.pdf'
         original=historical.read_bytes()
         try:
             historical.write_bytes(pdf('DIFFERENT SIMULATED PUBLIC PDF'))
@@ -140,7 +155,7 @@ class CompleteDefaultRouteTests(unittest.TestCase):
                 gate.require_public({'id':123,'files':files},preflight,download=download)
         finally:historical.write_bytes(original)
         self.assertEqual(self.completed,['source_for_cycle','stage_checkpoint','review_checkpoint',
-            'prepare_access','new_note_specs','stage_weekly_package'])
+            'prepare_access','review_checkpoint','new_note_specs','stage_weekly_package'])
         self.assert_revoked()
 
     def test_real_facade_exception_revokes_all_session_capabilities(self):
@@ -176,6 +191,24 @@ class CompleteDefaultRouteTests(unittest.TestCase):
                 self.full.runtime.require_source_session(self.full.root,alternate)
             with self.assertRaises(ValueError):
                 self.full.runtime.require_source_session(foreign,self.full.binding)
+        self.assert_revoked()
+
+    def test_counterfeit_ambient_access_cannot_clear_wrapper_provenance(self):
+        package=self.full.root/'counterfeit-wrapper';package.mkdir()
+        (package/'paper.tex').write_bytes(b'TEST ONLY no real wrapper provenance')
+        (package/'paper.pdf').write_bytes(pdf('TEST ONLY forged wrapper'))
+        counterfeit=types.ModuleType('nightly_manuscript_access')
+        counterfeit.frozen_sources=MagicMock()
+        counterfeit.require_render_logs=MagicMock()
+        with self.full.runtime.session(self.full.root,self.full.binding):
+            import methods_digest_v2 as current_digest
+            type(self).canonical_runtime=sys.modules['packaging_runtime']
+            with patch.dict(sys.modules,{'nightly_manuscript_access':counterfeit}):
+                with self.assertRaises((ValueError,OSError)):
+                    current_digest.require_wrapper_render(package,self.full.root)
+            counterfeit.frozen_sources.assert_not_called()
+            counterfeit.require_render_logs.assert_not_called()
+            type(self).rejected_ambient_counterfeit_attempts+=1
         self.assert_revoked()
 
 

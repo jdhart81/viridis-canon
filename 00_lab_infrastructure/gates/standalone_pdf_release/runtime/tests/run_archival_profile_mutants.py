@@ -6,6 +6,7 @@ A kill requires an intended unittest assertion failure with zero ERRORs.
 """
 from __future__ import annotations
 import argparse
+import ast
 import hashlib
 import json
 import os
@@ -71,6 +72,30 @@ MUTANTS = (
 def digest(raw): return hashlib.sha256(raw).hexdigest()
 
 
+def exact_function_mutation(source, function_name, old, replacement):
+    """One top-level function/span and one guard; preserve every other byte.
+
+    Function selection is semantic. The old token also occurring in another
+    validator is expected and never chooses or mutates that other function.
+    """
+    if type(source)is not str or type(function_name)is not str:
+        raise ValueError('CLOSED_MUTATION_SOURCE_AND_FUNCTION')
+    tree=ast.parse(source)
+    matches=[n for n in tree.body if isinstance(n,ast.FunctionDef)and n.name==function_name]
+    if len(matches)!=1:raise ValueError('MUTATION_FUNCTION_NOT_UNIQUE:'+function_name)
+    node=matches[0];lines=source.splitlines(keepends=True)
+    start=sum(map(len,lines[:node.lineno-1]));end=sum(map(len,lines[:node.end_lineno]))
+    body=source[start:end]
+    if body.count(old)!=1:raise ValueError('MUTATION_FUNCTION_ANCHOR_NOT_UNIQUE:'+function_name)
+    changed=body.replace(old,replacement)
+    result=source[:start]+changed+source[end:]
+    updated=ast.parse(result)
+    others=lambda t:[ast.dump(n,include_attributes=False)for n in t.body
+        if not(isinstance(n,ast.FunctionDef)and n.name==function_name)]
+    if others(tree)!=others(updated):raise ValueError('MUTATION_OUTSIDE_SELECTED_FUNCTION')
+    return result
+
+
 def run(runtime, output, interpreter):
     output.mkdir(exist_ok=False, parents=True)
     captured = {name:(runtime/name).read_bytes() for name in SOURCE_FILES}
@@ -115,8 +140,13 @@ def run(runtime, output, interpreter):
         for name, file, old, replacement, test in MUTANTS:
             baseline = execute(name+'.baseline',test)
             original = captured[file].decode()
-            if original.count(old)!=1: raise ValueError('MUTATION_ANCHOR_NOT_UNIQUE:'+name)
-            mutated = original.replace(old,replacement)
+            scoped={'profile_accepts_wrong_note_preparation':'_validate_legacy',
+                    'source_session_capability_not_revoked':'_session_legacy'}
+            if name in scoped:
+                mutated=exact_function_mutation(original,scoped[name],old,replacement)
+            else:
+                if original.count(old)!=1: raise ValueError('MUTATION_ANCHOR_NOT_UNIQUE:'+name)
+                mutated = original.replace(old,replacement)
             (copied/file).write_text(mutated)
             try: mutant = execute(name+'.mutant',test)
             finally: (copied/file).write_bytes(captured[file])

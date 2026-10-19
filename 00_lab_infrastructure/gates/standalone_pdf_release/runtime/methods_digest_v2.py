@@ -17,7 +17,10 @@ import zipfile
 from zoneinfo import ZoneInfo
 
 STANDARD='VRS-METHODS-DIGEST-2'
+LABELLED_STANDARD='VRS-METHODS-DIGEST-UNCERTIFIED-ARTIFACT-ENVELOPE-1'
 BINDING_STANDARD='VRS-METHODS-DIGEST-PUBLICATION-BINDING-2'
+ARTIFACT_LABEL='UNCERTIFIED — no issuer-produced Viridis Comparator certificate binds the exact bytes of this derived manuscript. Attached certificates cover only their exact sealed predecessors and quoted formal statements under their stated hypotheses. They do not certify this new PDF, its prose, the historical manuscript, or empirical claims. Results remain conditional on the stated model assumptions.'
+LABELLED_ACCESS_STANDARD='VRS-NIGHTLY-UNCERTIFIED-ARTIFACT-ENVELOPE-1'
 DISCLAIMER='logical validity given the model, not empirical validation of its assumptions'
 FIRST_EIGHT=('Run-125','Run-126','Run-128','Run-129','Run-130','Run-131','Run-134','Run-141')
 SOURCE_FIELDS=('creators','license','access_right','communities','language','resource_type','upload_type','publication_type')
@@ -113,6 +116,8 @@ def _current_access(root):
 def current_note_consumer(note_path,root,authority_binding):
     """Default authority seam; no caller's cached PASS substitutes for it."""
     manifest=json.loads(read_regular(Path(note_path)/'SCOPED_RELEASE_MANIFEST.json'))
+    if manifest.get('standard')==LABELLED_ACCESS_STANDARD:
+        return _current_access(root).require_labelled(Path(note_path),Path(root),authority_binding)
     if manifest.get('standard')=='VRS-NIGHTLY-ARCHIVAL-MANUSCRIPT-ACCESS-1':
         return _current_access(root).require_current(Path(note_path),Path(root),authority_binding)
     try:policy=importlib.import_module('phase7_audit_policy')
@@ -189,7 +194,7 @@ def consume_notes(root,note_specs,authority_binding,*,consume=current_note_consu
         if not isinstance(metadata,dict)or not isinstance(metadata_binding,dict)or metadata_binding not in uploads:raise DigestHold('unreviewed note metadata')
         raw=json.loads(read_regular(p/metadata_binding['filename']));raw=raw.get('metadata',raw)
         if raw!=metadata:raise DigestHold('note public metadata differs from reviewed bytes')
-        notes.append({'run_id':rid,'path':str(p.resolve()),'certificate':certificate,'candidate':current['candidate'],'formal_statement':current['formal_statement'],'foundation_basis':current['foundation_basis'],'statement_scope':claims,'claim_table':table,'section':'MAIN_NOTES'if any(c['headline_eligible']for c in table)else'DEFINITIONAL_OR_NONVACUITY_PENDING_APPENDIX','metadata_binding':metadata_binding,'policy_receipt':policy,'publication_binding':binding(p/'PUBLICATION_BINDING.json'),'uploads':uploads,'prior_dois':current.get('prior_dois',[]),**({'manuscripts':access_manuscripts(current,declared,rid)}if current.get('access_standard')=='VRS-NIGHTLY-ARCHIVAL-MANUSCRIPT-ACCESS-1'else{})})
+        notes.append({'run_id':rid,'path':str(p.resolve()),'certificate':certificate,'candidate':current['candidate'],'formal_statement':current['formal_statement'],'foundation_basis':current['foundation_basis'],'statement_scope':claims,'claim_table':table,'section':'MAIN_NOTES'if any(c['headline_eligible']for c in table)else'DEFINITIONAL_OR_NONVACUITY_PENDING_APPENDIX','metadata_binding':metadata_binding,'policy_receipt':policy,'publication_binding':binding(p/'PUBLICATION_BINDING.json'),'uploads':uploads,'prior_dois':current.get('prior_dois',[]),**({'manuscripts':access_manuscripts(current,declared,rid),**({'access_standard':current['access_standard'],'artifact_label':current['artifact_label'],'scientific_predecessor':current['scientific_predecessor']}if current['access_standard']==LABELLED_ACCESS_STANDARD else{})}if current.get('access_standard')in{'VRS-NIGHTLY-ARCHIVAL-MANUSCRIPT-ACCESS-1',LABELLED_ACCESS_STANDARD}else{})})
     for name,h in inputs.items():
         if sha(name)!=h:raise DigestHold('note/authority inputs changed during consumption')
     return {'notes':sorted(notes,key=lambda n:n['run_id']),'members':members,'input_bindings':inputs,'authority':authority_binding}
@@ -203,13 +208,18 @@ def access_manuscripts(current, declared, run):
          'archive_member':'SCOPE_EVIDENCE.zip!/historical/ORIGINAL_paper.pdf',
          'sha256':declared.get(run+'-Historical-Paper.pdf',{}).get('sha256'),
          'certification':'ENTIRELY_UNCERTIFIED'}]
+    if current.get('access_standard')==LABELLED_ACCESS_STANDARD:
+        expected[0].update(role='UNCERTIFIED_DERIVED_SCOPED_MANUSCRIPT',certification='ENTIRELY_UNCERTIFIED_ARTIFACT')
+        expected[1].update(filename=run+'-Historical-Paper-UNCERTIFIED.pdf',sha256=declared.get(run+'-Historical-Paper-UNCERTIFIED.pdf',{}).get('sha256'))
+        if current.get('artifact_label')!=ARTIFACT_LABEL:raise DigestHold('exact approved artifact label required')
     if roles!=expected or expected[1]['sha256']is None:raise DigestHold('closed actual manuscript roles required')
     return roles
 
 def manuscript_copies(note):
     copies=[(note['run_id']+'-Paper.pdf','paper.pdf')]
     if 'manuscripts'in note:
-        copies.append((note['run_id']+'-Historical-Paper.pdf',note['run_id']+'-Historical-Paper.pdf'))
+        name=note['manuscripts'][1]['filename']
+        copies.append((name,name))
     return copies
 
 def week_title(week):
@@ -223,15 +233,17 @@ def metadata_proposal(source,week,notes,publication_date,*,existing_title=None):
     title=week_title(week)
     if existing_title is not None and existing_title!=title:raise DigestHold('existing weekly title differs from discovered exact week title')
     meta={k:source[k]for k in SOURCE_FIELDS if k in source}
+    labelled=any(n.get('access_standard')==LABELLED_ACCESS_STANDARD for n in notes)
     sections=[]
     for section in ('MAIN_NOTES','DEFINITIONAL_OR_NONVACUITY_PENDING_APPENDIX'):
         rows=[]
         for note in notes:
             if note['section']!=section:continue
             claims='; '.join(html.escape(c['lean_theorem']+' ['+TIER_PRINT.get(c['semantic_tier'],c['semantic_tier'])+'; '+c['nonvacuity_label']+']',quote=False)for c in note['claim_table'])
-            rows.append('<li>'+note['run_id']+' — foundation basis '+note['foundation_basis']+': '+claims+'</li>')
+            filenames=('<br>'+'; '.join(html.escape(name,quote=False)+' — '+html.escape(ARTIFACT_LABEL,quote=False) for name,_ in manuscript_copies(note)))if labelled else''
+            rows.append('<li>'+note['run_id']+' — foundation basis '+note['foundation_basis']+': '+claims+filenames+'</li>')
         if rows:sections.append('<h2>'+('Reviewed scoped notes'if section=='MAIN_NOTES'else'Definitional / nonvacuity-pending appendix')+'</h2><ul>'+''.join(rows)+'</ul>')
-    description='<p><strong>'+html.escape(title,quote=False)+'</strong></p><p>'+DISCLAIMER+'</p>'+''.join(sections)+'<p>Every archived historical claim outside the listed exact note scopes is UNCERTIFIED. This digest creates no aggregate theorem or empirical validation. Appendix results do not count toward certified-result headlines.</p>'
+    description=('<p>'+html.escape(ARTIFACT_LABEL,quote=False)+'</p>'if labelled else'')+'<p><strong>'+html.escape(title,quote=False)+'</strong></p><p>'+DISCLAIMER+'</p>'+''.join(sections)+'<p>Every archived historical claim outside the listed exact note scopes is UNCERTIFIED. This digest creates no aggregate theorem or empirical validation. Appendix results do not count toward certified-result headlines.</p>'
     meta.update(title=title,description=description,publication_date=publication_date,keywords=['Viridis Methods Digest',week,'scoped mathematical results'])
     dois=sorted({doi for n in notes for doi in n['prior_dois']})
     if any(re.fullmatch('10[.]5281/zenodo[.][1-9][0-9]*',str(d))is None for d in dois):raise DigestHold('foreign/malformed prior DOI')
@@ -242,7 +254,14 @@ def wrapper_tex(week,notes):
     def escape(value):
         text=''.join(c if ord(c)<128 else '[U+%04X]'%ord(c)for c in str(value))
         return ''.join({'\\':r'\textbackslash{}','{':r'\{','}':r'\}','_':r'\_','%':r'\%','&':r'\&','#':r'\#','$':r'\$','^':r'\textasciicircum{}','~':r'\textasciitilde{}'}.get(c,c)for c in text)
-    lines=[r'\documentclass[11pt]{article}',r'\usepackage[margin=1in]{geometry}',r'\usepackage[T1]{fontenc}',r'\begin{document}',r'\section*{'+escape(week_title(week))+'}',escape(DISCLAIMER)+'.',r'\par Each note retains its own unchanged Comparator certificate, exact scope and publication binding. Historical remainders are UNCERTIFIED. No aggregate theorem is claimed.']
+    labelled=any(n.get('access_standard')==LABELLED_ACCESS_STANDARD for n in notes)
+    lines=[r'\documentclass[11pt]{article}',r'\usepackage[margin=1in]{geometry}']
+    # The pinned XeTeX cache already supplies its native Unicode fonts. Keep
+    # historical T1 bytes only for archival readers; the new banner needs U+2014.
+    if not labelled:lines.append(r'\usepackage[T1]{fontenc}')
+    lines.extend([r'\begin{document}',r'\section*{'+escape(week_title(week))+'}'])
+    if labelled:lines.append(r'\noindent\textbf{'+ARTIFACT_LABEL+'}')
+    lines.extend([escape(DISCLAIMER)+'.',r'\par Each note retains its own unchanged Comparator certificate, exact scope and publication binding. Historical remainders are UNCERTIFIED. No aggregate theorem is claimed.'])
     for section in ('MAIN_NOTES','DEFINITIONAL_OR_NONVACUITY_PENDING_APPENDIX'):
         lines.append(r'\section*{'+('Reviewed scoped notes'if section=='MAIN_NOTES'else'Definitional / nonvacuity-pending appendix')+'}')
         for note in notes:
@@ -261,19 +280,49 @@ def _output(root,out):
     if out.exists():raise DigestHold('immutable digest attempt already exists')
     return out
 
+
+
+def require_wrapper_render(package,root):
+    """Same unchanged pinned renderer/cache observer; no caller PASS seam."""
+    package=Path(package)
+    tex=read_regular(package/'paper.tex');pdf=read_regular(package/'paper.pdf')
+    seen={str((package/'paper.tex').resolve()):digest(tex)}
+    current_access=_current_access(root)
+    current_access.require_render_logs(package,seen)
+    with current_access.frozen_sources(root)as load:
+        load('phase7_audit_policy').require_pdf_provenance(package,root,tex,pdf,seen)
+    return seen
+
+def require_labelled_cohort(week,notes):
+    # The explicit new wording authority is scoped to W42. Later policy is not
+    # inferred from a rendering capability or an old scientific certificate.
+    if week!='2026-W42':raise DigestHold('artifact wording authority is scoped to 2026-W42')
+    if not notes or any(n.get('access_standard')!=LABELLED_ACCESS_STANDARD or n.get('artifact_label')!=ARTIFACT_LABEL for n in notes):
+        raise DigestHold('every current manuscript requires the fresh labelled artifact format')
+
+def require_new_publication(manifest):
+    """Historical readers stay available; new writes use the approved format."""
+    if manifest.get('standard')!=LABELLED_STANDARD:raise DigestHold('new publication requires the labelled artifact envelope')
+    require_labelled_cohort(manifest['release_week'],manifest['notes'])
+
 def prepare(root,out,week,note_specs,authority_binding,source_metadata_binding,publication_date,*,consume=current_note_consumer,consume_authority=current_authority_consumer,render=None,existing_title=None):
     """Freeze a new aggregate proposal; no automatic review or publication."""
     root=Path(root).resolve(strict=True);out=_output(root,out)
     consumed=consume_notes(root,note_specs,authority_binding,consume=consume,consume_authority=consume_authority)
     source_path,source_bytes=bound_file(root,source_metadata_binding);source=json.loads(source_bytes);source=source.get('metadata',source)
+    labelled=any(n.get('access_standard')==LABELLED_ACCESS_STANDARD for n in consumed['notes'])
+    # Explicit legacy render callers can still assemble historical-format test
+    # or archival packages. Neither the default entry nor prewrite publishes them.
+    if labelled or render is None:require_labelled_cohort(week,consumed['notes'])
     metadata=metadata_proposal(source,week,consumed['notes'],publication_date,existing_title=existing_title)
     inputs={**consumed['input_bindings'],str(source_path):digest(source_bytes)}
     out.mkdir(parents=True,exist_ok=False)
     immutable(out/'paper.tex',wrapper_tex(week,consumed['notes']));immutable(out/'metadata.json',raw_json(metadata))
-    if render is None:raise DigestHold('PDF rendering adapter required; immutable draft retained')
-    pdf=render(out/'paper.tex')
+    if labelled and render is not None:raise DigestHold('caller-selected current wrapper renderer forbidden')
+    pdf=_current_access(root).native_render(out/'paper.tex',root=root)if labelled else render(out/'paper.tex')
     if not isinstance(pdf,bytes)or not pdf.startswith(b'%PDF-'):raise DigestHold('actual wrapper PDF bytes required')
     immutable(out/'paper.pdf',pdf)
+    if labelled:inputs.update(require_wrapper_render(out,root))
     arc=archive_bytes(consumed['members']);immutable(out/'METHODS_NOTES.zip',arc);inventory=member_inventory(consumed['members']);require_archive(arc,inventory)
     # Standalone copies contain exactly the admitted archived manuscripts.
     note_pdfs=[]
@@ -284,7 +333,7 @@ def prepare(root,out,week,note_specs,authority_binding,source_metadata_binding,p
             if not data.startswith(b'%PDF-'):raise DigestHold('actual note PDF bytes required')
             immutable(out/name,data);note_pdfs.append(name)
     upload_names=('paper.tex','paper.pdf','metadata.json','METHODS_NOTES.zip',*note_pdfs)
-    manifest={'standard':STANDARD,'release_week':week,'status':'ASSEMBLED_NOT_PUBLICATION_BOUND','authority':authority_binding,'source_metadata':source_metadata_binding,'notes':consumed['notes'],'archive_members':inventory,'input_bindings':inputs,'uploads':[{'filename':n,'sha256':sha(out/n),'md5':hashlib.md5(read_regular(out/n)).hexdigest(),'bytes':(out/n).stat().st_size}for n in upload_names],'public_metadata':metadata,'review_pdf_is_publication':False,'certifies':False,'local_lean_execution':False,'zenodo_writes':0}
+    manifest={'standard':LABELLED_STANDARD if labelled else STANDARD,'release_week':week,'status':'ASSEMBLED_NOT_PUBLICATION_BOUND','authority':authority_binding,'source_metadata':source_metadata_binding,'notes':consumed['notes'],'archive_members':inventory,'input_bindings':inputs,'uploads':[{'filename':n,'sha256':sha(out/n),'md5':hashlib.md5(read_regular(out/n)).hexdigest(),'bytes':(out/n).stat().st_size}for n in upload_names],'public_metadata':metadata,'review_pdf_is_publication':False,'certifies':False,'local_lean_execution':False,'zenodo_writes':0}
     for path,h in inputs.items():
         if sha(path)!=h:raise DigestHold('inputs changed during aggregate assembly')
     immutable(out/'DIGEST_MANIFEST.json',raw_json(manifest));return manifest
@@ -292,11 +341,14 @@ def prepare(root,out,week,note_specs,authority_binding,source_metadata_binding,p
 def require_current(package,root,*,consume=current_note_consumer,consume_authority=current_authority_consumer):
     package=Path(package);root=Path(root).resolve(strict=True);manifest=json.loads(read_regular(package/'DIGEST_MANIFEST.json'))
     fields={'standard','release_week','status','authority','source_metadata','notes','archive_members','input_bindings','uploads','public_metadata','review_pdf_is_publication','certifies','local_lean_execution','zenodo_writes'}
-    if set(manifest)!=fields or manifest.get('standard')!=STANDARD or manifest.get('status')!='ASSEMBLED_NOT_PUBLICATION_BOUND' or any(manifest.get(k)is not False for k in ('review_pdf_is_publication','certifies','local_lean_execution')) or manifest.get('zenodo_writes')!=0:raise DigestHold('actual closed digest manifest required')
+    if set(manifest)!=fields or manifest.get('standard')not in {STANDARD,LABELLED_STANDARD} or manifest.get('status')!='ASSEMBLED_NOT_PUBLICATION_BOUND' or any(manifest.get(k)is not False for k in ('review_pdf_is_publication','certifies','local_lean_execution')) or manifest.get('zenodo_writes')!=0:raise DigestHold('actual closed digest manifest required')
     week_title(manifest.get('release_week'))
+    labelled=manifest['standard']==LABELLED_STANDARD
+    if labelled:require_new_publication(manifest)
+    elif any(n.get('access_standard')==LABELLED_ACCESS_STANDARD for n in manifest['notes']):raise DigestHold('labelled notes cannot downgrade the digest format')
     current=consume_notes(root,[{'run_id':n['run_id'],'path':n['path']}for n in manifest['notes']],manifest['authority'],consume=consume,consume_authority=consume_authority)
     source_path,source_bytes=bound_file(root,manifest['source_metadata'])
-    current_inputs={**current['input_bindings'],str(source_path):digest(source_bytes)}
+    current_inputs={**current['input_bindings'],str(source_path):digest(source_bytes),**(require_wrapper_render(package,root)if labelled else{})}
     if current['notes']!=manifest['notes']or current_inputs!=manifest['input_bindings']:raise DigestHold('aggregate current note/authority bindings changed')
     for path,h in manifest['input_bindings'].items():
         if sha(path)!=h:raise DigestHold('aggregate input changed')
@@ -363,7 +415,8 @@ def require_write_budget(events,method,at_utc,*,complete=False):
     return {'status':'WRITE_SLOT_AVAILABLE','date_new_york':str(day),'used':count,'remaining_including_next':10-count}
 
 def prewrite(package,root,method,at_utc,events,*,complete_journal=False,budget_consumer=None,consume=current_note_consumer,consume_authority=current_authority_consumer):
-    require_publication_bound(package,root,consume=consume,consume_authority=consume_authority)
+    manifest,_=require_publication_bound(package,root,consume=consume,consume_authority=consume_authority)
+    require_new_publication(manifest)
     computed=require_write_budget(events,method,at_utc,complete=complete_journal)
     # A caller's complete=True and empty list cannot authorize a production
     # write. The preserving executor must freshly consume its full immutable

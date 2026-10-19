@@ -385,11 +385,12 @@ def reject_import_artifacts(installed):
 def bootstrap_sources(manifest):
     """Only checked current source bytes may precede a runtime import/token."""
     need(type(manifest) is dict and set(manifest) == MANIFEST_FIELDS
-        and manifest['standard'] == 'VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-1', 'CLOSED_SOURCE_MANIFEST')
+        and manifest['standard'] in {'VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-1','VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-2-LINKED109'}, 'CLOSED_SOURCE_MANIFEST')
     root = Path(manifest['canonical_root'])
     need(root == FIXED_CANONICAL_ROOT, 'FIXED_WORKER_CANONICAL_ROOT')
     installed = root / '_ZENODO_DEPOSITS/standalone_pdf_runtime'
     reject_import_artifacts(installed)
+    linked=manifest['standard']=='VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-2-LINKED109'
     modules, metadata = manifest['modules'], manifest['metadata']
     shared=manifest['shared_dependencies']
     need(type(shared)is list and len(shared)==1 and type(shared[0])is dict
@@ -398,7 +399,7 @@ def bootstrap_sources(manifest):
          and Path(shared[0]['path'])==installed/'common'/SHARED_INPUT_NAME,
          'EXACT_SHARED_SOURCE_BOOTSTRAP')
     _strict_source_read(shared[0]['path'],shared[0]['sha256'],shared[0]['identity'])
-    need(type(modules) is list and len(modules) == 20 and type(metadata) is list and len(metadata) == 3,
+    need(type(modules) is list and len(modules) == 20 and type(metadata) is list and len(metadata) == (5 if linked else 3),
         'EXACT20_AND3_SOURCE_BOOTSTRAP')
     names = set()
     for row in modules:
@@ -410,12 +411,13 @@ def bootstrap_sources(manifest):
     need(names == MODULE_NAMES, 'EXACT_CURRENT20_WORKER_MODULES')
     expected = {'profile': 'CURRENT_PACKAGING_PROFILE.json', 'nomination': 'INSTALLATION_NOMINATION.json',
         'plan': 'INSTALL_PLAN.json'}
+    if linked:expected.update(linked109_adoption='LINKED109_ADOPTION.json',linked109_outer_guard='../guard_methods_digest_release.py')
     roles = set()
     profile_value=None
     for row in metadata:
         need(type(row) is dict and set(row) == {'role', 'path', 'sha256', 'identity'}
             and row['role'] in expected and row['role'] not in roles
-            and Path(row['path']) == installed / expected[row['role']], 'FIXED_CURRENT_METADATA')
+            and Path(row['path']) == (root/'_ZENODO_DEPOSITS/guard_methods_digest_release.py' if row['role']=='linked109_outer_guard' else installed/expected[row['role']]), 'FIXED_CURRENT_METADATA')
         roles.add(row['role'])
         raw=_strict_source_read(row['path'], row['sha256'], row['identity'])
         if row['role']=='profile':profile_value=decode_json(raw)
@@ -425,9 +427,15 @@ def bootstrap_sources(manifest):
     expected_shared=[{k:shared[0][k]for k in('name','path','sha256')}|{'git_path':SHARED_INPUT_GIT_PATH}]
     need(type(profile_value)is dict and profile_value.get('shared_dependencies')==expected_shared,
          'NOMINATED_BOOTSTRAP_SHARED_DEPENDENCY')
-    need(profile_value.get('standard') == PROFILE_STANDARD
+    need(profile_value.get('standard') == ('VRS-DIGEST-ARCHIVAL-PDF-LINKED109-PROFILE-1' if linked else PROFILE_STANDARD)
          and profile_value.get('note_preparation') == NOTE_PREPARATION
          and manifest['note_preparation'] == NOTE_PREPARATION, 'NOMINATED_BOOTSTRAP_NOTE_PREPARATION')
+    if linked:
+        adoption=next(row for row in metadata if row['role']=='linked109_adoption')
+        need(profile_value.get('linked109_adoption')=={'path':adoption['path'],'sha256':adoption['sha256']},
+             'LINKED109_BOOTSTRAP_ADOPTION_BINDING')
+        guard=next(row for row in metadata if row['role']=='linked109_outer_guard')
+        need(profile_value['external_guard']['sha256']==guard['sha256'],'LINKED109_BOOTSTRAP_CANONICAL_GUARD')
     reject_import_artifacts(installed)
     return root
 
@@ -436,7 +444,8 @@ def source_proof_valid(proof, manifest):
     need(type(proof) is dict and set(proof) == SOURCE_FIELDS
         and proof['status'] == 'ACTUAL_CURRENT_WORKER_SOURCE_AUTHORITY_AND_IDENTITY_VERIFIED'
         and proof['source_manifest_sha256'] == hashlib.sha256(encode_json(manifest)).hexdigest()
-        and proof['source_modules'] == 20 and proof['metadata_files'] == 3
+        and proof['source_modules'] == 20 and type(proof['metadata_files'])is int
+        and proof['metadata_files'] == (5 if manifest['standard']=='VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-2-LINKED109' else 3)
         and proof['transient_restore_allowed'] is False and proof['scientific_population_admitted'] is False
         and proof['certifies'] is False and proof['note_preparation'] == NOTE_PREPARATION
         and manifest.get('note_preparation') == NOTE_PREPARATION, 'CURRENT_WORKER_SOURCE_PROOF')

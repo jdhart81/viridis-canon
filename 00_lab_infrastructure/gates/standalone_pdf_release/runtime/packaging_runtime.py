@@ -24,6 +24,8 @@ import sys
 import signal
 import time
 import importlib.machinery
+import importlib.abc
+import importlib.util
 import dataclasses
 
 STANDARD = 'VRS-DIGEST-ARCHIVAL-PDF-PACKAGING-PROFILE-1'
@@ -129,8 +131,14 @@ V011_PLAN = {'path':'_ZENODO_DEPOSITS/standalone_pdf_runtime_v011/INSTALL_PLAN.j
 V011_INSTALLATION = {'profile':V011_PROFILE,'nomination':V011_NOMINATION,'plan':V011_PLAN}
 PREDECESSOR_INSTALLATION = {'v001':V001_INSTALLATION,'v002':V002_INSTALLATION,'v003':V003_INSTALLATION,'v004':V004_INSTALLATION,'v005':V005_INSTALLATION,'v006':V006_INSTALLATION,'v007':V007_INSTALLATION,'v008':V008_INSTALLATION,'v009':V009_INSTALLATION,'v010':V010_INSTALLATION,'v011':V011_INSTALLATION}
 PLATFORM_TIMEZONE_OBSERVATION = {'path':'reports/verification-coverage/2026-10-13/standalone-pdf-platform-timezone-v001/PLATFORM_NEW_YORK_TZIF_READBACK.json','sha256':'3bde531e08f840dab3a55ce4f492d660f48597a7e2490e13ffda7e58875ea94e'}
+# Frozen predecessor profiles retain the historical binding above. Only current
+# admission uses this independently observed native2026e environment binding.
+CURRENT_PLATFORM_TIMEZONE_OBSERVATION = {
+    'path': 'reports/verification-coverage/2026-10-17/standalone-pdf-platform-timezone-2026e/PLATFORM_NEW_YORK_TZIF_READBACK.json',
+    'sha256': '5012617020f643e80c4fad18ffdef9bf119d6687efaa53ba47585e8cf1696dc4',
+}
 PLATFORM_TZ_LOGICAL = Path('/usr/share/zoneinfo/America/New_York')
-PLATFORM_TZ_PHYSICAL = Path('/private/var/db/timezone/tz/2026d.1.0/zoneinfo/America/New_York')
+PLATFORM_TZ_PHYSICAL = Path('/private/var/db/timezone/tz/2026e.1.0/zoneinfo/America/New_York')
 PLATFORM_TZ_LINK_PATHS = (Path('/usr/share/zoneinfo'),Path('/var'),Path('/private/var/db/timezone/zoneinfo'))
 DATA_ALIAS_OBSERVATION = {'path':'reports/verification-coverage/2026-10-13/standalone-pdf-path-alias-v001/HISTORICAL_CONTROLPLANE_ALIAS_READBACK.json','sha256':'e65f0cf031a64103fad9d059972394d7a99832fba7863a8c375434d51a1f6ca9'}
 if not os.environ.get("VIRIDIS_CORE_ROOT"):
@@ -1345,7 +1353,7 @@ def platform_timezone_frame(observation):
 
 
 def require_platform_timezone_observation(root,binding):
-    need(same_binding(root,binding,PLATFORM_TIMEZONE_OBSERVATION),'FIXED_NATIVE_PLATFORM_TIMEZONE_OBSERVATION')
+    need(same_binding(root,binding,CURRENT_PLATFORM_TIMEZONE_OBSERVATION),'FIXED_NATIVE_PLATFORM_TIMEZONE_OBSERVATION')
     observation=object_at(root,binding)[2]
     fields={'actual_failed_child_path_limitation','actual_failed_execution','after','before','certifies','created_at_utc',
             'heavy_scientific_executions','independent_platform_path_evidence','logical_selected_path','network_requests',
@@ -1472,6 +1480,8 @@ def require_nomination(root, profile_binding):
     nomination_path = root / NOMINATION_PATH
     need(nomination_path.is_file() and not any(p.is_symlink() for p in (nomination_path,*nomination_path.parents)), 'CANONICAL_INSTALLATION_NOMINATION')
     _,raw,nomination=json_file(root,nomination_path)
+    if nomination.get('standard') == LINKED109_NOMINATION:
+        return linked109_nomination(root,profile_binding,nomination,raw)
     need(set(nomination) == {'standard','status','profile','installer_source','merged_source_commit','root_review_receipt'}
          and nomination['standard'] == 'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-13'
          and nomination['status'] == 'EXACT_SOURCE_AND_DEFAULT_BINDINGS_INSTALLED_RUNTIME_READBACK_PENDING'
@@ -1489,6 +1499,8 @@ def require_installed_plan(root, profile, nomination, proof):
     An unrelated review receipt or merely self-recorded installer hash cannot
     nominate a different module table, registry, authority or merged source.
     """
+    if profile.get('standard') == LINKED109_PROFILE:
+        return linked109_installed_plan(root,profile,nomination,proof)
     plan_path=Path(root)/Path(PROFILE_PATH).parent/'INSTALL_PLAN.json'
     need(plan_path.is_file()and not any(p.is_symlink()for p in(plan_path,*plan_path.parents)), 'ACTUAL_EXCLUSIVE_INSTALL_PLAN')
     _,raw,plan=json_file(root,plan_path)
@@ -1534,6 +1546,10 @@ def require_installed_plan(root, profile, nomination, proof):
 
 @contextlib.contextmanager
 def builder_source_scope(root,profile,pins):
+    if profile.get('standard') == LINKED109_PROFILE:
+        with linked109_source_scope(root,pins):
+            yield
+        return
     builder=load(root,SESSION_CONSUMER,'_exact_packaging_approved_builder')
     with builder.source_session(root,pins):
         yield
@@ -1560,7 +1576,7 @@ def current_import_artifact_guard(directory):
              'CURRENT_IMPORT_ARTIFACT:'+str(candidate))
 
 
-def validate(root, profile_binding, *, purpose_pins=None):
+def _validate_legacy(root, profile_binding, *, purpose_pins=None):
     root = Path(root).resolve(strict=True)
     current_import_artifact_guard(root/Path(PROFILE_PATH).parent)
     nomination = require_nomination(root, profile_binding)
@@ -1703,7 +1719,7 @@ def _source_session_contexts(root, source_pins):
 
 
 @contextlib.contextmanager
-def session(root, profile_binding):
+def _session_legacy(root, profile_binding):
     """Default v5 source scope: fresh byte checks plus pure parse DATA reuse."""
     with json_data_scope(root):
         result = validate(root, profile_binding)
@@ -1802,10 +1818,13 @@ def build_worker_source_manifest(root, profile_binding):
     for row in profile['modules']:
         need(Path(row['path']) == installed / row['name'], 'WORKER_FIXED_INSTALLED_MODULE')
     metadata = []
-    for role, name in (('profile','CURRENT_PACKAGING_PROFILE.json'),
-                       ('nomination','INSTALLATION_NOMINATION.json'),('plan','INSTALL_PLAN.json')):
-        path = installed / name
-        _, raw, _ = json_file(root, path)
+    linked=profile['standard']==LINKED109_PROFILE
+    roles=[('profile','CURRENT_PACKAGING_PROFILE.json'),('nomination','INSTALLATION_NOMINATION.json'),('plan','INSTALL_PLAN.json')]
+    if linked:roles.extend([('linked109_adoption',LINKED109_DATA_NAME),('linked109_outer_guard','../guard_methods_digest_release.py')])
+    for role,name in roles:
+        path = (root/'_ZENODO_DEPOSITS/guard_methods_digest_release.py' if role=='linked109_outer_guard' else installed/name)
+        if role=='linked109_outer_guard':_,raw=read_data_file(root,path)
+        else:_,raw,_=json_file(root,path)
         metadata.append(_worker_source_row(root, {'path':str(path),'sha256':sha(raw)}, role=role))
     modules = [_worker_source_row(root, {k:row[k] for k in ('path','sha256')}, name=row['name'])
                for row in sorted(profile['modules'],key=lambda row:row['name'])]
@@ -1814,7 +1833,7 @@ def build_worker_source_manifest(root, profile_binding):
     normalized_profile = {'path':str(root / PROFILE_PATH),'sha256':metadata[0]['sha256']}
     need(same_binding(root,normalized_profile,profile_binding)
          and same_binding(root,nomination['profile'],normalized_profile), 'WORKER_NOMINATED_CURRENT_PROFILE')
-    result = {'standard':'VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-1','canonical_root':str(root),
+    result = {'standard':('VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-2-LINKED109' if linked else 'VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-1'),'canonical_root':str(root),
               'profile_binding':normalized_profile,'modules':modules,'metadata':metadata,
               'source_origin':profile['source_origin'],'legacy_closure':profile['legacy_closure'],
               'source_review_change_flags':dict(CURRENT_SOURCE_REVIEW_CHANGE_FLAGS),'shared_dependencies':shared,
@@ -1848,18 +1867,19 @@ def refresh_worker_source_manifest_data(root, expected_manifest):
     """
     root = Path(root).resolve(strict=True)
     need(isinstance(expected_manifest,dict) and set(expected_manifest)==WORKER_SOURCE_MANIFEST_FIELDS
-         and expected_manifest['standard']=='VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-1'
+         and expected_manifest['standard'] in {'VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-1','VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-2-LINKED109'}
          and expected_manifest['canonical_root']==str(root)
          and root==SCIENTIFIC_ALIAS_PATH.parent/SCIENTIFIC_ALIAS_READLINK,
          'CLOSED_CURRENT_WORKER_SOURCE_DATA')
     installed = root / Path(PROFILE_PATH).parent
     modules = expected_manifest['modules']; metadata = expected_manifest['metadata']
+    linked=expected_manifest['standard']=='VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-2-LINKED109'
     shared = expected_manifest['shared_dependencies']
     current_import_artifact_guard(installed)
     need(isinstance(modules,list) and len(modules)==20
          and {row.get('name') for row in modules}==MODULE_NAMES
          and len({row.get('path') for row in modules})==20
-         and isinstance(metadata,list) and len(metadata)==3,
+         and isinstance(metadata,list) and len(metadata)==(5 if linked else 3),
          'COMPLETE_CURRENT_WORKER_SOURCE_DATA')
     need(isinstance(shared,list) and len(shared)==1 and isinstance(shared[0],dict)
          and set(shared[0])=={'name','path','sha256','identity'} and shared[0].get('name')==SHARED_INPUT_NAME
@@ -1872,10 +1892,11 @@ def refresh_worker_source_manifest_data(root, expected_manifest):
              and row['path']==str(installed/row['name']), 'FIXED_CURRENT_WORKER_SOURCE_DATA_PATH')
         actual_modules.append(_worker_source_row(root,{k:row[k] for k in ('path','sha256')},name=row['name']))
     actual_metadata=[]
-    for row,(role,name) in zip(metadata,(('profile','CURRENT_PACKAGING_PROFILE.json'),
-                 ('nomination','INSTALLATION_NOMINATION.json'),('plan','INSTALL_PLAN.json'))):
+    roles=[('profile','CURRENT_PACKAGING_PROFILE.json'),('nomination','INSTALLATION_NOMINATION.json'),('plan','INSTALL_PLAN.json')]
+    if linked:roles.extend([('linked109_adoption',LINKED109_DATA_NAME),('linked109_outer_guard','../guard_methods_digest_release.py')])
+    for row,(role,name) in zip(metadata,roles):
         need(set(row)=={'role','path','sha256','identity'} and row['role']==role
-             and row['path']==str(installed/name),'FIXED_CURRENT_WORKER_METADATA_DATA_PATH')
+             and row['path']==str(root/'_ZENODO_DEPOSITS/guard_methods_digest_release.py' if role=='linked109_outer_guard' else installed/name),'FIXED_CURRENT_WORKER_METADATA_DATA_PATH')
         actual_metadata.append(_worker_source_row(root,{k:row[k] for k in ('path','sha256')},role=role))
     actual_shared=[_worker_source_row(root,{k:row[k] for k in ('path','sha256')},name=row['name']) for row in shared]
     need(actual_modules==modules and actual_metadata==metadata and actual_shared==shared,'WORKER_CURRENT_SOURCE_DATA_IDENTITY_CHANGED')
@@ -1885,9 +1906,14 @@ def refresh_worker_source_manifest_data(root, expected_manifest):
          and expected_manifest['source_origin']==profile['source_origin']
          and expected_manifest['legacy_closure']==profile['legacy_closure']
          and expected_manifest['source_review_change_flags']==CURRENT_SOURCE_REVIEW_CHANGE_FLAGS
-         and profile.get('standard')==STANDARD and profile.get('note_preparation')==NOTE_PREPARATION
+         and profile.get('standard')==(LINKED109_PROFILE if linked else STANDARD) and profile.get('note_preparation')==NOTE_PREPARATION
          and expected_manifest['note_preparation']==NOTE_PREPARATION,
          'CURRENT_WORKER_MANIFEST_DATA_PROFILE_RELATION')
+    if linked:
+        need(profile['linked109_adoption']=={'path':metadata[3]['path'],'sha256':metadata[3]['sha256']},
+             'LINKED109_WORKER_MANIFEST_ADOPTION_DATA_BINDING')
+        need(metadata[4]['path']==str(root/'_ZENODO_DEPOSITS/guard_methods_digest_release.py')
+             and metadata[4]['sha256']==profile['external_guard']['sha256'],'LINKED109_WORKER_GUARD_IDENTITY')
     shared_dependency_table(root,profile['shared_dependencies'],installed=True)
     need([{k:r[k] for k in ('name','path','sha256')} for r in shared]
          == [{k:r[k] for k in ('name','path','sha256')} for r in profile['shared_dependencies']],
@@ -1897,3 +1923,628 @@ def refresh_worker_source_manifest_data(root, expected_manifest):
 
 if __name__ == '__main__':
     raise SystemExit('Explicit source-bound default entry required; no automatic installation.')
+
+# Prospective linked109 branch. Original 99/130 history and nomination13 remain
+# immutable. These new functions never turn historical source DATA into a live
+# verdict; the original science population/default/PDF consumers remain callers.
+LINKED109_PROFILE = 'VRS-DIGEST-ARCHIVAL-PDF-LINKED109-PROFILE-1'
+LINKED109_NOMINATION = 'VRS-ROOT-REVIEWED-PDF-RUNTIME-INSTALLATION-NOMINATION-14-LINKED109'
+LINKED109_PLAN = 'VRS-EXACT-DIGEST-ARCHIVAL-PDF-RUNTIME-INSTALL-PLAN-14-LINKED109'
+LINKED109_ADOPTION = 'VRS-CLOSED-109-LINKED-SOURCE-ADOPTION-1'
+LINKED109_DATA_NAME = 'LINKED109_ADOPTION.json'
+LINKED109_INSTALLER_GIT_PATH = '00_lab_infrastructure/gates/standalone_pdf_release/tools/install_packaging_runtime_linked109.py'
+LINKED109_SNAPSHOT_PREFIX = '00_lab_infrastructure/gates/standalone_pdf_release/source_adoption109/after/'
+LINKED109_GIT_PREFIX = '00_lab_infrastructure/gates/terminal_certification/'
+LINKED109_HELPER_PATH = 'RESEARCH_PIPELINE_v2/verification_coverage_gates/terminal_certification/terminal_hold.py'
+LINKED109_HELPER_SHA = 'c131bc30020abea90b646023e6c9c1b8974ee15e1c9024b11fd6a1a48379a5f3'
+LINKED109_PAIRS = (
+ ('autonomous_pipeline_controller.py', 'RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py',
+  '58e9c93920ff27c3d6035038bd77c53a1ff4bb075c991f2e2e02221d36b515f8',
+  '86f1691fec4195fe3f0c499df47a934373d6fb55d616cfc7841479511d97fd22'),
+ ('science_foundry_continuity.py', 'RESEARCH_PIPELINE_v2/science_foundry_continuity.py',
+  '933d224faf1991e8e609e993feb11ec65bcdc32acf166854d8656f0c623e8fcc',
+  '5f42e5907247a08f350bcf9291e0513ba66a8cb99a7ff9d0624a548fdf8d9ad9'))
+LINKED109_PINS = {
+ 'patch':'6f100d618cd80093235625dd7de26d286bb42db46cc178f22a24faa07354f475',
+ 'integration':'b304af0310367dbdac532a44dac86c4e29400402b41d70ab2e42bfe14206d2ec',
+ 'audit':'e99d8fd84d9410f5e6677131aefde74014fd4b151c260c85f77874f61ab103e6',
+ 's4_receipt':'2aa9dc95c5b79e06a343a636573e8fbb465f66f4d379bf65d648b5cbcb7f7d25',
+ 's4_archive':'34abdb07a719e58d35f6a54ac4137aa2cfb0e51a84e44e149dde6434cdf07925'}
+LINKED109_FIELDS = frozenset({'standard','canonical_root','original_scope','original_closure',
+ 'original109_source_origin','patch','integration','audit','s4_receipt','s4_archive'})
+LINKED109_CHECKERS = {
+ 'premise_declaration.py':'e00404ad578efa7dcd9299a5d947be594f36c15e53fd44479d22d578caab5137',
+ 'inv9_title_basis.py':'5c9981fe2536a6cde3c8a1d2e7cdc9684c1369aeb145be4fda635c8af8dfec81',
+ 'engine3_align_challenge.py':'d8d06e582d80bddae73dbb68a23a866ed8cac241f5c9780c3bc779a50fcd4870'}
+
+
+def linked109_json(raw, *, canonical=False):
+    def unique(pairs):
+        value = {}
+        for key, item in pairs:
+            need(key not in value, 'LINKED109_DUPLICATE_JSON_KEY')
+            value[key] = item
+        return value
+    need(type(raw) is bytes and len(raw) <= 4_000_000, 'LINKED109_BOUNDED_JSON')
+    value = json.loads(raw.decode('utf-8'), object_pairs_hook=unique,
+                       parse_constant=lambda _: (_ for _ in ()).throw(PackagingHold('HOLD_LINKED109_NONFINITE_JSON')))
+    need(type(value) is dict, 'LINKED109_OBJECT_JSON')
+    if canonical:
+        need(raw == (json.dumps(value,sort_keys=True,indent=2,ensure_ascii=False,allow_nan=False)+'\n').encode(),
+             'LINKED109_CANONICAL_JSON')
+    return value
+
+
+def linked109_read(root, binding, *, limit=4_000_000):
+    need(type(binding) is dict and set(binding)=={'path','sha256'}
+         and type(binding['path']) is str and type(binding['sha256']) is str
+         and re.fullmatch('[0-9a-f]{64}',binding['sha256']), 'LINKED109_CLOSED_BINDING')
+    root=checked_root(root); path=Path(binding['path'])
+    path=path if path.is_absolute() else root/path
+    need(path.is_relative_to(root) and '..' not in path.parts, 'LINKED109_CONTAINED_DATA')
+    sample=read_stable_input(path,max_bytes=limit)
+    need(sha(sample.data)==binding['sha256'],'LINKED109_INPUT_HASH')
+    read_stable_input(path,expected=sample.identity,max_bytes=limit)
+    return path,sample.data
+
+
+def linked109_apply_patch(before, patch):
+    """Pure exact published patch replay; no fuzzy positions or third file."""
+    need(type(before) is dict and set(before)=={r[0] for r in LINKED109_PAIRS}
+         and sha(patch)==LINKED109_PINS['patch'], 'LINKED109_EXACT_PATCH_AND_PAIRSET')
+    lines=patch.decode('utf-8').splitlines(keepends=True); result={}; i=0
+    for name,relative,old_sha,after_sha in LINKED109_PAIRS:
+        need(sha(before[name])==old_sha,'LINKED109_BEFOREIMAGE:'+name)
+        need(lines[i]=='--- a/'+relative+'\n' and lines[i+1]=='+++ b/'+relative+'\n',
+             'LINKED109_EXACT_PATCH_TARGET'); i+=2
+        original=before[name].decode('utf-8').splitlines(keepends=True); out=[]; cursor=0
+        while i<len(lines) and lines[i].startswith('@@ '):
+            match=re.fullmatch(r'@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@\n',lines[i])
+            need(match is not None,'LINKED109_EXACT_HUNK_HEADER'); i+=1
+            old_at,old_n,new_at,new_n=(int(match[1]),int(match[2] or 1),int(match[3]),int(match[4] or 1))
+            start=old_at if old_n==0 else old_at-1
+            need(cursor<=start<=len(original),'LINKED109_ORDERED_HUNK_POSITION')
+            out.extend(original[cursor:start]); cursor=start
+            need(len(out)==(new_at if new_n==0 else new_at-1),'LINKED109_NEW_HUNK_POSITION')
+            removed=added=0
+            while i<len(lines) and not lines[i].startswith(('@@ ','--- a/')):
+                entry=lines[i];i+=1;need(entry[:1] in {' ','+','-'},'LINKED109_NO_UNKNOWN_PATCH_DIRECTIVE')
+                if entry[:1] in {' ','-'}:
+                    need(cursor<len(original) and original[cursor]==entry[1:],'LINKED109_HUNK_BEFORE_MISMATCH')
+                    cursor+=1;removed+=1
+                if entry[:1] in {' ','+'}:out.append(entry[1:]);added+=1
+            need((removed,added)==(old_n,new_n),'LINKED109_EXACT_HUNK_COUNTS')
+        out.extend(original[cursor:]); raw=''.join(out).encode()
+        need(sha(raw)==after_sha,'LINKED109_DERIVED_AFTERIMAGE:'+name);result[name]=raw
+    need(i==len(lines),'LINKED109_NO_EXTRA_PATCH_DELTA')
+    return result
+
+
+def linked109_tables(root, historical_scope, historical_closure, derived):
+    """Pure closed DATA composition; not import/runtime/scientific admission."""
+    root=Path(root); purpose=historical_scope['purpose_source_pins']; runtime=historical_closure['source_pins']
+    def checked(rows,count):
+        need(type(rows) is list and len(rows)==count
+             and all(type(r) is dict and set(r)=={'name','path','sha256'} for r in rows)
+             and len({r['name'] for r in rows})==count and len({r['path'] for r in rows})==count,
+             'LINKED109_CLOSED_HISTORICAL_TABLE')
+        return {r['name']:dict(r) for r in rows}
+    old=checked(purpose,130); old_runtime=checked(runtime,99)
+    need(all(old.get(n)==row for n,row in old_runtime.items()),'LINKED109_ORIGINAL99_EXACT_SUBSET')
+    need(set(derived)=={p[0] for p in LINKED109_PAIRS},'LINKED109_DERIVED_PAIRSET')
+    for name,relative,before,after in LINKED109_PAIRS:
+        expected={'name':name,'path':str(root/relative),'sha256':before}
+        need(old.get(name)==old_runtime.get(name)==expected and sha(derived[name])==after,
+             'LINKED109_EXACT_OLD_AND_DERIVED_CALLER')
+        old[name]['sha256']=after;old_runtime[name]['sha256']=after
+    helper={'name':'terminal_hold.py','path':str(root/LINKED109_HELPER_PATH),'sha256':LINKED109_HELPER_SHA}
+    need(helper['name'] not in old and helper['path'] not in {r['path']for r in old.values()},'LINKED109_HELPER_ADDITIVE')
+    old[helper['name']]=helper;old_runtime[helper['name']]=helper
+    for name,digest in LINKED109_CHECKERS.items():
+        need(name in old and old[name]['sha256']==digest,'LINKED109_UNCHANGED_CHECKER_DEPENDENCY')
+    return sorted(old.values(),key=lambda r:r['name']),sorted(old_runtime.values(),key=lambda r:r['name'])
+
+
+def linked109_admission(root, binding, adopter_origin, *, installed=True):
+    """Recompute original109 derivation, new raw blobs and all live131/100."""
+    import io,zipfile
+    path,raw=linked109_read(root,binding)
+    expected=Path(root)/(Path(PROFILE_PATH).parent if installed else Path('reports/verification-coverage/linked109-adoption-plan'))/LINKED109_DATA_NAME
+    need(path==expected,'LINKED109_FIXED_ADOPTION_PATH')
+    value=linked109_json(raw,canonical=True)
+    need(set(value)==LINKED109_FIELDS and value['standard']==LINKED109_ADOPTION
+         and value['canonical_root']==str(root) and value['original_scope']==LEGACY_SCOPE
+         and value['original_closure']==LEGACY_CLOSURE,'LINKED109_CLOSED_ADOPTION')
+    captured={str(path):(binding,raw)}
+    materials={}
+    for role,digest in LINKED109_PINS.items():
+        need(value[role]['sha256']==digest,'LINKED109_FIXED_EVIDENCE:'+role)
+        p,b=linked109_read(root,value[role],limit=2_000_000);materials[role]=b;captured[str(p)]=(value[role],b)
+    scope=linked109_json(linked109_read(root,LEGACY_SCOPE)[1])
+    closure=linked109_json(linked109_read(root,LEGACY_CLOSURE)[1])
+    with zipfile.ZipFile(io.BytesIO(materials['s4_archive'])) as archive:
+        entries=archive.infolist(); names=[r.filename for r in entries]
+        need(len(set(names))==len(names) and sum(r.file_size for r in entries)<=1_000_000
+             and all(0<=r.file_size<=300_000 and not r.flag_bits&1 for r in entries),'LINKED109_BOUNDED_ORIGINAL_ARCHIVE')
+        before={n:archive.read('BEFORE_'+n)for n,_,_,_ in LINKED109_PAIRS}
+        derived=linked109_apply_patch(before,materials['patch'])
+        need(all(archive.read('AFTER_'+n)==derived[n]for n in derived)
+             and archive.read('terminal_hold.py')==linked109_read(root,{'path':LINKED109_HELPER_PATH,'sha256':LINKED109_HELPER_SHA})[1]
+             and archive.read('EXISTING_SELECTION.patch')==materials['patch']
+             and archive.read('INTEGRATION_BINDING.json')==materials['integration'], 'LINKED109_S4_RAW_AFTERIMAGES')
+        action=linked109_json(archive.read('ACTUAL_INSTALL_ACTION.json'))
+        need(action['status']=='INSTALLED_EXACT_REVIEWED_COMPONENT_ACTUAL_CLASSIFIER_AND_DISPATCH_PASS'
+             and action['helper_sha256']==LINKED109_HELPER_SHA
+             and action['caller_afterimages']=={r[1]:r[3]for r in LINKED109_PAIRS}
+             and action['actual_Run194_helper_result']['certifies'] is False
+             and action['actual_Run194_helper_result']['clears_certification_debt'] is False,
+             'LINKED109_ACTUAL_S4_ACTION')
+    integration=linked109_json(materials['integration'])
+    need(integration['files']==[{'path':rel,'before_sha256':old,'after_sha256':new,
+          'snapshot':'00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/'+name}
+          for name,rel,old,new in LINKED109_PAIRS]
+         and integration['patch_sha256']==LINKED109_PINS['patch']
+         and integration['terminal_helper_sha256']==LINKED109_HELPER_SHA,'LINKED109_MERGED_INTEGRATION_PAIR_BINDING')
+    receipt=linked109_json(materials['s4_receipt'])
+    need(receipt['merged_commit']=='101a814812325dc817f69e740cb6a4ebbc96b41d'
+         and receipt['audited_head']=='370c7eed0c5c25301f35a8c67c2c53dd8c14da31'
+         and receipt['raw_archive_sha256']==LINKED109_PINS['s4_archive']
+         and receipt['actual_Claude_verdict_sha256']==LINKED109_PINS['audit'], 'LINKED109_GENUINE_FIXED_S4_RECEIPT')
+    # All old original rows still come from their original merged tree. For the
+    # two now-replaced live paths, prove the preserved original snapshot bytes,
+    # not a false direct109/current blob. These immutable bytes remain in DATA.
+    origin=scope['source_origin'];oldrows=origin['source_rows']
+    need(len(oldrows)==130 and all({k:r[k] for k in ('name','path','sha256')} in scope['purpose_source_pins']
+          for r in oldrows),'LINKED109_ORIGINAL130_GIT_ORIGIN_ROWS')
+    linked109_historical_proof(root,{'pull_request':origin['merged_pr'],'merge_commit':origin['merged_commit'],'tree':origin['merged_tree']},oldrows,before)
+    original_rows=[{'name':n,'path':value[role]['path'],'sha256':LINKED109_PINS[role],
+                    'git_path':LINKED109_GIT_PREFIX+n}
+                   for role,n in [('patch','EXISTING_SELECTION.patch'),('integration','INTEGRATION_BINDING.json')]]
+    original_rows.append({'name':'terminal_hold.py','path':LINKED109_HELPER_PATH,'sha256':LINKED109_HELPER_SHA,
+                          'git_path':LINKED109_GIT_PREFIX+'terminal_hold.py'})
+    proof=source_proof(root,value['original109_source_origin'],original_rows)
+    pr=object_at(root,value['original109_source_origin']['pull_request'])[2]
+    need(pr.get('number')==109 and pr.get('headRefOid')=='370c7eed0c5c25301f35a8c67c2c53dd8c14da31'
+         and proof['merge_commit']=='101a814812325dc817f69e740cb6a4ebbc96b41d','LINKED109_EXACT_REVIEWED_SOURCE_HEAD')
+    # Literal installed-bytes=merged-blobs is additionally satisfied by this new
+    # adopter PR's ADDITIVE full afterimage snapshots. They were never raw109
+    # caller blobs. The old130 snapshots stay byteexact and are not rewritten.
+    linked109_live_afterimages(root,derived)
+    snapshots=[]
+    for name,relative,_,digest in LINKED109_PAIRS:
+        snapshots.append({'name':name,'path':relative,'sha256':digest,'git_path':LINKED109_SNAPSHOT_PREFIX+name})
+    source_proof(root,adopter_origin,snapshots)
+    purpose,current=linked109_tables(root,scope,closure,derived)
+    frames=[]
+    for row in purpose:
+        p,b=linked109_read(root,{k:row[k]for k in ('path','sha256')})
+        sample=read_stable_input(p);need(sample.data==b,'LINKED109_CURRENT_FRAME_RACE')
+        read_stable_input(p,expected=sample.identity);frames.append((str(p),sample.identity))
+    for _,(bound,b) in captured.items():
+        p,again=linked109_read(root,bound);need(again==b,'LINKED109_EVIDENCE_RACE')
+        sample=read_stable_input(p);need(sample.data==b,'LINKED109_EVIDENCE_FRAME_RACE')
+        read_stable_input(p,expected=sample.identity);frames.append((str(p),sample.identity))
+    return {'purpose':purpose,'runtime':current,'historical_scope':scope,'historical_closure':closure,
+            'adoption_binding':binding,'adoption_raw':raw,'derived':derived,'frames':frames,
+            'original109_proof':proof,'certifies':False}
+
+
+class Linked109Loader(importlib.abc.Loader):
+    def __init__(self,root,row):self.root=root;self.row=row
+    def create_module(self,spec):return None
+    def exec_module(self,module):
+        path,raw=linked109_read(self.root,{k:self.row[k]for k in ('path','sha256')})
+        module.__file__=str(path);exec(compile(raw,str(path),'exec'),module.__dict__)
+        need(linked109_read(self.root,{k:self.row[k]for k in ('path','sha256')})[1]==raw,'LINKED109_IMPORT_RACE')
+
+
+class Linked109Finder(importlib.abc.MetaPathFinder):
+    def __init__(self,root,pins):
+        self.root=Path(root);self.pins=pins
+        self.byname={r['name'][:-3]:r for r in pins if r['name']!='terminal_hold.py'}
+        self.qualified='verification_coverage_gates.terminal_certification.terminal_hold'
+        self.helper={'name':'terminal_hold.py','path':str(self.root/LINKED109_HELPER_PATH),'sha256':LINKED109_HELPER_SHA}
+        self.packages={'verification_coverage_gates':str(self.root/'RESEARCH_PIPELINE_v2/verification_coverage_gates'),
+          'verification_coverage_gates.terminal_certification':str(Path(self.helper['path']).parent)}
+        need(len(self.byname)==len(pins)-1 and self.helper in pins,'LINKED109_CLOSED_IMPORT_TABLE')
+    def find_spec(self,name,path=None,target=None):
+        if name=='terminal_hold':raise PackagingHold('HOLD_LINKED109_NO_FLAT_HELPER_ALIAS')
+        if name in self.packages:
+            spec=importlib.machinery.ModuleSpec(name,loader=None,is_package=True)
+            spec.submodule_search_locations=[self.packages[name]];return spec
+        row=self.helper if name==self.qualified else self.byname.get(name)
+        if row is not None:return importlib.util.spec_from_loader(name,Linked109Loader(self.root,row),origin=row['path'])
+        spec=importlib.machinery.PathFinder.find_spec(name,path);origin=getattr(spec,'origin',None)
+        if origin and origin not in {'built-in','frozen'} and Path(origin).absolute().is_relative_to(self.root):
+            raise PackagingHold('HOLD_LINKED109_UNPINNED_OWN_IMPORT:'+name)
+        return None
+    def assert_current(self):
+        paths={r['path']:r['sha256']for r in self.pins}
+        for row in self.pins:linked109_read(self.root,{k:row[k]for k in ('path','sha256')})
+        for name,module in list(sys.modules.items()):
+            if name=='terminal_hold':raise PackagingHold('HOLD_LINKED109_FOREIGN_FLAT_HELPER_CACHE')
+            if name in self.packages:
+                need(getattr(module,'__file__',None) is None and list(getattr(module,'__path__',[]))==[self.packages[name]],
+                     'LINKED109_FOREIGN_PACKAGE_CACHE');continue
+            source=getattr(module,'__file__',None)
+            if name==self.qualified:need(source==self.helper['path'],'LINKED109_FOREIGN_QUALIFIED_HELPER_CACHE')
+            if name in self.byname:need(source==self.byname[name]['path'],'LINKED109_FOREIGN_BASENAME_CACHE')
+            if isinstance(source,str) and Path(source).absolute().is_relative_to(self.root):
+                need(source in paths and sha(linked109_read(self.root,{'path':source,'sha256':paths[source]})[1])==paths[source],
+                     'LINKED109_UNPINNED_OR_CHANGED_CACHED_SOURCE')
+
+
+@contextlib.contextmanager
+def linked109_source_scope(root,pins):
+    finder=Linked109Finder(root,pins);finder.assert_current();sys.meta_path.insert(0,finder)
+    old=importlib.util.spec_from_file_location;byfile={r['path']:r for r in pins}
+    def exact_spec(name,location,*,loader=None,submodule_search_locations=None):
+        p=Path(location).absolute()
+        if p.is_relative_to(Path(root)):
+            if p==Path(root)/LINKED109_HELPER_PATH:
+                need(name=='verification_coverage_gates.terminal_certification.terminal_hold'
+                     and submodule_search_locations is None,'LINKED109_NO_DIRECT_HELPER_ALIAS')
+            need(str(p) in byfile and loader is None,'LINKED109_UNPINNED_DIRECT_SOURCE')
+            return importlib.util.spec_from_loader(name,Linked109Loader(root,byfile[str(p)]),origin=str(p))
+        return old(name,location,loader=loader,submodule_search_locations=submodule_search_locations)
+    importlib.util.spec_from_file_location=exact_spec
+    try:yield
+    finally:
+        importlib.util.spec_from_file_location=old
+        if finder in sys.meta_path:sys.meta_path.remove(finder)
+        finder.assert_current()
+
+
+def linked109_legacy_gate(root, admission, combined):
+    """Fresh original historical/material/helper/protected gates, new pin view.
+
+    Does not compare a new100 table to an old99 cached PASS. Population and
+    certificate/statement/registration admission remain original catalog calls.
+    """
+    with linked109_source_scope(root,combined):
+        original=load(root,LEGACY_CONSUMER,'_exact_linked109_original_consumer')
+        saved=admission['historical_closure'];output=(Path(root)/LEGACY_CLOSURE['path']).parent
+        config=linked109_json(read_data_file(root,output/'CONFIG.json')[1])
+        for key,digest in (('predecessor_runtime',original.PRIOR_RUNTIME_SHA),
+                           ('predecessor_closure',original.PRIOR_CLOSURE_SHA),
+                           ('predecessor_close','c975a6e9a94ee2e17c2df806b103fc5bcf15b1e2ae62de625d4c163d75f30a98')):
+            need(sha(read(root,config[key])[1])==digest,'LINKED109_ORIGINAL_BOUND_HISTORY:'+key)
+        pr=linked109_json(read_data_file(root,output/'RAW_PR_MERGED_READBACK.json')[1])
+        commit=linked109_json(read_data_file(root,output/'MERGED_COMMIT.json')[1])
+        tree=linked109_json(read_data_file(root,output/'COMPLETE_MERGED_TREE.json')[1])
+        files=original.merged(pr,config['expected_head_sha'],config['expected_merge_commit'],commit,tree)
+        materials={n:read_data_file(root,Path(root)/original.PREFIX/n)[1]for n in original.MATERIAL_NAMES}
+        need(all(sha(b)==config['source_hashes'][n]for n,b in materials.items()),'LINKED109_ORIGINAL_MATERIALS')
+        proof=original.u.source_proof(files,materials)
+        need(original.exact(linked109_json(read_data_file(root,output/'SOURCE_ORIGIN_PROOF.json')[1]),
+             {'status':'FULL_ACTUAL_MERGED_TREE_SOURCE_PROOF_NOT_INSTALLATION','files':proof}), 'LINKED109_ORIGINAL_MATERIAL_SOURCE_PROOF')
+        import copy
+        normalized=copy.deepcopy(pr);normalized['files']=[{'path':r['path'],'sha':r['sha']}for r in proof]
+        need(original.exact(linked109_json(read_data_file(root,output/'PR_MERGED_READBACK.json')[1]),normalized),'LINKED109_ORIGINAL_TREE_PROJECTION')
+        previous=linked109_json(read(root,config['predecessor_runtime'])[1])
+        old_catalog=linked109_json(read(root,previous['policy_version_catalog'])[1])
+        catalog=linked109_json(read_data_file(root,output/'POLICY_VERSION_CATALOG.json')[1])
+        need(original.exact(catalog,original.expected_catalog(old_catalog,materials,original.relative(output/'PR_MERGED_READBACK.json'))),
+             'LINKED109_ORIGINAL_POLICY_CATALOG')
+        builder=original.load_builder()
+        ledger,update,initial,collected,edges,duplicates=original.pin_table(builder)
+        helper_row={'name':'terminal_hold.py','path':str(Path(root)/LINKED109_HELPER_PATH),'sha256':LINKED109_HELPER_SHA}
+        need(len(collected)==99 and len({r['name']for r in collected})==99
+             and helper_row['name'] not in {r['name']for r in collected}
+             and sorted([*collected,helper_row],key=lambda r:r['name'])==admission['runtime']
+             and edges==saved['local_import_edges'] and duplicates==saved['identical_own_copies'],
+             'LINKED109_ACTUAL_CLOSED_IMPORT_READBACK')
+        need(update['profile']=='PHASE7_SCOPED_POLICY' and len(update['runtime_targets'])==22
+             and len(update['additional_modules'])==original.ADDITIONAL_COUNT,'LINKED109_ORIGINAL_ACTIVATION_CONTRACT')
+        for row in [*update['runtime_targets'],*update['additional_modules']]:
+            read(root,{'path':row['path'],'sha256':row.get('after_sha256',row.get('sha256'))})
+        helper=importlib.import_module('phase7_runtime_update')
+        actual=helper.validate(Path(root),ledger,initial)
+        need(actual['profile']=='PHASE7_SCOPED_POLICY','LINKED109_ORIGINAL_CURRENT_SCIENTIFIC_HELPER')
+        protected=linked109_json(read(root,saved['protected_readback'])[1])
+        original.protected(protected,installed_at=update['installed_at_utc'])
+        need(update['protected_readback']==saved['protected_readback'],'LINKED109_ORIGINAL_PROTECTED_BINDING')
+        # All current and original science roots checked again after imports.
+        for row in combined:linked109_read(root,{k:row[k]for k in ('path','sha256')})
+    return {'current_runtime_sources':100,'current_purpose_sources':131,'combined_purpose_sources':152,
+            'scientific_population_admitted':False,'certifies':False}
+
+
+def _validate_linked109(root, profile_binding, *, purpose_pins=None):
+    root = Path(root).resolve(strict=True)
+    current_import_artifact_guard(root/Path(PROFILE_PATH).parent)
+    nomination = require_nomination(root, profile_binding)
+    _, profile_raw, profile = object_at(root, profile_binding)
+    need(set(profile) == (PROFILE_FIELDS | {'linked109_adoption','external_installer','external_guard'}) and profile['standard'] == LINKED109_PROFILE
+         and profile['status'] == STATUS and profile['canonical_root'] == str(root)
+         and profile['default_routes'] == DEFAULT_ROUTES
+         and profile['note_preparation'] == NOTE_PREPARATION, 'CLOSED_INSTALLED_PROFILE')
+    installed = dt.datetime.fromisoformat(profile['installed_at_utc'].replace('Z', '+00:00'))
+    need(installed.tzinfo is not None and installed <= dt.datetime.now(dt.timezone.utc), 'INSTALLATION_TIME')
+    _, authority_raw, authority = object_at(root, profile['user_authority'])
+    need(set(authority) == {'standard', 'source', 'user_text', 'captured_at_utc', 'scientific_scope_changes', 'provider_instruction'}
+         and authority['standard'] == 'VRS-DIRECT-USER-PDF-STANDARD-AUTHORITY-1'
+         and authority['source'] == 'Current user message in this Codex chat'
+         and authority['user_text'] == USER_DIRECTIVE
+         and authority['scientific_scope_changes'] is False, 'EXACT_PACKAGING_USER_AUTHORITY')
+    _, provider_raw, provider = object_at(root,authority['provider_instruction'])
+    need(sha(provider_raw) == PROVIDER_SHA
+         and provider.get('standard') == 'VRS-PROVIDER-ATTRIBUTED-USER-INSTRUCTION-EXCERPT-1'
+         and provider.get('provider_tool') == 'mcp__codex_app__read_thread'
+         and provider.get('thread_id') == '01a12d47-02a3-78f3-beb4-6b8e1a079dd2'
+         and provider.get('user_messages') == [{'type':'userMessage','id':'01a132f6-4708-7440-a9ba-ebf03deeb906','content':[{'type':'text','text':USER_DIRECTIVE+'\n'}]}], 'ACTUAL_PROVIDER_PACKAGING_AUTHORITY')
+    captured = dt.datetime.fromisoformat(authority['captured_at_utc'].replace('Z', '+00:00'))
+    need(captured.tzinfo is not None and captured <= installed, 'AUTHORITY_TIME')
+
+    # Re-consume the actual installed predecessor first. A changed historical
+    # publisher, registrar or science file holds here; a saved PASS never wins.
+    for field, anchor in (('legacy_closure',LEGACY_CLOSURE),('legacy_consumer',LEGACY_CONSUMER),
+                          ('legacy_scope',LEGACY_SCOPE),('source_session_consumer',SESSION_CONSUMER)):
+        need(same_binding(root,profile[field],anchor),'UNCHANGED_PREEXEC_ANCHOR:'+field)
+    # Read and prove the complete old source tables before exec-loading any
+    # consumer. Crafted contained sources cannot run even if later checks HOLD.
+    admission=linked109_admission(root,profile['linked109_adoption'],profile['source_origin'])
+    saved=admission['historical_closure'];scope=admission['historical_scope']
+    legacy_pins=admission['runtime'];base_pins=admission['purpose']
+    origin=scope['source_origin']
+    for name, anchor in (('runtime_successor.py',LEGACY_CONSUMER),('prepare_first_seven_plan.py',SESSION_CONSUMER)):
+        selected=[r for r in base_pins if r['name']==name]
+        need(len(selected)==1 and same_binding(root,{k:selected[0][k] for k in ('path','sha256')},anchor),'BASE_EXECUTABLE_ANCHOR:'+name)
+    need(profile['predecessor_installation']==PREDECESSOR_INSTALLATION
+         and profile['transient_rehydration']==TRANSIENT_REHYDRATION_POLICY,'EXACT_PREDECESSOR_AND_TRANSIENT_POLICY')
+    predecessor=predecessor_installation(root)
+    alias_observation=require_data_alias_observation(root,profile['data_alias_observation'])
+    platform_observation=require_platform_timezone_observation(root,profile['platform_timezone_observation'])
+    legacy_paths = {r['path']: r['sha256'] for r in base_pins}
+    additional = module_table(root, profile['modules'])
+    shared = shared_dependency_table(root, profile['shared_dependencies'], installed=True)
+    need(not ({r['name'] for r in base_pins} & (MODULE_NAMES | {SHARED_INPUT_NAME}))
+         and not (set(legacy_paths) & {r['path'] for r in [*additional,*shared]}), 'ADDITIVE_ONLY_NAMESPACE')
+    combined = sorted([*base_pins, *additional, *shared], key=lambda r: r['name'])
+    if purpose_pins is not None:
+        need(isinstance(purpose_pins, list) and sorted(purpose_pins,key=lambda r:r['name']) == combined,
+             'EXACT_PURPOSE_ORIGINAL_AND_ADDITIVE')
+    view_rows = [r for r in base_pins if r['name'] == 'runtime_closure_view.py']
+    need(len(view_rows) == 1, 'ORIGINAL_MEASURED_VIEW_CONSUMER')
+    # Prove the additive source before importing any new executable module.
+    proof = source_proof(root, profile['source_origin'], linked109_adopter_rows(root,profile),
+                         required_checks=REQUIRED_CHECKS|{'linked109-source-admission'})
+    _, review_raw, review = object_at(root, profile['source_review'])
+    hashes = {r['name']: r['sha256'] for r in linked109_adopter_rows(root,profile)}
+    linked109_source_review(review,hashes,profile)
+    require_installed_plan(root,profile,nomination,proof)
+    ledger_path=root/'RESEARCH_PIPELINE_v2/corpus_ledger.json';_,ledger_raw=read_data_file(root,ledger_path)
+    if _JSON_DATA.get() is None:json.loads(ledger_raw)
+    else:parse_json_data(root,ledger_path,ledger_raw,copy_result=False)
+    # Source/helper admission is distinct from operational scientific data.
+    # The catalog performs one fresh complete original corpus build and the
+    # original baseline/current-population comparator in each operation.
+    transients=legacy_transient_precheck(root,
+        {'pull_request':origin['merged_pr'],'merge_commit':origin['merged_commit'],'tree':origin['merged_tree']},
+        restore=_RESTORE_TRANSIENTS.get())
+    # The genuine unchanged finder is installed before every original corpus
+    # import, including a cold direct entry and its ordinary checkpoint child.
+    need(len(combined)==152,'LINKED109_EXACT152_COMBINED_PURPOSE')
+    need(linked109_read(root,{'path':'_ZENODO_DEPOSITS/guard_methods_digest_release.py','sha256':profile['external_guard']['sha256']})[1]
+         ==linked109_read(root,{k:profile['external_guard'][k]for k in ('path','sha256')})[1],
+         'LINKED109_CURRENT_EXECUTED_CANONICAL_GUARD')
+    linked109_legacy_gate(root,admission,combined)
+    final=linked109_admission(root,profile['linked109_adoption'],profile['source_origin'])
+    need(final['frames']==admission['frames'] and final['adoption_raw']==admission['adoption_raw'],
+         'LINKED109_FINAL_CURRENT_FRAME_RACE')
+    need(ledger_path.read_bytes()==ledger_raw,'ACTUAL_SCIENCE_POPULATION_RACE')
+    need(proof['merge_commit']==nomination['merged_source_commit'],'INSTALLED_NOMINATED_MERGE')
+    _, registry_raw = read(root, profile['access_registry'])
+    need(read(root, profile_binding)[1] == profile_raw
+         and read(root, profile['user_authority'])[1] == authority_raw
+         and read(root, authority['provider_instruction'])[1] == provider_raw
+         and read(root, profile['source_review'])[1] == review_raw
+         and read(root, profile['access_registry'])[1] == registry_raw, 'FINAL_PROFILE_INPUT_RACE')
+    require_data_alias_observation(root,profile['data_alias_observation'])
+    require_platform_timezone_observation(root,profile['platform_timezone_observation'])
+    for row in combined:
+        read(root, {'path': row['path'], 'sha256': row['sha256']})
+    return {'status': 'ACTUAL_LINKED109_SOURCE_HELPER_AND_ADDITIVE_PACKAGING_SCOPE_PASS',
+            'legacy_closure': profile['legacy_closure'], 'source_pins': combined,
+            'linked109_adoption':profile['linked109_adoption'],
+            'source_counts':{'runtime':100,'purpose':131,'combined':152},
+            'merged_source': proof, 'access_registry': profile['access_registry'],
+            'default_routes': DEFAULT_ROUTES, 'predecessor_installation':predecessor,
+            'data_alias_observation':profile['data_alias_observation'],
+            'platform_timezone_observation':profile['platform_timezone_observation'],
+            'transient_source_readback':transients, 'scientific_population_admitted':False, 'certifies': False,
+            'ssot_writes': 0, 'zenodo_writes': 0}
+
+
+def linked109_historical_proof(root, origin, rows, before):
+    """Direct original blobs, using authentic preserved bytes for two old paths."""
+    observations={k:object_at(root,v)[2]for k,v in origin.items()}
+    need(set(observations)=={'pull_request','merge_commit','tree'},'LINKED109_ORIGINAL_SOURCE_ORIGIN')
+    pr,commit,tree=(observations[k]for k in ('pull_request','merge_commit','tree'))
+    oid=pr.get('mergeCommit',{}).get('oid');checks=pr.get('statusCheckRollup')
+    need(pr.get('state')=='MERGED' and pr.get('baseRefName')=='main'
+         and pr.get('url')=='https://github.com/jdhart81/viridis-canon/pull/'+str(pr.get('number'))
+         and re.fullmatch('[0-9a-f]{40}',str(oid)) and commit.get('sha')==oid
+         and tree.get('sha')==commit.get('tree',{}).get('sha') and tree.get('truncated') is False,
+         'LINKED109_GENUINE_ORIGINAL_MERGED_SOURCE')
+    need(type(checks)is list and checks and all(type(c)is dict and c.get('status')=='COMPLETED'
+         and c.get('conclusion') in {'SUCCESS','SKIPPED'}for c in checks)
+         and REQUIRED_CHECKS-{'standalone-manuscript-pdf'} <= {c.get('name')for c in checks if c.get('conclusion')=='SUCCESS'},
+         'LINKED109_ORIGINAL_REQUIRED_CI')
+    items=tree.get('tree');need(type(items)is list,'LINKED109_ORIGINAL_COMPLETE_TREE')
+    index={r.get('path'):r for r in items if type(r)is dict}
+    need(len(index)==len(items),'LINKED109_ORIGINAL_UNIQUE_TREE_PATHS')
+    for row in rows:
+        raw=before[row['name']] if row['name'] in before else linked109_read(root,{k:row[k]for k in ('path','sha256')})[1]
+        need(sha(raw)==row['sha256'],'LINKED109_ORIGINAL_BEFORE_HASH')
+        entry=index.get(row['git_path'],{})
+        need(entry.get('type')=='blob' and entry.get('mode')=='100644'
+             and entry.get('sha')==hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest(),
+             'LINKED109_ORIGINAL_DIRECT_BLOB:'+row['name'])
+
+
+def linked109_adopter_rows(root,profile):
+    installer=profile['external_installer']
+    need(type(installer)is dict and set(installer)=={'name','path','sha256','git_path'}
+         and installer['name']=='install_packaging_runtime_linked109.py'
+         and installer['git_path']==LINKED109_INSTALLER_GIT_PATH,'LINKED109_FIXED_EXTERNAL_INSTALLER_ROW')
+    linked109_read(root,{k:installer[k]for k in ('path','sha256')})
+    guard=profile['external_guard']
+    need(type(guard)is dict and set(guard)=={'name','path','sha256','git_path'}
+         and guard['name']=='guard_methods_digest_release_linked109.py'
+         and guard['git_path']=='00_lab_infrastructure/gates/standalone_pdf_release/tools/guard_methods_digest_release_linked109.py',
+         'LINKED109_FIXED_EXTERNAL_GUARD_ROW')
+    linked109_read(root,{k:guard[k]for k in ('path','sha256')})
+    rows=[*profile['modules'],*profile['shared_dependencies'],installer,guard]
+    for name,relative,_,digest in LINKED109_PAIRS:
+        rows.append({'name':name,'path':relative,'sha256':digest,'git_path':LINKED109_SNAPSHOT_PREFIX+name})
+    rows.append({'name':'terminal_hold.py','path':LINKED109_HELPER_PATH,'sha256':LINKED109_HELPER_SHA,
+                 'git_path':LINKED109_GIT_PREFIX+'terminal_hold.py'})
+    need(len(rows)==26 and len({r['name']for r in rows})==26,'LINKED109_COMPLETE_ADOPTER_SOURCE_ROWS')
+    return rows
+
+
+def linked109_source_review(review,hashes,profile):
+    extra={'linked109_adoption','external_installer','external_guard','current_source_counts'}
+    need(set(review)==(CURRENT_SOURCE_REVIEW_FIELDS|extra)
+         and review['standard']=='VRS-INDEPENDENT-PDF-RUNTIME-SOURCE-REVIEW-14-LINKED109'
+         and review['status']=='EXACT_COMPLETE_CANDIDATE_REVIEW_PASS'
+         and isinstance(review['reviewer'],str) and review['reviewer']
+         and review['source_hashes']==hashes and review['legacy_closure']==LEGACY_CLOSURE
+         and review['review_scope']=='SOURCE_ONLY' and review['actual_live_runtime_admission'] is False
+         and review['actual_seven_record_admission']=='PENDING_POST_INSTALL_FRESH_READBACK'
+         and review['linked109_adoption']==profile['linked109_adoption']
+         and review['external_installer']==profile['external_installer']
+         and review['external_guard']==profile['external_guard']
+         and review['current_source_counts']=={'runtime':100,'purpose':131,'combined':152}
+         and all(review.get(k)is v for k,v in CURRENT_SOURCE_REVIEW_CHANGE_FLAGS.items()),
+         'LINKED109_EXACT_SOURCE_REVIEW')
+
+
+def linked109_nomination(root,profile_binding,value,raw):
+    need(set(value)=={'standard','status','profile','installer_source','merged_source_commit','root_review_receipt','linked109_adoption'}
+         and value['standard']==LINKED109_NOMINATION
+         and value['status']=='EXACT_SOURCE_AND_DEFAULT_BINDINGS_INSTALLED_RUNTIME_READBACK_PENDING'
+         and same_binding(root,value['profile'],profile_binding)
+         and re.fullmatch('[0-9a-f]{40}',str(value['merged_source_commit'])),'LINKED109_EXACT_NOMINATION')
+    profile=object_at(root,profile_binding)[2]
+    need(profile['standard']==LINKED109_PROFILE and value['linked109_adoption']==profile['linked109_adoption']
+         and value['installer_source']=={k:profile['external_installer'][k]for k in ('path','sha256')},
+         'LINKED109_TRUTHFUL_EXECUTED_INSTALLER_NOMINATION')
+    linked109_read(root,value['installer_source']);linked109_read(root,value['root_review_receipt'])
+    need(read_data_file(root,Path(root)/NOMINATION_PATH)[1]==raw,'LINKED109_NOMINATION_RACE')
+    return value
+
+
+def linked109_plan_proof(root,plan,*,profile=None,nomination=None):
+    fields={'standard','status','canonical_root','source_modules','source_origin','source_review','user_authority',
+            'access_registry','historical_publisher','installed_at_utc','root_review','predecessor_installation',
+            'transient_rehydration','data_alias_observation','platform_timezone_observation','shared_dependencies',
+            'note_preparation','linked109_adoption','external_installer','external_guard','adoption_source'}
+    need(set(plan)==fields and plan['standard']==LINKED109_PLAN and plan['status']=='ROOT_REVIEWED_READY_NOT_INSTALLED'
+         and plan['canonical_root']==str(root),'LINKED109_CLOSED_INSTALL_PLAN')
+    module_table(root,plan['source_modules']);shared_dependency_table(root,plan['shared_dependencies'])
+    source_profile={**plan,'modules':plan['source_modules']}
+    rows=linked109_adopter_rows(root,source_profile)
+    proof=source_proof(root,plan['source_origin'],rows,required_checks=REQUIRED_CHECKS|{'linked109-source-admission'});hashes={r['name']:r['sha256']for r in rows}
+    linked109_source_review(object_at(root,plan['source_review'])[2],hashes,plan)
+    review=object_at(root,plan['root_review'])[2]
+    projection=(json.dumps({k:v for k,v in plan.items()if k!='root_review'},sort_keys=True,indent=2,ensure_ascii=False,allow_nan=False)+'\n').encode()
+    need(set(review)==(ROOT_REVIEW_FIELDS|{'linked109_adoption','external_installer','external_guard','current_source_counts'})
+         and review['standard']=='VRS-ROOT-EXACT-PDF-RUNTIME-INSTALL-REVIEW-14-LINKED109'
+         and review['status']=='EXACT_MERGED_SOURCE_AND_INSTALL_PLAN_REVIEW_PASS'
+         and isinstance(review['reviewer'],str) and review['reviewer']
+         and review['plan_projection_sha256']==sha(projection) and review['merged_source_commit']==proof['merge_commit']
+         and review['source_hashes']==hashes and review['historical_publisher_sha256']==HISTORICAL_PUBLISHER['sha256']
+         and review['linked109_adoption']==plan['linked109_adoption'] and review['external_installer']==plan['external_installer']
+         and review['external_guard']==plan['external_guard']
+         and review['current_source_counts']=={'runtime':100,'purpose':131,'combined':152}
+         and all(review.get(k)is v for k,v in CURRENT_SOURCE_REVIEW_CHANGE_FLAGS.items()),'LINKED109_EXACT_ROOT_PLAN_REVIEW')
+    need(plan['predecessor_installation']==PREDECESSOR_INSTALLATION
+         and plan['transient_rehydration']==TRANSIENT_REHYDRATION_POLICY
+         and plan['note_preparation']==NOTE_PREPARATION and plan['historical_publisher']==HISTORICAL_PUBLISHER,
+         'LINKED109_PRESERVED_INSTALL_AND_SCIENCE_POLICY')
+    need(plan['linked109_adoption']=={'path':str(Path(root)/Path(PROFILE_PATH).parent/LINKED109_DATA_NAME),
+                                      'sha256':plan['adoption_source']['sha256']},'LINKED109_PLAN_ADOPTION_SOURCE_RELATION')
+    if profile is not None:
+        need(linked109_read(root,plan['adoption_source'])[1]==linked109_read(root,profile['linked109_adoption'])[1],
+             'LINKED109_RETAINED_PREPARATION_AFTERIMAGE')
+        for field in fields-{'standard','status','root_review','source_modules','historical_publisher','adoption_source','shared_dependencies'}:
+            need(plan[field]==profile[field],'LINKED109_INSTALLED_PLAN_RELATION:'+field)
+        need(nomination['root_review_receipt']==plan['root_review']
+             and nomination['merged_source_commit']==proof['merge_commit'],'LINKED109_NOMINATED_ACTUAL_PLAN')
+        expected=[{k:r[k]for k in ('name','sha256','git_path')}for r in plan['source_modules']]
+        actual=[{k:r[k]for k in ('name','sha256','git_path')}for r in profile['modules']]
+        need(sorted(expected,key=lambda r:r['name'])==sorted(actual,key=lambda r:r['name']),'LINKED109_INSTALLED_EXACT20')
+        for row in profile['modules']:
+            need(Path(row['path'])==Path(root)/Path(PROFILE_PATH).parent/row['name'],'LINKED109_INSTALLED_MODULE_PATH')
+        shared_dependency_table(root,profile['shared_dependencies'],installed=True)
+        need([{k:r[k]for k in ('name','sha256','git_path')}for r in plan['shared_dependencies']]
+             ==[{k:r[k]for k in ('name','sha256','git_path')}for r in profile['shared_dependencies']],
+             'LINKED109_INSTALLED_EXACT_SHARED_SOURCE')
+    return proof
+
+
+def linked109_installed_plan(root,profile,nomination,proof):
+    p=Path(root)/Path(PROFILE_PATH).parent/'INSTALL_PLAN.json';_,raw,plan=json_file(root,p)
+    actual=linked109_plan_proof(root,plan,profile=profile,nomination=nomination)
+    need(actual['merge_commit']==proof['merge_commit'] and read_data_file(root,p)[1]==raw,'LINKED109_PLAN_FINAL_RACE')
+
+
+def validate(root,profile_binding,*,purpose_pins=None):
+    profile=object_at(root,profile_binding)[2]
+    if profile.get('standard')==LINKED109_PROFILE:
+        return _validate_linked109(root,profile_binding,purpose_pins=purpose_pins)
+    return _validate_legacy(root,profile_binding,purpose_pins=purpose_pins)
+
+
+@contextlib.contextmanager
+def session(root,profile_binding):
+    profile=object_at(root,profile_binding)[2]
+    if profile.get('standard')!=LINKED109_PROFILE:
+        with _session_legacy(root,profile_binding) as result:yield result
+        return
+    with json_data_scope(root):
+        result=validate(root,profile_binding)
+        with linked109_source_scope(root,result['source_pins']):
+            validate(root,profile_binding,purpose_pins=result['source_pins'])
+            path,_=read(root,profile_binding);tokens=[]
+            try:
+                for context in _source_session_contexts(root,result['source_pins']):
+                    tokens.append((context,context.set((str(Path(root)),str(path),profile_binding['sha256']))))
+                yield result
+            finally:
+                for context,token in reversed(tokens):context.reset(token)
+                validate(root,profile_binding,purpose_pins=result['source_pins'])
+
+
+def linked109_live_afterimages(root,derived):
+    need(type(derived)is dict and set(derived)=={p[0]for p in LINKED109_PAIRS},'LINKED109_CURRENT_PAIRSET')
+    for name,relative,_,digest in LINKED109_PAIRS:
+        need(sha(derived[name])==digest and linked109_read(root,{'path':relative,'sha256':digest})[1]==derived[name],
+             'LINKED109_CURRENT_AFTERIMAGE')
+    linked109_read(root,{'path':LINKED109_HELPER_PATH,'sha256':LINKED109_HELPER_SHA})
+
+
+def linked109_adoption_bytes(root,inputs):
+    """Closed prospective DATA preparation, not admission or a writer call.
+
+    The caller may retain these bytes only under separately reviewed preparation
+    authority. No new/adopter head, scientific review, PB, PASS or installer
+    action is invented. admission() independently rechecks every input later.
+    """
+    need(type(inputs)is dict and set(inputs)==set(LINKED109_PINS)|{'original109_source_origin'},
+         'LINKED109_EXACT_PREPARATION_INPUT_ROLES')
+    root=checked_root(root);captured=[]
+    for role,digest in LINKED109_PINS.items():
+        need(inputs[role]['sha256']==digest,'LINKED109_PREPARATION_FIXED_EVIDENCE')
+        path,raw=linked109_read(root,inputs[role],limit=2_000_000);captured.append((inputs[role],raw))
+    for binding in (LEGACY_SCOPE,LEGACY_CLOSURE):linked109_read(root,binding)
+    origin=inputs['original109_source_origin']
+    need(type(origin)is dict and set(origin)=={'pull_request','merge_commit','tree'},'LINKED109_PREPARATION_ORIGINAL_ORIGIN')
+    for binding in origin.values():
+        _,raw=linked109_read(root,binding);captured.append((binding,raw))
+    value={'standard':LINKED109_ADOPTION,'canonical_root':str(root),'original_scope':LEGACY_SCOPE,
+           'original_closure':LEGACY_CLOSURE,**inputs}
+    for binding,raw in captured:need(linked109_read(root,binding)[1]==raw,'LINKED109_PREPARATION_INPUT_RACE')
+    return (json.dumps(value,sort_keys=True,indent=2,ensure_ascii=False,allow_nan=False)+'\n').encode()

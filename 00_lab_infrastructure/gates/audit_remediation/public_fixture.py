@@ -110,9 +110,14 @@ def _derive(before: bytes, patch: bytes, target: str) -> bytes:
         index += 1
         while index < len(section) and not section[index].startswith("@@ "):
             line = section[index]
-            if not line or line[0] not in {" ", "+", "-"}:
+            if line == "\n":
+                # The pinned allocation diff spells empty context as bare LF.
+                # Consume and reproduce that exact source line like any context.
+                marker, content = " ", "\n"
+            elif line and line[0] in {" ", "+", "-"}:
+                marker, content = line[0], line[1:]
+            else:
                 raise FixtureHold("unsupported patch line")
-            marker, content = line[0], line[1:]
             if marker in {" ", "-"}:
                 if cursor >= len(source) or source[cursor] != content:
                     raise FixtureHold("patch context differs")

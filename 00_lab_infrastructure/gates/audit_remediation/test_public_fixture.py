@@ -125,3 +125,70 @@ def test_derivation_requires_unique_target_and_exact_context():
         _derive(original, patch + patch, "example.py")
     with pytest.raises(FixtureHold, match="patch context differs"):
         _derive(b"different\ntwo\n", patch, "example.py")
+
+
+ASSEMBLER_TARGET = "RESEARCH_PIPELINE_v2/assemble_saturday_candidate.py"
+ASSEMBLER_AFTER_SHA256 = "d60371087d6db196069ab88bf25279ac0b7791c7e9ba38170e63728fa45458b7"
+BLANK_CONTEXT_PATCH = (
+    b"--- a/example.py\n+++ b/example.py\n@@ -1,3 +1,3 @@\n"
+    b" one\n\n-two\n+three\n"
+)
+
+
+def canonical_assembler_inputs():
+    manifest = json.loads((REPOSITORY / DEPENDENCIES).read_bytes())
+    row = next(item for item in manifest["derived_sources"]
+               if item["name"] == "assembler-installed-source")
+    assert row["target"] == ASSEMBLER_TARGET
+    assert row["before_sha256"] == "a94df6572ad68ada2f7d524aabde3d9f3ff1d6f69c7440a5f47653c71185c7c6"
+    assert row["patch_sha256"] == "6f3c3777796df001f6f958ec8872197635e40b6c966e0da8090ac3793cc0fca1"
+    assert row["after_sha256"] == ASSEMBLER_AFTER_SHA256
+    before = (REPOSITORY / row["before_path"]).read_bytes()
+    patch = (REPOSITORY / row["patch_path"]).read_bytes()
+    assert hashlib.sha256(before).hexdigest() == row["before_sha256"]
+    assert hashlib.sha256(patch).hexdigest() == row["patch_sha256"]
+    return before, patch
+
+
+def test_canonical_allocation_patch_derives_exact_installed_assembler():
+    before, patch = canonical_assembler_inputs()
+    assert b"\n" in patch.splitlines(keepends=True)
+    derived = _derive(before, patch, ASSEMBLER_TARGET)
+    assert hashlib.sha256(derived).hexdigest() == ASSEMBLER_AFTER_SHA256
+
+
+def test_bare_lf_context_is_consumed_and_preserved_exactly():
+    assert _derive(b"one\n\ntwo\n", BLANK_CONTEXT_PATCH, "example.py") == b"one\n\nthree\n"
+
+
+@pytest.mark.parametrize("blank", [b"nonempty\n", b" \n", b"\r\n"])
+def test_bare_lf_context_rejects_a_different_source_line(blank):
+    with pytest.raises(FixtureHold, match="patch context differs"):
+        _derive(b"one\n" + blank + b"two\n", BLANK_CONTEXT_PATCH, "example.py")
+
+
+@pytest.mark.parametrize("malformed", [b"\r\n", b"\t\n", b"unmarked\n"])
+def test_only_exact_bare_lf_is_accepted_as_unmarked_context(malformed):
+    patch = BLANK_CONTEXT_PATCH.replace(b" one\n\n", b" one\n" + malformed)
+    with pytest.raises(FixtureHold, match="unsupported patch line"):
+        _derive(b"one\n\ntwo\n", patch, "example.py")
+
+
+@pytest.mark.parametrize("counts", [b"@@ -1,2 +1,3 @@", b"@@ -1,3 +1,2 @@", b"@@ -1,4 +1,3 @@"])
+def test_bare_lf_context_still_counts_in_both_hunk_totals(counts):
+    patch = BLANK_CONTEXT_PATCH.replace(b"@@ -1,3 +1,3 @@", counts)
+    with pytest.raises(FixtureHold, match="patch hunk counts differ"):
+        _derive(b"one\n\ntwo\n", patch, "example.py")
+
+
+def test_canonical_assembler_afterimage_pin_drift_stops_before_writes(tmp_path):
+    repo, manifest = synthetic_repository(tmp_path)
+    row = next(item for item in manifest["derived_sources"]
+               if item["name"] == "assembler-installed-source")
+    assert row["after_sha256"] == ASSEMBLER_AFTER_SHA256
+    row["after_sha256"] = "0" * 64
+    write_manifest(repo, manifest)
+    destination = tmp_path / "scratch"
+    with pytest.raises(FixtureHold, match="derived source does not match exact afterimage"):
+        materialize(repo, destination)
+    assert not destination.exists()

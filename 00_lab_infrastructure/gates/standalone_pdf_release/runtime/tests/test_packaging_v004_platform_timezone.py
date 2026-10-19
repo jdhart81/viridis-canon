@@ -77,7 +77,7 @@ def native_fixture():
         binding = {'path': str(receipt.relative_to(old.root)),
                    'sha256': runtime.sha(receipt.read_bytes())}
         with contextlib.ExitStack() as stack:
-            for key, value in {'PLATFORM_TIMEZONE_OBSERVATION': binding,
+            for key, value in {'CURRENT_PLATFORM_TIMEZONE_OBSERVATION': binding,
                                'PLATFORM_TZ_LOGICAL': logical,
                                'PLATFORM_TZ_PHYSICAL': physical,
                                'PLATFORM_TZ_LINK_PATHS': links}.items():
@@ -108,7 +108,7 @@ sys.path.insert(0,sys.argv[1])
 import packaging_catalog as catalog
 import packaging_runtime as runtime
 value=json.loads(sys.argv[2]);root=Path(value['root'])
-runtime.PLATFORM_TIMEZONE_OBSERVATION=value['binding']
+runtime.CURRENT_PLATFORM_TIMEZONE_OBSERVATION=value['binding']
 runtime.PLATFORM_TZ_LOGICAL=Path(value['logical'])
 runtime.PLATFORM_TZ_PHYSICAL=Path(value['physical'])
 runtime.PLATFORM_TZ_LINK_PATHS=tuple(Path(p)for p in value['links'])
@@ -158,7 +158,7 @@ print(json.dumps({'key':zone.key,'winter_seconds':datetime.datetime(2026,1,15,tz
             changed['allowed_timezones'] = ['America/New_York', 'any-other-leaf']
             f.receipt.write_text(json.dumps(changed, sort_keys=True))
             replacement = {**f.binding, 'sha256': runtime.sha(f.receipt.read_bytes())}
-            with patch.object(runtime, 'PLATFORM_TIMEZONE_OBSERVATION', replacement):
+            with patch.object(runtime, 'CURRENT_PLATFORM_TIMEZONE_OBSERVATION', replacement):
                 with self.assertRaisesRegex(runtime.PackagingHold, 'CLOSED_NATIVE_PLATFORM_TIMEZONE_OBSERVATION'):
                     catalog.ScientificInputData(f.root, f.context, platform_timezone_observation=replacement)
 

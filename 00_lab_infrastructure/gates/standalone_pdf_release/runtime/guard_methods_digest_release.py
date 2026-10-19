@@ -61,7 +61,7 @@ SOURCE_HASHES = {
         '223549c80276ab9e7b6e0b300122408f7ab809cf6fc87cf9b63b5d0c0eb3da05',
     'packaging_catalog.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '30a3e49d919fbf97b100a07f45222d86f8565443f019916758dde3748f43bc1b',
+        'fe8ecc58c4e61614201fd0531acd91b5c96eeb5ce1e20cd5d9d4c5906507e4a3',
     'packaging_nightly.py':
         # SHA-256 of reviewed source bytes; not a credential
         '98aad9c41d0f70442bab7299cc5b3a39b171d418c9c942e3c2d2a9508e2bd2f7',
@@ -76,7 +76,7 @@ SOURCE_HASHES = {
         'cd4169d3cc2c3af02829d20ce363908a9edb914501f134dc341dd8d085567014',
     'packaging_runtime.py':
         # SHA-256 of reviewed source bytes; not a credential
-        '9802c212ae005d4bed5c4a1537c7dc099e59fd1740c2513ffba9724b6c94c419',
+        '3aeb85d59c3e1315fda6d75bae2a853dcf7763ce7df2b939d3989e9984d7327c',
     'publish_dated_bundles_guarded.py':
         # SHA-256 of reviewed source bytes; not a credential
         '38a9752d9c686312acab087955cc9ccecd2e18fdabc13d54275ace2994486698',

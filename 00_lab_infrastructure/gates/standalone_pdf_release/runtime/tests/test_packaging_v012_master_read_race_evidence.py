@@ -92,7 +92,7 @@ class ReadRaceEvidenceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.candidate_path = HERE.parent / 'packaging_catalog.py'
-        assert sha(cls.candidate_path.read_bytes()) == '30a3e49d919fbf97b100a07f45222d86f8565443f019916758dde3748f43bc1b'
+        assert sha(cls.candidate_path.read_bytes()) == 'fe8ecc58c4e61614201fd0531acd91b5c96eeb5ce1e20cd5d9d4c5906507e4a3'
         original = historical_bytes('v011', 'packaging_catalog.py')
         assert sha(original) == '6816ea4868dd4d1262084348023e0132a0aa638843bf6dc9cfb025d05c086346'
         cls.proposal_class = load_data_class(cls.candidate_path)

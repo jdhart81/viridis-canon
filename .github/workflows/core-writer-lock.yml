@@ -1,0 +1,26 @@
+name: Core writer session lock
+on:
+  pull_request:
+    paths:
+      - '00_lab_infrastructure/gates/core_writer_lock/**'
+      - '.github/workflows/core-writer-lock.yml'
+  push:
+    branches: [main]
+    paths:
+      - '00_lab_infrastructure/gates/core_writer_lock/**'
+      - '.github/workflows/core-writer-lock.yml'
+permissions:
+  contents: read
+jobs:
+  process-lock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python: ['3.12', '3.14']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -I -B -m unittest discover -s 00_lab_infrastructure/gates/core_writer_lock/tests -v

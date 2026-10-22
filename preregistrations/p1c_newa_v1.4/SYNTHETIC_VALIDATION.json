@@ -1,0 +1,2327 @@
+{
+ "planted": {
+  "planted_beta": 0.3,
+  "beta": 0.288,
+  "interval_registered": [
+   0.257,
+   0.319
+  ],
+  "ci95_year": [
+   0.265,
+   0.311
+  ],
+  "n": 11314,
+  "decision": "SUPPORTED",
+  "reading_v11_rule": "SUPPORTED",
+  "decision_pilot_rule": "SUPPORTED",
+  "reading": "REPLICATED",
+  "model": "M2R",
+  "regions_40km": 24,
+  "S13_pilot_model_M2": {
+   "beta": 0.29,
+   "crit": 3.93,
+   "interval": [
+    0.24,
+    0.341
+   ],
+   "reading": "SUPPORTED"
+  }
+ },
+ "null": {
+  "planted_beta": 0.0,
+  "beta": -0.036,
+  "interval_registered": [
+   -0.076,
+   0.004
+  ],
+  "ci95_year": [
+   -0.067,
+   -0.006
+  ],
+  "n": 11314,
+  "decision": "NOT SUPPORTED",
+  "reading_v11_rule": "CONTRADICTED",
+  "decision_pilot_rule": "CONTRADICTED",
+  "reading": "NOT REPLICATED (effect significantly smaller than the pilot could detect)",
+  "model": "M2R",
+  "regions_40km": 24,
+  "S13_pilot_model_M2": {
+   "beta": -0.036,
+   "crit": 3.93,
+   "interval": [
+    -0.099,
+    0.027
+   ],
+   "reading": "NOT SUPPORTED"
+  }
+ },
+ "exactness_max_abs_diff": {
+  "M2R": 2.925898455810594e-14,
+  "M2": 4.991070490928395e-15
+ },
+ "null_check_fresh_seeds": {
+  "C2": 2.53,
+  "C1": 2.08,
+  "C2_M2": 3.93,
+  "C1_M2": 3.39,
+  "binding_models": {
+   "M2R": "stress:aniso_NS_s0.200_20x180",
+   "M2": "stress:long_s0.700_r720"
+  },
+  "models": {
+   "calibration:iid": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.019,
+     "v11_rule": 0.056,
+     "pilot_rule": 0.081,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.0,
+     "v11_rule": 0.05,
+     "pilot_rule": 0.076,
+     "threshold": 0.074
+    }
+   },
+   "calibration:block": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.017,
+     "v11_rule": 0.059,
+     "pilot_rule": 0.091,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.0,
+     "v11_rule": 0.055,
+     "pilot_rule": 0.123,
+     "threshold": 0.074
+    }
+   },
+   "calibration:block_exp": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.023,
+     "v11_rule": 0.065,
+     "pilot_rule": 0.095,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.003,
+     "v11_rule": 0.066,
+     "pilot_rule": 0.118,
+     "threshold": 0.074
+    }
+   },
+   "calibration:block_s0.045": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.019,
+     "v11_rule": 0.054,
+     "pilot_rule": 0.082,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.002,
+     "v11_rule": 0.056,
+     "pilot_rule": 0.097,
+     "threshold": 0.074
+    }
+   },
+   "calibration:block_s0.060": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.016,
+     "v11_rule": 0.041,
+     "pilot_rule": 0.07,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.0,
+     "v11_rule": 0.047,
+     "pilot_rule": 0.103,
+     "threshold": 0.074
+    }
+   },
+   "calibration:block_s0.075": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.027,
+     "v11_rule": 0.073,
+     "pilot_rule": 0.107,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.0,
+     "v11_rule": 0.054,
+     "pilot_rule": 0.134,
+     "threshold": 0.074
+    }
+   },
+   "calibration:block_s0.090": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.022,
+     "v11_rule": 0.052,
+     "pilot_rule": 0.086,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.0,
+     "v11_rule": 0.05,
+     "pilot_rule": 0.159,
+     "threshold": 0.074
+    }
+   },
+   "calibration:block_s0.110": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.035,
+     "v11_rule": 0.081,
+     "pilot_rule": 0.127,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.003,
+     "v11_rule": 0.067,
+     "pilot_rule": 0.193,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.030_r11": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.021,
+     "v11_rule": 0.062,
+     "pilot_rule": 0.083,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.0,
+     "v11_rule": 0.072,
+     "pilot_rule": 0.114,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.030_r16": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.018,
+     "v11_rule": 0.048,
+     "pilot_rule": 0.064,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.002,
+     "v11_rule": 0.064,
+     "pilot_rule": 0.1,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.030_r22": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.014,
+     "v11_rule": 0.052,
+     "pilot_rule": 0.068,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.002,
+     "v11_rule": 0.08,
+     "pilot_rule": 0.119,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.030_r30": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.009,
+     "v11_rule": 0.05,
+     "pilot_rule": 0.062,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.0,
+     "v11_rule": 0.079,
+     "pilot_rule": 0.128,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.030_r60": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.012,
+     "v11_rule": 0.035,
+     "pilot_rule": 0.056,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.0,
+     "v11_rule": 0.089,
+     "pilot_rule": 0.136,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.030_r180": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.018,
+     "v11_rule": 0.05,
+     "pilot_rule": 0.065,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.0,
+     "v11_rule": 0.097,
+     "pilot_rule": 0.115,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.045_r11": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.024,
+     "v11_rule": 0.059,
+     "pilot_rule": 0.087,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.003,
+     "v11_rule": 0.073,
+     "pilot_rule": 0.117,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.045_r16": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.023,
+     "v11_rule": 0.062,
+     "pilot_rule": 0.093,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.003,
+     "v11_rule": 0.096,
+     "pilot_rule": 0.145,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.045_r22": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.021,
+     "v11_rule": 0.051,
+     "pilot_rule": 0.074,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.001,
+     "v11_rule": 0.096,
+     "pilot_rule": 0.142,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.045_r30": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.019,
+     "v11_rule": 0.057,
+     "pilot_rule": 0.087,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.002,
+     "v11_rule": 0.114,
+     "pilot_rule": 0.176,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.045_r45": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.012,
+     "v11_rule": 0.051,
+     "pilot_rule": 0.074,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.006,
+     "v11_rule": 0.117,
+     "pilot_rule": 0.162,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.045_r60": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.019,
+     "v11_rule": 0.053,
+     "pilot_rule": 0.07,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.005,
+     "v11_rule": 0.124,
+     "pilot_rule": 0.177,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.045_r120": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.02,
+     "v11_rule": 0.05,
+     "pilot_rule": 0.065,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.002,
+     "v11_rule": 0.098,
+     "pilot_rule": 0.129,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.045_r180": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.016,
+     "v11_rule": 0.049,
+     "pilot_rule": 0.068,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.002,
+     "v11_rule": 0.087,
+     "pilot_rule": 0.115,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.060_r11": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.019,
+     "v11_rule": 0.046,
+     "pilot_rule": 0.079,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.002,
+     "v11_rule": 0.082,
+     "pilot_rule": 0.143,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.060_r16": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.016,
+     "v11_rule": 0.06,
+     "pilot_rule": 0.09,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.0,
+     "v11_rule": 0.098,
+     "pilot_rule": 0.152,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.060_r22": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.026,
+     "v11_rule": 0.079,
+     "pilot_rule": 0.107,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.002,
+     "v11_rule": 0.119,
+     "pilot_rule": 0.194,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.060_r30": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.023,
+     "v11_rule": 0.063,
+     "pilot_rule": 0.094,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.004,
+     "v11_rule": 0.139,
+     "pilot_rule": 0.191,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.060_r45": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.02,
+     "v11_rule": 0.06,
+     "pilot_rule": 0.088,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.004,
+     "v11_rule": 0.14,
+     "pilot_rule": 0.197,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.060_r60": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.018,
+     "v11_rule": 0.055,
+     "pilot_rule": 0.076,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.007,
+     "v11_rule": 0.146,
+     "pilot_rule": 0.204,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.060_r90": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.013,
+     "v11_rule": 0.055,
+     "pilot_rule": 0.069,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.005,
+     "v11_rule": 0.143,
+     "pilot_rule": 0.207,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.060_r120": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.014,
+     "v11_rule": 0.041,
+     "pilot_rule": 0.054,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.003,
+     "v11_rule": 0.126,
+     "pilot_rule": 0.181,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.060_r180": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.013,
+     "v11_rule": 0.05,
+     "pilot_rule": 0.074,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.002,
+     "v11_rule": 0.111,
+     "pilot_rule": 0.162,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.075_r11": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.023,
+     "v11_rule": 0.072,
+     "pilot_rule": 0.107,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.0,
+     "v11_rule": 0.097,
+     "pilot_rule": 0.162,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.075_r16": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.033,
+     "v11_rule": 0.068,
+     "pilot_rule": 0.111,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.004,
+     "v11_rule": 0.119,
+     "pilot_rule": 0.195,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.075_r22": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.018,
+     "v11_rule": 0.055,
+     "pilot_rule": 0.091,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.005,
+     "v11_rule": 0.129,
+     "pilot_rule": 0.194,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.075_r30": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.023,
+     "v11_rule": 0.059,
+     "pilot_rule": 0.079,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.005,
+     "v11_rule": 0.124,
+     "pilot_rule": 0.211,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.075_r45": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.022,
+     "v11_rule": 0.067,
+     "pilot_rule": 0.096,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.01,
+     "v11_rule": 0.165,
+     "pilot_rule": 0.245,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.075_r60": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.019,
+     "v11_rule": 0.056,
+     "pilot_rule": 0.079,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.006,
+     "v11_rule": 0.15,
+     "pilot_rule": 0.217,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.075_r90": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.021,
+     "v11_rule": 0.062,
+     "pilot_rule": 0.085,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.014,
+     "v11_rule": 0.152,
+     "pilot_rule": 0.224,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.075_r120": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.013,
+     "v11_rule": 0.037,
+     "pilot_rule": 0.054,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.003,
+     "v11_rule": 0.155,
+     "pilot_rule": 0.206,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.075_r180": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.02,
+     "v11_rule": 0.046,
+     "pilot_rule": 0.06,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.004,
+     "v11_rule": 0.123,
+     "pilot_rule": 0.179,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.090_r11": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.036,
+     "v11_rule": 0.087,
+     "pilot_rule": 0.125,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.001,
+     "v11_rule": 0.109,
+     "pilot_rule": 0.182,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.090_r16": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.022,
+     "v11_rule": 0.06,
+     "pilot_rule": 0.098,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.001,
+     "v11_rule": 0.106,
+     "pilot_rule": 0.205,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.090_r22": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.026,
+     "v11_rule": 0.068,
+     "pilot_rule": 0.101,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.005,
+     "v11_rule": 0.142,
+     "pilot_rule": 0.237,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.090_r30": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.024,
+     "v11_rule": 0.053,
+     "pilot_rule": 0.086,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.006,
+     "v11_rule": 0.12,
+     "pilot_rule": 0.211,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.090_r45": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.022,
+     "v11_rule": 0.062,
+     "pilot_rule": 0.082,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.008,
+     "v11_rule": 0.138,
+     "pilot_rule": 0.224,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.090_r60": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.024,
+     "v11_rule": 0.065,
+     "pilot_rule": 0.086,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.01,
+     "v11_rule": 0.173,
+     "pilot_rule": 0.247,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.090_r90": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.016,
+     "v11_rule": 0.045,
+     "pilot_rule": 0.072,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.012,
+     "v11_rule": 0.151,
+     "pilot_rule": 0.223,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.090_r120": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.019,
+     "v11_rule": 0.058,
+     "pilot_rule": 0.083,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.011,
+     "v11_rule": 0.156,
+     "pilot_rule": 0.229,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.090_r180": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.015,
+     "v11_rule": 0.041,
+     "pilot_rule": 0.062,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.004,
+     "v11_rule": 0.144,
+     "pilot_rule": 0.202,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.110_r16": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.032,
+     "v11_rule": 0.077,
+     "pilot_rule": 0.126,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.005,
+     "v11_rule": 0.131,
+     "pilot_rule": 0.215,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.110_r22": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.024,
+     "v11_rule": 0.077,
+     "pilot_rule": 0.122,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.005,
+     "v11_rule": 0.162,
+     "pilot_rule": 0.281,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.110_r30": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.027,
+     "v11_rule": 0.071,
+     "pilot_rule": 0.117,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.008,
+     "v11_rule": 0.174,
+     "pilot_rule": 0.284,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.110_r45": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.021,
+     "v11_rule": 0.058,
+     "pilot_rule": 0.087,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.015,
+     "v11_rule": 0.202,
+     "pilot_rule": 0.314,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.110_r60": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.026,
+     "v11_rule": 0.072,
+     "pilot_rule": 0.104,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.02,
+     "v11_rule": 0.203,
+     "pilot_rule": 0.299,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.110_r90": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.028,
+     "v11_rule": 0.061,
+     "pilot_rule": 0.083,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.011,
+     "v11_rule": 0.19,
+     "pilot_rule": 0.287,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.110_r120": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.013,
+     "v11_rule": 0.047,
+     "pilot_rule": 0.068,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.005,
+     "v11_rule": 0.172,
+     "pilot_rule": 0.252,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.110_r180": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.023,
+     "v11_rule": 0.058,
+     "pilot_rule": 0.078,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.008,
+     "v11_rule": 0.176,
+     "pilot_rule": 0.239,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.130_r22": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.036,
+     "v11_rule": 0.081,
+     "pilot_rule": 0.118,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.009,
+     "v11_rule": 0.145,
+     "pilot_rule": 0.273,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.130_r30": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.025,
+     "v11_rule": 0.063,
+     "pilot_rule": 0.111,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.006,
+     "v11_rule": 0.148,
+     "pilot_rule": 0.276,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.130_r45": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.029,
+     "v11_rule": 0.072,
+     "pilot_rule": 0.11,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.014,
+     "v11_rule": 0.203,
+     "pilot_rule": 0.318,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.130_r60": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.025,
+     "v11_rule": 0.093,
+     "pilot_rule": 0.129,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.015,
+     "v11_rule": 0.208,
+     "pilot_rule": 0.323,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.130_r90": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.018,
+     "v11_rule": 0.043,
+     "pilot_rule": 0.066,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.011,
+     "v11_rule": 0.194,
+     "pilot_rule": 0.297,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.130_r120": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.016,
+     "v11_rule": 0.064,
+     "pilot_rule": 0.09,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.018,
+     "v11_rule": 0.185,
+     "pilot_rule": 0.281,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.130_r180": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.018,
+     "v11_rule": 0.06,
+     "pilot_rule": 0.082,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.008,
+     "v11_rule": 0.181,
+     "pilot_rule": 0.25,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.160_r45": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.038,
+     "v11_rule": 0.084,
+     "pilot_rule": 0.133,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.015,
+     "v11_rule": 0.211,
+     "pilot_rule": 0.345,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.160_r60": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.022,
+     "v11_rule": 0.072,
+     "pilot_rule": 0.113,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.02,
+     "v11_rule": 0.227,
+     "pilot_rule": 0.343,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.160_r90": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.031,
+     "v11_rule": 0.071,
+     "pilot_rule": 0.097,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.017,
+     "v11_rule": 0.223,
+     "pilot_rule": 0.336,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.160_r120": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.025,
+     "v11_rule": 0.06,
+     "pilot_rule": 0.09,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.03,
+     "v11_rule": 0.224,
+     "pilot_rule": 0.326,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.160_r180": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.026,
+     "v11_rule": 0.054,
+     "pilot_rule": 0.077,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.013,
+     "v11_rule": 0.207,
+     "pilot_rule": 0.29,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.200_r45": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.027,
+     "v11_rule": 0.08,
+     "pilot_rule": 0.134,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.021,
+     "v11_rule": 0.24,
+     "pilot_rule": 0.402,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.200_r60": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.036,
+     "v11_rule": 0.079,
+     "pilot_rule": 0.128,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.021,
+     "v11_rule": 0.24,
+     "pilot_rule": 0.399,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.200_r90": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.021,
+     "v11_rule": 0.054,
+     "pilot_rule": 0.087,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.02,
+     "v11_rule": 0.251,
+     "pilot_rule": 0.389,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.200_r120": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.026,
+     "v11_rule": 0.065,
+     "pilot_rule": 0.104,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.021,
+     "v11_rule": 0.247,
+     "pilot_rule": 0.376,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.200_r180": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.023,
+     "v11_rule": 0.058,
+     "pilot_rule": 0.088,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.013,
+     "v11_rule": 0.213,
+     "pilot_rule": 0.316,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.250_r90": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.034,
+     "v11_rule": 0.078,
+     "pilot_rule": 0.114,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.025,
+     "v11_rule": 0.279,
+     "pilot_rule": 0.434,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.250_r120": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.02,
+     "v11_rule": 0.073,
+     "pilot_rule": 0.109,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.026,
+     "v11_rule": 0.225,
+     "pilot_rule": 0.392,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.250_r180": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.013,
+     "v11_rule": 0.046,
+     "pilot_rule": 0.084,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.017,
+     "v11_rule": 0.241,
+     "pilot_rule": 0.359,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.300_r90": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.03,
+     "v11_rule": 0.075,
+     "pilot_rule": 0.125,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.037,
+     "v11_rule": 0.286,
+     "pilot_rule": 0.458,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.300_r120": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.027,
+     "v11_rule": 0.068,
+     "pilot_rule": 0.111,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.03,
+     "v11_rule": 0.286,
+     "pilot_rule": 0.464,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.300_r180": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.024,
+     "v11_rule": 0.062,
+     "pilot_rule": 0.099,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.027,
+     "v11_rule": 0.265,
+     "pilot_rule": 0.418,
+     "threshold": 0.074
+    }
+   },
+   "calibration:field_s0.400_r180": {
+    "source": "calibration",
+    "reps": 1000,
+    "M2R": {
+     "registered_rule": 0.04,
+     "v11_rule": 0.092,
+     "pilot_rule": 0.145,
+     "threshold": 0.074
+    },
+    "M2": {
+     "registered_rule": 0.047,
+     "v11_rule": 0.311,
+     "pilot_rule": 0.478,
+     "threshold": 0.074
+    }
+   },
+   "stress:aniso_NS_s0.080_10x60": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.022,
+     "v11_rule": 0.088,
+     "pilot_rule": 0.13,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.027
+    },
+    "M2": {
+     "registered_rule": 0.006,
+     "v11_rule": 0.1,
+     "pilot_rule": 0.164,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.00225
+    }
+   },
+   "stress:aniso_NS_s0.100_10x60": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.03,
+     "v11_rule": 0.08,
+     "pilot_rule": 0.106,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.02975
+    },
+    "M2": {
+     "registered_rule": 0.004,
+     "v11_rule": 0.104,
+     "pilot_rule": 0.174,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.00175
+    }
+   },
+   "stress:aniso_NS_s0.130_10x60": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.036,
+     "v11_rule": 0.09,
+     "pilot_rule": 0.13,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03025
+    },
+    "M2": {
+     "registered_rule": 0.0,
+     "v11_rule": 0.108,
+     "pilot_rule": 0.212,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.00425
+    }
+   },
+   "stress:aniso_NS_s0.080_10x120": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.028,
+     "v11_rule": 0.06,
+     "pilot_rule": 0.092,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.026
+    },
+    "M2": {
+     "registered_rule": 0.002,
+     "v11_rule": 0.074,
+     "pilot_rule": 0.138,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.00125
+    }
+   },
+   "stress:aniso_NS_s0.100_10x120": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.026,
+     "v11_rule": 0.074,
+     "pilot_rule": 0.12,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0255
+    },
+    "M2": {
+     "registered_rule": 0.002,
+     "v11_rule": 0.106,
+     "pilot_rule": 0.184,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.00075
+    }
+   },
+   "stress:aniso_NS_s0.130_10x120": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.032,
+     "v11_rule": 0.086,
+     "pilot_rule": 0.132,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03175
+    },
+    "M2": {
+     "registered_rule": 0.002,
+     "v11_rule": 0.088,
+     "pilot_rule": 0.176,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.00325
+    }
+   },
+   "stress:aniso_NS_s0.150_10x120": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.038,
+     "v11_rule": 0.102,
+     "pilot_rule": 0.148,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0405
+    },
+    "M2": {
+     "registered_rule": 0.006,
+     "v11_rule": 0.124,
+     "pilot_rule": 0.238,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.002
+    }
+   },
+   "stress:aniso_NS_s0.080_15x90": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.018,
+     "v11_rule": 0.086,
+     "pilot_rule": 0.124,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0255
+    },
+    "M2": {
+     "registered_rule": 0.0,
+     "v11_rule": 0.112,
+     "pilot_rule": 0.188,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.00175
+    }
+   },
+   "stress:aniso_NS_s0.100_15x90": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.038,
+     "v11_rule": 0.08,
+     "pilot_rule": 0.122,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.028
+    },
+    "M2": {
+     "registered_rule": 0.002,
+     "v11_rule": 0.106,
+     "pilot_rule": 0.204,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.00225
+    }
+   },
+   "stress:aniso_NS_s0.130_15x90": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.042,
+     "v11_rule": 0.112,
+     "pilot_rule": 0.154,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.037
+    },
+    "M2": {
+     "registered_rule": 0.01,
+     "v11_rule": 0.126,
+     "pilot_rule": 0.23,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0025
+    }
+   },
+   "stress:aniso_NS_s0.150_15x90": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.034,
+     "v11_rule": 0.094,
+     "pilot_rule": 0.128,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.039
+    },
+    "M2": {
+     "registered_rule": 0.006,
+     "v11_rule": 0.1,
+     "pilot_rule": 0.236,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0045
+    }
+   },
+   "stress:aniso_NS_s0.080_20x180": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.026,
+     "v11_rule": 0.054,
+     "pilot_rule": 0.082,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03075
+    },
+    "M2": {
+     "registered_rule": 0.002,
+     "v11_rule": 0.082,
+     "pilot_rule": 0.162,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.00275
+    }
+   },
+   "stress:aniso_NS_s0.100_20x180": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.03,
+     "v11_rule": 0.078,
+     "pilot_rule": 0.106,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03
+    },
+    "M2": {
+     "registered_rule": 0.006,
+     "v11_rule": 0.092,
+     "pilot_rule": 0.184,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.00275
+    }
+   },
+   "stress:aniso_NS_s0.130_20x180": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.032,
+     "v11_rule": 0.096,
+     "pilot_rule": 0.126,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03375
+    },
+    "M2": {
+     "registered_rule": 0.0,
+     "v11_rule": 0.12,
+     "pilot_rule": 0.202,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.00225
+    }
+   },
+   "stress:aniso_NS_s0.150_20x180": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.04,
+     "v11_rule": 0.098,
+     "pilot_rule": 0.142,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.038
+    },
+    "M2": {
+     "registered_rule": 0.004,
+     "v11_rule": 0.102,
+     "pilot_rule": 0.21,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0025
+    }
+   },
+   "stress:aniso_NS_s0.200_20x180": {
+    "source": "stress",
+    "reps": 10000,
+    "M2R": {
+     "registered_rule": 0.043,
+     "v11_rule": 0.1055,
+     "pilot_rule": 0.1601,
+     "threshold": 0.058,
+     "calibration_share_final_rule": 0.0495
+    },
+    "M2": {
+     "registered_rule": 0.0031,
+     "v11_rule": 0.1172,
+     "pilot_rule": 0.2629,
+     "threshold": 0.058,
+     "calibration_share_final_rule": 0.00225
+    }
+   },
+   "stress:aniso_EW_s0.080_10x60": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.03,
+     "v11_rule": 0.098,
+     "pilot_rule": 0.14,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.02975
+    },
+    "M2": {
+     "registered_rule": 0.004,
+     "v11_rule": 0.132,
+     "pilot_rule": 0.212,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0045
+    }
+   },
+   "stress:aniso_EW_s0.100_10x60": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.036,
+     "v11_rule": 0.088,
+     "pilot_rule": 0.136,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03225
+    },
+    "M2": {
+     "registered_rule": 0.004,
+     "v11_rule": 0.16,
+     "pilot_rule": 0.254,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.00675
+    }
+   },
+   "stress:aniso_EW_s0.130_10x60": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.046,
+     "v11_rule": 0.102,
+     "pilot_rule": 0.178,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03825
+    },
+    "M2": {
+     "registered_rule": 0.01,
+     "v11_rule": 0.178,
+     "pilot_rule": 0.292,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0105
+    }
+   },
+   "stress:aniso_EW_s0.080_10x120": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.038,
+     "v11_rule": 0.082,
+     "pilot_rule": 0.126,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.02875
+    },
+    "M2": {
+     "registered_rule": 0.008,
+     "v11_rule": 0.16,
+     "pilot_rule": 0.244,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.006
+    }
+   },
+   "stress:aniso_EW_s0.100_10x120": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.044,
+     "v11_rule": 0.1,
+     "pilot_rule": 0.144,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03375
+    },
+    "M2": {
+     "registered_rule": 0.01,
+     "v11_rule": 0.15,
+     "pilot_rule": 0.242,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.008
+    }
+   },
+   "stress:aniso_EW_s0.130_10x120": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.038,
+     "v11_rule": 0.08,
+     "pilot_rule": 0.158,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03325
+    },
+    "M2": {
+     "registered_rule": 0.012,
+     "v11_rule": 0.168,
+     "pilot_rule": 0.29,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0075
+    }
+   },
+   "stress:aniso_EW_s0.150_10x120": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.046,
+     "v11_rule": 0.09,
+     "pilot_rule": 0.164,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.04125
+    },
+    "M2": {
+     "registered_rule": 0.006,
+     "v11_rule": 0.15,
+     "pilot_rule": 0.29,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.012
+    }
+   },
+   "stress:aniso_EW_s0.080_15x90": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.02,
+     "v11_rule": 0.068,
+     "pilot_rule": 0.106,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.033
+    },
+    "M2": {
+     "registered_rule": 0.004,
+     "v11_rule": 0.152,
+     "pilot_rule": 0.236,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0085
+    }
+   },
+   "stress:aniso_EW_s0.100_15x90": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.028,
+     "v11_rule": 0.07,
+     "pilot_rule": 0.114,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03175
+    },
+    "M2": {
+     "registered_rule": 0.006,
+     "v11_rule": 0.152,
+     "pilot_rule": 0.27,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.00925
+    }
+   },
+   "stress:aniso_EW_s0.130_15x90": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.034,
+     "v11_rule": 0.1,
+     "pilot_rule": 0.16,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.039
+    },
+    "M2": {
+     "registered_rule": 0.02,
+     "v11_rule": 0.22,
+     "pilot_rule": 0.348,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.01275
+    }
+   },
+   "stress:aniso_EW_s0.150_15x90": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.036,
+     "v11_rule": 0.072,
+     "pilot_rule": 0.138,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03275
+    },
+    "M2": {
+     "registered_rule": 0.012,
+     "v11_rule": 0.216,
+     "pilot_rule": 0.362,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.01625
+    }
+   },
+   "stress:aniso_EW_s0.080_20x180": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.022,
+     "v11_rule": 0.042,
+     "pilot_rule": 0.08,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0295
+    },
+    "M2": {
+     "registered_rule": 0.006,
+     "v11_rule": 0.164,
+     "pilot_rule": 0.276,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.01225
+    }
+   },
+   "stress:aniso_EW_s0.100_20x180": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.046,
+     "v11_rule": 0.082,
+     "pilot_rule": 0.142,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03225
+    },
+    "M2": {
+     "registered_rule": 0.034,
+     "v11_rule": 0.236,
+     "pilot_rule": 0.364,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.015
+    }
+   },
+   "stress:aniso_EW_s0.130_20x180": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.044,
+     "v11_rule": 0.084,
+     "pilot_rule": 0.142,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0355
+    },
+    "M2": {
+     "registered_rule": 0.014,
+     "v11_rule": 0.178,
+     "pilot_rule": 0.328,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0175
+    }
+   },
+   "stress:aniso_EW_s0.150_20x180": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.048,
+     "v11_rule": 0.116,
+     "pilot_rule": 0.168,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03225
+    },
+    "M2": {
+     "registered_rule": 0.028,
+     "v11_rule": 0.256,
+     "pilot_rule": 0.402,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.019
+    }
+   },
+   "stress:aniso_EW_s0.200_20x180": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.034,
+     "v11_rule": 0.096,
+     "pilot_rule": 0.158,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.04075
+    },
+    "M2": {
+     "registered_rule": 0.026,
+     "v11_rule": 0.254,
+     "pilot_rule": 0.446,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.023
+    }
+   },
+   "stress:long_s0.300_r180": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.026,
+     "v11_rule": 0.062,
+     "pilot_rule": 0.098,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.027
+    },
+    "M2": {
+     "registered_rule": 0.036,
+     "v11_rule": 0.316,
+     "pilot_rule": 0.458,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03125
+    }
+   },
+   "stress:long_s0.400_r180": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.032,
+     "v11_rule": 0.088,
+     "pilot_rule": 0.124,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03425
+    },
+    "M2": {
+     "registered_rule": 0.036,
+     "v11_rule": 0.294,
+     "pilot_rule": 0.486,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.04275
+    }
+   },
+   "stress:long_s0.300_r240": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.024,
+     "v11_rule": 0.082,
+     "pilot_rule": 0.108,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.026
+    },
+    "M2": {
+     "registered_rule": 0.04,
+     "v11_rule": 0.256,
+     "pilot_rule": 0.388,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.02625
+    }
+   },
+   "stress:long_s0.400_r240": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.036,
+     "v11_rule": 0.082,
+     "pilot_rule": 0.126,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.02675
+    },
+    "M2": {
+     "registered_rule": 0.04,
+     "v11_rule": 0.302,
+     "pilot_rule": 0.454,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03425
+    }
+   },
+   "stress:long_s0.300_r360": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.024,
+     "v11_rule": 0.066,
+     "pilot_rule": 0.084,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0235
+    },
+    "M2": {
+     "registered_rule": 0.02,
+     "v11_rule": 0.234,
+     "pilot_rule": 0.336,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.02175
+    }
+   },
+   "stress:long_s0.400_r360": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.032,
+     "v11_rule": 0.07,
+     "pilot_rule": 0.088,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.023
+    },
+    "M2": {
+     "registered_rule": 0.02,
+     "v11_rule": 0.254,
+     "pilot_rule": 0.376,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0335
+    }
+   },
+   "stress:long_s0.500_r360": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.022,
+     "v11_rule": 0.072,
+     "pilot_rule": 0.104,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.02725
+    },
+    "M2": {
+     "registered_rule": 0.036,
+     "v11_rule": 0.316,
+     "pilot_rule": 0.476,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.04125
+    }
+   },
+   "stress:long_s0.300_r480": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.012,
+     "v11_rule": 0.058,
+     "pilot_rule": 0.066,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.02075
+    },
+    "M2": {
+     "registered_rule": 0.014,
+     "v11_rule": 0.192,
+     "pilot_rule": 0.264,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.01675
+    }
+   },
+   "stress:long_s0.400_r480": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.03,
+     "v11_rule": 0.062,
+     "pilot_rule": 0.086,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0195
+    },
+    "M2": {
+     "registered_rule": 0.024,
+     "v11_rule": 0.278,
+     "pilot_rule": 0.392,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0235
+    }
+   },
+   "stress:long_s0.500_r480": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.03,
+     "v11_rule": 0.066,
+     "pilot_rule": 0.096,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0275
+    },
+    "M2": {
+     "registered_rule": 0.042,
+     "v11_rule": 0.284,
+     "pilot_rule": 0.432,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03525
+    }
+   },
+   "stress:long_s0.600_r480": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.026,
+     "v11_rule": 0.07,
+     "pilot_rule": 0.098,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.029
+    },
+    "M2": {
+     "registered_rule": 0.034,
+     "v11_rule": 0.326,
+     "pilot_rule": 0.512,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.04925
+    }
+   },
+   "stress:long_s0.300_r720": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.022,
+     "v11_rule": 0.064,
+     "pilot_rule": 0.078,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0195
+    },
+    "M2": {
+     "registered_rule": 0.016,
+     "v11_rule": 0.168,
+     "pilot_rule": 0.258,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.011
+    }
+   },
+   "stress:long_s0.400_r720": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.012,
+     "v11_rule": 0.05,
+     "pilot_rule": 0.08,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.01925
+    },
+    "M2": {
+     "registered_rule": 0.018,
+     "v11_rule": 0.228,
+     "pilot_rule": 0.312,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.01525
+    }
+   },
+   "stress:long_s0.500_r720": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.028,
+     "v11_rule": 0.052,
+     "pilot_rule": 0.076,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.02475
+    },
+    "M2": {
+     "registered_rule": 0.016,
+     "v11_rule": 0.264,
+     "pilot_rule": 0.394,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.02975
+    }
+   },
+   "stress:long_s0.600_r720": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.03,
+     "v11_rule": 0.07,
+     "pilot_rule": 0.108,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.02125
+    },
+    "M2": {
+     "registered_rule": 0.034,
+     "v11_rule": 0.29,
+     "pilot_rule": 0.466,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03475
+    }
+   },
+   "stress:long_s0.700_r720": {
+    "source": "stress",
+    "reps": 10000,
+    "M2R": {
+     "registered_rule": 0.0329,
+     "v11_rule": 0.082,
+     "pilot_rule": 0.1243,
+     "threshold": 0.058,
+     "calibration_share_final_rule": 0.036
+    },
+    "M2": {
+     "registered_rule": 0.0491,
+     "v11_rule": 0.3473,
+     "pilot_rule": 0.5285,
+     "threshold": 0.058,
+     "calibration_share_final_rule": 0.0495
+    }
+   },
+   "stress:comp_s0.060": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.032,
+     "v11_rule": 0.092,
+     "pilot_rule": 0.162,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0375
+    },
+    "M2": {
+     "registered_rule": 0.0,
+     "v11_rule": 0.102,
+     "pilot_rule": 0.18,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0015
+    }
+   },
+   "stress:comp_s0.080": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.028,
+     "v11_rule": 0.072,
+     "pilot_rule": 0.162,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.03875
+    },
+    "M2": {
+     "registered_rule": 0.002,
+     "v11_rule": 0.09,
+     "pilot_rule": 0.186,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.00275
+    }
+   },
+   "stress:comp_s0.100": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.058,
+     "v11_rule": 0.11,
+     "pilot_rule": 0.216,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.04475
+    },
+    "M2": {
+     "registered_rule": 0.004,
+     "v11_rule": 0.114,
+     "pilot_rule": 0.25,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.004
+    }
+   },
+   "stress:comp_s0.120": {
+    "source": "stress",
+    "reps": 500,
+    "M2R": {
+     "registered_rule": 0.056,
+     "v11_rule": 0.114,
+     "pilot_rule": 0.21,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.046
+    },
+    "M2": {
+     "registered_rule": 0.012,
+     "v11_rule": 0.126,
+     "pilot_rule": 0.228,
+     "threshold": 0.084,
+     "calibration_share_final_rule": 0.0045
+    }
+   }
+  }
+ },
+ "worst_margin": {
+  "M2R": {
+   "model": "stress:aniso_NS_s0.200_20x180",
+   "share": 0.043,
+   "threshold": 0.058
+  },
+  "M2": {
+   "model": "stress:long_s0.700_r720",
+   "share": 0.0491,
+   "threshold": 0.058
+  }
+ },
+ "pass_criterion": "planted SUPPORTED; fast path exact for M2R and M2; and every fresh-seed false-call share of the registered rules (M2R with C2, M2 with C2_M2) <= 0.058 at 10,000 replicates (binding models), <= 0.074 at 1,000 (calibration models) and <= 0.084 at 500 (stress models)",
+ "pass": true,
+ "code_sha256": {
+  "run_test.py": "25abae847109aa7bb22d73ce8414b401c94c448992af3cd6787d6a79440d8d88",
+  "simcal.py": "8df43dbb3b8e58077d56697e0053c2bedbef3a0cebf8417d1cd7311ee3683868",
+  "validate_synthetic.py": "188a113be9198fad5dd8e322dec89e2efe0087b06ec974188a66274b9af1a9cf",
+  "CALIBRATION.json": "be7287fdc47edc78416b9bfe2e42450e887223b0d43d4862562bce82a7c119f5",
+  "CRITICAL_VALUES.json": "17d87f48fd4b704069af631229a920087e971f7f88bf9ced2968a8cdd84469f2"
+ }
+}

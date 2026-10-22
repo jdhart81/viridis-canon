@@ -1,0 +1,976 @@
+{
+ "n_ignitions": 14105,
+ "n_with_outcome": 14105,
+ "pilot_overlap": 0,
+ "critical_values": {
+  "C2": 2.53,
+  "C1": 2.08,
+  "C2_M2": 3.93,
+  "C1_M2": 3.39
+ },
+ "inputs_verified": true,
+ "synthetic": false,
+ "n_missing_outcome": 0,
+ "primary_test": {
+  "hypothesis": "H2",
+  "defn": "B",
+  "model": "M2R",
+  "n": 11314,
+  "year_clusters": 33,
+  "block_clusters": 75,
+  "regions_40km": 24,
+  "beta": 0.05313557319560932,
+  "se_year": 0.009662655202509186,
+  "se_twoway": 0.012009584378082808,
+  "se_max": 0.012009584378082808,
+  "C2": 2.53,
+  "interval_registered": [
+   0.022751324719059815,
+   0.08351982167215882
+  ],
+  "interval_v11_t": [
+   0.0286728503347949,
+   0.07759829605642374
+  ],
+  "dof": 32,
+  "t_crit": 2.0369333434601016,
+  "ci95_year": [
+   0.03419676899869131,
+   0.07207437739252733
+  ],
+  "boot_ci95": [
+   0.03503317353101771,
+   0.07205250912959364
+  ],
+  "beta_log10_rho": -0.04852071377482831,
+  "beta_log10_roaddist": 0.14054314601314633
+ },
+ "decision": "SUPPORTED",
+ "reading_v11_rule": "SUPPORTED",
+ "decision_pilot_rule": "SUPPORTED",
+ "interpretation": {
+  "reading": "REPLICATED",
+  "per_tenfold_multiplier": 1.13014865678412,
+  "small_telescopes": {
+   "beta33": 0.04152611485970525,
+   "upper90": 0.07811550870202157,
+   "reject_beta_ge_beta33": false
+  },
+  "independent": {
+   "note": "pilot under M2R (Deviation 3); assumes the two estimates are independent (they share 33 years); see stacked",
+   "pilot_beta_M2R": 0.07913393598337634,
+   "diff": -0.025998362787767022,
+   "z": -0.8913002344846783,
+   "p_two_sided": 0.3727681229253199,
+   "pilot_beta_inside_registered_interval": true,
+   "pooled_fixed_effect": {
+    "beta": 0.05754272487225823,
+    "se": 0.010944438365932061,
+    "ci95": [
+     0.03609162567503139,
+     0.07899382406948507
+    ]
+   }
+  },
+  "stacked_with_pilot": {
+   "model": "M2R",
+   "beta_pilot": 0.07913393598337426,
+   "beta_conf": 0.053135573195607466,
+   "year": {
+    "clustering": "year",
+    "se_pilot": 0.02637913783684504,
+    "se_conf": 0.009680441319995034,
+    "cov": 2.5778392562655335e-05,
+    "corr": 0.10094854857395967,
+    "difference": {
+     "diff": -0.025998362787766793,
+     "z": -0.9570044837941463,
+     "p_two_sided": 0.3385649918701139
+    },
+    "pooled_gls": {
+     "beta": 0.05552866782790377,
+     "se": 0.009351892621626895,
+     "ci95": [
+      0.037198958289515055,
+      0.07385837736629249
+     ]
+    }
+   },
+   "twoway": {
+    "clustering": "year x 20 km block",
+    "se_pilot": 0.024854264642463535,
+    "se_conf": 0.011997607860653316,
+    "cov": 2.714753031329252e-05,
+    "corr": 0.09104052331281046,
+    "difference": {
+     "diff": -0.025998362787766793,
+     "z": -0.9775050190671921,
+     "p_two_sided": 0.32831919419352507
+    },
+    "pooled_gls": {
+     "beta": 0.05742813425502496,
+     "se": 0.01116506560325143,
+     "ci95": [
+      0.035544605672652156,
+      0.07931166283739777
+     ]
+    }
+   }
+  }
+ },
+ "secondary_models": [
+  {
+   "defn": "B",
+   "model": "M1",
+   "n": 11314,
+   "clusters": 33,
+   "beta": 0.06342872102275651,
+   "se": 0.010851351669394948,
+   "ci95": [
+    0.04216007175074242,
+    0.0846973702947706
+   ]
+  },
+  {
+   "defn": "A50",
+   "model": "M1",
+   "n": 102,
+   "clusters": 32,
+   "beta": 0.5531993596615908,
+   "se": 0.09823579920080794,
+   "ci95": [
+    0.36065719322800727,
+    0.7457415260951744
+   ]
+  },
+  {
+   "defn": "A50",
+   "model": "M2",
+   "n": 102,
+   "clusters": 32,
+   "beta": 0.5274657352686062,
+   "se": 0.08252629116836137,
+   "ci95": [
+    0.3657142045786179,
+    0.6892172659585944
+   ],
+   "beta_log10_rho": -0.532192666804532,
+   "beta_log10_roaddist": -0.03436479385055483,
+   "boot_ci95": [
+    0.3507573313788116,
+    0.6700867956723761
+   ]
+  },
+  {
+   "defn": "A25",
+   "model": "M1",
+   "n": 712,
+   "clusters": 33,
+   "beta": 0.15777060174780325,
+   "se": 0.03597810086182662,
+   "ci95": [
+    0.08725352405862306,
+    0.22828767943698342
+   ]
+  },
+  {
+   "defn": "A25",
+   "model": "M2",
+   "n": 712,
+   "clusters": 33,
+   "beta": 0.14008562102354719,
+   "se": 0.03514461595612995,
+   "ci95": [
+    0.07120217374953249,
+    0.2089690682975619
+   ],
+   "beta_log10_rho": -0.48346688601872007,
+   "beta_log10_roaddist": 0.346827212231526
+  }
+ ],
+ "secondary_decisions_not_confirmatory": {
+  "B_M1": "SUPPORTED",
+  "A50_M1": "SUPPORTED",
+  "A50_M2": "SUPPORTED",
+  "A25_M1": "SUPPORTED",
+  "A25_M2": "SUPPORTED"
+ },
+ "H3_escaped": [
+  {
+   "defn": "A50",
+   "model": "M2",
+   "n": 30,
+   "clusters": 15,
+   "beta": -0.7931842354336103,
+   "se": 2.5156832803858378,
+   "ci95": [
+    -5.723923464989852,
+    4.137554994122631
+   ],
+   "beta_log10_rho": -0.5871023303751438,
+   "beta_log10_roaddist": 3.697090877587983
+  },
+  {
+   "defn": "B",
+   "model": "M2",
+   "n": 802,
+   "clusters": 33,
+   "beta": 0.09102008766025449,
+   "se": 0.04599589052032495,
+   "ci95": [
+    0.0008681422404175909,
+    0.1811720330800914
+   ],
+   "beta_log10_rho": -0.014348489224772824,
+   "beta_log10_roaddist": 0.1150273512834877
+  }
+ ],
+ "H4_containment": [
+  {
+   "defn": "A50",
+   "n": 30,
+   "observed": 0.9666666666666667,
+   "null_mean": 0.9502533333333333,
+   "p_one_sided": 0.5076492350764924
+  },
+  {
+   "defn": "B",
+   "n": 802,
+   "observed": 0.9463840399002493,
+   "null_mean": 0.9294344139650872,
+   "p_one_sided": 0.00019998000199980003
+  }
+ ],
+ "sensitivity": [
+  {
+   "label": "S1 snap on-holdable",
+   "defn": "A50",
+   "model": "M2",
+   "n": 220,
+   "clusters": 33,
+   "beta": 0.4600605648783277,
+   "se": 0.06472570360333513,
+   "ci95": [
+    0.33319818581579086,
+    0.5869229439408645
+   ],
+   "beta_log10_rho": -0.46948119643107755,
+   "beta_log10_roaddist": -0.20469251783522552
+  },
+  {
+   "label": "S2 include censored",
+   "defn": "A50",
+   "model": "M2",
+   "n": 12947,
+   "clusters": 33,
+   "beta": 0.5757561657315888,
+   "se": 0.05724154852016254,
+   "ci95": [
+    0.46356273063207026,
+    0.6879496008311075
+   ],
+   "beta_log10_rho": 0.0027343912226347276,
+   "beta_log10_roaddist": 0.09930007079070935
+  },
+  {
+   "label": "S3 drop coarse coords",
+   "defn": "A50",
+   "model": "M2",
+   "n": 101,
+   "clusters": 32,
+   "beta": 0.5236604110885984,
+   "se": 0.08402180981148118,
+   "ci95": [
+    0.35897766385809526,
+    0.6883431583191015
+   ],
+   "beta_log10_rho": -0.5594770773777563,
+   "beta_log10_roaddist": 0.042001029579605755
+  },
+  {
+   "label": "S6a natural cause (lightning)",
+   "defn": "A50",
+   "model": "M2",
+   "n": 13,
+   "clusters": 7,
+   "k": 17,
+   "not_estimable": true,
+   "beta": null,
+   "se": null,
+   "ci95": [
+    null,
+    null
+   ]
+  },
+  {
+   "label": "S6b human cause",
+   "defn": "A50",
+   "model": "M2",
+   "n": 84,
+   "clusters": 30,
+   "beta": 0.5021315845322472,
+   "se": 0.11494324301608415,
+   "ci95": [
+    0.27684282822072226,
+    0.727420340843772
+   ],
+   "beta_log10_rho": -0.7083489187735837,
+   "beta_log10_roaddist": -0.05086228412064647
+  },
+  {
+   "label": "S8 years >= 2010",
+   "defn": "A50",
+   "model": "M2",
+   "n": 64,
+   "clusters": 15,
+   "beta": 0.47212943337816493,
+   "se": 0.12544439776949123,
+   "ci95": [
+    0.2262584137499621,
+    0.7180004530063677
+   ],
+   "beta_log10_rho": -0.4921224574712225,
+   "beta_log10_roaddist": -0.02102700226605636
+  },
+  {
+   "label": "S1 snap on-holdable",
+   "defn": "B",
+   "model": "M2",
+   "n": 13707,
+   "clusters": 33,
+   "beta": 0.05705987228040975,
+   "se": 0.00910648271093543,
+   "ci95": [
+    0.039211166166976306,
+    0.07490857839384318
+   ],
+   "beta_log10_rho": -0.058333985197146644,
+   "beta_log10_roaddist": 0.06636431975885418
+  },
+  {
+   "label": "S2 include censored",
+   "defn": "B",
+   "model": "M2",
+   "n": 11585,
+   "clusters": 33,
+   "beta": 0.03089396942802489,
+   "se": 0.009584084209911834,
+   "ci95": [
+    0.012109164376597696,
+    0.049678774479452084
+   ],
+   "beta_log10_rho": -0.052850702827075005,
+   "beta_log10_roaddist": 0.15132743476929467
+  },
+  {
+   "label": "S3 drop coarse coords",
+   "defn": "B",
+   "model": "M2",
+   "n": 11297,
+   "clusters": 33,
+   "beta": 0.03315687888704686,
+   "se": 0.009560776327908818,
+   "ci95": [
+    0.014417757284345578,
+    0.05189600048974814
+   ],
+   "beta_log10_rho": -0.05046605219936984,
+   "beta_log10_roaddist": 0.14599537718674754
+  },
+  {
+   "label": "S6a natural cause (lightning)",
+   "defn": "B",
+   "model": "M2",
+   "n": 4226,
+   "clusters": 33,
+   "beta": -0.014822984414738456,
+   "se": 0.02417707330957132,
+   "ci95": [
+    -0.062210048101498244,
+    0.03256407927202133
+   ],
+   "beta_log10_rho": -0.11179497082044816,
+   "beta_log10_roaddist": 0.09029149836732167
+  },
+  {
+   "label": "S6b human cause",
+   "defn": "B",
+   "model": "M2",
+   "n": 6915,
+   "clusters": 33,
+   "beta": 0.053603759389628275,
+   "se": 0.011628467414627667,
+   "ci95": [
+    0.030811963256958046,
+    0.0763955555222985
+   ],
+   "beta_log10_rho": 0.005787466430281192,
+   "beta_log10_roaddist": 0.15013704469323974
+  },
+  {
+   "label": "S8 years >= 2010",
+   "defn": "B",
+   "model": "M2",
+   "n": 4865,
+   "clusters": 15,
+   "beta": 0.04888620199369384,
+   "se": 0.012163122546383612,
+   "ci95": [
+    0.02504648180278196,
+    0.07272592218460572
+   ],
+   "beta_log10_rho": -0.05880987388634563,
+   "beta_log10_roaddist": 0.20494849075597743
+  },
+  {
+   "label": "S5 B+ (prior 10-yr scars)",
+   "defn": "Bp",
+   "model": "M2",
+   "n": 11105,
+   "clusters": 33,
+   "beta": 0.019627329394397566,
+   "se": 0.009654124057892299,
+   "ci95": [
+    0.0007052462409286621,
+    0.038549412547866466
+   ],
+   "beta_log10_rho": -0.0669541487264149,
+   "beta_log10_roaddist": 0.1500692346095131
+  },
+  {
+   "defn": "A50",
+   "model": "M2",
+   "fes": [
+    "fuel_group",
+    "cause",
+    "month",
+    "fire_year"
+   ],
+   "label": "S9 two-way clustered (year x 20 km block), A50 under M2; the interval uses C2 for reference only (C2 is calibrated for B under M2R)",
+   "n": 102,
+   "year_clusters": 32,
+   "block_clusters": 31,
+   "beta": 0.5274657352686062,
+   "se": 0.09259196935203988,
+   "ci95": [
+    0.345985475338608,
+    0.7089459951986044
+   ],
+   "se_year_only": 0.08252629116836137,
+   "se_block_only": 0.09545434344574953,
+   "nonpositive_fallback": false,
+   "se_max": 0.09259196935203988,
+   "crit": 2.53,
+   "interval_registered": [
+    0.2932080528079453,
+    0.7617234177292671
+   ],
+   "reading_registered": "SUPPORTED",
+   "dof": 30,
+   "t_crit": 2.0422724563012378,
+   "interval_v11_t": [
+    0.33836770658624676,
+    0.7165637639509657
+   ],
+   "reading_v11_t": "SUPPORTED",
+   "decision_registered_rule": "SUPPORTED"
+  },
+  {
+   "defn": "B",
+   "model": "M2R",
+   "fes": [
+    "fuel_group",
+    "cause",
+    "month",
+    "fire_year",
+    "region40"
+   ],
+   "label": "S10 outside the pilot's compute box",
+   "n": 9941,
+   "year_clusters": 33,
+   "block_clusters": 66,
+   "beta": 0.04280232977220792,
+   "se": 0.01354930773379515,
+   "ci95": [
+    0.01624568661396943,
+    0.06935897293044642
+   ],
+   "se_year_only": 0.010431916822413678,
+   "se_block_only": 0.014965507009736789,
+   "nonpositive_fallback": false,
+   "se_max": 0.01354930773379515,
+   "crit": 2.53,
+   "interval_registered": [
+    0.008522581205706196,
+    0.07708207833870964
+   ],
+   "reading_registered": "SUPPORTED",
+   "dof": 32,
+   "t_crit": 2.0369333434601016,
+   "interval_v11_t": [
+    0.015203293068438758,
+    0.07040136647597708
+   ],
+   "reading_v11_t": "SUPPORTED",
+   "decision_registered_rule": "SUPPORTED"
+  },
+  {
+   "defn": "B",
+   "model": "M2R",
+   "fes": [
+    "fuel_group",
+    "cause",
+    "month",
+    "fire_year",
+    "region40"
+   ],
+   "label": "S10b outside the pilot box and the pilot-fetched MTBS perimeters",
+   "n": 9368,
+   "year_clusters": 33,
+   "block_clusters": 64,
+   "beta": 0.041785721890373786,
+   "se": 0.015325565380611505,
+   "ci95": [
+    0.011747613744375236,
+    0.07182383003637234
+   ],
+   "se_year_only": 0.012089870886058939,
+   "se_block_only": 0.015559870316645762,
+   "nonpositive_fallback": false,
+   "se_max": 0.015325565380611505,
+   "crit": 2.53,
+   "interval_registered": [
+    0.0030120414774266815,
+    0.0805594023033209
+   ],
+   "reading_registered": "SUPPORTED",
+   "dof": 32,
+   "t_crit": 2.0369333434601016,
+   "interval_v11_t": [
+    0.01056856675922841,
+    0.07300287702151917
+   ],
+   "reading_v11_t": "SUPPORTED",
+   "decision_registered_rule": "SUPPORTED"
+  },
+  {
+   "defn": "B",
+   "model": "M2R",
+   "fes": [
+    "cause",
+    "month",
+    "fire_year",
+    "region40"
+   ],
+   "label": "S11 no fuel-group term",
+   "n": 11314,
+   "year_clusters": 33,
+   "block_clusters": 75,
+   "beta": 0.051127924360090886,
+   "se": 0.012316608898537517,
+   "ci95": [
+    0.026987370918957355,
+    0.07526847780122442
+   ],
+   "se_year_only": 0.00983857130796337,
+   "se_block_only": 0.0142509489606011,
+   "nonpositive_fallback": false,
+   "se_max": 0.012316608898537517,
+   "crit": 2.53,
+   "interval_registered": [
+    0.019966903846790972,
+    0.0822889448733908
+   ],
+   "reading_registered": "SUPPORTED",
+   "dof": 32,
+   "t_crit": 2.0369333434601016,
+   "interval_v11_t": [
+    0.026039813016302423,
+    0.07621603570387935
+   ],
+   "reading_v11_t": "SUPPORTED",
+   "decision_registered_rule": "SUPPORTED"
+  },
+  {
+   "defn": "B",
+   "model": "M2R",
+   "fes": [
+    "fuel_group",
+    "cause",
+    "month",
+    "fire_year",
+    "region40"
+   ],
+   "label": "S12 without possible cross-boundary duplicates",
+   "n": 11309,
+   "year_clusters": 33,
+   "block_clusters": 75,
+   "beta": 0.05249151624510262,
+   "se": 0.012079260994914834,
+   "ci95": [
+    0.028816164695069545,
+    0.07616686779513569
+   ],
+   "se_year_only": 0.009626038828131303,
+   "se_block_only": 0.014167242297634337,
+   "nonpositive_fallback": false,
+   "se_max": 0.012079260994914834,
+   "crit": 2.53,
+   "interval_registered": [
+    0.02193098592796809,
+    0.08305204656223715
+   ],
+   "reading_registered": "SUPPORTED",
+   "dof": 32,
+   "t_crit": 2.0369333434601016,
+   "interval_v11_t": [
+    0.027886866760203556,
+    0.07709616573000169
+   ],
+   "reading_v11_t": "SUPPORTED",
+   "decision_registered_rule": "SUPPORTED"
+  },
+  {
+   "defn": "B",
+   "model": "M2",
+   "fes": [
+    "fuel_group",
+    "cause",
+    "month",
+    "fire_year"
+   ],
+   "label": "S13 the pilot's model M2 (no regional terms), with its own calibrated critical value C2_M2",
+   "n": 11314,
+   "year_clusters": 33,
+   "block_clusters": 75,
+   "beta": 0.03295923149934508,
+   "se": 0.014168480371753752,
+   "ci95": [
+    0.005189009970707724,
+    0.06072945302798243
+   ],
+   "se_year_only": 0.009628445358103295,
+   "se_block_only": 0.016258287437035526,
+   "nonpositive_fallback": false,
+   "se_max": 0.014168480371753752,
+   "crit": 3.93,
+   "interval_registered": [
+    -0.02272289636164717,
+    0.08864135936033732
+   ],
+   "reading_registered": "NOT SUPPORTED",
+   "dof": 32,
+   "t_crit": 2.0369333434601016,
+   "interval_v11_t": [
+    0.0040989814039598844,
+    0.061819481594730274
+   ],
+   "reading_v11_t": "SUPPORTED",
+   "decision_registered_rule": "NOT SUPPORTED"
+  }
+ ],
+ "leave_one_year_out": {
+  "min_beta": 0.049244898044483815,
+  "max_beta": 0.05716793510071248,
+  "years_changing_decision": [],
+  "per_year": [
+   {
+    "year": 1992,
+    "beta": 0.05526769272432812,
+    "interval_registered": [
+     0.02341578652948692,
+     0.08711959891916932
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 1993,
+    "beta": 0.054771876515609615,
+    "interval_registered": [
+     0.02518667932932373,
+     0.08435707370189549
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 1994,
+    "beta": 0.056150607083572515,
+    "interval_registered": [
+     0.026082215255053613,
+     0.08621899891209142
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 1995,
+    "beta": 0.05371092865979473,
+    "interval_registered": [
+     0.0219982665648532,
+     0.08542359075473627
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 1996,
+    "beta": 0.05267938011572062,
+    "interval_registered": [
+     0.021831342362451742,
+     0.0835274178689895
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 1997,
+    "beta": 0.052496413957147575,
+    "interval_registered": [
+     0.02163922400196758,
+     0.08335360391232757
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 1998,
+    "beta": 0.054341565871795096,
+    "interval_registered": [
+     0.02392922702742736,
+     0.08475390471616283
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 1999,
+    "beta": 0.0547807075564964,
+    "interval_registered": [
+     0.024647915248372173,
+     0.08491349986462063
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2000,
+    "beta": 0.05118117270879717,
+    "interval_registered": [
+     0.020446454060892433,
+     0.08191589135670191
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2001,
+    "beta": 0.049244898044483815,
+    "interval_registered": [
+     0.020805678725394884,
+     0.07768411736357275
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2002,
+    "beta": 0.05191900675962078,
+    "interval_registered": [
+     0.02018301745811485,
+     0.08365499606112671
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2003,
+    "beta": 0.054227001114860555,
+    "interval_registered": [
+     0.023682816495666767,
+     0.08477118573405434
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2004,
+    "beta": 0.05716793510071248,
+    "interval_registered": [
+     0.02748264760374595,
+     0.08685322259767901
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2005,
+    "beta": 0.05153096556926534,
+    "interval_registered": [
+     0.02206596358704206,
+     0.08099596755148862
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2006,
+    "beta": 0.05361400125489898,
+    "interval_registered": [
+     0.023384948751900232,
+     0.08384305375789772
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2007,
+    "beta": 0.05244620398237761,
+    "interval_registered": [
+     0.021637385998839166,
+     0.08325502196591605
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2008,
+    "beta": 0.05482624011720261,
+    "interval_registered": [
+     0.026789734050088044,
+     0.08286274618431717
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2009,
+    "beta": 0.054646368673853474,
+    "interval_registered": [
+     0.024636094469717516,
+     0.08465664287798944
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2010,
+    "beta": 0.0544888113803892,
+    "interval_registered": [
+     0.024687102193063415,
+     0.08429052056771498
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2011,
+    "beta": 0.05188818963895905,
+    "interval_registered": [
+     0.022108600152322275,
+     0.08166777912559582
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2012,
+    "beta": 0.05339859036553005,
+    "interval_registered": [
+     0.0223838120182418,
+     0.0844133687128183
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2013,
+    "beta": 0.051723888391779896,
+    "interval_registered": [
+     0.021546501278085838,
+     0.08190127550547395
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2014,
+    "beta": 0.05162022040531344,
+    "interval_registered": [
+     0.02053056650065491,
+     0.08270987430997197
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2015,
+    "beta": 0.051023405290657596,
+    "interval_registered": [
+     0.02012889770392589,
+     0.08191791287738931
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2016,
+    "beta": 0.05173035549149303,
+    "interval_registered": [
+     0.019679115952867275,
+     0.08378159503011878
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2017,
+    "beta": 0.050283961852747916,
+    "interval_registered": [
+     0.01986242984052604,
+     0.0807054938649698
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2018,
+    "beta": 0.05466986806915553,
+    "interval_registered": [
+     0.022747298988604288,
+     0.08659243714970677
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2019,
+    "beta": 0.05338087877539687,
+    "interval_registered": [
+     0.022888982082983015,
+     0.08387277546781073
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2020,
+    "beta": 0.05229338702380897,
+    "interval_registered": [
+     0.018341350590821537,
+     0.08624542345679641
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2021,
+    "beta": 0.05124719834053072,
+    "interval_registered": [
+     0.019201395678700592,
+     0.08329300100236085
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2022,
+    "beta": 0.05263515021707516,
+    "interval_registered": [
+     0.02198165196827017,
+     0.08328864846588016
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2023,
+    "beta": 0.05346924486434548,
+    "interval_registered": [
+     0.021848091278952562,
+     0.0850903984497384
+    ],
+    "decision": "SUPPORTED"
+   },
+   {
+    "year": 2024,
+    "beta": 0.05368309407738145,
+    "interval_registered": [
+     0.022606895826196037,
+     0.08475929232856685
+    ],
+    "decision": "SUPPORTED"
+   }
+  ]
+ }
+}

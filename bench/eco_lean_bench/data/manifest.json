@@ -1,0 +1,60 @@
+{
+  "bench": "eco-lean-bench",
+  "counts": {
+    "by_depth": {
+      "elementary": {
+        "tasks": 7,
+        "theorems": 46
+      },
+      "substantial": {
+        "tasks": 8,
+        "theorems": 44
+      }
+    },
+    "tasks": 15,
+    "theorems": 90
+  },
+  "excluded": [
+    {
+      "reason": "challenge file is byte-identical to the solution: statements were frozen together with their proofs",
+      "run": "Run-120"
+    },
+    {
+      "reason": "challenge file is byte-identical to the solution: statements were frozen together with their proofs",
+      "run": "Run-121"
+    },
+    {
+      "reason": "challenge file is byte-identical to the solution: statements were frozen together with their proofs",
+      "run": "Run-122"
+    }
+  ],
+  "mathlib_revs": [
+    "8f9d9cff6bd728b17a24e163c9402775d9e6a365"
+  ],
+  "source": "certificates/index.json",
+  "source_sha256": "1487ec63943721b114ae2e06ae4bd6dfa5f9881aa7d5585cb6b645ad5b80976e",
+  "task_ids": [
+    "ELB-123",
+    "ELB-124",
+    "ELB-125",
+    "ELB-126",
+    "ELB-127",
+    "ELB-128",
+    "ELB-129",
+    "ELB-130",
+    "ELB-131",
+    "ELB-132",
+    "ELB-133",
+    "ELB-135",
+    "ELB-137",
+    "ELB-138",
+    "ELB-139"
+  ],
+  "task_schema": "eco-lean-bench-task/1",
+  "tasks_file": "tasks.jsonl",
+  "tasks_sha256": "4df2de761ec40707618c2b5592b0471a7ee3f0eac8cdd96faa42279dad85d79a",
+  "toolchains": [
+    "leanprover/lean4:v4.28.0"
+  ],
+  "version": "0.1.0"
+}

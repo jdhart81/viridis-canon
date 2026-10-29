@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "a66ceb92d90bc5d2b856fb0127c13af43e45ca24481c65ce430c8008cf1bd9f0",
+  "catalog_digest": "4c229b185c256285088c42c33ce086da757c5823a3f44e3edddb26ecb8935521",
   "concept_doi": "10.5281/zenodo.19317982",
   "coverage_provenance": {
     "certifies": false,
@@ -7657,7 +7657,7 @@
       "abstract": "Summary of Formally Verified Results The proof dependency DAG is verified by Lean's type checker. Each theorem only references previously defined axioms, definitions, and lemmas. The import structure ensures: Foundations.lean: A1–A7, D1–D3, L1–L3, T1–T2, C1 Energy.lean: A8–A12, D4–D5, T3–T6 (imports Foundations) Integration.lean: T7–T13, I1–I7 (imports both) Verified Theorems: T1: Minimum energy ∈ (6.17, 6.19) MJ/kg N C1: Haber-Bosch η = 20.6%, Plasma η = 24.72% at 25 MJ/kg N (17.66% at the 35 MJ/kg N used in T4: corollary1_plasma_at_T4_cost) L1: Solar info bound = η·G·A / (k_B·T·ln2) L3: Quenching rate = 30,000 K/s T2: Enhancement exponent ∈ (10.02, 10.04) T3: P_gross = 9,900 W, P_plasma = 6,200 W T4 (corrected): N production: ~0.177 g/s, ~0.638 kg/hr, ~5.10 kg/day, ~1,020 kg/yr at the assumed E_plasma = 35 MJ/kg N (v1 values were 3.6× high; see theorem4_v1_erratum_factor, theorem4_energy_closure) T5: Stoichiometric bound = 20.5 kg C/kg N T6: Decomposition amplifier = 300 kg C/kg N T7 (corrected): ΔC ≈ 35,712 kg C/yr, ΔCO₂ ≈ 130,944 kg CO₂/yr (v1: 128,800 and 472,300) T8: Fleet scaling is linear T9: Energy invested = 57.024 GJ/yr T10: Information bound structure T12: Safe deposition range: 10–37 kg N/ha/yr T13: N₂O penalty ≈ 4.29, net benefit ≈ 124.0, fraction ≈ 3.3% I1–I5, I7: System invariants verified",
       "caveat": "UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.\n\nHistorical scope note: Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 18,
-      "digest": "000220f4c9575e2e6ace03119f16227b151ba22229f4f538e5159a5942d7cb47",
+      "digest": "7a02bebf60b39cc7d8c15eb469885e519a0af9fee31a9d01b89e67ee6b6cdc1b",
       "doi": "",
       "external_validation": "not-recorded",
       "imports": [
@@ -7668,7 +7668,7 @@
       "integrity": "not-canon-admitted",
       "lean_module": "NitrogenFixation",
       "lemma_count": 0,
-      "line_count": 264,
+      "line_count": 267,
       "metadata": {
         "aristotle_id": "",
         "artifact_type": "lean4",
@@ -7693,7 +7693,7 @@
       "paper_url": "https://github.com/jdhart81/viridis-canon/blob/main/P7_PlasmaNFix/Integration.lean",
       "path": "P7_PlasmaNFix/Integration.lean",
       "record_id": "p7-plasmanfix-integration",
-      "source_sha256": "3a8d504eff75b85b46153d4decab026b1fed0c8a1b0355713996bfefefd817cd",
+      "source_sha256": "972174f14ca366d7677423161c625710e015d17404ebce26c5dee7dc18183122",
       "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/P7_PlasmaNFix/Integration.lean",
       "status": "working",
       "summary": "Lean research module with 19 theorem and lemma declarations.",

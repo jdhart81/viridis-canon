@@ -63,10 +63,13 @@ theorem theorem8_linearity (n₁ n₂ : ℝ) :
     ΔCO2_fleet (n₁ + n₂) = ΔCO2_fleet n₁ + ΔCO2_fleet n₂ := by
   unfold ΔCO2_fleet; ring
 
-/-- Table 1: Sensitivity analysis parameterized by α_e and fleet size n (Gt CO₂/yr).
-    Uses the corrected M_annual; every v1 Table 1 entry is 3.6× too high. -/
+/-- Table 1: Sensitivity analysis parameterized by α_e and fleet size n,
+    in Gt CO₂/yr. n × α [kg C/kg N] × M_annual [kg N/yr] × 44/12 gives kg CO₂/yr;
+    1 Gt = 10¹² kg, so divide by 1e12. (v1 divided by 1e9, which gives Mt, so the
+    v1 "Gt" output was 1000× too large in its stated unit, on top of the 3.6×
+    T4 slip.) Example: 10⁶ wings at α_e = 35 give ≈ 0.131 Gt CO₂/yr. -/
 def fleet_CO2_Gt (α : ℝ) (n : ℝ) : ℝ :=
-  n * α * M_annual * CO2_per_C / 1e9
+  n * α * M_annual * CO2_per_C / 1e12
 
 -- 5.3 Energy Return on Investment
 

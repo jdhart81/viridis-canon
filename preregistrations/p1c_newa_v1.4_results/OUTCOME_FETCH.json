@@ -1,0 +1,24 @@
+{
+ "fetched_at_utc": "2026-10-22T11:34:43Z",
+ "registration": "github.com/jdhart81/viridis-canon@9e79127d9ba9",
+ "g2_downloads": {
+  "PREREGISTRATION_P1C_NEWA_v1.4.md": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/9e79127d9ba9b17812f8fb567bef5ec858693a8d/preregistrations/p1c_newa_v1.4/PREREGISTRATION_P1C_NEWA_v1.4.md",
+   "sha256": "36e6383621e3f2d228c11ef13300e15b991787d827c242b5caf3e65a61c5f57f",
+   "at_utc": "2026-10-22T11:30:56Z"
+  },
+  "FREEZE.json": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/9e79127d9ba9b17812f8fb567bef5ec858693a8d/preregistrations/p1c_newa_v1.4/FREEZE.json",
+   "sha256": "4efb62b83fa8f8a5bbb674739f5102dd87bb599a17bf2f0b10f813789019e042",
+   "at_utc": "2026-10-22T11:30:56Z"
+  }
+ },
+ "requested": 14105,
+ "received": 14105,
+ "layer_name": "Fire_FPA_FOD_7th_Fires",
+ "layer_description": "This data publication contains a spatial database of wildfires that occurred in the United States (US) from 1992 to 2024. It is the sixth update of a publication originally generated to support the national Fire Program Analysis (FPA) system. The wildfire records were acquired from the reporting systems of federal, state, and local fire organizations. The following core data elements were required for records to be included in this data publication: discovery date, final fire size, and a point location at least as precise as a Public Land Survey System (PLSS) section (1-square mile grid). The data were transformed to conform, when possible, to the data standards of the National Wildfire Coordinating Group (NWCG), including an updated wildfire-cause standard (approved August 2020). Basic error-checking was performed, and redundant records were identified and removed to the degree possible. The resulting product, referred to as the Fire Program Analysis fire-occurrence database (FPA FOD), includes 2.66 million geo-referenced wildfire records, representing a total of 209 million acres burned during the 33-year period. Identifiers necessary to link the point-based, final-fire-reporting information to published large-fire-perimeter and operational-situation-reporting datasets are included.",
+ "layer_editing_info": null,
+ "log_sha256": "751ffbb99d8dd33614e97971c3bb4aabb1ea003c585abdc63d3c6304eba371bf",
+ "problems": [],
+ "outcomes_sha256": "d3284182a22b054e215f156a6d1dfb749a79b65dc360a49a520dd68ed92277e9"
+}

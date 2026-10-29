@@ -1,0 +1,24 @@
+{
+ "deviation": 2,
+ "recorded_at_utc": "2026-10-21T04:46:14Z",
+ "type": "exploratory, post hoc (the pilot plan allowed a spatial-block check only as a labelled deviation)",
+ "what": "Two-way clustered standard errors (year x 20 km block; Cameron, Gelbach & Miller 2011) for the pilot B/M2 estimate, computed with the confirmatory run_test.fit_twoway on the frozen pilot data, first while writing the confirmatory plan (2026-10-20 ~20:50 ET) and again for plan v1.1.",
+ "result": {
+  "beta": 0.06317647448409425,
+  "se_year_registered": 0.027318251774805232,
+  "se_twoway": 0.02342431414019364,
+  "year_clusters": 33,
+  "block_clusters": 41,
+  "ci95_twoway_z": [
+   0.017264818769314717,
+   0.10908813019887378
+  ],
+  "ci95_confirmatory_rule": [
+   0.00753101655895537,
+   0.11882193240923312
+  ],
+  "confirmatory_rule": "beta +- t(0.975, 32) * max(two-way SE, year-only SE)",
+  "reading": "SUPPORTED"
+ },
+ "note": "The two-way SE is smaller than the year-only SE here, so this check does not show the result is robust to spatial correlation; under the stricter confirmatory rule (max of the two SEs, t critical value) the pilot interval is (0.0075, 0.1188), still above 0. The registered pilot decision is unchanged."
+}

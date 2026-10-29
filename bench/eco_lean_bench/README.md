@@ -103,4 +103,4 @@ The build checks every challenge against the SHA-256 bound in `certificates/inde
 
 ## Licence
 
-Apache-2.0, like the rest of this repository. Viridis LLC.
+The scripts and the task data (Lean source) are Apache-2.0, like the rest of this repository's code. This documentation is CC-BY-4.0, per the repository's contribution terms. Viridis LLC.

@@ -1,0 +1,3 @@
+without_largest_cluster {'B': (np.float64(0.924), 'INCONCLUSIVE'), 'road': (np.float64(1.292), 'SUPPORTED'), 'water': (np.float64(0.61), 'CONTRADICTED'), 'nonburn': (np.float64(0.778), 'CONTRADICTED')}
+without_zones_north_of_49N {'B': (np.float64(0.932), 'INCONCLUSIVE'), 'road': (np.float64(1.286), 'SUPPORTED'), 'water': (np.float64(0.603), 'CONTRADICTED'), 'nonburn': (np.float64(0.767), 'CONTRADICTED')}
+ots stamp ROBUST.json 0

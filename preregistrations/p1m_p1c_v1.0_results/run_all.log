@@ -1,0 +1,21 @@
+=== real primary 2026-10-22T20:54:07Z
+PRIMARY (E_B, matched wildfires 1992-2024): INCONCLUSIVE
+ots stamp MECH_RESULTS.json 0
+ots stamp mech_profile.png 0
+=== roads 2026-10-22T20:55:32Z
+B {'E': 1.226, 'share_edge': 0.041, 'share_ref_out': 0.033, 'ci95': [1.1098465712114953, 1.3546718291718938], 'null_q025': 0.894, 'null_median': 0.998, 'null_q975': 1.103, 'p_shift_upper': 0.001, 'n_fires': 47, 'n_clusters': 30, 'share_of_grid_kept': 0.464}
+ots stamp ROADS_CHECKS.json 0
+ots stamp POSTHOC_ROADS.json 0
+=== robust 2026-10-22T20:57:00Z
+without_largest_cluster {'B': (np.float64(0.924), 'INCONCLUSIVE'), 'road': (np.float64(1.292), 'SUPPORTED'), 'water': (np.float64(0.61), 'CONTRADICTED'), 'nonburn': (np.float64(0.778), 'CONTRADICTED')}
+without_zones_north_of_49N {'B': (np.float64(0.932), 'INCONCLUSIVE'), 'road': (np.float64(1.286), 'SUPPORTED'), 'water': (np.float64(0.603), 'CONTRADICTED'), 'nonburn': (np.float64(0.767), 'CONTRADICTED')}
+ots stamp ROBUST.json 0
+=== real full 2026-10-22T20:57:34Z
+PRIMARY (E_B, matched wildfires 1992-2024): INCONCLUSIVE
+ots stamp MECH_RESULTS.json 0
+ots stamp mech_profile.png 0
+=== decide 2026-10-22T21:00:11Z
+  "note": "Fields region_p1c, plan_primary, robustness_subsets and runner were added by the runner. The frozen code labels its output with the pilot region and names E_B as its primary; MECH_PLAN.md names E_road (H1)."
+ }
+}
+ALL DONE 2026-10-22T21:00:13Z

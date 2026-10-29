@@ -1,0 +1,107 @@
+{
+ "verified_at_utc": "2026-10-22T20:53:50Z",
+ "github": {
+  "repo": "jdhart81/viridis-canon",
+  "commit": "5e9a9f72ffd86e101cfc555d07148cc958eaf9bb",
+  "folder": "preregistrations/p1m_p1c_v1.0",
+  "pr": "https://github.com/jdhart81/viridis-canon/pull/139",
+  "evidence": "files downloaded anonymously from raw.githubusercontent.com at this commit"
+ },
+ "registered_files": {
+  "MECH_PLAN.md": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/MECH_PLAN.md",
+   "sha256": "591df5276aa9cb0b6c39db2477c37fd9217319a9b58ecf498873d720638bc078",
+   "bytes": 13069
+  },
+  "run_p1c_mech.py": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/run_p1c_mech.py",
+   "sha256": "91408affc1500c44a176453eac3a468d354feb0bc02d2c80c903627bea8c3aa7",
+   "bytes": 15726
+  },
+  "freeze_p1c_mech.py": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/freeze_p1c_mech.py",
+   "sha256": "cce2ff1fd52a3b66a6e00a95ab659717436f0d90980bc763d3e22e7f08fd68f2",
+   "bytes": 8184
+  },
+  "verify_p1m_registration.py": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/verify_p1m_registration.py",
+   "sha256": "f97f9dcfb1e4c47beb29b02fcd6e7b1a7d2a1f10402d0b31d49d346ca51c8acf",
+   "bytes": 2640
+  },
+  "make_disjoint_perims.py": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/make_disjoint_perims.py",
+   "sha256": "3315cebf97506d59f5442cb17c7d75743b0f191effb0c4a04f34ffeccb95469a",
+   "bytes": 3027
+  },
+  "DISJOINT_FILTER.json": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/DISJOINT_FILTER.json",
+   "sha256": "f8497565b011d37d700ad2dab110cfef46e868e8b232ebf2230fffed1e3fa437",
+   "bytes": 7002
+  },
+  "mtbs_perims_disjoint.json": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/mtbs_perims_disjoint.json",
+   "sha256": "05ba36ede5a9d8a607d3355b0c0aaa5faf890bba94a67a1c7f1f23637c969128",
+   "bytes": 8134060
+  },
+  "SAMPLE_QA.json": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/SAMPLE_QA.json",
+   "sha256": "962c2533418372757744fb8034b9d02ea0ea901329d4cad341288b7691797a1b",
+   "bytes": 1919
+  },
+  "UNION_CHECK.json": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/UNION_CHECK.json",
+   "sha256": "7bd86443b48d36ec510db5fbfcaab7492b9142c6a7b9323af5c1360215339a6c",
+   "bytes": 798
+  },
+  "full_sample/SAMPLE_QA.json": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/full_sample/SAMPLE_QA.json",
+   "sha256": "593d3caed753ab3280b370226049a2f7633263b47493147b5ab21634eefce2db",
+   "bytes": 1744
+  },
+  "full_sample/MECH_PLAN.md": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/full_sample/MECH_PLAN.md",
+   "sha256": "591df5276aa9cb0b6c39db2477c37fd9217319a9b58ecf498873d720638bc078",
+   "bytes": 13069
+  },
+  "frozen_pilot_code/mech_test.py": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/frozen_pilot_code/mech_test.py",
+   "sha256": "85d4f45f4a6b0e2009e5fd0783040655c13a4487f15f221371219863d2760893",
+   "bytes": 23441
+  },
+  "frozen_pilot_code/posthoc_roads.py": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/frozen_pilot_code/posthoc_roads.py",
+   "sha256": "d61013e972208721d3fbe08fab129ff79f3f1892daf148b5c6040bfb00adcfff",
+   "bytes": 5924
+  },
+  "frozen_pilot_code/MECH_FREEZE.json": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/frozen_pilot_code/MECH_FREEZE.json",
+   "sha256": "c54863a74af39d71f9fe36e5aa9a019a21ec58df547bf0e2f9309f6f510f3967",
+   "bytes": 1003
+  },
+  "frozen_pilot_code/MECH_FREEZE.json.ots": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/frozen_pilot_code/MECH_FREEZE.json.ots",
+   "sha256": "37c2d49a1671429f047814afe3a7c5c466c86904a66ccd6409b8f8abbc7a9bd2",
+   "bytes": 805
+  },
+  "frozen_pilot_code/MECH_PLAN.md": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/frozen_pilot_code/MECH_PLAN.md",
+   "sha256": "43f965cea1ed0f1c4144cced44c3ad96f90575a0ce41a47577ebbbaa9956f688",
+   "bytes": 7495
+  },
+  "frozen_pilot_code/ots_upgraded/MECH_FREEZE.json.ots": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/frozen_pilot_code/ots_upgraded/MECH_FREEZE.json.ots",
+   "sha256": "88536c0ed4069dfd3c582bf6596c8ff55f6041af68b9e1024ed4b10707791d93",
+   "bytes": 1807
+  },
+  "MECH_FREEZE.json": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/MECH_FREEZE.json",
+   "sha256": "b5c55616520eb1e59dd2988cf8dbf1bb15ef51c002dbb90ff0d83724ee54ec55",
+   "bytes": 3635
+  },
+  "MECH_FREEZE.json.ots": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/5e9a9f72ffd86e101cfc555d07148cc958eaf9bb/preregistrations/p1m_p1c_v1.0/MECH_FREEZE.json.ots",
+   "sha256": "7cebd38f558ddb185463875bd6dd9ca877a8b4ac0fe40a32dd50c177cc276a75",
+   "bytes": 840
+  }
+ }
+}

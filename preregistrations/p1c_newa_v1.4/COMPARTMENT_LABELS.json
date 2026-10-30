@@ -1,0 +1,91 @@
+{
+ "note": "Addendum 1 to plan P1C v1.4, m1. Definition-B compartment labels (labB) used by the compartment models of the stress set, the pilot re-read, the validation and the power analysis. Label 0 is outside every compartment.",
+ "labels": {
+  "this_region": {
+   "package_file": "compartments_static.npz",
+   "copy_of": "p1c/compartments_static.npz",
+   "npz_sha256": "d6fd8cb7590dc9cc70ec84bb6e5179d69212295a871c7586ae7fe571d960d996",
+   "labB_shape": [
+    6849,
+    7885
+   ],
+   "labB_dtype": "int32",
+   "labB_bytes_sha256": "ee515ce845f3ee1e22ce309170cd149753f41607d26a2922918879853481c89a",
+   "ids_file": "compartment_ids_blind.csv.gz",
+   "ids_gz_sha256": "10d63f095a49a3fd14e4eda05fee72f07ea7b0563ff2ca30b8895f883808d833",
+   "ids_csv_sha256": "97aa5d47cfcfcf6f71d0bb35fd34bc3578a543e232904df1d204a5b9430e896c",
+   "n_ignitions": 14105,
+   "n_ignitions_on_label_0": 2520,
+   "n_compartments": 2069,
+   "b_sample": {
+    "n": 11314,
+    "compartments": 2065,
+    "on_label_0": 0
+   }
+  },
+  "pilot": {
+   "package_file": "pilot_compartments_static.npz",
+   "copy_of": "p1/compartments_static.npz",
+   "npz_sha256": "8fabe8e39cfb0cfee37d2b60d0bc63f42b1ebecb100d582deabca3c156c06ef5",
+   "labB_shape": [
+    6448,
+    6021
+   ],
+   "labB_dtype": "int32",
+   "labB_bytes_sha256": "47f992dbe50ced1fa495a9cca8e66172439930a76e3c50584a1d133a04be6bfa",
+   "ids_file": "pilot_compartment_ids.csv.gz",
+   "ids_gz_sha256": "988ef53130ba7857ad65cbb3a3a4ac33efa7dc704571e001f5a14007e392dd69",
+   "ids_csv_sha256": "0a6ca5866dd15b75ca38c52fed2eb14c6e7a54fb384458209d466a53024ca9dc",
+   "n_ignitions": 4642,
+   "n_ignitions_on_label_0": 790,
+   "n_compartments": 560,
+   "b_sample": {
+    "n": 2677,
+    "compartments": 555,
+    "on_label_0": 0
+   }
+  }
+ },
+ "rerun_recipe": {
+  "pilot_predictors_blind.csv.gz": {
+   "recreates": "../p1/predictors_blind.csv",
+   "sha256": "57118595eea2a28b2e268733ec9645304fdb283bfc60ed107c332624a96dc4d0"
+  },
+  "pilot_outcomes.csv.gz": {
+   "recreates": "../p1/outcomes.csv",
+   "sha256": "45705d1192032850bf971f3358f659f2328a4c53427c86855df2bc9c3960bae1"
+  },
+  "pilot_raw_mtbs_perims.json.gz": {
+   "recreates": "../p1/raw/mtbs_perims.json",
+   "sha256": "49d7a234b7d7ccc4877d874d31e9d5f57388770f238ceb51a7c67442501d78ec"
+  },
+  "pilot_p1_config.json": {
+   "recreates": "../p1/p1_config.json",
+   "sha256": "d43bd6025f46a7efec48f644f65b1f15e6e8186163da4deb4afe199a0e704f99"
+  },
+  "pilot_results.json": {
+   "recreates": "../p1/results.json",
+   "sha256": "364c84a834609a879c42cff2bf256e50ac3dfb8694e243a6bdd07f920951ded9"
+  },
+  "pilot_DEVIATION_2.json": {
+   "recreates": "../p1/DEVIATION_2.json",
+   "sha256": "6d0b356a63961419aecaf0e901bfa9360c7e83429ed01b25b2071646fdd14fb0"
+  },
+  "pilot_DEVIATION_3.json": {
+   "recreates": "../p1/DEVIATION_3.json",
+   "sha256": "1425dbc15bf896c98bc9d523a25f4c7d19f80486abcd4176e7ed0664ac32d657"
+  },
+  "pilot_raw_requests.log": {
+   "recreates": "../p1/raw/requests.log",
+   "sha256": "b6cd55c220b472aa62c460e7aa69fef65274fb6dc3a26e70ca8f54c2069e5cc6"
+  },
+  "predictors_blind.csv.gz": {
+   "recreates": "predictors_blind.csv",
+   "sha256": "2229c814df242d6b8acd3724d79f6eec63868d9d837f01a04a8c509ef3c8b2af"
+  },
+  "pilot_compartments_static.npz": {
+   "recreates": "../p1/compartments_static.npz (not frozen; see labels.pilot)",
+   "sha256": "8fabe8e39cfb0cfee37d2b60d0bc63f42b1ebecb100d582deabca3c156c06ef5"
+  }
+ }
+}

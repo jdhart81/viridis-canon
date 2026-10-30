@@ -1,0 +1,254 @@
+{
+  "PDF_scope": "All22 public gate tests, including digest_pdf_v2_review, use explicit synthetic consume_notes/render/metadata_consumer seams. Guard dispatch is mocked; no production auth or rendering consumer is admitted. Unexercised phase7_audit_policy/publication_preservation defaults are import-failing tripwires.",
+  "active": false,
+  "baseline_commit": "45efc6a7c325aae6f3882524b84d755bc899f282",
+  "derived_sources": [
+    {
+      "after_sha256": "86f1691fec4195fe3f0c499df47a934373d6fb55d616cfc7841479511d97fd22",
+      "before_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/autonomous_pipeline_controller.py",
+      "before_sha256": "58e9c93920ff27c3d6035038bd77c53a1ff4bb075c991f2e2e02221d36b515f8",
+      "binding_manifest_path": "00_lab_infrastructure/gates/terminal_certification/INTEGRATION_BINDING.json",
+      "binding_manifest_sha256": "b304af0310367dbdac532a44dac86c4e29400402b41d70ab2e42bfe14206d2ec",
+      "fixture_path": null,
+      "name": "controller-installed-baseline",
+      "patch_path": "00_lab_infrastructure/gates/terminal_certification/EXISTING_SELECTION.patch",
+      "patch_sha256": "6f100d618cd80093235625dd7de26d286bb42db46cc178f22a24faa07354f475",
+      "target": "RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py"
+    },
+    {
+      "after_sha256": "d60371087d6db196069ab88bf25279ac0b7791c7e9ba38170e63728fa45458b7",
+      "before_path": "tools/allocation_correction/before/assemble_saturday_candidate.py.txt",
+      "before_sha256": "a94df6572ad68ada2f7d524aabde3d9f3ff1d6f69c7440a5f47653c71185c7c6",
+      "binding_manifest_path": "tools/allocation_correction/PATCH_MANIFEST.json",
+      "binding_manifest_sha256": "ae509b7efa538b053d70d2c82c5dd4cc1c1c54e93d59c25a142e30f838f37df9",
+      "fixture_path": "RESEARCH_PIPELINE_v2/assemble_saturday_candidate.py",
+      "name": "assembler-installed-source",
+      "patch_path": "tools/allocation_correction/patches/assemble_saturday_candidate.py.patch",
+      "patch_sha256": "6f3c3777796df001f6f958ec8872197635e40b6c966e0da8090ac3793cc0fca1",
+      "target": "RESEARCH_PIPELINE_v2/assemble_saturday_candidate.py"
+    }
+  ],
+  "exercised_scope": "Finite public synthetic unit-test fixture only; never native/process/publisher/provider operation. Builder never imports candidate modules.",
+  "generated_test_inputs": [
+    {
+      "content": "\"\"\"TEST ONLY: bounded scratch root; no production path or adoption authority.\"\"\"\nfrom pathlib import Path\n\nTEST_FIXTURE_ONLY = True\nCONTROL_ROOT = Path(__file__).resolve().parent.parent\nFORGE_STATE = CONTROL_ROOT / \"RESEARCH_PIPELINE_v2/aristotle_forge_state.json\"\n",
+      "fixture_path": "RESEARCH_PIPELINE_v2/viridis_paths.py",
+      "role": "test-only-root-seam; original public source verified but never imported",
+      "sha256": "3dd991f8c17073430f04b4b37f0f04d9b1ac8c3857cce553b88203716977faaa"
+    },
+    {
+      "content": "{\"active\": null, \"history\": []}\n",
+      "fixture_path": "RESEARCH_PIPELINE_v2/aristotle_forge_state.json",
+      "role": "synthetic empty fixture state, no production authority",
+      "sha256": "a6251c91a2bff79ff76669665abe7a833851dff3fd3c113b52fe178787d9a5cb"
+    },
+    {
+      "content": "raise RuntimeError(\"audit fixture forbids unexercised production authority consumers\")\n",
+      "fixture_path": "_ZENODO_DEPOSITS/phase7_audit_policy.py",
+      "role": "fail-closed tripwire for unexercised production default",
+      "sha256": "dcc557006195b10c63a055bec18702c6ef016670f28ea1e1cdd41f39c3f08b82"
+    },
+    {
+      "content": "raise RuntimeError(\"audit fixture forbids unexercised production authority consumers\")\n",
+      "fixture_path": "_ZENODO_DEPOSITS/publication_preservation.py",
+      "role": "fail-closed tripwire for unexercised production default",
+      "sha256": "dcc557006195b10c63a055bec18702c6ef016670f28ea1e1cdd41f39c3f08b82"
+    }
+  ],
+  "installed": false,
+  "original_viridis_paths_verified_not_imported": true,
+  "production_admitted": false,
+  "public_sources": [
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/verification_state_metadata.py",
+      "public_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/verification_state_metadata.py",
+      "role": "existing-public-support",
+      "sha256": "3abd5a597d003f4b7538de14c9b6ea27b4acc506e5ac9876f2bee498f446a2b8"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/comparator_data_egress_authorization.py",
+      "public_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/comparator_data_egress_authorization.py",
+      "role": "existing-public-support",
+      "sha256": "5c799813e8b42b4667a1288ef98a9cccd4bfb00fd266fd16aac7aece6903fcd3"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/viridisos_kernel_packager.py",
+      "public_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/viridisos_kernel_packager.py",
+      "role": "existing-public-support",
+      "sha256": "6a74449ef46e2b48ad525f44b274cb5385cc1202b50e2ea119192442de21f02c"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/scientific_advisories.py",
+      "public_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/scientific_advisories.py",
+      "role": "existing-public-support",
+      "sha256": "86de1c6346e8c185773b039f9977c8dfb61aa2c7f42c58075360f855dc409eb5"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/scientific_reconciliation.py",
+      "public_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/scientific_reconciliation.py",
+      "role": "existing-public-support",
+      "sha256": "2910690f865a1bd7ef25cdd967b90c3f50797328cd68bccc7c4ed93048b85142"
+    },
+    {
+      "fixture_path": null,
+      "public_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/viridis_paths.py",
+      "role": "reference-only-hardcoded-root-replaced-by-test-seam",
+      "sha256": "a15ef655091ebd72910a060cdef1d0f727d18b7a7223dcbbc2192c18e39fe57c"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/terminal_certification/terminal_hold.py",
+      "public_path": "00_lab_infrastructure/gates/terminal_certification/terminal_hold.py",
+      "role": "existing-public-support",
+      "sha256": "c131bc30020abea90b646023e6c9c1b8974ee15e1c9024b11fd6a1a48379a5f3"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/effective_allocation.py",
+      "public_path": "tools/effective_allocation.py",
+      "role": "existing-public-support",
+      "sha256": "2da96a7afd5e469d41497541ede668108f1a1525dd3dd2978db2261f3f1f6600"
+    },
+    {
+      "fixture_path": "_ZENODO_DEPOSITS/manuscript_pdf_gate.py",
+      "public_path": "00_lab_infrastructure/gates/standalone_pdf_release/manuscript_pdf_gate.py",
+      "role": "existing-public-support",
+      "sha256": "3ca55bf1e3e25e920ce9b79a5363e8d17138183ad592675d6fc058996fa41d0d"
+    },
+    {
+      "fixture_path": "_ZENODO_DEPOSITS/rehearsal.py",
+      "public_path": "00_lab_infrastructure/gates/standalone_pdf_release/rehearsal.py",
+      "role": "existing-public-support",
+      "sha256": "fd396f3562da77a9a6d88d4ea8841eafa0d6c1f4eaa9c9bec32b834424087944"
+    },
+    {
+      "fixture_path": "_ZENODO_DEPOSITS/weekend_canon_lockstep.py",
+      "public_path": "00_lab_infrastructure/gates/production_snapshots/phase5-20261004/after/_ZENODO_DEPOSITS/weekend_canon_lockstep.py",
+      "role": "existing-public-support",
+      "sha256": "36b23f17c4ef4a9758f587caeb52f16c72d149fb49776e4e2fc920f5d2e32bec"
+    },
+    {
+      "fixture_path": "_ZENODO_DEPOSITS/release_coherence.py",
+      "public_path": "00_lab_infrastructure/gates/production_snapshots/phase5-20261004/after/_ZENODO_DEPOSITS/release_coherence.py",
+      "role": "existing-public-support",
+      "sha256": "348bc1f54ed027c6768efe512717bbc66976b7c658198383803d7e2bb8535060"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/premise_declaration.py",
+      "public_path": "00_lab_infrastructure/gates/premise_declaration.py",
+      "role": "complete-terminal-reader-closure",
+      "sha256": "e00404ad578efa7dcd9299a5d947be594f36c15e53fd44479d22d578caab5137"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/inv9_title_basis.py",
+      "public_path": "00_lab_infrastructure/gates/inv9_title_basis.py",
+      "role": "complete-terminal-reader-closure",
+      "sha256": "5c9981fe2536a6cde3c8a1d2e7cdc9684c1369aeb145be4fda635c8af8dfec81"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/verification_coverage_gates/certificate_inspection.py",
+      "public_path": "00_lab_infrastructure/gates/certificate_inspection.py",
+      "role": "complete-terminal-reader-closure",
+      "sha256": "a7e3d2fcd167865b129529fce7e3599acf045a190cbc2107e87f39b0a3623ec8"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/engine3_align_challenge.py",
+      "public_path": "comparator-deploy/engine3_align_challenge.py",
+      "role": "complete-terminal-reader-closure",
+      "sha256": "d8d06e582d80bddae73dbb68a23a866ed8cac241f5c9780c3bc779a50fcd4870"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/issue_lean_zero_sorry_certificate.py",
+      "public_path": "comparator-deploy/issue_lean_zero_sorry_certificate.py",
+      "role": "complete-terminal-reader-closure",
+      "sha256": "96c5c70d7d9de31c537ac4dc4a405d5f2c38a7ba03389c93dac1efb28cfc5ebe"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/job_observation_policy.py",
+      "public_path": "comparator-deploy/job_observation_policy.py",
+      "role": "complete-terminal-reader-closure",
+      "sha256": "63aa5ad5ccd0b3c299b1a262d0a7ebd2ff96ff46294a73c86600ea8db47e73c8"
+    },
+    {
+      "fixture_path": "_ZENODO_DEPOSITS/digest_pdf_v2_review/methods_digest.py",
+      "public_path": "00_lab_infrastructure/gates/standalone_pdf_release/digest_pdf_v2_review/methods_digest.py",
+      "role": "exercised-public-PDF-closure",
+      "sha256": "e3e8b5be4b99a9991066f49a60630c2a8d63eafd3c09b9b0ed85b50748706f39"
+    },
+    {
+      "fixture_path": "_ZENODO_DEPOSITS/guard_methods_digest_release.py",
+      "public_path": "00_lab_infrastructure/gates/standalone_pdf_release/guard_methods_digest_release.py",
+      "role": "exercised-public-PDF-closure",
+      "sha256": "ae6a4ec78cd398a3ab03bf1537cac63b6f3fdc59f651cea116cf80db2401668e"
+    },
+    {
+      "fixture_path": "_ZENODO_DEPOSITS/tests/test_manuscript_pdf_gate.py",
+      "public_path": "00_lab_infrastructure/gates/standalone_pdf_release/tests/test_manuscript_pdf_gate.py",
+      "role": "exercised-public-PDF-closure",
+      "sha256": "d5a87cb7f2d84aeff60a3a7d4af14a533fa65d66c8d01c2ceffacee6cec7e892"
+    },
+    {
+      "fixture_path": null,
+      "public_path": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/nightly_science_preflight.py",
+      "role": "unchanged-public-preflight-baseline",
+      "sha256": "a41945368e682012cdc41d8a206d6a8a0c66e12baddb082326bf755d626e2f83"
+    }
+  ],
+  "source_bindings_path": "00_lab_infrastructure/gates/audit_remediation/SOURCE_BINDINGS.json",
+  "source_bindings_sha256": "f3366563a45970f713ade0805f7edeef7edc9be0747052d25cb5d5a53c98eb40",
+  "source_freezes": [
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py",
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py",
+      "sha256": "93b3c32a2b1076aba6af62f2025b90367f89d8dec9b1d27582a796ff734cec2e"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/autonomous_transition_executor.py",
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/autonomous_transition_executor.py",
+      "sha256": "1f5df18877f45c8b723f6bed44c0c7c09c97072e2306210f1a9b64f87124e51f"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/test_autonomous_pipeline_controller.py",
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/test_autonomous_pipeline_controller.py",
+      "sha256": "9a9be1662a8222999eac3e7d382e33a6caacf206bfb76ca107bfa75fd6f3e372"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/test_autonomous_transition_executor.py",
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/test_autonomous_transition_executor.py",
+      "sha256": "fd46ed706401216e19c2090e2d72a7c09a5db73a7b1d440cd1b98f5b1354f56b"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/nightly_science_preflight.py",
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/nightly_science_preflight.py",
+      "sha256": "1135c591255ca98be7c9f7284cb67a2c06c662f77ef1d00716abbad278dce637"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/test_nightly_science_preflight.py",
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/test_nightly_science_preflight.py",
+      "sha256": "0c45918cd36f2f8cf35e42a6f492ccb730948a6c49f91cf90f28067bc08dc713"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/test_assemble_saturday_candidate.py",
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/test_assemble_saturday_candidate.py",
+      "sha256": "1acf560b1d10194ada15252edc9842ed8b17a0f60f850ddf2782d391aa8f48eb"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/nightly_proof_track.py",
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/nightly_proof_track.py",
+      "sha256": "b63c3866db0e3538f6462ca32f0bbf916a6e80081d1bdf74514b1fa6c7dc2b06"
+    },
+    {
+      "fixture_path": "RESEARCH_PIPELINE_v2/test_viridisos_kernel_packager.py",
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/test_viridisos_kernel_packager.py",
+      "sha256": "ceb14e89ae7ad06908f3e2e8b67d4cd5cf0e660df21d37c56433aa4337a58f03"
+    }
+  ],
+  "standard": "VRS-AUDIT-REMEDIATION-PUBLIC-TEST-DEPENDENCIES-1",
+  "terminal_layout": "Exactly one aligner at RESEARCH_PIPELINE_v2/engine3_align_challenge.py; pinned checker/title/certificate_inspection beneath verification_coverage_gates; issuer/job-observation readers bound at pipeline level. No Run194 production data or allowlist changes.",
+  "unexercised_writers": [
+    "post_aristotle_curator",
+    "canon_product_router",
+    "conservation_app_intake",
+    "augment_release_candidate",
+    "kernel packager without explicit read-only validate-only arguments",
+    "publisher dispatch, credentials, native renderers, network/Comparator transport"
+  ]
+}

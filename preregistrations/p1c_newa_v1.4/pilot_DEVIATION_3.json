@@ -1,0 +1,30 @@
+{
+ "deviation": 3,
+ "recorded_at_utc": "2026-10-21T07:12:26Z",
+ "type": "exploratory, post hoc (not part of the registered pilot analysis)",
+ "what": "The pilot B estimate under M2R: M2 plus fixed effects for 40 km regions (EPSG:5070 cells, x // 40000 and y // 40000), computed with the confirmatory run_test.fit_twoway on the frozen pilot data, after the confirmatory plan v1.3 adopted M2R as its primary model (decision record p1c/history_v1.3_dev/DECISION_primary_model_M2R.md, written before this estimate was computed).",
+ "result": {
+  "M2R": {
+   "beta": 0.07913393598337634,
+   "se_twoway": 0.0251912373814437,
+   "se_year": 0.026581989430332444,
+   "se_max": 0.026581989430332444,
+   "T": 2.9769756771130678,
+   "n": 2677,
+   "year_clusters": 33,
+   "block_clusters": 41,
+   "regions_40km": 16,
+   "ci95_pilot_rule_year_se": [
+    0.027033236699924752,
+    0.13123463526682794
+   ]
+  },
+  "M2_for_reference": {
+   "beta": 0.06317647448409425,
+   "se_twoway": 0.02342431414019364,
+   "se_year": 0.027318251774805232,
+   "T": 2.3126104483142633
+  }
+ },
+ "note": "With 40 km regional fixed effects the pilot estimate is larger (0.079 against 0.063) and its statistic T = beta / max(SE) rises from 2.31 to 2.98. Its calibrated reading is in the confirmatory plan v1.3, section 1. The registered pilot decision is unchanged."
+}

@@ -1,0 +1,15 @@
+{
+ "frozen_at_utc": "2026-10-21T22:59:29Z",
+ "note": "P1-M mechanism test (pilot region), frozen before the real run. No P1C data is used.",
+ "sha256": {
+  "MECH_PLAN.md": "43f965cea1ed0f1c4144cced44c3ad96f90575a0ce41a47577ebbbaa9956f688",
+  "mech_test.py": "85d4f45f4a6b0e2009e5fd0783040655c13a4487f15f221371219863d2760893",
+  "freeze_mech.py": "f6d262d978ae6e17f5586d4e318eda00f7b8b912fa73314e733b37c2ae6e1541",
+  "SYNTHETIC_CHECK.json": "2a2fa1ca7ba9856e66b62b9d642a1bb3adb1fba62b1e55a06042e975e5865d32",
+  "p1/compartments_static.npz": "8fabe8e39cfb0cfee37d2b60d0bc63f42b1ebecb100d582deabca3c156c06ef5",
+  "p1/raw/mtbs_perims.json": "49d7a234b7d7ccc4877d874d31e9d5f57388770f238ceb51a7c67442501d78ec",
+  "p1/raw/fpafod_ignitions_blind.json": "3e02be16b01362662ccbf0f2aeb135b03b7a60eb6df26bca0d10b581ec4d11c6",
+  "p1/p1_config.json": "d43bd6025f46a7efec48f644f65b1f15e6e8186163da4deb4afe199a0e704f99",
+  "p1/build_predictors.py": "3af05e2514f7201f98a82bec85943049e5a1842b9b6469363dddfb419efd30a0"
+ }
+}

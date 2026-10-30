@@ -68,8 +68,9 @@ On 2026-10-17 we re-elaborated all three certified solutions on a fresh machine
 against the pinned toolchain and Mathlib, without the Viridis pipeline. All 98
 listed theorems depend only on the three standard axioms.
 
-**Theorem bounty.** We pay $50 for each vacuous, trivial or misstated theorem you find
-among the 18 certified runs (cap $500, until 2027-01-31). See [`BOUNTY.md`](./BOUNTY.md).
+**Theorem bounty.** Found a vacuous, trivial or misstated theorem among the 18 certified
+runs? Confirmed findings are credited in the ledger and acknowledged in the papers. The
+cash bounty is closed to new reports. See [`BOUNTY.md`](./BOUNTY.md).
 
 ## Check it yourself
 
@@ -106,6 +107,7 @@ Please file it as an
 - **Ask** in [Discussions](https://github.com/jdhart81/viridis-canon/discussions).
 - **Challenge** a statement, assumption or proof through an [external-validation report](https://github.com/jdhart81/viridis-canon/issues/new?template=external-validation.yml).
 - **Contribute**: see [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+- **Agents**: start with [`llms.txt`](./llms.txt) and [`AGENTS.md`](./AGENTS.md), which also says how to file a report a maintainer can check quickly.
 
 ## Part of the Viridis open-source commons
 

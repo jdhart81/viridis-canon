@@ -1,0 +1,82 @@
+{
+ "note": "Post hoc checks, not in the plan; see the docstring of posthoc_roads.py.",
+ "code_sha256": "d61013e972208721d3fbe08fab129ff79f3f1892daf148b5c6040bfb00adcfff",
+ "mech_test_sha256": "85d4f45f4a6b0e2009e5fd0783040655c13a4487f15f221371219863d2760893",
+ "class_cells": {
+  "highway": 80039,
+  "local": 1554056,
+  "other_vehicle": 89629
+ },
+ "union_equals_frozen_road_raster": true,
+ "checks": {
+  "A_highway": {
+   "E": 0.9297988865917545,
+   "share_edge": 0.0009920045620329559,
+   "share_ref_out": 0.0010669022907407652,
+   "ci95": [
+    0.261780257622697,
+    1.7351670460245676
+   ],
+   "null_q025": 0.5229581214513115,
+   "null_median": 0.931236631610809,
+   "null_q975": 1.5360315781918172,
+   "p_shift_upper": 0.5024975024975025,
+   "n_fires": 47,
+   "n_clusters": 30
+  },
+  "A_local": {
+   "E": 1.2791453349837165,
+   "share_edge": 0.04493127249830706,
+   "share_ref_out": 0.03512601052395585,
+   "ci95": [
+    1.176760351335273,
+    1.421227891487225
+   ],
+   "null_q025": 0.9126793392948034,
+   "null_median": 0.9942848317276058,
+   "null_q975": 1.07616348500478,
+   "p_shift_upper": 0.000999000999000999,
+   "n_fires": 47,
+   "n_clusters": 30
+  },
+  "A_other_vehicle": {
+   "E": 1.4580376570123876,
+   "share_edge": 0.002595844273104202,
+   "share_ref_out": 0.001780368470333786,
+   "ci95": [
+    0.7678144149769675,
+    2.3434792726244322
+   ],
+   "null_q025": 0.6731524548958994,
+   "null_median": 1.002454636880048,
+   "null_q975": 1.4105038320793666,
+   "p_shift_upper": 0.017982017982017984,
+   "n_fires": 47,
+   "n_clusters": 30
+  },
+  "B_road_away_from_valley_floors": {
+   "E": 1.2263994973877017,
+   "share_edge": 0.040807629293608476,
+   "share_ref_out": 0.03327433628318584,
+   "ci95": [
+    1.1098465712114953,
+    1.3546718291718938
+   ],
+   "null_q025": 0.8938092375004956,
+   "null_median": 0.9978455489341211,
+   "null_q975": 1.1026412221065978,
+   "p_shift_upper": 0.000999000999000999,
+   "n_fires": 47,
+   "n_clusters": 30,
+   "share_of_grid_kept": 0.4638210448359128
+  }
+ },
+ "seconds": 81.7,
+ "note_p1c": "Pre-specified in MECH_PLAN.md (H2 and road classes). The code is the pilot post hoc check, hash-recorded but not frozen before its pilot run; it is run unchanged. Its own note is kept.",
+ "region_p1c": "P1C region: northeast Washington (eastern Okanogan, Ferry, Stevens and Pend Oreille counties); compute grid of p1c/p1_config.json",
+ "runner": {
+  "script": "run_p1c_mech.py",
+  "sha256": "91408affc1500c44a176453eac3a468d354feb0bc02d2c80c903627bea8c3aa7",
+  "note": "Fields region_p1c, plan_primary, robustness_subsets and runner were added by the runner. The frozen code labels its output with the pilot region and names E_B as its primary; MECH_PLAN.md names E_road (H1)."
+ }
+}

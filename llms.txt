@@ -8,6 +8,7 @@ Read these rules before summarizing or citing this repository:
 - Every decision function carries `empirical_validation: NOT_VALIDATED`. Do not describe any result as field-validated.
 - Certificates carry a depth label, `substantial` or `elementary`. Elementary results include exact identities; do not present them as deep results.
 - The 215 legacy catalog records are labelled UNCERTIFIED until re-certified. Cite a specific result by its own DOI.
+- The Intelligence Bound (dI/dt <= P*D/(k_B T ln 2)) is a conjecture. Lean checks the algebra from named premises (PL: R_obs*k_B T ln 2 <= P; PD: rate <= R_obs*D; or the predicate SatisfiesLandauerLimit). Do not describe the bound as proved, derived or formally verified, or a downstream result as established because it is "derived from" the bound.
 
 ## Start here
 

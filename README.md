@@ -24,6 +24,20 @@ A named human answers for every result. Nothing in this repository claims field
 validation. Every function says `empirical_validation: NOT_VALIDATED` until field
 evidence exists.
 
+> **Intelligence Bound status.** The Intelligence Bound, dI/dt ≤ P·D/(k_B T ln 2),
+> is a **conjecture**, not a theorem. What is machine-checked is the algebra from
+> named premises: given K = k_B T ln 2 > 0, **PL** (R_obs·K ≤ P) and **PD**
+> (rate ≤ R_obs·D), the rate is at most P·D/K
+> ([foundation release 10.5281/zenodo.23141592](https://doi.org/10.5281/zenodo.23141592)).
+> In the historical P0 source the thermodynamic arm is the assumed predicate
+> `SatisfiesLandauerLimit`; there `intelligence_bound` is **Conditional** and
+> `thermodynamic_bound_lemma` is a **Definition-expansion**
+> ([`CLAIMS_MATRIX.md`](./CLAIMS_MATRIX.md)). Neither premise is derived from
+> physics. Landauer's principle prices erasing a bit, not acquiring one, so PL is an
+> open physical question. Any record here described as an Intelligence Bound
+> "application", "ceiling", "floor" or "self-application" is conditional on the same
+> premises.
+
 ## What is machine-checked today
 
 | Evidence | Count | What it means |
@@ -259,7 +273,7 @@ counts are navigation, not a certificate or proof of physical assumptions.
 
 | Module | File | Historical sorry count | Historical build record | Current claim status | Research topic / historical target |
 |--------|------|------------------------|-------------------------|----------------------|------------------------------------|
-| **P0** | `P0_IntelligenceBound_COMPILED.lean` | **0** | COMPILED under its pinned Lean 4.24 / Mathlib environment and checked by required CI | UNCERTIFIED | Intelligence Bound flagship; external-validation status is tracked separately |
+| **P0** | `P0_IntelligenceBound_COMPILED.lean` | **0** | COMPILED under its pinned Lean 4.24 / Mathlib environment and checked by required CI | UNCERTIFIED | Intelligence Bound flagship: Conditional on the assumed `SatisfiesLandauerLimit` premise; the physical bound is a conjecture |
 | **P1** | `P1_DScore.lean` | **0** | COMPILED | UNCERTIFIED | Physical Review E (draft) |
 | **P2** | `P2_HDFM_POC.lean` | **0** | COMPILED | UNCERTIFIED | HDFM resubmission |
 | **P3** | `P3_Impossibility.lean` | **0** | COMPILED | UNCERTIFIED | 2nd canon paper (Goodhart impossibility / alignment-as-feasibility) |
@@ -270,14 +284,14 @@ counts are navigation, not a certificate or proof of physical assumptions.
 | **PSIT** | `PSIT_Symplectic.lean` | **0** | COMPILED | UNCERTIFIED | Symplectic-conjugation theorem — Nature Physics (Hart 2026, Run-035; 8 thms) |
 | **BMD** | `BoundedMemoryDissipation.lean` | **0** | COMPILED (Aristotle `6483ae65`, 2026-06-21) | UNCERTIFIED | **v9.1.0 INV-4 fix** — honest bounded-memory dissipation floor (`hmem` load-bearing); replaces P0's dead-`h_mem` `finite_memory_dissipation` (→ `landauer_dissipation_bound`) |
 | **EcoChain** | `EcoChain_DendriticCorridor.lean` | **0** | COMPILED | UNCERTIFIED | Dendritic corridor formation — *Methods in Ecology & Evolution* (4 thms + 3 lemmas; Aristotle c23eab22, 2026-05-30) |
-| **Book** | `Book_HeatAndDisorder.lean` | **0** | COMPILED | UNCERTIFIED | Model collection for *Heat and Disorder* book — 12 thms. Foundation (7): entropy monotonicity, feedback dichotomy, saddle-node tipping threshold, energy-balance uniqueness. Conditional model layer (5): strict Clausius production + gap-monotonicity, Planck climate sensitivity (Stefan–Boltzmann), **Intelligence-Bound restoration speed limit** (dI/dt ≤ P/(k_B T ln2)) + time lower bound. Aristotle a9312b60, 2026-05-31 |
+| **Book** | `Book_HeatAndDisorder.lean` | **0** | COMPILED | UNCERTIFIED | Model collection for *Heat and Disorder* book — 12 thms. Foundation (7): entropy monotonicity, feedback dichotomy, saddle-node tipping threshold, energy-balance uniqueness. Conditional model layer (5): strict Clausius production + gap-monotonicity, Planck climate sensitivity (Stefan–Boltzmann), **Intelligence-Bound restoration speed limit** (dI/dt ≤ P/(k_B T ln2), conditional on the Landauer premise) + time lower bound. Aristotle a9312b60, 2026-05-31 |
 | **MRAB** | `MRAB.lean` | **0** | COMPILED — **IB core-extension, included in the historical v10 layout** | UNCERTIFIED | Multi-Ring Alignment Bound (Thm 1; the Polymath Paradox + wu-wei saturation + UAIB reduction). 10 thms; Aristotle `65347d17`, 2026-06-21. Published standalone on Zenodo 2026-06-22; queued for a future curated v10 release (historical layout frozen at v9). |
-| **SIB** | `SymbioticIntelligenceBound.lean` | **0** | COMPILED — **IB core-extension, included in the historical v10 layout** | UNCERTIFIED | Symbiotic Intelligence Bound (two-body generalization of the IB; Good-Regulator rate law). 5 thms; Aristotle `a0660ac8`. Standalone DOI 10.5281/zenodo.20764638; included in the historical v10 layout. |
+| **SIB** | `SymbioticIntelligenceBound.lean` | **0** | COMPILED — **IB core-extension, included in the historical v10 layout** | UNCERTIFIED | Symbiotic Intelligence Bound (two-body generalization of the IB, taking each partner's IB as a premise; Good-Regulator rate law). 5 thms; Aristotle `a0660ac8`. Standalone DOI 10.5281/zenodo.20764638; included in the historical v10 layout. |
 | **UWMT** | `UniversalWaterfilling.lean` | **0** | COMPILED — **historical layout v10.1.0 ("the Keystone")** | UNCERTIFIED | Universal Water-Filling Meta-Theorem — unifies the 9-member shadow-price/water-filling family into one variational object (curvature + temperature control knobs; lambda = water level = shadow price = free energy). 8 thms; Aristotle `da92404c`, Run-084. |
-| **GST** | `GeodesicSaturation.lean` | **0** | COMPILED — **historical layout v10.1.0 ("the Sage")** | UNCERTIFIED | Geodesic Saturation Theorem — the IB's own equality/saturation condition: dI/dt=(P-F)c, saturates iff F=0 (constant-speed Fisher-Rao geodesic). 6 thms; Aristotle `f864600a`, Run-086. |
+| **GST** | `GeodesicSaturation.lean` | **0** | COMPILED — **historical layout v10.1.0 ("the Sage")** | UNCERTIFIED | Geodesic Saturation Theorem — the equality/saturation condition of the IB's formula, given its premises: dI/dt=(P-F)c, saturates iff F=0 (constant-speed Fisher-Rao geodesic). 6 thms; Aristotle `f864600a`, Run-086. |
 | **EET** | `EffortlessEquilibrium.lean` | **0** | COMPILED — **historical layout v10.2.0 ("the Steersman")** | UNCERTIFIED | Effortless Equilibrium Theorem — wu-wei rest states exist, rest iff grad(Phi)=0, and holding power P_hold=gamma^-1\|\|grad(Phi)\|\|^2 is minimized (zero) exactly at rest; harmonization is strictly cheaper than forcing. 11 thms; Aristotle `65ae007a`, Run-097. |
-| **PCT** | `PerennialCorridor.lean` | **0** | COMPILED — **historical layout v10.2.0 ("the Gardener")** | UNCERTIFIED | Perennial Corridor Theorem — Whittle-index corridor urgency ranking, band-convexity of the unimodal superlevel set, stewardship-dividend nonnegativity, and the IB floor on maintenance holding power. 15 thms; Run-098. |
-| **DST** | `DecoherentSelection.lean` | **0** | COMPILED — **historical layout v10.2.0 ("the Chooser")** | UNCERTIFIED | Decoherent Selection Theorem — decision cost vanishes iff the pointer-basis eigenstate is selected, is bounded by ln N, and the einselected basis is the unique zero-waste choice; IB throughput speed limit on collapse. 12 thms; Run-099. |
+| **PCT** | `PerennialCorridor.lean` | **0** | COMPILED — **historical layout v10.2.0 ("the Gardener")** | UNCERTIFIED | Perennial Corridor Theorem — Whittle-index corridor urgency ranking, band-convexity of the unimodal superlevel set, stewardship-dividend nonnegativity, and a conditional IB floor on maintenance holding power. 15 thms; Run-098. |
+| **DST** | `DecoherentSelection.lean` | **0** | COMPILED — **historical layout v10.2.0 ("the Chooser")** | UNCERTIFIED | Decoherent Selection Theorem — decision cost vanishes iff the pointer-basis eigenstate is selected, is bounded by ln N, and the einselected basis is the unique zero-waste choice; conditional IB throughput speed limit on collapse. 12 thms; Run-099. |
 | **MAT** | `MutualisticAttestation.lean` | **0** | COMPILED — **historical layout v10.2.0 ("the Attester")** | UNCERTIFIED | Mutualistic Attestation Theorem — attestation cost = kBT·ln2·(residual entropy); certification feedback has fold bistability (trap/mutualism stable states); optimal confidence is interior. 19 thms; Run-100 (100th nightly-run milestone). |
 | **TAT** | `ThermodynamicAttention.lean` | **0** | COMPILED — **historical layout v10.2.0 ("the Attuner")** | UNCERTIFIED | Thermodynamic Attention Theorem — the rational-inattention shadow price equals the Landauer quantum kBT; attention water-fills the einselected slow basis per KKT; Inattention Trap below a resolvability threshold C_crit. 12 thms; Run-101. |
 | **SST** | `StewardshipSetpoint.lean` | **0** | COMPILED — **historical layout v10.2.0 ("the Steward")** | UNCERTIFIED | Stewardship Setpoint Theorem — golden-rule sustainable ceiling for a living renewable stock (dD/dt=g(D)-phi*H); Tragedy collapse for phi*Omega>rho; act-budget twin of TAT. 13 thms; Run-102. |

@@ -1,0 +1,46 @@
+{
+  "captured_at_utc": "2026-10-17T19:30:22.381453+00:00",
+  "certifies": false,
+  "core_writes": 0,
+  "existing_frozen_source_edits": 0,
+  "expected_frozen_weekend_sha256": "36b23f17c4ef4a9758f587caeb52f16c72d149fb49776e4e2fc920f5d2e32bec",
+  "expected_publisher_guard_sha256": "7d19e7b3456af246139a43598d233eb947dc626707a9c8bac73e15a28ff2b3df",
+  "external_mutations": 0,
+  "host_bypass_via_json_or_fd": false,
+  "installed_core_host_hook": false,
+  "legacy_consumer_status": "HOLD_UNCERTIFIED_ARTIFACT",
+  "mandatory_hold": "HOLD_QUALIFIED_CORE_HOST_HOOK_NOT_INSTALLED",
+  "methods_digest_paper_join_adopted": false,
+  "production_activation": false,
+  "real_publisher_invocations": 0,
+  "remaining_gates": [
+    "Separate genuine installed whole-session Core host qualification/source integration",
+    "Scheduled Claude review of the exact PR head",
+    "Green retained whole-job CI within owner limit and leak/main/B5 requirements",
+    "Owning Root installation and readback review"
+  ],
+  "runtime_admission": false,
+  "source_scope": "W42_GENERIC_SOURCE_RECORDS_WITH_RESTRICTIVE_COVERAGE_ONLY",
+  "source_sha256": {
+    "W42_SOURCE_BOUNDARY.md": "b35f320be09a1b1a43f77d0baac44c698ccc9eca142ab3f935b10d7578c4b4c6",
+    "runtime/descriptive_os.py": "84150c65c6efcf34b8b2642ea3bfa8bc6a5ddad80a3aa1f43cb275f2d9514597",
+    "runtime/root_scope.py": "5c398533bb4b5b314200708d2cf61551b31e967682777c89e425894eff59a5e2",
+    "runtime/w42_after_source_session.py": "891757297d007003d19ed3d33fbfb11476469bbc7892f2e7db886083d6bb81ce",
+    "runtime/w42_receipt.py": "df239947c07204ac2074da0566d4953a5d46ddcd9b881c77c683bc3ec1a212b8",
+    "tests/test_w42_after_source_session.py": "7cc424dfb38e2115033e4e444ac3fa3a87f57f3d0b3876f204416be6ce9f59dd",
+    "tests/test_w42_default_chain.py": "239325197e166c1045e8a1f1d188d1ed65a57ffa228e55063e0a9fb9042b7f6f",
+    "tests/w42_fixture.py": "d6d52b177ddc41c27c23a3692d50a62169c4cf68edaa7e18ef2a914c61b6a584"
+  },
+  "standard": "VRS-W42-ADDITIVE-SOURCE-PREPARATION-1",
+  "status": "SOURCE_AND_INERT_INTEGRATION_REVIEW_PASS_INACTIVE",
+  "validation": {
+    "command": "python3 -B -m unittest -q test_w42_after_source_session test_w42_default_chain",
+    "default_chain_integration_tests": 3,
+    "focused_tests": 24,
+    "independent_source_review": "PASS",
+    "independent_test_rerun": "27 PASS",
+    "reported_elapsed_seconds": 6.139,
+    "review_scope": "SOURCE_AND_INERT_FIXTURES_ONLY",
+    "total": 27
+  }
+}

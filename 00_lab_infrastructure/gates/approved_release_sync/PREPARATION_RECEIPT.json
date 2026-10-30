@@ -1,0 +1,41 @@
+{
+  "activation_status": "HOLD_QUALIFIED_CORE_HOST_HOOK_NOT_INSTALLED",
+  "certifies": false,
+  "created_at_utc": "2026-10-17T19:38:09.231065+00:00",
+  "effects": {
+    "actual_core_writes": 0,
+    "actual_credentials_read": false,
+    "actual_publisher_invocations": 0,
+    "frozen_source_edits": 0,
+    "new_dois": 0,
+    "runtime_admissions": 0,
+    "scheduled_claude_verdict_fabricated": false
+  },
+  "independent_source_precheck": {
+    "blocking_findings": [],
+    "elapsed_seconds": 7.537,
+    "local_evidence_receipt_sha256": "4b3efc2c0c6d92f7ec931e38bc6187a5559ad4339b3ee10de676e56c5c84e62b",
+    "local_test_log_sha256": "bb4cdc5085a295e8eae99f6278b867e13f7fd53d827aa8d53e7b39960c653de8",
+    "result": "PASS",
+    "reviewer": "Codex independent architecture subagent",
+    "runtime_and_tests_unchanged": true,
+    "test_count": 139,
+    "test_exit_code": 0
+  },
+  "remaining_gates": [
+    "Actual scheduled Claude exact-current-head PASS or PASS_WITH_NITS",
+    "Required CI successful within each 600-second whole-job bound, clean scans, current-main and B5 checks",
+    "Owning Root sequencing; source PR remains unmerged",
+    "Separate reviewed genuine whole-session Core lock and host-hook installation and qualification",
+    "Owning Root installation/readback, authorized rehearsal and matching public readbacks"
+  ],
+  "source_manifest_sha256": "1398a02beb44458279057b8c96afbbcbe78b86a1e40c7538237abebe4f2d5153",
+  "standard": "VRS-APPROVED-RELEASE-SYNC-SOURCE-PREPARATION-1",
+  "status": "SOURCE_ONLY_PRECHECK_PASS_INACTIVE",
+  "supported_public_projection": "EXISTING_SOURCE_RECORD_WITH_RESTRICTIVE_COVERAGE",
+  "unsupported_joins": "Existing Methods Digest and paper-access pointer formats require a separately reviewed format successor; this source holds them.",
+  "workflow": {
+    "path": ".github/workflows/approved-release-sync.yml",
+    "sha256": "b66c71c0b6604f5fe63c5437c26515fefea3843d7c39d10f5ecdac190c1ecfed"
+  }
+}

@@ -44,6 +44,14 @@ an empirical-modeling problem, not a theorem.
 
 ## P0 — Intelligence Bound (erasure-side footing, post-Wolpert)
 
+**Status of the bound itself.** The physical Intelligence Bound,
+dI/dt ≤ P·D/(k_B T ln 2) (product form) or İ ≤ min(ρB, P/(k_B T ln 2)) (P0 form), is
+a **Conjecture**. The rows below grade what Lean checks *from* its premises. The
+foundation release [10.5281/zenodo.23141592](https://doi.org/10.5281/zenodo.23141592)
+states the product form as conditional on named premises PL (R_obs·K ≤ P) and PD
+(rate ≤ R_obs·D), neither of which is derived. Downstream "IB self-application"
+records inherit that conditional status.
+
 **Reproducibility update (2026-07-26).** Aristotle project
 `ba3dccd5-5c4d-4845-84f7-46aa24cd835b` independently reconstructed five proof
 bodies while preserving all 47 declaration signatures and non-proof content.
@@ -53,8 +61,12 @@ repairs reproducibility; it does not upgrade any interpretive claim below.
 
 | Result | Exact Lean conclusion | Required assumptions | NOT established | Status |
 |---|---|---|---|---|
-| `intelligence_bound` | `İ ≤ P / (k_B T ln 2)` | `SatisfiesLandauerLimit` (assumed predicate), erasure ≥ creation rate | that any *physical* system must satisfy the assumed Landauer predicate | **Conditional** |
+| `intelligence_bound` | `İ ≤ min(ρ · B, P / (k_B T ln 2))` | `SatisfiesLandauerLimit` (assumed predicate), `B ≠ ⊤`, `ρ ≤ 1` | that any *physical* system must satisfy the assumed Landauer predicate; the physical bound is the Intelligence Bound **conjecture** | **Conditional** |
+| `data_bound_lemma_conditional` | `İ ≤ ρ · B` (limsup of a product ≤ product of limsups, for the defined rates) | probability measure, `B ≠ ⊤`, `ρ ≠ ⊤` | that the defined `ρ`, `B` are measurable for a real learner | **Derived** (math) / **Empirical-hypothesis** (as a description of learners) |
 | `thermodynamic_bound_lemma` | algebraic rearrangement of `SatisfiesLandauerLimit` | the predicate itself | a *derivation* of the predicate from microphysics | **Definition-expansion** |
+| `learning_dissipation_link` | `SatisfiesLandauerLimit` | `h_landauer` (power covers assumed erasure cost), `h_erasure_needed` (erasure ≥ İ) | the same statement as `landauer_dissipation_bound`; no bounded-memory content | **Definition-expansion** |
+| `phase_transition_regimes`, `prediction1_rho_dependence` | `min(ρB, P/K)` equals `P/K` below `P* = ρBK` and `ρB` above it | `K = k_B T ln 2 > 0` | any physical phase transition; these are facts about `min` | **Definition-expansion** (elementary) |
+| `data_wall` | `ρ ≤ ρ_max ⟹ İ ≤ ρ_max · B` | as `intelligence_bound`; `h_data_limited` present but unused | nothing about power; a corollary of the data arm | **Conditional** |
 | `landauer_dissipation_bound` (was `finite_memory_dissipation`) | `P ≥ İ · k_B T ln 2` | `h_landauer`, `h_erasure_needed` | nothing beyond Landauer + transitivity (dead `h_mem`/`C` removed v9.1.0) | **Definition-expansion** ✅ resolved |
 | `BoundedMemoryDissipation.bounded_memory_dissipation_floor` | `ε>0 ∧ ε·E ≤ Q ∧ A−E ≤ M ⟹ ε·(A−M) ≤ Q` — bounded-memory dissipation floor, **`hmem` load-bearing** | per-erasure floor `ε>0`, budget `ε·E ≤ Q`, bounded memory `A−E ≤ M` | universal `ε = k_BT ln2` (regime param); the process↔ledger identification | **Derived/Conditional** ✅ Aristotle-verified (`6483ae65`, 2026-06-21; non-vacuity + load-bearing machine-checked) |
 | `conditional_conservation` | long-horizon preservation dominates exploitation, NNReal, finite case | finite rates, horizon threshold | unconditional convergence | **Conditional** (non-vacuous) |

@@ -4,6 +4,8 @@
 
 [![CI](https://github.com/jdhart81/viridis-canon/actions/workflows/ci.yml/badge.svg)](https://github.com/jdhart81/viridis-canon/actions/workflows/ci.yml) [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE) [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/jdhart81/viridis-canon/badge)](https://scorecard.dev/viewer/?uri=github.com/jdhart81/viridis-canon) [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jdhart81/viridis-canon)
 
+**Working papers, not peer reviewed. No result here is field-validated.**
+
 Viridis is an independent research program led by Justin D. Hart (Viridis LLC).
 It uses AI systems to propose and prove results about decisions in ecology and
 conservation. Typical questions:
@@ -164,7 +166,8 @@ assumption has been established in nature.
 
 - **Inspect the exact claims:** [`CLAIMS_MATRIX.md`](./CLAIMS_MATRIX.md)
 - **Reproduce current and historical builds:** [`REPRODUCE.md`](./REPRODUCE.md)
-- **Find the historical collection concept:** [10.5281/zenodo.19317982](https://doi.org/10.5281/zenodo.19317982)
+- **Cite the collection:** concept DOI [10.5281/zenodo.19317982](https://doi.org/10.5281/zenodo.19317982), which always resolves to the latest hub release (currently v2026.10.17, git tag `canon-v2026.10.17`)
+- **Licenses:** Lean sources and code are Apache-2.0 ([`LICENSE`](./LICENSE)); papers and documentation in the Zenodo records are CC BY 4.0 ([`NOTICE`](./NOTICE))
 - **Report a reproduction, critique, citation, or field test:** [external-validation issue](https://github.com/jdhart81/viridis-canon/issues/new?template=external-validation.yml)
 - **Understand AI use and human responsibility:** [`AI_USE_AND_AUTHORSHIP.md`](./AI_USE_AND_AUTHORSHIP.md)
 - **See the current validation boundary:** [`EXTERNAL_VALIDATION.md`](./EXTERNAL_VALIDATION.md)

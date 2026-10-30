@@ -56,29 +56,47 @@ def η_DC_HV : ℝ := 0.90
 /-- Definition 4: System efficiency chain. -/
 def η_system (η_plasma : ℝ) : ℝ := η_PV * η_MPPT * η_DC_HV * η_plasma
 
-/-- Theorem 4: Nitrogen production rate.
-    The paper uses E_plasma = 35 MJ/kg N and computes the rate as
-    P_plasma / (E_plasma_in_W_s_per_g).
+/-- Theorem 4 input (ASSUMPTION, design target): specific energy cost of
+    plasma N fixation, E_plasma = 35 MJ per kg N (as stated in Hart 2026).
 
-    Note: The paper's computation uses 35 × 10⁶ / 3600 = 9722 as the
-    energy cost denominator, which corresponds to treating 35 as kWh/kg
-    (= 9.722 Wh/g) rather than MJ/kg. The numerical results
-    (0.638 g/s → 2.30 kg/hr → 18.4 kg/day → 3,680 kg/yr) are internally
-    consistent given this denominator.
+    Units: MJ/kg N. In molar terms 35 MJ/kg × 0.0140067 kg/mol = 0.49 MJ/mol N.
+    This is an assumed design target, not a measured value: Rouwenhorst et al.
+    (2021, Energy Environ. Sci. 14, 2520, doi:10.1039/d0ee03763j) give a
+    theoretical minimum of 0.72 MJ/mol N for thermal plasmas and best
+    reproducible measurements of about 1.8–2.8 MJ/mol N (≈ 130–200 MJ/kg N).
+    All Theorem 4/7 magnitudes scale as 1/E_plasma. -/
+def E_plasma_MJ_per_kg : ℝ := 35
 
-    We formalize the paper's stated computational chain. -/
-def E_plasma_denom : ℝ := 35e6 / 3600  -- = 9722.22... W·s/g (paper's computation)
+/-- E_plasma converted once to J per g N (= W·s/g), the unit the rate needs:
+      35 MJ/kg × (10⁶ J / 1 MJ) × (1 kg / 1000 g) = 35,000 J/g.
+    Dimensional check of the rate: N_dot = P [W = J/s] / E [J/g] = [g/s]. -/
+def E_plasma_J_per_g : ℝ := E_plasma_MJ_per_kg * 1e6 / 1000
 
-/-- Production rate in g/s per the paper's computation. -/
-def N_dot : ℝ := P_plasma / E_plasma_denom
+/-- ERRATUM (v1, Zenodo 10.5281/zenodo.20008839): the published chain used
+    35 × 10⁶ / 3600 ≈ 9,722 as the denominator. That number is 35 MJ/kg
+    expressed in Wh/kg (35×10⁶ J/kg ÷ 3600 J/Wh); using it as J/g drops a
+    factor 3600/1000 = 3.6 and inflated every Theorem 4/7 output 3.6×.
+    Kept only so the erratum is machine-checked; nothing below uses it. -/
+def E_plasma_denom_v1_erratum : ℝ := 35e6 / 3600
 
-/-- The denominator ≈ 9722. -/
-theorem theorem4_denom_bounds :
-    9722 < E_plasma_denom ∧ E_plasma_denom < 9723 := by
-  unfold E_plasma_denom
-  constructor <;> norm_num
+/-- The v1 denominator understates the correct one by exactly 3.6×. -/
+theorem theorem4_v1_erratum_factor :
+    E_plasma_J_per_g / E_plasma_denom_v1_erratum = 3.6 := by
+  unfold E_plasma_J_per_g E_plasma_MJ_per_kg E_plasma_denom_v1_erratum
+  norm_num
 
-/-- Production rate in kg/hr. -/
+/-- The corrected denominator is 35,000 J/g. -/
+theorem theorem4_denom : E_plasma_J_per_g = 35000 := by
+  unfold E_plasma_J_per_g E_plasma_MJ_per_kg
+  norm_num
+
+/-- Theorem 4: Nitrogen production rate in g/s: N_dot = P_plasma / E_plasma
+    = 6200 W / 35,000 J/g. Note: η_MPPT and η_DC_HV (Definition 4) are not
+    applied here, as in the paper; P_plasma is taken as power delivered to the
+    reactor. -/
+def N_dot : ℝ := P_plasma / E_plasma_J_per_g
+
+/-- Production rate in kg/hr: g/s × 3600 s/h ÷ 1000 g/kg. -/
 def N_dot_kg_hr : ℝ := N_dot * 3600 / 1000
 
 /-- Daily production over 8 operating hours (kg/day). -/
@@ -87,28 +105,51 @@ def M_daily : ℝ := N_dot_kg_hr * 8
 /-- Annual production over 200 operating days (kg/yr). -/
 def M_annual : ℝ := M_daily * 200
 
-/-- Theorem 4: N_dot ≈ 0.638 g/s. -/
+/-- Theorem 4 (corrected): N_dot ≈ 0.1771 g/s (v1 stated 0.638 g/s). -/
 theorem theorem4_rate_bounds :
-    0.637 < N_dot ∧ N_dot < 0.639 := by
-  unfold N_dot P_plasma P_gross P_prop P_av η_PV G_eff A_PV E_plasma_denom
+    0.177 < N_dot ∧ N_dot < 0.178 := by
+  unfold N_dot P_plasma P_gross P_prop P_av η_PV G_eff A_PV
+  unfold E_plasma_J_per_g E_plasma_MJ_per_kg
   constructor <;> norm_num
 
-/-- Theorem 4: ≈ 2.30 kg/hr. -/
+/-- Theorem 4 (corrected): ≈ 0.638 kg/hr (v1 stated 2.30 kg/hr). -/
 theorem theorem4_hourly_bounds :
-    2.29 < N_dot_kg_hr ∧ N_dot_kg_hr < 2.31 := by
-  unfold N_dot_kg_hr N_dot P_plasma P_gross P_prop P_av η_PV G_eff A_PV E_plasma_denom
+    0.637 < N_dot_kg_hr ∧ N_dot_kg_hr < 0.639 := by
+  unfold N_dot_kg_hr N_dot P_plasma P_gross P_prop P_av η_PV G_eff A_PV
+  unfold E_plasma_J_per_g E_plasma_MJ_per_kg
   constructor <;> norm_num
 
-/-- Theorem 4: ≈ 18.4 kg/day. -/
+/-- Theorem 4 (corrected): ≈ 5.10 kg/day (v1 stated 18.4 kg/day). -/
 theorem theorem4_daily_bounds :
-    18.3 < M_daily ∧ M_daily < 18.5 := by
-  unfold M_daily N_dot_kg_hr N_dot P_plasma P_gross P_prop P_av η_PV G_eff A_PV E_plasma_denom
+    5.10 < M_daily ∧ M_daily < 5.11 := by
+  unfold M_daily N_dot_kg_hr N_dot P_plasma P_gross P_prop P_av η_PV G_eff A_PV
+  unfold E_plasma_J_per_g E_plasma_MJ_per_kg
   constructor <;> norm_num
 
-/-- Theorem 4: ≈ 3680 kg/yr. -/
+/-- Theorem 4 (corrected): ≈ 1,020 kg N/yr (v1 stated 3,680 kg/yr). -/
 theorem theorem4_annual_bounds :
-    3670 < M_annual ∧ M_annual < 3690 := by
-  unfold M_annual M_daily N_dot_kg_hr N_dot P_plasma P_gross P_prop P_av η_PV G_eff A_PV E_plasma_denom
+    1020 < M_annual ∧ M_annual < 1021 := by
+  unfold M_annual M_daily N_dot_kg_hr N_dot P_plasma P_gross P_prop P_av η_PV G_eff A_PV
+  unfold E_plasma_J_per_g E_plasma_MJ_per_kg
+  constructor <;> norm_num
+
+/-- Theorem 4 energy closure (units self-check): plasma energy over a year
+    divided by annual N output returns E_plasma = 35 × 10⁶ J/kg N.
+    P_plasma [W] × 8 h × 3600 s/h × 200 d [s] / M_annual [kg] = [J/kg].
+    (Under the v1 denominator this ratio was ≈ 9.72 × 10⁶ J/kg, which is
+    how the slip shows up.) -/
+theorem theorem4_energy_closure :
+    P_plasma * (8 * 3600) * 200 / M_annual = 35e6 := by
+  unfold M_annual M_daily N_dot_kg_hr N_dot P_plasma P_gross P_prop P_av η_PV G_eff A_PV
+  unfold E_plasma_J_per_g E_plasma_MJ_per_kg
+  norm_num
+
+/-- Corollary 1 at the Theorem 4 energy cost: Foundations.lean evaluates the
+    plasma efficiency at 25 MJ/kg N (24.72%), but Theorem 4 assumes
+    35 MJ/kg N, at which η_thermo = 6.18/35 ≈ 17.66%. -/
+theorem corollary1_plasma_at_T4_cost :
+    0.1765 < η_thermo E_plasma_MJ_per_kg ∧ η_thermo E_plasma_MJ_per_kg < 0.1766 := by
+  unfold η_thermo E_plasma_MJ_per_kg
   constructor <;> norm_num
 
 -- ============================================================

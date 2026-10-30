@@ -20,7 +20,8 @@ noncomputable section
 /-- Wing nitrogen deposition rate (kg N/ha/yr). -/
 def ρ_wing : ℝ := 20
 
-/-- Area serviced by one wing (ha). -/
+/-- Area serviced by one wing (ha): M_annual [kg N/yr] / ρ_wing [kg N/ha/yr].
+    ≈ 51.0 ha with the corrected M_annual (v1 chain gave ≈ 183.7 ha). -/
 def A_wing : ℝ := M_annual / ρ_wing
 
 theorem theorem7_area : A_wing = M_daily * 200 / ρ_wing := by
@@ -35,21 +36,21 @@ def ΔC_wing : ℝ := α_e * M_annual
 /-- Theorem 7: Annual CO₂ equivalent sequestration per wing (kg CO₂/yr). -/
 def ΔCO2_wing : ℝ := ΔC_wing * CO2_per_C
 
-/-- Theorem 7: ΔC_wing ≈ 128,563 kg C/yr.
-    (The paper rounds to 128,800 using 3,680 kg N/yr; the exact computation
-     from the power chain gives 3,673.2 kg N/yr × 35 = 128,563.2 kg C/yr.) -/
+/-- Theorem 7 (corrected): ΔC_wing = 35 kg C/kg N × 1,020.34 kg N/yr
+    = 35,712 kg C/yr. (v1 stated 128,800; the v1 Lean chain gave 128,563.2,
+    both inflated 3.6× by the Theorem 4 unit slip.) -/
 theorem theorem7_carbon_bounds :
-    128563 < ΔC_wing ∧ ΔC_wing < 128564 := by
+    35711 < ΔC_wing ∧ ΔC_wing < 35713 := by
   unfold ΔC_wing α_e M_annual M_daily N_dot_kg_hr N_dot
-  unfold P_plasma P_gross P_prop P_av η_PV G_eff A_PV E_plasma_denom
+  unfold P_plasma P_gross P_prop P_av η_PV G_eff A_PV E_plasma_J_per_g E_plasma_MJ_per_kg
   constructor <;> norm_num
 
-/-- Theorem 7: ΔCO₂_wing ≈ 471,398 kg CO₂/yr.
-    (The paper rounds to 472,300 using rounded intermediate values.) -/
+/-- Theorem 7 (corrected): ΔCO₂_wing = 35,712 × 44/12 = 130,944 kg CO₂/yr
+    (≈ 131 t CO₂/yr). (v1 stated 472,300; the v1 Lean chain gave 471,398.4.) -/
 theorem theorem7_co2_bounds :
-    471398 < ΔCO2_wing ∧ ΔCO2_wing < 471399 := by
+    130943 < ΔCO2_wing ∧ ΔCO2_wing < 130945 := by
   unfold ΔCO2_wing ΔC_wing CO2_per_C α_e M_annual M_daily N_dot_kg_hr N_dot
-  unfold P_plasma P_gross P_prop P_av η_PV G_eff A_PV E_plasma_denom
+  unfold P_plasma P_gross P_prop P_av η_PV G_eff A_PV E_plasma_J_per_g E_plasma_MJ_per_kg
   constructor <;> norm_num
 
 -- 5.2 Fleet-Scale Climate Impact
@@ -62,9 +63,13 @@ theorem theorem8_linearity (n₁ n₂ : ℝ) :
     ΔCO2_fleet (n₁ + n₂) = ΔCO2_fleet n₁ + ΔCO2_fleet n₂ := by
   unfold ΔCO2_fleet; ring
 
-/-- Table 1: Sensitivity analysis parameterized by α_e and fleet size n. -/
+/-- Table 1: Sensitivity analysis parameterized by α_e and fleet size n,
+    in Gt CO₂/yr. n × α [kg C/kg N] × M_annual [kg N/yr] × 44/12 gives kg CO₂/yr;
+    1 Gt = 10¹² kg, so divide by 1e12. (v1 divided by 1e9, which gives Mt, so the
+    v1 "Gt" output was 1000× too large in its stated unit, on top of the 3.6×
+    T4 slip.) Example: 10⁶ wings at α_e = 35 give ≈ 0.131 Gt CO₂/yr. -/
 def fleet_CO2_Gt (α : ℝ) (n : ℝ) : ℝ :=
-  n * α * M_annual * CO2_per_C / 1e9
+  n * α * M_annual * CO2_per_C / 1e12
 
 -- 5.3 Energy Return on Investment
 
@@ -238,15 +243,19 @@ and lemmas. The import structure ensures:
 
 ### Verified Theorems:
 - **T1**: Minimum energy ∈ (6.17, 6.19) MJ/kg N
-- **C1**: Haber-Bosch η = 20.6%, Plasma η = 24.72%
+- **C1**: Haber-Bosch η = 20.6%, Plasma η = 24.72% at 25 MJ/kg N
+  (17.66% at the 35 MJ/kg N used in T4: `corollary1_plasma_at_T4_cost`)
 - **L1**: Solar info bound = η·G·A / (k_B·T·ln2)
 - **L3**: Quenching rate = 30,000 K/s
 - **T2**: Enhancement exponent ∈ (10.02, 10.04)
 - **T3**: P_gross = 9,900 W, P_plasma = 6,200 W
-- **T4**: N production: ~0.638 g/s, ~2.30 kg/hr, ~18.4 kg/day, ~3,680 kg/yr
+- **T4** (corrected): N production: ~0.177 g/s, ~0.638 kg/hr, ~5.10 kg/day,
+  ~1,020 kg/yr at the assumed E_plasma = 35 MJ/kg N (v1 values were 3.6× high;
+  see `theorem4_v1_erratum_factor`, `theorem4_energy_closure`)
 - **T5**: Stoichiometric bound = 20.5 kg C/kg N
 - **T6**: Decomposition amplifier = 300 kg C/kg N
-- **T7**: ΔC ≈ 128,800 kg C/yr, ΔCO₂ ≈ 472,300 kg CO₂/yr
+- **T7** (corrected): ΔC ≈ 35,712 kg C/yr, ΔCO₂ ≈ 130,944 kg CO₂/yr
+  (v1: 128,800 and 472,300)
 - **T8**: Fleet scaling is linear
 - **T9**: Energy invested = 57.024 GJ/yr
 - **T10**: Information bound structure

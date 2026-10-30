@@ -1,7 +1,9 @@
 Viridis Canon
 Copyright 2026 Viridis LLC (Justin D. Hart)
 
-This product includes Lean 4 formalizations verified with Aristotle (Harmonic).
+Some Lean 4 formalizations were produced with the Aristotle prover (Harmonic);
+current certificates come from the Comparator dual-kernel check (see certificates/).
+AI tool roles are listed in AI_USE_AND_AUTHORSHIP.md.
 Depends on Mathlib (https://github.com/leanprover-community/mathlib4), Apache-2.0.
 
 Accompanying papers and documentation in the linked Zenodo records are

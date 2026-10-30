@@ -1,5 +1,5 @@
 {
-  "catalog_digest": "8c6b2c0e97711d5b3eea1984d4c4ac6b6e84c6b11be9a3f9aad05ecec5d94f85",
+  "catalog_digest": "bd3e173d6bfbc308a21c75933c4918604ff0e229fa771be2019d4f0f8b2f12d0",
   "concept_doi": "10.5281/zenodo.19317982",
   "coverage_provenance": {
     "certifies": false,
@@ -7189,7 +7189,7 @@
       "abstract": "FragmentationHysteresis.lean — the Fragmentation Hysteresis Theorem (FHT), \"the Mender\" Viridis Aristotle Forge · nightly Run 109 · [03] HDFM Corridors × 🔥 Thermodynamic · 2026-07-25 CLAIM. Habitat loss and habitat restoration are not the same path run backwards. Destruction of the connective backbone requires no knowledge of where the backbone is; restoration does. Encode that asymmetry as a SITING EFFICIENCY q ∈ (0,1] — the fraction of restored area that lands on the connective backbone — and the degrade→restore cycle becomes irreversible: R1 effective-area map a_eff(a) = a_min + q (a - a_min) ≤ a, with equality iff q = 1 or a = a_min; hence the restoration branch of the order parameter never exceeds the degradation branch. R2 offset multiplier law recovering a lost area ΔA requires restoring x* = ΔA / q, so the compensation multiplier is exactly m = 1/q and the restoration debt (1/q - 1)ΔA is ≥ 0, vanishing iff siting is perfect. R3 Second Law for landscapes the enclosed hysteresis area W(q) = ∫ (S(a) - S(a_eff a)) da is ≥ 0, is antitone in q, is 0 at q = 1, and is STRICTLY positive whenever q < 1 on a strictly monotone order parameter. R4 dead zone below a macroscopic connectivity floor a★ restoration buys nothing until x ≥ (a★ - a_min)/q — a tax scaling as 1/q. R5 latent heat of fragmentation crossing the percolation threshold destroys the observable restoration TEMPLATE, collapsing q₁ → q₀, so the debt jumps by L = (1/q₀ - 1/q₁)·ΔA > 0: a first-order irreversibility riding on a continuous transition (no feedback, no alternative state). R6 information–area equivalence…",
       "caveat": "UNCERTIFIED — no hash-bound Viridis Comparator certificate covers this deposit's claims. Lean sources may compile but have not been independently certified. Results are conditional on the stated model assumptions.\n\nHistorical scope note: Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude.",
       "definition_count": 0,
-      "digest": "392868f18881e7f87f49fc96e87aa2b91544acabb52c40f2ec49922ce1ea7184",
+      "digest": "d842e117627aed380fb5ef3bb0b19cbc252c215727ec54be2cc96951a405be5e",
       "doi": "10.5281/zenodo.21609938",
       "external_validation": "not-recorded",
       "imports": [
@@ -7198,7 +7198,7 @@
       "integrity": "not-canon-admitted",
       "lean_module": "Viridis.Mender.FragmentationHysteresis",
       "lemma_count": 0,
-      "line_count": 831,
+      "line_count": 833,
       "metadata": {
         "aristotle_id": "",
         "artifact_type": "lean4",

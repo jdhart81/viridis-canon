@@ -1,0 +1,24 @@
+{
+ "note": "Road classes rasterized with the builder functions and compared with the frozen road raster. No perimeter was read.",
+ "union_equals_frozen_road_raster": true,
+ "class_cells": {
+  "highway": 80039,
+  "local": 1554056,
+  "other_vehicle": 89629
+ },
+ "road_cells": 1709407,
+ "versions": {
+  "python": "3.13.16",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "rasterio": "1.5.2",
+  "gdal": "3.12.2",
+  "shapely": "2.2.0",
+  "pyproj": "3.8.0"
+ },
+ "runner": {
+  "script": "run_p1c_mech.py",
+  "sha256": "91408affc1500c44a176453eac3a468d354feb0bc02d2c80c903627bea8c3aa7",
+  "note": "Fields region_p1c, plan_primary, robustness_subsets and runner were added by the runner. The frozen code labels its output with the pilot region and names E_B as its primary; MECH_PLAN.md names E_road (H1)."
+ }
+}

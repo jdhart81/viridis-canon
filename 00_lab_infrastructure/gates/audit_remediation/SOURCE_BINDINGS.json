@@ -1,0 +1,107 @@
+{
+  "standard": "VRS-AUDIT-REMEDIATION-SOURCE-BINDINGS-1",
+  "baseline_commit": "45efc6a7c325aae6f3882524b84d755bc899f282",
+  "active": false,
+  "installed": false,
+  "production_admitted": false,
+  "candidate_source_edits_authorized": false,
+  "sources": [
+    {
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py",
+      "fixture_path": "RESEARCH_PIPELINE_v2/autonomous_pipeline_controller.py",
+      "sha256": "93b3c32a2b1076aba6af62f2025b90367f89d8dec9b1d27582a796ff734cec2e",
+      "role": "successor-runtime",
+      "installed_base_sha256": "86f1691fec4195fe3f0c499df47a934373d6fb55d616cfc7841479511d97fd22",
+      "public_origin": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/autonomous_pipeline_controller.py",
+      "origin_relation": "Public snapshot plus terminal_certification/EXISTING_SELECTION.patch yields exact installed86f169 baseline. Derived in memory and compared byte-for-byte; no source written or executed. INTEGRATION_BINDING.json records exact before/after. Preserve both old public snapshot and PR109 patch/pins."
+    },
+    {
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/autonomous_transition_executor.py",
+      "fixture_path": "RESEARCH_PIPELINE_v2/autonomous_transition_executor.py",
+      "sha256": "1f5df18877f45c8b723f6bed44c0c7c09c97072e2306210f1a9b64f87124e51f",
+      "role": "successor-runtime",
+      "installed_base_sha256": "749ecb7a95e22f9ac0251986012cbb664e8709948c2b7e13b8454d2111e6b865",
+      "public_origin": null,
+      "origin_relation": "No same-basename public source at45ef; first public source freeze required, not an existing public file edit."
+    },
+    {
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/test_autonomous_pipeline_controller.py",
+      "fixture_path": "RESEARCH_PIPELINE_v2/test_autonomous_pipeline_controller.py",
+      "sha256": "9a9be1662a8222999eac3e7d382e33a6caacf206bfb76ca107bfa75fd6f3e372",
+      "role": "unit-test",
+      "installed_base_sha256": "d891bccb1771e61a637adb6921e6e713f2bf27d4470bcf5aa044863a2714415e",
+      "public_origin": null,
+      "origin_relation": "No same-basename public source at45ef; first public source freeze required, not an existing public file edit."
+    },
+    {
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/test_autonomous_transition_executor.py",
+      "fixture_path": "RESEARCH_PIPELINE_v2/test_autonomous_transition_executor.py",
+      "sha256": "fd46ed706401216e19c2090e2d72a7c09a5db73a7b1d440cd1b98f5b1354f56b",
+      "role": "unit-test",
+      "installed_base_sha256": "a473ad38255e0d5a91a06a5fd778c3ea203a079513f10df2ac0fc2a2025455e3",
+      "public_origin": null,
+      "origin_relation": "No same-basename public source at45ef; first public source freeze required, not an existing public file edit."
+    },
+    {
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/nightly_science_preflight.py",
+      "fixture_path": "RESEARCH_PIPELINE_v2/nightly_science_preflight.py",
+      "sha256": "1135c591255ca98be7c9f7284cb67a2c06c662f77ef1d00716abbad278dce637",
+      "role": "successor-runtime",
+      "installed_base_sha256": "a41945368e682012cdc41d8a206d6a8a0c66e12baddb082326bf755d626e2f83",
+      "public_origin": "00_lab_infrastructure/gates/production_snapshots/phase7-20261008-owned-weekly-source-provenance/after/production_execution_dependencies/nightly_science_preflight.py",
+      "origin_relation": "Exact public base bytes a419; new1135 successor must be separately adopted."
+    },
+    {
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/test_nightly_science_preflight.py",
+      "fixture_path": "RESEARCH_PIPELINE_v2/test_nightly_science_preflight.py",
+      "sha256": "0c45918cd36f2f8cf35e42a6f492ccb730948a6c49f91cf90f28067bc08dc713",
+      "role": "unit-test",
+      "installed_base_sha256": "cdee9f6fe726ee68a8eaf987be459186c19912757493fe43294f549603c4dc61",
+      "public_origin": null,
+      "origin_relation": "No same-basename public source at45ef; first public source freeze required, not an existing public file edit."
+    },
+    {
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/test_assemble_saturday_candidate.py",
+      "fixture_path": "RESEARCH_PIPELINE_v2/test_assemble_saturday_candidate.py",
+      "sha256": "1acf560b1d10194ada15252edc9842ed8b17a0f60f850ddf2782d391aa8f48eb",
+      "role": "unit-test",
+      "installed_base_sha256": "e6c5d20e9216b8af852f7315e59ab6d1fb68ac0ac634f63b86d7d4bd987f6373",
+      "public_origin": null,
+      "origin_relation": "No same-basename public source at45ef; first public source freeze required, not an existing public file edit."
+    },
+    {
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/nightly_proof_track.py",
+      "fixture_path": "RESEARCH_PIPELINE_v2/nightly_proof_track.py",
+      "sha256": "b63c3866db0e3538f6462ca32f0bbf916a6e80081d1bdf74514b1fa6c7dc2b06",
+      "role": "existing-support-source-freeze",
+      "installed_base_sha256": "b63c3866db0e3538f6462ca32f0bbf916a6e80081d1bdf74514b1fa6c7dc2b06",
+      "public_origin": null,
+      "origin_relation": "Required by both runtime controller and changed preflight; absent public45ef. Pure reader, not new Comparator transport."
+    },
+    {
+      "public_path": "00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/test_viridisos_kernel_packager.py",
+      "fixture_path": "RESEARCH_PIPELINE_v2/test_viridisos_kernel_packager.py",
+      "sha256": "ceb14e89ae7ad06908f3e2e8b67d4cd5cf0e660df21d37c56433aa4337a58f03",
+      "role": "existing-test-helper-freeze",
+      "installed_base_sha256": "ceb14e89ae7ad06908f3e2e8b67d4cd5cf0e660df21d37c56433aa4337a58f03",
+      "public_origin": null,
+      "origin_relation": "Required shared fixture helpers for existing/new controller tests; absent public45ef."
+    }
+  ],
+  "preservation": [
+    "Historical production_snapshots, PR109 EXISTING_SELECTION.patch and INTEGRATION_BINDING remain unchanged",
+    "Controller86f1691 baseline derives from existing public58e9 source plus existing PR109 patch; successor93b3 requires new later adoption",
+    "No held runtime, scientific source, proof, certificate, catalog, ledger, scheduler or public metadata changed"
+  ],
+  "scope": "Pure source and synthetic fixture tests only. Existing subprocess writer, installation, current service, independent Claude, real checkpoint and release gates remain separate.",
+  "public_test_rebases": [
+    {
+      "public_path": "00_lab_infrastructure/gates/standalone_pdf_release/tests/test_manuscript_pdf_gate.py",
+      "fixture_path": "_ZENODO_DEPOSITS/tests/test_manuscript_pdf_gate.py",
+      "public_base_sha256": "9d8a0d63002f3881636f4790a37f64466144519a8f2f9558984caaed31eb95ba",
+      "installed_base_sha256": "56f2bde9915abb21cbcf30a77b9c5532e3e5d5a710c53d610ce0d19d2c3111db",
+      "sha256": "d5a87cb7f2d84aeff60a3a7d4af14a533fa65d66c8d01c2ceffacee6cec7e892",
+      "purpose": "Strengthen exact-PDF negative controls on the actual public base; preserve all other 20 test bodies and public guard/source pins. Private prior test results do not establish public closure readiness."
+    }
+  ]
+}

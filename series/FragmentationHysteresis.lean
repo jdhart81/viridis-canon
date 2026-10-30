@@ -34,7 +34,9 @@
   SCOPE / WELL-POSEDNESS GATE.  This file formalizes only self-contained, non-vacuous real
   analysis.  DEFERRED as CITED, not re-derived here: the Newman–Ziff percolation sweep and the
   numerical value a_c ≈ 0.5927 of the square-lattice site threshold, the β ≈ 5/36 exponent behind
-  the restoration sweet spot, and the empirical 4.9:1 offset ratio.  The order parameter S enters
+  the restoration sweet spot, and empirical offset ratios (Bull, Lloyd & Strange 2017,
+  doi:10.1111/conl.12335, report realized means of about 2.9:1; the 4.9:1 figure in an earlier
+  draft had no source and is withdrawn).  The order parameter S enters
   ONLY through explicit shape hypotheses (Monotone / StrictMono / Continuous) supplied as
   arguments; nothing below depends on percolation theory being true.
 

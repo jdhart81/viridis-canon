@@ -14,7 +14,7 @@
 - **Non-vacuity:** `fht_nonvacuous` proven with the stated worked example q1=0.85 / q0=0.12 / ΔA=0.35 including `2 < iStar < 3`; `fht_cycle_work_pos_witness` proven for the identity order parameter, q=1/2 on [0,1].
 - **Zero flagged deviations:** "Added no hypotheses and changed no auxiliary definitions."
 - Headline results: `multiplier_eq_one_over_q` (Offset Multiplier Law m = 1/q, Thm 3.2 canon candidate), `latent_heat_eq_debt_gap` + `latent_heat_pos_iff_template_loss` (Latent Heat of Fragmentation, Thm 3.6 canon candidate), `bit_halving_fails_across_saturation` (strict failure across the q(I)=min(q1, q0·2^I) clamp), `iopt_closed_form_is_global_min` (convex survey-depth optimum), `mender_ib_ceiling_never_violated` (IB self-application).
-- Deferred-as-cited (per submit gate): Newman–Ziff percolation sweep, a_c ≈ 0.5927, β ≈ 5/36, empirical 4.9:1 offset ratio — S enters only via Monotone/StrictMono/Continuous hypotheses.
+- Deferred-as-cited (per submit gate): Newman–Ziff percolation sweep, a_c ≈ 0.5927, β ≈ 5/36, empirical offset ratios (Bull et al. 2017, doi:10.1111/conl.12335: realized means about 2.9:1; the earlier unsourced 4.9:1 is withdrawn) — S enters only via Monotone/StrictMono/Continuous hypotheses.
 
 **Status:** VERIFIED CLEAN — canon candidate. Zenodo ledger row 69 ⏳ AWAITING JUSTIN OK (tier spine + branch; PUBLISH-CANDIDATE). NOT promoted to canon, NOT deposited to Zenodo (human-gated stages).
 Raw Aristotle output: `ARISTOTLE_RAW_SUMMARY.md`.

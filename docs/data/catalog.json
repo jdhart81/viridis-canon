@@ -7223,7 +7223,7 @@
       "paper_url": "https://doi.org/10.5281/zenodo.21609938",
       "path": "series/FragmentationHysteresis.lean",
       "record_id": "series-fragmentationhysteresis",
-      "source_sha256": "596ae5ca9abae6a967e12487309443b641b325cee5bb633c4fa42b6038094734",
+      "source_sha256": "9094ee2038fb4d5045b78f541f96f446aea56d1b55a97e59a50c66a7ac1ab9ad",
       "source_url": "https://github.com/jdhart81/viridis-canon/blob/main/series/FragmentationHysteresis.lean",
       "status": "working",
       "summary": "Lean research module with 30 theorem and lemma declarations.",

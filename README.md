@@ -107,6 +107,7 @@ Please file it as an
 - **Ask** in [Discussions](https://github.com/jdhart81/viridis-canon/discussions).
 - **Challenge** a statement, assumption or proof through an [external-validation report](https://github.com/jdhart81/viridis-canon/issues/new?template=external-validation.yml).
 - **Contribute**: see [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+- **Agents**: start with [`llms.txt`](./llms.txt) and [`AGENTS.md`](./AGENTS.md), which also says how to file a report a maintainer can check quickly.
 
 ---
 

@@ -411,7 +411,7 @@ echo '{esc(request)}' | python3 os-bundle/run.py</pre>
 <p>The proofs are AI-generated and machine-checked; Justin D. Hart (<a href="{ORCID}">ORCID</a>) is the accountable author.
 Tools and their roles: <a href="{REPO}/blob/main/AI_USE_AND_AUTHORSHIP.md">AI_USE_AND_AUTHORSHIP.md</a>.
 How we release: <a href="{REPO}/blob/main/RESPONSIBLE_RELEASE.md">RESPONSIBLE_RELEASE.md</a>.</p>
-<p>Find a vacuous, trivial or misstated theorem among the certified runs and we pay $50 (see the <a href="{REPO}/blob/main/BOUNTY.md">theorem bounty</a>).
+<p>Found a vacuous, trivial or misstated theorem among the certified runs? Confirmed findings are credited in the ledger and acknowledged in the papers. The cash bounty is closed to new reports (see the <a href="{REPO}/blob/main/BOUNTY.md">theorem bounty</a>).
 Questions and challenges: <a href="{REPO}/discussions">Discussions</a>.</p>
 </footer>
 </body>

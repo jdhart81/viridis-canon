@@ -13,6 +13,8 @@ identifiers:
     description: "Concept DOI — always resolves to the latest version"
 repository-code: "https://github.com/jdhart81/viridis-canon"
 license: Apache-2.0
+version: "2026.10.17"
+date-released: "2026-10-17"
 keywords:
   - machine-checked mathematics
   - ecological decision support

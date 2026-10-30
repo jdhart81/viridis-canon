@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "standard": "VRS-ENGINE3-CODEX-CANDIDATE-PROVENANCE-1",
+  "status": "FROZEN",
+  "source_run": "Run-125",
+  "operation": "Codex reviewed and reconstructed the ordered proof modules as one exact Comparator candidate; the only proof-text normalization changed the C1 term proof to an equivalent explicit by-exact proof",
+  "candidate_sha256": "fb668e6d401fd8ce681c1da5959aab3df1bdb748fa87b7be74d0158d3d127fe2",
+  "historical_provider_authority": false,
+  "fresh_comparator_verification_required": true,
+  "local_lean_execution": false,
+  "external_mutation": false
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-124-PivotalCorridorStewardship-Comparator-attempt-7",
+  "root_candidate_id": "Run-124-PivotalCorridorStewardship-Comparator",
+  "attempt": 7,
+  "source_run": "Run-124",
+  "module": "PaperFormalization",
+  "namespace": "Viridis.Run124.PaperFormalization",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "57f4e956fcbf6c97147f676d77cf7b16c8fa76edf27fca4318ad26dafbbd32f5",
+  "input_sha256": {
+    "SEALED_paper.pdf": "4ab0c80f8b7d40974c0928e3fbe398a317ab58bd99899ae0420f0c8f38bd4619",
+    "SEALED_paper.tex": "225720480220a38583409f221870da31b6ae04cb663d9f161cb5cdf48c8e4c3c",
+    "SEALED_CLAIM_INVENTORY.json": "02340c0d3f7789f45c69396f2a28324a5f8b021ae9312b4490e506e0f415f5b5",
+    "SEALED_RUN_MANIFEST.json": "6114654d358d51dbbe9ebb355afb6a729d585a3d3a81c844c2cf6a0654a88b17",
+    "VERIFICATION_STATEMENT_V6.lean": "57f4e956fcbf6c97147f676d77cf7b16c8fa76edf27fca4318ad26dafbbd32f5",
+    "VERIFICATION_CHALLENGE_ALIGNED_V7.lean": "c905cf767bf3788369ac95f4dc0661ee8098ec76e8eb1e400eebe2cc4fe311ec",
+    "STATEMENT_ALIGNMENT_V7.json": "7226e97dca334fce32708b127b0ac951396af89a7de6a943ec89d19e25756b48",
+    "VERIFICATION_CANDIDATE_V6.lean": "ede2d3f68dcc19d77508ab1be245c3be763e32ae4eb69605023b9f3faa31df17"
+  },
+  "statement_alignment": {
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT_V6.lean",
+      "sha256": "57f4e956fcbf6c97147f676d77cf7b16c8fa76edf27fca4318ad26dafbbd32f5"
+    },
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT_V7.json",
+      "sha256": "7226e97dca334fce32708b127b0ac951396af89a7de6a943ec89d19e25756b48"
+    }
+  },
+  "expected_theorem_names": [
+    "reliability_derivative_eq_pivotal_probability",
+    "pivotal_probability_independent_of_own_probability",
+    "local_linear_budget_gain_le_best_ratio",
+    "series_parallel_mixed_difference_signs",
+    "equal_marginals_do_not_identify_reliability",
+    "witness_C1",
+    "witness_C2",
+    "witness_C3",
+    "witness_C4"
+  ],
+  "nonvacuity_obligations": [
+    "witness_C1",
+    "witness_C2",
+    "witness_C3",
+    "witness_C4",
+    "equal_marginals_do_not_identify_reliability"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "legacy_provenance": {
+    "historical_candidate_sha256": "1f18cddadee0625494fe9981a75b506d01acbac6a5d03522b6c89ba961d42d6b",
+    "historical_audit_sha256": "f35599c4b165d2ba9fb295a811349f89c7d1c0d94ecc3e0983a3cacf6d89ba09",
+    "candidate_source": "Codex-adopted repair candidate from immutable historical proof text; provider status carries no certification authority",
+    "repair_note": "Infrastructure retry with the unchanged V6 candidate. The aligned challenge was mechanically derived in candidate declaration order after proving all nine target signatures exactly match the sealed V6 statement. Only target proof bodies were replaced by challenge sorries; the alignment receipt and original sealed statement are independently hash-bound.",
+    "fresh_comparator_verification_required": true,
+    "aristotle_required_for_this_certificate": false
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

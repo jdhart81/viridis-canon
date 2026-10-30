@@ -1,0 +1,81 @@
+{
+  "schema_version": "VRS-CLAIM-INVENTORY-1",
+  "run": 127,
+  "stage": "pre_aristotle",
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "The two-moment capacity floor yields a one-period violation probability at most alpha under the stated model and assumptions.",
+      "paper_locator": "Theorem 1",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "cantelli_capacity_certificate",
+      "current_support": "Cantelli derivation and 100,000 seeded finite law-risk checks; Lean not run."
+    },
+    {
+      "id": "C2",
+      "claim": "The certified rate fraction relative to the mean plug-in ceiling is [1-CV(D)*sqrt((1-alpha)/alpha)]_+.",
+      "paper_locator": "Corollary 1",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "capacity_reserve_fraction_eq",
+      "current_support": "Algebraic normalization and dimensional scaling checks; Lean not run."
+    },
+    {
+      "id": "C3",
+      "claim": "In the positive-floor regime, every strictly larger threshold has a nonnegative two-point counterexample with the same moments and violation probability above alpha.",
+      "paper_locator": "Theorem 2",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "positive_floor_sharp_two_point_counterexample",
+      "current_support": "Analytic construction and 320 tested counterexamples; Lean not run."
+    },
+    {
+      "id": "C4",
+      "claim": "A mean-only plug-in capacity can have violation probability arbitrarily close to one.",
+      "paper_locator": "Proposition 1",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "mean_only_plugin_arbitrarily_unsafe",
+      "current_support": "Explicit two-point family and retained 0.999900-failure control; Lean not run."
+    },
+    {
+      "id": "C5",
+      "claim": "The executable preregistered gate completed 14 PASS / 0 FAIL / 14 CHECKS.",
+      "paper_locator": "Verification",
+      "evidence_class": "NUMERIC",
+      "support": "verification.py and verification_output.txt"
+    },
+    {
+      "id": "C6",
+      "claim": "Known support, a known Gaussian law, temporal dependence, and sampling uncertainty alter the interpretation or conservatism of a two-moment marginal certificate.",
+      "paper_locator": "Controls and limitations",
+      "evidence_class": "NUMERIC",
+      "support": "Explicit controls in verification.py; general claims bounded by cited literature."
+    },
+    {
+      "id": "C7",
+      "claim": "Cantelli and distributionally robust chance-constraint theory are established prior art, including current higher-moment refinements.",
+      "paper_locator": "Prior work",
+      "evidence_class": "CITED",
+      "support": "SOURCE_LEDGER.json"
+    },
+    {
+      "id": "C8",
+      "claim": "The Viridis instantaneous rate inequality is a model premise for this run.",
+      "paper_locator": "Definitions and assumptions",
+      "evidence_class": "ASSUMED",
+      "support": "Not re-derived or empirically validated in Run 127."
+    },
+    {
+      "id": "C9",
+      "claim": "A Capacity Risk Certificate could create buyer value.",
+      "paper_locator": "business_EV-127.md only",
+      "evidence_class": "CONJECTURED",
+      "support": "Commercial hypothesis; no customer, delivery, adoption, or revenue evidence."
+    },
+    {
+      "id": "C10",
+      "claim": "Novelty and scientific significance are unassessed.",
+      "paper_locator": "Abstract, prior work, conclusion",
+      "evidence_class": "DEFERRED",
+      "support": "Generator cannot self-approve novelty or significance."
+    }
+  ]
+}

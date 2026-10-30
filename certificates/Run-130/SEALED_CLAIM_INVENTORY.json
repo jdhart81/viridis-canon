@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "run_id": "Run-130_seed-source-bottleneck-certificate",
+  "stage": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "claims": [
+    {
+      "claim_id": "C130-01",
+      "claim": "For a frozen capacitated bipartite eligibility graph, the maximum common demand fraction equals min(1, min over nonempty site subsets U of S(N(U))/D(U)).",
+      "status": "DERIVED_FROM_MAX_FLOW_MIN_CUT",
+      "evidence": ["paper.tex", "verification.py", "verification_output.txt"],
+      "formal_proof_status": "PROPOSED_UNPROVED",
+      "exclusions": ["integer lots", "multi-period routing", "cost optimality", "field establishment"]
+    },
+    {
+      "claim_id": "C130-02",
+      "claim": "Full demand is routable exactly when every nonempty site subset satisfies the capacitated Hall condition S(N(U)) >= D(U).",
+      "status": "COROLLARY_UNDER_MODEL",
+      "evidence": ["paper.tex", "verification_output.txt"],
+      "formal_proof_status": "PROPOSED_UNPROVED",
+      "exclusions": ["validity of the eligibility graph"]
+    },
+    {
+      "claim_id": "C130-03",
+      "claim": "Increasing capacity only at a source outside the neighborhood of an active minimizing site subset cannot improve the certified common fulfillment fraction.",
+      "status": "ALGEBRAIC_CUT_COROLLARY",
+      "evidence": ["paper.tex", "verification_output.txt"],
+      "formal_proof_status": "PROPOSED_UNPROVED",
+      "exclusions": ["edge addition", "changes to demands", "claims that every neighboring capacity increase is sufficient"]
+    },
+    {
+      "claim_id": "C130-04",
+      "claim": "The certificate of the intersection of scenario eligibility graphs cannot exceed the certificate of any individual scenario; the edge union is not a robust substitute.",
+      "status": "MONOTONICITY_COROLLARY",
+      "evidence": ["paper.tex", "verification_output.txt"],
+      "formal_proof_status": "PROPOSED_UNPROVED",
+      "exclusions": ["adaptive recourse after scenario revelation", "probabilistic chance constraints"]
+    },
+    {
+      "claim_id": "C130-05",
+      "claim": "The final preregistered executable gate completed 15 PASS / 0 FAIL / 15 CHECKS after a preserved numerical-tolerance failure and disclosed repair.",
+      "status": "COMPUTATIONALLY_VERIFIED",
+      "evidence": ["verification.py", "verification_output.txt", "VERIFICATION_FAILURE_NOTE.md"],
+      "formal_proof_status": "NOT_A_FORMAL_PROOF",
+      "exclusions": ["all graph sizes", "biological validation"]
+    },
+    {
+      "claim_id": "C130-06",
+      "claim": "Adequate total seed inventory can coexist with an arbitrarily small common fulfillment fraction when eligibility neighborhoods are imbalanced.",
+      "status": "CONSTRUCTIVE_NEGATIVE_CONTROL",
+      "evidence": ["paper.tex", "verification_output.txt"],
+      "formal_proof_status": "PROPOSED_UNPROVED",
+      "exclusions": ["empirical frequency or magnitude in any real seed system"]
+    }
+  ],
+  "claims_explicitly_not_made": [
+    "novelty or significance established",
+    "formal proof complete",
+    "eligibility edges biologically or legally valid",
+    "field survival or carbon benefit",
+    "procurement, policy, genetic-resource, or phytosanitary approval",
+    "canon, spine, ledger, publication, adoption, demand, delivery, payment, repeat use, or MRR readiness"
+  ]
+}

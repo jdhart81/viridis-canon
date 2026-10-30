@@ -1,0 +1,49 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-123-HabitableConcentrationFloor-Comparator-attempt-4",
+  "root_candidate_id": "Run-123-HabitableConcentrationFloor-Comparator",
+  "attempt": 4,
+  "source_run": "Run-123",
+  "module": "HabitableConcentrationFloor",
+  "namespace": "Viridis.Run123",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "2666c33fde1833e3c90891377be5715fe0879970bf17c956aebc8b1fd33521fa",
+  "input_sha256": {
+    "SEALED_paper.pdf": "3b000bc7ef5ae9477afc3de11a9000cc880e5c5406d7c01d3030b027fc151d8a",
+    "SEALED_paper.tex": "56827dfd909521ea6acd45c5a511546b62b7e1f18c3b19e0dcf0bb7b97f072dc",
+    "SEALED_CLAIM_INVENTORY.json": "c7ade4850898fdfc95c942bc0c64f83db2c4f4284d16df3427614dac9b738cce",
+    "SEALED_RUN_MANIFEST.json": "de117baaf9f6a144475aacdcf7ddb117f83f7928a077289b534ce0e137da82d2",
+    "VERIFICATION_STATEMENT_ATTEMPT_2.lean": "2666c33fde1833e3c90891377be5715fe0879970bf17c956aebc8b1fd33521fa",
+    "VERIFICATION_CANDIDATE_ATTEMPT_4.lean": "3d63f48e2b90ecbfe02b3a1b0e2e2df9630fd6db8fe2306f5d1e663976cb438d"
+  },
+  "expected_theorem_names": [
+    "kl_chain_rule_habitable_partition",
+    "kl_ge_binary_habitable_mass",
+    "binary_kl_monotone_above_reference",
+    "habitable_threshold_free_energy_floor",
+    "equality_iff_reference_conditionals",
+    "reference_shaped_conditionals_witness",
+    "within_class_excess_witness"
+  ],
+  "nonvacuity_obligations": [
+    "reference_shaped_conditionals_witness",
+    "within_class_excess_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "legacy_provenance": {
+    "statement_source": "immutable Run-123 Engine-3 statement attempt 2",
+    "candidate_source": "Codex-authored zero-sorry candidate attempt 4",
+    "aristotle_required_for_this_certificate": false
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

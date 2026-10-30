@@ -1,6 +1,6 @@
 """Independently compute a closed set of file facts from approved local bytes.
 
-Optional execution dependency: pypdf==6.19.0. No network, server metadata,
+Optional execution dependency: pypdf==6.21.2. No network, server metadata,
 Lean execution or certificate verdict is consumed here. Unknown facts fail closed.
 """
 from __future__ import annotations
@@ -13,7 +13,7 @@ from pathlib import Path
 import re
 import threading
 
-PYPDF_VERSION = '6.19.0'
+PYPDF_VERSION = '6.21.2'
 PARSER_NAME = 'ViridisApprovedPDFByteFacts'
 PARSER_VERSION = '1'
 SUPPORTED_FIELDS = frozenset({'width', 'height', 'page_count', 'number_of_pages',
@@ -49,7 +49,9 @@ def compute_pdf_facts(content):
         _hold('UNSUPPORTED_FILE_FORMAT')
     try:
         import pypdf
+        from pypdf import _reader
         from pypdf.generic import NumberObject, FloatObject
+        from pypdf.generic import _data_structures
     except ImportError:
         _hold('PINNED_PARSER_DEPENDENCY_UNAVAILABLE')
     if pypdf.__version__ != PYPDF_VERSION:
@@ -70,6 +72,32 @@ def compute_pdf_facts(content):
             _hold('MALFORMED_PDF_NUMBER_TOKEN')
         value._viridis_exact_pdf_token = token.decode('ascii')
         return value
+
+    def capture_object(original_reader):
+        def read_object(stream, *args, **kwargs):
+            if threading.get_ident() != owner_thread:
+                return original_reader(stream, *args, **kwargs)
+            start = stream.tell()
+            if stream.read(1) == b'%':
+                stream.seek(start)
+                # Use the pinned reader's own comment limit and positioning.
+                _data_structures.skip_over_comments(stream,
+                    limit=_data_structures._MAX_LEADING_COMMENTS)
+                start = stream.tell()
+            else:
+                stream.seek(start)
+            value = original_reader(stream, *args, **kwargs)
+            # The short-number fast path bypasses NumberObject.read_from_stream.
+            if isinstance(value, (NumberObject, FloatObject)):
+                end = stream.tell()
+                if end - start > 256:
+                    _hold('MALFORMED_PDF_NUMBER_TOKEN')
+                stream.seek(start); token = stream.read(end - start); stream.seek(end)
+                if re.fullmatch(rb'[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)', token) is None:
+                    _hold('MALFORMED_PDF_NUMBER_TOKEN')
+                value._viridis_exact_pdf_token = token.decode('ascii')
+            return value
+        return read_object
 
     def number(value):
         value = value.get_object() if hasattr(value, 'get_object') else value
@@ -100,9 +128,14 @@ def compute_pdf_facts(content):
     with _PARSE_LOCK:
         # Capture only after the lock: another caller must never retain our hook.
         original = NumberObject.read_from_stream
+        original_object = _data_structures.read_object
+        original_reader_object = _reader.read_object
         logger = logging.getLogger('pypdf'); handler = WarningCapture()
         logger.addHandler(handler)
         NumberObject.read_from_stream = staticmethod(capture_number)
+        _data_structures.read_object = capture_object(original_object)
+        # PdfReader holds a separate alias for indirect primitive objects.
+        _reader.read_object = capture_object(original_reader_object)
         try:
             reader = pypdf.PdfReader(BytesIO(content), strict=True)
             if reader.is_encrypted: _hold('ENCRYPTED_PDF_UNSUPPORTED')
@@ -142,6 +175,8 @@ def compute_pdf_facts(content):
             _hold('PDF_PARSE_FAILURE_' + type(exc).__name__)
         finally:
             NumberObject.read_from_stream = staticmethod(original)
+            _data_structures.read_object = original_object
+            _reader.read_object = original_reader_object
             logger.removeHandler(handler)
     return {'parser': {'name': PARSER_NAME, 'version': PARSER_VERSION,
         'dependency_name': 'pypdf', 'dependency_version': PYPDF_VERSION,

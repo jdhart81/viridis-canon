@@ -1,0 +1,95 @@
+{
+ "H1_road": {
+  "E": 1.2770225422060675,
+  "ci95": [
+   1.1744773647904823,
+   1.4097680059920146
+  ],
+  "p_shift_upper": 0.000999000999000999,
+  "p_shift_lower": 1.0,
+  "decision": "SUPPORTED",
+  "reading": "REPLICATED",
+  "pilot_E_1_45_inside_ci": false
+ },
+ "H2_road_away_from_valley_floors": {
+  "E": 1.2263994973877017,
+  "ci95": [
+   1.1098465712114953,
+   1.3546718291718938
+  ],
+  "p_shift_upper": 0.000999000999000999,
+  "n_fires": 47,
+  "n_clusters": 30,
+  "decision": "SUPPORTED",
+  "reading": "the road edge excess holds away from valley floors"
+ },
+ "road_classes": {
+  "highway": {
+   "E": 0.9297988865917545,
+   "ci95": [
+    0.261780257622697,
+    1.7351670460245676
+   ],
+   "p_shift_upper": 0.5024975024975025,
+   "decision": "NOT SUPPORTED"
+  },
+  "local": {
+   "E": 1.2791453349837165,
+   "ci95": [
+    1.176760351335273,
+    1.421227891487225
+   ],
+   "p_shift_upper": 0.000999000999000999,
+   "decision": "SUPPORTED"
+  },
+  "other_vehicle": {
+   "E": 1.4580376570123876,
+   "ci95": [
+    0.7678144149769675,
+    2.3434792726244322
+   ],
+   "p_shift_upper": 0.017982017982017984,
+   "decision": "NOT SUPPORTED"
+  }
+ },
+ "types_primary_sample": {
+  "B": {
+   "E": 0.9351883335134521,
+   "ci95": [
+    0.83873514711973,
+    1.0985543716924264
+   ],
+   "decision": "INCONCLUSIVE"
+  },
+  "road": {
+   "E": 1.2770225422060675,
+   "ci95": [
+    1.1744773647904823,
+    1.4097680059920146
+   ],
+   "decision": "SUPPORTED"
+  },
+  "water": {
+   "E": 0.6028739864830414,
+   "ci95": [
+    0.32802305757160344,
+    0.6970257261373767
+   ],
+   "decision": "CONTRADICTED"
+  },
+  "nonburn": {
+   "E": 0.7701893521981141,
+   "ci95": [
+    0.6793463660039162,
+    0.9387810003335268
+   ],
+   "decision": "CONTRADICTED"
+  }
+ },
+ "n_fires": 47,
+ "runner": {
+  "script": "run_p1c_mech.py",
+  "sha256": "91408affc1500c44a176453eac3a468d354feb0bc02d2c80c903627bea8c3aa7",
+  "note": "Fields region_p1c, plan_primary, robustness_subsets and runner were added by the runner. The frozen code labels its output with the pilot region and names E_B as its primary; MECH_PLAN.md names E_road (H1)."
+ }
+}

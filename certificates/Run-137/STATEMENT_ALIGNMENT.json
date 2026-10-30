@@ -1,0 +1,46 @@
+{
+  "aligned_challenge": {
+    "path": "pre_aristotle_corrections/Run-137_symbiotic-accounting-certificate-r1/VERIFICATION_CHALLENGE_ALIGNED.lean",
+    "sha256": "914947efc9341f44104a52c6283ac6d4ac1c96c33226381d07ac3d55a5f53cbb"
+  },
+  "candidate": {
+    "path": "pre_aristotle_corrections/Run-137_symbiotic-accounting-certificate-r1/VERIFICATION_CANDIDATE.lean",
+    "sha256": "afe2ac826cb598d998a4e32baa19c17ffba3df7706b8dc0015d36c1ff5c65daa"
+  },
+  "candidate_forbidden_constructs_empty": true,
+  "expected_theorem_names": [
+    "conjunctive_rate_upper_bound_as_frozen_is_false",
+    "conjunctive_rate_upper_bound",
+    "symbiotic_allocation_attains",
+    "normalized_rates_equal",
+    "weighted_harmonic_le_max",
+    "two_partner_closed_form",
+    "additive_rate_upper_bound_as_frozen_is_false",
+    "additive_rate_upper_bound",
+    "symbiotic_accounting_nonvacuous"
+  ],
+  "external_mutation": false,
+  "introduced_sorry_count": 9,
+  "local_lean_execution": false,
+  "operation": "candidate-order challenge with only expected theorem proof bodies replaced by sorry",
+  "schema_version": 1,
+  "sealed_statement": {
+    "path": "pre_aristotle_corrections/Run-137_symbiotic-accounting-certificate-r1/VERIFICATION_STATEMENT.lean",
+    "sha256": "afe2ac826cb598d998a4e32baa19c17ffba3df7706b8dc0015d36c1ff5c65daa"
+  },
+  "shared_declaration_order_source": "candidate",
+  "signature_sha256": {
+    "additive_rate_upper_bound": "2dee01e0d359b6a907ecb24704fee91f86ed4c4d3dec581be3c7d723ac384075",
+    "additive_rate_upper_bound_as_frozen_is_false": "4c2bb01ece9be5fed4f6946aeb3a6015d9213c99c9f8d9b9fbaf0824021acf3c",
+    "conjunctive_rate_upper_bound": "2a9baa35a3a479e2c3763f4b879e5ce039a8d0d56b25b3e7d280e3a5c20cfaf3",
+    "conjunctive_rate_upper_bound_as_frozen_is_false": "d09963470c76db42421edf58f0dafb2d0571be85f69271f9b7c906c18018a3b5",
+    "normalized_rates_equal": "24d081fce32a6ceaaa15e2df3f2684a3d82abac407f76fb6e12cc88199529f15",
+    "symbiotic_accounting_nonvacuous": "c44fe710fa0b2fb169932f2206d3f6b51679b6975a8616de29cac845026413a6",
+    "symbiotic_allocation_attains": "b682014639d86c70b1c134e64d5041567f71aba8e6ec9aa1f8f705b676a3f7a3",
+    "two_partner_closed_form": "d99057758aa6149f0e9c5010279dfcc5b6fd0d8b078cbc185d82e2ce6ded1b19",
+    "weighted_harmonic_le_max": "b9d630be032b9656ce30efeacbc8e15ab70234531cfdb830e9f44c9391939a60"
+  },
+  "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+  "status": "FROZEN",
+  "target_signatures_match_sealed_statement": true
+}

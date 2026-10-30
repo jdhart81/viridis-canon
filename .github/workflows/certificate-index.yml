@@ -1,0 +1,38 @@
+name: Certificate index
+
+on:
+  pull_request:
+    paths:
+      - 'certificates/**'
+      - '**/function.json'
+      - 'tools/build_certificates_index.py'
+      - '.github/workflows/certificate-index.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'certificates/**'
+      - '**/function.json'
+      - 'tools/build_certificates_index.py'
+      - '.github/workflows/certificate-index.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  certificate-index:
+    name: certificate-index (${{ matrix.python }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.12', '3.14']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Require exact regenerated certificate catalog and configs
+        run: timeout --signal=TERM --kill-after=5s 540s python3 -I -S -B tools/build_certificates_index.py --check

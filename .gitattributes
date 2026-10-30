@@ -5,3 +5,13 @@ reports/verification-coverage/*/doi-refinement-pr36/classified-doi-diffs/*.diff 
 reports/verification-coverage/*/doi-refinement-pr36/*.diff -whitespace
 
 **/transport-diagnostics/** export-ignore
+
+# Language statistics. The research in this repository is the Lean; the Python
+# below is pipeline and publication tooling, so it is left out of GitHub's
+# language breakdown. Files are unaffected otherwise.
+00_lab_infrastructure/** linguist-detectable=false
+comparator-deploy/** linguist-detectable=false
+reports/** linguist-detectable=false
+scripts/** linguist-detectable=false
+tools/** linguist-detectable=false
+tests/** linguist-detectable=false

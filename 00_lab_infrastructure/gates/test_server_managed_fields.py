@@ -1331,7 +1331,7 @@ class ServerManagedFieldsTests(unittest.TestCase):
             report=self.preview_audit(actual,expected,ctx)
             with self.subTest(representation=representation):self.assertEqual(report['status'],'SERVER_MANAGED_READBACK_PASS',report)
             detail=report['checks']['derived_previews']['detail']['provenance']['byte_metadata'][0]
-            self.assertEqual(detail['parser_output']['parser']['dependency_version'],'6.19.0')
+            self.assertEqual(detail['parser_output']['parser']['dependency_version'],'6.21.2')
             self.assertEqual(detail['parser_output']['parser']['name'],'ViridisApprovedPDFByteFacts')
             self.assertEqual(detail['parser_output']['facts']['page_count']['value'],2)
             self.assertEqual(detail['parser_output']['facts']['width']['decimal'],'612')
@@ -1358,9 +1358,12 @@ class ServerManagedFieldsTests(unittest.TestCase):
         import logging
         from unittest.mock import patch
         import pypdf
-        from pypdf.generic import NumberObject
+        from pypdf import _reader
+        from pypdf.generic import NumberObject, _data_structures
         from file_byte_metadata import ByteMetadataHold, compute_pdf_facts
         original = NumberObject.read_from_stream
+        original_object = _data_structures.read_object
+        original_reader_object = _reader.read_object
         native_reader = pypdf.PdfReader
         calls = []
         def warning_reader(*args, **kwargs):
@@ -1373,6 +1376,13 @@ class ServerManagedFieldsTests(unittest.TestCase):
                 compute_pdf_facts(self.pdf_bytes())
         self.assertEqual(calls, [{'strict': True}])
         self.assertIs(NumberObject.read_from_stream, original)
+        self.assertIs(_data_structures.read_object, original_object)
+        self.assertIs(_reader.read_object, original_reader_object)
+        with self.assertRaises(ByteMetadataHold):
+            compute_pdf_facts(b'%PDF-1.5\nbroken\n')
+        self.assertIs(NumberObject.read_from_stream, original)
+        self.assertIs(_data_structures.read_object, original_object)
+        self.assertIs(_reader.read_object, original_reader_object)
 
     def test_byte_metadata_generalized_computable_page_and_format_facts_pass(self):
         expected,actual,ctx=self.byte_metadata_fixture()
@@ -1469,11 +1479,16 @@ class ServerManagedFieldsTests(unittest.TestCase):
 
     def test_byte_metadata_exact_decimal_tokens_no_rounding_and_reader_restored(self):
         from file_byte_metadata import compute_pdf_facts, require_computed_field
-        from pypdf.generic import NumberObject
+        from pypdf import _reader
+        from pypdf.generic import NumberObject, _data_structures
         original=NumberObject.read_from_stream
+        original_object=_data_structures.read_object
+        original_reader_object=_reader.read_object
         data=self.pdf_bytes(width='612.125',height='792.5')
         facts=compute_pdf_facts(data)
         self.assertIs(NumberObject.read_from_stream,original)
+        self.assertIs(_data_structures.read_object,original_object)
+        self.assertIs(_reader.read_object,original_reader_object)
         self.assertEqual(facts['facts']['width']['decimal'],'612.125')
         require_computed_field(612.125,field='width',facts=facts['facts'])
         with self.assertRaises(ValueError):require_computed_field(612.1250001,field='width',facts=facts['facts'])
@@ -1481,18 +1496,48 @@ class ServerManagedFieldsTests(unittest.TestCase):
         objects=[b'<< /Type /Catalog /Pages 2 0 R >>',
             b'<< /Type /Pages /Count 1 /Kids [3 0 R] >>',
             b'<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612.1234567890123 792] /Resources << >> >>']
-        exact=b'%PDF-1.5\n';offsets=[0]
-        for index,obj in enumerate(objects,1):
-            offsets.append(len(exact));exact+=str(index).encode()+b' 0 obj\n'+obj+b'\nendobj\n'
-        xref=len(exact);exact+=b'xref\n0 4\n0000000000 65535 f \n'
-        for offset in offsets[1:]:exact+=f'{offset:010d} 00000 n \n'.encode()
-        exact+=b'trailer\n<< /Size 4 /Root 1 0 R >>\nstartxref\n'+str(xref).encode()+b'\n%%EOF\n'
+        def pdf_objects(rows):
+            exact=b'%PDF-1.5\n';offsets=[0]
+            for index,obj in enumerate(rows,1):
+                offsets.append(len(exact));exact+=str(index).encode()+b' 0 obj\n'+obj+b'\nendobj\n'
+            xref=len(exact);size=str(len(rows)+1).encode()
+            exact+=b'xref\n0 '+size+b'\n0000000000 65535 f \n'
+            for offset in offsets[1:]:exact+=f'{offset:010d} 00000 n \n'.encode()
+            return exact+b'trailer\n<< /Size '+size+b' /Root 1 0 R >>\nstartxref\n'+str(xref).encode()+b'\n%%EOF\n'
+        exact=pdf_objects(objects)
         output=compute_pdf_facts(exact)
         self.assertEqual(output['facts']['width']['decimal'],'612.1234567890123')
         require_computed_field(612.1234567890123,field='width',facts=output['facts'])
         with self.assertRaises(ValueError):require_computed_field(612.12345679,field='width',facts=output['facts'])
         with self.assertRaises(ValueError):compute_pdf_facts(exact.replace(b'612.1234567890123',b'611'))
+        # Both read_object aliases must retain short indirect numbers and skip
+        # leading comments without treating their bytes as a numeric token.
+        for variant in ('commented_count','commented_rotation','indirect_count',
+                        'indirect_width','commented_indirect_width','long_width'):
+            rows=list(objects);width='612.1234567890123'
+            if variant=='commented_count':
+                rows[1]=rows[1].replace(b'/Count 1',b'/Count % count comment\n1')
+            elif variant=='commented_rotation':
+                rows[2]=rows[2].replace(b'/Resources',b'/Rotate % rotation comment\n0 /Resources')
+            elif variant=='indirect_count':
+                rows[1]=rows[1].replace(b'/Count 1',b'/Count 4 0 R');rows.append(b'1')
+            elif variant in ('indirect_width','commented_indirect_width'):
+                width='612.125'
+                rows[2]=rows[2].replace(b'612.1234567890123',b'4 0 R')
+                rows.append((b'% width comment\n' if variant=='commented_indirect_width' else b'')+width.encode())
+            else:
+                width='612.12345678901234567890123456789'
+                rows[2]=rows[2].replace(b'612.1234567890123',width.encode())
+            with self.subTest(variant=variant):
+                output=compute_pdf_facts(pdf_objects(rows))
+                self.assertEqual(output['facts']['page_count']['value'],1)
+                self.assertEqual(output['facts']['width']['decimal'],width)
+                self.assertIs(NumberObject.read_from_stream,original)
+                self.assertIs(_data_structures.read_object,original_object)
+                self.assertIs(_reader.read_object,original_reader_object)
         self.assertIs(NumberObject.read_from_stream,original)
+        self.assertIs(_data_structures.read_object,original_object)
+        self.assertIs(_reader.read_object,original_reader_object)
 
     def test_byte_metadata_absent_parser_dependency_is_hold_old_rules_still_standalone(self):
         expected,actual,ctx=self.byte_metadata_fixture()
@@ -1525,9 +1570,12 @@ class ServerManagedFieldsTests(unittest.TestCase):
         from concurrent.futures import ThreadPoolExecutor
         from unittest.mock import patch
         import pypdf
+        from pypdf import _reader
         import file_byte_metadata as parser
-        from pypdf.generic import NumberObject
+        from pypdf.generic import NumberObject, _data_structures
         original=NumberObject.read_from_stream;native_reader=pypdf.PdfReader
+        original_object=_data_structures.read_object
+        original_reader_object=_reader.read_object
         first_inside=threading.Event();second_waiting=threading.Event()
         actual_lock=threading.RLock();counter_lock=threading.Lock();enters=0;readers=0
         class ObservedLock:
@@ -1554,6 +1602,8 @@ class ServerManagedFieldsTests(unittest.TestCase):
                 second=workers.submit(parser.compute_pdf_facts,content)
                 outputs=[first.result(timeout=10),second.result(timeout=10)]
         self.assertIs(NumberObject.read_from_stream,original)
+        self.assertIs(_data_structures.read_object,original_object)
+        self.assertIs(_reader.read_object,original_reader_object)
         self.assertEqual(outputs[0],outputs[1])
         self.assertEqual(outputs[0]['facts']['width']['decimal'],'612')
 

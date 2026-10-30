@@ -1,0 +1,107 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 132,
+  "run_id": "Run-132",
+  "slug": "dscore-weight-charter-certificate",
+  "title": "The D-Score Weight-Charter Certificate: A sharp rank-stability bound for precommitted composite indicators",
+  "generated_at_utc": "2026-08-16T08:12:00Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-132_dscore-weight-charter-certificate",
+  "selection": {
+    "area_id": "04",
+    "area": "D-Score Science",
+    "lens": "Stewardship",
+    "directive_kind": "locked_area",
+    "reason": "scored_selection",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true,
+    "combination_guard": "PASS_PRIOR_AREA_04_LENS_WAS_ALIGNMENT_AT_RUN_118"
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "significance": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 15,
+    "failed": 0,
+    "checks": 15,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "deterministic_replay": "BYTE_IDENTICAL_1242_BYTES",
+    "initial_failure": "14_PASS_1_FAIL_PRESERVED",
+    "scope": "200,000 simplex-pair cases, 100,000 ranking cases, 50,000 sharpness cases, 160,083 exact rational-grid comparisons, 20,000 simplex-vertex cases, 90,004 transformation and dimension controls, 100,000 nested convergence draws, and explicit normalization and omitted-component controls"
+  },
+  "formalization": {
+    "status": "FROZEN_PROPOSED_UNPROVED",
+    "lean_file": "formalization/DScoreWeightCharter.lean",
+    "targets": ["tv_range_certificate", "strict_rank_stability", "unrestricted_simplex_optimum", "charter_nonvacuous"],
+    "contains_explicit_sorry_placeholders": true
+  },
+  "aristotle": {"status": "NOT_RUN", "submitted": false},
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus D-Score methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 133,
+    "kind": "area",
+    "area_id": "03",
+    "area": "HDFM Corridors",
+    "lens": "Symbiosis",
+    "reason": "scored_selection",
+    "selection_note": "After Run 132 no severe-starvation, persistent-organic-leader-debt, or tier-floor rail is armed. Area 03 leads scored selection at 26.5; Symbiosis follows Stewardship and the prior area-03 Symbiosis pairing at Run 089 is outside the 16-run guard."
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 4,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "visual_review": "PASS_ALL_4_PAGES_RENDERED_AT_120_DPI",
+    "preserved_failure_evidence": "BUILD_FAILURE_NOTE.md"
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {"name":"Codex","role":"Binding-standard and Viridis-corpus review, current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"},
+      {"name":"Claude","role":"Historical Viridis research artifacts read with attribution preserved and no historical text rewritten"}
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "b634c94932322c248354b3dd481604159a6cef007213d86b4a00986a618dee92",
+    "resulting_nightly_state_sha256": "e191be13e7f63058709cf2870a0121d6df1c052af009f737e5f3a76f2b3e686d",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "BUILD_FAILURE_NOTE.md":"9a81c3d3be022260b6360005e538b2d2b1bd2f29303a2603f2efd1eabfd8a63e",
+      "CEO_ALERT.md":"a8e3cb37171de7170295cc4243241d36dc2b37fa34aaf264ed38ee5a287c49e1",
+      "CLAIM_INVENTORY.json":"84aaecfef4fdee96402d1abbb2c13758a8dab07381de252f1f9b1c49a90a5ddd",
+      "PAPER_PACKAGE_MANIFEST.json":"fd975146916ce88f37250666b4c2195127015848beb3025a2dd8fb2259068cd8",
+      "PREREGISTRATION.md":"3e3e42654ecb38560312842abed92e47989b3bcfba3b64524873b0bb54f9aa92",
+      "README.md":"ec8b53023eb88033a6b9ab3543d3c2d45f893a2aeae0037d514493e0884cf923",
+      "SOURCE_LEDGER.json":"0973d8e81d8f279c972fa30b39b1c3a2592035d2e41e80544eb6f8489532fd30",
+      "VERIFICATION_FAILURE_NOTE.md":"febd4302011b17ae45902123707505d5f430f68734859301e258a06d1fe9601d",
+      "business_EV-132.md":"6964a67f6f9171b3992ae316081ea5943191567287f9ba00a4205e973968d9f9",
+      "finding.md":"e7f767bca8e3352209d36315223c1f1c5130708f72083da6bd88b428d29c4844",
+      "formalization/ARISTOTLE_PROMPT.md":"01753600c7f6301ecab92a2c4e580ca6e144c42dc054b40ab1da8c6e2a47ce7e",
+      "formalization/DScoreWeightCharter.lean":"390ea2dca790c720f453d211dc31e83301873818b02ee7782c36d50df6f8bb48",
+      "formalization/STATEMENT_CONTRACT.json":"32b3043eed3a55ff928722d88ac910b44a1f600282002be037db8f81e9ae1447",
+      "formalization/lakefile.toml":"51977716695790365338ee5caea63c009eeae536aacb4dd5e688312ddee1dbf8",
+      "formalization/lean-toolchain":"db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028",
+      "paper.log":"99b7e1ba7df83bcca7880e778344ef89a948f8898397306e3ca70c6c56a4df7f",
+      "paper.pdf":"59f9c93461a8392962f9fac2c993b162d1372920ad32593645f293b18758b5eb",
+      "paper.tex":"e1ae7868868bd3a3c9c52fb4bfc9a59498e3961070ab6ee24f51206674805990",
+      "verification.py":"d6b73f0335852bc1c91c3929a61ea4eb97ab0a893f55bed5bb7bd6f595eba3a8",
+      "verification_output.txt":"6fe39b241a5c2c6c0591dba4d7e1b4dbe710e197387b4e2c6f416940acb69c8a"
+    },
+    "self_reference_note":"RUN_MANIFEST.json is hashed only after sealing; its hash is recorded in NIGHTLY_STATE.md and INDEX.md because a manifest cannot contain its own hash.",
+    "run_manifest_hash_recorded_in":"NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {"published":false,"pushed":false,"submitted":false,"outreach_sent":false,"external_account_mutated":false,"money_moved":false}
+}

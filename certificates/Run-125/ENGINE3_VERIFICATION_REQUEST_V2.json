@@ -1,0 +1,64 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-125-SymbioticBandwidth-Comparator-attempt-2",
+  "root_candidate_id": "Run-125-SymbioticBandwidth-Comparator",
+  "attempt": 2,
+  "source_run": "Run-125",
+  "module": "PaperFormalization",
+  "namespace": "Viridis.Run125.PaperFormalization",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "2b958be648f24ffebb06af4c28abe31046ea1f52ea67832346fac150b5e80644",
+  "input_sha256": {
+    "SEALED_paper.pdf": "c0a1605386099f7bc69ad3d80a53f31ef5134b258ea3b48053930100ff59183e",
+    "SEALED_paper.tex": "eb771d954d02974fca557d4cff5e66363e1fb7503d32d86c70078dcc1c2c702e",
+    "SEALED_CLAIM_INVENTORY.json": "33497d6c47810113fe18c2d18692c05190a81e5674fd1bb3fd756578c073e079",
+    "SEALED_RUN_MANIFEST.json": "2dd2b097d23fac25bc900897b4b3ac09ab40f137958be16609a70bb7bbea1489",
+    "VERIFICATION_STATEMENT_V2.lean": "2b958be648f24ffebb06af4c28abe31046ea1f52ea67832346fac150b5e80644",
+    "VERIFICATION_CHALLENGE_ALIGNED_V2.lean": "2b958be648f24ffebb06af4c28abe31046ea1f52ea67832346fac150b5e80644",
+    "STATEMENT_ALIGNMENT_V2.json": "fa38fda6072a2e4bd6a601edc140904733db5d55f819aef77f0bebdc553ca438",
+    "VERIFICATION_CANDIDATE_V2.lean": "adb5eb9b25d9be09f75aa3fc2de64d982e2787b9d2d8de453745b22e601ac6ed"
+  },
+  "statement_alignment": {
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT_V2.lean",
+      "sha256": "2b958be648f24ffebb06af4c28abe31046ea1f52ea67832346fac150b5e80644"
+    },
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT_V2.json",
+      "sha256": "fa38fda6072a2e4bd6a601edc140904733db5d55f819aef77f0bebdc553ca438"
+    }
+  },
+  "expected_theorem_names": [
+    "shared_channel_inverse",
+    "directional_gain_bounds",
+    "rank_deficient_unit_gain",
+    "worstcase_deadline",
+    "top_subspace_mean_cost",
+    "isotropic_rank_fraction"
+  ],
+  "nonvacuity_obligations": [
+    "witness_shared_channel_inverse",
+    "witness_directional_gain_aligned",
+    "witness_directional_gain_orthogonal",
+    "witness_rank_deficient_unit_gain",
+    "witness_worstcase_deadline",
+    "witness_top_subspace_mean_cost",
+    "witness_isotropic_rank_fraction"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "legacy_provenance": {
+    "historical_root_module_sha256": "0898b5d9fc9705c054e451267ea54376a5c67251613c38a6434515037587109d",
+    "historical_audit_sha256": "45325f9e23de25910b5e0a9bed89b8ab90626dadfa60cbd0f281b8c8e854f7f9",
+    "candidate_source": "Codex-reconstructed and reviewed monolith from immutable historical proof modules; historical provider status carries no certification authority",
+    "fresh_comparator_verification_required": true,
+    "aristotle_required_for_this_certificate": false
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

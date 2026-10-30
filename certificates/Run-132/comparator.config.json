@@ -1,0 +1,17 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.DScore.WeightCharter.tv_range_certificate",
+    "Viridis.DScore.WeightCharter.strict_rank_stability",
+    "Viridis.DScore.WeightCharter.unrestricted_simplex_optimum_counterexample",
+    "Viridis.DScore.WeightCharter.unrestricted_simplex_optimum_max",
+    "Viridis.DScore.WeightCharter.unrestricted_simplex_optimum",
+    "Viridis.DScore.WeightCharter.charter_nonvacuous"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

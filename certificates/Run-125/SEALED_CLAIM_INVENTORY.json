@@ -1,0 +1,83 @@
+{
+  "schema_version": "VRS-CLAIM-INVENTORY-1",
+  "run": 125,
+  "stage": "pre_aristotle",
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "For an orthogonal projector P and kappa >= 0, (I+kappa P)^-1 = I-kappa P/(1+kappa).",
+      "paper_locator": "Theorem 1, Eq. 5",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "shared_channel_inverse",
+      "current_support": "Algebraic derivation plus direct numerical inversion; Lean not run."
+    },
+    {
+      "id": "C2",
+      "claim": "Directional gain lies in [1,1+kappa], with equality 1+kappa in the shared subspace and equality 1 in its orthogonal complement.",
+      "paper_locator": "Theorem 1, Eq. 6",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "directional_gain_bounds",
+      "current_support": "Projection identity, 10,000 random tests, and equality controls; Lean not run."
+    },
+    {
+      "id": "C3",
+      "claim": "If rank(P)<m, a nonzero unit direction with gain exactly one exists.",
+      "paper_locator": "Theorem 2",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "rank_deficient_unit_gain",
+      "current_support": "Rank-nullity argument and constructed numerical null-space controls; Lean not run."
+    },
+    {
+      "id": "C4",
+      "claim": "Under the declared dissipation-budget model, rank-deficient shared mobility leaves the worst-case unit-displacement deadline unchanged.",
+      "paper_locator": "Theorem 2, Eq. 7",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "worstcase_deadline",
+      "current_support": "Inverse spectrum calculation and 500 randomized eigenvalue checks; Lean not run."
+    },
+    {
+      "id": "C5",
+      "claim": "For task second moment C, the rank-r projector minimizing expected cost spans a top-r covariance eigenspace.",
+      "paper_locator": "Theorem 3, Eq. 8",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "top_subspace_mean_cost",
+      "current_support": "Ky Fan principle cited/used and 20,000 random-projector comparisons; Lean not run."
+    },
+    {
+      "id": "C6",
+      "claim": "For isotropic task second moment I/m, every rank-r projector captures exactly r/m and has the stated mean-cost ratio.",
+      "paper_locator": "Corollary after Theorem 3, Eq. 9",
+      "evidence_class": "FORMAL_TARGET",
+      "aristotle_target": "isotropic_rank_fraction",
+      "current_support": "Trace algebra and all dimension/rank checks; Lean not run."
+    },
+    {
+      "id": "C7",
+      "claim": "The executable preregistered gate completed 18 PASS / 0 FAIL / 18 CHECKS.",
+      "paper_locator": "Verification plan and falsification tests",
+      "evidence_class": "NUMERIC",
+      "support": "verification.py and verification_output.txt"
+    },
+    {
+      "id": "C8",
+      "claim": "Tasnim and Wolpert treat thermodynamic speed limits for co-evolving subsystems, and Abiuso et al. treat multidimensional quadratic systems under partial control.",
+      "paper_locator": "Introduction and Discussion",
+      "evidence_class": "CITED",
+      "support": "SOURCE_LEDGER.json primary sources tasnim_wolpert_2026 and abiuso_et_al_2022"
+    },
+    {
+      "id": "C9",
+      "claim": "The Shared-Channel Coverage Audit could create buyer value.",
+      "paper_locator": "business_EV-125.md only",
+      "evidence_class": "CONJECTURED",
+      "support": "Business hypothesis; no customer, revenue, or adoption evidence."
+    },
+    {
+      "id": "C10",
+      "claim": "Novelty and scientific significance are unassessed.",
+      "paper_locator": "Abstract, Discussion, Conclusion",
+      "evidence_class": "DEFERRED",
+      "support": "Generator may search and bound claims but cannot self-approve novelty or significance."
+    }
+  ]
+}

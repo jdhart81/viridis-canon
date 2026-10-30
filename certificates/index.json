@@ -1,0 +1,2530 @@
+{
+  "schema": "viridis-certificates-index/1",
+  "description": "Comparator certificates for Viridis Canon results. Each run directory provides the listed certificate evidence. This export omits sealed manuscripts. A linked Zenodo DOI is a manuscript-access link, not a representation that its public PDF is byte-identical to the sealed manuscript. Each certificate covers only its hash-bound artifacts and stated formal theorem scope; a different public manuscript requires its own reviewed publication-binding evidence.",
+  "what_a_certificate_establishes": "The listed Lean theorems are proved in the solution file, their statements match the challenge file, they use only the permitted axioms, and the Lean kernel and the nanoda kernel accept them. It does not establish that the formal statement captures the paper's prose claim, that the model describes nature, that the result is new, or that any decision built on it is correct.",
+  "depth_rule": "substantial if the certified candidate has at least 200 non-blank lines and the median proof length of its listed theorems is at least 6 lines; otherwise elementary. Size indicator only: it does not measure novelty, difficulty or scientific value.",
+  "counts": {
+    "runs": 18,
+    "theorems": 114,
+    "substantial": 11,
+    "elementary": 7,
+    "challenge_identical_to_solution": 3
+  },
+  "runs": [
+    {
+      "run": "Run-120",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-29T03:54:05.955409+00:00",
+      "candidate_id": "Run-120-PaperFormalizationProof-Comparator-attempt-4",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.Run120",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE_V4.lean",
+          "sha256": "4b574148b3c4854ac85d0594915a536aa1cc372414c682a726b6ff60824b7c58"
+        },
+        "challenge": {
+          "file": "VERIFICATION_STATEMENT_V4.lean",
+          "sha256": "4b574148b3c4854ac85d0594915a536aa1cc372414c682a726b6ff60824b7c58"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT_V4.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST_V4.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": true,
+      "theorems": [
+        "conjunctive_chain_weakest_first",
+        "conjunctive_chain_weakest_first_unique",
+        "conjunctive_chain_weakest_first_budget",
+        "conjunctive_portfolio_monotone",
+        "conjunctive_portfolio_supermodular",
+        "conjunctive_portfolio_increasing_marginals",
+        "marginal_greedy_counterexample_family",
+        "greedy_first_pick_is_distractor",
+        "greedy_improvement",
+        "greedy_family_optimum",
+        "greedy_family_optimum_budget",
+        "greedy_family_optimal_improvement",
+        "greedy_improvement_ratio",
+        "greedy_ratio_tendsto_zero"
+      ],
+      "nonvacuity_obligations": [
+        "exists_weakest_selection",
+        "weakest_first_witness",
+        "portfolio_witness",
+        "greedyRun2_exists",
+        "greedy_family_ratio_pos_lt_one"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.Run120.claimValue_mono",
+        "Viridis.Run120.wfP_two",
+        "Viridis.Run120.greedyP_le_one",
+        "Viridis.Run120.greedyRun2_exists",
+        "Viridis.Run120.exists_weakest_selection._proof_1_1",
+        "Viridis.Run120.claimValue_inter._simp_1_2",
+        "Viridis.Run120.greedyF_c",
+        "Viridis.Run120.wfP_le_one",
+        "Viridis.Run120.greedy_family_optimum_budget",
+        "Viridis.Run120.prod_le_prod_of_pointwise_le_of_card_eq",
+        "Viridis.Run120.wfP._proof_1",
+        "Viridis.Run120.greedy_family_optimum",
+        "Viridis.Run120.conjunctive_portfolio_monotone",
+        "Viridis.Run120.claimValue_marginal._simp_1_1",
+        "Viridis.Run120.greedyMarg_c_b",
+        "Viridis.Run120.greedy_first_pick_is_distractor",
+        "Viridis.Run120.greedy_ratio_tendsto_zero",
+        "Viridis.Run120.claimValue_marginal",
+        "Viridis.Run120.pfW_nonneg",
+        "Viridis.Run120.greedyF_ab",
+        "Viridis.Run120.greedyMarg_empty_b",
+        "Viridis.Run120.claimValue_eq_div",
+        "Viridis.Run120.marginal_eq",
+        "Viridis.Run120.prod_audited_lt_of_weakest_strict",
+        "Viridis.Run120.claimValue_empty",
+        "Viridis.Run120.wfP_one",
+        "Viridis.Run120.portfolioValue.eq_1",
+        "Viridis.Run120.claimValue_le_one",
+        "Viridis.Run120.greedyW.eq_1",
+        "Viridis.Run120.weakest_first_witness",
+        "Viridis.Run120.marginal_greedy_counterexample_family",
+        "Viridis.Run120.claimValue_inter",
+        "Viridis.Run120.greedyF_ac",
+        "Viridis.Run120.conjunctive_chain_weakest_first",
+        "Viridis.Run120.wfP.eq_1",
+        "Fin.instCommMonoid.congr_simp",
+        "Viridis.Run120.conjunctive_chain_weakest_first_budget",
+        "Viridis.Run120.greedyW_nonneg",
+        "Viridis.Run120.conjunctive_portfolio_increasing_marginals",
+        "Viridis.Run120.greedyMarg_eq",
+        "Viridis.Run120.prod_audited_le_of_weakest",
+        "Viridis.Run120.greedyClaims._proof_1",
+        "Viridis.Run120.greedy_family_optimal_improvement",
+        "Viridis.Run120.greedyF.eq_1",
+        "Viridis.Run120.claimValue_inter._simp_1_1",
+        "Viridis.Run120.greedy_improvement_ratio",
+        "Viridis.Run120.greedyClaims.eq_1",
+        "Viridis.Run120.pfF_eq",
+        "Viridis.Run120.prod_lt_prod_of_pointwise_lt_of_card_eq",
+        "Viridis.Run120.claimValue_marginal._simp_1_2",
+        "Viridis.Run120.greedyP_pos",
+        "Viridis.Run120.greedyP.eq_1",
+        "Viridis.Run120.greedy_improvement",
+        "Viridis.Run120.pfW.eq_1",
+        "Viridis.Run120.exists_weakest_selection",
+        "Viridis.Run120.greedyW._proof_1",
+        "Viridis.Run120.conjunctive_portfolio_supermodular",
+        "Viridis.Run120.greedyF_a",
+        "Fin.instNonUnitalCommRing.congr_simp",
+        "Viridis.Run120.claimValue.eq_1",
+        "Viridis.Run120.conjunctive_chain_weakest_first_unique",
+        "Viridis.Run120.greedy_family_ratio_pos_lt_one",
+        "Viridis.Run120.greedyMarg_empty_a",
+        "Viridis.Run120.pfC.eq_1",
+        "Viridis.Run120.greedyP._proof_1",
+        "Viridis.Run120.exists_weakest_selection._proof_1_2",
+        "Viridis.Run120.claimValue_pos",
+        "Viridis.Run120.greedyF_bc",
+        "Viridis.Run120.wfP_zero",
+        "Viridis.Run120.greedyF_b",
+        "Viridis.Run120.greedyF_eq",
+        "Viridis.Run120.prod_le_prod_subset_of_le_one",
+        "Viridis.Run120.claimValue_marginal_mono",
+        "Viridis.Run120.wfP_pos",
+        "Viridis.Run120.greedyF_empty",
+        "Viridis.Run120.greedyMarg_c_a",
+        "Viridis.Run120.portfolio_witness",
+        "Viridis.Run120.prod_lt_prod_of_pointwise_lt_of_card_eq._proof_1_1",
+        "Viridis.Run120.fin3_cases",
+        "Viridis.Run120.weakest_first_witness_conclusion",
+        "Viridis.Run120.greedyMarg_empty_c"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "solution_ok_terminal": true
+      },
+      "depth": {
+        "label": "substantial",
+        "candidate_nonblank_lines": 807,
+        "proof_lines": {
+          "conjunctive_chain_weakest_first": 10,
+          "conjunctive_chain_weakest_first_budget": 14,
+          "conjunctive_chain_weakest_first_unique": 7,
+          "conjunctive_portfolio_increasing_marginals": 1,
+          "conjunctive_portfolio_monotone": 8,
+          "conjunctive_portfolio_supermodular": 11,
+          "greedy_family_optimal_improvement": 4,
+          "greedy_family_optimum": 10,
+          "greedy_family_optimum_budget": 13,
+          "greedy_first_pick_is_distractor": 10,
+          "greedy_improvement": 15,
+          "greedy_improvement_ratio": 3,
+          "greedy_ratio_tendsto_zero": 22,
+          "marginal_greedy_counterexample_family": 6
+        },
+        "median_proof_lines": 10.0,
+        "one_step_proofs": []
+      },
+      "os_functions": [
+        {
+          "id": "cast-conjunctive-chain-weakest-first",
+          "name": "The Conjunctive Audit Stewardship Theorem: Why Evidence Portfolios Reward Bundles Rather Than Scattered Greedy Checks",
+          "kind": "theorem_function",
+          "tier": "reference",
+          "doi": "10.5281/zenodo.22236735",
+          "summary": "For one independent conjunctive claim with equal audit costs, auditing the k smallest component-validity probabilities maximizes post-audit claim credibility.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/CAST/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-121",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-29T04:00:13.531165+00:00",
+      "candidate_id": "Run-121-PaperFormalizationProof-Comparator-attempt-1",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.Run121",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE.lean",
+          "sha256": "6d90c74247be843e629ce558b5863516f7eeba49ff8bb2f11efad02ac4463eb3"
+        },
+        "challenge": {
+          "file": "VERIFICATION_STATEMENT.lean",
+          "sha256": "6d90c74247be843e629ce558b5863516f7eeba49ff8bb2f11efad02ac4463eb3"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": true,
+      "theorems": [
+        "information_symbiosis_chain_rule",
+        "conditional_independence_no_positive_balance",
+        "net_symbiosis_cost_criterion",
+        "duplicate_and_xor_extremes"
+      ],
+      "nonvacuity_obligations": [
+        "chain_rule_nonvacuous",
+        "conditional_independence_nonvacuous",
+        "net_symbiosis_cost_nonvacuous",
+        "control_distributions_are_mass_functions",
+        "control_balances_distinct"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.Run121.probOf_le_probOf_snd",
+        "Viridis.Run121.information_symbiosis_chain_rule",
+        "Viridis.Run121.condMutualInfoBits.congr_simp",
+        "Viridis.Run121.gibbs._simp_1_5",
+        "Viridis.Run121.conditional_independence_no_positive_balance",
+        "Viridis.Run121.probOf_nonneg",
+        "Viridis.Run121.probOf_pair_swap",
+        "Viridis.Run121.sum_probOf_triple_mid",
+        "Viridis.Run121.entropyBits_triple_rotate",
+        "Viridis.Run121.sum_probOf_pair_right._simp_1_2",
+        "Viridis.Run121.balanceBits.eq_1",
+        "Viridis.Run121.tripleToFH._proof_2",
+        "Viridis.Run121.gibbs._simp_1_1",
+        "Viridis.Run121.mutualInfoBits_nonneg",
+        "Viridis.Run121.entropy_pfour_pair",
+        "Viridis.Run121.mutualInfoBits_nonneg._simp_1_4",
+        "Viridis.Run121.entropyBits_equiv",
+        "Viridis.Run121.gibbs",
+        "Viridis.Run121.condMutualInfoBits_eq_zero_of_condIndep._simp_1_5",
+        "Viridis.Run121.mutualInfoBits.congr_simp",
+        "Viridis.Run121.balance_xor",
+        "Viridis.Run121.net_symbiosis_cost_nonvacuous",
+        "Viridis.Run121.entropy_pdup_single",
+        "Viridis.Run121.pfour_nonneg",
+        "Viridis.Run121.mutualInfoBits.eq_1",
+        "Viridis.Run121.probOf_triple_le_fh",
+        "Viridis.Run121.entropyBits_pair_comm",
+        "Viridis.Run121.net_symbiosis_cost_criterion",
+        "Viridis.Run121.pfour_sum",
+        "Viridis.Run121.control_balances_distinct",
+        "Viridis.Run121.probOf_pair_assoc._simp_1_2",
+        "Viridis.Run121.chain_rule_nonvacuous",
+        "Viridis.Run121.tripleToFH.eq_1",
+        "Viridis.Run121.condMutualInfoBits_eq_zero_of_condIndep._simp_1_4",
+        "Viridis.Run121.sum_probOf_pair_right",
+        "Viridis.Run121.tripleRotate._proof_1",
+        "Viridis.Run121.tripleRotate._proof_2",
+        "Viridis.Run121.sum_probOf",
+        "Viridis.Run121.entropy_pfour_xor_snd",
+        "Viridis.Run121.probOf_comp_injective",
+        "Viridis.Run121.mutualInfo_duplicate",
+        "Viridis.Run121.negMulLog_half",
+        "Viridis.Run121.balance_duplicate",
+        "Viridis.Run121.tripleToH.eq_1",
+        "Viridis.Run121.probOf_triple_le_gh",
+        "Viridis.Run121.negMulLog_quarter",
+        "Viridis.Run121.condMutualInfoBits.eq_1",
+        "Viridis.Run121.entropyBits._proof_1",
+        "Viridis.Run121.probOf_pair_swap._simp_1_2",
+        "Viridis.Run121.sum_probOf_triple_first",
+        "Viridis.Run121.gibbs._simp_1_2",
+        "Viridis.Run121.gibbs._simp_1_6",
+        "Viridis.Run121.entropyBits.eq_1",
+        "Viridis.Run121.gibbs._simp_1_4",
+        "Viridis.Run121.gibbs._simp_1_7",
+        "Viridis.Run121.mutualInfoBits_nonneg._simp_1_1",
+        "Viridis.Run121.tripleToGH._proof_1",
+        "Viridis.Run121.pfour._proof_1",
+        "Viridis.Run121.tripleToGH._proof_2",
+        "Viridis.Run121.sum_triple_collapse_fh",
+        "Viridis.Run121.entropy_pdup_pair",
+        "Viridis.Run121.probOf_pair_assoc",
+        "Viridis.Run121.entropyBits.congr_simp",
+        "Viridis.Run121.mutualInfoBits_nonneg._simp_1_5",
+        "Viridis.Run121.tripleToFH._proof_1",
+        "Viridis.Run121.entropy_pfour_id_triple",
+        "Viridis.Run121.tripleRotate.eq_1",
+        "Viridis.Run121.probOf.congr_simp",
+        "Viridis.Run121.probOf_triple_gh",
+        "Viridis.Run121.sum_triple_collapse_gh",
+        "Viridis.Run121.condMutualInfoBits_eq_zero_of_condIndep",
+        "Viridis.Run121.control_distributions_are_mass_functions",
+        "Viridis.Run121.condIndep_duplicate",
+        "Viridis.Run121.entropy_pfour_fst",
+        "Viridis.Run121.probOf.eq_1",
+        "Viridis.Run121.sum_negMulLog_eq",
+        "Viridis.Run121.netBalanceBits.eq_1",
+        "Viridis.Run121.pdup_sum",
+        "Viridis.Run121.entropy_pfour_xor_fst",
+        "Viridis.Run121.entropy_pfour_id_fst",
+        "Viridis.Run121.entropy_pfour_xor_triple",
+        "Viridis.Run121.pfour.eq_1",
+        "Viridis.Run121.tripleToGH.eq_1",
+        "Viridis.Run121.conditional_independence_nonvacuous",
+        "Viridis.Run121.probOf_triple_h",
+        "Viridis.Run121.probOf_triple_fh",
+        "Viridis.Run121.pdup.eq_1",
+        "Viridis.Run121.balance_unique_bits",
+        "Viridis.Run121.sum_probOf_triple_pair",
+        "Viridis.Run121.entropy_pfour_id_snd",
+        "Viridis.Run121.sum_probOf_pair_left",
+        "Viridis.Run121.pdup_nonneg",
+        "Viridis.Run121.sum_triple_collapse_h",
+        "Viridis.Run121.entropyBits_comp_injective",
+        "Viridis.Run121.entropy_pdup_triple",
+        "Viridis.Run121.probOf_comp_not_mem",
+        "Viridis.Run121.probOf_le_probOf_fst",
+        "Viridis.Run121.duplicate_and_xor_extremes",
+        "Viridis.Run121.gibbs._simp_1_3",
+        "Viridis.Run121.probOf_triple_le_h",
+        "Viridis.Run121.entropy_pfour_xor",
+        "Viridis.Run121.entropy_pfour_snd",
+        "Viridis.Run121.balanceBits.congr_simp"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "solution_ok_terminal": true
+      },
+      "depth": {
+        "label": "substantial",
+        "candidate_nonblank_lines": 695,
+        "proof_lines": {
+          "conditional_independence_no_positive_balance": 14,
+          "duplicate_and_xor_extremes": 3,
+          "information_symbiosis_chain_rule": 10,
+          "net_symbiosis_cost_criterion": 7
+        },
+        "median_proof_lines": 8.5,
+        "one_step_proofs": []
+      },
+      "os_functions": [
+        {
+          "id": "isb-information-symbiosis-chain-rule",
+          "name": "Information Symbiosis Balance: A Conditional-Dependence Criterion for Cooperative Learning",
+          "kind": "theorem_function",
+          "tier": "reference",
+          "doi": "10.5281/zenodo.22236761",
+          "summary": "For every finite joint distribution, B = I(Y;X1,X2)-I(Y;X1)-I(Y;X2) equals I(X1;X2|Y)-I(X1;X2).",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/ISB/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-122",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-29T05:28:49.297095+00:00",
+      "candidate_id": "Run-122-PaperFormalizationProof-Comparator-attempt-5",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.Run122.PaperFormalization",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE_ATTEMPT_5.lean",
+          "sha256": "14ebbfa7c73f86cb2eccaf1c83e8e18a139d45a9f4c5d244e0aa03b56b24ac13"
+        },
+        "challenge": {
+          "file": "VERIFICATION_STATEMENT_ATTEMPT_5.lean",
+          "sha256": "14ebbfa7c73f86cb2eccaf1c83e8e18a139d45a9f4c5d244e0aa03b56b24ac13"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT_PRODUCTION_ATTEMPT_5.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST_ATTEMPT_5.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": true,
+      "theorems": [
+        "uniform_zeno_schedule_maximizes_success",
+        "zeno_schedule_log_gap_ge_variance",
+        "ideal_zeno_uniform_success_tendsto_one",
+        "noisy_zeno_log_objective_strictConcave",
+        "noisy_zeno_integer_optimum_floor_or_ceil",
+        "noisy_zeno_high_quality_asymptotic"
+      ],
+      "nonvacuity_obligations": [
+        "witness_C1",
+        "witness_C2",
+        "idealSuccess_uniform_eq",
+        "witness_C3_strictConcave",
+        "witness_C4",
+        "witness_C5"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.Run122.PaperFormalization.noisy_zeno_boundary_or_unique_interior_optimizer",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_noisyLogObjective._simp_1_5",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_div_self._simp_1_5",
+        "Viridis.Run122.PaperFormalization.mean_increment_mem_Ioo._simp_1_1",
+        "Viridis.Run122.PaperFormalization.pos_of_admissibleCount",
+        "Viridis.Run122.PaperFormalization.witnessQ.eq_1",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_zenoAngularGain",
+        "Viridis.Run122.PaperFormalization.witness_C2",
+        "Viridis.Run122.PaperFormalization.witness_half_pos",
+        "Viridis.Run122.PaperFormalization.witness_C3_strictConcave",
+        "Viridis.Run122.PaperFormalization.noisy_zeno_high_quality_asymptotic._simp_1_5",
+        "Viridis.Run122.PaperFormalization.idealSuccess_uniform_eq",
+        "Viridis.Run122.PaperFormalization.witnessQ_tendsto",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_div_self._simp_1_1",
+        "Viridis.Run122.PaperFormalization.witnessN_mem",
+        "Viridis.Run122.PaperFormalization.log_idealSuccess_uniform",
+        "Viridis.Run122.PaperFormalization.witness_C4",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_noisyLogObjective",
+        "Viridis.Run122.PaperFormalization.born_overlap_sq",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_div_self",
+        "Viridis.Run122.PaperFormalization.angle_lt_pi_div_two",
+        "Viridis.Run122.PaperFormalization.idealSuccess_eq_prod_born",
+        "Viridis.Run122.PaperFormalization.noisy_zeno_integer_optimum_floor_or_ceil",
+        "Viridis.Run122.PaperFormalization.Ici_one_subset",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_noisyLogDeriv",
+        "Viridis.Run122.PaperFormalization.uniformSchedule.eq_1",
+        "Viridis.Run122.PaperFormalization.ideal_zeno_uniform_success_tendsto_one",
+        "Viridis.Run122.PaperFormalization.sum_log_cos_add_variance_le._simp_1_7",
+        "Viridis.Run122.PaperFormalization.sum_log_cos_add_variance_le._simp_1_4",
+        "Viridis.Run122.PaperFormalization.sum_log_cos_add_variance_le._simp_1_6",
+        "Viridis.Run122.PaperFormalization.sum_log_cos_add_variance_le._simp_1_2",
+        "Viridis.Run122.PaperFormalization.log_idealSuccess",
+        "Viridis.Run122.PaperFormalization.interior_admissibleCount",
+        "Viridis.Run122.PaperFormalization.zeno_schedule_log_gap_ge_variance",
+        "Viridis.Run122.PaperFormalization.geodesicState.eq_1",
+        "Viridis.Run122.PaperFormalization.idealSuccess_pos",
+        "Viridis.Run122.PaperFormalization.noisy_zeno_high_quality_asymptotic._simp_1_8",
+        "Viridis.Run122.PaperFormalization.noisy_zeno_high_quality_asymptotic._simp_1_3",
+        "Viridis.Run122.PaperFormalization.isOpen_admissibleCount",
+        "Viridis.Run122.PaperFormalization.tendsto_zenoAngularGain_atTop",
+        "Viridis.Run122.PaperFormalization.cos_angle_pos",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_noisyLogObjective._simp_1_4",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_div_self._simp_1_7",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_div_self._simp_1_2",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_noisyLogObjective._simp_1_6",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_div_self._simp_1_4",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_noisyLogObjective._simp_1_2",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_div_self._simp_1_6",
+        "Viridis.Run122.PaperFormalization.witnessN.eq_1",
+        "Viridis.Run122.PaperFormalization.continuousAt_zenoAngularGain_zero",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_noisyLogObjective._simp_1_7",
+        "Viridis.Run122.PaperFormalization.zenoAngularGain_zero",
+        "Viridis.Run122.PaperFormalization.tendsto_zenoAngularGain_div_sq",
+        "Viridis.Run122.PaperFormalization.strictAntiOn_noisyLogDeriv",
+        "Viridis.Run122.PaperFormalization.exists_optimal_count",
+        "Viridis.Run122.PaperFormalization.witnessQ_mem",
+        "Viridis.Run122.PaperFormalization.overlap.eq_1",
+        "Viridis.Run122.PaperFormalization.noisyLogDeriv2_neg",
+        "Viridis.Run122.PaperFormalization.concaveOn_logCosPlusHalfSq",
+        "Viridis.Run122.PaperFormalization.witness_half_lt_one",
+        "Viridis.Run122.PaperFormalization.noisyLogDeriv.eq_1",
+        "Viridis.Run122.PaperFormalization.mean_increment_mem_Ioo",
+        "Viridis.Run122.PaperFormalization.uniform_zeno_schedule_maximizes_success",
+        "Viridis.Run122.PaperFormalization.zenoAngularGain_ge_sq",
+        "Viridis.Run122.PaperFormalization.incr_mem_Ioo",
+        "Viridis.Run122.PaperFormalization.zenoFirstOrderCondition.eq_1",
+        "Viridis.Run122.PaperFormalization.continuousOn_noisyLogObjective",
+        "Viridis.Run122.PaperFormalization.convex_admissibleCount",
+        "Viridis.Run122.PaperFormalization.deriv_noisyLogObjective_eq",
+        "Viridis.Run122.PaperFormalization.witness_foc",
+        "Viridis.Run122.PaperFormalization.noisyLogDeriv_eq",
+        "Viridis.Run122.PaperFormalization.concaveOn_le_of_right",
+        "Viridis.Run122.PaperFormalization.sum_log_cos_add_variance_le._simp_1_8",
+        "Viridis.Run122.PaperFormalization.concaveOn_le_of_left",
+        "Viridis.Run122.PaperFormalization.witness_x_mem",
+        "Viridis.Run122.PaperFormalization.witness_C5",
+        "Viridis.Run122.PaperFormalization.sum_log_cos_add_variance_le._simp_1_3",
+        "Viridis.Run122.PaperFormalization.cos_pos_of_admissible",
+        "Viridis.Run122.PaperFormalization.sum_log_cos_add_variance_le._simp_1_5",
+        "Viridis.Run122.PaperFormalization.witness_C3_optimizer",
+        "Viridis.Run122.PaperFormalization.idealSuccess.eq_1",
+        "Viridis.Run122.PaperFormalization.noisy_zeno_log_objective_strictConcave",
+        "Viridis.Run122.PaperFormalization.angle_pos",
+        "Viridis.Run122.PaperFormalization.witness_theta_lt",
+        "Viridis.Run122.PaperFormalization.witness_gain_pos",
+        "Viridis.Run122.PaperFormalization.logCosPlusHalfSq.eq_1",
+        "Viridis.Run122.PaperFormalization.sum_log_cos_add_variance_le._simp_1_1",
+        "Viridis.Run122.PaperFormalization.witness_C1",
+        "Viridis.Run122.PaperFormalization.zenoAngularGain.eq_1",
+        "Viridis.Run122.PaperFormalization.sum_log_cos_add_variance_le",
+        "Viridis.Run122.PaperFormalization.noisy_zeno_high_quality_asymptotic._simp_1_4",
+        "Viridis.Run122.PaperFormalization.admissibleIncrement._proof_1",
+        "Viridis.Run122.PaperFormalization.noisy_zeno_high_quality_asymptotic._simp_1_6",
+        "Viridis.Run122.PaperFormalization.continuousOn_noisyLogDeriv",
+        "Viridis.Run122.PaperFormalization.noisy_zeno_high_quality_asymptotic._simp_1_7",
+        "Viridis.Run122.PaperFormalization.noisy_zeno_high_quality_asymptotic._simp_1_2",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_noisyLogObjective._simp_1_8",
+        "Viridis.Run122.PaperFormalization.geodesicState_normalized",
+        "Viridis.Run122.PaperFormalization.noisy_zeno_high_quality_asymptotic",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_div_self._simp_1_3",
+        "Viridis.Run122.PaperFormalization.one_mem_admissibleCount",
+        "Viridis.Run122.PaperFormalization.hasDerivAt_noisyLogObjective._simp_1_3"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "solution_ok_terminal": true
+      },
+      "depth": {
+        "label": "substantial",
+        "candidate_nonblank_lines": 796,
+        "proof_lines": {
+          "ideal_zeno_uniform_success_tendsto_one": 49,
+          "noisy_zeno_high_quality_asymptotic": 43,
+          "noisy_zeno_integer_optimum_floor_or_ceil": 17,
+          "noisy_zeno_log_objective_strictConcave": 7,
+          "uniform_zeno_schedule_maximizes_success": 30,
+          "zeno_schedule_log_gap_ge_variance": 14
+        },
+        "median_proof_lines": 23.5,
+        "one_step_proofs": []
+      },
+      "os_functions": [
+        {
+          "id": "zab-uniform-zeno-schedule-maximizes-success",
+          "name": "The Zeno Alignment Budget: Uniform Projective Steps and a Noise-Limited Measurement Count",
+          "kind": "theorem_function",
+          "tier": "reference",
+          "doi": "10.5281/zenodo.22236789",
+          "summary": "For fixed N and endpoint angle in the stated two-level geodesic model, equal angular increments uniquely maximize successful-branch probability.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/ZAB/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-123",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-29T18:43:38.694706+00:00",
+      "candidate_id": "Run-123-HabitableConcentrationFloor-Comparator-attempt-4",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.Run123",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE_ATTEMPT_4.lean",
+          "sha256": "3d63f48e2b90ecbfe02b3a1b0e2e2df9630fd6db8fe2306f5d1e663976cb438d"
+        },
+        "challenge": {
+          "file": "VERIFICATION_STATEMENT_ATTEMPT_2.lean",
+          "sha256": "2666c33fde1833e3c90891377be5715fe0879970bf17c956aebc8b1fd33521fa"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT_PRODUCTION_ATTEMPT_4.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST_ATTEMPT_4.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": false,
+      "theorems": [
+        "kl_chain_rule_habitable_partition",
+        "kl_ge_binary_habitable_mass",
+        "binary_kl_monotone_above_reference",
+        "habitable_threshold_free_energy_floor",
+        "equality_iff_reference_conditionals",
+        "reference_shaped_conditionals_witness",
+        "within_class_excess_witness"
+      ],
+      "nonvacuity_obligations": [
+        "reference_shaped_conditionals_witness",
+        "within_class_excess_witness"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.Run123.within_class_excess_witness",
+        "Viridis.Run123.reference_shaped_conditionals_witness",
+        "Viridis.Run123.equality_iff_reference_conditionals",
+        "Viridis.Run123.kl_chain_rule_habitable_partition",
+        "Viridis.Run123.kl_ge_binary_habitable_mass",
+        "Viridis.Run123.binary_kl_monotone_above_reference",
+        "Viridis.Run123.habitable_threshold_free_energy_floor"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "solution_ok_terminal": true
+      },
+      "depth": {
+        "label": "elementary",
+        "candidate_nonblank_lines": 121,
+        "proof_lines": {
+          "binary_kl_monotone_above_reference": 34,
+          "equality_iff_reference_conditionals": 15,
+          "habitable_threshold_free_energy_floor": 4,
+          "kl_chain_rule_habitable_partition": 2,
+          "kl_ge_binary_habitable_mass": 3,
+          "reference_shaped_conditionals_witness": 3,
+          "within_class_excess_witness": 3
+        },
+        "median_proof_lines": 3,
+        "one_step_proofs": [
+          "kl_chain_rule_habitable_partition"
+        ]
+      },
+      "os_functions": [
+        {
+          "id": "hcf-kl-chain-rule-habitable-partition",
+          "name": "A Free-Energy Floor for Habitable-State Concentration: A Coarse-Grained Relative-Entropy Audit for Gaian Models",
+          "kind": "theorem_function",
+          "tier": "reference",
+          "doi": "10.5281/zenodo.22236755",
+          "summary": "KL decomposes exactly into the binary H versus H-complement divergence plus two conditional divergences.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/HCF/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-124",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-29T22:01:42.916848+00:00",
+      "candidate_id": "Run-124-PivotalCorridorStewardship-Comparator-attempt-7",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "sealed_statement_signature_alignment": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.Run124.PaperFormalization",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE_V6.lean",
+          "sha256": "ede2d3f68dcc19d77508ab1be245c3be763e32ae4eb69605023b9f3faa31df17"
+        },
+        "challenge": {
+          "file": "VERIFICATION_CHALLENGE_ALIGNED_V7.lean",
+          "sha256": "c905cf767bf3788369ac95f4dc0661ee8098ec76e8eb1e400eebe2cc4fe311ec"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT_V7.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST_V7.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": false,
+      "theorems": [
+        "reliability_derivative_eq_pivotal_probability",
+        "pivotal_probability_independent_of_own_probability",
+        "local_linear_budget_gain_le_best_ratio",
+        "series_parallel_mixed_difference_signs",
+        "equal_marginals_do_not_identify_reliability",
+        "witness_C1",
+        "witness_C2",
+        "witness_C3",
+        "witness_C4"
+      ],
+      "nonvacuity_obligations": [
+        "witness_C1",
+        "witness_C2",
+        "witness_C3",
+        "witness_C4",
+        "equal_marginals_do_not_identify_reliability"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.Run124.PaperFormalization.weight.eq_1",
+        "piFinTwoEquiv.eq_1",
+        "Viridis.Run124.PaperFormalization.pEx_mem_Ioo",
+        "Viridis.Run124.PaperFormalization.witness_C3",
+        "Viridis.Run124.PaperFormalization.coWeight_nonneg",
+        "Viridis.Run124.PaperFormalization.pivotalProb_nonneg",
+        "Viridis.Run124.PaperFormalization.plug.eq_1",
+        "Viridis.Run124.PaperFormalization.ind.eq_1",
+        "Viridis.Run124.PaperFormalization.pivotalProb_series2_pEx_zero._simp_1_4",
+        "Viridis.Run124.PaperFormalization.equal_marginals_do_not_identify_reliability",
+        "Viridis.Run124.PaperFormalization.ind_true",
+        "Viridis.Run124.PaperFormalization.series2.eq_1",
+        "Viridis.Run124.PaperFormalization.ind_false",
+        "Viridis.Run124.PaperFormalization.series_parallel_mixed_difference_signs",
+        "Viridis.Run124.PaperFormalization.reliability_fin2",
+        "Viridis.Run124.PaperFormalization.pEx.eq_1",
+        "Viridis.Run124.PaperFormalization.cEx.eq_1",
+        "Viridis.Run124.PaperFormalization.plug_of_ne",
+        "Viridis.Run124.PaperFormalization.weight_plug",
+        "Viridis.Run124.PaperFormalization.prod_split",
+        "Viridis.Run124.PaperFormalization.reliability.eq_1",
+        "Viridis.Run124.PaperFormalization.bestRatio.eq_1",
+        "Viridis.Run124.PaperFormalization.reliability_pos",
+        "Viridis.Run124.PaperFormalization.sum_split",
+        "Viridis.Run124.PaperFormalization.coWeight_update",
+        "Viridis.Run124.PaperFormalization.witness_C4",
+        "Viridis.Run124.PaperFormalization.coWeight.eq_1",
+        "Viridis.Run124.PaperFormalization.reliability_condition",
+        "Viridis.Run124.PaperFormalization.witness_C1",
+        "Viridis.Run124.PaperFormalization.plug.congr_simp",
+        "Viridis.Run124.PaperFormalization.jointReliability_weight",
+        "Viridis.Run124.PaperFormalization.coWeight.congr_simp",
+        "Viridis.Run124.PaperFormalization.indepHalf_eq_weight",
+        "Viridis.Run124.PaperFormalization.pivotal_probability_independent_of_own_probability",
+        "Viridis.Run124.PaperFormalization.bestRatio_series2_pEx",
+        "Viridis.Run124.PaperFormalization.plug_self",
+        "Viridis.Run124.PaperFormalization.ind_nonneg",
+        "Viridis.Run124.PaperFormalization.pivotalProb_series2_pEx_one._simp_1_4",
+        "Viridis.Run124.PaperFormalization.parallel2_monotone",
+        "Viridis.Run124.PaperFormalization.pivotalProb_series2_pEx_one",
+        "Viridis.Run124.PaperFormalization.reliability_update_boolean",
+        "Viridis.Run124.PaperFormalization.reliability_series2_pEx",
+        "Viridis.Run124.PaperFormalization.series2_monotone",
+        "Viridis.Run124.PaperFormalization.witness_C2",
+        "Viridis.Run124.PaperFormalization.indepHalf.eq_1",
+        "Viridis.Run124.PaperFormalization.pivotalProb_series2_pEx_zero",
+        "Viridis.Run124.PaperFormalization.cEx_pos",
+        "Viridis.Run124.PaperFormalization.ind_sub_ind_eq_pivotal",
+        "Viridis.Run124.PaperFormalization.reliability_derivative_eq_pivotal_probability",
+        "Viridis.Run124.PaperFormalization.pEx_mem_Icc",
+        "Equiv.piSplitAt.eq_1",
+        "Viridis.Run124.PaperFormalization.local_linear_budget_gain_le_best_ratio",
+        "Viridis.Run124.PaperFormalization.sum_fin2",
+        "Viridis.Run124.PaperFormalization.pivotalProb_eq_reliability_diff",
+        "Viridis.Run124.PaperFormalization.parallel2.eq_1"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "sealed_statement_signature_alignment": true,
+        "solution_ok_terminal": true
+      },
+      "depth": {
+        "label": "substantial",
+        "candidate_nonblank_lines": 522,
+        "proof_lines": {
+          "equal_marginals_do_not_identify_reliability": 16,
+          "local_linear_budget_gain_le_best_ratio": 36,
+          "pivotal_probability_independent_of_own_probability": 3,
+          "reliability_derivative_eq_pivotal_probability": 19,
+          "series_parallel_mixed_difference_signs": 71,
+          "witness_C1": 6,
+          "witness_C2": 3,
+          "witness_C3": 6,
+          "witness_C4": 4
+        },
+        "median_proof_lines": 6,
+        "one_step_proofs": []
+      },
+      "os_functions": [
+        {
+          "id": "pcs-reliability-derivative-eq-pivotal-probability",
+          "name": "Pivotal Corridor Stewardship: Exact Reliability Gradients and a Failure-Aware Priority Rule",
+          "kind": "theorem_function",
+          "tier": "reference",
+          "doi": "10.5281/zenodo.22665554",
+          "summary": "For independent edge states, the partial derivative of two-terminal reliability with respect to an edge survival probability equals that edge's pivotal probability.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/PCS/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-125",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-29T23:37:23.452842+00:00",
+      "candidate_id": "Run-125-SymbioticBandwidth-Comparator-attempt-2",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "sealed_statement_signature_alignment": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.Run125.PaperFormalization",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE_V2.lean",
+          "sha256": "adb5eb9b25d9be09f75aa3fc2de64d982e2787b9d2d8de453745b22e601ac6ed"
+        },
+        "challenge": {
+          "file": "VERIFICATION_CHALLENGE_ALIGNED_V2.lean",
+          "sha256": "2b958be648f24ffebb06af4c28abe31046ea1f52ea67832346fac150b5e80644"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT_V2_INFRA_RETRY_3.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST_V2.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": false,
+      "theorems": [
+        "shared_channel_inverse",
+        "directional_gain_bounds",
+        "rank_deficient_unit_gain",
+        "worstcase_deadline",
+        "top_subspace_mean_cost",
+        "isotropic_rank_fraction"
+      ],
+      "nonvacuity_obligations": [
+        "witness_shared_channel_inverse",
+        "witness_directional_gain_aligned",
+        "witness_directional_gain_orthogonal",
+        "witness_rank_deficient_unit_gain",
+        "witness_worstcase_deadline",
+        "witness_top_subspace_mean_cost",
+        "witness_isotropic_rank_fraction"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.Run125.PaperFormalization.sqNorm_nonneg",
+        "Viridis.Run125.PaperFormalization.sqNorm_split",
+        "Viridis.Run125.PaperFormalization.sqNorm_pos",
+        "Viridis.Run125.PaperFormalization.topIndicator_idem",
+        "Viridis.Run125.PaperFormalization.witness_isotropic_rank_fraction",
+        "Viridis.Run125.PaperFormalization.lam₂_antitone",
+        "Viridis.Run125.PaperFormalization.P₂.eq_1",
+        "Viridis.Run125.PaperFormalization.mean_quadratic_eq_trace",
+        "Viridis.Run125.PaperFormalization.meanCostTau_eq",
+        "Viridis.Run125.PaperFormalization.witness_directional_gain_aligned",
+        "Viridis.Run125.PaperFormalization.sum_le_top_sum._simp_1_1",
+        "Viridis.Run125.PaperFormalization.rank_deficient_unit_gain",
+        "Viridis.Run125.PaperFormalization.proj_quadratic",
+        "Viridis.Run125.PaperFormalization.P₂_trace",
+        "Viridis.Run125.PaperFormalization.trace_mul_conj",
+        "Viridis.Run125.PaperFormalization.isOrthProjector_conj",
+        "Viridis.Run125.PaperFormalization.sqNorm_smul",
+        "Viridis.Run125.PaperFormalization.top_subspace_mean_cost_of_isSymm",
+        "Viridis.Run125.PaperFormalization.capturedFraction_le_one",
+        "Viridis.Run125.PaperFormalization.topIndicator_symm",
+        "Viridis.Run125.PaperFormalization.diag_mem_Icc_of_symm_idem",
+        "Viridis.Run125.PaperFormalization.witness_shared_channel_inverse",
+        "Viridis.Run125.PaperFormalization.one_add_kappa_pos",
+        "Viridis.Run125.PaperFormalization.top_subspace_mean_cost",
+        "Viridis.Run125.PaperFormalization.card_top_filter._simp_1_2",
+        "Viridis.Run125.PaperFormalization.sum_le_top_sum",
+        "Viridis.Run125.PaperFormalization.quadForm_inv_pos",
+        "Viridis.Run125.PaperFormalization.isOrthProjector_conj'",
+        "Viridis.Run125.PaperFormalization.submatrix_perm_orthogonal",
+        "Viridis.Run125.PaperFormalization.spectral_permute",
+        "Viridis.Run125.PaperFormalization.exists_sorted_spectral_decomposition",
+        "Viridis.Run125.PaperFormalization.quadForm_inv",
+        "Viridis.Run125.PaperFormalization.lam₂_antitone._simp_1_2",
+        "Viridis.Run125.PaperFormalization.trace_topIndicator._simp_1_3",
+        "Viridis.Run125.PaperFormalization.capturedFraction.eq_1",
+        "Viridis.Run125.PaperFormalization.sqNorm_proj_le",
+        "Viridis.Run125.PaperFormalization.trace_mul_diagonal",
+        "Viridis.Run125.PaperFormalization.witness_top_subspace_mean_cost",
+        "Viridis.Run125.PaperFormalization.trace_eq_rank_of_idem",
+        "Viridis.Run125.PaperFormalization.lam₂.eq_1",
+        "Viridis.Run125.PaperFormalization.isotropic_rank_fraction",
+        "Viridis.Run125.PaperFormalization.witness_rank_deficient_unit_gain",
+        "Viridis.Run125.PaperFormalization.card_top_filter",
+        "Viridis.Run125.PaperFormalization.IsOrthProjector.isSymm",
+        "Viridis.Run125.PaperFormalization.one_add_kappa_ne_zero",
+        "Viridis.Run125.PaperFormalization.trace_topIndicator._simp_1_1",
+        "Viridis.Run125.PaperFormalization.trace_topIndicator",
+        "Viridis.Run125.PaperFormalization.witness_directional_gain_orthogonal",
+        "Viridis.Run125.PaperFormalization.sqNorm_eq_euclideanNorm_sq._simp_1_2",
+        "Viridis.Run125.PaperFormalization.card_top_filter._simp_1_1",
+        "Viridis.Run125.PaperFormalization.mobility_mul_inv_candidate",
+        "Viridis.Run125.PaperFormalization.trace_conj",
+        "Viridis.Run125.PaperFormalization.sum_le_top_sum._simp_1_2",
+        "Viridis.Run125.PaperFormalization.sqNorm_eq_euclideanNorm_sq",
+        "Viridis.Run125.PaperFormalization.sum_le_top_sum._simp_1_6",
+        "Viridis.Run125.PaperFormalization.inv_mobility",
+        "Viridis.Run125.PaperFormalization.sum_le_top_sum._simp_1_4",
+        "Viridis.Run125.PaperFormalization.exists_unit_mem_ker",
+        "Viridis.Run125.PaperFormalization.capturedFraction_nonneg",
+        "Viridis.Run125.PaperFormalization.card_top_filter._simp_1_3",
+        "Viridis.Run125.PaperFormalization.gain_eq_cost_ratio",
+        "Viridis.Run125.PaperFormalization.IsOrthProjector.isIdem",
+        "Viridis.Run125.PaperFormalization.trace_conj'",
+        "Viridis.Run125.PaperFormalization.directional_gain_bounds",
+        "Viridis.Run125.PaperFormalization.P₂_isOrthProjector",
+        "Viridis.Run125.PaperFormalization.sqNorm.eq_1",
+        "Viridis.Run125.PaperFormalization.shared_channel_inverse",
+        "Viridis.Run125.PaperFormalization.witness_worstcase_deadline",
+        "Viridis.Run125.PaperFormalization.mul_transpose_eq_one",
+        "Viridis.Run125.PaperFormalization.worstcase_deadline",
+        "Viridis.Run125.PaperFormalization.trace_topIndicator._simp_1_2",
+        "Viridis.Run125.PaperFormalization.P₂_rank"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "sealed_statement_signature_alignment": true,
+        "solution_ok_terminal": true
+      },
+      "depth": {
+        "label": "substantial",
+        "candidate_nonblank_lines": 783,
+        "proof_lines": {
+          "directional_gain_bounds": 45,
+          "isotropic_rank_fraction": 12,
+          "rank_deficient_unit_gain": 16,
+          "shared_channel_inverse": 7,
+          "top_subspace_mean_cost": 53,
+          "worstcase_deadline": 29
+        },
+        "median_proof_lines": 22.5,
+        "one_step_proofs": []
+      },
+      "os_functions": [
+        {
+          "id": "shared-channel-coverage",
+          "name": "Shared-channel coverage audit",
+          "kind": "decision_kernel",
+          "tier": "callable",
+          "doi": "10.5281/zenodo.21971052",
+          "summary": "Audits whether a shared low-dimensional signal (a dashboard, a single index) can carry enough of what several parties need, within a dissipation budget.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/SBB/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-126",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-30T00:00:45.715521+00:00",
+      "candidate_id": "Run-126-InvarianceCapacity-Comparator-attempt-1",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "sealed_statement_signature_alignment": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.Run126.PaperFormalization",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE.lean",
+          "sha256": "e8dc8803fb3c1e465b354b575886c0acf67ba19b28434d16e5abb4c62910101a"
+        },
+        "challenge": {
+          "file": "VERIFICATION_STATEMENT_V2.lean",
+          "sha256": "a3016266e251f570721253ebfae431c1d76bc88e88d8da6eb5b6afc9d0913e03"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT_V2_INFRA_RETRY_2.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST_V2.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": false,
+      "theorems": [
+        "mutual_information_chain_balance",
+        "forbidden_proxy_capacity_ceiling",
+        "capacity_ceiling_slack_decomposition",
+        "perfect_invariance_target_proxy_collapse",
+        "erasure_family_tightness"
+      ],
+      "nonvacuity_obligations": [
+        "mutual_information_chain_balance_nonvacuity",
+        "forbidden_proxy_capacity_ceiling_nonvacuity",
+        "capacity_ceiling_slack_decomposition_nonvacuity",
+        "perfect_invariance_target_proxy_collapse_nonvacuity",
+        "erasure_family_tightness_nonvacuity"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.Run126.PaperFormalization.JointLaw.sum_pS",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum3_of_RY",
+        "Viridis.Run126.PaperFormalization.JointLaw.pRYS_nonneg",
+        "Viridis.Run126.PaperFormalization.squareLaw_H_S",
+        "Viridis.Run126.PaperFormalization.erasure_H_Y",
+        "Viridis.Run126.PaperFormalization.JointLaw.I_RS.eq_1",
+        "Viridis.Run126.PaperFormalization.erasureLaw.congr_simp",
+        "Viridis.Run126.PaperFormalization.JointLaw.p_le_pYS",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_RYS.eq_1",
+        "Viridis.Run126.PaperFormalization.erasure_H_YS",
+        "Viridis.Run126.PaperFormalization.erasure_family_tightness_nonvacuity",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_R.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.pRS_le_pS",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum3_of_S",
+        "Viridis.Run126.PaperFormalization.JointLaw.total",
+        "Viridis.Run126.PaperFormalization.mul_logb_four",
+        "Viridis.Run126.PaperFormalization.JointLaw.I_RY_given_S.eq_1",
+        "Viridis.Run126.PaperFormalization.sum_mul_logb_le._simp_1_1",
+        "Viridis.Run126.PaperFormalization.squareLaw_pR_true",
+        "Viridis.Run126.PaperFormalization.zero_covariance_does_not_certify_invariance",
+        "Viridis.Run126.PaperFormalization.erasure_pY",
+        "Viridis.Run126.PaperFormalization.mul_logb_quot3",
+        "Viridis.Run126.PaperFormalization.sval.eq_1",
+        "Viridis.Run126.PaperFormalization.erasure_pR_none",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_Y_given_S.eq_1",
+        "Viridis.Run126.PaperFormalization.capacity_ceiling_slack_decomposition_nonvacuity",
+        "Viridis.Run126.PaperFormalization.JointLaw.I_RS_given_Y.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum_s_p",
+        "Viridis.Run126.PaperFormalization.leak_nonneg",
+        "Viridis.Run126.PaperFormalization.erasure_pRY_tf",
+        "Viridis.Run126.PaperFormalization.zero_covariance_does_not_certify_invariance._simp_1_4",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum_pR",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum_r_pRY",
+        "Viridis.Run126.PaperFormalization.squareLaw_H_R",
+        "Viridis.Run126.PaperFormalization.sum_mul_logb_le._simp_1_3",
+        "Viridis.Run126.PaperFormalization.JointLaw.pS_nonneg",
+        "Viridis.Run126.PaperFormalization.logb2_half",
+        "Viridis.Run126.PaperFormalization.mutual_information_chain_balance",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum_s_pYS",
+        "Viridis.Run126.PaperFormalization.JointLaw.pYS.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_RS.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_Y_given_RS.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_Y.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum_pRY",
+        "Viridis.Run126.PaperFormalization.perfect_invariance_target_proxy_collapse_nonvacuity",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum_s_pRS",
+        "Viridis.Run126.PaperFormalization.uniformLaw.eq_1",
+        "Viridis.Run126.PaperFormalization.sum_mul_logb_le",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum_y_p",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_Y_given_RS_nonneg",
+        "Viridis.Run126.PaperFormalization.JointLaw.mk.inj",
+        "Viridis.Run126.PaperFormalization.logb2_two",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_RS_eq_sum",
+        "Viridis.Run126.PaperFormalization.erasure_H_R",
+        "Viridis.Run126.PaperFormalization.mul_logb_two",
+        "Viridis.Run126.PaperFormalization.squareLaw_pS",
+        "Viridis.Run126.PaperFormalization.mutual_information_chain_balance_nonvacuity",
+        "Viridis.Run126.PaperFormalization.JointLaw.mk.congr_simp",
+        "Viridis.Run126.PaperFormalization.JointLaw.pYS_le_pY",
+        "Viridis.Run126.PaperFormalization.erasure_pYS",
+        "Viridis.Run126.PaperFormalization.JointLaw.cov.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_YS.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.pY.eq_1",
+        "Viridis.Run126.PaperFormalization.erasureLaw.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum_r_p",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum3_of_Y",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_YS_eq_sum",
+        "Viridis.Run126.PaperFormalization.H_Y_given_S_eq_zero_of_diagonal",
+        "Viridis.Run126.PaperFormalization.leak_some_tf",
+        "Viridis.Run126.PaperFormalization.JointLaw.pRS.eq_1",
+        "Viridis.Run126.PaperFormalization.capacity_ceiling_slack_decomposition",
+        "Viridis.Run126.PaperFormalization.rval_rmap",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_S.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.I_RY_given_S_eq",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum3_of_YS",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_Y_given_S_eq",
+        "Viridis.Run126.PaperFormalization.JointLaw.mk.injEq",
+        "Viridis.Run126.PaperFormalization.JointLaw.nonneg",
+        "Viridis.Run126.PaperFormalization.rmap.eq_1",
+        "Viridis.Run126.PaperFormalization.forbidden_proxy_capacity_ceiling_combined",
+        "Viridis.Run126.PaperFormalization.indepRLaw.eq_1",
+        "Viridis.Run126.PaperFormalization.diagLaw_values",
+        "Viridis.Run126.PaperFormalization.squareLaw_pRS",
+        "Viridis.Run126.PaperFormalization.sum_mul_logb_le._simp_1_5",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum2RS_of_R",
+        "Viridis.Run126.PaperFormalization.JointLaw.pRY_nonneg",
+        "Viridis.Run126.PaperFormalization.leak_some_self",
+        "Viridis.Run126.PaperFormalization.Hs.eq_1",
+        "Viridis.Run126.PaperFormalization.uniformLaw_values",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum2RS_of_S",
+        "Viridis.Run126.PaperFormalization.leak_none",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_Y_given_RS_eq",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum_y_pYS",
+        "Viridis.Run126.PaperFormalization.erasure_pRS",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_RY_eq_sum",
+        "Viridis.Run126.PaperFormalization.leak_some_ft",
+        "Viridis.Run126.PaperFormalization.erasure_H_RS",
+        "Viridis.Run126.PaperFormalization.erasure_pRY_diag",
+        "Viridis.Run126.PaperFormalization.rval.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.I_RY_eq",
+        "Viridis.Run126.PaperFormalization.erasure_pS",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum2RY_of_Y",
+        "Viridis.Run126.PaperFormalization.JointLaw.pY_nonneg",
+        "Viridis.Run126.PaperFormalization.forbidden_proxy_capacity_ceiling",
+        "Viridis.Run126.PaperFormalization.logb2_quarter",
+        "Viridis.Run126.PaperFormalization.JointLaw.pR.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum_pY",
+        "Viridis.Run126.PaperFormalization.sum_mul_logb_le._simp_1_2",
+        "Viridis.Run126.PaperFormalization.sum_mul_logb_le._simp_1_7",
+        "Viridis.Run126.PaperFormalization.sum_mul_logb_le._simp_1_4",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum_y_pRY",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_Y_given_RS_nonneg._simp_1_2",
+        "Viridis.Run126.PaperFormalization.sum_mul_logb_le._simp_1_6",
+        "Viridis.Run126.PaperFormalization.JointLaw.I_RY.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.mk.sizeOf_spec",
+        "Viridis.Run126.PaperFormalization.indepRLaw_values",
+        "Viridis.Run126.PaperFormalization.squareLaw.eq_1",
+        "Viridis.Run126.PaperFormalization.squareLaw_H_RS",
+        "Viridis.Run126.PaperFormalization.mul_logb_three",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum3_of_R",
+        "Viridis.Run126.PaperFormalization.erasure_pR_some",
+        "Viridis.Run126.PaperFormalization.logb2_eighth",
+        "Viridis.Run126.PaperFormalization.JointLaw.I_RS_given_Y_nonneg",
+        "Viridis.Run126.PaperFormalization.erasure_pRY_ft",
+        "Viridis.Run126.PaperFormalization.squareLaw_pR_true._simp_1_4",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum_r_pRS",
+        "Viridis.Run126.PaperFormalization.JointLaw.p_le_pRS",
+        "Viridis.Run126.PaperFormalization.JointLaw.pRS_le_pR",
+        "Viridis.Run126.PaperFormalization.JointLaw.pRS_nonneg",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_R_eq_sum",
+        "Viridis.Run126.PaperFormalization.JointLaw.pS.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.I_RS_given_Y_eq",
+        "Viridis.Run126.PaperFormalization.diagLaw.eq_1",
+        "Viridis.Run126.PaperFormalization.perfect_invariance_target_proxy_collapse",
+        "Viridis.Run126.PaperFormalization.JointLaw.pRY_le_pY",
+        "Viridis.Run126.PaperFormalization.squareLaw_pR_false",
+        "Viridis.Run126.PaperFormalization.JointLaw.p_le_pRY",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_S_eq_sum",
+        "Viridis.Run126.PaperFormalization.forbidden_proxy_capacity_ceiling_nonvacuity",
+        "Viridis.Run126.PaperFormalization.JointLaw.I_RS_eq",
+        "Viridis.Run126.PaperFormalization.leak.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_RYS_eq_sum",
+        "Viridis.Run126.PaperFormalization.JointLaw.pYS_le_pS",
+        "Viridis.Run126.PaperFormalization.erasure_family_tightness",
+        "Viridis.Run126.PaperFormalization.JointLaw.pRY_le_pR",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum2YS_of_S",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum2RY_of_R",
+        "Viridis.Run126.PaperFormalization.JointLaw.pRYS.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.pYS_nonneg",
+        "Viridis.Run126.PaperFormalization.JointLaw.I_RY_nonneg",
+        "Viridis.Run126.PaperFormalization.JointLaw.sum3_of_RS",
+        "Viridis.Run126.PaperFormalization.erasure_H_S",
+        "Viridis.Run126.PaperFormalization.JointLaw.pR_nonneg",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_Y_eq_sum",
+        "Viridis.Run126.PaperFormalization.erasure_H_RY",
+        "Viridis.Run126.PaperFormalization.JointLaw.H_RY.eq_1",
+        "Viridis.Run126.PaperFormalization.JointLaw.pRY.eq_1"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "sealed_statement_signature_alignment": true,
+        "solution_ok_terminal": true
+      },
+      "depth": {
+        "label": "substantial",
+        "candidate_nonblank_lines": 1048,
+        "proof_lines": {
+          "capacity_ceiling_slack_decomposition": 10,
+          "erasure_family_tightness": 14,
+          "forbidden_proxy_capacity_ceiling": 9,
+          "mutual_information_chain_balance": 7,
+          "perfect_invariance_target_proxy_collapse": 8
+        },
+        "median_proof_lines": 9,
+        "one_step_proofs": []
+      },
+      "os_functions": [
+        {
+          "id": "invariance-capacity",
+          "name": "Forbidden-proxy information capacity audit",
+          "kind": "decision_kernel",
+          "tier": "callable",
+          "doi": "10.5281/zenodo.21971043",
+          "summary": "Checks whether a forbidden proxy (a variable you must not use) is leaking into a decision, by comparing information ceilings.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/ICC/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-127",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-30T02:16:03.528369+00:00",
+      "candidate_id": "Run-127-PrecautionaryCapacity-Comparator-attempt-1",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "sealed_statement_signature_alignment": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.Run127.PaperFormalization",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE.lean",
+          "sha256": "e930944c7b5efe69cecc90884243a8aca6a09a6930442196347b6d4227334d9a"
+        },
+        "challenge": {
+          "file": "VERIFICATION_CHALLENGE_ALIGNED.lean",
+          "sha256": "cb9a966f3d2130bb5a91a15baaa809dc976f35713623190116a235f4867a1b44"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT_INFRA_RETRY_1.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": false,
+      "theorems": [
+        "cantelli_capacity_certificate",
+        "precautionary_rate_le_violation_budget",
+        "capacity_reserve_fraction_eq",
+        "positive_floor_sharp_two_point_counterexample",
+        "mean_only_plugin_arbitrarily_unsafe"
+      ],
+      "nonvacuity_obligations": [
+        "cantelli_capacity_certificate_nonvacuous",
+        "precautionary_rate_le_violation_budget_nonvacuous",
+        "capacity_reserve_fraction_eq_nonvacuous",
+        "positive_floor_sharp_two_point_counterexample_nonvacuous",
+        "mean_only_plugin_arbitrarily_unsafe_nonvacuous"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.Run127.PaperFormalization.twoPointLaw_le_lower_tail",
+        "Viridis.Run127.PaperFormalization.twoPointLaw_integral",
+        "Viridis.Run127.PaperFormalization.twoPointLaw_ae_nonneg",
+        "Viridis.Run127.PaperFormalization.RateModel.hP",
+        "Viridis.Run127.PaperFormalization.capacityFloor_violation_prob_le",
+        "Viridis.Run127.PaperFormalization.twoPointLaw_integrable._simp_1_2",
+        "Viridis.Run127.PaperFormalization.cantelli_capacity_certificate_nonvacuous",
+        "Viridis.Run127.PaperFormalization.RateModel.requiredCapacity_ceiling._simp_1_5",
+        "Viridis.Run127.PaperFormalization.cantelliTwoPoint_q_pos",
+        "Viridis.Run127.PaperFormalization.witnessLaw_violation_mass",
+        "Viridis.Run127.PaperFormalization.twoPointLaw_integral._simp_1_2",
+        "Viridis.Run127.PaperFormalization.capacityFloor_of_pos",
+        "Viridis.Run127.PaperFormalization.cantelliTwoPoint_variance",
+        "Viridis.Run127.PaperFormalization.mean_only_plugin_arbitrarily_unsafe_nonvacuous",
+        "Viridis.Run127.PaperFormalization.witnessLaw_variance",
+        "Viridis.Run127.PaperFormalization.twoPointLaw_mean",
+        "Viridis.Run127.PaperFormalization.witnessLaw_mean",
+        "Viridis.Run127.PaperFormalization.precautionary_rate_le_violation_budget",
+        "Viridis.Run127.PaperFormalization.cantelliTwoPoint_q_lt_one",
+        "Viridis.Run127.PaperFormalization.cantelliFactor_nonneg",
+        "Viridis.Run127.PaperFormalization.capacity_reserve_fraction_eq",
+        "Viridis.Run127.PaperFormalization.witnessLaw_memLp",
+        "Viridis.Run127.PaperFormalization.cantelliFactor_half",
+        "Viridis.Run127.PaperFormalization.RateModel.ceiling_lt_ceiling_iff",
+        "Viridis.Run127.PaperFormalization.capacityFloor_violation_prob_le._simp_1_5",
+        "Viridis.Run127.PaperFormalization.positive_floor_sharp_two_point_counterexample_nonvacuous",
+        "Viridis.Run127.PaperFormalization.RateModel.erasureCost_pos",
+        "Viridis.Run127.PaperFormalization.twoPointLaw_integrable",
+        "Viridis.Run127.PaperFormalization.twoPointLaw_memLp",
+        "Viridis.Run127.PaperFormalization.witnessLaw_ae_nonneg",
+        "Viridis.Run127.PaperFormalization.pos_of_capacityFloor_pos",
+        "Viridis.Run127.PaperFormalization.twoPointLaw_lower_tail",
+        "Viridis.Run127.PaperFormalization.twoPointLaw_nonneg_support",
+        "Viridis.Run127.PaperFormalization.RateModel.requiredCapacity_ceiling._simp_1_3",
+        "Viridis.Run127.PaperFormalization.capacityFloor_witness",
+        "Viridis.Run127.PaperFormalization.capacityFloor_violation_prob_le._simp_1_7",
+        "Viridis.Run127.PaperFormalization.capacityFloor_violation_prob_le._simp_1_2",
+        "Viridis.Run127.PaperFormalization.capacityFloor_violation_prob_le._simp_1_4",
+        "Viridis.Run127.PaperFormalization.capacityFloor_violation_prob_le._simp_1_6",
+        "Viridis.Run127.PaperFormalization.RateModel.violationEvent_certifiedRate._simp_1_3",
+        "Viridis.Run127.PaperFormalization.RateModel.requiredCapacity_ceiling._simp_1_1",
+        "Viridis.Run127.PaperFormalization.cantelli_capacity_certificate",
+        "Viridis.Run127.PaperFormalization.cantelli_lower_tail",
+        "Viridis.Run127.PaperFormalization.RateModel.mk.injEq",
+        "Viridis.Run127.PaperFormalization.RateModel.ceiling_smul",
+        "Viridis.Run127.PaperFormalization.cantelliFactor_pos",
+        "Viridis.Run127.PaperFormalization.RateModel.mk.sizeOf_spec",
+        "Viridis.Run127.PaperFormalization.RateModel.violationEvent.eq_1",
+        "Viridis.Run127.PaperFormalization.twoPointLaw_isProbabilityMeasure",
+        "Viridis.Run127.PaperFormalization.twoPointLaw_variance",
+        "Viridis.Run127.PaperFormalization.cantelliFactor_sq",
+        "Viridis.Run127.PaperFormalization.witnessLaw_isProbabilityMeasure",
+        "Viridis.Run127.PaperFormalization.coeffVar.eq_1",
+        "Viridis.Run127.PaperFormalization.RateModel.mk.inj",
+        "Viridis.Run127.PaperFormalization.RateModel.violationEvent_certifiedRate",
+        "Viridis.Run127.PaperFormalization.RateModel.hT",
+        "Viridis.Run127.PaperFormalization.precautionary_rate_le_violation_budget_nonvacuous",
+        "Viridis.Run127.PaperFormalization.posPart.eq_1",
+        "Viridis.Run127.PaperFormalization.twoPointLaw.eq_1",
+        "Viridis.Run127.PaperFormalization.RateModel.hkB",
+        "Viridis.Run127.PaperFormalization.cantelliTwoPoint.eq_1",
+        "Viridis.Run127.PaperFormalization.capacityFloor_violation_prob_le._simp_1_1",
+        "Viridis.Run127.PaperFormalization.witnessLaw_sigma",
+        "Viridis.Run127.PaperFormalization.twoPointLaw_apply",
+        "Viridis.Run127.PaperFormalization.cantelliTwoPoint_mean",
+        "Viridis.Run127.PaperFormalization.mean_only_plugin_arbitrarily_unsafe",
+        "Viridis.Run127.PaperFormalization.capacityFloor.eq_1",
+        "Viridis.Run127.PaperFormalization.RateModel.requiredCapacity_ceiling._simp_1_4",
+        "Viridis.Run127.PaperFormalization.RateModel.requiredCapacity_ceiling._simp_1_7",
+        "Viridis.Run127.PaperFormalization.RateModel.requiredCapacity_ceiling._simp_1_2",
+        "Viridis.Run127.PaperFormalization.positive_floor_sharp_two_point_counterexample",
+        "Viridis.Run127.PaperFormalization.RateModel.requiredCapacity_ceiling._simp_1_6",
+        "Viridis.Run127.PaperFormalization.capacity_reserve_fraction_eq_nonvacuous",
+        "Viridis.Run127.PaperFormalization.capacityFloor_violation_prob_le._simp_1_3",
+        "Viridis.Run127.PaperFormalization.capacityFloor_nonneg",
+        "Viridis.Run127.PaperFormalization.RateModel.requiredCapacity_ceiling",
+        "Viridis.Run127.PaperFormalization.RateModel.certifiedRate.eq_1",
+        "Viridis.Run127.PaperFormalization.capacityFloor_violation_prob_le._simp_1_8",
+        "Viridis.Run127.PaperFormalization.witnessLaw.eq_1"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "sealed_statement_signature_alignment": true,
+        "solution_ok_terminal": true
+      },
+      "depth": {
+        "label": "substantial",
+        "candidate_nonblank_lines": 644,
+        "proof_lines": {
+          "cantelli_capacity_certificate": 7,
+          "capacity_reserve_fraction_eq": 26,
+          "mean_only_plugin_arbitrarily_unsafe": 22,
+          "positive_floor_sharp_two_point_counterexample": 42,
+          "precautionary_rate_le_violation_budget": 6
+        },
+        "median_proof_lines": 22,
+        "one_step_proofs": []
+      },
+      "os_functions": [
+        {
+          "id": "precautionary-capacity",
+          "name": "Moment-robust precautionary capacity certificate",
+          "kind": "decision_kernel",
+          "tier": "callable",
+          "doi": "10.5281/zenodo.21971046",
+          "summary": "Sets a conservative operating ceiling on how much information a monitoring or decision system can rely on, given uncertainty about its capacity.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/PCR/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-128",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-30T02:21:39.412727+00:00",
+      "candidate_id": "Run-128-ReciprocityCorridor-Comparator-attempt-1",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "sealed_statement_signature_alignment": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.Run128.PaperFormalization",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE.lean",
+          "sha256": "1de8f6a1f2ac05dd8026ad92a646b910d17b8369ba72c3dc6ebf7628ba1696ee"
+        },
+        "challenge": {
+          "file": "VERIFICATION_CHALLENGE_ALIGNED.lean",
+          "sha256": "20188ee7c055802711586a9fce3b6d8abce2c6f4a54560460e2890ba300fa0e8"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": false,
+      "theorems": [
+        "bilateral_benefit_iff_reciprocity_corridor",
+        "strict_corridor_nonempty_iff_product_condition",
+        "share_coordinate_corridor_equivalence",
+        "nash_midpoint_unique_maximizer",
+        "bandwidth_scaling_cannot_restore_feasibility"
+      ],
+      "nonvacuity_obligations": [
+        "witness_feasible_product_condition",
+        "witness_infeasible_product_condition",
+        "witness_C1_benefit",
+        "witness_C1_no_benefit",
+        "witness_C2_corridor_nonempty",
+        "witness_C2_corridor_empty",
+        "witness_C3",
+        "witness_C4"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.Run128.PaperFormalization.witness_C3",
+        "Viridis.Run128.PaperFormalization.witness_feasible_product_condition",
+        "Viridis.Run128.PaperFormalization.share_payoff_identities",
+        "Viridis.Run128.PaperFormalization.share_payoff_identities._simp_1_4",
+        "Viridis.Run128.PaperFormalization.share_payoff_identities._simp_1_6",
+        "Viridis.Run128.PaperFormalization.witness_C2_corridor_empty",
+        "Viridis.Run128.PaperFormalization.share_payoff_identities._simp_1_7",
+        "Viridis.Run128.PaperFormalization.share_payoff_identities._simp_1_10",
+        "Viridis.Run128.PaperFormalization.witness_C4",
+        "Viridis.Run128.PaperFormalization.bandwidth_scaling_cannot_restore_feasibility",
+        "Viridis.Run128.PaperFormalization.witness_C1_benefit",
+        "Viridis.Run128.PaperFormalization.witness_C1_no_benefit",
+        "Viridis.Run128.PaperFormalization.nash_midpoint_unique_maximizer",
+        "Viridis.Run128.PaperFormalization.InCorridor.eq_1",
+        "Viridis.Run128.PaperFormalization.uX.eq_1",
+        "Viridis.Run128.PaperFormalization.qL_lt_qU_iff_product_condition",
+        "Viridis.Run128.PaperFormalization.uY.eq_1",
+        "Viridis.Run128.PaperFormalization.qU.eq_1",
+        "Viridis.Run128.PaperFormalization.witness_C2_corridor_nonempty",
+        "Viridis.Run128.PaperFormalization.nashProduct.eq_1",
+        "Viridis.Run128.PaperFormalization.share_payoff_identities._simp_1_5",
+        "Viridis.Run128.PaperFormalization.share_coordinate_corridor_equivalence",
+        "Viridis.Run128.PaperFormalization.uXshare.eq_1",
+        "Viridis.Run128.PaperFormalization.share_payoff_identities._simp_1_8",
+        "Viridis.Run128.PaperFormalization.share_payoff_identities._simp_1_9",
+        "Viridis.Run128.PaperFormalization.witness_infeasible_product_condition",
+        "Viridis.Run128.PaperFormalization.qL.eq_1",
+        "Viridis.Run128.PaperFormalization.ratio_interval_nonempty_iff_product_condition",
+        "Viridis.Run128.PaperFormalization.ProductCondition.eq_1",
+        "Viridis.Run128.PaperFormalization.strict_corridor_nonempty_iff_product_condition",
+        "Viridis.Run128.PaperFormalization.uYshare.eq_1",
+        "Viridis.Run128.PaperFormalization.bilateral_benefit_iff_reciprocity_corridor"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "sealed_statement_signature_alignment": true,
+        "solution_ok_terminal": true
+      },
+      "depth": {
+        "label": "substantial",
+        "candidate_nonblank_lines": 312,
+        "proof_lines": {
+          "bandwidth_scaling_cannot_restore_feasibility": 21,
+          "bilateral_benefit_iff_reciprocity_corridor": 24,
+          "nash_midpoint_unique_maximizer": 30,
+          "share_coordinate_corridor_equivalence": 18,
+          "strict_corridor_nonempty_iff_product_condition": 14
+        },
+        "median_proof_lines": 21,
+        "one_step_proofs": []
+      },
+      "os_functions": [
+        {
+          "id": "reciprocity-corridor",
+          "name": "Bilateral-benefit reciprocity corridor",
+          "kind": "decision_kernel",
+          "tier": "callable",
+          "doi": "10.5281/zenodo.21971047",
+          "summary": "Tests whether an exchange between two parties benefits both, given each side's value and cost, and what flow keeps it reciprocal.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/RC/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-129",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-30T05:29:37.125141+00:00",
+      "candidate_id": "Run-129-AnytimeChange-Comparator-attempt-3-selective-imports-complete",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "sealed_statement_signature_alignment": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.Run129.PaperFormalization",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE_V3.lean",
+          "sha256": "d5ac9ca2978b106699038d4d2672e3cf99939cbc8a0b7fedcd2e4fc01cf2b72b"
+        },
+        "challenge": {
+          "file": "VERIFICATION_CHALLENGE_ALIGNED_V3.lean",
+          "sha256": "d68413572ef573abdcecf422c1bfb8ab5c958c4281bccce268fae89aa783aa0e"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT_V3.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST_V3.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": false,
+      "theorems": [
+        "anytime_change_mixture_martingale",
+        "anytime_change_ville_certificate",
+        "change_component_dominance_and_penalty",
+        "bounded_overshoot_expected_delay"
+      ],
+      "nonvacuity_obligations": [
+        "c12_nonvacuous",
+        "c2_sup_nonvacuous",
+        "c3_nonvacuous",
+        "c4_nonvacuous"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.Run129.PaperFormalization.anytime_change_mixture_martingale",
+        "Viridis.Run129.PaperFormalization.anytime_change_ville_certificate",
+        "Viridis.Run129.PaperFormalization.change_component_dominance_and_penalty",
+        "Viridis.Run129.PaperFormalization.bounded_overshoot_expected_delay",
+        "Viridis.Run129.PaperFormalization.C12Witness.c12_nonvacuous",
+        "Viridis.Run129.PaperFormalization.C12Witness.c2_sup_nonvacuous",
+        "Viridis.Run129.PaperFormalization.C3Witness.c3_nonvacuous",
+        "Viridis.Run129.PaperFormalization.C4Witness.c4_nonvacuous"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "sealed_statement_signature_alignment": true,
+        "solution_ok_terminal": true,
+        "targeted_export_complete": true
+      },
+      "depth": {
+        "label": "substantial",
+        "candidate_nonblank_lines": 1179,
+        "proof_lines": {
+          "anytime_change_mixture_martingale": 12,
+          "anytime_change_ville_certificate": 9,
+          "bounded_overshoot_expected_delay": 47,
+          "change_component_dominance_and_penalty": 16
+        },
+        "median_proof_lines": 14.0,
+        "one_step_proofs": []
+      },
+      "os_functions": [
+        {
+          "id": "anytime-change",
+          "name": "Anytime monitoring change certificate",
+          "kind": "decision_kernel",
+          "tier": "callable",
+          "doi": "10.5281/zenodo.21971041",
+          "summary": "Tells you, from a sequence of yes/no observations, whether a change has happened with a controlled false-alarm rate — and how late you might be.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/ACC/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-130",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-30T05:36:17.996556+00:00",
+      "candidate_id": "Run-130-SeedSourceBottleneck-Comparator-attempt-1",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "sealed_statement_signature_alignment": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.Run130",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE.lean",
+          "sha256": "1260b3565b55ec536a94c59b13ac55cfadaa6e17f6b01b965e5d1014e609bd36"
+        },
+        "challenge": {
+          "file": "VERIFICATION_CHALLENGE_ALIGNED.lean",
+          "sha256": "2ef5f3d081483d3a6e12c69bc9f78e1b84b778dd40a4ba7c11d69c73c9c883c9"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": false,
+      "theorems": [
+        "seed_routing_common_fraction_eq_min_cut_ratio",
+        "seed_routing_feasible_iff_cut_conditions",
+        "capacity_outside_active_bottleneck_irrelevant",
+        "scenario_intersection_certificate_le_each_scenario"
+      ],
+      "nonvacuity_obligations": [
+        "C1_witness",
+        "C1_witness_nontrivial",
+        "C2_witness_infeasible",
+        "C2_witness_feasible",
+        "C3_witness",
+        "C4_witness",
+        "negative_control_arbitrarily_severe"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.Run130.seed_routing_common_fraction_eq_min_cut_ratio",
+        "Viridis.Run130.seed_routing_feasible_iff_cut_conditions",
+        "Viridis.Run130.capacity_outside_active_bottleneck_irrelevant",
+        "Viridis.Run130.scenario_intersection_certificate_le_each_scenario",
+        "Viridis.Run130.Witnesses.C1_witness",
+        "Viridis.Run130.Witnesses.C1_witness_nontrivial",
+        "Viridis.Run130.Witnesses.C2_witness_infeasible",
+        "Viridis.Run130.Witnesses.C2_witness_feasible",
+        "Viridis.Run130.Witnesses.C3_witness",
+        "Viridis.Run130.Witnesses.C4_witness",
+        "Viridis.Run130.Witnesses.negative_control_arbitrarily_severe"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "sealed_statement_signature_alignment": true,
+        "solution_ok_terminal": true,
+        "targeted_export_complete": true
+      },
+      "depth": {
+        "label": "substantial",
+        "candidate_nonblank_lines": 1029,
+        "proof_lines": {
+          "capacity_outside_active_bottleneck_irrelevant": 8,
+          "scenario_intersection_certificate_le_each_scenario": 4,
+          "seed_routing_common_fraction_eq_min_cut_ratio": 14,
+          "seed_routing_feasible_iff_cut_conditions": 12
+        },
+        "median_proof_lines": 10.0,
+        "one_step_proofs": []
+      },
+      "os_functions": [
+        {
+          "id": "seed-source-bottleneck",
+          "name": "Seed-source bottleneck certificate",
+          "kind": "decision_kernel",
+          "tier": "callable",
+          "doi": "10.5281/zenodo.21971057",
+          "summary": "Checks whether your seed or seedling supply network can actually meet planting demand, and where the bottleneck is.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/SSBC/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-131",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-30T05:40:15.777621+00:00",
+      "candidate_id": "Run-131-CognitiveSwitchingHysteresis-Comparator-attempt-1",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "sealed_statement_signature_alignment": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.Cognition.CognitiveSwitchingHysteresis",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE.lean",
+          "sha256": "842943f1da4b1dc2e55b07d2f9eb0edbeffe381e82bc44b51cabd08296295412"
+        },
+        "challenge": {
+          "file": "VERIFICATION_CHALLENGE_ALIGNED.lean",
+          "sha256": "13803e64077b8a4c7919af31f348aeb19b785f14dabb59fe876cffc6210d98c8"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": false,
+      "theorems": [
+        "threshold_order",
+        "band_width_identity",
+        "closed_loop_area_identity",
+        "bias_translation",
+        "directional_cost_recovery"
+      ],
+      "nonvacuity_obligations": [
+        "cshc_nonvacuous"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.Cognition.CognitiveSwitchingHysteresis.threshold_order",
+        "Viridis.Cognition.CognitiveSwitchingHysteresis.band_width_identity",
+        "Viridis.Cognition.CognitiveSwitchingHysteresis.closed_loop_area_identity",
+        "Viridis.Cognition.CognitiveSwitchingHysteresis.bias_translation",
+        "Viridis.Cognition.CognitiveSwitchingHysteresis.directional_cost_recovery",
+        "Viridis.Cognition.CognitiveSwitchingHysteresis.cshc_nonvacuous"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "sealed_statement_signature_alignment": true,
+        "solution_ok_terminal": true,
+        "targeted_export_complete": true
+      },
+      "depth": {
+        "label": "elementary",
+        "candidate_nonblank_lines": 59,
+        "proof_lines": {
+          "band_width_identity": 3,
+          "bias_translation": 3,
+          "closed_loop_area_identity": 6,
+          "directional_cost_recovery": 3,
+          "threshold_order": 3
+        },
+        "median_proof_lines": 3,
+        "one_step_proofs": []
+      },
+      "os_functions": [
+        {
+          "id": "switching-hysteresis",
+          "name": "Directional switching hysteresis certificate",
+          "kind": "decision_kernel",
+          "tier": "callable",
+          "doi": "10.5281/zenodo.21971042",
+          "summary": "Shows how much evidence it takes to justify switching a management state, and why switching back and forth wastes effort.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/CSHC/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-132",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-30T08:21:04.906146+00:00",
+      "candidate_id": "Run-132-DScoreWeightCharter-Engine3-Correction-r1-attempt-3",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "sealed_statement_signature_alignment": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.DScore.WeightCharter",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE_ATTEMPT_3.lean",
+          "sha256": "4fd0b4dd32d30d0383ffd06d9bc50b4cf53dfad8b4a017333a25cb3f0f46bd5e"
+        },
+        "challenge": {
+          "file": "VERIFICATION_CHALLENGE_ALIGNED_ATTEMPT_3.lean",
+          "sha256": "95e0bede5f1ec5277a5543468bdc67d63d444a49d7c93369871bddedd877d30b"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT_ATTEMPT_3.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST_ATTEMPT_3.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": false,
+      "theorems": [
+        "tv_range_certificate",
+        "strict_rank_stability",
+        "unrestricted_simplex_optimum_counterexample",
+        "unrestricted_simplex_optimum_max",
+        "unrestricted_simplex_optimum",
+        "charter_nonvacuous"
+      ],
+      "nonvacuity_obligations": [
+        "charter_nonvacuous"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.DScore.WeightCharter.tv_range_certificate",
+        "Viridis.DScore.WeightCharter.strict_rank_stability",
+        "Viridis.DScore.WeightCharter.unrestricted_simplex_optimum_counterexample",
+        "Viridis.DScore.WeightCharter.unrestricted_simplex_optimum_max",
+        "Viridis.DScore.WeightCharter.unrestricted_simplex_optimum",
+        "Viridis.DScore.WeightCharter.charter_nonvacuous"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "sealed_statement_signature_alignment": true,
+        "solution_ok_terminal": true,
+        "targeted_export_complete": true
+      },
+      "depth": {
+        "label": "substantial",
+        "candidate_nonblank_lines": 262,
+        "proof_lines": {
+          "charter_nonvacuous": 7,
+          "strict_rank_stability": 15,
+          "tv_range_certificate": 27,
+          "unrestricted_simplex_optimum": 46,
+          "unrestricted_simplex_optimum_counterexample": 40,
+          "unrestricted_simplex_optimum_max": 53
+        },
+        "median_proof_lines": 33.5,
+        "one_step_proofs": []
+      },
+      "os_functions": [
+        {
+          "id": "dswc-tv-range-certificate",
+          "name": "The D-Score Weight-Charter Certificate: A sharp rank-stability bound for precommitted composite indicators",
+          "kind": "theorem_function",
+          "tier": "reference",
+          "doi": "10.5281/zenodo.22236741",
+          "summary": "For simplex weights w and w0 and finite-dimensional contrast z, absolute score drift is at most total variation times range(z); the corollary is dimension-free within these assumptions.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/DSWC/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-133",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-30T08:25:39.568910+00:00",
+      "candidate_id": "Run-133-CorridorOverlapDuality-Comparator-attempt-1",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "sealed_statement_signature_alignment": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.HDFM.CorridorOverlapDuality",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE.lean",
+          "sha256": "153531dbead8ae7e94e1bb5a98ceb73f6aed50d75498e70919500029a7e2d2aa"
+        },
+        "challenge": {
+          "file": "VERIFICATION_CHALLENGE_ALIGNED.lean",
+          "sha256": "bcaeb2d0b29f1a1bccd57cba42e94169a21649b069346398483e10b171bf9612"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": false,
+      "theorems": [
+        "synchrony_dividend_identity",
+        "availability_penalty_eq_synchrony_dividend",
+        "overlap_tradeoff_nonnegative",
+        "overlap_tradeoff_strict",
+        "additive_shared_cost_saving",
+        "corridor_overlap_nonvacuous"
+      ],
+      "nonvacuity_obligations": [
+        "corridor_overlap_nonvacuous"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.HDFM.CorridorOverlapDuality.synchrony_dividend_identity",
+        "Viridis.HDFM.CorridorOverlapDuality.availability_penalty_eq_synchrony_dividend",
+        "Viridis.HDFM.CorridorOverlapDuality.overlap_tradeoff_nonnegative",
+        "Viridis.HDFM.CorridorOverlapDuality.overlap_tradeoff_strict",
+        "Viridis.HDFM.CorridorOverlapDuality.additive_shared_cost_saving",
+        "Viridis.HDFM.CorridorOverlapDuality.corridor_overlap_nonvacuous"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "sealed_statement_signature_alignment": true,
+        "solution_ok_terminal": true,
+        "targeted_export_complete": true
+      },
+      "depth": {
+        "label": "elementary",
+        "candidate_nonblank_lines": 45,
+        "proof_lines": {
+          "additive_shared_cost_saving": 2,
+          "availability_penalty_eq_synchrony_dividend": 2,
+          "corridor_overlap_nonvacuous": 5,
+          "overlap_tradeoff_nonnegative": 3,
+          "overlap_tradeoff_strict": 3,
+          "synchrony_dividend_identity": 4
+        },
+        "median_proof_lines": 3.0,
+        "one_step_proofs": [
+          "additive_shared_cost_saving",
+          "availability_penalty_eq_synchrony_dividend"
+        ]
+      },
+      "os_functions": [
+        {
+          "id": "codc-synchrony-dividend-identity",
+          "name": "The Corridor Overlap Duality Certificate: An exact synchrony-diversification tradeoff for two shared habitat paths",
+          "kind": "theorem_function",
+          "tier": "reference",
+          "doi": "10.5281/zenodo.22665525",
+          "summary": "For two finite fixed paths under independent physical-edge survival, Q_A Q_B equals Q_union Q_intersection.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/CODC/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-135",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-30T08:37:49.615771+00:00",
+      "candidate_id": "Run-135-SufficientSanitization-Comparator-attempt-1",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "sealed_statement_signature_alignment": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.Applications.SufficientSanitization",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE.lean",
+          "sha256": "e95ad53230883a723f5e3f0cc1d744e329ff5a36e91635f7f67eaf3703d5b21c"
+        },
+        "challenge": {
+          "file": "VERIFICATION_CHALLENGE_ALIGNED.lean",
+          "sha256": "ed7b51ec1a878f5e06f36f7a36146b97ac77b3475333c7e1d451cb41bb98982c"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": false,
+      "theorems": [
+        "relevance_chain_identity",
+        "entropy_decomposition_deterministic",
+        "exact_sufficiency_preserves_relevance",
+        "approximate_sufficiency_loss_bound",
+        "sufficient_sanitization_nonvacuous"
+      ],
+      "nonvacuity_obligations": [
+        "sufficient_sanitization_nonvacuous"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.Applications.SufficientSanitization.relevance_chain_identity",
+        "Viridis.Applications.SufficientSanitization.entropy_decomposition_deterministic",
+        "Viridis.Applications.SufficientSanitization.exact_sufficiency_preserves_relevance",
+        "Viridis.Applications.SufficientSanitization.approximate_sufficiency_loss_bound",
+        "Viridis.Applications.SufficientSanitization.sufficient_sanitization_nonvacuous"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "sealed_statement_signature_alignment": true,
+        "solution_ok_terminal": true,
+        "targeted_export_complete": true
+      },
+      "depth": {
+        "label": "elementary",
+        "candidate_nonblank_lines": 59,
+        "proof_lines": {
+          "approximate_sufficiency_loss_bound": 5,
+          "entropy_decomposition_deterministic": 3,
+          "exact_sufficiency_preserves_relevance": 2,
+          "relevance_chain_identity": 3,
+          "sufficient_sanitization_nonvacuous": 3
+        },
+        "median_proof_lines": 3,
+        "one_step_proofs": []
+      },
+      "os_functions": [
+        {
+          "id": "ssc-relevance-chain-identity",
+          "name": "The Sufficient Sanitization Certificate: Task Information, Data Minimization, and an Ideal Erasure Gap",
+          "kind": "theorem_function",
+          "tier": "reference",
+          "doi": "10.5281/zenodo.22236775",
+          "summary": "For finite X,Y and deterministic S=f(X), I(Y;X)=I(Y;S)+I(Y;X|S).",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/SSC/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-137",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-30T14:54:53.939960+00:00",
+      "candidate_id": "Run-137-SymbioticAccountingCorrection-r1-Comparator-attempt-1",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "sealed_statement_signature_alignment": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.IntelligenceBound.SymbioticAccounting",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE.lean",
+          "sha256": "afe2ac826cb598d998a4e32baa19c17ffba3df7706b8dc0015d36c1ff5c65daa"
+        },
+        "challenge": {
+          "file": "VERIFICATION_CHALLENGE_ALIGNED.lean",
+          "sha256": "914947efc9341f44104a52c6283ac6d4ac1c96c33226381d07ac3d55a5f53cbb"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": false,
+      "theorems": [
+        "conjunctive_rate_upper_bound_as_frozen_is_false",
+        "conjunctive_rate_upper_bound",
+        "symbiotic_allocation_attains",
+        "normalized_rates_equal",
+        "weighted_harmonic_le_max",
+        "two_partner_closed_form",
+        "additive_rate_upper_bound_as_frozen_is_false",
+        "additive_rate_upper_bound",
+        "symbiotic_accounting_nonvacuous"
+      ],
+      "nonvacuity_obligations": [
+        "symbiotic_accounting_nonvacuous"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.IntelligenceBound.SymbioticAccounting.conjunctive_rate_upper_bound_as_frozen_is_false",
+        "Viridis.IntelligenceBound.SymbioticAccounting.conjunctive_rate_upper_bound",
+        "Viridis.IntelligenceBound.SymbioticAccounting.symbiotic_allocation_attains",
+        "Viridis.IntelligenceBound.SymbioticAccounting.normalized_rates_equal",
+        "Viridis.IntelligenceBound.SymbioticAccounting.weighted_harmonic_le_max",
+        "Viridis.IntelligenceBound.SymbioticAccounting.two_partner_closed_form",
+        "Viridis.IntelligenceBound.SymbioticAccounting.additive_rate_upper_bound_as_frozen_is_false",
+        "Viridis.IntelligenceBound.SymbioticAccounting.additive_rate_upper_bound",
+        "Viridis.IntelligenceBound.SymbioticAccounting.symbiotic_accounting_nonvacuous"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "sealed_statement_signature_alignment": true,
+        "solution_ok_terminal": true,
+        "targeted_export_complete": true
+      },
+      "depth": {
+        "label": "elementary",
+        "candidate_nonblank_lines": 180,
+        "proof_lines": {
+          "additive_rate_upper_bound": 12,
+          "additive_rate_upper_bound_as_frozen_is_false": 11,
+          "conjunctive_rate_upper_bound": 14,
+          "conjunctive_rate_upper_bound_as_frozen_is_false": 12,
+          "normalized_rates_equal": 7,
+          "symbiotic_accounting_nonvacuous": 10,
+          "symbiotic_allocation_attains": 6,
+          "two_partner_closed_form": 9,
+          "weighted_harmonic_le_max": 13
+        },
+        "median_proof_lines": 11,
+        "one_step_proofs": []
+      },
+      "os_functions": [
+        {
+          "id": "sac-conjunctive-rate-upper-bound",
+          "name": "The Symbiotic Accounting Certificate: Complementarity Does Not Create Thermodynamic Capacity",
+          "kind": "theorem_function",
+          "tier": "reference",
+          "doi": "10.5281/zenodo.22236768",
+          "summary": "Any conjunctive task rate obeys R <= P/(epsilon sum_i w_i/d_i) under the frozen component and shared-budget inequalities.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/SAC/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-138",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-30T15:01:53.426292+00:00",
+      "candidate_id": "Run-138-GaianAlignmentCone-Comparator-attempt-1",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "sealed_statement_signature_alignment": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.GaianSystems.AlignmentCone",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE.lean",
+          "sha256": "1830f9cf99db8a26fb394dcdd5d343c866803495856f70258680ec9977ed4a73"
+        },
+        "challenge": {
+          "file": "VERIFICATION_CHALLENGE_ALIGNED.lean",
+          "sha256": "0ddb1628c0ad7a0110044388519cce1dde218f0c1851a47338ff3f1e88a43b14"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": false,
+      "theorems": [
+        "aggregate_projection_positive",
+        "aggregate_residual_bound",
+        "common_cone_closed_under_weighted_sum",
+        "alignment_floor_of_residual_bound",
+        "uniform_cone_alignment_floor",
+        "cancellation_gives_perfect_alignment",
+        "magnitude_masking_witness",
+        "gaian_alignment_nonvacuous"
+      ],
+      "nonvacuity_obligations": [
+        "gaian_alignment_nonvacuous"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.GaianSystems.AlignmentCone.aggregate_projection_positive",
+        "Viridis.GaianSystems.AlignmentCone.aggregate_residual_bound",
+        "Viridis.GaianSystems.AlignmentCone.common_cone_closed_under_weighted_sum",
+        "Viridis.GaianSystems.AlignmentCone.alignment_floor_of_residual_bound",
+        "Viridis.GaianSystems.AlignmentCone.uniform_cone_alignment_floor",
+        "Viridis.GaianSystems.AlignmentCone.cancellation_gives_perfect_alignment",
+        "Viridis.GaianSystems.AlignmentCone.magnitude_masking_witness",
+        "Viridis.GaianSystems.AlignmentCone.gaian_alignment_nonvacuous"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "sealed_statement_signature_alignment": true,
+        "solution_ok_terminal": true,
+        "targeted_export_complete": true
+      },
+      "depth": {
+        "label": "elementary",
+        "candidate_nonblank_lines": 110,
+        "proof_lines": {
+          "aggregate_projection_positive": 4,
+          "aggregate_residual_bound": 6,
+          "alignment_floor_of_residual_bound": 10,
+          "cancellation_gives_perfect_alignment": 5,
+          "common_cone_closed_under_weighted_sum": 8,
+          "gaian_alignment_nonvacuous": 11,
+          "magnitude_masking_witness": 2,
+          "uniform_cone_alignment_floor": 13
+        },
+        "median_proof_lines": 7.0,
+        "one_step_proofs": []
+      },
+      "os_functions": [
+        {
+          "id": "gacc-aggregate-residual-bound",
+          "name": "The Gaian Alignment Cone Certificate: When Local Directional Bounds Survive Aggregation",
+          "kind": "theorem_function",
+          "tier": "reference",
+          "doi": "10.5281/zenodo.22236748",
+          "summary": "Nonnegative weighted subsystem residuals obey the aggregate residual budget.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/GACC/function.json"
+        }
+      ]
+    },
+    {
+      "run": "Run-139",
+      "certificate_status": "LEAN_ZERO_SORRY_CERTIFIED",
+      "certificate_standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+      "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1",
+      "issued_at_utc": "2026-08-30T15:06:39.207537+00:00",
+      "candidate_id": "Run-139-ThermodynamicRetrofitWaterFilling-Comparator-attempt-1",
+      "gates": {
+        "allowed_axioms_only": true,
+        "aristotle_required": false,
+        "comparator_lean_kernel": true,
+        "comparator_nanoda_kernel": true,
+        "comparator_statement_identity": true,
+        "frozen_statement_and_candidate_hash_bound": true,
+        "independent_cloud_kernel_verification": true,
+        "local_lean_execution": false,
+        "nonvacuity_witnesses": true,
+        "sealed_statement_signature_alignment": true,
+        "zero_sorries_or_admits": true
+      },
+      "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+      "toolchain": "leanprover/lean4:v4.28.0",
+      "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+      "namespace": "Viridis.ThermodynamicEconomics.RetrofitWaterFilling",
+      "files": {
+        "solution": {
+          "file": "VERIFICATION_CANDIDATE.lean",
+          "sha256": "26144b575077db3d20d650a13321abf99d9fd5105d01209e760bdaa5130b8530"
+        },
+        "challenge": {
+          "file": "VERIFICATION_CHALLENGE_ALIGNED.lean",
+          "sha256": "4a36080607c0be7b17a5eceade22711c8127031e741f3d74ebcf8b98590ad617"
+        },
+        "receipt": "COMPARATOR_CLOUD_RECEIPT.json",
+        "request": "ENGINE3_VERIFICATION_REQUEST.json",
+        "claim_inventory": "SEALED_CLAIM_INVENTORY.json",
+        "comparator_config": "comparator.config.json"
+      },
+      "challenge_identical_to_solution": false,
+      "theorems": [
+        "clippedAllocation_nonnegative",
+        "clippedAllocation_le_one",
+        "interior_stationarity",
+        "coordinate_improvement_identity",
+        "embodied_burden_lowers_benefit",
+        "retrofit_allocation_nonvacuous"
+      ],
+      "nonvacuity_obligations": [
+        "retrofit_allocation_nonvacuous"
+      ],
+      "comparator_theorem_names": [
+        "Viridis.ThermodynamicEconomics.RetrofitWaterFilling.clippedAllocation_nonnegative",
+        "Viridis.ThermodynamicEconomics.RetrofitWaterFilling.clippedAllocation_le_one",
+        "Viridis.ThermodynamicEconomics.RetrofitWaterFilling.interior_stationarity",
+        "Viridis.ThermodynamicEconomics.RetrofitWaterFilling.coordinate_improvement_identity",
+        "Viridis.ThermodynamicEconomics.RetrofitWaterFilling.embodied_burden_lowers_benefit",
+        "Viridis.ThermodynamicEconomics.RetrofitWaterFilling.retrofit_allocation_nonvacuous"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "receipt_status": "VERIFIED",
+      "receipt_checks": {
+        "candidate_forbidden_constructs_empty": true,
+        "comparator_accepted": true,
+        "contract_declarations_present": true,
+        "lean_kernel_accepted": true,
+        "nanoda_kernel_accepted": true,
+        "sealed_statement_signature_alignment": true,
+        "solution_ok_terminal": true,
+        "targeted_export_complete": true
+      },
+      "depth": {
+        "label": "elementary",
+        "candidate_nonblank_lines": 41,
+        "proof_lines": {
+          "clippedAllocation_le_one": 2,
+          "clippedAllocation_nonnegative": 3,
+          "coordinate_improvement_identity": 2,
+          "embodied_burden_lowers_benefit": 2,
+          "interior_stationarity": 5,
+          "retrofit_allocation_nonvacuous": 4
+        },
+        "median_proof_lines": 2.5,
+        "one_step_proofs": [
+          "clippedAllocation_le_one",
+          "coordinate_improvement_identity",
+          "embodied_burden_lowers_benefit"
+        ]
+      },
+      "os_functions": [
+        {
+          "id": "thermodynamic-economic-allocation",
+          "name": "Ecological-thermodynamic capital allocation",
+          "kind": "decision_kernel",
+          "tier": "admitted",
+          "doi": "10.5281/zenodo.22236785",
+          "summary": "Allocates a capital budget across candidate ecological assets by declared value, transition cost and friction, and shows the budget's shadow price.",
+          "empirical_validation": "NOT_VALIDATED",
+          "manifest": "series/TRWFN/function.json"
+        }
+      ]
+    }
+  ]
+}

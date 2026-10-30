@@ -1,0 +1,16 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.Applications.SufficientSanitization.relevance_chain_identity",
+    "Viridis.Applications.SufficientSanitization.entropy_decomposition_deterministic",
+    "Viridis.Applications.SufficientSanitization.exact_sufficiency_preserves_relevance",
+    "Viridis.Applications.SufficientSanitization.approximate_sufficiency_loss_bound",
+    "Viridis.Applications.SufficientSanitization.sufficient_sanitization_nonvacuous"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

@@ -1,0 +1,110 @@
+name: Weekly terminal reporter public fixture
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tools/weekly_terminal_reporter/**'
+      - '.github/workflows/weekly-terminal-reporter.yml'
+      - '00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/nightly_proof_track.py'
+      - '00_lab_infrastructure/gates/terminal_certification/terminal_hold.py'
+      - '00_lab_infrastructure/gates/premise_declaration.py'
+      - '00_lab_infrastructure/gates/inv9_title_basis.py'
+      - 'comparator-deploy/engine3_align_challenge.py'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/weekly_terminal_reporter/**'
+      - '.github/workflows/weekly-terminal-reporter.yml'
+      - '00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/nightly_proof_track.py'
+      - '00_lab_infrastructure/gates/terminal_certification/terminal_hold.py'
+      - '00_lab_infrastructure/gates/premise_declaration.py'
+      - '00_lab_infrastructure/gates/inv9_title_basis.py'
+      - 'comparator-deploy/engine3_align_challenge.py'
+permissions:
+  contents: read
+env:
+  CI_SOURCE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+jobs:
+  public-reporter:
+    name: weekly-terminal-reporter (${{ matrix.python }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.12', '3.14']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install the exact pure test dependency
+        run: timeout --signal=TERM --kill-after=5s 60s python3 -m pip install --disable-pip-version-check 'pytest==9.1.1'
+      - name: Read the single immutable public CE8 baseline
+        env:
+          GIT_CONFIG_NOSYSTEM: '1'
+          GIT_CONFIG_SYSTEM: '/dev/null'
+          GIT_CONFIG_GLOBAL: '/dev/null'
+          GIT_TERMINAL_PROMPT: '0'
+          GIT_ASKPASS: '/usr/bin/false'
+          GIT_ALLOW_PROTOCOL: 'https'
+        run: |
+          baseline="$RUNNER_TEMP/weekly-terminal-baseline.py.data"
+          origin="$RUNNER_TEMP/weekly-terminal-baseline-origin.json"
+          commit='ce8e4c97bad2e12ff6f87e4b53280cccbfe9455e'
+          source_path='00_lab_infrastructure/gates/audit_remediation/source_freezes/RESEARCH_PIPELINE_v2/nightly_proof_track.py'
+          expected_blob='a1128de3b2ebe5dc0666dfb735760bc47bced584'
+          expected_sha='b63c3866db0e3538f6462ca32f0bbf916a6e80081d1bdf74514b1fa6c7dc2b06'
+          test ! -e "$baseline" && test ! -L "$baseline"
+          test ! -e "$origin" && test ! -L "$origin"
+          timeout --signal=TERM --kill-after=5s 60s git \
+            -c credential.helper= -c http.extraHeader= -c core.hooksPath=/dev/null \
+            fetch --no-tags --no-recurse-submodules --no-write-fetch-head --depth=1 \
+            https://github.com/jdhart81/viridis-canon.git "$commit"
+          actual_blob="$(timeout --signal=TERM --kill-after=5s 10s git rev-parse --verify "$commit:$source_path")"
+          test "$actual_blob" = "$expected_blob"
+          test "$(timeout --signal=TERM --kill-after=5s 10s git cat-file -t "$actual_blob")" = 'blob'
+          test "$(timeout --signal=TERM --kill-after=5s 10s git cat-file -s "$actual_blob")" = '21834'
+          set -o noclobber
+          timeout --signal=TERM --kill-after=5s 10s git cat-file blob "$actual_blob" > "$baseline"
+          test "$(wc -c < "$baseline")" -eq 21834
+          printf '%s  %s\n' "$expected_sha" "$baseline" | sha256sum --check --strict
+          printf '{"commit":"%s","path":"%s","blob_oid":"%s","sha256":"%s","bytes":21834}\n' \
+            "$commit" "$source_path" "$actual_blob" "$expected_sha" > "$origin"
+          cat "$origin"
+      - name: Prepare the finite public-only scratch fixture
+        run: timeout --signal=TERM --kill-after=5s 20s python3 -I -S -B tools/weekly_terminal_reporter/ci_fixture.py prepare --output "$RUNNER_TEMP/weekly-terminal-${{ matrix.python }}"
+      - name: Run all 16 retained and 28 new public cases
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+        run: |
+          out="$RUNNER_TEMP/weekly-terminal-${{ matrix.python }}"
+          fixture="$out/fixture/RESEARCH_PIPELINE_v2"
+          cd "$fixture"
+          export PYTHONPATH="$fixture"
+          set +e
+          timeout --signal=TERM --kill-after=5s 450s python3 -B -m pytest \
+            -c /dev/null --rootdir="$fixture" --confcutdir="$fixture" \
+            --import-mode=importlib -p no:cacheprovider -vv -rA \
+            --basetemp="$out/pytest_tmp" --junitxml="$out/junit.xml" \
+            test_nightly_proof_track_terminal_report.py > "$out/pytest.log" 2>&1
+          test_rc=$?
+          set -e
+          printf '%s\n' "$test_rc" > "$out/PYTEST_EXIT_CODE.txt"
+          timeout --signal=TERM --kill-after=5s 20s python3 -I -S -B \
+            "$GITHUB_WORKSPACE/tools/weekly_terminal_reporter/ci_fixture.py" verify --output "$out"
+          test "$test_rc" -eq 0
+      - name: Retain all pure evidence including failed or incomplete outcomes
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: weekly-terminal-reporter-${{ matrix.python }}
+          path: |
+            ${{ runner.temp }}/weekly-terminal-${{ matrix.python }}
+            ${{ runner.temp }}/weekly-terminal-baseline.py.data
+            ${{ runner.temp }}/weekly-terminal-baseline-origin.json
+          if-no-files-found: error
+          retention-days: 7

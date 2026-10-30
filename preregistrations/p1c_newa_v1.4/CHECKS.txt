@@ -1,0 +1,26 @@
+PASS P1 predictors carry no outcome column  [set()]
+PASS P1 raw ignition records carry no outcome field  [set()]
+PASS P2 an 8-connected diagonal line splits 4-connected fuel into 2 compartments  [n=2]
+PASS P2 control: the same line leaks under 8-connected fuel  [n8=1]
+PASS P3 every edge-touching compartment is censored (A50)
+PASS P3 every edge-touching compartment is censored (A25)
+PASS P3 every edge-touching compartment is censored (B)
+PASS P3 B censoring equals edge-touching exactly
+PASS P4 compartment rasters on the compute grid
+PASS P5 exclusion list is the frozen pilot table
+PASS P5 no pilot ignition in the confirmatory table  [overlap=0]
+PASS P5 fod_id unique in the confirmatory table
+PASS P6 table = raw in-box records minus pilot records  [raw in box 14105, pilot 0, table 14105, missing 0]
+
+DESCRIPTIVES (blind)
+ignitions in analysis box: 14105
+cause: {'Human': 9080, 'Natural': 4779, 'Missing data/not specified/undetermined': 246}
+years: 1992 - 2024 | ERC available: 1.0
+A50: on-holdable 0.082, censored 0.993, usable n=102, log10 Aenc acres q10..q90 [-0.33, 0.99, 1.51, 4.52, 4.94]
+   corr(log Aenc, log rho) = -0.15; corr(log Aenc, log road dist) = 0.47
+A25: on-holdable 0.249, censored 0.950, usable n=712, log10 Aenc acres q10..q90 [1.0, 2.12, 3.26, 3.87, 4.4]
+   corr(log Aenc, log rho) = -0.08; corr(log Aenc, log road dist) = 0.20
+B: on-holdable 0.179, censored 0.198, usable n=11314, log10 Aenc acres q10..q90 [2.41, 3.0, 3.63, 4.08, 4.46]
+   corr(log Aenc, log rho) = -0.54; corr(log Aenc, log road dist) = 0.41
+Bp: on-holdable 0.193, censored 0.213, usable n=11105, log10 Aenc acres q10..q90 [2.39, 2.98, 3.59, 4.06, 4.43]
+coarse coordinates: 0.001

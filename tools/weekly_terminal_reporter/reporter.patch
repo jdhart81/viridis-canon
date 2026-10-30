@@ -1,0 +1,307 @@
+--- before/nightly_proof_track.py
++++ after/nightly_proof_track_terminal_report.py
+@@ -11,7 +11,10 @@
+ import argparse
+ import hashlib
+ import json
++import os
+ import re
++import stat
++import types
+ from datetime import datetime, timezone
+ from pathlib import Path
+ from typing import Any
+@@ -26,8 +29,255 @@
+ }
+ PROVIDER_WARNING_STATUS = "PROOF_GATE_ACCEPTED_ZERO_SORRY_PROVIDER_WARNING"
+ CERTIFIED_STATUS = "LEAN_ZERO_SORRY_CERTIFIED"
++TERMINAL_HELPER_SHA256 = "c131bc30020abea90b646023e6c9c1b8974ee15e1c9024b11fd6a1a48379a5f3"
++TERMINAL_RECEIPTS = {
++    "Run-194": (
++        "PREMISE_DECLARATION_HOLD_ENGINE_20261015.json",
++        "0c03ddd7ff286fb114d19354616b04006529c3bf650bf21936ed6e695737c065",
++    ),
++}
++TERMINAL_UNRESOLVED = "HOLD_TERMINAL_PREMISE_EVIDENCE_UNRESOLVED"
++TERMINAL_CONFLICT = "HOLD_TERMINAL_PREMISE_CERTIFICATE_CONFLICT"
+ 
+ 
++class _TerminalEvidenceError(ValueError):
++    """An expected trusted object's terminal evidence cannot be resolved."""
++
++
++def _terminal_bytes(path: Path) -> bytes:
++    """Bound a regular-file read; byte rereads below delimit a read window."""
++    if any(part.is_symlink() for part in (path, *path.parents)):
++        raise _TerminalEvidenceError("symlink in terminal observation ancestry")
++    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
++    descriptor = os.open(path, flags)
++    try:
++        before = os.fstat(descriptor)
++        if not stat.S_ISREG(before.st_mode) or before.st_size > 4_000_000:
++            raise _TerminalEvidenceError("nonregular or oversized terminal observation")
++        with os.fdopen(descriptor, "rb", closefd=False) as stream:
++            data = stream.read(4_000_001)
++        after = os.fstat(descriptor)
++        current = path.lstat()
++        if (len(data) > 4_000_000 or
++                (before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns) !=
++                (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns) or
++                (after.st_dev, after.st_ino) != (current.st_dev, current.st_ino) or
++                not stat.S_ISREG(current.st_mode)):
++            raise _TerminalEvidenceError("terminal observation changed during read")
++        return data
++    finally:
++        os.close(descriptor)
++
++
++def _terminal_object(data: bytes) -> dict[str, Any]:
++    def unique(pairs):
++        result = {}
++        for key, value in pairs:
++            if key in result:
++                raise _TerminalEvidenceError("duplicate terminal observation key")
++            result[key] = value
++        return result
++    value = json.loads(data.decode("utf-8"), object_pairs_hook=unique)
++    if not isinstance(value, dict):
++        raise _TerminalEvidenceError("terminal observation must be a JSON object")
++    return value
++
++
++def _terminal_sha(data: bytes) -> str:
++    return hashlib.sha256(data).hexdigest()
++
++
++def _remember(snapshots: dict[Path, bytes], path: Path) -> bytes:
++    data = _terminal_bytes(path)
++    if path in snapshots and snapshots[path] != data:
++        raise _TerminalEvidenceError("terminal observation drifted between reads")
++    snapshots[path] = data
++    return data
++
++
++def _load_terminal_helper(control_root: Path):
++    """Load only the unchanged, pinned helper, without an ambient import cache."""
++    path = control_root / "RESEARCH_PIPELINE_v2/verification_coverage_gates/terminal_certification/terminal_hold.py"
++    data = _terminal_bytes(path)
++    if _terminal_sha(data) != TERMINAL_HELPER_SHA256:
++        raise _TerminalEvidenceError("terminal helper source pin mismatch")
++    module = types.ModuleType("_proof_track_fixed_terminal_hold")
++    module.__file__ = str(path)
++    exec(compile(data, str(path), "exec"), module.__dict__)
++    return module, path, data
++
++
++def _authenticated_terminal_context(control_root: Path, package: Path) -> dict[str, Any]:
++    """Delegate authentication to c131; no reporter-side trust or checker bypass.
++
++    Positive tests may replace this private adapter to test reporting logic.
++    Such synthetic cases do not authenticate the fixed allowlisted receipt.
++    """
++    helper, helper_path, helper_bytes = _load_terminal_helper(control_root)
++    certificate_root = control_root / "RESEARCH_PIPELINE_v2/lean_certificates"
++    evidence = helper.terminal_hold(package, certificate_root)
++    if evidence is None:
++        raise _TerminalEvidenceError("unchanged terminal helper did not authenticate expected trusted object")
++    if (evidence.get("run_id") != package.name or
++            evidence.get("status") != "TERMINAL_PREMISE_HOLD" or
++            evidence.get("certifies") is not False or
++            evidence.get("clears_certification_debt") is not False or
++            evidence.get("publication_admitted") is not False):
++        raise _TerminalEvidenceError("unexpected terminal helper result")
++    filename, receipt_sha = TERMINAL_RECEIPTS[package.name]
++    folder = certificate_root / package.name
++    snapshots = {helper_path: helper_bytes}
++    # The helper authenticates these sources and documents itself. Retain a
++    # second window through our later SOURCE/mirror/certificate joins as well.
++    for path, data in helper._checker_sources().items():
++        if _remember(snapshots, path) != data:
++            raise _TerminalEvidenceError("terminal checker source changed after authentication")
++    receipt_path = folder / filename
++    receipt = _remember(snapshots, receipt_path)
++    if _terminal_sha(receipt) != receipt_sha or evidence.get("receipt_sha256") != receipt_sha:
++        raise _TerminalEvidenceError("terminal receipt changed after authentication")
++    bindings = _terminal_object(receipt)["bindings"]
++    for role, name in helper.BOUND_FILES.items():
++        if _terminal_sha(_remember(snapshots, folder / name)) != bindings.get(role):
++            raise _TerminalEvidenceError("terminal staged input changed after authentication")
++    stage = folder / "ENGINE3_VERIFICATION_REQUEST.json"
++    if _terminal_sha(snapshots[stage]) != evidence.get("request_sha256"):
++        raise _TerminalEvidenceError("authenticated staged request changed")
++    manifest = package / "PAPER_PACKAGE_MANIFEST.json"
++    if _terminal_sha(_remember(snapshots, manifest)) != bindings.get("sealed_manifest_sha256"):
++        raise _TerminalEvidenceError("selected terminal package changed after authentication")
++    return {"evidence": evidence, "snapshots": snapshots, "stage": stage,
++            "folder": folder, "manifest": manifest}
++
++
++def _certificate_terminal_join(
++    record: tuple[Path, dict[str, Any]], control_root: Path,
++    context: dict[str, Any], snapshots: dict[Path, bytes],
++) -> dict[str, Any]:
++    path, certificate = record
++    raw = _remember(snapshots, path)
++    if _terminal_object(raw) != certificate:
++        raise _TerminalEvidenceError("current certificate changed after selection")
++    bindings = certificate["bindings"]
++
++    def bound(binding):
++        if not isinstance(binding, dict) or not isinstance(binding.get("path"), str):
++            raise _TerminalEvidenceError("unresolved current certificate binding")
++        target = Path(binding["path"])
++        choices = [target] if target.is_absolute() else [
++            control_root / target, control_root / "RESEARCH_PIPELINE_v2" / target]
++        for choice in choices:
++            try:
++                data = _terminal_bytes(choice)
++            except (OSError, ValueError):
++                continue
++            if _terminal_sha(data) == binding.get("sha256"):
++                if choice in snapshots and snapshots[choice] != data:
++                    raise _TerminalEvidenceError("current certificate binding drifted")
++                snapshots[choice] = data
++                return data
++        raise _TerminalEvidenceError("current certificate binding is no longer current")
++
++    expected = {
++        "request": context["stage"],
++        "formal_statement": context["folder"] / "VERIFICATION_STATEMENT.lean",
++        "candidate_proof": context["folder"] / "VERIFICATION_CANDIDATE.lean",
++    }
++    for role, target in expected.items():
++        if bound(bindings.get(role)) != snapshots[target]:
++            raise _TerminalEvidenceError("same-run certificate object linkage unresolved")
++    # Recheck current certificate file bindings, rather than treating an old
++    # certificate's filename, run ID, or status as exact-object evidence.
++    for role, binding in bindings.items():
++        if role != "sealed_paper_inputs" and isinstance(binding, dict) and "path" in binding:
++            bound(binding)
++    sealed = bindings["sealed_paper_inputs"]
++    for name in ("SEALED_RUN_MANIFEST.json", "SEALED_CLAIM_INVENTORY.json", "SEALED_paper.tex"):
++        if bound(sealed.get(name)) != snapshots[context["folder"] / name]:
++            raise _TerminalEvidenceError("same-run certificate sealed linkage unresolved")
++    for binding in sealed.values():
++        bound(binding)
++    return {"path": str(path), "sha256": _terminal_sha(raw),
++            "status": certificate.get("status"), "same_exact_terminal_object": True}
++
++
++def _terminal_observation(
++    control_root: Path, run_id: str, mirror_run: Path | None,
++    requests: list[Path], certificate_record: tuple[Path, dict[str, Any]] | None,
++) -> dict[str, Any]:
++    """Report tri-state evidence; uncertainty is never proof or dispatch authority."""
++    result = {"status": "NOT_APPLICABLE", "certifies": False,
++              "clears_certification_debt": False, "publication_admitted": False,
++              "authorizes_retry_or_transport": False}
++    if run_id not in TERMINAL_RECEIPTS:
++        return result
++    result.update(status=TERMINAL_UNRESOLVED, expected_trusted_run=run_id,
++                  expected_receipt_sha256=TERMINAL_RECEIPTS[run_id][1])
++    if certificate_record is not None:
++        result["selected_current_certificate"] = {
++            "path": str(certificate_record[0]), "status": certificate_record[1].get("status"),
++            "object_linkage": "unresolved until exact binding join completes",
++        }
++    try:
++        finalized = control_root / "RESEARCH_PIPELINE_v2/finalized_runs" / run_id
++        package = finalized if finalized.exists() or finalized.is_symlink() else control_root / "RESEARCH_PIPELINE_v2/nightly_packages" / run_id
++        context = _authenticated_terminal_context(control_root, package)
++        snapshots = context["snapshots"]
++        result["authenticated_terminal_evidence"] = context["evidence"]
++        if _terminal_sha(snapshots[context["stage"]]) != context["evidence"].get("request_sha256"):
++            raise _TerminalEvidenceError("authenticated staged request readback does not match helper result")
++        stage = _terminal_object(snapshots[context["stage"]])
++        if stage.get("source_run") != run_id:
++            raise _TerminalEvidenceError("authenticated staged run identity unresolved")
++        source_sha = stage["input_sha256"]["SOURCE_ENGINE3_REQUEST.json"]
++        source_path = context["folder"] / "SOURCE_ENGINE3_REQUEST.json"
++        source_bytes = _remember(snapshots, source_path)
++        if _terminal_sha(source_bytes) != source_sha:
++            raise _TerminalEvidenceError("staged SOURCE input binding does not match actual SOURCE")
++        if mirror_run is None:
++            raise _TerminalEvidenceError("reported mirror is missing for terminal lineage join")
++        mirror_path = mirror_run / "formalization/ENGINE3_VERIFICATION_REQUEST.json"
++        if mirror_path not in requests:
++            raise _TerminalEvidenceError("reported mirror request is not in proof-track provenance")
++        mirror_bytes = _remember(snapshots, mirror_path)
++        if mirror_bytes != source_bytes:
++            raise _TerminalEvidenceError("reported mirror request does not match held SOURCE lineage")
++        source = _terminal_object(source_bytes)
++        if (source.get("source_run") != run_id or
++                not isinstance(stage.get("candidate_id"), str) or
++                not stage["candidate_id"] or source.get("candidate_id") != stage["candidate_id"]):
++            raise _TerminalEvidenceError("SOURCE/staged candidate identity unresolved")
++        manifest_sha = _terminal_sha(snapshots[context["manifest"]])
++        if (stage["input_sha256"].get("SEALED_RUN_MANIFEST.json") != manifest_sha or
++                source["input_sha256"].get("PAPER_PACKAGE_MANIFEST.json") != manifest_sha or
++                snapshots[context["manifest"]] != snapshots[context["folder"] / "SEALED_RUN_MANIFEST.json"]):
++            raise _TerminalEvidenceError("staged/SOURCE selected manifest bridge unresolved")
++        if certificate_record is not None:
++            result["current_certificate"] = _certificate_terminal_join(
++                certificate_record, control_root, context, snapshots)
++        # There is no authenticated distinct-successor identity in this input
++        # schema. Mismatches stay unresolved, rather than becoming a new gate
++        # or being promoted to successor readiness based on a changed hash.
++        for path, data in snapshots.items():
++            if _terminal_bytes(path) != data:
++                raise _TerminalEvidenceError("terminal evidence changed during report join window")
++        selected_again = finalized if finalized.exists() or finalized.is_symlink() else control_root / "RESEARCH_PIPELINE_v2/nightly_packages" / run_id
++        if selected_again != package:
++            raise _TerminalEvidenceError("selected terminal package changed during report join window")
++        result.update(
++            status=TERMINAL_CONFLICT if certificate_record is not None else "TERMINAL_PREMISE_HOLD",
++            lineage={"staged_request_sha256": _terminal_sha(snapshots[context["stage"]]),
++                     "source_and_reported_mirror_sha256": source_sha,
++                     "selected_manifest_sha256": manifest_sha},
++            readbacks=[{"path": str(path), "sha256": _terminal_sha(data), "bytes": len(data)}
++                       for path, data in sorted(snapshots.items(), key=lambda row: str(row[0]))],
++            currentness="byte equality across the helper and reporter read windows; not an atomic report transaction",
++        )
++    except (OSError, ValueError, KeyError, TypeError, AttributeError, RuntimeError, ImportError, SyntaxError) as exc:
++        result["diagnostic"] = f"{type(exc).__name__}: {exc}"
++    return result
++
++
+ def read_json(path: Path) -> dict[str, Any]:
+     value = json.loads(path.read_text(encoding="utf-8"))
+     if not isinstance(value, dict):
+@@ -382,6 +632,17 @@
+     # changes no quality failure or independent-review/finalization evidence.
+     if certificate_record is not None and paper_saturday_status == "HOLD_CERTIFICATE":
+         paper_saturday_status = "HOLD_RECONCILIATION"
++
++    original_proof_status = proof_status
++    terminal_evidence = _terminal_observation(
++        control_root, run_id, mirror_run, requests, certificate_record)
++    terminal_evidence["original_proof_status"] = original_proof_status
++    terminal_applies = terminal_evidence["status"] != "NOT_APPLICABLE"
++    # Generation/mirror debt remains visible independently. Once both exist,
++    # exact terminal evidence, uncertainty, or a certificate conflict must take
++    # precedence over nominal readiness/certification without deleting either.
++    if terminal_applies and generated and mirrored:
++        proof_status = terminal_evidence["status"]
+ 
+     return {
+         "schema_version": 1,
+@@ -394,6 +655,7 @@
+         "paper_quality_verdict": gate.get("quality_verdict"),
+         "paper_saturday_status": paper_saturday_status,
+         "significance_gate_status": significance_status,
++        "terminal_evidence": terminal_evidence,
+         "request_paths": [str(path) for path in requests],
+         "request_kinds": sorted(request_kinds),
+         "aristotle_rows": [
+@@ -407,7 +669,10 @@
+             if request is not None and audit_recheck_for_row(row)
+         ],
+         "next_action": (
+-            "complete paper reconciliation and later independent review before finalization and local assembly" if proof_status == CERTIFIED_STATUS
++            "retain both the exact terminal premise hold and selected certificate for independent conflict review; this report authorizes no retry, transport, certificate issuance or publication" if terminal_evidence["status"] == TERMINAL_CONFLICT
++            else "retain the expected trusted terminal hold as unresolved evidence pending exact-lineage review; this report authorizes no retry, transport, successor generation, certificate issuance or publication" if terminal_evidence["status"] == TERMINAL_UNRESOLVED
++            else "retain the authenticated terminal premise hold and independent quality, significance and certification debt; recovery requires separate authorization and this report authorizes no retry or transport" if terminal_applies
++            else "complete paper reconciliation and later independent review before finalization and local assembly" if proof_status == CERTIFIED_STATUS
+             else "audit the returned project" if proof_status == "DOWNLOADED_UNAUDITED"
+             else "deliberately reformulate the false or drifted target and freeze a new paper/claim/Lean contract; automatic repair is prohibited" if terminal_statement_drift
+             else "reconcile the manager history against the immutable audit recheck before treating the proof as landed" if proof_status == "HOLD_AUDIT_INTEGRITY_RECHECK"

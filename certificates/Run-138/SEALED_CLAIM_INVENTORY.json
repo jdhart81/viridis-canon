@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "run": 138,
+  "stage": "pre_aristotle",
+  "novelty": "UNASSESSED",
+  "claims": [
+    {"id":"C1","claim":"Nonnegative weighted subsystem residuals obey |sum_i w_i b_i| <= sum_i w_i eps_i a_i under |b_i|<=eps_i a_i.","paper_locator":"Main results, Theorem 1","evidence_class":"FORMAL_TARGET","aristotle_target":"aggregate_residual_bound","formal_status":"UNPROVED","numeric_support":"verification.py check 1"},
+    {"id":"C2","claim":"Positive weights and target projections give a positive aggregate target projection.","paper_locator":"Main results, Proposition 1","evidence_class":"FORMAL_TARGET","aristotle_target":"aggregate_projection_positive","formal_status":"UNPROVED","numeric_support":"verification.py check 2"},
+    {"id":"C3","claim":"The aggregate alignment is at least A/sqrt(A^2+E^2) when A>0, E>=0, and |B|<=E.","paper_locator":"Main results, Theorem 2","evidence_class":"FORMAL_TARGET","aristotle_target":"alignment_floor_of_residual_bound","formal_status":"UNPROVED","numeric_support":"verification.py check 3"},
+    {"id":"C4","claim":"A uniform component cone half-width kappa yields aggregate alignment at least 1/sqrt(1+kappa^2).","paper_locator":"Main results, Corollary 1","evidence_class":"FORMAL_TARGET","aristotle_target":"common_cone_closed_under_weighted_sum and uniform_cone_alignment_floor","formal_status":"UNPROVED","numeric_support":"verification.py check 4"},
+    {"id":"C5","claim":"The general budget is sharp for co-directional residuals, while exact cancellation gives perfect aggregate alignment.","paper_locator":"Sharpness and cancellation","evidence_class":"FORMAL_TARGET","aristotle_target":"cancellation_gives_perfect_alignment","formal_status":"UNPROVED","numeric_support":"verification.py checks 5-6"},
+    {"id":"C6","claim":"Counting aligned components without magnitudes can mask aggregate reversal.","paper_locator":"Negative controls","evidence_class":"FORMAL_TARGET","aristotle_target":"magnitude_masking_witness","formal_status":"UNPROVED","numeric_support":"verification.py check 13"},
+    {"id":"C7","claim":"The preregistered verifier passed 16 of 16 checks.","paper_locator":"Computational verification","evidence_class":"NUMERIC","support":"verification_output.txt"},
+    {"id":"C8","claim":"The target direction, weights, audit plane, and residual budgets are legitimate for a real Earth-system decision.","paper_locator":"Methods, assumptions, and limitations","evidence_class":"DEFERRED","support":"Requires empirical identification, governance authority, and system-specific validation."},
+    {"id":"C9","claim":"The result establishes nonlinear stability, ecological safety, justice, agency, field effectiveness, or adoption.","paper_locator":"Discussion and limitations","evidence_class":"DEFERRED","support":"Outside the static model and unsupported."},
+    {"id":"C10","claim":"The Gaian specialization is novel, significant, or Canon-worthy.","paper_locator":"Prior work and conclusion","evidence_class":"DEFERRED","support":"SOURCE_LEDGER.json; novelty and significance remain UNASSESSED."},
+    {"id":"C11","claim":"The Gaian Alignment Cone Audit has demand, paid delivery, repeat use, MRR, or revenue.","paper_locator":"business_EV-138.md","evidence_class":"CONJECTURED","support":"All commercial evidence rungs are zero."}
+  ]
+}
+

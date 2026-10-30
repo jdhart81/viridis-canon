@@ -1,0 +1,128 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 131,
+  "run_id": "Run-131",
+  "slug": "cognitive-switching-hysteresis-certificate",
+  "title": "The Cognitive Switching Hysteresis Certificate: Exact loop geometry under directional state-change penalties",
+  "generated_at_utc": "2026-08-15T08:19:21Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-131_cognitive-switching-hysteresis-certificate",
+  "selection": {
+    "area_id": "14",
+    "area": "Cognitive Modeling",
+    "lens": "Thermodynamic",
+    "directive_kind": "locked_area",
+    "reason": "severe_starvation",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true,
+    "combination_guard": "PASS_PRIOR_AREA_14_LENS_WAS_ALIGNMENT_AT_RUN_108"
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "significance": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 15,
+    "failed": 0,
+    "checks": 15,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "deterministic_replay": "BYTE_IDENTICAL_1439_BYTES",
+    "scope": "250,000 seeded randomized cases: 20,000 bias translations, 20,000 interior-history cases, 20,000 exterior-band decisions, 50,000 analytic cycles, 100,000 direct cost comparisons, 10,000 scale transformations, 10,000 label symmetries, and 20,000 inverse reconstructions; plus exact symmetric/asymmetric thresholds, four-grid convergence with two switches, zero-cost, insufficient-amplitude, smooth-choice, and Landauer-identification controls"
+  },
+  "formalization": {
+    "status": "FROZEN_PROPOSED_UNPROVED",
+    "lean_file": "formalization/CognitiveSwitchingHysteresis.lean",
+    "targets": [
+      "threshold_order",
+      "band_width_identity",
+      "closed_loop_area_identity",
+      "bias_translation",
+      "directional_cost_recovery",
+      "cshc_nonvacuous"
+    ],
+    "contains_explicit_sorry_placeholders": true
+  },
+  "aristotle": {
+    "status": "NOT_RUN",
+    "submitted": false
+  },
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus cognition methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 132,
+    "kind": "area",
+    "area_id": "04",
+    "area": "D-Score Science",
+    "lens": "Stewardship",
+    "reason": "scored_selection",
+    "selection_note": "After Run 131 no severe-starvation, persistent-organic-leader-debt, or tier-floor rail is armed. Area 04 leads scored selection at 26.0; Stewardship follows Thermodynamic in the lens rotation and the area-lens combination is clean within the 16-run guard."
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 4,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "visual_review": "PASS_ALL_4_PAGES_RENDERED_AT_150_DPI",
+    "preserved_failure_evidence": "BUILD_FAILURE_NOTE.md"
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Binding-standard and Viridis-corpus review, current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "Historical Viridis research artifacts read with attribution preserved and no historical text rewritten"
+      }
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "659ebf6c68e2417a46ceb7c184f7f7498862af6c130cf15ec2ccd110656997b8",
+    "resulting_nightly_state_sha256": "b634c94932322c248354b3dd481604159a6cef007213d86b4a00986a618dee92",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "BUILD_FAILURE_NOTE.md": "f03ca5f3e1460c71ecfcb0d7af24a63c996bef0a4005c61adfbd52fe1b880acf",
+      "CEO_ALERT.md": "bac17e256bf591ea3c97942e83c27dd1f815522898bc95a874c898e8e3c482e3",
+      "CLAIM_INVENTORY.json": "d31be5ba3f43090e08b26c26ecc7339b06f4b98999aa74048829b00267f38bf8",
+      "PAPER_PACKAGE_MANIFEST.json": "faae9d3d0e8118b5ff3bda8b12f231f4dfad8d87294a1da46e187edf28aea6fb",
+      "PREREGISTRATION.md": "98bb1661af464bc38f8ff56af2e9b548bc636fbc6c20cc8611dfa7f157e34d4c",
+      "README.md": "2caae88431c28397927011da77fd8bd368ce8e6100c4866aadf8102180814c84",
+      "SOURCE_LEDGER.json": "45c41b6edc0dfe566a702055be7e13e247ff3d726e40406b143957a8d667705e",
+      "business_EV-131.md": "241cd62fbca939241851e60ecd9e1b512fdeedae7f6652a6f7fd875278c8531b",
+      "finding.md": "9918f169be8d97ab5490d153b408be393b0e9c1e2d9ca95ab58c78809e8a70d6",
+      "formalization/ARISTOTLE_PROMPT.md": "624f692b7323ada4506f9932c277745c566741ab5c56d80e77f797e01c262f42",
+      "formalization/CognitiveSwitchingHysteresis.lean": "9b57c213b1db90a6024923e5aa84f9e4e97bd506075e51dcfa9a0a3c64d7d521",
+      "formalization/STATEMENT_CONTRACT.json": "08a2d9f42a33637b84e6d83fc1c8a53fc1e45ef91e932b03cf817ad7d2b468c0",
+      "formalization/lakefile.toml": "d741980d915bda414d0c419da53b215739c857ae78ff180fbbcd945b85b0119b",
+      "formalization/lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028",
+      "paper.log": "a6d4b2be6dfc76e803ff5b42f3665c5537edb2ea5fb62c6f340565656e09bf57",
+      "paper.pdf": "5ad1d8d02db0d3c3b75b78f41c7670e5adc852d9c8eb2720d31c6f565c62d92e",
+      "paper.tex": "2b2fa0229787647ffdac5610b47d5965f4d94211933331ea79194a1c6a34dfa3",
+      "verification.py": "15ca91fd551c2a231e1dbace3e11029db4d8968ec098cf75035f32920a466c9b",
+      "verification_output.txt": "966a714a4c2c7137219a14168c7d2bb3dd3277f269e93816fa8a3566ecf94ebd"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed only after sealing; its hash is recorded in NIGHTLY_STATE.md and INDEX.md because a manifest cannot contain its own cryptographic hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {
+    "published": false,
+    "pushed": false,
+    "submitted": false,
+    "outreach_sent": false,
+    "external_account_mutated": false,
+    "money_moved": false
+  }
+}

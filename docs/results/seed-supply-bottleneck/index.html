@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can a seed supply network meet restoration demand? | Viridis Canon</title>
+<meta name="description" content="Given seed sources with quantities, planting sites with demands and the allowed source-to-site transfers, the largest share of every site&#x27;s demand that can be met at once equals a minimum cut ratio over site sets, and full supply is feasible exactly when a capacitated Hall condition holds. The theorems are machine-checked in Lean 4.">
+<link rel="canonical" href="https://jdhart81.github.io/viridis-canon/results/seed-supply-bottleneck/">
+<meta name="citation_title" content="The Seed-Source Bottleneck Certificate: A cut condition for climate-aligned afforestation supply networks">
+<meta name="citation_author" content="Hart, Justin D.">
+<meta name="citation_author_institution" content="Viridis LLC">
+<meta name="citation_author_orcid" content="https://orcid.org/0009-0008-3082-2482">
+<meta name="citation_publication_date" content="2026/08/17">
+<meta name="citation_online_date" content="2026/08/17">
+<meta name="citation_doi" content="10.5281/zenodo.21971057">
+<meta name="citation_pdf_url" content="https://zenodo.org/records/21971057/files/paper.pdf">
+<meta name="citation_abstract_html_url" content="https://jdhart81.github.io/viridis-canon/results/seed-supply-bottleneck/">
+<meta name="citation_technical_report_institution" content="Viridis LLC">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="restoration; native seed supply; seed transfer zones; max-flow min-cut; Hall&#x27;s theorem; decision support; Lean 4; machine-checked">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Can a seed supply network meet restoration demand?">
+<meta property="og:description" content="Given seed sources with quantities, planting sites with demands and the allowed source-to-site transfers, the largest share of every site&#x27;s demand that can be met at once equals a minimum cut ratio over site sets, and full supply is feasible exactly when a capacitated Hall condition holds. The theorems are machine-checked in Lean 4.">
+<meta property="og:url" content="https://jdhart81.github.io/viridis-canon/results/seed-supply-bottleneck/">
+<meta property="og:image" content="https://jdhart81.github.io/viridis-canon/assets/og.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "ScholarlyArticle",
+ "headline": "The Seed-Source Bottleneck Certificate: A cut condition for climate-aligned afforestation supply networks",
+ "name": "The Seed-Source Bottleneck Certificate: A cut condition for climate-aligned afforestation supply networks",
+ "author": {
+  "@type": "Person",
+  "name": "Justin D. Hart",
+  "sameAs": "https://orcid.org/0009-0008-3082-2482",
+  "affiliation": {
+   "@type": "Organization",
+   "name": "Viridis LLC"
+  }
+ },
+ "datePublished": "2026-08-17",
+ "identifier": {
+  "@type": "PropertyValue",
+  "propertyID": "DOI",
+  "value": "10.5281/zenodo.21971057"
+ },
+ "sameAs": "https://doi.org/10.5281/zenodo.21971057",
+ "url": "https://jdhart81.github.io/viridis-canon/results/seed-supply-bottleneck/",
+ "abstract": "Given seed sources with quantities, planting sites with demands and the allowed source-to-site transfers, the largest share of every site's demand that can be met at once equals a minimum cut ratio over site sets, and full supply is feasible exactly when a capacitated Hall condition holds. The theorems are machine-checked in Lean 4.",
+ "keywords": [
+  "restoration",
+  "native seed supply",
+  "seed transfer zones",
+  "max-flow min-cut",
+  "Hall's theorem",
+  "decision support",
+  "Lean 4",
+  "machine-checked"
+ ],
+ "license": "https://creativecommons.org/licenses/by/4.0/",
+ "isBasedOn": "https://github.com/jdhart81/viridis-canon/tree/main/series/SSBC",
+ "isPartOf": {
+  "@type": "CreativeWork",
+  "name": "Viridis Canon",
+  "url": "https://jdhart81.github.io/viridis-canon/"
+ },
+ "creativeWorkStatus": "UNCERTIFIED manuscript artifact; working paper (not peer reviewed); main theorems machine-checked (comparator certificate Run-130, scoped to its sealed artifacts)"
+}
+</script>
+<style>
+:root{--bg:#fbfaf6;--fg:#1c2620;--muted:#55635a;--line:#d9ded6;--accent:#1f5c3d;--code:#f1f3ee;--warn:#7a5a12;--warnbg:#fbf3dc}
+@media (prefers-color-scheme:dark){:root{--bg:#121714;--fg:#e4ebe5;--muted:#a3b1a7;--line:#2c3630;--accent:#7fc79d;--code:#1b221e;--warn:#e6c46a;--warnbg:#2a2412}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 Georgia,'Iowan Old Style','Times New Roman',serif}
+header,main,footer{max-width:46rem;margin:0 auto;padding:0 16px}
+header{display:flex;gap:1rem;flex-wrap:wrap;align-items:baseline;padding-top:1.25rem;font:15px/1.4 system-ui,sans-serif}
+header a{color:var(--accent);text-decoration:none}header .brand{font-weight:700;color:var(--fg)}
+h1{font-size:1.9rem;line-height:1.2;margin:1.2rem 0 .4rem}
+h2{font:600 1.05rem/1.3 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:2rem 0 .6rem;border-top:1px solid var(--line);padding-top:1rem}
+a{color:var(--accent)}
+.status{font:14px/1.45 system-ui,sans-serif;background:var(--warnbg);color:var(--warn);border-radius:6px;padding:.6rem .8rem;margin-top:1rem}
+.paper{font:15px/1.5 system-ui,sans-serif;color:var(--muted)}
+.question{font-size:1.15rem;font-style:italic}
+ul{padding-left:1.2rem}li{margin:.35rem 0}
+table{width:100%;border-collapse:collapse;font:14px/1.45 system-ui,sans-serif}
+td,th{border-bottom:1px solid var(--line);padding:.45rem .3rem;vertical-align:top;text-align:left}
+code,pre{font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);border-radius:4px}
+code{padding:.05rem .25rem;word-break:break-word}pre{padding:.75rem;overflow-x:auto;white-space:pre-wrap;word-break:break-word}
+.card{border:1px solid var(--line);border-radius:8px;padding:1rem;margin:1rem 0}
+.card h3{margin:.1rem 0 .4rem;font-size:1.2rem}
+footer{font:14px/1.5 system-ui,sans-serif;color:var(--muted);padding-bottom:3rem;margin-top:2.5rem;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<header><a class="brand" href="../../">Viridis Canon</a><a href="../">Results</a><a href="https://github.com/jdhart81/viridis-canon">Repository</a><a href="https://github.com/jdhart81/viridis-canon/blob/main/BOUNTY.md">Theorem bounty</a></header>
+<main>
+<p class="status">UNCERTIFIED manuscript artifact. No issuer-produced Viridis Comparator certificate has been shown to bind this public manuscript&#x27;s exact bytes. Any linked certificate applies only to its exact sealed artifacts and stated theorem scope. Results remain conditional on the declared assumptions. Working paper, not peer reviewed. The main theorems are machine-checked (comparator certificate, Lean and nanoda kernels); the decision tool is not field-validated.</p>
+<h1>Can a seed supply network meet restoration demand?</h1>
+<p class="paper">Paper: <cite>The Seed-Source Bottleneck Certificate: A cut condition for climate-aligned afforestation supply networks</cite>. Justin D. Hart, 2026.
+DOI <a href="https://doi.org/10.5281/zenodo.21971057">10.5281/zenodo.21971057</a> · <a href="https://zenodo.org/records/21971057/files/paper.pdf">PDF</a> ·
+<a href="https://github.com/jdhart81/viridis-canon/tree/main/series/SSBC">Lean source</a> ·
+<a href="https://github.com/jdhart81/viridis-canon/tree/main/certificates/Run-130">certificate</a></p>
+
+<h2>The question</h2>
+<p class="question">Can our seed sources meet every planting site&#x27;s demand under our seed-transfer rules? If not, which sites are the bottleneck, and will buying more seed help?</p>
+
+<h2>The answer, in plain words</h2>
+<p>Give the tool your seed lots (with quantities), your planting sites (with demand) and which lots may go to which sites, for example under climate-matched provenance rules. It returns the largest share of every site&#x27;s demand you can meet at the same time, and the sites that limit it.</p><p>Adding seed at a source that cannot reach the bottleneck sites cannot raise that share. Checking several climate scenarios together can only lower it, never raise it.</p><p>Having as much seed in total as you need is not enough: the certified negative control shows total supply exactly equal to total demand while only a small fraction of every site&#x27;s demand can be met.</p>
+
+<h2>The mathematics</h2>
+<ul>
+<li><b>Common fulfilment fraction.</b> θ* = min{1, min over non-empty site sets U of S(N(U)) / D(U)}, where N(U) is the set of sources allowed to serve some site in U, S is total supply and D is total demand. θ* is the largest feasible fraction.</li><li><b>Full supply.</b> Every site can be fully supplied if and only if D(U) ≤ S(N(U)) for every non-empty U (a capacitated Hall condition).</li><li><b>Bottleneck.</b> When θ* &lt; 1, increasing supply at a source outside N(U) for the active bottleneck U cannot increase θ*.</li><li><b>Scenarios.</b> The certificate for transfers allowed in every scenario is at most the certificate of each scenario.</li>
+</ul>
+
+
+<h2>What is machine-checked</h2>
+<p>Comparator certificate <a href="https://github.com/jdhart81/viridis-canon/tree/main/certificates/Run-130"><code>Run-130</code></a>:
+the statements below are proved with zero <code>sorry</code>, use only the axioms
+<code>propext</code>, <code>Quot.sound</code> and <code>Classical.choice</code>, match a separate
+challenge file, and are accepted by both the Lean kernel and the independent nanoda kernel
+(Lean v4.28.0, Mathlib <code>8f9d9cf</code>).
+Size label: <b>substantial</b>.</p>
+<table><thead><tr><th>Lean theorem</th><th>What it says</th></tr></thead>
+<tbody>
+<tr><td><code>seed_routing_common_fraction_eq_min_cut_ratio</code></td><td>θ* is the greatest feasible common fulfilment fraction.</td></tr>
+<tr><td><code>seed_routing_feasible_iff_cut_conditions</code></td><td>Full supply is feasible exactly when every non-empty site set passes the cut condition.</td></tr>
+<tr><td><code>capacity_outside_active_bottleneck_irrelevant</code></td><td>More supply outside the active bottleneck cannot raise θ*.</td></tr>
+<tr><td><code>scenario_intersection_certificate_le_each_scenario</code></td><td>Requiring a transfer to be allowed in every scenario can only lower θ*.</td></tr>
+<tr><td><code>C1_witness</code></td><td>Witness: in the paper&#x27;s two-site negative control the greatest feasible fraction is exactly 1/10.</td></tr>
+<tr><td><code>C1_witness_nontrivial</code></td><td>States 1/10 &lt; 1, so that witness value is below full supply (a one-line arithmetic fact).</td></tr>
+<tr><td><code>C2_witness_infeasible</code></td><td>Witness: in the negative control full supply is infeasible and the cut condition fails at the first site.</td></tr>
+<tr><td><code>C2_witness_feasible</code></td><td>Witness: with every transfer allowed, full supply is feasible and every cut condition holds.</td></tr>
+<tr><td><code>C3_witness</code></td><td>Witness: θ* &lt; 1 at an explicit bottleneck; adding supply at a source outside it leaves θ* unchanged.</td></tr>
+<tr><td><code>C4_witness</code></td><td>Witness: two scenarios with θ* = 1 and 1/10; requiring both gives 1/10, while allowing either gives a falsely reassuring 1.</td></tr>
+<tr><td><code>negative_control_arbitrarily_severe</code></td><td>For any e in (0, 1], total supply can equal total demand while only a fraction e of every site&#x27;s demand is achievable.</td></tr>
+</tbody></table>
+<p>Check it yourself:</p>
+<pre>git clone https://github.com/jdhart81/viridis-canon &amp;&amp; cd viridis-canon
+python3 certificates/verify_bundle.py                 # every file still matches its certificate (1 s)
+certificates/rerun.sh Run-130 --axioms-only            # re-elaborate in Lean and audit the axioms</pre>
+
+<h2>Try it</h2>
+<p>Run the decision function <code>seed-source-bottleneck</code> with the Python standard library only:</p>
+<pre>python3 -m canon_core build-os --out os-bundle
+echo '{&quot;id&quot;: &quot;seed-source-bottleneck&quot;, &quot;inputs&quot;: {&quot;demands&quot;: [4, 4], &quot;supplies&quot;: [3, 10], &quot;edges&quot;: [[0, 0], [1, 1]]}}' | python3 os-bundle/run.py</pre>
+<p>Expected output (from the function's manifest, re-checked in CI):</p>
+<pre>{
+ &quot;common_fulfillment_fraction&quot;: 0.75,
+ &quot;full_fulfillment_feasible&quot;: false,
+ &quot;bottleneck_site_indices&quot;: [
+  0
+ ],
+ &quot;eligible_supply_indices&quot;: [
+  0
+ ],
+ &quot;bottleneck_ratio&quot;: 0.75,
+ &quot;scope&quot;: &quot;continuous one-period frozen binary-eligibility supply network&quot;
+}</pre>
+<p>AI agents can call the same function over MCP at <code>https://viridisconservation.com/api/viridisos/mcp</code>.</p>
+
+<h2>Assumptions and limits</h2>
+<ul>
+<li>One period, continuous quantities, and a yes/no rule for which source may serve which site.</li><li>Costs, timing, storage losses and germination are outside the model unless folded into the supply numbers.</li><li>The underlying theorem is classical (Hall, Gale, max-flow/min-cut). What is new is a machine-checked statement for this decision, built from scratch because Mathlib has no capacitated Hall theorem.</li><li>Not field-validated: no seed program has used it yet.</li>
+</ul>
+
+<h2>Cite</h2>
+<pre>@misc{hart2026seedsupplybottleneck,
+  author    = {Hart, Justin D.},
+  title     = {The Seed-Source Bottleneck Certificate: A cut condition for climate-aligned afforestation supply networks},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21971057},
+  note      = {UNCERTIFIED manuscript artifact. Working paper. Main theorems machine-checked (comparator certificate Run-130, scoped to its sealed artifacts)}
+}</pre>
+</main>
+<footer>
+<p>The proofs are AI-generated and machine-checked; Justin D. Hart (<a href="https://orcid.org/0009-0008-3082-2482">ORCID</a>) is the accountable author.
+Tools and their roles: <a href="https://github.com/jdhart81/viridis-canon/blob/main/AI_USE_AND_AUTHORSHIP.md">AI_USE_AND_AUTHORSHIP.md</a>.
+How we release: <a href="https://github.com/jdhart81/viridis-canon/blob/main/RESPONSIBLE_RELEASE.md">RESPONSIBLE_RELEASE.md</a>.</p>
+<p>Find a vacuous, trivial or misstated theorem among the certified runs and we pay $50 (see the <a href="https://github.com/jdhart81/viridis-canon/blob/main/BOUNTY.md">theorem bounty</a>).
+Questions and challenges: <a href="https://github.com/jdhart81/viridis-canon/discussions">Discussions</a>.</p>
+</footer>
+</body>
+</html>

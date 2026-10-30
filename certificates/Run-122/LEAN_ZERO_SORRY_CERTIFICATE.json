@@ -1,0 +1,58 @@
+{
+  "bindings": {
+    "candidate_proof": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-122/VERIFICATION_CANDIDATE_ATTEMPT_5.lean",
+      "sha256": "14ebbfa7c73f86cb2eccaf1c83e8e18a139d45a9f4c5d244e0aa03b56b24ac13"
+    },
+    "formal_statement": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-122/VERIFICATION_STATEMENT_ATTEMPT_5.lean",
+      "sha256": "14ebbfa7c73f86cb2eccaf1c83e8e18a139d45a9f4c5d244e0aa03b56b24ac13"
+    },
+    "independent_cloud_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-122/COMPARATOR_CLOUD_RECEIPT_PRODUCTION_ATTEMPT_5.json",
+      "sha256": "6560a5b11c0c382e240a82ad05dc2f8275c4a314cd5c14ec8bc5075810d84d5d"
+    },
+    "request": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-122/ENGINE3_VERIFICATION_REQUEST_ATTEMPT_5.json",
+      "sha256": "0649d891dd87fa5d2916e3abb3605bd28595ca04bbff08093b31e2d151f0a99c"
+    },
+    "sealed_paper_inputs": {
+      "SEALED_CLAIM_INVENTORY.json": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-122/SEALED_CLAIM_INVENTORY.json",
+        "sha256": "08a414bbb4910d3958f241cda9449a83898a13f66b492838f0e43922a89efa48"
+      },
+      "SEALED_RUN_MANIFEST.json": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-122/SEALED_RUN_MANIFEST.json",
+        "sha256": "a3e26ba7d8b94f502f5f2a0c261b78ddeaf312210abc77b29ba628e7bd7f043d"
+      },
+      "SEALED_paper.pdf": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-122/SEALED_paper.pdf",
+        "sha256": "5443c4a92c061d2bee9fa58ef583852dbaf6af59b740fb49cdfad0b718c9841d"
+      },
+      "SEALED_paper.tex": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs  2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-122/SEALED_paper.tex",
+        "sha256": "c77870c679dc26acaeb66277ca2df9f1121de4e18a12d51a091a2947851912c8"
+      }
+    }
+  },
+  "candidate_id": "Run-122-PaperFormalizationProof-Comparator-attempt-5",
+  "gates": {
+    "allowed_axioms_only": true,
+    "aristotle_required": false,
+    "comparator_lean_kernel": true,
+    "comparator_nanoda_kernel": true,
+    "comparator_statement_identity": true,
+    "frozen_statement_and_candidate_hash_bound": true,
+    "independent_cloud_kernel_verification": true,
+    "local_lean_execution": false,
+    "nonvacuity_witnesses": true,
+    "zero_sorries_or_admits": true
+  },
+  "issued_at_utc": "2026-08-29T05:28:49.297095+00:00",
+  "run_id": "Run-122",
+  "schema_version": "1.0",
+  "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+  "standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+  "status": "LEAN_ZERO_SORRY_CERTIFIED",
+  "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1"
+}

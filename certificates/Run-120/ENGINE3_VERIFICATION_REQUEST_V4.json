@@ -1,0 +1,58 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-120-PaperFormalizationProof-Comparator-attempt-4",
+  "root_candidate_id": "Run-120-PaperFormalizationProof-Comparator",
+  "attempt": 4,
+  "source_run": "Run-120",
+  "module": "Run120Monolith",
+  "namespace": "Viridis.Run120",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "7370d9fa0f8dc0f6164e8f57cbd388d0e1fbfb1241408ec66a25cd2c38f10fe8",
+  "input_sha256": {
+    "SEALED_paper.pdf": "f212374147b81e2e25fe72637be9596e875dabed2e4644cb7832a2456a8cf63e",
+    "SEALED_paper.tex": "3f455193edb0193a97950c9eccbe1a99f436cb6ef0728133130e6f55ae94d601",
+    "SEALED_CLAIM_INVENTORY.json": "5c238b148168eaf9e8675b30fde538245b106d4a884bd4034e3ae0ef9dda57de",
+    "SEALED_RUN_MANIFEST.json": "8a7289547330bbf8a8c0795d94c5f6df81ba75eff0a1c02fc51e428f7d731435",
+    "VERIFICATION_STATEMENT_V4.lean": "4b574148b3c4854ac85d0594915a536aa1cc372414c682a726b6ff60824b7c58",
+    "VERIFICATION_CANDIDATE_V4.lean": "4b574148b3c4854ac85d0594915a536aa1cc372414c682a726b6ff60824b7c58"
+  },
+  "expected_theorem_names": [
+    "conjunctive_chain_weakest_first",
+    "conjunctive_chain_weakest_first_unique",
+    "conjunctive_chain_weakest_first_budget",
+    "conjunctive_portfolio_monotone",
+    "conjunctive_portfolio_supermodular",
+    "conjunctive_portfolio_increasing_marginals",
+    "marginal_greedy_counterexample_family",
+    "greedy_first_pick_is_distractor",
+    "greedy_improvement",
+    "greedy_family_optimum",
+    "greedy_family_optimum_budget",
+    "greedy_family_optimal_improvement",
+    "greedy_improvement_ratio",
+    "greedy_ratio_tendsto_zero"
+  ],
+  "nonvacuity_obligations": [
+    "exists_weakest_selection",
+    "weakest_first_witness",
+    "portfolio_witness",
+    "greedyRun2_exists",
+    "greedy_family_ratio_pos_lt_one"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "monolith_receipt": "MONOLITH_RECEIPT.json",
+  "supersedes_request_sha256": "9dfa03df4e019f3710d7711e27012837bb89042bca73c870418d1c363fa4b997",
+  "selective_import_wrapper": true,
+  "legacy_provenance": {
+    "candidate_source": "immutable Run-120 attempt-2 audited multi-module candidate",
+    "formal_declaration_source": "same frozen audited declaration set; Comparator independently rechecks types and proofs",
+    "aristotle_required_for_this_certificate": false
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

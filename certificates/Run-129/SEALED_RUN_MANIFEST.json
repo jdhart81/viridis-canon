@@ -1,0 +1,109 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 129,
+  "run_id": "Run-129",
+  "slug": "anytime-change-certificate",
+  "title": "The Anytime Change Certificate: False-alarm control, a late-change penalty, and a bounded erasure budget for continuous monitoring",
+  "generated_at_utc": "2026-08-13T08:20:47Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-129_anytime-change-certificate",
+  "selection": {
+    "area_id": "10",
+    "area": "Monitoring Technology",
+    "lens": "Thermodynamic",
+    "directive_kind": "locked_area",
+    "reason": "scored_selection",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true,
+    "combination_guard": "PASS_DISTANCE_18_FROM_RUN_111"
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "significance": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 15,
+    "failed": 0,
+    "checks": 15,
+    "failure_conditions_triggered": 0,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "scope": "heavy-tailed change-time prior normalization and tail identity; exact Bernoulli null martingale enumeration through horizon 18; exact finite-horizon threshold crossing; 12,000 long-horizon iid-null paths; repeated-test, sticky-null, and model-mismatch controls; 128,000 component-delay trials across four change times and three convergence scales; 4,000 mixture/component dominance paths; logarithmic late-change penalty and model-limited Landauer accounting"
+  },
+  "aristotle": {
+    "status": "NOT_RUN",
+    "submitted": false
+  },
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus monitoring-integrity methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 130,
+    "kind": "area",
+    "area_id": "11",
+    "area": "Afforestation Systems",
+    "lens": "Alignment",
+    "reason": "scored_selection",
+    "selection_note": "No severe-starvation or tier-floor rail is armed after Run 129. Area 11 has the highest post-transition stated score, 1.5*15=22.5. Run 129 consumed Thermodynamic as a rotation-preserving swap for the area 10 constraint, so Alignment carries into Run 130; area 11 x Alignment is combination-clean at the exact 16-run boundary from Run 114."
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 4,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "visual_review": "PASS_ALL_4_PAGES_RENDERED_AT_130_DPI",
+    "preserved_failure_evidence": null
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Binding-standard and Viridis-corpus review, current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "Historical Viridis research artifacts read with attribution preserved and no historical text rewritten"
+      }
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "82b5cbde4731f8e0af27c42507682e1bffd6c3f9697d9070cbf0e60c3669bf6c",
+    "resulting_nightly_state_sha256": "5898c578cc6312f26a34f7f569201f302cc0653d29d5dfe259f3e553753ef18e",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "CEO_ALERT.md": "dd8aeb1ec2fe748b3c1764ab35e4f722ea702fbda5dcd1bb9ed797e48f0c6f94",
+      "CLAIM_INVENTORY.json": "72e77cccce0ac8eda23e6570e66c0b9961b878feb9346b1681d9705d6fcc00e1",
+      "PAPER_PACKAGE_MANIFEST.json": "cb6601d0f5b2d025957bd91981a5deb045c9f1fd55a24b5f049b82ebcea99d82",
+      "PREREGISTRATION.md": "15d5abb98c6fe2312b86b0c807d977b1cb044fa91c5cd0c5129d4265df73cecd",
+      "README.md": "46899c79c93fe1310d2ea1f5a63f7e843ecfa6d2c1ee5122d7f7ef89f863b8ad",
+      "SOURCE_LEDGER.json": "e14ae4a22c80ef5723de5cc7c86f8070521028027c46cd35d6d86f2b4618daab",
+      "business_evidence_value.md": "fc8c494f8f5fc844873b1220bd68c3865fe4ff6b5045401c8a83bbf7f0ec89f1",
+      "finding.md": "e9ed1ce412b77d74bbe59c4e83151ff45ed08a2e0998388105f1a2c5184ad81d",
+      "paper.log": "824daed5791af04a76502b6012372ad29a90ee2cadce3c7d1ebef0e75eca0250",
+      "paper.pdf": "7e39aa3311b6982999aeabf332624b188fb9f1550c751a1b3338cbb5eb8f3f7e",
+      "paper.tex": "9492aa96d79151dd14988b8e2c6c6219c4bb5ee9c96de67ca00acc382e6d6b32",
+      "verification.py": "bbd556fbfdf12e0d0ffeeb6b8f29e7db6b03c9b2dc500398af6d9f8a7bc9df03",
+      "verification_output.txt": "136b3f66982670d73b4da702176cc3b580497464ba4aeb4aef9961cd0891fa45"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed only after sealing; its hash is recorded in NIGHTLY_STATE.md and INDEX.md because a manifest cannot contain its own cryptographic hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {
+    "published": false,
+    "pushed": false,
+    "submitted": false,
+    "outreach_sent": false,
+    "external_account_mutated": false,
+    "money_moved": false
+  }
+}

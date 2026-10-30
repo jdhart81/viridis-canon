@@ -1,8 +1,117 @@
-# Viridis Canon — research sources and coverage
+# Viridis Canon
 
-[![CI](https://github.com/jdhart81/viridis-canon/actions/workflows/ci.yml/badge.svg)](https://github.com/jdhart81/viridis-canon/actions/workflows/ci.yml) [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE) [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/jdhart81/viridis-canon/badge)](https://scorecard.dev/viewer/?uri=github.com/jdhart81/viridis-canon)
+**Machine-checked mathematics for ecological decisions, released in the open with the receipts.**
 
-**Public Lean sources, historical build records, and a coverage index for Viridis research.**
+[![CI](https://github.com/jdhart81/viridis-canon/actions/workflows/ci.yml/badge.svg)](https://github.com/jdhart81/viridis-canon/actions/workflows/ci.yml) [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE) [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/jdhart81/viridis-canon/badge)](https://scorecard.dev/viewer/?uri=github.com/jdhart81/viridis-canon) [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jdhart81/viridis-canon)
+
+Viridis is an independent research program led by Justin D. Hart (Viridis LLC).
+It uses AI systems to propose and prove results about decisions in ecology and
+conservation. Typical questions:
+
+- Can this seed supply network meet planting demand, and where is the bottleneck?
+- Has this monitoring signal really changed, at a controlled false-alarm rate?
+- How much capacity can a precautionary rule safely claim?
+
+Each result is released in three linked forms:
+
+- **Lean 4 proofs**, built against a pinned Mathlib.
+- **A paper**, with a Zenodo DOI.
+- **A decision function** you can run.
+
+A named human answers for every result. Nothing in this repository claims field
+validation. Every function says `empirical_validation: NOT_VALIDATED` until field
+evidence exists.
+
+## What is machine-checked today
+
+| Evidence | Count | What it means |
+|---|---|---|
+| Published comparator certificates | **18 runs, 114 theorems** | Each certificate records that the theorems are proved with zero `sorry`. It also records that they use only `propext`, `Quot.sound` and `Classical.choice`, that their statements match a challenge file, and that both the Lean kernel and the independent nanoda kernel accept them. The files and hashes are in [`certificates/`](./certificates/). |
+| … labelled *substantial* | **11 runs** | Formalizations of at least 200 lines with multi-step proofs. The other 7 are labelled *elementary* and are not oversold. See the [depth rule](./certificates/README.md). |
+| Decision functions tied to Lean theorems | **42** | Each [manifest](./os/) names its Lean module, theorems, DOI and verifier. They are listed in [`formalization.yaml`](./formalization.yaml). |
+| Rebuilt on every push | CI | `lake build` with an axiom audit (see [`REPRODUCE.md`](./REPRODUCE.md)). |
+| Legacy catalog records | 215 | Labelled UNCERTIFIED until re-certified (see [below](#legacy-catalog-status)). |
+
+How we release AI-assisted results, measured against the mathematics community's
+recommendations and including our known gaps, is set out in
+[**`RESPONSIBLE_RELEASE.md`**](./RESPONSIBLE_RELEASE.md).
+
+## Three results worth your time
+
+**1. Anytime-valid change detection for ecological monitoring.**
+[`series/ACC`](./series/ACC/) · [certificate](./certificates/Run-129/) · [paper](https://doi.org/10.5281/zenodo.21971041) · function `anytime-change` · [plain-language page](https://jdhart81.github.io/viridis-canon/results/anytime-change/)
+
+- Ville's inequality for non-negative martingales: P(∃n, c ≤ Mₙ) ≤ E[M₀]/c.
+- A mixture likelihood-ratio martingale.
+- The resulting false-alarm guarantee, P(∃n, Mₙ ≥ 1/α) ≤ α, valid at every sample size.
+- A Wald-type bound on expected detection delay.
+
+As of 2026-10-17 we could not find Ville's inequality in Mathlib, which has
+Doob's finite-horizon `maximal_ineq`. If it would be welcome there, we would like
+to contribute it upstream.
+
+**2. When a seed supply network can meet restoration demand.**
+[`series/SSBC`](./series/SSBC/) · [certificate](./certificates/Run-130/) · [paper](https://doi.org/10.5281/zenodo.21971057) · function `seed-source-bottleneck` · [plain-language page](https://jdhart81.github.io/viridis-canon/results/seed-supply-bottleneck/)
+
+- The largest fraction of every site's demand that can be met equals min{1, min over site sets U of S(N(U))/D(U)}.
+- Full demand is feasible exactly when every site set passes a capacitated Hall condition.
+- Adding capacity outside the bottleneck cannot help.
+
+**3. A precautionary capacity rule that is provably safe and provably tight.**
+[`series/PCR`](./series/PCR/) · [certificate](./certificates/Run-127/) · [paper](https://doi.org/10.5281/zenodo.21971046) · function `precautionary-capacity` · [plain-language page](https://jdhart81.github.io/viridis-canon/results/precautionary-capacity/)
+
+- From the mean and variance alone, a Cantelli-based ceiling keeps the violation probability at or below α.
+- A two-point distribution shows that no mean-and-variance rule can do better.
+- A rule that uses only the mean can be violated with probability above 0.999.
+
+On 2026-10-17 we re-elaborated all three certified solutions on a fresh machine
+against the pinned toolchain and Mathlib, without the Viridis pipeline. All 98
+listed theorems depend only on the three standard axioms.
+
+**Theorem bounty.** Found a vacuous, trivial or misstated theorem among the 18 certified
+runs? Confirmed findings are credited in the ledger and acknowledged in the papers. The
+cash bounty is closed to new reports. See [`BOUNTY.md`](./BOUNTY.md).
+
+## Check it yourself
+
+| Time | What you check | Command |
+|---|---|---|
+| 1 second | Every certificate still binds its files | `python3 certificates/verify_bundle.py` |
+| Minutes | Elaborate a certified proof on your machine and audit its axioms | `certificates/rerun.sh Run-129 --axioms-only` |
+| Full | The same check our service ran, with [comparator](https://github.com/leanprover/comparator) | `COMPARATOR=/path/to/comparator certificates/rerun.sh Run-129` |
+| Whole repo | Every module in this repository | `lake exe cache get && lake build` ([`REPRODUCE.md`](./REPRODUCE.md)), or open it in Codespaces |
+
+A failed or inconclusive reproduction is as useful to us as a clean one.
+Please file it as an
+[external-validation report](https://github.com/jdhart81/viridis-canon/issues/new?template=external-validation.yml).
+
+## Use it
+
+- **Run a decision function locally,** with the Python standard library only:
+
+  ```bash
+  python3 -m canon_core build-os --out os-bundle
+  echo '{"id":"seed-source-bottleneck","inputs":{"demands":[4,4],"edges":[[0,0],[1,1]],"supplies":[3,10]}}' | python3 os-bundle/run.py
+  # {"ok": true, "output": {"common_fulfillment_fraction": 0.75, "bottleneck_site_indices": [0], ...}}
+  ```
+
+- **Agents** can list and run the same functions over MCP at
+  `https://viridisconservation.com/api/viridisos/mcp`, using the
+  `viridis_list_functions` and `viridis_run_unsigned_preview` tools. See
+  [`llms.txt`](./llms.txt).
+- **People** can use them through the [Viridis Ecological OS](https://viridisconservation.com/research).
+
+## Cite, question, contribute
+
+- **Cite** a specific result by the DOI in [`formalization.yaml`](./formalization.yaml), or the whole collection by [`CITATION.cff`](./CITATION.cff).
+- **Ask** in [Discussions](https://github.com/jdhart81/viridis-canon/discussions).
+- **Challenge** a statement, assumption or proof through an [external-validation report](https://github.com/jdhart81/viridis-canon/issues/new?template=external-validation.yml).
+- **Contribute**: see [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+
+---
+
+<a id="legacy-catalog-status"></a>
+## Legacy catalog status and history
 
 **UNCERTIFIED — the 215 legacy source records in the public catalog
 are not admitted as Comparator-certified claims.** Historical compilation, an Aristotle

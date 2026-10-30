@@ -1,0 +1,65 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-129-AnytimeChange-Comparator-attempt-3-selective-imports-complete",
+  "root_candidate_id": "Run-129-AnytimeChange-Comparator",
+  "attempt": 3,
+  "source_run": "Run-129",
+  "module": "PaperFormalization",
+  "namespace": "Viridis.Run129.PaperFormalization",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "3fcba2c56436decc06a637d3ab522de0b96924c4c0ed54b0a341af03bc5f763a",
+  "input_sha256": {
+    "SEALED_paper.pdf": "7e39aa3311b6982999aeabf332624b188fb9f1550c751a1b3338cbb5eb8f3f7e",
+    "SEALED_paper.tex": "9492aa96d79151dd14988b8e2c6c6219c4bb5ee9c96de67ca00acc382e6d6b32",
+    "SEALED_CLAIM_INVENTORY.json": "72e77cccce0ac8eda23e6570e66c0b9961b878feb9346b1681d9705d6fcc00e1",
+    "SEALED_RUN_MANIFEST.json": "bfe8f5a4091f7d3b50839b501480a7d7a1e9340fe6b208ff134fc33452372499",
+    "VERIFICATION_STATEMENT.lean": "3fcba2c56436decc06a637d3ab522de0b96924c4c0ed54b0a341af03bc5f763a",
+    "VERIFICATION_CHALLENGE_ALIGNED_V3.lean": "d68413572ef573abdcecf422c1bfb8ab5c958c4281bccce268fae89aa783aa0e",
+    "STATEMENT_ALIGNMENT_V3.json": "35991254b535220c2c41ec31e7a8828984eee4601b30a5016453532ab20419d8",
+    "VERIFICATION_CANDIDATE_V3.lean": "d5ac9ca2978b106699038d4d2672e3cf99939cbc8a0b7fedcd2e4fc01cf2b72b",
+    "MONOLITH_RECEIPT.json": "2cd0959a1f0cc0dd7f2ac0aa4aa5521c577726a448a0fb60e03f29b789e75ec6",
+    "CODEX_AUTHORSHIP_AND_PROVENANCE_RECEIPT.json": "61952a43ca4130b8e2fed75e09b9e6b527fc7fc2f97367e177a5ca62ea9fac6d"
+  },
+  "statement_alignment": {
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "sha256": "3fcba2c56436decc06a637d3ab522de0b96924c4c0ed54b0a341af03bc5f763a"
+    },
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT_V3.json",
+      "sha256": "35991254b535220c2c41ec31e7a8828984eee4601b30a5016453532ab20419d8"
+    }
+  },
+  "expected_theorem_names": [
+    "anytime_change_mixture_martingale",
+    "anytime_change_ville_certificate",
+    "change_component_dominance_and_penalty",
+    "bounded_overshoot_expected_delay"
+  ],
+  "nonvacuity_obligations": [
+    "c12_nonvacuous",
+    "c2_sup_nonvacuous",
+    "c3_nonvacuous",
+    "c4_nonvacuous"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "legacy_provenance": {
+    "historical_root_module_sha256": "6955d21f6a8d2c8386ca1504bf005ec9fa922f8cc74bbbea6db703dbf4bc8a0c",
+    "historical_audit_sha256": "d5bc8f3cc887ffcc3e18109667d59c4adbfb1080e1bd31489d2a46848b586cd8",
+    "candidate_source": "Codex-reviewed and reconstructed zero-sorry monolith from immutable proof modules; historical provider status carries no certification authority",
+    "fresh_comparator_verification_required": true,
+    "aristotle_required_for_this_certificate": false
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

@@ -1,0 +1,124 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 139,
+  "run_id": "Run-139",
+  "slug": "thermodynamic-retrofit-water-filling-note",
+  "title": "The Thermodynamic Retrofit Water-Filling Note",
+  "generated_at_utc": "2026-08-23T08:14:53Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-139_thermodynamic-retrofit-water-filling-note",
+  "selection": {
+    "area_id": "02",
+    "area": "Thermodynamic Economics",
+    "lens": "Thermodynamic",
+    "directive_kind": "locked_area",
+    "reason": "scored_selection",
+    "policy_id": "VRS-NIGHTLY-SELECTION-2",
+    "area_selected_before_lens": true,
+    "combination_guard": "PASS_THERMODYNAMIC_ECONOMICS_THERMODYNAMIC_OUTSIDE_16_RUN_GUARD"
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "generator_exit_state": "DISPOSITION_ASSIGNED",
+  "novelty": "UNASSESSED",
+  "significance": "UNASSESSED",
+  "disposition": {
+    "status": "METHODS_NOTE",
+    "reason": "Established replacement and convex water-filling literature leave insufficient demonstrated delta for promotion.",
+    "triviality_probe_short_proof_found": false,
+    "prior_art_rows": 3,
+    "terminal": true
+  },
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 15,
+    "failed": 0,
+    "checks": 15,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "deterministic_seed": 139,
+    "scope": "500 closed-form versus quadrature benefit cases, 10,000 random portfolio KKT and feasible-challenger cases, a 100,001-point scalar grid, boundary, scaling, embodied-burden, friction, and non-vacuity controls",
+    "preserved_failure_evidence": "VERIFICATION_FAILURE_NOTE.md records the initial 13/15 harness result and the two narrow repairs."
+  },
+  "formalization": {
+    "status": "FROZEN_PROPOSED_UNPROVED",
+    "lean_file": "formalization/ThermodynamicRetrofitWaterFilling.lean",
+    "targets": [
+      "clippedAllocation_nonnegative",
+      "clippedAllocation_le_one",
+      "interior_stationarity",
+      "coordinate_improvement_identity",
+      "embodied_burden_lowers_benefit",
+      "retrofit_allocation_nonvacuous"
+    ],
+    "contains_explicit_sorry_placeholders": true,
+    "local_lean_compilation_run": false
+  },
+  "aristotle": {"status":"NOT_RUN","submitted":false},
+  "advisory": {
+    "ceo_alert": "HOLD",
+    "proposed_route": "working-corpus thermodynamic economics methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "spine_admitted": false,
+    "viridisos_disposition": "BACKLOG_NO_WRAPPER",
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 140,
+    "kind": "area",
+    "area_id": "15",
+    "area": "Ecoterraforming",
+    "lens": "Stewardship",
+    "reason": "severe_starvation",
+    "selection_note": "After Run 139, area 15 reaches the severe-starvation threshold at staleness 22. Stewardship follows Thermodynamic and the last area-15 pairing at Run 117 used Symbiosis."
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 3,
+    "clean_log": true,
+    "undefined_references": 0,
+    "visual_review": "PASS_ALL_3_PAGES_RENDERED_AT_120_DPI",
+    "preserved_failure_evidence": "Initial restricted-runtime build lacked lmroman6-regular.otf; the dependency fetch was authorized and the final build completed."
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {"name":"Codex","role":"Binding-standard and corpus review, current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"},
+      {"name":"Claude","role":"Historical Viridis research artifacts read with attribution preserved and no historical text rewritten"}
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "b1fc57dac4eb2cfcc45add70d6dc5857cee69510059482aaa2e3f9692b1fc270",
+    "resulting_nightly_state_sha256": "9c71dd7a3ae200803bedf63562e03e8e09f7493e4fabda503054fa41b0300516",
+    "selection_policy_sha256": "2fbcec1f40fdb63517ad36c7e8bb908d056935a6bae86885877beeac084a2dac",
+    "artifact_hashes": {
+      "CEO_ALERT.md": "54ac36ba5486be8ee8a9e504bf6693d0b75068a3178f187a6ed1fda5b4c5646b",
+      "CLAIM_INVENTORY.json": "fa6d6f54578da47ee01037cdca75490c549ebf1a2c6b62e5225aff5de5eb7097",
+      "DISPOSITION.json": "9f42fa83edde89e5fe18ed5c5551748053285c47761d24a17df73f39e0710afd",
+      "PAPER_PACKAGE_MANIFEST.json": "e3afeb78aa87ebc84b4b269ff9569684ed51cc87b03d6abbf1fa149bd5301fe9",
+      "PREREGISTRATION.md": "4326ba52e7dc69faf8d6ea2b47739c73601ce8921feb061235689066dd65b399",
+      "PRIOR_ART.md": "3fce392af8a1628f571aae480d84341707bfc9f73d622f4cc0f4eacd443964e2",
+      "README.md": "2bb01506849ae4942c5682766efa05156879f2c420daaf5ed7d91bc45141fbe3",
+      "SOURCE_LEDGER.json": "ecc242b1b59073ea5bbc125601847f9b352d5ea83bbd9320a488ebfed1c93bf2",
+      "VERIFICATION_FAILURE_NOTE.md": "81732afdf22c1ca6e2a7f0f8ff57ce8f8d15fc990596236189f89df6a6fa041d",
+      "business_EV-139.md": "f65085ee5dfaf317b69baab59013ae444a6206ff9e603f5dfd78687be272bfa9",
+      "finding.md": "d137d6b720d1fd3bab7a664fcb12ec4d20bb335852f9f2ad6f6b4b5f5774a029",
+      "formalization/ARISTOTLE_PROMPT.md": "62484df798f9b0f501c00f46dfb403734d071df6229f56c2413bb16ab09673c5",
+      "formalization/STATEMENT_CONTRACT.json": "d57b858d62c2877200b7f724ec80d832060f12f1e0188bc8c34035083d4b841d",
+      "formalization/ThermodynamicRetrofitWaterFilling.lean": "ef65ab4a74fd2ca4f556503aab69fd0ef189e0ddc62f76b588d226937176f99f",
+      "formalization/lakefile.toml": "b3b67b4e01392118bca9fd002d66130c9ece5d3e2367afb829f2eb1a75bcfc56",
+      "formalization/lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028",
+      "paper.log": "7ad0cd37a1e2124d9e709698f54be2280e858236b91a227b5abab87d8c86793c",
+      "paper.pdf": "7a02d49abc85f0a885a5ec946bc24078bac8665d457deb134b37f452d6a623ca",
+      "paper.tex": "1c9406c3a050e71311d49ff1bd250ddf4caead1bbc46cc0ff23b20d92997438e",
+      "verification.py": "3afc63edead8b3374604fbcccd3411e5626ca7555741433b11857c65bf7b4607",
+      "verification_output.txt": "b16221a52ca1ddc00771ff2f326843b03b939a794404c22982ef5829a91456bf"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed only after sealing; its hash is recorded in NIGHTLY_STATE.md and INDEX.md because a manifest cannot contain its own hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {"published":false,"pushed":false,"submitted":false,"outreach_sent":false,"external_account_mutated":false,"money_moved":false}
+}

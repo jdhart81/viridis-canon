@@ -1,0 +1,33 @@
+name: report-only-indexed-ledger
+on:
+  pull_request:
+    paths:
+      - '00_lab_infrastructure/gates/report_only_ledger/**'
+      - 'tools/tests/test_report_only_indexed_ledger.py'
+      - '.github/workflows/report-only-indexed-ledger.yml'
+  push:
+    branches: [main]
+    paths:
+      - '00_lab_infrastructure/gates/report_only_ledger/**'
+      - 'tools/tests/test_report_only_indexed_ledger.py'
+      - '.github/workflows/report-only-indexed-ledger.yml'
+permissions:
+  contents: read
+jobs:
+  report-only-indexed-ledger:
+    name: report-only-indexed-ledger (${{ matrix.python }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.12', '3.14']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Exact source/closed equivalence controls and causal index mutants
+        run: timeout --signal=TERM --kill-after=5s 510s python3 -I -S -B -m unittest discover -s tools/tests -p test_report_only_indexed_ledger.py -v

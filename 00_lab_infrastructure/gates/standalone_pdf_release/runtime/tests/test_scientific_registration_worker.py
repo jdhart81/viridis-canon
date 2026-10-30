@@ -819,7 +819,7 @@ class ScienceTransportTests(unittest.TestCase):
             with self.subTest(change=change),tempfile.TemporaryDirectory()as tmp:
                 root, _, _, batch, _=self.fixture(tmp)
                 now=dt.datetime.now(dt.timezone.utc).isoformat();mono=science.time.monotonic()
-                source=root/'source.json';source_value={'synthetic':'complete bound source DATA','note_preparation':runtime.NOTE_PREPARATION};source.write_bytes(science.raw(source_value))
+                source=root/'source.json';source_value={'standard':'VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-1','synthetic':'complete bound source DATA','note_preparation':runtime.NOTE_PREPARATION};source.write_bytes(science.raw(source_value))
                 proof={'status':'ACTUAL_CURRENT_WORKER_SOURCE_AUTHORITY_AND_IDENTITY_VERIFIED',
                     'source_manifest_sha256':runtime.sha(transport.encode_json(source_value)), 'source_modules':20,'metadata_files':3,
                     'transient_restore_allowed':False,'scientific_population_admitted':False,'certifies':False,'note_preparation':runtime.NOTE_PREPARATION}

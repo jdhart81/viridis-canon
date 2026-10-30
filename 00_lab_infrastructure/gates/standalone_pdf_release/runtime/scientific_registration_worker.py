@@ -108,17 +108,20 @@ def _bootstrap():
     root = BOOTSTRAP_ROOT
     fields = {'standard','canonical_root','profile_binding','modules','metadata','source_origin',
               'legacy_closure','source_review_change_flags','shared_dependencies','note_preparation'}
-    if set(manifest) != fields or manifest['standard'] != 'VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-1' or manifest['canonical_root'] != str(root):
+    if set(manifest) != fields or manifest['standard'] not in {'VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-1','VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-2-LINKED109'} or manifest['canonical_root'] != str(root):
         raise ValueError('WORKER_BOOTSTRAP_CLOSED_FIXED_ROOT_MANIFEST')
     directory = root/'_ZENODO_DEPOSITS/standalone_pdf_runtime'
+    linked=manifest['standard']=='VRS-CURRENT-DIGEST-ARCHIVAL-PDF-WORKER-SOURCE-MANIFEST-2-LINKED109'
     names = {'profile':'CURRENT_PACKAGING_PROFILE.json','nomination':'INSTALLATION_NOMINATION.json','plan':'INSTALL_PLAN.json'}
-    if len(manifest['modules']) != 20 or {r['name'] for r in manifest['modules']} != BOOTSTRAP_MODULE_NAMES or len(manifest['metadata']) != 3:
+    if linked:names.update(linked109_adoption='LINKED109_ADOPTION.json',linked109_outer_guard='../guard_methods_digest_release.py')
+    if len(manifest['modules']) != 20 or {r['name'] for r in manifest['modules']} != BOOTSTRAP_MODULE_NAMES or len(manifest['metadata']) != (5 if linked else 3):
         raise ValueError('WORKER_BOOTSTRAP_TWENTY_AND_THREE')
     metadata = {}
     for row in manifest['metadata']:
-        if set(row) != {'role','path','sha256','identity'} or row['role'] not in names or row['role'] in metadata or Path(row['path']) != directory/names[row['role']]:
+        if set(row) != {'role','path','sha256','identity'} or row['role'] not in names or row['role'] in metadata or Path(row['path']) != (root/'_ZENODO_DEPOSITS/guard_methods_digest_release.py' if row['role']=='linked109_outer_guard' else directory/names[row['role']]):
             raise ValueError('WORKER_BOOTSTRAP_FIXED_METADATA')
-        metadata[row['role']] = json.loads(_bootstrap_read(row['path'],row['sha256'],row['identity']))
+        raw=_bootstrap_read(row['path'],row['sha256'],row['identity'])
+        metadata[row['role']]=raw if row['role']=='linked109_outer_guard' else json.loads(raw)
     profile_row = next(r for r in manifest['metadata'] if r['role']=='profile')
     profile_bound = {'path':profile_row['path'],'sha256':profile_row['sha256']}
     if manifest['profile_binding'] != profile_bound or metadata['nomination']['profile'] != profile_bound:
@@ -132,10 +135,17 @@ def _bootstrap():
     expected_shared=[{k:shared[0][k] for k in ('name','path','sha256')} | {'git_path':BOOTSTRAP_SHARED_GIT_PATH}]
     if metadata['profile'].get('shared_dependencies')!=expected_shared:
         raise ValueError('WORKER_BOOTSTRAP_SHARED_PROFILE_BINDING')
-    if (metadata['profile'].get('standard') != PROFILE_STANDARD
+    if (metadata['profile'].get('standard') != ('VRS-DIGEST-ARCHIVAL-PDF-LINKED109-PROFILE-1' if linked else PROFILE_STANDARD)
             or metadata['profile'].get('note_preparation') != NOTE_PREPARATION
             or manifest['note_preparation'] != NOTE_PREPARATION):
         raise ValueError('WORKER_BOOTSTRAP_NOTE_PREPARATION_BINDING')
+    if linked:
+        adoption=next(r for r in manifest['metadata'] if r['role']=='linked109_adoption')
+        if metadata['profile'].get('linked109_adoption')!={'path':adoption['path'],'sha256':adoption['sha256']}:
+            raise ValueError('WORKER_BOOTSTRAP_LINKED109_ADOPTION_BINDING')
+        guard=next(r for r in manifest['metadata']if r['role']=='linked109_outer_guard')
+        if metadata['profile']['external_guard']['sha256']!=guard['sha256']:
+            raise ValueError('WORKER_BOOTSTRAP_LINKED109_GUARD_BINDING')
     module_rows = []
     for row in manifest['modules']:
         if set(row) != {'name','path','sha256','identity'} or Path(row['path']) != directory/row['name'] or '/' in row['name']:

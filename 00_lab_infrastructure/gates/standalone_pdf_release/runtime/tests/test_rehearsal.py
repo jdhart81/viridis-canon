@@ -145,9 +145,12 @@ class ControllerHoldPathTests(unittest.TestCase):
      if self.deleted:raise urllib.error.HTTPError(request.full_url,410,'gone',{},io.BytesIO(b'{}'))
      return Response(json.dumps({'id':123,'submitted':False,'state':'unsubmitted'}).encode())
    sl={'id':100,'metadata':{'title':'same'}};sn={'id':100,'metadata':{'copyright':'retained'}}
-   manifest={'release_week':'2026-W42','notes':[],'public_metadata':{'title':'same'}}
+   import methods_digest_v2 as current_digest
+   manifest={'standard':current_digest.LABELLED_STANDARD,'release_week':'2026-W42',
+    'notes':[{'run_id':'Run-191','access_standard':current_digest.LABELLED_ACCESS_STANDARD,
+              'artifact_label':current_digest.ARTIFACT_LABEL}],'public_metadata':{'title':'same'}}
    registry=SimpleNamespace(require_registration=lambda *a,**k:{'receipt':{'record_id':'100'}},registered_relation_template=lambda *a,**k:{})
-   mods={'methods_digest_v2':SimpleNamespace(require_publication_bound=lambda *a:(manifest,{})),
+   mods={'methods_digest_v2':SimpleNamespace(require_publication_bound=lambda *a:(manifest,{}),require_new_publication=current_digest.require_new_publication),
     'methods_digest_registration_v3':registry,'own_record_comparison':SimpleNamespace(),
     'own_prior_record':SimpleNamespace(),'digest_metadata':SimpleNamespace(closed_payload=lambda *a:{'metadata':{}},native_metadata=lambda *a:{}),
     'first_digest_state':SimpleNamespace(encode_api_communities=lambda x:x),'digest_weekly_state':SimpleNamespace(),

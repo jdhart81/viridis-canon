@@ -1,0 +1,38 @@
+name: linked109-source-admission
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/linked109-source-admission.yml'
+      - '00_lab_infrastructure/gates/standalone_pdf_release/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/linked109-source-admission.yml'
+      - '00_lab_infrastructure/gates/standalone_pdf_release/**'
+permissions:
+  contents: read
+jobs:
+  linked109-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.12', '3.14']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Pure source admission controls and assertion-only mutants
+        run: timeout --signal=TERM --kill-after=5s 510s python -I -B -m unittest discover -s 00_lab_infrastructure/gates/standalone_pdf_release/source_adoption109/tests -p 'test_linked109_admission.py' -v
+  linked109-source-admission:
+    if: always()
+    needs: [linked109-controls]
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Both exact interpreter cells required
+        env:
+          RESULT: ${{ needs.linked109-controls.result }}
+        run: test "$RESULT" = success

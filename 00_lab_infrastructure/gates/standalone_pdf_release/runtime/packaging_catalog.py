@@ -454,7 +454,7 @@ def operation_scope(root, profile_binding, registry_context):
             snapshot=parent if parent is not None and parent.root==Path(root).resolve(strict=True)and parent.context is registry_context else ScientificInputData(
                 root,registry_context,data_alias_observation=(runtime.DATA_ALIAS_OBSERVATION
                     if Path(root).resolve(strict=True)==runtime.SCIENTIFIC_ALIAS_PATH.parent/runtime.SCIENTIFIC_ALIAS_READLINK else None),
-                platform_timezone_observation=(runtime.PLATFORM_TIMEZONE_OBSERVATION
+                platform_timezone_observation=(runtime.CURRENT_PLATFORM_TIMEZONE_OBSERVATION
                     if Path(root).resolve(strict=True)==runtime.SCIENTIFIC_ALIAS_PATH.parent/runtime.SCIENTIFIC_ALIAS_READLINK else None))
             snapshot.depth+=1;counted=True
             science_token=_SCIENCE.set(snapshot);read_token=_READ_CAPTURE.set(snapshot)

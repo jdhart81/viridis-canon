@@ -41,7 +41,7 @@ MUTANTS=[
   'DigestRoleTests.test_closed_role_binding_rejects_omission_swap_extra_or_changed_hash',[]),
  ('W10_historical_top_copy',DIGEST,[("    if 'manuscripts'in note:","    if False:")],
   'DigestAccessTests.test_partitioned_actual_consumer_digest_exact_two_roles_and_recursive_gate',[]),
- ('W11_complete_historical_pdf',ACCESS,[("    require_pdf_envelope(pdf)","    pass  # MUTANT accepts header-only historical PDF")],
+ ('W11_complete_historical_pdf',ACCESS,[("    require_self_contained_original(original)\n    require_pdf_envelope(pdf)\n    seen = {}","    require_self_contained_original(original)\n    pass  # MUTANT accepts header-only historical PDF\n    seen = {}"),("        require_pdf_envelope(pdf)\n        d.immutable(out / (current['run_id'] + '-' + TOP_PDF), pdf)","        pass  # MUTANT accepts header-only historical PDF\n        d.immutable(out / (current['run_id'] + '-' + TOP_PDF), pdf)")],
   'ArchivalAccessTests.test_header_only_pdf_cannot_become_bound_even_with_matching_observation',[]),
  ('W12_original_helper_origins',ACCESS,[("    return _HELPER_ORIGINS[name] if name in _HELPER_ORIGINS else GATES + '/' + name","    return GATES + '/' + name")],
   'FrozenInputBoundaryTests.test_actual_helper_origins_are_required_and_never_recovered_from_relocated_copies',[]),
@@ -91,7 +91,7 @@ def main():
                 results.append({'name':name,'status':'INVALID_CONTROL','test':test,'control':control_result});continue
             mutated=source
             for before,after in replacements+extra:
-                expected=2 if name=='W11_complete_historical_pdf' else 1
+                expected=1
                 if mutated.count(before)!=expected:raise ValueError('unique closed mutation sites required: '+name+' '+repr(before))
                 mutated=mutated.replace(before,after)
             (root/path).write_text(mutated)

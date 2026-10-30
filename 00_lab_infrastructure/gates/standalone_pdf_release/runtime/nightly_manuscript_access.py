@@ -12,6 +12,16 @@ from copy import deepcopy
 import datetime as dt
 from io import BytesIO
 import json
+import html
+import os
+import signal
+import select
+import shutil
+import stat
+import subprocess
+import tempfile
+import threading
+import time
 import re
 from pathlib import Path
 import sys
@@ -91,6 +101,17 @@ _FROZEN_HASHES = {'certificate_inspection.py': 'a7e3d2fcd167865b129529fce7e3599a
  'static_pregate.py': '659e2d66a45af24a846a5fafe26564ccf713492d0d06be0fb8172e961e862153',
  'theorem_coverage.py': '62bb9e87b10b8ef317616e4b906878d03f06752ab4e7d2dff90bdf9dfb27e99d',
  'track_b.py': 'faed81a12261607af23ec24e81286a208d11f5b0c8c1fd69b65a518d3a304bca'}
+
+LABELLED_STANDARD = 'VRS-NIGHTLY-UNCERTIFIED-ARTIFACT-ENVELOPE-1'
+LABELLED_BINDING_STANDARD = 'VRS-NIGHTLY-UNCERTIFIED-ARTIFACT-BINDING-1'
+LABEL_TEXT = 'UNCERTIFIED — no issuer-produced Viridis Comparator certificate binds the exact bytes of this derived manuscript. Attached certificates cover only their exact sealed predecessors and quoted formal statements under their stated hypotheses. They do not certify this new PDF, its prose, the historical manuscript, or empirical claims. Results remain conditional on the stated model assumptions.'
+LABEL_AUTHORITY = {'path':'reports/verification-coverage/2026-10-17/w42-artifact-label-authority/JUSTIN_W42_ARTIFACT_LABEL_AUTHORITY.json',
+    'sha256':'f4347618a6ce2857f58ba680c7fc25ad5d5b728111c096d59250c037d19dca9a'}
+LABELLED_TOP_PDF = 'Historical-Paper-UNCERTIFIED.pdf'
+NATIVE_RENDERER = '/opt/homebrew/bin/tectonic'
+RENDER_CACHE = {'path':'reports/verification-coverage/2026-10-06/phase-7-science-catchup-v001/runtime-install-v001/RENDERER_CACHE_MANIFEST.json','sha256':'d312006417a3eef3fca66a51db558b1853476cd9a8ed0479fe04ed351f8a9dc4'}
+LABELLED_MANIFEST_FIELDS = MANIFEST_FIELDS | {'artifact_label','label_authority','scope_render'}
+LABELLED_PB_FIELDS = PB_FIELDS | {'review_invocation'}
 
 class AccessHold(ValueError):
     pass
@@ -444,6 +465,594 @@ def require_current(note, root, authority):
                 'publication_binding':binding(note / 'PUBLICATION_BINDING.json'),
                 'scientific_predecessor':actual['predecessor'],
                 'certifies':False,'publication_authorized':False}
+
+
+
+def cache_snapshot(directory):
+    directory=Path(directory)
+    need(directory.is_dir()and not any(p.is_symlink()for p in(directory,*directory.parents)),'regular exact renderer cache')
+    rows={}
+    for path in sorted(directory.rglob('*')):
+        need(not path.is_symlink(),'renderer cache symlink')
+        if path.is_file():rows[d.safe_member(str(path.relative_to(directory)))]=d.digest(d.read_regular(path))
+    return rows
+
+
+def require_native_render_supervision():
+    """Fail before scratch or Popen; capabilities are checked, never inferred."""
+    need(sys.platform == 'darwin' and sys.version_info[:2] == (3, 14),
+         'native renderer requires actual supported Mac Python3.14')
+    need(signal.getsignal(signal.SIGCHLD) == signal.SIG_DFL,
+         'native renderer requires default SIGCHLD')
+    need(threading.active_count() == 1 and threading.current_thread() is threading.main_thread(),
+         'native renderer requires one main thread')
+    need(all(hasattr(os, name) for name in ('waitid', 'P_PID', 'WNOWAIT', 'WEXITED', 'WNOHANG',
+                                           'waitpid', 'waitstatus_to_exitcode')),
+         'native renderer requires actual waitid WNOWAIT')
+    try:
+        os.waitid(os.P_PID, os.getpid(), os.WEXITED | os.WNOHANG | os.WNOWAIT)
+    except ChildProcessError:
+        return  # Valid native non-child probe; not child/OS qualification.
+    except (OSError, NotImplementedError) as exc:
+        raise AccessHold('native renderer waitid capability unavailable') from exc
+    raise AccessHold('native renderer non-child capability probe ambiguous')
+
+
+def native_render_observe(reservation):
+    process = reservation['process'];pid = reservation['pid']
+    need(type(process) is subprocess.Popen and process.pid==pid
+         and reservation['parent_pid']==os.getpid()
+         and not reservation['reaped'] and not reservation['lost'] and process.returncode is None,
+         'native renderer reservation lost or already reaped')
+    try:
+        observed = os.waitid(os.P_PID, pid, os.WEXITED | os.WNOHANG | os.WNOWAIT)
+    except (ChildProcessError, OSError) as exc:
+        reservation['lost'] = True
+        raise AccessHold('native renderer own unreaped reservation unavailable') from exc
+    need(observed is None or observed.si_pid == pid, 'native renderer wrong native child observation')
+    return observed
+
+
+# Executed only by the original parent's actual Popen child, after Python exec.
+# This is NOT preexec_fn: the constructor's exec-error pipe has already closed.
+# The fixed shim has no fork, Core/network operation or arbitrary-command API.
+_NATIVE_RENDER_STARTUP = r'''
+import os, sys
+try:
+    if len(sys.argv) != 6:
+        raise RuntimeError('CLOSED_RENDER_STARTUP_ARGV')
+    ready, go, parent = (int(value) for value in sys.argv[1:4])
+    binary, outdir = sys.argv[4:6]
+    pid = os.getpid()
+    if os.getppid() != parent or os.getsid(0) != pid or os.getpgid(0) != pid:
+        raise RuntimeError('ORIGINAL_NATIVE_PARENT_AND_SESSION')
+    if os.write(ready, b'R') != 1:
+        raise RuntimeError('RENDER_READY_WRITE')
+    os.close(ready)
+    if os.read(go, 1) != b'G':
+        raise RuntimeError('RENDER_GO_REQUIRED')
+    os.close(go)
+    if os.getppid() != parent or os.getsid(0) != pid or os.getpgid(0) != pid:
+        raise RuntimeError('ORIGINAL_PARENT_BEFORE_RENDER_EXEC')
+    os.execve(binary, ['/opt/homebrew/bin/tectonic', '--only-cached', '--keep-logs',
+                       '--outdir', outdir, 'paper.tex'], os.environ)
+finally:
+    os._exit(127)
+'''
+
+
+def native_render_reservation(process):
+    """Bind only original native parent/child here; isolation needs live READY.
+
+    WNOWAIT exit remains valid ownership even when Darwin live SID queries
+    return ESRCH. This function NEVER queries SID/PGID or invents isolation.
+    """
+    need(type(process) is subprocess.Popen and type(process.pid) is int and process.pid > 1,
+         'native renderer actual owned Popen required')
+    reservation = {'process':process, 'pid':process.pid, 'parent_pid':os.getpid(),
+        'reaped':False, 'lost':False, 'isolated':False, 'bound_sid':None, 'bound_pgid':None,
+        'bound_before_go':False, 'go_attempted':False, 'term_attempted':False,
+        'final_signal_attempted':False, 'reap_started':False, 'returncode':None,
+        'group_absent':False, 'term_deadline':None, 'reap_deadline':None, 'absence_deadline':None}
+    native_render_observe(reservation)
+    return reservation
+
+
+class NativeRenderAdmission:
+    """One actual own Popen object and pre-render READY/GO control descriptors.
+
+    Unknown constructor ownership closes GO and retains cache. There is no
+    saved/reported PID fallback, callback, extra process or post-reap signal.
+    """
+    def __init__(self, binary, command, directory, environment, stdout, stderr, deadline):
+        self.binary = str(binary);self.command = list(command);self.directory = directory
+        self.environment = environment;self.stdout = stdout;self.stderr = stderr
+        self.deadline = deadline;self.parent_pid = os.getpid()
+        self.process = None;self.reservation = None
+        self.constructor_attempted = False;self.constructor_completed = False
+        self.ready_read = None;self.ready_write = None;self.go_read = None;self.go_write = None
+
+    def close_control(self):
+        # Close the original owner GO writer first. A constructor-loss shim can
+        # then only see EOF and exit127 before any renderer exec.
+        for name in ('go_write', 'go_read', 'ready_write', 'ready_read'):
+            fd = getattr(self, name)
+            if fd is not None:
+                setattr(self, name, None)  # Never re-close a reused descriptor.
+                os.close(fd)
+
+    def start(self):
+        require_native_render_supervision()
+        need(self.process is None and not self.constructor_attempted,
+             'exclusive native renderer constructor')
+        need(self.command == ['/opt/homebrew/bin/tectonic', '--only-cached', '--keep-logs',
+                              '--outdir', str(Path(self.directory)/'render-observation'), 'paper.tex'],
+             'fixed native renderer command')
+        need(time.monotonic() < self.deadline, 'native startup inside original180 deadline')
+        self.ready_read,self.ready_write = os.pipe()
+        self.go_read,self.go_write = os.pipe()
+        self.constructor_attempted = True
+        # Python shim exec completes before Popen returns. The payload still
+        # waits for GO, so the parent can genuinely bind live SID/PGID first.
+        self.process = subprocess.Popen([sys.executable, '-I', '-S', '-B', '-c',
+            _NATIVE_RENDER_STARTUP, str(self.ready_write), str(self.go_read),
+            str(self.parent_pid), self.binary, str(Path(self.directory)/'render-observation')],
+            executable=sys.executable, cwd=self.directory, env=self.environment,
+            stdin=subprocess.DEVNULL, stdout=self.stdout, stderr=self.stderr,
+            start_new_session=True, pass_fds=(self.ready_write,self.go_read))
+        self.constructor_completed = True
+        self.reservation = native_render_reservation(self.process)
+        for name in ('ready_write','go_read'):
+            fd=getattr(self,name);setattr(self,name,None);os.close(fd)
+        return self
+
+    def bind_ready(self):
+        state=self.reservation
+        need(state is not None and not state['go_attempted'] and self.parent_pid==os.getpid(),
+             'original native admission owner')
+        while True:
+            need(time.monotonic()<self.deadline, 'native READY inside original180 deadline')
+            readable,_,_=select.select([self.ready_read],[],[],min(.01,max(0,self.deadline-time.monotonic())))
+            if readable:
+                need(os.read(self.ready_read,1)==b'R', 'native READY missing or EOF')
+                # The fixed shim remains blocked on GO throughout these actual
+                # kernel queries. An externally killed/unbound child stays HOLD.
+                need(native_render_observe(state) is None, 'native child exited before READY binding')
+                try:
+                    sid=os.getsid(state['pid']);pgid=os.getpgid(state['pid'])
+                except OSError as exc:
+                    raise AccessHold('native live isolation binding unavailable') from exc
+                need(sid==pgid==state['pid'] and native_render_observe(state) is None,
+                     'actual live original child SID/PGID before GO')
+                state['bound_sid']=sid;state['bound_pgid']=pgid
+                state['bound_before_go']=True;state['isolated']=True
+                fd=self.ready_read;self.ready_read=None;os.close(fd)
+                return state
+            need(native_render_observe(state) is None, 'native child exited before READY')
+
+    def go(self):
+        state=self.reservation
+        need(state is not None and state['isolated'] and state['bound_before_go']
+             and not state['go_attempted'] and self.parent_pid==os.getpid(),
+             'genuine pre-exec native binding required')
+        need(native_render_observe(state) is None and time.monotonic()<self.deadline,
+             'original live child before GO inside original180 deadline')
+        state['go_attempted']=True  # A failed/interrupted write is never replayed.
+        need(os.write(self.go_write,b'G')==1, 'single exact native renderer GO')
+        fd=self.go_write;self.go_write=None;os.close(fd)
+
+    def close(self):
+        self.close_control()
+        if self.process is None:
+            need(not self.constructor_attempted, 'unknown renderer constructor; cache retained')
+            return
+        if self.reservation is None:
+            self.reservation=native_render_reservation(self.process)
+        close_render_group(self.reservation)
+
+
+def native_render_signal(reservation, sig):
+    # Every nonzero signal has a fresh native OWN-child reservation. A saved
+    # numeric PGID, successful wait, or parent JSON can never satisfy this.
+    need(sig in (signal.SIGTERM, signal.SIGKILL) and reservation['parent_pid']==os.getpid()
+         and not reservation['reap_started'] and not reservation['reaped']
+         and not reservation['final_signal_attempted']
+         and (not reservation['isolated'] or (reservation['bound_before_go']
+              and reservation['bound_sid']==reservation['bound_pgid']==reservation['pid'])),
+         'native renderer signal phase closed')
+    observed = native_render_observe(reservation)
+    if sig == signal.SIGKILL:
+        reservation['final_signal_attempted'] = True  # Before syscall/interruption.
+    else:
+        reservation['term_attempted'] = True
+    try:
+        (os.killpg if reservation['isolated'] else os.kill)(reservation['pid'], sig)
+    except ProcessLookupError:
+        pass
+    except PermissionError as exc:
+        # A zombie-only Darwin group can deny a signal. This is NEVER absence:
+        # exact exit, own reap AND subsequent ESRCH are still mandatory.
+        if native_render_observe(reservation) is None:
+            raise AccessHold('native renderer live signal permission unknown') from exc
+
+
+def close_render_group(reservation):
+    """Last nonzero signal, native reap, then ONLY zero/ESRCH absence probes.
+
+    One-way state and absolute per-phase deadlines survive error/finally
+    reentry. Lost reservation or unknown cleanup retains the private cache.
+    This does not qualify owner-death or a whole-action outer600 supervisor.
+    """
+    process = reservation['process'];pid = reservation['pid']
+    if not reservation['reaped']:
+        if not reservation['reap_started']:
+            if not reservation['final_signal_attempted']:
+                observed = native_render_observe(reservation)
+                if observed is None:
+                    if reservation['term_deadline'] is None:
+                        reservation['term_deadline'] = time.monotonic() + 10
+                    if not reservation['term_attempted']:
+                        native_render_signal(reservation, signal.SIGTERM)
+                    while time.monotonic() < reservation['term_deadline']:
+                        if native_render_observe(reservation) is not None:
+                            break
+                        time.sleep(.01)
+                native_render_signal(reservation, signal.SIGKILL)
+            # Even if interrupted after final-signal flag/before syscall, no
+            # reentry can signal after a later reap; unproved exit stays HOLD.
+            reservation['reap_started'] = True
+        if reservation['reap_deadline'] is None:
+            reservation['reap_deadline'] = time.monotonic() + 5
+        while native_render_observe(reservation) is None:
+            need(time.monotonic() < reservation['reap_deadline'],
+                 'native renderer exit unobserved after final signal; cache retained')
+            time.sleep(.01)
+        actual, status = os.waitpid(pid, 0)
+        need(actual == pid, 'native renderer wrong own child reap')
+        code = os.waitstatus_to_exitcode(status)
+        # reap_started was set BEFORE waitpid. An interruption after kernel
+        # reap but before these stores cannot reopen any nonzero signal path.
+        reservation['returncode'] = code
+        process.returncode = code
+        reservation['reaped'] = True
+    need(reservation['isolated'] and reservation['bound_before_go'],
+         'unbound renderer reaped; group closure unproven; cache retained')
+    if reservation['absence_deadline'] is None:
+        reservation['absence_deadline'] = time.monotonic() + 5
+    while True:
+        try:
+            os.killpg(pid, 0)
+        except ProcessLookupError:
+            reservation['group_absent'] = True
+            return reservation['returncode']
+        except PermissionError:
+            pass  # Unknown/present. Never manufacture ESRCH.
+        need(time.monotonic() < reservation['absence_deadline'],
+             'native renderer group absence unproved; private cache retained')
+        time.sleep(.01)
+
+
+def require_render_logs(directory,seen):
+    """Bound fresh retained logs; a missing glyph is never faithful output."""
+    for name in ('stdout.txt','stderr.txt','paper.log'):
+        path=Path(directory)/'render-observation'/name
+        need(not any(p.is_symlink()for p in(path,*path.parents)),'regular renderer log ancestry')
+        if name=='paper.log'and not path.exists():continue
+        identity=lambda s:(s.st_dev,s.st_ino,s.st_mode,s.st_size,s.st_mtime_ns,s.st_ctime_ns)
+        entry=path.lstat();need(stat.S_ISREG(entry.st_mode),'regular renderer log')
+        fd=os.open(path,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
+        with os.fdopen(fd,'rb')as file:
+            before=os.fstat(file.fileno());need(identity(entry)==identity(before),'renderer log changed before read')
+            raw=file.read(4194305);after=os.fstat(file.fileno())
+        final=path.lstat()
+        need(not any(p.is_symlink()for p in(path,*path.parents)),'regular renderer log ancestry')
+        need(len(raw)<=4194304 and len(raw)==before.st_size
+             and identity(entry)==identity(before)==identity(after)==identity(final),'bounded stable renderer log')
+        need(b'Missing character:'not in raw and b'could not represent character'not in raw,
+             'native renderer missing glyph; artifact not faithful')
+        seen[str(path.resolve(strict=True))]=d.digest(raw)
+
+
+def native_render(path,*,root):
+    """Fixed current-source callback; pinned binary/cache checked BEFORE exec.
+
+    One owned temporary input cache exists at a time. It is deleted only after
+    the renderer exits and its exact hashes are compared; no cache copy becomes
+    release evidence. This function runs no Lean, network fetch or publisher.
+    """
+    require_native_render_supervision()
+    root=Path(root).resolve(strict=True);path=Path(path)
+    need(not any(p.is_symlink()for p in(path,*path.parents)),'regular native render input ancestry')
+    path=path.resolve(strict=True)
+    need(path.name=='paper.tex'and path.is_relative_to(root),'canonical exact render input')
+    before=d.read_regular(path);binary=Path(NATIVE_RENDERER).resolve(strict=True)
+    binary_before=d.read_regular(binary)
+    manifest_path,manifest_raw=closed_binding(root,RENDER_CACHE);manifest=json.loads(manifest_raw)
+    with frozen_sources(root)as load:
+        policy=load('phase7_audit_policy')
+        need(d.digest(binary_before)==policy.RENDERER_SHA and d.digest(manifest_raw)==policy.RENDERER_CACHE_SHA,
+             'pinned renderer and cache before execution')
+    cache=Path(manifest['cache_root']).resolve(strict=True)
+    need(cache.is_relative_to(root)and manifest.get('schema')=='VRS-PHASE7-TECTONIC-CACHE-1'
+         and len(manifest.get('files',{}))==556,'complete contained renderer cache')
+    expected=cache_snapshot(cache);need(expected==manifest['files'],'all pinned renderer assets before execution')
+    build=path.parent/'render-observation';need(not build.exists(),'exclusive native render attempt')
+    build.mkdir()
+    command=['/opt/homebrew/bin/tectonic','--only-cached','--keep-logs','--outdir',str(build),'paper.tex']
+    process=None;reservation=None;admission=None;spawn_attempted=False;group_closed=False;started=dt.datetime.now(dt.timezone.utc).isoformat()
+    private=Path(tempfile.mkdtemp(prefix='vrs-labelled-render-cache-')).resolve(strict=True)
+    try:
+        for name,pin in expected.items():
+            raw=d.read_regular(cache/name);need(d.digest(raw)==pin,'cache changed during private copy')
+            d.immutable(private/name,raw)
+        need(cache_snapshot(private)==expected,'private exact input cache')
+        environment={k:os.environ[k]for k in ('PATH','LANG','LC_ALL','TMPDIR')if k in os.environ}
+        environment['TECTONIC_CACHE_DIR']=str(private)
+        try:
+            with (build/'stdout.txt').open('xb')as stdout,(build/'stderr.txt').open('xb')as stderr:
+                render_deadline=time.monotonic()+180  # Startup consumes this original budget.
+                admission=NativeRenderAdmission(binary,command,path.parent,environment,stdout,stderr,render_deadline)
+                spawn_attempted=True
+                admission.start();admission.bind_ready();admission.go()
+                process=admission.process;reservation=admission.reservation
+                while native_render_observe(reservation) is None:
+                    if time.monotonic() >= render_deadline:
+                        close_render_group(reservation);group_closed=True
+                        raise AccessHold('HOLD_NATIVE_RENDER_180S_WITH_CLEANUP')
+                    time.sleep(.01)
+            close_render_group(reservation);group_closed=True
+            ended=dt.datetime.now(dt.timezone.utc).isoformat()
+            closure=(cache_snapshot(cache)==cache_snapshot(private)==expected
+                and d.read_regular(binary)==binary_before and Path(NATIVE_RENDERER).resolve(strict=True)==binary
+                and d.read_regular(path)==before and d.read_regular(manifest_path)==manifest_raw)
+            pdf=d.read_regular(build/'paper.pdf')if process.returncode==0 else b''
+            observation={'source_tex_sha256':d.digest(before),'rendered_pdf_sha256':d.digest(pdf),
+                'command':command,'renderer_binary':{'invoked_path':command[0],'resolved_path':str(binary),'sha256':d.digest(binary_before)},
+                'cache_manifest':deepcopy(RENDER_CACHE),'cache_file_count':len(expected),'cache_and_binary_exact_after':closure,
+                'started_at_utc':started,'ended_at_utc':ended,'returncode':process.returncode,
+                'network_resource_fetch_disabled':True,'no_env_or_stdin_or_credentials_captured':True,'local_lean_execution':False}
+            d.immutable(build/'RENDERER_OBSERVATION.json',d.raw_json(observation))
+            require_render_logs(path.parent,{})
+            need(process.returncode==0 and closure,'native renderer failed or input closure changed')
+            require_pdf_envelope(pdf)
+        finally:
+            if admission is not None:
+                admission.close_control()
+                if not group_closed:
+                    admission.close();group_closed=True
+    finally:
+        # A failed group closure retains this one scratch tree for diagnosis.
+        # Never delete input files while a renderer descendant may still use them.
+        if not spawn_attempted or group_closed:shutil.rmtree(private)
+        # Constructor loss/unknown reservation never proves no child exists.
+        # The scratch cache remains; future Root orchestration must HOLD.
+    return pdf
+
+def labelled_tex(original, *, historical):
+    """Only a fixed banner insertion; never execute or rewrite source commands.
+
+    Historical source must first pass the unchanged closed N1 grammar. The
+    other input is supplied only by the freshly admitted exact scoped template.
+    Scan real control tokens; comments/escaped lookalikes cannot select a site.
+    """
+    need(isinstance(original,bytes) and len(original)<=4194304, 'bounded exact label source')
+    if historical:
+        require_self_contained_original(original)
+    text=original.decode('utf-8')
+    need(LABEL_TEXT not in text, 'source already has artifact label')
+    depth=0; env=[]; documents=[]; titles=[]; i=0
+    while i<len(text):
+        c=text[i]
+        if c=='%':
+            while i<len(text) and text[i] not in '\r\n':i+=1
+            continue
+        if c=='{':depth+=1;i+=1;continue
+        if c=='}':
+            need(depth>0,'unbalanced label source braces');depth-=1;i+=1;continue
+        if c!='\\':i+=1;continue
+        start=i;i+=1
+        need(i<len(text),'trailing label source escape')
+        if not (text[i].isascii() and (text[i].isalpha() or text[i]=='@')):
+            i+=1;continue
+        begin=i
+        while i<len(text) and text[i].isascii() and (text[i].isalpha() or text[i]=='@'):i+=1
+        word=text[begin:i]
+        if word in {'begin','end'}:
+            match=re.match(r'\s*\{([A-Za-z*]+)\}',text[i:])
+            need(match is not None,'literal label environment required')
+            name=match[1];i+=match.end()
+            if name=='document':
+                need(depth==0,'nested document label source')
+                documents.append((word,start,i))
+            if word=='begin':env.append(name)
+            else:
+                need(env and env[-1]==name,'unbalanced label environments');env.pop()
+        elif word=='maketitle':
+            need(depth==0 and env==['document'],'nested label title refused')
+            titles.append((start,i))
+    need(depth==0 and not env and len(documents)==2 and [r[0]for r in documents]==['begin','end']
+         and len(titles)==1 and documents[0][2]<=titles[0][0]<documents[1][1], 'unique complete document/title required')
+    between=text[documents[0][2]:titles[0][0]]
+    need(not re.sub(r'%[^\r\n]*(?:\r\n|\r|\n|$)','',between).strip(), 'title must begin document body')
+    position=titles[0][1]
+    insertion='\n\n'+r'\noindent\textbf{'+LABEL_TEXT+'}\n\n'
+    result=(text[:position]+insertion+text[position:]).encode()
+    if historical:
+        require_self_contained_original(result)
+    return result
+
+
+def require_label_authority(root):
+    path,raw=closed_binding(root,LABEL_AUTHORITY)
+    value=json.loads(raw)
+    need(value.get('answer')=='Approve artifact-specific wording'
+         and value.get('approved_text')==LABEL_TEXT
+         and value.get('proposal_sha256')=='76b32310416d262351666e2b3baa8f19916e87400960659ddb334b82ce5e6cde',
+         'actual approved artifact label authority')
+    captured=dt.datetime.fromisoformat(value['at_utc'].replace('Z','+00:00'))
+    need(captured.tzinfo is not None and captured<=dt.datetime.now(dt.timezone.utc), 'actual label authority time')
+    return value,{str(path):d.digest(raw)}
+
+
+def labelled_render_identity(note,root,original,pdf,load,*,historical):
+    expected=labelled_tex(original,historical=historical)
+    directory=Path(note)/('historical-render' if historical else 'scope-render')
+    need(d.read_regular(directory/'paper.tex')==expected,'exact labelled render source')
+    require_pdf_envelope(pdf)
+    seen={str((directory/'paper.tex').resolve()):d.digest(expected)}
+    require_render_logs(directory,seen)
+    observation=load('phase7_audit_policy').require_pdf_provenance(directory,root,expected,pdf,seen)
+    return {'standard':'VRS-EXACT-LABELLED-MANUSCRIPT-RENDER-1',
+        'source_tex_sha256':d.digest(original),'labelled_tex_sha256':d.digest(expected),
+        'rendered_pdf_sha256':d.digest(pdf),'artifact_label':LABEL_TEXT,'ended_at_utc':observation['ended_at_utc'],
+        'observation':binding(directory/'render-observation/RENDERER_OBSERVATION.json'),
+        'inputs':seen,'certifies':False}
+
+
+def _derive_labelled(root,base,authority,note,load):
+    """Fresh predecessor science plus closed new artifact bytes, never a waiver."""
+    current=predecessor(root,base,authority,load)
+    label_authority,label_inputs=require_label_authority(root)
+    run=current['run_id'];base=Path(base);note=Path(note)
+    original=d.read_regular(base/HISTORICAL_TEX)
+    require_self_contained_original(original)
+    current_tex=d.read_regular(base/'paper.tex')
+    scope_pdf=d.read_regular(note/'paper.pdf')
+    historical_pdf=d.read_regular(note/(run+'-'+LABELLED_TOP_PDF))
+    scope_render=labelled_render_identity(note,root,current_tex,scope_pdf,load,historical=False)
+    historical_render=labelled_render_identity(note,root,original,historical_pdf,load,historical=True)
+    members=archive(d.read_regular(base/'SCOPE_EVIDENCE.zip'))
+    need(dict(members).get(HISTORICAL_TEX)==original and HISTORICAL_PDF not in dict(members),'exact raw historical archive source')
+    # The scoped template reads only these already bound literal displays.
+    for name,raw in members:
+        if name.startswith('rendered/'):
+            need(d.read_regular(note/'scope-render'/name)==raw,'labelled scope display differs')
+            scope_render['inputs'][str((note/'scope-render'/name).resolve())]=d.digest(raw)
+    expected={}
+    for row in current['uploads']:
+        name=d.safe_member(row['filename']);need('/'not in name and name not in expected,'closed labelled uploads')
+        raw=d.read_regular(base/name);need(d.digest(raw)==row['sha256'],'predecessor upload changed')
+        expected[name]=raw
+    expected['paper.tex']=labelled_tex(current_tex,historical=False)
+    expected['paper.pdf']=scope_pdf
+    members += [(HISTORICAL_PDF,historical_pdf)]
+    expected['SCOPE_EVIDENCE.zip']=d.archive_bytes(members)
+    expected[run+'-'+LABELLED_TOP_PDF]=historical_pdf
+    metadata=deepcopy(current['public_metadata'])
+    metadata['description']='<p>'+html.escape(LABEL_TEXT,quote=False)+'</p><p>'+html.escape(run+'-Paper.pdf — '+LABEL_TEXT,quote=False)+'</p><p>'+html.escape(run+'-'+LABELLED_TOP_PDF+' — '+LABEL_TEXT,quote=False)+'</p>'+metadata.get('description','')
+    expected['metadata.json']=d.raw_json(metadata)
+    expected['PREDECESSOR_SCOPED_RELEASE_MANIFEST.json']=d.read_regular(base/'SCOPED_RELEASE_MANIFEST.json')
+    expected['PREDECESSOR_PUBLICATION_BINDING.json']=d.read_regular(base/'PUBLICATION_BINDING.json')
+    expected['PHASE7_RULE_EXECUTION.json']=d.read_regular(base/'PHASE7_RULE_EXECUTION.json')
+    manifest={'standard':LABELLED_STANDARD,'run_id':run,
+        'predecessor':{'path':str(base),'manifest':binding(base/'SCOPED_RELEASE_MANIFEST.json'),
+                       'publication_binding':binding(base/'PUBLICATION_BINDING.json')},
+        'authority':deepcopy(authority),'artifact_label':LABEL_TEXT,'label_authority':deepcopy(LABEL_AUTHORITY),
+        'execution_sources':[{'name':n,'path':str(Path(root)/frozen_source_relative(n)),'sha256':h}for n,h in sorted(_FROZEN_HASHES.items())],
+        'uploads':[{'filename':n,'sha256':d.digest(b)}for n,b in sorted(expected.items())],
+        'archive_members':d.member_inventory(members),
+        'manuscripts':[
+            {'role':'UNCERTIFIED_DERIVED_SCOPED_MANUSCRIPT','filename':'paper.pdf','archive_member':None,
+             'sha256':d.digest(scope_pdf),'certification':'ENTIRELY_UNCERTIFIED_ARTIFACT'},
+            {'role':'UNCERTIFIED_HISTORICAL_MANUSCRIPT','filename':run+'-'+LABELLED_TOP_PDF,
+             'archive_member':'SCOPE_EVIDENCE.zip!/'+HISTORICAL_PDF,'sha256':d.digest(historical_pdf),
+             'certification':'ENTIRELY_UNCERTIFIED'}],
+        'scope_render':scope_render,'historical_render':historical_render,
+        'certifies':False,'publication_authorized':False,'ssot_writes':0,'zenodo_writes':0}
+    _finish(label_inputs);_finish(scope_render['inputs']);_finish(historical_render['inputs']);_finish(current['input_bindings'])
+    need(predecessor(root,base,authority,load)==current,'label predecessor changed during derivation')
+    need(require_label_authority(root)[0]==label_authority,'label authority changed during derivation')
+    return manifest,expected,current,metadata
+
+
+def prepare_labelled(root,base,out,authority,*,render=None):
+    need(render is None,'caller-selected labelled renderer forbidden')
+    root=Path(root).resolve(strict=True);base=Path(base).resolve(strict=True);out=Path(out)
+    need(not any(p.is_symlink()for p in(out,*out.parents)),'regular labelled output ancestry')
+    out=out.resolve();need(out.is_relative_to(root/'RESEARCH_PIPELINE_v2/science_release_queue/manuscript_access')
+        and not out.exists(),'new immutable labelled output required')
+    with frozen_sources(root)as load:
+        current=predecessor(root,base,authority,load);require_label_authority(root)
+        original=d.read_regular(base/HISTORICAL_TEX);require_self_contained_original(original)
+        out.mkdir(parents=True,exist_ok=False)
+        members=archive(d.read_regular(base/'SCOPE_EVIDENCE.zip'))
+        for name,raw in members:
+            d.immutable(out/name,raw)
+            if name.startswith('rendered/'):d.immutable(out/'scope-render'/name,raw)
+        for historical,source,filename in [(False,d.read_regular(base/'paper.tex'),'paper.pdf'),
+                                           (True,original,current['run_id']+'-'+LABELLED_TOP_PDF)]:
+            directory=out/('historical-render'if historical else'scope-render')
+            d.immutable(directory/'paper.tex',labelled_tex(source,historical=historical))
+            pdf=native_render(directory/'paper.tex',root=root);require_pdf_envelope(pdf)
+            d.immutable(out/filename,pdf)
+        manifest,expected,_,_= _derive_labelled(root,base,authority,out,load)
+        for name,raw in expected.items():d.immutable(out/name,raw)
+        d.immutable(out/HISTORICAL_PDF,d.read_regular(out/(current['run_id']+'-'+LABELLED_TOP_PDF)))
+        d.immutable(out/'SCOPED_RELEASE_MANIFEST.json',d.raw_json(manifest))
+    return {'status':'LABELLED_ARTIFACT_STAGED_REVIEW_REQUIRED','manifest':binding(out/'SCOPED_RELEASE_MANIFEST.json'),
+            'run_id':current['run_id'],'full_pdf_review_required':True,'certifies':False,'publication_authorized':False}
+
+
+def review_labelled(root,note,authority,*,review_invocation):
+    """Explicit later artifact review; never issue a scientific certificate."""
+    root=Path(root).resolve(strict=True);note=Path(note).resolve(strict=True)
+    need(note.is_relative_to(root)and not(note/'PUBLICATION_BINDING.json').exists(),'new canonical labelled review required')
+    need(isinstance(review_invocation,str)and len(review_invocation)>=12,'actual later artifact review invocation')
+    with frozen_sources(root)as load:
+        manifest,expected,current,_=_derive_labelled(root,Path(json.loads(d.read_regular(note/'SCOPED_RELEASE_MANIFEST.json'))['predecessor']['path']),authority,note,load)
+        need(json.loads(d.read_regular(note/'SCOPED_RELEASE_MANIFEST.json'))==manifest,'review exact labelled manifest')
+        for name,raw in expected.items():need(d.read_regular(note/name)==raw,'review exact labelled artifact bytes')
+        base=Path(manifest['predecessor']['path'])
+        previous=json.loads(d.read_regular(base/'PHASE7_RULE_EXECUTION.json'))['scope_comparison']
+        need(review_invocation not in {previous['current_invocation'],previous['source_selection_invocation']},'separate later artifact review')
+        pb={'standard':LABELLED_BINDING_STANDARD,'status':'LABELLED_ARTIFACT_BYTES_BOUND_NOT_PUBLICATION_AUTHORIZED',
+            'run_id':current['run_id'],'manifest':binding(note/'SCOPED_RELEASE_MANIFEST.json'),
+            'predecessor_binding':manifest['predecessor']['publication_binding'],'authority':deepcopy(authority),
+            'review_invocation':review_invocation,'issued_at_utc':dt.datetime.now(dt.timezone.utc).isoformat(),
+            'certifies':False,'publication_authorized':False}
+        d.immutable(note/'PUBLICATION_BINDING.json',d.raw_json(pb))
+    return require_labelled(note,root,authority)
+
+
+def require_labelled(note,root,authority):
+    root=Path(root).resolve(strict=True);note=Path(note).resolve(strict=True)
+    need(note.is_relative_to(root),'labelled note outside canonical root')
+    before=d.read_regular(note/'SCOPED_RELEASE_MANIFEST.json');pb_before=d.read_regular(note/'PUBLICATION_BINDING.json')
+    manifest=json.loads(before)
+    need(isinstance(manifest,dict)and set(manifest)==LABELLED_MANIFEST_FIELDS
+         and manifest.get('standard')==LABELLED_STANDARD and manifest['authority']==authority,'closed labelled manifest')
+    base=Path(manifest['predecessor']['path']);need(base.resolve(strict=True)!=note,'distinct immutable label predecessor')
+    with frozen_sources(root)as load:
+        actual,expected,current,metadata=_derive_labelled(root,base,authority,note,load)
+        need(actual==manifest,'fresh exact labelled artifact identity')
+        for name,raw in expected.items():need(d.read_regular(note/name)==raw,'labelled artifact bytes differ: '+name)
+        for name,raw in archive(d.read_regular(note/'SCOPE_EVIDENCE.zip')):
+            need(d.read_regular(note/name)==raw,'labelled archive/local bytes differ')
+        pb=json.loads(pb_before)
+        need(set(pb)==LABELLED_PB_FIELDS and pb['standard']==LABELLED_BINDING_STANDARD
+             and pb['status']=='LABELLED_ARTIFACT_BYTES_BOUND_NOT_PUBLICATION_AUTHORIZED'
+             and pb['run_id']==manifest['run_id']and pb['authority']==authority
+             and pb['manifest']==binding(note/'SCOPED_RELEASE_MANIFEST.json')
+             and pb['predecessor_binding']==actual['predecessor']['publication_binding']
+             and pb['certifies']is False and pb['publication_authorized']is False,'exact distinct labelled artifact binding')
+        prior_review=json.loads(d.read_regular(base/'PHASE7_RULE_EXECUTION.json'))['scope_comparison']
+        need(isinstance(pb['review_invocation'],str)and len(pb['review_invocation'])>=12
+             and pb['review_invocation']not in{prior_review['current_invocation'],prior_review['source_selection_invocation']},'fresh later artifact review identity')
+        issued=load('nightly_minimal_policy').time(pb['issued_at_utc'])
+        base_pb=json.loads(d.read_regular(base/'PUBLICATION_BINDING.json'));label_auth,_=require_label_authority(root)
+        need(max(load('nightly_minimal_policy').time(base_pb['issued_at_utc']),
+                 load('nightly_minimal_policy').time(label_auth['at_utc']),
+                 load('nightly_minimal_policy').time(actual['scope_render']['ended_at_utc']),
+                 load('nightly_minimal_policy').time(actual['historical_render']['ended_at_utc']))<=issued<=dt.datetime.now(dt.timezone.utc),
+             'labelled artifact after predecessor and human authority')
+        need(d.read_regular(note/'SCOPED_RELEASE_MANIFEST.json')==before
+             and d.read_regular(note/'PUBLICATION_BINDING.json')==pb_before,'labelled binding race')
+        return {**current,'status':'PUBLICATION_BOUND','exact_publication_binding':True,
+            'access_standard':LABELLED_STANDARD,'artifact_label':LABEL_TEXT,
+            'manuscripts':manifest['manuscripts'],'uploads':manifest['uploads'],'public_metadata':metadata,
+            'metadata_binding':next(v for v in manifest['uploads']if v['filename']=='metadata.json'),
+            'policy_receipt':binding(note/'PHASE7_RULE_EXECUTION.json'),'publication_binding':binding(note/'PUBLICATION_BINDING.json'),
+            'scientific_predecessor':actual['predecessor'],'certifies':False,'publication_authorized':False}
 
 if __name__ == '__main__':
     raise SystemExit('HOLD: measured explicit preparation only; no publication authority')

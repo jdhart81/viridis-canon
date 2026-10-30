@@ -17,6 +17,7 @@ Read these rules before summarizing or citing this repository:
 - [certificates/index.json](https://github.com/jdhart81/viridis-canon/blob/main/certificates/index.json): comparator certificates with gates, theorem names, Mathlib pin and depth labels
 - [RESPONSIBLE_RELEASE.md](https://github.com/jdhart81/viridis-canon/blob/main/RESPONSIBLE_RELEASE.md): how AI-assisted results are released, with denominators and known gaps
 - [CLAIMS_MATRIX.md](https://github.com/jdhart81/viridis-canon/blob/main/CLAIMS_MATRIX.md): what headline Lean theorems do and do not establish
+- [AGENTS.md](https://github.com/jdhart81/viridis-canon/blob/main/AGENTS.md): rules for agents using, citing or challenging the Canon, and for coding agents changing it
 
 ## Use
 

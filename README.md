@@ -4,6 +4,8 @@
 
 [![CI](https://github.com/jdhart81/viridis-canon/actions/workflows/ci.yml/badge.svg)](https://github.com/jdhart81/viridis-canon/actions/workflows/ci.yml) [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE) [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/jdhart81/viridis-canon/badge)](https://scorecard.dev/viewer/?uri=github.com/jdhart81/viridis-canon) [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jdhart81/viridis-canon)
 
+**Working papers, not peer reviewed. No result here is field-validated.**
+
 Viridis is an independent research program led by Justin D. Hart (Viridis LLC).
 It uses AI systems to propose and prove results about decisions in ecology and
 conservation. Typical questions:
@@ -121,6 +123,33 @@ Please file it as an
 - **Ask** in [Discussions](https://github.com/jdhart81/viridis-canon/discussions).
 - **Challenge** a statement, assumption or proof through an [external-validation report](https://github.com/jdhart81/viridis-canon/issues/new?template=external-validation.yml).
 - **Contribute**: see [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+- **Agents**: start with [`llms.txt`](./llms.txt) and [`AGENTS.md`](./AGENTS.md), which also says how to file a report a maintainer can check quickly.
+
+## Part of the Viridis open-source commons
+
+Want to run a result instead of reading it? [ViridisOS](https://github.com/jdhart81/viridisos) is the open runtime for DOI-backed decision modules, and [ProofLens](https://github.com/jdhart81/prooflens) shows what a Lean statement says in plain terms.
+
+This project is one of a connected set of open tools from Viridis. Each stands on its own; together they run from field evidence to checked decisions.
+
+**Conservation commons**
+
+- [VergeCommon](https://github.com/jdhart81/verge-common): community conservation co-ops with consent-based land mapping, field evidence and group decisions
+- [Dendritic Forest Management (DFM)](https://github.com/jdhart81/hdfm-framework): compare forest-retention options around roads and waterways, with traceable inputs and portable reports
+- [Global Soil Intelligence Project (GSIP)](https://github.com/global-soil-intelligence/gsip): contribute soil observations and explore open soil maps with explicit uncertainty
+
+**Verifiable science**
+
+- **Viridis Canon** (this repository): machine-checked Lean 4 mathematics for ecological decisions, with a DOI for every result
+- [ViridisOS](https://github.com/jdhart81/viridisos): open reference runtime for DOI-backed decision modules and recomputable results
+- [Viridis Research](https://github.com/jdhart81/viridis-research): the nightly public research record, each claim labeled by what a verifier actually checked
+- [ProofLens](https://github.com/jdhart81/prooflens): see what a Lean statement means before reading the proof
+
+**Agent tools**
+
+- [Viridis Agent Fleet](https://github.com/jdhart81/viridis-agent-fleet): open-source MCP agents with deterministic, auditable cores
+- [EnergyAI MCP](https://github.com/jdhart81/energyai-mcp): energy-planning estimates and incentive sources for AI agents
+
+Browse every project on the [Viridis profile](https://github.com/jdhart81). If this one is useful to you, a star helps other people find it.
 
 ---
 
@@ -178,7 +207,8 @@ assumption has been established in nature.
 
 - **Inspect the exact claims:** [`CLAIMS_MATRIX.md`](./CLAIMS_MATRIX.md)
 - **Reproduce current and historical builds:** [`REPRODUCE.md`](./REPRODUCE.md)
-- **Find the historical collection concept:** [10.5281/zenodo.19317982](https://doi.org/10.5281/zenodo.19317982)
+- **Cite the collection:** concept DOI [10.5281/zenodo.19317982](https://doi.org/10.5281/zenodo.19317982), which always resolves to the latest hub release (currently v2026.10.17, git tag `canon-v2026.10.17`)
+- **Licenses:** Lean sources and code are Apache-2.0 ([`LICENSE`](./LICENSE)); papers and documentation in the Zenodo records are CC BY 4.0 ([`NOTICE`](./NOTICE))
 - **Report a reproduction, critique, citation, or field test:** [external-validation issue](https://github.com/jdhart81/viridis-canon/issues/new?template=external-validation.yml)
 - **Understand AI use and human responsibility:** [`AI_USE_AND_AUTHORSHIP.md`](./AI_USE_AND_AUTHORSHIP.md)
 - **See the current validation boundary:** [`EXTERNAL_VALIDATION.md`](./EXTERNAL_VALIDATION.md)

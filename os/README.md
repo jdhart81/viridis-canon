@@ -50,7 +50,10 @@ digest to each release tag. The product vendors a bundle and pins its digest.
 - **I2 Parity.** The 17 runners reproduce the product's TypeScript runners
   bit-for-bit: 187,051 fuzz and published cases (outputs *and* error messages)
   with zero mismatches before retirement; 1,717 of them are replayed on every
-  build from `os/parity/`. The five `/research/recompute` hashes are untouched.
+  build from `os/parity/`. On 2026-10-31 parity was retired for afforestation,
+  harmonization and restoration (14 runners remain under I2): those three now
+  compute what their Lean theorems prove, which the old product did not, and
+  `tests/test_os_kernel_theorems.py` checks them against the theorem formulas.
 - **I3 No automatic authority.** `admitted` requires the ledger; the compiler
   cannot promote and writes nothing in the repository (tested). Mutualist stays
   `BLOCKED` with no runner.

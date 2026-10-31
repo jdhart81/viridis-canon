@@ -275,7 +275,10 @@ class CompilerTests(unittest.TestCase):
 
     def test_parity_fixtures_were_replayed(self):  # I2
         cases = self.bundle["parity"]["cases_by_function"]
-        self.assertEqual(len(cases), 17)
+        # 17 product runners at 398b177; afforestation, harmonization and restoration were retired
+        # from parity on 2026-10-31 because they now compute their theorems (see os/parity notes).
+        self.assertEqual(len(cases), 14)
+        self.assertFalse({"afforestation", "harmonization", "restoration"} & set(cases))
         self.assertTrue(all(n >= 100 for n in cases.values()))
 
     def test_reference_tier_covers_the_catalog(self):

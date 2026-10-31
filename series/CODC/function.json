@@ -21,6 +21,7 @@
       }
     ],
     "theorems": [
+      "finite_path_factorization",
       "synchrony_dividend_identity"
     ],
     "verification_provider": "COMPARATOR_CLOUD",

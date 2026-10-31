@@ -3,9 +3,9 @@
   "schema_version": 1,
   "id": "afforestation",
   "kind": "decision_kernel",
-  "name": "Afforestation — cubic optimal-seeding law + site-prep lever",
-  "version": "0.1.0",
-  "summary": "Gives the seeding density that balances establishment against cost, and shows how much site preparation shifts it.",
+  "name": "Afforestation — seeding efficiency and the 8× edge-hostility lever",
+  "version": "0.2.0",
+  "summary": "Gives seeding efficiency e = C·(3Δμ/(2aσ))³ (established canopy per seed), the critical nucleus and barrier, and the proven lever: halving edge hostility σ multiplies efficiency by exactly 8.",
   "line": "Restoration",
   "decision_family": "restoration-design",
   "tier": "admitted",
@@ -24,9 +24,7 @@
     "theorems": [
       "establishment_efficiency_cubic_in_drive_over_tension",
       "site_prep_halving_sigma_eightfolds_efficiency",
-      "homogeneous_limit_recovers_fnt",
-      "sower_IB_ceiling",
-      "seeding_efficiency_eq_cos2_theta"
+      "homogeneous_limit_recovers_fnt"
     ],
     "verification_provider": "COMPARATOR_CLOUD",
     "verification_receipt_id": "ast-sower"
@@ -37,91 +35,84 @@
       "required": true,
       "exclusiveMinimum": 0,
       "type": "number",
-      "unit": "dimensionless",
-      "help": "Site variability of establishment (0 = uniform)."
+      "unit": "model edge-cost units",
+      "help": "Edge hostility σ — surface-tension-like penalty on establishing edges (site prep such as nurse plants or mulch lowers it). Positive."
     },
     {
       "name": "delta_mu",
       "required": true,
       "exclusiveMinimum": 0,
       "type": "number",
+      "unit": "model suitability units",
+      "help": "Site suitability Δμ — ecological drive favouring establishment. Positive."
+    },
+    {
+      "name": "shape_factor",
+      "required": false,
+      "exclusiveMinimum": 0,
+      "type": "number",
       "unit": "dimensionless",
-      "help": "Establishment advantage — average growth minus loss. Positive."
+      "help": "Shape factor a (default 1)."
     },
     {
-      "name": "prep",
+      "name": "establishment_constant",
       "required": false,
-      "maximum": 2,
-      "minimum": 1,
+      "exclusiveMinimum": 0,
       "type": "number",
-      "unit": "×",
-      "help": "Site-preparation effort level, in the model's own units."
-    },
-    {
-      "name": "rate",
-      "required": false,
-      "minimum": 0,
-      "type": "number",
-      "unit": "declared seeding rate",
-      "help": "Current seeding rate (seedlings per area)."
-    },
-    {
-      "name": "rate_max",
-      "required": false,
-      "minimum": 0,
-      "type": "number",
-      "unit": "declared seeding rate",
-      "help": "Maximum seeding rate you can deliver."
+      "unit": "canopy per seed (scale)",
+      "help": "Establishment constant C that scales efficiency (default 1)."
     }
   ],
   "outputs": [
     {
-      "name": "optimal_density",
-      "unit": "seedlings/area"
+      "name": "critical_nucleus_n_star",
+      "unit": "trees"
     },
     {
-      "name": "site_prep_multiplier",
-      "unit": "×"
+      "name": "barrier_height",
+      "unit": "model energy units"
     },
     {
-      "name": "seeding_within_ib_ceiling",
-      "unit": "bool"
+      "name": "seeding_efficiency",
+      "unit": "established canopy per seed (scaled by C)"
+    },
+    {
+      "name": "efficiency_if_edge_hostility_halved",
+      "unit": "established canopy per seed (scaled by C)"
     }
   ],
   "hypotheses": [
     {
-      "id": "tension_positive",
-      "statement": "Site variability σ is positive.",
+      "id": "edge_hostility_positive",
+      "statement": "The edge hostility σ is positive.",
       "check": "sigma > 0"
     },
     {
       "id": "drive_positive",
-      "statement": "The establishment advantage Δμ is positive.",
+      "statement": "The site suitability Δμ is positive.",
       "check": "delta_mu > 0"
     },
     {
-      "id": "prep_in_range",
-      "statement": "The site-preparation lever is between 1 and 2 when supplied.",
-      "check": "prep is None or 1 <= prep <= 2"
+      "id": "shape_positive",
+      "statement": "The shape factor a is positive when supplied.",
+      "check": "shape_factor is None or shape_factor > 0"
     },
     {
-      "id": "rates_nonnegative",
-      "statement": "Declared seeding rates are non-negative when supplied.",
-      "check": "(rate is None or rate >= 0) and (rate_max is None or rate_max >= 0)"
+      "id": "constant_positive",
+      "statement": "The establishment constant C is positive when supplied.",
+      "check": "establishment_constant is None or establishment_constant > 0"
     }
   ],
   "example": {
     "inputs": {
       "sigma": 1,
-      "delta_mu": 1.2,
-      "prep": 2,
-      "rate": 1.2,
-      "rate_max": 1
+      "delta_mu": 1
     },
     "expected_outputs": {
-      "optimal_density": 13.824,
-      "site_prep_multiplier": 8,
-      "seeding_within_ib_ceiling": false
+      "critical_nucleus_n_star": 0.296296296,
+      "barrier_height": 0.148148148,
+      "seeding_efficiency": 3.375,
+      "efficiency_if_edge_hostility_halved": 27
     }
   },
   "scope": "Deterministic theorem-backed computation; empirical input validity is external.",

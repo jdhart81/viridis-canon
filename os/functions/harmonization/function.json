@@ -3,9 +3,9 @@
   "schema_version": 1,
   "id": "harmonization",
   "kind": "decision_kernel",
-  "name": "Harmonization — thermodynamic shadow-price coordination",
-  "version": "0.1.0",
-  "summary": "Finds a single coordinating price that lets several actors with different marginal costs act consistently, and checks whether the coordination overhead is affordable.",
+  "name": "Harmonization — single-price coordination toward a shared target",
+  "version": "0.2.0",
+  "summary": "Finds the single price that makes stewards with quadratic costs hit a shared total exactly, each steward's allocation at that price, and the total cost, which no other allocation meeting the target beats.",
   "line": "Governance / OS Modules",
   "decision_family": "governance-coordination",
   "tier": "admitted",
@@ -26,11 +26,6 @@
       "ght_market_clears",
       "ght_equimarginal",
       "ght_strong_duality_decentralized_eq_centralized",
-      "ght_scalar_price_minimal_sufficient",
-      "ght_harmonization_bandwidth_from_IB",
-      "ght_bandwidth_antitone_temp",
-      "ght_wuwei_robustness_ratio_ge_one",
-      "ght_wuwei_robustness_strict",
       "ght_nonvacuous"
     ],
     "verification_provider": "COMPARATOR_CLOUD",
@@ -38,88 +33,94 @@
   },
   "inputs": [
     {
-      "name": "marginal_costs",
+      "name": "curvatures",
       "required": true,
       "items": {
-        "minimum": 0,
+        "exclusiveMinimum": 0,
         "type": "number"
       },
       "minItems": 1,
       "type": "array",
-      "unit": "cost/unit",
-      "help": "Each actor's marginal cost, as a list."
+      "unit": "cost/unit²",
+      "help": "Each steward's cost curvature a_i (positive), as a list. Cost of steward i is (a_i/2)(x_i − b_i)²."
     },
     {
-      "name": "bandwidth",
-      "required": false,
-      "minimum": 0,
-      "type": "number",
-      "unit": "declared information rate",
-      "help": "Communication bandwidth available (0–1 scale)."
+      "name": "ideals",
+      "required": true,
+      "items": {
+        "type": "number"
+      },
+      "minItems": 1,
+      "type": "array",
+      "unit": "units",
+      "help": "Each steward's ideal level b_i, as a list in the same order as curvatures."
     },
     {
-      "name": "command_overhead",
-      "required": false,
-      "minimum": 0,
+      "name": "target",
+      "required": true,
       "type": "number",
-      "unit": "cost",
-      "help": "Cost of coordinating by direct command."
-    },
-    {
-      "name": "ib_bound",
-      "required": false,
-      "minimum": 0,
-      "type": "number",
-      "unit": "declared information rate",
-      "help": "Information ceiling for the coordination (model units)."
+      "unit": "units",
+      "help": "Shared target X that the allocations must sum to."
     }
   ],
   "outputs": [
     {
-      "name": "shadow_price",
+      "name": "clearing_price",
       "unit": "cost/unit"
     },
     {
-      "name": "wu_wei_dividend",
-      "unit": "cost saved"
+      "name": "allocation",
+      "unit": "units"
     },
     {
-      "name": "decentralization_cheaper",
+      "name": "total_allocated",
+      "unit": "units"
+    },
+    {
+      "name": "market_clears",
       "unit": "bool"
     },
     {
-      "name": "coordination_within_ib",
-      "unit": "bool"
+      "name": "total_cost",
+      "unit": "cost"
     }
   ],
   "hypotheses": [
     {
-      "id": "costs_declared",
-      "statement": "At least one steward reports a non-negative marginal cost.",
-      "check": "len(marginal_costs) >= 1 and all(c >= 0 for c in marginal_costs)"
+      "id": "curvatures_positive",
+      "statement": "Every steward's cost curvature is positive.",
+      "check": "len(curvatures) >= 1 and all(c > 0 for c in curvatures)"
     },
     {
-      "id": "overheads_nonnegative",
-      "statement": "Declared overhead, bandwidth and ceiling are non-negative when supplied.",
-      "check": "(command_overhead is None or command_overhead >= 0) and (bandwidth is None or bandwidth >= 0) and (ib_bound is None or ib_bound >= 0)"
+      "id": "same_stewards",
+      "statement": "Curvatures and ideals list the same stewards.",
+      "check": "len(curvatures) == len(ideals)"
     }
   ],
   "example": {
     "inputs": {
-      "marginal_costs": [
+      "curvatures": [
         1,
-        3,
-        2
+        1,
+        1
       ],
-      "command_overhead": 5,
-      "bandwidth": 0.5,
-      "ib_bound": 1
+      "ideals": [
+        10,
+        8,
+        6
+      ],
+      "target": 12
     },
     "expected_outputs": {
-      "shadow_price": 3,
-      "wu_wei_dividend": 10,
-      "decentralization_cheaper": true,
-      "coordination_within_ib": true
+      "clearing_price": 4,
+      "allocation": [
+        6,
+        4,
+        2
+      ],
+      "total_allocated": 12,
+      "market_clears": true,
+      "total_cost": 24
     }
   },
   "scope": "Deterministic theorem-backed computation; empirical input validity is external.",

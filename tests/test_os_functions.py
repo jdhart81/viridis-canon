@@ -80,9 +80,9 @@ class RepositoryManifestTests(unittest.TestCase):
         errors.extend(validate_admissions_ledger(self.context, {k: v[0] for k, v in self.manifests.items()}))
         self.assertEqual(errors, [])
 
-    def test_the_eighteen_decision_kernels_are_present(self):
+    def test_the_twenty_decision_kernels_are_present(self):
         kernels = {k for k, (m, _) in self.manifests.items() if m["kind"] == "decision_kernel"}
-        self.assertEqual(len(kernels), 18)
+        self.assertEqual(len(kernels), 20)
         core = json.loads((ROOT / "os/core.json").read_text(encoding="utf-8"))
         self.assertEqual(set(core["function_order"]), kernels)
 

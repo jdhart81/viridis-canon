@@ -198,10 +198,10 @@ results:
       depth: null
       claim_inventory: null
   - id: "dswc-tv-range-certificate"
-    title: "The D-Score Weight-Charter Certificate: A sharp rank-stability bound for precommitted composite indicators"
-    summary: "For simplex weights w and w0 and finite-dimensional contrast z, absolute score drift is at most total variation times range(z); the corollary is dimension-free within these assumptions."
-    kind: "theorem_function"
-    tier: "reference"
+    title: "D-Score robustness — does a parcel ranking survive disputed weights"
+    summary: "Checks whether two parcels keep their D-Score order when stakeholders dispute the indicator weights, using the sharp bound score drift ≤ total variation of the weights × range of the indicators."
+    kind: "decision_kernel"
+    tier: "callable"
     state: "READY"
     paper: "https://doi.org/10.5281/zenodo.22236741"
     manifest: "series/DSWC/function.json"
@@ -459,10 +459,10 @@ results:
       depth: null
       claim_inventory: null
   - id: "pcs-reliability-derivative-eq-pivotal-probability"
-    title: "Pivotal Corridor Stewardship: Exact Reliability Gradients and a Failure-Aware Priority Rule"
-    summary: "For independent edge states, the partial derivative of two-terminal reliability with respect to an edge survival probability equals that edge's pivotal probability."
-    kind: "theorem_function"
-    tier: "reference"
+    title: "Corridor priority — which corridor link to protect first"
+    summary: "Computes the exact probability that two habitat cores stay connected and each link's pivotal probability, which the theorem shows is the reliability gradient, then ranks links for protection (optionally per unit cost)."
+    kind: "decision_kernel"
+    tier: "callable"
     state: "READY"
     paper: "https://doi.org/10.5281/zenodo.22665554"
     manifest: "series/PCS/function.json"

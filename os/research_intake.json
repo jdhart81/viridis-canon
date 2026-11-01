@@ -44,7 +44,7 @@
       "product_line": "Verified computational methods",
       "run_id": "Run-124",
       "spine_admitted": false,
-      "state": "BACKLOG_NO_WRAPPER",
+      "state": "CERTIFICATION_READY",
       "successor_version_candidate": "unassigned"
     },
     {
@@ -116,7 +116,7 @@
       "product_line": "Verified computational methods",
       "run_id": "Run-132",
       "spine_admitted": false,
-      "state": "BACKLOG_NO_WRAPPER",
+      "state": "CERTIFICATION_READY",
       "successor_version_candidate": "unassigned"
     },
     {

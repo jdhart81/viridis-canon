@@ -851,11 +851,11 @@
       "os_functions": [
         {
           "id": "pcs-reliability-derivative-eq-pivotal-probability",
-          "name": "Pivotal Corridor Stewardship: Exact Reliability Gradients and a Failure-Aware Priority Rule",
-          "kind": "theorem_function",
-          "tier": "reference",
+          "name": "Corridor priority — which corridor link to protect first",
+          "kind": "decision_kernel",
+          "tier": "callable",
           "doi": "10.5281/zenodo.22665554",
-          "summary": "For independent edge states, the partial derivative of two-terminal reliability with respect to an edge survival probability equals that edge's pivotal probability.",
+          "summary": "Computes the exact probability that two habitat cores stay connected and each link's pivotal probability, which the theorem shows is the reliability gradient, then ranks links for protection (optionally per unit cost).",
           "empirical_validation": "NOT_VALIDATED",
           "manifest": "series/PCS/function.json"
         }
@@ -1992,11 +1992,11 @@
       "os_functions": [
         {
           "id": "dswc-tv-range-certificate",
-          "name": "The D-Score Weight-Charter Certificate: A sharp rank-stability bound for precommitted composite indicators",
-          "kind": "theorem_function",
-          "tier": "reference",
+          "name": "D-Score robustness — does a parcel ranking survive disputed weights",
+          "kind": "decision_kernel",
+          "tier": "callable",
           "doi": "10.5281/zenodo.22236741",
-          "summary": "For simplex weights w and w0 and finite-dimensional contrast z, absolute score drift is at most total variation times range(z); the corollary is dimension-free within these assumptions.",
+          "summary": "Checks whether two parcels keep their D-Score order when stakeholders dispute the indicator weights, using the sharp bound score drift ≤ total variation of the weights × range of the indicators.",
           "empirical_validation": "NOT_VALIDATED",
           "manifest": "series/DSWC/function.json"
         }

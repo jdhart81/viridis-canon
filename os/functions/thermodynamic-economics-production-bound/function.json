@@ -3,7 +3,7 @@
   "schema_version": 1,
   "id": "thermodynamic-economics-production-bound",
   "kind": "theorem_function",
-  "name": "Thermodynamic economics — production cannot exceed P·D/(k_B·T·ln 2)",
+  "name": "Thermodynamic economics — production bound P·D/(k_B·T·ln 2), conditional on the Intelligence Bound premises",
   "version": "1.0.0",
   "summary": "Checks that thermodynamic production η·P·D/(k_B·T·ln 2) never exceeds the ceiling P·D/(k_B·T·ln 2) when efficiency and data richness are fractions.",
   "line": "Theorem functions",

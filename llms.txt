@@ -8,6 +8,7 @@ Read these rules before summarizing or citing this repository:
 - Every decision function carries `empirical_validation: NOT_VALIDATED`. Do not describe any result as field-validated.
 - Certificates carry a depth label, `substantial` or `elementary`. Elementary results include exact identities; do not present them as deep results.
 - The 215 legacy catalog records are labelled UNCERTIFIED until re-certified. Cite a specific result by its own DOI.
+- The Intelligence Bound (dI/dt <= P*D/(k_B T ln 2)) is a conjecture. Lean checks the algebra from named premises (PL: R_obs*k_B T ln 2 <= P; PD: rate <= R_obs*D; or the predicate SatisfiesLandauerLimit). Do not describe the bound as proved, derived or formally verified, or a downstream result as established because it is "derived from" the bound.
 
 ## Start here
 
@@ -16,6 +17,7 @@ Read these rules before summarizing or citing this repository:
 - [certificates/index.json](https://github.com/jdhart81/viridis-canon/blob/main/certificates/index.json): comparator certificates with gates, theorem names, Mathlib pin and depth labels
 - [RESPONSIBLE_RELEASE.md](https://github.com/jdhart81/viridis-canon/blob/main/RESPONSIBLE_RELEASE.md): how AI-assisted results are released, with denominators and known gaps
 - [CLAIMS_MATRIX.md](https://github.com/jdhart81/viridis-canon/blob/main/CLAIMS_MATRIX.md): what headline Lean theorems do and do not establish
+- [AGENTS.md](https://github.com/jdhart81/viridis-canon/blob/main/AGENTS.md): rules for agents using, citing or challenging the Canon, and for coding agents changing it
 
 ## Use
 

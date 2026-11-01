@@ -1,0 +1,46 @@
+{
+ "test": "P1-M confirmatory test for the P1C region (MECH_PLAN.md v1.0)",
+ "frozen_at_utc": "2026-10-22T12:33:07Z",
+ "frozen_at_local": "2026-10-22 08:33:07 EDT",
+ "primary": "H1: E_road > 1 in the disjoint primary sample (matched wildfires 1992-2024); frozen rule of mech_test.py",
+ "sample": {
+  "n_fires": 47,
+  "n_clusters": 30
+ },
+ "registered_basis": {
+  "p1c_registration": "github.com/jdhart81/viridis-canon PR #138, commit 9e79127d9ba9b17812f8fb567bef5ec858693a8d",
+  "p1m_pilot_freeze": "p1mech/MECH_FREEZE.json (c54863a7...), Bitcoin block 972546"
+ },
+ "no_results_existed": true,
+ "sha256": {
+  "MECH_PLAN.md": "591df5276aa9cb0b6c39db2477c37fd9217319a9b58ecf498873d720638bc078",
+  "run_p1c_mech.py": "91408affc1500c44a176453eac3a468d354feb0bc02d2c80c903627bea8c3aa7",
+  "freeze_p1c_mech.py": "cce2ff1fd52a3b66a6e00a95ab659717436f0d90980bc763d3e22e7f08fd68f2",
+  "verify_p1m_registration.py": "f97f9dcfb1e4c47beb29b02fcd6e7b1a7d2a1f10402d0b31d49d346ca51c8acf",
+  "make_disjoint_perims.py": "3315cebf97506d59f5442cb17c7d75743b0f191effb0c4a04f34ffeccb95469a",
+  "DISJOINT_FILTER.json": "f8497565b011d37d700ad2dab110cfef46e868e8b232ebf2230fffed1e3fa437",
+  "mtbs_perims_disjoint.json": "05ba36ede5a9d8a607d3355b0c0aaa5faf890bba94a67a1c7f1f23637c969128",
+  "SAMPLE_QA.json": "962c2533418372757744fb8034b9d02ea0ea901329d4cad341288b7691797a1b",
+  "UNION_CHECK.json": "7bd86443b48d36ec510db5fbfcaab7492b9142c6a7b9323af5c1360215339a6c",
+  "full_sample/SAMPLE_QA.json": "593d3caed753ab3280b370226049a2f7633263b47493147b5ab21634eefce2db",
+  "full_sample/MECH_PLAN.md": "591df5276aa9cb0b6c39db2477c37fd9217319a9b58ecf498873d720638bc078",
+  "frozen_pilot_code/mech_test.py": "85d4f45f4a6b0e2009e5fd0783040655c13a4487f15f221371219863d2760893",
+  "frozen_pilot_code/posthoc_roads.py": "d61013e972208721d3fbe08fab129ff79f3f1892daf148b5c6040bfb00adcfff",
+  "frozen_pilot_code/MECH_FREEZE.json": "c54863a74af39d71f9fe36e5aa9a019a21ec58df547bf0e2f9309f6f510f3967",
+  "frozen_pilot_code/MECH_FREEZE.json.ots": "37c2d49a1671429f047814afe3a7c5c466c86904a66ccd6409b8f8abbc7a9bd2",
+  "frozen_pilot_code/MECH_PLAN.md": "43f965cea1ed0f1c4144cced44c3ad96f90575a0ce41a47577ebbbaa9956f688",
+  "frozen_pilot_code/ots_upgraded/MECH_FREEZE.json.ots": "88536c0ed4069dfd3c582bf6596c8ff55f6041af68b9e1024ed4b10707791d93",
+  "/home/claude/p1mech/mech_test.py": "85d4f45f4a6b0e2009e5fd0783040655c13a4487f15f221371219863d2760893",
+  "/home/claude/p1mech/posthoc_roads.py": "d61013e972208721d3fbe08fab129ff79f3f1892daf148b5c6040bfb00adcfff",
+  "/home/claude/p1mech/MECH_FREEZE.json": "c54863a74af39d71f9fe36e5aa9a019a21ec58df547bf0e2f9309f6f510f3967",
+  "/home/claude/p1c/compartments_static.npz": "d6fd8cb7590dc9cc70ec84bb6e5179d69212295a871c7586ae7fe571d960d996",
+  "/home/claude/p1c/raw/mtbs_perims.json": "d98e403368b58c5e91a68f17c6f27cdc3d5957f26cd828be12c3e89c8dff1b1e",
+  "/home/claude/p1c/raw/fpafod_ignitions_blind.json": "c6f4b3e4bd810827a257410a1615b099114867d483eae2a0394e2240e0466c9e",
+  "/home/claude/p1c/p1_config.json": "ce1d1452b567b19933eea05fdda02b0b2bb9cfe4ca35de0dc8dbfc72d6c5b213",
+  "/home/claude/p1c/build_predictors.py": "590baa2a03de597f7f2f5ee12e1be9fdef5e199566d879c1eef82c9944e75636",
+  "/home/claude/p1c/raw/roads_primary.json": "c13239fe8ae5e78096d0213afe9416cb207f05e7b713f15b0635b4e9ee636858",
+  "/home/claude/p1c/raw/roads_secondary.json": "c7a0b9eaf315daf3dfca4d564b4ef2f596529d79b819082a1f084c0844b596a6",
+  "/home/claude/p1c/raw/roads_local.json": "ab53215a4580b04d95eec382529abceee4d8831c3a340996d0a33081919c4701",
+  "/home/claude/p1/p1_config.json": "d43bd6025f46a7efec48f644f65b1f15e6e8186163da4deb4afe199a0e704f99"
+ }
+}

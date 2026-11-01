@@ -3,7 +3,7 @@
   "schema_version": 1,
   "id": "effortless-equilibrium-forcing-time",
   "kind": "theorem_function",
-  "name": "Effortless equilibrium — Intelligence Bound floor on forcing time",
+  "name": "Effortless equilibrium — forcing-time floor, conditional on the Intelligence Bound premises",
   "version": "1.0.0",
   "summary": "Checks that steering a system with I bits of control information at a rate within the Intelligence Bound takes at least I·k_B·T·ln 2/(P·D) time.",
   "line": "Theorem functions",

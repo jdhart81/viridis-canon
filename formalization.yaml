@@ -15,8 +15,8 @@ mathlib_rev: "8f9d9cff6bd728b17a24e163c9402775d9e6a365"
 result_count: 42
 results:
   - id: "afforestation"
-    title: "Afforestation — cubic optimal-seeding law + site-prep lever"
-    summary: "Gives the seeding density that balances establishment against cost, and shows how much site preparation shifts it."
+    title: "Afforestation — seeding efficiency and the 8× edge-hostility lever"
+    summary: "Gives seeding efficiency e = C·(3Δμ/(2aσ))³ (established canopy per seed), the critical nucleus and barrier, and the proven lever: halving edge hostility σ multiplies efficiency by exactly 8."
     kind: "decision_kernel"
     tier: "admitted"
     state: "READY"
@@ -25,7 +25,7 @@ results:
     empirical_validation: "NOT_VALIDATED"
     lean:
       module: "AfforestationStewardship"
-      theorems: ["establishment_efficiency_cubic_in_drive_over_tension", "site_prep_halving_sigma_eightfolds_efficiency", "homogeneous_limit_recovers_fnt", "sower_IB_ceiling", "seeding_efficiency_eq_cos2_theta"]
+      theorems: ["establishment_efficiency_cubic_in_drive_over_tension", "site_prep_halving_sigma_eightfolds_efficiency", "homogeneous_limit_recovers_fnt"]
       sources:
         - {path: "series/AfforestationStewardship.lean", sha256: "3ebe33bfd6bd74124e87b5d7e73448db58e1459207fd6ff5c00a90fc3ac9526f"}
     verification:
@@ -198,10 +198,10 @@ results:
       depth: null
       claim_inventory: null
   - id: "dswc-tv-range-certificate"
-    title: "The D-Score Weight-Charter Certificate: A sharp rank-stability bound for precommitted composite indicators"
-    summary: "For simplex weights w and w0 and finite-dimensional contrast z, absolute score drift is at most total variation times range(z); the corollary is dimension-free within these assumptions."
-    kind: "theorem_function"
-    tier: "reference"
+    title: "D-Score robustness — does a parcel ranking survive disputed weights"
+    summary: "Checks whether two parcels keep their D-Score order when stakeholders dispute the indicator weights, using the sharp bound score drift ≤ total variation of the weights × range of the indicators."
+    kind: "decision_kernel"
+    tier: "callable"
     state: "READY"
     paper: "https://doi.org/10.5281/zenodo.22236741"
     manifest: "series/DSWC/function.json"
@@ -218,7 +218,7 @@ results:
       depth: "substantial"
       claim_inventory: "certificates/Run-132/SEALED_CLAIM_INVENTORY.json"
   - id: "effortless-equilibrium-forcing-time"
-    title: "Effortless equilibrium — Intelligence Bound floor on forcing time"
+    title: "Effortless equilibrium — forcing-time floor, conditional on the Intelligence Bound premises"
     summary: "Checks that steering a system with I bits of control information at a rate within the Intelligence Bound takes at least I·k_B·T·ln 2/(P·D) time."
     kind: "theorem_function"
     tier: "callable"
@@ -278,8 +278,8 @@ results:
       depth: null
       claim_inventory: null
   - id: "harmonization"
-    title: "Harmonization — thermodynamic shadow-price coordination"
-    summary: "Finds a single coordinating price that lets several actors with different marginal costs act consistently, and checks whether the coordination overhead is affordable."
+    title: "Harmonization — single-price coordination toward a shared target"
+    summary: "Finds the single price that makes stewards with quadratic costs hit a shared total exactly, each steward's allocation at that price, and the total cost, which no other allocation meeting the target beats."
     kind: "decision_kernel"
     tier: "admitted"
     state: "READY"
@@ -288,7 +288,7 @@ results:
     empirical_validation: "NOT_VALIDATED"
     lean:
       module: "GaianHarmonization"
-      theorems: ["ght_best_response_minimizes", "ght_market_clears", "ght_equimarginal", "ght_strong_duality_decentralized_eq_centralized", "ght_scalar_price_minimal_sufficient", "ght_harmonization_bandwidth_from_IB", "ght_bandwidth_antitone_temp", "ght_wuwei_robustness_ratio_ge_one", "ght_wuwei_robustness_strict", "ght_nonvacuous"]
+      theorems: ["ght_best_response_minimizes", "ght_market_clears", "ght_equimarginal", "ght_strong_duality_decentralized_eq_centralized", "ght_nonvacuous"]
       sources:
         - {path: "series/GaianHarmonization.lean", sha256: "cfdead658b1373cd311ac816f88867c5fd429a708e813a23a3293c901d110aec"}
     verification:
@@ -379,7 +379,7 @@ results:
       depth: "substantial"
       claim_inventory: "certificates/Run-121/SEALED_CLAIM_INVENTORY.json"
   - id: "mission-feasibility-corrigibility"
-    title: "Conservation feasibility — corrigibility rate ceiling under the Intelligence Bound"
+    title: "Conservation feasibility — corrigibility rate ceiling, conditional on the Intelligence Bound premises"
     summary: "Checks that if correcting an agent at rate Δ costs Δ·k_B·T·ln 2 of power and that fits in the available power P, then the correction rate cannot exceed P/(k_B·T·ln 2)."
     kind: "theorem_function"
     tier: "callable"
@@ -459,10 +459,10 @@ results:
       depth: null
       claim_inventory: null
   - id: "pcs-reliability-derivative-eq-pivotal-probability"
-    title: "Pivotal Corridor Stewardship: Exact Reliability Gradients and a Failure-Aware Priority Rule"
-    summary: "For independent edge states, the partial derivative of two-terminal reliability with respect to an edge survival probability equals that edge's pivotal probability."
-    kind: "theorem_function"
-    tier: "reference"
+    title: "Corridor priority — which corridor link to protect first"
+    summary: "Computes the exact probability that two habitat cores stay connected and each link's pivotal probability, which the theorem shows is the reliability gradient, then ranks links for protection (optionally per unit cost)."
+    kind: "decision_kernel"
+    tier: "callable"
     state: "READY"
     paper: "https://doi.org/10.5281/zenodo.22665554"
     manifest: "series/PCS/function.json"
@@ -511,7 +511,7 @@ results:
       module: "NitrogenFixation"
       theorems: ["theorem10_info_bound_structure"]
       sources:
-        - {path: "P7_PlasmaNFix/Integration.lean", sha256: "09612cf1c2f6ff9d06aacb577373822826515bc74ffacebe763e8482e5117884"}
+        - {path: "P7_PlasmaNFix/Integration.lean", sha256: "972174f14ca366d7677423161c625710e015d17404ebce26c5dee7dc18183122"}
         - {path: "P7_PlasmaNFix/Foundations.lean", sha256: "d00ed89438dd55a25fc59fbd03a96c69ef91300db910a3da5547be9a15d9f82c"}
     verification:
       provider: "CANON_CI_SPINE_BUILD"
@@ -561,8 +561,8 @@ results:
       depth: "substantial"
       claim_inventory: "certificates/Run-128/SEALED_CLAIM_INVENTORY.json"
   - id: "restoration"
-    title: "Restoration — nucleation planting design (Θ go/no-go + n*)"
-    summary: "Tells you whether concentrating planting in a few large patches is likely to beat spreading it thin, and the smallest patch worth planting, given how strongly your site favors establishment."
+    title: "Restoration — nucleation planting design (critical cluster size n* + go/no-go)"
+    summary: "Gives the smallest planted cluster that the nucleation model says will grow rather than dissolve (n* = (2aσ/(3Δμ))³), the barrier height, and a go/no-go for a planned cluster size."
     kind: "decision_kernel"
     tier: "admitted"
     state: "READY"
@@ -571,7 +571,7 @@ results:
     empirical_validation: "NOT_VALIDATED"
     lean:
       module: "ForestNucleation"
-      theorems: ["critical_nucleus", "barrier_half_identity", "broadcast_suboptimal", "FNT_nonvacuous"]
+      theorems: ["critical_nucleus", "barrier_half_identity", "FNT_nonvacuous"]
       sources:
         - {path: "series/ForestNucleation.lean", sha256: "667a826a2e5befac67964b69670435362de2d3d792e163807c3bb7c2aec28132"}
     verification:
@@ -804,7 +804,7 @@ results:
       depth: "elementary"
       claim_inventory: "certificates/Run-139/SEALED_CLAIM_INVENTORY.json"
   - id: "thermodynamic-economics-production-bound"
-    title: "Thermodynamic economics — production cannot exceed P·D/(k_B·T·ln 2)"
+    title: "Thermodynamic economics — production bound P·D/(k_B·T·ln 2), conditional on the Intelligence Bound premises"
     summary: "Checks that thermodynamic production η·P·D/(k_B·T·ln 2) never exceeds the ceiling P·D/(k_B·T·ln 2) when efficiency and data richness are fractions."
     kind: "theorem_function"
     tier: "callable"

@@ -1,0 +1,575 @@
+{
+ "rule": "drop P1C perimeters intersecting the pilot compute box widened by 600 m",
+ "pilot_compute_box_5070": [
+  -1883130,
+  2946720,
+  -1702500,
+  3140160
+ ],
+ "widen_m": 600.0,
+ "source": {
+  "path": "/home/claude/p1c/raw/mtbs_perims.json",
+  "sha256": "d98e403368b58c5e91a68f17c6f27cdc3d5957f26cd828be12c3e89c8dff1b1e",
+  "features": 262
+ },
+ "output": {
+  "path": "/home/claude/p1mech_p1c/mtbs_perims_disjoint.json",
+  "sha256": "05ba36ede5a9d8a607d3355b0c0aaa5faf890bba94a67a1c7f1f23637c969128",
+  "features": 125
+ },
+ "dropped": {
+  "count": 137,
+  "features": [
+   {
+    "index": 0,
+    "year": 2024
+   },
+   {
+    "index": 1,
+    "year": 2024
+   },
+   {
+    "index": 3,
+    "year": 2023
+   },
+   {
+    "index": 7,
+    "year": 2023
+   },
+   {
+    "index": 8,
+    "year": 2023
+   },
+   {
+    "index": 9,
+    "year": 2023
+   },
+   {
+    "index": 16,
+    "year": 2022
+   },
+   {
+    "index": 17,
+    "year": 2022
+   },
+   {
+    "index": 19,
+    "year": 2021
+   },
+   {
+    "index": 22,
+    "year": 2021
+   },
+   {
+    "index": 24,
+    "year": 2021
+   },
+   {
+    "index": 25,
+    "year": 2021
+   },
+   {
+    "index": 26,
+    "year": 2021
+   },
+   {
+    "index": 28,
+    "year": 2021
+   },
+   {
+    "index": 29,
+    "year": 2021
+   },
+   {
+    "index": 31,
+    "year": 2020
+   },
+   {
+    "index": 32,
+    "year": 2020
+   },
+   {
+    "index": 36,
+    "year": 2020
+   },
+   {
+    "index": 37,
+    "year": 2020
+   },
+   {
+    "index": 39,
+    "year": 2020
+   },
+   {
+    "index": 40,
+    "year": 2020
+   },
+   {
+    "index": 42,
+    "year": 2020
+   },
+   {
+    "index": 43,
+    "year": 2020
+   },
+   {
+    "index": 44,
+    "year": 2020
+   },
+   {
+    "index": 46,
+    "year": 2019
+   },
+   {
+    "index": 47,
+    "year": 2018
+   },
+   {
+    "index": 50,
+    "year": 2018
+   },
+   {
+    "index": 56,
+    "year": 2018
+   },
+   {
+    "index": 57,
+    "year": 2017
+   },
+   {
+    "index": 62,
+    "year": 2017
+   },
+   {
+    "index": 67,
+    "year": 2016
+   },
+   {
+    "index": 70,
+    "year": 2016
+   },
+   {
+    "index": 77,
+    "year": 2015
+   },
+   {
+    "index": 78,
+    "year": 2015
+   },
+   {
+    "index": 79,
+    "year": 2015
+   },
+   {
+    "index": 80,
+    "year": 2015
+   },
+   {
+    "index": 81,
+    "year": 2015
+   },
+   {
+    "index": 83,
+    "year": 2015
+   },
+   {
+    "index": 84,
+    "year": 2015
+   },
+   {
+    "index": 87,
+    "year": 2015
+   },
+   {
+    "index": 94,
+    "year": 2015
+   },
+   {
+    "index": 95,
+    "year": 2015
+   },
+   {
+    "index": 96,
+    "year": 2015
+   },
+   {
+    "index": 98,
+    "year": 2015
+   },
+   {
+    "index": 101,
+    "year": 2014
+   },
+   {
+    "index": 102,
+    "year": 2014
+   },
+   {
+    "index": 104,
+    "year": 2014
+   },
+   {
+    "index": 107,
+    "year": 2013
+   },
+   {
+    "index": 109,
+    "year": 2012
+   },
+   {
+    "index": 110,
+    "year": 2012
+   },
+   {
+    "index": 111,
+    "year": 2012
+   },
+   {
+    "index": 112,
+    "year": 2012
+   },
+   {
+    "index": 113,
+    "year": 2012
+   },
+   {
+    "index": 114,
+    "year": 2012
+   },
+   {
+    "index": 115,
+    "year": 2012
+   },
+   {
+    "index": 116,
+    "year": 2012
+   },
+   {
+    "index": 117,
+    "year": 2012
+   },
+   {
+    "index": 121,
+    "year": 2012
+   },
+   {
+    "index": 124,
+    "year": 2011
+   },
+   {
+    "index": 125,
+    "year": 2011
+   },
+   {
+    "index": 126,
+    "year": 2010
+   },
+   {
+    "index": 129,
+    "year": 2010
+   },
+   {
+    "index": 133,
+    "year": 2009
+   },
+   {
+    "index": 135,
+    "year": 2009
+   },
+   {
+    "index": 136,
+    "year": 2008
+   },
+   {
+    "index": 137,
+    "year": 2008
+   },
+   {
+    "index": 138,
+    "year": 2008
+   },
+   {
+    "index": 139,
+    "year": 2008
+   },
+   {
+    "index": 141,
+    "year": 2008
+   },
+   {
+    "index": 145,
+    "year": 2008
+   },
+   {
+    "index": 146,
+    "year": 2008
+   },
+   {
+    "index": 150,
+    "year": 2007
+   },
+   {
+    "index": 152,
+    "year": 2007
+   },
+   {
+    "index": 153,
+    "year": 2007
+   },
+   {
+    "index": 154,
+    "year": 2007
+   },
+   {
+    "index": 156,
+    "year": 2007
+   },
+   {
+    "index": 157,
+    "year": 2007
+   },
+   {
+    "index": 159,
+    "year": 2007
+   },
+   {
+    "index": 161,
+    "year": 2006
+   },
+   {
+    "index": 162,
+    "year": 2006
+   },
+   {
+    "index": 164,
+    "year": 2006
+   },
+   {
+    "index": 166,
+    "year": 2006
+   },
+   {
+    "index": 167,
+    "year": 2006
+   },
+   {
+    "index": 170,
+    "year": 2005
+   },
+   {
+    "index": 171,
+    "year": 2005
+   },
+   {
+    "index": 174,
+    "year": 2005
+   },
+   {
+    "index": 175,
+    "year": 2005
+   },
+   {
+    "index": 178,
+    "year": 2004
+   },
+   {
+    "index": 179,
+    "year": 2004
+   },
+   {
+    "index": 181,
+    "year": 2004
+   },
+   {
+    "index": 188,
+    "year": 2003
+   },
+   {
+    "index": 189,
+    "year": 2003
+   },
+   {
+    "index": 192,
+    "year": 2003
+   },
+   {
+    "index": 193,
+    "year": 2002
+   },
+   {
+    "index": 195,
+    "year": 2001
+   },
+   {
+    "index": 196,
+    "year": 2001
+   },
+   {
+    "index": 197,
+    "year": 2001
+   },
+   {
+    "index": 198,
+    "year": 2001
+   },
+   {
+    "index": 199,
+    "year": 2001
+   },
+   {
+    "index": 200,
+    "year": 2001
+   },
+   {
+    "index": 203,
+    "year": 2001
+   },
+   {
+    "index": 205,
+    "year": 2000
+   },
+   {
+    "index": 206,
+    "year": 2000
+   },
+   {
+    "index": 207,
+    "year": 2000
+   },
+   {
+    "index": 208,
+    "year": 2000
+   },
+   {
+    "index": 210,
+    "year": 1999
+   },
+   {
+    "index": 211,
+    "year": 1999
+   },
+   {
+    "index": 212,
+    "year": 1999
+   },
+   {
+    "index": 213,
+    "year": 1998
+   },
+   {
+    "index": 214,
+    "year": 1998
+   },
+   {
+    "index": 217,
+    "year": 1996
+   },
+   {
+    "index": 222,
+    "year": 1995
+   },
+   {
+    "index": 223,
+    "year": 1994
+   },
+   {
+    "index": 224,
+    "year": 1994
+   },
+   {
+    "index": 225,
+    "year": 1994
+   },
+   {
+    "index": 227,
+    "year": 1994
+   },
+   {
+    "index": 228,
+    "year": 1994
+   },
+   {
+    "index": 229,
+    "year": 1994
+   },
+   {
+    "index": 230,
+    "year": 1994
+   },
+   {
+    "index": 231,
+    "year": 1992
+   },
+   {
+    "index": 232,
+    "year": 1992
+   },
+   {
+    "index": 233,
+    "year": 1992
+   },
+   {
+    "index": 234,
+    "year": 1992
+   },
+   {
+    "index": 238,
+    "year": 1991
+   },
+   {
+    "index": 239,
+    "year": 1991
+   },
+   {
+    "index": 243,
+    "year": 1989
+   },
+   {
+    "index": 244,
+    "year": 1989
+   },
+   {
+    "index": 245,
+    "year": 1989
+   },
+   {
+    "index": 246,
+    "year": 1988
+   },
+   {
+    "index": 253,
+    "year": 1988
+   },
+   {
+    "index": 255,
+    "year": 1987
+   },
+   {
+    "index": 256,
+    "year": 1987
+   },
+   {
+    "index": 257,
+    "year": 1986
+   },
+   {
+    "index": 258,
+    "year": 1985
+   },
+   {
+    "index": 259,
+    "year": 1985
+   },
+   {
+    "index": 260,
+    "year": 1985
+   },
+   {
+    "index": 261,
+    "year": 1985
+   }
+  ]
+ },
+ "code_sha256": "3315cebf97506d59f5442cb17c7d75743b0f191effb0c4a04f34ffeccb95469a",
+ "note": "Perimeter geometry and pilot configuration only. No barrier map was read."
+}

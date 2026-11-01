@@ -3,7 +3,7 @@
   "schema_version": 1,
   "id": "mission-feasibility-corrigibility",
   "kind": "theorem_function",
-  "name": "Conservation feasibility — corrigibility rate ceiling under the Intelligence Bound",
+  "name": "Conservation feasibility — corrigibility rate ceiling, conditional on the Intelligence Bound premises",
   "version": "1.0.0",
   "summary": "Checks that if correcting an agent at rate Δ costs Δ·k_B·T·ln 2 of power and that fits in the available power P, then the correction rate cannot exceed P/(k_B·T·ln 2).",
   "line": "Theorem functions",

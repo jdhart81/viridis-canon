@@ -637,10 +637,20 @@
     "standard": "CATALOG_COVERAGE_PROVENANCE_1"
   },
   "curation": {
+    "BiosphereErasureBound.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "Book_HeatAndDisorder.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "BoundedMemoryLearning.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
     "Bridge_BiosphereProductivity.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them.",
       "doi": "10.5281/zenodo.20777118",
       "id": "biosphere-productivity-bridge",
-      "summary": "The planetary Landauer dual linking biosphere productivity to the Intelligence Bound.",
+      "summary": "A planetary Landauer-dual model linking biosphere productivity to the conjectured Intelligence Bound, conditional on its premises.",
       "tags": [
         "biosphere",
         "intelligence-bound",
@@ -648,6 +658,12 @@
       ],
       "tier": "flagship",
       "title": "Intelligence Bound \u2194 Biosphere Productivity"
+    },
+    "Bridge_MissionFeasibility.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "DecoherentSelection.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
     },
     "EcoChain_DendriticCorridor.lean": {
       "doi": "10.5281/zenodo.20467431",
@@ -661,10 +677,23 @@
       "tier": "flagship",
       "title": "Dendritic Corridor"
     },
+    "EffortlessEquilibrium.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "GeodesicSaturation.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "MRAB.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "MutualisticAttestation.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
     "P0_IntelligenceBound_COMPILED.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them.",
       "doi": "10.5281/zenodo.19317982",
       "id": "intelligence-bound",
-      "summary": "The formal spine: a thermodynamic ceiling on intelligence production under finite power.",
+      "summary": "Historical P0 source: the conditional Intelligence Bound \u0130 \u2264 min(\u03c1B, P/(k_B T ln 2)), with the thermodynamic arm assumed as the predicate SatisfiesLandauerLimit. The physical bound is a conjecture.",
       "tags": [
         "flagship",
         "information-theory",
@@ -702,6 +731,7 @@
       "title": "Thermodynamic Economics"
     },
     "P5_SLSPT/IntelligenceBound.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them.",
       "summary": "A capacity bound showing how the attainable rate scales with available power and data while falling with per-unit thermodynamic cost.",
       "tags": [
         "capacity",
@@ -727,6 +757,21 @@
       ],
       "tier": "working-corpus",
       "title": "AI Safety \u2014 Quarantined"
+    },
+    "PerennialCorridor.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "StewardshipSetpoint.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "SymbioticIntelligenceBound.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "ThermodynamicAttention.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "UniversalWaterfilling.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
     },
     "releases/2026-08-08/Carbon_Continuity_After_Wildfire/lean/CarbonContinuity.lean": {
       "aristotle_id": "40c58299-efeb-4cad-b332-2525b7c8d6d1",
@@ -798,6 +843,21 @@
       "tier": "working-corpus",
       "title": "The Scheduler Free-Energy Certificate"
     },
+    "series/AfforestationStewardship.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/CapacityHarmonization.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/CertificationComplexity.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/CorridorStewardship.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/DissipativeGeneralization.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
     "series/DualCorridor.lean": {
       "id": "trees-cannot-cut",
       "paper_target": "Landscape Ecology",
@@ -811,6 +871,75 @@
         "s5"
       ],
       "title": "Trees Cannot Cut \u2014 Circuit Rank as the Design Variable Reconciling Habitat Connectivity and Fuel Discontinuity"
+    },
+    "series/EcopoieticSuccession.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/GaianHarmonization.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/GaianMutualismSelection.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/IntelligenceExergy.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/KibbleZurekSpeedLimit.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/MELT.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/MIST.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/ManipulationProofWeighting.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/MutualistCoestablishment.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/MutualisticInference.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/PlasticityVitrification.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/S6_CognitionLearning/DissipativeGeneralization.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/S6_CognitionLearning/HarmonizedDescent.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/S6_CognitionLearning/MELT.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/SymbioticCorridor.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/SymbioticRiskPremium.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/SymbioticSpeedLimit.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/ThermodynamicDiscounting.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/UniversalNucleationMetaTheorem.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/VerificationPhaseTransition.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/WuWeiCrypticity.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/WuWeiInference.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
+    },
+    "series/WuWeiSampling.lean": {
+      "caveat": "Lean checks conditional mathematics. This record is not, by itself, empirical validation, regulatory approval, or proof of a real-world magnitude. Intelligence Bound status: the physical bound dI/dt \u2264 P\u00b7D/(k_B T ln 2) is a conjecture, not a theorem. Where this record calls a result an Intelligence Bound application, a ceiling, or derived from the bound, read it as conditional on the named premises (PL: R_obs\u00b7k_B T ln 2 \u2264 P and PD: rate \u2264 R_obs\u00b7D, or the assumed predicate SatisfiesLandauerLimit). Lean checks the mathematics from those premises; it does not derive them."
     }
   },
   "doi_by_path": {

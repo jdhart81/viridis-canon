@@ -45,7 +45,9 @@
     "multi-ring-alignment-capacity",
     "symbiotic-surplus",
     "decision-information-capacity",
-    "thermodynamic-economic-allocation"
+    "thermodynamic-economic-allocation",
+    "pcs-reliability-derivative-eq-pivotal-probability",
+    "dswc-tv-range-certificate"
   ],
   "foundation_lean_modules": [
     "P0_IntelligenceBound_COMPILED",

@@ -21,6 +21,8 @@ B3  In every exported challenge, each target theorem's proof is exactly
 B4  Each target theorem's statement in the challenge equals its statement in
     the certified reference solution (the parser agrees with comparator).
 B5  Output is byte-deterministic: the same certificates give the same files.
+    The manifest depends only on what goes into the tasks, so an index edit
+    that changes no task (an OS-function note, say) leaves data/ current.
     Standard library only; no Lean needed.
 """
 from __future__ import annotations
@@ -127,7 +129,6 @@ def build() -> tuple[str, str]:
         "version": BENCH_VERSION,
         "task_schema": TASK_SCHEMA,
         "source": "certificates/index.json",
-        "source_sha256": sha256((CERTS / "index.json").read_bytes()),
         "tasks_file": "tasks.jsonl",
         "tasks_sha256": sha256(lines.encode("utf-8")),
         "counts": {"tasks": len(tasks), "theorems": sum(t["target_count"] for t in tasks),

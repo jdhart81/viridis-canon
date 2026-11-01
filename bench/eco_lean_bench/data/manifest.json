@@ -32,7 +32,6 @@
     "8f9d9cff6bd728b17a24e163c9402775d9e6a365"
   ],
   "source": "certificates/index.json",
-  "source_sha256": "1487ec63943721b114ae2e06ae4bd6dfa5f9881aa7d5585cb6b645ad5b80976e",
   "task_ids": [
     "ELB-123",
     "ELB-124",

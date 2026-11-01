@@ -6,6 +6,12 @@ namespace Viridis.HDFM.CorridorOverlapDuality
 def ProductFactorization (qA qB qUnion qShared : ℝ) : Prop :=
   qA * qB = qUnion * qShared
 
+theorem finite_path_factorization {ι : Type*} [DecidableEq ι]
+    (A B : Finset ι) (q : ι → ℝ) :
+    (∏ e ∈ A, q e) * (∏ e ∈ B, q e) =
+      (∏ e ∈ A ∪ B, q e) * (∏ e ∈ A ∩ B, q e) := by
+  exact (Finset.prod_union_inter (s₁ := A) (s₂ := B) (f := q)).symm
+
 theorem synchrony_dividend_identity
     (qA qB qUnion qShared : ℝ)
     (hfactor : ProductFactorization qA qB qUnion qShared) :

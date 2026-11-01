@@ -40,7 +40,7 @@
       "minimum": 0,
       "type": "number",
       "unit": "dimensionless retention coefficient",
-      "help": "Retention coefficient — share of carbon retained after the fire (0–1)."
+      "help": "Live-pool retention a — share of the live carbon pool kept from one cycle to the next (0 ≤ a < 1)."
     },
     {
       "name": "d",
@@ -49,7 +49,7 @@
       "minimum": 0,
       "type": "number",
       "unit": "dimensionless retention coefficient",
-      "help": "Disturbance intensity coefficient (0–1)."
+      "help": "Durable-pool retention d — share of the durable (dead/soil) carbon pool kept from one cycle to the next (0 ≤ d < 1)."
     },
     {
       "name": "r",
@@ -57,7 +57,7 @@
       "exclusiveMinimum": 0,
       "type": "number",
       "unit": "dimensionless coupling coefficient",
-      "help": "Regrowth rate coefficient (0–1)."
+      "help": "Regrowth coupling r — carbon added to the live pool per unit of durable pool each cycle. Any positive value."
     },
     {
       "name": "p",
@@ -65,7 +65,7 @@
       "exclusiveMinimum": 0,
       "type": "number",
       "unit": "dimensionless coupling coefficient",
-      "help": "Regenerative coupling — how strongly surviving stock supports regrowth (0–1)."
+      "help": "Transfer coupling p — carbon added to the durable pool per unit of live pool each cycle. Any positive value."
     }
   ],
   "outputs": [

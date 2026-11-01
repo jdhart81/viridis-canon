@@ -2,50 +2,6 @@
  "schema_version": 1,
  "source": "viridis-conservation-app@398b177: decisionKernelCatalog.ts EXAMPLES run through conservationDecisionRuntime.ts on Node 22 (V8 12.4)",
  "published": {
-  "restoration": {
-   "inputs": {
-    "sigma": 1.5,
-    "delta_mu": 1
-   },
-   "outputs": {
-    "nucleation_number": 1.5,
-    "critical_nucleus_n_star": 3.375,
-    "recommendation": "RED",
-    "broadcast_fails": true
-   }
-  },
-  "afforestation": {
-   "inputs": {
-    "sigma": 1,
-    "delta_mu": 1.2,
-    "prep": 2,
-    "rate": 1.2,
-    "rate_max": 1
-   },
-   "outputs": {
-    "optimal_density": 13.824,
-    "site_prep_multiplier": 8,
-    "seeding_within_ib_ceiling": false
-   }
-  },
-  "harmonization": {
-   "inputs": {
-    "marginal_costs": [
-     1,
-     3,
-     2
-    ],
-    "command_overhead": 5,
-    "bandwidth": 0.5,
-    "ib_bound": 1
-   },
-   "outputs": {
-    "shadow_price": 3,
-    "wu_wei_dividend": 10,
-    "decentralization_cheaper": true,
-    "coordination_within_ib": true
-   }
-  },
   "carbon-continuity": {
    "inputs": {
     "a": 0.6,
@@ -458,5 +414,11 @@
     "claim_boundary": "Scenario-only allocation for fixed, user-supplied coefficients. No appraisal, investment advice, empirical validation, price authorization, credit quantity, causal impact, or certification is produced."
    }
   }
- }
+ },
+ "retired_functions": [
+  "afforestation",
+  "harmonization",
+  "restoration"
+ ],
+ "retired_note": "Parity for afforestation, harmonization and restoration was retired on 2026-10-31: those runners now compute what their Lean theorems prove (viridisos #22-#24), so they intentionally differ from the product's 398b177 outputs. Theorem conformance is tested in tests/test_os_kernel_theorems.py instead."
 }

@@ -1,0 +1,25 @@
+{
+ "verified_at_utc": "2026-10-22T11:30:09Z",
+ "registered_files": {
+  "PREREGISTRATION_P1C_NEWA_v1.4.md": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/9e79127d9ba9b17812f8fb567bef5ec858693a8d/preregistrations/p1c_newa_v1.4/PREREGISTRATION_P1C_NEWA_v1.4.md",
+   "sha256": "36e6383621e3f2d228c11ef13300e15b991787d827c242b5caf3e65a61c5f57f",
+   "md5": "5cb087353234653779c92b6aadc5cae0",
+   "bytes": 40535
+  },
+  "FREEZE.json": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/9e79127d9ba9b17812f8fb567bef5ec858693a8d/preregistrations/p1c_newa_v1.4/FREEZE.json",
+   "sha256": "4efb62b83fa8f8a5bbb674739f5102dd87bb599a17bf2f0b10f813789019e042",
+   "md5": "1a7ae326447a3a0cfb429929fc0704c6",
+   "bytes": 24720
+  }
+ },
+ "github": {
+  "repo": "jdhart81/viridis-canon",
+  "commit": "9e79127d9ba9b17812f8fb567bef5ec858693a8d",
+  "folder": "preregistrations/p1c_newa_v1.4",
+  "public": true,
+  "pr": "https://github.com/jdhart81/viridis-canon/pull/138",
+  "evidence": "files downloaded anonymously from raw.githubusercontent.com at this commit"
+ }
+}

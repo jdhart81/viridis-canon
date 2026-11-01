@@ -1,5 +1,5 @@
 name: Theorem bounty report
-description: Report a vacuous, trivial or misstated theorem among the 18 certified runs ($50 per confirmed finding; see BOUNTY.md).
+description: Report a vacuous, trivial or misstated theorem among the 18 certified runs (credit for confirmed findings; the cash bounty is closed; see BOUNTY.md).
 title: "[bounty] Run-NNN: <theorem name>"
 labels: ["theorem-bounty"]
 body:
@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         Thanks for checking our work. Terms are in [BOUNTY.md](https://github.com/jdhart81/viridis-canon/blob/main/BOUNTY.md).
-        Do not include payment details here; we contact confirmed reporters privately.
+        New reports are credit only: confirmed findings go in the ledger and are acknowledged in the papers.
   - type: input
     id: run
     attributes:

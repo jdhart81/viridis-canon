@@ -1,0 +1,103 @@
+{
+ "note": "Descriptive subsets pre-specified in MECH_PLAN.md \u00a76; frozen analyse(), unchanged.",
+ "region_p1c": "P1C region: northeast Washington (eastern Okanogan, Ferry, Stevens and Pend Oreille counties); compute grid of p1c/p1_config.json",
+ "subsets": {
+  "without_largest_cluster": {
+   "n_fires": 41,
+   "n_clusters": 29,
+   "by_type": {
+    "B": {
+     "E": 0.9237940276238412,
+     "ci95": [
+      0.8321507644492645,
+      1.1057492514105327
+     ],
+     "p_shift_upper": 0.8861138861138861,
+     "p_shift_lower": 0.11488511488511488,
+     "decision": "INCONCLUSIVE"
+    },
+    "road": {
+     "E": 1.292030909196621,
+     "ci95": [
+      1.1629723885144145,
+      1.4358397579278455
+     ],
+     "p_shift_upper": 0.000999000999000999,
+     "p_shift_lower": 1.0,
+     "decision": "SUPPORTED"
+    },
+    "water": {
+     "E": 0.6101499874897737,
+     "ci95": [
+      0.33710728124765005,
+      0.7062480708896467
+     ],
+     "p_shift_upper": 0.995004995004995,
+     "p_shift_lower": 0.005994005994005994,
+     "decision": "CONTRADICTED"
+    },
+    "nonburn": {
+     "E": 0.7780772585394694,
+     "ci95": [
+      0.6823508120717687,
+      0.9691350324635166
+     ],
+     "p_shift_upper": 0.994005994005994,
+     "p_shift_lower": 0.006993006993006993,
+     "decision": "CONTRADICTED"
+    }
+   }
+  },
+  "without_zones_north_of_49N": {
+   "n_fires": 45,
+   "n_clusters": 29,
+   "by_type": {
+    "B": {
+     "E": 0.9324353183532754,
+     "ci95": [
+      0.8382965855706775,
+      1.0950521490838503
+     ],
+     "p_shift_upper": 0.8491508491508492,
+     "p_shift_lower": 0.15184815184815184,
+     "decision": "INCONCLUSIVE"
+    },
+    "road": {
+     "E": 1.2864696439188814,
+     "ci95": [
+      1.1743708320335808,
+      1.4234471500141639
+     ],
+     "p_shift_upper": 0.000999000999000999,
+     "p_shift_lower": 1.0,
+     "decision": "SUPPORTED"
+    },
+    "water": {
+     "E": 0.6026718631819465,
+     "ci95": [
+      0.32283118018586565,
+      0.701379526877414
+     ],
+     "p_shift_upper": 0.995004995004995,
+     "p_shift_lower": 0.005994005994005994,
+     "decision": "CONTRADICTED"
+    },
+    "nonburn": {
+     "E": 0.7674817538856081,
+     "ci95": [
+      0.6743708694623005,
+      0.932467088919999
+     ],
+     "p_shift_upper": 0.994005994005994,
+     "p_shift_lower": 0.006993006993006993,
+     "decision": "CONTRADICTED"
+    }
+   }
+  }
+ },
+ "runner": {
+  "script": "run_p1c_mech.py",
+  "sha256": "91408affc1500c44a176453eac3a468d354feb0bc02d2c80c903627bea8c3aa7",
+  "note": "Fields region_p1c, plan_primary, robustness_subsets and runner were added by the runner. The frozen code labels its output with the pilot region and names E_B as its primary; MECH_PLAN.md names E_road (H1)."
+ }
+}

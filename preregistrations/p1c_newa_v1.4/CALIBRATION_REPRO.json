@@ -1,0 +1,88 @@
+{
+ "models": {
+  "iid": {
+   "M2R": {
+    "recomputed": {
+     "q90_absT": 1.6869117712477177,
+     "q95_absT": 2.039130650131155
+    },
+    "recorded": {
+     "q90_absT": 1.6869117712477177,
+     "q95_absT": 2.039130650131155
+    },
+    "identical": true
+   },
+   "M2": {
+    "recomputed": {
+     "q90_absT": 1.6783483551672882,
+     "q95_absT": 2.0661995504613
+    },
+    "recorded": {
+     "q90_absT": 1.6783483551672882,
+     "q95_absT": 2.0661995504613
+    },
+    "identical": true
+   }
+  },
+  "block_s0.110": {
+   "M2R": {
+    "recomputed": {
+     "q90_absT": 1.8341881023700262,
+     "q95_absT": 2.2614985693989262
+    },
+    "recorded": {
+     "q90_absT": 1.8341881023700262,
+     "q95_absT": 2.2614985693989262
+    },
+    "identical": true
+   },
+   "M2": {
+    "recomputed": {
+     "q90_absT": 1.756859915198729,
+     "q95_absT": 2.1031153485780387
+    },
+    "recorded": {
+     "q90_absT": 1.756859915198729,
+     "q95_absT": 2.1031153485780387
+    },
+    "identical": true
+   }
+  },
+  "field_s0.400_r180": {
+   "M2R": {
+    "recomputed": {
+     "q90_absT": 1.9493045413339125,
+     "q95_absT": 2.368898064406115
+    },
+    "recorded": {
+     "q90_absT": 1.9493045413339125,
+     "q95_absT": 2.368898064406115
+    },
+    "identical": true
+   },
+   "M2": {
+    "recomputed": {
+     "q90_absT": 3.21966704063234,
+     "q95_absT": 3.7363715122805563
+    },
+    "recorded": {
+     "q90_absT": 3.21966704063234,
+     "q95_absT": 3.7363715122805563
+    },
+    "identical": true
+   }
+  }
+ },
+ "code_sha256": {
+  "run_test.py": "25abae847109aa7bb22d73ce8414b401c94c448992af3cd6787d6a79440d8d88",
+  "simcal.py": "8df43dbb3b8e58077d56697e0053c2bedbef3a0cebf8417d1cd7311ee3683868",
+  "check_calibration_repro.py": "dc3131a842d920271fb988bf978811143b441faf82806a89f9d7861bd7ff3942",
+  "CALIBRATION.json": "be7287fdc47edc78416b9bfe2e42450e887223b0d43d4862562bce82a7c119f5"
+ },
+ "v13_code_sha256": {
+  "run_test.py": "ebf445e5a2018f3bb23ddf8c1c91de511530abc19b9cd85314ea418097050dd2",
+  "simcal.py": "5068f6d02b4a23771ce0f195f38b33cbc6a03cd0d028b578c90c687bd982d2d4",
+  "calibrate_critical.py": "2539087ad3fdb6616399f1edc2593608e21deec7f07db9925c55697ffb897040"
+ },
+ "all_identical": true
+}

@@ -1,0 +1,62 @@
+{
+ "note": "Sample construction only: rasterization, inclusion, wildfire matching and clustering. No barrier map was read.",
+ "code_sha256": "85d4f45f4a6b0e2009e5fd0783040655c13a4487f15f221371219863d2760893",
+ "mtbs_features": 262,
+ "included": 167,
+ "skipped": {
+  "no_geometry": 0,
+  "outside_analysis_box": 93,
+  "zone_off_grid": 2,
+  "tiny": 0
+ },
+ "samples": {
+  "primary": {
+   "n_fires": 91,
+   "n_clusters": 35,
+   "largest_cluster": 39,
+   "clusters_without_room": 0,
+   "years": [
+    1992,
+    2024
+   ],
+   "burned_cells": 7269434,
+   "zone_cells": 4700659
+  },
+  "all_perimeters": {
+   "n_fires": 167,
+   "n_clusters": 54,
+   "largest_cluster": 65,
+   "clusters_without_room": 0,
+   "years": [
+    1985,
+    2024
+   ],
+   "burned_cells": 9460961,
+   "zone_cells": 7128447
+  },
+  "primary_before_2010": {
+   "n_fires": 37,
+   "n_clusters": 23,
+   "largest_cluster": 11,
+   "clusters_without_room": 0,
+   "years": [
+    1992,
+    2009
+   ],
+   "burned_cells": 1005695,
+   "zone_cells": 1169960
+  },
+  "primary_2010_on": {
+   "n_fires": 54,
+   "n_clusters": 28,
+   "largest_cluster": 18,
+   "clusters_without_room": 0,
+   "years": [
+    2010,
+    2024
+   ],
+   "burned_cells": 6263739,
+   "zone_cells": 3530699
+  }
+ }
+}

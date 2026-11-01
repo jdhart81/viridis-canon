@@ -4,6 +4,7 @@ Invariants R1-R5 are stated in tools/build_results_pages.py. Standard library on
 """
 from __future__ import annotations
 
+import html
 import importlib.util
 import json
 import re
@@ -120,6 +121,24 @@ class ResultsPagesTests(unittest.TestCase):
         locs = re.findall(r"<loc>([^<]+)</loc>", (ROOT / "docs" / "sitemap.xml").read_text(encoding="utf-8"))
         expected = [f"{self.tool.BASE}results/"] + [self.tool.page_url(r["slug"]) for r in self.tool.RESULTS]
         self.assertEqual(locs, expected)
+
+    def test_papers_carry_the_uncertified_label(self):  # R6
+        # The approved label, written out independently of the tool.
+        label = ("UNCERTIFIED manuscript artifact. No issuer-produced Viridis Comparator certificate has been "
+                 "shown to bind this public manuscript's exact bytes. Any linked certificate applies only to its "
+                 "exact sealed artifacts and stated theorem scope. Results remain conditional on the declared "
+                 "assumptions.")
+        for res in self.tool.RESULTS:
+            text = html.unescape((ROOT / "docs" / "results" / res["slug"] / "index.html").read_text(encoding="utf-8"))
+            statuses = re.findall(r'<p class="status">(.*?)</p>', text, re.S)
+            self.assertEqual(len(statuses), 1, res["slug"])
+            self.assertTrue(statuses[0].startswith(f"{label} Working paper, not peer reviewed."), res["slug"])
+            ld = json.loads(self._page(res["slug"]).jsonld[0])
+            self.assertTrue(ld["creativeWorkStatus"].startswith("UNCERTIFIED manuscript artifact;"), res["slug"])
+            self.assertIn(f"scoped to its sealed artifacts", ld["creativeWorkStatus"])
+            self.assertIn("note      = {UNCERTIFIED manuscript artifact.", text, res["slug"])
+        index = html.unescape((ROOT / "docs" / "results" / "index.html").read_text(encoding="utf-8"))
+        self.assertIn('<p class="status">Each paper below is an UNCERTIFIED manuscript artifact', index)
 
     def test_no_overclaiming_words(self):
         bad = re.compile(r"\b(field[- ]validated and|peer[- ]reviewed and|proven in the field|guaranteed in practice)\b", re.I)

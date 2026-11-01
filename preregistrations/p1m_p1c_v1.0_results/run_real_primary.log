@@ -1,0 +1,7 @@
+primary 47 {'B': (np.float64(0.935), [0.839, 1.099], 0.8452, 'INCONCLUSIVE'), 'road': (np.float64(1.277), [1.174, 1.41], 0.001, 'SUPPORTED'), 'water': (np.float64(0.603), [0.328, 0.697], 0.999, 'CONTRADICTED'), 'nonburn': (np.float64(0.77), [0.679, 0.939], 0.996, 'CONTRADICTED')}
+all_perimeters 82 {'B': (np.float64(0.945), [0.864, 1.05], 0.9261, 'INCONCLUSIVE'), 'road': (np.float64(1.369), [1.201, 1.573], 0.001, 'SUPPORTED'), 'water': (np.float64(0.632), [0.4, 0.776], 1.0, 'CONTRADICTED'), 'nonburn': (np.float64(0.822), [0.754, 0.91], 1.0, 'CONTRADICTED')}
+primary_before_2010 13 {'B': (np.float64(0.942), [0.823, 1.117], 0.5924, 'INCONCLUSIVE'), 'road': (np.float64(1.532), [1.114, 1.953], 0.001, 'SUPPORTED'), 'water': (np.float64(0.749), [0.175, 0.89], 0.8052, 'INCONCLUSIVE'), 'nonburn': (np.float64(0.816), [0.585, 0.928], 0.8282, 'INCONCLUSIVE')}
+primary_2010_on 34 {'B': (np.float64(0.939), [0.822, 1.095], 0.8452, 'INCONCLUSIVE'), 'road': (np.float64(1.231), [1.14, 1.344], 0.001, 'SUPPORTED'), 'water': (np.float64(0.502), [0.342, 0.71], 1.0, 'CONTRADICTED'), 'nonburn': (np.float64(0.758), [0.639, 0.967], 0.995, 'CONTRADICTED')}
+PRIMARY (E_B, matched wildfires 1992-2024): INCONCLUSIVE
+ots stamp MECH_RESULTS.json 0
+ots stamp mech_profile.png 0

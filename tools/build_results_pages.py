@@ -21,6 +21,10 @@ Invariants (enforced by tests/test_results_pages.py):
     R4  Every page has the Scholar tags title, author, publication_date, doi,
         pdf_url and abstract_html_url, plus parseable ScholarlyArticle JSON-LD.
     R5  The sitemap lists every page and nothing else.
+    R6  Science standard A1-A2 (labeling policy approved 2026-10-18): no certificate
+        binds the exact bytes of a published paper PDF, so every page, its JSON-LD
+        and its BibTeX label the paper an UNCERTIFIED manuscript artifact. The
+        certificate is cited only for its sealed artifacts and theorem scope.
 """
 from __future__ import annotations
 
@@ -36,10 +40,20 @@ SITEMAP = ROOT / "docs" / "sitemap.xml"
 BASE = "https://jdhart81.github.io/viridis-canon/"
 REPO = "https://github.com/jdhart81/viridis-canon"
 ORCID = "https://orcid.org/0009-0008-3082-2482"
-LASTMOD = "2026-10-17"
+LASTMOD = "2026-10-18"
 
-STATUS = ("Working paper, not peer reviewed. The main theorems are machine-checked. "
-          "Results are conditional on the stated assumptions; the decision tool is not field-validated.")
+# The approved label, verbatim. It is the same text the engine writes on Zenodo and the site shows.
+UNCERTIFIED_LABEL = ("UNCERTIFIED manuscript artifact. No issuer-produced Viridis Comparator certificate has been "
+                     "shown to bind this public manuscript's exact bytes. Any linked certificate applies only to its "
+                     "exact sealed artifacts and stated theorem scope. Results remain conditional on the declared "
+                     "assumptions.")
+STATUS = (f"{UNCERTIFIED_LABEL} Working paper, not peer reviewed. The main theorems are machine-checked "
+          "(comparator certificate, Lean and nanoda kernels); the decision tool is not field-validated.")
+INDEX_STATUS = ("Each paper below is an UNCERTIFIED manuscript artifact: no issuer-produced Viridis Comparator "
+                "certificate has been shown to bind its exact bytes. A certificate applies only to its exact sealed "
+                "artifacts and stated theorem scope. Working papers, not peer reviewed. The main theorems are "
+                "machine-checked; results are conditional on the declared assumptions, and the decision tools are "
+                "not field-validated.")
 
 RESULTS = [
     {
@@ -273,7 +287,8 @@ def bibtex(r: dict, doi: str) -> str:
     key = "hart2026" + r["slug"].replace("-", "")
     return (f"@misc{{{key},\n  author    = {{Hart, Justin D.}},\n  title     = {{{r['paper_title']}}},\n"
             f"  year      = {{2026}},\n  publisher = {{Zenodo}},\n  doi       = {{{doi}}},\n"
-            f"  note      = {{Working paper. Main theorems machine-checked (comparator certificate {r['run']})}}\n}}")
+            f"  note      = {{UNCERTIFIED manuscript artifact. Working paper. Main theorems machine-checked "
+            f"(comparator certificate {r['run']}, scoped to its sealed artifacts)}}\n}}")
 
 
 def render(r: dict) -> str:
@@ -301,7 +316,8 @@ def render(r: dict) -> str:
         "license": "https://creativecommons.org/licenses/by/4.0/",
         "isBasedOn": f"{REPO}/tree/main/series/{r['series']}",
         "isPartOf": {"@type": "CreativeWork", "name": "Viridis Canon", "url": BASE},
-        "creativeWorkStatus": "Working paper (not peer reviewed); main theorems machine-checked",
+        "creativeWorkStatus": (f"UNCERTIFIED manuscript artifact; working paper (not peer reviewed); main theorems "
+                               f"machine-checked (comparator certificate {r['run']}, scoped to its sealed artifacts)"),
     }
     rows = "\n".join(f"<tr><td><code>{esc(n)}</code></td><td>{esc(g)}</td></tr>" for n, g in r["theorems"])
     depth = run["depth"]["label"]
@@ -395,7 +411,7 @@ echo '{esc(request)}' | python3 os-bundle/run.py</pre>
 <p>The proofs are AI-generated and machine-checked; Justin D. Hart (<a href="{ORCID}">ORCID</a>) is the accountable author.
 Tools and their roles: <a href="{REPO}/blob/main/AI_USE_AND_AUTHORSHIP.md">AI_USE_AND_AUTHORSHIP.md</a>.
 How we release: <a href="{REPO}/blob/main/RESPONSIBLE_RELEASE.md">RESPONSIBLE_RELEASE.md</a>.</p>
-<p>Find a vacuous, trivial or misstated theorem among the certified runs and we pay $50 (see the <a href="{REPO}/blob/main/BOUNTY.md">theorem bounty</a>).
+<p>Found a vacuous, trivial or misstated theorem among the certified runs? Confirmed findings are credited in the ledger and acknowledged in the papers. The cash bounty is closed to new reports (see the <a href="{REPO}/blob/main/BOUNTY.md">theorem bounty</a>).
 Questions and challenges: <a href="{REPO}/discussions">Discussions</a>.</p>
 </footer>
 </body>
@@ -424,7 +440,7 @@ def render_index() -> str:
 <body>
 <header><a class="brand" href="../">Viridis Canon</a><a href="{REPO}">Repository</a><a href="{REPO}/blob/main/BOUNTY.md">Theorem bounty</a></header>
 <main>
-<p class="status">{esc(STATUS)}</p>
+<p class="status">{esc(INDEX_STATUS)}</p>
 <h1>Results</h1>
 <p>Each result answers a decision question in ecology or conservation, has a paper with a DOI,
 a Lean 4 formalization with a comparator certificate you can re-run, and a decision function you can call.

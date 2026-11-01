@@ -80,9 +80,9 @@ class RepositoryManifestTests(unittest.TestCase):
         errors.extend(validate_admissions_ledger(self.context, {k: v[0] for k, v in self.manifests.items()}))
         self.assertEqual(errors, [])
 
-    def test_the_eighteen_decision_kernels_are_present(self):
+    def test_the_twenty_decision_kernels_are_present(self):
         kernels = {k for k, (m, _) in self.manifests.items() if m["kind"] == "decision_kernel"}
-        self.assertEqual(len(kernels), 18)
+        self.assertEqual(len(kernels), 20)
         core = json.loads((ROOT / "os/core.json").read_text(encoding="utf-8"))
         self.assertEqual(set(core["function_order"]), kernels)
 
@@ -275,7 +275,10 @@ class CompilerTests(unittest.TestCase):
 
     def test_parity_fixtures_were_replayed(self):  # I2
         cases = self.bundle["parity"]["cases_by_function"]
-        self.assertEqual(len(cases), 17)
+        # 17 product runners at 398b177; afforestation, harmonization and restoration were retired
+        # from parity on 2026-10-31 because they now compute their theorems (see os/parity notes).
+        self.assertEqual(len(cases), 14)
+        self.assertFalse({"afforestation", "harmonization", "restoration"} & set(cases))
         self.assertTrue(all(n >= 100 for n in cases.values()))
 
     def test_reference_tier_covers_the_catalog(self):

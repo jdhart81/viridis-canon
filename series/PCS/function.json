@@ -2,14 +2,17 @@
   "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
   "schema_version": 1,
   "id": "pcs-reliability-derivative-eq-pivotal-probability",
-  "kind": "theorem_function",
-  "name": "Pivotal Corridor Stewardship: Exact Reliability Gradients and a Failure-Aware Priority Rule",
+  "kind": "decision_kernel",
+  "name": "Corridor priority — which corridor link to protect first",
   "version": "0.1.0",
-  "summary": "For independent edge states, the partial derivative of two-terminal reliability with respect to an edge survival probability equals that edge's pivotal probability.",
-  "decision_family": null,
-  "tier": "reference",
+  "summary": "Computes the exact probability that two habitat cores stay connected and each link's pivotal probability, which the theorem shows is the reliability gradient, then ranks links for protection (optionally per unit cost).",
+  "decision_family": "restoration-design",
+  "tier": "callable",
   "state": "READY",
-  "reconciliation": null,
+  "reconciliation": {
+    "code": "CANON_CLASSIFICATION",
+    "note": "The package's Lean status in the canon catalog is 'working' (not spine-admitted); Viridis OS admitted the DOI to its bundled canon index by the owner's decision on 2026-10-31, but the canon classification must be reconciled before admission as a function."
+  },
   "blocked": null,
   "doi": "10.5281/zenodo.22665554",
   "lean": {
@@ -26,22 +29,203 @@
     "verification_provider": "COMPARATOR_CLOUD",
     "verification_receipt_id": "Run-124-PivotalCorridorStewardship-Comparator-attempt-7"
   },
-  "inputs": [],
-  "outputs": [],
-  "hypotheses": [],
-  "example": null,
-  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values.",
-  "boundary": "Conditional mathematics about the supplied values only; not empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination.",
+  "inputs": [
+    {
+      "name": "num_nodes",
+      "required": true,
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 64,
+      "unit": "nodes",
+      "help": "Number of habitat patches (nodes), numbered from 0."
+    },
+    {
+      "name": "edges",
+      "required": true,
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "minItems": 1,
+      "maxItems": 16,
+      "unit": "index pairs [node, node]",
+      "help": "Corridor links as [node, node] pairs (at most 16)."
+    },
+    {
+      "name": "survival",
+      "required": true,
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "minItems": 1,
+      "maxItems": 16,
+      "unit": "probability",
+      "help": "Survival probability of each link, in the same order; links are assumed to fail independently."
+    },
+    {
+      "name": "core_a",
+      "required": true,
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "minItems": 1,
+      "unit": "node indices",
+      "help": "Nodes in the first habitat core."
+    },
+    {
+      "name": "core_b",
+      "required": true,
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "minItems": 1,
+      "unit": "node indices",
+      "help": "Nodes in the second habitat core (disjoint from the first)."
+    },
+    {
+      "name": "costs",
+      "required": false,
+      "type": "array",
+      "items": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "minItems": 1,
+      "maxItems": 16,
+      "unit": "cost per link",
+      "help": "Optional protection cost of each link, to rank by pivotal probability per unit cost."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "reliability",
+      "unit": "probability"
+    },
+    {
+      "name": "pivotal_probability",
+      "unit": "probability"
+    },
+    {
+      "name": "priority_order"
+    },
+    {
+      "name": "top_link"
+    },
+    {
+      "name": "scope"
+    },
+    {
+      "name": "pivotal_per_cost",
+      "unit": "probability per cost"
+    },
+    {
+      "name": "cost_priority_order"
+    },
+    {
+      "name": "best_ratio",
+      "unit": "probability per cost"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "survival_in_range",
+      "statement": "Every link survival probability is in [0, 1], one per link.",
+      "check": "len(survival) == len(edges) and all(0 <= x <= 1 for x in survival)"
+    },
+    {
+      "id": "cores_nonempty",
+      "statement": "Both terminal cores name at least one node.",
+      "check": "len(core_a) >= 1 and len(core_b) >= 1"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "num_nodes": 4,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "survival": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "core_a": [
+        0
+      ],
+      "core_b": [
+        3
+      ],
+      "costs": [
+        1,
+        2,
+        1,
+        1
+      ]
+    },
+    "expected_outputs": {
+      "reliability": 0.4375,
+      "pivotal_probability": [
+        0.375,
+        0.375,
+        0.375,
+        0.375
+      ],
+      "priority_order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "top_link": 0,
+      "scope": "independent link survival; exact two-terminal reliability by enumeration",
+      "pivotal_per_cost": [
+        0.375,
+        0.1875,
+        0.375,
+        0.375
+      ],
+      "cost_priority_order": [
+        0,
+        2,
+        3,
+        1
+      ],
+      "best_ratio": 0.375
+    }
+  },
+  "scope": "Two-terminal reliability of an undirected corridor graph with independent link survival, by exact enumeration (at most 16 links).",
+  "boundary": "Exact for independent link survival only. Correlated failures (fire, drought, a shared road), wrong survival probabilities, or a goal other than core-to-core connectivity are not covered, and the ranking is a first-order rule. The result is conditional on the supplied inputs; it does not establish empirical validity, Viridis review, certification, a credit, or a registry determination.",
   "empirical_validation": "NOT_VALIDATED",
-  "runner": null,
+  "runner": "runner.py",
   "provenance": {
-    "scaffolded_by": "tools/scaffold_function.py",
-    "run_id": "Run-124",
-    "theorem_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1b",
-    "certificate_sha256": "9e3524f05e7bfae713586f6ce0d1a9c3e7c106e2fe07b40f14ac7276f9fa46d2",
-    "catalog_title": "Viridis Run124",
-    "name_source": "2026-09-08.json#bundles/PCS/title",
-    "summary_source": "PAPER_PACKAGE_MANIFEST.json#claim_inventory/C1b",
-    "publication_date": "2026-09-08"
-  }
+    "ported_from": "jdhart81/viridisos@a20c304 modules/corridor_priority/engine.py",
+    "doi_state": "READY"
+  },
+  "line": "Restoration"
 }

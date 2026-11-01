@@ -1,0 +1,23 @@
+{
+ "verified_at_utc": "2026-10-22T11:30:17Z",
+ "registered_files": {
+  "ADDENDUM_v1.4.md": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/9e79127d9ba9b17812f8fb567bef5ec858693a8d/preregistrations/p1c_newa_v1.4/ADDENDUM_v1.4.md",
+   "sha256": "587df927fb79fad1c5022f8243f89a339e61a4c6f7061089b1a97939d17de819",
+   "md5": "08a44c0002947e74dd0e22df87cb3c26",
+   "bytes": 20822
+  },
+  "ADDENDUM_v1.4.md.ots": {
+   "url": "https://raw.githubusercontent.com/jdhart81/viridis-canon/9e79127d9ba9b17812f8fb567bef5ec858693a8d/preregistrations/p1c_newa_v1.4/ADDENDUM_v1.4.md.ots",
+   "sha256": "508e4ee8ec758eea693509c67564865d46a5ed6b845625a3ec67cc0e32edc8af",
+   "md5": "153ca4db75c0dc80a9db1678192a9995",
+   "bytes": 770
+  }
+ },
+ "github": {
+  "repo": "jdhart81/viridis-canon",
+  "commit": "9e79127d9ba9b17812f8fb567bef5ec858693a8d",
+  "folder": "preregistrations/p1c_newa_v1.4",
+  "evidence": "files downloaded anonymously from raw.githubusercontent.com at this commit"
+ }
+}

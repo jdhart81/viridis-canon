@@ -138,6 +138,20 @@ zero-substitution claim would require switching to a CES/Leontief production for
 
 ---
 
+## Trees Cannot Cut — raster topology (rung L2, added 2026-11-11)
+
+| Result | Exact Lean conclusion | Required assumptions | NOT established | Status |
+|---|---|---|---|---|
+| `Candidate.main` (`TreesCannotCut/Insertion.lean`) : `ViridisStatements.P1.Insertion.Statement` | For every finite raster `B ⊆ ℤ²` and pixel `p ∉ B`, `enclosed (insert p B) − C8 (insert p B) + χ (insert p B) = enclosed B − C8 B + χ B`, with barrier 8-connectivity and complement 4-connectivity | none beyond the definitions (no hypothesis on the 3×3 neighbourhood of `p`) | that real fire spread follows 4-connectivity through unburnable pixels; anything about wildfire, roads or treatment placement; the full TCC identity `enclosed = C8 − χ` as a separate statement (`Candidate.bridge_eq` proves it in the same file but it is not a frozen statement) | **Derived** (math) |
+
+**Note.** Statement and proof were produced by the Viridis engine (run
+`2026-11-09_P1`, task P1-T003) and are copied byte-for-byte; hashes are in
+`TreesCannotCut/PROVENANCE.md`. The empirical wildfire replication that motivates
+the raster result is a separate, **Empirical-hypothesis** layer and is not graded
+here.
+
+---
+
 ## P9 — AI Safety  ⚠ EXPLORATORY (quarantined v9.1.0)
 
 **Removed from the verified spine and from `defaultTargets`.** Retained for

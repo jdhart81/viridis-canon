@@ -39,3 +39,5 @@ DecoherentSelection.lean
 MutualisticAttestation.lean
 ThermodynamicAttention.lean
 StewardshipSetpoint.lean
+ViridisStatements/P1/Insertion.lean
+TreesCannotCut/Insertion.lean

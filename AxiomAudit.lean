@@ -53,6 +53,8 @@ import P5_SLSPT.SLSPTTowerOrdering
 import P7_PlasmaNFix.Foundations
 import P7_PlasmaNFix.Energy
 import P7_PlasmaNFix.Integration
+import ViridisStatements.P1.Insertion
+import TreesCannotCut.Insertion
 
 open Lean
 
@@ -73,7 +75,8 @@ def viridisSpineModules : List Name :=
    `MutualisticAttestation, `ThermodynamicAttention, `StewardshipSetpoint,
    `P5_SLSPT.IntelligenceBound, `P5_SLSPT.InverseSquare, `P5_SLSPT.ShadowPrice,
    `P5_SLSPT.ShadowPriceLevelCurves, `P5_SLSPT.SLSPTTowerOrdering,
-   `P7_PlasmaNFix.Foundations, `P7_PlasmaNFix.Energy, `P7_PlasmaNFix.Integration]
+   `P7_PlasmaNFix.Foundations, `P7_PlasmaNFix.Energy, `P7_PlasmaNFix.Integration,
+   `ViridisStatements.P1.Insertion, `TreesCannotCut.Insertion]
 
 run_cmd do
   let env ← getEnv

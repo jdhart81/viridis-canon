@@ -36,6 +36,7 @@ defaultTargets = [
   "MutualisticAttestation",
   "ThermodynamicAttention",
   "StewardshipSetpoint",
+  "TreesCannotCut_Insertion",
   "AxiomAudit"
 ]
 
@@ -253,6 +254,13 @@ globs = ["ThermodynamicAttention"]
 [[lean_lib]]
 name = "StewardshipSetpoint"
 globs = ["StewardshipSetpoint"]
+
+# Trees Cannot Cut, rung L2 (engine run 2026-11-09_P1, task P1-T003): single-pixel
+# insertion leaves enclosed - C8 + euler unchanged. Both files are byte-identical to the
+# engine-certified pair (see TreesCannotCut/PROVENANCE.md).
+[[lean_lib]]
+name = "TreesCannotCut_Insertion"
+globs = ["ViridisStatements.P1.Insertion", "TreesCannotCut.Insertion"]
 
 [[lean_lib]]
 name = "AxiomAudit"

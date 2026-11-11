@@ -1,0 +1,11 @@
+{
+ "region": "West-side Oregon Cascades (Willamette basin, forested) - P1C-W Stage 2, blind",
+ "analysis_box_lonlat": [-122.8, 43.5, -121.9, 45.0],
+ "analysis_box_5070": [-2128982, 2560901, -2014294, 2741316],
+ "compute_box_5070": [-2143982, 2545901, -1999294, 2756316],
+ "res": 30,
+ "W": 4822,
+ "H": 7013,
+ "erc_box": {"north": 45.2, "south": 43.3, "west": -123.1, "east": -121.6},
+ "note": "Fixed before any FPA FOD record for this box was requested. Washington DNR PCL does not cover Oregon: definitions A50/A25 are dropped; B is primary."
+}

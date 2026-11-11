@@ -3,6 +3,7 @@
 
 Run from this folder inside a viridis-canon checkout (it reads ../p1c_newa_v1.4).
   python3 freeze_w.py            write FREEZE.json (refuses if it already exists)
+  python3 freeze_w.py --supersede "REASON"   replace an earlier FREEZE.json, keeping it as FREEZE_superseded_N.json
   python3 freeze_w.py --verify   recompute every hash and compare with FREEZE.json
   python3 freeze_w.py --stamp    OpenTimestamps-stamp FREEZE.json
 
@@ -89,11 +90,24 @@ def checks():
     return dep, cr
 
 
-def main():
-    assert not os.path.exists('FREEZE.json'), 'FREEZE.json exists; use --verify'
+def main(reason=None):
+    sup = []
+    for k in range(1, 10):
+        p = f'FREEZE_superseded_{k}.json'
+        if os.path.exists(p):
+            sup.append(json.load(open(p))['_superseded'])
+    if os.path.exists('FREEZE.json'):
+        assert reason, 'FREEZE.json exists; use --verify, or --supersede "REASON"'
+        old = json.load(open('FREEZE.json')); k = len(sup) + 1
+        entry = dict(freeze_sha256=h(read('FREEZE.json')), frozen_at_utc=old['frozen_at_utc'], reason=reason)
+        old['_superseded'] = entry
+        json.dump(old, open(f'FREEZE_superseded_{k}.json', 'w'), indent=1)
+        os.remove('FREEZE.json'); sup.append(entry)
+    for k in range(1, len(sup) + 1):
+        FROZEN.append(f'FREEZE_superseded_{k}.json')
     dep, cr = checks()
     t = time.time()
-    rec = dict(version='1.0',
+    rec = dict(version='1.0', supersedes=sup,
                stage='1 (northeast Washington, the P1C v1.4 sample)',
                extends=dict(registration='preregistrations/p1c_newa_v1.4',
                             freeze_sha256=h(read(os.path.join(P1C, 'FREEZE.json')))),
@@ -135,4 +149,8 @@ def stamp():
 
 if __name__ == '__main__':
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    {'--verify': verify, '--stamp': stamp}.get(sys.argv[1] if len(sys.argv) > 1 else '', main)()
+    a = sys.argv[1] if len(sys.argv) > 1 else ''
+    if a == '--supersede':
+        main(sys.argv[2])
+    else:
+        {'--verify': verify, '--stamp': stamp}.get(a, main)()

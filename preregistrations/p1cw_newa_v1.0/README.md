@@ -28,6 +28,7 @@ Stage 2, a blind confirmation in the western Oregon Cascades, is defined in plan
 | `stage2_oregon_p1_config.json` | Stage 2 region, boxes and grid |
 | `freeze_w.py` | Checks invariants W1–W6, writes `FREEZE.json`, verifies (`--verify`) and stamps (`--stamp`) |
 | `FREEZE.json`, `FREEZE.json.ots` | The freeze record and its OpenTimestamps proof |
+| `FREEZE_superseded_1.json` | The first freeze record (commit 5989c46), replaced the same day before any outcome join because `fetch_era5_wind.py` omitted January 2025 from its schedule and did not create `raw/era5`; no data, table or calibration changed |
 
 ## How to check the freeze
 

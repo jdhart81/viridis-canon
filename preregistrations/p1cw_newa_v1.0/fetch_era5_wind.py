@@ -34,7 +34,8 @@ def one(ym):
     return ym, 'ok'
 
 if __name__ == '__main__':
-    months = ['199112'] + [f'{y}{m:02d}' for y in range(1992, 2025) for m in range(1, 13)]
+    months = ['199112'] + [f'{y}{m:02d}' for y in range(1992, 2025) for m in range(1, 13)] + ['202501']
+    os.makedirs('raw/era5', exist_ok=True)
     with Pool(int(sys.argv[1]) if len(sys.argv) > 1 else 4) as p:
         for ym, st in p.imap_unordered(one, months):
             print(ym, st, flush=True)

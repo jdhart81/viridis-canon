@@ -1,12 +1,19 @@
 {
  "version": "1.0",
+ "supersedes": [
+  {
+   "freeze_sha256": "d379b10cdaa685d359157653ebb0de19a2fec5398a643a418696c474182d4ab4",
+   "frozen_at_utc": "2026-11-11T17:21:48Z",
+   "reason": "fetch_era5_wind.py omitted January 2025 (202501) from its month schedule and did not create raw/era5, so it could not reproduce the frozen raw inputs on its own. Fixed in the script; the 202501 month re-fetched with the fixed script matches RAW_ERA5_SHA256SUMS.txt byte for byte. No plan text, data, wind table or calibration changed. Replaced before any outcome was joined."
+  }
+ ],
  "stage": "1 (northeast Washington, the P1C v1.4 sample)",
  "extends": {
   "registration": "preregistrations/p1c_newa_v1.4",
   "freeze_sha256": "4efb62b83fa8f8a5bbb674739f5102dd87bb599a17bf2f0b10f813789019e042"
  },
- "frozen_at_local": "2026-11-11 12:21:48 EST",
- "frozen_at_utc": "2026-11-11T17:21:48Z",
+ "frozen_at_local": "2026-11-11 12:27:16 EST",
+ "frozen_at_utc": "2026-11-11T17:27:16Z",
  "decision_rule": "SUPPORTED iff gamma + 2.53 * max(SE_twoway, SE_year) < 0; CONTRADICTED iff gamma - 2.53 * max(SE_twoway, SE_year) > 0; WIND-INVARIANT iff gamma -/+ 2.08 * max(SE_twoway, SE_year) lies inside +/-0.0265; else INCONCLUSIVE. gamma = coefficient on Lc x z_w (Lc = log10 A_enc - 3.63, z_w = standardized W3) in M2R-W = M2R + z_w + Lc*z_w + Lc*cause + z_w*cause, definition B, the P1C v1.4 sample.",
  "critical_values": {
   "C_W": 2.53,
@@ -16,17 +23,18 @@
  "note": "Frozen before wind and fire size were joined for any ignition in this region. No P1C outcomes.csv was read in building the wind table or the calibration (asserted in code). Raw ERA5 months are not shipped (1.1 GB); their hashes are in RAW_ERA5_SHA256SUMS.txt and fetch_era5_wind.py re-fetches them from the public NSF NCAR mirror.",
  "sha256": {
   "PREREGISTRATION_P1CW_NEWA_v1.0.md": "91b6f0d6a6034faa25b8ad4442f87c11ee865d53f6be29a58347035352e47a12",
-  "README.md": "7d1767f646cc704ba562a36eb3d38b663071ac9ee4e56f8c901bb54a5b0fb636",
-  "fetch_era5_wind.py": "da977f4bcb80c7255308be1fb013c15913893bc1ea2c3e9d9a32a1bf07810c54",
+  "README.md": "44a22cec25138b1c521361071134cf62181d6747d90fa30ef8af2f9f36ef2e68",
+  "fetch_era5_wind.py": "17b3b52724127fc5084ecad28ad6b6069d67a96cb48b5011a76de7ea9c51fddf",
   "build_wind.py": "7330fa06036700312cc83729134b94f707fbe4d5389265b588f5d4d562bf5d23",
   "calibrate_wind.py": "d186403854b71df39d2dba1399642753304e3fa67e3f6919214a0b0ba4938def",
-  "freeze_w.py": "9721f3efc2bc018fccf6b96881c664bf67be59b1981b190b5ca3ecf88535bd9e",
+  "freeze_w.py": "231e918010254282a4643e23287d72d3cc0ff5ec63c82cba4e91ed3dbfc568d5",
   "wind_blind_newa.csv": "6c90bd47a07815eaf5c9d9146e181218e6fd65d6011aaf1b39b997879eba1148",
   "CALIBRATION_WIND.json": "6fb08c3316a4020f9af9435e20138d607b869551adc971e63c844db43e56dc16",
   "calibrate_wind.out": "21e14ea2ea19e7d2951a282d28aad3d625af1054a377ef51fec192a48934622c",
   "raw_era5_requests.log": "2cc44c05eadfe0005cf73fd63144d387507ce7db8150c92f68192627fac5c655",
   "RAW_ERA5_SHA256SUMS.txt": "192ea0e738ad877aebdf465ada91dd2ccce20b2ea76f09c9b899eb99941416ca",
-  "stage2_oregon_p1_config.json": "bda334469f9f30c14ccd6ce2c7d1cf2f2016ac434d45b989937d32310b02a19f"
+  "stage2_oregon_p1_config.json": "bda334469f9f30c14ccd6ce2c7d1cf2f2016ac434d45b989937d32310b02a19f",
+  "FREEZE_superseded_1.json": "53882ea4ceac16148e1a77279e5f2cc64aa84fa9394f6b984b150f30df53f1ac"
  },
  "p1c_dependencies_sha256": {
   "p1c/run_test.py": "25abae847109aa7bb22d73ce8414b401c94c448992af3cd6787d6a79440d8d88",

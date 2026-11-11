@@ -276,6 +276,7 @@ counts are navigation, not a certificate or proof of physical assumptions.
 | **P0** | `P0_IntelligenceBound_COMPILED.lean` | **0** | COMPILED under its pinned Lean 4.24 / Mathlib environment and checked by required CI | UNCERTIFIED | Intelligence Bound flagship: Conditional on the assumed `SatisfiesLandauerLimit` premise; the physical bound is a conjecture |
 | **P0 (4.28 port)** | `P0_IntelligenceBound/Current.lean` | **0** | COMPILED under the current Lean 4.28 / Mathlib `8f9d9cf` spine build and audited by `AxiomAudit` | UNCERTIFIED | Same statements as P0; one proof repaired for the newer Mathlib. Same status: conditional on `SatisfiesLandauerLimit`; the physical bound is a conjecture |
 | **P1** | `P1_DScore.lean` | **0** | COMPILED | UNCERTIFIED | Physical Review E (draft) |
+| **TCC L2** | `TreesCannotCut/Insertion.lean` (statement `ViridisStatements/P1/Insertion.lean`) | **0** | COMPILED under the current Lean 4.28 / Mathlib `8f9d9cf` spine build and audited by `AxiomAudit`; both files byte-identical to engine run `2026-11-09_P1` | UNCERTIFIED | Trees Cannot Cut, rung L2: adding one barrier pixel to any finite raster leaves `enclosed − C8 + χ` unchanged under (8,4) connectivity. Pure raster topology; no ecological or fire claim |
 | **P2** | `P2_HDFM_POC.lean` | **0** | COMPILED | UNCERTIFIED | HDFM resubmission |
 | **P3** | `P3_Impossibility.lean` | **0** | COMPILED | UNCERTIFIED | 2nd canon paper (Goodhart impossibility / alignment-as-feasibility) |
 | **P4** | `P4_ThermodynamicEconomics.lean` | **0** | COMPILED | UNCERTIFIED | Nature Sustainability |
@@ -317,6 +318,8 @@ Aristotle-Pipeline/
 ├── P0_IntelligenceBound_COMPILED.lean   # Historical P0 model source
 ├── P0_IntelligenceBound/Current.lean     # P0 ported to the current toolchain
 ├── P1_DScore.lean                        # D-Score biodiversity metric
+├── ViridisStatements/P1/Insertion.lean  # Frozen TCC L2 statement (engine seal)
+├── TreesCannotCut/Insertion.lean        # TCC L2 proof: single-pixel insertion
 ├── P2_HDFM_POC.lean                      # HDFM graph models
 ├── P3_Impossibility.lean                 # Conditional feasibility model
 ├── P4_ThermodynamicEconomics.lean        # Thermodynamic economics models

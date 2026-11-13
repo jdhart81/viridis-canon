@@ -25,7 +25,6 @@
       }
     ],
     "theorems": [
-      "statement",
       "threshold_order",
       "band_width_identity",
       "closed_loop_area_identity",

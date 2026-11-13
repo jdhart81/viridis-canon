@@ -715,7 +715,7 @@ results:
     empirical_validation: "NOT_VALIDATED"
     lean:
       module: "Viridis.Cognition.CognitiveSwitchingHysteresis"
-      theorems: ["statement", "threshold_order", "band_width_identity", "closed_loop_area_identity", "bias_translation", "directional_cost_recovery", "cshc_nonvacuous"]
+      theorems: ["threshold_order", "band_width_identity", "closed_loop_area_identity", "bias_translation", "directional_cost_recovery", "cshc_nonvacuous"]
       sources:
         - {path: "series/CSHC/CognitiveSwitchingHysteresis.lean", sha256: "842943f1da4b1dc2e55b07d2f9eb0edbeffe381e82bc44b51cabd08296295412"}
     verification:

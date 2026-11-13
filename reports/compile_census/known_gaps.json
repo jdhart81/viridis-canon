@@ -1,0 +1,432 @@
+{
+ "schema": "viridis-canon/compile-census-known-gaps/v1",
+ "note": "Files the census does not find CLEAN, each with its recorded status, a kind and the reason. The census fails when a file is not clean and is not listed here with the same status. Kinds: statement_contract (a statement file that carries sorry by design), fixture, quarantined, open_gap (a real gap to close). Removing an entry is how a gap is closed.",
+ "gaps": [
+  {
+   "path": "00_lab_infrastructure/gates/fixtures/inv9_dependency_scope/formal.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "fixture",
+   "reason": "Gate test fixture; carries sorry on purpose."
+  },
+  {
+   "path": "00_lab_infrastructure/gates/fixtures/scoped_release/STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "fixture",
+   "reason": "Gate test fixture; carries sorry on purpose."
+  },
+  {
+   "path": "P9_AI_Safety.lean",
+   "status": "COMPILE_FAILED",
+   "kind": "quarantined",
+   "reason": "Quarantined (see lakefile.toml and catalog/config.json). The file does not parse: an import appears after the header."
+  },
+  {
+   "path": "certificates/Run-123/VERIFICATION_STATEMENT_ATTEMPT_2.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE_ATTEMPT_4.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-124/VERIFICATION_CHALLENGE_ALIGNED_V7.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE_V6.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-124/VERIFICATION_STATEMENT_V6.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE_V6.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-125/VERIFICATION_CHALLENGE_ALIGNED_V2.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE_V2.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-125/VERIFICATION_STATEMENT_V2.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE_V2.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-126/VERIFICATION_STATEMENT_V2.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-127/VERIFICATION_CHALLENGE_ALIGNED.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-127/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-128/VERIFICATION_CHALLENGE_ALIGNED.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-128/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-129/VERIFICATION_CHALLENGE_ALIGNED_V3.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE_V3.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-129/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE_V3.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-130/VERIFICATION_CHALLENGE_ALIGNED.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-131/VERIFICATION_CHALLENGE_ALIGNED.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-132/VERIFICATION_CHALLENGE_ALIGNED_ATTEMPT_3.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE_ATTEMPT_3.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-133/VERIFICATION_CHALLENGE_ALIGNED.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-135/VERIFICATION_CHALLENGE_ALIGNED.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-137/VERIFICATION_CHALLENGE_ALIGNED.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-138/VERIFICATION_CHALLENGE_ALIGNED.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "certificates/Run-139/VERIFICATION_CHALLENGE_ALIGNED.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/ACCN/VERIFICATION_CANDIDATE.lean",
+   "status": "COMPILE_FAILED",
+   "kind": "open_gap",
+   "reason": "DOI 10.5281/zenodo.22236361. The candidate proof does not compile at the project's declared pins (type mismatch at line 35), although COMPARATOR_SUMMARY.md reports a zero-sorry certificate from a private verifier."
+  },
+  {
+   "path": "series/ACCN/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "open_gap",
+   "reason": "States the claims with sorry by design, and no file beside it compiles clean."
+  },
+  {
+   "path": "series/BCAN/CorridorAlignment.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "open_gap",
+   "reason": "DOI 10.5281/zenodo.22236387. The only Lean file in the project; every theorem is closed with sorry. COMPARATOR_SUMMARY.md reports a zero-sorry certificate from a private verifier for a candidate that is not in this repository."
+  },
+  {
+   "path": "series/CAIA/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun166.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/CAST/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun120.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/CODC/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun133.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/DCAE/VERIFICATION_CANDIDATE.lean",
+   "status": "COMPILE_FAILED",
+   "kind": "open_gap",
+   "reason": "The candidate proof does not compile at the project's declared pins (unsolved goals at line 12)."
+  },
+  {
+   "path": "series/DCAE/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "open_gap",
+   "reason": "States the claims with sorry by design, and no file beside it compiles clean."
+  },
+  {
+   "path": "series/DMEC/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun175.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/DPAC/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun150.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/DREAA/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun158.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/DSUR/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun160.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/DSWC/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun132.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/FOIEB/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun178.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/FRCS/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/GACC/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun138.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/HCF/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun123.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/ISB/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun121.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/JMSF/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun174.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/MRRN/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun156.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/PCS/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun124.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/PDC/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun165.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/RASL/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun171.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/RCBN/CheckpointBalance.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "open_gap",
+   "reason": "DOI 10.5281/zenodo.22236441. The only Lean file in the project; every theorem is closed with sorry. COMPARATOR_SUMMARY.md reports a zero-sorry certificate from a private verifier for a candidate that is not in this repository."
+  },
+  {
+   "path": "series/RCBX/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun161.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/RDA/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun176.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/RECB/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun164.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/RFC/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun136.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/RRFG/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun153.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/SAC/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun137.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/SARN/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun162.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/SBCN/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun154.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/SBRN/StewardshipBottleneckReserve.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "open_gap",
+   "reason": "DOI 10.5281/zenodo.22236458. The only Lean file in the project; every theorem is closed with sorry. COMPARATOR_SUMMARY.md reports a zero-sorry certificate from a private verifier for a candidate that is not in this repository."
+  },
+  {
+   "path": "series/SDPN/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun159.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/SFB/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/SFMC/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun173.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/SOR/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun140.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/SPLR/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun169.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/SRA/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun172.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/SSC/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun135.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/SVON/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun155.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/TCTSI/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun157.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/TDCIL/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (VERIFICATION_CANDIDATE.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/TLRC/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun151.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/TRSE/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun152.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/TRWFN/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun139.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/UDWL/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun163.lean); the census does not check that it proves these statements."
+  },
+  {
+   "path": "series/ZAB/contracts/VERIFICATION_STATEMENT.lean",
+   "status": "NONSTANDARD_AXIOM",
+   "kind": "statement_contract",
+   "reason": "States the claims with sorry by design. A file beside it compiles clean (ViridisRun122.lean); the census does not check that it proves these statements."
+  }
+ ]
+}

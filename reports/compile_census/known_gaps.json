@@ -1,6 +1,6 @@
 {
  "schema": "viridis-canon/compile-census-known-gaps/v1",
- "note": "Files the census does not find CLEAN, each with its recorded status, a kind and the reason. The census fails when a file is not clean and is not listed here with the same status. Kinds: statement_contract (a statement file that carries sorry by design), fixture, quarantined, open_gap (a real gap to close). Removing an entry is how a gap is closed.",
+ "note": "Files the census does not find CLEAN, each with its recorded status, a kind and the reason. The census fails when a file is not clean and is not listed here with the same status. Kinds: statement_contract (a statement file that carries sorry by design), fixture, quarantined, superseded (a deposited proof that does not compile, kept unchanged beside a proof that does), open_gap (a real gap to close). Removing an entry is how a gap is closed.",
  "gaps": [
   {
    "path": "00_lab_infrastructure/gates/fixtures/inv9_dependency_scope/formal.lean",
@@ -143,20 +143,20 @@
   {
    "path": "series/ACCN/VERIFICATION_CANDIDATE.lean",
    "status": "COMPILE_FAILED",
-   "kind": "open_gap",
-   "reason": "DOI 10.5281/zenodo.22236361. The candidate proof does not compile at the project's declared pins (type mismatch at line 35), although COMPARATOR_SUMMARY.md reports a zero-sorry certificate from a private verifier."
+   "kind": "superseded",
+   "reason": "Deposited candidate proof; does not compile at the project's declared pins and is left unchanged. The statements are proved in VERIFICATION_PROOFS.lean beside it."
   },
   {
    "path": "series/ACCN/VERIFICATION_STATEMENT.lean",
    "status": "NONSTANDARD_AXIOM",
-   "kind": "open_gap",
-   "reason": "States the claims with sorry by design, and no file beside it compiles clean."
+   "kind": "statement_contract",
+   "reason": "Deposited statement file; carries sorry by design and is left unchanged. Every statement is proved in VERIFICATION_PROOFS.lean beside it, which checks each proved statement's type against this file."
   },
   {
    "path": "series/BCAN/CorridorAlignment.lean",
    "status": "NONSTANDARD_AXIOM",
-   "kind": "open_gap",
-   "reason": "DOI 10.5281/zenodo.22236387. The only Lean file in the project; every theorem is closed with sorry. COMPARATOR_SUMMARY.md reports a zero-sorry certificate from a private verifier for a candidate that is not in this repository."
+   "kind": "statement_contract",
+   "reason": "Deposited statement file; carries sorry by design and is left unchanged. Every statement is proved in CorridorAlignmentProofs.lean beside it, which checks each proved statement's type against this file."
   },
   {
    "path": "series/CAIA/contracts/VERIFICATION_STATEMENT.lean",
@@ -179,14 +179,14 @@
   {
    "path": "series/DCAE/VERIFICATION_CANDIDATE.lean",
    "status": "COMPILE_FAILED",
-   "kind": "open_gap",
-   "reason": "The candidate proof does not compile at the project's declared pins (unsolved goals at line 12)."
+   "kind": "superseded",
+   "reason": "Deposited candidate proof; does not compile at the project's declared pins and is left unchanged. The statements are proved in VERIFICATION_PROOFS.lean beside it."
   },
   {
    "path": "series/DCAE/VERIFICATION_STATEMENT.lean",
    "status": "NONSTANDARD_AXIOM",
-   "kind": "open_gap",
-   "reason": "States the claims with sorry by design, and no file beside it compiles clean."
+   "kind": "statement_contract",
+   "reason": "Deposited statement file; carries sorry by design and is left unchanged. Every statement is proved in VERIFICATION_PROOFS.lean beside it, which checks each proved statement's type against this file."
   },
   {
    "path": "series/DMEC/contracts/VERIFICATION_STATEMENT.lean",
@@ -281,8 +281,8 @@
   {
    "path": "series/RCBN/CheckpointBalance.lean",
    "status": "NONSTANDARD_AXIOM",
-   "kind": "open_gap",
-   "reason": "DOI 10.5281/zenodo.22236441. The only Lean file in the project; every theorem is closed with sorry. COMPARATOR_SUMMARY.md reports a zero-sorry certificate from a private verifier for a candidate that is not in this repository."
+   "kind": "statement_contract",
+   "reason": "Deposited statement file; carries sorry by design and is left unchanged. Every statement is proved in CheckpointBalanceProofs.lean beside it, which checks each proved statement's type against this file."
   },
   {
    "path": "series/RCBX/contracts/VERIFICATION_STATEMENT.lean",
@@ -335,8 +335,8 @@
   {
    "path": "series/SBRN/StewardshipBottleneckReserve.lean",
    "status": "NONSTANDARD_AXIOM",
-   "kind": "open_gap",
-   "reason": "DOI 10.5281/zenodo.22236458. The only Lean file in the project; every theorem is closed with sorry. COMPARATOR_SUMMARY.md reports a zero-sorry certificate from a private verifier for a candidate that is not in this repository."
+   "kind": "statement_contract",
+   "reason": "Deposited statement file; carries sorry by design and is left unchanged. Every statement is proved in StewardshipBottleneckReserveProofs.lean beside it, which checks each proved statement's type against this file."
   },
   {
    "path": "series/SDPN/contracts/VERIFICATION_STATEMENT.lean",

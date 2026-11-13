@@ -316,7 +316,7 @@ def check_file(entry: dict, repo: Path, out: Path, env: LeanEnvironment, timeout
     if code < -1:
         return {**result, "status": "COMPILE_FAILED", "detail": f"lean was killed by signal {-code} (out of memory?)"}
     if code != 0 or not olean.is_file():
-        return {**result, "status": "COMPILE_FAILED", "detail": _first_error(text)}
+        return {**result, "status": "COMPILE_FAILED", "detail": _first_error(text.replace(str(repo) + os.sep, ""))}
     audit_dir = out / "audit" / f"m{serial}"
     audit_dir.mkdir(parents=True, exist_ok=True)
     alias = f"CensusTarget{serial}"
@@ -376,7 +376,7 @@ def run(args: argparse.Namespace) -> int:
             r = results[path]
             print(f"[{index}/{shards}] {r['status']:<17} {path} {r.get('detail', '')}"[:300], flush=True)
     report = {"schema": "viridis-canon/compile-census-shard/v1", "shard": args.shard,
-              "commit": _commit(repo), "entries": [results[p] for p in owned]}
+              "commit": args.commit or _commit(repo), "entries": [results[p] for p in owned]}
     tag = "-" + re.sub(r"[^0-9A-Za-z.]+", "_", "+".join(args.toolchain)) if args.toolchain else ""
     target = out / f"shard-{index}-of-{shards}{tag}.json"
     target.write_text(json.dumps(report, indent=1, sort_keys=True) + "\n", encoding="utf-8")
@@ -430,7 +430,8 @@ def regressions(ledger: dict, known_gaps: dict) -> list[str]:
     return out
 
 
-def summary_md(ledger: dict) -> str:
+def summary_md(ledger: dict, known_gaps: dict | None = None) -> str:
+    kinds = {g["path"]: g.get("kind", "") for g in (known_gaps or {}).get("gaps", [])}
     c = ledger["counts"]
     lines = ["# Canon compile census", "",
              f"Commit `{ledger['commit']}`. {ledger['files']} Lean files, {ledger['declarations']} declarations "
@@ -438,8 +439,17 @@ def summary_md(ledger: dict) -> str:
     lines += [f"| {s} | {c[s]} |" for s in STATUSES]
     bad = [e for e in ledger["entries"] if e["status"] not in ("CLEAN", "NO_DECLARATIONS")]
     if bad:
-        lines += ["", "## Not clean", "", "| File | Status | Detail |", "|---|---|---|"]
-        lines += [f"| `{e['path']}` | {e['status']} | {str(e.get('detail', '')).replace('|', '/')[:200]} |" for e in bad]
+        by_kind: dict[str, int] = {}
+        for e in bad:
+            k = kinds.get(e["path"], "not recorded")
+            by_kind[k] = by_kind.get(k, 0) + 1
+        lines += ["", "## Not clean", "", "| Kind (from known_gaps.json) | Files |", "|---|---|"]
+        lines += [f"| {k} | {n} |" for k, n in sorted(by_kind.items())]
+        show = [e for e in bad if kinds.get(e["path"], "not recorded") in ("open_gap", "not recorded", "quarantined")]
+        if show:
+            lines += ["", "| File | Kind | Status | Detail |", "|---|---|---|---|"]
+            lines += [f"| `{e['path']}` | {kinds.get(e['path'], 'not recorded')} | {e['status']} | "
+                      f"{str(e.get('detail', '')).replace('|', '/')[:200]} |" for e in show]
     return "\n".join(lines) + "\n"
 
 
@@ -454,13 +464,19 @@ def merge(args: argparse.Namespace) -> int:
     if args.ledger:
         args.ledger.parent.mkdir(parents=True, exist_ok=True)
         args.ledger.write_text(json.dumps(ledger, indent=1, sort_keys=True) + "\n", encoding="utf-8")
-    md = summary_md(ledger)
+    gaps = None
+    if args.known_gaps:
+        gaps = json.loads(args.known_gaps.read_text(encoding="utf-8")) if args.known_gaps.is_file() else {"gaps": []}
+    md = summary_md(ledger, gaps)
     if args.summary:
         args.summary.write_text(md, encoding="utf-8")
     print(md)
-    if args.known_gaps:
-        gaps = json.loads(args.known_gaps.read_text(encoding="utf-8")) if args.known_gaps.is_file() else {"gaps": []}
+    if gaps is not None:
         reg = regressions(ledger, gaps)
+        closed = sorted(g["path"] for g in gaps.get("gaps", [])
+                        if {e["path"]: e["status"] for e in ledger["entries"]}.get(g["path"]) in ("CLEAN", "NO_DECLARATIONS"))
+        if closed:
+            print("Recorded gaps that are now clean (remove them from known_gaps.json): " + ", ".join(closed))
         if reg:
             print("CENSUS REGRESSIONS (not clean and not a recorded known gap):", file=sys.stderr)
             for r in reg:
@@ -481,6 +497,7 @@ def main(argv: list[str] | None = None) -> int:
     r.add_argument("--only", action="append", default=[], help="restrict to paths with this prefix (for trials)")
     r.add_argument("--toolchain", action="append", default=[],
                    help="only files that declare this toolchain; the others belong to another job")
+    r.add_argument("--commit", help="commit to record (a pull request builds a merge commit; pass its head)")
     r.add_argument("--out", type=Path, required=True)
     r.add_argument("--timeout", type=int, default=2700, help="seconds per compile and per audit")
     m = sub.add_parser("merge", help="combine shard reports into the ledger; exit 2 if incomplete (C1)")

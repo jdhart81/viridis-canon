@@ -51,7 +51,8 @@ jobs:
       - name: Compile and audit this shard
         run: |
           python3 tools/compile_census.py run --env "$(cat lean-toolchain)=." \
-            --toolchain "$(cat lean-toolchain)" --shard "${{ matrix.shard }}/6" --out "$RUNNER_TEMP/census"
+            --toolchain "$(cat lean-toolchain)" --shard "${{ matrix.shard }}/6" --out "$RUNNER_TEMP/census" \
+            --commit "${{ github.event.pull_request.head.sha || github.sha }}"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: census-shard-${{ github.run_attempt }}-current-${{ matrix.shard }}
@@ -80,7 +81,8 @@ jobs:
       - name: Compile and audit the files pinned to the historical toolchain
         run: |
           python3 tools/compile_census.py run --env "$(cat compat/v4_24/lean-toolchain)=compat/v4_24" \
-            --toolchain "$(cat compat/v4_24/lean-toolchain)" --shard 0/1 --out "$RUNNER_TEMP/census"
+            --toolchain "$(cat compat/v4_24/lean-toolchain)" --shard 0/1 --out "$RUNNER_TEMP/census" \
+            --commit "${{ github.event.pull_request.head.sha || github.sha }}"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: census-shard-${{ github.run_attempt }}-historical

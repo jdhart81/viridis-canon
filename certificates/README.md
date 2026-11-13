@@ -45,6 +45,10 @@ statements were frozen together with their proofs rather than separately.
 Comparator still kernel-checks every theorem and audits its axioms, but the
 "statement matches the challenge" step is trivially satisfied for these three.
 
+Outside readers have confirmed findings on Run-133 (corridor overlap duality); they are
+credited in [`series/CODC/FINDINGS.md`](../series/CODC/FINDINGS.md) and the
+[bounty ledger](../BOUNTY.md#ledger).
+
 ## What a certificate establishes, and what it does not
 
 A certificate here records that, on the Viridis Comparator service:

@@ -26,20 +26,25 @@ The census leaves no `.lean` file out.
   those statements. 2 more are gate test fixtures.
 - `P9_AI_Safety.lean` is quarantined and does not parse.
 
-### Open gaps
+### Gaps found, and closed the same day
 
-| Project | What the census found |
-|---|---|
-| `series/BCAN` (DOI 10.5281/zenodo.22236387) | The only Lean file closes every theorem with `sorry`. |
-| `series/RCBN` (DOI 10.5281/zenodo.22236441) | The only Lean file closes every theorem with `sorry`. |
-| `series/SBRN` (DOI 10.5281/zenodo.22236458) | The only Lean file closes every theorem with `sorry`. |
-| `series/ACCN` (DOI 10.5281/zenodo.22236361) | The candidate proof does not compile (type mismatch, line 35). |
-| `series/DCAE` | The candidate proof does not compile (unsolved goals, line 12). |
+| Project | What the census found | Closed by |
+|---|---|---|
+| `series/BCAN` (DOI 10.5281/zenodo.22236387) | The only Lean file closes every theorem with `sorry`. | `CorridorAlignmentProofs.lean` |
+| `series/RCBN` (DOI 10.5281/zenodo.22236441) | The only Lean file closes every theorem with `sorry`. | `CheckpointBalanceProofs.lean` |
+| `series/SBRN` (DOI 10.5281/zenodo.22236458) | The only Lean file closes every theorem with `sorry`. | `StewardshipBottleneckReserveProofs.lean` |
+| `series/ACCN` (DOI 10.5281/zenodo.22236361) | The candidate proof does not compile (type mismatch, line 35). | `VERIFICATION_PROOFS.lean` |
+| `series/DCAE` | The candidate proof does not compile (unsolved goals, line 12). | `VERIFICATION_PROOFS.lean` |
 
-Each of the first four has a `COMPARATOR_SUMMARY.md` that reports a zero-sorry certificate from a private
-verifier with no local Lean run. The census cannot see that verifier or the candidate it checked. What it
-can say is that the Lean in this repository does not establish those results. The catalog already labels
-these records as uncertified working material.
+Each proof file proves every deposited statement with no `sorry` and checks, by `type_of%`, that each proved
+statement is the deposited one. The deposited files are unchanged, so the two candidate files still do not
+compile and are recorded as `superseded`. Each folder has a `CENSUS_NOTE.md`. The proof files are listed in
+`catalog/config.json` `exclude` for now: admitting a new record to the public catalog needs the private
+coverage ledger, which is a separate step.
+
+The first four folders carry a `COMPARATOR_SUMMARY.md` that reports a zero-sorry certificate from a private
+verifier with no local Lean run. The candidate that verifier checked is not in this repository. The census
+measures only what is here.
 
 ## What CLEAN does not mean
 

@@ -1130,7 +1130,12 @@
   "exclude": [
     "AxiomAudit.lean",
     "DepositAudit.lean",
-    "P0AxiomAudit.lean"
+    "P0AxiomAudit.lean",
+    "series/ACCN/VERIFICATION_PROOFS.lean",
+    "series/BCAN/CorridorAlignmentProofs.lean",
+    "series/DCAE/VERIFICATION_PROOFS.lean",
+    "series/RCBN/CheckpointBalanceProofs.lean",
+    "series/SBRN/StewardshipBottleneckReserveProofs.lean"
   ],
   "honesty_notice": "Machine verification establishes conditional mathematics, not empirical truth. Published records retain explicit scope, validation, and quarantine states.",
   "include": [

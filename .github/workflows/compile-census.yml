@@ -1,0 +1,120 @@
+# Compile census: every Lean file in the canon is compiled on its own at its declared pins and
+# axiom-audited (tools/compile_census.py, invariants C1-C5). The spine, P0 and deposit jobs in ci.yml
+# build chosen targets; this job leaves no .lean file out. It holds no secrets and writes nothing back.
+name: compile-census
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 9 * * 0'   # weekly, Sunday 09:23 UTC
+  pull_request:
+    branches: [main]
+    paths: ['**.lean', '**/lakefile.toml', '**/lean-toolchain', '**/lake-manifest.json',
+            'tools/compile_census.py', 'reports/compile_census/known_gaps.json',
+            '.github/workflows/compile-census.yml']
+  push:
+    branches: [main]
+    paths: ['**.lean', '**/lakefile.toml', '**/lean-toolchain', '**/lake-manifest.json',
+            'tools/compile_census.py', 'reports/compile_census/known_gaps.json',
+            '.github/workflows/compile-census.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: compile-census-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  current:
+    name: census (current pins, shard ${{ matrix.shard }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.11'
+      - name: Install elan / Lean
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Mathlib cache
+        run: lake exe cache get
+      - name: Compile and audit this shard
+        run: |
+          python3 tools/compile_census.py run --env "$(cat lean-toolchain)=." \
+            --toolchain "$(cat lean-toolchain)" --shard "${{ matrix.shard }}/6" --out "$RUNNER_TEMP/census"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: census-shard-${{ github.run_attempt }}-current-${{ matrix.shard }}
+          path: ${{ runner.temp }}/census/shard-*.json
+          if-no-files-found: error
+
+  historical:
+    name: census (historical P0 pins)
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.11'
+      - name: Install elan / Lean
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Historical Mathlib cache
+        working-directory: compat/v4_24
+        run: lake exe cache get
+      - name: Compile and audit the files pinned to the historical toolchain
+        run: |
+          python3 tools/compile_census.py run --env "$(cat compat/v4_24/lean-toolchain)=compat/v4_24" \
+            --toolchain "$(cat compat/v4_24/lean-toolchain)" --shard 0/1 --out "$RUNNER_TEMP/census"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: census-shard-${{ github.run_attempt }}-historical
+          path: ${{ runner.temp }}/census/shard-*.json
+          if-no-files-found: error
+
+  ledger:
+    name: census ledger (complete, no regressions)
+    if: always()
+    needs: [current, historical]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: census-shard-${{ github.run_attempt }}-*
+          path: census
+          merge-multiple: true
+      - name: Merge shards; fail if any file is missing (C1) or newly not clean
+        run: |
+          set -o pipefail
+          python3 tools/compile_census.py merge census/shard-*.json --ledger census/ledger.json \
+            --summary census/summary.md --known-gaps reports/compile_census/known_gaps.json | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: compile-census-ledger
+          path: |
+            census/ledger.json
+            census/summary.md
+          if-no-files-found: warn

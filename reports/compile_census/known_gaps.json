@@ -1,0 +1,5 @@
+{
+  "schema": "viridis-canon/compile-census-known-gaps/v1",
+  "note": "Files the census does not find CLEAN, each with its recorded status and the reason it is accepted for now. The census fails when a file is not clean and is not listed here with the same status. Removing an entry is how a gap is closed.",
+  "gaps": []
+}

@@ -1,0 +1,19 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.CognitiveModeling.SignedBiasCancellation.pooled_error_at_zero",
+    "Viridis.CognitiveModeling.SignedBiasCancellation.pooled_error_at_one",
+    "Viridis.CognitiveModeling.SignedBiasCancellation.cancellation_weight_balance",
+    "Viridis.CognitiveModeling.SignedBiasCancellation.opposite_error_cancellation",
+    "Viridis.CognitiveModeling.SignedBiasCancellation.cancellation_weight_interior",
+    "Viridis.CognitiveModeling.SignedBiasCancellation.same_sign_nonnegative",
+    "Viridis.CognitiveModeling.SignedBiasCancellation.same_sign_nonpositive",
+    "Viridis.CognitiveModeling.SignedBiasCancellation.signed_bias_cancellation_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

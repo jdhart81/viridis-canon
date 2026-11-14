@@ -26,6 +26,19 @@ yourself and re-run the check on your own machine.
 | Run-133 | Corridor overlap duality | [10.5281/zenodo.22665525](https://doi.org/10.5281/zenodo.22665525) | elementary | 6 | `codc-synchrony-dividend-identity` |
 | Run-135 | Sufficient sanitization certificate | [10.5281/zenodo.22236775](https://doi.org/10.5281/zenodo.22236775) | elementary | 5 | `ssc-relevance-chain-identity` |
 | Run-139 | Ecological-thermodynamic capital allocation | [10.5281/zenodo.22236785](https://doi.org/10.5281/zenodo.22236785) | elementary | 6 | `thermodynamic-economic-allocation` |
+| Run-136 | Retention floor certificate (hazard-proportional refresh) | [10.5281/zenodo.22665565](https://doi.org/10.5281/zenodo.22665565) | elementary | 8 | none yet |
+| Run-145 | Agreement-conditioned collapse note | [10.5281/zenodo.22236361](https://doi.org/10.5281/zenodo.22236361) | elementary | 7 | none yet |
+| Run-151 | Thermal learning-rate corridor note | [10.5281/zenodo.22736706](https://doi.org/10.5281/zenodo.22736706) | elementary | 7 | none yet |
+| Run-153 | Reciprocal rescue feasibility note | [10.5281/zenodo.22736666](https://doi.org/10.5281/zenodo.22736666) | elementary | 7 | none yet |
+| Run-154 | Signed-bias cancellation note | [10.5281/zenodo.22736676](https://doi.org/10.5281/zenodo.22736676) | elementary | 8 | none yet |
+| Run-155 | Shared verification-overhead note | [10.5281/zenodo.22736690](https://doi.org/10.5281/zenodo.22736690) | elementary | 8 | none yet |
+| Run-156 | Monitoring-to-response reserve note | [10.5281/zenodo.22736654](https://doi.org/10.5281/zenodo.22736654) | elementary | 9 | none yet |
+| Run-158 | Deference-reserve equalization note | [10.5281/zenodo.22736637](https://doi.org/10.5281/zenodo.22736637) | elementary | 9 | none yet |
+| Run-160 | D-Score stewardship uncertainty-reserve note | [10.5281/zenodo.22736650](https://doi.org/10.5281/zenodo.22736650) | elementary | 10 | none yet |
+| Run-161 | Reciprocal corridor bottleneck note | [10.5281/zenodo.22736656](https://doi.org/10.5281/zenodo.22736656) | elementary | 9 | none yet |
+| Run-162 | Sequential alignment-retention note | [10.5281/zenodo.22736670](https://doi.org/10.5281/zenodo.22736670) | elementary | 8 | none yet |
+| Run-163 | Useful-dissipated work ledger note | [10.5281/zenodo.22736716](https://doi.org/10.5281/zenodo.22736716) | elementary | 9 | none yet |
+| Run-172 | Ring-fenced stewardship reserve accounting note | [10.5281/zenodo.23004874](https://doi.org/10.5281/zenodo.23004874) | elementary | 4 | none yet |
 
 [`index.json`](./index.json) is the authoritative, machine-readable list. It
 records, per run, the certificate gates, toolchain (`leanprover/lean4:v4.28.0`),
@@ -44,6 +57,11 @@ kernel, but we do not present them as deep mathematics.
 statements were frozen together with their proofs rather than separately.
 Comparator still kernel-checks every theorem and audits its axioms, but the
 "statement matches the challenge" step is trivially satisfied for these three.
+
+The 13 runs from Run-136 to Run-172 that list no OS function were added on 2026-11-14. Their
+certificate, receipt, statement and candidate files were already public in each run's Zenodo
+record; this folder adds the sealed claim inventory and run manifest the certificate binds, so
+`verify_bundle.py` and `rerun.sh` cover them too. All 13 are labelled elementary.
 
 Outside readers have confirmed findings on Run-133 (corridor overlap duality); they are
 credited in [`series/CODC/FINDINGS.md`](../series/CODC/FINDINGS.md) and the

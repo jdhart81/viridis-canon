@@ -42,8 +42,8 @@ evidence exists.
 
 | Evidence | Count | What it means |
 |---|---|---|
-| Published comparator certificates | **18 runs, 114 theorems** | Each certificate records that the theorems are proved with zero `sorry`. It also records that they use only `propext`, `Quot.sound` and `Classical.choice`, that their statements match a challenge file, and that both the Lean kernel and the independent nanoda kernel accept them. The files and hashes are in [`certificates/`](./certificates/). |
-| … labelled *substantial* | **11 runs** | Formalizations of at least 200 lines with multi-step proofs. The other 7 are labelled *elementary* and are not oversold. See the [depth rule](./certificates/README.md). |
+| Published comparator certificates | **31 runs, 217 theorems** | Each certificate records that the theorems are proved with zero `sorry`. It also records that they use only `propext`, `Quot.sound` and `Classical.choice`, that their statements match a challenge file, and that both the Lean kernel and the independent nanoda kernel accept them. The files and hashes are in [`certificates/`](./certificates/). |
+| … labelled *substantial* | **11 runs** | Formalizations of at least 200 lines with multi-step proofs. The other 20 are labelled *elementary* and are not oversold. See the [depth rule](./certificates/README.md). |
 | Decision functions tied to Lean theorems | **44** | Each [manifest](./os/) names its Lean module, theorems, DOI and verifier. They are listed in [`formalization.yaml`](./formalization.yaml). |
 | Rebuilt on every push | CI | `lake build` with an axiom audit (see [`REPRODUCE.md`](./REPRODUCE.md)). |
 | Legacy catalog records | 215 | Labelled UNCERTIFIED until re-certified (see [below](#legacy-catalog-status)). |
@@ -84,7 +84,7 @@ On 2026-10-17 we re-elaborated all three certified solutions on a fresh machine
 against the pinned toolchain and Mathlib, without the Viridis pipeline. All 98
 listed theorems depend only on the three standard axioms.
 
-**Theorem bounty.** Found a vacuous, trivial or misstated theorem among the 18 certified
+**Theorem bounty.** Found a vacuous, trivial or misstated theorem among the certified
 runs? Confirmed findings are credited in the ledger and acknowledged in the papers. The
 cash bounty is closed to new reports. See [`BOUNTY.md`](./BOUNTY.md).
 

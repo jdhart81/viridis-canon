@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "run_id": "Run-160",
+  "title": "A D-Score Stewardship Uncertainty-Reserve Note",
+  "paper_stage": "pre_aristotle",
+  "artifacts": {
+    "readme": "README.md",
+    "finding": "finding.md",
+    "paper_source": "paper.tex",
+    "paper_pdf": "paper.pdf",
+    "paper_log": "paper.log",
+    "verification_script": "verification.py",
+    "verification_output": "verification_output.txt",
+    "business_value": "business_EV-160.md"
+  },
+  "claim_inventory": [
+    {"id":"C1","claim":"The D-Score difference equals the weighted sum of component differences.","classification":["FORMAL_TARGET"],"formal_target":"score_difference_identity","evidence_class":"FORMAL_TARGET","aristotle_target":"score_difference_identity"},
+    {"id":"C2","claim":"Nonnegative weights and radii imply a nonnegative weighted uncertainty reserve.","classification":["FORMAL_TARGET"],"formal_target":"reserve_nonnegative","evidence_class":"FORMAL_TARGET","aristotle_target":"reserve_nonnegative"},
+    {"id":"C3","claim":"Supplied component-wise error intervals imply the exact weighted absolute-error envelope.","classification":["FORMAL_TARGET"],"formal_target":"componentwise_error_envelope","evidence_class":"FORMAL_TARGET","aristotle_target":"componentwise_error_envelope"},
+    {"id":"C4","claim":"A nominal margin at least the reserve protects the declared stewardship floor for every admissible realization.","classification":["FORMAL_TARGET"],"formal_target":"stewardship_floor_sound","evidence_class":"FORMAL_TARGET","aristotle_target":"stewardship_floor_sound"},
+    {"id":"C5","claim":"The lower and upper interval corners attain the corresponding score endpoints.","classification":["FORMAL_TARGET"],"formal_target":"lower_corner_exact and upper_corner_exact","evidence_class":"FORMAL_TARGET","aristotle_target":"lower_corner_exact and upper_corner_exact"},
+    {"id":"C6","claim":"Zero uncertainty recovers the nominal score, and increasing component radii cannot decrease the reserve under nonnegative weights.","classification":["FORMAL_TARGET"],"formal_target":"zero_uncertainty_recovers_nominal and reserve_monotone","evidence_class":"FORMAL_TARGET","aristotle_target":"zero_uncertainty_recovers_nominal and reserve_monotone"},
+    {"id":"C7","claim":"The positive exact lower-score and threshold witnesses are inhabited.","classification":["FORMAL_TARGET"],"formal_target":"lower_score_positive_witness and lower_corner_threshold_witness","evidence_class":"FORMAL_TARGET","aristotle_target":"lower_score_positive_witness and lower_corner_threshold_witness"},
+    {"id":"C8","claim":"The exact-rational package regression passes 358004 checks.","classification":["NUMERIC"],"evidence_class":"NUMERIC"},
+    {"id":"C9","claim":"Fixed nonnegative weights, compatible score units, linear aggregation, and valid supplied component intervals are model assumptions.","classification":["ASSUMED"],"evidence_class":"ASSUMED"},
+    {"id":"C10","claim":"Valid interval estimation, D-Score calibration, ecological improvement, registry eligibility, product activation, adoption, delivery, payment, or revenue is established.","classification":["DEFERRED"],"evidence_class":"DEFERRED"}
+  ],
+  "high_risk_claims": [
+    {"phrase":"exact robust interval","support":"Exact only for the declared fixed linear score and supplied component-wise box intervals.","paper_locator":"Abstract, Model and assumptions, and Main result","evidence_class":"FORMAL_TARGET"},
+    {"phrase":"stewardship floor","support":"A precommitted algebraic score threshold; not an ecological outcome, legal threshold, or registry decision.","paper_locator":"Abstract, Main result, and Limitations","evidence_class":"FORMAL_TARGET"},
+    {"phrase":"exact minimum","support":"Attained at the lower corner of the declared independent box; dependence restrictions can make it conservative.","paper_locator":"Main result and Limitations","evidence_class":"FORMAL_TARGET"},
+    {"phrase":"robust","support":"Means valid for every realization inside the supplied intervals, not robust to model, structural, or deep uncertainty.","paper_locator":"Related work, Model and assumptions, and Limitations","evidence_class":"ASSUMED"}
+  ],
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {"name":"Codex","role":"Standards and corpus review, current primary-literature search, preregistration, derivation, exact-rational verification, manuscript, Lean statement/candidate, packaging, and QA under human direction"},
+      {"name":"Claude","role":"Historical Viridis artifacts read with attribution preserved"}
+    ]
+  },
+  "viridisos_kernel_candidate": {
+    "status": "NO_RUNTIME_KERNEL",
+    "reason": "No field-calibrated component intervals, accepted stewardship threshold, validated decision family, input provenance, loss model, operating scope, or refusal envelope exists."
+  },
+  "route_proposal": "working-corpus",
+  "integrity_flags": [],
+  "formal_verification": {
+    "status": "FROZEN_CANDIDATE_UNCERTIFIED",
+    "provider": "COMPARATOR_CLOUD",
+    "aristotle_required": false,
+    "statement": "formalization/VERIFICATION_STATEMENT.lean",
+    "candidate": "formalization/VERIFICATION_CANDIDATE.lean",
+    "contract": "formalization/STATEMENT_CONTRACT.json",
+    "request": "formalization/ENGINE3_VERIFICATION_REQUEST.json",
+    "toolchain": "leanprover/lean4:v4.28.0",
+    "mathlib_commit": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+    "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+    "nonvacuity_obligations": ["lower_score_positive_witness", "lower_corner_threshold_witness"],
+    "local_lean_execution": false
+  },
+  "aristotle": {
+    "status": "pending",
+    "source_status": "NOT_RUN_NOT_REQUIRED_ENGINE_3",
+    "lean_files": ["formalization/VERIFICATION_STATEMENT.lean", "formalization/VERIFICATION_CANDIDATE.lean", "formalization/STATEMENT_CONTRACT.json", "formalization/ENGINE3_VERIFICATION_REQUEST.json", "formalization/lakefile.toml", "formalization/lean-toolchain"],
+    "summary_files": [],
+    "formal_targets_unproved": ["score_difference_identity", "reserve_nonnegative", "componentwise_error_envelope", "stewardship_floor_sound", "lower_corner_exact", "upper_corner_exact", "zero_uncertainty_recovers_nominal", "reserve_monotone", "lower_score_positive_witness", "lower_corner_threshold_witness"],
+    "compatibility_note": "Legacy field retained for validator compatibility; Engine-3 makes Aristotle not required."
+  },
+  "post_aristotle_review": {"status":"pending","path":null,"evidence":"Legacy field retained; no Comparator certificate or reconciled overlay exists."},
+  "post_lean_review": {"status":"pending","path":null,"evidence":"No Comparator certificate, reconciliation, or later-invocation review exists."},
+  "release_metadata": {
+    "abbreviation": "DSUR",
+    "description": "Pre-certificate D-Score stewardship uncertainty-reserve methods note.",
+    "keywords": ["D-Score", "biodiversity indicator", "uncertainty reserve", "robust threshold", "stewardship", "composite index"],
+    "version": "0.0.0-pre-certificate",
+    "license": null,
+    "series_route": "working-corpus D-Score stewardship methods branch",
+    "spine_admitted": false,
+    "spine_gate": null,
+    "spine_reason": "No certified result exists for a Canon scan.",
+    "viridisos_disposition": "NO_RUNTIME_KERNEL",
+    "notes": "No ledger row, DOI, deployment, runtime kernel, or publication authorization.",
+    "ledger_row": null
+  },
+  "disposition": "METHODS_NOTE",
+  "generated_package_manifested_at_utc": "2026-09-06T07:10:00Z",
+  "pdf_review": {"status":"PASS","method":"Poppler render review at 150 DPI","result":"All three pages reviewed; no clipping, overlap, unreadable glyphs, broken references, visible link boxes, or layout defects observed."},
+  "external_mutation": false
+}

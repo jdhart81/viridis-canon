@@ -1,0 +1,46 @@
+{
+  "aligned_challenge": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-158/attempts/attempt-2/VERIFICATION_CHALLENGE_ALIGNED.lean",
+    "sha256": "b5730c54f9073339ff4d79272dc452f884caf6de46d0104bc9d625da7624ff29"
+  },
+  "candidate": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-158/attempts/attempt-2/VERIFICATION_CANDIDATE.lean",
+    "sha256": "aebdd2147eb58df5fa8ed87c8f7880d75fea851f9ad7eb240c93f388acbb670b"
+  },
+  "candidate_forbidden_constructs_empty": true,
+  "expected_theorem_names": [
+    "residual_loss_decomposition",
+    "exchange_gain_identity",
+    "exchange_preserves_capacity",
+    "ordered_exchange_not_worse",
+    "ordered_exchange_reduces_loss",
+    "full_first_dominates_split",
+    "equal_rate_allocation_invariant",
+    "deference_reserve_positive_witness",
+    "wrong_priority_negative_control"
+  ],
+  "external_mutation": false,
+  "introduced_sorry_count": 9,
+  "local_lean_execution": false,
+  "operation": "candidate-order challenge with only expected theorem proof bodies replaced by sorry",
+  "schema_version": 1,
+  "sealed_statement": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-158/attempts/attempt-2/VERIFICATION_STATEMENT.lean",
+    "sha256": "b5730c54f9073339ff4d79272dc452f884caf6de46d0104bc9d625da7624ff29"
+  },
+  "shared_declaration_order_source": "candidate",
+  "signature_sha256": {
+    "deference_reserve_positive_witness": "b1fdc1b2b6c9cccb208c986f3614173545c9facf04f4b4c8fc2c7371a2924a12",
+    "equal_rate_allocation_invariant": "72f7be8ba2fe7314e34101faf9b92a092aab14abbafa4b11bc649386f0214402",
+    "exchange_gain_identity": "11df40f076e9818b52b273d0fb42c4c9d63d1fe529d84d91fbe91d92c212db04",
+    "exchange_preserves_capacity": "6f2a5282130a18ad5cd95f7ef42a45f7267d9282ae82d3937ba7aabea22f3a30",
+    "full_first_dominates_split": "7695676a300892783b59ba7ae3663e581ca9ba1fcc53ec2b9d0218fc9991737a",
+    "ordered_exchange_not_worse": "25bb6856f900c6095924414283fb031b30491c5e886de70429633a7afcbab293",
+    "ordered_exchange_reduces_loss": "bf788c0b31348a1b5e66b6548c8dba8ea5550aabacffca516b1566aa67920438",
+    "residual_loss_decomposition": "de0191a1f477eae1e2c04e4744a2b2905514c2415e6cf907360cb490d63d2f64",
+    "wrong_priority_negative_control": "081f7673836f89dfcb80cef1c30e8d576acc05af515299354da6d5f173a0b985"
+  },
+  "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+  "status": "FROZEN",
+  "target_signatures_match_sealed_statement": true
+}

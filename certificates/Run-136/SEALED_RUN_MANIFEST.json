@@ -1,0 +1,129 @@
+{
+  "schema_version": "VRS-NIGHTLY-GEN-2",
+  "run": 136,
+  "run_id": "Run-136",
+  "slug": "retention-floor-certificate",
+  "title": "The Retention Floor Certificate: Hazard-Proportional Refresh for Max-Min Knowledge Stewardship",
+  "generated_at_utc": "2026-08-20T08:19:17Z",
+  "source_workspace": "/Users/justinhart/Desktop/science ",
+  "run_directory": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-136_retention-floor-certificate",
+  "selection": {
+    "area_id": "06",
+    "area": "Entropy-Driven Learning",
+    "lens": "Stewardship",
+    "directive_kind": "locked_area",
+    "reason": "tier_starvation_floor",
+    "policy_id": "VRS-NIGHTLY-SELECTION-1",
+    "area_selected_before_lens": true,
+    "combination_guard": "PASS_ENTROPY_DRIVEN_LEARNING_STEWARDSHIP_PAIRING_OUTSIDE_16_RUN_GUARD"
+  },
+  "exit_state": "GENERATED_EXPLORATION",
+  "novelty": "UNASSESSED",
+  "significance": "UNASSESSED",
+  "verification": {
+    "status": "NUMERICAL_GATE_PASS",
+    "passed": 15,
+    "failed": 0,
+    "checks": 15,
+    "formal_verification": false,
+    "proposed_lean_targets_unproved": true,
+    "deterministic_replay": "BYTE_IDENTICAL",
+    "scope": "20,000 random feasible allocations, 10,000 random optimizer instances, exact stationary balance, dense two- and three-item grids, uniqueness, boundary, scaling, schedule, interference, objective, and transient controls",
+    "preserved_failure_evidence": "VERIFICATION_FAILURE_NOTE.md records the initial floating-point grid-endpoint harness defect and the residual-budget repair"
+  },
+  "formalization": {
+    "status": "FROZEN_PROPOSED_UNPROVED",
+    "lean_file": "formalization/RetentionFloor.lean",
+    "targets": [
+      "stationary_availability_balance",
+      "floor_requirement",
+      "retention_floor_upper_bound",
+      "hazard_proportional_attains_floor",
+      "retention_floor_unique",
+      "retention_floor_nonvacuous"
+    ],
+    "contains_explicit_sorry_placeholders": true
+  },
+  "aristotle": {
+    "status": "NOT_RUN",
+    "submitted": false
+  },
+  "advisory": {
+    "ceo_alert": "ROUTE_FOR_SIGNIFICANCE_REVIEW",
+    "proposed_route": "working-corpus retention-stewardship methods branch",
+    "proposed_spine_effect": "none",
+    "canon_admission": false,
+    "spine_admission": false,
+    "ledger_row": false
+  },
+  "next_locked_directive": {
+    "run": 137,
+    "kind": "area",
+    "area_id": "01",
+    "area": "Intelligence Bound",
+    "lens": "Symbiosis",
+    "reason": "scored_selection",
+    "selection_note": "No starvation rail is armed. Area 01 leads the post-transition stated score at 27.0, ahead of area 07 at 26.0. Symbiosis follows Stewardship and its last area-01 pairing was Run 072, outside the 16-run guard."
+  },
+  "paper_build": {
+    "command": "tectonic --keep-logs paper.tex",
+    "compiler": "Tectonic 0.17.0",
+    "pages": 3,
+    "clean_log": true,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "visual_review": "PASS_ALL_3_PAGES_RENDERED_AT_120_DPI",
+    "preserved_failure_evidence": null
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Binding-standard and Viridis-corpus review, current primary-literature search, preregistration, verification code and execution, manuscript drafting, packaging, PDF QA, and integrity checks under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "Historical Viridis research artifacts read with attribution preserved and no historical text rewritten"
+      }
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "prior_nightly_state_sha256": "1b842ce2da4122ea3d2b62a169b41df837bd15c19bec15ec001f760bbc782805",
+    "resulting_nightly_state_sha256": "4ec971b436bfd9f54bb6dad7a264c90a1ecf448fa40bc5f9467534ddc49630f7",
+    "selection_policy_sha256": "fdee0f1dff1a92ebe42ef7413a98b39b771b8759ad385ba3fb037898935cd09e",
+    "artifact_hashes": {
+      "CEO_ALERT.md": "c4edeab5f3e3651678fbae051c6fc75cb3bfd8b3e20160b8d8300b4d5c076e06",
+      "CLAIM_INVENTORY.json": "90fb5b715a6d8be3bf8f21a861e6c731e08dfc65e31e2c702ef0cf3a00e2bb78",
+      "PAPER_PACKAGE_MANIFEST.json": "d7a24eac90d77b57377567102e76054ec74b198aef315e47e328ba43162e119e",
+      "PREREGISTRATION.md": "5ebe59cfaed9007f90e8e1c7e1b7465ff88c6d55df785bef5318b2195df1f782",
+      "README.md": "18ed2844ec59d1157bb8a4d189a95fc89b251cdb97c0b45d6324394dd3563a07",
+      "SOURCE_LEDGER.json": "320ce88359cec9a9d4476a94b76af95ca88f9a35ed5374c726b1099572a55387",
+      "VERIFICATION_FAILURE_NOTE.md": "bb3714a957128ac4807276e0e59fa6b14e7465346dcfde588ac0def20b856d6f",
+      "business_EV-136.md": "80d3979eeb2566254e7aa2bda435c034757f56287b8df84633a516bfa53ad280",
+      "finding.md": "4dc6ed2dfa0e7bd4749073b6153e847a2b06b57d7a1d887d069bacce802f55a2",
+      "formalization/ARISTOTLE_PROMPT.md": "d8646d54c5dc7364072c5a257cd546ac6d0a05d1a773935dd70d827a5746c88d",
+      "formalization/RetentionFloor.lean": "7d669f85300059b7babbd290ac53036c71a88e964db3e98ec52726fabda21a23",
+      "formalization/STATEMENT_CONTRACT.json": "c3731671e83d6de62d0e14cc2c105fae99d43fa9ed22649777fccc7c76ab37fc",
+      "formalization/lakefile.toml": "adeac842c3e16aba5a07e1593c7b8aa1734e0629e1f5eb86909f7d0a050ccf26",
+      "formalization/lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028",
+      "paper.log": "94124a54bd3cbca81b5edc4473b2fd0e039a0b5fe303e51e11bb9b8ab6a36822",
+      "paper.pdf": "db1ec923a023a5a67d3149528e9de9f68a4da980a1a56d0c0c9ab9e757dd3845",
+      "paper.tex": "efce0ca18df3823df9466f3627af5e7d4a4a8e65dc2969de7dcae0c3d7538ad0",
+      "verification.py": "007e0178bfaef30c0a732d79c70dce8d958fab654df3f933baf7d769c3bb77ab",
+      "verification_output.txt": "093ab5125178df4256bcbf1683496b327c0472a1d04ee4afaf2c699c9adfe48d"
+    },
+    "self_reference_note": "RUN_MANIFEST.json is hashed only after sealing; its hash is recorded in NIGHTLY_STATE.md and INDEX.md because a manifest cannot contain its own hash.",
+    "run_manifest_hash_recorded_in": "NIGHTLY_STATE.md and INDEX.md"
+  },
+  "external_actions": {
+    "published": false,
+    "pushed": false,
+    "submitted": false,
+    "outreach_sent": false,
+    "external_account_mutated": false,
+    "money_moved": false
+  }
+}

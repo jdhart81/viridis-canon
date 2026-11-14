@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "run_id": "Run-153",
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "The closed-form pair satisfies both supplied linear equilibrium equations when loop gain is not one.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "equilibrium_balance_a and equilibrium_balance_b",
+      "classification": [
+        "FORMAL_TARGET"
+      ]
+    },
+    {
+      "id": "C2",
+      "claim": "Positive numerator margins and positive denominator imply a positive equilibrium.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "positive_equilibrium_of_positive_numerators",
+      "classification": [
+        "FORMAL_TARGET"
+      ]
+    },
+    {
+      "id": "C3",
+      "claim": "With nonpositive intrinsic inputs and nonnegative gains, stable reciprocal amplification cannot yield a positive equilibrium coordinate.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "no_two_decliner_positive_equilibrium",
+      "classification": [
+        "FORMAL_TARGET"
+      ]
+    },
+    {
+      "id": "C4",
+      "claim": "The declared one-sided help and burden inequalities imply both equilibrium coordinates are positive.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "one_sided_rescue_window",
+      "classification": [
+        "FORMAL_TARGET"
+      ]
+    },
+    {
+      "id": "C5",
+      "claim": "The rational witness has denominator 7/8 and equilibrium (4/7,22/7).",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "reciprocal_rescue_witness",
+      "classification": [
+        "FORMAL_TARGET"
+      ]
+    },
+    {
+      "id": "C6",
+      "claim": "Unit-by-unit reciprocal gain is a singular loop boundary in this model.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "unit_loop_boundary",
+      "classification": [
+        "FORMAL_TARGET"
+      ]
+    },
+    {
+      "id": "C7",
+      "claim": "The exact-rational verification output is green and byte-captured.",
+      "evidence_class": "NUMERIC",
+      "classification": [
+        "NUMERIC"
+      ]
+    },
+    {
+      "id": "C8",
+      "claim": "Linear fixed coefficients, nonnegative gains, and loop gain below one are supplied assumptions.",
+      "evidence_class": "ASSUMED",
+      "classification": [
+        "ASSUMED"
+      ]
+    },
+    {
+      "id": "C9",
+      "claim": "Ecological interaction signs, causal effects, resilience, habitability, intervention value, and Earth-system validity are established.",
+      "evidence_class": "DEFERRED",
+      "classification": [
+        "DEFERRED"
+      ]
+    },
+    {
+      "id": "C10",
+      "claim": "Novelty, significance, adoption, delivery, and revenue are established.",
+      "evidence_class": "DEFERRED",
+      "classification": [
+        "DEFERRED"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "aligned_challenge": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-172/VERIFICATION_CHALLENGE_ALIGNED.lean",
+    "sha256": "7f9a9c7ee6f8431e9a3e49c82a543f819c8ac4072965dc1e93ad8df7d5cccb3e"
+  },
+  "candidate": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-172/VERIFICATION_CANDIDATE.lean",
+    "sha256": "83bcd018520a3fc27a8d3d2d24531d605be71c2421733fb088d7de0e2de89fc9"
+  },
+  "candidate_forbidden_constructs_empty": true,
+  "expected_theorem_names": [
+    "reserve_preserved",
+    "zero_spendable_forces_zero",
+    "reserve_monotone",
+    "stewardship_reserve_witness"
+  ],
+  "external_mutation": false,
+  "introduced_sorry_count": 4,
+  "local_lean_execution": false,
+  "operation": "candidate-order challenge with only expected theorem proof bodies replaced by sorry",
+  "schema_version": 1,
+  "sealed_statement": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-172/VERIFICATION_STATEMENT.lean",
+    "sha256": "7f9a9c7ee6f8431e9a3e49c82a543f819c8ac4072965dc1e93ad8df7d5cccb3e"
+  },
+  "shared_declaration_order_source": "candidate",
+  "signature_sha256": {
+    "reserve_monotone": "7365e9636ad3b0ec2dd4cd5cb59de65b26d2a20292ffb52144198b74fee0358b",
+    "reserve_preserved": "98d34d2650d709dd6a5bdee95f6be36c75c1dede2f2d0c188552e1c9a4c6d5ac",
+    "stewardship_reserve_witness": "8c2f441c33444e4b7cea11658347c92145a1cb271d74b098654bdd3112035699",
+    "zero_spendable_forces_zero": "a1ff11e865c1f77ab6c0aec699fa5df32bcbf03ac019cdcf20961743e886ad00"
+  },
+  "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+  "status": "FROZEN",
+  "target_signatures_match_sealed_statement": true
+}

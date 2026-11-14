@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "run_id": "Run-155",
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Two separate verification processes pay the fixed setup burden twice, while one shared process pays it once.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "separate_cost_expansion and bundled_cost_expansion",
+      "classification": ["FORMAL_TARGET"]
+    },
+    {
+      "id": "C2",
+      "claim": "The no-interaction saving from sharing an identical fixed setup burden is exactly F.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "shared_verification_saving",
+      "classification": ["FORMAL_TARGET"]
+    },
+    {
+      "id": "C3",
+      "claim": "With interaction overhead h, the saving is F-h and sharing is strictly cheaper when h<F.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "interaction_adjusted_saving and sharing_strictly_cheaper",
+      "classification": ["FORMAL_TARGET"]
+    },
+    {
+      "id": "C4",
+      "claim": "Supplied marginal lower bounds propagate to a bundled lower bound.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "bundled_marginal_floor",
+      "classification": ["FORMAL_TARGET"]
+    },
+    {
+      "id": "C5",
+      "claim": "Nonnegative net service is equivalent to gross service covering the bundled verification burden.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "net_service_nonnegative_iff",
+      "classification": ["FORMAL_TARGET"]
+    },
+    {
+      "id": "C6",
+      "claim": "F=2, v1=3, v2=5 gives separate cost 12, bundled cost 10, and saving 2.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "shared_verification_witness",
+      "classification": ["FORMAL_TARGET"]
+    },
+    {
+      "id": "C7",
+      "claim": "The exact-rational verification output is green and byte-captured.",
+      "evidence_class": "NUMERIC",
+      "classification": ["NUMERIC"]
+    },
+    {
+      "id": "C8",
+      "claim": "Common burden units, identical fixed setup, unchanged marginal work, and complete interaction accounting are supplied assumptions.",
+      "evidence_class": "ASSUMED",
+      "classification": ["ASSUMED"]
+    },
+    {
+      "id": "C9",
+      "claim": "Real ecosystem-service additivity, valid credit stacking, measured physical energy savings, registry integrity, adoption, delivery, or revenue is established.",
+      "evidence_class": "DEFERRED",
+      "classification": ["DEFERRED"]
+    }
+  ]
+}
+

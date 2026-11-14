@@ -1,0 +1,23 @@
+{
+  "schema_version": "VRS-CLAIM-INVENTORY-1",
+  "run": 163,
+  "claims": [
+    {"id":"C1","claim":"Useful work is nonnegative for nonnegative stage work and useful fractions.","classification":["FORMAL_TARGET"],"formal_target":"useful_nonnegative","evidence_class":"FORMAL_TARGET"},
+    {"id":"C2","claim":"The modeled dissipative remainder is nonnegative when stage fractions are no greater than one.","classification":["FORMAL_TARGET"],"formal_target":"modeled_dissipation_nonnegative","evidence_class":"FORMAL_TARGET"},
+    {"id":"C3","claim":"Useful work plus the modeled remainder equals total supplied work exactly.","classification":["FORMAL_TARGET"],"formal_target":"work_partition","evidence_class":"FORMAL_TARGET"},
+    {"id":"C4","claim":"Each partition term is no greater than total supplied work under the stated bounds.","classification":["FORMAL_TARGET"],"formal_target":"useful_le_supplied, dissipation_le_supplied","evidence_class":"FORMAL_TARGET"},
+    {"id":"C5","claim":"A common efficiency ceiling bounds useful work and implies a necessary supplied-work floor for a declared target.","classification":["FORMAL_TARGET"],"formal_target":"uniform_efficiency_bound, target_requires_supply","evidence_class":"FORMAL_TARGET"},
+    {"id":"C6","claim":"Exact nonzero partition and target-floor witnesses are inhabited.","classification":["FORMAL_TARGET"],"formal_target":"partial_partition_witness, target_floor_witness","evidence_class":"FORMAL_TARGET"},
+    {"id":"C7","claim":"The exact-rational package regression passes its captured checks.","classification":["NUMERIC"],"evidence_class":"NUMERIC"},
+    {"id":"C8","claim":"Work units, boundaries, useful-output definitions, fixed fractions, additive stages, and the [0,1] range are supplied assumptions.","classification":["ASSUMED"],"evidence_class":"ASSUMED"},
+    {"id":"C9","claim":"Any entropy production, exergy destruction, ecosystem recovery, planetary habitability, causal benefit, adoption, delivery, payment, or revenue is established.","classification":["DEFERRED"],"evidence_class":"DEFERRED"}
+  ],
+  "high_risk_claims": [
+    {"phrase":"dissipated work","support":"A declared accounting remainder only, not measured heat, entropy production, exergy destruction, or ecological harm.","paper_locator":"Abstract, Model and assumptions, Limitations","evidence_class":"ASSUMED"},
+    {"phrase":"useful work","support":"A supplied operational classification requiring an external measurement protocol.","paper_locator":"Model and assumptions and Limitations","evidence_class":"ASSUMED"},
+    {"phrase":"necessary work floor","support":"Necessary only inside the fixed additive ledger under a supplied common efficiency ceiling; not sufficient for ecological success.","paper_locator":"Main result","evidence_class":"FORMAL_TARGET"},
+    {"phrase":"ecopoiesis","support":"Application framing only; no planet, ecosystem, intervention, or habitability condition is modeled.","paper_locator":"Introduction and Limitations","evidence_class":"DEFERRED"}
+  ],
+  "formal_status": "FROZEN_CANDIDATE_UNCERTIFIED",
+  "external_mutation": false
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "VRS-CLAIM-INVENTORY-2",
+  "run": 145,
+  "stage": "pre_certificate",
+  "claims": [
+    {"id":"C1","claim":"Agreement mass is positive in the nondegenerate probability interior.","paper_locator":"Proposition 1","evidence_class":"FORMAL_TARGET","formal_target":"agreement_mass_positive","current_support":"Deterministic zero-sorry candidate; Comparator not yet run."},
+    {"id":"C2","claim":"The agreement-conditioned confidence gain has the stated factorization.","paper_locator":"Proposition 1","evidence_class":"FORMAL_TARGET","formal_target":"agreement_gain_identity","current_support":"Exact algebra and deterministic candidate; uncertified."},
+    {"id":"C3","claim":"A competent independent pair is not worse after agreement conditioning.","paper_locator":"Corollary 1","evidence_class":"FORMAL_TARGET","formal_target":"competent_agreement_not_worse","current_support":"Frozen statement and candidate; uncertified."},
+    {"id":"C4","claim":"The confidence gain is strict for 1/2<p<1.","paper_locator":"Corollary 1","evidence_class":"FORMAL_TARGET","formal_target":"competent_interior_strict_gain","current_support":"Frozen statement and candidate; uncertified."},
+    {"id":"C5","claim":"Agreement and disagreement masses partition probability one.","paper_locator":"Proposition 1","evidence_class":"FORMAL_TARGET","formal_target":"disagreement_probability_identity","current_support":"Exact algebra; uncertified."},
+    {"id":"C6","claim":"A copied agent supplies no independent confidence gain.","paper_locator":"Dependence controls","evidence_class":"FORMAL_TARGET","formal_target":"copied_agent_no_gain","current_support":"Declared perfect-correlation control; uncertified."},
+    {"id":"C7","claim":"At p=3/4, the acting probability is 5/8 and conditional confidence is 9/10, strictly above 3/4.","paper_locator":"Worked witness","evidence_class":"FORMAL_TARGET","formal_target":"agreement_witness_three_quarters","current_support":"Named non-vacuity witness; uncertified."},
+    {"id":"C8","claim":"The deterministic verification gate result.","paper_locator":"Verification","evidence_class":"NUMERIC","support":"verification.py and verification_output.txt"},
+    {"id":"C9","claim":"The independence/competence mechanism and classifier-disagreement framing are established prior art.","paper_locator":"Related work","evidence_class":"CITED","support":"Boland 1989; Madani et al. 2004; Ferrer et al. 2009."},
+    {"id":"C10","claim":"The word collapse denotes an operational decision update, not physical quantum dynamics.","paper_locator":"Abstract and limitations","evidence_class":"ASSUMED","support":"Declared scope boundary."},
+    {"id":"C11","claim":"Novelty and significance remain unassessed; disposition is METHODS_NOTE.","paper_locator":"Abstract and discussion","evidence_class":"DEFERRED","support":"PRIOR_ART.md and DISPOSITION.json."}
+  ]
+}

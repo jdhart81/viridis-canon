@@ -1,0 +1,76 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-163-UsefulDissipatedWork-Comparator-attempt-2",
+  "root_candidate_id": "Run-163-UsefulDissipatedWork-Comparator",
+  "attempt": 2,
+  "source_run": "Run-163",
+  "module": "UsefulDissipatedWork",
+  "namespace": "Viridis.Ecoterraforming.UsefulDissipatedWork",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "1734b954ac1a882653fca3b26546958960686af2b254777c68d455f030bfa77f",
+  "input_sha256": {
+    "SEALED_paper.pdf": "308cb2f38f85fd204ee5cfb7eb4ab8497918170900a3631a2f8e216aa4b017a8",
+    "SEALED_paper.tex": "44fb6fd911ab9ae025f73a68708796212890af0523e9f3a1e8c318ec8904b9c5",
+    "SEALED_CLAIM_INVENTORY.json": "f3289ff20d4ec9ef8d7f5a490a2d255cf1e771dfe20290bfa7b7ee16f7e90562",
+    "SEALED_RUN_MANIFEST.json": "1a2a23b2e2cc9f1ec50a964d6c14024cd2ce5f1834097d0bdda0626031e13ec4",
+    "VERIFICATION_STATEMENT.lean": "1734b954ac1a882653fca3b26546958960686af2b254777c68d455f030bfa77f",
+    "VERIFICATION_CANDIDATE.lean": "36531a31de52283ab665e04675b424e63c2ff4968c81d0ccf51a2d4dd158b10a",
+    "STATEMENT_CONTRACT.json": "454e5292eea14640b26636108e97b1f20925964f93ea5937e2d882d91b264870",
+    "SOURCE_ENGINE3_REQUEST.json": "0fc6ac37dc30368a38c69c607e291f6a9951f85eabb8c493bdc8039d78d59448",
+    "CANDIDATE_AUTHORSHIP.json": "2393490e8ac62dd37f3fbddcc7dcc2ecf0615ffe6f4cad8a66c2caa44c3e04ea",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "1734b954ac1a882653fca3b26546958960686af2b254777c68d455f030bfa77f",
+    "STATEMENT_ALIGNMENT.json": "d8279cb35f9b932faac086d422f08cf8824f6c996e6b0a16a494579bb38f2e75"
+  },
+  "expected_theorem_names": [
+    "useful_nonnegative",
+    "modeled_dissipation_nonnegative",
+    "work_partition",
+    "useful_le_supplied",
+    "dissipation_le_supplied",
+    "uniform_efficiency_bound",
+    "target_requires_supply",
+    "partial_partition_witness",
+    "target_floor_witness"
+  ],
+  "nonvacuity_obligations": [
+    "partial_partition_witness",
+    "target_floor_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "canonical_output_bindings": {
+    "certificate_directory": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-163",
+    "cloud_receipt": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-163/COMPARATOR_CLOUD_RECEIPT.json",
+    "certificate": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-163/LEAN_ZERO_SORRY_CERTIFICATE.json"
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION",
+  "statement_alignment": {
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT.json",
+      "sha256": "d8279cb35f9b932faac086d422f08cf8824f6c996e6b0a16a494579bb38f2e75"
+    },
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "sha256": "1734b954ac1a882653fca3b26546958960686af2b254777c68d455f030bfa77f"
+    }
+  },
+  "candidate_authorship_binding": {
+    "author": "CODEX",
+    "receipt": "CANDIDATE_AUTHORSHIP.json"
+  },
+  "repair_parent": {
+    "request_sha256": "f3aefceff9133c6082b09069f563840ade879814e4e9896184efb7caa837172e",
+    "failure_receipt_sha256": "1b234de5ff19155d41d9fdb0473dd78cd7d9a275703d93fe63a54b5d41c33138",
+    "candidate_sha256": "c554b331152c098f4c576c4cde891534be89715a8699a117f357a7e9e0601aec"
+  }
+}

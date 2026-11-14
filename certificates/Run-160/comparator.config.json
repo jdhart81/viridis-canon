@@ -1,0 +1,21 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.DScore.StewardshipUncertaintyReserve.score_difference_identity",
+    "Viridis.DScore.StewardshipUncertaintyReserve.reserve_nonnegative",
+    "Viridis.DScore.StewardshipUncertaintyReserve.componentwise_error_envelope",
+    "Viridis.DScore.StewardshipUncertaintyReserve.stewardship_floor_sound",
+    "Viridis.DScore.StewardshipUncertaintyReserve.lower_corner_exact",
+    "Viridis.DScore.StewardshipUncertaintyReserve.upper_corner_exact",
+    "Viridis.DScore.StewardshipUncertaintyReserve.zero_uncertainty_recovers_nominal",
+    "Viridis.DScore.StewardshipUncertaintyReserve.reserve_monotone",
+    "Viridis.DScore.StewardshipUncertaintyReserve.lower_score_positive_witness",
+    "Viridis.DScore.StewardshipUncertaintyReserve.lower_corner_threshold_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

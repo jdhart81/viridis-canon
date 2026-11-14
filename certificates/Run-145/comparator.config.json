@@ -1,0 +1,18 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.AIWavefunctionCollapse.SymbioticAgreement.agreement_mass_positive",
+    "Viridis.AIWavefunctionCollapse.SymbioticAgreement.agreement_gain_identity",
+    "Viridis.AIWavefunctionCollapse.SymbioticAgreement.competent_agreement_not_worse",
+    "Viridis.AIWavefunctionCollapse.SymbioticAgreement.competent_interior_strict_gain",
+    "Viridis.AIWavefunctionCollapse.SymbioticAgreement.disagreement_probability_identity",
+    "Viridis.AIWavefunctionCollapse.SymbioticAgreement.copied_agent_no_gain",
+    "Viridis.AIWavefunctionCollapse.SymbioticAgreement.agreement_witness_three_quarters"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

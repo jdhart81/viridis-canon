@@ -42,6 +42,12 @@ import lean_text  # noqa: E402
 
 BENCH = "eco-lean-bench"
 BENCH_VERSION = "0.1.0"
+# Membership of bench 0.1.0 is frozen at the 18 runs published on 2026-10-17. Runs published later are
+# left out entirely (not even listed under `excluded`), so data/ stays byte-identical; they join in 0.2.0.
+DEFERRED_TO_NEXT_VERSION = frozenset({
+    "Run-136", "Run-145", "Run-151", "Run-153", "Run-154", "Run-155", "Run-156", "Run-158", "Run-160",
+    "Run-161", "Run-162", "Run-163", "Run-172",
+})
 TASK_SCHEMA = "eco-lean-bench-task/1"
 SORRY_PROOFS = (":= by sorry", ":= sorry")
 
@@ -113,6 +119,8 @@ def build() -> tuple[str, str]:
     index = json.loads((CERTS / "index.json").read_text(encoding="utf-8"))
     tasks, excluded = [], []
     for run in sorted(index["runs"], key=lambda r: r["run"]):
+        if run["run"] in DEFERRED_TO_NEXT_VERSION:
+            continue
         if run.get("challenge_identical_to_solution"):                           # B1
             excluded.append({"run": run["run"], "reason": "challenge file is byte-identical to the "
                              "solution: statements were frozen together with their proofs"})

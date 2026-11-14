@@ -1,0 +1,23 @@
+{
+  "schema_version": "VRS-CLAIM-INVENTORY-1",
+  "run": 161,
+  "claims": [
+    {"id":"C1","claim":"Reciprocal service is nonnegative and no larger than either supplied nonnegative directional capacity.","classification":["FORMAL_TARGET"],"formal_target":"reciprocal_service_nonnegative, reciprocal_service_le_left, reciprocal_service_le_right","evidence_class":"FORMAL_TARGET"},
+    {"id":"C2","claim":"Nonnegative unit costs and declared spend at most B imply (c+d) min(x,y) <= B.","classification":["FORMAL_TARGET"],"formal_target":"reciprocal_budget_bound","evidence_class":"FORMAL_TARGET"},
+    {"id":"C3","claim":"The deficit separates exactly into unused budget and a cost-weighted one-sided imbalance term.","classification":["FORMAL_TARGET"],"formal_target":"left_deficit_decomposition, right_deficit_decomposition","evidence_class":"FORMAL_TARGET"},
+    {"id":"C4","claim":"With strictly positive costs, the spend-bound equality is tight exactly when x=y.","classification":["FORMAL_TARGET"],"formal_target":"balanced_iff_tight","evidence_class":"FORMAL_TARGET"},
+    {"id":"C5","claim":"The balanced and imbalanced exact witnesses are inhabited.","classification":["FORMAL_TARGET"],"formal_target":"balanced_positive_witness, imbalance_deficit_witness","evidence_class":"FORMAL_TARGET"},
+    {"id":"C6","claim":"The exact-rational package regression passes 426404 checks.","classification":["NUMERIC"],"evidence_class":"NUMERIC"},
+    {"id":"C7","claim":"Compatible capacity units, the minimum-service definition, nonnegative linear costs, and an accurate budget are model assumptions.","classification":["ASSUMED"],"evidence_class":"ASSUMED"},
+    {"id":"C8","claim":"Real corridor reciprocity, dispersal, mutualistic persistence, optimal spatial design, ecological improvement, registry eligibility, adoption, delivery, payment, or revenue is established.","classification":["DEFERRED"],"evidence_class":"DEFERRED"}
+  ],
+  "high_risk_claims": [
+    {"phrase":"reciprocal corridor service","support":"A stipulated scalar minimum of two supplied compatible capacities, not an observed ecological service.","paper_locator":"Abstract, Model and assumptions, and Limitations","evidence_class":"ASSUMED"},
+    {"phrase":"exact deficit","support":"Exact only inside the declared two-stream linear-cost model.","paper_locator":"Main result","evidence_class":"FORMAL_TARGET"},
+    {"phrase":"equality holds exactly when balanced","support":"Requires both unit costs to be strictly positive and compares the spend bound at full declared spend.","paper_locator":"Abstract and Main result","evidence_class":"FORMAL_TARGET"},
+    {"phrase":"budget","support":"A supplied ledger quantity, not a verified financial authorization or expenditure.","paper_locator":"Model and assumptions and Limitations","evidence_class":"ASSUMED"},
+    {"phrase":"optimal","support":"Appears only in cited prior-work titles or explicit denials; no optimality claim is made for a real corridor.","paper_locator":"Related work, Discussion, Limitations, and References","evidence_class":"CITED"}
+  ],
+  "formal_status": "FROZEN_CANDIDATE_UNCERTIFIED",
+  "external_mutation": false
+}

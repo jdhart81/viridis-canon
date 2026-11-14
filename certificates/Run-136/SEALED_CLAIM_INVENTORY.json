@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.1-correction",
+  "run": 136,
+  "correction_id": "Run-136_retention-floor-certificate-r1",
+  "novelty": "UNASSESSED",
+  "formal_status": "ZERO_SORRY_CANDIDATE_PENDING_ALIGNED_DUAL_KERNEL_COMPARATOR",
+  "changes": [
+    {
+      "claim_id": "C2",
+      "paper_claim_changed": false,
+      "lean_target": "retention_floor_upper_bound",
+      "repair": "add hn : 0 < n, matching the paper domain n >= 1",
+      "preserved_counterexample": "n = 0, B = 0, q = 1/2"
+    },
+    {
+      "claim_id": "C4",
+      "paper_claim_changed": false,
+      "lean_target": "retention_floor_unique",
+      "repair": "add hr : forall i, 0 <= r i, matching the paper rate domain",
+      "preserved_counterexample": "n = 2, B = 2, unit costs and hazards, rates (-2, 1)"
+    }
+  ],
+  "unchanged_scope": "All scientific claims, numerical evidence, novelty, significance, rights, publication, deployment, and outcome gates remain separate."
+}

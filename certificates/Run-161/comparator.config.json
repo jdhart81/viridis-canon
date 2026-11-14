@@ -1,0 +1,20 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.HDFM.ReciprocalCorridorBottleneck.reciprocal_service_nonnegative",
+    "Viridis.HDFM.ReciprocalCorridorBottleneck.reciprocal_service_le_left",
+    "Viridis.HDFM.ReciprocalCorridorBottleneck.reciprocal_service_le_right",
+    "Viridis.HDFM.ReciprocalCorridorBottleneck.reciprocal_budget_bound",
+    "Viridis.HDFM.ReciprocalCorridorBottleneck.left_deficit_decomposition",
+    "Viridis.HDFM.ReciprocalCorridorBottleneck.right_deficit_decomposition",
+    "Viridis.HDFM.ReciprocalCorridorBottleneck.balanced_iff_tight",
+    "Viridis.HDFM.ReciprocalCorridorBottleneck.balanced_positive_witness",
+    "Viridis.HDFM.ReciprocalCorridorBottleneck.imbalance_deficit_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

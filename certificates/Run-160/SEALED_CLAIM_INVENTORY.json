@@ -1,0 +1,20 @@
+{
+  "schema_version": "VRS-CLAIM-INVENTORY-1",
+  "run": 160,
+  "claims": [
+    {"id":"C1","claim":"The D-Score difference equals the weighted sum of component differences.","classification":["FORMAL_TARGET"],"formal_target":"score_difference_identity"},
+    {"id":"C2","claim":"Nonnegative weights and radii imply a nonnegative weighted uncertainty reserve.","classification":["FORMAL_TARGET"],"formal_target":"reserve_nonnegative"},
+    {"id":"C3","claim":"Supplied component-wise error intervals imply the exact weighted absolute-error envelope.","classification":["FORMAL_TARGET"],"formal_target":"componentwise_error_envelope"},
+    {"id":"C4","claim":"A nominal margin at least the reserve protects the declared stewardship floor for every admissible realization.","classification":["FORMAL_TARGET"],"formal_target":"stewardship_floor_sound"},
+    {"id":"C5","claim":"The lower and upper interval corners attain the corresponding score endpoints.","classification":["FORMAL_TARGET"],"formal_target":"lower_corner_exact and upper_corner_exact"},
+    {"id":"C6","claim":"Zero uncertainty recovers the nominal score, and increasing component radii cannot decrease the reserve under nonnegative weights.","classification":["FORMAL_TARGET"],"formal_target":"zero_uncertainty_recovers_nominal and reserve_monotone"},
+    {"id":"C7","claim":"The positive exact lower-score and threshold witnesses are inhabited.","classification":["FORMAL_TARGET"],"formal_target":"lower_score_positive_witness and lower_corner_threshold_witness"},
+    {"id":"C8","claim":"The exact-rational package regression passes 358004 checks.","classification":["NUMERIC"]},
+    {"id":"C9","claim":"Fixed nonnegative weights, compatible score units, linear aggregation, and valid supplied component intervals are model assumptions.","classification":["ASSUMED"]},
+    {"id":"C10","claim":"Valid interval estimation, D-Score calibration, ecological improvement, registry eligibility, product activation, adoption, delivery, payment, or revenue is established.","classification":["DEFERRED"]}
+  ],
+  "integrity_flags": [],
+  "novelty_status": "UNASSESSED",
+  "formal_status": "FROZEN_CANDIDATE_UNCERTIFIED"
+}
+

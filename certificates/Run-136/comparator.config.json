@@ -1,0 +1,19 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.EntropyLearning.RetentionFloor.stationary_availability_balance",
+    "Viridis.EntropyLearning.RetentionFloor.floor_requirement",
+    "Viridis.EntropyLearning.RetentionFloor.retention_floor_upper_bound_as_frozen_is_false",
+    "Viridis.EntropyLearning.RetentionFloor.retention_floor_upper_bound",
+    "Viridis.EntropyLearning.RetentionFloor.hazard_proportional_attains_floor",
+    "Viridis.EntropyLearning.RetentionFloor.retention_floor_unique_as_frozen_is_false",
+    "Viridis.EntropyLearning.RetentionFloor.retention_floor_unique",
+    "Viridis.EntropyLearning.RetentionFloor.retention_floor_nonvacuous"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

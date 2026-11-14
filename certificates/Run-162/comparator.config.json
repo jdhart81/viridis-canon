@@ -1,0 +1,19 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.IntelligenceCapacity.SequentialAlignmentRetention.retained_nonnegative",
+    "Viridis.IntelligenceCapacity.SequentialAlignmentRetention.retained_le_after_first",
+    "Viridis.IntelligenceCapacity.SequentialAlignmentRetention.retained_le_capacity",
+    "Viridis.IntelligenceCapacity.SequentialAlignmentRetention.serial_loss_decomposition",
+    "Viridis.IntelligenceCapacity.SequentialAlignmentRetention.stage_order_invariant",
+    "Viridis.IntelligenceCapacity.SequentialAlignmentRetention.attribution_sum_invariant",
+    "Viridis.IntelligenceCapacity.SequentialAlignmentRetention.full_retention_witness",
+    "Viridis.IntelligenceCapacity.SequentialAlignmentRetention.partial_retention_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

@@ -47,7 +47,7 @@ Each line of [`data/tasks.jsonl`](data/tasks.jsonl) is one task:
 | `reference_solution` | Path and SHA-256 of the certified proof. It is not inlined, so the file can go straight to a prover. |
 | `public_since` | The date the reference proof became public, for contamination cuts |
 
-Runs 120, 121 and 122 are left out: their statements were frozen together with their proofs, so there is no separate challenge. [`data/manifest.json`](data/manifest.json) lists them with the hashes of everything else.
+Runs 120, 121 and 122 are left out: their statements were frozen together with their proofs, so there is no separate challenge. The 13 runs added to `certificates/` on 2026-11-14 (Run-136 to Run-172) are not part of bench 0.1.0, whose membership is frozen; they join in the next bench version. [`data/manifest.json`](data/manifest.json) lists them with the hashes of everything else.
 
 ## Score a submission
 

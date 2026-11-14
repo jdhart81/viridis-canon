@@ -1,0 +1,69 @@
+{
+  "aristotle_required": false,
+  "attempt": 2,
+  "candidate_id": "Run-151-ThermalStepCorridor-Comparator-attempt-2-proof-body-repair",
+  "expected_theorem_names": [
+    "gain_peak_deficit_identity",
+    "gain_nonnegative_corridor",
+    "gain_peak_upper_bound",
+    "gain_symmetric_mistuning",
+    "heat_quadratic_scaling",
+    "thermal_corridor_positive_witness",
+    "thermal_corridor_overshoot_witness"
+  ],
+  "external_mutation": false,
+  "input_sha256": {
+    "SEALED_CLAIM_INVENTORY.json": "458bc92d04d07d094a3d2b4b71ae613170f21555ab9305c4ee0d34710660adb9",
+    "SEALED_RUN_MANIFEST.json": "bfbaa55618332c217f8fc6dfac2b2af584e7a7e7e2e2c71aed5c4978f9b5bd17",
+    "SEALED_paper.pdf": "818e4c730ea607dd6bede8109bcfb18763cedd787f62ef8f58192a3c32335e77",
+    "SEALED_paper.tex": "4995dd5644aba406f444152d9bbaf8fc91c4f6a42c51ce7528ff7522a5ccfe65",
+    "STATEMENT_ALIGNMENT_V2.json": "933760c62ff43fafe3d08dfaa5c78ec454ad254f08a2e58eacff37b4eaa5838e",
+    "STATEMENT_CONTRACT.json": "305eb696737d7d4568a5ddb7f0ac8c69133a90c782658a1ca660e6b90afb10d4",
+    "VERIFICATION_CANDIDATE_V2.lean": "1e63ef236c7fdeab1d4b811d36d1232446d474682a318bfe4841d142e92a9628",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "f8f385ed78660995b6a88c0c0403f513a2cc54d63ef558d7aeaa0e0c926e9c90",
+    "VERIFICATION_STATEMENT.lean": "f8f385ed78660995b6a88c0c0403f513a2cc54d63ef558d7aeaa0e0c926e9c90",
+    "lakefile.toml": "c331073f8995dabe9f40dd0608fb92993860fd940cf9c9011188f87d27e60510",
+    "lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028"
+  },
+  "local_lean_execution": false,
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "module": "ThermalStepCorridor",
+  "namespace": "Viridis.EntropyLearning.ThermalStepCorridor",
+  "nonvacuity_obligations": [
+    "thermal_corridor_positive_witness",
+    "thermal_corridor_overshoot_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "proof_repair_lineage": {
+    "change": "Reverse the equality rewrite in gain_peak_upper_bound; proof body only; theorem, assumptions, definitions, target set and sealed paper unchanged.",
+    "failed_receipt_sha256": "abbbfcd166f64cdbc6abd7373c0c8255ad2abbd9be1189af850900d17ee3a3c7",
+    "original_candidate_sha256": "c2c7ef73330b55ee7b4d3aa2a88186092660a06db27715f698f684716a6f607d",
+    "original_request_sha256": "00a14a6637c9c1a5b5c71cec347dfd19d4f653b99b5d34fc384a74c3d949b35d"
+  },
+  "request_kind": "LEAN_PROOF",
+  "root_candidate_id": "Run-151-ThermalStepCorridor-Comparator",
+  "schema_version": "3.0",
+  "source_envelope": "/Users/justinhart/Desktop/science /07_nightly_engine/compound research papers/Run-151_thermal-learning-rate-corridor-note",
+  "source_run": "Run-151",
+  "staged_at_utc": "2026-09-08T14:12:53.622801+00:00",
+  "statement_alignment": {
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT_V2.json",
+      "sha256": "933760c62ff43fafe3d08dfaa5c78ec454ad254f08a2e58eacff37b4eaa5838e"
+    },
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "sha256": "f8f385ed78660995b6a88c0c0403f513a2cc54d63ef558d7aeaa0e0c926e9c90"
+    },
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1"
+  },
+  "statement_contract_sha256": "f8f385ed78660995b6a88c0c0403f513a2cc54d63ef558d7aeaa0e0c926e9c90",
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION",
+  "toolchain": "leanprover/lean4:v4.28.0"
+}

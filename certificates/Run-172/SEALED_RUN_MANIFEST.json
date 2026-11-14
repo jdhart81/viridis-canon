@@ -1,0 +1,176 @@
+{
+  "aristotle": {
+    "compatibility_note": "Legacy field retained; Comparator is authoritative.",
+    "formal_targets_unproved": [
+      "reserve_preserved",
+      "zero_spendable_forces_zero",
+      "reserve_monotone",
+      "stewardship_reserve_witness"
+    ],
+    "lean_files": [
+      "formalization/VERIFICATION_STATEMENT.lean",
+      "formalization/VERIFICATION_CANDIDATE.lean",
+      "formalization/STATEMENT_CONTRACT.json",
+      "formalization/ENGINE3_VERIFICATION_REQUEST.json",
+      "formalization/lakefile.toml",
+      "formalization/lean-toolchain"
+    ],
+    "source_status": "NOT_RUN_NOT_REQUIRED_ENGINE_3",
+    "status": "pending",
+    "summary_files": []
+  },
+  "artifacts": {
+    "business_value": "business_EV-172.md",
+    "finding": "finding.md",
+    "paper_log": "paper.log",
+    "paper_pdf": "paper.pdf",
+    "paper_source": "paper.tex",
+    "readme": "README.md",
+    "verification_output": "verification_output.txt",
+    "verification_script": "verification.py"
+  },
+  "claim_inventory": [
+    {
+      "aristotle_target": "reserve_preserved",
+      "claim": "Adjoining the same reserve preserves the spend bound.",
+      "evidence_class": "FORMAL_TARGET",
+      "id": "C1",
+      "targets": [
+        "reserve_preserved"
+      ]
+    },
+    {
+      "aristotle_target": "zero_spendable_forces_zero",
+      "claim": "Zero spendable balance forces zero spend under the premise.",
+      "evidence_class": "FORMAL_TARGET",
+      "id": "C2",
+      "targets": [
+        "zero_spendable_forces_zero"
+      ]
+    },
+    {
+      "aristotle_target": "reserve_monotone",
+      "claim": "The gross reported balance is monotone in the declared reserve.",
+      "evidence_class": "FORMAL_TARGET",
+      "id": "C3",
+      "targets": [
+        "reserve_monotone"
+      ]
+    },
+    {
+      "aristotle_target": "stewardship_reserve_witness",
+      "claim": "A positive named witness satisfies the frozen inequality.",
+      "evidence_class": "FORMAL_TARGET",
+      "id": "C4",
+      "targets": [
+        "stewardship_reserve_witness"
+      ]
+    },
+    {
+      "claim": "The captured exact-integer regression passes.",
+      "evidence_class": "NUMERIC",
+      "id": "C5",
+      "targets": []
+    },
+    {
+      "claim": "The classification of balances as spendable or reserved is assumed.",
+      "evidence_class": "ASSUMED",
+      "id": "C6",
+      "targets": []
+    },
+    {
+      "claim": "Legal compliance, ecological delivery, returns, and optimal allocation are not established.",
+      "evidence_class": "DEFERRED",
+      "id": "C7",
+      "targets": []
+    }
+  ],
+  "disposition": "METHODS_NOTE",
+  "external_mutation": false,
+  "formal_verification": {
+    "aristotle_required": false,
+    "candidate": "formalization/VERIFICATION_CANDIDATE.lean",
+    "contract": "formalization/STATEMENT_CONTRACT.json",
+    "local_lean_execution": false,
+    "mathlib_commit": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+    "nonvacuity_obligations": [
+      "stewardship_reserve_witness"
+    ],
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "provider": "COMPARATOR_CLOUD",
+    "request": "formalization/ENGINE3_VERIFICATION_REQUEST.json",
+    "statement": "formalization/VERIFICATION_STATEMENT.lean",
+    "status": "FROZEN_CANDIDATE_UNCERTIFIED",
+    "toolchain": "leanprover/lean4:v4.28.0"
+  },
+  "generated_package_manifested_at_utc": "2026-09-20T05:10:12.198235+00:00",
+  "high_risk_claims": [
+    {
+      "evidence_class": "DEFERRED",
+      "paper_locator": "Abstract; Introduction and prior work; Discussion and limitations",
+      "phrase": "optimal",
+      "support": "Every occurrence is a negation: the methods note explicitly makes no optimal-allocation claim."
+    }
+  ],
+  "integrity_flags": [],
+  "paper_stage": "pre_aristotle",
+  "pdf_review": {
+    "method": "Complete two-page Poppler visual review at 150 DPI before sealing",
+    "result": "Both pages are legible with no clipping, overlap, missing glyphs, broken references, or hidden content.",
+    "status": "PASS"
+  },
+  "post_aristotle_review": {
+    "evidence": "No Comparator certificate or reconciled overlay exists.",
+    "path": null,
+    "status": "pending"
+  },
+  "post_lean_review": {
+    "evidence": "No later-invocation review exists.",
+    "path": null,
+    "status": "pending"
+  },
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Standards and corpus review, primary-source search, preregistration, derivation, verification, manuscript, Lean statement/candidate, packaging, and QA under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "Historical Viridis artifacts read with attribution preserved"
+      }
+    ]
+  },
+  "release_metadata": {
+    "abbreviation": "SRA",
+    "description": "Pre-certificate ring-fenced stewardship reserve accounting methods note.",
+    "keywords": [
+      "stewardship",
+      "conservation finance",
+      "reserve accounting",
+      "natural capital"
+    ],
+    "ledger_row": null,
+    "license": null,
+    "notes": "No ledger row, DOI, deployment, fiduciary claim, ecological claim, or publication authorization.",
+    "series_route": "working-corpus thermodynamic-economics methods branch",
+    "spine_admitted": false,
+    "spine_gate": null,
+    "spine_reason": "No certified result exists.",
+    "version": "0.0.0-pre-certificate",
+    "viridisos_disposition": "NO_RUNTIME_KERNEL"
+  },
+  "route_proposal": "working-corpus",
+  "run_id": "Run-172",
+  "schema_version": 1,
+  "title": "A Ring-Fenced Stewardship Reserve Accounting Note",
+  "viridisos_kernel_candidate": {
+    "reason": "No legal reserve ontology, governance evidence, calibrated ecological outcome, decision loss, operating envelope, or refusal boundary is validated.",
+    "status": "NO_RUNTIME_KERNEL"
+  }
+}

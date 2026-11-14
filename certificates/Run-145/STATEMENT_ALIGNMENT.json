@@ -1,0 +1,42 @@
+{
+  "aligned_challenge": {
+    "path": "/Users/justinhart/Desktop/science /comparator-deploy/backlog/Run-145/VERIFICATION_CHALLENGE_ALIGNED.lean",
+    "sha256": "0c8e897b24a5cf6f538bfb3885a9b72f12c499de13f1ca807fc3784b98ae2bb5"
+  },
+  "candidate": {
+    "path": "/Users/justinhart/Desktop/science /comparator-deploy/backlog/Run-145/VERIFICATION_CANDIDATE.lean",
+    "sha256": "3a00f9e4472f160542c64d330ddac3fae4ca88b28e5a38fd5f2c8a0a77eb1334"
+  },
+  "candidate_forbidden_constructs_empty": true,
+  "expected_theorem_names": [
+    "agreement_mass_positive",
+    "agreement_gain_identity",
+    "competent_agreement_not_worse",
+    "competent_interior_strict_gain",
+    "disagreement_probability_identity",
+    "copied_agent_no_gain",
+    "agreement_witness_three_quarters"
+  ],
+  "external_mutation": false,
+  "introduced_sorry_count": 7,
+  "local_lean_execution": false,
+  "operation": "candidate-order challenge with only expected theorem proof bodies replaced by sorry",
+  "schema_version": 1,
+  "sealed_statement": {
+    "path": "/Users/justinhart/Desktop/science /comparator-deploy/backlog/Run-145/VERIFICATION_STATEMENT.lean",
+    "sha256": "0c8e897b24a5cf6f538bfb3885a9b72f12c499de13f1ca807fc3784b98ae2bb5"
+  },
+  "shared_declaration_order_source": "candidate",
+  "signature_sha256": {
+    "agreement_gain_identity": "578ecd83bd88880d2970b17055cf0b7f26447361c3ea564f6812dfc029c7dcff",
+    "agreement_mass_positive": "4f6d678345c5c4ffc587c65c75fd95eb8c75195266b6753d5382379e2952335f",
+    "agreement_witness_three_quarters": "9699abcadda11c877f8944d7a564425f7168c5ef1b77ccd3dcdafaec45deb882",
+    "competent_agreement_not_worse": "d953131905af004fc279a375e6a0a2aa5061ac0c2feddef106d550db4015ff12",
+    "competent_interior_strict_gain": "73fa0f562b19d0fae5241ca2037f509e9cf477b921a9ac3c8ee083e14a0b62bf",
+    "copied_agent_no_gain": "4379bf5198d8a648d66a1d17d64f673029db9bb74a521579f43ae5384a2015c8",
+    "disagreement_probability_identity": "5c24738c0a9680e002ce3ff5c28cc124a9117f6c24732276ff7000150e1e8584"
+  },
+  "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+  "status": "FROZEN",
+  "target_signatures_match_sealed_statement": true
+}

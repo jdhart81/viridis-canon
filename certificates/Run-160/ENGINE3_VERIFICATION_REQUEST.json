@@ -1,0 +1,65 @@
+{
+  "aristotle_required": false,
+  "attempt": 1,
+  "candidate_authorship_binding": {
+    "author": "CODEX",
+    "historical_provider_artifact_role": "DIAGNOSTIC_INPUT_ONLY_NOT_PROOF",
+    "receipt": "CANDIDATE_AUTHORSHIP.json"
+  },
+  "candidate_id": "Run-160-DScoreStewardshipUncertaintyReserve-Comparator-attempt-1",
+  "expected_theorem_names": [
+    "score_difference_identity",
+    "reserve_nonnegative",
+    "componentwise_error_envelope",
+    "stewardship_floor_sound",
+    "lower_corner_exact",
+    "upper_corner_exact",
+    "zero_uncertainty_recovers_nominal",
+    "reserve_monotone",
+    "lower_score_positive_witness",
+    "lower_corner_threshold_witness"
+  ],
+  "input_sha256": {
+    "CANDIDATE_AUTHORSHIP.json": "339c275dd66f940f08393e5b3ab9108d934ab8c946d1c28a26948eb15f36f66d",
+    "SEALED_CLAIM_INVENTORY.json": "ee56c63965848f6df58d2d41cd87c502dabeb67d56cb0d3a302c48edfd656700",
+    "SEALED_RUN_MANIFEST.json": "e3649b2546e084e066fa3c364995ae0e4691a4935f622c4c388715963a7a4aa8",
+    "SEALED_paper.pdf": "0276d4a1986c5e4db3bb972af120df08b58cb3cc0c8bd7fcac62022e8bca8feb",
+    "SEALED_paper.tex": "b8d5c7223cb065f3a15984aea23895f5f79d820d74f4ca28d923976d75f2bfd3",
+    "STATEMENT_ALIGNMENT.json": "f72e9ee79033ef96c42cd772016307df94e4a30826770e7d636911e3142c580f",
+    "VERIFICATION_CANDIDATE.lean": "5b6f324502a0001e1fb7edb32bb2b1472a3e70a681d039e87a9e4809bce7773a",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "8e959303446045cb06d5fdd7eea4323f7abfe33e7b19f1112e0941feba382b61"
+  },
+  "local_lean_execution": false,
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "module": "DScoreStewardshipUncertaintyReserve",
+  "namespace": "Viridis.DScore.StewardshipUncertaintyReserve",
+  "nonvacuity_obligations": [
+    "lower_score_positive_witness",
+    "lower_corner_threshold_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "request_kind": "LEAN_PROOF",
+  "root_candidate_id": "Run-160-DScoreStewardshipUncertaintyReserve-Comparator",
+  "schema_version": "3.0",
+  "source_run": "Run-160",
+  "statement_alignment": {
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT.json",
+      "sha256": "f72e9ee79033ef96c42cd772016307df94e4a30826770e7d636911e3142c580f"
+    },
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "sha256": "8e959303446045cb06d5fdd7eea4323f7abfe33e7b19f1112e0941feba382b61"
+    },
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1"
+  },
+  "statement_contract_sha256": "8e959303446045cb06d5fdd7eea4323f7abfe33e7b19f1112e0941feba382b61",
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION",
+  "toolchain": "leanprover/lean4:v4.28.0"
+}

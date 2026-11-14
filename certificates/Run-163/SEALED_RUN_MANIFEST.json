@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "run_id": "Run-163",
+  "title": "A Useful-Dissipated Work Ledger Note for Staged Ecopoiesis",
+  "paper_stage": "pre_aristotle",
+  "artifacts": {
+    "readme": "README.md",
+    "finding": "finding.md",
+    "paper_source": "paper.tex",
+    "paper_pdf": "paper.pdf",
+    "paper_log": "paper.log",
+    "verification_script": "verification.py",
+    "verification_output": "verification_output.txt",
+    "business_value": "business_EV-163.md"
+  },
+  "claim_inventory": [
+    {"id":"C1","claim":"Useful work is nonnegative for nonnegative inputs.","classification":["FORMAL_TARGET"],"formal_target":"useful_nonnegative","evidence_class":"FORMAL_TARGET","aristotle_target":"useful_nonnegative"},
+    {"id":"C2","claim":"The modeled remainder is nonnegative when fractions are at most one.","classification":["FORMAL_TARGET"],"formal_target":"modeled_dissipation_nonnegative","evidence_class":"FORMAL_TARGET","aristotle_target":"modeled_dissipation_nonnegative"},
+    {"id":"C3","claim":"The useful/remainder partition equals total supplied work.","classification":["FORMAL_TARGET"],"formal_target":"work_partition","evidence_class":"FORMAL_TARGET","aristotle_target":"work_partition"},
+    {"id":"C4","claim":"Both partition terms are bounded by total supplied work.","classification":["FORMAL_TARGET"],"formal_target":"useful_le_supplied and dissipation_le_supplied","evidence_class":"FORMAL_TARGET","aristotle_target":"useful_le_supplied and dissipation_le_supplied"},
+    {"id":"C5","claim":"A common efficiency ceiling bounds useful work and gives a necessary target-work floor.","classification":["FORMAL_TARGET"],"formal_target":"uniform_efficiency_bound and target_requires_supply","evidence_class":"FORMAL_TARGET","aristotle_target":"uniform_efficiency_bound and target_requires_supply"},
+    {"id":"C6","claim":"Exact nonzero partition and target-floor witnesses are inhabited.","classification":["FORMAL_TARGET"],"formal_target":"partial_partition_witness and target_floor_witness","evidence_class":"FORMAL_TARGET","aristotle_target":"partial_partition_witness and target_floor_witness"},
+    {"id":"C7","claim":"The exact-rational regression passes 520172 checks.","classification":["NUMERIC"],"evidence_class":"NUMERIC"},
+    {"id":"C8","claim":"Work boundaries, common units, useful-output definitions, fixed fractions, and additive stages are supplied assumptions.","classification":["ASSUMED"],"evidence_class":"ASSUMED"},
+    {"id":"C9","claim":"Real thermodynamic or ecological outcomes are established.","classification":["DEFERRED"],"evidence_class":"DEFERRED"}
+  ],
+  "high_risk_claims": [
+    {"phrase":"dissipated work","support":"Declared accounting remainder only; not measured heat, entropy production, exergy destruction, or ecological harm.","paper_locator":"Abstract, Model and assumptions, Limitations","evidence_class":"ASSUMED"},
+    {"phrase":"useful work","support":"Externally supplied classification, not an inferred ecological benefit.","paper_locator":"Model and assumptions and Limitations","evidence_class":"ASSUMED"},
+    {"phrase":"necessary work floor","support":"Necessary only under the supplied common ceiling; explicitly not sufficient for ecological success.","paper_locator":"Main result","evidence_class":"FORMAL_TARGET"},
+    {"phrase":"ecopoiesis","support":"Framing only; no named intervention or planetary system is modeled.","paper_locator":"Introduction and Limitations","evidence_class":"DEFERRED"}
+  ],
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {"name":"Codex","role":"Standards and corpus review, current primary-literature search, preregistration, derivation, exact-rational verification, manuscript, Lean statement/candidate, packaging, and QA under human direction"},
+      {"name":"Claude","role":"Historical Viridis artifacts read with attribution preserved"}
+    ]
+  },
+  "viridisos_kernel_candidate": {
+    "status": "NO_RUNTIME_KERNEL",
+    "reason": "No calibrated work boundary, useful-output measurement, stage-efficiency estimator, interaction model, uncertainty model, decision family, or refusal envelope exists."
+  },
+  "route_proposal": "working-corpus",
+  "integrity_flags": [],
+  "formal_verification": {
+    "status": "FROZEN_CANDIDATE_UNCERTIFIED",
+    "provider": "COMPARATOR_CLOUD",
+    "aristotle_required": false,
+    "statement": "formalization/VERIFICATION_STATEMENT.lean",
+    "candidate": "formalization/VERIFICATION_CANDIDATE.lean",
+    "contract": "formalization/STATEMENT_CONTRACT.json",
+    "request": "formalization/ENGINE3_VERIFICATION_REQUEST.json",
+    "toolchain": "leanprover/lean4:v4.28.0",
+    "mathlib_commit": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+    "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+    "nonvacuity_obligations": ["partial_partition_witness", "target_floor_witness"],
+    "local_lean_execution": false
+  },
+  "aristotle": {
+    "status": "pending",
+    "source_status": "NOT_RUN_NOT_REQUIRED_ENGINE_3",
+    "lean_files": ["formalization/VERIFICATION_STATEMENT.lean", "formalization/VERIFICATION_CANDIDATE.lean", "formalization/STATEMENT_CONTRACT.json", "formalization/ENGINE3_VERIFICATION_REQUEST.json", "formalization/lakefile.toml", "formalization/lean-toolchain"],
+    "summary_files": [],
+    "formal_targets_unproved": ["useful_nonnegative", "modeled_dissipation_nonnegative", "work_partition", "useful_le_supplied", "dissipation_le_supplied", "uniform_efficiency_bound", "target_requires_supply", "partial_partition_witness", "target_floor_witness"],
+    "compatibility_note": "Legacy field retained for validator compatibility; Engine-3 makes Aristotle not required."
+  },
+  "post_aristotle_review": {"status":"pending","path":null,"evidence":"Legacy field retained; no Comparator certificate or reconciled overlay exists."},
+  "post_lean_review": {"status":"pending","path":null,"evidence":"No Comparator certificate, reconciliation, or later-invocation review exists."},
+  "release_metadata": {
+    "abbreviation": "UDWL",
+    "description": "Pre-certificate Ecoterraforming useful/remainder work-accounting methods note.",
+    "keywords": ["ecopoiesis", "ecological restoration", "work ledger", "energy accounting", "efficiency", "staged intervention"],
+    "version": "0.0.0-pre-certificate",
+    "license": null,
+    "series_route": "working-corpus ecoterraforming methods branch",
+    "spine_admitted": false,
+    "spine_gate": null,
+    "spine_reason": "No certified result exists for a Canon scan.",
+    "viridisos_disposition": "NO_RUNTIME_KERNEL",
+    "notes": "No ledger row, DOI, deployment, runtime kernel, or publication authorization.",
+    "ledger_row": null
+  },
+  "disposition": "METHODS_NOTE",
+  "generated_package_manifested_at_utc": "2026-09-09T23:12:00Z",
+  "pdf_review": {"status":"PASS","method":"Poppler render review at 150 DPI","result":"All three pages reviewed; no clipping, overlap, unreadable glyphs, broken references, visible link boxes, or layout defects observed."},
+  "external_mutation": false
+}

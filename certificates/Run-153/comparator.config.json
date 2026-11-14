@@ -1,0 +1,18 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.GaianSystems.ReciprocalRescue.equilibrium_balance_a",
+    "Viridis.GaianSystems.ReciprocalRescue.equilibrium_balance_b",
+    "Viridis.GaianSystems.ReciprocalRescue.positive_equilibrium_of_positive_numerators",
+    "Viridis.GaianSystems.ReciprocalRescue.no_two_decliner_positive_equilibrium",
+    "Viridis.GaianSystems.ReciprocalRescue.one_sided_rescue_window",
+    "Viridis.GaianSystems.ReciprocalRescue.reciprocal_rescue_witness",
+    "Viridis.GaianSystems.ReciprocalRescue.unit_loop_boundary"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

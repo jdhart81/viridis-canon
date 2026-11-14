@@ -1,0 +1,149 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "gaian-regulation-stability",
+  "kind": "theorem_function",
+  "name": "Gaian regulation — stable only above the critical fidelity c/b",
+  "version": "1.0.0",
+  "summary": "For a regulating trait with private return fidelity × benefit and cost c, reports the critical fidelity c/b, the selection gradient and the stability eigenvalue, and checks that regulation is stable exactly when fidelity exceeds c/b.",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": {
+    "code": "CANON_CLASSIFICATION",
+    "note": "The record's status in the canon catalog is 'working' (working corpus, not spine-admitted). The file compiles with standard axioms only in the 2026-11-13 compile census; the classification must be reconciled before admission."
+  },
+  "blocked": null,
+  "doi": "10.5281/zenodo.21609942",
+  "lean": {
+    "module": "Viridis.Gaian.GaianMutualismSelection",
+    "sources": [
+      {
+        "path": "series/GaianMutualismSelection.lean",
+        "sha256": "f89adfd9e01be2b50f5b243f9bfe56490c29239def8020bc55612ae08cf76ea3"
+      }
+    ],
+    "theorems": [
+      "x1_stable_iff_rho_f_gt_critical",
+      "regulation_selected_iff_rho_f_gt_critical",
+      "fidelity_survival_transcritical_at_c_over_b"
+    ],
+    "verification_provider": "CANON_COMPILE_CENSUS",
+    "verification_receipt_id": "reports/compile_census (canon 7f8b9ff, Lean v4.28.0): CLEAN, 17 theorems"
+  },
+  "inputs": [
+    {
+      "name": "fidelity",
+      "type": "number",
+      "unit": "dimensionless",
+      "help": "Fidelity ρ_f: the share of a regulating act's benefit that returns to the actor.",
+      "required": true
+    },
+    {
+      "name": "benefit",
+      "type": "number",
+      "unit": "fitness units",
+      "help": "Benefit b of regulation (> 0).",
+      "required": true
+    },
+    {
+      "name": "cost",
+      "type": "number",
+      "unit": "fitness units",
+      "help": "Cost c of regulating.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "benefit_positive",
+      "statement": "b > 0.",
+      "check": "benefit > 0"
+    }
+  ],
+  "derived": [
+    {
+      "name": "critical_fidelity",
+      "expression": "cost / benefit",
+      "unit": "dimensionless",
+      "description": "ρ_f* = c/b"
+    },
+    {
+      "name": "selection_gradient",
+      "expression": "fidelity * benefit - cost",
+      "unit": "fitness units",
+      "description": "ρ_f·b − c (positive: individual selection favours regulation)"
+    },
+    {
+      "name": "stability_eigenvalue",
+      "expression": "cost - fidelity * benefit",
+      "unit": "fitness units",
+      "description": "c − ρ_f·b (negative: the regulating state is stable)"
+    }
+  ],
+  "conclusion": {
+    "statement": "c − ρ_f·b < 0 ⇔ c/b < ρ_f",
+    "check": "(stability_eigenvalue >= 0 or approx_le(critical_fidelity, fidelity)) and (critical_fidelity >= fidelity or approx_le(stability_eigenvalue, 0, cost))",
+    "lean_theorem": "x1_stable_iff_rho_f_gt_critical"
+  },
+  "example": {
+    "inputs": {
+      "fidelity": 0.6,
+      "benefit": 2,
+      "cost": 1
+    },
+    "expected_outputs": {
+      "theorem": "x1_stable_iff_rho_f_gt_critical",
+      "hypotheses": {
+        "benefit_positive": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "critical_fidelity": 0.5,
+        "selection_gradient": 0.19999999999999996,
+        "stability_eigenvalue": -0.19999999999999996
+      },
+      "conclusion": "c − ρ_f·b < 0 ⇔ c/b < ρ_f",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination. It says nothing about whether the Earth system regulates itself: fidelity, benefit and cost are inputs of a stylized selection model.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "series-gaianmutualismselection",
+    "catalog_status": "working",
+    "catalog_integrity": "not-canon-admitted",
+    "authored_by": "2026-11-13 Gaian theorem functions (MCP agent readiness)"
+  }
+}

@@ -124,7 +124,8 @@ RESULTS = [
              "theorem": "bounded_overshoot_expected_delay",
              "text": ("Earlier descriptions of this result gave the delay bound for increments “bounded above by z_max”. "
                       "The certified theorem also assumes a uniform two-sided bound, |Z| ≤ B, so it covers the "
-                      "bounded-increment case of the paper's claim. The paper's next version will state this.")},
+                      "bounded-increment case of the paper's claim. The paper states this scope from version 0.2.2 "
+                      "(doi:10.5281/zenodo.24234125).")},
         ],
         "note_ville": ("We could not find Ville's inequality in Mathlib (checked master 74e558e on 2026-10-17) "
                        "and have offered to contribute it upstream."),

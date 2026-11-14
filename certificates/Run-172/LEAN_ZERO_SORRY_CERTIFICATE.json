@@ -1,0 +1,80 @@
+{
+  "bindings": {
+    "candidate_proof": {
+      "path": "RESEARCH_PIPELINE_v2/lean_certificates/Run-172/VERIFICATION_CANDIDATE.lean",
+      "sha256": "83bcd018520a3fc27a8d3d2d24531d605be71c2421733fb088d7de0e2de89fc9"
+    },
+    "formal_statement": {
+      "path": "RESEARCH_PIPELINE_v2/lean_certificates/Run-172/VERIFICATION_STATEMENT.lean",
+      "sha256": "7f9a9c7ee6f8431e9a3e49c82a543f819c8ac4072965dc1e93ad8df7d5cccb3e"
+    },
+    "independent_cloud_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-172/COMPARATOR_CLOUD_RECEIPT.json",
+      "sha256": "e8b56b3d5f47f7412685e9d5772f6c64f56218cc3467e5ed9ccdb87c0dd7ec79"
+    },
+    "request": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-172/ENGINE3_VERIFICATION_REQUEST.json",
+      "sha256": "9f00892c2ed90a1d2268daa6f25715481121894d13de175c6ba5cb7d0b6967eb"
+    },
+    "sealed_paper_inputs": {
+      "SEALED_CLAIM_INVENTORY.json": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-172/SEALED_CLAIM_INVENTORY.json",
+        "sha256": "224158e198c67f19ddc2ffec9f6f0045f5b4b10cb3291e78addb5c96c189af24"
+      },
+      "SEALED_RUN_MANIFEST.json": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-172/SEALED_RUN_MANIFEST.json",
+        "sha256": "5de47f2f32f99fea71132b69f5fa09b783c83f3af0fff49f6b71b4c49481b21c"
+      },
+      "SEALED_paper.pdf": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-172/SEALED_paper.pdf",
+        "sha256": "f0615f052ebfa6505b2d2e803a2c53b437b65bc297d7a62d10638fbae202e839"
+      },
+      "SEALED_paper.tex": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-172/SEALED_paper.tex",
+        "sha256": "d7f7c5be309a007ce8b2a0b2dd44c9e9bffa20c5c71e6b2bf93184ed677b947b"
+      }
+    },
+    "sealed_statement_contract": {
+      "path": "RESEARCH_PIPELINE_v2/lean_certificates/Run-172/VERIFICATION_STATEMENT.lean",
+      "sha256": "7f9a9c7ee6f8431e9a3e49c82a543f819c8ac4072965dc1e93ad8df7d5cccb3e"
+    },
+    "statement_alignment_receipt": {
+      "path": "RESEARCH_PIPELINE_v2/lean_certificates/Run-172/STATEMENT_ALIGNMENT.json",
+      "sha256": "8cb46b363fc40493396811e66ebdf5fad36a40a2327b67c320dd6fc108c840be"
+    }
+  },
+  "candidate_id": "Run-172-StewardshipReserveAccounting-Comparator-attempt-1",
+  "gates": {
+    "allowed_axioms_only": true,
+    "aristotle_required": false,
+    "comparator_lean_kernel": true,
+    "comparator_nanoda_kernel": true,
+    "comparator_statement_identity": true,
+    "frozen_statement_and_candidate_hash_bound": true,
+    "independent_cloud_kernel_verification": true,
+    "local_lean_execution": false,
+    "nonvacuity_witnesses": true,
+    "sealed_statement_signature_alignment": true,
+    "zero_sorries_or_admits": true
+  },
+  "issued_at_utc": "2026-09-20T05:14:25.774114+00:00",
+  "run_id": "Run-172",
+  "runtime_observation_assessment": {
+    "approved_build_status": "UNREVIEWED",
+    "compiled_dependency_closure_sha256": null,
+    "disk_cache_admitted": false,
+    "execution_id": "674ce8d8-3218-4e47-83eb-8d252dc96856",
+    "failures": [],
+    "full_toolchain_attested": false,
+    "policy": "VRS-COMPARATOR-OBSERVATION-CONSUMER-1",
+    "scope": "Source-bound observations only. Manifest declarations are not approved executable or compiled-dependency pins; full attestation and cache admission remain unavailable.",
+    "served_request_id": "674ce8d8-3218-4e47-83eb-8d252dc96856",
+    "source_binding_status": "MATCH",
+    "status": "OBSERVATION_MATCH_PARTIAL"
+  },
+  "schema_version": "1.0",
+  "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+  "standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+  "status": "LEAN_ZERO_SORRY_CERTIFIED",
+  "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1"
+}

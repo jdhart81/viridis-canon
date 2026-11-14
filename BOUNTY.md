@@ -42,7 +42,7 @@ says anything at all. That is where outside eyes help most.
   states explicitly. Those are welcome in [Discussions](https://github.com/jdhart81/viridis-canon/discussions),
   but they are not bounty findings.
 - Style, naming, proof length or performance.
-- Material outside the 18 certified runs in [`certificates/`](./certificates/).
+- Material outside the certified runs in [`certificates/`](./certificates/).
 - Issues already recorded in the ledger below, or already disclosed in
   `certificates/README.md` (for example, the three runs whose challenge file is
   identical to the solution).

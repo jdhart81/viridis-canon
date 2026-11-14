@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "run_id": "Run-154",
+  "title": "A Signed-Bias Cancellation Note for Aligned Cognitive Ensembles",
+  "paper_stage": "pre_aristotle",
+  "artifacts": {
+    "readme": "README.md",
+    "finding": "finding.md",
+    "paper_source": "paper.tex",
+    "paper_pdf": "paper.pdf",
+    "paper_log": "paper.log",
+    "verification_script": "verification.py",
+    "verification_output": "verification_output.txt",
+    "business_value": "business_EV-154.md"
+  },
+  "claim_inventory": [
+    {
+      "id": "C1",
+      "claim": "The convex pool recovers the second error at weight zero and the first error at weight one.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "pooled_error_at_zero and pooled_error_at_one",
+      "classification": [
+        "FORMAL_TARGET"
+      ],
+      "aristotle_target": "pooled_error_at_zero and pooled_error_at_one"
+    },
+    {
+      "id": "C2",
+      "claim": "Positive opposite error magnitudes admit the balance weight b/(a+b), which exactly cancels the supplied scalar errors.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "cancellation_weight_balance and opposite_error_cancellation",
+      "classification": [
+        "FORMAL_TARGET"
+      ],
+      "aristotle_target": "cancellation_weight_balance and opposite_error_cancellation"
+    },
+    {
+      "id": "C3",
+      "claim": "For positive magnitudes, the cancellation weight lies strictly between zero and one.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "cancellation_weight_interior",
+      "classification": [
+        "FORMAL_TARGET"
+      ],
+      "aristotle_target": "cancellation_weight_interior"
+    },
+    {
+      "id": "C4",
+      "claim": "A convex pool preserves a shared weak error sign.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "same_sign_nonnegative and same_sign_nonpositive",
+      "classification": [
+        "FORMAL_TARGET"
+      ],
+      "aristotle_target": "same_sign_nonnegative and same_sign_nonpositive"
+    },
+    {
+      "id": "C5",
+      "claim": "The rational pair (-2,3) is exactly cancelled by weight 3/5.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "signed_bias_cancellation_witness",
+      "classification": [
+        "FORMAL_TARGET"
+      ],
+      "aristotle_target": "signed_bias_cancellation_witness"
+    },
+    {
+      "id": "C6",
+      "claim": "The exact-rational verification output is green and byte-captured.",
+      "evidence_class": "NUMERIC",
+      "classification": [
+        "NUMERIC"
+      ]
+    },
+    {
+      "id": "C7",
+      "claim": "One fixed scalar target, known static errors, and convex weighting are supplied assumptions.",
+      "evidence_class": "ASSUMED",
+      "classification": [
+        "ASSUMED"
+      ]
+    },
+    {
+      "id": "C8",
+      "claim": "Probability calibration, human cognition, strategic robustness, distribution-shift performance, and production alignment are established.",
+      "evidence_class": "DEFERRED",
+      "classification": [
+        "DEFERRED"
+      ]
+    }
+  ],
+  "high_risk_claims": [
+    {
+      "phrase": "exact cancellation",
+      "support": "Restricted to two supplied scalar errors of opposite sign and the exact interior balance weight.",
+      "paper_locator": "Proposition 1 and limitations",
+      "evidence_class": "FORMAL_TARGET"
+    },
+    {
+      "phrase": "aligned cognitive ensembles",
+      "support": "Title-level framing for agreement with one fixed scalar target; no behavioral, societal, safety, or production alignment claim.",
+      "paper_locator": "Abstract and limitations",
+      "evidence_class": "DEFERRED"
+    },
+    {
+      "phrase": "cannot cancel",
+      "support": "Restricted to same-sign supplied scalar errors under convex weighting in the declared static model.",
+      "paper_locator": "Proposition 2",
+      "evidence_class": "FORMAL_TARGET"
+    },
+    {
+      "phrase": "unique zero-error weight",
+      "support": "Uniqueness is restricted to the affine two-error pool with positive opposite-sign magnitudes.",
+      "paper_locator": "Abstract and Proposition 1",
+      "evidence_class": "FORMAL_TARGET"
+    }
+  ],
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Standards and corpus review, current primary-literature search, preregistration, derivation, exact-rational verification, manuscript, Lean statement/candidate, packaging, and QA under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "Historical Viridis artifacts read with attribution preserved"
+      }
+    ]
+  },
+  "viridisos_kernel_candidate": {
+    "status": "NO_RUNTIME_KERNEL",
+    "reason": "No production error stream, target protocol, calibration data, units, dependence model, uncertainty model, or decision loss exists."
+  },
+  "route_proposal": "working-corpus",
+  "integrity_flags": [],
+  "formal_verification": {
+    "status": "FROZEN_CANDIDATE_UNCERTIFIED",
+    "provider": "COMPARATOR_CLOUD",
+    "aristotle_required": false,
+    "statement": "formalization/VERIFICATION_STATEMENT.lean",
+    "candidate": "formalization/VERIFICATION_CANDIDATE.lean",
+    "contract": "formalization/STATEMENT_CONTRACT.json",
+    "request": "formalization/ENGINE3_VERIFICATION_REQUEST.json",
+    "toolchain": "leanprover/lean4:v4.28.0",
+    "mathlib_commit": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "nonvacuity_obligations": [
+      "signed_bias_cancellation_witness"
+    ],
+    "local_lean_execution": false
+  },
+  "aristotle": {
+    "status": "pending",
+    "source_status": "NOT_RUN_NOT_REQUIRED_ENGINE_3",
+    "lean_files": [
+      "formalization/VERIFICATION_STATEMENT.lean",
+      "formalization/VERIFICATION_CANDIDATE.lean",
+      "formalization/STATEMENT_CONTRACT.json",
+      "formalization/ENGINE3_VERIFICATION_REQUEST.json",
+      "formalization/lakefile.toml",
+      "formalization/lean-toolchain"
+    ],
+    "summary_files": [],
+    "formal_targets_unproved": [
+      "pooled_error_at_zero",
+      "pooled_error_at_one",
+      "cancellation_weight_balance",
+      "opposite_error_cancellation",
+      "cancellation_weight_interior",
+      "same_sign_nonnegative",
+      "same_sign_nonpositive",
+      "signed_bias_cancellation_witness"
+    ],
+    "compatibility_note": "Legacy field retained for validator compatibility; Engine-3 makes Aristotle not required."
+  },
+  "post_aristotle_review": {
+    "status": "pending",
+    "path": null,
+    "evidence": "Legacy field retained; no Comparator certificate or reconciled overlay exists."
+  },
+  "post_lean_review": {
+    "status": "pending",
+    "path": null,
+    "evidence": "No Comparator certificate, reconciliation, or later-invocation review exists."
+  },
+  "generated_package_manifested_at_utc": "2026-09-03T08:08:00Z",
+  "release_metadata": {
+    "abbreviation": "SBCN",
+    "description": "Pre-certificate signed-error cancellation methods note.",
+    "keywords": [
+      "cognitive ensembles",
+      "forecast combination",
+      "convex pooling",
+      "signed error",
+      "alignment"
+    ],
+    "version": "0.0.0-pre-certificate",
+    "license": null,
+    "series_route": "working-corpus cognition methods branch",
+    "spine_admitted": false,
+    "spine_gate": null,
+    "spine_reason": "No certified result exists for a Canon scan.",
+    "viridisos_disposition": "NO_RUNTIME_KERNEL",
+    "notes": "No ledger row, DOI, deployment, runtime kernel, or publication authorization.",
+    "ledger_row": null
+  },
+  "pdf_review": {
+    "status": "PASS",
+    "method": "Poppler render review at 150 DPI",
+    "result": "All pages reviewed; no clipping, overlap, unreadable glyphs, broken references, visible link boxes, or layout defects observed."
+  },
+  "disposition": "METHODS_NOTE",
+  "external_mutation": false
+}

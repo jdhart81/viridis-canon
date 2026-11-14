@@ -1,5 +1,5 @@
 name: Theorem bounty report
-description: Report a vacuous, trivial or misstated theorem among the 18 certified runs (credit for confirmed findings; the cash bounty is closed; see BOUNTY.md).
+description: Report a vacuous, trivial or misstated theorem among the certified runs (credit for confirmed findings; the cash bounty is closed; see BOUNTY.md).
 title: "[bounty] Run-NNN: <theorem name>"
 labels: ["theorem-bounty"]
 body:

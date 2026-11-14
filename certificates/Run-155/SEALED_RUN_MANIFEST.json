@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "run_id": "Run-155",
+  "title": "A Shared Verification-Overhead Note for Ecosystem-Service Bundles",
+  "paper_stage": "pre_aristotle",
+  "artifacts": {
+    "readme": "README.md",
+    "finding": "finding.md",
+    "paper_source": "paper.tex",
+    "paper_pdf": "paper.pdf",
+    "paper_log": "paper.log",
+    "verification_script": "verification.py",
+    "verification_output": "verification_output.txt",
+    "business_value": "business_EV-155.md"
+  },
+  "claim_inventory": [
+    {
+      "id": "C1",
+      "claim": "Two separate verification processes pay the fixed setup burden twice, while one shared process pays it once.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "separate_cost_expansion and bundled_cost_expansion",
+      "classification": ["FORMAL_TARGET"],
+      "aristotle_target": "separate_cost_expansion and bundled_cost_expansion"
+    },
+    {
+      "id": "C2",
+      "claim": "The no-interaction saving from sharing an identical fixed setup burden is exactly F.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "shared_verification_saving",
+      "classification": ["FORMAL_TARGET"],
+      "aristotle_target": "shared_verification_saving"
+    },
+    {
+      "id": "C3",
+      "claim": "With interaction overhead h, the saving is F-h and sharing is strictly cheaper when h<F.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "interaction_adjusted_saving and sharing_strictly_cheaper",
+      "classification": ["FORMAL_TARGET"],
+      "aristotle_target": "interaction_adjusted_saving and sharing_strictly_cheaper"
+    },
+    {
+      "id": "C4",
+      "claim": "Supplied marginal lower bounds propagate to a bundled lower bound.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "bundled_marginal_floor",
+      "classification": ["FORMAL_TARGET"],
+      "aristotle_target": "bundled_marginal_floor"
+    },
+    {
+      "id": "C5",
+      "claim": "Nonnegative net service is equivalent to gross service covering the bundled verification burden.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "net_service_nonnegative_iff",
+      "classification": ["FORMAL_TARGET"],
+      "aristotle_target": "net_service_nonnegative_iff"
+    },
+    {
+      "id": "C6",
+      "claim": "F=2, v1=3, v2=5 gives separate cost 12, bundled cost 10, and saving 2.",
+      "evidence_class": "FORMAL_TARGET",
+      "formal_target": "shared_verification_witness",
+      "classification": ["FORMAL_TARGET"],
+      "aristotle_target": "shared_verification_witness"
+    },
+    {
+      "id": "C7",
+      "claim": "The exact-rational verification output is green and byte-captured.",
+      "evidence_class": "NUMERIC",
+      "classification": ["NUMERIC"]
+    },
+    {
+      "id": "C8",
+      "claim": "Common burden units, identical fixed setup, unchanged marginal work, and complete interaction accounting are supplied assumptions.",
+      "evidence_class": "ASSUMED",
+      "classification": ["ASSUMED"]
+    },
+    {
+      "id": "C9",
+      "claim": "Real ecosystem-service additivity, valid credit stacking, measured physical energy savings, registry integrity, adoption, delivery, or revenue is established.",
+      "evidence_class": "DEFERRED",
+      "classification": ["DEFERRED"]
+    }
+  ],
+  "high_risk_claims": [
+    {
+      "phrase": "saving is exactly F",
+      "support": "Restricted to two audits with the same fixed setup burden and unchanged marginal burdens, before interaction overhead.",
+      "paper_locator": "Proposition 1 and limitations",
+      "evidence_class": "FORMAL_TARGET"
+    },
+    {
+      "phrase": "sharing is cheaper",
+      "support": "Strictly conditional on modeled interaction overhead h being less than the duplicated fixed burden F.",
+      "paper_locator": "Proposition 2",
+      "evidence_class": "FORMAL_TARGET"
+    },
+    {
+      "phrase": "thermodynamic per-bit floor",
+      "support": "Only propagates a supplied epsilon; k_B T ln 2 interpretation is conditional on specified logically irreversible physical operations.",
+      "paper_locator": "Proposition 3 and limitations",
+      "evidence_class": "ASSUMED"
+    },
+    {
+      "phrase": "ecosystem-service bundles",
+      "support": "Title-level application context only; no ecological additivity, synergy, fungibility, or stacking conclusion.",
+      "paper_locator": "Abstract, introduction, and limitations",
+      "evidence_class": "DEFERRED"
+    }
+  ],
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {
+        "name": "Codex",
+        "role": "Standards and corpus review, current primary-literature search, preregistration, derivation, exact-rational verification, manuscript, Lean statement/candidate, packaging, and QA under human direction"
+      },
+      {
+        "name": "Claude",
+        "role": "Historical Viridis artifacts read with attribution preserved"
+      }
+    ]
+  },
+  "viridisos_kernel_candidate": {
+    "status": "NO_RUNTIME_KERNEL",
+    "reason": "No calibrated MRV process, verified shared setup, burden units, field data, uncertainty model, decision loss, or operating envelope exists."
+  },
+  "route_proposal": "working-corpus",
+  "integrity_flags": [],
+  "formal_verification": {
+    "status": "FROZEN_CANDIDATE_UNCERTIFIED",
+    "provider": "COMPARATOR_CLOUD",
+    "aristotle_required": false,
+    "statement": "formalization/VERIFICATION_STATEMENT.lean",
+    "candidate": "formalization/VERIFICATION_CANDIDATE.lean",
+    "contract": "formalization/STATEMENT_CONTRACT.json",
+    "request": "formalization/ENGINE3_VERIFICATION_REQUEST.json",
+    "toolchain": "leanprover/lean4:v4.28.0",
+    "mathlib_commit": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+    "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+    "nonvacuity_obligations": ["shared_verification_witness"],
+    "local_lean_execution": false
+  },
+  "aristotle": {
+    "status": "pending",
+    "source_status": "NOT_RUN_NOT_REQUIRED_ENGINE_3",
+    "lean_files": [
+      "formalization/VERIFICATION_STATEMENT.lean",
+      "formalization/VERIFICATION_CANDIDATE.lean",
+      "formalization/STATEMENT_CONTRACT.json",
+      "formalization/ENGINE3_VERIFICATION_REQUEST.json",
+      "formalization/lakefile.toml",
+      "formalization/lean-toolchain"
+    ],
+    "summary_files": [],
+    "formal_targets_unproved": [
+      "separate_cost_expansion",
+      "bundled_cost_expansion",
+      "shared_verification_saving",
+      "interaction_adjusted_saving",
+      "sharing_strictly_cheaper",
+      "bundled_marginal_floor",
+      "net_service_nonnegative_iff",
+      "shared_verification_witness"
+    ],
+    "compatibility_note": "Legacy field retained for validator compatibility; Engine-3 makes Aristotle not required."
+  },
+  "post_aristotle_review": {
+    "status": "pending",
+    "path": null,
+    "evidence": "Legacy field retained; no Comparator certificate or reconciled overlay exists."
+  },
+  "post_lean_review": {
+    "status": "pending",
+    "path": null,
+    "evidence": "No Comparator certificate, reconciliation, or later-invocation review exists."
+  },
+  "generated_package_manifested_at_utc": "2026-09-03T14:08:00Z",
+  "release_metadata": {
+    "abbreviation": "SVON",
+    "description": "Pre-certificate shared verification-overhead methods note.",
+    "keywords": [
+      "ecosystem services",
+      "verification overhead",
+      "MRV",
+      "transaction costs",
+      "thermodynamic accounting"
+    ],
+    "version": "0.0.0-pre-certificate",
+    "license": null,
+    "series_route": "working-corpus Ecoservices verification methods branch",
+    "spine_admitted": false,
+    "spine_gate": null,
+    "spine_reason": "No certified result exists for a Canon scan.",
+    "viridisos_disposition": "NO_RUNTIME_KERNEL",
+    "notes": "No ledger row, DOI, deployment, runtime kernel, or publication authorization.",
+    "ledger_row": null
+  },
+  "pdf_review": {
+    "status": "PASS",
+    "method": "Poppler render review at 150 DPI",
+    "result": "All three pages reviewed; no clipping, overlap, unreadable glyphs, broken references, visible link boxes, or layout defects observed."
+  },
+  "disposition": "METHODS_NOTE",
+  "external_mutation": false
+}

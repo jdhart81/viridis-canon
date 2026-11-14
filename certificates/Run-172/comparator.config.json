@@ -1,0 +1,15 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.ThermodynamicEconomics.StewardshipReserve.reserve_preserved",
+    "Viridis.ThermodynamicEconomics.StewardshipReserve.zero_spendable_forces_zero",
+    "Viridis.ThermodynamicEconomics.StewardshipReserve.reserve_monotone",
+    "Viridis.ThermodynamicEconomics.StewardshipReserve.stewardship_reserve_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

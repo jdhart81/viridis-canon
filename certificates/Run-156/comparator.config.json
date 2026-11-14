@@ -1,0 +1,20 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.ThermodynamicSpeedLimits.MonitoringResponseReserve.blind_window_definition",
+    "Viridis.ThermodynamicSpeedLimits.MonitoringResponseReserve.blind_loss_decomposition",
+    "Viridis.ThermodynamicSpeedLimits.MonitoringResponseReserve.response_delay_penalty",
+    "Viridis.ThermodynamicSpeedLimits.MonitoringResponseReserve.residual_reserve_safe_iff",
+    "Viridis.ThermodynamicSpeedLimits.MonitoringResponseReserve.response_delay_monotone",
+    "Viridis.ThermodynamicSpeedLimits.MonitoringResponseReserve.balanced_cycle_nonincrease",
+    "Viridis.ThermodynamicSpeedLimits.MonitoringResponseReserve.active_share_floor",
+    "Viridis.ThermodynamicSpeedLimits.MonitoringResponseReserve.response_reserve_witness",
+    "Viridis.ThermodynamicSpeedLimits.MonitoringResponseReserve.late_response_negative_control"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

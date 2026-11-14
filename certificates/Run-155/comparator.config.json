@@ -1,0 +1,19 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.Ecoservices.SharedVerificationOverhead.separate_cost_expansion",
+    "Viridis.Ecoservices.SharedVerificationOverhead.bundled_cost_expansion",
+    "Viridis.Ecoservices.SharedVerificationOverhead.shared_verification_saving",
+    "Viridis.Ecoservices.SharedVerificationOverhead.interaction_adjusted_saving",
+    "Viridis.Ecoservices.SharedVerificationOverhead.sharing_strictly_cheaper",
+    "Viridis.Ecoservices.SharedVerificationOverhead.bundled_marginal_floor",
+    "Viridis.Ecoservices.SharedVerificationOverhead.net_service_nonnegative_iff",
+    "Viridis.Ecoservices.SharedVerificationOverhead.shared_verification_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

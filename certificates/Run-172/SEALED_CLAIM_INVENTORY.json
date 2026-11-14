@@ -1,0 +1,60 @@
+{
+  "claims": [
+    {
+      "aristotle_target": "reserve_preserved",
+      "claim": "Adjoining the same reserve preserves the spend bound.",
+      "evidence_class": "FORMAL_TARGET",
+      "id": "C1",
+      "targets": [
+        "reserve_preserved"
+      ]
+    },
+    {
+      "aristotle_target": "zero_spendable_forces_zero",
+      "claim": "Zero spendable balance forces zero spend under the premise.",
+      "evidence_class": "FORMAL_TARGET",
+      "id": "C2",
+      "targets": [
+        "zero_spendable_forces_zero"
+      ]
+    },
+    {
+      "aristotle_target": "reserve_monotone",
+      "claim": "The gross reported balance is monotone in the declared reserve.",
+      "evidence_class": "FORMAL_TARGET",
+      "id": "C3",
+      "targets": [
+        "reserve_monotone"
+      ]
+    },
+    {
+      "aristotle_target": "stewardship_reserve_witness",
+      "claim": "A positive named witness satisfies the frozen inequality.",
+      "evidence_class": "FORMAL_TARGET",
+      "id": "C4",
+      "targets": [
+        "stewardship_reserve_witness"
+      ]
+    },
+    {
+      "claim": "The captured exact-integer regression passes.",
+      "evidence_class": "NUMERIC",
+      "id": "C5",
+      "targets": []
+    },
+    {
+      "claim": "The classification of balances as spendable or reserved is assumed.",
+      "evidence_class": "ASSUMED",
+      "id": "C6",
+      "targets": []
+    },
+    {
+      "claim": "Legal compliance, ecological delivery, returns, and optimal allocation are not established.",
+      "evidence_class": "DEFERRED",
+      "id": "C7",
+      "targets": []
+    }
+  ],
+  "run_id": "Run-172",
+  "schema_version": 1
+}

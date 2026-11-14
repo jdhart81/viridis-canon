@@ -1,0 +1,19 @@
+{
+  "schema_version": "VRS-CLAIM-INVENTORY-1",
+  "run": 158,
+  "claims": [
+    {"id": "C1", "claim": "Residual loss plus review benefit equals baseline loss.", "classification": ["FORMAL_TARGET"], "formal_target": "residual_loss_decomposition"},
+    {"id": "C2", "claim": "Moving review time delta from stream 2 to stream 1 changes benefit by delta times the rate difference.", "classification": ["FORMAL_TARGET"], "formal_target": "exchange_gain_identity"},
+    {"id": "C3", "claim": "The exchange preserves total reviewer time.", "classification": ["FORMAL_TARGET"], "formal_target": "exchange_preserves_capacity"},
+    {"id": "C4", "claim": "Under ordered rates and nonnegative transfer, the exchange cannot reduce review benefit or increase residual loss.", "classification": ["FORMAL_TARGET"], "formal_target": "ordered_exchange_not_worse and ordered_exchange_reduces_loss"},
+    {"id": "C5", "claim": "For fixed total review time, allocation to the higher-rate stream dominates any split in the unconstrained two-stream ledger.", "classification": ["FORMAL_TARGET"], "formal_target": "full_first_dominates_split"},
+    {"id": "C6", "claim": "When rates are equal, every allocation with the same total review time has equal benefit.", "classification": ["FORMAL_TARGET"], "formal_target": "equal_rate_allocation_invariant"},
+    {"id": "C7", "claim": "The exact positive witness and wrong-priority negative control hold.", "classification": ["FORMAL_TARGET"], "formal_target": "deference_reserve_positive_witness and wrong_priority_negative_control"},
+    {"id": "C8", "claim": "The exact-rational package regression passes 440080 checks.", "classification": ["NUMERIC"]},
+    {"id": "C9", "claim": "Known stationary linear benefit rates, divisible work, additive effects, compatible units, and fungible reviewer time are supplied assumptions.", "classification": ["ASSUMED"]},
+    {"id": "C10", "claim": "Calibrated risk, reviewer superiority, subgroup fairness, queueing behavior, field benefit, safe deployment, adoption, delivery, or revenue is established.", "classification": ["DEFERRED"]}
+  ],
+  "integrity_flags": [],
+  "novelty_status": "UNASSESSED",
+  "formal_status": "FROZEN_CANDIDATE_UNCERTIFIED"
+}

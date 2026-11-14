@@ -1,0 +1,69 @@
+{
+  "aristotle_required": false,
+  "attempt": 2,
+  "candidate_authorship_binding": {
+    "author": "CODEX",
+    "historical_provider_artifact_role": "DIAGNOSTIC_INPUT_ONLY_NOT_PROOF",
+    "receipt": "CANDIDATE_AUTHORSHIP.json"
+  },
+  "candidate_id": "Run-158-DeferenceReserveEqualization-Comparator-attempt-2",
+  "expected_theorem_names": [
+    "residual_loss_decomposition",
+    "exchange_gain_identity",
+    "exchange_preserves_capacity",
+    "ordered_exchange_not_worse",
+    "ordered_exchange_reduces_loss",
+    "full_first_dominates_split",
+    "equal_rate_allocation_invariant",
+    "deference_reserve_positive_witness",
+    "wrong_priority_negative_control"
+  ],
+  "input_sha256": {
+    "CANDIDATE_AUTHORSHIP.json": "f8bcce0ab3c0033c215befb1651356365f94da53a9c6cc0c3fa508153d8b533d",
+    "SEALED_CLAIM_INVENTORY.json": "6df87bdc8763a18546d5920788551515b39fe8f70d4ce1d179db805a3c6b8f46",
+    "SEALED_RUN_MANIFEST.json": "9c2dd850d48bfb14e364e0d2e708d14b0612186027f44d78cbae0651d577a7e7",
+    "SEALED_paper.pdf": "ee879599a8080cc2c0ca2e7fa01b0576e2f8046ffb678314e726b40069f56fb7",
+    "SEALED_paper.tex": "f358222e2ce9305fa1a25518dadf4cc9e3d9e4188bdc38d29d1a9ba029ea518a",
+    "STATEMENT_ALIGNMENT.json": "bfd7963e4db74d830037ad80e8a86b9c5b5a2e99f691b884b54ed174c1ad6d52",
+    "VERIFICATION_CANDIDATE.lean": "aebdd2147eb58df5fa8ed87c8f7880d75fea851f9ad7eb240c93f388acbb670b",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "b5730c54f9073339ff4d79272dc452f884caf6de46d0104bc9d625da7624ff29"
+  },
+  "local_lean_execution": false,
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "module": "DeferenceReserveEqualization",
+  "namespace": "Viridis.Applications.DeferenceReserveEqualization",
+  "nonvacuity_obligations": [
+    "deference_reserve_positive_witness",
+    "wrong_priority_negative_control"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "request_kind": "LEAN_PROOF",
+  "root_candidate_id": "Run-158-DeferenceReserveEqualization-Comparator",
+  "schema_version": "3.0",
+  "source_run": "Run-158",
+  "statement_alignment": {
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT.json",
+      "sha256": "bfd7963e4db74d830037ad80e8a86b9c5b5a2e99f691b884b54ed174c1ad6d52"
+    },
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "sha256": "b5730c54f9073339ff4d79272dc452f884caf6de46d0104bc9d625da7624ff29"
+    },
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1"
+  },
+  "statement_contract_sha256": "b5730c54f9073339ff4d79272dc452f884caf6de46d0104bc9d625da7624ff29",
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "repair_parent": {
+    "request_sha256": "5f54b2e19e14ca877204bc54b2a3848b85f2c0ad49e33aea9b198c4199af2111",
+    "failure_receipt_sha256": "e57414559db24f0a973db5832bbc6bd04f6220fe8e20ba007e832d7c5678d6ca",
+    "candidate_sha256": "34c5d2bd07c501fc838de5d8220e030f7a3bb912868ceee4b6556587dadb369b"
+  }
+}

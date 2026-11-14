@@ -1,0 +1,44 @@
+{
+  "aligned_challenge": {
+    "path": "RESEARCH_PIPELINE_v2/pre_aristotle_corrections/Run-136_retention-floor-certificate-r1/VERIFICATION_CHALLENGE_ALIGNED.lean",
+    "sha256": "a2ce1a8fe8d16cddf480427200c955cd06502ad720d229c5bbc06e76f6b00b87"
+  },
+  "candidate": {
+    "path": "RESEARCH_PIPELINE_v2/pre_aristotle_corrections/Run-136_retention-floor-certificate-r1/VERIFICATION_CANDIDATE.lean",
+    "sha256": "4d733e4ca7ebae4a7296304aeec76210b6d1cf7f79e12ad8493b72e3324d6c2d"
+  },
+  "candidate_forbidden_constructs_empty": true,
+  "expected_theorem_names": [
+    "stationary_availability_balance",
+    "floor_requirement",
+    "retention_floor_upper_bound_as_frozen_is_false",
+    "retention_floor_upper_bound",
+    "hazard_proportional_attains_floor",
+    "retention_floor_unique_as_frozen_is_false",
+    "retention_floor_unique",
+    "retention_floor_nonvacuous"
+  ],
+  "external_mutation": false,
+  "introduced_sorry_count": 8,
+  "local_lean_execution": false,
+  "operation": "candidate-order challenge with only expected theorem proof bodies replaced by sorry",
+  "schema_version": 1,
+  "sealed_statement": {
+    "path": "RESEARCH_PIPELINE_v2/pre_aristotle_corrections/Run-136_retention-floor-certificate-r1/VERIFICATION_STATEMENT.lean",
+    "sha256": "4d733e4ca7ebae4a7296304aeec76210b6d1cf7f79e12ad8493b72e3324d6c2d"
+  },
+  "shared_declaration_order_source": "candidate",
+  "signature_sha256": {
+    "floor_requirement": "cb4c10920af4ed48bc9104af525bb077294c4ed6509ee7f8192a6696c1a2368b",
+    "hazard_proportional_attains_floor": "d8a02abcffa6988f7fabf158837ed2423621a537fa2d574e8d16c84935d0e685",
+    "retention_floor_nonvacuous": "38a02c36d68021018d7adbb7caeca09dc1041865bc998291c6032d2e08ad8d41",
+    "retention_floor_unique": "ef464178636b03d5f2bcb599c9c6b9b88434716dc3d4810f92a2c813d2509467",
+    "retention_floor_unique_as_frozen_is_false": "940361177b73a114786c21832e04209efe3927b22968615b9106bc5b600d8c0e",
+    "retention_floor_upper_bound": "c582bd764b42734b1a86d9efe6b3f24370fadccd9d2fd32477b8863f1ce5c0de",
+    "retention_floor_upper_bound_as_frozen_is_false": "98252c7e6981f940f906fd0f61a3673e69f353b40165eae70ede777636953d98",
+    "stationary_availability_balance": "6bfd86dc814938de3305dc8d8456b335c2cc6340031c532e5d108f1058abc6be"
+  },
+  "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+  "status": "FROZEN",
+  "target_signatures_match_sealed_statement": true
+}

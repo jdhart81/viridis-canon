@@ -1,0 +1,57 @@
+{
+  "schema_version": "3.0",
+  "request_kind": "LEAN_PROOF",
+  "candidate_id": "Run-136-RetentionFloorCorrection-r1-Comparator-attempt-1",
+  "root_candidate_id": "Run-136-RetentionFloorCorrection-r1-Comparator",
+  "attempt": 1,
+  "source_run": "Run-136",
+  "module": "RetentionFloor",
+  "namespace": "Viridis.EntropyLearning.RetentionFloor",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "statement_contract_sha256": "4d733e4ca7ebae4a7296304aeec76210b6d1cf7f79e12ad8493b72e3324d6c2d",
+  "input_sha256": {
+    "SEALED_paper.pdf": "4e55e80e2ddfe1a434b9a742c607559c9e14fcb446e32527e4f92abd1039cfa0",
+    "SEALED_paper.tex": "344953da454ce80aa4b60399e43f7eaad0640e62fba85b26bbe934d3e014b666",
+    "SEALED_CLAIM_INVENTORY.json": "d80c90e5f5aa591aaf21e4db62c4c732e63f86b6ba445e729f4bda8986d439cb",
+    "SEALED_RUN_MANIFEST.json": "24c01d8e5b1840a940130a0c12f1671c4d9e93adba6bffea6f355e8c381df277",
+    "CORRECTION_RECEIPT.json": "a1adbfe64ee10bee9c958595f63d41df19abb5879c4b2d70b4c57f628aafdd2d",
+    "VERIFICATION_CANDIDATE.lean": "4d733e4ca7ebae4a7296304aeec76210b6d1cf7f79e12ad8493b72e3324d6c2d",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "a2ce1a8fe8d16cddf480427200c955cd06502ad720d229c5bbc06e76f6b00b87",
+    "STATEMENT_ALIGNMENT.json": "b52fe4ae312ac00765216f4efd776bb1384b6e813a152843912f3e3d614cb925"
+  },
+  "statement_alignment": {
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "sha256": "4d733e4ca7ebae4a7296304aeec76210b6d1cf7f79e12ad8493b72e3324d6c2d"
+    },
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT.json",
+      "sha256": "b52fe4ae312ac00765216f4efd776bb1384b6e813a152843912f3e3d614cb925"
+    }
+  },
+  "expected_theorem_names": [
+    "stationary_availability_balance",
+    "floor_requirement",
+    "retention_floor_upper_bound_as_frozen_is_false",
+    "retention_floor_upper_bound",
+    "hazard_proportional_attains_floor",
+    "retention_floor_unique_as_frozen_is_false",
+    "retention_floor_unique",
+    "retention_floor_nonvacuous"
+  ],
+  "nonvacuity_obligations": ["retention_floor_nonvacuous"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "aristotle_required": false,
+  "local_lean_execution": false,
+  "correction_binding": {
+    "correction_id": "Run-136_retention-floor-certificate-r1",
+    "receipt": "CORRECTION_RECEIPT.json",
+    "original_run_preserved": true,
+    "statement_weakened": false
+  },
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION"
+}

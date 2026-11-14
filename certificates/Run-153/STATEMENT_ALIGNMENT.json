@@ -1,0 +1,42 @@
+{
+  "aligned_challenge": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-153/attempts/attempt-2/VERIFICATION_CHALLENGE_ALIGNED.lean",
+    "sha256": "25c32b4dddbbf0214dab4f35df6f0f1fe10a4cb5800d8eb6b504e6a6f9734a59"
+  },
+  "candidate": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-153/attempts/attempt-2/VERIFICATION_CANDIDATE.lean",
+    "sha256": "d9906858150239657ef2facfc90a24030c63eead694c26eca1763d0a99766cd8"
+  },
+  "candidate_forbidden_constructs_empty": true,
+  "expected_theorem_names": [
+    "equilibrium_balance_a",
+    "equilibrium_balance_b",
+    "positive_equilibrium_of_positive_numerators",
+    "no_two_decliner_positive_equilibrium",
+    "one_sided_rescue_window",
+    "reciprocal_rescue_witness",
+    "unit_loop_boundary"
+  ],
+  "external_mutation": false,
+  "introduced_sorry_count": 7,
+  "local_lean_execution": false,
+  "operation": "candidate-order challenge with only expected theorem proof bodies replaced by sorry",
+  "schema_version": 1,
+  "sealed_statement": {
+    "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-153/attempts/attempt-2/VERIFICATION_STATEMENT.lean",
+    "sha256": "25c32b4dddbbf0214dab4f35df6f0f1fe10a4cb5800d8eb6b504e6a6f9734a59"
+  },
+  "shared_declaration_order_source": "candidate",
+  "signature_sha256": {
+    "equilibrium_balance_a": "c8d92923291089192b52944c83e1ac4ef1952f65b57e55742eab131b61c00659",
+    "equilibrium_balance_b": "c3a97098c03c799f2c4ac5ca91fed55563423bafc2dd1f3862e0e74432875d0b",
+    "no_two_decliner_positive_equilibrium": "fb8ac6155626e2e1a8516d821086a35e6470c07652a424b540983f73b302e92f",
+    "one_sided_rescue_window": "86bac40f3e045386ebf2bfe526bc0e84e7590fa98439c96800fdc276886e4a45",
+    "positive_equilibrium_of_positive_numerators": "9237b97d56625861ebe93fbd90725f151071147ec855f1426cf5604a12600745",
+    "reciprocal_rescue_witness": "a75e7247965944d798bf66d742d6e777b9845b43af1be6b8572dffd9b014b05c",
+    "unit_loop_boundary": "d9bc666d60e5e3b1e8d8a97c707dad0e44ce26d38c232e9ea38a568d36139282"
+  },
+  "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1",
+  "status": "FROZEN",
+  "target_signatures_match_sealed_statement": true
+}

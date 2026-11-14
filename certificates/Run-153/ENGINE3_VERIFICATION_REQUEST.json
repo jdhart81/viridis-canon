@@ -1,0 +1,66 @@
+{
+  "aristotle_required": false,
+  "attempt": 2,
+  "candidate_authorship_binding": {
+    "author": "CODEX",
+    "historical_provider_artifact_role": "DIAGNOSTIC_INPUT_ONLY_NOT_PROOF",
+    "receipt": "CANDIDATE_AUTHORSHIP.json"
+  },
+  "candidate_id": "Run-153-ReciprocalRescue-Comparator-attempt-2",
+  "expected_theorem_names": [
+    "equilibrium_balance_a",
+    "equilibrium_balance_b",
+    "positive_equilibrium_of_positive_numerators",
+    "no_two_decliner_positive_equilibrium",
+    "one_sided_rescue_window",
+    "reciprocal_rescue_witness",
+    "unit_loop_boundary"
+  ],
+  "input_sha256": {
+    "CANDIDATE_AUTHORSHIP.json": "e6fc8548a7d5c64e48a6b9d2f691062d81207df8db1a71bd4addb1867399ba63",
+    "SEALED_CLAIM_INVENTORY.json": "5ddd96ae3e6844ee6f8941847d8d1281a23cdc148f3cb5149f4c69966f0a2fb1",
+    "SEALED_RUN_MANIFEST.json": "262d138718ba8962b489b88d369c6d367284e64f6b00a65d4a5b53f162e57e6d",
+    "SEALED_paper.pdf": "10d6efb30a08157679952de7a10f9f77ef489dc9171d0d9c769095037fb5bc97",
+    "SEALED_paper.tex": "c0d372788f3bb5865e4f9d575ab50fab97ae88b500185afc66ff35476755af89",
+    "STATEMENT_ALIGNMENT.json": "bfdbe36b07c323211710af28bc5c5e254b84647ce2e1126bdac9ffa4bb8b63f9",
+    "VERIFICATION_CANDIDATE.lean": "d9906858150239657ef2facfc90a24030c63eead694c26eca1763d0a99766cd8",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "25c32b4dddbbf0214dab4f35df6f0f1fe10a4cb5800d8eb6b504e6a6f9734a59"
+  },
+  "local_lean_execution": false,
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "module": "ReciprocalRescue",
+  "namespace": "Viridis.GaianSystems.ReciprocalRescue",
+  "nonvacuity_obligations": [
+    "reciprocal_rescue_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "request_kind": "LEAN_PROOF",
+  "root_candidate_id": "Run-153-ReciprocalRescue-Comparator",
+  "schema_version": "3.0",
+  "source_run": "Run-153",
+  "statement_alignment": {
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT.json",
+      "sha256": "bfdbe36b07c323211710af28bc5c5e254b84647ce2e1126bdac9ffa4bb8b63f9"
+    },
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "sha256": "25c32b4dddbbf0214dab4f35df6f0f1fe10a4cb5800d8eb6b504e6a6f9734a59"
+    },
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1"
+  },
+  "statement_contract_sha256": "25c32b4dddbbf0214dab4f35df6f0f1fe10a4cb5800d8eb6b504e6a6f9734a59",
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "repair_parent": {
+    "request_sha256": "224e8c59459187a6913491b279174936b4bf435ef5e2034ce22882cead0b5294",
+    "failure_receipt_sha256": "3fa17f1983274fd439b4936fa3c7844162d580730c325c52fd2350c5099bf4c8",
+    "candidate_sha256": "57174922238f77f1520573e91040e0a1b036698b6689d8406fa28c1ed0ee2799"
+  }
+}

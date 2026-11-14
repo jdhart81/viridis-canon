@@ -457,7 +457,7 @@ def render_index() -> str:
 <h1>Results</h1>
 <p>Each result answers a decision question in ecology or conservation, has a paper with a DOI,
 a Lean 4 formalization with a comparator certificate you can re-run, and a decision function you can call.
-These are the three we lead with; all 18 certified runs are listed in
+These are the three we lead with; every certified run is listed in
 <a href="{REPO}/tree/main/certificates">certificates/</a>.</p>
 {''.join(cards)}
 </main>

@@ -1,0 +1,69 @@
+{
+  "aristotle_required": false,
+  "attempt": 2,
+  "candidate_authorship_binding": {
+    "author": "CODEX",
+    "historical_provider_artifact_role": "DIAGNOSTIC_INPUT_ONLY_NOT_PROOF",
+    "receipt": "CANDIDATE_AUTHORSHIP.json"
+  },
+  "candidate_id": "Run-156-MonitoringResponseReserve-Comparator-attempt-2",
+  "expected_theorem_names": [
+    "blind_window_definition",
+    "blind_loss_decomposition",
+    "response_delay_penalty",
+    "residual_reserve_safe_iff",
+    "response_delay_monotone",
+    "balanced_cycle_nonincrease",
+    "active_share_floor",
+    "response_reserve_witness",
+    "late_response_negative_control"
+  ],
+  "input_sha256": {
+    "CANDIDATE_AUTHORSHIP.json": "17cfa3d4ef9303e924947dcc648f09844c2ebfc46c581f29e0f8fb10503adb50",
+    "SEALED_CLAIM_INVENTORY.json": "ab34bcf5371edb226065024483dcbcc8fac8f1bd4b5237855d11cf82a926333e",
+    "SEALED_RUN_MANIFEST.json": "f2329ec6ae4f103be9d35d2e856bdd58ea45a9b191a5c1ba2504f63fa7316749",
+    "SEALED_paper.pdf": "b4e8b0748d2f55933911abd3af1daff22751ed5a9d121945cafd0e73b1b95f67",
+    "SEALED_paper.tex": "454b28c31ae1f70870bce2a93d7e71cdfe08b6e4edaffe0a8bd8b1aec179d2b3",
+    "STATEMENT_ALIGNMENT.json": "60c9c530bf70b2bc2e1b466a160216dbb99c37243b2ba883626278fafd720ffd",
+    "VERIFICATION_CANDIDATE.lean": "4291d5d3bf03f0d0d4c7b74b55a0de0b602a87a90f598e197e9333eab8f10521",
+    "VERIFICATION_CHALLENGE_ALIGNED.lean": "9689215c8d0ae34b630a21077f2eaeaafebc83921fadb184fdf252fb629e9a70"
+  },
+  "local_lean_execution": false,
+  "mathlib_rev": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "module": "MonitoringResponseReserve",
+  "namespace": "Viridis.ThermodynamicSpeedLimits.MonitoringResponseReserve",
+  "nonvacuity_obligations": [
+    "response_reserve_witness",
+    "late_response_negative_control"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "permitted_sorries": [],
+  "primary_verifier": "COMPARATOR_CLOUD",
+  "request_kind": "LEAN_PROOF",
+  "root_candidate_id": "Run-156-MonitoringResponseReserve-Comparator",
+  "schema_version": "3.0",
+  "source_run": "Run-156",
+  "statement_alignment": {
+    "receipt": {
+      "filename": "STATEMENT_ALIGNMENT.json",
+      "sha256": "60c9c530bf70b2bc2e1b466a160216dbb99c37243b2ba883626278fafd720ffd"
+    },
+    "sealed_statement": {
+      "filename": "VERIFICATION_STATEMENT.lean",
+      "sha256": "9689215c8d0ae34b630a21077f2eaeaafebc83921fadb184fdf252fb629e9a70"
+    },
+    "standard": "VRS-ENGINE3-ALIGNED-COMPARATOR-PAIR-1"
+  },
+  "statement_contract_sha256": "9689215c8d0ae34b630a21077f2eaeaafebc83921fadb184fdf252fb629e9a70",
+  "status": "FROZEN_READY_FOR_FIFO_CERTIFICATION",
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "repair_parent": {
+    "request_sha256": "e2a0ac7ca9ab7f83eb9e16bd6a262815a6b1cb46d3b02e9ecccc4a8228bd641a",
+    "failure_receipt_sha256": "471e5b44907eb2f70ca6e6eda86bd05ffa6b4484f680e2eb3cec7e1ec8ef8313",
+    "candidate_sha256": "26ff0e5699c31086a1f92eaccdabb3e7277614520c45fb0114d48a0e84553ad0"
+  }
+}

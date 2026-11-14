@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "run_id": "Run-145",
+  "title": "An Agreement-Conditioned Collapse Note",
+  "paper_stage": "pre_aristotle",
+  "artifacts": {
+    "readme": "README.md",
+    "finding": "finding.md",
+    "paper_source": "paper.tex",
+    "paper_pdf": "paper.pdf",
+    "paper_log": "paper.log",
+    "verification_script": "verification.py",
+    "verification_output": "verification_output.txt",
+    "business_value": "business_EV-145.md"
+  },
+  "claim_inventory": [
+    {"id":"C1","claim":"Agreement mass is positive in the nondegenerate probability interior.","evidence_class":"FORMAL_TARGET","formal_target":"agreement_mass_positive","aristotle_target":"agreement_mass_positive"},
+    {"id":"C2","claim":"The agreement-conditioned confidence gain has the stated factorization.","evidence_class":"FORMAL_TARGET","formal_target":"agreement_gain_identity","aristotle_target":"agreement_gain_identity"},
+    {"id":"C3","claim":"A competent independent pair is not worse after agreement conditioning.","evidence_class":"FORMAL_TARGET","formal_target":"competent_agreement_not_worse","aristotle_target":"competent_agreement_not_worse"},
+    {"id":"C4","claim":"The confidence gain is strict for 1/2<p<1.","evidence_class":"FORMAL_TARGET","formal_target":"competent_interior_strict_gain","aristotle_target":"competent_interior_strict_gain"},
+    {"id":"C5","claim":"Agreement and disagreement masses partition probability one.","evidence_class":"FORMAL_TARGET","formal_target":"disagreement_probability_identity","aristotle_target":"disagreement_probability_identity"},
+    {"id":"C6","claim":"A copied agent provides no independent confidence gain.","evidence_class":"FORMAL_TARGET","formal_target":"copied_agent_no_gain","aristotle_target":"copied_agent_no_gain"},
+    {"id":"C7","claim":"At p=3/4, act mass is 5/8 and conditional confidence is 9/10.","evidence_class":"FORMAL_TARGET","formal_target":"agreement_witness_three_quarters","aristotle_target":"agreement_witness_three_quarters"},
+    {"id":"C8","claim":"The deterministic gate passed 16 of 16 checks.","evidence_class":"NUMERIC"},
+    {"id":"C9","claim":"The result is classical aggregation algebra and not a physical quantum claim.","evidence_class":"ASSUMED"},
+    {"id":"C10","claim":"Novelty and significance remain unassessed.","evidence_class":"DEFERRED"}
+  ],
+  "high_risk_claims": [
+    {
+      "phrase": "strictly beneficial",
+      "support": "Restricted to conditional confidence under balanced labels, symmetric calibration, conditional independence, equal competence, and abstention on disagreement; frozen target remains uncertified.",
+      "paper_locator": "Corollary 1 and limitations",
+      "evidence_class": "FORMAL_TARGET"
+    },
+    {
+      "phrase": "collapse",
+      "support": "Explicitly defined as an operational act-or-abstain state update, not microscopic quantum dynamics.",
+      "paper_locator": "Abstract, Introduction, and Discussion",
+      "evidence_class": "ASSUMED"
+    }
+  ],
+  "provenance": {
+    "accountable_author": "Justin D. Hart",
+    "ai_systems": [
+      {"name":"Codex","role":"Standards and corpus review, bounded primary-source search, preregistration, derivation, verification code, manuscript, Lean statement/candidate, packaging, and QA under human direction"},
+      {"name":"Claude","role":"Historical Viridis artifacts read with attribution preserved and no historical text rewritten"}
+    ]
+  },
+  "route_proposal": "working-corpus",
+  "integrity_flags": [],
+  "formal_verification": {
+    "status": "FROZEN_CANDIDATE_UNCERTIFIED",
+    "provider": "COMPARATOR_CLOUD",
+    "aristotle_required": false,
+    "statement": "formalization/VERIFICATION_STATEMENT.lean",
+    "candidate": "formalization/VERIFICATION_CANDIDATE.lean",
+    "contract": "formalization/STATEMENT_CONTRACT.json",
+    "toolchain": "leanprover/lean4:v4.28.0",
+    "mathlib_commit": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+    "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+    "nonvacuity_obligations": ["agreement_witness_three_quarters"],
+    "local_lean_execution": false
+  },
+  "aristotle": {
+    "status": "pending",
+    "source_status": "NOT_RUN_NOT_REQUIRED_ENGINE_3",
+    "lean_files": ["formalization/VERIFICATION_STATEMENT.lean","formalization/VERIFICATION_CANDIDATE.lean","formalization/STATEMENT_CONTRACT.json","formalization/ENGINE3_VERIFICATION_REQUEST.json","formalization/lakefile.toml","formalization/lean-toolchain"],
+    "summary_files": [],
+    "formal_targets_unproved": ["agreement_mass_positive","agreement_gain_identity","competent_agreement_not_worse","competent_interior_strict_gain","disagreement_probability_identity","copied_agent_no_gain","agreement_witness_three_quarters"],
+    "compatibility_note": "The field name is retained for the legacy package validator; Engine-3 makes Aristotle not required and prohibits scheduled submission."
+  },
+  "post_aristotle_review": {"status":"pending","path":null,"evidence":"Legacy field name retained for validator compatibility; no Comparator certificate, reconciled overlay, or post-Lean review exists."},
+  "post_lean_review": {"status":"pending","path":null,"evidence":"No Comparator receipt, certificate, reconciled overlay, or post-Lean review exists."},
+  "generated_package_manifested_at_utc": "2026-08-29T02:06:08Z",
+  "release_metadata": {
+    "abbreviation": "ACCN",
+    "description": "Pre-certificate classical agreement-conditioning methods note; not peer reviewed, formally certified, empirically validated, or promoted.",
+    "keywords": ["agreement conditioning", "abstention", "ensemble diversity", "calibration", "methods note"],
+    "version": "0.0.0-pre-certificate",
+    "license": null,
+    "series_route": "working-corpus AI-wavefunction-collapse methods branch",
+    "spine_admitted": false,
+    "spine_gate": null,
+    "spine_reason": "No certified result exists for the five-gate Canon scan; no spine admission is implied.",
+    "viridisos_disposition": "BACKLOG_NO_WRAPPER",
+    "notes": "No ledger row, release bundle, public DOI, product deployment, or publication authorization is present.",
+    "ledger_row": null
+  },
+  "pdf_review": {"status":"PASS","method":"independent three-page 120-DPI Poppler render review","result":"No clipping, overlap, unreadable glyphs, broken references, or layout defects observed."},
+  "disposition": "METHODS_NOTE",
+  "external_mutation": false
+}

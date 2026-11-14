@@ -1,0 +1,20 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.Applications.DeferenceReserveEqualization.residual_loss_decomposition",
+    "Viridis.Applications.DeferenceReserveEqualization.exchange_gain_identity",
+    "Viridis.Applications.DeferenceReserveEqualization.exchange_preserves_capacity",
+    "Viridis.Applications.DeferenceReserveEqualization.ordered_exchange_not_worse",
+    "Viridis.Applications.DeferenceReserveEqualization.ordered_exchange_reduces_loss",
+    "Viridis.Applications.DeferenceReserveEqualization.full_first_dominates_split",
+    "Viridis.Applications.DeferenceReserveEqualization.equal_rate_allocation_invariant",
+    "Viridis.Applications.DeferenceReserveEqualization.deference_reserve_positive_witness",
+    "Viridis.Applications.DeferenceReserveEqualization.wrong_priority_negative_control"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

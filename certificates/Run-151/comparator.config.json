@@ -1,0 +1,18 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.EntropyLearning.ThermalStepCorridor.gain_peak_deficit_identity",
+    "Viridis.EntropyLearning.ThermalStepCorridor.gain_nonnegative_corridor",
+    "Viridis.EntropyLearning.ThermalStepCorridor.gain_peak_upper_bound",
+    "Viridis.EntropyLearning.ThermalStepCorridor.gain_symmetric_mistuning",
+    "Viridis.EntropyLearning.ThermalStepCorridor.heat_quadratic_scaling",
+    "Viridis.EntropyLearning.ThermalStepCorridor.thermal_corridor_positive_witness",
+    "Viridis.EntropyLearning.ThermalStepCorridor.thermal_corridor_overshoot_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

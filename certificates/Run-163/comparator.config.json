@@ -1,0 +1,20 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Viridis.Ecoterraforming.UsefulDissipatedWork.useful_nonnegative",
+    "Viridis.Ecoterraforming.UsefulDissipatedWork.modeled_dissipation_nonnegative",
+    "Viridis.Ecoterraforming.UsefulDissipatedWork.work_partition",
+    "Viridis.Ecoterraforming.UsefulDissipatedWork.useful_le_supplied",
+    "Viridis.Ecoterraforming.UsefulDissipatedWork.dissipation_le_supplied",
+    "Viridis.Ecoterraforming.UsefulDissipatedWork.uniform_efficiency_bound",
+    "Viridis.Ecoterraforming.UsefulDissipatedWork.target_requires_supply",
+    "Viridis.Ecoterraforming.UsefulDissipatedWork.partial_partition_witness",
+    "Viridis.Ecoterraforming.UsefulDissipatedWork.target_floor_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

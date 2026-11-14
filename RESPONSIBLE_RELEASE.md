@@ -37,16 +37,19 @@ recommendation, including where we fall short.
 | Nightly research-engine runs to date | 199 |
 | Runs submitted to the Comparator certification pipeline (Run-116 onward, plus the Run-900 foundational series) | 84 |
 | Runs issued a `LEAN_ZERO_SORRY_CERTIFIED` certificate | 78 |
-| Certified runs published here in full, with the challenge, solution, certificate and receipt | 18 |
+| Certified runs published here in full, with the challenge, solution, certificate and receipt | 31 |
 | Of those, labelled *substantial* by our size rule | 11 |
 
 Runs 001–115 came before the current certification pipeline. Their historical
 proof records do not count as certificates. They remain public on Zenodo and
 carry an UNCERTIFIED label until they are re-certified.
 
-**How results are chosen for this release.** The 18 published runs are the
-certified results that back a callable decision function in [`os/`](./os/).
-These are the results someone can actually use, so we checked them first.
+**How results are chosen for this release.** The first 18 published runs (2026-10-17)
+are the certified results that back a callable decision function in [`os/`](./os/).
+These are the results someone can actually use, so we checked them first. The 13 runs
+added on 2026-11-14 are certified working-corpus notes whose certificate files were
+already public in their Zenodo records. None of them backs a decision function yet, and
+all 13 are labelled *elementary*.
 
 ## What a Lean check does not tell you
 

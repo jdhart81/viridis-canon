@@ -1,0 +1,80 @@
+{
+  "bindings": {
+    "candidate_proof": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-156/attempts/attempt-2/VERIFICATION_CANDIDATE.lean",
+      "sha256": "4291d5d3bf03f0d0d4c7b74b55a0de0b602a87a90f598e197e9333eab8f10521"
+    },
+    "formal_statement": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-156/attempts/attempt-2/VERIFICATION_CHALLENGE_ALIGNED.lean",
+      "sha256": "9689215c8d0ae34b630a21077f2eaeaafebc83921fadb184fdf252fb629e9a70"
+    },
+    "independent_cloud_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-156/attempts/attempt-2/COMPARATOR_CLOUD_RECEIPT.json",
+      "sha256": "4d2008744b214699c498d5bb16b4357db2088f441cdb760152bb4e1966bd58ac"
+    },
+    "request": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-156/attempts/attempt-2/ENGINE3_VERIFICATION_REQUEST.json",
+      "sha256": "06e02c02497aba188176240826edda5b5716a1456b743ece5850340d594cfd51"
+    },
+    "sealed_paper_inputs": {
+      "SEALED_CLAIM_INVENTORY.json": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-156/attempts/attempt-2/SEALED_CLAIM_INVENTORY.json",
+        "sha256": "ab34bcf5371edb226065024483dcbcc8fac8f1bd4b5237855d11cf82a926333e"
+      },
+      "SEALED_RUN_MANIFEST.json": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-156/attempts/attempt-2/SEALED_RUN_MANIFEST.json",
+        "sha256": "f2329ec6ae4f103be9d35d2e856bdd58ea45a9b191a5c1ba2504f63fa7316749"
+      },
+      "SEALED_paper.pdf": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-156/attempts/attempt-2/SEALED_paper.pdf",
+        "sha256": "b4e8b0748d2f55933911abd3af1daff22751ed5a9d121945cafd0e73b1b95f67"
+      },
+      "SEALED_paper.tex": {
+        "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-156/attempts/attempt-2/SEALED_paper.tex",
+        "sha256": "454b28c31ae1f70870bce2a93d7e71cdfe08b6e4edaffe0a8bd8b1aec179d2b3"
+      }
+    },
+    "sealed_statement_contract": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-156/attempts/attempt-2/VERIFICATION_STATEMENT.lean",
+      "sha256": "9689215c8d0ae34b630a21077f2eaeaafebc83921fadb184fdf252fb629e9a70"
+    },
+    "statement_alignment_receipt": {
+      "path": "/Users/justinhart/Desktop/Cowork /Viridis Core docs 2.0/RESEARCH_PIPELINE_v2/lean_certificates/Run-156/attempts/attempt-2/STATEMENT_ALIGNMENT.json",
+      "sha256": "60c9c530bf70b2bc2e1b466a160216dbb99c37243b2ba883626278fafd720ffd"
+    }
+  },
+  "candidate_id": "Run-156-MonitoringResponseReserve-Comparator-attempt-2",
+  "gates": {
+    "allowed_axioms_only": true,
+    "aristotle_required": false,
+    "comparator_lean_kernel": true,
+    "comparator_nanoda_kernel": true,
+    "comparator_statement_identity": true,
+    "frozen_statement_and_candidate_hash_bound": true,
+    "independent_cloud_kernel_verification": true,
+    "local_lean_execution": false,
+    "nonvacuity_witnesses": true,
+    "sealed_statement_signature_alignment": true,
+    "zero_sorries_or_admits": true
+  },
+  "issued_at_utc": "2026-09-13T14:32:50.946393+00:00",
+  "run_id": "Run-156",
+  "runtime_observation_assessment": {
+    "approved_build_status": "UNREVIEWED",
+    "compiled_dependency_closure_sha256": null,
+    "disk_cache_admitted": false,
+    "execution_id": "6a475891-233b-469c-b39e-797471c87388",
+    "failures": [],
+    "full_toolchain_attested": false,
+    "policy": "VRS-COMPARATOR-OBSERVATION-CONSUMER-1",
+    "scope": "Source-bound observations only. Manifest declarations are not approved executable or compiled-dependency pins; full attestation and cache admission remain unavailable.",
+    "served_request_id": "6a475891-233b-469c-b39e-797471c87388",
+    "source_binding_status": "MATCH",
+    "status": "OBSERVATION_MATCH_PARTIAL"
+  },
+  "schema_version": "1.0",
+  "scope": "formal Lean claims only; novelty, empirical validity, rights, publication, deployment, and outcomes remain separate gates",
+  "standard": "VRS-LEAN-ZERO-SORRY-CERTIFICATE-1",
+  "status": "LEAN_ZERO_SORRY_CERTIFIED",
+  "verification_standard": "VRS-COMPARATOR-DUAL-KERNEL-1"
+}

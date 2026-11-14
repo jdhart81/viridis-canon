@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viridis Canon — November 2026 release</title>
+<meta name="description" content="Overview of the Viridis Canon November 2026 release: machine-checked mathematics for ecological decisions, with certificate counts, three lead results, corrections and outside review.">
+<meta name="author" content="Justin D. Hart">
+<link rel="canonical" href="https://jdhart81.github.io/viridis-canon/overview/">
+<style>
+:root{--fg:#1c2620;--muted:#55635a;--line:#d9ded6;--accent:#1f5c3d;--code:#f1f3ee;--warn:#7a5a12;--warnbg:#fbf3dc}
+*{box-sizing:border-box}
+body{margin:0;color:var(--fg);background:#fff;font:16px/1.55 'Liberation Serif','DejaVu Serif',Georgia,'Times New Roman',serif}
+main{max-width:46rem;margin:0 auto;padding:1.5rem 16px 3rem}
+h1{font-size:2.1rem;line-height:1.15;margin:0 0 .2rem;color:var(--accent)}
+.sub{font-size:1.2rem;margin:0 0 .6rem;color:var(--accent)}
+.by,.status,h2,table,.meta{font-family:'Liberation Sans','DejaVu Sans',Arial,Helvetica,sans-serif}
+.by{font-size:.85rem;color:var(--muted);margin:0 0 1rem}
+.status{font-size:.82rem;line-height:1.45;background:var(--warnbg);color:var(--warn);border-radius:6px;padding:.6rem .8rem}
+h2{font-size:.95rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:1.6rem 0 .5rem;border-top:1px solid var(--line);padding-top:.9rem}
+h3{font-size:1.25rem;line-height:1.25;margin:1.4rem 0 .3rem}
+a{color:var(--accent)}
+.question{font-style:italic}
+ul{padding-left:1.2rem}li{margin:.3rem 0}
+table{width:100%;border-collapse:collapse;font-size:.82rem;line-height:1.4}
+td,th{border-bottom:1px solid var(--line);padding:.35rem .3rem;vertical-align:top;text-align:left}
+td.n{text-align:right;white-space:nowrap;font-weight:700}
+code,pre{font:.78rem/1.45 'Liberation Mono','DejaVu Sans Mono',Menlo,monospace;background:var(--code);border-radius:4px}
+code{padding:.05rem .2rem;word-break:break-word}pre{padding:.6rem;white-space:pre-wrap;word-break:break-word}
+.meta{font-size:.8rem;color:var(--muted)}
+table.ledger td:nth-child(-n+2){white-space:nowrap}
+.box{border:1px solid var(--line);border-radius:6px;padding:.1rem .8rem;margin:.8rem 0;background:#fafbf8}
+@media print{main{max-width:none;padding:0}h2,h3{break-after:avoid}table,pre,.box,li{break-inside:avoid}a{text-decoration:none}}
+@page{size:letter;margin:18mm 17mm}
+</style>
+</head>
+<body>
+<main>
+<h1>Viridis Canon</h1>
+<p class="sub">Machine-checked mathematics for ecological decisions — November 2026 release</p>
+<p class="by">Justin D. Hart · Viridis LLC · ORCID <a href="https://orcid.org/0009-0008-3082-2482">0009-0008-3082-2482</a> ·
+13 November 2026 · version 2026.11.13 · <a href="https://github.com/jdhart81/viridis-canon">github.com/jdhart81/viridis-canon</a></p>
+<p class="status">UNCERTIFIED manuscript artifact. No issuer-produced Viridis Comparator certificate has been shown to bind this public manuscript&#x27;s exact bytes. Any linked certificate applies only to its exact sealed artifacts and stated theorem scope. Results remain conditional on the declared assumptions. Working paper, not peer reviewed. The main theorems of 18 results carry comparator certificates (Lean 4; accepted by the Lean kernel and by the independent nanoda kernel). Results are conditional on their stated assumptions; the decision tools are not field-validated.</p>
+
+<h2>What this is</h2>
+<p>The Viridis Canon is an open research program that uses AI systems to propose and prove results about
+decisions in ecology and conservation. Each result is released in three linked forms: Lean 4 proofs built
+against a pinned Mathlib, a paper with a DOI, and a decision function you can run. The Git repository
+<a href="https://github.com/jdhart81/viridis-canon">github.com/jdhart81/viridis-canon</a> is where results are released and corrected; the
+Zenodo record (concept DOI <a href="https://doi.org/10.5281/zenodo.19317982">10.5281/zenodo.19317982</a>) is the permanent,
+citable snapshot. This overview replaces the October 2026 overview
+(<a href="https://doi.org/10.5281/zenodo.23442570">10.5281/zenodo.23442570</a>).</p>
+
+<h2>In numbers</h2>
+<table><tbody>
+<tr><td>Published with certificate bundles</td><td class="n">18 runs, 114 theorems</td><td>11 runs labelled substantial, 7 elementary</td></tr>
+<tr><td>Decision functions tied to Lean theorems</td><td class="n">44</td><td>Listed in <code>formalization.yaml</code>; none is field-validated</td></tr>
+<tr><td>Findings confirmed by outside readers</td><td class="n">3</td><td>Credited under “Outside review”</td></tr>
+<tr><td>Engine runs</td><td class="n">199</td><td rowspan="3">Engine totals as published with the October 2026 release (<code>RESPONSIBLE_RELEASE.md</code>)</td></tr>
+<tr><td>Submitted for certification</td><td class="n">84</td></tr>
+<tr><td>Certified</td><td class="n">78</td></tr>
+</tbody></table>
+<p class="meta">The size label is computed from the Lean source (at least 200 lines and a median proof of at
+least six lines counts as substantial). It is a size indicator, not a judgement of novelty or importance.</p>
+
+<h2>What changed since the October release</h2>
+<ul>
+<li>The cash theorem bounty is closed to new reports; confirmed findings now earn named credit. 3 findings were confirmed and are listed under “Outside review”.</li><li>Run-129, <code>bounded_overshoot_expected_delay</code>: the stated scope was corrected after an outside report (#121). See the result below.</li><li>Run-133, one of the certified runs, has 2 confirmed findings. Its certified files stay as issued until it is re-certified with the repairs.</li><li>A compile census now compiles every Lean file in the repository on its own and audits its axioms, weekly and on every Lean change. The 2026-11-13 ledger covers 278 files and 6,947 declarations; 188 files are clean. The rest are listed with reasons in <code>reports/compile_census/</code>.</li><li>44 decision functions are now tied to Lean theorems in <code>formalization.yaml</code>.</li>
+</ul>
+
+<h2>Three results</h2>
+<h3>Anytime-valid change detection for ecological monitoring</h3>
+<p class="question">Has this monitoring signal really changed? And if I re-check after every new observation, for as long as the program runs, how do I keep false alarms under control?</p>
+<p>Monitoring programs look at data continuously. Re-running a classical test after every new count inflates the false-alarm rate. This result gives a monitor whose probability of ever raising a false alarm is at most α, however long you watch and however often you look.</p><p>It also tells you what a late change costs (a log-sized evidence penalty) and, when the evidence increments are bounded, bounds how long, on average, a real change takes to detect.</p>
+<ul>
+<li><b>Ville's inequality.</b> For a non-negative martingale (M<sub>n</sub>) and c &gt; 0: P(∃n: M<sub>n</sub> ≥ c) ≤ E[M<sub>0</sub>]/c.</li><li><b>The monitor.</b> M<sub>n</sub> = A<sub>n</sub> + t<sub>n</sub>, with A<sub>0</sub> = 0, A<sub>n</sub> = Λ<sub>n</sub>(A<sub>n−1</sub> + π<sub>n</sub>), change-time prior π<sub>k</sub> = 1/(k(k+1)) and tail t<sub>n</sub> = 1/(n+1). Λ<sub>n</sub> is the likelihood ratio of observation n. Under the null it is a non-negative martingale with M<sub>0</sub> = 1.</li><li><b>Anytime false-alarm control.</b> P<sub>0</sub>(∃n: M<sub>n</sub> ≥ 1/α) ≤ α.</li><li><b>Late-change penalty.</b> The monitor dominates every embedded change-at-ν detector and alarms no later than it; the evidence boundary for a change at ν is log(1/α) + log(ν(ν+1)).</li><li><b>Detection delay.</b> If post-change log-likelihood increments Z<sub>j</sub> are each independent of the past, uniformly bounded (|Z<sub>j</sub>| ≤ B), at most z<sub>max</sub>, and have mean D &gt; 0, and the first time N<sub>a</sub> the evidence sum reaches a &gt; 0 has finite expectation, then a/D ≤ E[N<sub>a</sub>] &lt; (a + z<sub>max</sub>)/D.</li>
+</ul>
+<div class="box"><p><b>Corrected 2026-11-13</b> (<code>bounded_overshoot_expected_delay</code>). Earlier descriptions of this result gave the delay bound for increments “bounded above by z_max”. The certified theorem also assumes a uniform two-sided bound, |Z| ≤ B, so it covers the bounded-increment case of the paper&#x27;s claim. The paper&#x27;s next version will state this. Found by @mak777uh (<a href="https://github.com/jdhart81/viridis-canon/issues/121">#121</a>).</p></div><p class="meta">Certified (Run-129, size label substantial): <code>anytime_change_mixture_martingale</code>, <code>anytime_change_ville_certificate</code>, <code>change_component_dominance_and_penalty</code>, <code>bounded_overshoot_expected_delay</code>, plus
+4 non-vacuity witnesses. Paper (UNCERTIFIED manuscript artifact):
+<cite>The Anytime Change Certificate: False-alarm control, a late-change penalty, and a bounded erasure budget for continuous monitoring</cite>, DOI <a href="https://doi.org/10.5281/zenodo.21971041">10.5281/zenodo.21971041</a>.
+Function: <code>anytime-change</code>. Plain-language page: <a href="https://jdhart81.github.io/viridis-canon/results/anytime-change/">https://jdhart81.github.io/viridis-canon/results/anytime-change/</a>.</p>
+<h3>Can a seed supply network meet restoration demand?</h3>
+<p class="question">Can our seed sources meet every planting site&#x27;s demand under our seed-transfer rules? If not, which sites are the bottleneck, and will buying more seed help?</p>
+<p>Give the tool your seed lots (with quantities), your planting sites (with demand) and which lots may go to which sites, for example under climate-matched provenance rules. It returns the largest share of every site&#x27;s demand you can meet at the same time, and the sites that limit it.</p><p>Adding seed at a source that cannot reach the bottleneck sites cannot raise that share. Checking several climate scenarios together can only lower it, never raise it.</p><p>Having as much seed in total as you need is not enough: the certified negative control shows total supply exactly equal to total demand while only a small fraction of every site&#x27;s demand can be met.</p>
+<ul>
+<li><b>Common fulfilment fraction.</b> θ* = min{1, min over non-empty site sets U of S(N(U)) / D(U)}, where N(U) is the set of sources allowed to serve some site in U, S is total supply and D is total demand. θ* is the largest feasible fraction.</li><li><b>Full supply.</b> Every site can be fully supplied if and only if D(U) ≤ S(N(U)) for every non-empty U (a capacitated Hall condition).</li><li><b>Bottleneck.</b> When θ* &lt; 1, increasing supply at a source outside N(U) for the active bottleneck U cannot increase θ*.</li><li><b>Scenarios.</b> The certificate for transfers allowed in every scenario is at most the certificate of each scenario.</li>
+</ul>
+<p class="meta">Certified (Run-130, size label substantial): <code>seed_routing_common_fraction_eq_min_cut_ratio</code>, <code>seed_routing_feasible_iff_cut_conditions</code>, <code>capacity_outside_active_bottleneck_irrelevant</code>, <code>scenario_intersection_certificate_le_each_scenario</code>, plus
+7 non-vacuity witnesses. Paper (UNCERTIFIED manuscript artifact):
+<cite>The Seed-Source Bottleneck Certificate: A cut condition for climate-aligned afforestation supply networks</cite>, DOI <a href="https://doi.org/10.5281/zenodo.21971057">10.5281/zenodo.21971057</a>.
+Function: <code>seed-source-bottleneck</code>. Plain-language page: <a href="https://jdhart81.github.io/viridis-canon/results/seed-supply-bottleneck/">https://jdhart81.github.io/viridis-canon/results/seed-supply-bottleneck/</a>.</p>
+<h3>A precautionary capacity rule that is provably safe and provably tight</h3>
+<p class="question">If I only know the average and the spread of an uncertain capacity, how much can I safely plan to use, with a guaranteed bound on the chance of falling short?</p>
+<p>Plan against the floor d = [μ − σ√((1−α)/α)]₊. Whatever the shape of the uncertainty (any non-negative distribution with mean μ and standard deviation σ), the chance that capacity falls below that floor is at most α.</p><p>You cannot do better with the mean and variance alone: for any higher floor there is a two-point distribution that breaks the guarantee. Planning on the mean alone can fail with probability above any level below 1.</p>
+<ul>
+<li><b>Two-moment floor.</b> d<sub>α</sub> = [μ − σ√((1−α)/α)]<sub>+</sub>, from Cantelli's one-sided inequality (proved here; Mathlib at our pinned revision has Chebyshev's but not Cantelli's).</li><li><b>Guarantee.</b> P(D &lt; d<sub>α</sub>) ≤ α for every non-negative capacity D with mean μ and standard deviation σ.</li><li><b>Sharpness.</b> For any d &gt; d<sub>α</sub> &gt; 0 there is a two-point law with the same mean and variance under which the violation probability exceeds α.</li><li><b>Mean-only rule.</b> For any β &lt; 1 there is a non-negative two-point law with mean μ under which planning on μ fails with probability above β.</li><li><b>In the paper's model</b> the certified rate is r<sub>α</sub> = P·d<sub>α</sub>/(k<sub>B</sub>T ln 2), and the reserve fraction is r<sub>α</sub>/r<sub>μ</sub> = [1 − CV·√((1−α)/α)]<sub>+</sub>.</li>
+</ul>
+<p class="meta">Certified (Run-127, size label substantial): <code>cantelli_capacity_certificate</code>, <code>precautionary_rate_le_violation_budget</code>, <code>capacity_reserve_fraction_eq</code>, <code>positive_floor_sharp_two_point_counterexample</code>, <code>mean_only_plugin_arbitrarily_unsafe</code>, plus
+5 non-vacuity witnesses. Paper (UNCERTIFIED manuscript artifact):
+<cite>The Precautionary Capacity Reserve: A Sharp Moment-Robust Stewardship Discount for an Intelligence-Rate Model</cite>, DOI <a href="https://doi.org/10.5281/zenodo.21971046">10.5281/zenodo.21971046</a>.
+Function: <code>precautionary-capacity</code>. Plain-language page: <a href="https://jdhart81.github.io/viridis-canon/results/precautionary-capacity/">https://jdhart81.github.io/viridis-canon/results/precautionary-capacity/</a>.</p>
+
+<h2>What a certificate establishes, and what it does not</h2>
+<p>The listed Lean theorems are proved in the solution file, their statements match the challenge file, they
+use only the permitted axioms, and the Lean kernel and the nanoda kernel accept them. It does not establish
+that the formal statement captures the paper's prose claim, that the model describes nature, that the result
+is new, or that any decision built on it is correct.</p>
+
+<h2>Check it yourself</h2>
+<pre>git clone https://github.com/jdhart81/viridis-canon &amp;&amp; cd viridis-canon
+python3 certificates/verify_bundle.py         # every file still matches its certificate
+certificates/rerun.sh Run-129 --axioms-only   # re-elaborate in Lean and audit the axioms
+certificates/rerun.sh Run-129                 # full comparator check (needs comparator)</pre>
+<p>The attached <code>viridis-canon-certificates-2026-11-13.zip</code> contains every certified run's challenge and solution files,
+certificates, receipts and claim inventories, the verifier, the re-run script, <code>formalization.yaml</code>
+and the release documents.</p>
+
+<h2>Outside review</h2>
+<p>A certificate cannot tell you whether a Lean statement says what the paper claims. Outside readers can.
+So far they have confirmed 3 findings among the certified runs. Each one is credited
+below and is fixed or relabelled.</p>
+<table class="ledger"><thead><tr><th>Date</th><th>Run</th><th>Theorem</th><th>Finding</th><th>Reporter</th><th>Outcome</th></tr></thead><tbody><tr><td>2026-10-29</td><td>Run-133</td><td><code>synchrony_dividend_identity</code> (C1)</td><td>Misstated</td><td>@BeakDo (<a href="https://github.com/jdhart81/viridis-canon/issues/152">#152</a>)</td><td>Confirmed; $50</td></tr><tr><td>2026-10-29</td><td>Run-129</td><td><code>bounded_overshoot_expected_delay</code> (C4)</td><td>Misstated</td><td>@mak777uh (<a href="https://github.com/jdhart81/viridis-canon/issues/121">#121</a>)</td><td>Confirmed; $50</td></tr><tr><td>2026-11-07</td><td>Run-133</td><td><code>additive_shared_cost_saving</code> (C5)</td><td>Trivial</td><td>@whhhh1500 (<a href="https://github.com/jdhart81/viridis-canon/issues/158">#158</a>)</td><td>Confirmed; named credit</td></tr></tbody></table>
+<p>The cash theorem bounty announced with the October release is closed to new reports. Reports filed before it closed were reviewed under the terms they were filed under. New confirmed findings earn named credit in the ledger, on the affected result page and in the paper's next version; there is no cash award. How to report, how findings are judged and the full ledger:
+<a href="https://github.com/jdhart81/viridis-canon/blob/main/BOUNTY.md">BOUNTY.md</a>.</p>
+
+<h2>Authorship and AI use</h2>
+<p>Justin D. Hart is the accountable author of every result. The proofs are AI-generated and then
+machine-checked. Tools and their roles: the Aristotle theorem prover (Harmonic) for automated Lean proofs;
+OpenAI Codex for proof candidates, code and operations; Claude (Anthropic) for drafting, critique and review.
+Tools are not authors. Details: <code>AI_USE_AND_AUTHORSHIP.md</code> and <code>RESPONSIBLE_RELEASE.md</code>.</p>
+
+<h2>Earlier versions</h2>
+<p>Version 2026.10.17 (<a href="https://doi.org/10.5281/zenodo.23442570">10.5281/zenodo.23442570</a>) is the October 2026
+release; its overview offered the cash bounty that has since closed and stated the Run-129 delay bound without
+the bounded-increment condition. Versions up to v10.2.0 bundled historical drafts and listed the Aristotle
+prover among the creators. All earlier versions remain available as history.</p>
+</main>
+</body>
+</html>

@@ -1133,6 +1133,7 @@
     "P0AxiomAudit.lean",
     "series/ACCN/VERIFICATION_PROOFS.lean",
     "series/BCAN/CorridorAlignmentProofs.lean",
+    "series/NonSubstitutability/Non_Substitutability_Complete.lean",
     "series/DCAE/VERIFICATION_PROOFS.lean",
     "series/RCBN/CheckpointBalanceProofs.lean",
     "series/SBRN/StewardshipBottleneckReserveProofs.lean"

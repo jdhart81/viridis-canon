@@ -104,11 +104,11 @@ DOI <a href="https://doi.org/10.5281/zenodo.21971041">10.5281/zenodo.21971041</a
 <p class="question">Has this monitoring signal really changed? And if I re-check after every new observation, for as long as the program runs, how do I keep false alarms under control?</p>
 
 <h2>The answer, in plain words</h2>
-<p>Monitoring programs look at data continuously. Re-running a classical test after every new count inflates the false-alarm rate. This result gives a monitor whose probability of ever raising a false alarm is at most α, however long you watch and however often you look.</p><p>It also tells you what a late change costs (a log-sized evidence penalty) and bounds how long, on average, a real change takes to detect.</p>
+<p>Monitoring programs look at data continuously. Re-running a classical test after every new count inflates the false-alarm rate. This result gives a monitor whose probability of ever raising a false alarm is at most α, however long you watch and however often you look.</p><p>It also tells you what a late change costs (a log-sized evidence penalty) and, when the evidence increments are bounded, bounds how long, on average, a real change takes to detect.</p>
 
 <h2>The mathematics</h2>
 <ul>
-<li><b>Ville's inequality.</b> For a non-negative martingale (M<sub>n</sub>) and c &gt; 0: P(∃n: M<sub>n</sub> ≥ c) ≤ E[M<sub>0</sub>]/c.</li><li><b>The monitor.</b> M<sub>n</sub> = A<sub>n</sub> + t<sub>n</sub>, with A<sub>0</sub> = 0, A<sub>n</sub> = Λ<sub>n</sub>(A<sub>n−1</sub> + π<sub>n</sub>), change-time prior π<sub>k</sub> = 1/(k(k+1)) and tail t<sub>n</sub> = 1/(n+1). Λ<sub>n</sub> is the likelihood ratio of observation n. Under the null it is a non-negative martingale with M<sub>0</sub> = 1.</li><li><b>Anytime false-alarm control.</b> P<sub>0</sub>(∃n: M<sub>n</sub> ≥ 1/α) ≤ α.</li><li><b>Late-change penalty.</b> The monitor dominates every embedded change-at-ν detector and alarms no later than it; the evidence boundary for a change at ν is log(1/α) + log(ν(ν+1)).</li><li><b>Detection delay.</b> If post-change log-likelihood increments are bounded above by z<sub>max</sub> with mean D &gt; 0, the first time the evidence sum reaches a satisfies a/D ≤ E[N<sub>a</sub>] &lt; (a + z<sub>max</sub>)/D.</li>
+<li><b>Ville's inequality.</b> For a non-negative martingale (M<sub>n</sub>) and c &gt; 0: P(∃n: M<sub>n</sub> ≥ c) ≤ E[M<sub>0</sub>]/c.</li><li><b>The monitor.</b> M<sub>n</sub> = A<sub>n</sub> + t<sub>n</sub>, with A<sub>0</sub> = 0, A<sub>n</sub> = Λ<sub>n</sub>(A<sub>n−1</sub> + π<sub>n</sub>), change-time prior π<sub>k</sub> = 1/(k(k+1)) and tail t<sub>n</sub> = 1/(n+1). Λ<sub>n</sub> is the likelihood ratio of observation n. Under the null it is a non-negative martingale with M<sub>0</sub> = 1.</li><li><b>Anytime false-alarm control.</b> P<sub>0</sub>(∃n: M<sub>n</sub> ≥ 1/α) ≤ α.</li><li><b>Late-change penalty.</b> The monitor dominates every embedded change-at-ν detector and alarms no later than it; the evidence boundary for a change at ν is log(1/α) + log(ν(ν+1)).</li><li><b>Detection delay.</b> If post-change log-likelihood increments Z<sub>j</sub> are each independent of the past, uniformly bounded (|Z<sub>j</sub>| ≤ B), at most z<sub>max</sub>, and have mean D &gt; 0, and the first time N<sub>a</sub> the evidence sum reaches a &gt; 0 has finite expectation, then a/D ≤ E[N<sub>a</sub>] &lt; (a + z<sub>max</sub>)/D.</li>
 </ul>
 <p>We could not find Ville&#x27;s inequality in Mathlib (checked master 74e558e on 2026-10-17) and have offered to contribute it upstream.</p>
 
@@ -124,7 +124,7 @@ Size label: <b>substantial</b>.</p>
 <tr><td><code>anytime_change_mixture_martingale</code></td><td>Under the declared null the monitor is a non-negative martingale with M₀ = 1 and mean 1 at every n.</td></tr>
 <tr><td><code>anytime_change_ville_certificate</code></td><td>P₀(the monitor ever reaches 1/α) ≤ α. Proved from Ville&#x27;s inequality (`ville_inequality`).</td></tr>
 <tr><td><code>change_component_dominance_and_penalty</code></td><td>The monitor dominates each change-at-ν component, alarms no later, and pays log(1/α) + log(ν(ν+1)).</td></tr>
-<tr><td><code>bounded_overshoot_expected_delay</code></td><td>a/D ≤ E[N_a] &lt; (a + z_max)/D for the first crossing of level a.</td></tr>
+<tr><td><code>bounded_overshoot_expected_delay</code></td><td>a/D ≤ E[N_a] &lt; (a + z_max)/D for the first crossing of level a, for increments with |Z| ≤ B and Z ≤ z_max, and E[N_a] finite.</td></tr>
 <tr><td><code>c12_nonvacuous</code></td><td>Witness: an iid Bernoulli(1/5) null on ℕ → Bool satisfies every hypothesis; the alarm event is neither empty nor null.</td></tr>
 <tr><td><code>c2_sup_nonvacuous</code></td><td>Witness for the supremum form of the certificate at the same instance.</td></tr>
 <tr><td><code>c3_nonvacuous</code></td><td>Witness: dominance is strict on an explicit path (alarm at 1 versus 2).</td></tr>
@@ -154,7 +154,12 @@ echo '{&quot;id&quot;: &quot;anytime-change&quot;, &quot;inputs&quot;: {&quot;ob
 
 <h2>Assumptions and limits</h2>
 <ul>
-<li>The null is used only through E₀[Λₙ | past] = 1, with Λₙ non-negative, adapted and integrable.</li><li>The runnable tool implements the single Bernoulli likelihood-ratio process of the paper; other data types need their own likelihood ratios.</li><li>The paper&#x27;s title also mentions an erasure budget. That physical reading is part of the paper&#x27;s model, not of the certificate.</li><li>Not field-validated: no monitoring program has used it yet.</li>
+<li>The null is used only through E₀[Λₙ | past] = 1, with Λₙ non-negative, adapted and integrable.</li><li>The delay bound is certified for uniformly bounded increments (|Z| ≤ B). The paper assumes only an upper bound plus the usual Wald integrability conditions; that wider case is not certified.</li><li>The runnable tool implements the single Bernoulli likelihood-ratio process of the paper; other data types need their own likelihood ratios.</li><li>The paper&#x27;s title also mentions an erasure budget. That physical reading is part of the paper&#x27;s model, not of the certificate.</li><li>Not field-validated: no monitoring program has used it yet.</li>
+</ul>
+
+<h2>Corrections</h2>
+<ul>
+<li><b>Corrected 2026-11-13</b> (<code>bounded_overshoot_expected_delay</code>). Earlier descriptions of this result gave the delay bound for increments “bounded above by z_max”. The certified theorem also assumes a uniform two-sided bound, |Z| ≤ B, so it covers the bounded-increment case of the paper&#x27;s claim. The paper&#x27;s next version will state this. Found by @mak777uh (<a href="https://github.com/jdhart81/viridis-canon/issues/121">#121</a>).</li>
 </ul>
 
 <h2>Cite</h2>

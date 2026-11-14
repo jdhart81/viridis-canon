@@ -40,7 +40,7 @@ SITEMAP = ROOT / "docs" / "sitemap.xml"
 BASE = "https://jdhart81.github.io/viridis-canon/"
 REPO = "https://github.com/jdhart81/viridis-canon"
 ORCID = "https://orcid.org/0009-0008-3082-2482"
-LASTMOD = "2026-10-18"
+LASTMOD = "2026-11-13"
 
 # The approved label, verbatim. It is the same text the engine writes on Zenodo and the site shows.
 UNCERTIFIED_LABEL = ("UNCERTIFIED manuscript artifact. No issuer-produced Viridis Comparator certificate has been "
@@ -77,8 +77,8 @@ RESULTS = [
             "Monitoring programs look at data continuously. Re-running a classical test after every new "
             "count inflates the false-alarm rate. This result gives a monitor whose probability of ever "
             "raising a false alarm is at most α, however long you watch and however often you look.",
-            "It also tells you what a late change costs (a log-sized evidence penalty) and bounds how "
-            "long, on average, a real change takes to detect.",
+            "It also tells you what a late change costs (a log-sized evidence penalty) and, when the "
+            "evidence increments are bounded, bounds how long, on average, a real change takes to detect.",
         ],
         "math": [
             "<b>Ville's inequality.</b> For a non-negative martingale (M<sub>n</sub>) and c &gt; 0: "
@@ -91,9 +91,10 @@ RESULTS = [
             "<b>Late-change penalty.</b> The monitor dominates every embedded change-at-ν detector and "
             "alarms no later than it; the evidence boundary for a change at ν is "
             "log(1/α) + log(ν(ν+1)).",
-            "<b>Detection delay.</b> If post-change log-likelihood increments are bounded above by "
-            "z<sub>max</sub> with mean D &gt; 0, the first time the evidence sum reaches a satisfies "
-            "a/D ≤ E[N<sub>a</sub>] &lt; (a + z<sub>max</sub>)/D.",
+            "<b>Detection delay.</b> If post-change log-likelihood increments Z<sub>j</sub> are each "
+            "independent of the past, uniformly bounded (|Z<sub>j</sub>| ≤ B), at most z<sub>max</sub>, "
+            "and have mean D &gt; 0, and the first time N<sub>a</sub> the evidence sum reaches a &gt; 0 has "
+            "finite expectation, then a/D ≤ E[N<sub>a</sub>] &lt; (a + z<sub>max</sub>)/D.",
         ],
         "theorems": [
             ("anytime_change_mixture_martingale",
@@ -103,7 +104,8 @@ RESULTS = [
             ("change_component_dominance_and_penalty",
              "The monitor dominates each change-at-ν component, alarms no later, and pays log(1/α) + log(ν(ν+1))."),
             ("bounded_overshoot_expected_delay",
-             "a/D ≤ E[N_a] < (a + z_max)/D for the first crossing of level a."),
+             "a/D ≤ E[N_a] < (a + z_max)/D for the first crossing of level a, for increments with "
+             "|Z| ≤ B and Z ≤ z_max, and E[N_a] finite."),
             ("c12_nonvacuous", "Witness: an iid Bernoulli(1/5) null on ℕ → Bool satisfies every hypothesis; the alarm event is neither empty nor null."),
             ("c2_sup_nonvacuous", "Witness for the supremum form of the certificate at the same instance."),
             ("c3_nonvacuous", "Witness: dominance is strict on an explicit path (alarm at 1 versus 2)."),
@@ -111,9 +113,18 @@ RESULTS = [
         ],
         "assumptions": [
             "The null is used only through E₀[Λₙ | past] = 1, with Λₙ non-negative, adapted and integrable.",
+            "The delay bound is certified for uniformly bounded increments (|Z| ≤ B). The paper assumes only an "
+            "upper bound plus the usual Wald integrability conditions; that wider case is not certified.",
             "The runnable tool implements the single Bernoulli likelihood-ratio process of the paper; other data types need their own likelihood ratios.",
             "The paper's title also mentions an erasure budget. That physical reading is part of the paper's model, not of the certificate.",
             "Not field-validated: no monitoring program has used it yet.",
+        ],
+        "corrections": [
+            {"date": "2026-11-13", "issue": 121, "reporter": "mak777uh",
+             "theorem": "bounded_overshoot_expected_delay",
+             "text": ("Earlier descriptions of this result gave the delay bound for increments “bounded above by z_max”. "
+                      "The certified theorem also assumes a uniform two-sided bound, |Z| ≤ B, so it covers the "
+                      "bounded-increment case of the paper's claim. The paper's next version will state this.")},
         ],
         "note_ville": ("We could not find Ville's inequality in Mathlib (checked master 74e558e on 2026-10-17) "
                        "and have offered to contribute it upstream."),
@@ -352,6 +363,7 @@ def render(r: dict) -> str:
 <style>{CSS}</style>
 </head>"""
     ville = f"<p>{esc(r['note_ville'])}</p>" if r.get("note_ville") else ""
+    corrections = corrections_html(r)
     body = f"""
 <body>
 <header><a class="brand" href="../../">Viridis Canon</a><a href="../">Results</a><a href="{REPO}">Repository</a><a href="{REPO}/blob/main/BOUNTY.md">Theorem bounty</a></header>
@@ -404,7 +416,7 @@ echo '{esc(request)}' | python3 os-bundle/run.py</pre>
 {''.join(f'<li>{esc(a)}</li>' for a in r['assumptions'])}
 </ul>
 
-<h2>Cite</h2>
+{corrections}<h2>Cite</h2>
 <pre>{esc(bibtex(r, doi))}</pre>
 </main>
 <footer>
@@ -453,6 +465,20 @@ see <a href="{REPO}/blob/main/RESPONSIBLE_RELEASE.md">how we release</a>.</p></f
 </body>
 </html>
 """
+
+
+def correction_items(r: dict) -> list[str]:
+    """One HTML fragment per correction of a result (also used by tools/build_overview.py)."""
+    return [f"<b>Corrected {esc(c['date'])}</b> (<code>{esc(c['theorem'])}</code>). {esc(c['text'])} "
+            f"Found by @{esc(c['reporter'])} (<a href=\"{REPO}/issues/{c['issue']}\">#{c['issue']}</a>)."
+            for c in r.get("corrections", [])]
+
+
+def corrections_html(r: dict) -> str:
+    items = correction_items(r)
+    if not items:
+        return ""
+    return "<h2>Corrections</h2>\n<ul>\n" + "".join(f"<li>{i}</li>" for i in items) + "\n</ul>\n\n"
 
 
 def render_sitemap() -> str:

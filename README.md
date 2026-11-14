@@ -44,7 +44,7 @@ evidence exists.
 |---|---|---|
 | Published comparator certificates | **18 runs, 114 theorems** | Each certificate records that the theorems are proved with zero `sorry`. It also records that they use only `propext`, `Quot.sound` and `Classical.choice`, that their statements match a challenge file, and that both the Lean kernel and the independent nanoda kernel accept them. The files and hashes are in [`certificates/`](./certificates/). |
 | … labelled *substantial* | **11 runs** | Formalizations of at least 200 lines with multi-step proofs. The other 7 are labelled *elementary* and are not oversold. See the [depth rule](./certificates/README.md). |
-| Decision functions tied to Lean theorems | **42** | Each [manifest](./os/) names its Lean module, theorems, DOI and verifier. They are listed in [`formalization.yaml`](./formalization.yaml). |
+| Decision functions tied to Lean theorems | **44** | Each [manifest](./os/) names its Lean module, theorems, DOI and verifier. They are listed in [`formalization.yaml`](./formalization.yaml). |
 | Rebuilt on every push | CI | `lake build` with an axiom audit (see [`REPRODUCE.md`](./REPRODUCE.md)). |
 | Legacy catalog records | 215 | Labelled UNCERTIFIED until re-certified (see [below](#legacy-catalog-status)). |
 
@@ -60,7 +60,7 @@ recommendations and including our known gaps, is set out in
 - Ville's inequality for non-negative martingales: P(∃n, c ≤ Mₙ) ≤ E[M₀]/c.
 - A mixture likelihood-ratio martingale.
 - The resulting false-alarm guarantee, P(∃n, Mₙ ≥ 1/α) ≤ α, valid at every sample size.
-- A Wald-type bound on expected detection delay.
+- A Wald-type bound on expected detection delay, certified for uniformly bounded increments ([corrected 2026-11-13](https://jdhart81.github.io/viridis-canon/results/anytime-change/)).
 
 As of 2026-10-17 we could not find Ville's inequality in Mathlib, which has
 Doob's finite-horizon `maximal_ineq`. If it would be welcome there, we would like
@@ -205,9 +205,10 @@ connections among information, thermodynamics, learning, and living systems.
 The repository is the reproducible source, not a claim that every model
 assumption has been established in nature.
 
+- **Read the overview:** [the current release on one page](https://jdhart81.github.io/viridis-canon/overview/), built by [`tools/build_overview.py`](./tools/build_overview.py) from the certificate index, `formalization.yaml` and the bounty ledger
 - **Inspect the exact claims:** [`CLAIMS_MATRIX.md`](./CLAIMS_MATRIX.md)
 - **Reproduce current and historical builds:** [`REPRODUCE.md`](./REPRODUCE.md)
-- **Cite the collection:** concept DOI [10.5281/zenodo.19317982](https://doi.org/10.5281/zenodo.19317982), which always resolves to the latest hub release (currently v2026.10.17, git tag `canon-v2026.10.17`)
+- **Cite the collection:** concept DOI [10.5281/zenodo.19317982](https://doi.org/10.5281/zenodo.19317982), which always resolves to the latest hub release (currently v2026.11.13, git tag `canon-v2026.11.13`)
 - **Licenses:** Lean sources and code are Apache-2.0 ([`LICENSE`](./LICENSE)); papers and documentation in the Zenodo records are CC BY 4.0 ([`NOTICE`](./NOTICE))
 - **Report a reproduction, critique, citation, or field test:** [external-validation issue](https://github.com/jdhart81/viridis-canon/issues/new?template=external-validation.yml)
 - **Understand AI use and human responsibility:** [`AI_USE_AND_AUTHORSHIP.md`](./AI_USE_AND_AUTHORSHIP.md)

@@ -1,0 +1,146 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "gaian-externality-gap",
+  "kind": "theorem_function",
+  "name": "Gaian externality — private regulation under-shoots the planetary optimum",
+  "version": "1.0.0",
+  "summary": "In the linear-quadratic regulation model, reports the privately optimal effort ρ_f/(s+ρ_f), the planetary optimum 1/(s+1) and the gap between them, and checks that private effort is below the optimum whenever fidelity is below one.",
+  "line": "Theorem functions",
+  "decision_family": null,
+  "tier": "callable",
+  "state": "READY",
+  "reconciliation": {
+    "code": "CANON_CLASSIFICATION",
+    "note": "The record's status in the canon catalog is 'working' (working corpus, not spine-admitted). The file compiles with standard axioms only in the 2026-11-13 compile census; the classification must be reconciled before admission."
+  },
+  "blocked": null,
+  "doi": "10.5281/zenodo.21609942",
+  "lean": {
+    "module": "Viridis.Gaian.GaianMutualismSelection",
+    "sources": [
+      {
+        "path": "series/GaianMutualismSelection.lean",
+        "sha256": "f89adfd9e01be2b50f5b243f9bfe56490c29239def8020bc55612ae08cf76ea3"
+      }
+    ],
+    "theorems": [
+      "r_priv_lt_r_soc_for_rho_f_lt_one",
+      "gaian_externality_gap_monotone_closes_at_one"
+    ],
+    "verification_provider": "CANON_COMPILE_CENSUS",
+    "verification_receipt_id": "reports/compile_census (canon 7f8b9ff, Lean v4.28.0): CLEAN, 17 theorems"
+  },
+  "inputs": [
+    {
+      "name": "fidelity",
+      "type": "number",
+      "unit": "dimensionless",
+      "help": "Fidelity ρ_f (0 < ρ_f < 1).",
+      "required": true
+    },
+    {
+      "name": "cost_scale",
+      "type": "number",
+      "unit": "dimensionless",
+      "help": "Model cost parameter s (> 0).",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "theorem"
+    },
+    {
+      "name": "hypotheses"
+    },
+    {
+      "name": "hypotheses_hold"
+    },
+    {
+      "name": "derived"
+    },
+    {
+      "name": "conclusion"
+    },
+    {
+      "name": "conclusion_check"
+    },
+    {
+      "name": "conclusion_follows_from_theorem"
+    },
+    {
+      "name": "status"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "cost_scale_positive",
+      "statement": "s > 0.",
+      "check": "cost_scale > 0"
+    },
+    {
+      "id": "fidelity_between_zero_and_one",
+      "statement": "0 < ρ_f < 1.",
+      "check": "0 < fidelity < 1"
+    }
+  ],
+  "derived": [
+    {
+      "name": "private_effort",
+      "expression": "fidelity / (cost_scale + fidelity)",
+      "unit": "dimensionless",
+      "description": "r_priv = ρ_f/(s+ρ_f)"
+    },
+    {
+      "name": "planetary_optimum_effort",
+      "expression": "1 / (cost_scale + 1)",
+      "unit": "dimensionless",
+      "description": "r_soc = 1/(s+1)"
+    },
+    {
+      "name": "externality_gap",
+      "expression": "1 / (cost_scale + 1) - fidelity / (cost_scale + fidelity)",
+      "unit": "dimensionless",
+      "description": "r_soc − r_priv"
+    }
+  ],
+  "conclusion": {
+    "statement": "ρ_f/(s+ρ_f) < 1/(s+1)",
+    "check": "approx_le(private_effort, planetary_optimum_effort)",
+    "lean_theorem": "r_priv_lt_r_soc_for_rho_f_lt_one"
+  },
+  "example": {
+    "inputs": {
+      "fidelity": 0.5,
+      "cost_scale": 1
+    },
+    "expected_outputs": {
+      "theorem": "r_priv_lt_r_soc_for_rho_f_lt_one",
+      "hypotheses": {
+        "cost_scale_positive": true,
+        "fidelity_between_zero_and_one": true
+      },
+      "hypotheses_hold": true,
+      "derived": {
+        "private_effort": 0.3333333333333333,
+        "planetary_optimum_effort": 0.5,
+        "externality_gap": 0.16666666666666669
+      },
+      "conclusion": "ρ_f/(s+ρ_f) < 1/(s+1)",
+      "conclusion_check": true,
+      "conclusion_follows_from_theorem": true,
+      "status": "CONCLUSION_FOLLOWS"
+    }
+  },
+  "scope": "Theorem function: the Lean hypotheses and conclusion restated as checks over supplied real values (IEEE double arithmetic; conclusion compared with a 1e-9 relative tolerance).",
+  "boundary": "This is conditional mathematics about the supplied values only: it reports whether the Lean theorem's hypotheses hold for them and, if so, the conclusion the theorem guarantees. It does not establish empirical validity, a real-world magnitude, Viridis review, certification, a credit, or a registry determination. It says nothing about whether the Earth system regulates itself: fidelity, benefit and cost are inputs of a stylized selection model.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "theorem",
+  "provenance": {
+    "catalog_record": "series-gaianmutualismselection",
+    "catalog_status": "working",
+    "catalog_integrity": "not-canon-admitted",
+    "authored_by": "2026-11-13 Gaian theorem functions (MCP agent readiness)"
+  }
+}

@@ -102,6 +102,21 @@ digest to each release tag. The product vendors a bundle and pins its digest.
 These spine records have no standalone deposit DOI; their manifests cite the
 canon concept DOI (10.5281/zenodo.19317982) and say so in `provenance.doi_scope`.
 
+### Working-corpus records promoted to callable theorem functions (2026-11-13)
+
+These two come from a working-corpus record, not the verified spine. The file
+compiles with standard axioms only in the compile census (`reports/compile_census/`),
+and each manifest carries an open `CANON_CLASSIFICATION` reconciliation, so the
+functions run as previews and cannot be admitted until the record is reclassified.
+
+| Function | Record | Theorem |
+|---|---|---|
+| gaian-regulation-stability | series/GaianMutualismSelection.lean | `x1_stable_iff_rho_f_gt_critical` |
+| gaian-externality-gap | series/GaianMutualismSelection.lean | `r_priv_lt_r_soc_for_rho_f_lt_one` |
+
+They state results of a stylized selection model (fidelity, benefit, cost). They
+make no claim about whether the Earth system regulates itself.
+
 ### Verified records not promoted, and why
 
 | Record | Why not (v1 grammar) |

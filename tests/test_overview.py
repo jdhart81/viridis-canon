@@ -193,3 +193,32 @@ class SurfaceTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SpecSyncTests(unittest.TestCase):
+    """R1-R3: the standards pages agree with the published record."""
+
+    PAGES = ("RESPONSIBLE_RELEASE.md", "AI_USE_AND_AUTHORSHIP.md",
+             "CANON_DEPOSIT_INVARIANTS.md", "README.md", "llms.txt")
+
+    def test_r1_no_page_credits_an_ai_tool_as_author_or_contributor(self):
+        bad = re.compile(
+            r"co-?authored with|credited as co-?author|is now a contributor|"
+            r"is a \*contributor\*|as an organizational contributor", re.I)
+        for name in self.PAGES + ("series/DualCorridor_ARISTOTLE_SUMMARY.md",):
+            text = (ROOT / name).read_text(encoding="utf-8")
+            self.assertIsNone(bad.search(text), f"{name} credits an AI tool as author or contributor")
+
+    def test_r2_release_page_counts_match_the_certificate_index(self):
+        index = json.loads((ROOT / "certificates" / "index.json").read_text(encoding="utf-8"))
+        published = len(index["runs"])
+        text = (ROOT / "RESPONSIBLE_RELEASE.md").read_text(encoding="utf-8")
+        certified = int(re.search(r"`LEAN_ZERO_SORRY_CERTIFIED` certificate \| (\d+) \|", text).group(1))
+        self.assertIn(f"this release covers {published} certified runs", text)
+        self.assertIn(f"Another {certified - published} runs are certified internally", text)
+        self.assertIn(f"for the {published} certified runs", text)
+
+    def test_r3_description_has_one_source_and_no_retired_template(self):
+        self.assertFalse((ROOT / "CANON_DESCRIPTION_TEMPLATE.html").exists())
+        text = (ROOT / "CANON_DEPOSIT_INVARIANTS.md").read_text(encoding="utf-8")
+        self.assertIn("tools/build_overview.py --zenodo-description", text)

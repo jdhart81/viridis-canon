@@ -1,32 +1,51 @@
 # Canon Deposit Invariants
 
-Binding rules for every Viridis Canon Zenodo deposit (manual `push_canon_v*.py` or the
-`viridis-canon-submission` task). The concept DOI resolves to the latest version, so each
-record is a public front door to the whole canon — it must read like one.
+Binding rules for every hub release of the Viridis Canon on Zenodo (concept DOI
+[10.5281/zenodo.19317982](https://doi.org/10.5281/zenodo.19317982)). The concept DOI
+resolves to the latest version, so each version is the public front door to the whole
+canon and must read like one.
 
-## INV-DESC (description invariant) — REQUIRED on every version
-The Zenodo `description` of every canon-snapshot version MUST equal:
+Revised 2026-11-14. The earlier rule (a fixed description template plus one trailing
+note) was retired: the hub description has been generated from the repository since
+the October 2026 release, and the old template named an AI tool as co-author, which
+[`AI_USE_AND_AUTHORSHIP.md`](./AI_USE_AND_AUTHORSHIP.md) and Zenodo both rule out.
 
-    [stable canon description]  +  one trailing paragraph:
-    "<p><strong>This version (vX.Y.Z).</strong> {one concise note}. {lineage note}.</p>"
+## INV-DESC: one source for the description
 
-- The **stable canon description** is `CANON_DESCRIPTION_TEMPLATE.html` (single source of
-  truth) — it describes what the canon IS and never changes between releases.
-- Only the **trailing "This version" note** changes per release (1–2 sentences: what this
-  version added/changed). It is a side note, never the body.
-- Do NOT make the description version-specific/technical (no CI/lakefile/patch-note prose
-  in the body — that belongs in `CHANGELOG_vX.Y.Z.md` and the trailing note only).
+The Zenodo `description` of a hub version is the output of
 
-## How to apply
-- New version: `push_canon_vX.Y.Z.py` must build `description = open(CANON_DESCRIPTION_TEMPLATE.html).read() + this_version_note`.
-- Edit an existing published record in place (same DOI): `canon_desc_backfill.py` pattern
-  — POST actions/edit → GET metadata → set description → PUT → POST publish.
+    python3 tools/build_overview.py --zenodo-description
 
-## Other standing invariants (recap)
+built from the commit being released. Nothing is typed into the record by hand. The
+counts, results, corrections and authorship statement in it come from the same
+repository records as the overview page, and `tests/test_overview.py` checks them.
+
+## INV-FILES: what a hub version holds
+
+- The overview PDF from `tools/build_overview.py --pdf`, checked with `--check-pdf`.
+- The certificates bundle from `tools/build_overview.py --bundle`. Before upload,
+  `certificates/verify_bundle.py` must pass on the unpacked bundle.
+- Files from the previous version are not carried over.
+- After publishing, every file is read back without signing in and its SHA-256 is
+  compared with the built file.
+
+## INV-AI: authorship and AI use
+
+- Justin D. Hart is the only creator. No AI tool is listed as creator or contributor.
+- The description names the AI tools used and their roles.
+
+## INV-LOCKSTEP: Zenodo and Git agree
+
+- The release commit is on `main` before anything is published.
+- `README.md`, `CITATION.cff` and the overview carry the same version, and that version
+  exists on Zenodo.
+- The release commit is tagged `canon-vYYYY.MM.DD` and has a GitHub Release that links
+  the version DOI.
+
+## Standing rules
+
+- Publishing is gated on Justin's explicit go-ahead for that release.
+- Credentials are never printed, committed or put in a URL.
 - Spine freeze: no new spine version without Justin's explicit OK (v9 frozen).
-- Token: read from `secrets/Zenodo_API/Zenodo_token.md`; never print; never use
-  `raise_for_status` with the token in query params (it leaks into error URLs). Sanitize
-  all output with `.replace(TOKEN,'***')`.
-- Files: keep the featured paper PDF; replace the prior canon archive with the new snapshot zip.
-- Zenodo↔Git lockstep: every deposit also pushes to github.com/jdhart81/viridis-canon (+ tag/Release).
-- Publish keystroke is Justin-gated by default.
+- A published version is never edited to hide a defect. A defect gets a notice on the
+  old version and a corrected new version.

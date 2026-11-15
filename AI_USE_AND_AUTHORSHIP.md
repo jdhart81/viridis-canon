@@ -31,6 +31,9 @@ type; it does not establish that the assumptions describe nature.
 ## Publication policy
 
 - Automated systems are not listed as journal authors.
+- Automated systems are not listed as creators or contributors in Zenodo
+  metadata. Zenodo does not allow it. A record produced with AI tools names
+  each tool and its role in its description instead.
 - Substantive tool use is disclosed in the paper or acknowledgment appropriate
   to the target venue.
 - Git co-author trailers and Aristotle summaries record technical provenance;

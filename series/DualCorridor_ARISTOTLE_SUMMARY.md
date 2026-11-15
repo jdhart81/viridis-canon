@@ -5,7 +5,7 @@
 Habitat Connectivity and Fuel Discontinuity in Managed Forest Landscapes.*
 **Concept DOI (cite this):** 10.5281/zenodo.21686446 · **Latest:** 10.5281/zenodo.21708530 (v1.0.1, 2026-07-30) · **First release:** 10.5281/zenodo.21686447 (v1.0.0)
 **Published:** 2026-07-29 (v1.0.0); revised 2026-07-30 (v1.0.1) · `viridis-canon`
-**Authorship:** Justin D. Hart is sole author; Aristotle (Harmonic) is a *contributor* (Lean 4 verification), not a creator — corrected in both versions 2026-07-30.
+**Authorship:** Justin D. Hart is sole author; Aristotle (Harmonic) did the Lean 4 verification and is a tool, not an author. Since 2026-11-14 the Zenodo records name it in their description, not in the creator or contributor lists.
 **Route:** Journal branch (standalone DOI) · indexed in Series **S5 — Corridors & Spatial**
 (`10.5281/zenodo.20777068`) · `isDerivedFrom` spine `10.5281/zenodo.19317982`
 **Toolchain:** `leanprover/lean4:v4.28.0` · Mathlib rev `8f9d9cff`
@@ -22,7 +22,7 @@ Habitat Connectivity and Fuel Discontinuity in Managed Forest Landscapes.*
 | Non-vacuity | **PASS** — `FaceCount.ofCircuitRank` exhibits the hypothesis as inhabited, itself axiom-clean |
 | Paper-first | **PASS** — 26 pp PDF leads the deposit |
 | Honest scope | **PASS** — see *Scope* below; stated in the paper banner, Appendix B, the README and the Zenodo notes |
-| Identity hygiene | **PASS** — Viridis LLC, Columbia Falls MT; ORCID 0009-0008-3082-2482; Aristotle (Harmonic) credited as co-author |
+| Identity hygiene | **PASS** — Viridis LLC, Columbia Falls MT; ORCID 0009-0008-3082-2482; Aristotle (Harmonic) is the verification tool, not an author (see Authorship above) |
 | Hold check | **PASS** — no active hold |
 
 ---

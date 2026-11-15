@@ -39,7 +39,7 @@ table.ledger td:nth-child(-n+2){white-space:nowrap}
 <h1>Viridis Canon</h1>
 <p class="sub">Machine-checked mathematics for ecological decisions — November 2026 release</p>
 <p class="by">Justin D. Hart · Viridis LLC · ORCID <a href="https://orcid.org/0009-0008-3082-2482">0009-0008-3082-2482</a> ·
-13 November 2026 · version 2026.11.13 · <a href="https://github.com/jdhart81/viridis-canon">github.com/jdhart81/viridis-canon</a></p>
+14 November 2026 · version 2026.11.14 · <a href="https://github.com/jdhart81/viridis-canon">github.com/jdhart81/viridis-canon</a></p>
 <p class="status">UNCERTIFIED manuscript artifact. No issuer-produced Viridis Comparator certificate has been shown to bind this public manuscript&#x27;s exact bytes. Any linked certificate applies only to its exact sealed artifacts and stated theorem scope. Results remain conditional on the declared assumptions. Working paper, not peer reviewed. The main theorems of 31 results carry comparator certificates (Lean 4; accepted by the Lean kernel and by the independent nanoda kernel). Results are conditional on their stated assumptions; the decision tools are not field-validated.</p>
 
 <h2>What this is</h2>
@@ -48,8 +48,8 @@ decisions in ecology and conservation. Each result is released in three linked f
 against a pinned Mathlib, a paper with a DOI, and a decision function you can run. The Git repository
 <a href="https://github.com/jdhart81/viridis-canon">github.com/jdhart81/viridis-canon</a> is where results are released and corrected; the
 Zenodo record (concept DOI <a href="https://doi.org/10.5281/zenodo.19317982">10.5281/zenodo.19317982</a>) is the permanent,
-citable snapshot. This overview replaces the October 2026 overview
-(<a href="https://doi.org/10.5281/zenodo.23442570">10.5281/zenodo.23442570</a>).</p>
+citable snapshot. This overview replaces version 2026.11.13
+(<a href="https://doi.org/10.5281/zenodo.24211354">10.5281/zenodo.24211354</a>).</p>
 
 <h2>In numbers</h2>
 <table><tbody>
@@ -65,7 +65,7 @@ least six lines counts as substantial). It is a size indicator, not a judgement 
 
 <h2>What changed since the October release</h2>
 <ul>
-<li>The cash theorem bounty is closed to new reports; confirmed findings now earn named credit. 3 findings were confirmed and are listed under “Outside review”.</li><li>Run-129, <code>bounded_overshoot_expected_delay</code>: the stated scope was corrected after an outside report (#121). See the result below.</li><li>Run-133, one of the certified runs, has 2 confirmed findings. Its certified files stay as issued until it is re-certified with the repairs.</li><li>A compile census now compiles every Lean file in the repository on its own and audits its axioms, weekly and on every Lean change. The 2026-11-13 ledger covers 278 files and 6,947 declarations; 188 files are clean. The rest are listed with reasons in <code>reports/compile_census/</code>.</li><li>44 decision functions are now tied to Lean theorems in <code>formalization.yaml</code>.</li>
+<li>Thirteen more certified runs (Run-136 to Run-172) now have certificate bundles in the repository, taking the published total from 18 to 31. Their certificate files were already public in their Zenodo records. All thirteen are labelled elementary, none backs a decision function yet, and each candidate proof also compiles clean in the compile census.</li><li>Corrected versions were published on 14 November 2026 for the Run-129 paper (the delay bound's scope; <a href="https://doi.org/10.5281/zenodo.24234125">10.5281/zenodo.24234125</a>) and for the product-form boundary-essentiality formalization, formerly titled “Non-Substitutability Theorem” (<a href="https://doi.org/10.5281/zenodo.24232949">10.5281/zenodo.24232949</a>).</li><li>No Zenodo record lists an AI tool as creator or contributor any longer. Records that credited one that way now name the tool and its role in their description instead.</li><li>The cash theorem bounty is closed to new reports; confirmed findings now earn named credit. 3 findings were confirmed and are listed under “Outside review”.</li><li>Run-129, <code>bounded_overshoot_expected_delay</code>: the stated scope was corrected after an outside report (#121). See the result below.</li><li>Run-133, one of the certified runs, has 2 confirmed findings. Its certified files stay as issued until it is re-certified with the repairs.</li><li>A compile census now compiles every Lean file in the repository on its own and audits its axioms, weekly and on every Lean change. The 2026-11-14 ledger covers 322 files and 7,452 declarations; 208 files are clean. The rest are listed with reasons in <code>reports/compile_census/</code>.</li><li>44 decision functions are now tied to Lean theorems in <code>formalization.yaml</code>.</li>
 </ul>
 
 <h2>Three results</h2>
@@ -111,7 +111,7 @@ is new, or that any decision built on it is correct.</p>
 python3 certificates/verify_bundle.py         # every file still matches its certificate
 certificates/rerun.sh Run-129 --axioms-only   # re-elaborate in Lean and audit the axioms
 certificates/rerun.sh Run-129                 # full comparator check (needs comparator)</pre>
-<p>The attached <code>viridis-canon-certificates-2026-11-13.zip</code> contains every certified run's challenge and solution files,
+<p>The attached <code>viridis-canon-certificates-2026-11-14.zip</code> contains every certified run's challenge and solution files,
 certificates, receipts and claim inventories, the verifier, the re-run script, <code>formalization.yaml</code>
 and the release documents.</p>
 
@@ -130,10 +130,11 @@ OpenAI Codex for proof candidates, code and operations; Claude (Anthropic) for d
 Tools are not authors. Details: <code>AI_USE_AND_AUTHORSHIP.md</code> and <code>RESPONSIBLE_RELEASE.md</code>.</p>
 
 <h2>Earlier versions</h2>
-<p>Version 2026.10.17 (<a href="https://doi.org/10.5281/zenodo.23442570">10.5281/zenodo.23442570</a>) is the October 2026
-release; its overview offered the cash bounty that has since closed and stated the Run-129 delay bound without
-the bounded-increment condition. Versions up to v10.2.0 bundled historical drafts and listed the Aristotle
-prover among the creators. All earlier versions remain available as history.</p>
+<p>Version 2026.11.13 (<a href="https://doi.org/10.5281/zenodo.24211354">10.5281/zenodo.24211354</a>) covered the
+18 certificate bundles published by then. Version 2026.10.17
+(<a href="https://doi.org/10.5281/zenodo.23442570">10.5281/zenodo.23442570</a>) is the October 2026 release; its overview offered the
+cash bounty that has since closed and stated the Run-129 delay bound without the bounded-increment condition.
+Versions up to v10.2.0 bundled historical drafts. All earlier versions remain available as history.</p>
 </main>
 </body>
 </html>

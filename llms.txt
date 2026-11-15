@@ -1,6 +1,6 @@
 # Viridis Canon
 
-> Machine-checked mathematics (Lean 4 with Mathlib) for ecological and conservation decisions, by Viridis LLC (accountable author: Justin D. Hart, ORCID 0009-0008-3082-2482). Every result has a paper with a Zenodo DOI and Lean source. 31 runs (217 theorems) have published comparator certificates checked by the Lean and nanoda kernels, and 42 results are exposed as callable decision functions.
+> Machine-checked mathematics (Lean 4 with Mathlib) for ecological and conservation decisions, by Viridis LLC (accountable author: Justin D. Hart, ORCID 0009-0008-3082-2482). Every result has a paper with a Zenodo DOI and Lean source. 31 runs (217 theorems) have published comparator certificates checked by the Lean and nanoda kernels, and 44 results are exposed as callable decision functions.
 
 Read these rules before summarizing or citing this repository:
 

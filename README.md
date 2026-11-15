@@ -208,7 +208,7 @@ assumption has been established in nature.
 - **Read the overview:** [the current release on one page](https://jdhart81.github.io/viridis-canon/overview/), built by [`tools/build_overview.py`](./tools/build_overview.py) from the certificate index, `formalization.yaml` and the bounty ledger
 - **Inspect the exact claims:** [`CLAIMS_MATRIX.md`](./CLAIMS_MATRIX.md)
 - **Reproduce current and historical builds:** [`REPRODUCE.md`](./REPRODUCE.md)
-- **Cite the collection:** concept DOI [10.5281/zenodo.19317982](https://doi.org/10.5281/zenodo.19317982), which always resolves to the latest hub release (currently v2026.11.13, git tag `canon-v2026.11.13`)
+- **Cite the collection:** concept DOI [10.5281/zenodo.19317982](https://doi.org/10.5281/zenodo.19317982), which always resolves to the latest hub release (currently v2026.11.14, git tag `canon-v2026.11.14`)
 - **Licenses:** Lean sources and code are Apache-2.0 ([`LICENSE`](./LICENSE)); papers and documentation in the Zenodo records are CC BY 4.0 ([`NOTICE`](./NOTICE))
 - **Report a reproduction, critique, citation, or field test:** [external-validation issue](https://github.com/jdhart81/viridis-canon/issues/new?template=external-validation.yml)
 - **Understand AI use and human responsibility:** [`AI_USE_AND_AUTHORSHIP.md`](./AI_USE_AND_AUTHORSHIP.md)

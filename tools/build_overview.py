@@ -50,14 +50,29 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "overview" / "index.html"
 
 # ---- release facts that no other file holds (edit these at each hub release) ----
-VERSION = "2026.11.13"
+VERSION = "2026.11.14"
 RELEASE_NAME = "November 2026 release"
-RELEASE_DATE_TEXT = "13 November 2026"
-PREVIOUS_VERSION = "2026.10.17"
-PREVIOUS_DOI = "10.5281/zenodo.23442570"
+RELEASE_DATE_TEXT = "14 November 2026"
+PREVIOUS_VERSION = "2026.11.13"
+PREVIOUS_DOI = "10.5281/zenodo.24211354"
+OCTOBER_VERSION = "2026.10.17"
+OCTOBER_DOI = "10.5281/zenodo.23442570"
+# Hand-written notes for this release (HTML). Everything else in "What changed" is generated.
+RELEASE_NOTES = (
+    "Thirteen more certified runs (Run-136 to Run-172) now have certificate bundles in the repository, "
+    "taking the published total from 18 to 31. Their certificate files were already public in their Zenodo "
+    "records. All thirteen are labelled elementary, none backs a decision function yet, and each candidate "
+    "proof also compiles clean in the compile census.",
+    "Corrected versions were published on 14 November 2026 for the Run-129 paper (the delay bound's scope; "
+    "<a href=\"https://doi.org/10.5281/zenodo.24234125\">10.5281/zenodo.24234125</a>) and for the product-form "
+    "boundary-essentiality formalization, formerly titled “Non-Substitutability Theorem” "
+    "(<a href=\"https://doi.org/10.5281/zenodo.24232949\">10.5281/zenodo.24232949</a>).",
+    "No Zenodo record lists an AI tool as creator or contributor any longer. Records that credited one that "
+    "way now name the tool and its role in their description instead.",
+)
 CONCEPT_DOI = "10.5281/zenodo.19317982"
 PDF_NAME = "Viridis-Canon-November-2026-Overview.pdf"
-BUNDLE_NAME = "viridis-canon-certificates-2026-11-13.zip"
+BUNDLE_NAME = "viridis-canon-certificates-2026-11-14.zip"
 ORCID_ID = "0009-0008-3082-2482"
 # Files that travel with certificates/ in the bundle (the same seven as the October bundle).
 BUNDLE_DOCS = ("formalization.yaml", "RESPONSIBLE_RELEASE.md", "AI_USE_AND_AUTHORSHIP.md",
@@ -238,6 +253,7 @@ def _changes_html(b: dict) -> str:
                  f"reasons in <code>reports/compile_census/</code>.")
     items.append(f"{function_count()} decision functions are now tied to Lean theorems in "
                  "<code>formalization.yaml</code>.")
+    items = list(RELEASE_NOTES) + items
     return (f"<h2>What changed since the October release</h2>\n<ul>\n"
             + "".join(f"<li>{i}</li>" for i in items) + "\n</ul>\n")
 
@@ -271,7 +287,7 @@ decisions in ecology and conservation. Each result is released in three linked f
 against a pinned Mathlib, a paper with a DOI, and a decision function you can run. The Git repository
 <a href="{REPO}">github.com/jdhart81/viridis-canon</a> is where results are released and corrected; the
 Zenodo record (concept DOI <a href="https://doi.org/{CONCEPT_DOI}">{CONCEPT_DOI}</a>) is the permanent,
-citable snapshot. This overview replaces the October 2026 overview
+citable snapshot. This overview replaces version {PREVIOUS_VERSION}
 (<a href="https://doi.org/{PREVIOUS_DOI}">{PREVIOUS_DOI}</a>).</p>
 
 <h2>In numbers</h2>
@@ -312,10 +328,11 @@ OpenAI Codex for proof candidates, code and operations; Claude (Anthropic) for d
 Tools are not authors. Details: <code>AI_USE_AND_AUTHORSHIP.md</code> and <code>RESPONSIBLE_RELEASE.md</code>.</p>
 
 <h2>Earlier versions</h2>
-<p>Version {PREVIOUS_VERSION} (<a href="https://doi.org/{PREVIOUS_DOI}">{PREVIOUS_DOI}</a>) is the October 2026
-release; its overview offered the cash bounty that has since closed and stated the Run-129 delay bound without
-the bounded-increment condition. Versions up to v10.2.0 bundled historical drafts and listed the Aristotle
-prover among the creators. All earlier versions remain available as history.</p>
+<p>Version {PREVIOUS_VERSION} (<a href="https://doi.org/{PREVIOUS_DOI}">{PREVIOUS_DOI}</a>) covered the
+18 certificate bundles published by then. Version {OCTOBER_VERSION}
+(<a href="https://doi.org/{OCTOBER_DOI}">{OCTOBER_DOI}</a>) is the October 2026 release; its overview offered the
+cash bounty that has since closed and stated the Run-129 delay bound without the bounded-increment condition.
+Versions up to v10.2.0 bundled historical drafts. All earlier versions remain available as history.</p>
 </main>
 </body>
 </html>
@@ -345,7 +362,7 @@ def zenodo_description() -> str:
 {chr(10).join(lead)}
 </ul>
 <p><strong>In numbers.</strong> {k['runs']} runs published with certificate bundles ({k['theorems']} theorems; {k['substantial']} runs labelled substantial, {k['elementary']} elementary); {function_count()} decision functions tied to Lean theorems. Engine totals as published with the October 2026 release: {d['runs']} engine runs, {d['submitted']} submitted for certification, {d['certified']} certified.</p>
-<p><strong>Changed since version {PREVIOUS_VERSION}.</strong> The overview is rebuilt from the repository's own records. It corrects the stated scope of the Run-129 detection-delay theorem (certified for uniformly bounded increments), credits the outside findings, and reports the weekly compile census of every Lean file.</p>
+<p><strong>Changed since version {PREVIOUS_VERSION}.</strong> Thirteen more certified runs (Run-136 to Run-172) are in the certificates bundle, taking it from 18 to {k['runs']} runs; all thirteen are labelled elementary. Since the October 2026 release ({OCTOBER_VERSION}) the overview is built from the repository's own records, states the scope of the Run-129 detection-delay theorem (certified for uniformly bounded increments), credits the outside findings, and reports the weekly compile census of every Lean file.</p>
 {review}
 <p><strong>Check it yourself.</strong> <code>python3 certificates/verify_bundle.py</code> checks that every file still matches its certificate; <code>certificates/rerun.sh Run-129 --axioms-only</code> re-elaborates a run in Lean and audits its axioms. The attached certificates bundle holds every certified run's challenge and solution files, certificates and receipts, the verifier and the re-run script.</p>
 <p><strong>Authorship.</strong> Justin D. Hart is the accountable author. The proofs are AI-generated and machine-checked. Tools used, which are not authors: the Aristotle prover (Harmonic), OpenAI Codex, and Claude (Anthropic); their roles are in AI_USE_AND_AUTHORSHIP.md. Earlier versions of this record remain available as history.</p>

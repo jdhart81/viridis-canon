@@ -24,6 +24,15 @@ A named human answers for every result. Nothing in this repository claims field
 validation. Every function says `empirical_validation: NOT_VALIDATED` until field
 evidence exists.
 
+> **Direction.** Viridis studies intelligence and living complexity as physical
+> processes: they run on energy, information and memory, and they can be lost. The
+> program's working conjecture, the Intelligence Bound, says that the rate at which
+> any system can learn is limited by its power and by the information its
+> surroundings hold. If that is right, protecting ecological complexity protects the
+> capacity to learn, for ecosystems, people and machines. This is the program's
+> direction, not its evidence: each result here is released on its own proof or
+> test, and a result depends on the conjecture only where its record says so.
+
 > **Intelligence Bound status.** The Intelligence Bound, dI/dt ≤ P·D/(k_B T ln 2),
 > is a **conjecture**, not a theorem. What is machine-checked is the algebra from
 > named premises: given K = k_B T ln 2 > 0, **PL** (R_obs·K ≤ P) and **PD**

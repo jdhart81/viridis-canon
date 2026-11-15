@@ -19,7 +19,9 @@ assumptions**, what is **NOT established**, and a **status label** from
 > requires data to validate · **Conjecture** = stated, not proved · **Exploratory**
 > = quarantined, not part of the verified spine.
 
-Last updated: 2026-07-26. Module/line references are to the public repository.
+Last updated: 2026-11-15 (UWMT, SST and SIB rows and the research-scope map added;
+earlier rows unchanged since 2026-07-26 except where dated). Module/line references
+are to the public repository.
 
 **Coverage boundary.** This matrix audits the headline foundation, flagship,
 bridge, and quarantined results listed below. It is not yet a row-by-row audit
@@ -138,6 +140,52 @@ zero-substitution claim would require switching to a CES/Leontief production for
 
 ---
 
+## UWMT — Universal Water-Filling (`UniversalWaterfilling.lean`, added 2026-11-15)
+
+| Result | Exact Lean conclusion | Required assumptions | NOT established | Status |
+|---|---|---|---|---|
+| `uwmt_concave_optimum_is_waterfilling`, `kkt_active_set_equalises_marginal_at_lambda` | for `V = (c₁x − k₁x²/2) + (c₂(R−x) − k₂(R−x)²/2)`, `x* = (c₁−c₂+k₂R)/(k₁+k₂)` equalises the two marginals and maximises `V` over **all real** `x` | `k₁, k₂ > 0` | more than **two** channels; any concave value other than this quadratic; the constraint `0 ≤ x ≤ R` (no active set or corner case is modelled); a "universal" or "meta" theorem over the nine-member family named in the docstring | **Derived** (two-channel quadratic model) |
+| `envelope_dVdB_equals_lambda` | `dV*/dB = λ*` for the same model | `k₁ + k₂ > 0` | the envelope identity for a general value function | **Derived** (same model) |
+| `entropic_linear_optimum_is_gibbs_softmax` | the softmax weights are positive, sum to 1, and `g_i/τ − ln x_i` is constant in `i` | `n > 0`, `τ > 0` | that the softmax **maximises** the entropy-regularised objective — no objective is defined and no optimality is proved | **Definition-expansion** |
+| `maxshare_monotone_decreasing_in_temperature` | `1/(1+e^{−Δ/τ})` is strictly decreasing in `τ` | `Δ > 0`, `0 < τ₁ < τ₂` | any statement about a physical temperature | **Definition-expansion** (elementary) |
+| `convexity_crosses_zero_flips_interior_to_corner` | `2(B/2)^p − B^p` is positive for `p < 1`, zero at `p = 1`, negative for `p > 1` | `B > 0` | a phase transition in any system; this compares an even split with no split for a power-law value | **Derived** (elementary) |
+| `keystone_IB_ceiling` | `rate·(k_B·T·ln2) ≤ P·D ⟹ rate ≤ P·D/(k_B·T·ln2)` | the hypothesis itself; `ln2` is an arbitrary positive real | that any allocation "obeys the Intelligence Bound" — the hypothesis **is** the bound, multiplied through | **Definition-expansion** |
+
+**Note.** The module proves correct facts about three small models. It does not
+prove one theorem that unifies them, and the Intelligence Bound enters only as an
+assumed inequality. Allocation results cited from this module apply to the
+two-channel quadratic case.
+
+---
+
+## SST — Stewardship Setpoint (`StewardshipSetpoint.lean`, added 2026-11-15)
+
+| Result | Exact Lean conclusion | Required assumptions | NOT established | Status |
+|---|---|---|---|---|
+| `golden_rule_gprime_eq_r`, `phi_concave_unique_max` | for logistic `g(D) = ρD(1 − D/K)`, `D* = (K/2)(1 − r/ρ)` satisfies `g'(D*) = r` and is the unique maximiser of `g(D) − rD` | `K, ρ > 0` | that `D*` solves a discounted optimal-control problem (none is formalised); that any real stock regenerates logistically | **Derived** (logistic model) — the classical Clark golden rule |
+| `sustainable_ratio_le_one_half`, `steward_ib_self_application` | `D*/K = ½(1 − r/ρ) ≤ ½`, with equality iff `r = 0` | `0 ≤ r < ρ` | a "never harvest more than half" rule outside logistic growth; any Intelligence Bound content — `Ω` is a free positive constant and no bound on a rate is used | **Definition-expansion** (of `D*`) |
+| `forcing_collapses_capacity_when_phiOmega_gt_rho` | `ρD(1 − D/K) − φΩD < 0` for every `D > 0` | `φΩ > ρ` | convergence `D → 0` of a trajectory (no dynamics are formalised; the sign of the rate is shown) | **Conditional** |
+| `setpoint_J_beats_forcing_J` | `0 < g(D*)/r` | `0 < r < ρ` | a comparison of two policies' discounted values — `J_force = 0` is asserted in the docstring, not derived | **Definition-expansion** (name stronger than conclusion) |
+| `clark_collapse_threshold_r_ge_rho`, `Dstar_decreasing_in_discount`, `duty_cycle_lt_one` | sign and monotonicity facts about `D*` and `u*` | parameter ranges as stated | — | **Derived** (elementary) |
+| `orar_extremum_seeking_converges_to_Dstar` | `g'(D) − r` is positive below `D*` and negative above | `0 ≤ r < ρ` | convergence of any extremum-seeking controller | **Conditional** (name stronger than conclusion) |
+
+**Note.** These are textbook renewable-resource results for logistic growth,
+correctly proved. The "at most one half" setpoint is a property of the logistic
+curve (maximum sustainable yield at `K/2`), not a general stewardship law and not
+a consequence of the Intelligence Bound.
+
+---
+
+## SIB — Symbiotic Intelligence Bound (`SymbioticIntelligenceBound.lean`, added 2026-11-15)
+
+| Result | Exact Lean conclusion | Required assumptions | NOT established | Status |
+|---|---|---|---|---|
+| `joint_bound_from_partners` | the sum of two rates is at most `(P_A D_A + P_E D_E)/ε_L` | **each partner's Intelligence Bound, with a subsidy term, as a hypothesis**; subsidies cancel | either partner's bound; that subsidies cancel in any real coupled system | **Bridge-assumption** |
+| `ness_reciprocity`, `no_perpetual_learning`, `symbiotic_surplus_threshold` | linear-arithmetic consequences of the stated identities | the identities themselves (conservation, stationarity, `Φ_net ≤ σ_total`) | that those identities hold for a learner–environment pair | **Definition-expansion** |
+| `cos_sq_extraction_bounded` | `inner² ≤ n_a·n_E ⟹ 0 ≤ inner²/(n_a·n_E) ≤ 1` | Cauchy–Schwarz **assumed** as `hcs` over reals | any Fisher–Rao geometry; no inner-product space appears | **Definition-expansion** |
+
+---
+
 ## Trees Cannot Cut — raster topology (rung L2, added 2026-11-11)
 
 | Result | Exact Lean conclusion | Required assumptions | NOT established | Status |
@@ -184,6 +232,29 @@ than re-declared. Deferred to a forge pass (changes proof content).
 
 ---
 
+## Research-scope support map (added 2026-11-15)
+
+What the rows above support for each direction the research program names. "Support"
+means machine-checked mathematics exists; it never means field or laboratory evidence.
+
+| Direction | Supported by | Grade | Missing |
+|---|---|---|---|
+| A learner has a physical resource budget | `BoundedMemoryLearning`, `BoundedMemoryDissipation`, P0 min form | **Conditional** — the strongest footing in the canon | a measured per-erasure cost `ε` for any real system |
+| Common information measures across living and engineered systems | P1 D-Score | **Derived** (math) / **Empirical-hypothesis** (as a metric) | field validation of the metric |
+| Allocation of a constrained budget | UWMT | **Derived** for the two-channel quadratic model only | `n` channels, general concave value, inequality constraints |
+| Stewardship setpoint | SST | **Derived** for logistic growth only | a formalised control problem; any non-logistic stock |
+| Physical control surfaces for AI systems | none — P9 is quarantined | **Exploratory** | a non-vacuous reconstruction |
+| Ecosystems as information-thermodynamic systems | `BiosphereErasureBound`, `Bridge_BiosphereProductivity` | **Conditional** | empirical `ε_L`, `D`; the process↔ledger identification |
+| Universal limits on intelligence | contradicted as a universal: `reversible_regime_imposes_no_bound` | **Derived** negative result | — |
+
+**Foundation.** The statement the canon can carry is the bounded-memory erasure
+floor: a learner with memory `M` that acquires `A` bits erases at least `A − M` and
+dissipates at least `ε·(A − M)`, with `ε` a stated regime parameter. The product
+form `dI/dt ≤ P·D/(k_B T ln 2)` remains a conjecture with premises PL and PD
+undischarged.
+
+---
+
 ## Open items deferred to a fresh Aristotle pass (not claimed verified in v9.1.0)
 
 1. ~~**P0** — make `h_mem` load-bearing~~ ✅ **DONE v9.1.0** (module `BoundedMemoryDissipation`, Aristotle `6483ae65`).
@@ -192,6 +263,16 @@ than re-declared. Deferred to a forge pass (changes proof content).
    here stands).
 3. **Bridges** — `Bridge_MissionFeasibility` to import the real pillars.
 4. **P9** — full non-vacuous reconstruction before any spine re-entry.
+5. **UWMT** — an `n`-channel water-filling theorem for a general strictly concave
+   value under `0 ≤ x_i`, `Σ x_i = R`, and an optimality proof for the entropic face,
+   if the "universal" title is to stand (added 2026-11-15).
+6. **SST** — formalise the discounted control problem and derive `D*` from it; state
+   the logistic assumption in every theorem name or docstring that cites the
+   one-half ratio (added 2026-11-15).
+7. **Docstrings** — `keystone_IB_ceiling`, `steward_ib_self_application`,
+   `setpoint_J_beats_forcing_J` and `orar_extremum_seeking_converges_to_Dstar` claim
+   more than their conclusions. Rewording changes Lean source and its hashes, so it
+   waits for a forge pass (added 2026-11-15).
 
 These are proof-content changes; per the Aristotle-first gate they require a fresh
 machine-checked pass and are **not** asserted as verified in this release.

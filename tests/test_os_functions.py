@@ -81,10 +81,17 @@ class RepositoryManifestTests(unittest.TestCase):
         self.assertEqual(errors, [])
 
     def test_the_twenty_decision_kernels_are_present(self):
+        # The twenty hand-curated kernels, plus whatever auto-intake has entered
+        # (os/research_statements.json). Every live kernel is in the operating order;
+        # an auto-intake kernel that is entered but not live (or rolled back) is not.
+        from canon_core.auto_intake import entered_not_live, load_ledger
+
         kernels = {k for k, (m, _) in self.manifests.items() if m["kind"] == "decision_kernel"}
-        self.assertEqual(len(kernels), 20)
+        auto = {e["function_id"] for e in load_ledger(ROOT)["entries"] if e.get("function_id")}
+        self.assertEqual(len(kernels - auto), 20)
+        self.assertLessEqual(auto, kernels)
         core = json.loads((ROOT / "os/core.json").read_text(encoding="utf-8"))
-        self.assertEqual(set(core["function_order"]), kernels)
+        self.assertEqual(set(core["function_order"]), kernels - entered_not_live(ROOT))
 
     def test_mutualist_stays_blocked(self):  # I3
         manifest, _ = self.manifests["mutualist"]
@@ -256,8 +263,14 @@ class CompilerTests(unittest.TestCase):
         self.assertEqual(_tree_digest(self.watched), self.before)
 
     def test_every_callable_manifest_has_a_bundle_entry(self):  # I1
+        from canon_core.auto_intake import entered_not_live
+
         ids = {f["id"] for f in self.bundle["functions"]}
+        out_of_service = entered_not_live(ROOT)  # recorded in rejected_functions with the reason
         for fid, (manifest, _) in _manifests().items():
+            if fid in out_of_service:
+                self.assertNotIn(fid, ids)
+                continue
             self.assertIn(fid, ids)
             entry = next(f for f in self.bundle["functions"] if f["id"] == fid)
             self.assertEqual(entry["tier"], manifest["tier"])  # never promoted
@@ -339,7 +352,9 @@ class EngineManifestResilienceTests(unittest.TestCase):
             self.assertIn("engine-draft-function", result["rejected"])
             bundle = json.loads((tmp / "out" / "functions.json").read_text(encoding="utf-8"))
             self.assertNotIn("engine-draft-function", {f["id"] for f in bundle["functions"]})
-            self.assertEqual(bundle["stats"]["rejected_functions"], 1)
+            from canon_core.auto_intake import entered_not_live
+
+            self.assertEqual(bundle["stats"]["rejected_functions"], 1 + len(entered_not_live(ROOT)))
             self.assertTrue(bundle["rejected_functions"][0]["errors"])
         finally:
             shutil.rmtree(tmp, ignore_errors=True)

@@ -1,0 +1,56 @@
+{
+  "schema": "viridis-certified-index-v1",
+  "statements": {
+    "P3.CascadedRecovery": {
+      "closed_by_single_tactic": false,
+      "constant": "ViridisStatements.P3.CascadedRecovery.Statement",
+      "decision": "D-012",
+      "path": "lean/ViridisStatements/P3/CascadedRecovery.lean",
+      "project": "P3",
+      "proof": {
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "candidate_sha256": "eaafbaaa17a780833c6d955cae570ece4c6676fd241accb2bf52bac6773b8f1c",
+        "claim_id": "C1",
+        "date": "2026-11-16",
+        "doi": "10.5281/zenodo.0000000",
+        "run_dir": "runs/2026-11-16_P3"
+      },
+      "sealed_at": "2026-11-08T14:33:37Z",
+      "sealed_by": "owner",
+      "sha256": "a4e3f3c269b81a1d5dacde1535f0112654d5d4c5203e9a01a444bc4edcfbb115",
+      "status": "PROVEN",
+      "task": "P3-T001"
+    },
+    "P3.CyclicSymbiosis": {
+      "closed_by_single_tactic": false,
+      "constant": "ViridisStatements.P3.CyclicSymbiosis.Statement",
+      "decision": "D-014",
+      "path": "lean/ViridisStatements/P3/CyclicSymbiosis.lean",
+      "project": "P3",
+      "proof": null,
+      "sealed_at": "2026-11-08T14:34:07Z",
+      "sealed_by": "owner",
+      "sha256": "a6825700fb4c21d12ba330c739d321dd105da3b21c394338cda11ef5a67667c4",
+      "status": "SEALED_UNPROVEN",
+      "task": "P3-T001"
+    }
+  },
+  "tested_claims": [
+    {
+      "claim_id": "C1",
+      "date": "2026-11-12",
+      "doi": "10.5281/zenodo.24281803",
+      "entry": "code/rerun_p1c.py",
+      "pinned_inputs": 11,
+      "project": "P4",
+      "run_dir": "runs/2026-11-12_P4",
+      "task": "P4-T001",
+      "text": "Running the frozen registered P1C v1.4 script (code/run_test.py, unchanged, via code/rerun_p1c.py) on the registered input files gives, for the registered primary test (H2, definition B, model M2R): n = 11,314 ignitions, beta = 0.0531 (0.05313557) log10 final fire size per log10 compartment area, max(two-way, year-clustered) SE = 0.0120, registered interval beta +/- 2.53 x max SE = [0.0228, 0.0835], decision SUPPORTED under the frozen rule (SUPPORTED iff beta - C2 x max SE > 0), and pre-specified reading REPLICATED. The script's input check against the registered FREEZE.json passed (inputs_ver"
+    }
+  ],
+  "note": "Excerpt of jdhart81/viridis-research index/certified.json at 43867fe with a placeholder DOI for tests; not a real DOI."
+}

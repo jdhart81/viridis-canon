@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "standard": "VOS-AUTO-INTAKE-1",
+  "purpose": "A statement the science engine proves (PROVEN in jdhart81/viridis-research index/certified.json) that fits a Viridis Conservation service enters this canon as a decision kernel without a human merge, and goes live when go_live is true. docs/auto_intake/README.md has the invariants and the rollback.",
+  "enabled": true,
+  "go_live": true,
+  "go_live_decision": "Owner decision 2026-11-17 (Justin Hart): new kernels go live automatically once their checks pass. Set go_live to false to stop new kernels going live; entries then wait as callable code outside the live list.",
+  "max_new_kernels_per_run": 1,
+  "research_repository": "jdhart81/viridis-research",
+  "require_run_doi": true,
+  "package_root": "research",
+  "rollback": "python3 -m canon_core auto-intake rollback --function <id>, or revert the PR that brought the kernel in"
+}

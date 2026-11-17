@@ -57,6 +57,14 @@ jobs:
           git fetch --no-tags origin "${{ github.base_ref }}"
           if git diff --name-only "origin/${{ github.base_ref }}...HEAD" | grep -qx 'os/admissions.json'; then
             case "$HEAD_REF" in
+              auto-intake/*)
+                # Owner decision 2026-11-17 (os/auto_intake.json): a kernel the engine proved goes live
+                # automatically. The branch may change the ledger only as auto-intake go-live/rollback.
+                python3 -m canon_core auto-intake audit --base-ref "origin/${{ github.base_ref }}" || exit 1
+                if [ "$AUTHOR" != "jdhart81" ]; then
+                  echo "::error::auto-intake PRs must be opened with the repository owner's token (got '$AUTHOR')."; exit 1
+                fi
+                echo "admissions change is an audited auto-intake go-live or rollback"; exit 0;;
               canon/*|engine/*|science-engine/*|lockstep/*)
                 echo "::error::os/admissions.json changed on automated branch '$HEAD_REF'. Admission is a human act: open a separate PR."; exit 1;;
             esac

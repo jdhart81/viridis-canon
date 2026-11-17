@@ -4,12 +4,13 @@
   "purpose": "Operate Viridis Conservation from qualified client decision through evidence, kernel routing, accountable review, delivery, and research feedback.",
   "snapshot_date": "2026-09-20",
   "authority": {
-    "automatic_kernel_activation": false,
+    "automatic_kernel_activation": true,
     "automatic_ledger_mutation": false,
     "automatic_market_release": false,
     "automatic_production_certification": false,
     "automatic_research_publication": false,
-    "operator_review_required": true
+    "operator_review_required": true,
+    "automatic_kernel_activation_scope": "Only kernels entered by auto-intake under os/auto_intake.json (PROVEN, class A or B, all gates green); see docs/auto_intake/README.md."
   },
   "map_authority": {
     "automatic_decision_tree_activation": false,

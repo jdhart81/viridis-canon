@@ -47,6 +47,10 @@ def _parser() -> argparse.ArgumentParser:
     verify_os = sub.add_parser("verify-os", help="recompute an OS bundle's digest and run its self-test")
     verify_os.add_argument("bundle", type=Path)
     verify_os.add_argument("--expect-digest", default="")
+
+    from .auto_intake import add_parser as _add_auto_intake
+
+    _add_auto_intake(sub)
     return parser
 
 
@@ -121,6 +125,11 @@ def main(argv: list[str] | None = None) -> int:
         if not errors:
             print(f"functions valid: {len(manifests)} manifests")
         return 1 if errors else 0
+
+    if args.command == "auto-intake":
+        from .auto_intake import run_cli
+
+        return run_cli(args)
 
     if args.command == "verify-os":
         import subprocess

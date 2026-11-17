@@ -258,8 +258,17 @@ def build_os(
     order = core.get("function_order", [])
     if len(order) != len(set(order)):
         errors.append("os/core.json: function_order lists a function twice")
+    auto_status = {e.get("function_id"): e for e in _read(root / "os" / "research_statements.json").get("entries", [])} \
+        if (root / "os" / "research_statements.json").is_file() else {}
     for mid in kernels - set(order):
-        reject(mid, paths[mid], [f"{mid}: a new decision_kernel must be added to os/core.json function_order by a human"])
+        entry = auto_status.get(mid)
+        if entry and entry.get("status") == "ROLLED_BACK":
+            why = f"{mid}: rolled back by auto-intake at {entry.get('rolled_back_at')}; out of service"
+        elif entry and entry.get("status") == "ENTERED":
+            why = f"{mid}: entered by auto-intake; not live while os/auto_intake.json go_live is off"
+        else:
+            why = f"{mid}: a new decision_kernel must be added to os/core.json function_order by a human"
+        reject(mid, paths[mid], [why])
         manifests.pop(mid)
         paths.pop(mid)
     if errors:

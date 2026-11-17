@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "policy": "A function may declare tier 'admitted' only if it is listed here. Entries are added by human-authored commits reviewed by the repository owner (see CODEOWNERS). The OS compiler reads this file and never writes it.",
+  "policy": "A function may declare tier 'admitted' only if it is listed here. Entries are added by human-authored commits reviewed by the repository owner (see CODEOWNERS), with one standing exception the owner set on 2026-11-17: auto-intake (canon_core/auto_intake.py) may add an entry for a kernel it entered from a PROVEN engine result while os/auto_intake.json has go_live true; each such entry names that decision and its one-step rollback. The OS compiler reads this file and never writes it.",
   "admitted": [
     {
       "id": "restoration",

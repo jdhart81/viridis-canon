@@ -1,0 +1,70 @@
+# Auto-intake: proven engine results become live kernels
+
+**Owner decision (2026-11-17, Justin Hart):** when the science engine proves a statement that is
+a spin-off function or service for Viridis Conservation, it is entered into this canon and goes
+live automatically, with no human merge, once every check passes. `os/auto_intake.json` holds
+that decision as two switches (`enabled`, `go_live`) and `os/core.json`
+`authority.automatic_kernel_activation` mirrors `go_live`.
+
+## The path
+
+```
+viridis-engine nightly (one job)            jdhart81/viridis-research
+  run certified ───────────────────────────► index/certified.json  (PROVEN, sealed hash, proof hash, DOI)
+  auto-intake step (tools/auto_intake/engine_step.sh)
+    1 plan        python3 -m canon_core auto-intake plan        every statement: CANDIDATE / WAIT / SKIP + reason
+    2 draft       engine Claude, docs/auto_intake/DRAFTING.md   one candidate per night: package, or decide C/RECERT
+    3 verify      ... auto-intake verify                        every gate below; any error = stop
+    4 apply       ... auto-intake apply                         family, research intake, ledger, regenerated indexes
+    5 go-live     ... auto-intake go-live                       os/core.json + os/admissions.json + tier admitted
+    6 gates       validate-functions, build-os, unit tests, generated-index checks
+    7 PR          branch auto-intake/<statement>, PR, wait for canon CI, merge only when green
+  jdhart81/viridisos
+    8 refresh     tools/refresh_from_canon.py → runtime/canon_auto_kernels.json, GET /auto-kernels; PR, merge when green
+  owner note      python3 -m canon_core auto-intake note --since <last run>   (folded into the kernel-flag email)
+```
+
+The product (viridis-conservation-app) vendors the canon `os-bundle` and pins its digest. A new
+live kernel reaches viridisconservation.com when the app takes the next bundle; that last hop is
+the app's own release step and is not automated here.
+
+## Invariants (tests/test_os_auto_intake.py)
+
+| | Invariant | Where it is enforced |
+|---|---|---|
+| AI-1 | Only a statement PROVEN in the certified index, with a proof, not closed by a single tactic, labelled PROVEN and non-trivial in its run's certification.json, and classified **A** (new service) or **B** (strengthens one) enters. TESTED results never become kernels; SEALED_UNPROVEN and every other status never enter. Text naming the Intelligence Bound must call it a conjecture and never proven; no kernel is called product-ready. | `eligibility`, `verify` |
+| AI-2 | A statement already in `os/research_statements.json`, or already backing a function, is skipped; applying twice writes once. | `plan`, `verify`, `apply` |
+| AI-3 | The package is `research/<function id>/` with `function.json` (decision_kernel, callable, READY, NOT_VALIDATED, inputs with units, the run's DOI, a boundary that says what is not established), `runner.py`, `intake.json`, verbatim copies of the sealed statement and the checked proof pinned by the index hashes, and `tests/test_os_auto_<id>.py`. Every statement part is a machine check replayed on the example, at least three cases and the negative controls. | `verify`, `conformance_problems` |
+| AI-4 | `verify` lists every problem and exits non-zero; the engine step merges only when verify, validate-functions, build-os, the unit tests and canon CI are green, and otherwise leaves the PR open with the reason. | CLI, `engine_step.sh` |
+| AI-5 | ViridisOS's auto-kernel list refreshes from the merged canon and refuses to disagree with the canon's live list. | viridisos `tools/refresh_from_canon.py` |
+| AI-6 | Go-live is one switch. With `go_live` false nothing is written to `os/core.json` or `os/admissions.json`. Each live kernel's admission entry names the owner decision and its rollback. Rollback is one command (or one revert) and a rolled-back kernel never comes back by itself. | `go_live`, `rollback` |
+| AI-7 | Every entry, go-live, rollback and decline is a ledger entry with statement, run, class and reason; `plan` gives every skip a reason; `note` gives the owner one line per kernel. | `os/research_statements.json`, `note` |
+| AI-8 | One kernel per night (`max_new_kernels_per_run`), inside the existing nightly job; no new schedule. Canon and ViridisOS are public, so their CI costs nothing against the Actions cap. | `os/auto_intake.json`, `engine_step.sh` |
+
+## Classes
+
+- **A**: a new decision service a Viridis Conservation buyer would use.
+- **B**: strengthens an existing service; `strengthens` names it.
+- **C**: proven, but no buyer decision (a lemma rung, a refutation, pure infrastructure). Logged, never entered.
+- **RECERT**: re-proves the backing of a kernel that is already live. Handled by the re-certification path, never entered as a new kernel.
+
+## Roll back a live kernel
+
+```
+python3 -m canon_core auto-intake rollback --function <id>
+python3 tools/build_certificates_index.py && python3 tools/build_formalization_yaml.py   # rollback already runs these
+```
+
+Commit, open a PR and merge it; or simply revert the PR that brought the kernel in. Rollback takes
+the kernel out of `os/core.json` and `os/admissions.json`, sets its tier back to callable (so the
+OS build leaves it out of the live bundle and records why), and marks the ledger ROLLED_BACK. The
+statement is not screened again. To stop new kernels going live, set `go_live` to false in
+`os/auto_intake.json` and `automatic_kernel_activation` to false in `os/core.json`; to stop
+intake entirely, set `enabled` to false.
+
+## Why the Lean files are `.lean.txt`
+
+The proof is compiled and axiom-audited by the engine in viridis-research, against that repo's
+lake environment. The canon keeps a verbatim copy pinned by the index hashes so the manifest can
+bind to it; the `.txt` suffix keeps the canon's compile census and catalog from trying to build a
+file that imports `ViridisStatements` outside its environment.

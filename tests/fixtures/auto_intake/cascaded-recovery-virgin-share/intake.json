@@ -1,0 +1,12 @@
+{
+  "statement": "P3.CascadedRecovery",
+  "function_id": "cascaded-recovery-virgin-share",
+  "class": "B",
+  "family": "governance-coordination",
+  "service": "Byproduct exchange and circular-material planning",
+  "strengthens": "byproduct-exchange",
+  "buyer_decision": "How much virgin material a multi-stage recovery chain still needs, and whether adding a stage is worth more than improving the best one.",
+  "proven": "For recovery fractions in [0,1], the virgin share is the product of (1 - r), lies in [0,1], is at least (1 - max r)^n, is never above the best single stage, and is strictly below it when another stage recovers anything.",
+  "assumed": "Stages act in series on one material, each recovering a fixed fraction; no losses, downgrading or rebound demand; the fractions supplied are the real ones.",
+  "reason": "Gives the byproduct-exchange service a proven bound for multi-stage chains (class B)."
+}

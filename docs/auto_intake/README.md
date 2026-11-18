@@ -21,12 +21,21 @@ viridis-engine nightly (one job)            jdhart81/viridis-research
     7 PR          branch auto-intake/<statement>, PR, wait for canon CI, merge only when green
   jdhart81/viridisos
     8 refresh     tools/refresh_from_canon.py → runtime/canon_auto_kernels.json, GET /auto-kernels; PR, merge when green
+  jdhart81/viridis-canon release
+    9 release     when main's live-kernel files differ from the newest canon-v release: publish canon-vYYYY.MM.DD;
+                  the os-bundle workflow builds the bundle from that tag and attaches it with its DIGEST
+  viridis-conservation-app (viridisconservation.com)
+   10 site        once that release carries its DIGEST: the app's scripts/sync-canon-bundle.sh moves the pinned
+                  bundle on branch auto-intake/site-<tag>; PR; merge when the app's checks pass
   owner note      python3 -m canon_core auto-intake note --since <last run>   (folded into the kernel-flag email)
 ```
 
-The product (viridis-conservation-app) vendors the canon `os-bundle` and pins its digest. A new
-live kernel reaches viridisconservation.com when the app takes the next bundle; that last hop is
-the app's own release step and is not automated here.
+The product (viridis-conservation-app) vendors the canon `os-bundle` and pins its digest. Steps 9
+and 10 carry a new live kernel there: a kernel merged one night is released that night, and the
+site takes the released bundle on the next run once its DIGEST is attached. The site moves only
+through its own `scripts/sync-canon-bundle.sh` (which must verify the bundle against the release
+DIGEST with `canon_core verify-os` and support `--check <tag>`), only on a branch with a PR, and
+only when the app's own checks pass. Without that script the site stays pinned and the step says so.
 
 ## Invariants (tests/test_os_auto_intake.py)
 
@@ -58,6 +67,9 @@ python3 tools/build_certificates_index.py && python3 tools/build_formalization_y
 Commit, open a PR and merge it; or simply revert the PR that brought the kernel in. Rollback takes
 the kernel out of `os/core.json` and `os/admissions.json`, sets its tier back to callable (so the
 OS build leaves it out of the live bundle and records why), and marks the ledger ROLLED_BACK. The
+next run publishes a canon release without it and moves the site to that release. To take it off
+the site at once, pin the site to the release before the kernel arrived:
+`scripts/sync-canon-bundle.sh <previous canon-v tag>` in the app, then merge that PR. The
 statement is not screened again. To stop new kernels going live, set `go_live` to false in
 `os/auto_intake.json` and `automatic_kernel_activation` to false in `os/core.json`; to stop
 intake entirely, set `enabled` to false.

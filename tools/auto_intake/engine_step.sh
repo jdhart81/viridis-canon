@@ -3,23 +3,38 @@
 #
 # Runs inside the existing nightly job after the run is certified; adds no schedule (AI-8).
 # Needs: CANON (viridis-canon checkout), VIRIDISOS (viridisos checkout), RESEARCH (viridis-research
-# checkout), GH_TOKEN with contents and pull-request write on viridis-canon and viridisos, and
+# checkout), GH_TOKEN with contents and pull-request write on viridis-canon, viridisos and the site
+# app, and
 # DRAFT, a command that runs the engine's Claude on docs/auto_intake/DRAFTING.md for the statement
 # in $STATEMENT and writes research/<id>/ (or records a decline).
 #
 # Order each night:
 #   A sweep: merge open auto-intake PRs whose checks are all green; report red ones (AI-4)
+#   R release: when canon main's live-kernel files differ from the newest canon-v release, publish
+#      canon-vYYYY.MM.DD; the canon's os-bundle workflow attaches the bundle + DIGEST to it (AI-5)
 #   B refresh ViridisOS from canon main if its auto-kernel list is stale (AI-5)
+#   S site: if SITE (site app checkout) is set, move its pinned bundle to the newest canon release
+#      that has a DIGEST, through the app's own scripts/sync-canon-bundle.sh, and open a PR (AI-5, AI-6)
 #   C plan; draft at most one candidate; verify, apply, go-live, gates; open the PR (AI-1..AI-3, AI-6)
 #   D print the owner's note for the kernel-flag email (AI-7)
+# STEPS (default "A R B S C D") limits which steps run; the tests use it to run R and S alone.
 set -euo pipefail
-: "${CANON:?}" "${VIRIDISOS:?}" "${RESEARCH:?}"
+STEPS="${STEPS:-A R B S C D}"
+want() { case " $STEPS " in *" $1 "*) return 0;; *) return 1;; esac; }
+: "${CANON:?}"
+if want B || want C; then : "${VIRIDISOS:?}" "${RESEARCH:?}"; fi
+RESEARCH="${RESEARCH:-}"
 INDEX="$RESEARCH/index/certified.json"
 SINCE="${SINCE:-$(date -u -d '1 day ago' +%Y-%m-%dT%H:%M:%SZ)}"
+SITE_REPO="${SITE_REPO:-jdhart81/viridis-conservation-app}"
 log() { echo "auto-intake: $*"; }
+latest_canon_release() {
+  gh release list -R jdhart81/viridis-canon --exclude-drafts --exclude-pre-releases --limit 30 \
+    --json tagName,publishedAt -q '[.[] | select(.tagName | startswith("canon-v"))] | sort_by(.publishedAt) | last | .tagName // ""'
+}
 
 # A. sweep: merge only green PRs ---------------------------------------------------------
-for repo in jdhart81/viridis-canon jdhart81/viridisos; do
+want A && for repo in jdhart81/viridis-canon jdhart81/viridisos ${SITE:+$SITE_REPO}; do
   for pr in $(gh pr list -R "$repo" --state open --search "head:auto-intake/" --json number -q '.[].number'); do
     states=$(gh pr checks "$pr" -R "$repo" --json state -q '[.[].state | select(. != "SKIPPED" and . != "NEUTRAL")] | unique | join(",")' || echo "UNKNOWN")
     if [ "$states" = "SUCCESS" ]; then
@@ -32,9 +47,25 @@ for repo in jdhart81/viridis-canon jdhart81/viridisos; do
   done
 done
 
+# R. release the canon bundle when the live kernel set changed since the last release --------
+# (covers auto-intake merges, rollbacks and reverts alike)
+want R && git -C "$CANON" fetch -q --tags origin main
+last=$(want R && latest_canon_release || true)
+if want R && [ -n "$last" ] && ! git -C "$CANON" diff --quiet "$last" origin/main -- \
+     os/core.json os/admissions.json os/research_statements.json research/; then
+  tag="canon-v$(date -u +%Y.%m.%d)"
+  if gh release view "$tag" -R jdhart81/viridis-canon >/dev/null 2>&1; then
+    log "release $tag already exists; the next run releases any later change"
+  else
+    gh release create "$tag" -R jdhart81/viridis-canon --target main --title "$tag" \
+      --notes "Canon release after a live-kernel change (auto-intake). The os-bundle workflow attaches the bundle and its DIGEST." \
+      && log "published $tag" || log "release $tag failed; left for review"
+  fi
+fi
+
 # B. ViridisOS follows canon main --------------------------------------------------------
-git -C "$CANON" fetch -q origin main && git -C "$CANON" checkout -q --detach origin/main
-if ! (cd "$VIRIDISOS" && python3 tools/refresh_from_canon.py --canon "$CANON" --check >/dev/null); then
+want B && git -C "$CANON" fetch -q origin main && git -C "$CANON" checkout -q --detach origin/main
+if want B && ! (cd "$VIRIDISOS" && python3 tools/refresh_from_canon.py --canon "$CANON" --check >/dev/null); then
   branch="auto-intake/os-refresh-$(git -C "$CANON" rev-parse --short HEAD)"
   ( cd "$VIRIDISOS" && git fetch -q origin main && git checkout -q -B "$branch" origin/main \
     && python3 tools/refresh_from_canon.py --canon "$CANON" && bash run_all_tests.sh >/dev/null \
@@ -46,10 +77,35 @@ if ! (cd "$VIRIDISOS" && python3 tools/refresh_from_canon.py --canon "$CANON" --
     && log "opened ViridisOS refresh $branch" || log "ViridisOS refresh failed; left for review"
 fi
 
+# S. the site takes the newest released bundle ------------------------------------------------
+if ! want S; then :
+elif [ -n "${SITE:-}" ] && [ -x "$SITE/scripts/sync-canon-bundle.sh" ]; then
+  latest=$(latest_canon_release || true)
+  if [ -n "$latest" ] && gh release view "$latest" -R jdhart81/viridis-canon --json assets \
+       -q '.assets[].name' | grep -q '\.DIGEST$'; then
+    if ! (cd "$SITE" && scripts/sync-canon-bundle.sh --check "$latest" >/dev/null); then
+      branch="auto-intake/site-$latest"
+      if ! gh pr list -R "$SITE_REPO" --state open --search "head:$branch" --json number -q '.[0].number' | grep -q .; then
+        ( cd "$SITE" && git fetch -q origin main && git checkout -q -B "$branch" origin/main \
+          && scripts/sync-canon-bundle.sh "$latest" \
+          && git add -A && git commit -s -qm "canon: take bundle $latest" \
+          && git push -q -u origin "$branch" \
+          && gh pr create -R "$SITE_REPO" --head "$branch" --title "Auto-intake: take canon bundle $latest" \
+               --body "Generated by viridis-canon tools/auto_intake/engine_step.sh. Moves the pinned canon os-bundle to $latest after its DIGEST verified. Merges when the app's checks pass (owner decision 2026-11-17). Roll back: scripts/sync-canon-bundle.sh <previous tag>." ) \
+          && log "opened site PR for $latest" || log "site bundle update to $latest failed; left for review"
+      fi
+    fi
+  else
+    log "no released canon bundle with a DIGEST yet; site stays pinned"
+  fi
+elif [ -n "${SITE:-}" ]; then
+  log "site checkout has no scripts/sync-canon-bundle.sh; site stays pinned"
+fi
+
 # C. one candidate per night -------------------------------------------------------------
-STATEMENT=$(cd "$CANON" && python3 -m canon_core auto-intake plan --index "$INDEX" --research-root "$RESEARCH" \
+want C && STATEMENT=$(cd "$CANON" && python3 -m canon_core auto-intake plan --index "$INDEX" --research-root "$RESEARCH" \
   | python3 -c 'import json,sys; c=json.load(sys.stdin)["candidates"]; print(c[0] if c else "")')
-if [ -n "$STATEMENT" ] && ! gh pr list -R jdhart81/viridis-canon --state open --search "head:auto-intake/$STATEMENT" --json number -q '.[0].number' | grep -q .; then
+if want C && [ -n "$STATEMENT" ] && ! gh pr list -R jdhart81/viridis-canon --state open --search "head:auto-intake/$STATEMENT" --json number -q '.[0].number' | grep -q .; then
   branch="auto-intake/$STATEMENT"
   cd "$CANON" && git checkout -q -B "$branch" origin/main
   export STATEMENT INDEX RESEARCH
@@ -82,4 +138,4 @@ Generated by tools/auto_intake/engine_step.sh. Merges automatically when canon C
 fi
 
 # D. owner note ------------------------------------------------------------------------------
-cd "$CANON" && git checkout -q --detach origin/main && python3 -m canon_core auto-intake note --since "$SINCE"
+if want D; then cd "$CANON" && git checkout -q --detach origin/main && python3 -m canon_core auto-intake note --since "$SINCE"; fi

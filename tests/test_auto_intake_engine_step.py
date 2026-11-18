@@ -291,6 +291,15 @@ class Site(Base):
         self.assertIn("CANON_ASSETS_DIR", self.alert_text())
 
 
+    def test_sync_script_never_sees_the_claude_credential(self):
+        spy = SYNC.replace("set -e\n", "set -e\nenv > \"$SPY\"\n")
+        canon, _, site = self.setup_site("canon-v2026.11.13", script=spy)
+        self.env.update(SPY=str(self.tmp / "spy-env"), CLAUDE_CODE_OAUTH_TOKEN="claude-secret")
+        self.three_phases(canon, site, f"os-bundle-{self.TAG}.DIGEST")
+        self.assertIn("pr-created", self.log.read_text())
+        self.assertNotIn("claude-secret", (self.tmp / "spy-env").read_text())
+
+
 class Publish(Base):
     """The publish phase applies only patches inside the change's allowed paths (AI-9)."""
     CANON_FILES = {"os/research_statements.json": "{}\n", "os/core.json": "{}\n", "README.md": "x\n",

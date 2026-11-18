@@ -85,7 +85,7 @@ phase_fetch() {
       elif echo "$states" | grep -qE 'FAILURE|ERROR|CANCELLED|TIMED_OUT|ACTION_REQUIRED|STARTUP_FAILURE'; then
         alert "$repo#$pr has failing checks ($states); left open"
       elif [ -z "$states" ] || [ "$states" = "NONE" ]; then
-        if [ "$age" -ge "$STALL_HOURS" ]; then alert "no checks have run on $repo#$pr in ${age}h; it cannot merge until they do"
+        if [ "$age" -ge "$STALL_HOURS" ]; then alert "no checks have run (or none could be read) on $repo#$pr in ${age}h; it cannot merge until they do"
         else log "waiting on $repo#$pr: no checks yet (${age}h)"; fi
       elif [ "$age" -ge "$STALL_HOURS" ]; then
         alert "$repo#$pr has waited ${age}h on checks ($states)"
@@ -175,6 +175,9 @@ phase_build() {
     if [ -e "$f" ]; then alert "build refused: $f exists"; exit 3; fi
   done
   if want B || want C; then : "${VIRIDISOS:?}" "${RESEARCH:?}"; fi
+  # Only the drafter gets the Claude credential; tests, sync scripts and gates never see it.
+  local claude_token="${CLAUDE_CODE_OAUTH_TOKEN:-}"
+  unset CLAUDE_CODE_OAUTH_TOKEN
 
   # B. ViridisOS follows canon main
   if want B; then
@@ -229,7 +232,7 @@ phase_build() {
       pushd "$CANON" >/dev/null
       git checkout -q -B "$branch" origin/main
       export STATEMENT INDEX RESEARCH
-      if ! ${DRAFT:?}; then alert "draft for $STATEMENT failed; nothing kept"; git reset -q --hard && git clean -qfd; fi
+      if ! CLAUDE_CODE_OAUTH_TOKEN="$claude_token" ${DRAFT:?}; then alert "draft for $STATEMENT failed; nothing kept"; git reset -q --hard && git clean -qfd; fi
       pkg=$(git status --porcelain --untracked-files=all | awk '{print $2}' | grep -oE '^research/[a-z0-9-]+/' | sort -u | head -1 || true)
       if [ -n "$pkg" ]; then
         if python3 -m canon_core auto-intake verify --index "$INDEX" --research-root "$RESEARCH" --package "$pkg" \

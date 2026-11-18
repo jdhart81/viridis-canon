@@ -165,7 +165,9 @@ phase_build() {
     if [ -n "${!v:-}" ]; then alert "build refused: $v is set"; exit 3; fi
   done
   for d in "$CANON" "${VIRIDISOS:-}" "${SITE:-}" "${RESEARCH:-}"; do
-    [ -n "$d" ] && [ -d "$d/.git" ] || continue
+    [ -n "$d" ] && [ -e "$d" ] || continue
+    # any checkout git recognises (plain clone, linked worktree, submodule), by its effective config
+    git -C "$d" rev-parse --git-dir >/dev/null 2>&1 || continue
     if git -C "$d" config --get-regexp '^(http\..*extraheader|credential(\..*)?\.helper|url\..*insteadof)$' >/dev/null 2>&1 \
        || git -C "$d" config --get-regexp '^remote\..*url$' 2>/dev/null | grep -qE '://[^/]*@'; then
       alert "build refused: $d stores git credentials"; exit 3

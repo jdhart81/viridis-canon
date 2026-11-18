@@ -220,6 +220,16 @@ class Phases(Base):
         self.assertEqual(out.returncode, 3)
         self.assertIn("stores git credentials", out.stdout)
 
+    def test_build_refuses_a_linked_worktree_whose_shared_config_holds_credentials(self):
+        _, canon = self.origin("jdhart81/viridis-canon", {"README.md": "x\n"})
+        sh("git", "config", "http.https://github.com/.extraheader", "AUTHORIZATION: basic x", cwd=canon, env=self.env)
+        wt = self.tmp / "worktree"
+        sh("git", "worktree", "add", "-q", "--detach", str(wt), cwd=canon, env=self.env)
+        self.assertTrue((wt / ".git").is_file())
+        out = self.run_step("build", "D", CANON=str(wt), AI_IN=str(self.tmp / "in"), AI_OUT=str(self.tmp / "out"))
+        self.assertEqual(out.returncode, 3)
+        self.assertIn("stores git credentials", out.stdout)
+
     def test_build_refuses_a_token_in_a_remote_url(self):
         _, canon = self.origin("jdhart81/viridis-canon", {"README.md": "x\n"})
         sh("git", "remote", "set-url", "origin", "https://x-access-token:abc@github.com/a/b.git", cwd=canon, env=self.env)

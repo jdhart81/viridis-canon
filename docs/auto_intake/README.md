@@ -37,6 +37,32 @@ through its own `scripts/sync-canon-bundle.sh` (which must verify the bundle aga
 DIGEST with `canon_core verify-os` and support `--check <tag>`), only on a branch with a PR, and
 only when the app's own checks pass. Without that script the site stays pinned and the step says so.
 
+## Three phases, so the write token never meets drafted code
+
+The step is three workflow steps in the engine's nightly job, each a `PHASE` of
+`engine_step.sh`:
+
+| Phase | Credentials | Runs | Does |
+|---|---|---|---|
+| `fetch` | `AUTO_INTAKE_TOKEN`, as the runner user | only `gh` and `git` | sweeps open auto-intake PRs (merge green, alert on red, missing or stalled checks), publishes the canon release, downloads the newest released bundle into `$AI_IN` |
+| `build` | none; a separate unprivileged user under `env -i`, on copies of the checkouts | the drafter, the package's `runner.py`, every gate, ViridisOS tests, the site's sync script and tests | steps 1–6, 8 and 10 above; writes each change to `$AI_OUT/<canon\|viridisos\|site>/` as `branch`, `patch`, `body` |
+| `publish` | `AUTO_INTAKE_TOKEN`, as the runner user | only `gh` and `git`, in a fresh clone with hooks off | refuses any patch outside its allowed paths, applies it, commits with a fixed message, pushes the branch, opens the PR |
+
+Allowed paths, checked before a patch is applied (`check_patch`):
+
+- canon: one `research/<id>/`, `tests/test_os_auto_<id>.py`, `os/research_statements.json`,
+  `os/families.json`, `os/research_intake.json`, `os/core.json`, `os/admissions.json`,
+  `formalization.yaml`, `README.md`, `docs/overview/index.html`; a decline only the ledger;
+  no deletions
+- viridisos: `runtime/canon_auto_kernels.json` only
+- site: `os-bundle/` only
+
+Any rename, mode change, symlink, submodule, quoted, absolute or `..` path refuses the whole
+change. Run without `PHASE`, the step only sweeps and releases, and says so.
+
+Every problem is an `ALERT` line; the engine collects them, and any failed phase, into one open
+issue in viridis-engine ("Auto-intake needs attention"), which emails the owner.
+
 ## Invariants (tests/test_os_auto_intake.py)
 
 | | Invariant | Where it is enforced |
@@ -49,6 +75,8 @@ only when the app's own checks pass. Without that script the site stays pinned a
 | AI-6 | Go-live is one switch. With `go_live` false nothing is written to `os/core.json` or `os/admissions.json`. Each live kernel's admission entry names the owner decision and its rollback. Rollback is one command (or one revert) and a rolled-back kernel never comes back by itself. | `go_live`, `rollback` |
 | AI-7 | Every entry, go-live, rollback and decline is a ledger entry with statement, run, class and reason; `plan` gives every skip a reason; `note` gives the owner one line per kernel. | `os/research_statements.json`, `note` |
 | AI-8 | One kernel per night (`max_new_kernels_per_run`), inside the existing nightly job; no new schedule. Canon and ViridisOS are public, so their CI costs nothing against the Actions cap. | `os/auto_intake.json`, `engine_step.sh` |
+| AI-9 | The write token is never in reach of code a drafter wrote or a merged kernel ships: `build` refuses to start with any credential in its environment, in a checkout's git config or remote URL, or in gh's login; `publish` runs only gh and git and applies only patches inside the allowed paths. | `engine_step.sh` phases, `check_patch` |
+| AI-10 | Nothing fails quietly: red, missing or stalled (`STALL_HOURS`, default 12) checks, a release without its DIGEST after 3 hours, a refused patch, a failed gate and any failed phase raise an alert that reaches the owner as an issue. | `alert`, engine report step |
 
 ## Classes
 

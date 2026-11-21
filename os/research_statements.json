@@ -24,6 +24,26 @@
       "rollback": null
     },
     {
+      "statement": "P1.Bridge",
+      "class": "C",
+      "status": "DECLINED",
+      "function_id": null,
+      "strengthens": null,
+      "service": null,
+      "buyer_decision": null,
+      "proven": null,
+      "assumed": null,
+      "reason": "Rung L3 of the P1 lemma ladder (enclosed 4-components = C8 - chi on any finite raster); pure raster topology that by its run's own account does not discharge FaceCount, so it gives no standalone buyer decision and does not yet back the firebreak circuit-rank planner.",
+      "run_dir": "runs/2026-11-10_P1",
+      "doi": "10.5281/zenodo.24281796",
+      "statement_sha256": "66038622a8193e494604720c398024984bc7346b3101cf7a36e65276cda6171d",
+      "decided_at": "2026-11-20T03:01:28Z",
+      "decided_by": "auto-intake",
+      "live_at": null,
+      "rolled_back_at": null,
+      "rollback": null
+    },
+    {
       "statement": "P1.Insertion",
       "class": "C",
       "status": "DECLINED",

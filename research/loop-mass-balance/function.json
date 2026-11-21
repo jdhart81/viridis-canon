@@ -1,0 +1,325 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "loop-mass-balance",
+  "kind": "decision_kernel",
+  "name": "Loop mass balance: virgin input and secondary stock in a one-material recovery loop",
+  "version": "0.1.0",
+  "summary": "Computes how much virgin material a single-material recovery loop needs per period and over a planning horizon, the secondary stock it settles towards, and the stock path from a given starting stock.",
+  "decision_family": "governance-coordination",
+  "line": "Circular-material loop planning",
+  "tier": "admitted",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.24281827",
+  "lean": {
+    "module": "ViridisStatements.P3.LoopMassBalance",
+    "sources": [
+      {
+        "path": "research/loop-mass-balance/lean/Statement.lean.txt",
+        "sha256": "f00634594133f7edfb49f21bf30203d259cc8dfa7e62a40326bff1da1ea31ac7"
+      },
+      {
+        "path": "research/loop-mass-balance/lean/Proof.lean.txt",
+        "sha256": "0e110da9753e71462f1f2613eef5f7aa9e7fd1c6d8b368034fcc5210283a69b3"
+      }
+    ],
+    "theorems": [
+      "main"
+    ],
+    "verification_provider": "VIRIDIS_ENGINE_LEAN",
+    "verification_receipt_id": "jdhart81/viridis-research runs/2026-11-15_P3 P3.LoopMassBalance (statement f00634594133, candidate 0e110da9753e)"
+  },
+  "inputs": [
+    {
+      "name": "demand",
+      "required": true,
+      "type": "number",
+      "minimum": 0,
+      "unit": "material units per period",
+      "help": "Demand for the material in each period, in any consistent unit (for example tonnes per year)."
+    },
+    {
+      "name": "recovery_fraction",
+      "required": true,
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "unit": "fraction",
+      "help": "Share of each period's demand met from recovered (secondary) material, from 0 to 1."
+    },
+    {
+      "name": "retention",
+      "required": true,
+      "type": "number",
+      "minimum": 0,
+      "exclusiveMaximum": 1,
+      "unit": "fraction per period",
+      "help": "Share of the secondary stock that survives one period, from 0 up to but not including 1."
+    },
+    {
+      "name": "initial_stock",
+      "required": true,
+      "type": "number",
+      "unit": "material units",
+      "help": "Secondary stock at period 0, in the same material unit as demand (normally 0 or more)."
+    },
+    {
+      "name": "periods",
+      "required": true,
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000,
+      "unit": "periods",
+      "help": "Planning horizon T: the number of periods to total virgin input over and to run the stock forward."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "virgin_per_period",
+      "unit": "material units per period"
+    },
+    {
+      "name": "steady_stock",
+      "unit": "material units"
+    },
+    {
+      "name": "stock_path",
+      "unit": "material units, periods 0 to T"
+    },
+    {
+      "name": "stock_at_horizon",
+      "unit": "material units"
+    },
+    {
+      "name": "gap_at_horizon",
+      "unit": "material units"
+    },
+    {
+      "name": "cumulative_virgin",
+      "unit": "material units"
+    },
+    {
+      "name": "virgin_total_strictly_decreasing_in_recovery"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "demand_nonnegative",
+      "statement": "Demand per period is nonnegative.",
+      "check": "demand >= 0"
+    },
+    {
+      "id": "recovery_nonnegative",
+      "statement": "The recovery fraction is at least 0.",
+      "check": "recovery_fraction >= 0"
+    },
+    {
+      "id": "recovery_at_most_one",
+      "statement": "The recovery fraction is at most 1 (recovered material cannot exceed demand).",
+      "check": "recovery_fraction <= 1"
+    },
+    {
+      "id": "retention_nonnegative",
+      "statement": "Stock retention is at least 0.",
+      "check": "retention >= 0"
+    },
+    {
+      "id": "retention_below_one",
+      "statement": "Stock retention is strictly below 1 (some stock is lost each period).",
+      "check": "retention < 1"
+    },
+    {
+      "id": "periods_natural",
+      "statement": "The horizon is a whole number of periods.",
+      "check": "periods >= 0 and int(periods) == periods"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "demand": 10,
+      "recovery_fraction": 0.5,
+      "retention": 0.5,
+      "initial_stock": 0,
+      "periods": 3
+    },
+    "expected_outputs": {
+      "virgin_per_period": 5.0,
+      "steady_stock": 10.0,
+      "stock_path": [
+        0.0,
+        5.0,
+        7.5,
+        8.75
+      ],
+      "stock_at_horizon": 8.75,
+      "gap_at_horizon": -1.25,
+      "cumulative_virgin": 15.0,
+      "virgin_total_strictly_decreasing_in_recovery": true
+    }
+  },
+  "scope": "One material in discrete periods with constant demand, a constant share of demand met from recovered material, and a secondary stock that keeps a constant fraction of itself each period and receives the recovered amount.",
+  "boundary": "Exact arithmetic of the one-material loop model only. It does not establish any real recovery rate, retention rate or demand, that recovered material is available in the stock when it is drawn (the model does not cap recovery by the stock), quality losses, rebound demand, or prices; it is not empirical validation, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "authored_by": "auto-intake",
+    "research_repository": "jdhart81/viridis-research",
+    "research_statement": "P3.LoopMassBalance",
+    "research_run": "runs/2026-11-15_P3",
+    "statement_sha256": "f00634594133f7edfb49f21bf30203d259cc8dfa7e62a40326bff1da1ea31ac7",
+    "candidate_sha256": "0e110da9753e71462f1f2613eef5f7aa9e7fd1c6d8b368034fcc5210283a69b3",
+    "statement_text": "For every D >= 0, r in [0,1], rho in [0,1) and S0, with V = D(1 - r), S(0) = S0, S(t+1) = rho S(t) + r D and S* = r D / (1 - rho): (1) 0 <= V <= D; (2) S(t) - S* = rho^t (S0 - S*) for every t; (3) S(t) -> S* as t -> infinity; (4) the cumulative virgin input over T periods equals T D (1 - r) for every T. And (5) for D > 0 and T > 0, the cumulative virgin input over T periods is strictly decreasing in r on [0,1].",
+    "statement_conformance": [
+      {
+        "part": "1",
+        "statement": "0 <= virgin input per period <= demand",
+        "check": "virgin_per_period >= 0 and approx_le(virgin_per_period, demand, demand)"
+      },
+      {
+        "part": "2",
+        "statement": "S(t) - S* = rho^t (S0 - S*) for every period t on the reported path, including the horizon gap",
+        "check": "all(approx_eq(stock_path[t] - steady_stock, pow(retention, t) * (initial_stock - steady_stock), abs(initial_stock) + steady_stock) for t in range(len(stock_path))) and approx_eq(gap_at_horizon, pow(retention, periods) * (initial_stock - steady_stock), abs(initial_stock) + steady_stock)"
+      },
+      {
+        "part": "3",
+        "statement": "S(t) -> S*: with rho < 1 the gap to the steady stock shrinks by the factor rho every period (the limit itself is checked in Lean, not here)",
+        "check": "retention < 1 and all(approx_le(abs(stock_path[t + 1] - steady_stock), retention * abs(stock_path[t] - steady_stock), abs(initial_stock) + steady_stock) for t in range(periods))"
+      },
+      {
+        "part": "4",
+        "statement": "cumulative virgin input over T periods = T D (1 - r)",
+        "check": "approx_eq(cumulative_virgin, periods * demand * (1 - recovery_fraction), periods * demand)"
+      },
+      {
+        "part": "5",
+        "statement": "for D > 0 and T > 0 the cumulative virgin input is strictly decreasing in r on [0,1]",
+        "check": "virgin_total_strictly_decreasing_in_recovery == (demand > 0 and periods > 0) and all(all((periods * demand * (1 - a) > periods * demand * (1 - b)) if (virgin_total_strictly_decreasing_in_recovery and a < b) else True for b in [0, recovery_fraction, 1]) for a in [0, recovery_fraction, 1])"
+      },
+      {
+        "part": "definition",
+        "statement": "V = D (1 - r); S* = r D / (1 - rho); S(0) = S0; S(t+1) = rho S(t) + r D; the horizon stock is S(T) and the horizon gap is S(T) - S*",
+        "check": "approx_eq(virgin_per_period, demand * (1 - recovery_fraction), demand) and approx_eq(steady_stock, recovery_fraction * demand / (1 - retention), steady_stock) and len(stock_path) == periods + 1 and approx_eq(stock_path[0], initial_stock, initial_stock) and all(approx_eq(stock_path[t + 1], retention * stock_path[t] + recovery_fraction * demand, abs(initial_stock) + steady_stock) for t in range(periods)) and approx_eq(stock_at_horizon, stock_path[periods], stock_at_horizon) and approx_eq(gap_at_horizon, stock_at_horizon - steady_stock, abs(initial_stock) + steady_stock)"
+      }
+    ],
+    "conformance_cases": [
+      {
+        "demand": 10,
+        "recovery_fraction": 0.5,
+        "retention": 0.5,
+        "initial_stock": 0,
+        "periods": 2
+      },
+      {
+        "demand": 10,
+        "recovery_fraction": 0.75,
+        "retention": 0.5,
+        "initial_stock": 0,
+        "periods": 3
+      },
+      {
+        "demand": 0,
+        "recovery_fraction": 0,
+        "retention": 0.5,
+        "initial_stock": 0,
+        "periods": 3
+      },
+      {
+        "demand": 0,
+        "recovery_fraction": 1,
+        "retention": 0.5,
+        "initial_stock": 0,
+        "periods": 3
+      },
+      {
+        "demand": 10,
+        "recovery_fraction": 0.5,
+        "retention": 0.5,
+        "initial_stock": 0,
+        "periods": 0
+      },
+      {
+        "demand": 100,
+        "recovery_fraction": 1,
+        "retention": 0,
+        "initial_stock": 40,
+        "periods": 4
+      },
+      {
+        "demand": 12.5,
+        "recovery_fraction": 0.3,
+        "retention": 0.9,
+        "initial_stock": 80,
+        "periods": 25
+      },
+      {
+        "demand": 10,
+        "recovery_fraction": 0,
+        "retention": 0.8,
+        "initial_stock": 20,
+        "periods": 5
+      },
+      {
+        "demand": 10,
+        "recovery_fraction": 0.6,
+        "retention": 0.95,
+        "initial_stock": 0,
+        "periods": 1000
+      }
+    ],
+    "negative_controls": [
+      {
+        "demand": 1,
+        "recovery_fraction": 1,
+        "retention": 1,
+        "initial_stock": 0,
+        "periods": 3
+      },
+      {
+        "demand": 10,
+        "recovery_fraction": 2,
+        "retention": 0.5,
+        "initial_stock": 0,
+        "periods": 3
+      },
+      {
+        "demand": 10,
+        "recovery_fraction": -0.1,
+        "retention": 0.5,
+        "initial_stock": 0,
+        "periods": 3
+      },
+      {
+        "demand": -1,
+        "recovery_fraction": 0.5,
+        "retention": 0.5,
+        "initial_stock": 0,
+        "periods": 3
+      },
+      {
+        "demand": 10,
+        "recovery_fraction": 0.5,
+        "retention": -0.1,
+        "initial_stock": 0,
+        "periods": 3
+      },
+      {
+        "demand": 10,
+        "recovery_fraction": 0.5,
+        "retention": 0.5,
+        "initial_stock": 0,
+        "periods": 1.5
+      },
+      {
+        "demand": 10,
+        "recovery_fraction": 0.5,
+        "retention": 0.5,
+        "initial_stock": 0,
+        "periods": -1
+      }
+    ],
+    "strengthens": null,
+    "lean_witnesses": "D = 10, r = 1/2, rho = 1/2, S0 = 0: V = 5, S(1) = 5, S(2) = 15/2, S* = 10, S(2) - S* = -5/2 = (1/2)^2 (0 - 10); 3-period virgin total 15, falling to 15/2 at r = 3/4; with D = 0 the total is 0 at r = 0 and r = 1; rho = 1 and r = 2 are refused."
+  }
+}

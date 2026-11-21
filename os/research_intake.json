@@ -407,6 +407,15 @@
       "spine_admitted": false,
       "state": "BACKLOG_NO_WRAPPER",
       "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "P3.LoopMassBalance",
+      "doi": "10.5281/zenodo.24281827",
+      "product_line": "Circular-material loop planning",
+      "run_id": "runs/2026-11-15_P3",
+      "spine_admitted": false,
+      "state": "CERTIFICATION_READY",
+      "successor_version_candidate": "unassigned"
     }
   ]
 }

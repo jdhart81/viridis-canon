@@ -48,7 +48,8 @@
     "decision-information-capacity",
     "thermodynamic-economic-allocation",
     "pcs-reliability-derivative-eq-pivotal-probability",
-    "dswc-tv-range-certificate"
+    "dswc-tv-range-certificate",
+    "loop-mass-balance"
   ],
   "foundation_lean_modules": [
     "P0_IntelligenceBound_COMPILED",

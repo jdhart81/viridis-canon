@@ -53,7 +53,7 @@ evidence exists.
 |---|---|---|
 | Published comparator certificates | **31 runs, 217 theorems** | Each certificate records that the theorems are proved with zero `sorry`. It also records that they use only `propext`, `Quot.sound` and `Classical.choice`, that their statements match a challenge file, and that both the Lean kernel and the independent nanoda kernel accept them. The files and hashes are in [`certificates/`](./certificates/). |
 | … labelled *substantial* | **11 runs** | Formalizations of at least 200 lines with multi-step proofs. The other 20 are labelled *elementary* and are not oversold. See the [depth rule](./certificates/README.md). |
-| Decision functions tied to Lean theorems | **44** | Each [manifest](./os/) names its Lean module, theorems, DOI and verifier. They are listed in [`formalization.yaml`](./formalization.yaml). |
+| Decision functions tied to Lean theorems | **45** | Each [manifest](./os/) names its Lean module, theorems, DOI and verifier. They are listed in [`formalization.yaml`](./formalization.yaml). |
 | Rebuilt on every push | CI | `lake build` with an axiom audit (see [`REPRODUCE.md`](./REPRODUCE.md)). |
 | Legacy catalog records | 215 | Labelled UNCERTIFIED until re-certified (see [below](#legacy-catalog-status)). |
 

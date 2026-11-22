@@ -64,6 +64,13 @@
       "warrant_verdict": "ADMITTED",
       "evidence": "Product warrant ADMITTED with service state READY_UNSIGNED_PREVIEW in viridis-conservation-app@398b177 (backing receipt Run-139-ThermodynamicRetrofitWaterFilling-Comparator-attempt-1).",
       "human_gate": "Carried forward by the WS-20 migration; takes effect only when the repository owner merges the PR that adds this entry."
+    },
+    {
+      "id": "loop-mass-balance",
+      "tier": "admitted",
+      "warrant_verdict": "ADMITTED",
+      "evidence": "Research statement P3.LoopMassBalance PROVEN in jdhart81/viridis-research runs/2026-11-15_P3 (statement sha256 f00634594133, DOI 10.5281/zenodo.24281827); auto-intake gates, conformance tests, canon tests and the OS build passed.",
+      "human_gate": "Standing owner decision 2026-11-17 (os/auto_intake.json go_live): new kernels go live automatically after their checks pass. Roll back: python3 -m canon_core auto-intake rollback --function loop-mass-balance"
     }
   ]
 }

@@ -144,6 +144,26 @@
       "rollback": null
     },
     {
+      "statement": "P3.LoopMassBalance",
+      "class": "A",
+      "status": "LIVE",
+      "function_id": "loop-mass-balance",
+      "strengthens": null,
+      "service": "Circular-material loop planning",
+      "buyer_decision": "How much virgin material a one-material recovery loop will still need over a planning horizon at a chosen recovery fraction, and what secondary stock to plan storage for.",
+      "proven": "For demand D >= 0, recovery fraction r in [0,1] and stock retention rho in [0,1), the virgin input per period D(1 - r) lies between 0 and D; the secondary stock gap to r D / (1 - rho) shrinks as rho^t and the stock converges to that level; the virgin total over T periods is T D (1 - r); and for D > 0, T > 0 that total strictly falls as r rises.",
+      "assumed": "One material; demand, recovery fraction and retention are constant over the horizon; recovery is not capped by the stock actually available; no quality losses, rebound demand or price effects; the numbers supplied are the real ones.",
+      "reason": "A new service: no live kernel plans virgin input and secondary stock for a recovery loop (class A).",
+      "run_dir": "runs/2026-11-15_P3",
+      "doi": "10.5281/zenodo.24281827",
+      "statement_sha256": "f00634594133f7edfb49f21bf30203d259cc8dfa7e62a40326bff1da1ea31ac7",
+      "decided_at": "2026-11-21T01:22:55Z",
+      "decided_by": "auto-intake",
+      "live_at": "2026-11-21T01:22:57Z",
+      "rolled_back_at": null,
+      "rollback": "python3 -m canon_core auto-intake rollback --function loop-mass-balance"
+    },
+    {
       "statement": "P5.UnrestrictedBoundFalse",
       "class": "C",
       "status": "DECLINED",

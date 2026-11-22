@@ -12,7 +12,7 @@
 schema: "viridis-formalization/1"
 toolchain: "leanprover/lean4:v4.28.0"
 mathlib_rev: "8f9d9cff6bd728b17a24e163c9402775d9e6a365"
-result_count: 44
+result_count: 45
 results:
   - id: "afforestation"
     title: "Afforestation — seeding efficiency and the 8× edge-hostility lever"
@@ -418,6 +418,27 @@ results:
       certificate: "certificates/Run-121"
       depth: "substantial"
       claim_inventory: "certificates/Run-121/SEALED_CLAIM_INVENTORY.json"
+  - id: "loop-mass-balance"
+    title: "Loop mass balance: virgin input and secondary stock in a one-material recovery loop"
+    summary: "Computes how much virgin material a single-material recovery loop needs per period and over a planning horizon, the secondary stock it settles towards, and the stock path from a given starting stock."
+    kind: "decision_kernel"
+    tier: "admitted"
+    state: "READY"
+    paper: "https://doi.org/10.5281/zenodo.24281827"
+    manifest: "research/loop-mass-balance/function.json"
+    empirical_validation: "NOT_VALIDATED"
+    lean:
+      module: "ViridisStatements.P3.LoopMassBalance"
+      theorems: ["main"]
+      sources:
+        - {path: "research/loop-mass-balance/lean/Statement.lean.txt", sha256: "f00634594133f7edfb49f21bf30203d259cc8dfa7e62a40326bff1da1ea31ac7"}
+        - {path: "research/loop-mass-balance/lean/Proof.lean.txt", sha256: "0e110da9753e71462f1f2613eef5f7aa9e7fd1c6d8b368034fcc5210283a69b3"}
+    verification:
+      provider: "VIRIDIS_ENGINE_LEAN"
+      receipt: "jdhart81/viridis-research runs/2026-11-15_P3 P3.LoopMassBalance (statement f00634594133, candidate 0e110da9753e)"
+      certificate: null
+      depth: null
+      claim_inventory: null
   - id: "mission-feasibility-corrigibility"
     title: "Conservation feasibility — corrigibility rate ceiling, conditional on the Intelligence Bound premises"
     summary: "Checks that if correcting an agent at rate Δ costs Δ·k_B·T·ln 2 of power and that fits in the available power P, then the correction rate cannot exceed P/(k_B·T·ln 2)."

@@ -77,6 +77,7 @@ issue in viridis-engine ("Auto-intake needs attention"), which emails the owner.
 | AI-8 | One kernel per night (`max_new_kernels_per_run`), inside the existing nightly job; no new schedule. Canon and ViridisOS are public, so their CI costs nothing against the Actions cap. | `os/auto_intake.json`, `engine_step.sh` |
 | AI-9 | The write token is never in reach of code a drafter wrote or a merged kernel ships: `build` refuses to start with any credential in its environment, in a checkout's git config or remote URL, or in gh's login; `publish` runs only gh and git and applies only patches inside the allowed paths. | `engine_step.sh` phases, `check_patch` |
 | AI-10 | Nothing fails quietly: red, missing or stalled (`STALL_HOURS`, default 12) checks, a release without its DIGEST after 3 hours, a refused patch, a failed gate and any failed phase raise an alert that reaches the owner as an issue. | `alert`, engine report step |
+| AI-11 | ViridisOS and the site are judged on `origin/main` as the fetch phase left it, not on the engine's earlier checkout, so a refresh the sweep merged minutes before is not redone or reported as failed; a change that turns out to be empty is logged, not alerted; a failing ViridisOS test run names its failing suites in the alert and prints their output in the step log. | `engine_step.sh` steps B and S, `show_failures` |
 
 ## Classes
 

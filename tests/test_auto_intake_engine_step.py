@@ -12,6 +12,9 @@ Invariants checked:
   AI-9 the build phase refuses to run with any credential in reach; the publish phase opens a PR
      only for a patch inside that change's allowed paths, and without PHASE nothing drafts
   AI-10 red, missing or stalled checks, and every refusal, are ALERT lines and lines in $AI_ALERTS
+  AI-11 ViridisOS and the site are judged on origin/main as fetch left it, so a refresh the sweep
+     merged after the engine checked out is not redone or reported as a failure; a failing test
+     run names its failing suites in the alert and shows their output in the step log
 """
 import datetime
 import os
@@ -64,6 +67,28 @@ set -e
 if [ "$1" = "--check" ]; then [ "$(cat os-bundle/pin 2>/dev/null)" = "$2" ]; exit $?; fi
 [ -f "$CANON_ASSETS_DIR/os-bundle-$1.DIGEST" ]
 mkdir -p os-bundle && echo "$1" > os-bundle/pin
+"""
+
+REFRESH = """import pathlib, sys
+args = sys.argv
+want = (pathlib.Path(args[args.index("--canon") + 1]) / "kernels.txt").read_text()
+out = pathlib.Path("runtime/canon_auto_kernels.json")
+if "--check" in args:
+    sys.exit(0 if out.exists() and out.read_text() == want else 1)
+out.parent.mkdir(exist_ok=True)
+out.write_text(want)
+print("refreshed")
+"""
+
+OS_TESTS = """#!/usr/bin/env bash
+if [ -f FAIL ]; then
+  echo "test_alpha.py                      3 passed, 0 failed"
+  echo "test_beta.py                       1 passed, 2 failed"
+  echo "AssertionError: beta broke"
+  echo "TOTAL: 4 passed, 2 failed"; exit 1
+fi
+echo "test_alpha.py                      3 passed, 0 failed"
+echo "TOTAL: 3 passed, 0 failed"
 """
 
 
@@ -288,6 +313,17 @@ class Site(Base):
         self.three_phases(canon, site, f"os-bundle-{self.TAG}.DIGEST")
         self.assertNotIn("pr-created", self.log.read_text())
 
+    def test_site_update_merged_after_checkout_is_not_redone_or_alerted(self):  # AI-11
+        canon, origin, site = self.setup_site("canon-v2026.11.13")
+        seed = self.tmp / "seed" / "jdhart81/viridis-conservation-app"
+        (seed / "os-bundle" / "pin").write_text(self.TAG + "\n")
+        sh("git", "commit", "-qam", "site update merged by the sweep", cwd=seed, env=self.env)
+        sh("git", "push", "-q", "origin", "main", cwd=seed, env=self.env)
+        outs = self.three_phases(canon, site, f"os-bundle-{self.TAG}.DIGEST")
+        self.assertNotIn("pr-created", self.log.read_text())
+        self.assertEqual(self.alert_text(), "")
+        self.assertIn(f"site already pins {self.TAG}", outs[1].stdout)
+
     def test_site_without_sync_script_is_left_alone(self):
         canon, _, site = self.setup_site("canon-v2026.11.13", script=None)
         outs = self.three_phases(canon, site, f"os-bundle-{self.TAG}.DIGEST")
@@ -308,6 +344,55 @@ class Site(Base):
         self.three_phases(canon, site, f"os-bundle-{self.TAG}.DIGEST")
         self.assertIn("pr-created", self.log.read_text())
         self.assertNotIn("claude-secret", (self.tmp / "spy-env").read_text())
+
+
+class OsRefresh(Base):
+    def setup_os(self, canon_kernels, os_kernels, fail=False):
+        _, canon = self.origin("jdhart81/viridis-canon", {"kernels.txt": canon_kernels})
+        files = {"tools/refresh_from_canon.py": REFRESH, "run_all_tests.sh": OS_TESTS,
+                 "runtime/canon_auto_kernels.json": os_kernels}
+        if fail:
+            files["FAIL"] = "x\n"
+        origin, vos = self.origin("jdhart81/viridisos", files)
+        research = self.tmp / "research"
+        research.mkdir(exist_ok=True)
+        return canon, origin, vos, research
+
+    def build(self, canon, vos, research):
+        (self.tmp / "in").mkdir(exist_ok=True)
+        (self.tmp / "in" / "open-heads").write_text("")
+        out = self.run_step("build", "B", CANON=str(canon), VIRIDISOS=str(vos), RESEARCH=str(research),
+                            AI_IN=str(self.tmp / "in"), AI_OUT=str(self.tmp / "out"))
+        self.assertEqual(out.returncode, 0, out.stdout + out.stderr)
+        return out
+
+    def test_stale_viridisos_is_refreshed_on_a_branch(self):
+        canon, _, vos, research = self.setup_os("k2\n", "k1\n")
+        out = self.build(canon, vos, research)
+        self.assertIn("prepared ViridisOS refresh auto-intake/os-refresh-", out.stdout)
+        self.assertTrue((self.tmp / "out" / "viridisos" / "patch").read_text())
+        self.assertEqual(self.alert_text(), "")
+
+    def test_refresh_merged_after_checkout_is_not_redone_or_alerted(self):  # AI-11, 2026-11-23
+        canon, origin, vos, research = self.setup_os("k2\n", "k1\n")
+        seed = self.tmp / "seed" / "jdhart81/viridisos"
+        (seed / "runtime" / "canon_auto_kernels.json").write_text("k2\n")
+        sh("git", "commit", "-qam", "refresh merged by the sweep", cwd=seed, env=self.env)
+        sh("git", "push", "-q", "origin", "main", cwd=seed, env=self.env)
+        sh("git", "fetch", "-q", "origin", "main", cwd=vos, env=self.env)  # what fetch does; the tree stays old
+        out = self.build(canon, vos, research)
+        self.assertEqual(self.alert_text(), "")
+        self.assertNotIn("ALERT", out.stdout)
+        self.assertIn("ViridisOS already follows canon", out.stdout)
+        self.assertFalse((self.tmp / "out" / "viridisos").exists())
+
+    def test_failing_tests_are_named_and_shown(self):  # AI-11
+        canon, _, vos, research = self.setup_os("k2\n", "k1\n", fail=True)
+        out = self.build(canon, vos, research)
+        self.assertIn("failed its tests (test_beta.py)", self.alert_text())
+        self.assertIn("  | AssertionError: beta broke", out.stdout)
+        self.assertNotIn("test_alpha.py", out.stdout.split("failing part")[1])
+        self.assertFalse((self.tmp / "out" / "viridisos").exists())
 
 
 class Publish(Base):

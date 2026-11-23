@@ -142,12 +142,21 @@ phase_fetch() {
 }
 
 # ============================================================================== build (no token)
-emit() {  # emit <kind> <branch> <checkout> [body]: staged changes in <checkout> become $AI_OUT/<kind>/
+show_failures() {  # show_failures <what> <log>: the failing part of a test log, into the step's own output
+  echo "auto-intake: $1 failed; the failing part of their output:"
+  { grep -vE '^test_[A-Za-z0-9_]+\.py +[0-9]+ passed, 0 failed$' "$2" || true; } | tail -n 80 | sed 's/^/  | /'
+}
+failing_suites() {  # names of the suites whose summary line reports failures, or "see the step log"
+  local names
+  names=$(grep -oE '^test_[A-Za-z0-9_]+\.py +[0-9]+ passed, [1-9][0-9]* failed$' "$1" | awk '{print $1}' | head -n 5 | paste -sd, - || true)
+  echo "${names:-see the step log}"
+}
+emit() {  # emit <kind> <branch> <checkout> [body]: staged changes in <checkout> become $AI_OUT/<kind>/; 2 = no change
   local out="$AI_OUT/$1"
   rm -rf "$out" && mkdir -p "$out"
   printf '%s\n' "$2" > "$out/branch"
   git -C "$3" diff --cached --binary HEAD > "$out/patch"
-  if [ ! -s "$out/patch" ]; then rm -rf "$out"; return 1; fi
+  if [ ! -s "$out/patch" ]; then rm -rf "$out"; return 2; fi  # 2: nothing to change
   printf '%s\n' "${4:-}" > "$out/body"
 }
 
@@ -181,25 +190,44 @@ phase_build() {
   local claude_token="${CLAUDE_CODE_OAUTH_TOKEN:-}"
   unset CLAUDE_CODE_OAUTH_TOKEN
 
-  # B. ViridisOS follows canon main
+  # B. ViridisOS follows canon main. Every decision is made on origin/main as fetch left it: the
+  # sweep may have merged the previous refresh after the engine checked out, so the working tree
+  # can be older than origin/main (the 2026-11-23 false alarm).
   if want B; then
     git -C "$CANON" checkout -q --detach origin/main
-    if ! (cd "$VIRIDISOS" && python3 tools/refresh_from_canon.py --canon "$CANON" --check >/dev/null); then
+    if ! git -C "$VIRIDISOS" checkout -q --detach origin/main; then
+      alert "ViridisOS: could not check out origin/main; nothing kept"
+    elif (cd "$VIRIDISOS" && python3 tools/refresh_from_canon.py --canon "$CANON" --check >/dev/null); then
+      log "ViridisOS already follows canon $(git -C "$CANON" rev-parse --short HEAD)"
+    else
       branch="auto-intake/os-refresh-$(git -C "$CANON" rev-parse --short HEAD)"
+      tests_log=$(mktemp)
       if is_open "$OS_REPO" "$branch"; then log "ViridisOS refresh $branch already has a PR"
-      elif ( cd "$VIRIDISOS" && git checkout -q -B "$branch" origin/main \
-             && python3 tools/refresh_from_canon.py --canon "$CANON" && bash run_all_tests.sh >/dev/null \
-             && git add runtime/canon_auto_kernels.json ) \
-           && emit viridisos "$branch" "$VIRIDISOS" "Refreshes runtime/canon_auto_kernels.json from canon $(git -C "$CANON" rev-parse HEAD); ViridisOS tests passed in the build."; then
-        log "prepared ViridisOS refresh $branch"
+      elif ! (cd "$VIRIDISOS" && git checkout -q -B "$branch" origin/main \
+              && python3 tools/refresh_from_canon.py --canon "$CANON"); then
+        alert "ViridisOS refresh from canon failed in tools/refresh_from_canon.py; nothing kept"
+      elif ! (cd "$VIRIDISOS" && bash run_all_tests.sh > "$tests_log" 2>&1); then
+        show_failures "ViridisOS tests" "$tests_log"
+        alert "ViridisOS refresh from canon failed its tests ($(failing_suites "$tests_log")); nothing kept"
       else
-        alert "ViridisOS refresh from canon failed its tests; nothing kept"
+        rc=0
+        (cd "$VIRIDISOS" && git add runtime/canon_auto_kernels.json) \
+          && emit viridisos "$branch" "$VIRIDISOS" "Refreshes runtime/canon_auto_kernels.json from canon $(git -C "$CANON" rev-parse HEAD); ViridisOS tests passed in the build." \
+          || rc=$?
+        case $rc in
+          0) log "prepared ViridisOS refresh $branch" ;;
+          2) log "ViridisOS refresh $branch changes nothing; ViridisOS already follows the canon" ;;
+          *) alert "ViridisOS refresh $branch could not be staged; nothing kept" ;;
+        esac
       fi
+      rm -f "$tests_log"
     fi
   fi
 
-  # S. the site takes the newest released bundle
+  # S. the site takes the newest released bundle (decided on origin/main, as in B)
   if ! want S || [ -z "${SITE:-}" ]; then :
+  elif ! git -C "$SITE" checkout -q --detach origin/main; then
+    alert "site: could not check out origin/main; site stays pinned"
   elif [ ! -x "$SITE/scripts/sync-canon-bundle.sh" ]; then
     alert "the site has no scripts/sync-canon-bundle.sh; site stays pinned"
   elif ! grep -q CANON_ASSETS_DIR "$SITE/scripts/sync-canon-bundle.sh"; then
@@ -209,14 +237,20 @@ phase_build() {
   else
     latest=$(head -n1 "$AI_IN/latest-release")
     export CANON_ASSETS_DIR="$AI_IN/assets/$latest"
-    if (cd "$SITE" && scripts/sync-canon-bundle.sh --check "$latest" >/dev/null); then :
+    if (cd "$SITE" && scripts/sync-canon-bundle.sh --check "$latest" >/dev/null); then
+      log "site already pins $latest"
     elif is_open "$SITE_REPO" "auto-intake/site-$latest"; then log "site update to $latest already has a PR"
-    elif ( cd "$SITE" && git checkout -q -B "auto-intake/site-$latest" origin/main \
-           && scripts/sync-canon-bundle.sh "$latest" && git add -A -- os-bundle ) \
-         && emit site "auto-intake/site-$latest" "$SITE" "Moves the pinned canon os-bundle to $latest after its DIGEST verified; the app's tests passed in the build."; then
-      log "prepared site update to $latest"
+    elif ! ( cd "$SITE" && git checkout -q -B "auto-intake/site-$latest" origin/main \
+             && scripts/sync-canon-bundle.sh "$latest" && git add -A -- os-bundle ); then
+      alert "site update to $latest failed (sync script or the app's tests; the lines above say which); site stays pinned"
     else
-      alert "site update to $latest failed (sync script or the app's tests); site stays pinned"
+      rc=0
+      emit site "auto-intake/site-$latest" "$SITE" "Moves the pinned canon os-bundle to $latest after its DIGEST verified; the app's tests passed in the build." || rc=$?
+      case $rc in
+        0) log "prepared site update to $latest" ;;
+        2) log "site update to $latest changes nothing; the site already pins it" ;;
+        *) alert "site update to $latest could not be staged; site stays pinned" ;;
+      esac
     fi
     unset CANON_ASSETS_DIR
   fi

@@ -1,0 +1,12 @@
+{
+  "statement": "P3.CascadedRecovery",
+  "function_id": "cascaded-recovery-virgin-share",
+  "class": "B",
+  "family": "governance-coordination",
+  "service": "Circular-material loop planning",
+  "strengthens": "loop-mass-balance",
+  "buyer_decision": "How much virgin material a multi-stage recovery chain still needs, and whether adding a stage is worth more than improving the best one.",
+  "proven": "For recovery fractions in [0,1], the virgin share is the product of (1 - r), lies in [0,1], is at least (1 - max r)^n, is never above the best single stage, and is strictly below it when another stage recovers anything.",
+  "assumed": "Stages act in series on one material, each recovering a fixed fraction of what reaches it; no losses between stages, downgrading or rebound demand; the fractions supplied are the real ones.",
+  "reason": "Extends the live loop-mass-balance service, which takes one recovery fraction, with a proven bound for chains of several recovery stages (class B)."
+}

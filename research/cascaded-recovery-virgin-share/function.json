@@ -1,0 +1,227 @@
+{
+  "$schema": "https://jdhart81.github.io/viridis-canon/schemas/function-v1.json",
+  "schema_version": 1,
+  "id": "cascaded-recovery-virgin-share",
+  "kind": "decision_kernel",
+  "name": "Cascaded recovery: virgin share after several recovery stages",
+  "version": "0.1.0",
+  "summary": "Computes the share of a material stream that must still come from virgin material after a series of recovery stages, its proven lower bound, and how much the cascade beats the best single stage.",
+  "decision_family": "governance-coordination",
+  "line": "Circular-material loop planning",
+  "tier": "admitted",
+  "state": "READY",
+  "reconciliation": null,
+  "blocked": null,
+  "doi": "10.5281/zenodo.24456101",
+  "lean": {
+    "module": "ViridisStatements.P3.CascadedRecovery",
+    "sources": [
+      {
+        "path": "research/cascaded-recovery-virgin-share/lean/Statement.lean.txt",
+        "sha256": "a4e3f3c269b81a1d5dacde1535f0112654d5d4c5203e9a01a444bc4edcfbb115"
+      },
+      {
+        "path": "research/cascaded-recovery-virgin-share/lean/Proof.lean.txt",
+        "sha256": "eaafbaaa17a780833c6d955cae570ece4c6676fd241accb2bf52bac6773b8f1c"
+      }
+    ],
+    "theorems": [
+      "main"
+    ],
+    "verification_provider": "VIRIDIS_ENGINE_LEAN",
+    "verification_receipt_id": "jdhart81/viridis-research runs/2026-11-16_P3 P3.CascadedRecovery (statement a4e3f3c269b8, candidate eaafbaaa17a7)"
+  },
+  "inputs": [
+    {
+      "name": "recovery_fractions",
+      "required": true,
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "minItems": 1,
+      "maxItems": 64,
+      "unit": "fraction per stage",
+      "help": "Share of the material reaching each stage that the stage recovers, from 0 to 1, in stream order."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "virgin_share",
+      "unit": "fraction"
+    },
+    {
+      "name": "recovered_share",
+      "unit": "fraction"
+    },
+    {
+      "name": "stage_count",
+      "unit": "stages"
+    },
+    {
+      "name": "uniform_lower_bound",
+      "unit": "fraction"
+    },
+    {
+      "name": "best_single_stage",
+      "unit": "stage index"
+    },
+    {
+      "name": "best_single_stage_share",
+      "unit": "fraction"
+    },
+    {
+      "name": "cascade_strictly_better"
+    },
+    {
+      "name": "cascade_gain",
+      "unit": "fraction"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "nonnegative",
+      "statement": "Every stage recovers a nonnegative fraction (no stage adds demand).",
+      "check": "all(r >= 0 for r in recovery_fractions)"
+    },
+    {
+      "id": "at_most_one",
+      "statement": "No stage recovers more than reaches it.",
+      "check": "all(r <= 1 for r in recovery_fractions)"
+    }
+  ],
+  "example": {
+    "inputs": {
+      "recovery_fractions": [
+        0.5,
+        0.25,
+        0
+      ]
+    },
+    "expected_outputs": {
+      "virgin_share": 0.375,
+      "recovered_share": 0.625,
+      "stage_count": 3,
+      "uniform_lower_bound": 0.125,
+      "best_single_stage": 0,
+      "best_single_stage_share": 0.5,
+      "cascade_strictly_better": true,
+      "cascade_gain": 0.125
+    }
+  },
+  "scope": "A single material stream passing through recovery stages in series, each recovering a fixed fraction of what reaches it.",
+  "boundary": "Exact arithmetic of the series-stage model only. It does not establish any real recovery rate, losses between stages, quality downgrades, rebound demand, or that the stages are independent; it is not empirical validation, Viridis review, certification, a credit, or a registry determination.",
+  "empirical_validation": "NOT_VALIDATED",
+  "runner": "runner.py",
+  "provenance": {
+    "authored_by": "auto-intake",
+    "research_repository": "jdhart81/viridis-research",
+    "research_statement": "P3.CascadedRecovery",
+    "research_run": "runs/2026-11-16_P3",
+    "statement_sha256": "a4e3f3c269b81a1d5dacde1535f0112654d5d4c5203e9a01a444bc4edcfbb115",
+    "candidate_sha256": "eaafbaaa17a780833c6d955cae570ece4c6676fd241accb2bf52bac6773b8f1c",
+    "statement_text": "For every n and every r : Fin n -> R with 0 <= r i <= 1, the virgin share prod(1 - r i) satisfies: (1) 0 <= share <= 1; (2) for every m with r i <= m <= 1, (1 - m)^n <= share, in particular (1 - max r)^n <= share; (3) for every stage j, share <= 1 - r j; (4) if r j < 1 and some other stage k != j has r k > 0, then share < 1 - r j.",
+    "statement_conformance": [
+      {
+        "part": "1",
+        "statement": "0 <= virgin share <= 1",
+        "check": "virgin_share >= 0 and virgin_share <= 1"
+      },
+      {
+        "part": "2",
+        "statement": "(1 - m)^n <= virgin share for every uniform bound m with max r <= m <= 1; the reported lower bound is (1 - max r)^n",
+        "check": "approx_eq(uniform_lower_bound, pow(1 - sorted(recovery_fractions)[-1], len(recovery_fractions))) and approx_le(uniform_lower_bound, virgin_share) and all(approx_le(pow(1 - m, len(recovery_fractions)), virgin_share) for m in [sorted(recovery_fractions)[-1], (sorted(recovery_fractions)[-1] + 1) / 2, 1])"
+      },
+      {
+        "part": "3",
+        "statement": "virgin share <= 1 - r j for every stage j (never worse than any one stage)",
+        "check": "all(approx_le(virgin_share, 1 - r) for r in recovery_fractions) and approx_eq(best_single_stage_share, 1 - sorted(recovery_fractions)[-1]) and approx_le(virgin_share, best_single_stage_share)"
+      },
+      {
+        "part": "4",
+        "statement": "virgin share < 1 - r j whenever r j < 1 and another stage k != j has r k > 0",
+        "check": "all((virgin_share < 1 - recovery_fractions[j]) if (recovery_fractions[j] < 1 and any((recovery_fractions[k] > 0) if k != j else False for k in range(len(recovery_fractions)))) else True for j in range(len(recovery_fractions))) and cascade_strictly_better == ((1 - best_single_stage_share) < 1 and any((recovery_fractions[k] > 0) if k != best_single_stage else False for k in range(len(recovery_fractions))))"
+      },
+      {
+        "part": "definition",
+        "statement": "virgin share = prod(1 - r i); recovered share = 1 - virgin share; gain = best single-stage share - virgin share",
+        "check": "approx_eq(virgin_share, prod([1 - r for r in recovery_fractions])) and approx_eq(recovered_share, 1 - virgin_share) and approx_eq(cascade_gain, best_single_stage_share - virgin_share) and stage_count == len(recovery_fractions)"
+      }
+    ],
+    "conformance_cases": [
+      {
+        "recovery_fractions": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "recovery_fractions": [
+          0.5,
+          0.25,
+          0
+        ]
+      },
+      {
+        "recovery_fractions": [
+          0,
+          0.5
+        ]
+      },
+      {
+        "recovery_fractions": [
+          0.5,
+          1
+        ]
+      },
+      {
+        "recovery_fractions": [
+          0.9
+        ]
+      },
+      {
+        "recovery_fractions": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "recovery_fractions": [
+          1,
+          1
+        ]
+      },
+      {
+        "recovery_fractions": [
+          0.3,
+          0.6,
+          0.15,
+          0.8,
+          0.05
+        ]
+      }
+    ],
+    "negative_controls": [
+      {
+        "recovery_fractions": [
+          2,
+          0.5
+        ]
+      },
+      {
+        "recovery_fractions": [
+          -1,
+          0.5
+        ]
+      },
+      {
+        "recovery_fractions": []
+      }
+    ],
+    "strengthens": "loop-mass-balance",
+    "lean_witnesses": "[1/2,1/2] -> 1/4 (strictly below 1/2); [1/2,1/4,0] -> 3/8 above (1/2)^3; controls [0,1/2] and [1/2,1] meet the single stage exactly; r = 2 and r = -1 are refused."
+  }
+}

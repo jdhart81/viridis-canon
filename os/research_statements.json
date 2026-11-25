@@ -144,6 +144,26 @@
       "rollback": null
     },
     {
+      "statement": "P2.Tempo",
+      "class": "RECERT",
+      "status": "DECLINED",
+      "function_id": null,
+      "strengthens": null,
+      "service": null,
+      "buyer_decision": null,
+      "proven": null,
+      "assumed": null,
+      "reason": "P2.Tempo is a reconstruction that re-proves the six StewardshipTempo theorems backing the already-live Tempo cadence kernel (os/functions/tempo), so it re-certifies that kernel rather than adding a new service.",
+      "run_dir": "runs/2026-11-21_P2",
+      "doi": "10.5281/zenodo.24456138",
+      "statement_sha256": "a966ef3b1e3bb10cb9336686d71ec5c8b85c442fc1a21e6d3c2a13c7b6622179",
+      "decided_at": "2026-11-24T01:55:29Z",
+      "decided_by": "auto-intake",
+      "live_at": null,
+      "rolled_back_at": null,
+      "rollback": null
+    },
+    {
       "statement": "P3.LoopMassBalance",
       "class": "A",
       "status": "LIVE",

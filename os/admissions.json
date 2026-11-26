@@ -71,6 +71,13 @@
       "warrant_verdict": "ADMITTED",
       "evidence": "Research statement P3.LoopMassBalance PROVEN in jdhart81/viridis-research runs/2026-11-15_P3 (statement sha256 f00634594133, DOI 10.5281/zenodo.24281827); auto-intake gates, conformance tests, canon tests and the OS build passed.",
       "human_gate": "Standing owner decision 2026-11-17 (os/auto_intake.json go_live): new kernels go live automatically after their checks pass. Roll back: python3 -m canon_core auto-intake rollback --function loop-mass-balance"
+    },
+    {
+      "id": "cascaded-recovery-virgin-share",
+      "tier": "admitted",
+      "warrant_verdict": "ADMITTED",
+      "evidence": "Research statement P3.CascadedRecovery PROVEN in jdhart81/viridis-research runs/2026-11-16_P3 (statement sha256 a4e3f3c269b8, DOI 10.5281/zenodo.24456101); auto-intake gates, conformance tests, canon tests and the OS build passed.",
+      "human_gate": "Standing owner decision 2026-11-17 (os/auto_intake.json go_live): new kernels go live automatically after their checks pass. Roll back: python3 -m canon_core auto-intake rollback --function cascaded-recovery-virgin-share"
     }
   ]
 }

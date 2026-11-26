@@ -416,6 +416,15 @@
       "spine_admitted": false,
       "state": "CERTIFICATION_READY",
       "successor_version_candidate": "unassigned"
+    },
+    {
+      "abbreviation": "P3.CascadedRecovery",
+      "doi": "10.5281/zenodo.24456101",
+      "product_line": "Circular-material loop planning",
+      "run_id": "runs/2026-11-16_P3",
+      "spine_admitted": false,
+      "state": "CERTIFICATION_READY",
+      "successor_version_candidate": "unassigned"
     }
   ]
 }

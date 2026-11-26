@@ -49,7 +49,8 @@
     "thermodynamic-economic-allocation",
     "pcs-reliability-derivative-eq-pivotal-probability",
     "dswc-tv-range-certificate",
-    "loop-mass-balance"
+    "loop-mass-balance",
+    "cascaded-recovery-virgin-share"
   ],
   "foundation_lean_modules": [
     "P0_IntelligenceBound_COMPILED",

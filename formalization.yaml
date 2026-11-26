@@ -12,7 +12,7 @@
 schema: "viridis-formalization/1"
 toolchain: "leanprover/lean4:v4.28.0"
 mathlib_rev: "8f9d9cff6bd728b17a24e163c9402775d9e6a365"
-result_count: 45
+result_count: 46
 results:
   - id: "afforestation"
     title: "Afforestation — seeding efficiency and the 8× edge-hostility lever"
@@ -114,6 +114,27 @@ results:
     verification:
       provider: "COMPARATOR_CLOUD"
       receipt: "40c58299-efeb-4cad-b332-2525b7c8d6d1"
+      certificate: null
+      depth: null
+      claim_inventory: null
+  - id: "cascaded-recovery-virgin-share"
+    title: "Cascaded recovery: virgin share after several recovery stages"
+    summary: "Computes the share of a material stream that must still come from virgin material after a series of recovery stages, its proven lower bound, and how much the cascade beats the best single stage."
+    kind: "decision_kernel"
+    tier: "admitted"
+    state: "READY"
+    paper: "https://doi.org/10.5281/zenodo.24456101"
+    manifest: "research/cascaded-recovery-virgin-share/function.json"
+    empirical_validation: "NOT_VALIDATED"
+    lean:
+      module: "ViridisStatements.P3.CascadedRecovery"
+      theorems: ["main"]
+      sources:
+        - {path: "research/cascaded-recovery-virgin-share/lean/Statement.lean.txt", sha256: "a4e3f3c269b81a1d5dacde1535f0112654d5d4c5203e9a01a444bc4edcfbb115"}
+        - {path: "research/cascaded-recovery-virgin-share/lean/Proof.lean.txt", sha256: "eaafbaaa17a780833c6d955cae570ece4c6676fd241accb2bf52bac6773b8f1c"}
+    verification:
+      provider: "VIRIDIS_ENGINE_LEAN"
+      receipt: "jdhart81/viridis-research runs/2026-11-16_P3 P3.CascadedRecovery (statement a4e3f3c269b8, candidate eaafbaaa17a7)"
       certificate: null
       depth: null
       claim_inventory: null

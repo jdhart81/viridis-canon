@@ -164,6 +164,26 @@
       "rollback": null
     },
     {
+      "statement": "P3.CascadedRecovery",
+      "class": "B",
+      "status": "LIVE",
+      "function_id": "cascaded-recovery-virgin-share",
+      "strengthens": "loop-mass-balance",
+      "service": "Circular-material loop planning",
+      "buyer_decision": "How much virgin material a multi-stage recovery chain still needs, and whether adding a stage is worth more than improving the best one.",
+      "proven": "For recovery fractions in [0,1], the virgin share is the product of (1 - r), lies in [0,1], is at least (1 - max r)^n, is never above the best single stage, and is strictly below it when another stage recovers anything.",
+      "assumed": "Stages act in series on one material, each recovering a fixed fraction of what reaches it; no losses between stages, downgrading or rebound demand; the fractions supplied are the real ones.",
+      "reason": "Extends the live loop-mass-balance service, which takes one recovery fraction, with a proven bound for chains of several recovery stages (class B).",
+      "run_dir": "runs/2026-11-16_P3",
+      "doi": "10.5281/zenodo.24456101",
+      "statement_sha256": "a4e3f3c269b81a1d5dacde1535f0112654d5d4c5203e9a01a444bc4edcfbb115",
+      "decided_at": "2026-11-25T03:47:45Z",
+      "decided_by": "auto-intake",
+      "live_at": "2026-11-25T03:47:48Z",
+      "rolled_back_at": null,
+      "rollback": "python3 -m canon_core auto-intake rollback --function cascaded-recovery-virgin-share"
+    },
+    {
       "statement": "P3.LoopMassBalance",
       "class": "A",
       "status": "LIVE",
